@@ -88,11 +88,7 @@ pub fn bio_seq_assembly_greedy_make_series(vals : Array[Double], name : String) 
 
 pub fn bio_seq_assembly_greedy_series_len(s : BioseqassemblygreedySeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_assembly_greedy_series_sum(s : BioseqassemblygreedySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_series_sum(s : BioseqassemblygreedySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_assembly_greedy_series_mean(s : BioseqassemblygreedySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_assembly_greedy_frame_set(s : BioseqassemblygreedyFrame, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_greedy_frame_sum(s : BioseqassemblygreedyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_frame_sum(s : BioseqassemblygreedyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_frame_mean(s : BioseqassemblygreedyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_frame_mean(s : BioseqassemblygreedyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_frame_scale(s : BioseqassemblygreedyFrame, f : Double) -> BioseqassemblygreedyFrame {
   let result = bio_seq_assembly_greedy_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_assembly_greedy_frame_fill(s : BioseqassemblygreedyFrame, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_greedy_frame_min(s : BioseqassemblygreedyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_frame_min(s : BioseqassemblygreedyFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_frame_max(s : BioseqassemblygreedyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_frame_max(s : BioseqassemblygreedyFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_frame_to_string(s : BioseqassemblygreedyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_assembly_greedy_table_set(s : BioseqassemblygreedyTable, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_greedy_table_sum(s : BioseqassemblygreedyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_table_sum(s : BioseqassemblygreedyTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_table_mean(s : BioseqassemblygreedyTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_table_mean(s : BioseqassemblygreedyTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_table_scale(s : BioseqassemblygreedyTable, f : Double) -> BioseqassemblygreedyTable {
   let result = bio_seq_assembly_greedy_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_assembly_greedy_table_fill(s : BioseqassemblygreedyTable, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_greedy_table_min(s : BioseqassemblygreedyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_table_min(s : BioseqassemblygreedyTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_table_max(s : BioseqassemblygreedyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_table_max(s : BioseqassemblygreedyTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_table_to_string(s : BioseqassemblygreedyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_assembly_greedy_graphn_set(s : BioseqassemblygreedyGraphN, i : In
   result
 }
 
-pub fn bio_seq_assembly_greedy_graphn_sum(s : BioseqassemblygreedyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_graphn_sum(s : BioseqassemblygreedyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_graphn_mean(s : BioseqassemblygreedyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_graphn_mean(s : BioseqassemblygreedyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_graphn_scale(s : BioseqassemblygreedyGraphN, f : Double) -> BioseqassemblygreedyGraphN {
   let result = bio_seq_assembly_greedy_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_assembly_greedy_graphn_fill(s : BioseqassemblygreedyGraphN, v : D
   result
 }
 
-pub fn bio_seq_assembly_greedy_graphn_min(s : BioseqassemblygreedyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_graphn_min(s : BioseqassemblygreedyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_graphn_max(s : BioseqassemblygreedyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_graphn_max(s : BioseqassemblygreedyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_graphn_to_string(s : BioseqassemblygreedyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_assembly_greedy_node_set(s : BioseqassemblygreedyNode, i : Int, v
   result
 }
 
-pub fn bio_seq_assembly_greedy_node_sum(s : BioseqassemblygreedyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_node_sum(s : BioseqassemblygreedyNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_node_mean(s : BioseqassemblygreedyNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_node_mean(s : BioseqassemblygreedyNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_node_scale(s : BioseqassemblygreedyNode, f : Double) -> BioseqassemblygreedyNode {
   let result = bio_seq_assembly_greedy_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_assembly_greedy_node_fill(s : BioseqassemblygreedyNode, v : Doubl
   result
 }
 
-pub fn bio_seq_assembly_greedy_node_min(s : BioseqassemblygreedyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_node_min(s : BioseqassemblygreedyNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_node_max(s : BioseqassemblygreedyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_node_max(s : BioseqassemblygreedyNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_node_to_string(s : BioseqassemblygreedyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_assembly_greedy_edge_set(s : BioseqassemblygreedyEdge, i : Int, v
   result
 }
 
-pub fn bio_seq_assembly_greedy_edge_sum(s : BioseqassemblygreedyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_edge_sum(s : BioseqassemblygreedyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_edge_mean(s : BioseqassemblygreedyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_edge_mean(s : BioseqassemblygreedyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_edge_scale(s : BioseqassemblygreedyEdge, f : Double) -> BioseqassemblygreedyEdge {
   let result = bio_seq_assembly_greedy_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_assembly_greedy_edge_fill(s : BioseqassemblygreedyEdge, v : Doubl
   result
 }
 
-pub fn bio_seq_assembly_greedy_edge_min(s : BioseqassemblygreedyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_edge_min(s : BioseqassemblygreedyEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_edge_max(s : BioseqassemblygreedyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_edge_max(s : BioseqassemblygreedyEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_edge_to_string(s : BioseqassemblygreedyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_assembly_greedy_path_set(s : BioseqassemblygreedyPath, i : Int, v
   result
 }
 
-pub fn bio_seq_assembly_greedy_path_sum(s : BioseqassemblygreedyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_path_sum(s : BioseqassemblygreedyPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_path_mean(s : BioseqassemblygreedyPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_path_mean(s : BioseqassemblygreedyPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_path_scale(s : BioseqassemblygreedyPath, f : Double) -> BioseqassemblygreedyPath {
   let result = bio_seq_assembly_greedy_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_assembly_greedy_path_fill(s : BioseqassemblygreedyPath, v : Doubl
   result
 }
 
-pub fn bio_seq_assembly_greedy_path_min(s : BioseqassemblygreedyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_path_min(s : BioseqassemblygreedyPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_path_max(s : BioseqassemblygreedyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_path_max(s : BioseqassemblygreedyPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_path_to_string(s : BioseqassemblygreedyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_assembly_greedy_cluster_set(s : BioseqassemblygreedyCluster, i : 
   result
 }
 
-pub fn bio_seq_assembly_greedy_cluster_sum(s : BioseqassemblygreedyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_cluster_sum(s : BioseqassemblygreedyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_cluster_mean(s : BioseqassemblygreedyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_cluster_mean(s : BioseqassemblygreedyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_cluster_scale(s : BioseqassemblygreedyCluster, f : Double) -> BioseqassemblygreedyCluster {
   let result = bio_seq_assembly_greedy_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_assembly_greedy_cluster_fill(s : BioseqassemblygreedyCluster, v :
   result
 }
 
-pub fn bio_seq_assembly_greedy_cluster_min(s : BioseqassemblygreedyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_cluster_min(s : BioseqassemblygreedyCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_cluster_max(s : BioseqassemblygreedyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_cluster_max(s : BioseqassemblygreedyCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_cluster_to_string(s : BioseqassemblygreedyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_assembly_greedy_model_set(s : BioseqassemblygreedyModel, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_greedy_model_sum(s : BioseqassemblygreedyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_model_sum(s : BioseqassemblygreedyModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_model_mean(s : BioseqassemblygreedyModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_model_mean(s : BioseqassemblygreedyModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_model_scale(s : BioseqassemblygreedyModel, f : Double) -> BioseqassemblygreedyModel {
   let result = bio_seq_assembly_greedy_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_assembly_greedy_model_fill(s : BioseqassemblygreedyModel, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_greedy_model_min(s : BioseqassemblygreedyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_model_min(s : BioseqassemblygreedyModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_model_max(s : BioseqassemblygreedyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_model_max(s : BioseqassemblygreedyModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_model_to_string(s : BioseqassemblygreedyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_assembly_greedy_layer_set(s : BioseqassemblygreedyLayer, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_greedy_layer_sum(s : BioseqassemblygreedyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_layer_sum(s : BioseqassemblygreedyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_layer_mean(s : BioseqassemblygreedyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_layer_mean(s : BioseqassemblygreedyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_layer_scale(s : BioseqassemblygreedyLayer, f : Double) -> BioseqassemblygreedyLayer {
   let result = bio_seq_assembly_greedy_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_assembly_greedy_layer_fill(s : BioseqassemblygreedyLayer, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_greedy_layer_min(s : BioseqassemblygreedyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_layer_min(s : BioseqassemblygreedyLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_layer_max(s : BioseqassemblygreedyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_layer_max(s : BioseqassemblygreedyLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_layer_to_string(s : BioseqassemblygreedyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_assembly_greedy_buffer_set(s : BioseqassemblygreedyBuffer, i : In
   result
 }
 
-pub fn bio_seq_assembly_greedy_buffer_sum(s : BioseqassemblygreedyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_buffer_sum(s : BioseqassemblygreedyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_buffer_mean(s : BioseqassemblygreedyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_buffer_mean(s : BioseqassemblygreedyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_buffer_scale(s : BioseqassemblygreedyBuffer, f : Double) -> BioseqassemblygreedyBuffer {
   let result = bio_seq_assembly_greedy_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_assembly_greedy_buffer_fill(s : BioseqassemblygreedyBuffer, v : D
   result
 }
 
-pub fn bio_seq_assembly_greedy_buffer_min(s : BioseqassemblygreedyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_buffer_min(s : BioseqassemblygreedyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_buffer_max(s : BioseqassemblygreedyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_buffer_max(s : BioseqassemblygreedyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_buffer_to_string(s : BioseqassemblygreedyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_assembly_greedy_cursor_set(s : BioseqassemblygreedyCursor, i : In
   result
 }
 
-pub fn bio_seq_assembly_greedy_cursor_sum(s : BioseqassemblygreedyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_cursor_sum(s : BioseqassemblygreedyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_cursor_mean(s : BioseqassemblygreedyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_cursor_mean(s : BioseqassemblygreedyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_cursor_scale(s : BioseqassemblygreedyCursor, f : Double) -> BioseqassemblygreedyCursor {
   let result = bio_seq_assembly_greedy_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_assembly_greedy_cursor_fill(s : BioseqassemblygreedyCursor, v : D
   result
 }
 
-pub fn bio_seq_assembly_greedy_cursor_min(s : BioseqassemblygreedyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_cursor_min(s : BioseqassemblygreedyCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_cursor_max(s : BioseqassemblygreedyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_cursor_max(s : BioseqassemblygreedyCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_cursor_to_string(s : BioseqassemblygreedyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_assembly_greedy_view_set(s : BioseqassemblygreedyView, i : Int, v
   result
 }
 
-pub fn bio_seq_assembly_greedy_view_sum(s : BioseqassemblygreedyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_view_sum(s : BioseqassemblygreedyView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_view_mean(s : BioseqassemblygreedyView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_view_mean(s : BioseqassemblygreedyView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_view_scale(s : BioseqassemblygreedyView, f : Double) -> BioseqassemblygreedyView {
   let result = bio_seq_assembly_greedy_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_assembly_greedy_view_fill(s : BioseqassemblygreedyView, v : Doubl
   result
 }
 
-pub fn bio_seq_assembly_greedy_view_min(s : BioseqassemblygreedyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_view_min(s : BioseqassemblygreedyView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_view_max(s : BioseqassemblygreedyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_view_max(s : BioseqassemblygreedyView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_view_to_string(s : BioseqassemblygreedyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_assembly_greedy_range_set(s : BioseqassemblygreedyRange, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_greedy_range_sum(s : BioseqassemblygreedyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_range_sum(s : BioseqassemblygreedyRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_range_mean(s : BioseqassemblygreedyRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_range_mean(s : BioseqassemblygreedyRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_range_scale(s : BioseqassemblygreedyRange, f : Double) -> BioseqassemblygreedyRange {
   let result = bio_seq_assembly_greedy_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_assembly_greedy_range_fill(s : BioseqassemblygreedyRange, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_greedy_range_min(s : BioseqassemblygreedyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_range_min(s : BioseqassemblygreedyRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_range_max(s : BioseqassemblygreedyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_range_max(s : BioseqassemblygreedyRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_range_to_string(s : BioseqassemblygreedyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_assembly_greedy_slice_set(s : BioseqassemblygreedySlice, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_greedy_slice_sum(s : BioseqassemblygreedySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_greedy_slice_sum(s : BioseqassemblygreedySlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_greedy_slice_mean(s : BioseqassemblygreedySlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_greedy_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_greedy_slice_mean(s : BioseqassemblygreedySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_greedy_slice_scale(s : BioseqassemblygreedySlice, f : Double) -> BioseqassemblygreedySlice {
   let result = bio_seq_assembly_greedy_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_assembly_greedy_slice_fill(s : BioseqassemblygreedySlice, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_greedy_slice_min(s : BioseqassemblygreedySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_slice_min(s : BioseqassemblygreedySlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_greedy_slice_max(s : BioseqassemblygreedySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_greedy_slice_max(s : BioseqassemblygreedySlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_greedy_slice_to_string(s : BioseqassemblygreedySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn image_feature_surf_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_feature_surf_series_len(s : ImagefeaturesurfSeries) -> Int { s.vals.length() }
 
-pub fn image_feature_surf_series_sum(s : ImagefeaturesurfSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_feature_surf_series_sum(s : ImagefeaturesurfSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_feature_surf_series_mean(s : ImagefeaturesurfSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_feature_surf_frame_set(s : ImagefeaturesurfFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_surf_frame_sum(s : ImagefeaturesurfFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_frame_sum(s : ImagefeaturesurfFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_frame_mean(s : ImagefeaturesurfFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_frame_mean(s : ImagefeaturesurfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_frame_scale(s : ImagefeaturesurfFrame, f : Double) -> ImagefeaturesurfFrame {
   let result = image_feature_surf_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_feature_surf_frame_fill(s : ImagefeaturesurfFrame, v : Double) -> I
   result
 }
 
-pub fn image_feature_surf_frame_min(s : ImagefeaturesurfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_frame_min(s : ImagefeaturesurfFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_frame_max(s : ImagefeaturesurfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_frame_max(s : ImagefeaturesurfFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_frame_to_string(s : ImagefeaturesurfFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_feature_surf_table_set(s : ImagefeaturesurfTable, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_surf_table_sum(s : ImagefeaturesurfTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_table_sum(s : ImagefeaturesurfTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_table_mean(s : ImagefeaturesurfTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_table_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_table_mean(s : ImagefeaturesurfTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_table_scale(s : ImagefeaturesurfTable, f : Double) -> ImagefeaturesurfTable {
   let result = image_feature_surf_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_feature_surf_table_fill(s : ImagefeaturesurfTable, v : Double) -> I
   result
 }
 
-pub fn image_feature_surf_table_min(s : ImagefeaturesurfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_table_min(s : ImagefeaturesurfTable) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_table_max(s : ImagefeaturesurfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_table_max(s : ImagefeaturesurfTable) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_table_to_string(s : ImagefeaturesurfTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_feature_surf_graphn_set(s : ImagefeaturesurfGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_feature_surf_graphn_sum(s : ImagefeaturesurfGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_graphn_sum(s : ImagefeaturesurfGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_graphn_mean(s : ImagefeaturesurfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_graphn_mean(s : ImagefeaturesurfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_graphn_scale(s : ImagefeaturesurfGraphN, f : Double) -> ImagefeaturesurfGraphN {
   let result = image_feature_surf_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_feature_surf_graphn_fill(s : ImagefeaturesurfGraphN, v : Double) ->
   result
 }
 
-pub fn image_feature_surf_graphn_min(s : ImagefeaturesurfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_graphn_min(s : ImagefeaturesurfGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_graphn_max(s : ImagefeaturesurfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_graphn_max(s : ImagefeaturesurfGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_graphn_to_string(s : ImagefeaturesurfGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_feature_surf_node_set(s : ImagefeaturesurfNode, i : Int, v : Double
   result
 }
 
-pub fn image_feature_surf_node_sum(s : ImagefeaturesurfNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_node_sum(s : ImagefeaturesurfNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_node_mean(s : ImagefeaturesurfNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_node_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_node_mean(s : ImagefeaturesurfNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_node_scale(s : ImagefeaturesurfNode, f : Double) -> ImagefeaturesurfNode {
   let result = image_feature_surf_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_feature_surf_node_fill(s : ImagefeaturesurfNode, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_surf_node_min(s : ImagefeaturesurfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_node_min(s : ImagefeaturesurfNode) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_node_max(s : ImagefeaturesurfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_node_max(s : ImagefeaturesurfNode) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_node_to_string(s : ImagefeaturesurfNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_feature_surf_edge_set(s : ImagefeaturesurfEdge, i : Int, v : Double
   result
 }
 
-pub fn image_feature_surf_edge_sum(s : ImagefeaturesurfEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_edge_sum(s : ImagefeaturesurfEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_edge_mean(s : ImagefeaturesurfEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_edge_mean(s : ImagefeaturesurfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_edge_scale(s : ImagefeaturesurfEdge, f : Double) -> ImagefeaturesurfEdge {
   let result = image_feature_surf_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_feature_surf_edge_fill(s : ImagefeaturesurfEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_surf_edge_min(s : ImagefeaturesurfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_edge_min(s : ImagefeaturesurfEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_edge_max(s : ImagefeaturesurfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_edge_max(s : ImagefeaturesurfEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_edge_to_string(s : ImagefeaturesurfEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_feature_surf_path_set(s : ImagefeaturesurfPath, i : Int, v : Double
   result
 }
 
-pub fn image_feature_surf_path_sum(s : ImagefeaturesurfPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_path_sum(s : ImagefeaturesurfPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_path_mean(s : ImagefeaturesurfPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_path_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_path_mean(s : ImagefeaturesurfPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_path_scale(s : ImagefeaturesurfPath, f : Double) -> ImagefeaturesurfPath {
   let result = image_feature_surf_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_feature_surf_path_fill(s : ImagefeaturesurfPath, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_surf_path_min(s : ImagefeaturesurfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_path_min(s : ImagefeaturesurfPath) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_path_max(s : ImagefeaturesurfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_path_max(s : ImagefeaturesurfPath) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_path_to_string(s : ImagefeaturesurfPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_feature_surf_cluster_set(s : ImagefeaturesurfCluster, i : Int, v : 
   result
 }
 
-pub fn image_feature_surf_cluster_sum(s : ImagefeaturesurfCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_cluster_sum(s : ImagefeaturesurfCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_cluster_mean(s : ImagefeaturesurfCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_cluster_mean(s : ImagefeaturesurfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_cluster_scale(s : ImagefeaturesurfCluster, f : Double) -> ImagefeaturesurfCluster {
   let result = image_feature_surf_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_feature_surf_cluster_fill(s : ImagefeaturesurfCluster, v : Double) 
   result
 }
 
-pub fn image_feature_surf_cluster_min(s : ImagefeaturesurfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_cluster_min(s : ImagefeaturesurfCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_cluster_max(s : ImagefeaturesurfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_cluster_max(s : ImagefeaturesurfCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_cluster_to_string(s : ImagefeaturesurfCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_feature_surf_model_set(s : ImagefeaturesurfModel, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_surf_model_sum(s : ImagefeaturesurfModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_model_sum(s : ImagefeaturesurfModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_model_mean(s : ImagefeaturesurfModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_model_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_model_mean(s : ImagefeaturesurfModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_model_scale(s : ImagefeaturesurfModel, f : Double) -> ImagefeaturesurfModel {
   let result = image_feature_surf_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_feature_surf_model_fill(s : ImagefeaturesurfModel, v : Double) -> I
   result
 }
 
-pub fn image_feature_surf_model_min(s : ImagefeaturesurfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_model_min(s : ImagefeaturesurfModel) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_model_max(s : ImagefeaturesurfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_model_max(s : ImagefeaturesurfModel) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_model_to_string(s : ImagefeaturesurfModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_feature_surf_layer_set(s : ImagefeaturesurfLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_surf_layer_sum(s : ImagefeaturesurfLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_layer_sum(s : ImagefeaturesurfLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_layer_mean(s : ImagefeaturesurfLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_layer_mean(s : ImagefeaturesurfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_layer_scale(s : ImagefeaturesurfLayer, f : Double) -> ImagefeaturesurfLayer {
   let result = image_feature_surf_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_feature_surf_layer_fill(s : ImagefeaturesurfLayer, v : Double) -> I
   result
 }
 
-pub fn image_feature_surf_layer_min(s : ImagefeaturesurfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_layer_min(s : ImagefeaturesurfLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_layer_max(s : ImagefeaturesurfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_layer_max(s : ImagefeaturesurfLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_layer_to_string(s : ImagefeaturesurfLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_feature_surf_buffer_set(s : ImagefeaturesurfBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_feature_surf_buffer_sum(s : ImagefeaturesurfBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_buffer_sum(s : ImagefeaturesurfBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_buffer_mean(s : ImagefeaturesurfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_buffer_mean(s : ImagefeaturesurfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_buffer_scale(s : ImagefeaturesurfBuffer, f : Double) -> ImagefeaturesurfBuffer {
   let result = image_feature_surf_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_feature_surf_buffer_fill(s : ImagefeaturesurfBuffer, v : Double) ->
   result
 }
 
-pub fn image_feature_surf_buffer_min(s : ImagefeaturesurfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_buffer_min(s : ImagefeaturesurfBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_buffer_max(s : ImagefeaturesurfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_buffer_max(s : ImagefeaturesurfBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_buffer_to_string(s : ImagefeaturesurfBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_feature_surf_cursor_set(s : ImagefeaturesurfCursor, i : Int, v : Do
   result
 }
 
-pub fn image_feature_surf_cursor_sum(s : ImagefeaturesurfCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_cursor_sum(s : ImagefeaturesurfCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_cursor_mean(s : ImagefeaturesurfCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_cursor_mean(s : ImagefeaturesurfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_cursor_scale(s : ImagefeaturesurfCursor, f : Double) -> ImagefeaturesurfCursor {
   let result = image_feature_surf_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_feature_surf_cursor_fill(s : ImagefeaturesurfCursor, v : Double) ->
   result
 }
 
-pub fn image_feature_surf_cursor_min(s : ImagefeaturesurfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_cursor_min(s : ImagefeaturesurfCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_cursor_max(s : ImagefeaturesurfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_cursor_max(s : ImagefeaturesurfCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_cursor_to_string(s : ImagefeaturesurfCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_feature_surf_view_set(s : ImagefeaturesurfView, i : Int, v : Double
   result
 }
 
-pub fn image_feature_surf_view_sum(s : ImagefeaturesurfView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_view_sum(s : ImagefeaturesurfView) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_view_mean(s : ImagefeaturesurfView) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_view_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_view_mean(s : ImagefeaturesurfView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_view_scale(s : ImagefeaturesurfView, f : Double) -> ImagefeaturesurfView {
   let result = image_feature_surf_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_feature_surf_view_fill(s : ImagefeaturesurfView, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_surf_view_min(s : ImagefeaturesurfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_view_min(s : ImagefeaturesurfView) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_view_max(s : ImagefeaturesurfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_view_max(s : ImagefeaturesurfView) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_view_to_string(s : ImagefeaturesurfView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_feature_surf_range_set(s : ImagefeaturesurfRange, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_surf_range_sum(s : ImagefeaturesurfRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_range_sum(s : ImagefeaturesurfRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_range_mean(s : ImagefeaturesurfRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_range_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_range_mean(s : ImagefeaturesurfRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_range_scale(s : ImagefeaturesurfRange, f : Double) -> ImagefeaturesurfRange {
   let result = image_feature_surf_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_feature_surf_range_fill(s : ImagefeaturesurfRange, v : Double) -> I
   result
 }
 
-pub fn image_feature_surf_range_min(s : ImagefeaturesurfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_range_min(s : ImagefeaturesurfRange) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_range_max(s : ImagefeaturesurfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_range_max(s : ImagefeaturesurfRange) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_range_to_string(s : ImagefeaturesurfRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_feature_surf_slice_set(s : ImagefeaturesurfSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_surf_slice_sum(s : ImagefeaturesurfSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_surf_slice_sum(s : ImagefeaturesurfSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_surf_slice_mean(s : ImagefeaturesurfSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_surf_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_surf_slice_mean(s : ImagefeaturesurfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_surf_slice_scale(s : ImagefeaturesurfSlice, f : Double) -> ImagefeaturesurfSlice {
   let result = image_feature_surf_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_feature_surf_slice_fill(s : ImagefeaturesurfSlice, v : Double) -> I
   result
 }
 
-pub fn image_feature_surf_slice_min(s : ImagefeaturesurfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_slice_min(s : ImagefeaturesurfSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_surf_slice_max(s : ImagefeaturesurfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_surf_slice_max(s : ImagefeaturesurfSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_surf_slice_to_string(s : ImagefeaturesurfSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

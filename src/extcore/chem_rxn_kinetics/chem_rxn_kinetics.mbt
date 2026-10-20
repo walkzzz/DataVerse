@@ -88,11 +88,7 @@ pub fn chem_rxn_kinetics_make_series(vals : Array[Double], name : String) -> Che
 
 pub fn chem_rxn_kinetics_series_len(s : ChemrxnkineticsSeries) -> Int { s.vals.length() }
 
-pub fn chem_rxn_kinetics_series_sum(s : ChemrxnkineticsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_rxn_kinetics_series_sum(s : ChemrxnkineticsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_rxn_kinetics_series_mean(s : ChemrxnkineticsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_rxn_kinetics_frame_set(s : ChemrxnkineticsFrame, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_kinetics_frame_sum(s : ChemrxnkineticsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_frame_sum(s : ChemrxnkineticsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_frame_mean(s : ChemrxnkineticsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_frame_mean(s : ChemrxnkineticsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_frame_scale(s : ChemrxnkineticsFrame, f : Double) -> ChemrxnkineticsFrame {
   let result = chem_rxn_kinetics_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_rxn_kinetics_frame_fill(s : ChemrxnkineticsFrame, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_kinetics_frame_min(s : ChemrxnkineticsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_frame_min(s : ChemrxnkineticsFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_frame_max(s : ChemrxnkineticsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_frame_max(s : ChemrxnkineticsFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_frame_to_string(s : ChemrxnkineticsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_rxn_kinetics_table_set(s : ChemrxnkineticsTable, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_kinetics_table_sum(s : ChemrxnkineticsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_table_sum(s : ChemrxnkineticsTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_table_mean(s : ChemrxnkineticsTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_table_mean(s : ChemrxnkineticsTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_table_scale(s : ChemrxnkineticsTable, f : Double) -> ChemrxnkineticsTable {
   let result = chem_rxn_kinetics_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_rxn_kinetics_table_fill(s : ChemrxnkineticsTable, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_kinetics_table_min(s : ChemrxnkineticsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_table_min(s : ChemrxnkineticsTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_table_max(s : ChemrxnkineticsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_table_max(s : ChemrxnkineticsTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_table_to_string(s : ChemrxnkineticsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_rxn_kinetics_graphn_set(s : ChemrxnkineticsGraphN, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_kinetics_graphn_sum(s : ChemrxnkineticsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_graphn_sum(s : ChemrxnkineticsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_graphn_mean(s : ChemrxnkineticsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_graphn_mean(s : ChemrxnkineticsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_graphn_scale(s : ChemrxnkineticsGraphN, f : Double) -> ChemrxnkineticsGraphN {
   let result = chem_rxn_kinetics_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_rxn_kinetics_graphn_fill(s : ChemrxnkineticsGraphN, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_kinetics_graphn_min(s : ChemrxnkineticsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_graphn_min(s : ChemrxnkineticsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_graphn_max(s : ChemrxnkineticsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_graphn_max(s : ChemrxnkineticsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_graphn_to_string(s : ChemrxnkineticsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_rxn_kinetics_node_set(s : ChemrxnkineticsNode, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_kinetics_node_sum(s : ChemrxnkineticsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_node_sum(s : ChemrxnkineticsNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_node_mean(s : ChemrxnkineticsNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_node_mean(s : ChemrxnkineticsNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_node_scale(s : ChemrxnkineticsNode, f : Double) -> ChemrxnkineticsNode {
   let result = chem_rxn_kinetics_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_rxn_kinetics_node_fill(s : ChemrxnkineticsNode, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_kinetics_node_min(s : ChemrxnkineticsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_node_min(s : ChemrxnkineticsNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_node_max(s : ChemrxnkineticsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_node_max(s : ChemrxnkineticsNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_node_to_string(s : ChemrxnkineticsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_rxn_kinetics_edge_set(s : ChemrxnkineticsEdge, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_kinetics_edge_sum(s : ChemrxnkineticsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_edge_sum(s : ChemrxnkineticsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_edge_mean(s : ChemrxnkineticsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_edge_mean(s : ChemrxnkineticsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_edge_scale(s : ChemrxnkineticsEdge, f : Double) -> ChemrxnkineticsEdge {
   let result = chem_rxn_kinetics_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_rxn_kinetics_edge_fill(s : ChemrxnkineticsEdge, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_kinetics_edge_min(s : ChemrxnkineticsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_edge_min(s : ChemrxnkineticsEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_edge_max(s : ChemrxnkineticsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_edge_max(s : ChemrxnkineticsEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_edge_to_string(s : ChemrxnkineticsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_rxn_kinetics_path_set(s : ChemrxnkineticsPath, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_kinetics_path_sum(s : ChemrxnkineticsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_path_sum(s : ChemrxnkineticsPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_path_mean(s : ChemrxnkineticsPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_path_mean(s : ChemrxnkineticsPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_path_scale(s : ChemrxnkineticsPath, f : Double) -> ChemrxnkineticsPath {
   let result = chem_rxn_kinetics_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_rxn_kinetics_path_fill(s : ChemrxnkineticsPath, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_kinetics_path_min(s : ChemrxnkineticsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_path_min(s : ChemrxnkineticsPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_path_max(s : ChemrxnkineticsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_path_max(s : ChemrxnkineticsPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_path_to_string(s : ChemrxnkineticsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_rxn_kinetics_cluster_set(s : ChemrxnkineticsCluster, i : Int, v : Do
   result
 }
 
-pub fn chem_rxn_kinetics_cluster_sum(s : ChemrxnkineticsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_cluster_sum(s : ChemrxnkineticsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_cluster_mean(s : ChemrxnkineticsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_cluster_mean(s : ChemrxnkineticsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_cluster_scale(s : ChemrxnkineticsCluster, f : Double) -> ChemrxnkineticsCluster {
   let result = chem_rxn_kinetics_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_rxn_kinetics_cluster_fill(s : ChemrxnkineticsCluster, v : Double) ->
   result
 }
 
-pub fn chem_rxn_kinetics_cluster_min(s : ChemrxnkineticsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_cluster_min(s : ChemrxnkineticsCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_cluster_max(s : ChemrxnkineticsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_cluster_max(s : ChemrxnkineticsCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_cluster_to_string(s : ChemrxnkineticsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_rxn_kinetics_model_set(s : ChemrxnkineticsModel, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_kinetics_model_sum(s : ChemrxnkineticsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_model_sum(s : ChemrxnkineticsModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_model_mean(s : ChemrxnkineticsModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_model_mean(s : ChemrxnkineticsModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_model_scale(s : ChemrxnkineticsModel, f : Double) -> ChemrxnkineticsModel {
   let result = chem_rxn_kinetics_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_rxn_kinetics_model_fill(s : ChemrxnkineticsModel, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_kinetics_model_min(s : ChemrxnkineticsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_model_min(s : ChemrxnkineticsModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_model_max(s : ChemrxnkineticsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_model_max(s : ChemrxnkineticsModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_model_to_string(s : ChemrxnkineticsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_rxn_kinetics_layer_set(s : ChemrxnkineticsLayer, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_kinetics_layer_sum(s : ChemrxnkineticsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_layer_sum(s : ChemrxnkineticsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_layer_mean(s : ChemrxnkineticsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_layer_mean(s : ChemrxnkineticsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_layer_scale(s : ChemrxnkineticsLayer, f : Double) -> ChemrxnkineticsLayer {
   let result = chem_rxn_kinetics_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_rxn_kinetics_layer_fill(s : ChemrxnkineticsLayer, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_kinetics_layer_min(s : ChemrxnkineticsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_layer_min(s : ChemrxnkineticsLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_layer_max(s : ChemrxnkineticsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_layer_max(s : ChemrxnkineticsLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_layer_to_string(s : ChemrxnkineticsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_rxn_kinetics_buffer_set(s : ChemrxnkineticsBuffer, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_kinetics_buffer_sum(s : ChemrxnkineticsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_buffer_sum(s : ChemrxnkineticsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_buffer_mean(s : ChemrxnkineticsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_buffer_mean(s : ChemrxnkineticsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_buffer_scale(s : ChemrxnkineticsBuffer, f : Double) -> ChemrxnkineticsBuffer {
   let result = chem_rxn_kinetics_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_rxn_kinetics_buffer_fill(s : ChemrxnkineticsBuffer, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_kinetics_buffer_min(s : ChemrxnkineticsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_buffer_min(s : ChemrxnkineticsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_buffer_max(s : ChemrxnkineticsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_buffer_max(s : ChemrxnkineticsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_buffer_to_string(s : ChemrxnkineticsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_rxn_kinetics_cursor_set(s : ChemrxnkineticsCursor, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_kinetics_cursor_sum(s : ChemrxnkineticsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_cursor_sum(s : ChemrxnkineticsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_cursor_mean(s : ChemrxnkineticsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_cursor_mean(s : ChemrxnkineticsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_cursor_scale(s : ChemrxnkineticsCursor, f : Double) -> ChemrxnkineticsCursor {
   let result = chem_rxn_kinetics_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_rxn_kinetics_cursor_fill(s : ChemrxnkineticsCursor, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_kinetics_cursor_min(s : ChemrxnkineticsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_cursor_min(s : ChemrxnkineticsCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_cursor_max(s : ChemrxnkineticsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_cursor_max(s : ChemrxnkineticsCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_cursor_to_string(s : ChemrxnkineticsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_rxn_kinetics_view_set(s : ChemrxnkineticsView, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_kinetics_view_sum(s : ChemrxnkineticsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_view_sum(s : ChemrxnkineticsView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_view_mean(s : ChemrxnkineticsView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_view_mean(s : ChemrxnkineticsView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_view_scale(s : ChemrxnkineticsView, f : Double) -> ChemrxnkineticsView {
   let result = chem_rxn_kinetics_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_rxn_kinetics_view_fill(s : ChemrxnkineticsView, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_kinetics_view_min(s : ChemrxnkineticsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_view_min(s : ChemrxnkineticsView) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_view_max(s : ChemrxnkineticsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_view_max(s : ChemrxnkineticsView) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_view_to_string(s : ChemrxnkineticsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_rxn_kinetics_range_set(s : ChemrxnkineticsRange, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_kinetics_range_sum(s : ChemrxnkineticsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_range_sum(s : ChemrxnkineticsRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_range_mean(s : ChemrxnkineticsRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_range_mean(s : ChemrxnkineticsRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_range_scale(s : ChemrxnkineticsRange, f : Double) -> ChemrxnkineticsRange {
   let result = chem_rxn_kinetics_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_rxn_kinetics_range_fill(s : ChemrxnkineticsRange, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_kinetics_range_min(s : ChemrxnkineticsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_range_min(s : ChemrxnkineticsRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_range_max(s : ChemrxnkineticsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_range_max(s : ChemrxnkineticsRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_range_to_string(s : ChemrxnkineticsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_rxn_kinetics_slice_set(s : ChemrxnkineticsSlice, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_kinetics_slice_sum(s : ChemrxnkineticsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_kinetics_slice_sum(s : ChemrxnkineticsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_kinetics_slice_mean(s : ChemrxnkineticsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_kinetics_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_kinetics_slice_mean(s : ChemrxnkineticsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_kinetics_slice_scale(s : ChemrxnkineticsSlice, f : Double) -> ChemrxnkineticsSlice {
   let result = chem_rxn_kinetics_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_rxn_kinetics_slice_fill(s : ChemrxnkineticsSlice, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_kinetics_slice_min(s : ChemrxnkineticsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_slice_min(s : ChemrxnkineticsSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_kinetics_slice_max(s : ChemrxnkineticsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_kinetics_slice_max(s : ChemrxnkineticsSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_kinetics_slice_to_string(s : ChemrxnkineticsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

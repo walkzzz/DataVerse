@@ -88,11 +88,7 @@ pub fn math_galerkin_make_series(vals : Array[Double], name : String) -> Mathgal
 
 pub fn math_galerkin_series_len(s : MathgalerkinSeries) -> Int { s.vals.length() }
 
-pub fn math_galerkin_series_sum(s : MathgalerkinSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_galerkin_series_sum(s : MathgalerkinSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_galerkin_series_mean(s : MathgalerkinSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_galerkin_frame_set(s : MathgalerkinFrame, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_galerkin_frame_sum(s : MathgalerkinFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_frame_sum(s : MathgalerkinFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_frame_mean(s : MathgalerkinFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_frame_mean(s : MathgalerkinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_frame_scale(s : MathgalerkinFrame, f : Double) -> MathgalerkinFrame {
   let result = math_galerkin_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_galerkin_frame_fill(s : MathgalerkinFrame, v : Double) -> Mathgalerk
   result
 }
 
-pub fn math_galerkin_frame_min(s : MathgalerkinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_frame_min(s : MathgalerkinFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_frame_max(s : MathgalerkinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_frame_max(s : MathgalerkinFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_frame_to_string(s : MathgalerkinFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_galerkin_table_set(s : MathgalerkinTable, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_galerkin_table_sum(s : MathgalerkinTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_table_sum(s : MathgalerkinTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_table_mean(s : MathgalerkinTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_table_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_table_mean(s : MathgalerkinTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_table_scale(s : MathgalerkinTable, f : Double) -> MathgalerkinTable {
   let result = math_galerkin_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_galerkin_table_fill(s : MathgalerkinTable, v : Double) -> Mathgalerk
   result
 }
 
-pub fn math_galerkin_table_min(s : MathgalerkinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_table_min(s : MathgalerkinTable) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_table_max(s : MathgalerkinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_table_max(s : MathgalerkinTable) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_table_to_string(s : MathgalerkinTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_galerkin_graphn_set(s : MathgalerkinGraphN, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_galerkin_graphn_sum(s : MathgalerkinGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_graphn_sum(s : MathgalerkinGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_graphn_mean(s : MathgalerkinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_graphn_mean(s : MathgalerkinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_graphn_scale(s : MathgalerkinGraphN, f : Double) -> MathgalerkinGraphN {
   let result = math_galerkin_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_galerkin_graphn_fill(s : MathgalerkinGraphN, v : Double) -> Mathgale
   result
 }
 
-pub fn math_galerkin_graphn_min(s : MathgalerkinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_graphn_min(s : MathgalerkinGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_graphn_max(s : MathgalerkinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_graphn_max(s : MathgalerkinGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_graphn_to_string(s : MathgalerkinGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_galerkin_node_set(s : MathgalerkinNode, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_galerkin_node_sum(s : MathgalerkinNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_node_sum(s : MathgalerkinNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_node_mean(s : MathgalerkinNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_node_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_node_mean(s : MathgalerkinNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_node_scale(s : MathgalerkinNode, f : Double) -> MathgalerkinNode {
   let result = math_galerkin_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_galerkin_node_fill(s : MathgalerkinNode, v : Double) -> Mathgalerkin
   result
 }
 
-pub fn math_galerkin_node_min(s : MathgalerkinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_node_min(s : MathgalerkinNode) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_node_max(s : MathgalerkinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_node_max(s : MathgalerkinNode) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_node_to_string(s : MathgalerkinNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_galerkin_edge_set(s : MathgalerkinEdge, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_galerkin_edge_sum(s : MathgalerkinEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_edge_sum(s : MathgalerkinEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_edge_mean(s : MathgalerkinEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_edge_mean(s : MathgalerkinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_edge_scale(s : MathgalerkinEdge, f : Double) -> MathgalerkinEdge {
   let result = math_galerkin_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_galerkin_edge_fill(s : MathgalerkinEdge, v : Double) -> Mathgalerkin
   result
 }
 
-pub fn math_galerkin_edge_min(s : MathgalerkinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_edge_min(s : MathgalerkinEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_edge_max(s : MathgalerkinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_edge_max(s : MathgalerkinEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_edge_to_string(s : MathgalerkinEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_galerkin_path_set(s : MathgalerkinPath, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_galerkin_path_sum(s : MathgalerkinPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_path_sum(s : MathgalerkinPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_path_mean(s : MathgalerkinPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_path_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_path_mean(s : MathgalerkinPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_path_scale(s : MathgalerkinPath, f : Double) -> MathgalerkinPath {
   let result = math_galerkin_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_galerkin_path_fill(s : MathgalerkinPath, v : Double) -> Mathgalerkin
   result
 }
 
-pub fn math_galerkin_path_min(s : MathgalerkinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_path_min(s : MathgalerkinPath) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_path_max(s : MathgalerkinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_path_max(s : MathgalerkinPath) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_path_to_string(s : MathgalerkinPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_galerkin_cluster_set(s : MathgalerkinCluster, i : Int, v : Double) -
   result
 }
 
-pub fn math_galerkin_cluster_sum(s : MathgalerkinCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_cluster_sum(s : MathgalerkinCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_cluster_mean(s : MathgalerkinCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_cluster_mean(s : MathgalerkinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_cluster_scale(s : MathgalerkinCluster, f : Double) -> MathgalerkinCluster {
   let result = math_galerkin_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_galerkin_cluster_fill(s : MathgalerkinCluster, v : Double) -> Mathga
   result
 }
 
-pub fn math_galerkin_cluster_min(s : MathgalerkinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_cluster_min(s : MathgalerkinCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_cluster_max(s : MathgalerkinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_cluster_max(s : MathgalerkinCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_cluster_to_string(s : MathgalerkinCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_galerkin_model_set(s : MathgalerkinModel, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_galerkin_model_sum(s : MathgalerkinModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_model_sum(s : MathgalerkinModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_model_mean(s : MathgalerkinModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_model_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_model_mean(s : MathgalerkinModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_model_scale(s : MathgalerkinModel, f : Double) -> MathgalerkinModel {
   let result = math_galerkin_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_galerkin_model_fill(s : MathgalerkinModel, v : Double) -> Mathgalerk
   result
 }
 
-pub fn math_galerkin_model_min(s : MathgalerkinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_model_min(s : MathgalerkinModel) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_model_max(s : MathgalerkinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_model_max(s : MathgalerkinModel) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_model_to_string(s : MathgalerkinModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_galerkin_layer_set(s : MathgalerkinLayer, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_galerkin_layer_sum(s : MathgalerkinLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_layer_sum(s : MathgalerkinLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_layer_mean(s : MathgalerkinLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_layer_mean(s : MathgalerkinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_layer_scale(s : MathgalerkinLayer, f : Double) -> MathgalerkinLayer {
   let result = math_galerkin_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_galerkin_layer_fill(s : MathgalerkinLayer, v : Double) -> Mathgalerk
   result
 }
 
-pub fn math_galerkin_layer_min(s : MathgalerkinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_layer_min(s : MathgalerkinLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_layer_max(s : MathgalerkinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_layer_max(s : MathgalerkinLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_layer_to_string(s : MathgalerkinLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_galerkin_buffer_set(s : MathgalerkinBuffer, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_galerkin_buffer_sum(s : MathgalerkinBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_buffer_sum(s : MathgalerkinBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_buffer_mean(s : MathgalerkinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_buffer_mean(s : MathgalerkinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_buffer_scale(s : MathgalerkinBuffer, f : Double) -> MathgalerkinBuffer {
   let result = math_galerkin_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_galerkin_buffer_fill(s : MathgalerkinBuffer, v : Double) -> Mathgale
   result
 }
 
-pub fn math_galerkin_buffer_min(s : MathgalerkinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_buffer_min(s : MathgalerkinBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_buffer_max(s : MathgalerkinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_buffer_max(s : MathgalerkinBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_buffer_to_string(s : MathgalerkinBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_galerkin_cursor_set(s : MathgalerkinCursor, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_galerkin_cursor_sum(s : MathgalerkinCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_cursor_sum(s : MathgalerkinCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_cursor_mean(s : MathgalerkinCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_cursor_mean(s : MathgalerkinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_cursor_scale(s : MathgalerkinCursor, f : Double) -> MathgalerkinCursor {
   let result = math_galerkin_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_galerkin_cursor_fill(s : MathgalerkinCursor, v : Double) -> Mathgale
   result
 }
 
-pub fn math_galerkin_cursor_min(s : MathgalerkinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_cursor_min(s : MathgalerkinCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_cursor_max(s : MathgalerkinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_cursor_max(s : MathgalerkinCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_cursor_to_string(s : MathgalerkinCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_galerkin_view_set(s : MathgalerkinView, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_galerkin_view_sum(s : MathgalerkinView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_view_sum(s : MathgalerkinView) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_view_mean(s : MathgalerkinView) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_view_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_view_mean(s : MathgalerkinView) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_view_scale(s : MathgalerkinView, f : Double) -> MathgalerkinView {
   let result = math_galerkin_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_galerkin_view_fill(s : MathgalerkinView, v : Double) -> Mathgalerkin
   result
 }
 
-pub fn math_galerkin_view_min(s : MathgalerkinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_view_min(s : MathgalerkinView) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_view_max(s : MathgalerkinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_view_max(s : MathgalerkinView) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_view_to_string(s : MathgalerkinView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_galerkin_range_set(s : MathgalerkinRange, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_galerkin_range_sum(s : MathgalerkinRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_range_sum(s : MathgalerkinRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_range_mean(s : MathgalerkinRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_range_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_range_mean(s : MathgalerkinRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_range_scale(s : MathgalerkinRange, f : Double) -> MathgalerkinRange {
   let result = math_galerkin_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_galerkin_range_fill(s : MathgalerkinRange, v : Double) -> Mathgalerk
   result
 }
 
-pub fn math_galerkin_range_min(s : MathgalerkinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_range_min(s : MathgalerkinRange) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_range_max(s : MathgalerkinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_range_max(s : MathgalerkinRange) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_range_to_string(s : MathgalerkinRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_galerkin_slice_set(s : MathgalerkinSlice, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_galerkin_slice_sum(s : MathgalerkinSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_galerkin_slice_sum(s : MathgalerkinSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_galerkin_slice_mean(s : MathgalerkinSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_galerkin_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_galerkin_slice_mean(s : MathgalerkinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_galerkin_slice_scale(s : MathgalerkinSlice, f : Double) -> MathgalerkinSlice {
   let result = math_galerkin_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_galerkin_slice_fill(s : MathgalerkinSlice, v : Double) -> Mathgalerk
   result
 }
 
-pub fn math_galerkin_slice_min(s : MathgalerkinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_slice_min(s : MathgalerkinSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_galerkin_slice_max(s : MathgalerkinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_galerkin_slice_max(s : MathgalerkinSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_galerkin_slice_to_string(s : MathgalerkinSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

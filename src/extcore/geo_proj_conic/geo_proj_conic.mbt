@@ -88,11 +88,7 @@ pub fn geo_proj_conic_make_series(vals : Array[Double], name : String) -> Geopro
 
 pub fn geo_proj_conic_series_len(s : GeoprojconicSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_conic_series_sum(s : GeoprojconicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_conic_series_sum(s : GeoprojconicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_conic_series_mean(s : GeoprojconicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_conic_frame_set(s : GeoprojconicFrame, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_conic_frame_sum(s : GeoprojconicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_frame_sum(s : GeoprojconicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_frame_mean(s : GeoprojconicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_frame_mean(s : GeoprojconicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_frame_scale(s : GeoprojconicFrame, f : Double) -> GeoprojconicFrame {
   let result = geo_proj_conic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_conic_frame_fill(s : GeoprojconicFrame, v : Double) -> Geoprojco
   result
 }
 
-pub fn geo_proj_conic_frame_min(s : GeoprojconicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_frame_min(s : GeoprojconicFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_frame_max(s : GeoprojconicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_frame_max(s : GeoprojconicFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_frame_to_string(s : GeoprojconicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_conic_table_set(s : GeoprojconicTable, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_conic_table_sum(s : GeoprojconicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_table_sum(s : GeoprojconicTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_table_mean(s : GeoprojconicTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_table_mean(s : GeoprojconicTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_table_scale(s : GeoprojconicTable, f : Double) -> GeoprojconicTable {
   let result = geo_proj_conic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_conic_table_fill(s : GeoprojconicTable, v : Double) -> Geoprojco
   result
 }
 
-pub fn geo_proj_conic_table_min(s : GeoprojconicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_table_min(s : GeoprojconicTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_table_max(s : GeoprojconicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_table_max(s : GeoprojconicTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_table_to_string(s : GeoprojconicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_conic_graphn_set(s : GeoprojconicGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_conic_graphn_sum(s : GeoprojconicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_graphn_sum(s : GeoprojconicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_graphn_mean(s : GeoprojconicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_graphn_mean(s : GeoprojconicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_graphn_scale(s : GeoprojconicGraphN, f : Double) -> GeoprojconicGraphN {
   let result = geo_proj_conic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_conic_graphn_fill(s : GeoprojconicGraphN, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_conic_graphn_min(s : GeoprojconicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_graphn_min(s : GeoprojconicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_graphn_max(s : GeoprojconicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_graphn_max(s : GeoprojconicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_graphn_to_string(s : GeoprojconicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_conic_node_set(s : GeoprojconicNode, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_conic_node_sum(s : GeoprojconicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_node_sum(s : GeoprojconicNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_node_mean(s : GeoprojconicNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_node_mean(s : GeoprojconicNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_node_scale(s : GeoprojconicNode, f : Double) -> GeoprojconicNode {
   let result = geo_proj_conic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_conic_node_fill(s : GeoprojconicNode, v : Double) -> Geoprojconi
   result
 }
 
-pub fn geo_proj_conic_node_min(s : GeoprojconicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_node_min(s : GeoprojconicNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_node_max(s : GeoprojconicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_node_max(s : GeoprojconicNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_node_to_string(s : GeoprojconicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_conic_edge_set(s : GeoprojconicEdge, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_conic_edge_sum(s : GeoprojconicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_edge_sum(s : GeoprojconicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_edge_mean(s : GeoprojconicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_edge_mean(s : GeoprojconicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_edge_scale(s : GeoprojconicEdge, f : Double) -> GeoprojconicEdge {
   let result = geo_proj_conic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_conic_edge_fill(s : GeoprojconicEdge, v : Double) -> Geoprojconi
   result
 }
 
-pub fn geo_proj_conic_edge_min(s : GeoprojconicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_edge_min(s : GeoprojconicEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_edge_max(s : GeoprojconicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_edge_max(s : GeoprojconicEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_edge_to_string(s : GeoprojconicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_conic_path_set(s : GeoprojconicPath, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_conic_path_sum(s : GeoprojconicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_path_sum(s : GeoprojconicPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_path_mean(s : GeoprojconicPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_path_mean(s : GeoprojconicPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_path_scale(s : GeoprojconicPath, f : Double) -> GeoprojconicPath {
   let result = geo_proj_conic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_conic_path_fill(s : GeoprojconicPath, v : Double) -> Geoprojconi
   result
 }
 
-pub fn geo_proj_conic_path_min(s : GeoprojconicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_path_min(s : GeoprojconicPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_path_max(s : GeoprojconicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_path_max(s : GeoprojconicPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_path_to_string(s : GeoprojconicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_conic_cluster_set(s : GeoprojconicCluster, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_conic_cluster_sum(s : GeoprojconicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_cluster_sum(s : GeoprojconicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_cluster_mean(s : GeoprojconicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_cluster_mean(s : GeoprojconicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_cluster_scale(s : GeoprojconicCluster, f : Double) -> GeoprojconicCluster {
   let result = geo_proj_conic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_conic_cluster_fill(s : GeoprojconicCluster, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_conic_cluster_min(s : GeoprojconicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_cluster_min(s : GeoprojconicCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_cluster_max(s : GeoprojconicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_cluster_max(s : GeoprojconicCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_cluster_to_string(s : GeoprojconicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_conic_model_set(s : GeoprojconicModel, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_conic_model_sum(s : GeoprojconicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_model_sum(s : GeoprojconicModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_model_mean(s : GeoprojconicModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_model_mean(s : GeoprojconicModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_model_scale(s : GeoprojconicModel, f : Double) -> GeoprojconicModel {
   let result = geo_proj_conic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_conic_model_fill(s : GeoprojconicModel, v : Double) -> Geoprojco
   result
 }
 
-pub fn geo_proj_conic_model_min(s : GeoprojconicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_model_min(s : GeoprojconicModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_model_max(s : GeoprojconicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_model_max(s : GeoprojconicModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_model_to_string(s : GeoprojconicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_conic_layer_set(s : GeoprojconicLayer, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_conic_layer_sum(s : GeoprojconicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_layer_sum(s : GeoprojconicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_layer_mean(s : GeoprojconicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_layer_mean(s : GeoprojconicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_layer_scale(s : GeoprojconicLayer, f : Double) -> GeoprojconicLayer {
   let result = geo_proj_conic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_conic_layer_fill(s : GeoprojconicLayer, v : Double) -> Geoprojco
   result
 }
 
-pub fn geo_proj_conic_layer_min(s : GeoprojconicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_layer_min(s : GeoprojconicLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_layer_max(s : GeoprojconicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_layer_max(s : GeoprojconicLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_layer_to_string(s : GeoprojconicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_conic_buffer_set(s : GeoprojconicBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_conic_buffer_sum(s : GeoprojconicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_buffer_sum(s : GeoprojconicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_buffer_mean(s : GeoprojconicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_buffer_mean(s : GeoprojconicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_buffer_scale(s : GeoprojconicBuffer, f : Double) -> GeoprojconicBuffer {
   let result = geo_proj_conic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_conic_buffer_fill(s : GeoprojconicBuffer, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_conic_buffer_min(s : GeoprojconicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_buffer_min(s : GeoprojconicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_buffer_max(s : GeoprojconicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_buffer_max(s : GeoprojconicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_buffer_to_string(s : GeoprojconicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_conic_cursor_set(s : GeoprojconicCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_conic_cursor_sum(s : GeoprojconicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_cursor_sum(s : GeoprojconicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_cursor_mean(s : GeoprojconicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_cursor_mean(s : GeoprojconicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_cursor_scale(s : GeoprojconicCursor, f : Double) -> GeoprojconicCursor {
   let result = geo_proj_conic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_conic_cursor_fill(s : GeoprojconicCursor, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_conic_cursor_min(s : GeoprojconicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_cursor_min(s : GeoprojconicCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_cursor_max(s : GeoprojconicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_cursor_max(s : GeoprojconicCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_cursor_to_string(s : GeoprojconicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_conic_view_set(s : GeoprojconicView, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_conic_view_sum(s : GeoprojconicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_view_sum(s : GeoprojconicView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_view_mean(s : GeoprojconicView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_view_mean(s : GeoprojconicView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_view_scale(s : GeoprojconicView, f : Double) -> GeoprojconicView {
   let result = geo_proj_conic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_conic_view_fill(s : GeoprojconicView, v : Double) -> Geoprojconi
   result
 }
 
-pub fn geo_proj_conic_view_min(s : GeoprojconicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_view_min(s : GeoprojconicView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_view_max(s : GeoprojconicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_view_max(s : GeoprojconicView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_view_to_string(s : GeoprojconicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_conic_range_set(s : GeoprojconicRange, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_conic_range_sum(s : GeoprojconicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_range_sum(s : GeoprojconicRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_range_mean(s : GeoprojconicRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_range_mean(s : GeoprojconicRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_range_scale(s : GeoprojconicRange, f : Double) -> GeoprojconicRange {
   let result = geo_proj_conic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_conic_range_fill(s : GeoprojconicRange, v : Double) -> Geoprojco
   result
 }
 
-pub fn geo_proj_conic_range_min(s : GeoprojconicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_range_min(s : GeoprojconicRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_range_max(s : GeoprojconicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_range_max(s : GeoprojconicRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_range_to_string(s : GeoprojconicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_conic_slice_set(s : GeoprojconicSlice, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_conic_slice_sum(s : GeoprojconicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_conic_slice_sum(s : GeoprojconicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_conic_slice_mean(s : GeoprojconicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_conic_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_conic_slice_mean(s : GeoprojconicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_conic_slice_scale(s : GeoprojconicSlice, f : Double) -> GeoprojconicSlice {
   let result = geo_proj_conic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_conic_slice_fill(s : GeoprojconicSlice, v : Double) -> Geoprojco
   result
 }
 
-pub fn geo_proj_conic_slice_min(s : GeoprojconicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_slice_min(s : GeoprojconicSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_conic_slice_max(s : GeoprojconicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_conic_slice_max(s : GeoprojconicSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_conic_slice_to_string(s : GeoprojconicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

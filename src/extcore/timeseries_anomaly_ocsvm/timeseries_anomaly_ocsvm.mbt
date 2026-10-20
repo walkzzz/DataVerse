@@ -88,11 +88,7 @@ pub fn timeseries_anomaly_ocsvm_make_series(vals : Array[Double], name : String)
 
 pub fn timeseries_anomaly_ocsvm_series_len(s : TimeseriesanomalyocsvmSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_anomaly_ocsvm_series_sum(s : TimeseriesanomalyocsvmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_series_sum(s : TimeseriesanomalyocsvmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_anomaly_ocsvm_series_mean(s : TimeseriesanomalyocsvmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_anomaly_ocsvm_frame_set(s : TimeseriesanomalyocsvmFrame, i : I
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_sum(s : TimeseriesanomalyocsvmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_frame_sum(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_frame_mean(s : TimeseriesanomalyocsvmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_frame_mean(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_frame_scale(s : TimeseriesanomalyocsvmFrame, f : Double) -> TimeseriesanomalyocsvmFrame {
   let result = timeseries_anomaly_ocsvm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_anomaly_ocsvm_frame_fill(s : TimeseriesanomalyocsvmFrame, v : 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_frame_min(s : TimeseriesanomalyocsvmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_frame_min(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_frame_max(s : TimeseriesanomalyocsvmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_frame_max(s : TimeseriesanomalyocsvmFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_frame_to_string(s : TimeseriesanomalyocsvmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_anomaly_ocsvm_table_set(s : TimeseriesanomalyocsvmTable, i : I
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_table_sum(s : TimeseriesanomalyocsvmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_table_sum(s : TimeseriesanomalyocsvmTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_table_mean(s : TimeseriesanomalyocsvmTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_table_mean(s : TimeseriesanomalyocsvmTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_table_scale(s : TimeseriesanomalyocsvmTable, f : Double) -> TimeseriesanomalyocsvmTable {
   let result = timeseries_anomaly_ocsvm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_anomaly_ocsvm_table_fill(s : TimeseriesanomalyocsvmTable, v : 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_table_min(s : TimeseriesanomalyocsvmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_table_min(s : TimeseriesanomalyocsvmTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_table_max(s : TimeseriesanomalyocsvmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_table_max(s : TimeseriesanomalyocsvmTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_table_to_string(s : TimeseriesanomalyocsvmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_anomaly_ocsvm_graphn_set(s : TimeseriesanomalyocsvmGraphN, i :
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_sum(s : TimeseriesanomalyocsvmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_graphn_sum(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_graphn_mean(s : TimeseriesanomalyocsvmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_graphn_mean(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_graphn_scale(s : TimeseriesanomalyocsvmGraphN, f : Double) -> TimeseriesanomalyocsvmGraphN {
   let result = timeseries_anomaly_ocsvm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_anomaly_ocsvm_graphn_fill(s : TimeseriesanomalyocsvmGraphN, v 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_graphn_min(s : TimeseriesanomalyocsvmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_graphn_min(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_graphn_max(s : TimeseriesanomalyocsvmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_graphn_max(s : TimeseriesanomalyocsvmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_graphn_to_string(s : TimeseriesanomalyocsvmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_anomaly_ocsvm_node_set(s : TimeseriesanomalyocsvmNode, i : Int
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_node_sum(s : TimeseriesanomalyocsvmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_node_sum(s : TimeseriesanomalyocsvmNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_node_mean(s : TimeseriesanomalyocsvmNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_node_mean(s : TimeseriesanomalyocsvmNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_node_scale(s : TimeseriesanomalyocsvmNode, f : Double) -> TimeseriesanomalyocsvmNode {
   let result = timeseries_anomaly_ocsvm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_anomaly_ocsvm_node_fill(s : TimeseriesanomalyocsvmNode, v : Do
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_node_min(s : TimeseriesanomalyocsvmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_node_min(s : TimeseriesanomalyocsvmNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_node_max(s : TimeseriesanomalyocsvmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_node_max(s : TimeseriesanomalyocsvmNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_node_to_string(s : TimeseriesanomalyocsvmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_anomaly_ocsvm_edge_set(s : TimeseriesanomalyocsvmEdge, i : Int
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_sum(s : TimeseriesanomalyocsvmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_edge_sum(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_edge_mean(s : TimeseriesanomalyocsvmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_edge_mean(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_edge_scale(s : TimeseriesanomalyocsvmEdge, f : Double) -> TimeseriesanomalyocsvmEdge {
   let result = timeseries_anomaly_ocsvm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_anomaly_ocsvm_edge_fill(s : TimeseriesanomalyocsvmEdge, v : Do
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_edge_min(s : TimeseriesanomalyocsvmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_edge_min(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_edge_max(s : TimeseriesanomalyocsvmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_edge_max(s : TimeseriesanomalyocsvmEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_edge_to_string(s : TimeseriesanomalyocsvmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_anomaly_ocsvm_path_set(s : TimeseriesanomalyocsvmPath, i : Int
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_path_sum(s : TimeseriesanomalyocsvmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_path_sum(s : TimeseriesanomalyocsvmPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_path_mean(s : TimeseriesanomalyocsvmPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_path_mean(s : TimeseriesanomalyocsvmPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_path_scale(s : TimeseriesanomalyocsvmPath, f : Double) -> TimeseriesanomalyocsvmPath {
   let result = timeseries_anomaly_ocsvm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_anomaly_ocsvm_path_fill(s : TimeseriesanomalyocsvmPath, v : Do
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_path_min(s : TimeseriesanomalyocsvmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_path_min(s : TimeseriesanomalyocsvmPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_path_max(s : TimeseriesanomalyocsvmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_path_max(s : TimeseriesanomalyocsvmPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_path_to_string(s : TimeseriesanomalyocsvmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_anomaly_ocsvm_cluster_set(s : TimeseriesanomalyocsvmCluster, i
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_sum(s : TimeseriesanomalyocsvmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_cluster_sum(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_cluster_mean(s : TimeseriesanomalyocsvmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_cluster_mean(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_cluster_scale(s : TimeseriesanomalyocsvmCluster, f : Double) -> TimeseriesanomalyocsvmCluster {
   let result = timeseries_anomaly_ocsvm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_anomaly_ocsvm_cluster_fill(s : TimeseriesanomalyocsvmCluster, 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_cluster_min(s : TimeseriesanomalyocsvmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_cluster_min(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_cluster_max(s : TimeseriesanomalyocsvmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_cluster_max(s : TimeseriesanomalyocsvmCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_cluster_to_string(s : TimeseriesanomalyocsvmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_anomaly_ocsvm_model_set(s : TimeseriesanomalyocsvmModel, i : I
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_model_sum(s : TimeseriesanomalyocsvmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_model_sum(s : TimeseriesanomalyocsvmModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_model_mean(s : TimeseriesanomalyocsvmModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_model_mean(s : TimeseriesanomalyocsvmModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_model_scale(s : TimeseriesanomalyocsvmModel, f : Double) -> TimeseriesanomalyocsvmModel {
   let result = timeseries_anomaly_ocsvm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_anomaly_ocsvm_model_fill(s : TimeseriesanomalyocsvmModel, v : 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_model_min(s : TimeseriesanomalyocsvmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_model_min(s : TimeseriesanomalyocsvmModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_model_max(s : TimeseriesanomalyocsvmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_model_max(s : TimeseriesanomalyocsvmModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_model_to_string(s : TimeseriesanomalyocsvmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_anomaly_ocsvm_layer_set(s : TimeseriesanomalyocsvmLayer, i : I
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_sum(s : TimeseriesanomalyocsvmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_layer_sum(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_layer_mean(s : TimeseriesanomalyocsvmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_layer_mean(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_layer_scale(s : TimeseriesanomalyocsvmLayer, f : Double) -> TimeseriesanomalyocsvmLayer {
   let result = timeseries_anomaly_ocsvm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_anomaly_ocsvm_layer_fill(s : TimeseriesanomalyocsvmLayer, v : 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_layer_min(s : TimeseriesanomalyocsvmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_layer_min(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_layer_max(s : TimeseriesanomalyocsvmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_layer_max(s : TimeseriesanomalyocsvmLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_layer_to_string(s : TimeseriesanomalyocsvmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_anomaly_ocsvm_buffer_set(s : TimeseriesanomalyocsvmBuffer, i :
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_sum(s : TimeseriesanomalyocsvmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_buffer_sum(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_buffer_mean(s : TimeseriesanomalyocsvmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_buffer_mean(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_buffer_scale(s : TimeseriesanomalyocsvmBuffer, f : Double) -> TimeseriesanomalyocsvmBuffer {
   let result = timeseries_anomaly_ocsvm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_anomaly_ocsvm_buffer_fill(s : TimeseriesanomalyocsvmBuffer, v 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_buffer_min(s : TimeseriesanomalyocsvmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_buffer_min(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_buffer_max(s : TimeseriesanomalyocsvmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_buffer_max(s : TimeseriesanomalyocsvmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_buffer_to_string(s : TimeseriesanomalyocsvmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_anomaly_ocsvm_cursor_set(s : TimeseriesanomalyocsvmCursor, i :
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_sum(s : TimeseriesanomalyocsvmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_cursor_sum(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_cursor_mean(s : TimeseriesanomalyocsvmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_cursor_mean(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_cursor_scale(s : TimeseriesanomalyocsvmCursor, f : Double) -> TimeseriesanomalyocsvmCursor {
   let result = timeseries_anomaly_ocsvm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_anomaly_ocsvm_cursor_fill(s : TimeseriesanomalyocsvmCursor, v 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_cursor_min(s : TimeseriesanomalyocsvmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_cursor_min(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_cursor_max(s : TimeseriesanomalyocsvmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_cursor_max(s : TimeseriesanomalyocsvmCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_cursor_to_string(s : TimeseriesanomalyocsvmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_anomaly_ocsvm_view_set(s : TimeseriesanomalyocsvmView, i : Int
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_view_sum(s : TimeseriesanomalyocsvmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_view_sum(s : TimeseriesanomalyocsvmView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_view_mean(s : TimeseriesanomalyocsvmView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_view_mean(s : TimeseriesanomalyocsvmView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_view_scale(s : TimeseriesanomalyocsvmView, f : Double) -> TimeseriesanomalyocsvmView {
   let result = timeseries_anomaly_ocsvm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_anomaly_ocsvm_view_fill(s : TimeseriesanomalyocsvmView, v : Do
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_view_min(s : TimeseriesanomalyocsvmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_view_min(s : TimeseriesanomalyocsvmView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_view_max(s : TimeseriesanomalyocsvmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_view_max(s : TimeseriesanomalyocsvmView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_view_to_string(s : TimeseriesanomalyocsvmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_anomaly_ocsvm_range_set(s : TimeseriesanomalyocsvmRange, i : I
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_range_sum(s : TimeseriesanomalyocsvmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_range_sum(s : TimeseriesanomalyocsvmRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_range_mean(s : TimeseriesanomalyocsvmRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_range_mean(s : TimeseriesanomalyocsvmRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_range_scale(s : TimeseriesanomalyocsvmRange, f : Double) -> TimeseriesanomalyocsvmRange {
   let result = timeseries_anomaly_ocsvm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_anomaly_ocsvm_range_fill(s : TimeseriesanomalyocsvmRange, v : 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_range_min(s : TimeseriesanomalyocsvmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_range_min(s : TimeseriesanomalyocsvmRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_range_max(s : TimeseriesanomalyocsvmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_range_max(s : TimeseriesanomalyocsvmRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_range_to_string(s : TimeseriesanomalyocsvmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_anomaly_ocsvm_slice_set(s : TimeseriesanomalyocsvmSlice, i : I
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_sum(s : TimeseriesanomalyocsvmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_ocsvm_slice_sum(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_slice_mean(s : TimeseriesanomalyocsvmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_ocsvm_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_ocsvm_slice_mean(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_slice_scale(s : TimeseriesanomalyocsvmSlice, f : Double) -> TimeseriesanomalyocsvmSlice {
   let result = timeseries_anomaly_ocsvm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_anomaly_ocsvm_slice_fill(s : TimeseriesanomalyocsvmSlice, v : 
   result
 }
 
-pub fn timeseries_anomaly_ocsvm_slice_min(s : TimeseriesanomalyocsvmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_slice_min(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_ocsvm_slice_max(s : TimeseriesanomalyocsvmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_ocsvm_slice_max(s : TimeseriesanomalyocsvmSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_ocsvm_slice_to_string(s : TimeseriesanomalyocsvmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

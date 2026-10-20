@@ -88,11 +88,7 @@ pub fn signal_window_planck_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_window_planck_series_len(s : SignalwindowplanckSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_planck_series_sum(s : SignalwindowplanckSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_planck_series_sum(s : SignalwindowplanckSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_planck_series_mean(s : SignalwindowplanckSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_planck_frame_set(s : SignalwindowplanckFrame, i : Int, v : 
   result
 }
 
-pub fn signal_window_planck_frame_sum(s : SignalwindowplanckFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_frame_sum(s : SignalwindowplanckFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_frame_mean(s : SignalwindowplanckFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_frame_mean(s : SignalwindowplanckFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_frame_scale(s : SignalwindowplanckFrame, f : Double) -> SignalwindowplanckFrame {
   let result = signal_window_planck_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_planck_frame_fill(s : SignalwindowplanckFrame, v : Double) 
   result
 }
 
-pub fn signal_window_planck_frame_min(s : SignalwindowplanckFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_frame_min(s : SignalwindowplanckFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_frame_max(s : SignalwindowplanckFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_frame_max(s : SignalwindowplanckFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_frame_to_string(s : SignalwindowplanckFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_planck_table_set(s : SignalwindowplanckTable, i : Int, v : 
   result
 }
 
-pub fn signal_window_planck_table_sum(s : SignalwindowplanckTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_table_sum(s : SignalwindowplanckTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_table_mean(s : SignalwindowplanckTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_table_mean(s : SignalwindowplanckTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_table_scale(s : SignalwindowplanckTable, f : Double) -> SignalwindowplanckTable {
   let result = signal_window_planck_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_planck_table_fill(s : SignalwindowplanckTable, v : Double) 
   result
 }
 
-pub fn signal_window_planck_table_min(s : SignalwindowplanckTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_table_min(s : SignalwindowplanckTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_table_max(s : SignalwindowplanckTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_table_max(s : SignalwindowplanckTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_table_to_string(s : SignalwindowplanckTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_planck_graphn_set(s : SignalwindowplanckGraphN, i : Int, v 
   result
 }
 
-pub fn signal_window_planck_graphn_sum(s : SignalwindowplanckGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_graphn_sum(s : SignalwindowplanckGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_graphn_mean(s : SignalwindowplanckGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_graphn_mean(s : SignalwindowplanckGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_graphn_scale(s : SignalwindowplanckGraphN, f : Double) -> SignalwindowplanckGraphN {
   let result = signal_window_planck_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_planck_graphn_fill(s : SignalwindowplanckGraphN, v : Double
   result
 }
 
-pub fn signal_window_planck_graphn_min(s : SignalwindowplanckGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_graphn_min(s : SignalwindowplanckGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_graphn_max(s : SignalwindowplanckGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_graphn_max(s : SignalwindowplanckGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_graphn_to_string(s : SignalwindowplanckGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_planck_node_set(s : SignalwindowplanckNode, i : Int, v : Do
   result
 }
 
-pub fn signal_window_planck_node_sum(s : SignalwindowplanckNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_node_sum(s : SignalwindowplanckNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_node_mean(s : SignalwindowplanckNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_node_mean(s : SignalwindowplanckNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_node_scale(s : SignalwindowplanckNode, f : Double) -> SignalwindowplanckNode {
   let result = signal_window_planck_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_planck_node_fill(s : SignalwindowplanckNode, v : Double) ->
   result
 }
 
-pub fn signal_window_planck_node_min(s : SignalwindowplanckNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_node_min(s : SignalwindowplanckNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_node_max(s : SignalwindowplanckNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_node_max(s : SignalwindowplanckNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_node_to_string(s : SignalwindowplanckNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_planck_edge_set(s : SignalwindowplanckEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_window_planck_edge_sum(s : SignalwindowplanckEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_edge_sum(s : SignalwindowplanckEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_edge_mean(s : SignalwindowplanckEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_edge_mean(s : SignalwindowplanckEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_edge_scale(s : SignalwindowplanckEdge, f : Double) -> SignalwindowplanckEdge {
   let result = signal_window_planck_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_planck_edge_fill(s : SignalwindowplanckEdge, v : Double) ->
   result
 }
 
-pub fn signal_window_planck_edge_min(s : SignalwindowplanckEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_edge_min(s : SignalwindowplanckEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_edge_max(s : SignalwindowplanckEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_edge_max(s : SignalwindowplanckEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_edge_to_string(s : SignalwindowplanckEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_planck_path_set(s : SignalwindowplanckPath, i : Int, v : Do
   result
 }
 
-pub fn signal_window_planck_path_sum(s : SignalwindowplanckPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_path_sum(s : SignalwindowplanckPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_path_mean(s : SignalwindowplanckPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_path_mean(s : SignalwindowplanckPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_path_scale(s : SignalwindowplanckPath, f : Double) -> SignalwindowplanckPath {
   let result = signal_window_planck_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_planck_path_fill(s : SignalwindowplanckPath, v : Double) ->
   result
 }
 
-pub fn signal_window_planck_path_min(s : SignalwindowplanckPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_path_min(s : SignalwindowplanckPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_path_max(s : SignalwindowplanckPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_path_max(s : SignalwindowplanckPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_path_to_string(s : SignalwindowplanckPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_planck_cluster_set(s : SignalwindowplanckCluster, i : Int, 
   result
 }
 
-pub fn signal_window_planck_cluster_sum(s : SignalwindowplanckCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_cluster_sum(s : SignalwindowplanckCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_cluster_mean(s : SignalwindowplanckCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_cluster_mean(s : SignalwindowplanckCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_cluster_scale(s : SignalwindowplanckCluster, f : Double) -> SignalwindowplanckCluster {
   let result = signal_window_planck_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_planck_cluster_fill(s : SignalwindowplanckCluster, v : Doub
   result
 }
 
-pub fn signal_window_planck_cluster_min(s : SignalwindowplanckCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_cluster_min(s : SignalwindowplanckCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_cluster_max(s : SignalwindowplanckCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_cluster_max(s : SignalwindowplanckCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_cluster_to_string(s : SignalwindowplanckCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_planck_model_set(s : SignalwindowplanckModel, i : Int, v : 
   result
 }
 
-pub fn signal_window_planck_model_sum(s : SignalwindowplanckModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_model_sum(s : SignalwindowplanckModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_model_mean(s : SignalwindowplanckModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_model_mean(s : SignalwindowplanckModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_model_scale(s : SignalwindowplanckModel, f : Double) -> SignalwindowplanckModel {
   let result = signal_window_planck_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_planck_model_fill(s : SignalwindowplanckModel, v : Double) 
   result
 }
 
-pub fn signal_window_planck_model_min(s : SignalwindowplanckModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_model_min(s : SignalwindowplanckModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_model_max(s : SignalwindowplanckModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_model_max(s : SignalwindowplanckModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_model_to_string(s : SignalwindowplanckModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_planck_layer_set(s : SignalwindowplanckLayer, i : Int, v : 
   result
 }
 
-pub fn signal_window_planck_layer_sum(s : SignalwindowplanckLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_layer_sum(s : SignalwindowplanckLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_layer_mean(s : SignalwindowplanckLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_layer_mean(s : SignalwindowplanckLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_layer_scale(s : SignalwindowplanckLayer, f : Double) -> SignalwindowplanckLayer {
   let result = signal_window_planck_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_planck_layer_fill(s : SignalwindowplanckLayer, v : Double) 
   result
 }
 
-pub fn signal_window_planck_layer_min(s : SignalwindowplanckLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_layer_min(s : SignalwindowplanckLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_layer_max(s : SignalwindowplanckLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_layer_max(s : SignalwindowplanckLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_layer_to_string(s : SignalwindowplanckLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_planck_buffer_set(s : SignalwindowplanckBuffer, i : Int, v 
   result
 }
 
-pub fn signal_window_planck_buffer_sum(s : SignalwindowplanckBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_buffer_sum(s : SignalwindowplanckBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_buffer_mean(s : SignalwindowplanckBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_buffer_mean(s : SignalwindowplanckBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_buffer_scale(s : SignalwindowplanckBuffer, f : Double) -> SignalwindowplanckBuffer {
   let result = signal_window_planck_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_planck_buffer_fill(s : SignalwindowplanckBuffer, v : Double
   result
 }
 
-pub fn signal_window_planck_buffer_min(s : SignalwindowplanckBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_buffer_min(s : SignalwindowplanckBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_buffer_max(s : SignalwindowplanckBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_buffer_max(s : SignalwindowplanckBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_buffer_to_string(s : SignalwindowplanckBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_planck_cursor_set(s : SignalwindowplanckCursor, i : Int, v 
   result
 }
 
-pub fn signal_window_planck_cursor_sum(s : SignalwindowplanckCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_cursor_sum(s : SignalwindowplanckCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_cursor_mean(s : SignalwindowplanckCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_cursor_mean(s : SignalwindowplanckCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_cursor_scale(s : SignalwindowplanckCursor, f : Double) -> SignalwindowplanckCursor {
   let result = signal_window_planck_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_planck_cursor_fill(s : SignalwindowplanckCursor, v : Double
   result
 }
 
-pub fn signal_window_planck_cursor_min(s : SignalwindowplanckCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_cursor_min(s : SignalwindowplanckCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_cursor_max(s : SignalwindowplanckCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_cursor_max(s : SignalwindowplanckCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_cursor_to_string(s : SignalwindowplanckCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_planck_view_set(s : SignalwindowplanckView, i : Int, v : Do
   result
 }
 
-pub fn signal_window_planck_view_sum(s : SignalwindowplanckView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_view_sum(s : SignalwindowplanckView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_view_mean(s : SignalwindowplanckView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_view_mean(s : SignalwindowplanckView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_view_scale(s : SignalwindowplanckView, f : Double) -> SignalwindowplanckView {
   let result = signal_window_planck_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_planck_view_fill(s : SignalwindowplanckView, v : Double) ->
   result
 }
 
-pub fn signal_window_planck_view_min(s : SignalwindowplanckView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_view_min(s : SignalwindowplanckView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_view_max(s : SignalwindowplanckView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_view_max(s : SignalwindowplanckView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_view_to_string(s : SignalwindowplanckView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_planck_range_set(s : SignalwindowplanckRange, i : Int, v : 
   result
 }
 
-pub fn signal_window_planck_range_sum(s : SignalwindowplanckRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_range_sum(s : SignalwindowplanckRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_range_mean(s : SignalwindowplanckRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_range_mean(s : SignalwindowplanckRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_range_scale(s : SignalwindowplanckRange, f : Double) -> SignalwindowplanckRange {
   let result = signal_window_planck_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_planck_range_fill(s : SignalwindowplanckRange, v : Double) 
   result
 }
 
-pub fn signal_window_planck_range_min(s : SignalwindowplanckRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_range_min(s : SignalwindowplanckRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_range_max(s : SignalwindowplanckRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_range_max(s : SignalwindowplanckRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_range_to_string(s : SignalwindowplanckRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_planck_slice_set(s : SignalwindowplanckSlice, i : Int, v : 
   result
 }
 
-pub fn signal_window_planck_slice_sum(s : SignalwindowplanckSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_planck_slice_sum(s : SignalwindowplanckSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_planck_slice_mean(s : SignalwindowplanckSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_planck_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_planck_slice_mean(s : SignalwindowplanckSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_planck_slice_scale(s : SignalwindowplanckSlice, f : Double) -> SignalwindowplanckSlice {
   let result = signal_window_planck_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_planck_slice_fill(s : SignalwindowplanckSlice, v : Double) 
   result
 }
 
-pub fn signal_window_planck_slice_min(s : SignalwindowplanckSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_slice_min(s : SignalwindowplanckSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_planck_slice_max(s : SignalwindowplanckSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_planck_slice_max(s : SignalwindowplanckSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_planck_slice_to_string(s : SignalwindowplanckSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

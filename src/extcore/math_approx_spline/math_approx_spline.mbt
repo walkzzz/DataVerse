@@ -88,11 +88,7 @@ pub fn math_approx_spline_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_approx_spline_series_len(s : MathapproxsplineSeries) -> Int { s.vals.length() }
 
-pub fn math_approx_spline_series_sum(s : MathapproxsplineSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_spline_series_sum(s : MathapproxsplineSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_spline_series_mean(s : MathapproxsplineSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_spline_frame_set(s : MathapproxsplineFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_spline_frame_sum(s : MathapproxsplineFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_frame_sum(s : MathapproxsplineFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_frame_mean(s : MathapproxsplineFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_frame_mean(s : MathapproxsplineFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_frame_scale(s : MathapproxsplineFrame, f : Double) -> MathapproxsplineFrame {
   let result = math_approx_spline_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_spline_frame_fill(s : MathapproxsplineFrame, v : Double) -> M
   result
 }
 
-pub fn math_approx_spline_frame_min(s : MathapproxsplineFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_frame_min(s : MathapproxsplineFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_frame_max(s : MathapproxsplineFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_frame_max(s : MathapproxsplineFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_frame_to_string(s : MathapproxsplineFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_spline_table_set(s : MathapproxsplineTable, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_spline_table_sum(s : MathapproxsplineTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_table_sum(s : MathapproxsplineTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_table_mean(s : MathapproxsplineTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_table_mean(s : MathapproxsplineTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_table_scale(s : MathapproxsplineTable, f : Double) -> MathapproxsplineTable {
   let result = math_approx_spline_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_spline_table_fill(s : MathapproxsplineTable, v : Double) -> M
   result
 }
 
-pub fn math_approx_spline_table_min(s : MathapproxsplineTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_table_min(s : MathapproxsplineTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_table_max(s : MathapproxsplineTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_table_max(s : MathapproxsplineTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_table_to_string(s : MathapproxsplineTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_spline_graphn_set(s : MathapproxsplineGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_approx_spline_graphn_sum(s : MathapproxsplineGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_graphn_sum(s : MathapproxsplineGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_graphn_mean(s : MathapproxsplineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_graphn_mean(s : MathapproxsplineGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_graphn_scale(s : MathapproxsplineGraphN, f : Double) -> MathapproxsplineGraphN {
   let result = math_approx_spline_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_spline_graphn_fill(s : MathapproxsplineGraphN, v : Double) ->
   result
 }
 
-pub fn math_approx_spline_graphn_min(s : MathapproxsplineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_graphn_min(s : MathapproxsplineGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_graphn_max(s : MathapproxsplineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_graphn_max(s : MathapproxsplineGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_graphn_to_string(s : MathapproxsplineGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_spline_node_set(s : MathapproxsplineNode, i : Int, v : Double
   result
 }
 
-pub fn math_approx_spline_node_sum(s : MathapproxsplineNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_node_sum(s : MathapproxsplineNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_node_mean(s : MathapproxsplineNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_node_mean(s : MathapproxsplineNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_node_scale(s : MathapproxsplineNode, f : Double) -> MathapproxsplineNode {
   let result = math_approx_spline_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_spline_node_fill(s : MathapproxsplineNode, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_spline_node_min(s : MathapproxsplineNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_node_min(s : MathapproxsplineNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_node_max(s : MathapproxsplineNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_node_max(s : MathapproxsplineNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_node_to_string(s : MathapproxsplineNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_spline_edge_set(s : MathapproxsplineEdge, i : Int, v : Double
   result
 }
 
-pub fn math_approx_spline_edge_sum(s : MathapproxsplineEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_edge_sum(s : MathapproxsplineEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_edge_mean(s : MathapproxsplineEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_edge_mean(s : MathapproxsplineEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_edge_scale(s : MathapproxsplineEdge, f : Double) -> MathapproxsplineEdge {
   let result = math_approx_spline_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_spline_edge_fill(s : MathapproxsplineEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_spline_edge_min(s : MathapproxsplineEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_edge_min(s : MathapproxsplineEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_edge_max(s : MathapproxsplineEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_edge_max(s : MathapproxsplineEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_edge_to_string(s : MathapproxsplineEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_spline_path_set(s : MathapproxsplinePath, i : Int, v : Double
   result
 }
 
-pub fn math_approx_spline_path_sum(s : MathapproxsplinePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_path_sum(s : MathapproxsplinePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_path_mean(s : MathapproxsplinePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_path_mean(s : MathapproxsplinePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_path_scale(s : MathapproxsplinePath, f : Double) -> MathapproxsplinePath {
   let result = math_approx_spline_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_spline_path_fill(s : MathapproxsplinePath, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_spline_path_min(s : MathapproxsplinePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_path_min(s : MathapproxsplinePath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_path_max(s : MathapproxsplinePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_path_max(s : MathapproxsplinePath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_path_to_string(s : MathapproxsplinePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_spline_cluster_set(s : MathapproxsplineCluster, i : Int, v : 
   result
 }
 
-pub fn math_approx_spline_cluster_sum(s : MathapproxsplineCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_cluster_sum(s : MathapproxsplineCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_cluster_mean(s : MathapproxsplineCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_cluster_mean(s : MathapproxsplineCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_cluster_scale(s : MathapproxsplineCluster, f : Double) -> MathapproxsplineCluster {
   let result = math_approx_spline_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_spline_cluster_fill(s : MathapproxsplineCluster, v : Double) 
   result
 }
 
-pub fn math_approx_spline_cluster_min(s : MathapproxsplineCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_cluster_min(s : MathapproxsplineCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_cluster_max(s : MathapproxsplineCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_cluster_max(s : MathapproxsplineCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_cluster_to_string(s : MathapproxsplineCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_spline_model_set(s : MathapproxsplineModel, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_spline_model_sum(s : MathapproxsplineModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_model_sum(s : MathapproxsplineModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_model_mean(s : MathapproxsplineModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_model_mean(s : MathapproxsplineModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_model_scale(s : MathapproxsplineModel, f : Double) -> MathapproxsplineModel {
   let result = math_approx_spline_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_spline_model_fill(s : MathapproxsplineModel, v : Double) -> M
   result
 }
 
-pub fn math_approx_spline_model_min(s : MathapproxsplineModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_model_min(s : MathapproxsplineModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_model_max(s : MathapproxsplineModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_model_max(s : MathapproxsplineModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_model_to_string(s : MathapproxsplineModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_spline_layer_set(s : MathapproxsplineLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_spline_layer_sum(s : MathapproxsplineLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_layer_sum(s : MathapproxsplineLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_layer_mean(s : MathapproxsplineLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_layer_mean(s : MathapproxsplineLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_layer_scale(s : MathapproxsplineLayer, f : Double) -> MathapproxsplineLayer {
   let result = math_approx_spline_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_spline_layer_fill(s : MathapproxsplineLayer, v : Double) -> M
   result
 }
 
-pub fn math_approx_spline_layer_min(s : MathapproxsplineLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_layer_min(s : MathapproxsplineLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_layer_max(s : MathapproxsplineLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_layer_max(s : MathapproxsplineLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_layer_to_string(s : MathapproxsplineLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_spline_buffer_set(s : MathapproxsplineBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_approx_spline_buffer_sum(s : MathapproxsplineBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_buffer_sum(s : MathapproxsplineBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_buffer_mean(s : MathapproxsplineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_buffer_mean(s : MathapproxsplineBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_buffer_scale(s : MathapproxsplineBuffer, f : Double) -> MathapproxsplineBuffer {
   let result = math_approx_spline_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_spline_buffer_fill(s : MathapproxsplineBuffer, v : Double) ->
   result
 }
 
-pub fn math_approx_spline_buffer_min(s : MathapproxsplineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_buffer_min(s : MathapproxsplineBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_buffer_max(s : MathapproxsplineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_buffer_max(s : MathapproxsplineBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_buffer_to_string(s : MathapproxsplineBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_spline_cursor_set(s : MathapproxsplineCursor, i : Int, v : Do
   result
 }
 
-pub fn math_approx_spline_cursor_sum(s : MathapproxsplineCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_cursor_sum(s : MathapproxsplineCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_cursor_mean(s : MathapproxsplineCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_cursor_mean(s : MathapproxsplineCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_cursor_scale(s : MathapproxsplineCursor, f : Double) -> MathapproxsplineCursor {
   let result = math_approx_spline_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_spline_cursor_fill(s : MathapproxsplineCursor, v : Double) ->
   result
 }
 
-pub fn math_approx_spline_cursor_min(s : MathapproxsplineCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_cursor_min(s : MathapproxsplineCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_cursor_max(s : MathapproxsplineCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_cursor_max(s : MathapproxsplineCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_cursor_to_string(s : MathapproxsplineCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_spline_view_set(s : MathapproxsplineView, i : Int, v : Double
   result
 }
 
-pub fn math_approx_spline_view_sum(s : MathapproxsplineView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_view_sum(s : MathapproxsplineView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_view_mean(s : MathapproxsplineView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_view_mean(s : MathapproxsplineView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_view_scale(s : MathapproxsplineView, f : Double) -> MathapproxsplineView {
   let result = math_approx_spline_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_spline_view_fill(s : MathapproxsplineView, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_spline_view_min(s : MathapproxsplineView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_view_min(s : MathapproxsplineView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_view_max(s : MathapproxsplineView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_view_max(s : MathapproxsplineView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_view_to_string(s : MathapproxsplineView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_spline_range_set(s : MathapproxsplineRange, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_spline_range_sum(s : MathapproxsplineRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_range_sum(s : MathapproxsplineRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_range_mean(s : MathapproxsplineRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_range_mean(s : MathapproxsplineRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_range_scale(s : MathapproxsplineRange, f : Double) -> MathapproxsplineRange {
   let result = math_approx_spline_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_spline_range_fill(s : MathapproxsplineRange, v : Double) -> M
   result
 }
 
-pub fn math_approx_spline_range_min(s : MathapproxsplineRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_range_min(s : MathapproxsplineRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_range_max(s : MathapproxsplineRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_range_max(s : MathapproxsplineRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_range_to_string(s : MathapproxsplineRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_spline_slice_set(s : MathapproxsplineSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_spline_slice_sum(s : MathapproxsplineSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_spline_slice_sum(s : MathapproxsplineSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_spline_slice_mean(s : MathapproxsplineSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_spline_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_spline_slice_mean(s : MathapproxsplineSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_spline_slice_scale(s : MathapproxsplineSlice, f : Double) -> MathapproxsplineSlice {
   let result = math_approx_spline_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_spline_slice_fill(s : MathapproxsplineSlice, v : Double) -> M
   result
 }
 
-pub fn math_approx_spline_slice_min(s : MathapproxsplineSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_slice_min(s : MathapproxsplineSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_spline_slice_max(s : MathapproxsplineSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_spline_slice_max(s : MathapproxsplineSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_spline_slice_to_string(s : MathapproxsplineSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

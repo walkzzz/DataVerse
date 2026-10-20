@@ -88,11 +88,7 @@ pub fn chem_desc_maccs_make_series(vals : Array[Double], name : String) -> Chemd
 
 pub fn chem_desc_maccs_series_len(s : ChemdescmaccsSeries) -> Int { s.vals.length() }
 
-pub fn chem_desc_maccs_series_sum(s : ChemdescmaccsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_desc_maccs_series_sum(s : ChemdescmaccsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_desc_maccs_series_mean(s : ChemdescmaccsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_desc_maccs_frame_set(s : ChemdescmaccsFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_maccs_frame_sum(s : ChemdescmaccsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_frame_sum(s : ChemdescmaccsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_frame_mean(s : ChemdescmaccsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_frame_mean(s : ChemdescmaccsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_frame_scale(s : ChemdescmaccsFrame, f : Double) -> ChemdescmaccsFrame {
   let result = chem_desc_maccs_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_desc_maccs_frame_fill(s : ChemdescmaccsFrame, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_maccs_frame_min(s : ChemdescmaccsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_frame_min(s : ChemdescmaccsFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_frame_max(s : ChemdescmaccsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_frame_max(s : ChemdescmaccsFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_frame_to_string(s : ChemdescmaccsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_desc_maccs_table_set(s : ChemdescmaccsTable, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_maccs_table_sum(s : ChemdescmaccsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_table_sum(s : ChemdescmaccsTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_table_mean(s : ChemdescmaccsTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_table_mean(s : ChemdescmaccsTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_table_scale(s : ChemdescmaccsTable, f : Double) -> ChemdescmaccsTable {
   let result = chem_desc_maccs_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_desc_maccs_table_fill(s : ChemdescmaccsTable, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_maccs_table_min(s : ChemdescmaccsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_table_min(s : ChemdescmaccsTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_table_max(s : ChemdescmaccsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_table_max(s : ChemdescmaccsTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_table_to_string(s : ChemdescmaccsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_desc_maccs_graphn_set(s : ChemdescmaccsGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn chem_desc_maccs_graphn_sum(s : ChemdescmaccsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_graphn_sum(s : ChemdescmaccsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_graphn_mean(s : ChemdescmaccsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_graphn_mean(s : ChemdescmaccsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_graphn_scale(s : ChemdescmaccsGraphN, f : Double) -> ChemdescmaccsGraphN {
   let result = chem_desc_maccs_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_desc_maccs_graphn_fill(s : ChemdescmaccsGraphN, v : Double) -> Chemd
   result
 }
 
-pub fn chem_desc_maccs_graphn_min(s : ChemdescmaccsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_graphn_min(s : ChemdescmaccsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_graphn_max(s : ChemdescmaccsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_graphn_max(s : ChemdescmaccsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_graphn_to_string(s : ChemdescmaccsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_desc_maccs_node_set(s : ChemdescmaccsNode, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_maccs_node_sum(s : ChemdescmaccsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_node_sum(s : ChemdescmaccsNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_node_mean(s : ChemdescmaccsNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_node_mean(s : ChemdescmaccsNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_node_scale(s : ChemdescmaccsNode, f : Double) -> ChemdescmaccsNode {
   let result = chem_desc_maccs_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_desc_maccs_node_fill(s : ChemdescmaccsNode, v : Double) -> Chemdescm
   result
 }
 
-pub fn chem_desc_maccs_node_min(s : ChemdescmaccsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_node_min(s : ChemdescmaccsNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_node_max(s : ChemdescmaccsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_node_max(s : ChemdescmaccsNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_node_to_string(s : ChemdescmaccsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_desc_maccs_edge_set(s : ChemdescmaccsEdge, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_maccs_edge_sum(s : ChemdescmaccsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_edge_sum(s : ChemdescmaccsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_edge_mean(s : ChemdescmaccsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_edge_mean(s : ChemdescmaccsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_edge_scale(s : ChemdescmaccsEdge, f : Double) -> ChemdescmaccsEdge {
   let result = chem_desc_maccs_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_desc_maccs_edge_fill(s : ChemdescmaccsEdge, v : Double) -> Chemdescm
   result
 }
 
-pub fn chem_desc_maccs_edge_min(s : ChemdescmaccsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_edge_min(s : ChemdescmaccsEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_edge_max(s : ChemdescmaccsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_edge_max(s : ChemdescmaccsEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_edge_to_string(s : ChemdescmaccsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_desc_maccs_path_set(s : ChemdescmaccsPath, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_maccs_path_sum(s : ChemdescmaccsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_path_sum(s : ChemdescmaccsPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_path_mean(s : ChemdescmaccsPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_path_mean(s : ChemdescmaccsPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_path_scale(s : ChemdescmaccsPath, f : Double) -> ChemdescmaccsPath {
   let result = chem_desc_maccs_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_desc_maccs_path_fill(s : ChemdescmaccsPath, v : Double) -> Chemdescm
   result
 }
 
-pub fn chem_desc_maccs_path_min(s : ChemdescmaccsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_path_min(s : ChemdescmaccsPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_path_max(s : ChemdescmaccsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_path_max(s : ChemdescmaccsPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_path_to_string(s : ChemdescmaccsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_desc_maccs_cluster_set(s : ChemdescmaccsCluster, i : Int, v : Double
   result
 }
 
-pub fn chem_desc_maccs_cluster_sum(s : ChemdescmaccsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_cluster_sum(s : ChemdescmaccsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_cluster_mean(s : ChemdescmaccsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_cluster_mean(s : ChemdescmaccsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_cluster_scale(s : ChemdescmaccsCluster, f : Double) -> ChemdescmaccsCluster {
   let result = chem_desc_maccs_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_desc_maccs_cluster_fill(s : ChemdescmaccsCluster, v : Double) -> Che
   result
 }
 
-pub fn chem_desc_maccs_cluster_min(s : ChemdescmaccsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_cluster_min(s : ChemdescmaccsCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_cluster_max(s : ChemdescmaccsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_cluster_max(s : ChemdescmaccsCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_cluster_to_string(s : ChemdescmaccsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_desc_maccs_model_set(s : ChemdescmaccsModel, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_maccs_model_sum(s : ChemdescmaccsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_model_sum(s : ChemdescmaccsModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_model_mean(s : ChemdescmaccsModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_model_mean(s : ChemdescmaccsModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_model_scale(s : ChemdescmaccsModel, f : Double) -> ChemdescmaccsModel {
   let result = chem_desc_maccs_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_desc_maccs_model_fill(s : ChemdescmaccsModel, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_maccs_model_min(s : ChemdescmaccsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_model_min(s : ChemdescmaccsModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_model_max(s : ChemdescmaccsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_model_max(s : ChemdescmaccsModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_model_to_string(s : ChemdescmaccsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_desc_maccs_layer_set(s : ChemdescmaccsLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_maccs_layer_sum(s : ChemdescmaccsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_layer_sum(s : ChemdescmaccsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_layer_mean(s : ChemdescmaccsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_layer_mean(s : ChemdescmaccsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_layer_scale(s : ChemdescmaccsLayer, f : Double) -> ChemdescmaccsLayer {
   let result = chem_desc_maccs_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_desc_maccs_layer_fill(s : ChemdescmaccsLayer, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_maccs_layer_min(s : ChemdescmaccsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_layer_min(s : ChemdescmaccsLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_layer_max(s : ChemdescmaccsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_layer_max(s : ChemdescmaccsLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_layer_to_string(s : ChemdescmaccsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_desc_maccs_buffer_set(s : ChemdescmaccsBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn chem_desc_maccs_buffer_sum(s : ChemdescmaccsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_buffer_sum(s : ChemdescmaccsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_buffer_mean(s : ChemdescmaccsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_buffer_mean(s : ChemdescmaccsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_buffer_scale(s : ChemdescmaccsBuffer, f : Double) -> ChemdescmaccsBuffer {
   let result = chem_desc_maccs_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_desc_maccs_buffer_fill(s : ChemdescmaccsBuffer, v : Double) -> Chemd
   result
 }
 
-pub fn chem_desc_maccs_buffer_min(s : ChemdescmaccsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_buffer_min(s : ChemdescmaccsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_buffer_max(s : ChemdescmaccsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_buffer_max(s : ChemdescmaccsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_buffer_to_string(s : ChemdescmaccsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_desc_maccs_cursor_set(s : ChemdescmaccsCursor, i : Int, v : Double) 
   result
 }
 
-pub fn chem_desc_maccs_cursor_sum(s : ChemdescmaccsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_cursor_sum(s : ChemdescmaccsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_cursor_mean(s : ChemdescmaccsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_cursor_mean(s : ChemdescmaccsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_cursor_scale(s : ChemdescmaccsCursor, f : Double) -> ChemdescmaccsCursor {
   let result = chem_desc_maccs_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_desc_maccs_cursor_fill(s : ChemdescmaccsCursor, v : Double) -> Chemd
   result
 }
 
-pub fn chem_desc_maccs_cursor_min(s : ChemdescmaccsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_cursor_min(s : ChemdescmaccsCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_cursor_max(s : ChemdescmaccsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_cursor_max(s : ChemdescmaccsCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_cursor_to_string(s : ChemdescmaccsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_desc_maccs_view_set(s : ChemdescmaccsView, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_maccs_view_sum(s : ChemdescmaccsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_view_sum(s : ChemdescmaccsView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_view_mean(s : ChemdescmaccsView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_view_mean(s : ChemdescmaccsView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_view_scale(s : ChemdescmaccsView, f : Double) -> ChemdescmaccsView {
   let result = chem_desc_maccs_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_desc_maccs_view_fill(s : ChemdescmaccsView, v : Double) -> Chemdescm
   result
 }
 
-pub fn chem_desc_maccs_view_min(s : ChemdescmaccsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_view_min(s : ChemdescmaccsView) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_view_max(s : ChemdescmaccsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_view_max(s : ChemdescmaccsView) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_view_to_string(s : ChemdescmaccsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_desc_maccs_range_set(s : ChemdescmaccsRange, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_maccs_range_sum(s : ChemdescmaccsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_range_sum(s : ChemdescmaccsRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_range_mean(s : ChemdescmaccsRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_range_mean(s : ChemdescmaccsRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_range_scale(s : ChemdescmaccsRange, f : Double) -> ChemdescmaccsRange {
   let result = chem_desc_maccs_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_desc_maccs_range_fill(s : ChemdescmaccsRange, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_maccs_range_min(s : ChemdescmaccsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_range_min(s : ChemdescmaccsRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_range_max(s : ChemdescmaccsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_range_max(s : ChemdescmaccsRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_range_to_string(s : ChemdescmaccsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_desc_maccs_slice_set(s : ChemdescmaccsSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_maccs_slice_sum(s : ChemdescmaccsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_maccs_slice_sum(s : ChemdescmaccsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_maccs_slice_mean(s : ChemdescmaccsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_maccs_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_maccs_slice_mean(s : ChemdescmaccsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_maccs_slice_scale(s : ChemdescmaccsSlice, f : Double) -> ChemdescmaccsSlice {
   let result = chem_desc_maccs_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_desc_maccs_slice_fill(s : ChemdescmaccsSlice, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_maccs_slice_min(s : ChemdescmaccsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_slice_min(s : ChemdescmaccsSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_maccs_slice_max(s : ChemdescmaccsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_maccs_slice_max(s : ChemdescmaccsSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_maccs_slice_to_string(s : ChemdescmaccsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

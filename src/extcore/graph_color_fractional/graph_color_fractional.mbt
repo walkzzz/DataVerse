@@ -88,11 +88,7 @@ pub fn graph_color_fractional_make_series(vals : Array[Double], name : String) -
 
 pub fn graph_color_fractional_series_len(s : GraphcolorfractionalSeries) -> Int { s.vals.length() }
 
-pub fn graph_color_fractional_series_sum(s : GraphcolorfractionalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_color_fractional_series_sum(s : GraphcolorfractionalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_color_fractional_series_mean(s : GraphcolorfractionalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_color_fractional_frame_set(s : GraphcolorfractionalFrame, i : Int, 
   result
 }
 
-pub fn graph_color_fractional_frame_sum(s : GraphcolorfractionalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_frame_sum(s : GraphcolorfractionalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_frame_mean(s : GraphcolorfractionalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_frame_mean(s : GraphcolorfractionalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_frame_scale(s : GraphcolorfractionalFrame, f : Double) -> GraphcolorfractionalFrame {
   let result = graph_color_fractional_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_color_fractional_frame_fill(s : GraphcolorfractionalFrame, v : Doub
   result
 }
 
-pub fn graph_color_fractional_frame_min(s : GraphcolorfractionalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_frame_min(s : GraphcolorfractionalFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_frame_max(s : GraphcolorfractionalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_frame_max(s : GraphcolorfractionalFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_frame_to_string(s : GraphcolorfractionalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_color_fractional_table_set(s : GraphcolorfractionalTable, i : Int, 
   result
 }
 
-pub fn graph_color_fractional_table_sum(s : GraphcolorfractionalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_table_sum(s : GraphcolorfractionalTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_table_mean(s : GraphcolorfractionalTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_table_mean(s : GraphcolorfractionalTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_table_scale(s : GraphcolorfractionalTable, f : Double) -> GraphcolorfractionalTable {
   let result = graph_color_fractional_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_color_fractional_table_fill(s : GraphcolorfractionalTable, v : Doub
   result
 }
 
-pub fn graph_color_fractional_table_min(s : GraphcolorfractionalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_table_min(s : GraphcolorfractionalTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_table_max(s : GraphcolorfractionalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_table_max(s : GraphcolorfractionalTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_table_to_string(s : GraphcolorfractionalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_color_fractional_graphn_set(s : GraphcolorfractionalGraphN, i : Int
   result
 }
 
-pub fn graph_color_fractional_graphn_sum(s : GraphcolorfractionalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_graphn_sum(s : GraphcolorfractionalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_graphn_mean(s : GraphcolorfractionalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_graphn_mean(s : GraphcolorfractionalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_graphn_scale(s : GraphcolorfractionalGraphN, f : Double) -> GraphcolorfractionalGraphN {
   let result = graph_color_fractional_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_color_fractional_graphn_fill(s : GraphcolorfractionalGraphN, v : Do
   result
 }
 
-pub fn graph_color_fractional_graphn_min(s : GraphcolorfractionalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_graphn_min(s : GraphcolorfractionalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_graphn_max(s : GraphcolorfractionalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_graphn_max(s : GraphcolorfractionalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_graphn_to_string(s : GraphcolorfractionalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_color_fractional_node_set(s : GraphcolorfractionalNode, i : Int, v 
   result
 }
 
-pub fn graph_color_fractional_node_sum(s : GraphcolorfractionalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_node_sum(s : GraphcolorfractionalNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_node_mean(s : GraphcolorfractionalNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_node_mean(s : GraphcolorfractionalNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_node_scale(s : GraphcolorfractionalNode, f : Double) -> GraphcolorfractionalNode {
   let result = graph_color_fractional_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_color_fractional_node_fill(s : GraphcolorfractionalNode, v : Double
   result
 }
 
-pub fn graph_color_fractional_node_min(s : GraphcolorfractionalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_node_min(s : GraphcolorfractionalNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_node_max(s : GraphcolorfractionalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_node_max(s : GraphcolorfractionalNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_node_to_string(s : GraphcolorfractionalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_color_fractional_edge_set(s : GraphcolorfractionalEdge, i : Int, v 
   result
 }
 
-pub fn graph_color_fractional_edge_sum(s : GraphcolorfractionalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_edge_sum(s : GraphcolorfractionalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_edge_mean(s : GraphcolorfractionalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_edge_mean(s : GraphcolorfractionalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_edge_scale(s : GraphcolorfractionalEdge, f : Double) -> GraphcolorfractionalEdge {
   let result = graph_color_fractional_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_color_fractional_edge_fill(s : GraphcolorfractionalEdge, v : Double
   result
 }
 
-pub fn graph_color_fractional_edge_min(s : GraphcolorfractionalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_edge_min(s : GraphcolorfractionalEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_edge_max(s : GraphcolorfractionalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_edge_max(s : GraphcolorfractionalEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_edge_to_string(s : GraphcolorfractionalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_color_fractional_path_set(s : GraphcolorfractionalPath, i : Int, v 
   result
 }
 
-pub fn graph_color_fractional_path_sum(s : GraphcolorfractionalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_path_sum(s : GraphcolorfractionalPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_path_mean(s : GraphcolorfractionalPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_path_mean(s : GraphcolorfractionalPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_path_scale(s : GraphcolorfractionalPath, f : Double) -> GraphcolorfractionalPath {
   let result = graph_color_fractional_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_color_fractional_path_fill(s : GraphcolorfractionalPath, v : Double
   result
 }
 
-pub fn graph_color_fractional_path_min(s : GraphcolorfractionalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_path_min(s : GraphcolorfractionalPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_path_max(s : GraphcolorfractionalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_path_max(s : GraphcolorfractionalPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_path_to_string(s : GraphcolorfractionalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_color_fractional_cluster_set(s : GraphcolorfractionalCluster, i : I
   result
 }
 
-pub fn graph_color_fractional_cluster_sum(s : GraphcolorfractionalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_cluster_sum(s : GraphcolorfractionalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_cluster_mean(s : GraphcolorfractionalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_cluster_mean(s : GraphcolorfractionalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_cluster_scale(s : GraphcolorfractionalCluster, f : Double) -> GraphcolorfractionalCluster {
   let result = graph_color_fractional_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_color_fractional_cluster_fill(s : GraphcolorfractionalCluster, v : 
   result
 }
 
-pub fn graph_color_fractional_cluster_min(s : GraphcolorfractionalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_cluster_min(s : GraphcolorfractionalCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_cluster_max(s : GraphcolorfractionalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_cluster_max(s : GraphcolorfractionalCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_cluster_to_string(s : GraphcolorfractionalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_color_fractional_model_set(s : GraphcolorfractionalModel, i : Int, 
   result
 }
 
-pub fn graph_color_fractional_model_sum(s : GraphcolorfractionalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_model_sum(s : GraphcolorfractionalModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_model_mean(s : GraphcolorfractionalModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_model_mean(s : GraphcolorfractionalModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_model_scale(s : GraphcolorfractionalModel, f : Double) -> GraphcolorfractionalModel {
   let result = graph_color_fractional_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_color_fractional_model_fill(s : GraphcolorfractionalModel, v : Doub
   result
 }
 
-pub fn graph_color_fractional_model_min(s : GraphcolorfractionalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_model_min(s : GraphcolorfractionalModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_model_max(s : GraphcolorfractionalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_model_max(s : GraphcolorfractionalModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_model_to_string(s : GraphcolorfractionalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_color_fractional_layer_set(s : GraphcolorfractionalLayer, i : Int, 
   result
 }
 
-pub fn graph_color_fractional_layer_sum(s : GraphcolorfractionalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_layer_sum(s : GraphcolorfractionalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_layer_mean(s : GraphcolorfractionalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_layer_mean(s : GraphcolorfractionalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_layer_scale(s : GraphcolorfractionalLayer, f : Double) -> GraphcolorfractionalLayer {
   let result = graph_color_fractional_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_color_fractional_layer_fill(s : GraphcolorfractionalLayer, v : Doub
   result
 }
 
-pub fn graph_color_fractional_layer_min(s : GraphcolorfractionalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_layer_min(s : GraphcolorfractionalLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_layer_max(s : GraphcolorfractionalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_layer_max(s : GraphcolorfractionalLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_layer_to_string(s : GraphcolorfractionalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_color_fractional_buffer_set(s : GraphcolorfractionalBuffer, i : Int
   result
 }
 
-pub fn graph_color_fractional_buffer_sum(s : GraphcolorfractionalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_buffer_sum(s : GraphcolorfractionalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_buffer_mean(s : GraphcolorfractionalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_buffer_mean(s : GraphcolorfractionalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_buffer_scale(s : GraphcolorfractionalBuffer, f : Double) -> GraphcolorfractionalBuffer {
   let result = graph_color_fractional_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_color_fractional_buffer_fill(s : GraphcolorfractionalBuffer, v : Do
   result
 }
 
-pub fn graph_color_fractional_buffer_min(s : GraphcolorfractionalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_buffer_min(s : GraphcolorfractionalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_buffer_max(s : GraphcolorfractionalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_buffer_max(s : GraphcolorfractionalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_buffer_to_string(s : GraphcolorfractionalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_color_fractional_cursor_set(s : GraphcolorfractionalCursor, i : Int
   result
 }
 
-pub fn graph_color_fractional_cursor_sum(s : GraphcolorfractionalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_cursor_sum(s : GraphcolorfractionalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_cursor_mean(s : GraphcolorfractionalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_cursor_mean(s : GraphcolorfractionalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_cursor_scale(s : GraphcolorfractionalCursor, f : Double) -> GraphcolorfractionalCursor {
   let result = graph_color_fractional_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_color_fractional_cursor_fill(s : GraphcolorfractionalCursor, v : Do
   result
 }
 
-pub fn graph_color_fractional_cursor_min(s : GraphcolorfractionalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_cursor_min(s : GraphcolorfractionalCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_cursor_max(s : GraphcolorfractionalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_cursor_max(s : GraphcolorfractionalCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_cursor_to_string(s : GraphcolorfractionalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_color_fractional_view_set(s : GraphcolorfractionalView, i : Int, v 
   result
 }
 
-pub fn graph_color_fractional_view_sum(s : GraphcolorfractionalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_view_sum(s : GraphcolorfractionalView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_view_mean(s : GraphcolorfractionalView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_view_mean(s : GraphcolorfractionalView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_view_scale(s : GraphcolorfractionalView, f : Double) -> GraphcolorfractionalView {
   let result = graph_color_fractional_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_color_fractional_view_fill(s : GraphcolorfractionalView, v : Double
   result
 }
 
-pub fn graph_color_fractional_view_min(s : GraphcolorfractionalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_view_min(s : GraphcolorfractionalView) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_view_max(s : GraphcolorfractionalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_view_max(s : GraphcolorfractionalView) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_view_to_string(s : GraphcolorfractionalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_color_fractional_range_set(s : GraphcolorfractionalRange, i : Int, 
   result
 }
 
-pub fn graph_color_fractional_range_sum(s : GraphcolorfractionalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_range_sum(s : GraphcolorfractionalRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_range_mean(s : GraphcolorfractionalRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_range_mean(s : GraphcolorfractionalRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_range_scale(s : GraphcolorfractionalRange, f : Double) -> GraphcolorfractionalRange {
   let result = graph_color_fractional_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_color_fractional_range_fill(s : GraphcolorfractionalRange, v : Doub
   result
 }
 
-pub fn graph_color_fractional_range_min(s : GraphcolorfractionalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_range_min(s : GraphcolorfractionalRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_range_max(s : GraphcolorfractionalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_range_max(s : GraphcolorfractionalRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_range_to_string(s : GraphcolorfractionalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_color_fractional_slice_set(s : GraphcolorfractionalSlice, i : Int, 
   result
 }
 
-pub fn graph_color_fractional_slice_sum(s : GraphcolorfractionalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_fractional_slice_sum(s : GraphcolorfractionalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_fractional_slice_mean(s : GraphcolorfractionalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_fractional_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_fractional_slice_mean(s : GraphcolorfractionalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_fractional_slice_scale(s : GraphcolorfractionalSlice, f : Double) -> GraphcolorfractionalSlice {
   let result = graph_color_fractional_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_color_fractional_slice_fill(s : GraphcolorfractionalSlice, v : Doub
   result
 }
 
-pub fn graph_color_fractional_slice_min(s : GraphcolorfractionalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_slice_min(s : GraphcolorfractionalSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_fractional_slice_max(s : GraphcolorfractionalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_fractional_slice_max(s : GraphcolorfractionalSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_fractional_slice_to_string(s : GraphcolorfractionalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

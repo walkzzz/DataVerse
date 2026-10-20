@@ -88,11 +88,7 @@ pub fn math_lu_decomp_make_series(vals : Array[Double], name : String) -> Mathlu
 
 pub fn math_lu_decomp_series_len(s : MathludecompSeries) -> Int { s.vals.length() }
 
-pub fn math_lu_decomp_series_sum(s : MathludecompSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_lu_decomp_series_sum(s : MathludecompSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_lu_decomp_series_mean(s : MathludecompSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_lu_decomp_frame_set(s : MathludecompFrame, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_lu_decomp_frame_sum(s : MathludecompFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_frame_sum(s : MathludecompFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_frame_mean(s : MathludecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_frame_mean(s : MathludecompFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_frame_scale(s : MathludecompFrame, f : Double) -> MathludecompFrame {
   let result = math_lu_decomp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_lu_decomp_frame_fill(s : MathludecompFrame, v : Double) -> Mathludec
   result
 }
 
-pub fn math_lu_decomp_frame_min(s : MathludecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_frame_min(s : MathludecompFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_frame_max(s : MathludecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_frame_max(s : MathludecompFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_frame_to_string(s : MathludecompFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_lu_decomp_table_set(s : MathludecompTable, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_lu_decomp_table_sum(s : MathludecompTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_table_sum(s : MathludecompTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_table_mean(s : MathludecompTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_table_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_table_mean(s : MathludecompTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_table_scale(s : MathludecompTable, f : Double) -> MathludecompTable {
   let result = math_lu_decomp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_lu_decomp_table_fill(s : MathludecompTable, v : Double) -> Mathludec
   result
 }
 
-pub fn math_lu_decomp_table_min(s : MathludecompTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_table_min(s : MathludecompTable) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_table_max(s : MathludecompTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_table_max(s : MathludecompTable) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_table_to_string(s : MathludecompTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_lu_decomp_graphn_set(s : MathludecompGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn math_lu_decomp_graphn_sum(s : MathludecompGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_graphn_sum(s : MathludecompGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_graphn_mean(s : MathludecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_graphn_mean(s : MathludecompGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_graphn_scale(s : MathludecompGraphN, f : Double) -> MathludecompGraphN {
   let result = math_lu_decomp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_lu_decomp_graphn_fill(s : MathludecompGraphN, v : Double) -> Mathlud
   result
 }
 
-pub fn math_lu_decomp_graphn_min(s : MathludecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_graphn_min(s : MathludecompGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_graphn_max(s : MathludecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_graphn_max(s : MathludecompGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_graphn_to_string(s : MathludecompGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_lu_decomp_node_set(s : MathludecompNode, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_lu_decomp_node_sum(s : MathludecompNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_node_sum(s : MathludecompNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_node_mean(s : MathludecompNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_node_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_node_mean(s : MathludecompNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_node_scale(s : MathludecompNode, f : Double) -> MathludecompNode {
   let result = math_lu_decomp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_lu_decomp_node_fill(s : MathludecompNode, v : Double) -> Mathludecom
   result
 }
 
-pub fn math_lu_decomp_node_min(s : MathludecompNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_node_min(s : MathludecompNode) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_node_max(s : MathludecompNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_node_max(s : MathludecompNode) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_node_to_string(s : MathludecompNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_lu_decomp_edge_set(s : MathludecompEdge, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_lu_decomp_edge_sum(s : MathludecompEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_edge_sum(s : MathludecompEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_edge_mean(s : MathludecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_edge_mean(s : MathludecompEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_edge_scale(s : MathludecompEdge, f : Double) -> MathludecompEdge {
   let result = math_lu_decomp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_lu_decomp_edge_fill(s : MathludecompEdge, v : Double) -> Mathludecom
   result
 }
 
-pub fn math_lu_decomp_edge_min(s : MathludecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_edge_min(s : MathludecompEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_edge_max(s : MathludecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_edge_max(s : MathludecompEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_edge_to_string(s : MathludecompEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_lu_decomp_path_set(s : MathludecompPath, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_lu_decomp_path_sum(s : MathludecompPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_path_sum(s : MathludecompPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_path_mean(s : MathludecompPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_path_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_path_mean(s : MathludecompPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_path_scale(s : MathludecompPath, f : Double) -> MathludecompPath {
   let result = math_lu_decomp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_lu_decomp_path_fill(s : MathludecompPath, v : Double) -> Mathludecom
   result
 }
 
-pub fn math_lu_decomp_path_min(s : MathludecompPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_path_min(s : MathludecompPath) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_path_max(s : MathludecompPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_path_max(s : MathludecompPath) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_path_to_string(s : MathludecompPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_lu_decomp_cluster_set(s : MathludecompCluster, i : Int, v : Double) 
   result
 }
 
-pub fn math_lu_decomp_cluster_sum(s : MathludecompCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_cluster_sum(s : MathludecompCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_cluster_mean(s : MathludecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_cluster_mean(s : MathludecompCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_cluster_scale(s : MathludecompCluster, f : Double) -> MathludecompCluster {
   let result = math_lu_decomp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_lu_decomp_cluster_fill(s : MathludecompCluster, v : Double) -> Mathl
   result
 }
 
-pub fn math_lu_decomp_cluster_min(s : MathludecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_cluster_min(s : MathludecompCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_cluster_max(s : MathludecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_cluster_max(s : MathludecompCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_cluster_to_string(s : MathludecompCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_lu_decomp_model_set(s : MathludecompModel, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_lu_decomp_model_sum(s : MathludecompModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_model_sum(s : MathludecompModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_model_mean(s : MathludecompModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_model_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_model_mean(s : MathludecompModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_model_scale(s : MathludecompModel, f : Double) -> MathludecompModel {
   let result = math_lu_decomp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_lu_decomp_model_fill(s : MathludecompModel, v : Double) -> Mathludec
   result
 }
 
-pub fn math_lu_decomp_model_min(s : MathludecompModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_model_min(s : MathludecompModel) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_model_max(s : MathludecompModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_model_max(s : MathludecompModel) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_model_to_string(s : MathludecompModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_lu_decomp_layer_set(s : MathludecompLayer, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_lu_decomp_layer_sum(s : MathludecompLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_layer_sum(s : MathludecompLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_layer_mean(s : MathludecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_layer_mean(s : MathludecompLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_layer_scale(s : MathludecompLayer, f : Double) -> MathludecompLayer {
   let result = math_lu_decomp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_lu_decomp_layer_fill(s : MathludecompLayer, v : Double) -> Mathludec
   result
 }
 
-pub fn math_lu_decomp_layer_min(s : MathludecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_layer_min(s : MathludecompLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_layer_max(s : MathludecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_layer_max(s : MathludecompLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_layer_to_string(s : MathludecompLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_lu_decomp_buffer_set(s : MathludecompBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn math_lu_decomp_buffer_sum(s : MathludecompBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_buffer_sum(s : MathludecompBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_buffer_mean(s : MathludecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_buffer_mean(s : MathludecompBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_buffer_scale(s : MathludecompBuffer, f : Double) -> MathludecompBuffer {
   let result = math_lu_decomp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_lu_decomp_buffer_fill(s : MathludecompBuffer, v : Double) -> Mathlud
   result
 }
 
-pub fn math_lu_decomp_buffer_min(s : MathludecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_buffer_min(s : MathludecompBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_buffer_max(s : MathludecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_buffer_max(s : MathludecompBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_buffer_to_string(s : MathludecompBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_lu_decomp_cursor_set(s : MathludecompCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn math_lu_decomp_cursor_sum(s : MathludecompCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_cursor_sum(s : MathludecompCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_cursor_mean(s : MathludecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_cursor_mean(s : MathludecompCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_cursor_scale(s : MathludecompCursor, f : Double) -> MathludecompCursor {
   let result = math_lu_decomp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_lu_decomp_cursor_fill(s : MathludecompCursor, v : Double) -> Mathlud
   result
 }
 
-pub fn math_lu_decomp_cursor_min(s : MathludecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_cursor_min(s : MathludecompCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_cursor_max(s : MathludecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_cursor_max(s : MathludecompCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_cursor_to_string(s : MathludecompCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_lu_decomp_view_set(s : MathludecompView, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_lu_decomp_view_sum(s : MathludecompView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_view_sum(s : MathludecompView) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_view_mean(s : MathludecompView) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_view_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_view_mean(s : MathludecompView) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_view_scale(s : MathludecompView, f : Double) -> MathludecompView {
   let result = math_lu_decomp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_lu_decomp_view_fill(s : MathludecompView, v : Double) -> Mathludecom
   result
 }
 
-pub fn math_lu_decomp_view_min(s : MathludecompView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_view_min(s : MathludecompView) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_view_max(s : MathludecompView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_view_max(s : MathludecompView) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_view_to_string(s : MathludecompView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_lu_decomp_range_set(s : MathludecompRange, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_lu_decomp_range_sum(s : MathludecompRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_range_sum(s : MathludecompRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_range_mean(s : MathludecompRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_range_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_range_mean(s : MathludecompRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_range_scale(s : MathludecompRange, f : Double) -> MathludecompRange {
   let result = math_lu_decomp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_lu_decomp_range_fill(s : MathludecompRange, v : Double) -> Mathludec
   result
 }
 
-pub fn math_lu_decomp_range_min(s : MathludecompRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_range_min(s : MathludecompRange) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_range_max(s : MathludecompRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_range_max(s : MathludecompRange) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_range_to_string(s : MathludecompRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_lu_decomp_slice_set(s : MathludecompSlice, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_lu_decomp_slice_sum(s : MathludecompSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_lu_decomp_slice_sum(s : MathludecompSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_lu_decomp_slice_mean(s : MathludecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_lu_decomp_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_lu_decomp_slice_mean(s : MathludecompSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_lu_decomp_slice_scale(s : MathludecompSlice, f : Double) -> MathludecompSlice {
   let result = math_lu_decomp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_lu_decomp_slice_fill(s : MathludecompSlice, v : Double) -> Mathludec
   result
 }
 
-pub fn math_lu_decomp_slice_min(s : MathludecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_slice_min(s : MathludecompSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_lu_decomp_slice_max(s : MathludecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_lu_decomp_slice_max(s : MathludecompSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_lu_decomp_slice_to_string(s : MathludecompSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

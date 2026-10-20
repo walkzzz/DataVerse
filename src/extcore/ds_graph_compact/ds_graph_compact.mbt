@@ -88,11 +88,7 @@ pub fn ds_graph_compact_make_series(vals : Array[Double], name : String) -> Dsgr
 
 pub fn ds_graph_compact_series_len(s : DsgraphcompactSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_compact_series_sum(s : DsgraphcompactSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_compact_series_sum(s : DsgraphcompactSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_compact_series_mean(s : DsgraphcompactSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_compact_frame_set(s : DsgraphcompactFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_compact_frame_sum(s : DsgraphcompactFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_frame_sum(s : DsgraphcompactFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_frame_mean(s : DsgraphcompactFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_frame_mean(s : DsgraphcompactFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_frame_scale(s : DsgraphcompactFrame, f : Double) -> DsgraphcompactFrame {
   let result = ds_graph_compact_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_compact_frame_fill(s : DsgraphcompactFrame, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_compact_frame_min(s : DsgraphcompactFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_frame_min(s : DsgraphcompactFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_frame_max(s : DsgraphcompactFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_frame_max(s : DsgraphcompactFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_frame_to_string(s : DsgraphcompactFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_compact_table_set(s : DsgraphcompactTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_compact_table_sum(s : DsgraphcompactTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_table_sum(s : DsgraphcompactTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_table_mean(s : DsgraphcompactTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_table_mean(s : DsgraphcompactTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_table_scale(s : DsgraphcompactTable, f : Double) -> DsgraphcompactTable {
   let result = ds_graph_compact_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_compact_table_fill(s : DsgraphcompactTable, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_compact_table_min(s : DsgraphcompactTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_table_min(s : DsgraphcompactTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_table_max(s : DsgraphcompactTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_table_max(s : DsgraphcompactTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_table_to_string(s : DsgraphcompactTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_compact_graphn_set(s : DsgraphcompactGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_compact_graphn_sum(s : DsgraphcompactGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_graphn_sum(s : DsgraphcompactGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_graphn_mean(s : DsgraphcompactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_graphn_mean(s : DsgraphcompactGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_graphn_scale(s : DsgraphcompactGraphN, f : Double) -> DsgraphcompactGraphN {
   let result = ds_graph_compact_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_compact_graphn_fill(s : DsgraphcompactGraphN, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_compact_graphn_min(s : DsgraphcompactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_graphn_min(s : DsgraphcompactGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_graphn_max(s : DsgraphcompactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_graphn_max(s : DsgraphcompactGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_graphn_to_string(s : DsgraphcompactGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_compact_node_set(s : DsgraphcompactNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_compact_node_sum(s : DsgraphcompactNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_node_sum(s : DsgraphcompactNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_node_mean(s : DsgraphcompactNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_node_mean(s : DsgraphcompactNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_node_scale(s : DsgraphcompactNode, f : Double) -> DsgraphcompactNode {
   let result = ds_graph_compact_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_compact_node_fill(s : DsgraphcompactNode, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_compact_node_min(s : DsgraphcompactNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_node_min(s : DsgraphcompactNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_node_max(s : DsgraphcompactNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_node_max(s : DsgraphcompactNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_node_to_string(s : DsgraphcompactNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_compact_edge_set(s : DsgraphcompactEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_compact_edge_sum(s : DsgraphcompactEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_edge_sum(s : DsgraphcompactEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_edge_mean(s : DsgraphcompactEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_edge_mean(s : DsgraphcompactEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_edge_scale(s : DsgraphcompactEdge, f : Double) -> DsgraphcompactEdge {
   let result = ds_graph_compact_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_compact_edge_fill(s : DsgraphcompactEdge, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_compact_edge_min(s : DsgraphcompactEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_edge_min(s : DsgraphcompactEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_edge_max(s : DsgraphcompactEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_edge_max(s : DsgraphcompactEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_edge_to_string(s : DsgraphcompactEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_compact_path_set(s : DsgraphcompactPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_compact_path_sum(s : DsgraphcompactPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_path_sum(s : DsgraphcompactPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_path_mean(s : DsgraphcompactPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_path_mean(s : DsgraphcompactPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_path_scale(s : DsgraphcompactPath, f : Double) -> DsgraphcompactPath {
   let result = ds_graph_compact_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_compact_path_fill(s : DsgraphcompactPath, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_compact_path_min(s : DsgraphcompactPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_path_min(s : DsgraphcompactPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_path_max(s : DsgraphcompactPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_path_max(s : DsgraphcompactPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_path_to_string(s : DsgraphcompactPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_compact_cluster_set(s : DsgraphcompactCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_compact_cluster_sum(s : DsgraphcompactCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_cluster_sum(s : DsgraphcompactCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_cluster_mean(s : DsgraphcompactCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_cluster_mean(s : DsgraphcompactCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_cluster_scale(s : DsgraphcompactCluster, f : Double) -> DsgraphcompactCluster {
   let result = ds_graph_compact_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_compact_cluster_fill(s : DsgraphcompactCluster, v : Double) -> D
   result
 }
 
-pub fn ds_graph_compact_cluster_min(s : DsgraphcompactCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_cluster_min(s : DsgraphcompactCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_cluster_max(s : DsgraphcompactCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_cluster_max(s : DsgraphcompactCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_cluster_to_string(s : DsgraphcompactCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_compact_model_set(s : DsgraphcompactModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_compact_model_sum(s : DsgraphcompactModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_model_sum(s : DsgraphcompactModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_model_mean(s : DsgraphcompactModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_model_mean(s : DsgraphcompactModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_model_scale(s : DsgraphcompactModel, f : Double) -> DsgraphcompactModel {
   let result = ds_graph_compact_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_compact_model_fill(s : DsgraphcompactModel, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_compact_model_min(s : DsgraphcompactModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_model_min(s : DsgraphcompactModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_model_max(s : DsgraphcompactModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_model_max(s : DsgraphcompactModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_model_to_string(s : DsgraphcompactModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_compact_layer_set(s : DsgraphcompactLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_compact_layer_sum(s : DsgraphcompactLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_layer_sum(s : DsgraphcompactLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_layer_mean(s : DsgraphcompactLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_layer_mean(s : DsgraphcompactLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_layer_scale(s : DsgraphcompactLayer, f : Double) -> DsgraphcompactLayer {
   let result = ds_graph_compact_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_compact_layer_fill(s : DsgraphcompactLayer, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_compact_layer_min(s : DsgraphcompactLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_layer_min(s : DsgraphcompactLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_layer_max(s : DsgraphcompactLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_layer_max(s : DsgraphcompactLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_layer_to_string(s : DsgraphcompactLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_compact_buffer_set(s : DsgraphcompactBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_compact_buffer_sum(s : DsgraphcompactBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_buffer_sum(s : DsgraphcompactBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_buffer_mean(s : DsgraphcompactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_buffer_mean(s : DsgraphcompactBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_buffer_scale(s : DsgraphcompactBuffer, f : Double) -> DsgraphcompactBuffer {
   let result = ds_graph_compact_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_compact_buffer_fill(s : DsgraphcompactBuffer, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_compact_buffer_min(s : DsgraphcompactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_buffer_min(s : DsgraphcompactBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_buffer_max(s : DsgraphcompactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_buffer_max(s : DsgraphcompactBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_buffer_to_string(s : DsgraphcompactBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_compact_cursor_set(s : DsgraphcompactCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_compact_cursor_sum(s : DsgraphcompactCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_cursor_sum(s : DsgraphcompactCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_cursor_mean(s : DsgraphcompactCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_cursor_mean(s : DsgraphcompactCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_cursor_scale(s : DsgraphcompactCursor, f : Double) -> DsgraphcompactCursor {
   let result = ds_graph_compact_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_compact_cursor_fill(s : DsgraphcompactCursor, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_compact_cursor_min(s : DsgraphcompactCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_cursor_min(s : DsgraphcompactCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_cursor_max(s : DsgraphcompactCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_cursor_max(s : DsgraphcompactCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_cursor_to_string(s : DsgraphcompactCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_compact_view_set(s : DsgraphcompactView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_compact_view_sum(s : DsgraphcompactView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_view_sum(s : DsgraphcompactView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_view_mean(s : DsgraphcompactView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_view_mean(s : DsgraphcompactView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_view_scale(s : DsgraphcompactView, f : Double) -> DsgraphcompactView {
   let result = ds_graph_compact_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_compact_view_fill(s : DsgraphcompactView, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_compact_view_min(s : DsgraphcompactView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_view_min(s : DsgraphcompactView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_view_max(s : DsgraphcompactView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_view_max(s : DsgraphcompactView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_view_to_string(s : DsgraphcompactView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_compact_range_set(s : DsgraphcompactRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_compact_range_sum(s : DsgraphcompactRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_range_sum(s : DsgraphcompactRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_range_mean(s : DsgraphcompactRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_range_mean(s : DsgraphcompactRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_range_scale(s : DsgraphcompactRange, f : Double) -> DsgraphcompactRange {
   let result = ds_graph_compact_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_compact_range_fill(s : DsgraphcompactRange, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_compact_range_min(s : DsgraphcompactRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_range_min(s : DsgraphcompactRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_range_max(s : DsgraphcompactRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_range_max(s : DsgraphcompactRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_range_to_string(s : DsgraphcompactRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_compact_slice_set(s : DsgraphcompactSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_compact_slice_sum(s : DsgraphcompactSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_compact_slice_sum(s : DsgraphcompactSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_compact_slice_mean(s : DsgraphcompactSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_compact_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_compact_slice_mean(s : DsgraphcompactSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_compact_slice_scale(s : DsgraphcompactSlice, f : Double) -> DsgraphcompactSlice {
   let result = ds_graph_compact_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_compact_slice_fill(s : DsgraphcompactSlice, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_compact_slice_min(s : DsgraphcompactSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_slice_min(s : DsgraphcompactSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_compact_slice_max(s : DsgraphcompactSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_compact_slice_max(s : DsgraphcompactSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_compact_slice_to_string(s : DsgraphcompactSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

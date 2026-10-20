@@ -88,11 +88,7 @@ pub fn db_store_matrix_make_series(vals : Array[Double], name : String) -> Dbsto
 
 pub fn db_store_matrix_series_len(s : DbstorematrixSeries) -> Int { s.vals.length() }
 
-pub fn db_store_matrix_series_sum(s : DbstorematrixSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_matrix_series_sum(s : DbstorematrixSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_matrix_series_mean(s : DbstorematrixSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_matrix_frame_set(s : DbstorematrixFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_matrix_frame_sum(s : DbstorematrixFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_frame_sum(s : DbstorematrixFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_frame_mean(s : DbstorematrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_frame_mean(s : DbstorematrixFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_frame_scale(s : DbstorematrixFrame, f : Double) -> DbstorematrixFrame {
   let result = db_store_matrix_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_matrix_frame_fill(s : DbstorematrixFrame, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_matrix_frame_min(s : DbstorematrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_frame_min(s : DbstorematrixFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_frame_max(s : DbstorematrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_frame_max(s : DbstorematrixFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_frame_to_string(s : DbstorematrixFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_matrix_table_set(s : DbstorematrixTable, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_matrix_table_sum(s : DbstorematrixTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_table_sum(s : DbstorematrixTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_table_mean(s : DbstorematrixTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_table_mean(s : DbstorematrixTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_table_scale(s : DbstorematrixTable, f : Double) -> DbstorematrixTable {
   let result = db_store_matrix_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_matrix_table_fill(s : DbstorematrixTable, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_matrix_table_min(s : DbstorematrixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_table_min(s : DbstorematrixTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_table_max(s : DbstorematrixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_table_max(s : DbstorematrixTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_table_to_string(s : DbstorematrixTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_matrix_graphn_set(s : DbstorematrixGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_matrix_graphn_sum(s : DbstorematrixGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_graphn_sum(s : DbstorematrixGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_graphn_mean(s : DbstorematrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_graphn_mean(s : DbstorematrixGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_graphn_scale(s : DbstorematrixGraphN, f : Double) -> DbstorematrixGraphN {
   let result = db_store_matrix_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_matrix_graphn_fill(s : DbstorematrixGraphN, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_matrix_graphn_min(s : DbstorematrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_graphn_min(s : DbstorematrixGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_graphn_max(s : DbstorematrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_graphn_max(s : DbstorematrixGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_graphn_to_string(s : DbstorematrixGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_matrix_node_set(s : DbstorematrixNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_matrix_node_sum(s : DbstorematrixNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_node_sum(s : DbstorematrixNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_node_mean(s : DbstorematrixNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_node_mean(s : DbstorematrixNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_node_scale(s : DbstorematrixNode, f : Double) -> DbstorematrixNode {
   let result = db_store_matrix_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_matrix_node_fill(s : DbstorematrixNode, v : Double) -> Dbstorema
   result
 }
 
-pub fn db_store_matrix_node_min(s : DbstorematrixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_node_min(s : DbstorematrixNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_node_max(s : DbstorematrixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_node_max(s : DbstorematrixNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_node_to_string(s : DbstorematrixNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_matrix_edge_set(s : DbstorematrixEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_matrix_edge_sum(s : DbstorematrixEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_edge_sum(s : DbstorematrixEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_edge_mean(s : DbstorematrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_edge_mean(s : DbstorematrixEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_edge_scale(s : DbstorematrixEdge, f : Double) -> DbstorematrixEdge {
   let result = db_store_matrix_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_matrix_edge_fill(s : DbstorematrixEdge, v : Double) -> Dbstorema
   result
 }
 
-pub fn db_store_matrix_edge_min(s : DbstorematrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_edge_min(s : DbstorematrixEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_edge_max(s : DbstorematrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_edge_max(s : DbstorematrixEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_edge_to_string(s : DbstorematrixEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_matrix_path_set(s : DbstorematrixPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_matrix_path_sum(s : DbstorematrixPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_path_sum(s : DbstorematrixPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_path_mean(s : DbstorematrixPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_path_mean(s : DbstorematrixPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_path_scale(s : DbstorematrixPath, f : Double) -> DbstorematrixPath {
   let result = db_store_matrix_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_matrix_path_fill(s : DbstorematrixPath, v : Double) -> Dbstorema
   result
 }
 
-pub fn db_store_matrix_path_min(s : DbstorematrixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_path_min(s : DbstorematrixPath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_path_max(s : DbstorematrixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_path_max(s : DbstorematrixPath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_path_to_string(s : DbstorematrixPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_matrix_cluster_set(s : DbstorematrixCluster, i : Int, v : Double
   result
 }
 
-pub fn db_store_matrix_cluster_sum(s : DbstorematrixCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_cluster_sum(s : DbstorematrixCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_cluster_mean(s : DbstorematrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_cluster_mean(s : DbstorematrixCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_cluster_scale(s : DbstorematrixCluster, f : Double) -> DbstorematrixCluster {
   let result = db_store_matrix_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_matrix_cluster_fill(s : DbstorematrixCluster, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_matrix_cluster_min(s : DbstorematrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_cluster_min(s : DbstorematrixCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_cluster_max(s : DbstorematrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_cluster_max(s : DbstorematrixCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_cluster_to_string(s : DbstorematrixCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_matrix_model_set(s : DbstorematrixModel, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_matrix_model_sum(s : DbstorematrixModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_model_sum(s : DbstorematrixModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_model_mean(s : DbstorematrixModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_model_mean(s : DbstorematrixModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_model_scale(s : DbstorematrixModel, f : Double) -> DbstorematrixModel {
   let result = db_store_matrix_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_matrix_model_fill(s : DbstorematrixModel, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_matrix_model_min(s : DbstorematrixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_model_min(s : DbstorematrixModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_model_max(s : DbstorematrixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_model_max(s : DbstorematrixModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_model_to_string(s : DbstorematrixModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_matrix_layer_set(s : DbstorematrixLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_matrix_layer_sum(s : DbstorematrixLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_layer_sum(s : DbstorematrixLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_layer_mean(s : DbstorematrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_layer_mean(s : DbstorematrixLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_layer_scale(s : DbstorematrixLayer, f : Double) -> DbstorematrixLayer {
   let result = db_store_matrix_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_matrix_layer_fill(s : DbstorematrixLayer, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_matrix_layer_min(s : DbstorematrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_layer_min(s : DbstorematrixLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_layer_max(s : DbstorematrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_layer_max(s : DbstorematrixLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_layer_to_string(s : DbstorematrixLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_matrix_buffer_set(s : DbstorematrixBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_matrix_buffer_sum(s : DbstorematrixBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_buffer_sum(s : DbstorematrixBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_buffer_mean(s : DbstorematrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_buffer_mean(s : DbstorematrixBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_buffer_scale(s : DbstorematrixBuffer, f : Double) -> DbstorematrixBuffer {
   let result = db_store_matrix_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_matrix_buffer_fill(s : DbstorematrixBuffer, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_matrix_buffer_min(s : DbstorematrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_buffer_min(s : DbstorematrixBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_buffer_max(s : DbstorematrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_buffer_max(s : DbstorematrixBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_buffer_to_string(s : DbstorematrixBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_matrix_cursor_set(s : DbstorematrixCursor, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_matrix_cursor_sum(s : DbstorematrixCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_cursor_sum(s : DbstorematrixCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_cursor_mean(s : DbstorematrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_cursor_mean(s : DbstorematrixCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_cursor_scale(s : DbstorematrixCursor, f : Double) -> DbstorematrixCursor {
   let result = db_store_matrix_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_matrix_cursor_fill(s : DbstorematrixCursor, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_matrix_cursor_min(s : DbstorematrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_cursor_min(s : DbstorematrixCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_cursor_max(s : DbstorematrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_cursor_max(s : DbstorematrixCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_cursor_to_string(s : DbstorematrixCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_matrix_view_set(s : DbstorematrixView, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_matrix_view_sum(s : DbstorematrixView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_view_sum(s : DbstorematrixView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_view_mean(s : DbstorematrixView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_view_mean(s : DbstorematrixView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_view_scale(s : DbstorematrixView, f : Double) -> DbstorematrixView {
   let result = db_store_matrix_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_matrix_view_fill(s : DbstorematrixView, v : Double) -> Dbstorema
   result
 }
 
-pub fn db_store_matrix_view_min(s : DbstorematrixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_view_min(s : DbstorematrixView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_view_max(s : DbstorematrixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_view_max(s : DbstorematrixView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_view_to_string(s : DbstorematrixView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_matrix_range_set(s : DbstorematrixRange, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_matrix_range_sum(s : DbstorematrixRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_range_sum(s : DbstorematrixRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_range_mean(s : DbstorematrixRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_range_mean(s : DbstorematrixRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_range_scale(s : DbstorematrixRange, f : Double) -> DbstorematrixRange {
   let result = db_store_matrix_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_matrix_range_fill(s : DbstorematrixRange, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_matrix_range_min(s : DbstorematrixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_range_min(s : DbstorematrixRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_range_max(s : DbstorematrixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_range_max(s : DbstorematrixRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_range_to_string(s : DbstorematrixRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_matrix_slice_set(s : DbstorematrixSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_matrix_slice_sum(s : DbstorematrixSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_matrix_slice_sum(s : DbstorematrixSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_matrix_slice_mean(s : DbstorematrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_matrix_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_matrix_slice_mean(s : DbstorematrixSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_matrix_slice_scale(s : DbstorematrixSlice, f : Double) -> DbstorematrixSlice {
   let result = db_store_matrix_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_matrix_slice_fill(s : DbstorematrixSlice, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_matrix_slice_min(s : DbstorematrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_slice_min(s : DbstorematrixSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_matrix_slice_max(s : DbstorematrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_matrix_slice_max(s : DbstorematrixSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_matrix_slice_to_string(s : DbstorematrixSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

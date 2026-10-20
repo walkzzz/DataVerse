@@ -88,11 +88,7 @@ pub fn signal_spec_periodogram_make_series(vals : Array[Double], name : String) 
 
 pub fn signal_spec_periodogram_series_len(s : SignalspecperiodogramSeries) -> Int { s.vals.length() }
 
-pub fn signal_spec_periodogram_series_sum(s : SignalspecperiodogramSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_spec_periodogram_series_sum(s : SignalspecperiodogramSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_spec_periodogram_series_mean(s : SignalspecperiodogramSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_spec_periodogram_frame_set(s : SignalspecperiodogramFrame, i : Int
   result
 }
 
-pub fn signal_spec_periodogram_frame_sum(s : SignalspecperiodogramFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_frame_sum(s : SignalspecperiodogramFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_frame_mean(s : SignalspecperiodogramFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_frame_mean(s : SignalspecperiodogramFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_frame_scale(s : SignalspecperiodogramFrame, f : Double) -> SignalspecperiodogramFrame {
   let result = signal_spec_periodogram_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_spec_periodogram_frame_fill(s : SignalspecperiodogramFrame, v : Do
   result
 }
 
-pub fn signal_spec_periodogram_frame_min(s : SignalspecperiodogramFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_frame_min(s : SignalspecperiodogramFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_frame_max(s : SignalspecperiodogramFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_frame_max(s : SignalspecperiodogramFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_frame_to_string(s : SignalspecperiodogramFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_spec_periodogram_table_set(s : SignalspecperiodogramTable, i : Int
   result
 }
 
-pub fn signal_spec_periodogram_table_sum(s : SignalspecperiodogramTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_table_sum(s : SignalspecperiodogramTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_table_mean(s : SignalspecperiodogramTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_table_mean(s : SignalspecperiodogramTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_table_scale(s : SignalspecperiodogramTable, f : Double) -> SignalspecperiodogramTable {
   let result = signal_spec_periodogram_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_spec_periodogram_table_fill(s : SignalspecperiodogramTable, v : Do
   result
 }
 
-pub fn signal_spec_periodogram_table_min(s : SignalspecperiodogramTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_table_min(s : SignalspecperiodogramTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_table_max(s : SignalspecperiodogramTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_table_max(s : SignalspecperiodogramTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_table_to_string(s : SignalspecperiodogramTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_spec_periodogram_graphn_set(s : SignalspecperiodogramGraphN, i : I
   result
 }
 
-pub fn signal_spec_periodogram_graphn_sum(s : SignalspecperiodogramGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_graphn_sum(s : SignalspecperiodogramGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_graphn_mean(s : SignalspecperiodogramGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_graphn_mean(s : SignalspecperiodogramGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_graphn_scale(s : SignalspecperiodogramGraphN, f : Double) -> SignalspecperiodogramGraphN {
   let result = signal_spec_periodogram_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_spec_periodogram_graphn_fill(s : SignalspecperiodogramGraphN, v : 
   result
 }
 
-pub fn signal_spec_periodogram_graphn_min(s : SignalspecperiodogramGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_graphn_min(s : SignalspecperiodogramGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_graphn_max(s : SignalspecperiodogramGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_graphn_max(s : SignalspecperiodogramGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_graphn_to_string(s : SignalspecperiodogramGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_spec_periodogram_node_set(s : SignalspecperiodogramNode, i : Int, 
   result
 }
 
-pub fn signal_spec_periodogram_node_sum(s : SignalspecperiodogramNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_node_sum(s : SignalspecperiodogramNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_node_mean(s : SignalspecperiodogramNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_node_mean(s : SignalspecperiodogramNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_node_scale(s : SignalspecperiodogramNode, f : Double) -> SignalspecperiodogramNode {
   let result = signal_spec_periodogram_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_spec_periodogram_node_fill(s : SignalspecperiodogramNode, v : Doub
   result
 }
 
-pub fn signal_spec_periodogram_node_min(s : SignalspecperiodogramNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_node_min(s : SignalspecperiodogramNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_node_max(s : SignalspecperiodogramNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_node_max(s : SignalspecperiodogramNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_node_to_string(s : SignalspecperiodogramNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_spec_periodogram_edge_set(s : SignalspecperiodogramEdge, i : Int, 
   result
 }
 
-pub fn signal_spec_periodogram_edge_sum(s : SignalspecperiodogramEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_edge_sum(s : SignalspecperiodogramEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_edge_mean(s : SignalspecperiodogramEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_edge_mean(s : SignalspecperiodogramEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_edge_scale(s : SignalspecperiodogramEdge, f : Double) -> SignalspecperiodogramEdge {
   let result = signal_spec_periodogram_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_spec_periodogram_edge_fill(s : SignalspecperiodogramEdge, v : Doub
   result
 }
 
-pub fn signal_spec_periodogram_edge_min(s : SignalspecperiodogramEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_edge_min(s : SignalspecperiodogramEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_edge_max(s : SignalspecperiodogramEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_edge_max(s : SignalspecperiodogramEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_edge_to_string(s : SignalspecperiodogramEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_spec_periodogram_path_set(s : SignalspecperiodogramPath, i : Int, 
   result
 }
 
-pub fn signal_spec_periodogram_path_sum(s : SignalspecperiodogramPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_path_sum(s : SignalspecperiodogramPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_path_mean(s : SignalspecperiodogramPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_path_mean(s : SignalspecperiodogramPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_path_scale(s : SignalspecperiodogramPath, f : Double) -> SignalspecperiodogramPath {
   let result = signal_spec_periodogram_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_spec_periodogram_path_fill(s : SignalspecperiodogramPath, v : Doub
   result
 }
 
-pub fn signal_spec_periodogram_path_min(s : SignalspecperiodogramPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_path_min(s : SignalspecperiodogramPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_path_max(s : SignalspecperiodogramPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_path_max(s : SignalspecperiodogramPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_path_to_string(s : SignalspecperiodogramPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_spec_periodogram_cluster_set(s : SignalspecperiodogramCluster, i :
   result
 }
 
-pub fn signal_spec_periodogram_cluster_sum(s : SignalspecperiodogramCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_cluster_sum(s : SignalspecperiodogramCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_cluster_mean(s : SignalspecperiodogramCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_cluster_mean(s : SignalspecperiodogramCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_cluster_scale(s : SignalspecperiodogramCluster, f : Double) -> SignalspecperiodogramCluster {
   let result = signal_spec_periodogram_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_spec_periodogram_cluster_fill(s : SignalspecperiodogramCluster, v 
   result
 }
 
-pub fn signal_spec_periodogram_cluster_min(s : SignalspecperiodogramCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_cluster_min(s : SignalspecperiodogramCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_cluster_max(s : SignalspecperiodogramCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_cluster_max(s : SignalspecperiodogramCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_cluster_to_string(s : SignalspecperiodogramCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_spec_periodogram_model_set(s : SignalspecperiodogramModel, i : Int
   result
 }
 
-pub fn signal_spec_periodogram_model_sum(s : SignalspecperiodogramModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_model_sum(s : SignalspecperiodogramModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_model_mean(s : SignalspecperiodogramModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_model_mean(s : SignalspecperiodogramModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_model_scale(s : SignalspecperiodogramModel, f : Double) -> SignalspecperiodogramModel {
   let result = signal_spec_periodogram_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_spec_periodogram_model_fill(s : SignalspecperiodogramModel, v : Do
   result
 }
 
-pub fn signal_spec_periodogram_model_min(s : SignalspecperiodogramModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_model_min(s : SignalspecperiodogramModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_model_max(s : SignalspecperiodogramModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_model_max(s : SignalspecperiodogramModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_model_to_string(s : SignalspecperiodogramModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_spec_periodogram_layer_set(s : SignalspecperiodogramLayer, i : Int
   result
 }
 
-pub fn signal_spec_periodogram_layer_sum(s : SignalspecperiodogramLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_layer_sum(s : SignalspecperiodogramLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_layer_mean(s : SignalspecperiodogramLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_layer_mean(s : SignalspecperiodogramLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_layer_scale(s : SignalspecperiodogramLayer, f : Double) -> SignalspecperiodogramLayer {
   let result = signal_spec_periodogram_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_spec_periodogram_layer_fill(s : SignalspecperiodogramLayer, v : Do
   result
 }
 
-pub fn signal_spec_periodogram_layer_min(s : SignalspecperiodogramLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_layer_min(s : SignalspecperiodogramLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_layer_max(s : SignalspecperiodogramLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_layer_max(s : SignalspecperiodogramLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_layer_to_string(s : SignalspecperiodogramLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_spec_periodogram_buffer_set(s : SignalspecperiodogramBuffer, i : I
   result
 }
 
-pub fn signal_spec_periodogram_buffer_sum(s : SignalspecperiodogramBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_buffer_sum(s : SignalspecperiodogramBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_buffer_mean(s : SignalspecperiodogramBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_buffer_mean(s : SignalspecperiodogramBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_buffer_scale(s : SignalspecperiodogramBuffer, f : Double) -> SignalspecperiodogramBuffer {
   let result = signal_spec_periodogram_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_spec_periodogram_buffer_fill(s : SignalspecperiodogramBuffer, v : 
   result
 }
 
-pub fn signal_spec_periodogram_buffer_min(s : SignalspecperiodogramBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_buffer_min(s : SignalspecperiodogramBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_buffer_max(s : SignalspecperiodogramBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_buffer_max(s : SignalspecperiodogramBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_buffer_to_string(s : SignalspecperiodogramBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_spec_periodogram_cursor_set(s : SignalspecperiodogramCursor, i : I
   result
 }
 
-pub fn signal_spec_periodogram_cursor_sum(s : SignalspecperiodogramCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_cursor_sum(s : SignalspecperiodogramCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_cursor_mean(s : SignalspecperiodogramCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_cursor_mean(s : SignalspecperiodogramCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_cursor_scale(s : SignalspecperiodogramCursor, f : Double) -> SignalspecperiodogramCursor {
   let result = signal_spec_periodogram_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_spec_periodogram_cursor_fill(s : SignalspecperiodogramCursor, v : 
   result
 }
 
-pub fn signal_spec_periodogram_cursor_min(s : SignalspecperiodogramCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_cursor_min(s : SignalspecperiodogramCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_cursor_max(s : SignalspecperiodogramCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_cursor_max(s : SignalspecperiodogramCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_cursor_to_string(s : SignalspecperiodogramCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_spec_periodogram_view_set(s : SignalspecperiodogramView, i : Int, 
   result
 }
 
-pub fn signal_spec_periodogram_view_sum(s : SignalspecperiodogramView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_view_sum(s : SignalspecperiodogramView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_view_mean(s : SignalspecperiodogramView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_view_mean(s : SignalspecperiodogramView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_view_scale(s : SignalspecperiodogramView, f : Double) -> SignalspecperiodogramView {
   let result = signal_spec_periodogram_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_spec_periodogram_view_fill(s : SignalspecperiodogramView, v : Doub
   result
 }
 
-pub fn signal_spec_periodogram_view_min(s : SignalspecperiodogramView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_view_min(s : SignalspecperiodogramView) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_view_max(s : SignalspecperiodogramView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_view_max(s : SignalspecperiodogramView) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_view_to_string(s : SignalspecperiodogramView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_spec_periodogram_range_set(s : SignalspecperiodogramRange, i : Int
   result
 }
 
-pub fn signal_spec_periodogram_range_sum(s : SignalspecperiodogramRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_range_sum(s : SignalspecperiodogramRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_range_mean(s : SignalspecperiodogramRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_range_mean(s : SignalspecperiodogramRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_range_scale(s : SignalspecperiodogramRange, f : Double) -> SignalspecperiodogramRange {
   let result = signal_spec_periodogram_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_spec_periodogram_range_fill(s : SignalspecperiodogramRange, v : Do
   result
 }
 
-pub fn signal_spec_periodogram_range_min(s : SignalspecperiodogramRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_range_min(s : SignalspecperiodogramRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_range_max(s : SignalspecperiodogramRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_range_max(s : SignalspecperiodogramRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_range_to_string(s : SignalspecperiodogramRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_spec_periodogram_slice_set(s : SignalspecperiodogramSlice, i : Int
   result
 }
 
-pub fn signal_spec_periodogram_slice_sum(s : SignalspecperiodogramSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_periodogram_slice_sum(s : SignalspecperiodogramSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_periodogram_slice_mean(s : SignalspecperiodogramSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_periodogram_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_periodogram_slice_mean(s : SignalspecperiodogramSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_periodogram_slice_scale(s : SignalspecperiodogramSlice, f : Double) -> SignalspecperiodogramSlice {
   let result = signal_spec_periodogram_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_spec_periodogram_slice_fill(s : SignalspecperiodogramSlice, v : Do
   result
 }
 
-pub fn signal_spec_periodogram_slice_min(s : SignalspecperiodogramSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_slice_min(s : SignalspecperiodogramSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_periodogram_slice_max(s : SignalspecperiodogramSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_periodogram_slice_max(s : SignalspecperiodogramSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_periodogram_slice_to_string(s : SignalspecperiodogramSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

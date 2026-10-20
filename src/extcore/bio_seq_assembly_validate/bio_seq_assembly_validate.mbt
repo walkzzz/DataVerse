@@ -88,11 +88,7 @@ pub fn bio_seq_assembly_validate_make_series(vals : Array[Double], name : String
 
 pub fn bio_seq_assembly_validate_series_len(s : BioseqassemblyvalidateSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_assembly_validate_series_sum(s : BioseqassemblyvalidateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_series_sum(s : BioseqassemblyvalidateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_assembly_validate_series_mean(s : BioseqassemblyvalidateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_assembly_validate_frame_set(s : BioseqassemblyvalidateFrame, i : 
   result
 }
 
-pub fn bio_seq_assembly_validate_frame_sum(s : BioseqassemblyvalidateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_frame_sum(s : BioseqassemblyvalidateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_frame_mean(s : BioseqassemblyvalidateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_frame_mean(s : BioseqassemblyvalidateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_frame_scale(s : BioseqassemblyvalidateFrame, f : Double) -> BioseqassemblyvalidateFrame {
   let result = bio_seq_assembly_validate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_assembly_validate_frame_fill(s : BioseqassemblyvalidateFrame, v :
   result
 }
 
-pub fn bio_seq_assembly_validate_frame_min(s : BioseqassemblyvalidateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_frame_min(s : BioseqassemblyvalidateFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_frame_max(s : BioseqassemblyvalidateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_frame_max(s : BioseqassemblyvalidateFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_frame_to_string(s : BioseqassemblyvalidateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_assembly_validate_table_set(s : BioseqassemblyvalidateTable, i : 
   result
 }
 
-pub fn bio_seq_assembly_validate_table_sum(s : BioseqassemblyvalidateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_table_sum(s : BioseqassemblyvalidateTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_table_mean(s : BioseqassemblyvalidateTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_table_mean(s : BioseqassemblyvalidateTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_table_scale(s : BioseqassemblyvalidateTable, f : Double) -> BioseqassemblyvalidateTable {
   let result = bio_seq_assembly_validate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_assembly_validate_table_fill(s : BioseqassemblyvalidateTable, v :
   result
 }
 
-pub fn bio_seq_assembly_validate_table_min(s : BioseqassemblyvalidateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_table_min(s : BioseqassemblyvalidateTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_table_max(s : BioseqassemblyvalidateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_table_max(s : BioseqassemblyvalidateTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_table_to_string(s : BioseqassemblyvalidateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_assembly_validate_graphn_set(s : BioseqassemblyvalidateGraphN, i 
   result
 }
 
-pub fn bio_seq_assembly_validate_graphn_sum(s : BioseqassemblyvalidateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_graphn_sum(s : BioseqassemblyvalidateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_graphn_mean(s : BioseqassemblyvalidateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_graphn_mean(s : BioseqassemblyvalidateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_graphn_scale(s : BioseqassemblyvalidateGraphN, f : Double) -> BioseqassemblyvalidateGraphN {
   let result = bio_seq_assembly_validate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_assembly_validate_graphn_fill(s : BioseqassemblyvalidateGraphN, v
   result
 }
 
-pub fn bio_seq_assembly_validate_graphn_min(s : BioseqassemblyvalidateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_graphn_min(s : BioseqassemblyvalidateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_graphn_max(s : BioseqassemblyvalidateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_graphn_max(s : BioseqassemblyvalidateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_graphn_to_string(s : BioseqassemblyvalidateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_assembly_validate_node_set(s : BioseqassemblyvalidateNode, i : In
   result
 }
 
-pub fn bio_seq_assembly_validate_node_sum(s : BioseqassemblyvalidateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_node_sum(s : BioseqassemblyvalidateNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_node_mean(s : BioseqassemblyvalidateNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_node_mean(s : BioseqassemblyvalidateNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_node_scale(s : BioseqassemblyvalidateNode, f : Double) -> BioseqassemblyvalidateNode {
   let result = bio_seq_assembly_validate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_assembly_validate_node_fill(s : BioseqassemblyvalidateNode, v : D
   result
 }
 
-pub fn bio_seq_assembly_validate_node_min(s : BioseqassemblyvalidateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_node_min(s : BioseqassemblyvalidateNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_node_max(s : BioseqassemblyvalidateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_node_max(s : BioseqassemblyvalidateNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_node_to_string(s : BioseqassemblyvalidateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_assembly_validate_edge_set(s : BioseqassemblyvalidateEdge, i : In
   result
 }
 
-pub fn bio_seq_assembly_validate_edge_sum(s : BioseqassemblyvalidateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_edge_sum(s : BioseqassemblyvalidateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_edge_mean(s : BioseqassemblyvalidateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_edge_mean(s : BioseqassemblyvalidateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_edge_scale(s : BioseqassemblyvalidateEdge, f : Double) -> BioseqassemblyvalidateEdge {
   let result = bio_seq_assembly_validate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_assembly_validate_edge_fill(s : BioseqassemblyvalidateEdge, v : D
   result
 }
 
-pub fn bio_seq_assembly_validate_edge_min(s : BioseqassemblyvalidateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_edge_min(s : BioseqassemblyvalidateEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_edge_max(s : BioseqassemblyvalidateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_edge_max(s : BioseqassemblyvalidateEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_edge_to_string(s : BioseqassemblyvalidateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_assembly_validate_path_set(s : BioseqassemblyvalidatePath, i : In
   result
 }
 
-pub fn bio_seq_assembly_validate_path_sum(s : BioseqassemblyvalidatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_path_sum(s : BioseqassemblyvalidatePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_path_mean(s : BioseqassemblyvalidatePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_path_mean(s : BioseqassemblyvalidatePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_path_scale(s : BioseqassemblyvalidatePath, f : Double) -> BioseqassemblyvalidatePath {
   let result = bio_seq_assembly_validate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_assembly_validate_path_fill(s : BioseqassemblyvalidatePath, v : D
   result
 }
 
-pub fn bio_seq_assembly_validate_path_min(s : BioseqassemblyvalidatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_path_min(s : BioseqassemblyvalidatePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_path_max(s : BioseqassemblyvalidatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_path_max(s : BioseqassemblyvalidatePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_path_to_string(s : BioseqassemblyvalidatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_assembly_validate_cluster_set(s : BioseqassemblyvalidateCluster, 
   result
 }
 
-pub fn bio_seq_assembly_validate_cluster_sum(s : BioseqassemblyvalidateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_cluster_sum(s : BioseqassemblyvalidateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_cluster_mean(s : BioseqassemblyvalidateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_cluster_mean(s : BioseqassemblyvalidateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_cluster_scale(s : BioseqassemblyvalidateCluster, f : Double) -> BioseqassemblyvalidateCluster {
   let result = bio_seq_assembly_validate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_assembly_validate_cluster_fill(s : BioseqassemblyvalidateCluster,
   result
 }
 
-pub fn bio_seq_assembly_validate_cluster_min(s : BioseqassemblyvalidateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_cluster_min(s : BioseqassemblyvalidateCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_cluster_max(s : BioseqassemblyvalidateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_cluster_max(s : BioseqassemblyvalidateCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_cluster_to_string(s : BioseqassemblyvalidateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_assembly_validate_model_set(s : BioseqassemblyvalidateModel, i : 
   result
 }
 
-pub fn bio_seq_assembly_validate_model_sum(s : BioseqassemblyvalidateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_model_sum(s : BioseqassemblyvalidateModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_model_mean(s : BioseqassemblyvalidateModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_model_mean(s : BioseqassemblyvalidateModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_model_scale(s : BioseqassemblyvalidateModel, f : Double) -> BioseqassemblyvalidateModel {
   let result = bio_seq_assembly_validate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_assembly_validate_model_fill(s : BioseqassemblyvalidateModel, v :
   result
 }
 
-pub fn bio_seq_assembly_validate_model_min(s : BioseqassemblyvalidateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_model_min(s : BioseqassemblyvalidateModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_model_max(s : BioseqassemblyvalidateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_model_max(s : BioseqassemblyvalidateModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_model_to_string(s : BioseqassemblyvalidateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_assembly_validate_layer_set(s : BioseqassemblyvalidateLayer, i : 
   result
 }
 
-pub fn bio_seq_assembly_validate_layer_sum(s : BioseqassemblyvalidateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_layer_sum(s : BioseqassemblyvalidateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_layer_mean(s : BioseqassemblyvalidateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_layer_mean(s : BioseqassemblyvalidateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_layer_scale(s : BioseqassemblyvalidateLayer, f : Double) -> BioseqassemblyvalidateLayer {
   let result = bio_seq_assembly_validate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_assembly_validate_layer_fill(s : BioseqassemblyvalidateLayer, v :
   result
 }
 
-pub fn bio_seq_assembly_validate_layer_min(s : BioseqassemblyvalidateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_layer_min(s : BioseqassemblyvalidateLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_layer_max(s : BioseqassemblyvalidateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_layer_max(s : BioseqassemblyvalidateLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_layer_to_string(s : BioseqassemblyvalidateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_assembly_validate_buffer_set(s : BioseqassemblyvalidateBuffer, i 
   result
 }
 
-pub fn bio_seq_assembly_validate_buffer_sum(s : BioseqassemblyvalidateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_buffer_sum(s : BioseqassemblyvalidateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_buffer_mean(s : BioseqassemblyvalidateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_buffer_mean(s : BioseqassemblyvalidateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_buffer_scale(s : BioseqassemblyvalidateBuffer, f : Double) -> BioseqassemblyvalidateBuffer {
   let result = bio_seq_assembly_validate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_assembly_validate_buffer_fill(s : BioseqassemblyvalidateBuffer, v
   result
 }
 
-pub fn bio_seq_assembly_validate_buffer_min(s : BioseqassemblyvalidateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_buffer_min(s : BioseqassemblyvalidateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_buffer_max(s : BioseqassemblyvalidateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_buffer_max(s : BioseqassemblyvalidateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_buffer_to_string(s : BioseqassemblyvalidateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_assembly_validate_cursor_set(s : BioseqassemblyvalidateCursor, i 
   result
 }
 
-pub fn bio_seq_assembly_validate_cursor_sum(s : BioseqassemblyvalidateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_cursor_sum(s : BioseqassemblyvalidateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_cursor_mean(s : BioseqassemblyvalidateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_cursor_mean(s : BioseqassemblyvalidateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_cursor_scale(s : BioseqassemblyvalidateCursor, f : Double) -> BioseqassemblyvalidateCursor {
   let result = bio_seq_assembly_validate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_assembly_validate_cursor_fill(s : BioseqassemblyvalidateCursor, v
   result
 }
 
-pub fn bio_seq_assembly_validate_cursor_min(s : BioseqassemblyvalidateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_cursor_min(s : BioseqassemblyvalidateCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_cursor_max(s : BioseqassemblyvalidateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_cursor_max(s : BioseqassemblyvalidateCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_cursor_to_string(s : BioseqassemblyvalidateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_assembly_validate_view_set(s : BioseqassemblyvalidateView, i : In
   result
 }
 
-pub fn bio_seq_assembly_validate_view_sum(s : BioseqassemblyvalidateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_view_sum(s : BioseqassemblyvalidateView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_view_mean(s : BioseqassemblyvalidateView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_view_mean(s : BioseqassemblyvalidateView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_view_scale(s : BioseqassemblyvalidateView, f : Double) -> BioseqassemblyvalidateView {
   let result = bio_seq_assembly_validate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_assembly_validate_view_fill(s : BioseqassemblyvalidateView, v : D
   result
 }
 
-pub fn bio_seq_assembly_validate_view_min(s : BioseqassemblyvalidateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_view_min(s : BioseqassemblyvalidateView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_view_max(s : BioseqassemblyvalidateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_view_max(s : BioseqassemblyvalidateView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_view_to_string(s : BioseqassemblyvalidateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_assembly_validate_range_set(s : BioseqassemblyvalidateRange, i : 
   result
 }
 
-pub fn bio_seq_assembly_validate_range_sum(s : BioseqassemblyvalidateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_range_sum(s : BioseqassemblyvalidateRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_range_mean(s : BioseqassemblyvalidateRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_range_mean(s : BioseqassemblyvalidateRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_range_scale(s : BioseqassemblyvalidateRange, f : Double) -> BioseqassemblyvalidateRange {
   let result = bio_seq_assembly_validate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_assembly_validate_range_fill(s : BioseqassemblyvalidateRange, v :
   result
 }
 
-pub fn bio_seq_assembly_validate_range_min(s : BioseqassemblyvalidateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_range_min(s : BioseqassemblyvalidateRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_range_max(s : BioseqassemblyvalidateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_range_max(s : BioseqassemblyvalidateRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_range_to_string(s : BioseqassemblyvalidateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_assembly_validate_slice_set(s : BioseqassemblyvalidateSlice, i : 
   result
 }
 
-pub fn bio_seq_assembly_validate_slice_sum(s : BioseqassemblyvalidateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_validate_slice_sum(s : BioseqassemblyvalidateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_validate_slice_mean(s : BioseqassemblyvalidateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_validate_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_validate_slice_mean(s : BioseqassemblyvalidateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_validate_slice_scale(s : BioseqassemblyvalidateSlice, f : Double) -> BioseqassemblyvalidateSlice {
   let result = bio_seq_assembly_validate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_assembly_validate_slice_fill(s : BioseqassemblyvalidateSlice, v :
   result
 }
 
-pub fn bio_seq_assembly_validate_slice_min(s : BioseqassemblyvalidateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_slice_min(s : BioseqassemblyvalidateSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_validate_slice_max(s : BioseqassemblyvalidateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_validate_slice_max(s : BioseqassemblyvalidateSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_validate_slice_to_string(s : BioseqassemblyvalidateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

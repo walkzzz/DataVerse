@@ -88,11 +88,7 @@ pub fn net_proto_mqtt_make_series(vals : Array[Double], name : String) -> Netpro
 
 pub fn net_proto_mqtt_series_len(s : NetprotomqttSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_mqtt_series_sum(s : NetprotomqttSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_mqtt_series_sum(s : NetprotomqttSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_mqtt_series_mean(s : NetprotomqttSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_mqtt_frame_set(s : NetprotomqttFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_mqtt_frame_sum(s : NetprotomqttFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_frame_sum(s : NetprotomqttFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_frame_mean(s : NetprotomqttFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_frame_mean(s : NetprotomqttFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_frame_scale(s : NetprotomqttFrame, f : Double) -> NetprotomqttFrame {
   let result = net_proto_mqtt_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_mqtt_frame_fill(s : NetprotomqttFrame, v : Double) -> Netprotom
   result
 }
 
-pub fn net_proto_mqtt_frame_min(s : NetprotomqttFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_frame_min(s : NetprotomqttFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_frame_max(s : NetprotomqttFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_frame_max(s : NetprotomqttFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_frame_to_string(s : NetprotomqttFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_mqtt_table_set(s : NetprotomqttTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_mqtt_table_sum(s : NetprotomqttTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_table_sum(s : NetprotomqttTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_table_mean(s : NetprotomqttTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_table_mean(s : NetprotomqttTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_table_scale(s : NetprotomqttTable, f : Double) -> NetprotomqttTable {
   let result = net_proto_mqtt_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_mqtt_table_fill(s : NetprotomqttTable, v : Double) -> Netprotom
   result
 }
 
-pub fn net_proto_mqtt_table_min(s : NetprotomqttTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_table_min(s : NetprotomqttTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_table_max(s : NetprotomqttTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_table_max(s : NetprotomqttTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_table_to_string(s : NetprotomqttTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_mqtt_graphn_set(s : NetprotomqttGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_mqtt_graphn_sum(s : NetprotomqttGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_graphn_sum(s : NetprotomqttGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_graphn_mean(s : NetprotomqttGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_graphn_mean(s : NetprotomqttGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_graphn_scale(s : NetprotomqttGraphN, f : Double) -> NetprotomqttGraphN {
   let result = net_proto_mqtt_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_mqtt_graphn_fill(s : NetprotomqttGraphN, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_mqtt_graphn_min(s : NetprotomqttGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_graphn_min(s : NetprotomqttGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_graphn_max(s : NetprotomqttGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_graphn_max(s : NetprotomqttGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_graphn_to_string(s : NetprotomqttGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_mqtt_node_set(s : NetprotomqttNode, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_mqtt_node_sum(s : NetprotomqttNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_node_sum(s : NetprotomqttNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_node_mean(s : NetprotomqttNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_node_mean(s : NetprotomqttNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_node_scale(s : NetprotomqttNode, f : Double) -> NetprotomqttNode {
   let result = net_proto_mqtt_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_mqtt_node_fill(s : NetprotomqttNode, v : Double) -> Netprotomqt
   result
 }
 
-pub fn net_proto_mqtt_node_min(s : NetprotomqttNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_node_min(s : NetprotomqttNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_node_max(s : NetprotomqttNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_node_max(s : NetprotomqttNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_node_to_string(s : NetprotomqttNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_mqtt_edge_set(s : NetprotomqttEdge, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_mqtt_edge_sum(s : NetprotomqttEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_edge_sum(s : NetprotomqttEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_edge_mean(s : NetprotomqttEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_edge_mean(s : NetprotomqttEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_edge_scale(s : NetprotomqttEdge, f : Double) -> NetprotomqttEdge {
   let result = net_proto_mqtt_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_mqtt_edge_fill(s : NetprotomqttEdge, v : Double) -> Netprotomqt
   result
 }
 
-pub fn net_proto_mqtt_edge_min(s : NetprotomqttEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_edge_min(s : NetprotomqttEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_edge_max(s : NetprotomqttEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_edge_max(s : NetprotomqttEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_edge_to_string(s : NetprotomqttEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_mqtt_path_set(s : NetprotomqttPath, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_mqtt_path_sum(s : NetprotomqttPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_path_sum(s : NetprotomqttPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_path_mean(s : NetprotomqttPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_path_mean(s : NetprotomqttPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_path_scale(s : NetprotomqttPath, f : Double) -> NetprotomqttPath {
   let result = net_proto_mqtt_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_mqtt_path_fill(s : NetprotomqttPath, v : Double) -> Netprotomqt
   result
 }
 
-pub fn net_proto_mqtt_path_min(s : NetprotomqttPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_path_min(s : NetprotomqttPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_path_max(s : NetprotomqttPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_path_max(s : NetprotomqttPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_path_to_string(s : NetprotomqttPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_mqtt_cluster_set(s : NetprotomqttCluster, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_mqtt_cluster_sum(s : NetprotomqttCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_cluster_sum(s : NetprotomqttCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_cluster_mean(s : NetprotomqttCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_cluster_mean(s : NetprotomqttCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_cluster_scale(s : NetprotomqttCluster, f : Double) -> NetprotomqttCluster {
   let result = net_proto_mqtt_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_mqtt_cluster_fill(s : NetprotomqttCluster, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_mqtt_cluster_min(s : NetprotomqttCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_cluster_min(s : NetprotomqttCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_cluster_max(s : NetprotomqttCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_cluster_max(s : NetprotomqttCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_cluster_to_string(s : NetprotomqttCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_mqtt_model_set(s : NetprotomqttModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_mqtt_model_sum(s : NetprotomqttModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_model_sum(s : NetprotomqttModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_model_mean(s : NetprotomqttModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_model_mean(s : NetprotomqttModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_model_scale(s : NetprotomqttModel, f : Double) -> NetprotomqttModel {
   let result = net_proto_mqtt_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_mqtt_model_fill(s : NetprotomqttModel, v : Double) -> Netprotom
   result
 }
 
-pub fn net_proto_mqtt_model_min(s : NetprotomqttModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_model_min(s : NetprotomqttModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_model_max(s : NetprotomqttModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_model_max(s : NetprotomqttModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_model_to_string(s : NetprotomqttModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_mqtt_layer_set(s : NetprotomqttLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_mqtt_layer_sum(s : NetprotomqttLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_layer_sum(s : NetprotomqttLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_layer_mean(s : NetprotomqttLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_layer_mean(s : NetprotomqttLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_layer_scale(s : NetprotomqttLayer, f : Double) -> NetprotomqttLayer {
   let result = net_proto_mqtt_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_mqtt_layer_fill(s : NetprotomqttLayer, v : Double) -> Netprotom
   result
 }
 
-pub fn net_proto_mqtt_layer_min(s : NetprotomqttLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_layer_min(s : NetprotomqttLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_layer_max(s : NetprotomqttLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_layer_max(s : NetprotomqttLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_layer_to_string(s : NetprotomqttLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_mqtt_buffer_set(s : NetprotomqttBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_mqtt_buffer_sum(s : NetprotomqttBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_buffer_sum(s : NetprotomqttBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_buffer_mean(s : NetprotomqttBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_buffer_mean(s : NetprotomqttBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_buffer_scale(s : NetprotomqttBuffer, f : Double) -> NetprotomqttBuffer {
   let result = net_proto_mqtt_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_mqtt_buffer_fill(s : NetprotomqttBuffer, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_mqtt_buffer_min(s : NetprotomqttBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_buffer_min(s : NetprotomqttBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_buffer_max(s : NetprotomqttBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_buffer_max(s : NetprotomqttBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_buffer_to_string(s : NetprotomqttBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_mqtt_cursor_set(s : NetprotomqttCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_mqtt_cursor_sum(s : NetprotomqttCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_cursor_sum(s : NetprotomqttCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_cursor_mean(s : NetprotomqttCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_cursor_mean(s : NetprotomqttCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_cursor_scale(s : NetprotomqttCursor, f : Double) -> NetprotomqttCursor {
   let result = net_proto_mqtt_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_mqtt_cursor_fill(s : NetprotomqttCursor, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_mqtt_cursor_min(s : NetprotomqttCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_cursor_min(s : NetprotomqttCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_cursor_max(s : NetprotomqttCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_cursor_max(s : NetprotomqttCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_cursor_to_string(s : NetprotomqttCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_mqtt_view_set(s : NetprotomqttView, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_mqtt_view_sum(s : NetprotomqttView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_view_sum(s : NetprotomqttView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_view_mean(s : NetprotomqttView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_view_mean(s : NetprotomqttView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_view_scale(s : NetprotomqttView, f : Double) -> NetprotomqttView {
   let result = net_proto_mqtt_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_mqtt_view_fill(s : NetprotomqttView, v : Double) -> Netprotomqt
   result
 }
 
-pub fn net_proto_mqtt_view_min(s : NetprotomqttView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_view_min(s : NetprotomqttView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_view_max(s : NetprotomqttView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_view_max(s : NetprotomqttView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_view_to_string(s : NetprotomqttView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_mqtt_range_set(s : NetprotomqttRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_mqtt_range_sum(s : NetprotomqttRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_range_sum(s : NetprotomqttRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_range_mean(s : NetprotomqttRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_range_mean(s : NetprotomqttRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_range_scale(s : NetprotomqttRange, f : Double) -> NetprotomqttRange {
   let result = net_proto_mqtt_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_mqtt_range_fill(s : NetprotomqttRange, v : Double) -> Netprotom
   result
 }
 
-pub fn net_proto_mqtt_range_min(s : NetprotomqttRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_range_min(s : NetprotomqttRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_range_max(s : NetprotomqttRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_range_max(s : NetprotomqttRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_range_to_string(s : NetprotomqttRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_mqtt_slice_set(s : NetprotomqttSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_mqtt_slice_sum(s : NetprotomqttSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_mqtt_slice_sum(s : NetprotomqttSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_mqtt_slice_mean(s : NetprotomqttSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_mqtt_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_mqtt_slice_mean(s : NetprotomqttSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_mqtt_slice_scale(s : NetprotomqttSlice, f : Double) -> NetprotomqttSlice {
   let result = net_proto_mqtt_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_mqtt_slice_fill(s : NetprotomqttSlice, v : Double) -> Netprotom
   result
 }
 
-pub fn net_proto_mqtt_slice_min(s : NetprotomqttSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_slice_min(s : NetprotomqttSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_mqtt_slice_max(s : NetprotomqttSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_mqtt_slice_max(s : NetprotomqttSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_mqtt_slice_to_string(s : NetprotomqttSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

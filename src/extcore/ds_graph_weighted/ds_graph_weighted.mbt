@@ -88,11 +88,7 @@ pub fn ds_graph_weighted_make_series(vals : Array[Double], name : String) -> Dsg
 
 pub fn ds_graph_weighted_series_len(s : DsgraphweightedSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_weighted_series_sum(s : DsgraphweightedSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_weighted_series_sum(s : DsgraphweightedSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_weighted_series_mean(s : DsgraphweightedSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_weighted_frame_set(s : DsgraphweightedFrame, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_weighted_frame_sum(s : DsgraphweightedFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_frame_sum(s : DsgraphweightedFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_frame_mean(s : DsgraphweightedFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_frame_mean(s : DsgraphweightedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_frame_scale(s : DsgraphweightedFrame, f : Double) -> DsgraphweightedFrame {
   let result = ds_graph_weighted_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_weighted_frame_fill(s : DsgraphweightedFrame, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_weighted_frame_min(s : DsgraphweightedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_frame_min(s : DsgraphweightedFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_frame_max(s : DsgraphweightedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_frame_max(s : DsgraphweightedFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_frame_to_string(s : DsgraphweightedFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_weighted_table_set(s : DsgraphweightedTable, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_weighted_table_sum(s : DsgraphweightedTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_table_sum(s : DsgraphweightedTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_table_mean(s : DsgraphweightedTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_table_mean(s : DsgraphweightedTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_table_scale(s : DsgraphweightedTable, f : Double) -> DsgraphweightedTable {
   let result = ds_graph_weighted_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_weighted_table_fill(s : DsgraphweightedTable, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_weighted_table_min(s : DsgraphweightedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_table_min(s : DsgraphweightedTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_table_max(s : DsgraphweightedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_table_max(s : DsgraphweightedTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_table_to_string(s : DsgraphweightedTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_weighted_graphn_set(s : DsgraphweightedGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_weighted_graphn_sum(s : DsgraphweightedGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_graphn_sum(s : DsgraphweightedGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_graphn_mean(s : DsgraphweightedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_graphn_mean(s : DsgraphweightedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_graphn_scale(s : DsgraphweightedGraphN, f : Double) -> DsgraphweightedGraphN {
   let result = ds_graph_weighted_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_weighted_graphn_fill(s : DsgraphweightedGraphN, v : Double) -> D
   result
 }
 
-pub fn ds_graph_weighted_graphn_min(s : DsgraphweightedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_graphn_min(s : DsgraphweightedGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_graphn_max(s : DsgraphweightedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_graphn_max(s : DsgraphweightedGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_graphn_to_string(s : DsgraphweightedGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_weighted_node_set(s : DsgraphweightedNode, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_weighted_node_sum(s : DsgraphweightedNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_node_sum(s : DsgraphweightedNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_node_mean(s : DsgraphweightedNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_node_mean(s : DsgraphweightedNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_node_scale(s : DsgraphweightedNode, f : Double) -> DsgraphweightedNode {
   let result = ds_graph_weighted_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_weighted_node_fill(s : DsgraphweightedNode, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_weighted_node_min(s : DsgraphweightedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_node_min(s : DsgraphweightedNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_node_max(s : DsgraphweightedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_node_max(s : DsgraphweightedNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_node_to_string(s : DsgraphweightedNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_weighted_edge_set(s : DsgraphweightedEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_weighted_edge_sum(s : DsgraphweightedEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_edge_sum(s : DsgraphweightedEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_edge_mean(s : DsgraphweightedEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_edge_mean(s : DsgraphweightedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_edge_scale(s : DsgraphweightedEdge, f : Double) -> DsgraphweightedEdge {
   let result = ds_graph_weighted_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_weighted_edge_fill(s : DsgraphweightedEdge, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_weighted_edge_min(s : DsgraphweightedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_edge_min(s : DsgraphweightedEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_edge_max(s : DsgraphweightedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_edge_max(s : DsgraphweightedEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_edge_to_string(s : DsgraphweightedEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_weighted_path_set(s : DsgraphweightedPath, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_weighted_path_sum(s : DsgraphweightedPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_path_sum(s : DsgraphweightedPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_path_mean(s : DsgraphweightedPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_path_mean(s : DsgraphweightedPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_path_scale(s : DsgraphweightedPath, f : Double) -> DsgraphweightedPath {
   let result = ds_graph_weighted_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_weighted_path_fill(s : DsgraphweightedPath, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_weighted_path_min(s : DsgraphweightedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_path_min(s : DsgraphweightedPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_path_max(s : DsgraphweightedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_path_max(s : DsgraphweightedPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_path_to_string(s : DsgraphweightedPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_weighted_cluster_set(s : DsgraphweightedCluster, i : Int, v : Do
   result
 }
 
-pub fn ds_graph_weighted_cluster_sum(s : DsgraphweightedCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_cluster_sum(s : DsgraphweightedCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_cluster_mean(s : DsgraphweightedCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_cluster_mean(s : DsgraphweightedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_cluster_scale(s : DsgraphweightedCluster, f : Double) -> DsgraphweightedCluster {
   let result = ds_graph_weighted_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_weighted_cluster_fill(s : DsgraphweightedCluster, v : Double) ->
   result
 }
 
-pub fn ds_graph_weighted_cluster_min(s : DsgraphweightedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_cluster_min(s : DsgraphweightedCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_cluster_max(s : DsgraphweightedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_cluster_max(s : DsgraphweightedCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_cluster_to_string(s : DsgraphweightedCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_weighted_model_set(s : DsgraphweightedModel, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_weighted_model_sum(s : DsgraphweightedModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_model_sum(s : DsgraphweightedModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_model_mean(s : DsgraphweightedModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_model_mean(s : DsgraphweightedModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_model_scale(s : DsgraphweightedModel, f : Double) -> DsgraphweightedModel {
   let result = ds_graph_weighted_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_weighted_model_fill(s : DsgraphweightedModel, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_weighted_model_min(s : DsgraphweightedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_model_min(s : DsgraphweightedModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_model_max(s : DsgraphweightedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_model_max(s : DsgraphweightedModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_model_to_string(s : DsgraphweightedModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_weighted_layer_set(s : DsgraphweightedLayer, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_weighted_layer_sum(s : DsgraphweightedLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_layer_sum(s : DsgraphweightedLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_layer_mean(s : DsgraphweightedLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_layer_mean(s : DsgraphweightedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_layer_scale(s : DsgraphweightedLayer, f : Double) -> DsgraphweightedLayer {
   let result = ds_graph_weighted_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_weighted_layer_fill(s : DsgraphweightedLayer, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_weighted_layer_min(s : DsgraphweightedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_layer_min(s : DsgraphweightedLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_layer_max(s : DsgraphweightedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_layer_max(s : DsgraphweightedLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_layer_to_string(s : DsgraphweightedLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_weighted_buffer_set(s : DsgraphweightedBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_weighted_buffer_sum(s : DsgraphweightedBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_buffer_sum(s : DsgraphweightedBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_buffer_mean(s : DsgraphweightedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_buffer_mean(s : DsgraphweightedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_buffer_scale(s : DsgraphweightedBuffer, f : Double) -> DsgraphweightedBuffer {
   let result = ds_graph_weighted_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_weighted_buffer_fill(s : DsgraphweightedBuffer, v : Double) -> D
   result
 }
 
-pub fn ds_graph_weighted_buffer_min(s : DsgraphweightedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_buffer_min(s : DsgraphweightedBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_buffer_max(s : DsgraphweightedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_buffer_max(s : DsgraphweightedBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_buffer_to_string(s : DsgraphweightedBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_weighted_cursor_set(s : DsgraphweightedCursor, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_weighted_cursor_sum(s : DsgraphweightedCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_cursor_sum(s : DsgraphweightedCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_cursor_mean(s : DsgraphweightedCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_cursor_mean(s : DsgraphweightedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_cursor_scale(s : DsgraphweightedCursor, f : Double) -> DsgraphweightedCursor {
   let result = ds_graph_weighted_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_weighted_cursor_fill(s : DsgraphweightedCursor, v : Double) -> D
   result
 }
 
-pub fn ds_graph_weighted_cursor_min(s : DsgraphweightedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_cursor_min(s : DsgraphweightedCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_cursor_max(s : DsgraphweightedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_cursor_max(s : DsgraphweightedCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_cursor_to_string(s : DsgraphweightedCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_weighted_view_set(s : DsgraphweightedView, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_weighted_view_sum(s : DsgraphweightedView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_view_sum(s : DsgraphweightedView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_view_mean(s : DsgraphweightedView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_view_mean(s : DsgraphweightedView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_view_scale(s : DsgraphweightedView, f : Double) -> DsgraphweightedView {
   let result = ds_graph_weighted_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_weighted_view_fill(s : DsgraphweightedView, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_weighted_view_min(s : DsgraphweightedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_view_min(s : DsgraphweightedView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_view_max(s : DsgraphweightedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_view_max(s : DsgraphweightedView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_view_to_string(s : DsgraphweightedView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_weighted_range_set(s : DsgraphweightedRange, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_weighted_range_sum(s : DsgraphweightedRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_range_sum(s : DsgraphweightedRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_range_mean(s : DsgraphweightedRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_range_mean(s : DsgraphweightedRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_range_scale(s : DsgraphweightedRange, f : Double) -> DsgraphweightedRange {
   let result = ds_graph_weighted_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_weighted_range_fill(s : DsgraphweightedRange, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_weighted_range_min(s : DsgraphweightedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_range_min(s : DsgraphweightedRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_range_max(s : DsgraphweightedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_range_max(s : DsgraphweightedRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_range_to_string(s : DsgraphweightedRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_weighted_slice_set(s : DsgraphweightedSlice, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_weighted_slice_sum(s : DsgraphweightedSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_weighted_slice_sum(s : DsgraphweightedSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_weighted_slice_mean(s : DsgraphweightedSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_weighted_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_weighted_slice_mean(s : DsgraphweightedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_weighted_slice_scale(s : DsgraphweightedSlice, f : Double) -> DsgraphweightedSlice {
   let result = ds_graph_weighted_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_weighted_slice_fill(s : DsgraphweightedSlice, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_weighted_slice_min(s : DsgraphweightedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_slice_min(s : DsgraphweightedSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_weighted_slice_max(s : DsgraphweightedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_weighted_slice_max(s : DsgraphweightedSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_weighted_slice_to_string(s : DsgraphweightedSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

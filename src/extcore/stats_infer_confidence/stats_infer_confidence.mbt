@@ -88,11 +88,7 @@ pub fn stats_infer_confidence_make_series(vals : Array[Double], name : String) -
 
 pub fn stats_infer_confidence_series_len(s : StatsinferconfidenceSeries) -> Int { s.vals.length() }
 
-pub fn stats_infer_confidence_series_sum(s : StatsinferconfidenceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_infer_confidence_series_sum(s : StatsinferconfidenceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_infer_confidence_series_mean(s : StatsinferconfidenceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_infer_confidence_frame_set(s : StatsinferconfidenceFrame, i : Int, 
   result
 }
 
-pub fn stats_infer_confidence_frame_sum(s : StatsinferconfidenceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_frame_sum(s : StatsinferconfidenceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_frame_mean(s : StatsinferconfidenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_frame_mean(s : StatsinferconfidenceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_frame_scale(s : StatsinferconfidenceFrame, f : Double) -> StatsinferconfidenceFrame {
   let result = stats_infer_confidence_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_infer_confidence_frame_fill(s : StatsinferconfidenceFrame, v : Doub
   result
 }
 
-pub fn stats_infer_confidence_frame_min(s : StatsinferconfidenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_frame_min(s : StatsinferconfidenceFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_frame_max(s : StatsinferconfidenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_frame_max(s : StatsinferconfidenceFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_frame_to_string(s : StatsinferconfidenceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_infer_confidence_table_set(s : StatsinferconfidenceTable, i : Int, 
   result
 }
 
-pub fn stats_infer_confidence_table_sum(s : StatsinferconfidenceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_table_sum(s : StatsinferconfidenceTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_table_mean(s : StatsinferconfidenceTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_table_mean(s : StatsinferconfidenceTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_table_scale(s : StatsinferconfidenceTable, f : Double) -> StatsinferconfidenceTable {
   let result = stats_infer_confidence_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_infer_confidence_table_fill(s : StatsinferconfidenceTable, v : Doub
   result
 }
 
-pub fn stats_infer_confidence_table_min(s : StatsinferconfidenceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_table_min(s : StatsinferconfidenceTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_table_max(s : StatsinferconfidenceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_table_max(s : StatsinferconfidenceTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_table_to_string(s : StatsinferconfidenceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_infer_confidence_graphn_set(s : StatsinferconfidenceGraphN, i : Int
   result
 }
 
-pub fn stats_infer_confidence_graphn_sum(s : StatsinferconfidenceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_graphn_sum(s : StatsinferconfidenceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_graphn_mean(s : StatsinferconfidenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_graphn_mean(s : StatsinferconfidenceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_graphn_scale(s : StatsinferconfidenceGraphN, f : Double) -> StatsinferconfidenceGraphN {
   let result = stats_infer_confidence_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_infer_confidence_graphn_fill(s : StatsinferconfidenceGraphN, v : Do
   result
 }
 
-pub fn stats_infer_confidence_graphn_min(s : StatsinferconfidenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_graphn_min(s : StatsinferconfidenceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_graphn_max(s : StatsinferconfidenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_graphn_max(s : StatsinferconfidenceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_graphn_to_string(s : StatsinferconfidenceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_infer_confidence_node_set(s : StatsinferconfidenceNode, i : Int, v 
   result
 }
 
-pub fn stats_infer_confidence_node_sum(s : StatsinferconfidenceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_node_sum(s : StatsinferconfidenceNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_node_mean(s : StatsinferconfidenceNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_node_mean(s : StatsinferconfidenceNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_node_scale(s : StatsinferconfidenceNode, f : Double) -> StatsinferconfidenceNode {
   let result = stats_infer_confidence_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_infer_confidence_node_fill(s : StatsinferconfidenceNode, v : Double
   result
 }
 
-pub fn stats_infer_confidence_node_min(s : StatsinferconfidenceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_node_min(s : StatsinferconfidenceNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_node_max(s : StatsinferconfidenceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_node_max(s : StatsinferconfidenceNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_node_to_string(s : StatsinferconfidenceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_infer_confidence_edge_set(s : StatsinferconfidenceEdge, i : Int, v 
   result
 }
 
-pub fn stats_infer_confidence_edge_sum(s : StatsinferconfidenceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_edge_sum(s : StatsinferconfidenceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_edge_mean(s : StatsinferconfidenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_edge_mean(s : StatsinferconfidenceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_edge_scale(s : StatsinferconfidenceEdge, f : Double) -> StatsinferconfidenceEdge {
   let result = stats_infer_confidence_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_infer_confidence_edge_fill(s : StatsinferconfidenceEdge, v : Double
   result
 }
 
-pub fn stats_infer_confidence_edge_min(s : StatsinferconfidenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_edge_min(s : StatsinferconfidenceEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_edge_max(s : StatsinferconfidenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_edge_max(s : StatsinferconfidenceEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_edge_to_string(s : StatsinferconfidenceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_infer_confidence_path_set(s : StatsinferconfidencePath, i : Int, v 
   result
 }
 
-pub fn stats_infer_confidence_path_sum(s : StatsinferconfidencePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_path_sum(s : StatsinferconfidencePath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_path_mean(s : StatsinferconfidencePath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_path_mean(s : StatsinferconfidencePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_path_scale(s : StatsinferconfidencePath, f : Double) -> StatsinferconfidencePath {
   let result = stats_infer_confidence_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_infer_confidence_path_fill(s : StatsinferconfidencePath, v : Double
   result
 }
 
-pub fn stats_infer_confidence_path_min(s : StatsinferconfidencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_path_min(s : StatsinferconfidencePath) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_path_max(s : StatsinferconfidencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_path_max(s : StatsinferconfidencePath) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_path_to_string(s : StatsinferconfidencePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_infer_confidence_cluster_set(s : StatsinferconfidenceCluster, i : I
   result
 }
 
-pub fn stats_infer_confidence_cluster_sum(s : StatsinferconfidenceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_cluster_sum(s : StatsinferconfidenceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_cluster_mean(s : StatsinferconfidenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_cluster_mean(s : StatsinferconfidenceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_cluster_scale(s : StatsinferconfidenceCluster, f : Double) -> StatsinferconfidenceCluster {
   let result = stats_infer_confidence_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_infer_confidence_cluster_fill(s : StatsinferconfidenceCluster, v : 
   result
 }
 
-pub fn stats_infer_confidence_cluster_min(s : StatsinferconfidenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_cluster_min(s : StatsinferconfidenceCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_cluster_max(s : StatsinferconfidenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_cluster_max(s : StatsinferconfidenceCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_cluster_to_string(s : StatsinferconfidenceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_infer_confidence_model_set(s : StatsinferconfidenceModel, i : Int, 
   result
 }
 
-pub fn stats_infer_confidence_model_sum(s : StatsinferconfidenceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_model_sum(s : StatsinferconfidenceModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_model_mean(s : StatsinferconfidenceModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_model_mean(s : StatsinferconfidenceModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_model_scale(s : StatsinferconfidenceModel, f : Double) -> StatsinferconfidenceModel {
   let result = stats_infer_confidence_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_infer_confidence_model_fill(s : StatsinferconfidenceModel, v : Doub
   result
 }
 
-pub fn stats_infer_confidence_model_min(s : StatsinferconfidenceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_model_min(s : StatsinferconfidenceModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_model_max(s : StatsinferconfidenceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_model_max(s : StatsinferconfidenceModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_model_to_string(s : StatsinferconfidenceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_infer_confidence_layer_set(s : StatsinferconfidenceLayer, i : Int, 
   result
 }
 
-pub fn stats_infer_confidence_layer_sum(s : StatsinferconfidenceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_layer_sum(s : StatsinferconfidenceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_layer_mean(s : StatsinferconfidenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_layer_mean(s : StatsinferconfidenceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_layer_scale(s : StatsinferconfidenceLayer, f : Double) -> StatsinferconfidenceLayer {
   let result = stats_infer_confidence_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_infer_confidence_layer_fill(s : StatsinferconfidenceLayer, v : Doub
   result
 }
 
-pub fn stats_infer_confidence_layer_min(s : StatsinferconfidenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_layer_min(s : StatsinferconfidenceLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_layer_max(s : StatsinferconfidenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_layer_max(s : StatsinferconfidenceLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_layer_to_string(s : StatsinferconfidenceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_infer_confidence_buffer_set(s : StatsinferconfidenceBuffer, i : Int
   result
 }
 
-pub fn stats_infer_confidence_buffer_sum(s : StatsinferconfidenceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_buffer_sum(s : StatsinferconfidenceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_buffer_mean(s : StatsinferconfidenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_buffer_mean(s : StatsinferconfidenceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_buffer_scale(s : StatsinferconfidenceBuffer, f : Double) -> StatsinferconfidenceBuffer {
   let result = stats_infer_confidence_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_infer_confidence_buffer_fill(s : StatsinferconfidenceBuffer, v : Do
   result
 }
 
-pub fn stats_infer_confidence_buffer_min(s : StatsinferconfidenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_buffer_min(s : StatsinferconfidenceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_buffer_max(s : StatsinferconfidenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_buffer_max(s : StatsinferconfidenceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_buffer_to_string(s : StatsinferconfidenceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_infer_confidence_cursor_set(s : StatsinferconfidenceCursor, i : Int
   result
 }
 
-pub fn stats_infer_confidence_cursor_sum(s : StatsinferconfidenceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_cursor_sum(s : StatsinferconfidenceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_cursor_mean(s : StatsinferconfidenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_cursor_mean(s : StatsinferconfidenceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_cursor_scale(s : StatsinferconfidenceCursor, f : Double) -> StatsinferconfidenceCursor {
   let result = stats_infer_confidence_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_infer_confidence_cursor_fill(s : StatsinferconfidenceCursor, v : Do
   result
 }
 
-pub fn stats_infer_confidence_cursor_min(s : StatsinferconfidenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_cursor_min(s : StatsinferconfidenceCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_cursor_max(s : StatsinferconfidenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_cursor_max(s : StatsinferconfidenceCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_cursor_to_string(s : StatsinferconfidenceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_infer_confidence_view_set(s : StatsinferconfidenceView, i : Int, v 
   result
 }
 
-pub fn stats_infer_confidence_view_sum(s : StatsinferconfidenceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_view_sum(s : StatsinferconfidenceView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_view_mean(s : StatsinferconfidenceView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_view_mean(s : StatsinferconfidenceView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_view_scale(s : StatsinferconfidenceView, f : Double) -> StatsinferconfidenceView {
   let result = stats_infer_confidence_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_infer_confidence_view_fill(s : StatsinferconfidenceView, v : Double
   result
 }
 
-pub fn stats_infer_confidence_view_min(s : StatsinferconfidenceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_view_min(s : StatsinferconfidenceView) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_view_max(s : StatsinferconfidenceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_view_max(s : StatsinferconfidenceView) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_view_to_string(s : StatsinferconfidenceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_infer_confidence_range_set(s : StatsinferconfidenceRange, i : Int, 
   result
 }
 
-pub fn stats_infer_confidence_range_sum(s : StatsinferconfidenceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_range_sum(s : StatsinferconfidenceRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_range_mean(s : StatsinferconfidenceRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_range_mean(s : StatsinferconfidenceRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_range_scale(s : StatsinferconfidenceRange, f : Double) -> StatsinferconfidenceRange {
   let result = stats_infer_confidence_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_infer_confidence_range_fill(s : StatsinferconfidenceRange, v : Doub
   result
 }
 
-pub fn stats_infer_confidence_range_min(s : StatsinferconfidenceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_range_min(s : StatsinferconfidenceRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_range_max(s : StatsinferconfidenceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_range_max(s : StatsinferconfidenceRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_range_to_string(s : StatsinferconfidenceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_infer_confidence_slice_set(s : StatsinferconfidenceSlice, i : Int, 
   result
 }
 
-pub fn stats_infer_confidence_slice_sum(s : StatsinferconfidenceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_confidence_slice_sum(s : StatsinferconfidenceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_confidence_slice_mean(s : StatsinferconfidenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_confidence_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_confidence_slice_mean(s : StatsinferconfidenceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_confidence_slice_scale(s : StatsinferconfidenceSlice, f : Double) -> StatsinferconfidenceSlice {
   let result = stats_infer_confidence_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_infer_confidence_slice_fill(s : StatsinferconfidenceSlice, v : Doub
   result
 }
 
-pub fn stats_infer_confidence_slice_min(s : StatsinferconfidenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_slice_min(s : StatsinferconfidenceSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_confidence_slice_max(s : StatsinferconfidenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_confidence_slice_max(s : StatsinferconfidenceSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_confidence_slice_to_string(s : StatsinferconfidenceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

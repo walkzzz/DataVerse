@@ -88,11 +88,7 @@ pub fn signal_filter_kalman_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_filter_kalman_series_len(s : SignalfilterkalmanSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_kalman_series_sum(s : SignalfilterkalmanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_kalman_series_sum(s : SignalfilterkalmanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_kalman_series_mean(s : SignalfilterkalmanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_kalman_frame_set(s : SignalfilterkalmanFrame, i : Int, v : 
   result
 }
 
-pub fn signal_filter_kalman_frame_sum(s : SignalfilterkalmanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_frame_sum(s : SignalfilterkalmanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_frame_mean(s : SignalfilterkalmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_frame_mean(s : SignalfilterkalmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_frame_scale(s : SignalfilterkalmanFrame, f : Double) -> SignalfilterkalmanFrame {
   let result = signal_filter_kalman_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_kalman_frame_fill(s : SignalfilterkalmanFrame, v : Double) 
   result
 }
 
-pub fn signal_filter_kalman_frame_min(s : SignalfilterkalmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_frame_min(s : SignalfilterkalmanFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_frame_max(s : SignalfilterkalmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_frame_max(s : SignalfilterkalmanFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_frame_to_string(s : SignalfilterkalmanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_kalman_table_set(s : SignalfilterkalmanTable, i : Int, v : 
   result
 }
 
-pub fn signal_filter_kalman_table_sum(s : SignalfilterkalmanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_table_sum(s : SignalfilterkalmanTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_table_mean(s : SignalfilterkalmanTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_table_mean(s : SignalfilterkalmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_table_scale(s : SignalfilterkalmanTable, f : Double) -> SignalfilterkalmanTable {
   let result = signal_filter_kalman_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_kalman_table_fill(s : SignalfilterkalmanTable, v : Double) 
   result
 }
 
-pub fn signal_filter_kalman_table_min(s : SignalfilterkalmanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_table_min(s : SignalfilterkalmanTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_table_max(s : SignalfilterkalmanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_table_max(s : SignalfilterkalmanTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_table_to_string(s : SignalfilterkalmanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_kalman_graphn_set(s : SignalfilterkalmanGraphN, i : Int, v 
   result
 }
 
-pub fn signal_filter_kalman_graphn_sum(s : SignalfilterkalmanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_graphn_sum(s : SignalfilterkalmanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_graphn_mean(s : SignalfilterkalmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_graphn_mean(s : SignalfilterkalmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_graphn_scale(s : SignalfilterkalmanGraphN, f : Double) -> SignalfilterkalmanGraphN {
   let result = signal_filter_kalman_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_kalman_graphn_fill(s : SignalfilterkalmanGraphN, v : Double
   result
 }
 
-pub fn signal_filter_kalman_graphn_min(s : SignalfilterkalmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_graphn_min(s : SignalfilterkalmanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_graphn_max(s : SignalfilterkalmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_graphn_max(s : SignalfilterkalmanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_graphn_to_string(s : SignalfilterkalmanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_kalman_node_set(s : SignalfilterkalmanNode, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_kalman_node_sum(s : SignalfilterkalmanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_node_sum(s : SignalfilterkalmanNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_node_mean(s : SignalfilterkalmanNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_node_mean(s : SignalfilterkalmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_node_scale(s : SignalfilterkalmanNode, f : Double) -> SignalfilterkalmanNode {
   let result = signal_filter_kalman_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_kalman_node_fill(s : SignalfilterkalmanNode, v : Double) ->
   result
 }
 
-pub fn signal_filter_kalman_node_min(s : SignalfilterkalmanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_node_min(s : SignalfilterkalmanNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_node_max(s : SignalfilterkalmanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_node_max(s : SignalfilterkalmanNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_node_to_string(s : SignalfilterkalmanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_kalman_edge_set(s : SignalfilterkalmanEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_kalman_edge_sum(s : SignalfilterkalmanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_edge_sum(s : SignalfilterkalmanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_edge_mean(s : SignalfilterkalmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_edge_mean(s : SignalfilterkalmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_edge_scale(s : SignalfilterkalmanEdge, f : Double) -> SignalfilterkalmanEdge {
   let result = signal_filter_kalman_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_kalman_edge_fill(s : SignalfilterkalmanEdge, v : Double) ->
   result
 }
 
-pub fn signal_filter_kalman_edge_min(s : SignalfilterkalmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_edge_min(s : SignalfilterkalmanEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_edge_max(s : SignalfilterkalmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_edge_max(s : SignalfilterkalmanEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_edge_to_string(s : SignalfilterkalmanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_kalman_path_set(s : SignalfilterkalmanPath, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_kalman_path_sum(s : SignalfilterkalmanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_path_sum(s : SignalfilterkalmanPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_path_mean(s : SignalfilterkalmanPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_path_mean(s : SignalfilterkalmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_path_scale(s : SignalfilterkalmanPath, f : Double) -> SignalfilterkalmanPath {
   let result = signal_filter_kalman_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_kalman_path_fill(s : SignalfilterkalmanPath, v : Double) ->
   result
 }
 
-pub fn signal_filter_kalman_path_min(s : SignalfilterkalmanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_path_min(s : SignalfilterkalmanPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_path_max(s : SignalfilterkalmanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_path_max(s : SignalfilterkalmanPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_path_to_string(s : SignalfilterkalmanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_kalman_cluster_set(s : SignalfilterkalmanCluster, i : Int, 
   result
 }
 
-pub fn signal_filter_kalman_cluster_sum(s : SignalfilterkalmanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_cluster_sum(s : SignalfilterkalmanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_cluster_mean(s : SignalfilterkalmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_cluster_mean(s : SignalfilterkalmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_cluster_scale(s : SignalfilterkalmanCluster, f : Double) -> SignalfilterkalmanCluster {
   let result = signal_filter_kalman_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_kalman_cluster_fill(s : SignalfilterkalmanCluster, v : Doub
   result
 }
 
-pub fn signal_filter_kalman_cluster_min(s : SignalfilterkalmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_cluster_min(s : SignalfilterkalmanCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_cluster_max(s : SignalfilterkalmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_cluster_max(s : SignalfilterkalmanCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_cluster_to_string(s : SignalfilterkalmanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_kalman_model_set(s : SignalfilterkalmanModel, i : Int, v : 
   result
 }
 
-pub fn signal_filter_kalman_model_sum(s : SignalfilterkalmanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_model_sum(s : SignalfilterkalmanModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_model_mean(s : SignalfilterkalmanModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_model_mean(s : SignalfilterkalmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_model_scale(s : SignalfilterkalmanModel, f : Double) -> SignalfilterkalmanModel {
   let result = signal_filter_kalman_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_kalman_model_fill(s : SignalfilterkalmanModel, v : Double) 
   result
 }
 
-pub fn signal_filter_kalman_model_min(s : SignalfilterkalmanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_model_min(s : SignalfilterkalmanModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_model_max(s : SignalfilterkalmanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_model_max(s : SignalfilterkalmanModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_model_to_string(s : SignalfilterkalmanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_kalman_layer_set(s : SignalfilterkalmanLayer, i : Int, v : 
   result
 }
 
-pub fn signal_filter_kalman_layer_sum(s : SignalfilterkalmanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_layer_sum(s : SignalfilterkalmanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_layer_mean(s : SignalfilterkalmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_layer_mean(s : SignalfilterkalmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_layer_scale(s : SignalfilterkalmanLayer, f : Double) -> SignalfilterkalmanLayer {
   let result = signal_filter_kalman_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_kalman_layer_fill(s : SignalfilterkalmanLayer, v : Double) 
   result
 }
 
-pub fn signal_filter_kalman_layer_min(s : SignalfilterkalmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_layer_min(s : SignalfilterkalmanLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_layer_max(s : SignalfilterkalmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_layer_max(s : SignalfilterkalmanLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_layer_to_string(s : SignalfilterkalmanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_kalman_buffer_set(s : SignalfilterkalmanBuffer, i : Int, v 
   result
 }
 
-pub fn signal_filter_kalman_buffer_sum(s : SignalfilterkalmanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_buffer_sum(s : SignalfilterkalmanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_buffer_mean(s : SignalfilterkalmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_buffer_mean(s : SignalfilterkalmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_buffer_scale(s : SignalfilterkalmanBuffer, f : Double) -> SignalfilterkalmanBuffer {
   let result = signal_filter_kalman_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_kalman_buffer_fill(s : SignalfilterkalmanBuffer, v : Double
   result
 }
 
-pub fn signal_filter_kalman_buffer_min(s : SignalfilterkalmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_buffer_min(s : SignalfilterkalmanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_buffer_max(s : SignalfilterkalmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_buffer_max(s : SignalfilterkalmanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_buffer_to_string(s : SignalfilterkalmanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_kalman_cursor_set(s : SignalfilterkalmanCursor, i : Int, v 
   result
 }
 
-pub fn signal_filter_kalman_cursor_sum(s : SignalfilterkalmanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_cursor_sum(s : SignalfilterkalmanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_cursor_mean(s : SignalfilterkalmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_cursor_mean(s : SignalfilterkalmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_cursor_scale(s : SignalfilterkalmanCursor, f : Double) -> SignalfilterkalmanCursor {
   let result = signal_filter_kalman_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_kalman_cursor_fill(s : SignalfilterkalmanCursor, v : Double
   result
 }
 
-pub fn signal_filter_kalman_cursor_min(s : SignalfilterkalmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_cursor_min(s : SignalfilterkalmanCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_cursor_max(s : SignalfilterkalmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_cursor_max(s : SignalfilterkalmanCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_cursor_to_string(s : SignalfilterkalmanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_kalman_view_set(s : SignalfilterkalmanView, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_kalman_view_sum(s : SignalfilterkalmanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_view_sum(s : SignalfilterkalmanView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_view_mean(s : SignalfilterkalmanView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_view_mean(s : SignalfilterkalmanView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_view_scale(s : SignalfilterkalmanView, f : Double) -> SignalfilterkalmanView {
   let result = signal_filter_kalman_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_kalman_view_fill(s : SignalfilterkalmanView, v : Double) ->
   result
 }
 
-pub fn signal_filter_kalman_view_min(s : SignalfilterkalmanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_view_min(s : SignalfilterkalmanView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_view_max(s : SignalfilterkalmanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_view_max(s : SignalfilterkalmanView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_view_to_string(s : SignalfilterkalmanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_kalman_range_set(s : SignalfilterkalmanRange, i : Int, v : 
   result
 }
 
-pub fn signal_filter_kalman_range_sum(s : SignalfilterkalmanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_range_sum(s : SignalfilterkalmanRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_range_mean(s : SignalfilterkalmanRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_range_mean(s : SignalfilterkalmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_range_scale(s : SignalfilterkalmanRange, f : Double) -> SignalfilterkalmanRange {
   let result = signal_filter_kalman_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_kalman_range_fill(s : SignalfilterkalmanRange, v : Double) 
   result
 }
 
-pub fn signal_filter_kalman_range_min(s : SignalfilterkalmanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_range_min(s : SignalfilterkalmanRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_range_max(s : SignalfilterkalmanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_range_max(s : SignalfilterkalmanRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_range_to_string(s : SignalfilterkalmanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_kalman_slice_set(s : SignalfilterkalmanSlice, i : Int, v : 
   result
 }
 
-pub fn signal_filter_kalman_slice_sum(s : SignalfilterkalmanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_kalman_slice_sum(s : SignalfilterkalmanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_kalman_slice_mean(s : SignalfilterkalmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_kalman_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_kalman_slice_mean(s : SignalfilterkalmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_kalman_slice_scale(s : SignalfilterkalmanSlice, f : Double) -> SignalfilterkalmanSlice {
   let result = signal_filter_kalman_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_kalman_slice_fill(s : SignalfilterkalmanSlice, v : Double) 
   result
 }
 
-pub fn signal_filter_kalman_slice_min(s : SignalfilterkalmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_slice_min(s : SignalfilterkalmanSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_kalman_slice_max(s : SignalfilterkalmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_kalman_slice_max(s : SignalfilterkalmanSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_kalman_slice_to_string(s : SignalfilterkalmanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn crypto_sym_rc4_make_series(vals : Array[Double], name : String) -> Crypto
 
 pub fn crypto_sym_rc4_series_len(s : Cryptosymrc4Series) -> Int { s.vals.length() }
 
-pub fn crypto_sym_rc4_series_sum(s : Cryptosymrc4Series) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_rc4_series_sum(s : Cryptosymrc4Series) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_rc4_series_mean(s : Cryptosymrc4Series) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_rc4_frame_set(s : Cryptosymrc4Frame, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_rc4_frame_sum(s : Cryptosymrc4Frame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_frame_sum(s : Cryptosymrc4Frame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_frame_mean(s : Cryptosymrc4Frame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_frame_mean(s : Cryptosymrc4Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_frame_scale(s : Cryptosymrc4Frame, f : Double) -> Cryptosymrc4Frame {
   let result = crypto_sym_rc4_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_rc4_frame_fill(s : Cryptosymrc4Frame, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_rc4_frame_min(s : Cryptosymrc4Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_frame_min(s : Cryptosymrc4Frame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_frame_max(s : Cryptosymrc4Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_frame_max(s : Cryptosymrc4Frame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_frame_to_string(s : Cryptosymrc4Frame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_rc4_table_set(s : Cryptosymrc4Table, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_rc4_table_sum(s : Cryptosymrc4Table) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_table_sum(s : Cryptosymrc4Table) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_table_mean(s : Cryptosymrc4Table) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_table_mean(s : Cryptosymrc4Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_table_scale(s : Cryptosymrc4Table, f : Double) -> Cryptosymrc4Table {
   let result = crypto_sym_rc4_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_rc4_table_fill(s : Cryptosymrc4Table, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_rc4_table_min(s : Cryptosymrc4Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_table_min(s : Cryptosymrc4Table) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_table_max(s : Cryptosymrc4Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_table_max(s : Cryptosymrc4Table) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_table_to_string(s : Cryptosymrc4Table) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_rc4_graphn_set(s : Cryptosymrc4GraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_rc4_graphn_sum(s : Cryptosymrc4GraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_graphn_sum(s : Cryptosymrc4GraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_graphn_mean(s : Cryptosymrc4GraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_graphn_mean(s : Cryptosymrc4GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_graphn_scale(s : Cryptosymrc4GraphN, f : Double) -> Cryptosymrc4GraphN {
   let result = crypto_sym_rc4_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_rc4_graphn_fill(s : Cryptosymrc4GraphN, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_rc4_graphn_min(s : Cryptosymrc4GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_graphn_min(s : Cryptosymrc4GraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_graphn_max(s : Cryptosymrc4GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_graphn_max(s : Cryptosymrc4GraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_graphn_to_string(s : Cryptosymrc4GraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_rc4_node_set(s : Cryptosymrc4Node, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_rc4_node_sum(s : Cryptosymrc4Node) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_node_sum(s : Cryptosymrc4Node) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_node_mean(s : Cryptosymrc4Node) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_node_mean(s : Cryptosymrc4Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_node_scale(s : Cryptosymrc4Node, f : Double) -> Cryptosymrc4Node {
   let result = crypto_sym_rc4_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_rc4_node_fill(s : Cryptosymrc4Node, v : Double) -> Cryptosymrc
   result
 }
 
-pub fn crypto_sym_rc4_node_min(s : Cryptosymrc4Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_node_min(s : Cryptosymrc4Node) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_node_max(s : Cryptosymrc4Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_node_max(s : Cryptosymrc4Node) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_node_to_string(s : Cryptosymrc4Node) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_rc4_edge_set(s : Cryptosymrc4Edge, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_rc4_edge_sum(s : Cryptosymrc4Edge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_edge_sum(s : Cryptosymrc4Edge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_edge_mean(s : Cryptosymrc4Edge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_edge_mean(s : Cryptosymrc4Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_edge_scale(s : Cryptosymrc4Edge, f : Double) -> Cryptosymrc4Edge {
   let result = crypto_sym_rc4_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_rc4_edge_fill(s : Cryptosymrc4Edge, v : Double) -> Cryptosymrc
   result
 }
 
-pub fn crypto_sym_rc4_edge_min(s : Cryptosymrc4Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_edge_min(s : Cryptosymrc4Edge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_edge_max(s : Cryptosymrc4Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_edge_max(s : Cryptosymrc4Edge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_edge_to_string(s : Cryptosymrc4Edge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_rc4_path_set(s : Cryptosymrc4Path, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_rc4_path_sum(s : Cryptosymrc4Path) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_path_sum(s : Cryptosymrc4Path) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_path_mean(s : Cryptosymrc4Path) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_path_mean(s : Cryptosymrc4Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_path_scale(s : Cryptosymrc4Path, f : Double) -> Cryptosymrc4Path {
   let result = crypto_sym_rc4_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_rc4_path_fill(s : Cryptosymrc4Path, v : Double) -> Cryptosymrc
   result
 }
 
-pub fn crypto_sym_rc4_path_min(s : Cryptosymrc4Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_path_min(s : Cryptosymrc4Path) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_path_max(s : Cryptosymrc4Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_path_max(s : Cryptosymrc4Path) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_path_to_string(s : Cryptosymrc4Path) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_rc4_cluster_set(s : Cryptosymrc4Cluster, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_rc4_cluster_sum(s : Cryptosymrc4Cluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_cluster_sum(s : Cryptosymrc4Cluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_cluster_mean(s : Cryptosymrc4Cluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_cluster_mean(s : Cryptosymrc4Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_cluster_scale(s : Cryptosymrc4Cluster, f : Double) -> Cryptosymrc4Cluster {
   let result = crypto_sym_rc4_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_rc4_cluster_fill(s : Cryptosymrc4Cluster, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_rc4_cluster_min(s : Cryptosymrc4Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_cluster_min(s : Cryptosymrc4Cluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_cluster_max(s : Cryptosymrc4Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_cluster_max(s : Cryptosymrc4Cluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_cluster_to_string(s : Cryptosymrc4Cluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_rc4_model_set(s : Cryptosymrc4Model, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_rc4_model_sum(s : Cryptosymrc4Model) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_model_sum(s : Cryptosymrc4Model) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_model_mean(s : Cryptosymrc4Model) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_model_mean(s : Cryptosymrc4Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_model_scale(s : Cryptosymrc4Model, f : Double) -> Cryptosymrc4Model {
   let result = crypto_sym_rc4_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_rc4_model_fill(s : Cryptosymrc4Model, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_rc4_model_min(s : Cryptosymrc4Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_model_min(s : Cryptosymrc4Model) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_model_max(s : Cryptosymrc4Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_model_max(s : Cryptosymrc4Model) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_model_to_string(s : Cryptosymrc4Model) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_rc4_layer_set(s : Cryptosymrc4Layer, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_rc4_layer_sum(s : Cryptosymrc4Layer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_layer_sum(s : Cryptosymrc4Layer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_layer_mean(s : Cryptosymrc4Layer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_layer_mean(s : Cryptosymrc4Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_layer_scale(s : Cryptosymrc4Layer, f : Double) -> Cryptosymrc4Layer {
   let result = crypto_sym_rc4_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_rc4_layer_fill(s : Cryptosymrc4Layer, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_rc4_layer_min(s : Cryptosymrc4Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_layer_min(s : Cryptosymrc4Layer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_layer_max(s : Cryptosymrc4Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_layer_max(s : Cryptosymrc4Layer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_layer_to_string(s : Cryptosymrc4Layer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_rc4_buffer_set(s : Cryptosymrc4Buffer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_rc4_buffer_sum(s : Cryptosymrc4Buffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_buffer_sum(s : Cryptosymrc4Buffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_buffer_mean(s : Cryptosymrc4Buffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_buffer_mean(s : Cryptosymrc4Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_buffer_scale(s : Cryptosymrc4Buffer, f : Double) -> Cryptosymrc4Buffer {
   let result = crypto_sym_rc4_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_rc4_buffer_fill(s : Cryptosymrc4Buffer, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_rc4_buffer_min(s : Cryptosymrc4Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_buffer_min(s : Cryptosymrc4Buffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_buffer_max(s : Cryptosymrc4Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_buffer_max(s : Cryptosymrc4Buffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_buffer_to_string(s : Cryptosymrc4Buffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_rc4_cursor_set(s : Cryptosymrc4Cursor, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_rc4_cursor_sum(s : Cryptosymrc4Cursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_cursor_sum(s : Cryptosymrc4Cursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_cursor_mean(s : Cryptosymrc4Cursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_cursor_mean(s : Cryptosymrc4Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_cursor_scale(s : Cryptosymrc4Cursor, f : Double) -> Cryptosymrc4Cursor {
   let result = crypto_sym_rc4_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_rc4_cursor_fill(s : Cryptosymrc4Cursor, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_rc4_cursor_min(s : Cryptosymrc4Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_cursor_min(s : Cryptosymrc4Cursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_cursor_max(s : Cryptosymrc4Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_cursor_max(s : Cryptosymrc4Cursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_cursor_to_string(s : Cryptosymrc4Cursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_rc4_view_set(s : Cryptosymrc4View, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_rc4_view_sum(s : Cryptosymrc4View) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_view_sum(s : Cryptosymrc4View) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_view_mean(s : Cryptosymrc4View) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_view_mean(s : Cryptosymrc4View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_view_scale(s : Cryptosymrc4View, f : Double) -> Cryptosymrc4View {
   let result = crypto_sym_rc4_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_rc4_view_fill(s : Cryptosymrc4View, v : Double) -> Cryptosymrc
   result
 }
 
-pub fn crypto_sym_rc4_view_min(s : Cryptosymrc4View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_view_min(s : Cryptosymrc4View) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_view_max(s : Cryptosymrc4View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_view_max(s : Cryptosymrc4View) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_view_to_string(s : Cryptosymrc4View) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_rc4_range_set(s : Cryptosymrc4Range, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_rc4_range_sum(s : Cryptosymrc4Range) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_range_sum(s : Cryptosymrc4Range) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_range_mean(s : Cryptosymrc4Range) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_range_mean(s : Cryptosymrc4Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_range_scale(s : Cryptosymrc4Range, f : Double) -> Cryptosymrc4Range {
   let result = crypto_sym_rc4_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_rc4_range_fill(s : Cryptosymrc4Range, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_rc4_range_min(s : Cryptosymrc4Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_range_min(s : Cryptosymrc4Range) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_range_max(s : Cryptosymrc4Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_range_max(s : Cryptosymrc4Range) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_range_to_string(s : Cryptosymrc4Range) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_rc4_slice_set(s : Cryptosymrc4Slice, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_rc4_slice_sum(s : Cryptosymrc4Slice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_rc4_slice_sum(s : Cryptosymrc4Slice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_rc4_slice_mean(s : Cryptosymrc4Slice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_rc4_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_rc4_slice_mean(s : Cryptosymrc4Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_rc4_slice_scale(s : Cryptosymrc4Slice, f : Double) -> Cryptosymrc4Slice {
   let result = crypto_sym_rc4_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_rc4_slice_fill(s : Cryptosymrc4Slice, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_rc4_slice_min(s : Cryptosymrc4Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_slice_min(s : Cryptosymrc4Slice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_rc4_slice_max(s : Cryptosymrc4Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_rc4_slice_max(s : Cryptosymrc4Slice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_rc4_slice_to_string(s : Cryptosymrc4Slice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_approx_interp_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_approx_interp_series_len(s : MathapproxinterpSeries) -> Int { s.vals.length() }
 
-pub fn math_approx_interp_series_sum(s : MathapproxinterpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_interp_series_sum(s : MathapproxinterpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_interp_series_mean(s : MathapproxinterpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_interp_frame_set(s : MathapproxinterpFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_interp_frame_sum(s : MathapproxinterpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_frame_sum(s : MathapproxinterpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_frame_mean(s : MathapproxinterpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_frame_mean(s : MathapproxinterpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_frame_scale(s : MathapproxinterpFrame, f : Double) -> MathapproxinterpFrame {
   let result = math_approx_interp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_interp_frame_fill(s : MathapproxinterpFrame, v : Double) -> M
   result
 }
 
-pub fn math_approx_interp_frame_min(s : MathapproxinterpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_frame_min(s : MathapproxinterpFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_frame_max(s : MathapproxinterpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_frame_max(s : MathapproxinterpFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_frame_to_string(s : MathapproxinterpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_interp_table_set(s : MathapproxinterpTable, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_interp_table_sum(s : MathapproxinterpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_table_sum(s : MathapproxinterpTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_table_mean(s : MathapproxinterpTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_table_mean(s : MathapproxinterpTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_table_scale(s : MathapproxinterpTable, f : Double) -> MathapproxinterpTable {
   let result = math_approx_interp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_interp_table_fill(s : MathapproxinterpTable, v : Double) -> M
   result
 }
 
-pub fn math_approx_interp_table_min(s : MathapproxinterpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_table_min(s : MathapproxinterpTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_table_max(s : MathapproxinterpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_table_max(s : MathapproxinterpTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_table_to_string(s : MathapproxinterpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_interp_graphn_set(s : MathapproxinterpGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_approx_interp_graphn_sum(s : MathapproxinterpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_graphn_sum(s : MathapproxinterpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_graphn_mean(s : MathapproxinterpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_graphn_mean(s : MathapproxinterpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_graphn_scale(s : MathapproxinterpGraphN, f : Double) -> MathapproxinterpGraphN {
   let result = math_approx_interp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_interp_graphn_fill(s : MathapproxinterpGraphN, v : Double) ->
   result
 }
 
-pub fn math_approx_interp_graphn_min(s : MathapproxinterpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_graphn_min(s : MathapproxinterpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_graphn_max(s : MathapproxinterpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_graphn_max(s : MathapproxinterpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_graphn_to_string(s : MathapproxinterpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_interp_node_set(s : MathapproxinterpNode, i : Int, v : Double
   result
 }
 
-pub fn math_approx_interp_node_sum(s : MathapproxinterpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_node_sum(s : MathapproxinterpNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_node_mean(s : MathapproxinterpNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_node_mean(s : MathapproxinterpNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_node_scale(s : MathapproxinterpNode, f : Double) -> MathapproxinterpNode {
   let result = math_approx_interp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_interp_node_fill(s : MathapproxinterpNode, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_interp_node_min(s : MathapproxinterpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_node_min(s : MathapproxinterpNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_node_max(s : MathapproxinterpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_node_max(s : MathapproxinterpNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_node_to_string(s : MathapproxinterpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_interp_edge_set(s : MathapproxinterpEdge, i : Int, v : Double
   result
 }
 
-pub fn math_approx_interp_edge_sum(s : MathapproxinterpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_edge_sum(s : MathapproxinterpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_edge_mean(s : MathapproxinterpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_edge_mean(s : MathapproxinterpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_edge_scale(s : MathapproxinterpEdge, f : Double) -> MathapproxinterpEdge {
   let result = math_approx_interp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_interp_edge_fill(s : MathapproxinterpEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_interp_edge_min(s : MathapproxinterpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_edge_min(s : MathapproxinterpEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_edge_max(s : MathapproxinterpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_edge_max(s : MathapproxinterpEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_edge_to_string(s : MathapproxinterpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_interp_path_set(s : MathapproxinterpPath, i : Int, v : Double
   result
 }
 
-pub fn math_approx_interp_path_sum(s : MathapproxinterpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_path_sum(s : MathapproxinterpPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_path_mean(s : MathapproxinterpPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_path_mean(s : MathapproxinterpPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_path_scale(s : MathapproxinterpPath, f : Double) -> MathapproxinterpPath {
   let result = math_approx_interp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_interp_path_fill(s : MathapproxinterpPath, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_interp_path_min(s : MathapproxinterpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_path_min(s : MathapproxinterpPath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_path_max(s : MathapproxinterpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_path_max(s : MathapproxinterpPath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_path_to_string(s : MathapproxinterpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_interp_cluster_set(s : MathapproxinterpCluster, i : Int, v : 
   result
 }
 
-pub fn math_approx_interp_cluster_sum(s : MathapproxinterpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_cluster_sum(s : MathapproxinterpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_cluster_mean(s : MathapproxinterpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_cluster_mean(s : MathapproxinterpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_cluster_scale(s : MathapproxinterpCluster, f : Double) -> MathapproxinterpCluster {
   let result = math_approx_interp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_interp_cluster_fill(s : MathapproxinterpCluster, v : Double) 
   result
 }
 
-pub fn math_approx_interp_cluster_min(s : MathapproxinterpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_cluster_min(s : MathapproxinterpCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_cluster_max(s : MathapproxinterpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_cluster_max(s : MathapproxinterpCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_cluster_to_string(s : MathapproxinterpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_interp_model_set(s : MathapproxinterpModel, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_interp_model_sum(s : MathapproxinterpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_model_sum(s : MathapproxinterpModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_model_mean(s : MathapproxinterpModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_model_mean(s : MathapproxinterpModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_model_scale(s : MathapproxinterpModel, f : Double) -> MathapproxinterpModel {
   let result = math_approx_interp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_interp_model_fill(s : MathapproxinterpModel, v : Double) -> M
   result
 }
 
-pub fn math_approx_interp_model_min(s : MathapproxinterpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_model_min(s : MathapproxinterpModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_model_max(s : MathapproxinterpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_model_max(s : MathapproxinterpModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_model_to_string(s : MathapproxinterpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_interp_layer_set(s : MathapproxinterpLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_interp_layer_sum(s : MathapproxinterpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_layer_sum(s : MathapproxinterpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_layer_mean(s : MathapproxinterpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_layer_mean(s : MathapproxinterpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_layer_scale(s : MathapproxinterpLayer, f : Double) -> MathapproxinterpLayer {
   let result = math_approx_interp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_interp_layer_fill(s : MathapproxinterpLayer, v : Double) -> M
   result
 }
 
-pub fn math_approx_interp_layer_min(s : MathapproxinterpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_layer_min(s : MathapproxinterpLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_layer_max(s : MathapproxinterpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_layer_max(s : MathapproxinterpLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_layer_to_string(s : MathapproxinterpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_interp_buffer_set(s : MathapproxinterpBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_approx_interp_buffer_sum(s : MathapproxinterpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_buffer_sum(s : MathapproxinterpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_buffer_mean(s : MathapproxinterpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_buffer_mean(s : MathapproxinterpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_buffer_scale(s : MathapproxinterpBuffer, f : Double) -> MathapproxinterpBuffer {
   let result = math_approx_interp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_interp_buffer_fill(s : MathapproxinterpBuffer, v : Double) ->
   result
 }
 
-pub fn math_approx_interp_buffer_min(s : MathapproxinterpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_buffer_min(s : MathapproxinterpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_buffer_max(s : MathapproxinterpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_buffer_max(s : MathapproxinterpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_buffer_to_string(s : MathapproxinterpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_interp_cursor_set(s : MathapproxinterpCursor, i : Int, v : Do
   result
 }
 
-pub fn math_approx_interp_cursor_sum(s : MathapproxinterpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_cursor_sum(s : MathapproxinterpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_cursor_mean(s : MathapproxinterpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_cursor_mean(s : MathapproxinterpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_cursor_scale(s : MathapproxinterpCursor, f : Double) -> MathapproxinterpCursor {
   let result = math_approx_interp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_interp_cursor_fill(s : MathapproxinterpCursor, v : Double) ->
   result
 }
 
-pub fn math_approx_interp_cursor_min(s : MathapproxinterpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_cursor_min(s : MathapproxinterpCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_cursor_max(s : MathapproxinterpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_cursor_max(s : MathapproxinterpCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_cursor_to_string(s : MathapproxinterpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_interp_view_set(s : MathapproxinterpView, i : Int, v : Double
   result
 }
 
-pub fn math_approx_interp_view_sum(s : MathapproxinterpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_view_sum(s : MathapproxinterpView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_view_mean(s : MathapproxinterpView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_view_mean(s : MathapproxinterpView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_view_scale(s : MathapproxinterpView, f : Double) -> MathapproxinterpView {
   let result = math_approx_interp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_interp_view_fill(s : MathapproxinterpView, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_interp_view_min(s : MathapproxinterpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_view_min(s : MathapproxinterpView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_view_max(s : MathapproxinterpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_view_max(s : MathapproxinterpView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_view_to_string(s : MathapproxinterpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_interp_range_set(s : MathapproxinterpRange, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_interp_range_sum(s : MathapproxinterpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_range_sum(s : MathapproxinterpRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_range_mean(s : MathapproxinterpRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_range_mean(s : MathapproxinterpRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_range_scale(s : MathapproxinterpRange, f : Double) -> MathapproxinterpRange {
   let result = math_approx_interp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_interp_range_fill(s : MathapproxinterpRange, v : Double) -> M
   result
 }
 
-pub fn math_approx_interp_range_min(s : MathapproxinterpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_range_min(s : MathapproxinterpRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_range_max(s : MathapproxinterpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_range_max(s : MathapproxinterpRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_range_to_string(s : MathapproxinterpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_interp_slice_set(s : MathapproxinterpSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_interp_slice_sum(s : MathapproxinterpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_interp_slice_sum(s : MathapproxinterpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_interp_slice_mean(s : MathapproxinterpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_interp_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_interp_slice_mean(s : MathapproxinterpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_interp_slice_scale(s : MathapproxinterpSlice, f : Double) -> MathapproxinterpSlice {
   let result = math_approx_interp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_interp_slice_fill(s : MathapproxinterpSlice, v : Double) -> M
   result
 }
 
-pub fn math_approx_interp_slice_min(s : MathapproxinterpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_slice_min(s : MathapproxinterpSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_interp_slice_max(s : MathapproxinterpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_interp_slice_max(s : MathapproxinterpSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_interp_slice_to_string(s : MathapproxinterpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

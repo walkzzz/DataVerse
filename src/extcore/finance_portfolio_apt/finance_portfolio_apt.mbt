@@ -88,11 +88,7 @@ pub fn finance_portfolio_apt_make_series(vals : Array[Double], name : String) ->
 
 pub fn finance_portfolio_apt_series_len(s : FinanceportfolioaptSeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_apt_series_sum(s : FinanceportfolioaptSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_apt_series_sum(s : FinanceportfolioaptSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_apt_series_mean(s : FinanceportfolioaptSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_apt_frame_set(s : FinanceportfolioaptFrame, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_apt_frame_sum(s : FinanceportfolioaptFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_frame_sum(s : FinanceportfolioaptFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_frame_mean(s : FinanceportfolioaptFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_frame_mean(s : FinanceportfolioaptFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_frame_scale(s : FinanceportfolioaptFrame, f : Double) -> FinanceportfolioaptFrame {
   let result = finance_portfolio_apt_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_apt_frame_fill(s : FinanceportfolioaptFrame, v : Double
   result
 }
 
-pub fn finance_portfolio_apt_frame_min(s : FinanceportfolioaptFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_frame_min(s : FinanceportfolioaptFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_frame_max(s : FinanceportfolioaptFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_frame_max(s : FinanceportfolioaptFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_frame_to_string(s : FinanceportfolioaptFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_apt_table_set(s : FinanceportfolioaptTable, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_apt_table_sum(s : FinanceportfolioaptTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_table_sum(s : FinanceportfolioaptTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_table_mean(s : FinanceportfolioaptTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_table_mean(s : FinanceportfolioaptTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_table_scale(s : FinanceportfolioaptTable, f : Double) -> FinanceportfolioaptTable {
   let result = finance_portfolio_apt_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_apt_table_fill(s : FinanceportfolioaptTable, v : Double
   result
 }
 
-pub fn finance_portfolio_apt_table_min(s : FinanceportfolioaptTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_table_min(s : FinanceportfolioaptTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_table_max(s : FinanceportfolioaptTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_table_max(s : FinanceportfolioaptTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_table_to_string(s : FinanceportfolioaptTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_apt_graphn_set(s : FinanceportfolioaptGraphN, i : Int, 
   result
 }
 
-pub fn finance_portfolio_apt_graphn_sum(s : FinanceportfolioaptGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_graphn_sum(s : FinanceportfolioaptGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_graphn_mean(s : FinanceportfolioaptGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_graphn_mean(s : FinanceportfolioaptGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_graphn_scale(s : FinanceportfolioaptGraphN, f : Double) -> FinanceportfolioaptGraphN {
   let result = finance_portfolio_apt_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_apt_graphn_fill(s : FinanceportfolioaptGraphN, v : Doub
   result
 }
 
-pub fn finance_portfolio_apt_graphn_min(s : FinanceportfolioaptGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_graphn_min(s : FinanceportfolioaptGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_graphn_max(s : FinanceportfolioaptGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_graphn_max(s : FinanceportfolioaptGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_graphn_to_string(s : FinanceportfolioaptGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_apt_node_set(s : FinanceportfolioaptNode, i : Int, v : 
   result
 }
 
-pub fn finance_portfolio_apt_node_sum(s : FinanceportfolioaptNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_node_sum(s : FinanceportfolioaptNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_node_mean(s : FinanceportfolioaptNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_node_mean(s : FinanceportfolioaptNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_node_scale(s : FinanceportfolioaptNode, f : Double) -> FinanceportfolioaptNode {
   let result = finance_portfolio_apt_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_apt_node_fill(s : FinanceportfolioaptNode, v : Double) 
   result
 }
 
-pub fn finance_portfolio_apt_node_min(s : FinanceportfolioaptNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_node_min(s : FinanceportfolioaptNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_node_max(s : FinanceportfolioaptNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_node_max(s : FinanceportfolioaptNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_node_to_string(s : FinanceportfolioaptNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_apt_edge_set(s : FinanceportfolioaptEdge, i : Int, v : 
   result
 }
 
-pub fn finance_portfolio_apt_edge_sum(s : FinanceportfolioaptEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_edge_sum(s : FinanceportfolioaptEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_edge_mean(s : FinanceportfolioaptEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_edge_mean(s : FinanceportfolioaptEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_edge_scale(s : FinanceportfolioaptEdge, f : Double) -> FinanceportfolioaptEdge {
   let result = finance_portfolio_apt_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_apt_edge_fill(s : FinanceportfolioaptEdge, v : Double) 
   result
 }
 
-pub fn finance_portfolio_apt_edge_min(s : FinanceportfolioaptEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_edge_min(s : FinanceportfolioaptEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_edge_max(s : FinanceportfolioaptEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_edge_max(s : FinanceportfolioaptEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_edge_to_string(s : FinanceportfolioaptEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_apt_path_set(s : FinanceportfolioaptPath, i : Int, v : 
   result
 }
 
-pub fn finance_portfolio_apt_path_sum(s : FinanceportfolioaptPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_path_sum(s : FinanceportfolioaptPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_path_mean(s : FinanceportfolioaptPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_path_mean(s : FinanceportfolioaptPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_path_scale(s : FinanceportfolioaptPath, f : Double) -> FinanceportfolioaptPath {
   let result = finance_portfolio_apt_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_apt_path_fill(s : FinanceportfolioaptPath, v : Double) 
   result
 }
 
-pub fn finance_portfolio_apt_path_min(s : FinanceportfolioaptPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_path_min(s : FinanceportfolioaptPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_path_max(s : FinanceportfolioaptPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_path_max(s : FinanceportfolioaptPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_path_to_string(s : FinanceportfolioaptPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_apt_cluster_set(s : FinanceportfolioaptCluster, i : Int
   result
 }
 
-pub fn finance_portfolio_apt_cluster_sum(s : FinanceportfolioaptCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_cluster_sum(s : FinanceportfolioaptCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_cluster_mean(s : FinanceportfolioaptCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_cluster_mean(s : FinanceportfolioaptCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_cluster_scale(s : FinanceportfolioaptCluster, f : Double) -> FinanceportfolioaptCluster {
   let result = finance_portfolio_apt_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_apt_cluster_fill(s : FinanceportfolioaptCluster, v : Do
   result
 }
 
-pub fn finance_portfolio_apt_cluster_min(s : FinanceportfolioaptCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_cluster_min(s : FinanceportfolioaptCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_cluster_max(s : FinanceportfolioaptCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_cluster_max(s : FinanceportfolioaptCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_cluster_to_string(s : FinanceportfolioaptCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_apt_model_set(s : FinanceportfolioaptModel, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_apt_model_sum(s : FinanceportfolioaptModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_model_sum(s : FinanceportfolioaptModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_model_mean(s : FinanceportfolioaptModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_model_mean(s : FinanceportfolioaptModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_model_scale(s : FinanceportfolioaptModel, f : Double) -> FinanceportfolioaptModel {
   let result = finance_portfolio_apt_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_apt_model_fill(s : FinanceportfolioaptModel, v : Double
   result
 }
 
-pub fn finance_portfolio_apt_model_min(s : FinanceportfolioaptModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_model_min(s : FinanceportfolioaptModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_model_max(s : FinanceportfolioaptModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_model_max(s : FinanceportfolioaptModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_model_to_string(s : FinanceportfolioaptModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_apt_layer_set(s : FinanceportfolioaptLayer, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_apt_layer_sum(s : FinanceportfolioaptLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_layer_sum(s : FinanceportfolioaptLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_layer_mean(s : FinanceportfolioaptLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_layer_mean(s : FinanceportfolioaptLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_layer_scale(s : FinanceportfolioaptLayer, f : Double) -> FinanceportfolioaptLayer {
   let result = finance_portfolio_apt_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_apt_layer_fill(s : FinanceportfolioaptLayer, v : Double
   result
 }
 
-pub fn finance_portfolio_apt_layer_min(s : FinanceportfolioaptLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_layer_min(s : FinanceportfolioaptLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_layer_max(s : FinanceportfolioaptLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_layer_max(s : FinanceportfolioaptLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_layer_to_string(s : FinanceportfolioaptLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_apt_buffer_set(s : FinanceportfolioaptBuffer, i : Int, 
   result
 }
 
-pub fn finance_portfolio_apt_buffer_sum(s : FinanceportfolioaptBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_buffer_sum(s : FinanceportfolioaptBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_buffer_mean(s : FinanceportfolioaptBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_buffer_mean(s : FinanceportfolioaptBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_buffer_scale(s : FinanceportfolioaptBuffer, f : Double) -> FinanceportfolioaptBuffer {
   let result = finance_portfolio_apt_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_apt_buffer_fill(s : FinanceportfolioaptBuffer, v : Doub
   result
 }
 
-pub fn finance_portfolio_apt_buffer_min(s : FinanceportfolioaptBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_buffer_min(s : FinanceportfolioaptBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_buffer_max(s : FinanceportfolioaptBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_buffer_max(s : FinanceportfolioaptBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_buffer_to_string(s : FinanceportfolioaptBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_apt_cursor_set(s : FinanceportfolioaptCursor, i : Int, 
   result
 }
 
-pub fn finance_portfolio_apt_cursor_sum(s : FinanceportfolioaptCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_cursor_sum(s : FinanceportfolioaptCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_cursor_mean(s : FinanceportfolioaptCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_cursor_mean(s : FinanceportfolioaptCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_cursor_scale(s : FinanceportfolioaptCursor, f : Double) -> FinanceportfolioaptCursor {
   let result = finance_portfolio_apt_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_apt_cursor_fill(s : FinanceportfolioaptCursor, v : Doub
   result
 }
 
-pub fn finance_portfolio_apt_cursor_min(s : FinanceportfolioaptCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_cursor_min(s : FinanceportfolioaptCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_cursor_max(s : FinanceportfolioaptCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_cursor_max(s : FinanceportfolioaptCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_cursor_to_string(s : FinanceportfolioaptCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_apt_view_set(s : FinanceportfolioaptView, i : Int, v : 
   result
 }
 
-pub fn finance_portfolio_apt_view_sum(s : FinanceportfolioaptView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_view_sum(s : FinanceportfolioaptView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_view_mean(s : FinanceportfolioaptView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_view_mean(s : FinanceportfolioaptView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_view_scale(s : FinanceportfolioaptView, f : Double) -> FinanceportfolioaptView {
   let result = finance_portfolio_apt_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_apt_view_fill(s : FinanceportfolioaptView, v : Double) 
   result
 }
 
-pub fn finance_portfolio_apt_view_min(s : FinanceportfolioaptView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_view_min(s : FinanceportfolioaptView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_view_max(s : FinanceportfolioaptView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_view_max(s : FinanceportfolioaptView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_view_to_string(s : FinanceportfolioaptView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_apt_range_set(s : FinanceportfolioaptRange, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_apt_range_sum(s : FinanceportfolioaptRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_range_sum(s : FinanceportfolioaptRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_range_mean(s : FinanceportfolioaptRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_range_mean(s : FinanceportfolioaptRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_range_scale(s : FinanceportfolioaptRange, f : Double) -> FinanceportfolioaptRange {
   let result = finance_portfolio_apt_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_apt_range_fill(s : FinanceportfolioaptRange, v : Double
   result
 }
 
-pub fn finance_portfolio_apt_range_min(s : FinanceportfolioaptRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_range_min(s : FinanceportfolioaptRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_range_max(s : FinanceportfolioaptRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_range_max(s : FinanceportfolioaptRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_range_to_string(s : FinanceportfolioaptRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_apt_slice_set(s : FinanceportfolioaptSlice, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_apt_slice_sum(s : FinanceportfolioaptSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_apt_slice_sum(s : FinanceportfolioaptSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_apt_slice_mean(s : FinanceportfolioaptSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_apt_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_apt_slice_mean(s : FinanceportfolioaptSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_apt_slice_scale(s : FinanceportfolioaptSlice, f : Double) -> FinanceportfolioaptSlice {
   let result = finance_portfolio_apt_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_apt_slice_fill(s : FinanceportfolioaptSlice, v : Double
   result
 }
 
-pub fn finance_portfolio_apt_slice_min(s : FinanceportfolioaptSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_slice_min(s : FinanceportfolioaptSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_apt_slice_max(s : FinanceportfolioaptSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_apt_slice_max(s : FinanceportfolioaptSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_apt_slice_to_string(s : FinanceportfolioaptSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn nlp_embed_fasttext_make_series(vals : Array[Double], name : String) -> Nl
 
 pub fn nlp_embed_fasttext_series_len(s : NlpembedfasttextSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_fasttext_series_sum(s : NlpembedfasttextSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_fasttext_series_sum(s : NlpembedfasttextSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_fasttext_series_mean(s : NlpembedfasttextSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_fasttext_frame_set(s : NlpembedfasttextFrame, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_fasttext_frame_sum(s : NlpembedfasttextFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_frame_sum(s : NlpembedfasttextFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_frame_mean(s : NlpembedfasttextFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_frame_mean(s : NlpembedfasttextFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_frame_scale(s : NlpembedfasttextFrame, f : Double) -> NlpembedfasttextFrame {
   let result = nlp_embed_fasttext_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_fasttext_frame_fill(s : NlpembedfasttextFrame, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_fasttext_frame_min(s : NlpembedfasttextFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_frame_min(s : NlpembedfasttextFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_frame_max(s : NlpembedfasttextFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_frame_max(s : NlpembedfasttextFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_frame_to_string(s : NlpembedfasttextFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_fasttext_table_set(s : NlpembedfasttextTable, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_fasttext_table_sum(s : NlpembedfasttextTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_table_sum(s : NlpembedfasttextTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_table_mean(s : NlpembedfasttextTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_table_mean(s : NlpembedfasttextTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_table_scale(s : NlpembedfasttextTable, f : Double) -> NlpembedfasttextTable {
   let result = nlp_embed_fasttext_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_fasttext_table_fill(s : NlpembedfasttextTable, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_fasttext_table_min(s : NlpembedfasttextTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_table_min(s : NlpembedfasttextTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_table_max(s : NlpembedfasttextTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_table_max(s : NlpembedfasttextTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_table_to_string(s : NlpembedfasttextTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_fasttext_graphn_set(s : NlpembedfasttextGraphN, i : Int, v : Do
   result
 }
 
-pub fn nlp_embed_fasttext_graphn_sum(s : NlpembedfasttextGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_graphn_sum(s : NlpembedfasttextGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_graphn_mean(s : NlpembedfasttextGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_graphn_mean(s : NlpembedfasttextGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_graphn_scale(s : NlpembedfasttextGraphN, f : Double) -> NlpembedfasttextGraphN {
   let result = nlp_embed_fasttext_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_fasttext_graphn_fill(s : NlpembedfasttextGraphN, v : Double) ->
   result
 }
 
-pub fn nlp_embed_fasttext_graphn_min(s : NlpembedfasttextGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_graphn_min(s : NlpembedfasttextGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_graphn_max(s : NlpembedfasttextGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_graphn_max(s : NlpembedfasttextGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_graphn_to_string(s : NlpembedfasttextGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_fasttext_node_set(s : NlpembedfasttextNode, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_fasttext_node_sum(s : NlpembedfasttextNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_node_sum(s : NlpembedfasttextNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_node_mean(s : NlpembedfasttextNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_node_mean(s : NlpembedfasttextNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_node_scale(s : NlpembedfasttextNode, f : Double) -> NlpembedfasttextNode {
   let result = nlp_embed_fasttext_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_fasttext_node_fill(s : NlpembedfasttextNode, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_fasttext_node_min(s : NlpembedfasttextNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_node_min(s : NlpembedfasttextNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_node_max(s : NlpembedfasttextNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_node_max(s : NlpembedfasttextNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_node_to_string(s : NlpembedfasttextNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_fasttext_edge_set(s : NlpembedfasttextEdge, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_fasttext_edge_sum(s : NlpembedfasttextEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_edge_sum(s : NlpembedfasttextEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_edge_mean(s : NlpembedfasttextEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_edge_mean(s : NlpembedfasttextEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_edge_scale(s : NlpembedfasttextEdge, f : Double) -> NlpembedfasttextEdge {
   let result = nlp_embed_fasttext_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_fasttext_edge_fill(s : NlpembedfasttextEdge, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_fasttext_edge_min(s : NlpembedfasttextEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_edge_min(s : NlpembedfasttextEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_edge_max(s : NlpembedfasttextEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_edge_max(s : NlpembedfasttextEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_edge_to_string(s : NlpembedfasttextEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_fasttext_path_set(s : NlpembedfasttextPath, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_fasttext_path_sum(s : NlpembedfasttextPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_path_sum(s : NlpembedfasttextPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_path_mean(s : NlpembedfasttextPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_path_mean(s : NlpembedfasttextPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_path_scale(s : NlpembedfasttextPath, f : Double) -> NlpembedfasttextPath {
   let result = nlp_embed_fasttext_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_fasttext_path_fill(s : NlpembedfasttextPath, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_fasttext_path_min(s : NlpembedfasttextPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_path_min(s : NlpembedfasttextPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_path_max(s : NlpembedfasttextPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_path_max(s : NlpembedfasttextPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_path_to_string(s : NlpembedfasttextPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_fasttext_cluster_set(s : NlpembedfasttextCluster, i : Int, v : 
   result
 }
 
-pub fn nlp_embed_fasttext_cluster_sum(s : NlpembedfasttextCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_cluster_sum(s : NlpembedfasttextCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_cluster_mean(s : NlpembedfasttextCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_cluster_mean(s : NlpembedfasttextCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_cluster_scale(s : NlpembedfasttextCluster, f : Double) -> NlpembedfasttextCluster {
   let result = nlp_embed_fasttext_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_fasttext_cluster_fill(s : NlpembedfasttextCluster, v : Double) 
   result
 }
 
-pub fn nlp_embed_fasttext_cluster_min(s : NlpembedfasttextCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_cluster_min(s : NlpembedfasttextCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_cluster_max(s : NlpembedfasttextCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_cluster_max(s : NlpembedfasttextCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_cluster_to_string(s : NlpembedfasttextCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_fasttext_model_set(s : NlpembedfasttextModel, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_fasttext_model_sum(s : NlpembedfasttextModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_model_sum(s : NlpembedfasttextModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_model_mean(s : NlpembedfasttextModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_model_mean(s : NlpembedfasttextModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_model_scale(s : NlpembedfasttextModel, f : Double) -> NlpembedfasttextModel {
   let result = nlp_embed_fasttext_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_fasttext_model_fill(s : NlpembedfasttextModel, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_fasttext_model_min(s : NlpembedfasttextModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_model_min(s : NlpembedfasttextModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_model_max(s : NlpembedfasttextModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_model_max(s : NlpembedfasttextModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_model_to_string(s : NlpembedfasttextModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_fasttext_layer_set(s : NlpembedfasttextLayer, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_fasttext_layer_sum(s : NlpembedfasttextLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_layer_sum(s : NlpembedfasttextLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_layer_mean(s : NlpembedfasttextLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_layer_mean(s : NlpembedfasttextLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_layer_scale(s : NlpembedfasttextLayer, f : Double) -> NlpembedfasttextLayer {
   let result = nlp_embed_fasttext_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_fasttext_layer_fill(s : NlpembedfasttextLayer, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_fasttext_layer_min(s : NlpembedfasttextLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_layer_min(s : NlpembedfasttextLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_layer_max(s : NlpembedfasttextLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_layer_max(s : NlpembedfasttextLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_layer_to_string(s : NlpembedfasttextLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_fasttext_buffer_set(s : NlpembedfasttextBuffer, i : Int, v : Do
   result
 }
 
-pub fn nlp_embed_fasttext_buffer_sum(s : NlpembedfasttextBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_buffer_sum(s : NlpembedfasttextBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_buffer_mean(s : NlpembedfasttextBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_buffer_mean(s : NlpembedfasttextBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_buffer_scale(s : NlpembedfasttextBuffer, f : Double) -> NlpembedfasttextBuffer {
   let result = nlp_embed_fasttext_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_fasttext_buffer_fill(s : NlpembedfasttextBuffer, v : Double) ->
   result
 }
 
-pub fn nlp_embed_fasttext_buffer_min(s : NlpembedfasttextBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_buffer_min(s : NlpembedfasttextBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_buffer_max(s : NlpembedfasttextBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_buffer_max(s : NlpembedfasttextBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_buffer_to_string(s : NlpembedfasttextBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_fasttext_cursor_set(s : NlpembedfasttextCursor, i : Int, v : Do
   result
 }
 
-pub fn nlp_embed_fasttext_cursor_sum(s : NlpembedfasttextCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_cursor_sum(s : NlpembedfasttextCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_cursor_mean(s : NlpembedfasttextCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_cursor_mean(s : NlpembedfasttextCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_cursor_scale(s : NlpembedfasttextCursor, f : Double) -> NlpembedfasttextCursor {
   let result = nlp_embed_fasttext_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_fasttext_cursor_fill(s : NlpembedfasttextCursor, v : Double) ->
   result
 }
 
-pub fn nlp_embed_fasttext_cursor_min(s : NlpembedfasttextCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_cursor_min(s : NlpembedfasttextCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_cursor_max(s : NlpembedfasttextCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_cursor_max(s : NlpembedfasttextCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_cursor_to_string(s : NlpembedfasttextCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_fasttext_view_set(s : NlpembedfasttextView, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_fasttext_view_sum(s : NlpembedfasttextView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_view_sum(s : NlpembedfasttextView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_view_mean(s : NlpembedfasttextView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_view_mean(s : NlpembedfasttextView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_view_scale(s : NlpembedfasttextView, f : Double) -> NlpembedfasttextView {
   let result = nlp_embed_fasttext_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_fasttext_view_fill(s : NlpembedfasttextView, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_fasttext_view_min(s : NlpembedfasttextView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_view_min(s : NlpembedfasttextView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_view_max(s : NlpembedfasttextView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_view_max(s : NlpembedfasttextView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_view_to_string(s : NlpembedfasttextView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_fasttext_range_set(s : NlpembedfasttextRange, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_fasttext_range_sum(s : NlpembedfasttextRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_range_sum(s : NlpembedfasttextRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_range_mean(s : NlpembedfasttextRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_range_mean(s : NlpembedfasttextRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_range_scale(s : NlpembedfasttextRange, f : Double) -> NlpembedfasttextRange {
   let result = nlp_embed_fasttext_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_fasttext_range_fill(s : NlpembedfasttextRange, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_fasttext_range_min(s : NlpembedfasttextRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_range_min(s : NlpembedfasttextRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_range_max(s : NlpembedfasttextRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_range_max(s : NlpembedfasttextRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_range_to_string(s : NlpembedfasttextRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_fasttext_slice_set(s : NlpembedfasttextSlice, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_fasttext_slice_sum(s : NlpembedfasttextSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_fasttext_slice_sum(s : NlpembedfasttextSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_fasttext_slice_mean(s : NlpembedfasttextSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_fasttext_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_fasttext_slice_mean(s : NlpembedfasttextSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_fasttext_slice_scale(s : NlpembedfasttextSlice, f : Double) -> NlpembedfasttextSlice {
   let result = nlp_embed_fasttext_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_fasttext_slice_fill(s : NlpembedfasttextSlice, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_fasttext_slice_min(s : NlpembedfasttextSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_slice_min(s : NlpembedfasttextSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_fasttext_slice_max(s : NlpembedfasttextSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_fasttext_slice_max(s : NlpembedfasttextSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_fasttext_slice_to_string(s : NlpembedfasttextSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

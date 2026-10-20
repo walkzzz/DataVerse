@@ -88,11 +88,7 @@ pub fn math_approx_poly_make_series(vals : Array[Double], name : String) -> Math
 
 pub fn math_approx_poly_series_len(s : MathapproxpolySeries) -> Int { s.vals.length() }
 
-pub fn math_approx_poly_series_sum(s : MathapproxpolySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_poly_series_sum(s : MathapproxpolySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_poly_series_mean(s : MathapproxpolySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_poly_frame_set(s : MathapproxpolyFrame, i : Int, v : Double) 
   result
 }
 
-pub fn math_approx_poly_frame_sum(s : MathapproxpolyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_frame_sum(s : MathapproxpolyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_frame_mean(s : MathapproxpolyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_frame_mean(s : MathapproxpolyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_frame_scale(s : MathapproxpolyFrame, f : Double) -> MathapproxpolyFrame {
   let result = math_approx_poly_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_poly_frame_fill(s : MathapproxpolyFrame, v : Double) -> Matha
   result
 }
 
-pub fn math_approx_poly_frame_min(s : MathapproxpolyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_frame_min(s : MathapproxpolyFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_frame_max(s : MathapproxpolyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_frame_max(s : MathapproxpolyFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_frame_to_string(s : MathapproxpolyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_poly_table_set(s : MathapproxpolyTable, i : Int, v : Double) 
   result
 }
 
-pub fn math_approx_poly_table_sum(s : MathapproxpolyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_table_sum(s : MathapproxpolyTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_table_mean(s : MathapproxpolyTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_table_mean(s : MathapproxpolyTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_table_scale(s : MathapproxpolyTable, f : Double) -> MathapproxpolyTable {
   let result = math_approx_poly_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_poly_table_fill(s : MathapproxpolyTable, v : Double) -> Matha
   result
 }
 
-pub fn math_approx_poly_table_min(s : MathapproxpolyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_table_min(s : MathapproxpolyTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_table_max(s : MathapproxpolyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_table_max(s : MathapproxpolyTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_table_to_string(s : MathapproxpolyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_poly_graphn_set(s : MathapproxpolyGraphN, i : Int, v : Double
   result
 }
 
-pub fn math_approx_poly_graphn_sum(s : MathapproxpolyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_graphn_sum(s : MathapproxpolyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_graphn_mean(s : MathapproxpolyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_graphn_mean(s : MathapproxpolyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_graphn_scale(s : MathapproxpolyGraphN, f : Double) -> MathapproxpolyGraphN {
   let result = math_approx_poly_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_poly_graphn_fill(s : MathapproxpolyGraphN, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_poly_graphn_min(s : MathapproxpolyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_graphn_min(s : MathapproxpolyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_graphn_max(s : MathapproxpolyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_graphn_max(s : MathapproxpolyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_graphn_to_string(s : MathapproxpolyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_poly_node_set(s : MathapproxpolyNode, i : Int, v : Double) ->
   result
 }
 
-pub fn math_approx_poly_node_sum(s : MathapproxpolyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_node_sum(s : MathapproxpolyNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_node_mean(s : MathapproxpolyNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_node_mean(s : MathapproxpolyNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_node_scale(s : MathapproxpolyNode, f : Double) -> MathapproxpolyNode {
   let result = math_approx_poly_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_poly_node_fill(s : MathapproxpolyNode, v : Double) -> Mathapp
   result
 }
 
-pub fn math_approx_poly_node_min(s : MathapproxpolyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_node_min(s : MathapproxpolyNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_node_max(s : MathapproxpolyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_node_max(s : MathapproxpolyNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_node_to_string(s : MathapproxpolyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_poly_edge_set(s : MathapproxpolyEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn math_approx_poly_edge_sum(s : MathapproxpolyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_edge_sum(s : MathapproxpolyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_edge_mean(s : MathapproxpolyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_edge_mean(s : MathapproxpolyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_edge_scale(s : MathapproxpolyEdge, f : Double) -> MathapproxpolyEdge {
   let result = math_approx_poly_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_poly_edge_fill(s : MathapproxpolyEdge, v : Double) -> Mathapp
   result
 }
 
-pub fn math_approx_poly_edge_min(s : MathapproxpolyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_edge_min(s : MathapproxpolyEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_edge_max(s : MathapproxpolyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_edge_max(s : MathapproxpolyEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_edge_to_string(s : MathapproxpolyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_poly_path_set(s : MathapproxpolyPath, i : Int, v : Double) ->
   result
 }
 
-pub fn math_approx_poly_path_sum(s : MathapproxpolyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_path_sum(s : MathapproxpolyPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_path_mean(s : MathapproxpolyPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_path_mean(s : MathapproxpolyPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_path_scale(s : MathapproxpolyPath, f : Double) -> MathapproxpolyPath {
   let result = math_approx_poly_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_poly_path_fill(s : MathapproxpolyPath, v : Double) -> Mathapp
   result
 }
 
-pub fn math_approx_poly_path_min(s : MathapproxpolyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_path_min(s : MathapproxpolyPath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_path_max(s : MathapproxpolyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_path_max(s : MathapproxpolyPath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_path_to_string(s : MathapproxpolyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_poly_cluster_set(s : MathapproxpolyCluster, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_poly_cluster_sum(s : MathapproxpolyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_cluster_sum(s : MathapproxpolyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_cluster_mean(s : MathapproxpolyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_cluster_mean(s : MathapproxpolyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_cluster_scale(s : MathapproxpolyCluster, f : Double) -> MathapproxpolyCluster {
   let result = math_approx_poly_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_poly_cluster_fill(s : MathapproxpolyCluster, v : Double) -> M
   result
 }
 
-pub fn math_approx_poly_cluster_min(s : MathapproxpolyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_cluster_min(s : MathapproxpolyCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_cluster_max(s : MathapproxpolyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_cluster_max(s : MathapproxpolyCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_cluster_to_string(s : MathapproxpolyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_poly_model_set(s : MathapproxpolyModel, i : Int, v : Double) 
   result
 }
 
-pub fn math_approx_poly_model_sum(s : MathapproxpolyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_model_sum(s : MathapproxpolyModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_model_mean(s : MathapproxpolyModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_model_mean(s : MathapproxpolyModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_model_scale(s : MathapproxpolyModel, f : Double) -> MathapproxpolyModel {
   let result = math_approx_poly_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_poly_model_fill(s : MathapproxpolyModel, v : Double) -> Matha
   result
 }
 
-pub fn math_approx_poly_model_min(s : MathapproxpolyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_model_min(s : MathapproxpolyModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_model_max(s : MathapproxpolyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_model_max(s : MathapproxpolyModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_model_to_string(s : MathapproxpolyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_poly_layer_set(s : MathapproxpolyLayer, i : Int, v : Double) 
   result
 }
 
-pub fn math_approx_poly_layer_sum(s : MathapproxpolyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_layer_sum(s : MathapproxpolyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_layer_mean(s : MathapproxpolyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_layer_mean(s : MathapproxpolyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_layer_scale(s : MathapproxpolyLayer, f : Double) -> MathapproxpolyLayer {
   let result = math_approx_poly_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_poly_layer_fill(s : MathapproxpolyLayer, v : Double) -> Matha
   result
 }
 
-pub fn math_approx_poly_layer_min(s : MathapproxpolyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_layer_min(s : MathapproxpolyLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_layer_max(s : MathapproxpolyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_layer_max(s : MathapproxpolyLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_layer_to_string(s : MathapproxpolyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_poly_buffer_set(s : MathapproxpolyBuffer, i : Int, v : Double
   result
 }
 
-pub fn math_approx_poly_buffer_sum(s : MathapproxpolyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_buffer_sum(s : MathapproxpolyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_buffer_mean(s : MathapproxpolyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_buffer_mean(s : MathapproxpolyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_buffer_scale(s : MathapproxpolyBuffer, f : Double) -> MathapproxpolyBuffer {
   let result = math_approx_poly_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_poly_buffer_fill(s : MathapproxpolyBuffer, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_poly_buffer_min(s : MathapproxpolyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_buffer_min(s : MathapproxpolyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_buffer_max(s : MathapproxpolyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_buffer_max(s : MathapproxpolyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_buffer_to_string(s : MathapproxpolyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_poly_cursor_set(s : MathapproxpolyCursor, i : Int, v : Double
   result
 }
 
-pub fn math_approx_poly_cursor_sum(s : MathapproxpolyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_cursor_sum(s : MathapproxpolyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_cursor_mean(s : MathapproxpolyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_cursor_mean(s : MathapproxpolyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_cursor_scale(s : MathapproxpolyCursor, f : Double) -> MathapproxpolyCursor {
   let result = math_approx_poly_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_poly_cursor_fill(s : MathapproxpolyCursor, v : Double) -> Mat
   result
 }
 
-pub fn math_approx_poly_cursor_min(s : MathapproxpolyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_cursor_min(s : MathapproxpolyCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_cursor_max(s : MathapproxpolyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_cursor_max(s : MathapproxpolyCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_cursor_to_string(s : MathapproxpolyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_poly_view_set(s : MathapproxpolyView, i : Int, v : Double) ->
   result
 }
 
-pub fn math_approx_poly_view_sum(s : MathapproxpolyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_view_sum(s : MathapproxpolyView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_view_mean(s : MathapproxpolyView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_view_mean(s : MathapproxpolyView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_view_scale(s : MathapproxpolyView, f : Double) -> MathapproxpolyView {
   let result = math_approx_poly_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_poly_view_fill(s : MathapproxpolyView, v : Double) -> Mathapp
   result
 }
 
-pub fn math_approx_poly_view_min(s : MathapproxpolyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_view_min(s : MathapproxpolyView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_view_max(s : MathapproxpolyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_view_max(s : MathapproxpolyView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_view_to_string(s : MathapproxpolyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_poly_range_set(s : MathapproxpolyRange, i : Int, v : Double) 
   result
 }
 
-pub fn math_approx_poly_range_sum(s : MathapproxpolyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_range_sum(s : MathapproxpolyRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_range_mean(s : MathapproxpolyRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_range_mean(s : MathapproxpolyRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_range_scale(s : MathapproxpolyRange, f : Double) -> MathapproxpolyRange {
   let result = math_approx_poly_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_poly_range_fill(s : MathapproxpolyRange, v : Double) -> Matha
   result
 }
 
-pub fn math_approx_poly_range_min(s : MathapproxpolyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_range_min(s : MathapproxpolyRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_range_max(s : MathapproxpolyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_range_max(s : MathapproxpolyRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_range_to_string(s : MathapproxpolyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_poly_slice_set(s : MathapproxpolySlice, i : Int, v : Double) 
   result
 }
 
-pub fn math_approx_poly_slice_sum(s : MathapproxpolySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_poly_slice_sum(s : MathapproxpolySlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_poly_slice_mean(s : MathapproxpolySlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_poly_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_poly_slice_mean(s : MathapproxpolySlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_poly_slice_scale(s : MathapproxpolySlice, f : Double) -> MathapproxpolySlice {
   let result = math_approx_poly_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_poly_slice_fill(s : MathapproxpolySlice, v : Double) -> Matha
   result
 }
 
-pub fn math_approx_poly_slice_min(s : MathapproxpolySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_slice_min(s : MathapproxpolySlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_poly_slice_max(s : MathapproxpolySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_poly_slice_max(s : MathapproxpolySlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_poly_slice_to_string(s : MathapproxpolySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

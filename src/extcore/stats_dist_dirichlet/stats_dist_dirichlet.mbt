@@ -88,11 +88,7 @@ pub fn stats_dist_dirichlet_make_series(vals : Array[Double], name : String) -> 
 
 pub fn stats_dist_dirichlet_series_len(s : StatsdistdirichletSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_dirichlet_series_sum(s : StatsdistdirichletSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_dirichlet_series_sum(s : StatsdistdirichletSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_dirichlet_series_mean(s : StatsdistdirichletSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_dirichlet_frame_set(s : StatsdistdirichletFrame, i : Int, v : 
   result
 }
 
-pub fn stats_dist_dirichlet_frame_sum(s : StatsdistdirichletFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_frame_sum(s : StatsdistdirichletFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_frame_mean(s : StatsdistdirichletFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_frame_mean(s : StatsdistdirichletFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_frame_scale(s : StatsdistdirichletFrame, f : Double) -> StatsdistdirichletFrame {
   let result = stats_dist_dirichlet_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_dirichlet_frame_fill(s : StatsdistdirichletFrame, v : Double) 
   result
 }
 
-pub fn stats_dist_dirichlet_frame_min(s : StatsdistdirichletFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_frame_min(s : StatsdistdirichletFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_frame_max(s : StatsdistdirichletFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_frame_max(s : StatsdistdirichletFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_frame_to_string(s : StatsdistdirichletFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_dirichlet_table_set(s : StatsdistdirichletTable, i : Int, v : 
   result
 }
 
-pub fn stats_dist_dirichlet_table_sum(s : StatsdistdirichletTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_table_sum(s : StatsdistdirichletTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_table_mean(s : StatsdistdirichletTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_table_mean(s : StatsdistdirichletTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_table_scale(s : StatsdistdirichletTable, f : Double) -> StatsdistdirichletTable {
   let result = stats_dist_dirichlet_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_dirichlet_table_fill(s : StatsdistdirichletTable, v : Double) 
   result
 }
 
-pub fn stats_dist_dirichlet_table_min(s : StatsdistdirichletTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_table_min(s : StatsdistdirichletTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_table_max(s : StatsdistdirichletTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_table_max(s : StatsdistdirichletTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_table_to_string(s : StatsdistdirichletTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_dirichlet_graphn_set(s : StatsdistdirichletGraphN, i : Int, v 
   result
 }
 
-pub fn stats_dist_dirichlet_graphn_sum(s : StatsdistdirichletGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_graphn_sum(s : StatsdistdirichletGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_graphn_mean(s : StatsdistdirichletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_graphn_mean(s : StatsdistdirichletGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_graphn_scale(s : StatsdistdirichletGraphN, f : Double) -> StatsdistdirichletGraphN {
   let result = stats_dist_dirichlet_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_dirichlet_graphn_fill(s : StatsdistdirichletGraphN, v : Double
   result
 }
 
-pub fn stats_dist_dirichlet_graphn_min(s : StatsdistdirichletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_graphn_min(s : StatsdistdirichletGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_graphn_max(s : StatsdistdirichletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_graphn_max(s : StatsdistdirichletGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_graphn_to_string(s : StatsdistdirichletGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_dirichlet_node_set(s : StatsdistdirichletNode, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_dirichlet_node_sum(s : StatsdistdirichletNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_node_sum(s : StatsdistdirichletNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_node_mean(s : StatsdistdirichletNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_node_mean(s : StatsdistdirichletNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_node_scale(s : StatsdistdirichletNode, f : Double) -> StatsdistdirichletNode {
   let result = stats_dist_dirichlet_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_dirichlet_node_fill(s : StatsdistdirichletNode, v : Double) ->
   result
 }
 
-pub fn stats_dist_dirichlet_node_min(s : StatsdistdirichletNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_node_min(s : StatsdistdirichletNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_node_max(s : StatsdistdirichletNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_node_max(s : StatsdistdirichletNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_node_to_string(s : StatsdistdirichletNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_dirichlet_edge_set(s : StatsdistdirichletEdge, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_dirichlet_edge_sum(s : StatsdistdirichletEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_edge_sum(s : StatsdistdirichletEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_edge_mean(s : StatsdistdirichletEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_edge_mean(s : StatsdistdirichletEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_edge_scale(s : StatsdistdirichletEdge, f : Double) -> StatsdistdirichletEdge {
   let result = stats_dist_dirichlet_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_dirichlet_edge_fill(s : StatsdistdirichletEdge, v : Double) ->
   result
 }
 
-pub fn stats_dist_dirichlet_edge_min(s : StatsdistdirichletEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_edge_min(s : StatsdistdirichletEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_edge_max(s : StatsdistdirichletEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_edge_max(s : StatsdistdirichletEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_edge_to_string(s : StatsdistdirichletEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_dirichlet_path_set(s : StatsdistdirichletPath, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_dirichlet_path_sum(s : StatsdistdirichletPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_path_sum(s : StatsdistdirichletPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_path_mean(s : StatsdistdirichletPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_path_mean(s : StatsdistdirichletPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_path_scale(s : StatsdistdirichletPath, f : Double) -> StatsdistdirichletPath {
   let result = stats_dist_dirichlet_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_dirichlet_path_fill(s : StatsdistdirichletPath, v : Double) ->
   result
 }
 
-pub fn stats_dist_dirichlet_path_min(s : StatsdistdirichletPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_path_min(s : StatsdistdirichletPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_path_max(s : StatsdistdirichletPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_path_max(s : StatsdistdirichletPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_path_to_string(s : StatsdistdirichletPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_dirichlet_cluster_set(s : StatsdistdirichletCluster, i : Int, 
   result
 }
 
-pub fn stats_dist_dirichlet_cluster_sum(s : StatsdistdirichletCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_cluster_sum(s : StatsdistdirichletCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_cluster_mean(s : StatsdistdirichletCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_cluster_mean(s : StatsdistdirichletCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_cluster_scale(s : StatsdistdirichletCluster, f : Double) -> StatsdistdirichletCluster {
   let result = stats_dist_dirichlet_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_dirichlet_cluster_fill(s : StatsdistdirichletCluster, v : Doub
   result
 }
 
-pub fn stats_dist_dirichlet_cluster_min(s : StatsdistdirichletCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_cluster_min(s : StatsdistdirichletCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_cluster_max(s : StatsdistdirichletCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_cluster_max(s : StatsdistdirichletCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_cluster_to_string(s : StatsdistdirichletCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_dirichlet_model_set(s : StatsdistdirichletModel, i : Int, v : 
   result
 }
 
-pub fn stats_dist_dirichlet_model_sum(s : StatsdistdirichletModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_model_sum(s : StatsdistdirichletModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_model_mean(s : StatsdistdirichletModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_model_mean(s : StatsdistdirichletModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_model_scale(s : StatsdistdirichletModel, f : Double) -> StatsdistdirichletModel {
   let result = stats_dist_dirichlet_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_dirichlet_model_fill(s : StatsdistdirichletModel, v : Double) 
   result
 }
 
-pub fn stats_dist_dirichlet_model_min(s : StatsdistdirichletModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_model_min(s : StatsdistdirichletModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_model_max(s : StatsdistdirichletModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_model_max(s : StatsdistdirichletModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_model_to_string(s : StatsdistdirichletModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_dirichlet_layer_set(s : StatsdistdirichletLayer, i : Int, v : 
   result
 }
 
-pub fn stats_dist_dirichlet_layer_sum(s : StatsdistdirichletLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_layer_sum(s : StatsdistdirichletLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_layer_mean(s : StatsdistdirichletLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_layer_mean(s : StatsdistdirichletLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_layer_scale(s : StatsdistdirichletLayer, f : Double) -> StatsdistdirichletLayer {
   let result = stats_dist_dirichlet_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_dirichlet_layer_fill(s : StatsdistdirichletLayer, v : Double) 
   result
 }
 
-pub fn stats_dist_dirichlet_layer_min(s : StatsdistdirichletLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_layer_min(s : StatsdistdirichletLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_layer_max(s : StatsdistdirichletLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_layer_max(s : StatsdistdirichletLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_layer_to_string(s : StatsdistdirichletLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_dirichlet_buffer_set(s : StatsdistdirichletBuffer, i : Int, v 
   result
 }
 
-pub fn stats_dist_dirichlet_buffer_sum(s : StatsdistdirichletBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_buffer_sum(s : StatsdistdirichletBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_buffer_mean(s : StatsdistdirichletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_buffer_mean(s : StatsdistdirichletBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_buffer_scale(s : StatsdistdirichletBuffer, f : Double) -> StatsdistdirichletBuffer {
   let result = stats_dist_dirichlet_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_dirichlet_buffer_fill(s : StatsdistdirichletBuffer, v : Double
   result
 }
 
-pub fn stats_dist_dirichlet_buffer_min(s : StatsdistdirichletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_buffer_min(s : StatsdistdirichletBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_buffer_max(s : StatsdistdirichletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_buffer_max(s : StatsdistdirichletBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_buffer_to_string(s : StatsdistdirichletBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_dirichlet_cursor_set(s : StatsdistdirichletCursor, i : Int, v 
   result
 }
 
-pub fn stats_dist_dirichlet_cursor_sum(s : StatsdistdirichletCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_cursor_sum(s : StatsdistdirichletCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_cursor_mean(s : StatsdistdirichletCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_cursor_mean(s : StatsdistdirichletCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_cursor_scale(s : StatsdistdirichletCursor, f : Double) -> StatsdistdirichletCursor {
   let result = stats_dist_dirichlet_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_dirichlet_cursor_fill(s : StatsdistdirichletCursor, v : Double
   result
 }
 
-pub fn stats_dist_dirichlet_cursor_min(s : StatsdistdirichletCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_cursor_min(s : StatsdistdirichletCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_cursor_max(s : StatsdistdirichletCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_cursor_max(s : StatsdistdirichletCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_cursor_to_string(s : StatsdistdirichletCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_dirichlet_view_set(s : StatsdistdirichletView, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_dirichlet_view_sum(s : StatsdistdirichletView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_view_sum(s : StatsdistdirichletView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_view_mean(s : StatsdistdirichletView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_view_mean(s : StatsdistdirichletView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_view_scale(s : StatsdistdirichletView, f : Double) -> StatsdistdirichletView {
   let result = stats_dist_dirichlet_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_dirichlet_view_fill(s : StatsdistdirichletView, v : Double) ->
   result
 }
 
-pub fn stats_dist_dirichlet_view_min(s : StatsdistdirichletView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_view_min(s : StatsdistdirichletView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_view_max(s : StatsdistdirichletView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_view_max(s : StatsdistdirichletView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_view_to_string(s : StatsdistdirichletView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_dirichlet_range_set(s : StatsdistdirichletRange, i : Int, v : 
   result
 }
 
-pub fn stats_dist_dirichlet_range_sum(s : StatsdistdirichletRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_range_sum(s : StatsdistdirichletRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_range_mean(s : StatsdistdirichletRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_range_mean(s : StatsdistdirichletRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_range_scale(s : StatsdistdirichletRange, f : Double) -> StatsdistdirichletRange {
   let result = stats_dist_dirichlet_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_dirichlet_range_fill(s : StatsdistdirichletRange, v : Double) 
   result
 }
 
-pub fn stats_dist_dirichlet_range_min(s : StatsdistdirichletRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_range_min(s : StatsdistdirichletRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_range_max(s : StatsdistdirichletRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_range_max(s : StatsdistdirichletRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_range_to_string(s : StatsdistdirichletRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_dirichlet_slice_set(s : StatsdistdirichletSlice, i : Int, v : 
   result
 }
 
-pub fn stats_dist_dirichlet_slice_sum(s : StatsdistdirichletSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_dirichlet_slice_sum(s : StatsdistdirichletSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_dirichlet_slice_mean(s : StatsdistdirichletSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_dirichlet_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_dirichlet_slice_mean(s : StatsdistdirichletSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_dirichlet_slice_scale(s : StatsdistdirichletSlice, f : Double) -> StatsdistdirichletSlice {
   let result = stats_dist_dirichlet_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_dirichlet_slice_fill(s : StatsdistdirichletSlice, v : Double) 
   result
 }
 
-pub fn stats_dist_dirichlet_slice_min(s : StatsdistdirichletSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_slice_min(s : StatsdistdirichletSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_dirichlet_slice_max(s : StatsdistdirichletSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_dirichlet_slice_max(s : StatsdistdirichletSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_dirichlet_slice_to_string(s : StatsdistdirichletSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

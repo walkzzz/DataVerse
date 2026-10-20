@@ -88,11 +88,7 @@ pub fn net_route_dijkstra_make_series(vals : Array[Double], name : String) -> Ne
 
 pub fn net_route_dijkstra_series_len(s : NetroutedijkstraSeries) -> Int { s.vals.length() }
 
-pub fn net_route_dijkstra_series_sum(s : NetroutedijkstraSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_dijkstra_series_sum(s : NetroutedijkstraSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_dijkstra_series_mean(s : NetroutedijkstraSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_dijkstra_frame_set(s : NetroutedijkstraFrame, i : Int, v : Doub
   result
 }
 
-pub fn net_route_dijkstra_frame_sum(s : NetroutedijkstraFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_frame_sum(s : NetroutedijkstraFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_frame_mean(s : NetroutedijkstraFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_frame_mean(s : NetroutedijkstraFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_frame_scale(s : NetroutedijkstraFrame, f : Double) -> NetroutedijkstraFrame {
   let result = net_route_dijkstra_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_dijkstra_frame_fill(s : NetroutedijkstraFrame, v : Double) -> N
   result
 }
 
-pub fn net_route_dijkstra_frame_min(s : NetroutedijkstraFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_frame_min(s : NetroutedijkstraFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_frame_max(s : NetroutedijkstraFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_frame_max(s : NetroutedijkstraFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_frame_to_string(s : NetroutedijkstraFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_dijkstra_table_set(s : NetroutedijkstraTable, i : Int, v : Doub
   result
 }
 
-pub fn net_route_dijkstra_table_sum(s : NetroutedijkstraTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_table_sum(s : NetroutedijkstraTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_table_mean(s : NetroutedijkstraTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_table_mean(s : NetroutedijkstraTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_table_scale(s : NetroutedijkstraTable, f : Double) -> NetroutedijkstraTable {
   let result = net_route_dijkstra_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_dijkstra_table_fill(s : NetroutedijkstraTable, v : Double) -> N
   result
 }
 
-pub fn net_route_dijkstra_table_min(s : NetroutedijkstraTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_table_min(s : NetroutedijkstraTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_table_max(s : NetroutedijkstraTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_table_max(s : NetroutedijkstraTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_table_to_string(s : NetroutedijkstraTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_dijkstra_graphn_set(s : NetroutedijkstraGraphN, i : Int, v : Do
   result
 }
 
-pub fn net_route_dijkstra_graphn_sum(s : NetroutedijkstraGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_graphn_sum(s : NetroutedijkstraGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_graphn_mean(s : NetroutedijkstraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_graphn_mean(s : NetroutedijkstraGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_graphn_scale(s : NetroutedijkstraGraphN, f : Double) -> NetroutedijkstraGraphN {
   let result = net_route_dijkstra_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_dijkstra_graphn_fill(s : NetroutedijkstraGraphN, v : Double) ->
   result
 }
 
-pub fn net_route_dijkstra_graphn_min(s : NetroutedijkstraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_graphn_min(s : NetroutedijkstraGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_graphn_max(s : NetroutedijkstraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_graphn_max(s : NetroutedijkstraGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_graphn_to_string(s : NetroutedijkstraGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_dijkstra_node_set(s : NetroutedijkstraNode, i : Int, v : Double
   result
 }
 
-pub fn net_route_dijkstra_node_sum(s : NetroutedijkstraNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_node_sum(s : NetroutedijkstraNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_node_mean(s : NetroutedijkstraNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_node_mean(s : NetroutedijkstraNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_node_scale(s : NetroutedijkstraNode, f : Double) -> NetroutedijkstraNode {
   let result = net_route_dijkstra_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_dijkstra_node_fill(s : NetroutedijkstraNode, v : Double) -> Net
   result
 }
 
-pub fn net_route_dijkstra_node_min(s : NetroutedijkstraNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_node_min(s : NetroutedijkstraNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_node_max(s : NetroutedijkstraNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_node_max(s : NetroutedijkstraNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_node_to_string(s : NetroutedijkstraNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_dijkstra_edge_set(s : NetroutedijkstraEdge, i : Int, v : Double
   result
 }
 
-pub fn net_route_dijkstra_edge_sum(s : NetroutedijkstraEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_edge_sum(s : NetroutedijkstraEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_edge_mean(s : NetroutedijkstraEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_edge_mean(s : NetroutedijkstraEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_edge_scale(s : NetroutedijkstraEdge, f : Double) -> NetroutedijkstraEdge {
   let result = net_route_dijkstra_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_dijkstra_edge_fill(s : NetroutedijkstraEdge, v : Double) -> Net
   result
 }
 
-pub fn net_route_dijkstra_edge_min(s : NetroutedijkstraEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_edge_min(s : NetroutedijkstraEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_edge_max(s : NetroutedijkstraEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_edge_max(s : NetroutedijkstraEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_edge_to_string(s : NetroutedijkstraEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_dijkstra_path_set(s : NetroutedijkstraPath, i : Int, v : Double
   result
 }
 
-pub fn net_route_dijkstra_path_sum(s : NetroutedijkstraPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_path_sum(s : NetroutedijkstraPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_path_mean(s : NetroutedijkstraPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_path_mean(s : NetroutedijkstraPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_path_scale(s : NetroutedijkstraPath, f : Double) -> NetroutedijkstraPath {
   let result = net_route_dijkstra_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_dijkstra_path_fill(s : NetroutedijkstraPath, v : Double) -> Net
   result
 }
 
-pub fn net_route_dijkstra_path_min(s : NetroutedijkstraPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_path_min(s : NetroutedijkstraPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_path_max(s : NetroutedijkstraPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_path_max(s : NetroutedijkstraPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_path_to_string(s : NetroutedijkstraPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_dijkstra_cluster_set(s : NetroutedijkstraCluster, i : Int, v : 
   result
 }
 
-pub fn net_route_dijkstra_cluster_sum(s : NetroutedijkstraCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_cluster_sum(s : NetroutedijkstraCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_cluster_mean(s : NetroutedijkstraCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_cluster_mean(s : NetroutedijkstraCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_cluster_scale(s : NetroutedijkstraCluster, f : Double) -> NetroutedijkstraCluster {
   let result = net_route_dijkstra_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_dijkstra_cluster_fill(s : NetroutedijkstraCluster, v : Double) 
   result
 }
 
-pub fn net_route_dijkstra_cluster_min(s : NetroutedijkstraCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_cluster_min(s : NetroutedijkstraCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_cluster_max(s : NetroutedijkstraCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_cluster_max(s : NetroutedijkstraCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_cluster_to_string(s : NetroutedijkstraCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_dijkstra_model_set(s : NetroutedijkstraModel, i : Int, v : Doub
   result
 }
 
-pub fn net_route_dijkstra_model_sum(s : NetroutedijkstraModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_model_sum(s : NetroutedijkstraModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_model_mean(s : NetroutedijkstraModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_model_mean(s : NetroutedijkstraModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_model_scale(s : NetroutedijkstraModel, f : Double) -> NetroutedijkstraModel {
   let result = net_route_dijkstra_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_dijkstra_model_fill(s : NetroutedijkstraModel, v : Double) -> N
   result
 }
 
-pub fn net_route_dijkstra_model_min(s : NetroutedijkstraModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_model_min(s : NetroutedijkstraModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_model_max(s : NetroutedijkstraModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_model_max(s : NetroutedijkstraModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_model_to_string(s : NetroutedijkstraModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_dijkstra_layer_set(s : NetroutedijkstraLayer, i : Int, v : Doub
   result
 }
 
-pub fn net_route_dijkstra_layer_sum(s : NetroutedijkstraLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_layer_sum(s : NetroutedijkstraLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_layer_mean(s : NetroutedijkstraLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_layer_mean(s : NetroutedijkstraLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_layer_scale(s : NetroutedijkstraLayer, f : Double) -> NetroutedijkstraLayer {
   let result = net_route_dijkstra_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_dijkstra_layer_fill(s : NetroutedijkstraLayer, v : Double) -> N
   result
 }
 
-pub fn net_route_dijkstra_layer_min(s : NetroutedijkstraLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_layer_min(s : NetroutedijkstraLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_layer_max(s : NetroutedijkstraLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_layer_max(s : NetroutedijkstraLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_layer_to_string(s : NetroutedijkstraLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_dijkstra_buffer_set(s : NetroutedijkstraBuffer, i : Int, v : Do
   result
 }
 
-pub fn net_route_dijkstra_buffer_sum(s : NetroutedijkstraBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_buffer_sum(s : NetroutedijkstraBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_buffer_mean(s : NetroutedijkstraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_buffer_mean(s : NetroutedijkstraBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_buffer_scale(s : NetroutedijkstraBuffer, f : Double) -> NetroutedijkstraBuffer {
   let result = net_route_dijkstra_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_dijkstra_buffer_fill(s : NetroutedijkstraBuffer, v : Double) ->
   result
 }
 
-pub fn net_route_dijkstra_buffer_min(s : NetroutedijkstraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_buffer_min(s : NetroutedijkstraBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_buffer_max(s : NetroutedijkstraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_buffer_max(s : NetroutedijkstraBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_buffer_to_string(s : NetroutedijkstraBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_dijkstra_cursor_set(s : NetroutedijkstraCursor, i : Int, v : Do
   result
 }
 
-pub fn net_route_dijkstra_cursor_sum(s : NetroutedijkstraCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_cursor_sum(s : NetroutedijkstraCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_cursor_mean(s : NetroutedijkstraCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_cursor_mean(s : NetroutedijkstraCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_cursor_scale(s : NetroutedijkstraCursor, f : Double) -> NetroutedijkstraCursor {
   let result = net_route_dijkstra_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_dijkstra_cursor_fill(s : NetroutedijkstraCursor, v : Double) ->
   result
 }
 
-pub fn net_route_dijkstra_cursor_min(s : NetroutedijkstraCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_cursor_min(s : NetroutedijkstraCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_cursor_max(s : NetroutedijkstraCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_cursor_max(s : NetroutedijkstraCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_cursor_to_string(s : NetroutedijkstraCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_dijkstra_view_set(s : NetroutedijkstraView, i : Int, v : Double
   result
 }
 
-pub fn net_route_dijkstra_view_sum(s : NetroutedijkstraView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_view_sum(s : NetroutedijkstraView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_view_mean(s : NetroutedijkstraView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_view_mean(s : NetroutedijkstraView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_view_scale(s : NetroutedijkstraView, f : Double) -> NetroutedijkstraView {
   let result = net_route_dijkstra_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_dijkstra_view_fill(s : NetroutedijkstraView, v : Double) -> Net
   result
 }
 
-pub fn net_route_dijkstra_view_min(s : NetroutedijkstraView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_view_min(s : NetroutedijkstraView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_view_max(s : NetroutedijkstraView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_view_max(s : NetroutedijkstraView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_view_to_string(s : NetroutedijkstraView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_dijkstra_range_set(s : NetroutedijkstraRange, i : Int, v : Doub
   result
 }
 
-pub fn net_route_dijkstra_range_sum(s : NetroutedijkstraRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_range_sum(s : NetroutedijkstraRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_range_mean(s : NetroutedijkstraRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_range_mean(s : NetroutedijkstraRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_range_scale(s : NetroutedijkstraRange, f : Double) -> NetroutedijkstraRange {
   let result = net_route_dijkstra_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_dijkstra_range_fill(s : NetroutedijkstraRange, v : Double) -> N
   result
 }
 
-pub fn net_route_dijkstra_range_min(s : NetroutedijkstraRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_range_min(s : NetroutedijkstraRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_range_max(s : NetroutedijkstraRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_range_max(s : NetroutedijkstraRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_range_to_string(s : NetroutedijkstraRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_dijkstra_slice_set(s : NetroutedijkstraSlice, i : Int, v : Doub
   result
 }
 
-pub fn net_route_dijkstra_slice_sum(s : NetroutedijkstraSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_dijkstra_slice_sum(s : NetroutedijkstraSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_dijkstra_slice_mean(s : NetroutedijkstraSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_dijkstra_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_dijkstra_slice_mean(s : NetroutedijkstraSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_dijkstra_slice_scale(s : NetroutedijkstraSlice, f : Double) -> NetroutedijkstraSlice {
   let result = net_route_dijkstra_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_dijkstra_slice_fill(s : NetroutedijkstraSlice, v : Double) -> N
   result
 }
 
-pub fn net_route_dijkstra_slice_min(s : NetroutedijkstraSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_slice_min(s : NetroutedijkstraSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_dijkstra_slice_max(s : NetroutedijkstraSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_dijkstra_slice_max(s : NetroutedijkstraSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_dijkstra_slice_to_string(s : NetroutedijkstraSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

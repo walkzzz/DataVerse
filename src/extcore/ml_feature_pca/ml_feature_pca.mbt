@@ -88,11 +88,7 @@ pub fn ml_feature_pca_make_series(vals : Array[Double], name : String) -> Mlfeat
 
 pub fn ml_feature_pca_series_len(s : MlfeaturepcaSeries) -> Int { s.vals.length() }
 
-pub fn ml_feature_pca_series_sum(s : MlfeaturepcaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_feature_pca_series_sum(s : MlfeaturepcaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_feature_pca_series_mean(s : MlfeaturepcaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_feature_pca_frame_set(s : MlfeaturepcaFrame, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pca_frame_sum(s : MlfeaturepcaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_frame_sum(s : MlfeaturepcaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_frame_mean(s : MlfeaturepcaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_frame_mean(s : MlfeaturepcaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_frame_scale(s : MlfeaturepcaFrame, f : Double) -> MlfeaturepcaFrame {
   let result = ml_feature_pca_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_feature_pca_frame_fill(s : MlfeaturepcaFrame, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pca_frame_min(s : MlfeaturepcaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_frame_min(s : MlfeaturepcaFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_frame_max(s : MlfeaturepcaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_frame_max(s : MlfeaturepcaFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_frame_to_string(s : MlfeaturepcaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_feature_pca_table_set(s : MlfeaturepcaTable, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pca_table_sum(s : MlfeaturepcaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_table_sum(s : MlfeaturepcaTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_table_mean(s : MlfeaturepcaTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_table_mean(s : MlfeaturepcaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_table_scale(s : MlfeaturepcaTable, f : Double) -> MlfeaturepcaTable {
   let result = ml_feature_pca_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_feature_pca_table_fill(s : MlfeaturepcaTable, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pca_table_min(s : MlfeaturepcaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_table_min(s : MlfeaturepcaTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_table_max(s : MlfeaturepcaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_table_max(s : MlfeaturepcaTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_table_to_string(s : MlfeaturepcaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_feature_pca_graphn_set(s : MlfeaturepcaGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_pca_graphn_sum(s : MlfeaturepcaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_graphn_sum(s : MlfeaturepcaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_graphn_mean(s : MlfeaturepcaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_graphn_mean(s : MlfeaturepcaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_graphn_scale(s : MlfeaturepcaGraphN, f : Double) -> MlfeaturepcaGraphN {
   let result = ml_feature_pca_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_feature_pca_graphn_fill(s : MlfeaturepcaGraphN, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_pca_graphn_min(s : MlfeaturepcaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_graphn_min(s : MlfeaturepcaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_graphn_max(s : MlfeaturepcaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_graphn_max(s : MlfeaturepcaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_graphn_to_string(s : MlfeaturepcaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_feature_pca_node_set(s : MlfeaturepcaNode, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pca_node_sum(s : MlfeaturepcaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_node_sum(s : MlfeaturepcaNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_node_mean(s : MlfeaturepcaNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_node_mean(s : MlfeaturepcaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_node_scale(s : MlfeaturepcaNode, f : Double) -> MlfeaturepcaNode {
   let result = ml_feature_pca_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_feature_pca_node_fill(s : MlfeaturepcaNode, v : Double) -> Mlfeaturepc
   result
 }
 
-pub fn ml_feature_pca_node_min(s : MlfeaturepcaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_node_min(s : MlfeaturepcaNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_node_max(s : MlfeaturepcaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_node_max(s : MlfeaturepcaNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_node_to_string(s : MlfeaturepcaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_feature_pca_edge_set(s : MlfeaturepcaEdge, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pca_edge_sum(s : MlfeaturepcaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_edge_sum(s : MlfeaturepcaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_edge_mean(s : MlfeaturepcaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_edge_mean(s : MlfeaturepcaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_edge_scale(s : MlfeaturepcaEdge, f : Double) -> MlfeaturepcaEdge {
   let result = ml_feature_pca_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_feature_pca_edge_fill(s : MlfeaturepcaEdge, v : Double) -> Mlfeaturepc
   result
 }
 
-pub fn ml_feature_pca_edge_min(s : MlfeaturepcaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_edge_min(s : MlfeaturepcaEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_edge_max(s : MlfeaturepcaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_edge_max(s : MlfeaturepcaEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_edge_to_string(s : MlfeaturepcaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_feature_pca_path_set(s : MlfeaturepcaPath, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pca_path_sum(s : MlfeaturepcaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_path_sum(s : MlfeaturepcaPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_path_mean(s : MlfeaturepcaPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_path_mean(s : MlfeaturepcaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_path_scale(s : MlfeaturepcaPath, f : Double) -> MlfeaturepcaPath {
   let result = ml_feature_pca_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_feature_pca_path_fill(s : MlfeaturepcaPath, v : Double) -> Mlfeaturepc
   result
 }
 
-pub fn ml_feature_pca_path_min(s : MlfeaturepcaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_path_min(s : MlfeaturepcaPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_path_max(s : MlfeaturepcaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_path_max(s : MlfeaturepcaPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_path_to_string(s : MlfeaturepcaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_feature_pca_cluster_set(s : MlfeaturepcaCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_pca_cluster_sum(s : MlfeaturepcaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_cluster_sum(s : MlfeaturepcaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_cluster_mean(s : MlfeaturepcaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_cluster_mean(s : MlfeaturepcaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_cluster_scale(s : MlfeaturepcaCluster, f : Double) -> MlfeaturepcaCluster {
   let result = ml_feature_pca_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_feature_pca_cluster_fill(s : MlfeaturepcaCluster, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_pca_cluster_min(s : MlfeaturepcaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_cluster_min(s : MlfeaturepcaCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_cluster_max(s : MlfeaturepcaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_cluster_max(s : MlfeaturepcaCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_cluster_to_string(s : MlfeaturepcaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_feature_pca_model_set(s : MlfeaturepcaModel, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pca_model_sum(s : MlfeaturepcaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_model_sum(s : MlfeaturepcaModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_model_mean(s : MlfeaturepcaModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_model_mean(s : MlfeaturepcaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_model_scale(s : MlfeaturepcaModel, f : Double) -> MlfeaturepcaModel {
   let result = ml_feature_pca_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_feature_pca_model_fill(s : MlfeaturepcaModel, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pca_model_min(s : MlfeaturepcaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_model_min(s : MlfeaturepcaModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_model_max(s : MlfeaturepcaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_model_max(s : MlfeaturepcaModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_model_to_string(s : MlfeaturepcaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_feature_pca_layer_set(s : MlfeaturepcaLayer, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pca_layer_sum(s : MlfeaturepcaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_layer_sum(s : MlfeaturepcaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_layer_mean(s : MlfeaturepcaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_layer_mean(s : MlfeaturepcaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_layer_scale(s : MlfeaturepcaLayer, f : Double) -> MlfeaturepcaLayer {
   let result = ml_feature_pca_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_feature_pca_layer_fill(s : MlfeaturepcaLayer, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pca_layer_min(s : MlfeaturepcaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_layer_min(s : MlfeaturepcaLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_layer_max(s : MlfeaturepcaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_layer_max(s : MlfeaturepcaLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_layer_to_string(s : MlfeaturepcaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_feature_pca_buffer_set(s : MlfeaturepcaBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_pca_buffer_sum(s : MlfeaturepcaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_buffer_sum(s : MlfeaturepcaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_buffer_mean(s : MlfeaturepcaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_buffer_mean(s : MlfeaturepcaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_buffer_scale(s : MlfeaturepcaBuffer, f : Double) -> MlfeaturepcaBuffer {
   let result = ml_feature_pca_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_feature_pca_buffer_fill(s : MlfeaturepcaBuffer, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_pca_buffer_min(s : MlfeaturepcaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_buffer_min(s : MlfeaturepcaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_buffer_max(s : MlfeaturepcaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_buffer_max(s : MlfeaturepcaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_buffer_to_string(s : MlfeaturepcaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_feature_pca_cursor_set(s : MlfeaturepcaCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_pca_cursor_sum(s : MlfeaturepcaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_cursor_sum(s : MlfeaturepcaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_cursor_mean(s : MlfeaturepcaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_cursor_mean(s : MlfeaturepcaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_cursor_scale(s : MlfeaturepcaCursor, f : Double) -> MlfeaturepcaCursor {
   let result = ml_feature_pca_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_feature_pca_cursor_fill(s : MlfeaturepcaCursor, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_pca_cursor_min(s : MlfeaturepcaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_cursor_min(s : MlfeaturepcaCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_cursor_max(s : MlfeaturepcaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_cursor_max(s : MlfeaturepcaCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_cursor_to_string(s : MlfeaturepcaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_feature_pca_view_set(s : MlfeaturepcaView, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pca_view_sum(s : MlfeaturepcaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_view_sum(s : MlfeaturepcaView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_view_mean(s : MlfeaturepcaView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_view_mean(s : MlfeaturepcaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_view_scale(s : MlfeaturepcaView, f : Double) -> MlfeaturepcaView {
   let result = ml_feature_pca_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_feature_pca_view_fill(s : MlfeaturepcaView, v : Double) -> Mlfeaturepc
   result
 }
 
-pub fn ml_feature_pca_view_min(s : MlfeaturepcaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_view_min(s : MlfeaturepcaView) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_view_max(s : MlfeaturepcaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_view_max(s : MlfeaturepcaView) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_view_to_string(s : MlfeaturepcaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_feature_pca_range_set(s : MlfeaturepcaRange, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pca_range_sum(s : MlfeaturepcaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_range_sum(s : MlfeaturepcaRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_range_mean(s : MlfeaturepcaRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_range_mean(s : MlfeaturepcaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_range_scale(s : MlfeaturepcaRange, f : Double) -> MlfeaturepcaRange {
   let result = ml_feature_pca_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_feature_pca_range_fill(s : MlfeaturepcaRange, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pca_range_min(s : MlfeaturepcaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_range_min(s : MlfeaturepcaRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_range_max(s : MlfeaturepcaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_range_max(s : MlfeaturepcaRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_range_to_string(s : MlfeaturepcaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_feature_pca_slice_set(s : MlfeaturepcaSlice, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pca_slice_sum(s : MlfeaturepcaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pca_slice_sum(s : MlfeaturepcaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pca_slice_mean(s : MlfeaturepcaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pca_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pca_slice_mean(s : MlfeaturepcaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pca_slice_scale(s : MlfeaturepcaSlice, f : Double) -> MlfeaturepcaSlice {
   let result = ml_feature_pca_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_feature_pca_slice_fill(s : MlfeaturepcaSlice, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pca_slice_min(s : MlfeaturepcaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_slice_min(s : MlfeaturepcaSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pca_slice_max(s : MlfeaturepcaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pca_slice_max(s : MlfeaturepcaSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pca_slice_to_string(s : MlfeaturepcaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

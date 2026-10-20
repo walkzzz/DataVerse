@@ -88,11 +88,7 @@ pub fn ml_rl_sarsa_make_series(vals : Array[Double], name : String) -> Mlrlsarsa
 
 pub fn ml_rl_sarsa_series_len(s : MlrlsarsaSeries) -> Int { s.vals.length() }
 
-pub fn ml_rl_sarsa_series_sum(s : MlrlsarsaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_rl_sarsa_series_sum(s : MlrlsarsaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_rl_sarsa_series_mean(s : MlrlsarsaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_rl_sarsa_frame_set(s : MlrlsarsaFrame, i : Int, v : Double) -> Mlrlsar
   result
 }
 
-pub fn ml_rl_sarsa_frame_sum(s : MlrlsarsaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_frame_sum(s : MlrlsarsaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_frame_mean(s : MlrlsarsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_frame_mean(s : MlrlsarsaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_frame_scale(s : MlrlsarsaFrame, f : Double) -> MlrlsarsaFrame {
   let result = ml_rl_sarsa_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_rl_sarsa_frame_fill(s : MlrlsarsaFrame, v : Double) -> MlrlsarsaFrame 
   result
 }
 
-pub fn ml_rl_sarsa_frame_min(s : MlrlsarsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_frame_min(s : MlrlsarsaFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_frame_max(s : MlrlsarsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_frame_max(s : MlrlsarsaFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_frame_to_string(s : MlrlsarsaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_rl_sarsa_table_set(s : MlrlsarsaTable, i : Int, v : Double) -> Mlrlsar
   result
 }
 
-pub fn ml_rl_sarsa_table_sum(s : MlrlsarsaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_table_sum(s : MlrlsarsaTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_table_mean(s : MlrlsarsaTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_table_mean(s : MlrlsarsaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_table_scale(s : MlrlsarsaTable, f : Double) -> MlrlsarsaTable {
   let result = ml_rl_sarsa_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_rl_sarsa_table_fill(s : MlrlsarsaTable, v : Double) -> MlrlsarsaTable 
   result
 }
 
-pub fn ml_rl_sarsa_table_min(s : MlrlsarsaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_table_min(s : MlrlsarsaTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_table_max(s : MlrlsarsaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_table_max(s : MlrlsarsaTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_table_to_string(s : MlrlsarsaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_rl_sarsa_graphn_set(s : MlrlsarsaGraphN, i : Int, v : Double) -> Mlrls
   result
 }
 
-pub fn ml_rl_sarsa_graphn_sum(s : MlrlsarsaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_graphn_sum(s : MlrlsarsaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_graphn_mean(s : MlrlsarsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_graphn_mean(s : MlrlsarsaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_graphn_scale(s : MlrlsarsaGraphN, f : Double) -> MlrlsarsaGraphN {
   let result = ml_rl_sarsa_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_rl_sarsa_graphn_fill(s : MlrlsarsaGraphN, v : Double) -> MlrlsarsaGrap
   result
 }
 
-pub fn ml_rl_sarsa_graphn_min(s : MlrlsarsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_graphn_min(s : MlrlsarsaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_graphn_max(s : MlrlsarsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_graphn_max(s : MlrlsarsaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_graphn_to_string(s : MlrlsarsaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_rl_sarsa_node_set(s : MlrlsarsaNode, i : Int, v : Double) -> Mlrlsarsa
   result
 }
 
-pub fn ml_rl_sarsa_node_sum(s : MlrlsarsaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_node_sum(s : MlrlsarsaNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_node_mean(s : MlrlsarsaNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_node_mean(s : MlrlsarsaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_node_scale(s : MlrlsarsaNode, f : Double) -> MlrlsarsaNode {
   let result = ml_rl_sarsa_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_rl_sarsa_node_fill(s : MlrlsarsaNode, v : Double) -> MlrlsarsaNode {
   result
 }
 
-pub fn ml_rl_sarsa_node_min(s : MlrlsarsaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_node_min(s : MlrlsarsaNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_node_max(s : MlrlsarsaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_node_max(s : MlrlsarsaNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_node_to_string(s : MlrlsarsaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_rl_sarsa_edge_set(s : MlrlsarsaEdge, i : Int, v : Double) -> Mlrlsarsa
   result
 }
 
-pub fn ml_rl_sarsa_edge_sum(s : MlrlsarsaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_edge_sum(s : MlrlsarsaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_edge_mean(s : MlrlsarsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_edge_mean(s : MlrlsarsaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_edge_scale(s : MlrlsarsaEdge, f : Double) -> MlrlsarsaEdge {
   let result = ml_rl_sarsa_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_rl_sarsa_edge_fill(s : MlrlsarsaEdge, v : Double) -> MlrlsarsaEdge {
   result
 }
 
-pub fn ml_rl_sarsa_edge_min(s : MlrlsarsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_edge_min(s : MlrlsarsaEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_edge_max(s : MlrlsarsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_edge_max(s : MlrlsarsaEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_edge_to_string(s : MlrlsarsaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_rl_sarsa_path_set(s : MlrlsarsaPath, i : Int, v : Double) -> Mlrlsarsa
   result
 }
 
-pub fn ml_rl_sarsa_path_sum(s : MlrlsarsaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_path_sum(s : MlrlsarsaPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_path_mean(s : MlrlsarsaPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_path_mean(s : MlrlsarsaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_path_scale(s : MlrlsarsaPath, f : Double) -> MlrlsarsaPath {
   let result = ml_rl_sarsa_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_rl_sarsa_path_fill(s : MlrlsarsaPath, v : Double) -> MlrlsarsaPath {
   result
 }
 
-pub fn ml_rl_sarsa_path_min(s : MlrlsarsaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_path_min(s : MlrlsarsaPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_path_max(s : MlrlsarsaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_path_max(s : MlrlsarsaPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_path_to_string(s : MlrlsarsaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_rl_sarsa_cluster_set(s : MlrlsarsaCluster, i : Int, v : Double) -> Mlr
   result
 }
 
-pub fn ml_rl_sarsa_cluster_sum(s : MlrlsarsaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_cluster_sum(s : MlrlsarsaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_cluster_mean(s : MlrlsarsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_cluster_mean(s : MlrlsarsaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_cluster_scale(s : MlrlsarsaCluster, f : Double) -> MlrlsarsaCluster {
   let result = ml_rl_sarsa_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_rl_sarsa_cluster_fill(s : MlrlsarsaCluster, v : Double) -> MlrlsarsaCl
   result
 }
 
-pub fn ml_rl_sarsa_cluster_min(s : MlrlsarsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_cluster_min(s : MlrlsarsaCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_cluster_max(s : MlrlsarsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_cluster_max(s : MlrlsarsaCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_cluster_to_string(s : MlrlsarsaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_rl_sarsa_model_set(s : MlrlsarsaModel, i : Int, v : Double) -> Mlrlsar
   result
 }
 
-pub fn ml_rl_sarsa_model_sum(s : MlrlsarsaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_model_sum(s : MlrlsarsaModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_model_mean(s : MlrlsarsaModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_model_mean(s : MlrlsarsaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_model_scale(s : MlrlsarsaModel, f : Double) -> MlrlsarsaModel {
   let result = ml_rl_sarsa_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_rl_sarsa_model_fill(s : MlrlsarsaModel, v : Double) -> MlrlsarsaModel 
   result
 }
 
-pub fn ml_rl_sarsa_model_min(s : MlrlsarsaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_model_min(s : MlrlsarsaModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_model_max(s : MlrlsarsaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_model_max(s : MlrlsarsaModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_model_to_string(s : MlrlsarsaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_rl_sarsa_layer_set(s : MlrlsarsaLayer, i : Int, v : Double) -> Mlrlsar
   result
 }
 
-pub fn ml_rl_sarsa_layer_sum(s : MlrlsarsaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_layer_sum(s : MlrlsarsaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_layer_mean(s : MlrlsarsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_layer_mean(s : MlrlsarsaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_layer_scale(s : MlrlsarsaLayer, f : Double) -> MlrlsarsaLayer {
   let result = ml_rl_sarsa_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_rl_sarsa_layer_fill(s : MlrlsarsaLayer, v : Double) -> MlrlsarsaLayer 
   result
 }
 
-pub fn ml_rl_sarsa_layer_min(s : MlrlsarsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_layer_min(s : MlrlsarsaLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_layer_max(s : MlrlsarsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_layer_max(s : MlrlsarsaLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_layer_to_string(s : MlrlsarsaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_rl_sarsa_buffer_set(s : MlrlsarsaBuffer, i : Int, v : Double) -> Mlrls
   result
 }
 
-pub fn ml_rl_sarsa_buffer_sum(s : MlrlsarsaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_buffer_sum(s : MlrlsarsaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_buffer_mean(s : MlrlsarsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_buffer_mean(s : MlrlsarsaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_buffer_scale(s : MlrlsarsaBuffer, f : Double) -> MlrlsarsaBuffer {
   let result = ml_rl_sarsa_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_rl_sarsa_buffer_fill(s : MlrlsarsaBuffer, v : Double) -> MlrlsarsaBuff
   result
 }
 
-pub fn ml_rl_sarsa_buffer_min(s : MlrlsarsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_buffer_min(s : MlrlsarsaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_buffer_max(s : MlrlsarsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_buffer_max(s : MlrlsarsaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_buffer_to_string(s : MlrlsarsaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_rl_sarsa_cursor_set(s : MlrlsarsaCursor, i : Int, v : Double) -> Mlrls
   result
 }
 
-pub fn ml_rl_sarsa_cursor_sum(s : MlrlsarsaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_cursor_sum(s : MlrlsarsaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_cursor_mean(s : MlrlsarsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_cursor_mean(s : MlrlsarsaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_cursor_scale(s : MlrlsarsaCursor, f : Double) -> MlrlsarsaCursor {
   let result = ml_rl_sarsa_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_rl_sarsa_cursor_fill(s : MlrlsarsaCursor, v : Double) -> MlrlsarsaCurs
   result
 }
 
-pub fn ml_rl_sarsa_cursor_min(s : MlrlsarsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_cursor_min(s : MlrlsarsaCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_cursor_max(s : MlrlsarsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_cursor_max(s : MlrlsarsaCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_cursor_to_string(s : MlrlsarsaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_rl_sarsa_view_set(s : MlrlsarsaView, i : Int, v : Double) -> Mlrlsarsa
   result
 }
 
-pub fn ml_rl_sarsa_view_sum(s : MlrlsarsaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_view_sum(s : MlrlsarsaView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_view_mean(s : MlrlsarsaView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_view_mean(s : MlrlsarsaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_view_scale(s : MlrlsarsaView, f : Double) -> MlrlsarsaView {
   let result = ml_rl_sarsa_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_rl_sarsa_view_fill(s : MlrlsarsaView, v : Double) -> MlrlsarsaView {
   result
 }
 
-pub fn ml_rl_sarsa_view_min(s : MlrlsarsaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_view_min(s : MlrlsarsaView) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_view_max(s : MlrlsarsaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_view_max(s : MlrlsarsaView) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_view_to_string(s : MlrlsarsaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_rl_sarsa_range_set(s : MlrlsarsaRange, i : Int, v : Double) -> Mlrlsar
   result
 }
 
-pub fn ml_rl_sarsa_range_sum(s : MlrlsarsaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_range_sum(s : MlrlsarsaRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_range_mean(s : MlrlsarsaRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_range_mean(s : MlrlsarsaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_range_scale(s : MlrlsarsaRange, f : Double) -> MlrlsarsaRange {
   let result = ml_rl_sarsa_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_rl_sarsa_range_fill(s : MlrlsarsaRange, v : Double) -> MlrlsarsaRange 
   result
 }
 
-pub fn ml_rl_sarsa_range_min(s : MlrlsarsaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_range_min(s : MlrlsarsaRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_range_max(s : MlrlsarsaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_range_max(s : MlrlsarsaRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_range_to_string(s : MlrlsarsaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_rl_sarsa_slice_set(s : MlrlsarsaSlice, i : Int, v : Double) -> Mlrlsar
   result
 }
 
-pub fn ml_rl_sarsa_slice_sum(s : MlrlsarsaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_sarsa_slice_sum(s : MlrlsarsaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_sarsa_slice_mean(s : MlrlsarsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_sarsa_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_sarsa_slice_mean(s : MlrlsarsaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_sarsa_slice_scale(s : MlrlsarsaSlice, f : Double) -> MlrlsarsaSlice {
   let result = ml_rl_sarsa_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_rl_sarsa_slice_fill(s : MlrlsarsaSlice, v : Double) -> MlrlsarsaSlice 
   result
 }
 
-pub fn ml_rl_sarsa_slice_min(s : MlrlsarsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_slice_min(s : MlrlsarsaSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_sarsa_slice_max(s : MlrlsarsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_sarsa_slice_max(s : MlrlsarsaSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_sarsa_slice_to_string(s : MlrlsarsaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

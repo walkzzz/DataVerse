@@ -88,11 +88,7 @@ pub fn ds_heap_interval_make_series(vals : Array[Double], name : String) -> Dshe
 
 pub fn ds_heap_interval_series_len(s : DsheapintervalSeries) -> Int { s.vals.length() }
 
-pub fn ds_heap_interval_series_sum(s : DsheapintervalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_heap_interval_series_sum(s : DsheapintervalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_heap_interval_series_mean(s : DsheapintervalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_heap_interval_frame_set(s : DsheapintervalFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_interval_frame_sum(s : DsheapintervalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_frame_sum(s : DsheapintervalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_frame_mean(s : DsheapintervalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_frame_mean(s : DsheapintervalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_frame_scale(s : DsheapintervalFrame, f : Double) -> DsheapintervalFrame {
   let result = ds_heap_interval_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_heap_interval_frame_fill(s : DsheapintervalFrame, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_interval_frame_min(s : DsheapintervalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_frame_min(s : DsheapintervalFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_frame_max(s : DsheapintervalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_frame_max(s : DsheapintervalFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_frame_to_string(s : DsheapintervalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_heap_interval_table_set(s : DsheapintervalTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_interval_table_sum(s : DsheapintervalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_table_sum(s : DsheapintervalTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_table_mean(s : DsheapintervalTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_table_mean(s : DsheapintervalTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_table_scale(s : DsheapintervalTable, f : Double) -> DsheapintervalTable {
   let result = ds_heap_interval_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_heap_interval_table_fill(s : DsheapintervalTable, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_interval_table_min(s : DsheapintervalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_table_min(s : DsheapintervalTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_table_max(s : DsheapintervalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_table_max(s : DsheapintervalTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_table_to_string(s : DsheapintervalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_heap_interval_graphn_set(s : DsheapintervalGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_heap_interval_graphn_sum(s : DsheapintervalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_graphn_sum(s : DsheapintervalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_graphn_mean(s : DsheapintervalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_graphn_mean(s : DsheapintervalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_graphn_scale(s : DsheapintervalGraphN, f : Double) -> DsheapintervalGraphN {
   let result = ds_heap_interval_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_heap_interval_graphn_fill(s : DsheapintervalGraphN, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_interval_graphn_min(s : DsheapintervalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_graphn_min(s : DsheapintervalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_graphn_max(s : DsheapintervalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_graphn_max(s : DsheapintervalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_graphn_to_string(s : DsheapintervalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_heap_interval_node_set(s : DsheapintervalNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_interval_node_sum(s : DsheapintervalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_node_sum(s : DsheapintervalNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_node_mean(s : DsheapintervalNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_node_mean(s : DsheapintervalNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_node_scale(s : DsheapintervalNode, f : Double) -> DsheapintervalNode {
   let result = ds_heap_interval_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_heap_interval_node_fill(s : DsheapintervalNode, v : Double) -> Dsheapi
   result
 }
 
-pub fn ds_heap_interval_node_min(s : DsheapintervalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_node_min(s : DsheapintervalNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_node_max(s : DsheapintervalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_node_max(s : DsheapintervalNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_node_to_string(s : DsheapintervalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_heap_interval_edge_set(s : DsheapintervalEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_interval_edge_sum(s : DsheapintervalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_edge_sum(s : DsheapintervalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_edge_mean(s : DsheapintervalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_edge_mean(s : DsheapintervalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_edge_scale(s : DsheapintervalEdge, f : Double) -> DsheapintervalEdge {
   let result = ds_heap_interval_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_heap_interval_edge_fill(s : DsheapintervalEdge, v : Double) -> Dsheapi
   result
 }
 
-pub fn ds_heap_interval_edge_min(s : DsheapintervalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_edge_min(s : DsheapintervalEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_edge_max(s : DsheapintervalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_edge_max(s : DsheapintervalEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_edge_to_string(s : DsheapintervalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_heap_interval_path_set(s : DsheapintervalPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_interval_path_sum(s : DsheapintervalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_path_sum(s : DsheapintervalPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_path_mean(s : DsheapintervalPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_path_mean(s : DsheapintervalPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_path_scale(s : DsheapintervalPath, f : Double) -> DsheapintervalPath {
   let result = ds_heap_interval_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_heap_interval_path_fill(s : DsheapintervalPath, v : Double) -> Dsheapi
   result
 }
 
-pub fn ds_heap_interval_path_min(s : DsheapintervalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_path_min(s : DsheapintervalPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_path_max(s : DsheapintervalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_path_max(s : DsheapintervalPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_path_to_string(s : DsheapintervalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_heap_interval_cluster_set(s : DsheapintervalCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_heap_interval_cluster_sum(s : DsheapintervalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_cluster_sum(s : DsheapintervalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_cluster_mean(s : DsheapintervalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_cluster_mean(s : DsheapintervalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_cluster_scale(s : DsheapintervalCluster, f : Double) -> DsheapintervalCluster {
   let result = ds_heap_interval_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_heap_interval_cluster_fill(s : DsheapintervalCluster, v : Double) -> D
   result
 }
 
-pub fn ds_heap_interval_cluster_min(s : DsheapintervalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_cluster_min(s : DsheapintervalCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_cluster_max(s : DsheapintervalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_cluster_max(s : DsheapintervalCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_cluster_to_string(s : DsheapintervalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_heap_interval_model_set(s : DsheapintervalModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_interval_model_sum(s : DsheapintervalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_model_sum(s : DsheapintervalModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_model_mean(s : DsheapintervalModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_model_mean(s : DsheapintervalModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_model_scale(s : DsheapintervalModel, f : Double) -> DsheapintervalModel {
   let result = ds_heap_interval_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_heap_interval_model_fill(s : DsheapintervalModel, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_interval_model_min(s : DsheapintervalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_model_min(s : DsheapintervalModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_model_max(s : DsheapintervalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_model_max(s : DsheapintervalModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_model_to_string(s : DsheapintervalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_heap_interval_layer_set(s : DsheapintervalLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_interval_layer_sum(s : DsheapintervalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_layer_sum(s : DsheapintervalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_layer_mean(s : DsheapintervalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_layer_mean(s : DsheapintervalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_layer_scale(s : DsheapintervalLayer, f : Double) -> DsheapintervalLayer {
   let result = ds_heap_interval_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_heap_interval_layer_fill(s : DsheapintervalLayer, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_interval_layer_min(s : DsheapintervalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_layer_min(s : DsheapintervalLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_layer_max(s : DsheapintervalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_layer_max(s : DsheapintervalLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_layer_to_string(s : DsheapintervalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_heap_interval_buffer_set(s : DsheapintervalBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_heap_interval_buffer_sum(s : DsheapintervalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_buffer_sum(s : DsheapintervalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_buffer_mean(s : DsheapintervalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_buffer_mean(s : DsheapintervalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_buffer_scale(s : DsheapintervalBuffer, f : Double) -> DsheapintervalBuffer {
   let result = ds_heap_interval_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_heap_interval_buffer_fill(s : DsheapintervalBuffer, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_interval_buffer_min(s : DsheapintervalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_buffer_min(s : DsheapintervalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_buffer_max(s : DsheapintervalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_buffer_max(s : DsheapintervalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_buffer_to_string(s : DsheapintervalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_heap_interval_cursor_set(s : DsheapintervalCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_heap_interval_cursor_sum(s : DsheapintervalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_cursor_sum(s : DsheapintervalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_cursor_mean(s : DsheapintervalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_cursor_mean(s : DsheapintervalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_cursor_scale(s : DsheapintervalCursor, f : Double) -> DsheapintervalCursor {
   let result = ds_heap_interval_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_heap_interval_cursor_fill(s : DsheapintervalCursor, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_interval_cursor_min(s : DsheapintervalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_cursor_min(s : DsheapintervalCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_cursor_max(s : DsheapintervalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_cursor_max(s : DsheapintervalCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_cursor_to_string(s : DsheapintervalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_heap_interval_view_set(s : DsheapintervalView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_interval_view_sum(s : DsheapintervalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_view_sum(s : DsheapintervalView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_view_mean(s : DsheapintervalView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_view_mean(s : DsheapintervalView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_view_scale(s : DsheapintervalView, f : Double) -> DsheapintervalView {
   let result = ds_heap_interval_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_heap_interval_view_fill(s : DsheapintervalView, v : Double) -> Dsheapi
   result
 }
 
-pub fn ds_heap_interval_view_min(s : DsheapintervalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_view_min(s : DsheapintervalView) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_view_max(s : DsheapintervalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_view_max(s : DsheapintervalView) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_view_to_string(s : DsheapintervalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_heap_interval_range_set(s : DsheapintervalRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_interval_range_sum(s : DsheapintervalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_range_sum(s : DsheapintervalRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_range_mean(s : DsheapintervalRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_range_mean(s : DsheapintervalRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_range_scale(s : DsheapintervalRange, f : Double) -> DsheapintervalRange {
   let result = ds_heap_interval_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_heap_interval_range_fill(s : DsheapintervalRange, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_interval_range_min(s : DsheapintervalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_range_min(s : DsheapintervalRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_range_max(s : DsheapintervalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_range_max(s : DsheapintervalRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_range_to_string(s : DsheapintervalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_heap_interval_slice_set(s : DsheapintervalSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_interval_slice_sum(s : DsheapintervalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_interval_slice_sum(s : DsheapintervalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_interval_slice_mean(s : DsheapintervalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_interval_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_interval_slice_mean(s : DsheapintervalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_interval_slice_scale(s : DsheapintervalSlice, f : Double) -> DsheapintervalSlice {
   let result = ds_heap_interval_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_heap_interval_slice_fill(s : DsheapintervalSlice, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_interval_slice_min(s : DsheapintervalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_slice_min(s : DsheapintervalSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_interval_slice_max(s : DsheapintervalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_interval_slice_max(s : DsheapintervalSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_interval_slice_to_string(s : DsheapintervalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

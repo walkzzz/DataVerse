@@ -88,11 +88,7 @@ pub fn image_feature_harris_make_series(vals : Array[Double], name : String) -> 
 
 pub fn image_feature_harris_series_len(s : ImagefeatureharrisSeries) -> Int { s.vals.length() }
 
-pub fn image_feature_harris_series_sum(s : ImagefeatureharrisSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_feature_harris_series_sum(s : ImagefeatureharrisSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_feature_harris_series_mean(s : ImagefeatureharrisSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_feature_harris_frame_set(s : ImagefeatureharrisFrame, i : Int, v : 
   result
 }
 
-pub fn image_feature_harris_frame_sum(s : ImagefeatureharrisFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_frame_sum(s : ImagefeatureharrisFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_frame_mean(s : ImagefeatureharrisFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_frame_mean(s : ImagefeatureharrisFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_frame_scale(s : ImagefeatureharrisFrame, f : Double) -> ImagefeatureharrisFrame {
   let result = image_feature_harris_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_feature_harris_frame_fill(s : ImagefeatureharrisFrame, v : Double) 
   result
 }
 
-pub fn image_feature_harris_frame_min(s : ImagefeatureharrisFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_frame_min(s : ImagefeatureharrisFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_frame_max(s : ImagefeatureharrisFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_frame_max(s : ImagefeatureharrisFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_frame_to_string(s : ImagefeatureharrisFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_feature_harris_table_set(s : ImagefeatureharrisTable, i : Int, v : 
   result
 }
 
-pub fn image_feature_harris_table_sum(s : ImagefeatureharrisTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_table_sum(s : ImagefeatureharrisTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_table_mean(s : ImagefeatureharrisTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_table_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_table_mean(s : ImagefeatureharrisTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_table_scale(s : ImagefeatureharrisTable, f : Double) -> ImagefeatureharrisTable {
   let result = image_feature_harris_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_feature_harris_table_fill(s : ImagefeatureharrisTable, v : Double) 
   result
 }
 
-pub fn image_feature_harris_table_min(s : ImagefeatureharrisTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_table_min(s : ImagefeatureharrisTable) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_table_max(s : ImagefeatureharrisTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_table_max(s : ImagefeatureharrisTable) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_table_to_string(s : ImagefeatureharrisTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_feature_harris_graphn_set(s : ImagefeatureharrisGraphN, i : Int, v 
   result
 }
 
-pub fn image_feature_harris_graphn_sum(s : ImagefeatureharrisGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_graphn_sum(s : ImagefeatureharrisGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_graphn_mean(s : ImagefeatureharrisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_graphn_mean(s : ImagefeatureharrisGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_graphn_scale(s : ImagefeatureharrisGraphN, f : Double) -> ImagefeatureharrisGraphN {
   let result = image_feature_harris_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_feature_harris_graphn_fill(s : ImagefeatureharrisGraphN, v : Double
   result
 }
 
-pub fn image_feature_harris_graphn_min(s : ImagefeatureharrisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_graphn_min(s : ImagefeatureharrisGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_graphn_max(s : ImagefeatureharrisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_graphn_max(s : ImagefeatureharrisGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_graphn_to_string(s : ImagefeatureharrisGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_feature_harris_node_set(s : ImagefeatureharrisNode, i : Int, v : Do
   result
 }
 
-pub fn image_feature_harris_node_sum(s : ImagefeatureharrisNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_node_sum(s : ImagefeatureharrisNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_node_mean(s : ImagefeatureharrisNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_node_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_node_mean(s : ImagefeatureharrisNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_node_scale(s : ImagefeatureharrisNode, f : Double) -> ImagefeatureharrisNode {
   let result = image_feature_harris_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_feature_harris_node_fill(s : ImagefeatureharrisNode, v : Double) ->
   result
 }
 
-pub fn image_feature_harris_node_min(s : ImagefeatureharrisNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_node_min(s : ImagefeatureharrisNode) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_node_max(s : ImagefeatureharrisNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_node_max(s : ImagefeatureharrisNode) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_node_to_string(s : ImagefeatureharrisNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_feature_harris_edge_set(s : ImagefeatureharrisEdge, i : Int, v : Do
   result
 }
 
-pub fn image_feature_harris_edge_sum(s : ImagefeatureharrisEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_edge_sum(s : ImagefeatureharrisEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_edge_mean(s : ImagefeatureharrisEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_edge_mean(s : ImagefeatureharrisEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_edge_scale(s : ImagefeatureharrisEdge, f : Double) -> ImagefeatureharrisEdge {
   let result = image_feature_harris_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_feature_harris_edge_fill(s : ImagefeatureharrisEdge, v : Double) ->
   result
 }
 
-pub fn image_feature_harris_edge_min(s : ImagefeatureharrisEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_edge_min(s : ImagefeatureharrisEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_edge_max(s : ImagefeatureharrisEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_edge_max(s : ImagefeatureharrisEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_edge_to_string(s : ImagefeatureharrisEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_feature_harris_path_set(s : ImagefeatureharrisPath, i : Int, v : Do
   result
 }
 
-pub fn image_feature_harris_path_sum(s : ImagefeatureharrisPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_path_sum(s : ImagefeatureharrisPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_path_mean(s : ImagefeatureharrisPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_path_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_path_mean(s : ImagefeatureharrisPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_path_scale(s : ImagefeatureharrisPath, f : Double) -> ImagefeatureharrisPath {
   let result = image_feature_harris_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_feature_harris_path_fill(s : ImagefeatureharrisPath, v : Double) ->
   result
 }
 
-pub fn image_feature_harris_path_min(s : ImagefeatureharrisPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_path_min(s : ImagefeatureharrisPath) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_path_max(s : ImagefeatureharrisPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_path_max(s : ImagefeatureharrisPath) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_path_to_string(s : ImagefeatureharrisPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_feature_harris_cluster_set(s : ImagefeatureharrisCluster, i : Int, 
   result
 }
 
-pub fn image_feature_harris_cluster_sum(s : ImagefeatureharrisCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_cluster_sum(s : ImagefeatureharrisCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_cluster_mean(s : ImagefeatureharrisCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_cluster_mean(s : ImagefeatureharrisCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_cluster_scale(s : ImagefeatureharrisCluster, f : Double) -> ImagefeatureharrisCluster {
   let result = image_feature_harris_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_feature_harris_cluster_fill(s : ImagefeatureharrisCluster, v : Doub
   result
 }
 
-pub fn image_feature_harris_cluster_min(s : ImagefeatureharrisCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_cluster_min(s : ImagefeatureharrisCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_cluster_max(s : ImagefeatureharrisCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_cluster_max(s : ImagefeatureharrisCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_cluster_to_string(s : ImagefeatureharrisCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_feature_harris_model_set(s : ImagefeatureharrisModel, i : Int, v : 
   result
 }
 
-pub fn image_feature_harris_model_sum(s : ImagefeatureharrisModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_model_sum(s : ImagefeatureharrisModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_model_mean(s : ImagefeatureharrisModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_model_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_model_mean(s : ImagefeatureharrisModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_model_scale(s : ImagefeatureharrisModel, f : Double) -> ImagefeatureharrisModel {
   let result = image_feature_harris_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_feature_harris_model_fill(s : ImagefeatureharrisModel, v : Double) 
   result
 }
 
-pub fn image_feature_harris_model_min(s : ImagefeatureharrisModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_model_min(s : ImagefeatureharrisModel) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_model_max(s : ImagefeatureharrisModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_model_max(s : ImagefeatureharrisModel) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_model_to_string(s : ImagefeatureharrisModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_feature_harris_layer_set(s : ImagefeatureharrisLayer, i : Int, v : 
   result
 }
 
-pub fn image_feature_harris_layer_sum(s : ImagefeatureharrisLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_layer_sum(s : ImagefeatureharrisLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_layer_mean(s : ImagefeatureharrisLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_layer_mean(s : ImagefeatureharrisLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_layer_scale(s : ImagefeatureharrisLayer, f : Double) -> ImagefeatureharrisLayer {
   let result = image_feature_harris_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_feature_harris_layer_fill(s : ImagefeatureharrisLayer, v : Double) 
   result
 }
 
-pub fn image_feature_harris_layer_min(s : ImagefeatureharrisLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_layer_min(s : ImagefeatureharrisLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_layer_max(s : ImagefeatureharrisLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_layer_max(s : ImagefeatureharrisLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_layer_to_string(s : ImagefeatureharrisLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_feature_harris_buffer_set(s : ImagefeatureharrisBuffer, i : Int, v 
   result
 }
 
-pub fn image_feature_harris_buffer_sum(s : ImagefeatureharrisBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_buffer_sum(s : ImagefeatureharrisBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_buffer_mean(s : ImagefeatureharrisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_buffer_mean(s : ImagefeatureharrisBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_buffer_scale(s : ImagefeatureharrisBuffer, f : Double) -> ImagefeatureharrisBuffer {
   let result = image_feature_harris_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_feature_harris_buffer_fill(s : ImagefeatureharrisBuffer, v : Double
   result
 }
 
-pub fn image_feature_harris_buffer_min(s : ImagefeatureharrisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_buffer_min(s : ImagefeatureharrisBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_buffer_max(s : ImagefeatureharrisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_buffer_max(s : ImagefeatureharrisBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_buffer_to_string(s : ImagefeatureharrisBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_feature_harris_cursor_set(s : ImagefeatureharrisCursor, i : Int, v 
   result
 }
 
-pub fn image_feature_harris_cursor_sum(s : ImagefeatureharrisCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_cursor_sum(s : ImagefeatureharrisCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_cursor_mean(s : ImagefeatureharrisCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_cursor_mean(s : ImagefeatureharrisCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_cursor_scale(s : ImagefeatureharrisCursor, f : Double) -> ImagefeatureharrisCursor {
   let result = image_feature_harris_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_feature_harris_cursor_fill(s : ImagefeatureharrisCursor, v : Double
   result
 }
 
-pub fn image_feature_harris_cursor_min(s : ImagefeatureharrisCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_cursor_min(s : ImagefeatureharrisCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_cursor_max(s : ImagefeatureharrisCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_cursor_max(s : ImagefeatureharrisCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_cursor_to_string(s : ImagefeatureharrisCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_feature_harris_view_set(s : ImagefeatureharrisView, i : Int, v : Do
   result
 }
 
-pub fn image_feature_harris_view_sum(s : ImagefeatureharrisView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_view_sum(s : ImagefeatureharrisView) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_view_mean(s : ImagefeatureharrisView) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_view_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_view_mean(s : ImagefeatureharrisView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_view_scale(s : ImagefeatureharrisView, f : Double) -> ImagefeatureharrisView {
   let result = image_feature_harris_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_feature_harris_view_fill(s : ImagefeatureharrisView, v : Double) ->
   result
 }
 
-pub fn image_feature_harris_view_min(s : ImagefeatureharrisView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_view_min(s : ImagefeatureharrisView) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_view_max(s : ImagefeatureharrisView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_view_max(s : ImagefeatureharrisView) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_view_to_string(s : ImagefeatureharrisView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_feature_harris_range_set(s : ImagefeatureharrisRange, i : Int, v : 
   result
 }
 
-pub fn image_feature_harris_range_sum(s : ImagefeatureharrisRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_range_sum(s : ImagefeatureharrisRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_range_mean(s : ImagefeatureharrisRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_range_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_range_mean(s : ImagefeatureharrisRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_range_scale(s : ImagefeatureharrisRange, f : Double) -> ImagefeatureharrisRange {
   let result = image_feature_harris_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_feature_harris_range_fill(s : ImagefeatureharrisRange, v : Double) 
   result
 }
 
-pub fn image_feature_harris_range_min(s : ImagefeatureharrisRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_range_min(s : ImagefeatureharrisRange) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_range_max(s : ImagefeatureharrisRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_range_max(s : ImagefeatureharrisRange) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_range_to_string(s : ImagefeatureharrisRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_feature_harris_slice_set(s : ImagefeatureharrisSlice, i : Int, v : 
   result
 }
 
-pub fn image_feature_harris_slice_sum(s : ImagefeatureharrisSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_harris_slice_sum(s : ImagefeatureharrisSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_harris_slice_mean(s : ImagefeatureharrisSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_harris_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_harris_slice_mean(s : ImagefeatureharrisSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_harris_slice_scale(s : ImagefeatureharrisSlice, f : Double) -> ImagefeatureharrisSlice {
   let result = image_feature_harris_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_feature_harris_slice_fill(s : ImagefeatureharrisSlice, v : Double) 
   result
 }
 
-pub fn image_feature_harris_slice_min(s : ImagefeatureharrisSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_slice_min(s : ImagefeatureharrisSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_harris_slice_max(s : ImagefeatureharrisSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_harris_slice_max(s : ImagefeatureharrisSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_harris_slice_to_string(s : ImagefeatureharrisSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

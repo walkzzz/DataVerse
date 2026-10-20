@@ -88,11 +88,7 @@ pub fn stats_dist_student_make_series(vals : Array[Double], name : String) -> St
 
 pub fn stats_dist_student_series_len(s : StatsdiststudentSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_student_series_sum(s : StatsdiststudentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_student_series_sum(s : StatsdiststudentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_student_series_mean(s : StatsdiststudentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_student_frame_set(s : StatsdiststudentFrame, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_student_frame_sum(s : StatsdiststudentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_frame_sum(s : StatsdiststudentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_frame_mean(s : StatsdiststudentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_frame_mean(s : StatsdiststudentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_frame_scale(s : StatsdiststudentFrame, f : Double) -> StatsdiststudentFrame {
   let result = stats_dist_student_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_student_frame_fill(s : StatsdiststudentFrame, v : Double) -> S
   result
 }
 
-pub fn stats_dist_student_frame_min(s : StatsdiststudentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_frame_min(s : StatsdiststudentFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_frame_max(s : StatsdiststudentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_frame_max(s : StatsdiststudentFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_frame_to_string(s : StatsdiststudentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_student_table_set(s : StatsdiststudentTable, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_student_table_sum(s : StatsdiststudentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_table_sum(s : StatsdiststudentTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_table_mean(s : StatsdiststudentTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_table_mean(s : StatsdiststudentTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_table_scale(s : StatsdiststudentTable, f : Double) -> StatsdiststudentTable {
   let result = stats_dist_student_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_student_table_fill(s : StatsdiststudentTable, v : Double) -> S
   result
 }
 
-pub fn stats_dist_student_table_min(s : StatsdiststudentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_table_min(s : StatsdiststudentTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_table_max(s : StatsdiststudentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_table_max(s : StatsdiststudentTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_table_to_string(s : StatsdiststudentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_student_graphn_set(s : StatsdiststudentGraphN, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_student_graphn_sum(s : StatsdiststudentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_graphn_sum(s : StatsdiststudentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_graphn_mean(s : StatsdiststudentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_graphn_mean(s : StatsdiststudentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_graphn_scale(s : StatsdiststudentGraphN, f : Double) -> StatsdiststudentGraphN {
   let result = stats_dist_student_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_student_graphn_fill(s : StatsdiststudentGraphN, v : Double) ->
   result
 }
 
-pub fn stats_dist_student_graphn_min(s : StatsdiststudentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_graphn_min(s : StatsdiststudentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_graphn_max(s : StatsdiststudentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_graphn_max(s : StatsdiststudentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_graphn_to_string(s : StatsdiststudentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_student_node_set(s : StatsdiststudentNode, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_student_node_sum(s : StatsdiststudentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_node_sum(s : StatsdiststudentNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_node_mean(s : StatsdiststudentNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_node_mean(s : StatsdiststudentNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_node_scale(s : StatsdiststudentNode, f : Double) -> StatsdiststudentNode {
   let result = stats_dist_student_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_student_node_fill(s : StatsdiststudentNode, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_student_node_min(s : StatsdiststudentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_node_min(s : StatsdiststudentNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_node_max(s : StatsdiststudentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_node_max(s : StatsdiststudentNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_node_to_string(s : StatsdiststudentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_student_edge_set(s : StatsdiststudentEdge, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_student_edge_sum(s : StatsdiststudentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_edge_sum(s : StatsdiststudentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_edge_mean(s : StatsdiststudentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_edge_mean(s : StatsdiststudentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_edge_scale(s : StatsdiststudentEdge, f : Double) -> StatsdiststudentEdge {
   let result = stats_dist_student_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_student_edge_fill(s : StatsdiststudentEdge, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_student_edge_min(s : StatsdiststudentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_edge_min(s : StatsdiststudentEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_edge_max(s : StatsdiststudentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_edge_max(s : StatsdiststudentEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_edge_to_string(s : StatsdiststudentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_student_path_set(s : StatsdiststudentPath, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_student_path_sum(s : StatsdiststudentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_path_sum(s : StatsdiststudentPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_path_mean(s : StatsdiststudentPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_path_mean(s : StatsdiststudentPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_path_scale(s : StatsdiststudentPath, f : Double) -> StatsdiststudentPath {
   let result = stats_dist_student_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_student_path_fill(s : StatsdiststudentPath, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_student_path_min(s : StatsdiststudentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_path_min(s : StatsdiststudentPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_path_max(s : StatsdiststudentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_path_max(s : StatsdiststudentPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_path_to_string(s : StatsdiststudentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_student_cluster_set(s : StatsdiststudentCluster, i : Int, v : 
   result
 }
 
-pub fn stats_dist_student_cluster_sum(s : StatsdiststudentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_cluster_sum(s : StatsdiststudentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_cluster_mean(s : StatsdiststudentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_cluster_mean(s : StatsdiststudentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_cluster_scale(s : StatsdiststudentCluster, f : Double) -> StatsdiststudentCluster {
   let result = stats_dist_student_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_student_cluster_fill(s : StatsdiststudentCluster, v : Double) 
   result
 }
 
-pub fn stats_dist_student_cluster_min(s : StatsdiststudentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_cluster_min(s : StatsdiststudentCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_cluster_max(s : StatsdiststudentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_cluster_max(s : StatsdiststudentCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_cluster_to_string(s : StatsdiststudentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_student_model_set(s : StatsdiststudentModel, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_student_model_sum(s : StatsdiststudentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_model_sum(s : StatsdiststudentModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_model_mean(s : StatsdiststudentModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_model_mean(s : StatsdiststudentModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_model_scale(s : StatsdiststudentModel, f : Double) -> StatsdiststudentModel {
   let result = stats_dist_student_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_student_model_fill(s : StatsdiststudentModel, v : Double) -> S
   result
 }
 
-pub fn stats_dist_student_model_min(s : StatsdiststudentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_model_min(s : StatsdiststudentModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_model_max(s : StatsdiststudentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_model_max(s : StatsdiststudentModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_model_to_string(s : StatsdiststudentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_student_layer_set(s : StatsdiststudentLayer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_student_layer_sum(s : StatsdiststudentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_layer_sum(s : StatsdiststudentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_layer_mean(s : StatsdiststudentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_layer_mean(s : StatsdiststudentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_layer_scale(s : StatsdiststudentLayer, f : Double) -> StatsdiststudentLayer {
   let result = stats_dist_student_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_student_layer_fill(s : StatsdiststudentLayer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_student_layer_min(s : StatsdiststudentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_layer_min(s : StatsdiststudentLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_layer_max(s : StatsdiststudentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_layer_max(s : StatsdiststudentLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_layer_to_string(s : StatsdiststudentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_student_buffer_set(s : StatsdiststudentBuffer, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_student_buffer_sum(s : StatsdiststudentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_buffer_sum(s : StatsdiststudentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_buffer_mean(s : StatsdiststudentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_buffer_mean(s : StatsdiststudentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_buffer_scale(s : StatsdiststudentBuffer, f : Double) -> StatsdiststudentBuffer {
   let result = stats_dist_student_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_student_buffer_fill(s : StatsdiststudentBuffer, v : Double) ->
   result
 }
 
-pub fn stats_dist_student_buffer_min(s : StatsdiststudentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_buffer_min(s : StatsdiststudentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_buffer_max(s : StatsdiststudentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_buffer_max(s : StatsdiststudentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_buffer_to_string(s : StatsdiststudentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_student_cursor_set(s : StatsdiststudentCursor, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_student_cursor_sum(s : StatsdiststudentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_cursor_sum(s : StatsdiststudentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_cursor_mean(s : StatsdiststudentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_cursor_mean(s : StatsdiststudentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_cursor_scale(s : StatsdiststudentCursor, f : Double) -> StatsdiststudentCursor {
   let result = stats_dist_student_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_student_cursor_fill(s : StatsdiststudentCursor, v : Double) ->
   result
 }
 
-pub fn stats_dist_student_cursor_min(s : StatsdiststudentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_cursor_min(s : StatsdiststudentCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_cursor_max(s : StatsdiststudentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_cursor_max(s : StatsdiststudentCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_cursor_to_string(s : StatsdiststudentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_student_view_set(s : StatsdiststudentView, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_student_view_sum(s : StatsdiststudentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_view_sum(s : StatsdiststudentView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_view_mean(s : StatsdiststudentView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_view_mean(s : StatsdiststudentView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_view_scale(s : StatsdiststudentView, f : Double) -> StatsdiststudentView {
   let result = stats_dist_student_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_student_view_fill(s : StatsdiststudentView, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_student_view_min(s : StatsdiststudentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_view_min(s : StatsdiststudentView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_view_max(s : StatsdiststudentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_view_max(s : StatsdiststudentView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_view_to_string(s : StatsdiststudentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_student_range_set(s : StatsdiststudentRange, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_student_range_sum(s : StatsdiststudentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_range_sum(s : StatsdiststudentRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_range_mean(s : StatsdiststudentRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_range_mean(s : StatsdiststudentRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_range_scale(s : StatsdiststudentRange, f : Double) -> StatsdiststudentRange {
   let result = stats_dist_student_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_student_range_fill(s : StatsdiststudentRange, v : Double) -> S
   result
 }
 
-pub fn stats_dist_student_range_min(s : StatsdiststudentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_range_min(s : StatsdiststudentRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_range_max(s : StatsdiststudentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_range_max(s : StatsdiststudentRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_range_to_string(s : StatsdiststudentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_student_slice_set(s : StatsdiststudentSlice, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_student_slice_sum(s : StatsdiststudentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_student_slice_sum(s : StatsdiststudentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_student_slice_mean(s : StatsdiststudentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_student_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_student_slice_mean(s : StatsdiststudentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_student_slice_scale(s : StatsdiststudentSlice, f : Double) -> StatsdiststudentSlice {
   let result = stats_dist_student_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_student_slice_fill(s : StatsdiststudentSlice, v : Double) -> S
   result
 }
 
-pub fn stats_dist_student_slice_min(s : StatsdiststudentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_slice_min(s : StatsdiststudentSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_student_slice_max(s : StatsdiststudentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_student_slice_max(s : StatsdiststudentSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_student_slice_to_string(s : StatsdiststudentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

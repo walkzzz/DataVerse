@@ -88,11 +88,7 @@ pub fn signal_window_hamming_make_series(vals : Array[Double], name : String) ->
 
 pub fn signal_window_hamming_series_len(s : SignalwindowhammingSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_hamming_series_sum(s : SignalwindowhammingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_hamming_series_sum(s : SignalwindowhammingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_hamming_series_mean(s : SignalwindowhammingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_hamming_frame_set(s : SignalwindowhammingFrame, i : Int, v 
   result
 }
 
-pub fn signal_window_hamming_frame_sum(s : SignalwindowhammingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_frame_sum(s : SignalwindowhammingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_frame_mean(s : SignalwindowhammingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_frame_mean(s : SignalwindowhammingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_frame_scale(s : SignalwindowhammingFrame, f : Double) -> SignalwindowhammingFrame {
   let result = signal_window_hamming_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_hamming_frame_fill(s : SignalwindowhammingFrame, v : Double
   result
 }
 
-pub fn signal_window_hamming_frame_min(s : SignalwindowhammingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_frame_min(s : SignalwindowhammingFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_frame_max(s : SignalwindowhammingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_frame_max(s : SignalwindowhammingFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_frame_to_string(s : SignalwindowhammingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_hamming_table_set(s : SignalwindowhammingTable, i : Int, v 
   result
 }
 
-pub fn signal_window_hamming_table_sum(s : SignalwindowhammingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_table_sum(s : SignalwindowhammingTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_table_mean(s : SignalwindowhammingTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_table_mean(s : SignalwindowhammingTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_table_scale(s : SignalwindowhammingTable, f : Double) -> SignalwindowhammingTable {
   let result = signal_window_hamming_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_hamming_table_fill(s : SignalwindowhammingTable, v : Double
   result
 }
 
-pub fn signal_window_hamming_table_min(s : SignalwindowhammingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_table_min(s : SignalwindowhammingTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_table_max(s : SignalwindowhammingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_table_max(s : SignalwindowhammingTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_table_to_string(s : SignalwindowhammingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_hamming_graphn_set(s : SignalwindowhammingGraphN, i : Int, 
   result
 }
 
-pub fn signal_window_hamming_graphn_sum(s : SignalwindowhammingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_graphn_sum(s : SignalwindowhammingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_graphn_mean(s : SignalwindowhammingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_graphn_mean(s : SignalwindowhammingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_graphn_scale(s : SignalwindowhammingGraphN, f : Double) -> SignalwindowhammingGraphN {
   let result = signal_window_hamming_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_hamming_graphn_fill(s : SignalwindowhammingGraphN, v : Doub
   result
 }
 
-pub fn signal_window_hamming_graphn_min(s : SignalwindowhammingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_graphn_min(s : SignalwindowhammingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_graphn_max(s : SignalwindowhammingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_graphn_max(s : SignalwindowhammingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_graphn_to_string(s : SignalwindowhammingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_hamming_node_set(s : SignalwindowhammingNode, i : Int, v : 
   result
 }
 
-pub fn signal_window_hamming_node_sum(s : SignalwindowhammingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_node_sum(s : SignalwindowhammingNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_node_mean(s : SignalwindowhammingNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_node_mean(s : SignalwindowhammingNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_node_scale(s : SignalwindowhammingNode, f : Double) -> SignalwindowhammingNode {
   let result = signal_window_hamming_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_hamming_node_fill(s : SignalwindowhammingNode, v : Double) 
   result
 }
 
-pub fn signal_window_hamming_node_min(s : SignalwindowhammingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_node_min(s : SignalwindowhammingNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_node_max(s : SignalwindowhammingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_node_max(s : SignalwindowhammingNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_node_to_string(s : SignalwindowhammingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_hamming_edge_set(s : SignalwindowhammingEdge, i : Int, v : 
   result
 }
 
-pub fn signal_window_hamming_edge_sum(s : SignalwindowhammingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_edge_sum(s : SignalwindowhammingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_edge_mean(s : SignalwindowhammingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_edge_mean(s : SignalwindowhammingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_edge_scale(s : SignalwindowhammingEdge, f : Double) -> SignalwindowhammingEdge {
   let result = signal_window_hamming_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_hamming_edge_fill(s : SignalwindowhammingEdge, v : Double) 
   result
 }
 
-pub fn signal_window_hamming_edge_min(s : SignalwindowhammingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_edge_min(s : SignalwindowhammingEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_edge_max(s : SignalwindowhammingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_edge_max(s : SignalwindowhammingEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_edge_to_string(s : SignalwindowhammingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_hamming_path_set(s : SignalwindowhammingPath, i : Int, v : 
   result
 }
 
-pub fn signal_window_hamming_path_sum(s : SignalwindowhammingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_path_sum(s : SignalwindowhammingPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_path_mean(s : SignalwindowhammingPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_path_mean(s : SignalwindowhammingPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_path_scale(s : SignalwindowhammingPath, f : Double) -> SignalwindowhammingPath {
   let result = signal_window_hamming_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_hamming_path_fill(s : SignalwindowhammingPath, v : Double) 
   result
 }
 
-pub fn signal_window_hamming_path_min(s : SignalwindowhammingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_path_min(s : SignalwindowhammingPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_path_max(s : SignalwindowhammingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_path_max(s : SignalwindowhammingPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_path_to_string(s : SignalwindowhammingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_hamming_cluster_set(s : SignalwindowhammingCluster, i : Int
   result
 }
 
-pub fn signal_window_hamming_cluster_sum(s : SignalwindowhammingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_cluster_sum(s : SignalwindowhammingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_cluster_mean(s : SignalwindowhammingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_cluster_mean(s : SignalwindowhammingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_cluster_scale(s : SignalwindowhammingCluster, f : Double) -> SignalwindowhammingCluster {
   let result = signal_window_hamming_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_hamming_cluster_fill(s : SignalwindowhammingCluster, v : Do
   result
 }
 
-pub fn signal_window_hamming_cluster_min(s : SignalwindowhammingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_cluster_min(s : SignalwindowhammingCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_cluster_max(s : SignalwindowhammingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_cluster_max(s : SignalwindowhammingCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_cluster_to_string(s : SignalwindowhammingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_hamming_model_set(s : SignalwindowhammingModel, i : Int, v 
   result
 }
 
-pub fn signal_window_hamming_model_sum(s : SignalwindowhammingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_model_sum(s : SignalwindowhammingModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_model_mean(s : SignalwindowhammingModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_model_mean(s : SignalwindowhammingModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_model_scale(s : SignalwindowhammingModel, f : Double) -> SignalwindowhammingModel {
   let result = signal_window_hamming_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_hamming_model_fill(s : SignalwindowhammingModel, v : Double
   result
 }
 
-pub fn signal_window_hamming_model_min(s : SignalwindowhammingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_model_min(s : SignalwindowhammingModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_model_max(s : SignalwindowhammingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_model_max(s : SignalwindowhammingModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_model_to_string(s : SignalwindowhammingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_hamming_layer_set(s : SignalwindowhammingLayer, i : Int, v 
   result
 }
 
-pub fn signal_window_hamming_layer_sum(s : SignalwindowhammingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_layer_sum(s : SignalwindowhammingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_layer_mean(s : SignalwindowhammingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_layer_mean(s : SignalwindowhammingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_layer_scale(s : SignalwindowhammingLayer, f : Double) -> SignalwindowhammingLayer {
   let result = signal_window_hamming_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_hamming_layer_fill(s : SignalwindowhammingLayer, v : Double
   result
 }
 
-pub fn signal_window_hamming_layer_min(s : SignalwindowhammingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_layer_min(s : SignalwindowhammingLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_layer_max(s : SignalwindowhammingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_layer_max(s : SignalwindowhammingLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_layer_to_string(s : SignalwindowhammingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_hamming_buffer_set(s : SignalwindowhammingBuffer, i : Int, 
   result
 }
 
-pub fn signal_window_hamming_buffer_sum(s : SignalwindowhammingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_buffer_sum(s : SignalwindowhammingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_buffer_mean(s : SignalwindowhammingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_buffer_mean(s : SignalwindowhammingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_buffer_scale(s : SignalwindowhammingBuffer, f : Double) -> SignalwindowhammingBuffer {
   let result = signal_window_hamming_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_hamming_buffer_fill(s : SignalwindowhammingBuffer, v : Doub
   result
 }
 
-pub fn signal_window_hamming_buffer_min(s : SignalwindowhammingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_buffer_min(s : SignalwindowhammingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_buffer_max(s : SignalwindowhammingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_buffer_max(s : SignalwindowhammingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_buffer_to_string(s : SignalwindowhammingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_hamming_cursor_set(s : SignalwindowhammingCursor, i : Int, 
   result
 }
 
-pub fn signal_window_hamming_cursor_sum(s : SignalwindowhammingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_cursor_sum(s : SignalwindowhammingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_cursor_mean(s : SignalwindowhammingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_cursor_mean(s : SignalwindowhammingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_cursor_scale(s : SignalwindowhammingCursor, f : Double) -> SignalwindowhammingCursor {
   let result = signal_window_hamming_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_hamming_cursor_fill(s : SignalwindowhammingCursor, v : Doub
   result
 }
 
-pub fn signal_window_hamming_cursor_min(s : SignalwindowhammingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_cursor_min(s : SignalwindowhammingCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_cursor_max(s : SignalwindowhammingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_cursor_max(s : SignalwindowhammingCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_cursor_to_string(s : SignalwindowhammingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_hamming_view_set(s : SignalwindowhammingView, i : Int, v : 
   result
 }
 
-pub fn signal_window_hamming_view_sum(s : SignalwindowhammingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_view_sum(s : SignalwindowhammingView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_view_mean(s : SignalwindowhammingView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_view_mean(s : SignalwindowhammingView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_view_scale(s : SignalwindowhammingView, f : Double) -> SignalwindowhammingView {
   let result = signal_window_hamming_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_hamming_view_fill(s : SignalwindowhammingView, v : Double) 
   result
 }
 
-pub fn signal_window_hamming_view_min(s : SignalwindowhammingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_view_min(s : SignalwindowhammingView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_view_max(s : SignalwindowhammingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_view_max(s : SignalwindowhammingView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_view_to_string(s : SignalwindowhammingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_hamming_range_set(s : SignalwindowhammingRange, i : Int, v 
   result
 }
 
-pub fn signal_window_hamming_range_sum(s : SignalwindowhammingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_range_sum(s : SignalwindowhammingRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_range_mean(s : SignalwindowhammingRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_range_mean(s : SignalwindowhammingRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_range_scale(s : SignalwindowhammingRange, f : Double) -> SignalwindowhammingRange {
   let result = signal_window_hamming_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_hamming_range_fill(s : SignalwindowhammingRange, v : Double
   result
 }
 
-pub fn signal_window_hamming_range_min(s : SignalwindowhammingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_range_min(s : SignalwindowhammingRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_range_max(s : SignalwindowhammingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_range_max(s : SignalwindowhammingRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_range_to_string(s : SignalwindowhammingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_hamming_slice_set(s : SignalwindowhammingSlice, i : Int, v 
   result
 }
 
-pub fn signal_window_hamming_slice_sum(s : SignalwindowhammingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hamming_slice_sum(s : SignalwindowhammingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hamming_slice_mean(s : SignalwindowhammingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hamming_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hamming_slice_mean(s : SignalwindowhammingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hamming_slice_scale(s : SignalwindowhammingSlice, f : Double) -> SignalwindowhammingSlice {
   let result = signal_window_hamming_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_hamming_slice_fill(s : SignalwindowhammingSlice, v : Double
   result
 }
 
-pub fn signal_window_hamming_slice_min(s : SignalwindowhammingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_slice_min(s : SignalwindowhammingSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hamming_slice_max(s : SignalwindowhammingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hamming_slice_max(s : SignalwindowhammingSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hamming_slice_to_string(s : SignalwindowhammingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

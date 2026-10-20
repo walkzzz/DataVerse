@@ -88,11 +88,7 @@ pub fn graph_tree_mst_kruskal_make_series(vals : Array[Double], name : String) -
 
 pub fn graph_tree_mst_kruskal_series_len(s : GraphtreemstkruskalSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_mst_kruskal_series_sum(s : GraphtreemstkruskalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_series_sum(s : GraphtreemstkruskalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_mst_kruskal_series_mean(s : GraphtreemstkruskalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_mst_kruskal_frame_set(s : GraphtreemstkruskalFrame, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_kruskal_frame_sum(s : GraphtreemstkruskalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_frame_sum(s : GraphtreemstkruskalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_frame_mean(s : GraphtreemstkruskalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_frame_mean(s : GraphtreemstkruskalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_frame_scale(s : GraphtreemstkruskalFrame, f : Double) -> GraphtreemstkruskalFrame {
   let result = graph_tree_mst_kruskal_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_mst_kruskal_frame_fill(s : GraphtreemstkruskalFrame, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_kruskal_frame_min(s : GraphtreemstkruskalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_frame_min(s : GraphtreemstkruskalFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_frame_max(s : GraphtreemstkruskalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_frame_max(s : GraphtreemstkruskalFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_frame_to_string(s : GraphtreemstkruskalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_mst_kruskal_table_set(s : GraphtreemstkruskalTable, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_kruskal_table_sum(s : GraphtreemstkruskalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_table_sum(s : GraphtreemstkruskalTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_table_mean(s : GraphtreemstkruskalTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_table_mean(s : GraphtreemstkruskalTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_table_scale(s : GraphtreemstkruskalTable, f : Double) -> GraphtreemstkruskalTable {
   let result = graph_tree_mst_kruskal_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_mst_kruskal_table_fill(s : GraphtreemstkruskalTable, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_kruskal_table_min(s : GraphtreemstkruskalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_table_min(s : GraphtreemstkruskalTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_table_max(s : GraphtreemstkruskalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_table_max(s : GraphtreemstkruskalTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_table_to_string(s : GraphtreemstkruskalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_mst_kruskal_graphn_set(s : GraphtreemstkruskalGraphN, i : Int,
   result
 }
 
-pub fn graph_tree_mst_kruskal_graphn_sum(s : GraphtreemstkruskalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_graphn_sum(s : GraphtreemstkruskalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_graphn_mean(s : GraphtreemstkruskalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_graphn_mean(s : GraphtreemstkruskalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_graphn_scale(s : GraphtreemstkruskalGraphN, f : Double) -> GraphtreemstkruskalGraphN {
   let result = graph_tree_mst_kruskal_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_mst_kruskal_graphn_fill(s : GraphtreemstkruskalGraphN, v : Dou
   result
 }
 
-pub fn graph_tree_mst_kruskal_graphn_min(s : GraphtreemstkruskalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_graphn_min(s : GraphtreemstkruskalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_graphn_max(s : GraphtreemstkruskalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_graphn_max(s : GraphtreemstkruskalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_graphn_to_string(s : GraphtreemstkruskalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_mst_kruskal_node_set(s : GraphtreemstkruskalNode, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_kruskal_node_sum(s : GraphtreemstkruskalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_node_sum(s : GraphtreemstkruskalNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_node_mean(s : GraphtreemstkruskalNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_node_mean(s : GraphtreemstkruskalNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_node_scale(s : GraphtreemstkruskalNode, f : Double) -> GraphtreemstkruskalNode {
   let result = graph_tree_mst_kruskal_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_mst_kruskal_node_fill(s : GraphtreemstkruskalNode, v : Double)
   result
 }
 
-pub fn graph_tree_mst_kruskal_node_min(s : GraphtreemstkruskalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_node_min(s : GraphtreemstkruskalNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_node_max(s : GraphtreemstkruskalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_node_max(s : GraphtreemstkruskalNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_node_to_string(s : GraphtreemstkruskalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_mst_kruskal_edge_set(s : GraphtreemstkruskalEdge, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_kruskal_edge_sum(s : GraphtreemstkruskalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_edge_sum(s : GraphtreemstkruskalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_edge_mean(s : GraphtreemstkruskalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_edge_mean(s : GraphtreemstkruskalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_edge_scale(s : GraphtreemstkruskalEdge, f : Double) -> GraphtreemstkruskalEdge {
   let result = graph_tree_mst_kruskal_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_mst_kruskal_edge_fill(s : GraphtreemstkruskalEdge, v : Double)
   result
 }
 
-pub fn graph_tree_mst_kruskal_edge_min(s : GraphtreemstkruskalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_edge_min(s : GraphtreemstkruskalEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_edge_max(s : GraphtreemstkruskalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_edge_max(s : GraphtreemstkruskalEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_edge_to_string(s : GraphtreemstkruskalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_mst_kruskal_path_set(s : GraphtreemstkruskalPath, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_kruskal_path_sum(s : GraphtreemstkruskalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_path_sum(s : GraphtreemstkruskalPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_path_mean(s : GraphtreemstkruskalPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_path_mean(s : GraphtreemstkruskalPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_path_scale(s : GraphtreemstkruskalPath, f : Double) -> GraphtreemstkruskalPath {
   let result = graph_tree_mst_kruskal_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_mst_kruskal_path_fill(s : GraphtreemstkruskalPath, v : Double)
   result
 }
 
-pub fn graph_tree_mst_kruskal_path_min(s : GraphtreemstkruskalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_path_min(s : GraphtreemstkruskalPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_path_max(s : GraphtreemstkruskalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_path_max(s : GraphtreemstkruskalPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_path_to_string(s : GraphtreemstkruskalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_mst_kruskal_cluster_set(s : GraphtreemstkruskalCluster, i : In
   result
 }
 
-pub fn graph_tree_mst_kruskal_cluster_sum(s : GraphtreemstkruskalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_cluster_sum(s : GraphtreemstkruskalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_cluster_mean(s : GraphtreemstkruskalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_cluster_mean(s : GraphtreemstkruskalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_cluster_scale(s : GraphtreemstkruskalCluster, f : Double) -> GraphtreemstkruskalCluster {
   let result = graph_tree_mst_kruskal_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_mst_kruskal_cluster_fill(s : GraphtreemstkruskalCluster, v : D
   result
 }
 
-pub fn graph_tree_mst_kruskal_cluster_min(s : GraphtreemstkruskalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_cluster_min(s : GraphtreemstkruskalCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_cluster_max(s : GraphtreemstkruskalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_cluster_max(s : GraphtreemstkruskalCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_cluster_to_string(s : GraphtreemstkruskalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_mst_kruskal_model_set(s : GraphtreemstkruskalModel, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_kruskal_model_sum(s : GraphtreemstkruskalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_model_sum(s : GraphtreemstkruskalModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_model_mean(s : GraphtreemstkruskalModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_model_mean(s : GraphtreemstkruskalModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_model_scale(s : GraphtreemstkruskalModel, f : Double) -> GraphtreemstkruskalModel {
   let result = graph_tree_mst_kruskal_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_mst_kruskal_model_fill(s : GraphtreemstkruskalModel, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_kruskal_model_min(s : GraphtreemstkruskalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_model_min(s : GraphtreemstkruskalModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_model_max(s : GraphtreemstkruskalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_model_max(s : GraphtreemstkruskalModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_model_to_string(s : GraphtreemstkruskalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_mst_kruskal_layer_set(s : GraphtreemstkruskalLayer, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_kruskal_layer_sum(s : GraphtreemstkruskalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_layer_sum(s : GraphtreemstkruskalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_layer_mean(s : GraphtreemstkruskalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_layer_mean(s : GraphtreemstkruskalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_layer_scale(s : GraphtreemstkruskalLayer, f : Double) -> GraphtreemstkruskalLayer {
   let result = graph_tree_mst_kruskal_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_mst_kruskal_layer_fill(s : GraphtreemstkruskalLayer, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_kruskal_layer_min(s : GraphtreemstkruskalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_layer_min(s : GraphtreemstkruskalLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_layer_max(s : GraphtreemstkruskalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_layer_max(s : GraphtreemstkruskalLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_layer_to_string(s : GraphtreemstkruskalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_mst_kruskal_buffer_set(s : GraphtreemstkruskalBuffer, i : Int,
   result
 }
 
-pub fn graph_tree_mst_kruskal_buffer_sum(s : GraphtreemstkruskalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_buffer_sum(s : GraphtreemstkruskalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_buffer_mean(s : GraphtreemstkruskalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_buffer_mean(s : GraphtreemstkruskalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_buffer_scale(s : GraphtreemstkruskalBuffer, f : Double) -> GraphtreemstkruskalBuffer {
   let result = graph_tree_mst_kruskal_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_mst_kruskal_buffer_fill(s : GraphtreemstkruskalBuffer, v : Dou
   result
 }
 
-pub fn graph_tree_mst_kruskal_buffer_min(s : GraphtreemstkruskalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_buffer_min(s : GraphtreemstkruskalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_buffer_max(s : GraphtreemstkruskalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_buffer_max(s : GraphtreemstkruskalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_buffer_to_string(s : GraphtreemstkruskalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_mst_kruskal_cursor_set(s : GraphtreemstkruskalCursor, i : Int,
   result
 }
 
-pub fn graph_tree_mst_kruskal_cursor_sum(s : GraphtreemstkruskalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_cursor_sum(s : GraphtreemstkruskalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_cursor_mean(s : GraphtreemstkruskalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_cursor_mean(s : GraphtreemstkruskalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_cursor_scale(s : GraphtreemstkruskalCursor, f : Double) -> GraphtreemstkruskalCursor {
   let result = graph_tree_mst_kruskal_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_mst_kruskal_cursor_fill(s : GraphtreemstkruskalCursor, v : Dou
   result
 }
 
-pub fn graph_tree_mst_kruskal_cursor_min(s : GraphtreemstkruskalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_cursor_min(s : GraphtreemstkruskalCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_cursor_max(s : GraphtreemstkruskalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_cursor_max(s : GraphtreemstkruskalCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_cursor_to_string(s : GraphtreemstkruskalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_mst_kruskal_view_set(s : GraphtreemstkruskalView, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_kruskal_view_sum(s : GraphtreemstkruskalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_view_sum(s : GraphtreemstkruskalView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_view_mean(s : GraphtreemstkruskalView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_view_mean(s : GraphtreemstkruskalView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_view_scale(s : GraphtreemstkruskalView, f : Double) -> GraphtreemstkruskalView {
   let result = graph_tree_mst_kruskal_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_mst_kruskal_view_fill(s : GraphtreemstkruskalView, v : Double)
   result
 }
 
-pub fn graph_tree_mst_kruskal_view_min(s : GraphtreemstkruskalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_view_min(s : GraphtreemstkruskalView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_view_max(s : GraphtreemstkruskalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_view_max(s : GraphtreemstkruskalView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_view_to_string(s : GraphtreemstkruskalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_mst_kruskal_range_set(s : GraphtreemstkruskalRange, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_kruskal_range_sum(s : GraphtreemstkruskalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_range_sum(s : GraphtreemstkruskalRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_range_mean(s : GraphtreemstkruskalRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_range_mean(s : GraphtreemstkruskalRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_range_scale(s : GraphtreemstkruskalRange, f : Double) -> GraphtreemstkruskalRange {
   let result = graph_tree_mst_kruskal_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_mst_kruskal_range_fill(s : GraphtreemstkruskalRange, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_kruskal_range_min(s : GraphtreemstkruskalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_range_min(s : GraphtreemstkruskalRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_range_max(s : GraphtreemstkruskalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_range_max(s : GraphtreemstkruskalRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_range_to_string(s : GraphtreemstkruskalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_mst_kruskal_slice_set(s : GraphtreemstkruskalSlice, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_kruskal_slice_sum(s : GraphtreemstkruskalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_kruskal_slice_sum(s : GraphtreemstkruskalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_kruskal_slice_mean(s : GraphtreemstkruskalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_kruskal_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_kruskal_slice_mean(s : GraphtreemstkruskalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_kruskal_slice_scale(s : GraphtreemstkruskalSlice, f : Double) -> GraphtreemstkruskalSlice {
   let result = graph_tree_mst_kruskal_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_mst_kruskal_slice_fill(s : GraphtreemstkruskalSlice, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_kruskal_slice_min(s : GraphtreemstkruskalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_slice_min(s : GraphtreemstkruskalSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_kruskal_slice_max(s : GraphtreemstkruskalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_kruskal_slice_max(s : GraphtreemstkruskalSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_kruskal_slice_to_string(s : GraphtreemstkruskalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

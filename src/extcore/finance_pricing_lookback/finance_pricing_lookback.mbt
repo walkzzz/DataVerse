@@ -88,11 +88,7 @@ pub fn finance_pricing_lookback_make_series(vals : Array[Double], name : String)
 
 pub fn finance_pricing_lookback_series_len(s : FinancepricinglookbackSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_lookback_series_sum(s : FinancepricinglookbackSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_lookback_series_sum(s : FinancepricinglookbackSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_lookback_series_mean(s : FinancepricinglookbackSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_lookback_frame_set(s : FinancepricinglookbackFrame, i : I
   result
 }
 
-pub fn finance_pricing_lookback_frame_sum(s : FinancepricinglookbackFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_frame_sum(s : FinancepricinglookbackFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_frame_mean(s : FinancepricinglookbackFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_frame_mean(s : FinancepricinglookbackFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_frame_scale(s : FinancepricinglookbackFrame, f : Double) -> FinancepricinglookbackFrame {
   let result = finance_pricing_lookback_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_lookback_frame_fill(s : FinancepricinglookbackFrame, v : 
   result
 }
 
-pub fn finance_pricing_lookback_frame_min(s : FinancepricinglookbackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_frame_min(s : FinancepricinglookbackFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_frame_max(s : FinancepricinglookbackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_frame_max(s : FinancepricinglookbackFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_frame_to_string(s : FinancepricinglookbackFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_lookback_table_set(s : FinancepricinglookbackTable, i : I
   result
 }
 
-pub fn finance_pricing_lookback_table_sum(s : FinancepricinglookbackTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_table_sum(s : FinancepricinglookbackTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_table_mean(s : FinancepricinglookbackTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_table_mean(s : FinancepricinglookbackTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_table_scale(s : FinancepricinglookbackTable, f : Double) -> FinancepricinglookbackTable {
   let result = finance_pricing_lookback_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_lookback_table_fill(s : FinancepricinglookbackTable, v : 
   result
 }
 
-pub fn finance_pricing_lookback_table_min(s : FinancepricinglookbackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_table_min(s : FinancepricinglookbackTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_table_max(s : FinancepricinglookbackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_table_max(s : FinancepricinglookbackTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_table_to_string(s : FinancepricinglookbackTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_lookback_graphn_set(s : FinancepricinglookbackGraphN, i :
   result
 }
 
-pub fn finance_pricing_lookback_graphn_sum(s : FinancepricinglookbackGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_graphn_sum(s : FinancepricinglookbackGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_graphn_mean(s : FinancepricinglookbackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_graphn_mean(s : FinancepricinglookbackGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_graphn_scale(s : FinancepricinglookbackGraphN, f : Double) -> FinancepricinglookbackGraphN {
   let result = finance_pricing_lookback_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_lookback_graphn_fill(s : FinancepricinglookbackGraphN, v 
   result
 }
 
-pub fn finance_pricing_lookback_graphn_min(s : FinancepricinglookbackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_graphn_min(s : FinancepricinglookbackGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_graphn_max(s : FinancepricinglookbackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_graphn_max(s : FinancepricinglookbackGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_graphn_to_string(s : FinancepricinglookbackGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_lookback_node_set(s : FinancepricinglookbackNode, i : Int
   result
 }
 
-pub fn finance_pricing_lookback_node_sum(s : FinancepricinglookbackNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_node_sum(s : FinancepricinglookbackNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_node_mean(s : FinancepricinglookbackNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_node_mean(s : FinancepricinglookbackNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_node_scale(s : FinancepricinglookbackNode, f : Double) -> FinancepricinglookbackNode {
   let result = finance_pricing_lookback_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_lookback_node_fill(s : FinancepricinglookbackNode, v : Do
   result
 }
 
-pub fn finance_pricing_lookback_node_min(s : FinancepricinglookbackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_node_min(s : FinancepricinglookbackNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_node_max(s : FinancepricinglookbackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_node_max(s : FinancepricinglookbackNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_node_to_string(s : FinancepricinglookbackNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_lookback_edge_set(s : FinancepricinglookbackEdge, i : Int
   result
 }
 
-pub fn finance_pricing_lookback_edge_sum(s : FinancepricinglookbackEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_edge_sum(s : FinancepricinglookbackEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_edge_mean(s : FinancepricinglookbackEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_edge_mean(s : FinancepricinglookbackEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_edge_scale(s : FinancepricinglookbackEdge, f : Double) -> FinancepricinglookbackEdge {
   let result = finance_pricing_lookback_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_lookback_edge_fill(s : FinancepricinglookbackEdge, v : Do
   result
 }
 
-pub fn finance_pricing_lookback_edge_min(s : FinancepricinglookbackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_edge_min(s : FinancepricinglookbackEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_edge_max(s : FinancepricinglookbackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_edge_max(s : FinancepricinglookbackEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_edge_to_string(s : FinancepricinglookbackEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_lookback_path_set(s : FinancepricinglookbackPath, i : Int
   result
 }
 
-pub fn finance_pricing_lookback_path_sum(s : FinancepricinglookbackPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_path_sum(s : FinancepricinglookbackPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_path_mean(s : FinancepricinglookbackPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_path_mean(s : FinancepricinglookbackPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_path_scale(s : FinancepricinglookbackPath, f : Double) -> FinancepricinglookbackPath {
   let result = finance_pricing_lookback_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_lookback_path_fill(s : FinancepricinglookbackPath, v : Do
   result
 }
 
-pub fn finance_pricing_lookback_path_min(s : FinancepricinglookbackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_path_min(s : FinancepricinglookbackPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_path_max(s : FinancepricinglookbackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_path_max(s : FinancepricinglookbackPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_path_to_string(s : FinancepricinglookbackPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_lookback_cluster_set(s : FinancepricinglookbackCluster, i
   result
 }
 
-pub fn finance_pricing_lookback_cluster_sum(s : FinancepricinglookbackCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_cluster_sum(s : FinancepricinglookbackCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_cluster_mean(s : FinancepricinglookbackCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_cluster_mean(s : FinancepricinglookbackCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_cluster_scale(s : FinancepricinglookbackCluster, f : Double) -> FinancepricinglookbackCluster {
   let result = finance_pricing_lookback_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_lookback_cluster_fill(s : FinancepricinglookbackCluster, 
   result
 }
 
-pub fn finance_pricing_lookback_cluster_min(s : FinancepricinglookbackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_cluster_min(s : FinancepricinglookbackCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_cluster_max(s : FinancepricinglookbackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_cluster_max(s : FinancepricinglookbackCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_cluster_to_string(s : FinancepricinglookbackCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_lookback_model_set(s : FinancepricinglookbackModel, i : I
   result
 }
 
-pub fn finance_pricing_lookback_model_sum(s : FinancepricinglookbackModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_model_sum(s : FinancepricinglookbackModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_model_mean(s : FinancepricinglookbackModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_model_mean(s : FinancepricinglookbackModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_model_scale(s : FinancepricinglookbackModel, f : Double) -> FinancepricinglookbackModel {
   let result = finance_pricing_lookback_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_lookback_model_fill(s : FinancepricinglookbackModel, v : 
   result
 }
 
-pub fn finance_pricing_lookback_model_min(s : FinancepricinglookbackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_model_min(s : FinancepricinglookbackModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_model_max(s : FinancepricinglookbackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_model_max(s : FinancepricinglookbackModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_model_to_string(s : FinancepricinglookbackModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_lookback_layer_set(s : FinancepricinglookbackLayer, i : I
   result
 }
 
-pub fn finance_pricing_lookback_layer_sum(s : FinancepricinglookbackLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_layer_sum(s : FinancepricinglookbackLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_layer_mean(s : FinancepricinglookbackLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_layer_mean(s : FinancepricinglookbackLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_layer_scale(s : FinancepricinglookbackLayer, f : Double) -> FinancepricinglookbackLayer {
   let result = finance_pricing_lookback_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_lookback_layer_fill(s : FinancepricinglookbackLayer, v : 
   result
 }
 
-pub fn finance_pricing_lookback_layer_min(s : FinancepricinglookbackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_layer_min(s : FinancepricinglookbackLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_layer_max(s : FinancepricinglookbackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_layer_max(s : FinancepricinglookbackLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_layer_to_string(s : FinancepricinglookbackLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_lookback_buffer_set(s : FinancepricinglookbackBuffer, i :
   result
 }
 
-pub fn finance_pricing_lookback_buffer_sum(s : FinancepricinglookbackBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_buffer_sum(s : FinancepricinglookbackBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_buffer_mean(s : FinancepricinglookbackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_buffer_mean(s : FinancepricinglookbackBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_buffer_scale(s : FinancepricinglookbackBuffer, f : Double) -> FinancepricinglookbackBuffer {
   let result = finance_pricing_lookback_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_lookback_buffer_fill(s : FinancepricinglookbackBuffer, v 
   result
 }
 
-pub fn finance_pricing_lookback_buffer_min(s : FinancepricinglookbackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_buffer_min(s : FinancepricinglookbackBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_buffer_max(s : FinancepricinglookbackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_buffer_max(s : FinancepricinglookbackBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_buffer_to_string(s : FinancepricinglookbackBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_lookback_cursor_set(s : FinancepricinglookbackCursor, i :
   result
 }
 
-pub fn finance_pricing_lookback_cursor_sum(s : FinancepricinglookbackCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_cursor_sum(s : FinancepricinglookbackCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_cursor_mean(s : FinancepricinglookbackCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_cursor_mean(s : FinancepricinglookbackCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_cursor_scale(s : FinancepricinglookbackCursor, f : Double) -> FinancepricinglookbackCursor {
   let result = finance_pricing_lookback_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_lookback_cursor_fill(s : FinancepricinglookbackCursor, v 
   result
 }
 
-pub fn finance_pricing_lookback_cursor_min(s : FinancepricinglookbackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_cursor_min(s : FinancepricinglookbackCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_cursor_max(s : FinancepricinglookbackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_cursor_max(s : FinancepricinglookbackCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_cursor_to_string(s : FinancepricinglookbackCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_lookback_view_set(s : FinancepricinglookbackView, i : Int
   result
 }
 
-pub fn finance_pricing_lookback_view_sum(s : FinancepricinglookbackView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_view_sum(s : FinancepricinglookbackView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_view_mean(s : FinancepricinglookbackView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_view_mean(s : FinancepricinglookbackView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_view_scale(s : FinancepricinglookbackView, f : Double) -> FinancepricinglookbackView {
   let result = finance_pricing_lookback_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_lookback_view_fill(s : FinancepricinglookbackView, v : Do
   result
 }
 
-pub fn finance_pricing_lookback_view_min(s : FinancepricinglookbackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_view_min(s : FinancepricinglookbackView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_view_max(s : FinancepricinglookbackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_view_max(s : FinancepricinglookbackView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_view_to_string(s : FinancepricinglookbackView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_lookback_range_set(s : FinancepricinglookbackRange, i : I
   result
 }
 
-pub fn finance_pricing_lookback_range_sum(s : FinancepricinglookbackRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_range_sum(s : FinancepricinglookbackRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_range_mean(s : FinancepricinglookbackRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_range_mean(s : FinancepricinglookbackRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_range_scale(s : FinancepricinglookbackRange, f : Double) -> FinancepricinglookbackRange {
   let result = finance_pricing_lookback_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_lookback_range_fill(s : FinancepricinglookbackRange, v : 
   result
 }
 
-pub fn finance_pricing_lookback_range_min(s : FinancepricinglookbackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_range_min(s : FinancepricinglookbackRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_range_max(s : FinancepricinglookbackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_range_max(s : FinancepricinglookbackRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_range_to_string(s : FinancepricinglookbackRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_lookback_slice_set(s : FinancepricinglookbackSlice, i : I
   result
 }
 
-pub fn finance_pricing_lookback_slice_sum(s : FinancepricinglookbackSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_lookback_slice_sum(s : FinancepricinglookbackSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_lookback_slice_mean(s : FinancepricinglookbackSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_lookback_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_lookback_slice_mean(s : FinancepricinglookbackSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_lookback_slice_scale(s : FinancepricinglookbackSlice, f : Double) -> FinancepricinglookbackSlice {
   let result = finance_pricing_lookback_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_lookback_slice_fill(s : FinancepricinglookbackSlice, v : 
   result
 }
 
-pub fn finance_pricing_lookback_slice_min(s : FinancepricinglookbackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_slice_min(s : FinancepricinglookbackSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_lookback_slice_max(s : FinancepricinglookbackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_lookback_slice_max(s : FinancepricinglookbackSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_lookback_slice_to_string(s : FinancepricinglookbackSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

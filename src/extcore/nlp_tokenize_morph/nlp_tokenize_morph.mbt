@@ -88,11 +88,7 @@ pub fn nlp_tokenize_morph_make_series(vals : Array[Double], name : String) -> Nl
 
 pub fn nlp_tokenize_morph_series_len(s : NlptokenizemorphSeries) -> Int { s.vals.length() }
 
-pub fn nlp_tokenize_morph_series_sum(s : NlptokenizemorphSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_tokenize_morph_series_sum(s : NlptokenizemorphSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_tokenize_morph_series_mean(s : NlptokenizemorphSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_tokenize_morph_frame_set(s : NlptokenizemorphFrame, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_morph_frame_sum(s : NlptokenizemorphFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_frame_sum(s : NlptokenizemorphFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_frame_mean(s : NlptokenizemorphFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_frame_mean(s : NlptokenizemorphFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_frame_scale(s : NlptokenizemorphFrame, f : Double) -> NlptokenizemorphFrame {
   let result = nlp_tokenize_morph_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_tokenize_morph_frame_fill(s : NlptokenizemorphFrame, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_morph_frame_min(s : NlptokenizemorphFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_frame_min(s : NlptokenizemorphFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_frame_max(s : NlptokenizemorphFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_frame_max(s : NlptokenizemorphFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_frame_to_string(s : NlptokenizemorphFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_tokenize_morph_table_set(s : NlptokenizemorphTable, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_morph_table_sum(s : NlptokenizemorphTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_table_sum(s : NlptokenizemorphTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_table_mean(s : NlptokenizemorphTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_table_mean(s : NlptokenizemorphTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_table_scale(s : NlptokenizemorphTable, f : Double) -> NlptokenizemorphTable {
   let result = nlp_tokenize_morph_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_tokenize_morph_table_fill(s : NlptokenizemorphTable, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_morph_table_min(s : NlptokenizemorphTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_table_min(s : NlptokenizemorphTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_table_max(s : NlptokenizemorphTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_table_max(s : NlptokenizemorphTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_table_to_string(s : NlptokenizemorphTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_tokenize_morph_graphn_set(s : NlptokenizemorphGraphN, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_morph_graphn_sum(s : NlptokenizemorphGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_graphn_sum(s : NlptokenizemorphGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_graphn_mean(s : NlptokenizemorphGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_graphn_mean(s : NlptokenizemorphGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_graphn_scale(s : NlptokenizemorphGraphN, f : Double) -> NlptokenizemorphGraphN {
   let result = nlp_tokenize_morph_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_tokenize_morph_graphn_fill(s : NlptokenizemorphGraphN, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_morph_graphn_min(s : NlptokenizemorphGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_graphn_min(s : NlptokenizemorphGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_graphn_max(s : NlptokenizemorphGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_graphn_max(s : NlptokenizemorphGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_graphn_to_string(s : NlptokenizemorphGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_tokenize_morph_node_set(s : NlptokenizemorphNode, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_morph_node_sum(s : NlptokenizemorphNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_node_sum(s : NlptokenizemorphNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_node_mean(s : NlptokenizemorphNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_node_mean(s : NlptokenizemorphNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_node_scale(s : NlptokenizemorphNode, f : Double) -> NlptokenizemorphNode {
   let result = nlp_tokenize_morph_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_tokenize_morph_node_fill(s : NlptokenizemorphNode, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_morph_node_min(s : NlptokenizemorphNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_node_min(s : NlptokenizemorphNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_node_max(s : NlptokenizemorphNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_node_max(s : NlptokenizemorphNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_node_to_string(s : NlptokenizemorphNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_tokenize_morph_edge_set(s : NlptokenizemorphEdge, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_morph_edge_sum(s : NlptokenizemorphEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_edge_sum(s : NlptokenizemorphEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_edge_mean(s : NlptokenizemorphEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_edge_mean(s : NlptokenizemorphEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_edge_scale(s : NlptokenizemorphEdge, f : Double) -> NlptokenizemorphEdge {
   let result = nlp_tokenize_morph_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_tokenize_morph_edge_fill(s : NlptokenizemorphEdge, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_morph_edge_min(s : NlptokenizemorphEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_edge_min(s : NlptokenizemorphEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_edge_max(s : NlptokenizemorphEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_edge_max(s : NlptokenizemorphEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_edge_to_string(s : NlptokenizemorphEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_tokenize_morph_path_set(s : NlptokenizemorphPath, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_morph_path_sum(s : NlptokenizemorphPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_path_sum(s : NlptokenizemorphPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_path_mean(s : NlptokenizemorphPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_path_mean(s : NlptokenizemorphPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_path_scale(s : NlptokenizemorphPath, f : Double) -> NlptokenizemorphPath {
   let result = nlp_tokenize_morph_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_tokenize_morph_path_fill(s : NlptokenizemorphPath, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_morph_path_min(s : NlptokenizemorphPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_path_min(s : NlptokenizemorphPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_path_max(s : NlptokenizemorphPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_path_max(s : NlptokenizemorphPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_path_to_string(s : NlptokenizemorphPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_tokenize_morph_cluster_set(s : NlptokenizemorphCluster, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_morph_cluster_sum(s : NlptokenizemorphCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_cluster_sum(s : NlptokenizemorphCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_cluster_mean(s : NlptokenizemorphCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_cluster_mean(s : NlptokenizemorphCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_cluster_scale(s : NlptokenizemorphCluster, f : Double) -> NlptokenizemorphCluster {
   let result = nlp_tokenize_morph_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_tokenize_morph_cluster_fill(s : NlptokenizemorphCluster, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_morph_cluster_min(s : NlptokenizemorphCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_cluster_min(s : NlptokenizemorphCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_cluster_max(s : NlptokenizemorphCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_cluster_max(s : NlptokenizemorphCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_cluster_to_string(s : NlptokenizemorphCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_tokenize_morph_model_set(s : NlptokenizemorphModel, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_morph_model_sum(s : NlptokenizemorphModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_model_sum(s : NlptokenizemorphModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_model_mean(s : NlptokenizemorphModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_model_mean(s : NlptokenizemorphModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_model_scale(s : NlptokenizemorphModel, f : Double) -> NlptokenizemorphModel {
   let result = nlp_tokenize_morph_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_tokenize_morph_model_fill(s : NlptokenizemorphModel, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_morph_model_min(s : NlptokenizemorphModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_model_min(s : NlptokenizemorphModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_model_max(s : NlptokenizemorphModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_model_max(s : NlptokenizemorphModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_model_to_string(s : NlptokenizemorphModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_tokenize_morph_layer_set(s : NlptokenizemorphLayer, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_morph_layer_sum(s : NlptokenizemorphLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_layer_sum(s : NlptokenizemorphLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_layer_mean(s : NlptokenizemorphLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_layer_mean(s : NlptokenizemorphLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_layer_scale(s : NlptokenizemorphLayer, f : Double) -> NlptokenizemorphLayer {
   let result = nlp_tokenize_morph_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_tokenize_morph_layer_fill(s : NlptokenizemorphLayer, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_morph_layer_min(s : NlptokenizemorphLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_layer_min(s : NlptokenizemorphLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_layer_max(s : NlptokenizemorphLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_layer_max(s : NlptokenizemorphLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_layer_to_string(s : NlptokenizemorphLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_tokenize_morph_buffer_set(s : NlptokenizemorphBuffer, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_morph_buffer_sum(s : NlptokenizemorphBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_buffer_sum(s : NlptokenizemorphBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_buffer_mean(s : NlptokenizemorphBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_buffer_mean(s : NlptokenizemorphBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_buffer_scale(s : NlptokenizemorphBuffer, f : Double) -> NlptokenizemorphBuffer {
   let result = nlp_tokenize_morph_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_tokenize_morph_buffer_fill(s : NlptokenizemorphBuffer, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_morph_buffer_min(s : NlptokenizemorphBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_buffer_min(s : NlptokenizemorphBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_buffer_max(s : NlptokenizemorphBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_buffer_max(s : NlptokenizemorphBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_buffer_to_string(s : NlptokenizemorphBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_tokenize_morph_cursor_set(s : NlptokenizemorphCursor, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_morph_cursor_sum(s : NlptokenizemorphCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_cursor_sum(s : NlptokenizemorphCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_cursor_mean(s : NlptokenizemorphCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_cursor_mean(s : NlptokenizemorphCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_cursor_scale(s : NlptokenizemorphCursor, f : Double) -> NlptokenizemorphCursor {
   let result = nlp_tokenize_morph_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_tokenize_morph_cursor_fill(s : NlptokenizemorphCursor, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_morph_cursor_min(s : NlptokenizemorphCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_cursor_min(s : NlptokenizemorphCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_cursor_max(s : NlptokenizemorphCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_cursor_max(s : NlptokenizemorphCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_cursor_to_string(s : NlptokenizemorphCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_tokenize_morph_view_set(s : NlptokenizemorphView, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_morph_view_sum(s : NlptokenizemorphView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_view_sum(s : NlptokenizemorphView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_view_mean(s : NlptokenizemorphView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_view_mean(s : NlptokenizemorphView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_view_scale(s : NlptokenizemorphView, f : Double) -> NlptokenizemorphView {
   let result = nlp_tokenize_morph_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_tokenize_morph_view_fill(s : NlptokenizemorphView, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_morph_view_min(s : NlptokenizemorphView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_view_min(s : NlptokenizemorphView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_view_max(s : NlptokenizemorphView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_view_max(s : NlptokenizemorphView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_view_to_string(s : NlptokenizemorphView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_tokenize_morph_range_set(s : NlptokenizemorphRange, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_morph_range_sum(s : NlptokenizemorphRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_range_sum(s : NlptokenizemorphRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_range_mean(s : NlptokenizemorphRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_range_mean(s : NlptokenizemorphRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_range_scale(s : NlptokenizemorphRange, f : Double) -> NlptokenizemorphRange {
   let result = nlp_tokenize_morph_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_tokenize_morph_range_fill(s : NlptokenizemorphRange, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_morph_range_min(s : NlptokenizemorphRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_range_min(s : NlptokenizemorphRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_range_max(s : NlptokenizemorphRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_range_max(s : NlptokenizemorphRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_range_to_string(s : NlptokenizemorphRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_tokenize_morph_slice_set(s : NlptokenizemorphSlice, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_morph_slice_sum(s : NlptokenizemorphSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_morph_slice_sum(s : NlptokenizemorphSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_morph_slice_mean(s : NlptokenizemorphSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_morph_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_morph_slice_mean(s : NlptokenizemorphSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_morph_slice_scale(s : NlptokenizemorphSlice, f : Double) -> NlptokenizemorphSlice {
   let result = nlp_tokenize_morph_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_tokenize_morph_slice_fill(s : NlptokenizemorphSlice, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_morph_slice_min(s : NlptokenizemorphSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_slice_min(s : NlptokenizemorphSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_morph_slice_max(s : NlptokenizemorphSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_morph_slice_max(s : NlptokenizemorphSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_morph_slice_to_string(s : NlptokenizemorphSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

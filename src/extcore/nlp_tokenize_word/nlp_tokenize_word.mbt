@@ -88,11 +88,7 @@ pub fn nlp_tokenize_word_make_series(vals : Array[Double], name : String) -> Nlp
 
 pub fn nlp_tokenize_word_series_len(s : NlptokenizewordSeries) -> Int { s.vals.length() }
 
-pub fn nlp_tokenize_word_series_sum(s : NlptokenizewordSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_tokenize_word_series_sum(s : NlptokenizewordSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_tokenize_word_series_mean(s : NlptokenizewordSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_tokenize_word_frame_set(s : NlptokenizewordFrame, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_word_frame_sum(s : NlptokenizewordFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_frame_sum(s : NlptokenizewordFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_frame_mean(s : NlptokenizewordFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_frame_mean(s : NlptokenizewordFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_frame_scale(s : NlptokenizewordFrame, f : Double) -> NlptokenizewordFrame {
   let result = nlp_tokenize_word_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_tokenize_word_frame_fill(s : NlptokenizewordFrame, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_word_frame_min(s : NlptokenizewordFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_frame_min(s : NlptokenizewordFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_frame_max(s : NlptokenizewordFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_frame_max(s : NlptokenizewordFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_frame_to_string(s : NlptokenizewordFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_tokenize_word_table_set(s : NlptokenizewordTable, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_word_table_sum(s : NlptokenizewordTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_table_sum(s : NlptokenizewordTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_table_mean(s : NlptokenizewordTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_table_mean(s : NlptokenizewordTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_table_scale(s : NlptokenizewordTable, f : Double) -> NlptokenizewordTable {
   let result = nlp_tokenize_word_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_tokenize_word_table_fill(s : NlptokenizewordTable, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_word_table_min(s : NlptokenizewordTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_table_min(s : NlptokenizewordTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_table_max(s : NlptokenizewordTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_table_max(s : NlptokenizewordTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_table_to_string(s : NlptokenizewordTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_tokenize_word_graphn_set(s : NlptokenizewordGraphN, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_word_graphn_sum(s : NlptokenizewordGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_graphn_sum(s : NlptokenizewordGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_graphn_mean(s : NlptokenizewordGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_graphn_mean(s : NlptokenizewordGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_graphn_scale(s : NlptokenizewordGraphN, f : Double) -> NlptokenizewordGraphN {
   let result = nlp_tokenize_word_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_tokenize_word_graphn_fill(s : NlptokenizewordGraphN, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_word_graphn_min(s : NlptokenizewordGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_graphn_min(s : NlptokenizewordGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_graphn_max(s : NlptokenizewordGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_graphn_max(s : NlptokenizewordGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_graphn_to_string(s : NlptokenizewordGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_tokenize_word_node_set(s : NlptokenizewordNode, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_word_node_sum(s : NlptokenizewordNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_node_sum(s : NlptokenizewordNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_node_mean(s : NlptokenizewordNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_node_mean(s : NlptokenizewordNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_node_scale(s : NlptokenizewordNode, f : Double) -> NlptokenizewordNode {
   let result = nlp_tokenize_word_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_tokenize_word_node_fill(s : NlptokenizewordNode, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_word_node_min(s : NlptokenizewordNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_node_min(s : NlptokenizewordNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_node_max(s : NlptokenizewordNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_node_max(s : NlptokenizewordNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_node_to_string(s : NlptokenizewordNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_tokenize_word_edge_set(s : NlptokenizewordEdge, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_word_edge_sum(s : NlptokenizewordEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_edge_sum(s : NlptokenizewordEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_edge_mean(s : NlptokenizewordEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_edge_mean(s : NlptokenizewordEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_edge_scale(s : NlptokenizewordEdge, f : Double) -> NlptokenizewordEdge {
   let result = nlp_tokenize_word_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_tokenize_word_edge_fill(s : NlptokenizewordEdge, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_word_edge_min(s : NlptokenizewordEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_edge_min(s : NlptokenizewordEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_edge_max(s : NlptokenizewordEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_edge_max(s : NlptokenizewordEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_edge_to_string(s : NlptokenizewordEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_tokenize_word_path_set(s : NlptokenizewordPath, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_word_path_sum(s : NlptokenizewordPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_path_sum(s : NlptokenizewordPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_path_mean(s : NlptokenizewordPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_path_mean(s : NlptokenizewordPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_path_scale(s : NlptokenizewordPath, f : Double) -> NlptokenizewordPath {
   let result = nlp_tokenize_word_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_tokenize_word_path_fill(s : NlptokenizewordPath, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_word_path_min(s : NlptokenizewordPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_path_min(s : NlptokenizewordPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_path_max(s : NlptokenizewordPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_path_max(s : NlptokenizewordPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_path_to_string(s : NlptokenizewordPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_tokenize_word_cluster_set(s : NlptokenizewordCluster, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_word_cluster_sum(s : NlptokenizewordCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_cluster_sum(s : NlptokenizewordCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_cluster_mean(s : NlptokenizewordCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_cluster_mean(s : NlptokenizewordCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_cluster_scale(s : NlptokenizewordCluster, f : Double) -> NlptokenizewordCluster {
   let result = nlp_tokenize_word_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_tokenize_word_cluster_fill(s : NlptokenizewordCluster, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_word_cluster_min(s : NlptokenizewordCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_cluster_min(s : NlptokenizewordCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_cluster_max(s : NlptokenizewordCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_cluster_max(s : NlptokenizewordCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_cluster_to_string(s : NlptokenizewordCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_tokenize_word_model_set(s : NlptokenizewordModel, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_word_model_sum(s : NlptokenizewordModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_model_sum(s : NlptokenizewordModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_model_mean(s : NlptokenizewordModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_model_mean(s : NlptokenizewordModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_model_scale(s : NlptokenizewordModel, f : Double) -> NlptokenizewordModel {
   let result = nlp_tokenize_word_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_tokenize_word_model_fill(s : NlptokenizewordModel, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_word_model_min(s : NlptokenizewordModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_model_min(s : NlptokenizewordModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_model_max(s : NlptokenizewordModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_model_max(s : NlptokenizewordModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_model_to_string(s : NlptokenizewordModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_tokenize_word_layer_set(s : NlptokenizewordLayer, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_word_layer_sum(s : NlptokenizewordLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_layer_sum(s : NlptokenizewordLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_layer_mean(s : NlptokenizewordLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_layer_mean(s : NlptokenizewordLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_layer_scale(s : NlptokenizewordLayer, f : Double) -> NlptokenizewordLayer {
   let result = nlp_tokenize_word_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_tokenize_word_layer_fill(s : NlptokenizewordLayer, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_word_layer_min(s : NlptokenizewordLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_layer_min(s : NlptokenizewordLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_layer_max(s : NlptokenizewordLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_layer_max(s : NlptokenizewordLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_layer_to_string(s : NlptokenizewordLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_tokenize_word_buffer_set(s : NlptokenizewordBuffer, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_word_buffer_sum(s : NlptokenizewordBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_buffer_sum(s : NlptokenizewordBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_buffer_mean(s : NlptokenizewordBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_buffer_mean(s : NlptokenizewordBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_buffer_scale(s : NlptokenizewordBuffer, f : Double) -> NlptokenizewordBuffer {
   let result = nlp_tokenize_word_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_tokenize_word_buffer_fill(s : NlptokenizewordBuffer, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_word_buffer_min(s : NlptokenizewordBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_buffer_min(s : NlptokenizewordBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_buffer_max(s : NlptokenizewordBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_buffer_max(s : NlptokenizewordBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_buffer_to_string(s : NlptokenizewordBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_tokenize_word_cursor_set(s : NlptokenizewordCursor, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_word_cursor_sum(s : NlptokenizewordCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_cursor_sum(s : NlptokenizewordCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_cursor_mean(s : NlptokenizewordCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_cursor_mean(s : NlptokenizewordCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_cursor_scale(s : NlptokenizewordCursor, f : Double) -> NlptokenizewordCursor {
   let result = nlp_tokenize_word_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_tokenize_word_cursor_fill(s : NlptokenizewordCursor, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_word_cursor_min(s : NlptokenizewordCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_cursor_min(s : NlptokenizewordCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_cursor_max(s : NlptokenizewordCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_cursor_max(s : NlptokenizewordCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_cursor_to_string(s : NlptokenizewordCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_tokenize_word_view_set(s : NlptokenizewordView, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_word_view_sum(s : NlptokenizewordView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_view_sum(s : NlptokenizewordView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_view_mean(s : NlptokenizewordView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_view_mean(s : NlptokenizewordView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_view_scale(s : NlptokenizewordView, f : Double) -> NlptokenizewordView {
   let result = nlp_tokenize_word_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_tokenize_word_view_fill(s : NlptokenizewordView, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_word_view_min(s : NlptokenizewordView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_view_min(s : NlptokenizewordView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_view_max(s : NlptokenizewordView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_view_max(s : NlptokenizewordView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_view_to_string(s : NlptokenizewordView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_tokenize_word_range_set(s : NlptokenizewordRange, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_word_range_sum(s : NlptokenizewordRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_range_sum(s : NlptokenizewordRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_range_mean(s : NlptokenizewordRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_range_mean(s : NlptokenizewordRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_range_scale(s : NlptokenizewordRange, f : Double) -> NlptokenizewordRange {
   let result = nlp_tokenize_word_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_tokenize_word_range_fill(s : NlptokenizewordRange, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_word_range_min(s : NlptokenizewordRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_range_min(s : NlptokenizewordRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_range_max(s : NlptokenizewordRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_range_max(s : NlptokenizewordRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_range_to_string(s : NlptokenizewordRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_tokenize_word_slice_set(s : NlptokenizewordSlice, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_word_slice_sum(s : NlptokenizewordSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_word_slice_sum(s : NlptokenizewordSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_word_slice_mean(s : NlptokenizewordSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_word_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_word_slice_mean(s : NlptokenizewordSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_word_slice_scale(s : NlptokenizewordSlice, f : Double) -> NlptokenizewordSlice {
   let result = nlp_tokenize_word_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_tokenize_word_slice_fill(s : NlptokenizewordSlice, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_word_slice_min(s : NlptokenizewordSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_slice_min(s : NlptokenizewordSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_word_slice_max(s : NlptokenizewordSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_word_slice_max(s : NlptokenizewordSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_word_slice_to_string(s : NlptokenizewordSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

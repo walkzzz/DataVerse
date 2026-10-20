@@ -88,11 +88,7 @@ pub fn math_eigenvalue_make_series(vals : Array[Double], name : String) -> Mathe
 
 pub fn math_eigenvalue_series_len(s : MatheigenvalueSeries) -> Int { s.vals.length() }
 
-pub fn math_eigenvalue_series_sum(s : MatheigenvalueSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_eigenvalue_series_sum(s : MatheigenvalueSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_eigenvalue_series_mean(s : MatheigenvalueSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_eigenvalue_frame_set(s : MatheigenvalueFrame, i : Int, v : Double) -
   result
 }
 
-pub fn math_eigenvalue_frame_sum(s : MatheigenvalueFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_frame_sum(s : MatheigenvalueFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_frame_mean(s : MatheigenvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_frame_mean(s : MatheigenvalueFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_frame_scale(s : MatheigenvalueFrame, f : Double) -> MatheigenvalueFrame {
   let result = math_eigenvalue_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_eigenvalue_frame_fill(s : MatheigenvalueFrame, v : Double) -> Mathei
   result
 }
 
-pub fn math_eigenvalue_frame_min(s : MatheigenvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_frame_min(s : MatheigenvalueFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_frame_max(s : MatheigenvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_frame_max(s : MatheigenvalueFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_frame_to_string(s : MatheigenvalueFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_eigenvalue_table_set(s : MatheigenvalueTable, i : Int, v : Double) -
   result
 }
 
-pub fn math_eigenvalue_table_sum(s : MatheigenvalueTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_table_sum(s : MatheigenvalueTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_table_mean(s : MatheigenvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_table_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_table_mean(s : MatheigenvalueTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_table_scale(s : MatheigenvalueTable, f : Double) -> MatheigenvalueTable {
   let result = math_eigenvalue_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_eigenvalue_table_fill(s : MatheigenvalueTable, v : Double) -> Mathei
   result
 }
 
-pub fn math_eigenvalue_table_min(s : MatheigenvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_table_min(s : MatheigenvalueTable) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_table_max(s : MatheigenvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_table_max(s : MatheigenvalueTable) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_table_to_string(s : MatheigenvalueTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_eigenvalue_graphn_set(s : MatheigenvalueGraphN, i : Int, v : Double)
   result
 }
 
-pub fn math_eigenvalue_graphn_sum(s : MatheigenvalueGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_graphn_sum(s : MatheigenvalueGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_graphn_mean(s : MatheigenvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_graphn_mean(s : MatheigenvalueGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_graphn_scale(s : MatheigenvalueGraphN, f : Double) -> MatheigenvalueGraphN {
   let result = math_eigenvalue_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_eigenvalue_graphn_fill(s : MatheigenvalueGraphN, v : Double) -> Math
   result
 }
 
-pub fn math_eigenvalue_graphn_min(s : MatheigenvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_graphn_min(s : MatheigenvalueGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_graphn_max(s : MatheigenvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_graphn_max(s : MatheigenvalueGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_graphn_to_string(s : MatheigenvalueGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_eigenvalue_node_set(s : MatheigenvalueNode, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_eigenvalue_node_sum(s : MatheigenvalueNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_node_sum(s : MatheigenvalueNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_node_mean(s : MatheigenvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_node_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_node_mean(s : MatheigenvalueNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_node_scale(s : MatheigenvalueNode, f : Double) -> MatheigenvalueNode {
   let result = math_eigenvalue_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_eigenvalue_node_fill(s : MatheigenvalueNode, v : Double) -> Matheige
   result
 }
 
-pub fn math_eigenvalue_node_min(s : MatheigenvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_node_min(s : MatheigenvalueNode) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_node_max(s : MatheigenvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_node_max(s : MatheigenvalueNode) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_node_to_string(s : MatheigenvalueNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_eigenvalue_edge_set(s : MatheigenvalueEdge, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_eigenvalue_edge_sum(s : MatheigenvalueEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_edge_sum(s : MatheigenvalueEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_edge_mean(s : MatheigenvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_edge_mean(s : MatheigenvalueEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_edge_scale(s : MatheigenvalueEdge, f : Double) -> MatheigenvalueEdge {
   let result = math_eigenvalue_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_eigenvalue_edge_fill(s : MatheigenvalueEdge, v : Double) -> Matheige
   result
 }
 
-pub fn math_eigenvalue_edge_min(s : MatheigenvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_edge_min(s : MatheigenvalueEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_edge_max(s : MatheigenvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_edge_max(s : MatheigenvalueEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_edge_to_string(s : MatheigenvalueEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_eigenvalue_path_set(s : MatheigenvaluePath, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_eigenvalue_path_sum(s : MatheigenvaluePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_path_sum(s : MatheigenvaluePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_path_mean(s : MatheigenvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_path_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_path_mean(s : MatheigenvaluePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_path_scale(s : MatheigenvaluePath, f : Double) -> MatheigenvaluePath {
   let result = math_eigenvalue_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_eigenvalue_path_fill(s : MatheigenvaluePath, v : Double) -> Matheige
   result
 }
 
-pub fn math_eigenvalue_path_min(s : MatheigenvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_path_min(s : MatheigenvaluePath) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_path_max(s : MatheigenvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_path_max(s : MatheigenvaluePath) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_path_to_string(s : MatheigenvaluePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_eigenvalue_cluster_set(s : MatheigenvalueCluster, i : Int, v : Doubl
   result
 }
 
-pub fn math_eigenvalue_cluster_sum(s : MatheigenvalueCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_cluster_sum(s : MatheigenvalueCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_cluster_mean(s : MatheigenvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_cluster_mean(s : MatheigenvalueCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_cluster_scale(s : MatheigenvalueCluster, f : Double) -> MatheigenvalueCluster {
   let result = math_eigenvalue_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_eigenvalue_cluster_fill(s : MatheigenvalueCluster, v : Double) -> Ma
   result
 }
 
-pub fn math_eigenvalue_cluster_min(s : MatheigenvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_cluster_min(s : MatheigenvalueCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_cluster_max(s : MatheigenvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_cluster_max(s : MatheigenvalueCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_cluster_to_string(s : MatheigenvalueCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_eigenvalue_model_set(s : MatheigenvalueModel, i : Int, v : Double) -
   result
 }
 
-pub fn math_eigenvalue_model_sum(s : MatheigenvalueModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_model_sum(s : MatheigenvalueModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_model_mean(s : MatheigenvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_model_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_model_mean(s : MatheigenvalueModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_model_scale(s : MatheigenvalueModel, f : Double) -> MatheigenvalueModel {
   let result = math_eigenvalue_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_eigenvalue_model_fill(s : MatheigenvalueModel, v : Double) -> Mathei
   result
 }
 
-pub fn math_eigenvalue_model_min(s : MatheigenvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_model_min(s : MatheigenvalueModel) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_model_max(s : MatheigenvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_model_max(s : MatheigenvalueModel) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_model_to_string(s : MatheigenvalueModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_eigenvalue_layer_set(s : MatheigenvalueLayer, i : Int, v : Double) -
   result
 }
 
-pub fn math_eigenvalue_layer_sum(s : MatheigenvalueLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_layer_sum(s : MatheigenvalueLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_layer_mean(s : MatheigenvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_layer_mean(s : MatheigenvalueLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_layer_scale(s : MatheigenvalueLayer, f : Double) -> MatheigenvalueLayer {
   let result = math_eigenvalue_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_eigenvalue_layer_fill(s : MatheigenvalueLayer, v : Double) -> Mathei
   result
 }
 
-pub fn math_eigenvalue_layer_min(s : MatheigenvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_layer_min(s : MatheigenvalueLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_layer_max(s : MatheigenvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_layer_max(s : MatheigenvalueLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_layer_to_string(s : MatheigenvalueLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_eigenvalue_buffer_set(s : MatheigenvalueBuffer, i : Int, v : Double)
   result
 }
 
-pub fn math_eigenvalue_buffer_sum(s : MatheigenvalueBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_buffer_sum(s : MatheigenvalueBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_buffer_mean(s : MatheigenvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_buffer_mean(s : MatheigenvalueBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_buffer_scale(s : MatheigenvalueBuffer, f : Double) -> MatheigenvalueBuffer {
   let result = math_eigenvalue_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_eigenvalue_buffer_fill(s : MatheigenvalueBuffer, v : Double) -> Math
   result
 }
 
-pub fn math_eigenvalue_buffer_min(s : MatheigenvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_buffer_min(s : MatheigenvalueBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_buffer_max(s : MatheigenvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_buffer_max(s : MatheigenvalueBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_buffer_to_string(s : MatheigenvalueBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_eigenvalue_cursor_set(s : MatheigenvalueCursor, i : Int, v : Double)
   result
 }
 
-pub fn math_eigenvalue_cursor_sum(s : MatheigenvalueCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_cursor_sum(s : MatheigenvalueCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_cursor_mean(s : MatheigenvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_cursor_mean(s : MatheigenvalueCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_cursor_scale(s : MatheigenvalueCursor, f : Double) -> MatheigenvalueCursor {
   let result = math_eigenvalue_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_eigenvalue_cursor_fill(s : MatheigenvalueCursor, v : Double) -> Math
   result
 }
 
-pub fn math_eigenvalue_cursor_min(s : MatheigenvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_cursor_min(s : MatheigenvalueCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_cursor_max(s : MatheigenvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_cursor_max(s : MatheigenvalueCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_cursor_to_string(s : MatheigenvalueCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_eigenvalue_view_set(s : MatheigenvalueView, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_eigenvalue_view_sum(s : MatheigenvalueView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_view_sum(s : MatheigenvalueView) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_view_mean(s : MatheigenvalueView) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_view_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_view_mean(s : MatheigenvalueView) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_view_scale(s : MatheigenvalueView, f : Double) -> MatheigenvalueView {
   let result = math_eigenvalue_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_eigenvalue_view_fill(s : MatheigenvalueView, v : Double) -> Matheige
   result
 }
 
-pub fn math_eigenvalue_view_min(s : MatheigenvalueView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_view_min(s : MatheigenvalueView) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_view_max(s : MatheigenvalueView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_view_max(s : MatheigenvalueView) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_view_to_string(s : MatheigenvalueView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_eigenvalue_range_set(s : MatheigenvalueRange, i : Int, v : Double) -
   result
 }
 
-pub fn math_eigenvalue_range_sum(s : MatheigenvalueRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_range_sum(s : MatheigenvalueRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_range_mean(s : MatheigenvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_range_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_range_mean(s : MatheigenvalueRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_range_scale(s : MatheigenvalueRange, f : Double) -> MatheigenvalueRange {
   let result = math_eigenvalue_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_eigenvalue_range_fill(s : MatheigenvalueRange, v : Double) -> Mathei
   result
 }
 
-pub fn math_eigenvalue_range_min(s : MatheigenvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_range_min(s : MatheigenvalueRange) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_range_max(s : MatheigenvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_range_max(s : MatheigenvalueRange) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_range_to_string(s : MatheigenvalueRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_eigenvalue_slice_set(s : MatheigenvalueSlice, i : Int, v : Double) -
   result
 }
 
-pub fn math_eigenvalue_slice_sum(s : MatheigenvalueSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_eigenvalue_slice_sum(s : MatheigenvalueSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_eigenvalue_slice_mean(s : MatheigenvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_eigenvalue_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_eigenvalue_slice_mean(s : MatheigenvalueSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_eigenvalue_slice_scale(s : MatheigenvalueSlice, f : Double) -> MatheigenvalueSlice {
   let result = math_eigenvalue_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_eigenvalue_slice_fill(s : MatheigenvalueSlice, v : Double) -> Mathei
   result
 }
 
-pub fn math_eigenvalue_slice_min(s : MatheigenvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_slice_min(s : MatheigenvalueSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_eigenvalue_slice_max(s : MatheigenvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_eigenvalue_slice_max(s : MatheigenvalueSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_eigenvalue_slice_to_string(s : MatheigenvalueSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

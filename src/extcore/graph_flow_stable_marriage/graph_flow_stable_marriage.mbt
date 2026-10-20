@@ -88,11 +88,7 @@ pub fn graph_flow_stable_marriage_make_series(vals : Array[Double], name : Strin
 
 pub fn graph_flow_stable_marriage_series_len(s : GraphflowstablemarriageSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_stable_marriage_series_sum(s : GraphflowstablemarriageSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_series_sum(s : GraphflowstablemarriageSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_stable_marriage_series_mean(s : GraphflowstablemarriageSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_stable_marriage_frame_set(s : GraphflowstablemarriageFrame, i 
   result
 }
 
-pub fn graph_flow_stable_marriage_frame_sum(s : GraphflowstablemarriageFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_frame_sum(s : GraphflowstablemarriageFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_frame_mean(s : GraphflowstablemarriageFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_frame_mean(s : GraphflowstablemarriageFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_frame_scale(s : GraphflowstablemarriageFrame, f : Double) -> GraphflowstablemarriageFrame {
   let result = graph_flow_stable_marriage_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_stable_marriage_frame_fill(s : GraphflowstablemarriageFrame, v
   result
 }
 
-pub fn graph_flow_stable_marriage_frame_min(s : GraphflowstablemarriageFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_frame_min(s : GraphflowstablemarriageFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_frame_max(s : GraphflowstablemarriageFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_frame_max(s : GraphflowstablemarriageFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_frame_to_string(s : GraphflowstablemarriageFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_stable_marriage_table_set(s : GraphflowstablemarriageTable, i 
   result
 }
 
-pub fn graph_flow_stable_marriage_table_sum(s : GraphflowstablemarriageTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_table_sum(s : GraphflowstablemarriageTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_table_mean(s : GraphflowstablemarriageTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_table_mean(s : GraphflowstablemarriageTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_table_scale(s : GraphflowstablemarriageTable, f : Double) -> GraphflowstablemarriageTable {
   let result = graph_flow_stable_marriage_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_stable_marriage_table_fill(s : GraphflowstablemarriageTable, v
   result
 }
 
-pub fn graph_flow_stable_marriage_table_min(s : GraphflowstablemarriageTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_table_min(s : GraphflowstablemarriageTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_table_max(s : GraphflowstablemarriageTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_table_max(s : GraphflowstablemarriageTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_table_to_string(s : GraphflowstablemarriageTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_stable_marriage_graphn_set(s : GraphflowstablemarriageGraphN, 
   result
 }
 
-pub fn graph_flow_stable_marriage_graphn_sum(s : GraphflowstablemarriageGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_graphn_sum(s : GraphflowstablemarriageGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_graphn_mean(s : GraphflowstablemarriageGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_graphn_mean(s : GraphflowstablemarriageGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_graphn_scale(s : GraphflowstablemarriageGraphN, f : Double) -> GraphflowstablemarriageGraphN {
   let result = graph_flow_stable_marriage_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_stable_marriage_graphn_fill(s : GraphflowstablemarriageGraphN,
   result
 }
 
-pub fn graph_flow_stable_marriage_graphn_min(s : GraphflowstablemarriageGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_graphn_min(s : GraphflowstablemarriageGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_graphn_max(s : GraphflowstablemarriageGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_graphn_max(s : GraphflowstablemarriageGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_graphn_to_string(s : GraphflowstablemarriageGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_stable_marriage_node_set(s : GraphflowstablemarriageNode, i : 
   result
 }
 
-pub fn graph_flow_stable_marriage_node_sum(s : GraphflowstablemarriageNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_node_sum(s : GraphflowstablemarriageNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_node_mean(s : GraphflowstablemarriageNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_node_mean(s : GraphflowstablemarriageNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_node_scale(s : GraphflowstablemarriageNode, f : Double) -> GraphflowstablemarriageNode {
   let result = graph_flow_stable_marriage_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_stable_marriage_node_fill(s : GraphflowstablemarriageNode, v :
   result
 }
 
-pub fn graph_flow_stable_marriage_node_min(s : GraphflowstablemarriageNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_node_min(s : GraphflowstablemarriageNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_node_max(s : GraphflowstablemarriageNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_node_max(s : GraphflowstablemarriageNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_node_to_string(s : GraphflowstablemarriageNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_stable_marriage_edge_set(s : GraphflowstablemarriageEdge, i : 
   result
 }
 
-pub fn graph_flow_stable_marriage_edge_sum(s : GraphflowstablemarriageEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_edge_sum(s : GraphflowstablemarriageEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_edge_mean(s : GraphflowstablemarriageEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_edge_mean(s : GraphflowstablemarriageEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_edge_scale(s : GraphflowstablemarriageEdge, f : Double) -> GraphflowstablemarriageEdge {
   let result = graph_flow_stable_marriage_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_stable_marriage_edge_fill(s : GraphflowstablemarriageEdge, v :
   result
 }
 
-pub fn graph_flow_stable_marriage_edge_min(s : GraphflowstablemarriageEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_edge_min(s : GraphflowstablemarriageEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_edge_max(s : GraphflowstablemarriageEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_edge_max(s : GraphflowstablemarriageEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_edge_to_string(s : GraphflowstablemarriageEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_stable_marriage_path_set(s : GraphflowstablemarriagePath, i : 
   result
 }
 
-pub fn graph_flow_stable_marriage_path_sum(s : GraphflowstablemarriagePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_path_sum(s : GraphflowstablemarriagePath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_path_mean(s : GraphflowstablemarriagePath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_path_mean(s : GraphflowstablemarriagePath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_path_scale(s : GraphflowstablemarriagePath, f : Double) -> GraphflowstablemarriagePath {
   let result = graph_flow_stable_marriage_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_stable_marriage_path_fill(s : GraphflowstablemarriagePath, v :
   result
 }
 
-pub fn graph_flow_stable_marriage_path_min(s : GraphflowstablemarriagePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_path_min(s : GraphflowstablemarriagePath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_path_max(s : GraphflowstablemarriagePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_path_max(s : GraphflowstablemarriagePath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_path_to_string(s : GraphflowstablemarriagePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_stable_marriage_cluster_set(s : GraphflowstablemarriageCluster
   result
 }
 
-pub fn graph_flow_stable_marriage_cluster_sum(s : GraphflowstablemarriageCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_cluster_sum(s : GraphflowstablemarriageCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_cluster_mean(s : GraphflowstablemarriageCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_cluster_mean(s : GraphflowstablemarriageCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_cluster_scale(s : GraphflowstablemarriageCluster, f : Double) -> GraphflowstablemarriageCluster {
   let result = graph_flow_stable_marriage_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_stable_marriage_cluster_fill(s : GraphflowstablemarriageCluste
   result
 }
 
-pub fn graph_flow_stable_marriage_cluster_min(s : GraphflowstablemarriageCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_cluster_min(s : GraphflowstablemarriageCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_cluster_max(s : GraphflowstablemarriageCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_cluster_max(s : GraphflowstablemarriageCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_cluster_to_string(s : GraphflowstablemarriageCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_stable_marriage_model_set(s : GraphflowstablemarriageModel, i 
   result
 }
 
-pub fn graph_flow_stable_marriage_model_sum(s : GraphflowstablemarriageModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_model_sum(s : GraphflowstablemarriageModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_model_mean(s : GraphflowstablemarriageModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_model_mean(s : GraphflowstablemarriageModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_model_scale(s : GraphflowstablemarriageModel, f : Double) -> GraphflowstablemarriageModel {
   let result = graph_flow_stable_marriage_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_stable_marriage_model_fill(s : GraphflowstablemarriageModel, v
   result
 }
 
-pub fn graph_flow_stable_marriage_model_min(s : GraphflowstablemarriageModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_model_min(s : GraphflowstablemarriageModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_model_max(s : GraphflowstablemarriageModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_model_max(s : GraphflowstablemarriageModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_model_to_string(s : GraphflowstablemarriageModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_stable_marriage_layer_set(s : GraphflowstablemarriageLayer, i 
   result
 }
 
-pub fn graph_flow_stable_marriage_layer_sum(s : GraphflowstablemarriageLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_layer_sum(s : GraphflowstablemarriageLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_layer_mean(s : GraphflowstablemarriageLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_layer_mean(s : GraphflowstablemarriageLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_layer_scale(s : GraphflowstablemarriageLayer, f : Double) -> GraphflowstablemarriageLayer {
   let result = graph_flow_stable_marriage_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_stable_marriage_layer_fill(s : GraphflowstablemarriageLayer, v
   result
 }
 
-pub fn graph_flow_stable_marriage_layer_min(s : GraphflowstablemarriageLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_layer_min(s : GraphflowstablemarriageLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_layer_max(s : GraphflowstablemarriageLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_layer_max(s : GraphflowstablemarriageLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_layer_to_string(s : GraphflowstablemarriageLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_stable_marriage_buffer_set(s : GraphflowstablemarriageBuffer, 
   result
 }
 
-pub fn graph_flow_stable_marriage_buffer_sum(s : GraphflowstablemarriageBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_buffer_sum(s : GraphflowstablemarriageBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_buffer_mean(s : GraphflowstablemarriageBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_buffer_mean(s : GraphflowstablemarriageBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_buffer_scale(s : GraphflowstablemarriageBuffer, f : Double) -> GraphflowstablemarriageBuffer {
   let result = graph_flow_stable_marriage_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_stable_marriage_buffer_fill(s : GraphflowstablemarriageBuffer,
   result
 }
 
-pub fn graph_flow_stable_marriage_buffer_min(s : GraphflowstablemarriageBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_buffer_min(s : GraphflowstablemarriageBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_buffer_max(s : GraphflowstablemarriageBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_buffer_max(s : GraphflowstablemarriageBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_buffer_to_string(s : GraphflowstablemarriageBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_stable_marriage_cursor_set(s : GraphflowstablemarriageCursor, 
   result
 }
 
-pub fn graph_flow_stable_marriage_cursor_sum(s : GraphflowstablemarriageCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_cursor_sum(s : GraphflowstablemarriageCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_cursor_mean(s : GraphflowstablemarriageCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_cursor_mean(s : GraphflowstablemarriageCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_cursor_scale(s : GraphflowstablemarriageCursor, f : Double) -> GraphflowstablemarriageCursor {
   let result = graph_flow_stable_marriage_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_stable_marriage_cursor_fill(s : GraphflowstablemarriageCursor,
   result
 }
 
-pub fn graph_flow_stable_marriage_cursor_min(s : GraphflowstablemarriageCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_cursor_min(s : GraphflowstablemarriageCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_cursor_max(s : GraphflowstablemarriageCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_cursor_max(s : GraphflowstablemarriageCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_cursor_to_string(s : GraphflowstablemarriageCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_stable_marriage_view_set(s : GraphflowstablemarriageView, i : 
   result
 }
 
-pub fn graph_flow_stable_marriage_view_sum(s : GraphflowstablemarriageView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_view_sum(s : GraphflowstablemarriageView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_view_mean(s : GraphflowstablemarriageView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_view_mean(s : GraphflowstablemarriageView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_view_scale(s : GraphflowstablemarriageView, f : Double) -> GraphflowstablemarriageView {
   let result = graph_flow_stable_marriage_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_stable_marriage_view_fill(s : GraphflowstablemarriageView, v :
   result
 }
 
-pub fn graph_flow_stable_marriage_view_min(s : GraphflowstablemarriageView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_view_min(s : GraphflowstablemarriageView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_view_max(s : GraphflowstablemarriageView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_view_max(s : GraphflowstablemarriageView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_view_to_string(s : GraphflowstablemarriageView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_stable_marriage_range_set(s : GraphflowstablemarriageRange, i 
   result
 }
 
-pub fn graph_flow_stable_marriage_range_sum(s : GraphflowstablemarriageRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_range_sum(s : GraphflowstablemarriageRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_range_mean(s : GraphflowstablemarriageRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_range_mean(s : GraphflowstablemarriageRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_range_scale(s : GraphflowstablemarriageRange, f : Double) -> GraphflowstablemarriageRange {
   let result = graph_flow_stable_marriage_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_stable_marriage_range_fill(s : GraphflowstablemarriageRange, v
   result
 }
 
-pub fn graph_flow_stable_marriage_range_min(s : GraphflowstablemarriageRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_range_min(s : GraphflowstablemarriageRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_range_max(s : GraphflowstablemarriageRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_range_max(s : GraphflowstablemarriageRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_range_to_string(s : GraphflowstablemarriageRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_stable_marriage_slice_set(s : GraphflowstablemarriageSlice, i 
   result
 }
 
-pub fn graph_flow_stable_marriage_slice_sum(s : GraphflowstablemarriageSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_stable_marriage_slice_sum(s : GraphflowstablemarriageSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_stable_marriage_slice_mean(s : GraphflowstablemarriageSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_stable_marriage_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_stable_marriage_slice_mean(s : GraphflowstablemarriageSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_stable_marriage_slice_scale(s : GraphflowstablemarriageSlice, f : Double) -> GraphflowstablemarriageSlice {
   let result = graph_flow_stable_marriage_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_stable_marriage_slice_fill(s : GraphflowstablemarriageSlice, v
   result
 }
 
-pub fn graph_flow_stable_marriage_slice_min(s : GraphflowstablemarriageSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_slice_min(s : GraphflowstablemarriageSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_stable_marriage_slice_max(s : GraphflowstablemarriageSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_stable_marriage_slice_max(s : GraphflowstablemarriageSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_stable_marriage_slice_to_string(s : GraphflowstablemarriageSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

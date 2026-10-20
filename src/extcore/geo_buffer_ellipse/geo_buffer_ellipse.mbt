@@ -88,11 +88,7 @@ pub fn geo_buffer_ellipse_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_buffer_ellipse_series_len(s : GeobufferellipseSeries) -> Int { s.vals.length() }
 
-pub fn geo_buffer_ellipse_series_sum(s : GeobufferellipseSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_buffer_ellipse_series_sum(s : GeobufferellipseSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_buffer_ellipse_series_mean(s : GeobufferellipseSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_buffer_ellipse_frame_set(s : GeobufferellipseFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_ellipse_frame_sum(s : GeobufferellipseFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_frame_sum(s : GeobufferellipseFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_frame_mean(s : GeobufferellipseFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_frame_mean(s : GeobufferellipseFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_frame_scale(s : GeobufferellipseFrame, f : Double) -> GeobufferellipseFrame {
   let result = geo_buffer_ellipse_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_buffer_ellipse_frame_fill(s : GeobufferellipseFrame, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_ellipse_frame_min(s : GeobufferellipseFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_frame_min(s : GeobufferellipseFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_frame_max(s : GeobufferellipseFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_frame_max(s : GeobufferellipseFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_frame_to_string(s : GeobufferellipseFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_buffer_ellipse_table_set(s : GeobufferellipseTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_ellipse_table_sum(s : GeobufferellipseTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_table_sum(s : GeobufferellipseTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_table_mean(s : GeobufferellipseTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_table_mean(s : GeobufferellipseTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_table_scale(s : GeobufferellipseTable, f : Double) -> GeobufferellipseTable {
   let result = geo_buffer_ellipse_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_buffer_ellipse_table_fill(s : GeobufferellipseTable, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_ellipse_table_min(s : GeobufferellipseTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_table_min(s : GeobufferellipseTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_table_max(s : GeobufferellipseTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_table_max(s : GeobufferellipseTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_table_to_string(s : GeobufferellipseTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_buffer_ellipse_graphn_set(s : GeobufferellipseGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_ellipse_graphn_sum(s : GeobufferellipseGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_graphn_sum(s : GeobufferellipseGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_graphn_mean(s : GeobufferellipseGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_graphn_mean(s : GeobufferellipseGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_graphn_scale(s : GeobufferellipseGraphN, f : Double) -> GeobufferellipseGraphN {
   let result = geo_buffer_ellipse_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_buffer_ellipse_graphn_fill(s : GeobufferellipseGraphN, v : Double) ->
   result
 }
 
-pub fn geo_buffer_ellipse_graphn_min(s : GeobufferellipseGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_graphn_min(s : GeobufferellipseGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_graphn_max(s : GeobufferellipseGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_graphn_max(s : GeobufferellipseGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_graphn_to_string(s : GeobufferellipseGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_buffer_ellipse_node_set(s : GeobufferellipseNode, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_ellipse_node_sum(s : GeobufferellipseNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_node_sum(s : GeobufferellipseNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_node_mean(s : GeobufferellipseNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_node_mean(s : GeobufferellipseNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_node_scale(s : GeobufferellipseNode, f : Double) -> GeobufferellipseNode {
   let result = geo_buffer_ellipse_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_buffer_ellipse_node_fill(s : GeobufferellipseNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_ellipse_node_min(s : GeobufferellipseNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_node_min(s : GeobufferellipseNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_node_max(s : GeobufferellipseNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_node_max(s : GeobufferellipseNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_node_to_string(s : GeobufferellipseNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_buffer_ellipse_edge_set(s : GeobufferellipseEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_ellipse_edge_sum(s : GeobufferellipseEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_edge_sum(s : GeobufferellipseEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_edge_mean(s : GeobufferellipseEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_edge_mean(s : GeobufferellipseEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_edge_scale(s : GeobufferellipseEdge, f : Double) -> GeobufferellipseEdge {
   let result = geo_buffer_ellipse_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_buffer_ellipse_edge_fill(s : GeobufferellipseEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_ellipse_edge_min(s : GeobufferellipseEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_edge_min(s : GeobufferellipseEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_edge_max(s : GeobufferellipseEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_edge_max(s : GeobufferellipseEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_edge_to_string(s : GeobufferellipseEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_buffer_ellipse_path_set(s : GeobufferellipsePath, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_ellipse_path_sum(s : GeobufferellipsePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_path_sum(s : GeobufferellipsePath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_path_mean(s : GeobufferellipsePath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_path_mean(s : GeobufferellipsePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_path_scale(s : GeobufferellipsePath, f : Double) -> GeobufferellipsePath {
   let result = geo_buffer_ellipse_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_buffer_ellipse_path_fill(s : GeobufferellipsePath, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_ellipse_path_min(s : GeobufferellipsePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_path_min(s : GeobufferellipsePath) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_path_max(s : GeobufferellipsePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_path_max(s : GeobufferellipsePath) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_path_to_string(s : GeobufferellipsePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_buffer_ellipse_cluster_set(s : GeobufferellipseCluster, i : Int, v : 
   result
 }
 
-pub fn geo_buffer_ellipse_cluster_sum(s : GeobufferellipseCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_cluster_sum(s : GeobufferellipseCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_cluster_mean(s : GeobufferellipseCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_cluster_mean(s : GeobufferellipseCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_cluster_scale(s : GeobufferellipseCluster, f : Double) -> GeobufferellipseCluster {
   let result = geo_buffer_ellipse_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_buffer_ellipse_cluster_fill(s : GeobufferellipseCluster, v : Double) 
   result
 }
 
-pub fn geo_buffer_ellipse_cluster_min(s : GeobufferellipseCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_cluster_min(s : GeobufferellipseCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_cluster_max(s : GeobufferellipseCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_cluster_max(s : GeobufferellipseCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_cluster_to_string(s : GeobufferellipseCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_buffer_ellipse_model_set(s : GeobufferellipseModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_ellipse_model_sum(s : GeobufferellipseModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_model_sum(s : GeobufferellipseModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_model_mean(s : GeobufferellipseModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_model_mean(s : GeobufferellipseModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_model_scale(s : GeobufferellipseModel, f : Double) -> GeobufferellipseModel {
   let result = geo_buffer_ellipse_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_buffer_ellipse_model_fill(s : GeobufferellipseModel, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_ellipse_model_min(s : GeobufferellipseModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_model_min(s : GeobufferellipseModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_model_max(s : GeobufferellipseModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_model_max(s : GeobufferellipseModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_model_to_string(s : GeobufferellipseModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_buffer_ellipse_layer_set(s : GeobufferellipseLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_ellipse_layer_sum(s : GeobufferellipseLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_layer_sum(s : GeobufferellipseLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_layer_mean(s : GeobufferellipseLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_layer_mean(s : GeobufferellipseLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_layer_scale(s : GeobufferellipseLayer, f : Double) -> GeobufferellipseLayer {
   let result = geo_buffer_ellipse_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_buffer_ellipse_layer_fill(s : GeobufferellipseLayer, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_ellipse_layer_min(s : GeobufferellipseLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_layer_min(s : GeobufferellipseLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_layer_max(s : GeobufferellipseLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_layer_max(s : GeobufferellipseLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_layer_to_string(s : GeobufferellipseLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_buffer_ellipse_buffer_set(s : GeobufferellipseBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_ellipse_buffer_sum(s : GeobufferellipseBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_buffer_sum(s : GeobufferellipseBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_buffer_mean(s : GeobufferellipseBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_buffer_mean(s : GeobufferellipseBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_buffer_scale(s : GeobufferellipseBuffer, f : Double) -> GeobufferellipseBuffer {
   let result = geo_buffer_ellipse_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_buffer_ellipse_buffer_fill(s : GeobufferellipseBuffer, v : Double) ->
   result
 }
 
-pub fn geo_buffer_ellipse_buffer_min(s : GeobufferellipseBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_buffer_min(s : GeobufferellipseBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_buffer_max(s : GeobufferellipseBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_buffer_max(s : GeobufferellipseBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_buffer_to_string(s : GeobufferellipseBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_buffer_ellipse_cursor_set(s : GeobufferellipseCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_ellipse_cursor_sum(s : GeobufferellipseCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_cursor_sum(s : GeobufferellipseCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_cursor_mean(s : GeobufferellipseCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_cursor_mean(s : GeobufferellipseCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_cursor_scale(s : GeobufferellipseCursor, f : Double) -> GeobufferellipseCursor {
   let result = geo_buffer_ellipse_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_buffer_ellipse_cursor_fill(s : GeobufferellipseCursor, v : Double) ->
   result
 }
 
-pub fn geo_buffer_ellipse_cursor_min(s : GeobufferellipseCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_cursor_min(s : GeobufferellipseCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_cursor_max(s : GeobufferellipseCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_cursor_max(s : GeobufferellipseCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_cursor_to_string(s : GeobufferellipseCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_buffer_ellipse_view_set(s : GeobufferellipseView, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_ellipse_view_sum(s : GeobufferellipseView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_view_sum(s : GeobufferellipseView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_view_mean(s : GeobufferellipseView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_view_mean(s : GeobufferellipseView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_view_scale(s : GeobufferellipseView, f : Double) -> GeobufferellipseView {
   let result = geo_buffer_ellipse_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_buffer_ellipse_view_fill(s : GeobufferellipseView, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_ellipse_view_min(s : GeobufferellipseView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_view_min(s : GeobufferellipseView) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_view_max(s : GeobufferellipseView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_view_max(s : GeobufferellipseView) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_view_to_string(s : GeobufferellipseView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_buffer_ellipse_range_set(s : GeobufferellipseRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_ellipse_range_sum(s : GeobufferellipseRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_range_sum(s : GeobufferellipseRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_range_mean(s : GeobufferellipseRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_range_mean(s : GeobufferellipseRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_range_scale(s : GeobufferellipseRange, f : Double) -> GeobufferellipseRange {
   let result = geo_buffer_ellipse_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_buffer_ellipse_range_fill(s : GeobufferellipseRange, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_ellipse_range_min(s : GeobufferellipseRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_range_min(s : GeobufferellipseRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_range_max(s : GeobufferellipseRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_range_max(s : GeobufferellipseRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_range_to_string(s : GeobufferellipseRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_buffer_ellipse_slice_set(s : GeobufferellipseSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_ellipse_slice_sum(s : GeobufferellipseSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_ellipse_slice_sum(s : GeobufferellipseSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_ellipse_slice_mean(s : GeobufferellipseSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_ellipse_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_ellipse_slice_mean(s : GeobufferellipseSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_ellipse_slice_scale(s : GeobufferellipseSlice, f : Double) -> GeobufferellipseSlice {
   let result = geo_buffer_ellipse_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_buffer_ellipse_slice_fill(s : GeobufferellipseSlice, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_ellipse_slice_min(s : GeobufferellipseSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_slice_min(s : GeobufferellipseSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_ellipse_slice_max(s : GeobufferellipseSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_ellipse_slice_max(s : GeobufferellipseSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_ellipse_slice_to_string(s : GeobufferellipseSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

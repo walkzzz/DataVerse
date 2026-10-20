@@ -88,11 +88,7 @@ pub fn image_filter_sobel_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_filter_sobel_series_len(s : ImagefiltersobelSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_sobel_series_sum(s : ImagefiltersobelSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_sobel_series_sum(s : ImagefiltersobelSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_sobel_series_mean(s : ImagefiltersobelSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_sobel_frame_set(s : ImagefiltersobelFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_sobel_frame_sum(s : ImagefiltersobelFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_frame_sum(s : ImagefiltersobelFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_frame_mean(s : ImagefiltersobelFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_frame_mean(s : ImagefiltersobelFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_frame_scale(s : ImagefiltersobelFrame, f : Double) -> ImagefiltersobelFrame {
   let result = image_filter_sobel_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_sobel_frame_fill(s : ImagefiltersobelFrame, v : Double) -> I
   result
 }
 
-pub fn image_filter_sobel_frame_min(s : ImagefiltersobelFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_frame_min(s : ImagefiltersobelFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_frame_max(s : ImagefiltersobelFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_frame_max(s : ImagefiltersobelFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_frame_to_string(s : ImagefiltersobelFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_sobel_table_set(s : ImagefiltersobelTable, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_sobel_table_sum(s : ImagefiltersobelTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_table_sum(s : ImagefiltersobelTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_table_mean(s : ImagefiltersobelTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_table_mean(s : ImagefiltersobelTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_table_scale(s : ImagefiltersobelTable, f : Double) -> ImagefiltersobelTable {
   let result = image_filter_sobel_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_sobel_table_fill(s : ImagefiltersobelTable, v : Double) -> I
   result
 }
 
-pub fn image_filter_sobel_table_min(s : ImagefiltersobelTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_table_min(s : ImagefiltersobelTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_table_max(s : ImagefiltersobelTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_table_max(s : ImagefiltersobelTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_table_to_string(s : ImagefiltersobelTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_sobel_graphn_set(s : ImagefiltersobelGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_filter_sobel_graphn_sum(s : ImagefiltersobelGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_graphn_sum(s : ImagefiltersobelGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_graphn_mean(s : ImagefiltersobelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_graphn_mean(s : ImagefiltersobelGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_graphn_scale(s : ImagefiltersobelGraphN, f : Double) -> ImagefiltersobelGraphN {
   let result = image_filter_sobel_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_sobel_graphn_fill(s : ImagefiltersobelGraphN, v : Double) ->
   result
 }
 
-pub fn image_filter_sobel_graphn_min(s : ImagefiltersobelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_graphn_min(s : ImagefiltersobelGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_graphn_max(s : ImagefiltersobelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_graphn_max(s : ImagefiltersobelGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_graphn_to_string(s : ImagefiltersobelGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_sobel_node_set(s : ImagefiltersobelNode, i : Int, v : Double
   result
 }
 
-pub fn image_filter_sobel_node_sum(s : ImagefiltersobelNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_node_sum(s : ImagefiltersobelNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_node_mean(s : ImagefiltersobelNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_node_mean(s : ImagefiltersobelNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_node_scale(s : ImagefiltersobelNode, f : Double) -> ImagefiltersobelNode {
   let result = image_filter_sobel_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_sobel_node_fill(s : ImagefiltersobelNode, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_sobel_node_min(s : ImagefiltersobelNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_node_min(s : ImagefiltersobelNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_node_max(s : ImagefiltersobelNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_node_max(s : ImagefiltersobelNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_node_to_string(s : ImagefiltersobelNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_sobel_edge_set(s : ImagefiltersobelEdge, i : Int, v : Double
   result
 }
 
-pub fn image_filter_sobel_edge_sum(s : ImagefiltersobelEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_edge_sum(s : ImagefiltersobelEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_edge_mean(s : ImagefiltersobelEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_edge_mean(s : ImagefiltersobelEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_edge_scale(s : ImagefiltersobelEdge, f : Double) -> ImagefiltersobelEdge {
   let result = image_filter_sobel_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_sobel_edge_fill(s : ImagefiltersobelEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_sobel_edge_min(s : ImagefiltersobelEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_edge_min(s : ImagefiltersobelEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_edge_max(s : ImagefiltersobelEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_edge_max(s : ImagefiltersobelEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_edge_to_string(s : ImagefiltersobelEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_sobel_path_set(s : ImagefiltersobelPath, i : Int, v : Double
   result
 }
 
-pub fn image_filter_sobel_path_sum(s : ImagefiltersobelPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_path_sum(s : ImagefiltersobelPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_path_mean(s : ImagefiltersobelPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_path_mean(s : ImagefiltersobelPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_path_scale(s : ImagefiltersobelPath, f : Double) -> ImagefiltersobelPath {
   let result = image_filter_sobel_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_sobel_path_fill(s : ImagefiltersobelPath, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_sobel_path_min(s : ImagefiltersobelPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_path_min(s : ImagefiltersobelPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_path_max(s : ImagefiltersobelPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_path_max(s : ImagefiltersobelPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_path_to_string(s : ImagefiltersobelPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_sobel_cluster_set(s : ImagefiltersobelCluster, i : Int, v : 
   result
 }
 
-pub fn image_filter_sobel_cluster_sum(s : ImagefiltersobelCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_cluster_sum(s : ImagefiltersobelCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_cluster_mean(s : ImagefiltersobelCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_cluster_mean(s : ImagefiltersobelCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_cluster_scale(s : ImagefiltersobelCluster, f : Double) -> ImagefiltersobelCluster {
   let result = image_filter_sobel_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_sobel_cluster_fill(s : ImagefiltersobelCluster, v : Double) 
   result
 }
 
-pub fn image_filter_sobel_cluster_min(s : ImagefiltersobelCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_cluster_min(s : ImagefiltersobelCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_cluster_max(s : ImagefiltersobelCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_cluster_max(s : ImagefiltersobelCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_cluster_to_string(s : ImagefiltersobelCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_sobel_model_set(s : ImagefiltersobelModel, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_sobel_model_sum(s : ImagefiltersobelModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_model_sum(s : ImagefiltersobelModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_model_mean(s : ImagefiltersobelModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_model_mean(s : ImagefiltersobelModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_model_scale(s : ImagefiltersobelModel, f : Double) -> ImagefiltersobelModel {
   let result = image_filter_sobel_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_sobel_model_fill(s : ImagefiltersobelModel, v : Double) -> I
   result
 }
 
-pub fn image_filter_sobel_model_min(s : ImagefiltersobelModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_model_min(s : ImagefiltersobelModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_model_max(s : ImagefiltersobelModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_model_max(s : ImagefiltersobelModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_model_to_string(s : ImagefiltersobelModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_sobel_layer_set(s : ImagefiltersobelLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_sobel_layer_sum(s : ImagefiltersobelLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_layer_sum(s : ImagefiltersobelLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_layer_mean(s : ImagefiltersobelLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_layer_mean(s : ImagefiltersobelLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_layer_scale(s : ImagefiltersobelLayer, f : Double) -> ImagefiltersobelLayer {
   let result = image_filter_sobel_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_sobel_layer_fill(s : ImagefiltersobelLayer, v : Double) -> I
   result
 }
 
-pub fn image_filter_sobel_layer_min(s : ImagefiltersobelLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_layer_min(s : ImagefiltersobelLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_layer_max(s : ImagefiltersobelLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_layer_max(s : ImagefiltersobelLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_layer_to_string(s : ImagefiltersobelLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_sobel_buffer_set(s : ImagefiltersobelBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_filter_sobel_buffer_sum(s : ImagefiltersobelBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_buffer_sum(s : ImagefiltersobelBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_buffer_mean(s : ImagefiltersobelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_buffer_mean(s : ImagefiltersobelBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_buffer_scale(s : ImagefiltersobelBuffer, f : Double) -> ImagefiltersobelBuffer {
   let result = image_filter_sobel_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_sobel_buffer_fill(s : ImagefiltersobelBuffer, v : Double) ->
   result
 }
 
-pub fn image_filter_sobel_buffer_min(s : ImagefiltersobelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_buffer_min(s : ImagefiltersobelBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_buffer_max(s : ImagefiltersobelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_buffer_max(s : ImagefiltersobelBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_buffer_to_string(s : ImagefiltersobelBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_sobel_cursor_set(s : ImagefiltersobelCursor, i : Int, v : Do
   result
 }
 
-pub fn image_filter_sobel_cursor_sum(s : ImagefiltersobelCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_cursor_sum(s : ImagefiltersobelCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_cursor_mean(s : ImagefiltersobelCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_cursor_mean(s : ImagefiltersobelCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_cursor_scale(s : ImagefiltersobelCursor, f : Double) -> ImagefiltersobelCursor {
   let result = image_filter_sobel_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_sobel_cursor_fill(s : ImagefiltersobelCursor, v : Double) ->
   result
 }
 
-pub fn image_filter_sobel_cursor_min(s : ImagefiltersobelCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_cursor_min(s : ImagefiltersobelCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_cursor_max(s : ImagefiltersobelCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_cursor_max(s : ImagefiltersobelCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_cursor_to_string(s : ImagefiltersobelCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_sobel_view_set(s : ImagefiltersobelView, i : Int, v : Double
   result
 }
 
-pub fn image_filter_sobel_view_sum(s : ImagefiltersobelView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_view_sum(s : ImagefiltersobelView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_view_mean(s : ImagefiltersobelView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_view_mean(s : ImagefiltersobelView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_view_scale(s : ImagefiltersobelView, f : Double) -> ImagefiltersobelView {
   let result = image_filter_sobel_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_sobel_view_fill(s : ImagefiltersobelView, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_sobel_view_min(s : ImagefiltersobelView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_view_min(s : ImagefiltersobelView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_view_max(s : ImagefiltersobelView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_view_max(s : ImagefiltersobelView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_view_to_string(s : ImagefiltersobelView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_sobel_range_set(s : ImagefiltersobelRange, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_sobel_range_sum(s : ImagefiltersobelRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_range_sum(s : ImagefiltersobelRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_range_mean(s : ImagefiltersobelRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_range_mean(s : ImagefiltersobelRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_range_scale(s : ImagefiltersobelRange, f : Double) -> ImagefiltersobelRange {
   let result = image_filter_sobel_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_sobel_range_fill(s : ImagefiltersobelRange, v : Double) -> I
   result
 }
 
-pub fn image_filter_sobel_range_min(s : ImagefiltersobelRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_range_min(s : ImagefiltersobelRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_range_max(s : ImagefiltersobelRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_range_max(s : ImagefiltersobelRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_range_to_string(s : ImagefiltersobelRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_sobel_slice_set(s : ImagefiltersobelSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_sobel_slice_sum(s : ImagefiltersobelSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_sobel_slice_sum(s : ImagefiltersobelSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_sobel_slice_mean(s : ImagefiltersobelSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_sobel_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_sobel_slice_mean(s : ImagefiltersobelSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_sobel_slice_scale(s : ImagefiltersobelSlice, f : Double) -> ImagefiltersobelSlice {
   let result = image_filter_sobel_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_sobel_slice_fill(s : ImagefiltersobelSlice, v : Double) -> I
   result
 }
 
-pub fn image_filter_sobel_slice_min(s : ImagefiltersobelSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_slice_min(s : ImagefiltersobelSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_sobel_slice_max(s : ImagefiltersobelSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_sobel_slice_max(s : ImagefiltersobelSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_sobel_slice_to_string(s : ImagefiltersobelSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

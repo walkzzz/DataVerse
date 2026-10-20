@@ -88,11 +88,7 @@ pub fn geo_proj_cylindrical_make_series(vals : Array[Double], name : String) -> 
 
 pub fn geo_proj_cylindrical_series_len(s : GeoprojcylindricalSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_cylindrical_series_sum(s : GeoprojcylindricalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_cylindrical_series_sum(s : GeoprojcylindricalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_cylindrical_series_mean(s : GeoprojcylindricalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_cylindrical_frame_set(s : GeoprojcylindricalFrame, i : Int, v : 
   result
 }
 
-pub fn geo_proj_cylindrical_frame_sum(s : GeoprojcylindricalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_frame_sum(s : GeoprojcylindricalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_frame_mean(s : GeoprojcylindricalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_frame_mean(s : GeoprojcylindricalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_frame_scale(s : GeoprojcylindricalFrame, f : Double) -> GeoprojcylindricalFrame {
   let result = geo_proj_cylindrical_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_cylindrical_frame_fill(s : GeoprojcylindricalFrame, v : Double) 
   result
 }
 
-pub fn geo_proj_cylindrical_frame_min(s : GeoprojcylindricalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_frame_min(s : GeoprojcylindricalFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_frame_max(s : GeoprojcylindricalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_frame_max(s : GeoprojcylindricalFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_frame_to_string(s : GeoprojcylindricalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_cylindrical_table_set(s : GeoprojcylindricalTable, i : Int, v : 
   result
 }
 
-pub fn geo_proj_cylindrical_table_sum(s : GeoprojcylindricalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_table_sum(s : GeoprojcylindricalTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_table_mean(s : GeoprojcylindricalTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_table_mean(s : GeoprojcylindricalTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_table_scale(s : GeoprojcylindricalTable, f : Double) -> GeoprojcylindricalTable {
   let result = geo_proj_cylindrical_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_cylindrical_table_fill(s : GeoprojcylindricalTable, v : Double) 
   result
 }
 
-pub fn geo_proj_cylindrical_table_min(s : GeoprojcylindricalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_table_min(s : GeoprojcylindricalTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_table_max(s : GeoprojcylindricalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_table_max(s : GeoprojcylindricalTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_table_to_string(s : GeoprojcylindricalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_cylindrical_graphn_set(s : GeoprojcylindricalGraphN, i : Int, v 
   result
 }
 
-pub fn geo_proj_cylindrical_graphn_sum(s : GeoprojcylindricalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_graphn_sum(s : GeoprojcylindricalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_graphn_mean(s : GeoprojcylindricalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_graphn_mean(s : GeoprojcylindricalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_graphn_scale(s : GeoprojcylindricalGraphN, f : Double) -> GeoprojcylindricalGraphN {
   let result = geo_proj_cylindrical_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_cylindrical_graphn_fill(s : GeoprojcylindricalGraphN, v : Double
   result
 }
 
-pub fn geo_proj_cylindrical_graphn_min(s : GeoprojcylindricalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_graphn_min(s : GeoprojcylindricalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_graphn_max(s : GeoprojcylindricalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_graphn_max(s : GeoprojcylindricalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_graphn_to_string(s : GeoprojcylindricalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_cylindrical_node_set(s : GeoprojcylindricalNode, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_cylindrical_node_sum(s : GeoprojcylindricalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_node_sum(s : GeoprojcylindricalNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_node_mean(s : GeoprojcylindricalNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_node_mean(s : GeoprojcylindricalNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_node_scale(s : GeoprojcylindricalNode, f : Double) -> GeoprojcylindricalNode {
   let result = geo_proj_cylindrical_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_cylindrical_node_fill(s : GeoprojcylindricalNode, v : Double) ->
   result
 }
 
-pub fn geo_proj_cylindrical_node_min(s : GeoprojcylindricalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_node_min(s : GeoprojcylindricalNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_node_max(s : GeoprojcylindricalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_node_max(s : GeoprojcylindricalNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_node_to_string(s : GeoprojcylindricalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_cylindrical_edge_set(s : GeoprojcylindricalEdge, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_cylindrical_edge_sum(s : GeoprojcylindricalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_edge_sum(s : GeoprojcylindricalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_edge_mean(s : GeoprojcylindricalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_edge_mean(s : GeoprojcylindricalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_edge_scale(s : GeoprojcylindricalEdge, f : Double) -> GeoprojcylindricalEdge {
   let result = geo_proj_cylindrical_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_cylindrical_edge_fill(s : GeoprojcylindricalEdge, v : Double) ->
   result
 }
 
-pub fn geo_proj_cylindrical_edge_min(s : GeoprojcylindricalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_edge_min(s : GeoprojcylindricalEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_edge_max(s : GeoprojcylindricalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_edge_max(s : GeoprojcylindricalEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_edge_to_string(s : GeoprojcylindricalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_cylindrical_path_set(s : GeoprojcylindricalPath, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_cylindrical_path_sum(s : GeoprojcylindricalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_path_sum(s : GeoprojcylindricalPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_path_mean(s : GeoprojcylindricalPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_path_mean(s : GeoprojcylindricalPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_path_scale(s : GeoprojcylindricalPath, f : Double) -> GeoprojcylindricalPath {
   let result = geo_proj_cylindrical_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_cylindrical_path_fill(s : GeoprojcylindricalPath, v : Double) ->
   result
 }
 
-pub fn geo_proj_cylindrical_path_min(s : GeoprojcylindricalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_path_min(s : GeoprojcylindricalPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_path_max(s : GeoprojcylindricalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_path_max(s : GeoprojcylindricalPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_path_to_string(s : GeoprojcylindricalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_cylindrical_cluster_set(s : GeoprojcylindricalCluster, i : Int, 
   result
 }
 
-pub fn geo_proj_cylindrical_cluster_sum(s : GeoprojcylindricalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_cluster_sum(s : GeoprojcylindricalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_cluster_mean(s : GeoprojcylindricalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_cluster_mean(s : GeoprojcylindricalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_cluster_scale(s : GeoprojcylindricalCluster, f : Double) -> GeoprojcylindricalCluster {
   let result = geo_proj_cylindrical_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_cylindrical_cluster_fill(s : GeoprojcylindricalCluster, v : Doub
   result
 }
 
-pub fn geo_proj_cylindrical_cluster_min(s : GeoprojcylindricalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_cluster_min(s : GeoprojcylindricalCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_cluster_max(s : GeoprojcylindricalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_cluster_max(s : GeoprojcylindricalCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_cluster_to_string(s : GeoprojcylindricalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_cylindrical_model_set(s : GeoprojcylindricalModel, i : Int, v : 
   result
 }
 
-pub fn geo_proj_cylindrical_model_sum(s : GeoprojcylindricalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_model_sum(s : GeoprojcylindricalModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_model_mean(s : GeoprojcylindricalModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_model_mean(s : GeoprojcylindricalModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_model_scale(s : GeoprojcylindricalModel, f : Double) -> GeoprojcylindricalModel {
   let result = geo_proj_cylindrical_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_cylindrical_model_fill(s : GeoprojcylindricalModel, v : Double) 
   result
 }
 
-pub fn geo_proj_cylindrical_model_min(s : GeoprojcylindricalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_model_min(s : GeoprojcylindricalModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_model_max(s : GeoprojcylindricalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_model_max(s : GeoprojcylindricalModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_model_to_string(s : GeoprojcylindricalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_cylindrical_layer_set(s : GeoprojcylindricalLayer, i : Int, v : 
   result
 }
 
-pub fn geo_proj_cylindrical_layer_sum(s : GeoprojcylindricalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_layer_sum(s : GeoprojcylindricalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_layer_mean(s : GeoprojcylindricalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_layer_mean(s : GeoprojcylindricalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_layer_scale(s : GeoprojcylindricalLayer, f : Double) -> GeoprojcylindricalLayer {
   let result = geo_proj_cylindrical_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_cylindrical_layer_fill(s : GeoprojcylindricalLayer, v : Double) 
   result
 }
 
-pub fn geo_proj_cylindrical_layer_min(s : GeoprojcylindricalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_layer_min(s : GeoprojcylindricalLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_layer_max(s : GeoprojcylindricalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_layer_max(s : GeoprojcylindricalLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_layer_to_string(s : GeoprojcylindricalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_cylindrical_buffer_set(s : GeoprojcylindricalBuffer, i : Int, v 
   result
 }
 
-pub fn geo_proj_cylindrical_buffer_sum(s : GeoprojcylindricalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_buffer_sum(s : GeoprojcylindricalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_buffer_mean(s : GeoprojcylindricalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_buffer_mean(s : GeoprojcylindricalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_buffer_scale(s : GeoprojcylindricalBuffer, f : Double) -> GeoprojcylindricalBuffer {
   let result = geo_proj_cylindrical_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_cylindrical_buffer_fill(s : GeoprojcylindricalBuffer, v : Double
   result
 }
 
-pub fn geo_proj_cylindrical_buffer_min(s : GeoprojcylindricalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_buffer_min(s : GeoprojcylindricalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_buffer_max(s : GeoprojcylindricalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_buffer_max(s : GeoprojcylindricalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_buffer_to_string(s : GeoprojcylindricalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_cylindrical_cursor_set(s : GeoprojcylindricalCursor, i : Int, v 
   result
 }
 
-pub fn geo_proj_cylindrical_cursor_sum(s : GeoprojcylindricalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_cursor_sum(s : GeoprojcylindricalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_cursor_mean(s : GeoprojcylindricalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_cursor_mean(s : GeoprojcylindricalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_cursor_scale(s : GeoprojcylindricalCursor, f : Double) -> GeoprojcylindricalCursor {
   let result = geo_proj_cylindrical_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_cylindrical_cursor_fill(s : GeoprojcylindricalCursor, v : Double
   result
 }
 
-pub fn geo_proj_cylindrical_cursor_min(s : GeoprojcylindricalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_cursor_min(s : GeoprojcylindricalCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_cursor_max(s : GeoprojcylindricalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_cursor_max(s : GeoprojcylindricalCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_cursor_to_string(s : GeoprojcylindricalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_cylindrical_view_set(s : GeoprojcylindricalView, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_cylindrical_view_sum(s : GeoprojcylindricalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_view_sum(s : GeoprojcylindricalView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_view_mean(s : GeoprojcylindricalView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_view_mean(s : GeoprojcylindricalView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_view_scale(s : GeoprojcylindricalView, f : Double) -> GeoprojcylindricalView {
   let result = geo_proj_cylindrical_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_cylindrical_view_fill(s : GeoprojcylindricalView, v : Double) ->
   result
 }
 
-pub fn geo_proj_cylindrical_view_min(s : GeoprojcylindricalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_view_min(s : GeoprojcylindricalView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_view_max(s : GeoprojcylindricalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_view_max(s : GeoprojcylindricalView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_view_to_string(s : GeoprojcylindricalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_cylindrical_range_set(s : GeoprojcylindricalRange, i : Int, v : 
   result
 }
 
-pub fn geo_proj_cylindrical_range_sum(s : GeoprojcylindricalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_range_sum(s : GeoprojcylindricalRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_range_mean(s : GeoprojcylindricalRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_range_mean(s : GeoprojcylindricalRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_range_scale(s : GeoprojcylindricalRange, f : Double) -> GeoprojcylindricalRange {
   let result = geo_proj_cylindrical_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_cylindrical_range_fill(s : GeoprojcylindricalRange, v : Double) 
   result
 }
 
-pub fn geo_proj_cylindrical_range_min(s : GeoprojcylindricalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_range_min(s : GeoprojcylindricalRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_range_max(s : GeoprojcylindricalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_range_max(s : GeoprojcylindricalRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_range_to_string(s : GeoprojcylindricalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_cylindrical_slice_set(s : GeoprojcylindricalSlice, i : Int, v : 
   result
 }
 
-pub fn geo_proj_cylindrical_slice_sum(s : GeoprojcylindricalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_cylindrical_slice_sum(s : GeoprojcylindricalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_cylindrical_slice_mean(s : GeoprojcylindricalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_cylindrical_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_cylindrical_slice_mean(s : GeoprojcylindricalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_cylindrical_slice_scale(s : GeoprojcylindricalSlice, f : Double) -> GeoprojcylindricalSlice {
   let result = geo_proj_cylindrical_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_cylindrical_slice_fill(s : GeoprojcylindricalSlice, v : Double) 
   result
 }
 
-pub fn geo_proj_cylindrical_slice_min(s : GeoprojcylindricalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_slice_min(s : GeoprojcylindricalSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_cylindrical_slice_max(s : GeoprojcylindricalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_cylindrical_slice_max(s : GeoprojcylindricalSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_cylindrical_slice_to_string(s : GeoprojcylindricalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

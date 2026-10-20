@@ -88,11 +88,7 @@ pub fn stats_infer_hypothesis_make_series(vals : Array[Double], name : String) -
 
 pub fn stats_infer_hypothesis_series_len(s : StatsinferhypothesisSeries) -> Int { s.vals.length() }
 
-pub fn stats_infer_hypothesis_series_sum(s : StatsinferhypothesisSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_infer_hypothesis_series_sum(s : StatsinferhypothesisSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_infer_hypothesis_series_mean(s : StatsinferhypothesisSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_infer_hypothesis_frame_set(s : StatsinferhypothesisFrame, i : Int, 
   result
 }
 
-pub fn stats_infer_hypothesis_frame_sum(s : StatsinferhypothesisFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_frame_sum(s : StatsinferhypothesisFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_frame_mean(s : StatsinferhypothesisFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_frame_mean(s : StatsinferhypothesisFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_frame_scale(s : StatsinferhypothesisFrame, f : Double) -> StatsinferhypothesisFrame {
   let result = stats_infer_hypothesis_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_infer_hypothesis_frame_fill(s : StatsinferhypothesisFrame, v : Doub
   result
 }
 
-pub fn stats_infer_hypothesis_frame_min(s : StatsinferhypothesisFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_frame_min(s : StatsinferhypothesisFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_frame_max(s : StatsinferhypothesisFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_frame_max(s : StatsinferhypothesisFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_frame_to_string(s : StatsinferhypothesisFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_infer_hypothesis_table_set(s : StatsinferhypothesisTable, i : Int, 
   result
 }
 
-pub fn stats_infer_hypothesis_table_sum(s : StatsinferhypothesisTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_table_sum(s : StatsinferhypothesisTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_table_mean(s : StatsinferhypothesisTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_table_mean(s : StatsinferhypothesisTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_table_scale(s : StatsinferhypothesisTable, f : Double) -> StatsinferhypothesisTable {
   let result = stats_infer_hypothesis_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_infer_hypothesis_table_fill(s : StatsinferhypothesisTable, v : Doub
   result
 }
 
-pub fn stats_infer_hypothesis_table_min(s : StatsinferhypothesisTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_table_min(s : StatsinferhypothesisTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_table_max(s : StatsinferhypothesisTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_table_max(s : StatsinferhypothesisTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_table_to_string(s : StatsinferhypothesisTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_infer_hypothesis_graphn_set(s : StatsinferhypothesisGraphN, i : Int
   result
 }
 
-pub fn stats_infer_hypothesis_graphn_sum(s : StatsinferhypothesisGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_graphn_sum(s : StatsinferhypothesisGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_graphn_mean(s : StatsinferhypothesisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_graphn_mean(s : StatsinferhypothesisGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_graphn_scale(s : StatsinferhypothesisGraphN, f : Double) -> StatsinferhypothesisGraphN {
   let result = stats_infer_hypothesis_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_infer_hypothesis_graphn_fill(s : StatsinferhypothesisGraphN, v : Do
   result
 }
 
-pub fn stats_infer_hypothesis_graphn_min(s : StatsinferhypothesisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_graphn_min(s : StatsinferhypothesisGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_graphn_max(s : StatsinferhypothesisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_graphn_max(s : StatsinferhypothesisGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_graphn_to_string(s : StatsinferhypothesisGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_infer_hypothesis_node_set(s : StatsinferhypothesisNode, i : Int, v 
   result
 }
 
-pub fn stats_infer_hypothesis_node_sum(s : StatsinferhypothesisNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_node_sum(s : StatsinferhypothesisNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_node_mean(s : StatsinferhypothesisNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_node_mean(s : StatsinferhypothesisNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_node_scale(s : StatsinferhypothesisNode, f : Double) -> StatsinferhypothesisNode {
   let result = stats_infer_hypothesis_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_infer_hypothesis_node_fill(s : StatsinferhypothesisNode, v : Double
   result
 }
 
-pub fn stats_infer_hypothesis_node_min(s : StatsinferhypothesisNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_node_min(s : StatsinferhypothesisNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_node_max(s : StatsinferhypothesisNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_node_max(s : StatsinferhypothesisNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_node_to_string(s : StatsinferhypothesisNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_infer_hypothesis_edge_set(s : StatsinferhypothesisEdge, i : Int, v 
   result
 }
 
-pub fn stats_infer_hypothesis_edge_sum(s : StatsinferhypothesisEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_edge_sum(s : StatsinferhypothesisEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_edge_mean(s : StatsinferhypothesisEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_edge_mean(s : StatsinferhypothesisEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_edge_scale(s : StatsinferhypothesisEdge, f : Double) -> StatsinferhypothesisEdge {
   let result = stats_infer_hypothesis_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_infer_hypothesis_edge_fill(s : StatsinferhypothesisEdge, v : Double
   result
 }
 
-pub fn stats_infer_hypothesis_edge_min(s : StatsinferhypothesisEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_edge_min(s : StatsinferhypothesisEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_edge_max(s : StatsinferhypothesisEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_edge_max(s : StatsinferhypothesisEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_edge_to_string(s : StatsinferhypothesisEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_infer_hypothesis_path_set(s : StatsinferhypothesisPath, i : Int, v 
   result
 }
 
-pub fn stats_infer_hypothesis_path_sum(s : StatsinferhypothesisPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_path_sum(s : StatsinferhypothesisPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_path_mean(s : StatsinferhypothesisPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_path_mean(s : StatsinferhypothesisPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_path_scale(s : StatsinferhypothesisPath, f : Double) -> StatsinferhypothesisPath {
   let result = stats_infer_hypothesis_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_infer_hypothesis_path_fill(s : StatsinferhypothesisPath, v : Double
   result
 }
 
-pub fn stats_infer_hypothesis_path_min(s : StatsinferhypothesisPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_path_min(s : StatsinferhypothesisPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_path_max(s : StatsinferhypothesisPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_path_max(s : StatsinferhypothesisPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_path_to_string(s : StatsinferhypothesisPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_infer_hypothesis_cluster_set(s : StatsinferhypothesisCluster, i : I
   result
 }
 
-pub fn stats_infer_hypothesis_cluster_sum(s : StatsinferhypothesisCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_cluster_sum(s : StatsinferhypothesisCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_cluster_mean(s : StatsinferhypothesisCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_cluster_mean(s : StatsinferhypothesisCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_cluster_scale(s : StatsinferhypothesisCluster, f : Double) -> StatsinferhypothesisCluster {
   let result = stats_infer_hypothesis_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_infer_hypothesis_cluster_fill(s : StatsinferhypothesisCluster, v : 
   result
 }
 
-pub fn stats_infer_hypothesis_cluster_min(s : StatsinferhypothesisCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_cluster_min(s : StatsinferhypothesisCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_cluster_max(s : StatsinferhypothesisCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_cluster_max(s : StatsinferhypothesisCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_cluster_to_string(s : StatsinferhypothesisCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_infer_hypothesis_model_set(s : StatsinferhypothesisModel, i : Int, 
   result
 }
 
-pub fn stats_infer_hypothesis_model_sum(s : StatsinferhypothesisModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_model_sum(s : StatsinferhypothesisModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_model_mean(s : StatsinferhypothesisModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_model_mean(s : StatsinferhypothesisModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_model_scale(s : StatsinferhypothesisModel, f : Double) -> StatsinferhypothesisModel {
   let result = stats_infer_hypothesis_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_infer_hypothesis_model_fill(s : StatsinferhypothesisModel, v : Doub
   result
 }
 
-pub fn stats_infer_hypothesis_model_min(s : StatsinferhypothesisModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_model_min(s : StatsinferhypothesisModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_model_max(s : StatsinferhypothesisModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_model_max(s : StatsinferhypothesisModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_model_to_string(s : StatsinferhypothesisModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_infer_hypothesis_layer_set(s : StatsinferhypothesisLayer, i : Int, 
   result
 }
 
-pub fn stats_infer_hypothesis_layer_sum(s : StatsinferhypothesisLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_layer_sum(s : StatsinferhypothesisLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_layer_mean(s : StatsinferhypothesisLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_layer_mean(s : StatsinferhypothesisLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_layer_scale(s : StatsinferhypothesisLayer, f : Double) -> StatsinferhypothesisLayer {
   let result = stats_infer_hypothesis_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_infer_hypothesis_layer_fill(s : StatsinferhypothesisLayer, v : Doub
   result
 }
 
-pub fn stats_infer_hypothesis_layer_min(s : StatsinferhypothesisLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_layer_min(s : StatsinferhypothesisLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_layer_max(s : StatsinferhypothesisLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_layer_max(s : StatsinferhypothesisLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_layer_to_string(s : StatsinferhypothesisLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_infer_hypothesis_buffer_set(s : StatsinferhypothesisBuffer, i : Int
   result
 }
 
-pub fn stats_infer_hypothesis_buffer_sum(s : StatsinferhypothesisBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_buffer_sum(s : StatsinferhypothesisBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_buffer_mean(s : StatsinferhypothesisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_buffer_mean(s : StatsinferhypothesisBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_buffer_scale(s : StatsinferhypothesisBuffer, f : Double) -> StatsinferhypothesisBuffer {
   let result = stats_infer_hypothesis_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_infer_hypothesis_buffer_fill(s : StatsinferhypothesisBuffer, v : Do
   result
 }
 
-pub fn stats_infer_hypothesis_buffer_min(s : StatsinferhypothesisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_buffer_min(s : StatsinferhypothesisBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_buffer_max(s : StatsinferhypothesisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_buffer_max(s : StatsinferhypothesisBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_buffer_to_string(s : StatsinferhypothesisBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_infer_hypothesis_cursor_set(s : StatsinferhypothesisCursor, i : Int
   result
 }
 
-pub fn stats_infer_hypothesis_cursor_sum(s : StatsinferhypothesisCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_cursor_sum(s : StatsinferhypothesisCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_cursor_mean(s : StatsinferhypothesisCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_cursor_mean(s : StatsinferhypothesisCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_cursor_scale(s : StatsinferhypothesisCursor, f : Double) -> StatsinferhypothesisCursor {
   let result = stats_infer_hypothesis_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_infer_hypothesis_cursor_fill(s : StatsinferhypothesisCursor, v : Do
   result
 }
 
-pub fn stats_infer_hypothesis_cursor_min(s : StatsinferhypothesisCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_cursor_min(s : StatsinferhypothesisCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_cursor_max(s : StatsinferhypothesisCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_cursor_max(s : StatsinferhypothesisCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_cursor_to_string(s : StatsinferhypothesisCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_infer_hypothesis_view_set(s : StatsinferhypothesisView, i : Int, v 
   result
 }
 
-pub fn stats_infer_hypothesis_view_sum(s : StatsinferhypothesisView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_view_sum(s : StatsinferhypothesisView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_view_mean(s : StatsinferhypothesisView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_view_mean(s : StatsinferhypothesisView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_view_scale(s : StatsinferhypothesisView, f : Double) -> StatsinferhypothesisView {
   let result = stats_infer_hypothesis_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_infer_hypothesis_view_fill(s : StatsinferhypothesisView, v : Double
   result
 }
 
-pub fn stats_infer_hypothesis_view_min(s : StatsinferhypothesisView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_view_min(s : StatsinferhypothesisView) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_view_max(s : StatsinferhypothesisView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_view_max(s : StatsinferhypothesisView) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_view_to_string(s : StatsinferhypothesisView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_infer_hypothesis_range_set(s : StatsinferhypothesisRange, i : Int, 
   result
 }
 
-pub fn stats_infer_hypothesis_range_sum(s : StatsinferhypothesisRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_range_sum(s : StatsinferhypothesisRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_range_mean(s : StatsinferhypothesisRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_range_mean(s : StatsinferhypothesisRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_range_scale(s : StatsinferhypothesisRange, f : Double) -> StatsinferhypothesisRange {
   let result = stats_infer_hypothesis_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_infer_hypothesis_range_fill(s : StatsinferhypothesisRange, v : Doub
   result
 }
 
-pub fn stats_infer_hypothesis_range_min(s : StatsinferhypothesisRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_range_min(s : StatsinferhypothesisRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_range_max(s : StatsinferhypothesisRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_range_max(s : StatsinferhypothesisRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_range_to_string(s : StatsinferhypothesisRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_infer_hypothesis_slice_set(s : StatsinferhypothesisSlice, i : Int, 
   result
 }
 
-pub fn stats_infer_hypothesis_slice_sum(s : StatsinferhypothesisSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_hypothesis_slice_sum(s : StatsinferhypothesisSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_hypothesis_slice_mean(s : StatsinferhypothesisSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_hypothesis_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_hypothesis_slice_mean(s : StatsinferhypothesisSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_hypothesis_slice_scale(s : StatsinferhypothesisSlice, f : Double) -> StatsinferhypothesisSlice {
   let result = stats_infer_hypothesis_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_infer_hypothesis_slice_fill(s : StatsinferhypothesisSlice, v : Doub
   result
 }
 
-pub fn stats_infer_hypothesis_slice_min(s : StatsinferhypothesisSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_slice_min(s : StatsinferhypothesisSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_hypothesis_slice_max(s : StatsinferhypothesisSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_hypothesis_slice_max(s : StatsinferhypothesisSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_hypothesis_slice_to_string(s : StatsinferhypothesisSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

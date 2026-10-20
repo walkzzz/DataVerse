@@ -88,11 +88,7 @@ pub fn crypto_sym_cast_make_series(vals : Array[Double], name : String) -> Crypt
 
 pub fn crypto_sym_cast_series_len(s : CryptosymcastSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_cast_series_sum(s : CryptosymcastSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_cast_series_sum(s : CryptosymcastSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_cast_series_mean(s : CryptosymcastSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_cast_frame_set(s : CryptosymcastFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_cast_frame_sum(s : CryptosymcastFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_frame_sum(s : CryptosymcastFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_frame_mean(s : CryptosymcastFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_frame_mean(s : CryptosymcastFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_frame_scale(s : CryptosymcastFrame, f : Double) -> CryptosymcastFrame {
   let result = crypto_sym_cast_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_cast_frame_fill(s : CryptosymcastFrame, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_cast_frame_min(s : CryptosymcastFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_frame_min(s : CryptosymcastFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_frame_max(s : CryptosymcastFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_frame_max(s : CryptosymcastFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_frame_to_string(s : CryptosymcastFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_cast_table_set(s : CryptosymcastTable, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_cast_table_sum(s : CryptosymcastTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_table_sum(s : CryptosymcastTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_table_mean(s : CryptosymcastTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_table_mean(s : CryptosymcastTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_table_scale(s : CryptosymcastTable, f : Double) -> CryptosymcastTable {
   let result = crypto_sym_cast_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_cast_table_fill(s : CryptosymcastTable, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_cast_table_min(s : CryptosymcastTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_table_min(s : CryptosymcastTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_table_max(s : CryptosymcastTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_table_max(s : CryptosymcastTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_table_to_string(s : CryptosymcastTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_cast_graphn_set(s : CryptosymcastGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_cast_graphn_sum(s : CryptosymcastGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_graphn_sum(s : CryptosymcastGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_graphn_mean(s : CryptosymcastGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_graphn_mean(s : CryptosymcastGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_graphn_scale(s : CryptosymcastGraphN, f : Double) -> CryptosymcastGraphN {
   let result = crypto_sym_cast_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_cast_graphn_fill(s : CryptosymcastGraphN, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_cast_graphn_min(s : CryptosymcastGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_graphn_min(s : CryptosymcastGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_graphn_max(s : CryptosymcastGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_graphn_max(s : CryptosymcastGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_graphn_to_string(s : CryptosymcastGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_cast_node_set(s : CryptosymcastNode, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_cast_node_sum(s : CryptosymcastNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_node_sum(s : CryptosymcastNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_node_mean(s : CryptosymcastNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_node_mean(s : CryptosymcastNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_node_scale(s : CryptosymcastNode, f : Double) -> CryptosymcastNode {
   let result = crypto_sym_cast_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_cast_node_fill(s : CryptosymcastNode, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_cast_node_min(s : CryptosymcastNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_node_min(s : CryptosymcastNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_node_max(s : CryptosymcastNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_node_max(s : CryptosymcastNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_node_to_string(s : CryptosymcastNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_cast_edge_set(s : CryptosymcastEdge, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_cast_edge_sum(s : CryptosymcastEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_edge_sum(s : CryptosymcastEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_edge_mean(s : CryptosymcastEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_edge_mean(s : CryptosymcastEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_edge_scale(s : CryptosymcastEdge, f : Double) -> CryptosymcastEdge {
   let result = crypto_sym_cast_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_cast_edge_fill(s : CryptosymcastEdge, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_cast_edge_min(s : CryptosymcastEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_edge_min(s : CryptosymcastEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_edge_max(s : CryptosymcastEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_edge_max(s : CryptosymcastEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_edge_to_string(s : CryptosymcastEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_cast_path_set(s : CryptosymcastPath, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_cast_path_sum(s : CryptosymcastPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_path_sum(s : CryptosymcastPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_path_mean(s : CryptosymcastPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_path_mean(s : CryptosymcastPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_path_scale(s : CryptosymcastPath, f : Double) -> CryptosymcastPath {
   let result = crypto_sym_cast_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_cast_path_fill(s : CryptosymcastPath, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_cast_path_min(s : CryptosymcastPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_path_min(s : CryptosymcastPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_path_max(s : CryptosymcastPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_path_max(s : CryptosymcastPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_path_to_string(s : CryptosymcastPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_cast_cluster_set(s : CryptosymcastCluster, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_cast_cluster_sum(s : CryptosymcastCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_cluster_sum(s : CryptosymcastCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_cluster_mean(s : CryptosymcastCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_cluster_mean(s : CryptosymcastCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_cluster_scale(s : CryptosymcastCluster, f : Double) -> CryptosymcastCluster {
   let result = crypto_sym_cast_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_cast_cluster_fill(s : CryptosymcastCluster, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_cast_cluster_min(s : CryptosymcastCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_cluster_min(s : CryptosymcastCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_cluster_max(s : CryptosymcastCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_cluster_max(s : CryptosymcastCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_cluster_to_string(s : CryptosymcastCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_cast_model_set(s : CryptosymcastModel, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_cast_model_sum(s : CryptosymcastModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_model_sum(s : CryptosymcastModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_model_mean(s : CryptosymcastModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_model_mean(s : CryptosymcastModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_model_scale(s : CryptosymcastModel, f : Double) -> CryptosymcastModel {
   let result = crypto_sym_cast_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_cast_model_fill(s : CryptosymcastModel, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_cast_model_min(s : CryptosymcastModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_model_min(s : CryptosymcastModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_model_max(s : CryptosymcastModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_model_max(s : CryptosymcastModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_model_to_string(s : CryptosymcastModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_cast_layer_set(s : CryptosymcastLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_cast_layer_sum(s : CryptosymcastLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_layer_sum(s : CryptosymcastLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_layer_mean(s : CryptosymcastLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_layer_mean(s : CryptosymcastLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_layer_scale(s : CryptosymcastLayer, f : Double) -> CryptosymcastLayer {
   let result = crypto_sym_cast_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_cast_layer_fill(s : CryptosymcastLayer, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_cast_layer_min(s : CryptosymcastLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_layer_min(s : CryptosymcastLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_layer_max(s : CryptosymcastLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_layer_max(s : CryptosymcastLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_layer_to_string(s : CryptosymcastLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_cast_buffer_set(s : CryptosymcastBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_cast_buffer_sum(s : CryptosymcastBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_buffer_sum(s : CryptosymcastBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_buffer_mean(s : CryptosymcastBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_buffer_mean(s : CryptosymcastBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_buffer_scale(s : CryptosymcastBuffer, f : Double) -> CryptosymcastBuffer {
   let result = crypto_sym_cast_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_cast_buffer_fill(s : CryptosymcastBuffer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_cast_buffer_min(s : CryptosymcastBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_buffer_min(s : CryptosymcastBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_buffer_max(s : CryptosymcastBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_buffer_max(s : CryptosymcastBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_buffer_to_string(s : CryptosymcastBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_cast_cursor_set(s : CryptosymcastCursor, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_cast_cursor_sum(s : CryptosymcastCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_cursor_sum(s : CryptosymcastCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_cursor_mean(s : CryptosymcastCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_cursor_mean(s : CryptosymcastCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_cursor_scale(s : CryptosymcastCursor, f : Double) -> CryptosymcastCursor {
   let result = crypto_sym_cast_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_cast_cursor_fill(s : CryptosymcastCursor, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_cast_cursor_min(s : CryptosymcastCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_cursor_min(s : CryptosymcastCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_cursor_max(s : CryptosymcastCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_cursor_max(s : CryptosymcastCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_cursor_to_string(s : CryptosymcastCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_cast_view_set(s : CryptosymcastView, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_cast_view_sum(s : CryptosymcastView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_view_sum(s : CryptosymcastView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_view_mean(s : CryptosymcastView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_view_mean(s : CryptosymcastView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_view_scale(s : CryptosymcastView, f : Double) -> CryptosymcastView {
   let result = crypto_sym_cast_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_cast_view_fill(s : CryptosymcastView, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_cast_view_min(s : CryptosymcastView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_view_min(s : CryptosymcastView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_view_max(s : CryptosymcastView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_view_max(s : CryptosymcastView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_view_to_string(s : CryptosymcastView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_cast_range_set(s : CryptosymcastRange, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_cast_range_sum(s : CryptosymcastRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_range_sum(s : CryptosymcastRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_range_mean(s : CryptosymcastRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_range_mean(s : CryptosymcastRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_range_scale(s : CryptosymcastRange, f : Double) -> CryptosymcastRange {
   let result = crypto_sym_cast_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_cast_range_fill(s : CryptosymcastRange, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_cast_range_min(s : CryptosymcastRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_range_min(s : CryptosymcastRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_range_max(s : CryptosymcastRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_range_max(s : CryptosymcastRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_range_to_string(s : CryptosymcastRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_cast_slice_set(s : CryptosymcastSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_cast_slice_sum(s : CryptosymcastSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_cast_slice_sum(s : CryptosymcastSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_cast_slice_mean(s : CryptosymcastSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_cast_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_cast_slice_mean(s : CryptosymcastSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_cast_slice_scale(s : CryptosymcastSlice, f : Double) -> CryptosymcastSlice {
   let result = crypto_sym_cast_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_cast_slice_fill(s : CryptosymcastSlice, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_cast_slice_min(s : CryptosymcastSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_slice_min(s : CryptosymcastSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_cast_slice_max(s : CryptosymcastSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_cast_slice_max(s : CryptosymcastSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_cast_slice_to_string(s : CryptosymcastSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

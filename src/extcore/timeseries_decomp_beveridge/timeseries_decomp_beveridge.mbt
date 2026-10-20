@@ -88,11 +88,7 @@ pub fn timeseries_decomp_beveridge_make_series(vals : Array[Double], name : Stri
 
 pub fn timeseries_decomp_beveridge_series_len(s : TimeseriesdecompbeveridgeSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_decomp_beveridge_series_sum(s : TimeseriesdecompbeveridgeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_series_sum(s : TimeseriesdecompbeveridgeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_decomp_beveridge_series_mean(s : TimeseriesdecompbeveridgeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_decomp_beveridge_frame_set(s : TimeseriesdecompbeveridgeFrame,
   result
 }
 
-pub fn timeseries_decomp_beveridge_frame_sum(s : TimeseriesdecompbeveridgeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_frame_sum(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_frame_mean(s : TimeseriesdecompbeveridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_frame_mean(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_frame_scale(s : TimeseriesdecompbeveridgeFrame, f : Double) -> TimeseriesdecompbeveridgeFrame {
   let result = timeseries_decomp_beveridge_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_decomp_beveridge_frame_fill(s : TimeseriesdecompbeveridgeFrame
   result
 }
 
-pub fn timeseries_decomp_beveridge_frame_min(s : TimeseriesdecompbeveridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_frame_min(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_frame_max(s : TimeseriesdecompbeveridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_frame_max(s : TimeseriesdecompbeveridgeFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_frame_to_string(s : TimeseriesdecompbeveridgeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_decomp_beveridge_table_set(s : TimeseriesdecompbeveridgeTable,
   result
 }
 
-pub fn timeseries_decomp_beveridge_table_sum(s : TimeseriesdecompbeveridgeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_table_sum(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_table_mean(s : TimeseriesdecompbeveridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_table_mean(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_table_scale(s : TimeseriesdecompbeveridgeTable, f : Double) -> TimeseriesdecompbeveridgeTable {
   let result = timeseries_decomp_beveridge_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_decomp_beveridge_table_fill(s : TimeseriesdecompbeveridgeTable
   result
 }
 
-pub fn timeseries_decomp_beveridge_table_min(s : TimeseriesdecompbeveridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_table_min(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_table_max(s : TimeseriesdecompbeveridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_table_max(s : TimeseriesdecompbeveridgeTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_table_to_string(s : TimeseriesdecompbeveridgeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_decomp_beveridge_graphn_set(s : TimeseriesdecompbeveridgeGraph
   result
 }
 
-pub fn timeseries_decomp_beveridge_graphn_sum(s : TimeseriesdecompbeveridgeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_graphn_sum(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_graphn_mean(s : TimeseriesdecompbeveridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_graphn_mean(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_graphn_scale(s : TimeseriesdecompbeveridgeGraphN, f : Double) -> TimeseriesdecompbeveridgeGraphN {
   let result = timeseries_decomp_beveridge_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_decomp_beveridge_graphn_fill(s : TimeseriesdecompbeveridgeGrap
   result
 }
 
-pub fn timeseries_decomp_beveridge_graphn_min(s : TimeseriesdecompbeveridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_graphn_min(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_graphn_max(s : TimeseriesdecompbeveridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_graphn_max(s : TimeseriesdecompbeveridgeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_graphn_to_string(s : TimeseriesdecompbeveridgeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_decomp_beveridge_node_set(s : TimeseriesdecompbeveridgeNode, i
   result
 }
 
-pub fn timeseries_decomp_beveridge_node_sum(s : TimeseriesdecompbeveridgeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_node_sum(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_node_mean(s : TimeseriesdecompbeveridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_node_mean(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_node_scale(s : TimeseriesdecompbeveridgeNode, f : Double) -> TimeseriesdecompbeveridgeNode {
   let result = timeseries_decomp_beveridge_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_decomp_beveridge_node_fill(s : TimeseriesdecompbeveridgeNode, 
   result
 }
 
-pub fn timeseries_decomp_beveridge_node_min(s : TimeseriesdecompbeveridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_node_min(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_node_max(s : TimeseriesdecompbeveridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_node_max(s : TimeseriesdecompbeveridgeNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_node_to_string(s : TimeseriesdecompbeveridgeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_decomp_beveridge_edge_set(s : TimeseriesdecompbeveridgeEdge, i
   result
 }
 
-pub fn timeseries_decomp_beveridge_edge_sum(s : TimeseriesdecompbeveridgeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_edge_sum(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_edge_mean(s : TimeseriesdecompbeveridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_edge_mean(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_edge_scale(s : TimeseriesdecompbeveridgeEdge, f : Double) -> TimeseriesdecompbeveridgeEdge {
   let result = timeseries_decomp_beveridge_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_decomp_beveridge_edge_fill(s : TimeseriesdecompbeveridgeEdge, 
   result
 }
 
-pub fn timeseries_decomp_beveridge_edge_min(s : TimeseriesdecompbeveridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_edge_min(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_edge_max(s : TimeseriesdecompbeveridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_edge_max(s : TimeseriesdecompbeveridgeEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_edge_to_string(s : TimeseriesdecompbeveridgeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_decomp_beveridge_path_set(s : TimeseriesdecompbeveridgePath, i
   result
 }
 
-pub fn timeseries_decomp_beveridge_path_sum(s : TimeseriesdecompbeveridgePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_path_sum(s : TimeseriesdecompbeveridgePath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_path_mean(s : TimeseriesdecompbeveridgePath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_path_mean(s : TimeseriesdecompbeveridgePath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_path_scale(s : TimeseriesdecompbeveridgePath, f : Double) -> TimeseriesdecompbeveridgePath {
   let result = timeseries_decomp_beveridge_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_decomp_beveridge_path_fill(s : TimeseriesdecompbeveridgePath, 
   result
 }
 
-pub fn timeseries_decomp_beveridge_path_min(s : TimeseriesdecompbeveridgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_path_min(s : TimeseriesdecompbeveridgePath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_path_max(s : TimeseriesdecompbeveridgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_path_max(s : TimeseriesdecompbeveridgePath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_path_to_string(s : TimeseriesdecompbeveridgePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_decomp_beveridge_cluster_set(s : TimeseriesdecompbeveridgeClus
   result
 }
 
-pub fn timeseries_decomp_beveridge_cluster_sum(s : TimeseriesdecompbeveridgeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_cluster_sum(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_cluster_mean(s : TimeseriesdecompbeveridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_cluster_mean(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_cluster_scale(s : TimeseriesdecompbeveridgeCluster, f : Double) -> TimeseriesdecompbeveridgeCluster {
   let result = timeseries_decomp_beveridge_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_decomp_beveridge_cluster_fill(s : TimeseriesdecompbeveridgeClu
   result
 }
 
-pub fn timeseries_decomp_beveridge_cluster_min(s : TimeseriesdecompbeveridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_cluster_min(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_cluster_max(s : TimeseriesdecompbeveridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_cluster_max(s : TimeseriesdecompbeveridgeCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_cluster_to_string(s : TimeseriesdecompbeveridgeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_decomp_beveridge_model_set(s : TimeseriesdecompbeveridgeModel,
   result
 }
 
-pub fn timeseries_decomp_beveridge_model_sum(s : TimeseriesdecompbeveridgeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_model_sum(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_model_mean(s : TimeseriesdecompbeveridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_model_mean(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_model_scale(s : TimeseriesdecompbeveridgeModel, f : Double) -> TimeseriesdecompbeveridgeModel {
   let result = timeseries_decomp_beveridge_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_decomp_beveridge_model_fill(s : TimeseriesdecompbeveridgeModel
   result
 }
 
-pub fn timeseries_decomp_beveridge_model_min(s : TimeseriesdecompbeveridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_model_min(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_model_max(s : TimeseriesdecompbeveridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_model_max(s : TimeseriesdecompbeveridgeModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_model_to_string(s : TimeseriesdecompbeveridgeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_decomp_beveridge_layer_set(s : TimeseriesdecompbeveridgeLayer,
   result
 }
 
-pub fn timeseries_decomp_beveridge_layer_sum(s : TimeseriesdecompbeveridgeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_layer_sum(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_layer_mean(s : TimeseriesdecompbeveridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_layer_mean(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_layer_scale(s : TimeseriesdecompbeveridgeLayer, f : Double) -> TimeseriesdecompbeveridgeLayer {
   let result = timeseries_decomp_beveridge_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_decomp_beveridge_layer_fill(s : TimeseriesdecompbeveridgeLayer
   result
 }
 
-pub fn timeseries_decomp_beveridge_layer_min(s : TimeseriesdecompbeveridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_layer_min(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_layer_max(s : TimeseriesdecompbeveridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_layer_max(s : TimeseriesdecompbeveridgeLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_layer_to_string(s : TimeseriesdecompbeveridgeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_decomp_beveridge_buffer_set(s : TimeseriesdecompbeveridgeBuffe
   result
 }
 
-pub fn timeseries_decomp_beveridge_buffer_sum(s : TimeseriesdecompbeveridgeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_buffer_sum(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_buffer_mean(s : TimeseriesdecompbeveridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_buffer_mean(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_buffer_scale(s : TimeseriesdecompbeveridgeBuffer, f : Double) -> TimeseriesdecompbeveridgeBuffer {
   let result = timeseries_decomp_beveridge_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_decomp_beveridge_buffer_fill(s : TimeseriesdecompbeveridgeBuff
   result
 }
 
-pub fn timeseries_decomp_beveridge_buffer_min(s : TimeseriesdecompbeveridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_buffer_min(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_buffer_max(s : TimeseriesdecompbeveridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_buffer_max(s : TimeseriesdecompbeveridgeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_buffer_to_string(s : TimeseriesdecompbeveridgeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_decomp_beveridge_cursor_set(s : TimeseriesdecompbeveridgeCurso
   result
 }
 
-pub fn timeseries_decomp_beveridge_cursor_sum(s : TimeseriesdecompbeveridgeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_cursor_sum(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_cursor_mean(s : TimeseriesdecompbeveridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_cursor_mean(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_cursor_scale(s : TimeseriesdecompbeveridgeCursor, f : Double) -> TimeseriesdecompbeveridgeCursor {
   let result = timeseries_decomp_beveridge_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_decomp_beveridge_cursor_fill(s : TimeseriesdecompbeveridgeCurs
   result
 }
 
-pub fn timeseries_decomp_beveridge_cursor_min(s : TimeseriesdecompbeveridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_cursor_min(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_cursor_max(s : TimeseriesdecompbeveridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_cursor_max(s : TimeseriesdecompbeveridgeCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_cursor_to_string(s : TimeseriesdecompbeveridgeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_decomp_beveridge_view_set(s : TimeseriesdecompbeveridgeView, i
   result
 }
 
-pub fn timeseries_decomp_beveridge_view_sum(s : TimeseriesdecompbeveridgeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_view_sum(s : TimeseriesdecompbeveridgeView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_view_mean(s : TimeseriesdecompbeveridgeView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_view_mean(s : TimeseriesdecompbeveridgeView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_view_scale(s : TimeseriesdecompbeveridgeView, f : Double) -> TimeseriesdecompbeveridgeView {
   let result = timeseries_decomp_beveridge_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_decomp_beveridge_view_fill(s : TimeseriesdecompbeveridgeView, 
   result
 }
 
-pub fn timeseries_decomp_beveridge_view_min(s : TimeseriesdecompbeveridgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_view_min(s : TimeseriesdecompbeveridgeView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_view_max(s : TimeseriesdecompbeveridgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_view_max(s : TimeseriesdecompbeveridgeView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_view_to_string(s : TimeseriesdecompbeveridgeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_decomp_beveridge_range_set(s : TimeseriesdecompbeveridgeRange,
   result
 }
 
-pub fn timeseries_decomp_beveridge_range_sum(s : TimeseriesdecompbeveridgeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_range_sum(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_range_mean(s : TimeseriesdecompbeveridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_range_mean(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_range_scale(s : TimeseriesdecompbeveridgeRange, f : Double) -> TimeseriesdecompbeveridgeRange {
   let result = timeseries_decomp_beveridge_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_decomp_beveridge_range_fill(s : TimeseriesdecompbeveridgeRange
   result
 }
 
-pub fn timeseries_decomp_beveridge_range_min(s : TimeseriesdecompbeveridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_range_min(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_range_max(s : TimeseriesdecompbeveridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_range_max(s : TimeseriesdecompbeveridgeRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_range_to_string(s : TimeseriesdecompbeveridgeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_decomp_beveridge_slice_set(s : TimeseriesdecompbeveridgeSlice,
   result
 }
 
-pub fn timeseries_decomp_beveridge_slice_sum(s : TimeseriesdecompbeveridgeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_beveridge_slice_sum(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_beveridge_slice_mean(s : TimeseriesdecompbeveridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_beveridge_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_beveridge_slice_mean(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_beveridge_slice_scale(s : TimeseriesdecompbeveridgeSlice, f : Double) -> TimeseriesdecompbeveridgeSlice {
   let result = timeseries_decomp_beveridge_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_decomp_beveridge_slice_fill(s : TimeseriesdecompbeveridgeSlice
   result
 }
 
-pub fn timeseries_decomp_beveridge_slice_min(s : TimeseriesdecompbeveridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_slice_min(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_beveridge_slice_max(s : TimeseriesdecompbeveridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_beveridge_slice_max(s : TimeseriesdecompbeveridgeSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_beveridge_slice_to_string(s : TimeseriesdecompbeveridgeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

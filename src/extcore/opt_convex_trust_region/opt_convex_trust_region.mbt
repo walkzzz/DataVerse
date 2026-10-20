@@ -88,11 +88,7 @@ pub fn opt_convex_trust_region_make_series(vals : Array[Double], name : String) 
 
 pub fn opt_convex_trust_region_series_len(s : OptconvextrustregionSeries) -> Int { s.vals.length() }
 
-pub fn opt_convex_trust_region_series_sum(s : OptconvextrustregionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_convex_trust_region_series_sum(s : OptconvextrustregionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_convex_trust_region_series_mean(s : OptconvextrustregionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_convex_trust_region_frame_set(s : OptconvextrustregionFrame, i : Int,
   result
 }
 
-pub fn opt_convex_trust_region_frame_sum(s : OptconvextrustregionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_frame_sum(s : OptconvextrustregionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_frame_mean(s : OptconvextrustregionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_frame_mean(s : OptconvextrustregionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_frame_scale(s : OptconvextrustregionFrame, f : Double) -> OptconvextrustregionFrame {
   let result = opt_convex_trust_region_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_convex_trust_region_frame_fill(s : OptconvextrustregionFrame, v : Dou
   result
 }
 
-pub fn opt_convex_trust_region_frame_min(s : OptconvextrustregionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_frame_min(s : OptconvextrustregionFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_frame_max(s : OptconvextrustregionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_frame_max(s : OptconvextrustregionFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_frame_to_string(s : OptconvextrustregionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_convex_trust_region_table_set(s : OptconvextrustregionTable, i : Int,
   result
 }
 
-pub fn opt_convex_trust_region_table_sum(s : OptconvextrustregionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_table_sum(s : OptconvextrustregionTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_table_mean(s : OptconvextrustregionTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_table_mean(s : OptconvextrustregionTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_table_scale(s : OptconvextrustregionTable, f : Double) -> OptconvextrustregionTable {
   let result = opt_convex_trust_region_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_convex_trust_region_table_fill(s : OptconvextrustregionTable, v : Dou
   result
 }
 
-pub fn opt_convex_trust_region_table_min(s : OptconvextrustregionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_table_min(s : OptconvextrustregionTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_table_max(s : OptconvextrustregionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_table_max(s : OptconvextrustregionTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_table_to_string(s : OptconvextrustregionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_convex_trust_region_graphn_set(s : OptconvextrustregionGraphN, i : In
   result
 }
 
-pub fn opt_convex_trust_region_graphn_sum(s : OptconvextrustregionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_graphn_sum(s : OptconvextrustregionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_graphn_mean(s : OptconvextrustregionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_graphn_mean(s : OptconvextrustregionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_graphn_scale(s : OptconvextrustregionGraphN, f : Double) -> OptconvextrustregionGraphN {
   let result = opt_convex_trust_region_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_convex_trust_region_graphn_fill(s : OptconvextrustregionGraphN, v : D
   result
 }
 
-pub fn opt_convex_trust_region_graphn_min(s : OptconvextrustregionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_graphn_min(s : OptconvextrustregionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_graphn_max(s : OptconvextrustregionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_graphn_max(s : OptconvextrustregionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_graphn_to_string(s : OptconvextrustregionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_convex_trust_region_node_set(s : OptconvextrustregionNode, i : Int, v
   result
 }
 
-pub fn opt_convex_trust_region_node_sum(s : OptconvextrustregionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_node_sum(s : OptconvextrustregionNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_node_mean(s : OptconvextrustregionNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_node_mean(s : OptconvextrustregionNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_node_scale(s : OptconvextrustregionNode, f : Double) -> OptconvextrustregionNode {
   let result = opt_convex_trust_region_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_convex_trust_region_node_fill(s : OptconvextrustregionNode, v : Doubl
   result
 }
 
-pub fn opt_convex_trust_region_node_min(s : OptconvextrustregionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_node_min(s : OptconvextrustregionNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_node_max(s : OptconvextrustregionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_node_max(s : OptconvextrustregionNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_node_to_string(s : OptconvextrustregionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_convex_trust_region_edge_set(s : OptconvextrustregionEdge, i : Int, v
   result
 }
 
-pub fn opt_convex_trust_region_edge_sum(s : OptconvextrustregionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_edge_sum(s : OptconvextrustregionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_edge_mean(s : OptconvextrustregionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_edge_mean(s : OptconvextrustregionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_edge_scale(s : OptconvextrustregionEdge, f : Double) -> OptconvextrustregionEdge {
   let result = opt_convex_trust_region_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_convex_trust_region_edge_fill(s : OptconvextrustregionEdge, v : Doubl
   result
 }
 
-pub fn opt_convex_trust_region_edge_min(s : OptconvextrustregionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_edge_min(s : OptconvextrustregionEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_edge_max(s : OptconvextrustregionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_edge_max(s : OptconvextrustregionEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_edge_to_string(s : OptconvextrustregionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_convex_trust_region_path_set(s : OptconvextrustregionPath, i : Int, v
   result
 }
 
-pub fn opt_convex_trust_region_path_sum(s : OptconvextrustregionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_path_sum(s : OptconvextrustregionPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_path_mean(s : OptconvextrustregionPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_path_mean(s : OptconvextrustregionPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_path_scale(s : OptconvextrustregionPath, f : Double) -> OptconvextrustregionPath {
   let result = opt_convex_trust_region_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_convex_trust_region_path_fill(s : OptconvextrustregionPath, v : Doubl
   result
 }
 
-pub fn opt_convex_trust_region_path_min(s : OptconvextrustregionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_path_min(s : OptconvextrustregionPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_path_max(s : OptconvextrustregionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_path_max(s : OptconvextrustregionPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_path_to_string(s : OptconvextrustregionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_convex_trust_region_cluster_set(s : OptconvextrustregionCluster, i : 
   result
 }
 
-pub fn opt_convex_trust_region_cluster_sum(s : OptconvextrustregionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_cluster_sum(s : OptconvextrustregionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_cluster_mean(s : OptconvextrustregionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_cluster_mean(s : OptconvextrustregionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_cluster_scale(s : OptconvextrustregionCluster, f : Double) -> OptconvextrustregionCluster {
   let result = opt_convex_trust_region_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_convex_trust_region_cluster_fill(s : OptconvextrustregionCluster, v :
   result
 }
 
-pub fn opt_convex_trust_region_cluster_min(s : OptconvextrustregionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_cluster_min(s : OptconvextrustregionCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_cluster_max(s : OptconvextrustregionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_cluster_max(s : OptconvextrustregionCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_cluster_to_string(s : OptconvextrustregionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_convex_trust_region_model_set(s : OptconvextrustregionModel, i : Int,
   result
 }
 
-pub fn opt_convex_trust_region_model_sum(s : OptconvextrustregionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_model_sum(s : OptconvextrustregionModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_model_mean(s : OptconvextrustregionModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_model_mean(s : OptconvextrustregionModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_model_scale(s : OptconvextrustregionModel, f : Double) -> OptconvextrustregionModel {
   let result = opt_convex_trust_region_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_convex_trust_region_model_fill(s : OptconvextrustregionModel, v : Dou
   result
 }
 
-pub fn opt_convex_trust_region_model_min(s : OptconvextrustregionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_model_min(s : OptconvextrustregionModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_model_max(s : OptconvextrustregionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_model_max(s : OptconvextrustregionModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_model_to_string(s : OptconvextrustregionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_convex_trust_region_layer_set(s : OptconvextrustregionLayer, i : Int,
   result
 }
 
-pub fn opt_convex_trust_region_layer_sum(s : OptconvextrustregionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_layer_sum(s : OptconvextrustregionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_layer_mean(s : OptconvextrustregionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_layer_mean(s : OptconvextrustregionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_layer_scale(s : OptconvextrustregionLayer, f : Double) -> OptconvextrustregionLayer {
   let result = opt_convex_trust_region_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_convex_trust_region_layer_fill(s : OptconvextrustregionLayer, v : Dou
   result
 }
 
-pub fn opt_convex_trust_region_layer_min(s : OptconvextrustregionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_layer_min(s : OptconvextrustregionLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_layer_max(s : OptconvextrustregionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_layer_max(s : OptconvextrustregionLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_layer_to_string(s : OptconvextrustregionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_convex_trust_region_buffer_set(s : OptconvextrustregionBuffer, i : In
   result
 }
 
-pub fn opt_convex_trust_region_buffer_sum(s : OptconvextrustregionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_buffer_sum(s : OptconvextrustregionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_buffer_mean(s : OptconvextrustregionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_buffer_mean(s : OptconvextrustregionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_buffer_scale(s : OptconvextrustregionBuffer, f : Double) -> OptconvextrustregionBuffer {
   let result = opt_convex_trust_region_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_convex_trust_region_buffer_fill(s : OptconvextrustregionBuffer, v : D
   result
 }
 
-pub fn opt_convex_trust_region_buffer_min(s : OptconvextrustregionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_buffer_min(s : OptconvextrustregionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_buffer_max(s : OptconvextrustregionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_buffer_max(s : OptconvextrustregionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_buffer_to_string(s : OptconvextrustregionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_convex_trust_region_cursor_set(s : OptconvextrustregionCursor, i : In
   result
 }
 
-pub fn opt_convex_trust_region_cursor_sum(s : OptconvextrustregionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_cursor_sum(s : OptconvextrustregionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_cursor_mean(s : OptconvextrustregionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_cursor_mean(s : OptconvextrustregionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_cursor_scale(s : OptconvextrustregionCursor, f : Double) -> OptconvextrustregionCursor {
   let result = opt_convex_trust_region_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_convex_trust_region_cursor_fill(s : OptconvextrustregionCursor, v : D
   result
 }
 
-pub fn opt_convex_trust_region_cursor_min(s : OptconvextrustregionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_cursor_min(s : OptconvextrustregionCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_cursor_max(s : OptconvextrustregionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_cursor_max(s : OptconvextrustregionCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_cursor_to_string(s : OptconvextrustregionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_convex_trust_region_view_set(s : OptconvextrustregionView, i : Int, v
   result
 }
 
-pub fn opt_convex_trust_region_view_sum(s : OptconvextrustregionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_view_sum(s : OptconvextrustregionView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_view_mean(s : OptconvextrustregionView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_view_mean(s : OptconvextrustregionView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_view_scale(s : OptconvextrustregionView, f : Double) -> OptconvextrustregionView {
   let result = opt_convex_trust_region_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_convex_trust_region_view_fill(s : OptconvextrustregionView, v : Doubl
   result
 }
 
-pub fn opt_convex_trust_region_view_min(s : OptconvextrustregionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_view_min(s : OptconvextrustregionView) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_view_max(s : OptconvextrustregionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_view_max(s : OptconvextrustregionView) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_view_to_string(s : OptconvextrustregionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_convex_trust_region_range_set(s : OptconvextrustregionRange, i : Int,
   result
 }
 
-pub fn opt_convex_trust_region_range_sum(s : OptconvextrustregionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_range_sum(s : OptconvextrustregionRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_range_mean(s : OptconvextrustregionRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_range_mean(s : OptconvextrustregionRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_range_scale(s : OptconvextrustregionRange, f : Double) -> OptconvextrustregionRange {
   let result = opt_convex_trust_region_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_convex_trust_region_range_fill(s : OptconvextrustregionRange, v : Dou
   result
 }
 
-pub fn opt_convex_trust_region_range_min(s : OptconvextrustregionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_range_min(s : OptconvextrustregionRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_range_max(s : OptconvextrustregionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_range_max(s : OptconvextrustregionRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_range_to_string(s : OptconvextrustregionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_convex_trust_region_slice_set(s : OptconvextrustregionSlice, i : Int,
   result
 }
 
-pub fn opt_convex_trust_region_slice_sum(s : OptconvextrustregionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_trust_region_slice_sum(s : OptconvextrustregionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_trust_region_slice_mean(s : OptconvextrustregionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_trust_region_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_trust_region_slice_mean(s : OptconvextrustregionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_trust_region_slice_scale(s : OptconvextrustregionSlice, f : Double) -> OptconvextrustregionSlice {
   let result = opt_convex_trust_region_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_convex_trust_region_slice_fill(s : OptconvextrustregionSlice, v : Dou
   result
 }
 
-pub fn opt_convex_trust_region_slice_min(s : OptconvextrustregionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_slice_min(s : OptconvextrustregionSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_trust_region_slice_max(s : OptconvextrustregionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_trust_region_slice_max(s : OptconvextrustregionSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_trust_region_slice_to_string(s : OptconvextrustregionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn opt_meta_aco_make_series(vals : Array[Double], name : String) -> Optmetaa
 
 pub fn opt_meta_aco_series_len(s : OptmetaacoSeries) -> Int { s.vals.length() }
 
-pub fn opt_meta_aco_series_sum(s : OptmetaacoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_meta_aco_series_sum(s : OptmetaacoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_meta_aco_series_mean(s : OptmetaacoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_meta_aco_frame_set(s : OptmetaacoFrame, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_aco_frame_sum(s : OptmetaacoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_frame_sum(s : OptmetaacoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_frame_mean(s : OptmetaacoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_frame_mean(s : OptmetaacoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_frame_scale(s : OptmetaacoFrame, f : Double) -> OptmetaacoFrame {
   let result = opt_meta_aco_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_meta_aco_frame_fill(s : OptmetaacoFrame, v : Double) -> OptmetaacoFra
   result
 }
 
-pub fn opt_meta_aco_frame_min(s : OptmetaacoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_frame_min(s : OptmetaacoFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_frame_max(s : OptmetaacoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_frame_max(s : OptmetaacoFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_frame_to_string(s : OptmetaacoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_meta_aco_table_set(s : OptmetaacoTable, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_aco_table_sum(s : OptmetaacoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_table_sum(s : OptmetaacoTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_table_mean(s : OptmetaacoTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_table_mean(s : OptmetaacoTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_table_scale(s : OptmetaacoTable, f : Double) -> OptmetaacoTable {
   let result = opt_meta_aco_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_meta_aco_table_fill(s : OptmetaacoTable, v : Double) -> OptmetaacoTab
   result
 }
 
-pub fn opt_meta_aco_table_min(s : OptmetaacoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_table_min(s : OptmetaacoTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_table_max(s : OptmetaacoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_table_max(s : OptmetaacoTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_table_to_string(s : OptmetaacoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_meta_aco_graphn_set(s : OptmetaacoGraphN, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_aco_graphn_sum(s : OptmetaacoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_graphn_sum(s : OptmetaacoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_graphn_mean(s : OptmetaacoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_graphn_mean(s : OptmetaacoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_graphn_scale(s : OptmetaacoGraphN, f : Double) -> OptmetaacoGraphN {
   let result = opt_meta_aco_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_meta_aco_graphn_fill(s : OptmetaacoGraphN, v : Double) -> OptmetaacoG
   result
 }
 
-pub fn opt_meta_aco_graphn_min(s : OptmetaacoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_graphn_min(s : OptmetaacoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_graphn_max(s : OptmetaacoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_graphn_max(s : OptmetaacoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_graphn_to_string(s : OptmetaacoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_meta_aco_node_set(s : OptmetaacoNode, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_aco_node_sum(s : OptmetaacoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_node_sum(s : OptmetaacoNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_node_mean(s : OptmetaacoNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_node_mean(s : OptmetaacoNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_node_scale(s : OptmetaacoNode, f : Double) -> OptmetaacoNode {
   let result = opt_meta_aco_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_meta_aco_node_fill(s : OptmetaacoNode, v : Double) -> OptmetaacoNode 
   result
 }
 
-pub fn opt_meta_aco_node_min(s : OptmetaacoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_node_min(s : OptmetaacoNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_node_max(s : OptmetaacoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_node_max(s : OptmetaacoNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_node_to_string(s : OptmetaacoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_meta_aco_edge_set(s : OptmetaacoEdge, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_aco_edge_sum(s : OptmetaacoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_edge_sum(s : OptmetaacoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_edge_mean(s : OptmetaacoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_edge_mean(s : OptmetaacoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_edge_scale(s : OptmetaacoEdge, f : Double) -> OptmetaacoEdge {
   let result = opt_meta_aco_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_meta_aco_edge_fill(s : OptmetaacoEdge, v : Double) -> OptmetaacoEdge 
   result
 }
 
-pub fn opt_meta_aco_edge_min(s : OptmetaacoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_edge_min(s : OptmetaacoEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_edge_max(s : OptmetaacoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_edge_max(s : OptmetaacoEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_edge_to_string(s : OptmetaacoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_meta_aco_path_set(s : OptmetaacoPath, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_aco_path_sum(s : OptmetaacoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_path_sum(s : OptmetaacoPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_path_mean(s : OptmetaacoPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_path_mean(s : OptmetaacoPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_path_scale(s : OptmetaacoPath, f : Double) -> OptmetaacoPath {
   let result = opt_meta_aco_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_meta_aco_path_fill(s : OptmetaacoPath, v : Double) -> OptmetaacoPath 
   result
 }
 
-pub fn opt_meta_aco_path_min(s : OptmetaacoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_path_min(s : OptmetaacoPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_path_max(s : OptmetaacoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_path_max(s : OptmetaacoPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_path_to_string(s : OptmetaacoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_meta_aco_cluster_set(s : OptmetaacoCluster, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_aco_cluster_sum(s : OptmetaacoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_cluster_sum(s : OptmetaacoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_cluster_mean(s : OptmetaacoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_cluster_mean(s : OptmetaacoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_cluster_scale(s : OptmetaacoCluster, f : Double) -> OptmetaacoCluster {
   let result = opt_meta_aco_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_meta_aco_cluster_fill(s : OptmetaacoCluster, v : Double) -> Optmetaac
   result
 }
 
-pub fn opt_meta_aco_cluster_min(s : OptmetaacoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_cluster_min(s : OptmetaacoCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_cluster_max(s : OptmetaacoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_cluster_max(s : OptmetaacoCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_cluster_to_string(s : OptmetaacoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_meta_aco_model_set(s : OptmetaacoModel, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_aco_model_sum(s : OptmetaacoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_model_sum(s : OptmetaacoModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_model_mean(s : OptmetaacoModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_model_mean(s : OptmetaacoModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_model_scale(s : OptmetaacoModel, f : Double) -> OptmetaacoModel {
   let result = opt_meta_aco_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_meta_aco_model_fill(s : OptmetaacoModel, v : Double) -> OptmetaacoMod
   result
 }
 
-pub fn opt_meta_aco_model_min(s : OptmetaacoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_model_min(s : OptmetaacoModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_model_max(s : OptmetaacoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_model_max(s : OptmetaacoModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_model_to_string(s : OptmetaacoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_meta_aco_layer_set(s : OptmetaacoLayer, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_aco_layer_sum(s : OptmetaacoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_layer_sum(s : OptmetaacoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_layer_mean(s : OptmetaacoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_layer_mean(s : OptmetaacoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_layer_scale(s : OptmetaacoLayer, f : Double) -> OptmetaacoLayer {
   let result = opt_meta_aco_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_meta_aco_layer_fill(s : OptmetaacoLayer, v : Double) -> OptmetaacoLay
   result
 }
 
-pub fn opt_meta_aco_layer_min(s : OptmetaacoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_layer_min(s : OptmetaacoLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_layer_max(s : OptmetaacoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_layer_max(s : OptmetaacoLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_layer_to_string(s : OptmetaacoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_meta_aco_buffer_set(s : OptmetaacoBuffer, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_aco_buffer_sum(s : OptmetaacoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_buffer_sum(s : OptmetaacoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_buffer_mean(s : OptmetaacoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_buffer_mean(s : OptmetaacoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_buffer_scale(s : OptmetaacoBuffer, f : Double) -> OptmetaacoBuffer {
   let result = opt_meta_aco_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_meta_aco_buffer_fill(s : OptmetaacoBuffer, v : Double) -> OptmetaacoB
   result
 }
 
-pub fn opt_meta_aco_buffer_min(s : OptmetaacoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_buffer_min(s : OptmetaacoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_buffer_max(s : OptmetaacoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_buffer_max(s : OptmetaacoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_buffer_to_string(s : OptmetaacoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_meta_aco_cursor_set(s : OptmetaacoCursor, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_aco_cursor_sum(s : OptmetaacoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_cursor_sum(s : OptmetaacoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_cursor_mean(s : OptmetaacoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_cursor_mean(s : OptmetaacoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_cursor_scale(s : OptmetaacoCursor, f : Double) -> OptmetaacoCursor {
   let result = opt_meta_aco_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_meta_aco_cursor_fill(s : OptmetaacoCursor, v : Double) -> OptmetaacoC
   result
 }
 
-pub fn opt_meta_aco_cursor_min(s : OptmetaacoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_cursor_min(s : OptmetaacoCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_cursor_max(s : OptmetaacoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_cursor_max(s : OptmetaacoCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_cursor_to_string(s : OptmetaacoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_meta_aco_view_set(s : OptmetaacoView, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_aco_view_sum(s : OptmetaacoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_view_sum(s : OptmetaacoView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_view_mean(s : OptmetaacoView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_view_mean(s : OptmetaacoView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_view_scale(s : OptmetaacoView, f : Double) -> OptmetaacoView {
   let result = opt_meta_aco_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_meta_aco_view_fill(s : OptmetaacoView, v : Double) -> OptmetaacoView 
   result
 }
 
-pub fn opt_meta_aco_view_min(s : OptmetaacoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_view_min(s : OptmetaacoView) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_view_max(s : OptmetaacoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_view_max(s : OptmetaacoView) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_view_to_string(s : OptmetaacoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_meta_aco_range_set(s : OptmetaacoRange, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_aco_range_sum(s : OptmetaacoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_range_sum(s : OptmetaacoRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_range_mean(s : OptmetaacoRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_range_mean(s : OptmetaacoRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_range_scale(s : OptmetaacoRange, f : Double) -> OptmetaacoRange {
   let result = opt_meta_aco_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_meta_aco_range_fill(s : OptmetaacoRange, v : Double) -> OptmetaacoRan
   result
 }
 
-pub fn opt_meta_aco_range_min(s : OptmetaacoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_range_min(s : OptmetaacoRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_range_max(s : OptmetaacoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_range_max(s : OptmetaacoRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_range_to_string(s : OptmetaacoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_meta_aco_slice_set(s : OptmetaacoSlice, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_aco_slice_sum(s : OptmetaacoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_aco_slice_sum(s : OptmetaacoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_aco_slice_mean(s : OptmetaacoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_aco_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_aco_slice_mean(s : OptmetaacoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_aco_slice_scale(s : OptmetaacoSlice, f : Double) -> OptmetaacoSlice {
   let result = opt_meta_aco_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_meta_aco_slice_fill(s : OptmetaacoSlice, v : Double) -> OptmetaacoSli
   result
 }
 
-pub fn opt_meta_aco_slice_min(s : OptmetaacoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_slice_min(s : OptmetaacoSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_aco_slice_max(s : OptmetaacoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_aco_slice_max(s : OptmetaacoSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_aco_slice_to_string(s : OptmetaacoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

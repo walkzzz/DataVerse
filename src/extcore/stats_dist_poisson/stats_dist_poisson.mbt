@@ -88,11 +88,7 @@ pub fn stats_dist_poisson_make_series(vals : Array[Double], name : String) -> St
 
 pub fn stats_dist_poisson_series_len(s : StatsdistpoissonSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_poisson_series_sum(s : StatsdistpoissonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_poisson_series_sum(s : StatsdistpoissonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_poisson_series_mean(s : StatsdistpoissonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_poisson_frame_set(s : StatsdistpoissonFrame, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_poisson_frame_sum(s : StatsdistpoissonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_frame_sum(s : StatsdistpoissonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_frame_mean(s : StatsdistpoissonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_frame_mean(s : StatsdistpoissonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_frame_scale(s : StatsdistpoissonFrame, f : Double) -> StatsdistpoissonFrame {
   let result = stats_dist_poisson_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_poisson_frame_fill(s : StatsdistpoissonFrame, v : Double) -> S
   result
 }
 
-pub fn stats_dist_poisson_frame_min(s : StatsdistpoissonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_frame_min(s : StatsdistpoissonFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_frame_max(s : StatsdistpoissonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_frame_max(s : StatsdistpoissonFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_frame_to_string(s : StatsdistpoissonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_poisson_table_set(s : StatsdistpoissonTable, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_poisson_table_sum(s : StatsdistpoissonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_table_sum(s : StatsdistpoissonTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_table_mean(s : StatsdistpoissonTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_table_mean(s : StatsdistpoissonTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_table_scale(s : StatsdistpoissonTable, f : Double) -> StatsdistpoissonTable {
   let result = stats_dist_poisson_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_poisson_table_fill(s : StatsdistpoissonTable, v : Double) -> S
   result
 }
 
-pub fn stats_dist_poisson_table_min(s : StatsdistpoissonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_table_min(s : StatsdistpoissonTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_table_max(s : StatsdistpoissonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_table_max(s : StatsdistpoissonTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_table_to_string(s : StatsdistpoissonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_poisson_graphn_set(s : StatsdistpoissonGraphN, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_poisson_graphn_sum(s : StatsdistpoissonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_graphn_sum(s : StatsdistpoissonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_graphn_mean(s : StatsdistpoissonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_graphn_mean(s : StatsdistpoissonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_graphn_scale(s : StatsdistpoissonGraphN, f : Double) -> StatsdistpoissonGraphN {
   let result = stats_dist_poisson_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_poisson_graphn_fill(s : StatsdistpoissonGraphN, v : Double) ->
   result
 }
 
-pub fn stats_dist_poisson_graphn_min(s : StatsdistpoissonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_graphn_min(s : StatsdistpoissonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_graphn_max(s : StatsdistpoissonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_graphn_max(s : StatsdistpoissonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_graphn_to_string(s : StatsdistpoissonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_poisson_node_set(s : StatsdistpoissonNode, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_poisson_node_sum(s : StatsdistpoissonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_node_sum(s : StatsdistpoissonNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_node_mean(s : StatsdistpoissonNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_node_mean(s : StatsdistpoissonNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_node_scale(s : StatsdistpoissonNode, f : Double) -> StatsdistpoissonNode {
   let result = stats_dist_poisson_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_poisson_node_fill(s : StatsdistpoissonNode, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_poisson_node_min(s : StatsdistpoissonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_node_min(s : StatsdistpoissonNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_node_max(s : StatsdistpoissonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_node_max(s : StatsdistpoissonNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_node_to_string(s : StatsdistpoissonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_poisson_edge_set(s : StatsdistpoissonEdge, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_poisson_edge_sum(s : StatsdistpoissonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_edge_sum(s : StatsdistpoissonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_edge_mean(s : StatsdistpoissonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_edge_mean(s : StatsdistpoissonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_edge_scale(s : StatsdistpoissonEdge, f : Double) -> StatsdistpoissonEdge {
   let result = stats_dist_poisson_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_poisson_edge_fill(s : StatsdistpoissonEdge, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_poisson_edge_min(s : StatsdistpoissonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_edge_min(s : StatsdistpoissonEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_edge_max(s : StatsdistpoissonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_edge_max(s : StatsdistpoissonEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_edge_to_string(s : StatsdistpoissonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_poisson_path_set(s : StatsdistpoissonPath, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_poisson_path_sum(s : StatsdistpoissonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_path_sum(s : StatsdistpoissonPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_path_mean(s : StatsdistpoissonPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_path_mean(s : StatsdistpoissonPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_path_scale(s : StatsdistpoissonPath, f : Double) -> StatsdistpoissonPath {
   let result = stats_dist_poisson_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_poisson_path_fill(s : StatsdistpoissonPath, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_poisson_path_min(s : StatsdistpoissonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_path_min(s : StatsdistpoissonPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_path_max(s : StatsdistpoissonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_path_max(s : StatsdistpoissonPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_path_to_string(s : StatsdistpoissonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_poisson_cluster_set(s : StatsdistpoissonCluster, i : Int, v : 
   result
 }
 
-pub fn stats_dist_poisson_cluster_sum(s : StatsdistpoissonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_cluster_sum(s : StatsdistpoissonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_cluster_mean(s : StatsdistpoissonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_cluster_mean(s : StatsdistpoissonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_cluster_scale(s : StatsdistpoissonCluster, f : Double) -> StatsdistpoissonCluster {
   let result = stats_dist_poisson_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_poisson_cluster_fill(s : StatsdistpoissonCluster, v : Double) 
   result
 }
 
-pub fn stats_dist_poisson_cluster_min(s : StatsdistpoissonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_cluster_min(s : StatsdistpoissonCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_cluster_max(s : StatsdistpoissonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_cluster_max(s : StatsdistpoissonCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_cluster_to_string(s : StatsdistpoissonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_poisson_model_set(s : StatsdistpoissonModel, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_poisson_model_sum(s : StatsdistpoissonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_model_sum(s : StatsdistpoissonModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_model_mean(s : StatsdistpoissonModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_model_mean(s : StatsdistpoissonModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_model_scale(s : StatsdistpoissonModel, f : Double) -> StatsdistpoissonModel {
   let result = stats_dist_poisson_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_poisson_model_fill(s : StatsdistpoissonModel, v : Double) -> S
   result
 }
 
-pub fn stats_dist_poisson_model_min(s : StatsdistpoissonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_model_min(s : StatsdistpoissonModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_model_max(s : StatsdistpoissonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_model_max(s : StatsdistpoissonModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_model_to_string(s : StatsdistpoissonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_poisson_layer_set(s : StatsdistpoissonLayer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_poisson_layer_sum(s : StatsdistpoissonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_layer_sum(s : StatsdistpoissonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_layer_mean(s : StatsdistpoissonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_layer_mean(s : StatsdistpoissonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_layer_scale(s : StatsdistpoissonLayer, f : Double) -> StatsdistpoissonLayer {
   let result = stats_dist_poisson_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_poisson_layer_fill(s : StatsdistpoissonLayer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_poisson_layer_min(s : StatsdistpoissonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_layer_min(s : StatsdistpoissonLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_layer_max(s : StatsdistpoissonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_layer_max(s : StatsdistpoissonLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_layer_to_string(s : StatsdistpoissonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_poisson_buffer_set(s : StatsdistpoissonBuffer, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_poisson_buffer_sum(s : StatsdistpoissonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_buffer_sum(s : StatsdistpoissonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_buffer_mean(s : StatsdistpoissonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_buffer_mean(s : StatsdistpoissonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_buffer_scale(s : StatsdistpoissonBuffer, f : Double) -> StatsdistpoissonBuffer {
   let result = stats_dist_poisson_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_poisson_buffer_fill(s : StatsdistpoissonBuffer, v : Double) ->
   result
 }
 
-pub fn stats_dist_poisson_buffer_min(s : StatsdistpoissonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_buffer_min(s : StatsdistpoissonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_buffer_max(s : StatsdistpoissonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_buffer_max(s : StatsdistpoissonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_buffer_to_string(s : StatsdistpoissonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_poisson_cursor_set(s : StatsdistpoissonCursor, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_poisson_cursor_sum(s : StatsdistpoissonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_cursor_sum(s : StatsdistpoissonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_cursor_mean(s : StatsdistpoissonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_cursor_mean(s : StatsdistpoissonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_cursor_scale(s : StatsdistpoissonCursor, f : Double) -> StatsdistpoissonCursor {
   let result = stats_dist_poisson_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_poisson_cursor_fill(s : StatsdistpoissonCursor, v : Double) ->
   result
 }
 
-pub fn stats_dist_poisson_cursor_min(s : StatsdistpoissonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_cursor_min(s : StatsdistpoissonCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_cursor_max(s : StatsdistpoissonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_cursor_max(s : StatsdistpoissonCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_cursor_to_string(s : StatsdistpoissonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_poisson_view_set(s : StatsdistpoissonView, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_poisson_view_sum(s : StatsdistpoissonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_view_sum(s : StatsdistpoissonView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_view_mean(s : StatsdistpoissonView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_view_mean(s : StatsdistpoissonView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_view_scale(s : StatsdistpoissonView, f : Double) -> StatsdistpoissonView {
   let result = stats_dist_poisson_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_poisson_view_fill(s : StatsdistpoissonView, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_poisson_view_min(s : StatsdistpoissonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_view_min(s : StatsdistpoissonView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_view_max(s : StatsdistpoissonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_view_max(s : StatsdistpoissonView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_view_to_string(s : StatsdistpoissonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_poisson_range_set(s : StatsdistpoissonRange, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_poisson_range_sum(s : StatsdistpoissonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_range_sum(s : StatsdistpoissonRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_range_mean(s : StatsdistpoissonRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_range_mean(s : StatsdistpoissonRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_range_scale(s : StatsdistpoissonRange, f : Double) -> StatsdistpoissonRange {
   let result = stats_dist_poisson_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_poisson_range_fill(s : StatsdistpoissonRange, v : Double) -> S
   result
 }
 
-pub fn stats_dist_poisson_range_min(s : StatsdistpoissonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_range_min(s : StatsdistpoissonRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_range_max(s : StatsdistpoissonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_range_max(s : StatsdistpoissonRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_range_to_string(s : StatsdistpoissonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_poisson_slice_set(s : StatsdistpoissonSlice, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_poisson_slice_sum(s : StatsdistpoissonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_poisson_slice_sum(s : StatsdistpoissonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_poisson_slice_mean(s : StatsdistpoissonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_poisson_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_poisson_slice_mean(s : StatsdistpoissonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_poisson_slice_scale(s : StatsdistpoissonSlice, f : Double) -> StatsdistpoissonSlice {
   let result = stats_dist_poisson_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_poisson_slice_fill(s : StatsdistpoissonSlice, v : Double) -> S
   result
 }
 
-pub fn stats_dist_poisson_slice_min(s : StatsdistpoissonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_slice_min(s : StatsdistpoissonSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_poisson_slice_max(s : StatsdistpoissonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_poisson_slice_max(s : StatsdistpoissonSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_poisson_slice_to_string(s : StatsdistpoissonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

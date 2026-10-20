@@ -88,11 +88,7 @@ pub fn db_store_time_make_series(vals : Array[Double], name : String) -> Dbstore
 
 pub fn db_store_time_series_len(s : DbstoretimeSeries) -> Int { s.vals.length() }
 
-pub fn db_store_time_series_sum(s : DbstoretimeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_time_series_sum(s : DbstoretimeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_time_series_mean(s : DbstoretimeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_time_frame_set(s : DbstoretimeFrame, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_time_frame_sum(s : DbstoretimeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_frame_sum(s : DbstoretimeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_frame_mean(s : DbstoretimeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_frame_mean(s : DbstoretimeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_frame_scale(s : DbstoretimeFrame, f : Double) -> DbstoretimeFrame {
   let result = db_store_time_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_time_frame_fill(s : DbstoretimeFrame, v : Double) -> Dbstoretime
   result
 }
 
-pub fn db_store_time_frame_min(s : DbstoretimeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_frame_min(s : DbstoretimeFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_frame_max(s : DbstoretimeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_frame_max(s : DbstoretimeFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_frame_to_string(s : DbstoretimeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_time_table_set(s : DbstoretimeTable, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_time_table_sum(s : DbstoretimeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_table_sum(s : DbstoretimeTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_table_mean(s : DbstoretimeTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_table_mean(s : DbstoretimeTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_table_scale(s : DbstoretimeTable, f : Double) -> DbstoretimeTable {
   let result = db_store_time_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_time_table_fill(s : DbstoretimeTable, v : Double) -> Dbstoretime
   result
 }
 
-pub fn db_store_time_table_min(s : DbstoretimeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_table_min(s : DbstoretimeTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_table_max(s : DbstoretimeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_table_max(s : DbstoretimeTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_table_to_string(s : DbstoretimeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_time_graphn_set(s : DbstoretimeGraphN, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_time_graphn_sum(s : DbstoretimeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_graphn_sum(s : DbstoretimeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_graphn_mean(s : DbstoretimeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_graphn_mean(s : DbstoretimeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_graphn_scale(s : DbstoretimeGraphN, f : Double) -> DbstoretimeGraphN {
   let result = db_store_time_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_time_graphn_fill(s : DbstoretimeGraphN, v : Double) -> Dbstoreti
   result
 }
 
-pub fn db_store_time_graphn_min(s : DbstoretimeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_graphn_min(s : DbstoretimeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_graphn_max(s : DbstoretimeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_graphn_max(s : DbstoretimeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_graphn_to_string(s : DbstoretimeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_time_node_set(s : DbstoretimeNode, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_time_node_sum(s : DbstoretimeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_node_sum(s : DbstoretimeNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_node_mean(s : DbstoretimeNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_node_mean(s : DbstoretimeNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_node_scale(s : DbstoretimeNode, f : Double) -> DbstoretimeNode {
   let result = db_store_time_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_time_node_fill(s : DbstoretimeNode, v : Double) -> DbstoretimeNo
   result
 }
 
-pub fn db_store_time_node_min(s : DbstoretimeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_node_min(s : DbstoretimeNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_node_max(s : DbstoretimeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_node_max(s : DbstoretimeNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_node_to_string(s : DbstoretimeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_time_edge_set(s : DbstoretimeEdge, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_time_edge_sum(s : DbstoretimeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_edge_sum(s : DbstoretimeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_edge_mean(s : DbstoretimeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_edge_mean(s : DbstoretimeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_edge_scale(s : DbstoretimeEdge, f : Double) -> DbstoretimeEdge {
   let result = db_store_time_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_time_edge_fill(s : DbstoretimeEdge, v : Double) -> DbstoretimeEd
   result
 }
 
-pub fn db_store_time_edge_min(s : DbstoretimeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_edge_min(s : DbstoretimeEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_edge_max(s : DbstoretimeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_edge_max(s : DbstoretimeEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_edge_to_string(s : DbstoretimeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_time_path_set(s : DbstoretimePath, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_time_path_sum(s : DbstoretimePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_path_sum(s : DbstoretimePath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_path_mean(s : DbstoretimePath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_path_mean(s : DbstoretimePath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_path_scale(s : DbstoretimePath, f : Double) -> DbstoretimePath {
   let result = db_store_time_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_time_path_fill(s : DbstoretimePath, v : Double) -> DbstoretimePa
   result
 }
 
-pub fn db_store_time_path_min(s : DbstoretimePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_path_min(s : DbstoretimePath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_path_max(s : DbstoretimePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_path_max(s : DbstoretimePath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_path_to_string(s : DbstoretimePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_time_cluster_set(s : DbstoretimeCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_time_cluster_sum(s : DbstoretimeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_cluster_sum(s : DbstoretimeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_cluster_mean(s : DbstoretimeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_cluster_mean(s : DbstoretimeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_cluster_scale(s : DbstoretimeCluster, f : Double) -> DbstoretimeCluster {
   let result = db_store_time_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_time_cluster_fill(s : DbstoretimeCluster, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_time_cluster_min(s : DbstoretimeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_cluster_min(s : DbstoretimeCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_cluster_max(s : DbstoretimeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_cluster_max(s : DbstoretimeCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_cluster_to_string(s : DbstoretimeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_time_model_set(s : DbstoretimeModel, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_time_model_sum(s : DbstoretimeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_model_sum(s : DbstoretimeModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_model_mean(s : DbstoretimeModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_model_mean(s : DbstoretimeModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_model_scale(s : DbstoretimeModel, f : Double) -> DbstoretimeModel {
   let result = db_store_time_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_time_model_fill(s : DbstoretimeModel, v : Double) -> Dbstoretime
   result
 }
 
-pub fn db_store_time_model_min(s : DbstoretimeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_model_min(s : DbstoretimeModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_model_max(s : DbstoretimeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_model_max(s : DbstoretimeModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_model_to_string(s : DbstoretimeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_time_layer_set(s : DbstoretimeLayer, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_time_layer_sum(s : DbstoretimeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_layer_sum(s : DbstoretimeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_layer_mean(s : DbstoretimeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_layer_mean(s : DbstoretimeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_layer_scale(s : DbstoretimeLayer, f : Double) -> DbstoretimeLayer {
   let result = db_store_time_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_time_layer_fill(s : DbstoretimeLayer, v : Double) -> Dbstoretime
   result
 }
 
-pub fn db_store_time_layer_min(s : DbstoretimeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_layer_min(s : DbstoretimeLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_layer_max(s : DbstoretimeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_layer_max(s : DbstoretimeLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_layer_to_string(s : DbstoretimeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_time_buffer_set(s : DbstoretimeBuffer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_time_buffer_sum(s : DbstoretimeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_buffer_sum(s : DbstoretimeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_buffer_mean(s : DbstoretimeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_buffer_mean(s : DbstoretimeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_buffer_scale(s : DbstoretimeBuffer, f : Double) -> DbstoretimeBuffer {
   let result = db_store_time_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_time_buffer_fill(s : DbstoretimeBuffer, v : Double) -> Dbstoreti
   result
 }
 
-pub fn db_store_time_buffer_min(s : DbstoretimeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_buffer_min(s : DbstoretimeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_buffer_max(s : DbstoretimeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_buffer_max(s : DbstoretimeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_buffer_to_string(s : DbstoretimeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_time_cursor_set(s : DbstoretimeCursor, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_time_cursor_sum(s : DbstoretimeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_cursor_sum(s : DbstoretimeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_cursor_mean(s : DbstoretimeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_cursor_mean(s : DbstoretimeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_cursor_scale(s : DbstoretimeCursor, f : Double) -> DbstoretimeCursor {
   let result = db_store_time_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_time_cursor_fill(s : DbstoretimeCursor, v : Double) -> Dbstoreti
   result
 }
 
-pub fn db_store_time_cursor_min(s : DbstoretimeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_cursor_min(s : DbstoretimeCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_cursor_max(s : DbstoretimeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_cursor_max(s : DbstoretimeCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_cursor_to_string(s : DbstoretimeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_time_view_set(s : DbstoretimeView, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_time_view_sum(s : DbstoretimeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_view_sum(s : DbstoretimeView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_view_mean(s : DbstoretimeView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_view_mean(s : DbstoretimeView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_view_scale(s : DbstoretimeView, f : Double) -> DbstoretimeView {
   let result = db_store_time_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_time_view_fill(s : DbstoretimeView, v : Double) -> DbstoretimeVi
   result
 }
 
-pub fn db_store_time_view_min(s : DbstoretimeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_view_min(s : DbstoretimeView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_view_max(s : DbstoretimeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_view_max(s : DbstoretimeView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_view_to_string(s : DbstoretimeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_time_range_set(s : DbstoretimeRange, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_time_range_sum(s : DbstoretimeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_range_sum(s : DbstoretimeRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_range_mean(s : DbstoretimeRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_range_mean(s : DbstoretimeRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_range_scale(s : DbstoretimeRange, f : Double) -> DbstoretimeRange {
   let result = db_store_time_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_time_range_fill(s : DbstoretimeRange, v : Double) -> Dbstoretime
   result
 }
 
-pub fn db_store_time_range_min(s : DbstoretimeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_range_min(s : DbstoretimeRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_range_max(s : DbstoretimeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_range_max(s : DbstoretimeRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_range_to_string(s : DbstoretimeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_time_slice_set(s : DbstoretimeSlice, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_time_slice_sum(s : DbstoretimeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_time_slice_sum(s : DbstoretimeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_time_slice_mean(s : DbstoretimeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_time_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_time_slice_mean(s : DbstoretimeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_time_slice_scale(s : DbstoretimeSlice, f : Double) -> DbstoretimeSlice {
   let result = db_store_time_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_time_slice_fill(s : DbstoretimeSlice, v : Double) -> Dbstoretime
   result
 }
 
-pub fn db_store_time_slice_min(s : DbstoretimeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_slice_min(s : DbstoretimeSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_time_slice_max(s : DbstoretimeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_time_slice_max(s : DbstoretimeSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_time_slice_to_string(s : DbstoretimeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_flow_policing_make_series(vals : Array[Double], name : String) -> Net
 
 pub fn net_flow_policing_series_len(s : NetflowpolicingSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_policing_series_sum(s : NetflowpolicingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_policing_series_sum(s : NetflowpolicingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_policing_series_mean(s : NetflowpolicingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_policing_frame_set(s : NetflowpolicingFrame, i : Int, v : Double
   result
 }
 
-pub fn net_flow_policing_frame_sum(s : NetflowpolicingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_frame_sum(s : NetflowpolicingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_frame_mean(s : NetflowpolicingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_frame_mean(s : NetflowpolicingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_frame_scale(s : NetflowpolicingFrame, f : Double) -> NetflowpolicingFrame {
   let result = net_flow_policing_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_policing_frame_fill(s : NetflowpolicingFrame, v : Double) -> Net
   result
 }
 
-pub fn net_flow_policing_frame_min(s : NetflowpolicingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_frame_min(s : NetflowpolicingFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_frame_max(s : NetflowpolicingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_frame_max(s : NetflowpolicingFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_frame_to_string(s : NetflowpolicingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_policing_table_set(s : NetflowpolicingTable, i : Int, v : Double
   result
 }
 
-pub fn net_flow_policing_table_sum(s : NetflowpolicingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_table_sum(s : NetflowpolicingTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_table_mean(s : NetflowpolicingTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_table_mean(s : NetflowpolicingTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_table_scale(s : NetflowpolicingTable, f : Double) -> NetflowpolicingTable {
   let result = net_flow_policing_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_policing_table_fill(s : NetflowpolicingTable, v : Double) -> Net
   result
 }
 
-pub fn net_flow_policing_table_min(s : NetflowpolicingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_table_min(s : NetflowpolicingTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_table_max(s : NetflowpolicingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_table_max(s : NetflowpolicingTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_table_to_string(s : NetflowpolicingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_policing_graphn_set(s : NetflowpolicingGraphN, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_policing_graphn_sum(s : NetflowpolicingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_graphn_sum(s : NetflowpolicingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_graphn_mean(s : NetflowpolicingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_graphn_mean(s : NetflowpolicingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_graphn_scale(s : NetflowpolicingGraphN, f : Double) -> NetflowpolicingGraphN {
   let result = net_flow_policing_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_policing_graphn_fill(s : NetflowpolicingGraphN, v : Double) -> N
   result
 }
 
-pub fn net_flow_policing_graphn_min(s : NetflowpolicingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_graphn_min(s : NetflowpolicingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_graphn_max(s : NetflowpolicingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_graphn_max(s : NetflowpolicingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_graphn_to_string(s : NetflowpolicingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_policing_node_set(s : NetflowpolicingNode, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_policing_node_sum(s : NetflowpolicingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_node_sum(s : NetflowpolicingNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_node_mean(s : NetflowpolicingNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_node_mean(s : NetflowpolicingNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_node_scale(s : NetflowpolicingNode, f : Double) -> NetflowpolicingNode {
   let result = net_flow_policing_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_policing_node_fill(s : NetflowpolicingNode, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_policing_node_min(s : NetflowpolicingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_node_min(s : NetflowpolicingNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_node_max(s : NetflowpolicingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_node_max(s : NetflowpolicingNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_node_to_string(s : NetflowpolicingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_policing_edge_set(s : NetflowpolicingEdge, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_policing_edge_sum(s : NetflowpolicingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_edge_sum(s : NetflowpolicingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_edge_mean(s : NetflowpolicingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_edge_mean(s : NetflowpolicingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_edge_scale(s : NetflowpolicingEdge, f : Double) -> NetflowpolicingEdge {
   let result = net_flow_policing_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_policing_edge_fill(s : NetflowpolicingEdge, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_policing_edge_min(s : NetflowpolicingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_edge_min(s : NetflowpolicingEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_edge_max(s : NetflowpolicingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_edge_max(s : NetflowpolicingEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_edge_to_string(s : NetflowpolicingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_policing_path_set(s : NetflowpolicingPath, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_policing_path_sum(s : NetflowpolicingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_path_sum(s : NetflowpolicingPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_path_mean(s : NetflowpolicingPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_path_mean(s : NetflowpolicingPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_path_scale(s : NetflowpolicingPath, f : Double) -> NetflowpolicingPath {
   let result = net_flow_policing_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_policing_path_fill(s : NetflowpolicingPath, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_policing_path_min(s : NetflowpolicingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_path_min(s : NetflowpolicingPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_path_max(s : NetflowpolicingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_path_max(s : NetflowpolicingPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_path_to_string(s : NetflowpolicingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_policing_cluster_set(s : NetflowpolicingCluster, i : Int, v : Do
   result
 }
 
-pub fn net_flow_policing_cluster_sum(s : NetflowpolicingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_cluster_sum(s : NetflowpolicingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_cluster_mean(s : NetflowpolicingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_cluster_mean(s : NetflowpolicingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_cluster_scale(s : NetflowpolicingCluster, f : Double) -> NetflowpolicingCluster {
   let result = net_flow_policing_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_policing_cluster_fill(s : NetflowpolicingCluster, v : Double) ->
   result
 }
 
-pub fn net_flow_policing_cluster_min(s : NetflowpolicingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_cluster_min(s : NetflowpolicingCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_cluster_max(s : NetflowpolicingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_cluster_max(s : NetflowpolicingCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_cluster_to_string(s : NetflowpolicingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_policing_model_set(s : NetflowpolicingModel, i : Int, v : Double
   result
 }
 
-pub fn net_flow_policing_model_sum(s : NetflowpolicingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_model_sum(s : NetflowpolicingModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_model_mean(s : NetflowpolicingModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_model_mean(s : NetflowpolicingModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_model_scale(s : NetflowpolicingModel, f : Double) -> NetflowpolicingModel {
   let result = net_flow_policing_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_policing_model_fill(s : NetflowpolicingModel, v : Double) -> Net
   result
 }
 
-pub fn net_flow_policing_model_min(s : NetflowpolicingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_model_min(s : NetflowpolicingModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_model_max(s : NetflowpolicingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_model_max(s : NetflowpolicingModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_model_to_string(s : NetflowpolicingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_policing_layer_set(s : NetflowpolicingLayer, i : Int, v : Double
   result
 }
 
-pub fn net_flow_policing_layer_sum(s : NetflowpolicingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_layer_sum(s : NetflowpolicingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_layer_mean(s : NetflowpolicingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_layer_mean(s : NetflowpolicingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_layer_scale(s : NetflowpolicingLayer, f : Double) -> NetflowpolicingLayer {
   let result = net_flow_policing_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_policing_layer_fill(s : NetflowpolicingLayer, v : Double) -> Net
   result
 }
 
-pub fn net_flow_policing_layer_min(s : NetflowpolicingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_layer_min(s : NetflowpolicingLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_layer_max(s : NetflowpolicingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_layer_max(s : NetflowpolicingLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_layer_to_string(s : NetflowpolicingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_policing_buffer_set(s : NetflowpolicingBuffer, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_policing_buffer_sum(s : NetflowpolicingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_buffer_sum(s : NetflowpolicingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_buffer_mean(s : NetflowpolicingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_buffer_mean(s : NetflowpolicingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_buffer_scale(s : NetflowpolicingBuffer, f : Double) -> NetflowpolicingBuffer {
   let result = net_flow_policing_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_policing_buffer_fill(s : NetflowpolicingBuffer, v : Double) -> N
   result
 }
 
-pub fn net_flow_policing_buffer_min(s : NetflowpolicingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_buffer_min(s : NetflowpolicingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_buffer_max(s : NetflowpolicingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_buffer_max(s : NetflowpolicingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_buffer_to_string(s : NetflowpolicingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_policing_cursor_set(s : NetflowpolicingCursor, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_policing_cursor_sum(s : NetflowpolicingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_cursor_sum(s : NetflowpolicingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_cursor_mean(s : NetflowpolicingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_cursor_mean(s : NetflowpolicingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_cursor_scale(s : NetflowpolicingCursor, f : Double) -> NetflowpolicingCursor {
   let result = net_flow_policing_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_policing_cursor_fill(s : NetflowpolicingCursor, v : Double) -> N
   result
 }
 
-pub fn net_flow_policing_cursor_min(s : NetflowpolicingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_cursor_min(s : NetflowpolicingCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_cursor_max(s : NetflowpolicingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_cursor_max(s : NetflowpolicingCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_cursor_to_string(s : NetflowpolicingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_policing_view_set(s : NetflowpolicingView, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_policing_view_sum(s : NetflowpolicingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_view_sum(s : NetflowpolicingView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_view_mean(s : NetflowpolicingView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_view_mean(s : NetflowpolicingView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_view_scale(s : NetflowpolicingView, f : Double) -> NetflowpolicingView {
   let result = net_flow_policing_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_policing_view_fill(s : NetflowpolicingView, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_policing_view_min(s : NetflowpolicingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_view_min(s : NetflowpolicingView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_view_max(s : NetflowpolicingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_view_max(s : NetflowpolicingView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_view_to_string(s : NetflowpolicingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_policing_range_set(s : NetflowpolicingRange, i : Int, v : Double
   result
 }
 
-pub fn net_flow_policing_range_sum(s : NetflowpolicingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_range_sum(s : NetflowpolicingRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_range_mean(s : NetflowpolicingRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_range_mean(s : NetflowpolicingRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_range_scale(s : NetflowpolicingRange, f : Double) -> NetflowpolicingRange {
   let result = net_flow_policing_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_policing_range_fill(s : NetflowpolicingRange, v : Double) -> Net
   result
 }
 
-pub fn net_flow_policing_range_min(s : NetflowpolicingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_range_min(s : NetflowpolicingRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_range_max(s : NetflowpolicingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_range_max(s : NetflowpolicingRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_range_to_string(s : NetflowpolicingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_policing_slice_set(s : NetflowpolicingSlice, i : Int, v : Double
   result
 }
 
-pub fn net_flow_policing_slice_sum(s : NetflowpolicingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_policing_slice_sum(s : NetflowpolicingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_policing_slice_mean(s : NetflowpolicingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_policing_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_policing_slice_mean(s : NetflowpolicingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_policing_slice_scale(s : NetflowpolicingSlice, f : Double) -> NetflowpolicingSlice {
   let result = net_flow_policing_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_policing_slice_fill(s : NetflowpolicingSlice, v : Double) -> Net
   result
 }
 
-pub fn net_flow_policing_slice_min(s : NetflowpolicingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_slice_min(s : NetflowpolicingSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_policing_slice_max(s : NetflowpolicingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_policing_slice_max(s : NetflowpolicingSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_policing_slice_to_string(s : NetflowpolicingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

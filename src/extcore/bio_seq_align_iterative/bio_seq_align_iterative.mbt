@@ -88,11 +88,7 @@ pub fn bio_seq_align_iterative_make_series(vals : Array[Double], name : String) 
 
 pub fn bio_seq_align_iterative_series_len(s : BioseqaligniterativeSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_align_iterative_series_sum(s : BioseqaligniterativeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_align_iterative_series_sum(s : BioseqaligniterativeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_align_iterative_series_mean(s : BioseqaligniterativeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_align_iterative_frame_set(s : BioseqaligniterativeFrame, i : Int,
   result
 }
 
-pub fn bio_seq_align_iterative_frame_sum(s : BioseqaligniterativeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_frame_sum(s : BioseqaligniterativeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_frame_mean(s : BioseqaligniterativeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_frame_mean(s : BioseqaligniterativeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_frame_scale(s : BioseqaligniterativeFrame, f : Double) -> BioseqaligniterativeFrame {
   let result = bio_seq_align_iterative_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_align_iterative_frame_fill(s : BioseqaligniterativeFrame, v : Dou
   result
 }
 
-pub fn bio_seq_align_iterative_frame_min(s : BioseqaligniterativeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_frame_min(s : BioseqaligniterativeFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_frame_max(s : BioseqaligniterativeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_frame_max(s : BioseqaligniterativeFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_frame_to_string(s : BioseqaligniterativeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_align_iterative_table_set(s : BioseqaligniterativeTable, i : Int,
   result
 }
 
-pub fn bio_seq_align_iterative_table_sum(s : BioseqaligniterativeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_table_sum(s : BioseqaligniterativeTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_table_mean(s : BioseqaligniterativeTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_table_mean(s : BioseqaligniterativeTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_table_scale(s : BioseqaligniterativeTable, f : Double) -> BioseqaligniterativeTable {
   let result = bio_seq_align_iterative_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_align_iterative_table_fill(s : BioseqaligniterativeTable, v : Dou
   result
 }
 
-pub fn bio_seq_align_iterative_table_min(s : BioseqaligniterativeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_table_min(s : BioseqaligniterativeTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_table_max(s : BioseqaligniterativeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_table_max(s : BioseqaligniterativeTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_table_to_string(s : BioseqaligniterativeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_align_iterative_graphn_set(s : BioseqaligniterativeGraphN, i : In
   result
 }
 
-pub fn bio_seq_align_iterative_graphn_sum(s : BioseqaligniterativeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_graphn_sum(s : BioseqaligniterativeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_graphn_mean(s : BioseqaligniterativeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_graphn_mean(s : BioseqaligniterativeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_graphn_scale(s : BioseqaligniterativeGraphN, f : Double) -> BioseqaligniterativeGraphN {
   let result = bio_seq_align_iterative_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_align_iterative_graphn_fill(s : BioseqaligniterativeGraphN, v : D
   result
 }
 
-pub fn bio_seq_align_iterative_graphn_min(s : BioseqaligniterativeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_graphn_min(s : BioseqaligniterativeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_graphn_max(s : BioseqaligniterativeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_graphn_max(s : BioseqaligniterativeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_graphn_to_string(s : BioseqaligniterativeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_align_iterative_node_set(s : BioseqaligniterativeNode, i : Int, v
   result
 }
 
-pub fn bio_seq_align_iterative_node_sum(s : BioseqaligniterativeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_node_sum(s : BioseqaligniterativeNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_node_mean(s : BioseqaligniterativeNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_node_mean(s : BioseqaligniterativeNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_node_scale(s : BioseqaligniterativeNode, f : Double) -> BioseqaligniterativeNode {
   let result = bio_seq_align_iterative_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_align_iterative_node_fill(s : BioseqaligniterativeNode, v : Doubl
   result
 }
 
-pub fn bio_seq_align_iterative_node_min(s : BioseqaligniterativeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_node_min(s : BioseqaligniterativeNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_node_max(s : BioseqaligniterativeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_node_max(s : BioseqaligniterativeNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_node_to_string(s : BioseqaligniterativeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_align_iterative_edge_set(s : BioseqaligniterativeEdge, i : Int, v
   result
 }
 
-pub fn bio_seq_align_iterative_edge_sum(s : BioseqaligniterativeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_edge_sum(s : BioseqaligniterativeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_edge_mean(s : BioseqaligniterativeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_edge_mean(s : BioseqaligniterativeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_edge_scale(s : BioseqaligniterativeEdge, f : Double) -> BioseqaligniterativeEdge {
   let result = bio_seq_align_iterative_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_align_iterative_edge_fill(s : BioseqaligniterativeEdge, v : Doubl
   result
 }
 
-pub fn bio_seq_align_iterative_edge_min(s : BioseqaligniterativeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_edge_min(s : BioseqaligniterativeEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_edge_max(s : BioseqaligniterativeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_edge_max(s : BioseqaligniterativeEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_edge_to_string(s : BioseqaligniterativeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_align_iterative_path_set(s : BioseqaligniterativePath, i : Int, v
   result
 }
 
-pub fn bio_seq_align_iterative_path_sum(s : BioseqaligniterativePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_path_sum(s : BioseqaligniterativePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_path_mean(s : BioseqaligniterativePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_path_mean(s : BioseqaligniterativePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_path_scale(s : BioseqaligniterativePath, f : Double) -> BioseqaligniterativePath {
   let result = bio_seq_align_iterative_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_align_iterative_path_fill(s : BioseqaligniterativePath, v : Doubl
   result
 }
 
-pub fn bio_seq_align_iterative_path_min(s : BioseqaligniterativePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_path_min(s : BioseqaligniterativePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_path_max(s : BioseqaligniterativePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_path_max(s : BioseqaligniterativePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_path_to_string(s : BioseqaligniterativePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_align_iterative_cluster_set(s : BioseqaligniterativeCluster, i : 
   result
 }
 
-pub fn bio_seq_align_iterative_cluster_sum(s : BioseqaligniterativeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_cluster_sum(s : BioseqaligniterativeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_cluster_mean(s : BioseqaligniterativeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_cluster_mean(s : BioseqaligniterativeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_cluster_scale(s : BioseqaligniterativeCluster, f : Double) -> BioseqaligniterativeCluster {
   let result = bio_seq_align_iterative_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_align_iterative_cluster_fill(s : BioseqaligniterativeCluster, v :
   result
 }
 
-pub fn bio_seq_align_iterative_cluster_min(s : BioseqaligniterativeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_cluster_min(s : BioseqaligniterativeCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_cluster_max(s : BioseqaligniterativeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_cluster_max(s : BioseqaligniterativeCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_cluster_to_string(s : BioseqaligniterativeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_align_iterative_model_set(s : BioseqaligniterativeModel, i : Int,
   result
 }
 
-pub fn bio_seq_align_iterative_model_sum(s : BioseqaligniterativeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_model_sum(s : BioseqaligniterativeModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_model_mean(s : BioseqaligniterativeModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_model_mean(s : BioseqaligniterativeModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_model_scale(s : BioseqaligniterativeModel, f : Double) -> BioseqaligniterativeModel {
   let result = bio_seq_align_iterative_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_align_iterative_model_fill(s : BioseqaligniterativeModel, v : Dou
   result
 }
 
-pub fn bio_seq_align_iterative_model_min(s : BioseqaligniterativeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_model_min(s : BioseqaligniterativeModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_model_max(s : BioseqaligniterativeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_model_max(s : BioseqaligniterativeModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_model_to_string(s : BioseqaligniterativeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_align_iterative_layer_set(s : BioseqaligniterativeLayer, i : Int,
   result
 }
 
-pub fn bio_seq_align_iterative_layer_sum(s : BioseqaligniterativeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_layer_sum(s : BioseqaligniterativeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_layer_mean(s : BioseqaligniterativeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_layer_mean(s : BioseqaligniterativeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_layer_scale(s : BioseqaligniterativeLayer, f : Double) -> BioseqaligniterativeLayer {
   let result = bio_seq_align_iterative_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_align_iterative_layer_fill(s : BioseqaligniterativeLayer, v : Dou
   result
 }
 
-pub fn bio_seq_align_iterative_layer_min(s : BioseqaligniterativeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_layer_min(s : BioseqaligniterativeLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_layer_max(s : BioseqaligniterativeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_layer_max(s : BioseqaligniterativeLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_layer_to_string(s : BioseqaligniterativeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_align_iterative_buffer_set(s : BioseqaligniterativeBuffer, i : In
   result
 }
 
-pub fn bio_seq_align_iterative_buffer_sum(s : BioseqaligniterativeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_buffer_sum(s : BioseqaligniterativeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_buffer_mean(s : BioseqaligniterativeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_buffer_mean(s : BioseqaligniterativeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_buffer_scale(s : BioseqaligniterativeBuffer, f : Double) -> BioseqaligniterativeBuffer {
   let result = bio_seq_align_iterative_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_align_iterative_buffer_fill(s : BioseqaligniterativeBuffer, v : D
   result
 }
 
-pub fn bio_seq_align_iterative_buffer_min(s : BioseqaligniterativeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_buffer_min(s : BioseqaligniterativeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_buffer_max(s : BioseqaligniterativeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_buffer_max(s : BioseqaligniterativeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_buffer_to_string(s : BioseqaligniterativeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_align_iterative_cursor_set(s : BioseqaligniterativeCursor, i : In
   result
 }
 
-pub fn bio_seq_align_iterative_cursor_sum(s : BioseqaligniterativeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_cursor_sum(s : BioseqaligniterativeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_cursor_mean(s : BioseqaligniterativeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_cursor_mean(s : BioseqaligniterativeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_cursor_scale(s : BioseqaligniterativeCursor, f : Double) -> BioseqaligniterativeCursor {
   let result = bio_seq_align_iterative_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_align_iterative_cursor_fill(s : BioseqaligniterativeCursor, v : D
   result
 }
 
-pub fn bio_seq_align_iterative_cursor_min(s : BioseqaligniterativeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_cursor_min(s : BioseqaligniterativeCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_cursor_max(s : BioseqaligniterativeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_cursor_max(s : BioseqaligniterativeCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_cursor_to_string(s : BioseqaligniterativeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_align_iterative_view_set(s : BioseqaligniterativeView, i : Int, v
   result
 }
 
-pub fn bio_seq_align_iterative_view_sum(s : BioseqaligniterativeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_view_sum(s : BioseqaligniterativeView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_view_mean(s : BioseqaligniterativeView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_view_mean(s : BioseqaligniterativeView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_view_scale(s : BioseqaligniterativeView, f : Double) -> BioseqaligniterativeView {
   let result = bio_seq_align_iterative_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_align_iterative_view_fill(s : BioseqaligniterativeView, v : Doubl
   result
 }
 
-pub fn bio_seq_align_iterative_view_min(s : BioseqaligniterativeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_view_min(s : BioseqaligniterativeView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_view_max(s : BioseqaligniterativeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_view_max(s : BioseqaligniterativeView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_view_to_string(s : BioseqaligniterativeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_align_iterative_range_set(s : BioseqaligniterativeRange, i : Int,
   result
 }
 
-pub fn bio_seq_align_iterative_range_sum(s : BioseqaligniterativeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_range_sum(s : BioseqaligniterativeRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_range_mean(s : BioseqaligniterativeRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_range_mean(s : BioseqaligniterativeRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_range_scale(s : BioseqaligniterativeRange, f : Double) -> BioseqaligniterativeRange {
   let result = bio_seq_align_iterative_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_align_iterative_range_fill(s : BioseqaligniterativeRange, v : Dou
   result
 }
 
-pub fn bio_seq_align_iterative_range_min(s : BioseqaligniterativeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_range_min(s : BioseqaligniterativeRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_range_max(s : BioseqaligniterativeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_range_max(s : BioseqaligniterativeRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_range_to_string(s : BioseqaligniterativeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_align_iterative_slice_set(s : BioseqaligniterativeSlice, i : Int,
   result
 }
 
-pub fn bio_seq_align_iterative_slice_sum(s : BioseqaligniterativeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_iterative_slice_sum(s : BioseqaligniterativeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_iterative_slice_mean(s : BioseqaligniterativeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_iterative_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_iterative_slice_mean(s : BioseqaligniterativeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_iterative_slice_scale(s : BioseqaligniterativeSlice, f : Double) -> BioseqaligniterativeSlice {
   let result = bio_seq_align_iterative_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_align_iterative_slice_fill(s : BioseqaligniterativeSlice, v : Dou
   result
 }
 
-pub fn bio_seq_align_iterative_slice_min(s : BioseqaligniterativeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_slice_min(s : BioseqaligniterativeSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_iterative_slice_max(s : BioseqaligniterativeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_iterative_slice_max(s : BioseqaligniterativeSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_iterative_slice_to_string(s : BioseqaligniterativeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

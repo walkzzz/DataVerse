@@ -88,11 +88,7 @@ pub fn graph_color_backtrack_make_series(vals : Array[Double], name : String) ->
 
 pub fn graph_color_backtrack_series_len(s : GraphcolorbacktrackSeries) -> Int { s.vals.length() }
 
-pub fn graph_color_backtrack_series_sum(s : GraphcolorbacktrackSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_color_backtrack_series_sum(s : GraphcolorbacktrackSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_color_backtrack_series_mean(s : GraphcolorbacktrackSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_color_backtrack_frame_set(s : GraphcolorbacktrackFrame, i : Int, v 
   result
 }
 
-pub fn graph_color_backtrack_frame_sum(s : GraphcolorbacktrackFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_frame_sum(s : GraphcolorbacktrackFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_frame_mean(s : GraphcolorbacktrackFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_frame_mean(s : GraphcolorbacktrackFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_frame_scale(s : GraphcolorbacktrackFrame, f : Double) -> GraphcolorbacktrackFrame {
   let result = graph_color_backtrack_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_color_backtrack_frame_fill(s : GraphcolorbacktrackFrame, v : Double
   result
 }
 
-pub fn graph_color_backtrack_frame_min(s : GraphcolorbacktrackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_frame_min(s : GraphcolorbacktrackFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_frame_max(s : GraphcolorbacktrackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_frame_max(s : GraphcolorbacktrackFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_frame_to_string(s : GraphcolorbacktrackFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_color_backtrack_table_set(s : GraphcolorbacktrackTable, i : Int, v 
   result
 }
 
-pub fn graph_color_backtrack_table_sum(s : GraphcolorbacktrackTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_table_sum(s : GraphcolorbacktrackTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_table_mean(s : GraphcolorbacktrackTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_table_mean(s : GraphcolorbacktrackTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_table_scale(s : GraphcolorbacktrackTable, f : Double) -> GraphcolorbacktrackTable {
   let result = graph_color_backtrack_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_color_backtrack_table_fill(s : GraphcolorbacktrackTable, v : Double
   result
 }
 
-pub fn graph_color_backtrack_table_min(s : GraphcolorbacktrackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_table_min(s : GraphcolorbacktrackTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_table_max(s : GraphcolorbacktrackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_table_max(s : GraphcolorbacktrackTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_table_to_string(s : GraphcolorbacktrackTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_color_backtrack_graphn_set(s : GraphcolorbacktrackGraphN, i : Int, 
   result
 }
 
-pub fn graph_color_backtrack_graphn_sum(s : GraphcolorbacktrackGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_graphn_sum(s : GraphcolorbacktrackGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_graphn_mean(s : GraphcolorbacktrackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_graphn_mean(s : GraphcolorbacktrackGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_graphn_scale(s : GraphcolorbacktrackGraphN, f : Double) -> GraphcolorbacktrackGraphN {
   let result = graph_color_backtrack_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_color_backtrack_graphn_fill(s : GraphcolorbacktrackGraphN, v : Doub
   result
 }
 
-pub fn graph_color_backtrack_graphn_min(s : GraphcolorbacktrackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_graphn_min(s : GraphcolorbacktrackGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_graphn_max(s : GraphcolorbacktrackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_graphn_max(s : GraphcolorbacktrackGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_graphn_to_string(s : GraphcolorbacktrackGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_color_backtrack_node_set(s : GraphcolorbacktrackNode, i : Int, v : 
   result
 }
 
-pub fn graph_color_backtrack_node_sum(s : GraphcolorbacktrackNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_node_sum(s : GraphcolorbacktrackNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_node_mean(s : GraphcolorbacktrackNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_node_mean(s : GraphcolorbacktrackNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_node_scale(s : GraphcolorbacktrackNode, f : Double) -> GraphcolorbacktrackNode {
   let result = graph_color_backtrack_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_color_backtrack_node_fill(s : GraphcolorbacktrackNode, v : Double) 
   result
 }
 
-pub fn graph_color_backtrack_node_min(s : GraphcolorbacktrackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_node_min(s : GraphcolorbacktrackNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_node_max(s : GraphcolorbacktrackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_node_max(s : GraphcolorbacktrackNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_node_to_string(s : GraphcolorbacktrackNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_color_backtrack_edge_set(s : GraphcolorbacktrackEdge, i : Int, v : 
   result
 }
 
-pub fn graph_color_backtrack_edge_sum(s : GraphcolorbacktrackEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_edge_sum(s : GraphcolorbacktrackEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_edge_mean(s : GraphcolorbacktrackEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_edge_mean(s : GraphcolorbacktrackEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_edge_scale(s : GraphcolorbacktrackEdge, f : Double) -> GraphcolorbacktrackEdge {
   let result = graph_color_backtrack_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_color_backtrack_edge_fill(s : GraphcolorbacktrackEdge, v : Double) 
   result
 }
 
-pub fn graph_color_backtrack_edge_min(s : GraphcolorbacktrackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_edge_min(s : GraphcolorbacktrackEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_edge_max(s : GraphcolorbacktrackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_edge_max(s : GraphcolorbacktrackEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_edge_to_string(s : GraphcolorbacktrackEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_color_backtrack_path_set(s : GraphcolorbacktrackPath, i : Int, v : 
   result
 }
 
-pub fn graph_color_backtrack_path_sum(s : GraphcolorbacktrackPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_path_sum(s : GraphcolorbacktrackPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_path_mean(s : GraphcolorbacktrackPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_path_mean(s : GraphcolorbacktrackPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_path_scale(s : GraphcolorbacktrackPath, f : Double) -> GraphcolorbacktrackPath {
   let result = graph_color_backtrack_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_color_backtrack_path_fill(s : GraphcolorbacktrackPath, v : Double) 
   result
 }
 
-pub fn graph_color_backtrack_path_min(s : GraphcolorbacktrackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_path_min(s : GraphcolorbacktrackPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_path_max(s : GraphcolorbacktrackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_path_max(s : GraphcolorbacktrackPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_path_to_string(s : GraphcolorbacktrackPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_color_backtrack_cluster_set(s : GraphcolorbacktrackCluster, i : Int
   result
 }
 
-pub fn graph_color_backtrack_cluster_sum(s : GraphcolorbacktrackCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_cluster_sum(s : GraphcolorbacktrackCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_cluster_mean(s : GraphcolorbacktrackCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_cluster_mean(s : GraphcolorbacktrackCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_cluster_scale(s : GraphcolorbacktrackCluster, f : Double) -> GraphcolorbacktrackCluster {
   let result = graph_color_backtrack_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_color_backtrack_cluster_fill(s : GraphcolorbacktrackCluster, v : Do
   result
 }
 
-pub fn graph_color_backtrack_cluster_min(s : GraphcolorbacktrackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_cluster_min(s : GraphcolorbacktrackCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_cluster_max(s : GraphcolorbacktrackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_cluster_max(s : GraphcolorbacktrackCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_cluster_to_string(s : GraphcolorbacktrackCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_color_backtrack_model_set(s : GraphcolorbacktrackModel, i : Int, v 
   result
 }
 
-pub fn graph_color_backtrack_model_sum(s : GraphcolorbacktrackModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_model_sum(s : GraphcolorbacktrackModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_model_mean(s : GraphcolorbacktrackModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_model_mean(s : GraphcolorbacktrackModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_model_scale(s : GraphcolorbacktrackModel, f : Double) -> GraphcolorbacktrackModel {
   let result = graph_color_backtrack_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_color_backtrack_model_fill(s : GraphcolorbacktrackModel, v : Double
   result
 }
 
-pub fn graph_color_backtrack_model_min(s : GraphcolorbacktrackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_model_min(s : GraphcolorbacktrackModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_model_max(s : GraphcolorbacktrackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_model_max(s : GraphcolorbacktrackModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_model_to_string(s : GraphcolorbacktrackModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_color_backtrack_layer_set(s : GraphcolorbacktrackLayer, i : Int, v 
   result
 }
 
-pub fn graph_color_backtrack_layer_sum(s : GraphcolorbacktrackLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_layer_sum(s : GraphcolorbacktrackLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_layer_mean(s : GraphcolorbacktrackLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_layer_mean(s : GraphcolorbacktrackLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_layer_scale(s : GraphcolorbacktrackLayer, f : Double) -> GraphcolorbacktrackLayer {
   let result = graph_color_backtrack_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_color_backtrack_layer_fill(s : GraphcolorbacktrackLayer, v : Double
   result
 }
 
-pub fn graph_color_backtrack_layer_min(s : GraphcolorbacktrackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_layer_min(s : GraphcolorbacktrackLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_layer_max(s : GraphcolorbacktrackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_layer_max(s : GraphcolorbacktrackLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_layer_to_string(s : GraphcolorbacktrackLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_color_backtrack_buffer_set(s : GraphcolorbacktrackBuffer, i : Int, 
   result
 }
 
-pub fn graph_color_backtrack_buffer_sum(s : GraphcolorbacktrackBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_buffer_sum(s : GraphcolorbacktrackBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_buffer_mean(s : GraphcolorbacktrackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_buffer_mean(s : GraphcolorbacktrackBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_buffer_scale(s : GraphcolorbacktrackBuffer, f : Double) -> GraphcolorbacktrackBuffer {
   let result = graph_color_backtrack_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_color_backtrack_buffer_fill(s : GraphcolorbacktrackBuffer, v : Doub
   result
 }
 
-pub fn graph_color_backtrack_buffer_min(s : GraphcolorbacktrackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_buffer_min(s : GraphcolorbacktrackBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_buffer_max(s : GraphcolorbacktrackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_buffer_max(s : GraphcolorbacktrackBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_buffer_to_string(s : GraphcolorbacktrackBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_color_backtrack_cursor_set(s : GraphcolorbacktrackCursor, i : Int, 
   result
 }
 
-pub fn graph_color_backtrack_cursor_sum(s : GraphcolorbacktrackCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_cursor_sum(s : GraphcolorbacktrackCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_cursor_mean(s : GraphcolorbacktrackCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_cursor_mean(s : GraphcolorbacktrackCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_cursor_scale(s : GraphcolorbacktrackCursor, f : Double) -> GraphcolorbacktrackCursor {
   let result = graph_color_backtrack_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_color_backtrack_cursor_fill(s : GraphcolorbacktrackCursor, v : Doub
   result
 }
 
-pub fn graph_color_backtrack_cursor_min(s : GraphcolorbacktrackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_cursor_min(s : GraphcolorbacktrackCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_cursor_max(s : GraphcolorbacktrackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_cursor_max(s : GraphcolorbacktrackCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_cursor_to_string(s : GraphcolorbacktrackCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_color_backtrack_view_set(s : GraphcolorbacktrackView, i : Int, v : 
   result
 }
 
-pub fn graph_color_backtrack_view_sum(s : GraphcolorbacktrackView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_view_sum(s : GraphcolorbacktrackView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_view_mean(s : GraphcolorbacktrackView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_view_mean(s : GraphcolorbacktrackView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_view_scale(s : GraphcolorbacktrackView, f : Double) -> GraphcolorbacktrackView {
   let result = graph_color_backtrack_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_color_backtrack_view_fill(s : GraphcolorbacktrackView, v : Double) 
   result
 }
 
-pub fn graph_color_backtrack_view_min(s : GraphcolorbacktrackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_view_min(s : GraphcolorbacktrackView) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_view_max(s : GraphcolorbacktrackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_view_max(s : GraphcolorbacktrackView) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_view_to_string(s : GraphcolorbacktrackView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_color_backtrack_range_set(s : GraphcolorbacktrackRange, i : Int, v 
   result
 }
 
-pub fn graph_color_backtrack_range_sum(s : GraphcolorbacktrackRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_range_sum(s : GraphcolorbacktrackRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_range_mean(s : GraphcolorbacktrackRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_range_mean(s : GraphcolorbacktrackRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_range_scale(s : GraphcolorbacktrackRange, f : Double) -> GraphcolorbacktrackRange {
   let result = graph_color_backtrack_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_color_backtrack_range_fill(s : GraphcolorbacktrackRange, v : Double
   result
 }
 
-pub fn graph_color_backtrack_range_min(s : GraphcolorbacktrackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_range_min(s : GraphcolorbacktrackRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_range_max(s : GraphcolorbacktrackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_range_max(s : GraphcolorbacktrackRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_range_to_string(s : GraphcolorbacktrackRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_color_backtrack_slice_set(s : GraphcolorbacktrackSlice, i : Int, v 
   result
 }
 
-pub fn graph_color_backtrack_slice_sum(s : GraphcolorbacktrackSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_backtrack_slice_sum(s : GraphcolorbacktrackSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_backtrack_slice_mean(s : GraphcolorbacktrackSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_backtrack_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_backtrack_slice_mean(s : GraphcolorbacktrackSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_backtrack_slice_scale(s : GraphcolorbacktrackSlice, f : Double) -> GraphcolorbacktrackSlice {
   let result = graph_color_backtrack_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_color_backtrack_slice_fill(s : GraphcolorbacktrackSlice, v : Double
   result
 }
 
-pub fn graph_color_backtrack_slice_min(s : GraphcolorbacktrackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_slice_min(s : GraphcolorbacktrackSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_backtrack_slice_max(s : GraphcolorbacktrackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_backtrack_slice_max(s : GraphcolorbacktrackSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_backtrack_slice_to_string(s : GraphcolorbacktrackSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

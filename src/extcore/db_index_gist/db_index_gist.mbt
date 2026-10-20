@@ -88,11 +88,7 @@ pub fn db_index_gist_make_series(vals : Array[Double], name : String) -> Dbindex
 
 pub fn db_index_gist_series_len(s : DbindexgistSeries) -> Int { s.vals.length() }
 
-pub fn db_index_gist_series_sum(s : DbindexgistSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_gist_series_sum(s : DbindexgistSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_gist_series_mean(s : DbindexgistSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_gist_frame_set(s : DbindexgistFrame, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_gist_frame_sum(s : DbindexgistFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_frame_sum(s : DbindexgistFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_frame_mean(s : DbindexgistFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_frame_mean(s : DbindexgistFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_frame_scale(s : DbindexgistFrame, f : Double) -> DbindexgistFrame {
   let result = db_index_gist_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_gist_frame_fill(s : DbindexgistFrame, v : Double) -> Dbindexgist
   result
 }
 
-pub fn db_index_gist_frame_min(s : DbindexgistFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_frame_min(s : DbindexgistFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_frame_max(s : DbindexgistFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_frame_max(s : DbindexgistFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_frame_to_string(s : DbindexgistFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_gist_table_set(s : DbindexgistTable, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_gist_table_sum(s : DbindexgistTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_table_sum(s : DbindexgistTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_table_mean(s : DbindexgistTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_table_mean(s : DbindexgistTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_table_scale(s : DbindexgistTable, f : Double) -> DbindexgistTable {
   let result = db_index_gist_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_gist_table_fill(s : DbindexgistTable, v : Double) -> Dbindexgist
   result
 }
 
-pub fn db_index_gist_table_min(s : DbindexgistTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_table_min(s : DbindexgistTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_table_max(s : DbindexgistTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_table_max(s : DbindexgistTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_table_to_string(s : DbindexgistTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_gist_graphn_set(s : DbindexgistGraphN, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_gist_graphn_sum(s : DbindexgistGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_graphn_sum(s : DbindexgistGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_graphn_mean(s : DbindexgistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_graphn_mean(s : DbindexgistGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_graphn_scale(s : DbindexgistGraphN, f : Double) -> DbindexgistGraphN {
   let result = db_index_gist_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_gist_graphn_fill(s : DbindexgistGraphN, v : Double) -> Dbindexgi
   result
 }
 
-pub fn db_index_gist_graphn_min(s : DbindexgistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_graphn_min(s : DbindexgistGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_graphn_max(s : DbindexgistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_graphn_max(s : DbindexgistGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_graphn_to_string(s : DbindexgistGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_gist_node_set(s : DbindexgistNode, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_gist_node_sum(s : DbindexgistNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_node_sum(s : DbindexgistNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_node_mean(s : DbindexgistNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_node_mean(s : DbindexgistNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_node_scale(s : DbindexgistNode, f : Double) -> DbindexgistNode {
   let result = db_index_gist_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_gist_node_fill(s : DbindexgistNode, v : Double) -> DbindexgistNo
   result
 }
 
-pub fn db_index_gist_node_min(s : DbindexgistNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_node_min(s : DbindexgistNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_node_max(s : DbindexgistNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_node_max(s : DbindexgistNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_node_to_string(s : DbindexgistNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_gist_edge_set(s : DbindexgistEdge, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_gist_edge_sum(s : DbindexgistEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_edge_sum(s : DbindexgistEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_edge_mean(s : DbindexgistEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_edge_mean(s : DbindexgistEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_edge_scale(s : DbindexgistEdge, f : Double) -> DbindexgistEdge {
   let result = db_index_gist_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_gist_edge_fill(s : DbindexgistEdge, v : Double) -> DbindexgistEd
   result
 }
 
-pub fn db_index_gist_edge_min(s : DbindexgistEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_edge_min(s : DbindexgistEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_edge_max(s : DbindexgistEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_edge_max(s : DbindexgistEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_edge_to_string(s : DbindexgistEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_gist_path_set(s : DbindexgistPath, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_gist_path_sum(s : DbindexgistPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_path_sum(s : DbindexgistPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_path_mean(s : DbindexgistPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_path_mean(s : DbindexgistPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_path_scale(s : DbindexgistPath, f : Double) -> DbindexgistPath {
   let result = db_index_gist_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_gist_path_fill(s : DbindexgistPath, v : Double) -> DbindexgistPa
   result
 }
 
-pub fn db_index_gist_path_min(s : DbindexgistPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_path_min(s : DbindexgistPath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_path_max(s : DbindexgistPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_path_max(s : DbindexgistPath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_path_to_string(s : DbindexgistPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_gist_cluster_set(s : DbindexgistCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_gist_cluster_sum(s : DbindexgistCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_cluster_sum(s : DbindexgistCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_cluster_mean(s : DbindexgistCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_cluster_mean(s : DbindexgistCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_cluster_scale(s : DbindexgistCluster, f : Double) -> DbindexgistCluster {
   let result = db_index_gist_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_gist_cluster_fill(s : DbindexgistCluster, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_gist_cluster_min(s : DbindexgistCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_cluster_min(s : DbindexgistCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_cluster_max(s : DbindexgistCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_cluster_max(s : DbindexgistCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_cluster_to_string(s : DbindexgistCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_gist_model_set(s : DbindexgistModel, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_gist_model_sum(s : DbindexgistModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_model_sum(s : DbindexgistModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_model_mean(s : DbindexgistModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_model_mean(s : DbindexgistModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_model_scale(s : DbindexgistModel, f : Double) -> DbindexgistModel {
   let result = db_index_gist_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_gist_model_fill(s : DbindexgistModel, v : Double) -> Dbindexgist
   result
 }
 
-pub fn db_index_gist_model_min(s : DbindexgistModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_model_min(s : DbindexgistModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_model_max(s : DbindexgistModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_model_max(s : DbindexgistModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_model_to_string(s : DbindexgistModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_gist_layer_set(s : DbindexgistLayer, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_gist_layer_sum(s : DbindexgistLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_layer_sum(s : DbindexgistLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_layer_mean(s : DbindexgistLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_layer_mean(s : DbindexgistLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_layer_scale(s : DbindexgistLayer, f : Double) -> DbindexgistLayer {
   let result = db_index_gist_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_gist_layer_fill(s : DbindexgistLayer, v : Double) -> Dbindexgist
   result
 }
 
-pub fn db_index_gist_layer_min(s : DbindexgistLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_layer_min(s : DbindexgistLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_layer_max(s : DbindexgistLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_layer_max(s : DbindexgistLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_layer_to_string(s : DbindexgistLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_gist_buffer_set(s : DbindexgistBuffer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_gist_buffer_sum(s : DbindexgistBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_buffer_sum(s : DbindexgistBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_buffer_mean(s : DbindexgistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_buffer_mean(s : DbindexgistBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_buffer_scale(s : DbindexgistBuffer, f : Double) -> DbindexgistBuffer {
   let result = db_index_gist_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_gist_buffer_fill(s : DbindexgistBuffer, v : Double) -> Dbindexgi
   result
 }
 
-pub fn db_index_gist_buffer_min(s : DbindexgistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_buffer_min(s : DbindexgistBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_buffer_max(s : DbindexgistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_buffer_max(s : DbindexgistBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_buffer_to_string(s : DbindexgistBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_gist_cursor_set(s : DbindexgistCursor, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_gist_cursor_sum(s : DbindexgistCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_cursor_sum(s : DbindexgistCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_cursor_mean(s : DbindexgistCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_cursor_mean(s : DbindexgistCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_cursor_scale(s : DbindexgistCursor, f : Double) -> DbindexgistCursor {
   let result = db_index_gist_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_gist_cursor_fill(s : DbindexgistCursor, v : Double) -> Dbindexgi
   result
 }
 
-pub fn db_index_gist_cursor_min(s : DbindexgistCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_cursor_min(s : DbindexgistCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_cursor_max(s : DbindexgistCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_cursor_max(s : DbindexgistCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_cursor_to_string(s : DbindexgistCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_gist_view_set(s : DbindexgistView, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_gist_view_sum(s : DbindexgistView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_view_sum(s : DbindexgistView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_view_mean(s : DbindexgistView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_view_mean(s : DbindexgistView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_view_scale(s : DbindexgistView, f : Double) -> DbindexgistView {
   let result = db_index_gist_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_gist_view_fill(s : DbindexgistView, v : Double) -> DbindexgistVi
   result
 }
 
-pub fn db_index_gist_view_min(s : DbindexgistView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_view_min(s : DbindexgistView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_view_max(s : DbindexgistView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_view_max(s : DbindexgistView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_view_to_string(s : DbindexgistView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_gist_range_set(s : DbindexgistRange, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_gist_range_sum(s : DbindexgistRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_range_sum(s : DbindexgistRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_range_mean(s : DbindexgistRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_range_mean(s : DbindexgistRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_range_scale(s : DbindexgistRange, f : Double) -> DbindexgistRange {
   let result = db_index_gist_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_gist_range_fill(s : DbindexgistRange, v : Double) -> Dbindexgist
   result
 }
 
-pub fn db_index_gist_range_min(s : DbindexgistRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_range_min(s : DbindexgistRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_range_max(s : DbindexgistRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_range_max(s : DbindexgistRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_range_to_string(s : DbindexgistRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_gist_slice_set(s : DbindexgistSlice, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_gist_slice_sum(s : DbindexgistSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_gist_slice_sum(s : DbindexgistSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_gist_slice_mean(s : DbindexgistSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_gist_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_gist_slice_mean(s : DbindexgistSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_gist_slice_scale(s : DbindexgistSlice, f : Double) -> DbindexgistSlice {
   let result = db_index_gist_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_gist_slice_fill(s : DbindexgistSlice, v : Double) -> Dbindexgist
   result
 }
 
-pub fn db_index_gist_slice_min(s : DbindexgistSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_slice_min(s : DbindexgistSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_gist_slice_max(s : DbindexgistSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_gist_slice_max(s : DbindexgistSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_gist_slice_to_string(s : DbindexgistSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

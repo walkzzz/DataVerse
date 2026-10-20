@@ -88,11 +88,7 @@ pub fn ml_neural_transformer_make_series(vals : Array[Double], name : String) ->
 
 pub fn ml_neural_transformer_series_len(s : MlneuraltransformerSeries) -> Int { s.vals.length() }
 
-pub fn ml_neural_transformer_series_sum(s : MlneuraltransformerSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_neural_transformer_series_sum(s : MlneuraltransformerSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_neural_transformer_series_mean(s : MlneuraltransformerSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_neural_transformer_frame_set(s : MlneuraltransformerFrame, i : Int, v 
   result
 }
 
-pub fn ml_neural_transformer_frame_sum(s : MlneuraltransformerFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_frame_sum(s : MlneuraltransformerFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_frame_mean(s : MlneuraltransformerFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_frame_mean(s : MlneuraltransformerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_frame_scale(s : MlneuraltransformerFrame, f : Double) -> MlneuraltransformerFrame {
   let result = ml_neural_transformer_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_neural_transformer_frame_fill(s : MlneuraltransformerFrame, v : Double
   result
 }
 
-pub fn ml_neural_transformer_frame_min(s : MlneuraltransformerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_frame_min(s : MlneuraltransformerFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_frame_max(s : MlneuraltransformerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_frame_max(s : MlneuraltransformerFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_frame_to_string(s : MlneuraltransformerFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_neural_transformer_table_set(s : MlneuraltransformerTable, i : Int, v 
   result
 }
 
-pub fn ml_neural_transformer_table_sum(s : MlneuraltransformerTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_table_sum(s : MlneuraltransformerTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_table_mean(s : MlneuraltransformerTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_table_mean(s : MlneuraltransformerTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_table_scale(s : MlneuraltransformerTable, f : Double) -> MlneuraltransformerTable {
   let result = ml_neural_transformer_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_neural_transformer_table_fill(s : MlneuraltransformerTable, v : Double
   result
 }
 
-pub fn ml_neural_transformer_table_min(s : MlneuraltransformerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_table_min(s : MlneuraltransformerTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_table_max(s : MlneuraltransformerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_table_max(s : MlneuraltransformerTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_table_to_string(s : MlneuraltransformerTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_neural_transformer_graphn_set(s : MlneuraltransformerGraphN, i : Int, 
   result
 }
 
-pub fn ml_neural_transformer_graphn_sum(s : MlneuraltransformerGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_graphn_sum(s : MlneuraltransformerGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_graphn_mean(s : MlneuraltransformerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_graphn_mean(s : MlneuraltransformerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_graphn_scale(s : MlneuraltransformerGraphN, f : Double) -> MlneuraltransformerGraphN {
   let result = ml_neural_transformer_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_neural_transformer_graphn_fill(s : MlneuraltransformerGraphN, v : Doub
   result
 }
 
-pub fn ml_neural_transformer_graphn_min(s : MlneuraltransformerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_graphn_min(s : MlneuraltransformerGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_graphn_max(s : MlneuraltransformerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_graphn_max(s : MlneuraltransformerGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_graphn_to_string(s : MlneuraltransformerGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_neural_transformer_node_set(s : MlneuraltransformerNode, i : Int, v : 
   result
 }
 
-pub fn ml_neural_transformer_node_sum(s : MlneuraltransformerNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_node_sum(s : MlneuraltransformerNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_node_mean(s : MlneuraltransformerNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_node_mean(s : MlneuraltransformerNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_node_scale(s : MlneuraltransformerNode, f : Double) -> MlneuraltransformerNode {
   let result = ml_neural_transformer_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_neural_transformer_node_fill(s : MlneuraltransformerNode, v : Double) 
   result
 }
 
-pub fn ml_neural_transformer_node_min(s : MlneuraltransformerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_node_min(s : MlneuraltransformerNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_node_max(s : MlneuraltransformerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_node_max(s : MlneuraltransformerNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_node_to_string(s : MlneuraltransformerNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_neural_transformer_edge_set(s : MlneuraltransformerEdge, i : Int, v : 
   result
 }
 
-pub fn ml_neural_transformer_edge_sum(s : MlneuraltransformerEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_edge_sum(s : MlneuraltransformerEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_edge_mean(s : MlneuraltransformerEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_edge_mean(s : MlneuraltransformerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_edge_scale(s : MlneuraltransformerEdge, f : Double) -> MlneuraltransformerEdge {
   let result = ml_neural_transformer_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_neural_transformer_edge_fill(s : MlneuraltransformerEdge, v : Double) 
   result
 }
 
-pub fn ml_neural_transformer_edge_min(s : MlneuraltransformerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_edge_min(s : MlneuraltransformerEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_edge_max(s : MlneuraltransformerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_edge_max(s : MlneuraltransformerEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_edge_to_string(s : MlneuraltransformerEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_neural_transformer_path_set(s : MlneuraltransformerPath, i : Int, v : 
   result
 }
 
-pub fn ml_neural_transformer_path_sum(s : MlneuraltransformerPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_path_sum(s : MlneuraltransformerPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_path_mean(s : MlneuraltransformerPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_path_mean(s : MlneuraltransformerPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_path_scale(s : MlneuraltransformerPath, f : Double) -> MlneuraltransformerPath {
   let result = ml_neural_transformer_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_neural_transformer_path_fill(s : MlneuraltransformerPath, v : Double) 
   result
 }
 
-pub fn ml_neural_transformer_path_min(s : MlneuraltransformerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_path_min(s : MlneuraltransformerPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_path_max(s : MlneuraltransformerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_path_max(s : MlneuraltransformerPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_path_to_string(s : MlneuraltransformerPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_neural_transformer_cluster_set(s : MlneuraltransformerCluster, i : Int
   result
 }
 
-pub fn ml_neural_transformer_cluster_sum(s : MlneuraltransformerCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_cluster_sum(s : MlneuraltransformerCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_cluster_mean(s : MlneuraltransformerCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_cluster_mean(s : MlneuraltransformerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_cluster_scale(s : MlneuraltransformerCluster, f : Double) -> MlneuraltransformerCluster {
   let result = ml_neural_transformer_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_neural_transformer_cluster_fill(s : MlneuraltransformerCluster, v : Do
   result
 }
 
-pub fn ml_neural_transformer_cluster_min(s : MlneuraltransformerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_cluster_min(s : MlneuraltransformerCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_cluster_max(s : MlneuraltransformerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_cluster_max(s : MlneuraltransformerCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_cluster_to_string(s : MlneuraltransformerCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_neural_transformer_model_set(s : MlneuraltransformerModel, i : Int, v 
   result
 }
 
-pub fn ml_neural_transformer_model_sum(s : MlneuraltransformerModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_model_sum(s : MlneuraltransformerModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_model_mean(s : MlneuraltransformerModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_model_mean(s : MlneuraltransformerModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_model_scale(s : MlneuraltransformerModel, f : Double) -> MlneuraltransformerModel {
   let result = ml_neural_transformer_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_neural_transformer_model_fill(s : MlneuraltransformerModel, v : Double
   result
 }
 
-pub fn ml_neural_transformer_model_min(s : MlneuraltransformerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_model_min(s : MlneuraltransformerModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_model_max(s : MlneuraltransformerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_model_max(s : MlneuraltransformerModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_model_to_string(s : MlneuraltransformerModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_neural_transformer_layer_set(s : MlneuraltransformerLayer, i : Int, v 
   result
 }
 
-pub fn ml_neural_transformer_layer_sum(s : MlneuraltransformerLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_layer_sum(s : MlneuraltransformerLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_layer_mean(s : MlneuraltransformerLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_layer_mean(s : MlneuraltransformerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_layer_scale(s : MlneuraltransformerLayer, f : Double) -> MlneuraltransformerLayer {
   let result = ml_neural_transformer_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_neural_transformer_layer_fill(s : MlneuraltransformerLayer, v : Double
   result
 }
 
-pub fn ml_neural_transformer_layer_min(s : MlneuraltransformerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_layer_min(s : MlneuraltransformerLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_layer_max(s : MlneuraltransformerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_layer_max(s : MlneuraltransformerLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_layer_to_string(s : MlneuraltransformerLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_neural_transformer_buffer_set(s : MlneuraltransformerBuffer, i : Int, 
   result
 }
 
-pub fn ml_neural_transformer_buffer_sum(s : MlneuraltransformerBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_buffer_sum(s : MlneuraltransformerBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_buffer_mean(s : MlneuraltransformerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_buffer_mean(s : MlneuraltransformerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_buffer_scale(s : MlneuraltransformerBuffer, f : Double) -> MlneuraltransformerBuffer {
   let result = ml_neural_transformer_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_neural_transformer_buffer_fill(s : MlneuraltransformerBuffer, v : Doub
   result
 }
 
-pub fn ml_neural_transformer_buffer_min(s : MlneuraltransformerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_buffer_min(s : MlneuraltransformerBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_buffer_max(s : MlneuraltransformerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_buffer_max(s : MlneuraltransformerBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_buffer_to_string(s : MlneuraltransformerBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_neural_transformer_cursor_set(s : MlneuraltransformerCursor, i : Int, 
   result
 }
 
-pub fn ml_neural_transformer_cursor_sum(s : MlneuraltransformerCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_cursor_sum(s : MlneuraltransformerCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_cursor_mean(s : MlneuraltransformerCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_cursor_mean(s : MlneuraltransformerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_cursor_scale(s : MlneuraltransformerCursor, f : Double) -> MlneuraltransformerCursor {
   let result = ml_neural_transformer_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_neural_transformer_cursor_fill(s : MlneuraltransformerCursor, v : Doub
   result
 }
 
-pub fn ml_neural_transformer_cursor_min(s : MlneuraltransformerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_cursor_min(s : MlneuraltransformerCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_cursor_max(s : MlneuraltransformerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_cursor_max(s : MlneuraltransformerCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_cursor_to_string(s : MlneuraltransformerCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_neural_transformer_view_set(s : MlneuraltransformerView, i : Int, v : 
   result
 }
 
-pub fn ml_neural_transformer_view_sum(s : MlneuraltransformerView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_view_sum(s : MlneuraltransformerView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_view_mean(s : MlneuraltransformerView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_view_mean(s : MlneuraltransformerView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_view_scale(s : MlneuraltransformerView, f : Double) -> MlneuraltransformerView {
   let result = ml_neural_transformer_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_neural_transformer_view_fill(s : MlneuraltransformerView, v : Double) 
   result
 }
 
-pub fn ml_neural_transformer_view_min(s : MlneuraltransformerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_view_min(s : MlneuraltransformerView) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_view_max(s : MlneuraltransformerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_view_max(s : MlneuraltransformerView) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_view_to_string(s : MlneuraltransformerView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_neural_transformer_range_set(s : MlneuraltransformerRange, i : Int, v 
   result
 }
 
-pub fn ml_neural_transformer_range_sum(s : MlneuraltransformerRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_range_sum(s : MlneuraltransformerRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_range_mean(s : MlneuraltransformerRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_range_mean(s : MlneuraltransformerRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_range_scale(s : MlneuraltransformerRange, f : Double) -> MlneuraltransformerRange {
   let result = ml_neural_transformer_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_neural_transformer_range_fill(s : MlneuraltransformerRange, v : Double
   result
 }
 
-pub fn ml_neural_transformer_range_min(s : MlneuraltransformerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_range_min(s : MlneuraltransformerRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_range_max(s : MlneuraltransformerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_range_max(s : MlneuraltransformerRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_range_to_string(s : MlneuraltransformerRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_neural_transformer_slice_set(s : MlneuraltransformerSlice, i : Int, v 
   result
 }
 
-pub fn ml_neural_transformer_slice_sum(s : MlneuraltransformerSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_transformer_slice_sum(s : MlneuraltransformerSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_transformer_slice_mean(s : MlneuraltransformerSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_transformer_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_transformer_slice_mean(s : MlneuraltransformerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_transformer_slice_scale(s : MlneuraltransformerSlice, f : Double) -> MlneuraltransformerSlice {
   let result = ml_neural_transformer_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_neural_transformer_slice_fill(s : MlneuraltransformerSlice, v : Double
   result
 }
 
-pub fn ml_neural_transformer_slice_min(s : MlneuraltransformerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_slice_min(s : MlneuraltransformerSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_transformer_slice_max(s : MlneuraltransformerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_transformer_slice_max(s : MlneuraltransformerSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_transformer_slice_to_string(s : MlneuraltransformerSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

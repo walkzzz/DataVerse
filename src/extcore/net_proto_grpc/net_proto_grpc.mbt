@@ -88,11 +88,7 @@ pub fn net_proto_grpc_make_series(vals : Array[Double], name : String) -> Netpro
 
 pub fn net_proto_grpc_series_len(s : NetprotogrpcSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_grpc_series_sum(s : NetprotogrpcSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_grpc_series_sum(s : NetprotogrpcSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_grpc_series_mean(s : NetprotogrpcSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_grpc_frame_set(s : NetprotogrpcFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_grpc_frame_sum(s : NetprotogrpcFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_frame_sum(s : NetprotogrpcFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_frame_mean(s : NetprotogrpcFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_frame_mean(s : NetprotogrpcFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_frame_scale(s : NetprotogrpcFrame, f : Double) -> NetprotogrpcFrame {
   let result = net_proto_grpc_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_grpc_frame_fill(s : NetprotogrpcFrame, v : Double) -> Netprotog
   result
 }
 
-pub fn net_proto_grpc_frame_min(s : NetprotogrpcFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_frame_min(s : NetprotogrpcFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_frame_max(s : NetprotogrpcFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_frame_max(s : NetprotogrpcFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_frame_to_string(s : NetprotogrpcFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_grpc_table_set(s : NetprotogrpcTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_grpc_table_sum(s : NetprotogrpcTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_table_sum(s : NetprotogrpcTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_table_mean(s : NetprotogrpcTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_table_mean(s : NetprotogrpcTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_table_scale(s : NetprotogrpcTable, f : Double) -> NetprotogrpcTable {
   let result = net_proto_grpc_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_grpc_table_fill(s : NetprotogrpcTable, v : Double) -> Netprotog
   result
 }
 
-pub fn net_proto_grpc_table_min(s : NetprotogrpcTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_table_min(s : NetprotogrpcTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_table_max(s : NetprotogrpcTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_table_max(s : NetprotogrpcTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_table_to_string(s : NetprotogrpcTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_grpc_graphn_set(s : NetprotogrpcGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_grpc_graphn_sum(s : NetprotogrpcGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_graphn_sum(s : NetprotogrpcGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_graphn_mean(s : NetprotogrpcGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_graphn_mean(s : NetprotogrpcGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_graphn_scale(s : NetprotogrpcGraphN, f : Double) -> NetprotogrpcGraphN {
   let result = net_proto_grpc_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_grpc_graphn_fill(s : NetprotogrpcGraphN, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_grpc_graphn_min(s : NetprotogrpcGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_graphn_min(s : NetprotogrpcGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_graphn_max(s : NetprotogrpcGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_graphn_max(s : NetprotogrpcGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_graphn_to_string(s : NetprotogrpcGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_grpc_node_set(s : NetprotogrpcNode, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_grpc_node_sum(s : NetprotogrpcNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_node_sum(s : NetprotogrpcNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_node_mean(s : NetprotogrpcNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_node_mean(s : NetprotogrpcNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_node_scale(s : NetprotogrpcNode, f : Double) -> NetprotogrpcNode {
   let result = net_proto_grpc_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_grpc_node_fill(s : NetprotogrpcNode, v : Double) -> Netprotogrp
   result
 }
 
-pub fn net_proto_grpc_node_min(s : NetprotogrpcNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_node_min(s : NetprotogrpcNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_node_max(s : NetprotogrpcNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_node_max(s : NetprotogrpcNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_node_to_string(s : NetprotogrpcNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_grpc_edge_set(s : NetprotogrpcEdge, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_grpc_edge_sum(s : NetprotogrpcEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_edge_sum(s : NetprotogrpcEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_edge_mean(s : NetprotogrpcEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_edge_mean(s : NetprotogrpcEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_edge_scale(s : NetprotogrpcEdge, f : Double) -> NetprotogrpcEdge {
   let result = net_proto_grpc_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_grpc_edge_fill(s : NetprotogrpcEdge, v : Double) -> Netprotogrp
   result
 }
 
-pub fn net_proto_grpc_edge_min(s : NetprotogrpcEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_edge_min(s : NetprotogrpcEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_edge_max(s : NetprotogrpcEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_edge_max(s : NetprotogrpcEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_edge_to_string(s : NetprotogrpcEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_grpc_path_set(s : NetprotogrpcPath, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_grpc_path_sum(s : NetprotogrpcPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_path_sum(s : NetprotogrpcPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_path_mean(s : NetprotogrpcPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_path_mean(s : NetprotogrpcPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_path_scale(s : NetprotogrpcPath, f : Double) -> NetprotogrpcPath {
   let result = net_proto_grpc_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_grpc_path_fill(s : NetprotogrpcPath, v : Double) -> Netprotogrp
   result
 }
 
-pub fn net_proto_grpc_path_min(s : NetprotogrpcPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_path_min(s : NetprotogrpcPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_path_max(s : NetprotogrpcPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_path_max(s : NetprotogrpcPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_path_to_string(s : NetprotogrpcPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_grpc_cluster_set(s : NetprotogrpcCluster, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_grpc_cluster_sum(s : NetprotogrpcCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_cluster_sum(s : NetprotogrpcCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_cluster_mean(s : NetprotogrpcCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_cluster_mean(s : NetprotogrpcCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_cluster_scale(s : NetprotogrpcCluster, f : Double) -> NetprotogrpcCluster {
   let result = net_proto_grpc_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_grpc_cluster_fill(s : NetprotogrpcCluster, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_grpc_cluster_min(s : NetprotogrpcCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_cluster_min(s : NetprotogrpcCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_cluster_max(s : NetprotogrpcCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_cluster_max(s : NetprotogrpcCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_cluster_to_string(s : NetprotogrpcCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_grpc_model_set(s : NetprotogrpcModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_grpc_model_sum(s : NetprotogrpcModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_model_sum(s : NetprotogrpcModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_model_mean(s : NetprotogrpcModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_model_mean(s : NetprotogrpcModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_model_scale(s : NetprotogrpcModel, f : Double) -> NetprotogrpcModel {
   let result = net_proto_grpc_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_grpc_model_fill(s : NetprotogrpcModel, v : Double) -> Netprotog
   result
 }
 
-pub fn net_proto_grpc_model_min(s : NetprotogrpcModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_model_min(s : NetprotogrpcModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_model_max(s : NetprotogrpcModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_model_max(s : NetprotogrpcModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_model_to_string(s : NetprotogrpcModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_grpc_layer_set(s : NetprotogrpcLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_grpc_layer_sum(s : NetprotogrpcLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_layer_sum(s : NetprotogrpcLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_layer_mean(s : NetprotogrpcLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_layer_mean(s : NetprotogrpcLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_layer_scale(s : NetprotogrpcLayer, f : Double) -> NetprotogrpcLayer {
   let result = net_proto_grpc_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_grpc_layer_fill(s : NetprotogrpcLayer, v : Double) -> Netprotog
   result
 }
 
-pub fn net_proto_grpc_layer_min(s : NetprotogrpcLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_layer_min(s : NetprotogrpcLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_layer_max(s : NetprotogrpcLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_layer_max(s : NetprotogrpcLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_layer_to_string(s : NetprotogrpcLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_grpc_buffer_set(s : NetprotogrpcBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_grpc_buffer_sum(s : NetprotogrpcBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_buffer_sum(s : NetprotogrpcBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_buffer_mean(s : NetprotogrpcBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_buffer_mean(s : NetprotogrpcBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_buffer_scale(s : NetprotogrpcBuffer, f : Double) -> NetprotogrpcBuffer {
   let result = net_proto_grpc_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_grpc_buffer_fill(s : NetprotogrpcBuffer, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_grpc_buffer_min(s : NetprotogrpcBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_buffer_min(s : NetprotogrpcBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_buffer_max(s : NetprotogrpcBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_buffer_max(s : NetprotogrpcBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_buffer_to_string(s : NetprotogrpcBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_grpc_cursor_set(s : NetprotogrpcCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_grpc_cursor_sum(s : NetprotogrpcCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_cursor_sum(s : NetprotogrpcCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_cursor_mean(s : NetprotogrpcCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_cursor_mean(s : NetprotogrpcCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_cursor_scale(s : NetprotogrpcCursor, f : Double) -> NetprotogrpcCursor {
   let result = net_proto_grpc_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_grpc_cursor_fill(s : NetprotogrpcCursor, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_grpc_cursor_min(s : NetprotogrpcCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_cursor_min(s : NetprotogrpcCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_cursor_max(s : NetprotogrpcCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_cursor_max(s : NetprotogrpcCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_cursor_to_string(s : NetprotogrpcCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_grpc_view_set(s : NetprotogrpcView, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_grpc_view_sum(s : NetprotogrpcView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_view_sum(s : NetprotogrpcView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_view_mean(s : NetprotogrpcView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_view_mean(s : NetprotogrpcView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_view_scale(s : NetprotogrpcView, f : Double) -> NetprotogrpcView {
   let result = net_proto_grpc_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_grpc_view_fill(s : NetprotogrpcView, v : Double) -> Netprotogrp
   result
 }
 
-pub fn net_proto_grpc_view_min(s : NetprotogrpcView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_view_min(s : NetprotogrpcView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_view_max(s : NetprotogrpcView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_view_max(s : NetprotogrpcView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_view_to_string(s : NetprotogrpcView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_grpc_range_set(s : NetprotogrpcRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_grpc_range_sum(s : NetprotogrpcRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_range_sum(s : NetprotogrpcRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_range_mean(s : NetprotogrpcRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_range_mean(s : NetprotogrpcRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_range_scale(s : NetprotogrpcRange, f : Double) -> NetprotogrpcRange {
   let result = net_proto_grpc_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_grpc_range_fill(s : NetprotogrpcRange, v : Double) -> Netprotog
   result
 }
 
-pub fn net_proto_grpc_range_min(s : NetprotogrpcRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_range_min(s : NetprotogrpcRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_range_max(s : NetprotogrpcRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_range_max(s : NetprotogrpcRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_range_to_string(s : NetprotogrpcRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_grpc_slice_set(s : NetprotogrpcSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_grpc_slice_sum(s : NetprotogrpcSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_grpc_slice_sum(s : NetprotogrpcSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_grpc_slice_mean(s : NetprotogrpcSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_grpc_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_grpc_slice_mean(s : NetprotogrpcSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_grpc_slice_scale(s : NetprotogrpcSlice, f : Double) -> NetprotogrpcSlice {
   let result = net_proto_grpc_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_grpc_slice_fill(s : NetprotogrpcSlice, v : Double) -> Netprotog
   result
 }
 
-pub fn net_proto_grpc_slice_min(s : NetprotogrpcSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_slice_min(s : NetprotogrpcSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_grpc_slice_max(s : NetprotogrpcSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_grpc_slice_max(s : NetprotogrpcSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_grpc_slice_to_string(s : NetprotogrpcSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

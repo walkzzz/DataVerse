@@ -88,11 +88,7 @@ pub fn physics_heat_insulation_make_series(vals : Array[Double], name : String) 
 
 pub fn physics_heat_insulation_series_len(s : PhysicsheatinsulationSeries) -> Int { s.vals.length() }
 
-pub fn physics_heat_insulation_series_sum(s : PhysicsheatinsulationSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_heat_insulation_series_sum(s : PhysicsheatinsulationSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_heat_insulation_series_mean(s : PhysicsheatinsulationSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_heat_insulation_frame_set(s : PhysicsheatinsulationFrame, i : Int
   result
 }
 
-pub fn physics_heat_insulation_frame_sum(s : PhysicsheatinsulationFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_frame_sum(s : PhysicsheatinsulationFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_frame_mean(s : PhysicsheatinsulationFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_frame_mean(s : PhysicsheatinsulationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_frame_scale(s : PhysicsheatinsulationFrame, f : Double) -> PhysicsheatinsulationFrame {
   let result = physics_heat_insulation_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_heat_insulation_frame_fill(s : PhysicsheatinsulationFrame, v : Do
   result
 }
 
-pub fn physics_heat_insulation_frame_min(s : PhysicsheatinsulationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_frame_min(s : PhysicsheatinsulationFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_frame_max(s : PhysicsheatinsulationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_frame_max(s : PhysicsheatinsulationFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_frame_to_string(s : PhysicsheatinsulationFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_heat_insulation_table_set(s : PhysicsheatinsulationTable, i : Int
   result
 }
 
-pub fn physics_heat_insulation_table_sum(s : PhysicsheatinsulationTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_table_sum(s : PhysicsheatinsulationTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_table_mean(s : PhysicsheatinsulationTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_table_mean(s : PhysicsheatinsulationTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_table_scale(s : PhysicsheatinsulationTable, f : Double) -> PhysicsheatinsulationTable {
   let result = physics_heat_insulation_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_heat_insulation_table_fill(s : PhysicsheatinsulationTable, v : Do
   result
 }
 
-pub fn physics_heat_insulation_table_min(s : PhysicsheatinsulationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_table_min(s : PhysicsheatinsulationTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_table_max(s : PhysicsheatinsulationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_table_max(s : PhysicsheatinsulationTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_table_to_string(s : PhysicsheatinsulationTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_heat_insulation_graphn_set(s : PhysicsheatinsulationGraphN, i : I
   result
 }
 
-pub fn physics_heat_insulation_graphn_sum(s : PhysicsheatinsulationGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_graphn_sum(s : PhysicsheatinsulationGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_graphn_mean(s : PhysicsheatinsulationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_graphn_mean(s : PhysicsheatinsulationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_graphn_scale(s : PhysicsheatinsulationGraphN, f : Double) -> PhysicsheatinsulationGraphN {
   let result = physics_heat_insulation_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_heat_insulation_graphn_fill(s : PhysicsheatinsulationGraphN, v : 
   result
 }
 
-pub fn physics_heat_insulation_graphn_min(s : PhysicsheatinsulationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_graphn_min(s : PhysicsheatinsulationGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_graphn_max(s : PhysicsheatinsulationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_graphn_max(s : PhysicsheatinsulationGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_graphn_to_string(s : PhysicsheatinsulationGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_heat_insulation_node_set(s : PhysicsheatinsulationNode, i : Int, 
   result
 }
 
-pub fn physics_heat_insulation_node_sum(s : PhysicsheatinsulationNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_node_sum(s : PhysicsheatinsulationNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_node_mean(s : PhysicsheatinsulationNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_node_mean(s : PhysicsheatinsulationNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_node_scale(s : PhysicsheatinsulationNode, f : Double) -> PhysicsheatinsulationNode {
   let result = physics_heat_insulation_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_heat_insulation_node_fill(s : PhysicsheatinsulationNode, v : Doub
   result
 }
 
-pub fn physics_heat_insulation_node_min(s : PhysicsheatinsulationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_node_min(s : PhysicsheatinsulationNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_node_max(s : PhysicsheatinsulationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_node_max(s : PhysicsheatinsulationNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_node_to_string(s : PhysicsheatinsulationNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_heat_insulation_edge_set(s : PhysicsheatinsulationEdge, i : Int, 
   result
 }
 
-pub fn physics_heat_insulation_edge_sum(s : PhysicsheatinsulationEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_edge_sum(s : PhysicsheatinsulationEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_edge_mean(s : PhysicsheatinsulationEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_edge_mean(s : PhysicsheatinsulationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_edge_scale(s : PhysicsheatinsulationEdge, f : Double) -> PhysicsheatinsulationEdge {
   let result = physics_heat_insulation_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_heat_insulation_edge_fill(s : PhysicsheatinsulationEdge, v : Doub
   result
 }
 
-pub fn physics_heat_insulation_edge_min(s : PhysicsheatinsulationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_edge_min(s : PhysicsheatinsulationEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_edge_max(s : PhysicsheatinsulationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_edge_max(s : PhysicsheatinsulationEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_edge_to_string(s : PhysicsheatinsulationEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_heat_insulation_path_set(s : PhysicsheatinsulationPath, i : Int, 
   result
 }
 
-pub fn physics_heat_insulation_path_sum(s : PhysicsheatinsulationPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_path_sum(s : PhysicsheatinsulationPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_path_mean(s : PhysicsheatinsulationPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_path_mean(s : PhysicsheatinsulationPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_path_scale(s : PhysicsheatinsulationPath, f : Double) -> PhysicsheatinsulationPath {
   let result = physics_heat_insulation_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_heat_insulation_path_fill(s : PhysicsheatinsulationPath, v : Doub
   result
 }
 
-pub fn physics_heat_insulation_path_min(s : PhysicsheatinsulationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_path_min(s : PhysicsheatinsulationPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_path_max(s : PhysicsheatinsulationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_path_max(s : PhysicsheatinsulationPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_path_to_string(s : PhysicsheatinsulationPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_heat_insulation_cluster_set(s : PhysicsheatinsulationCluster, i :
   result
 }
 
-pub fn physics_heat_insulation_cluster_sum(s : PhysicsheatinsulationCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_cluster_sum(s : PhysicsheatinsulationCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_cluster_mean(s : PhysicsheatinsulationCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_cluster_mean(s : PhysicsheatinsulationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_cluster_scale(s : PhysicsheatinsulationCluster, f : Double) -> PhysicsheatinsulationCluster {
   let result = physics_heat_insulation_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_heat_insulation_cluster_fill(s : PhysicsheatinsulationCluster, v 
   result
 }
 
-pub fn physics_heat_insulation_cluster_min(s : PhysicsheatinsulationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_cluster_min(s : PhysicsheatinsulationCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_cluster_max(s : PhysicsheatinsulationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_cluster_max(s : PhysicsheatinsulationCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_cluster_to_string(s : PhysicsheatinsulationCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_heat_insulation_model_set(s : PhysicsheatinsulationModel, i : Int
   result
 }
 
-pub fn physics_heat_insulation_model_sum(s : PhysicsheatinsulationModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_model_sum(s : PhysicsheatinsulationModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_model_mean(s : PhysicsheatinsulationModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_model_mean(s : PhysicsheatinsulationModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_model_scale(s : PhysicsheatinsulationModel, f : Double) -> PhysicsheatinsulationModel {
   let result = physics_heat_insulation_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_heat_insulation_model_fill(s : PhysicsheatinsulationModel, v : Do
   result
 }
 
-pub fn physics_heat_insulation_model_min(s : PhysicsheatinsulationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_model_min(s : PhysicsheatinsulationModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_model_max(s : PhysicsheatinsulationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_model_max(s : PhysicsheatinsulationModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_model_to_string(s : PhysicsheatinsulationModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_heat_insulation_layer_set(s : PhysicsheatinsulationLayer, i : Int
   result
 }
 
-pub fn physics_heat_insulation_layer_sum(s : PhysicsheatinsulationLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_layer_sum(s : PhysicsheatinsulationLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_layer_mean(s : PhysicsheatinsulationLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_layer_mean(s : PhysicsheatinsulationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_layer_scale(s : PhysicsheatinsulationLayer, f : Double) -> PhysicsheatinsulationLayer {
   let result = physics_heat_insulation_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_heat_insulation_layer_fill(s : PhysicsheatinsulationLayer, v : Do
   result
 }
 
-pub fn physics_heat_insulation_layer_min(s : PhysicsheatinsulationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_layer_min(s : PhysicsheatinsulationLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_layer_max(s : PhysicsheatinsulationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_layer_max(s : PhysicsheatinsulationLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_layer_to_string(s : PhysicsheatinsulationLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_heat_insulation_buffer_set(s : PhysicsheatinsulationBuffer, i : I
   result
 }
 
-pub fn physics_heat_insulation_buffer_sum(s : PhysicsheatinsulationBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_buffer_sum(s : PhysicsheatinsulationBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_buffer_mean(s : PhysicsheatinsulationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_buffer_mean(s : PhysicsheatinsulationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_buffer_scale(s : PhysicsheatinsulationBuffer, f : Double) -> PhysicsheatinsulationBuffer {
   let result = physics_heat_insulation_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_heat_insulation_buffer_fill(s : PhysicsheatinsulationBuffer, v : 
   result
 }
 
-pub fn physics_heat_insulation_buffer_min(s : PhysicsheatinsulationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_buffer_min(s : PhysicsheatinsulationBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_buffer_max(s : PhysicsheatinsulationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_buffer_max(s : PhysicsheatinsulationBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_buffer_to_string(s : PhysicsheatinsulationBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_heat_insulation_cursor_set(s : PhysicsheatinsulationCursor, i : I
   result
 }
 
-pub fn physics_heat_insulation_cursor_sum(s : PhysicsheatinsulationCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_cursor_sum(s : PhysicsheatinsulationCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_cursor_mean(s : PhysicsheatinsulationCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_cursor_mean(s : PhysicsheatinsulationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_cursor_scale(s : PhysicsheatinsulationCursor, f : Double) -> PhysicsheatinsulationCursor {
   let result = physics_heat_insulation_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_heat_insulation_cursor_fill(s : PhysicsheatinsulationCursor, v : 
   result
 }
 
-pub fn physics_heat_insulation_cursor_min(s : PhysicsheatinsulationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_cursor_min(s : PhysicsheatinsulationCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_cursor_max(s : PhysicsheatinsulationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_cursor_max(s : PhysicsheatinsulationCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_cursor_to_string(s : PhysicsheatinsulationCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_heat_insulation_view_set(s : PhysicsheatinsulationView, i : Int, 
   result
 }
 
-pub fn physics_heat_insulation_view_sum(s : PhysicsheatinsulationView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_view_sum(s : PhysicsheatinsulationView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_view_mean(s : PhysicsheatinsulationView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_view_mean(s : PhysicsheatinsulationView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_view_scale(s : PhysicsheatinsulationView, f : Double) -> PhysicsheatinsulationView {
   let result = physics_heat_insulation_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_heat_insulation_view_fill(s : PhysicsheatinsulationView, v : Doub
   result
 }
 
-pub fn physics_heat_insulation_view_min(s : PhysicsheatinsulationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_view_min(s : PhysicsheatinsulationView) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_view_max(s : PhysicsheatinsulationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_view_max(s : PhysicsheatinsulationView) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_view_to_string(s : PhysicsheatinsulationView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_heat_insulation_range_set(s : PhysicsheatinsulationRange, i : Int
   result
 }
 
-pub fn physics_heat_insulation_range_sum(s : PhysicsheatinsulationRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_range_sum(s : PhysicsheatinsulationRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_range_mean(s : PhysicsheatinsulationRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_range_mean(s : PhysicsheatinsulationRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_range_scale(s : PhysicsheatinsulationRange, f : Double) -> PhysicsheatinsulationRange {
   let result = physics_heat_insulation_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_heat_insulation_range_fill(s : PhysicsheatinsulationRange, v : Do
   result
 }
 
-pub fn physics_heat_insulation_range_min(s : PhysicsheatinsulationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_range_min(s : PhysicsheatinsulationRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_range_max(s : PhysicsheatinsulationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_range_max(s : PhysicsheatinsulationRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_range_to_string(s : PhysicsheatinsulationRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_heat_insulation_slice_set(s : PhysicsheatinsulationSlice, i : Int
   result
 }
 
-pub fn physics_heat_insulation_slice_sum(s : PhysicsheatinsulationSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_insulation_slice_sum(s : PhysicsheatinsulationSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_insulation_slice_mean(s : PhysicsheatinsulationSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_insulation_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_insulation_slice_mean(s : PhysicsheatinsulationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_insulation_slice_scale(s : PhysicsheatinsulationSlice, f : Double) -> PhysicsheatinsulationSlice {
   let result = physics_heat_insulation_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_heat_insulation_slice_fill(s : PhysicsheatinsulationSlice, v : Do
   result
 }
 
-pub fn physics_heat_insulation_slice_min(s : PhysicsheatinsulationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_slice_min(s : PhysicsheatinsulationSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_insulation_slice_max(s : PhysicsheatinsulationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_insulation_slice_max(s : PhysicsheatinsulationSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_insulation_slice_to_string(s : PhysicsheatinsulationSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

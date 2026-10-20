@@ -88,11 +88,7 @@ pub fn opt_grad_nadam_make_series(vals : Array[Double], name : String) -> Optgra
 
 pub fn opt_grad_nadam_series_len(s : OptgradnadamSeries) -> Int { s.vals.length() }
 
-pub fn opt_grad_nadam_series_sum(s : OptgradnadamSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_grad_nadam_series_sum(s : OptgradnadamSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_grad_nadam_series_mean(s : OptgradnadamSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_grad_nadam_frame_set(s : OptgradnadamFrame, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nadam_frame_sum(s : OptgradnadamFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_frame_sum(s : OptgradnadamFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_frame_mean(s : OptgradnadamFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_frame_mean(s : OptgradnadamFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_frame_scale(s : OptgradnadamFrame, f : Double) -> OptgradnadamFrame {
   let result = opt_grad_nadam_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_grad_nadam_frame_fill(s : OptgradnadamFrame, v : Double) -> Optgradna
   result
 }
 
-pub fn opt_grad_nadam_frame_min(s : OptgradnadamFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_frame_min(s : OptgradnadamFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_frame_max(s : OptgradnadamFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_frame_max(s : OptgradnadamFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_frame_to_string(s : OptgradnadamFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_grad_nadam_table_set(s : OptgradnadamTable, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nadam_table_sum(s : OptgradnadamTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_table_sum(s : OptgradnadamTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_table_mean(s : OptgradnadamTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_table_mean(s : OptgradnadamTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_table_scale(s : OptgradnadamTable, f : Double) -> OptgradnadamTable {
   let result = opt_grad_nadam_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_grad_nadam_table_fill(s : OptgradnadamTable, v : Double) -> Optgradna
   result
 }
 
-pub fn opt_grad_nadam_table_min(s : OptgradnadamTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_table_min(s : OptgradnadamTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_table_max(s : OptgradnadamTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_table_max(s : OptgradnadamTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_table_to_string(s : OptgradnadamTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_grad_nadam_graphn_set(s : OptgradnadamGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_nadam_graphn_sum(s : OptgradnadamGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_graphn_sum(s : OptgradnadamGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_graphn_mean(s : OptgradnadamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_graphn_mean(s : OptgradnadamGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_graphn_scale(s : OptgradnadamGraphN, f : Double) -> OptgradnadamGraphN {
   let result = opt_grad_nadam_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_grad_nadam_graphn_fill(s : OptgradnadamGraphN, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_nadam_graphn_min(s : OptgradnadamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_graphn_min(s : OptgradnadamGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_graphn_max(s : OptgradnadamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_graphn_max(s : OptgradnadamGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_graphn_to_string(s : OptgradnadamGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_grad_nadam_node_set(s : OptgradnadamNode, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nadam_node_sum(s : OptgradnadamNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_node_sum(s : OptgradnadamNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_node_mean(s : OptgradnadamNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_node_mean(s : OptgradnadamNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_node_scale(s : OptgradnadamNode, f : Double) -> OptgradnadamNode {
   let result = opt_grad_nadam_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_grad_nadam_node_fill(s : OptgradnadamNode, v : Double) -> Optgradnada
   result
 }
 
-pub fn opt_grad_nadam_node_min(s : OptgradnadamNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_node_min(s : OptgradnadamNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_node_max(s : OptgradnadamNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_node_max(s : OptgradnadamNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_node_to_string(s : OptgradnadamNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_grad_nadam_edge_set(s : OptgradnadamEdge, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nadam_edge_sum(s : OptgradnadamEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_edge_sum(s : OptgradnadamEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_edge_mean(s : OptgradnadamEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_edge_mean(s : OptgradnadamEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_edge_scale(s : OptgradnadamEdge, f : Double) -> OptgradnadamEdge {
   let result = opt_grad_nadam_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_grad_nadam_edge_fill(s : OptgradnadamEdge, v : Double) -> Optgradnada
   result
 }
 
-pub fn opt_grad_nadam_edge_min(s : OptgradnadamEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_edge_min(s : OptgradnadamEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_edge_max(s : OptgradnadamEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_edge_max(s : OptgradnadamEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_edge_to_string(s : OptgradnadamEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_grad_nadam_path_set(s : OptgradnadamPath, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nadam_path_sum(s : OptgradnadamPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_path_sum(s : OptgradnadamPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_path_mean(s : OptgradnadamPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_path_mean(s : OptgradnadamPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_path_scale(s : OptgradnadamPath, f : Double) -> OptgradnadamPath {
   let result = opt_grad_nadam_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_grad_nadam_path_fill(s : OptgradnadamPath, v : Double) -> Optgradnada
   result
 }
 
-pub fn opt_grad_nadam_path_min(s : OptgradnadamPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_path_min(s : OptgradnadamPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_path_max(s : OptgradnadamPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_path_max(s : OptgradnadamPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_path_to_string(s : OptgradnadamPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_grad_nadam_cluster_set(s : OptgradnadamCluster, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_nadam_cluster_sum(s : OptgradnadamCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_cluster_sum(s : OptgradnadamCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_cluster_mean(s : OptgradnadamCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_cluster_mean(s : OptgradnadamCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_cluster_scale(s : OptgradnadamCluster, f : Double) -> OptgradnadamCluster {
   let result = opt_grad_nadam_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_grad_nadam_cluster_fill(s : OptgradnadamCluster, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_nadam_cluster_min(s : OptgradnadamCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_cluster_min(s : OptgradnadamCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_cluster_max(s : OptgradnadamCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_cluster_max(s : OptgradnadamCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_cluster_to_string(s : OptgradnadamCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_grad_nadam_model_set(s : OptgradnadamModel, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nadam_model_sum(s : OptgradnadamModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_model_sum(s : OptgradnadamModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_model_mean(s : OptgradnadamModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_model_mean(s : OptgradnadamModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_model_scale(s : OptgradnadamModel, f : Double) -> OptgradnadamModel {
   let result = opt_grad_nadam_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_grad_nadam_model_fill(s : OptgradnadamModel, v : Double) -> Optgradna
   result
 }
 
-pub fn opt_grad_nadam_model_min(s : OptgradnadamModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_model_min(s : OptgradnadamModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_model_max(s : OptgradnadamModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_model_max(s : OptgradnadamModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_model_to_string(s : OptgradnadamModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_grad_nadam_layer_set(s : OptgradnadamLayer, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nadam_layer_sum(s : OptgradnadamLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_layer_sum(s : OptgradnadamLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_layer_mean(s : OptgradnadamLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_layer_mean(s : OptgradnadamLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_layer_scale(s : OptgradnadamLayer, f : Double) -> OptgradnadamLayer {
   let result = opt_grad_nadam_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_grad_nadam_layer_fill(s : OptgradnadamLayer, v : Double) -> Optgradna
   result
 }
 
-pub fn opt_grad_nadam_layer_min(s : OptgradnadamLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_layer_min(s : OptgradnadamLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_layer_max(s : OptgradnadamLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_layer_max(s : OptgradnadamLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_layer_to_string(s : OptgradnadamLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_grad_nadam_buffer_set(s : OptgradnadamBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_nadam_buffer_sum(s : OptgradnadamBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_buffer_sum(s : OptgradnadamBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_buffer_mean(s : OptgradnadamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_buffer_mean(s : OptgradnadamBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_buffer_scale(s : OptgradnadamBuffer, f : Double) -> OptgradnadamBuffer {
   let result = opt_grad_nadam_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_grad_nadam_buffer_fill(s : OptgradnadamBuffer, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_nadam_buffer_min(s : OptgradnadamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_buffer_min(s : OptgradnadamBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_buffer_max(s : OptgradnadamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_buffer_max(s : OptgradnadamBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_buffer_to_string(s : OptgradnadamBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_grad_nadam_cursor_set(s : OptgradnadamCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_nadam_cursor_sum(s : OptgradnadamCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_cursor_sum(s : OptgradnadamCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_cursor_mean(s : OptgradnadamCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_cursor_mean(s : OptgradnadamCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_cursor_scale(s : OptgradnadamCursor, f : Double) -> OptgradnadamCursor {
   let result = opt_grad_nadam_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_grad_nadam_cursor_fill(s : OptgradnadamCursor, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_nadam_cursor_min(s : OptgradnadamCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_cursor_min(s : OptgradnadamCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_cursor_max(s : OptgradnadamCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_cursor_max(s : OptgradnadamCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_cursor_to_string(s : OptgradnadamCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_grad_nadam_view_set(s : OptgradnadamView, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nadam_view_sum(s : OptgradnadamView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_view_sum(s : OptgradnadamView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_view_mean(s : OptgradnadamView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_view_mean(s : OptgradnadamView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_view_scale(s : OptgradnadamView, f : Double) -> OptgradnadamView {
   let result = opt_grad_nadam_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_grad_nadam_view_fill(s : OptgradnadamView, v : Double) -> Optgradnada
   result
 }
 
-pub fn opt_grad_nadam_view_min(s : OptgradnadamView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_view_min(s : OptgradnadamView) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_view_max(s : OptgradnadamView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_view_max(s : OptgradnadamView) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_view_to_string(s : OptgradnadamView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_grad_nadam_range_set(s : OptgradnadamRange, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nadam_range_sum(s : OptgradnadamRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_range_sum(s : OptgradnadamRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_range_mean(s : OptgradnadamRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_range_mean(s : OptgradnadamRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_range_scale(s : OptgradnadamRange, f : Double) -> OptgradnadamRange {
   let result = opt_grad_nadam_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_grad_nadam_range_fill(s : OptgradnadamRange, v : Double) -> Optgradna
   result
 }
 
-pub fn opt_grad_nadam_range_min(s : OptgradnadamRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_range_min(s : OptgradnadamRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_range_max(s : OptgradnadamRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_range_max(s : OptgradnadamRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_range_to_string(s : OptgradnadamRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_grad_nadam_slice_set(s : OptgradnadamSlice, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nadam_slice_sum(s : OptgradnadamSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nadam_slice_sum(s : OptgradnadamSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nadam_slice_mean(s : OptgradnadamSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nadam_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nadam_slice_mean(s : OptgradnadamSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nadam_slice_scale(s : OptgradnadamSlice, f : Double) -> OptgradnadamSlice {
   let result = opt_grad_nadam_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_grad_nadam_slice_fill(s : OptgradnadamSlice, v : Double) -> Optgradna
   result
 }
 
-pub fn opt_grad_nadam_slice_min(s : OptgradnadamSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_slice_min(s : OptgradnadamSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nadam_slice_max(s : OptgradnadamSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nadam_slice_max(s : OptgradnadamSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nadam_slice_to_string(s : OptgradnadamSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

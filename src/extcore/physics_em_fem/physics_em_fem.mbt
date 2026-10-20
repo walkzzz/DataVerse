@@ -88,11 +88,7 @@ pub fn physics_em_fem_make_series(vals : Array[Double], name : String) -> Physic
 
 pub fn physics_em_fem_series_len(s : PhysicsemfemSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_fem_series_sum(s : PhysicsemfemSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_fem_series_sum(s : PhysicsemfemSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_fem_series_mean(s : PhysicsemfemSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_fem_frame_set(s : PhysicsemfemFrame, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fem_frame_sum(s : PhysicsemfemFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_frame_sum(s : PhysicsemfemFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_frame_mean(s : PhysicsemfemFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_frame_mean(s : PhysicsemfemFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_frame_scale(s : PhysicsemfemFrame, f : Double) -> PhysicsemfemFrame {
   let result = physics_em_fem_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_fem_frame_fill(s : PhysicsemfemFrame, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fem_frame_min(s : PhysicsemfemFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_frame_min(s : PhysicsemfemFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_frame_max(s : PhysicsemfemFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_frame_max(s : PhysicsemfemFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_frame_to_string(s : PhysicsemfemFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_fem_table_set(s : PhysicsemfemTable, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fem_table_sum(s : PhysicsemfemTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_table_sum(s : PhysicsemfemTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_table_mean(s : PhysicsemfemTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_table_mean(s : PhysicsemfemTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_table_scale(s : PhysicsemfemTable, f : Double) -> PhysicsemfemTable {
   let result = physics_em_fem_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_fem_table_fill(s : PhysicsemfemTable, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fem_table_min(s : PhysicsemfemTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_table_min(s : PhysicsemfemTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_table_max(s : PhysicsemfemTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_table_max(s : PhysicsemfemTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_table_to_string(s : PhysicsemfemTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_fem_graphn_set(s : PhysicsemfemGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fem_graphn_sum(s : PhysicsemfemGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_graphn_sum(s : PhysicsemfemGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_graphn_mean(s : PhysicsemfemGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_graphn_mean(s : PhysicsemfemGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_graphn_scale(s : PhysicsemfemGraphN, f : Double) -> PhysicsemfemGraphN {
   let result = physics_em_fem_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_fem_graphn_fill(s : PhysicsemfemGraphN, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fem_graphn_min(s : PhysicsemfemGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_graphn_min(s : PhysicsemfemGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_graphn_max(s : PhysicsemfemGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_graphn_max(s : PhysicsemfemGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_graphn_to_string(s : PhysicsemfemGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_fem_node_set(s : PhysicsemfemNode, i : Int, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_fem_node_sum(s : PhysicsemfemNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_node_sum(s : PhysicsemfemNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_node_mean(s : PhysicsemfemNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_node_mean(s : PhysicsemfemNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_node_scale(s : PhysicsemfemNode, f : Double) -> PhysicsemfemNode {
   let result = physics_em_fem_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_fem_node_fill(s : PhysicsemfemNode, v : Double) -> Physicsemfe
   result
 }
 
-pub fn physics_em_fem_node_min(s : PhysicsemfemNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_node_min(s : PhysicsemfemNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_node_max(s : PhysicsemfemNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_node_max(s : PhysicsemfemNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_node_to_string(s : PhysicsemfemNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_fem_edge_set(s : PhysicsemfemEdge, i : Int, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_fem_edge_sum(s : PhysicsemfemEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_edge_sum(s : PhysicsemfemEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_edge_mean(s : PhysicsemfemEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_edge_mean(s : PhysicsemfemEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_edge_scale(s : PhysicsemfemEdge, f : Double) -> PhysicsemfemEdge {
   let result = physics_em_fem_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_fem_edge_fill(s : PhysicsemfemEdge, v : Double) -> Physicsemfe
   result
 }
 
-pub fn physics_em_fem_edge_min(s : PhysicsemfemEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_edge_min(s : PhysicsemfemEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_edge_max(s : PhysicsemfemEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_edge_max(s : PhysicsemfemEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_edge_to_string(s : PhysicsemfemEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_fem_path_set(s : PhysicsemfemPath, i : Int, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_fem_path_sum(s : PhysicsemfemPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_path_sum(s : PhysicsemfemPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_path_mean(s : PhysicsemfemPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_path_mean(s : PhysicsemfemPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_path_scale(s : PhysicsemfemPath, f : Double) -> PhysicsemfemPath {
   let result = physics_em_fem_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_fem_path_fill(s : PhysicsemfemPath, v : Double) -> Physicsemfe
   result
 }
 
-pub fn physics_em_fem_path_min(s : PhysicsemfemPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_path_min(s : PhysicsemfemPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_path_max(s : PhysicsemfemPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_path_max(s : PhysicsemfemPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_path_to_string(s : PhysicsemfemPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_fem_cluster_set(s : PhysicsemfemCluster, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_fem_cluster_sum(s : PhysicsemfemCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_cluster_sum(s : PhysicsemfemCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_cluster_mean(s : PhysicsemfemCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_cluster_mean(s : PhysicsemfemCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_cluster_scale(s : PhysicsemfemCluster, f : Double) -> PhysicsemfemCluster {
   let result = physics_em_fem_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_fem_cluster_fill(s : PhysicsemfemCluster, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_fem_cluster_min(s : PhysicsemfemCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_cluster_min(s : PhysicsemfemCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_cluster_max(s : PhysicsemfemCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_cluster_max(s : PhysicsemfemCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_cluster_to_string(s : PhysicsemfemCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_fem_model_set(s : PhysicsemfemModel, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fem_model_sum(s : PhysicsemfemModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_model_sum(s : PhysicsemfemModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_model_mean(s : PhysicsemfemModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_model_mean(s : PhysicsemfemModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_model_scale(s : PhysicsemfemModel, f : Double) -> PhysicsemfemModel {
   let result = physics_em_fem_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_fem_model_fill(s : PhysicsemfemModel, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fem_model_min(s : PhysicsemfemModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_model_min(s : PhysicsemfemModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_model_max(s : PhysicsemfemModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_model_max(s : PhysicsemfemModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_model_to_string(s : PhysicsemfemModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_fem_layer_set(s : PhysicsemfemLayer, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fem_layer_sum(s : PhysicsemfemLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_layer_sum(s : PhysicsemfemLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_layer_mean(s : PhysicsemfemLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_layer_mean(s : PhysicsemfemLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_layer_scale(s : PhysicsemfemLayer, f : Double) -> PhysicsemfemLayer {
   let result = physics_em_fem_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_fem_layer_fill(s : PhysicsemfemLayer, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fem_layer_min(s : PhysicsemfemLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_layer_min(s : PhysicsemfemLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_layer_max(s : PhysicsemfemLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_layer_max(s : PhysicsemfemLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_layer_to_string(s : PhysicsemfemLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_fem_buffer_set(s : PhysicsemfemBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fem_buffer_sum(s : PhysicsemfemBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_buffer_sum(s : PhysicsemfemBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_buffer_mean(s : PhysicsemfemBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_buffer_mean(s : PhysicsemfemBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_buffer_scale(s : PhysicsemfemBuffer, f : Double) -> PhysicsemfemBuffer {
   let result = physics_em_fem_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_fem_buffer_fill(s : PhysicsemfemBuffer, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fem_buffer_min(s : PhysicsemfemBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_buffer_min(s : PhysicsemfemBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_buffer_max(s : PhysicsemfemBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_buffer_max(s : PhysicsemfemBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_buffer_to_string(s : PhysicsemfemBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_fem_cursor_set(s : PhysicsemfemCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fem_cursor_sum(s : PhysicsemfemCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_cursor_sum(s : PhysicsemfemCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_cursor_mean(s : PhysicsemfemCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_cursor_mean(s : PhysicsemfemCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_cursor_scale(s : PhysicsemfemCursor, f : Double) -> PhysicsemfemCursor {
   let result = physics_em_fem_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_fem_cursor_fill(s : PhysicsemfemCursor, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fem_cursor_min(s : PhysicsemfemCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_cursor_min(s : PhysicsemfemCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_cursor_max(s : PhysicsemfemCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_cursor_max(s : PhysicsemfemCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_cursor_to_string(s : PhysicsemfemCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_fem_view_set(s : PhysicsemfemView, i : Int, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_fem_view_sum(s : PhysicsemfemView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_view_sum(s : PhysicsemfemView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_view_mean(s : PhysicsemfemView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_view_mean(s : PhysicsemfemView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_view_scale(s : PhysicsemfemView, f : Double) -> PhysicsemfemView {
   let result = physics_em_fem_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_fem_view_fill(s : PhysicsemfemView, v : Double) -> Physicsemfe
   result
 }
 
-pub fn physics_em_fem_view_min(s : PhysicsemfemView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_view_min(s : PhysicsemfemView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_view_max(s : PhysicsemfemView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_view_max(s : PhysicsemfemView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_view_to_string(s : PhysicsemfemView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_fem_range_set(s : PhysicsemfemRange, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fem_range_sum(s : PhysicsemfemRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_range_sum(s : PhysicsemfemRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_range_mean(s : PhysicsemfemRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_range_mean(s : PhysicsemfemRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_range_scale(s : PhysicsemfemRange, f : Double) -> PhysicsemfemRange {
   let result = physics_em_fem_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_fem_range_fill(s : PhysicsemfemRange, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fem_range_min(s : PhysicsemfemRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_range_min(s : PhysicsemfemRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_range_max(s : PhysicsemfemRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_range_max(s : PhysicsemfemRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_range_to_string(s : PhysicsemfemRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_fem_slice_set(s : PhysicsemfemSlice, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fem_slice_sum(s : PhysicsemfemSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fem_slice_sum(s : PhysicsemfemSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fem_slice_mean(s : PhysicsemfemSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fem_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fem_slice_mean(s : PhysicsemfemSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fem_slice_scale(s : PhysicsemfemSlice, f : Double) -> PhysicsemfemSlice {
   let result = physics_em_fem_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_fem_slice_fill(s : PhysicsemfemSlice, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fem_slice_min(s : PhysicsemfemSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_slice_min(s : PhysicsemfemSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fem_slice_max(s : PhysicsemfemSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fem_slice_max(s : PhysicsemfemSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fem_slice_to_string(s : PhysicsemfemSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

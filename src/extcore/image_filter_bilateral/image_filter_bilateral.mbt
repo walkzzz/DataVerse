@@ -88,11 +88,7 @@ pub fn image_filter_bilateral_make_series(vals : Array[Double], name : String) -
 
 pub fn image_filter_bilateral_series_len(s : ImagefilterbilateralSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_bilateral_series_sum(s : ImagefilterbilateralSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_bilateral_series_sum(s : ImagefilterbilateralSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_bilateral_series_mean(s : ImagefilterbilateralSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_bilateral_frame_set(s : ImagefilterbilateralFrame, i : Int, 
   result
 }
 
-pub fn image_filter_bilateral_frame_sum(s : ImagefilterbilateralFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_frame_sum(s : ImagefilterbilateralFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_frame_mean(s : ImagefilterbilateralFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_frame_mean(s : ImagefilterbilateralFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_frame_scale(s : ImagefilterbilateralFrame, f : Double) -> ImagefilterbilateralFrame {
   let result = image_filter_bilateral_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_bilateral_frame_fill(s : ImagefilterbilateralFrame, v : Doub
   result
 }
 
-pub fn image_filter_bilateral_frame_min(s : ImagefilterbilateralFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_frame_min(s : ImagefilterbilateralFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_frame_max(s : ImagefilterbilateralFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_frame_max(s : ImagefilterbilateralFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_frame_to_string(s : ImagefilterbilateralFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_bilateral_table_set(s : ImagefilterbilateralTable, i : Int, 
   result
 }
 
-pub fn image_filter_bilateral_table_sum(s : ImagefilterbilateralTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_table_sum(s : ImagefilterbilateralTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_table_mean(s : ImagefilterbilateralTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_table_mean(s : ImagefilterbilateralTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_table_scale(s : ImagefilterbilateralTable, f : Double) -> ImagefilterbilateralTable {
   let result = image_filter_bilateral_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_bilateral_table_fill(s : ImagefilterbilateralTable, v : Doub
   result
 }
 
-pub fn image_filter_bilateral_table_min(s : ImagefilterbilateralTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_table_min(s : ImagefilterbilateralTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_table_max(s : ImagefilterbilateralTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_table_max(s : ImagefilterbilateralTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_table_to_string(s : ImagefilterbilateralTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_bilateral_graphn_set(s : ImagefilterbilateralGraphN, i : Int
   result
 }
 
-pub fn image_filter_bilateral_graphn_sum(s : ImagefilterbilateralGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_graphn_sum(s : ImagefilterbilateralGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_graphn_mean(s : ImagefilterbilateralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_graphn_mean(s : ImagefilterbilateralGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_graphn_scale(s : ImagefilterbilateralGraphN, f : Double) -> ImagefilterbilateralGraphN {
   let result = image_filter_bilateral_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_bilateral_graphn_fill(s : ImagefilterbilateralGraphN, v : Do
   result
 }
 
-pub fn image_filter_bilateral_graphn_min(s : ImagefilterbilateralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_graphn_min(s : ImagefilterbilateralGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_graphn_max(s : ImagefilterbilateralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_graphn_max(s : ImagefilterbilateralGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_graphn_to_string(s : ImagefilterbilateralGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_bilateral_node_set(s : ImagefilterbilateralNode, i : Int, v 
   result
 }
 
-pub fn image_filter_bilateral_node_sum(s : ImagefilterbilateralNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_node_sum(s : ImagefilterbilateralNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_node_mean(s : ImagefilterbilateralNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_node_mean(s : ImagefilterbilateralNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_node_scale(s : ImagefilterbilateralNode, f : Double) -> ImagefilterbilateralNode {
   let result = image_filter_bilateral_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_bilateral_node_fill(s : ImagefilterbilateralNode, v : Double
   result
 }
 
-pub fn image_filter_bilateral_node_min(s : ImagefilterbilateralNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_node_min(s : ImagefilterbilateralNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_node_max(s : ImagefilterbilateralNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_node_max(s : ImagefilterbilateralNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_node_to_string(s : ImagefilterbilateralNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_bilateral_edge_set(s : ImagefilterbilateralEdge, i : Int, v 
   result
 }
 
-pub fn image_filter_bilateral_edge_sum(s : ImagefilterbilateralEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_edge_sum(s : ImagefilterbilateralEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_edge_mean(s : ImagefilterbilateralEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_edge_mean(s : ImagefilterbilateralEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_edge_scale(s : ImagefilterbilateralEdge, f : Double) -> ImagefilterbilateralEdge {
   let result = image_filter_bilateral_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_bilateral_edge_fill(s : ImagefilterbilateralEdge, v : Double
   result
 }
 
-pub fn image_filter_bilateral_edge_min(s : ImagefilterbilateralEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_edge_min(s : ImagefilterbilateralEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_edge_max(s : ImagefilterbilateralEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_edge_max(s : ImagefilterbilateralEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_edge_to_string(s : ImagefilterbilateralEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_bilateral_path_set(s : ImagefilterbilateralPath, i : Int, v 
   result
 }
 
-pub fn image_filter_bilateral_path_sum(s : ImagefilterbilateralPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_path_sum(s : ImagefilterbilateralPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_path_mean(s : ImagefilterbilateralPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_path_mean(s : ImagefilterbilateralPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_path_scale(s : ImagefilterbilateralPath, f : Double) -> ImagefilterbilateralPath {
   let result = image_filter_bilateral_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_bilateral_path_fill(s : ImagefilterbilateralPath, v : Double
   result
 }
 
-pub fn image_filter_bilateral_path_min(s : ImagefilterbilateralPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_path_min(s : ImagefilterbilateralPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_path_max(s : ImagefilterbilateralPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_path_max(s : ImagefilterbilateralPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_path_to_string(s : ImagefilterbilateralPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_bilateral_cluster_set(s : ImagefilterbilateralCluster, i : I
   result
 }
 
-pub fn image_filter_bilateral_cluster_sum(s : ImagefilterbilateralCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_cluster_sum(s : ImagefilterbilateralCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_cluster_mean(s : ImagefilterbilateralCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_cluster_mean(s : ImagefilterbilateralCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_cluster_scale(s : ImagefilterbilateralCluster, f : Double) -> ImagefilterbilateralCluster {
   let result = image_filter_bilateral_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_bilateral_cluster_fill(s : ImagefilterbilateralCluster, v : 
   result
 }
 
-pub fn image_filter_bilateral_cluster_min(s : ImagefilterbilateralCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_cluster_min(s : ImagefilterbilateralCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_cluster_max(s : ImagefilterbilateralCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_cluster_max(s : ImagefilterbilateralCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_cluster_to_string(s : ImagefilterbilateralCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_bilateral_model_set(s : ImagefilterbilateralModel, i : Int, 
   result
 }
 
-pub fn image_filter_bilateral_model_sum(s : ImagefilterbilateralModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_model_sum(s : ImagefilterbilateralModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_model_mean(s : ImagefilterbilateralModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_model_mean(s : ImagefilterbilateralModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_model_scale(s : ImagefilterbilateralModel, f : Double) -> ImagefilterbilateralModel {
   let result = image_filter_bilateral_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_bilateral_model_fill(s : ImagefilterbilateralModel, v : Doub
   result
 }
 
-pub fn image_filter_bilateral_model_min(s : ImagefilterbilateralModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_model_min(s : ImagefilterbilateralModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_model_max(s : ImagefilterbilateralModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_model_max(s : ImagefilterbilateralModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_model_to_string(s : ImagefilterbilateralModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_bilateral_layer_set(s : ImagefilterbilateralLayer, i : Int, 
   result
 }
 
-pub fn image_filter_bilateral_layer_sum(s : ImagefilterbilateralLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_layer_sum(s : ImagefilterbilateralLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_layer_mean(s : ImagefilterbilateralLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_layer_mean(s : ImagefilterbilateralLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_layer_scale(s : ImagefilterbilateralLayer, f : Double) -> ImagefilterbilateralLayer {
   let result = image_filter_bilateral_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_bilateral_layer_fill(s : ImagefilterbilateralLayer, v : Doub
   result
 }
 
-pub fn image_filter_bilateral_layer_min(s : ImagefilterbilateralLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_layer_min(s : ImagefilterbilateralLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_layer_max(s : ImagefilterbilateralLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_layer_max(s : ImagefilterbilateralLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_layer_to_string(s : ImagefilterbilateralLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_bilateral_buffer_set(s : ImagefilterbilateralBuffer, i : Int
   result
 }
 
-pub fn image_filter_bilateral_buffer_sum(s : ImagefilterbilateralBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_buffer_sum(s : ImagefilterbilateralBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_buffer_mean(s : ImagefilterbilateralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_buffer_mean(s : ImagefilterbilateralBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_buffer_scale(s : ImagefilterbilateralBuffer, f : Double) -> ImagefilterbilateralBuffer {
   let result = image_filter_bilateral_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_bilateral_buffer_fill(s : ImagefilterbilateralBuffer, v : Do
   result
 }
 
-pub fn image_filter_bilateral_buffer_min(s : ImagefilterbilateralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_buffer_min(s : ImagefilterbilateralBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_buffer_max(s : ImagefilterbilateralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_buffer_max(s : ImagefilterbilateralBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_buffer_to_string(s : ImagefilterbilateralBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_bilateral_cursor_set(s : ImagefilterbilateralCursor, i : Int
   result
 }
 
-pub fn image_filter_bilateral_cursor_sum(s : ImagefilterbilateralCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_cursor_sum(s : ImagefilterbilateralCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_cursor_mean(s : ImagefilterbilateralCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_cursor_mean(s : ImagefilterbilateralCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_cursor_scale(s : ImagefilterbilateralCursor, f : Double) -> ImagefilterbilateralCursor {
   let result = image_filter_bilateral_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_bilateral_cursor_fill(s : ImagefilterbilateralCursor, v : Do
   result
 }
 
-pub fn image_filter_bilateral_cursor_min(s : ImagefilterbilateralCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_cursor_min(s : ImagefilterbilateralCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_cursor_max(s : ImagefilterbilateralCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_cursor_max(s : ImagefilterbilateralCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_cursor_to_string(s : ImagefilterbilateralCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_bilateral_view_set(s : ImagefilterbilateralView, i : Int, v 
   result
 }
 
-pub fn image_filter_bilateral_view_sum(s : ImagefilterbilateralView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_view_sum(s : ImagefilterbilateralView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_view_mean(s : ImagefilterbilateralView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_view_mean(s : ImagefilterbilateralView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_view_scale(s : ImagefilterbilateralView, f : Double) -> ImagefilterbilateralView {
   let result = image_filter_bilateral_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_bilateral_view_fill(s : ImagefilterbilateralView, v : Double
   result
 }
 
-pub fn image_filter_bilateral_view_min(s : ImagefilterbilateralView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_view_min(s : ImagefilterbilateralView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_view_max(s : ImagefilterbilateralView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_view_max(s : ImagefilterbilateralView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_view_to_string(s : ImagefilterbilateralView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_bilateral_range_set(s : ImagefilterbilateralRange, i : Int, 
   result
 }
 
-pub fn image_filter_bilateral_range_sum(s : ImagefilterbilateralRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_range_sum(s : ImagefilterbilateralRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_range_mean(s : ImagefilterbilateralRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_range_mean(s : ImagefilterbilateralRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_range_scale(s : ImagefilterbilateralRange, f : Double) -> ImagefilterbilateralRange {
   let result = image_filter_bilateral_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_bilateral_range_fill(s : ImagefilterbilateralRange, v : Doub
   result
 }
 
-pub fn image_filter_bilateral_range_min(s : ImagefilterbilateralRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_range_min(s : ImagefilterbilateralRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_range_max(s : ImagefilterbilateralRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_range_max(s : ImagefilterbilateralRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_range_to_string(s : ImagefilterbilateralRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_bilateral_slice_set(s : ImagefilterbilateralSlice, i : Int, 
   result
 }
 
-pub fn image_filter_bilateral_slice_sum(s : ImagefilterbilateralSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_bilateral_slice_sum(s : ImagefilterbilateralSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_bilateral_slice_mean(s : ImagefilterbilateralSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_bilateral_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_bilateral_slice_mean(s : ImagefilterbilateralSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_bilateral_slice_scale(s : ImagefilterbilateralSlice, f : Double) -> ImagefilterbilateralSlice {
   let result = image_filter_bilateral_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_bilateral_slice_fill(s : ImagefilterbilateralSlice, v : Doub
   result
 }
 
-pub fn image_filter_bilateral_slice_min(s : ImagefilterbilateralSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_slice_min(s : ImagefilterbilateralSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_bilateral_slice_max(s : ImagefilterbilateralSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_bilateral_slice_max(s : ImagefilterbilateralSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_bilateral_slice_to_string(s : ImagefilterbilateralSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

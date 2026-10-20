@@ -88,11 +88,7 @@ pub fn sort_compare_merge_make_series(vals : Array[Double], name : String) -> So
 
 pub fn sort_compare_merge_series_len(s : SortcomparemergeSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_merge_series_sum(s : SortcomparemergeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_merge_series_sum(s : SortcomparemergeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_merge_series_mean(s : SortcomparemergeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_merge_frame_set(s : SortcomparemergeFrame, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_merge_frame_sum(s : SortcomparemergeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_frame_sum(s : SortcomparemergeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_frame_mean(s : SortcomparemergeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_frame_mean(s : SortcomparemergeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_frame_scale(s : SortcomparemergeFrame, f : Double) -> SortcomparemergeFrame {
   let result = sort_compare_merge_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_merge_frame_fill(s : SortcomparemergeFrame, v : Double) -> S
   result
 }
 
-pub fn sort_compare_merge_frame_min(s : SortcomparemergeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_frame_min(s : SortcomparemergeFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_frame_max(s : SortcomparemergeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_frame_max(s : SortcomparemergeFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_frame_to_string(s : SortcomparemergeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_merge_table_set(s : SortcomparemergeTable, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_merge_table_sum(s : SortcomparemergeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_table_sum(s : SortcomparemergeTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_table_mean(s : SortcomparemergeTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_table_mean(s : SortcomparemergeTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_table_scale(s : SortcomparemergeTable, f : Double) -> SortcomparemergeTable {
   let result = sort_compare_merge_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_merge_table_fill(s : SortcomparemergeTable, v : Double) -> S
   result
 }
 
-pub fn sort_compare_merge_table_min(s : SortcomparemergeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_table_min(s : SortcomparemergeTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_table_max(s : SortcomparemergeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_table_max(s : SortcomparemergeTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_table_to_string(s : SortcomparemergeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_merge_graphn_set(s : SortcomparemergeGraphN, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_merge_graphn_sum(s : SortcomparemergeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_graphn_sum(s : SortcomparemergeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_graphn_mean(s : SortcomparemergeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_graphn_mean(s : SortcomparemergeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_graphn_scale(s : SortcomparemergeGraphN, f : Double) -> SortcomparemergeGraphN {
   let result = sort_compare_merge_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_merge_graphn_fill(s : SortcomparemergeGraphN, v : Double) ->
   result
 }
 
-pub fn sort_compare_merge_graphn_min(s : SortcomparemergeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_graphn_min(s : SortcomparemergeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_graphn_max(s : SortcomparemergeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_graphn_max(s : SortcomparemergeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_graphn_to_string(s : SortcomparemergeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_merge_node_set(s : SortcomparemergeNode, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_merge_node_sum(s : SortcomparemergeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_node_sum(s : SortcomparemergeNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_node_mean(s : SortcomparemergeNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_node_mean(s : SortcomparemergeNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_node_scale(s : SortcomparemergeNode, f : Double) -> SortcomparemergeNode {
   let result = sort_compare_merge_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_merge_node_fill(s : SortcomparemergeNode, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_merge_node_min(s : SortcomparemergeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_node_min(s : SortcomparemergeNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_node_max(s : SortcomparemergeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_node_max(s : SortcomparemergeNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_node_to_string(s : SortcomparemergeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_merge_edge_set(s : SortcomparemergeEdge, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_merge_edge_sum(s : SortcomparemergeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_edge_sum(s : SortcomparemergeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_edge_mean(s : SortcomparemergeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_edge_mean(s : SortcomparemergeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_edge_scale(s : SortcomparemergeEdge, f : Double) -> SortcomparemergeEdge {
   let result = sort_compare_merge_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_merge_edge_fill(s : SortcomparemergeEdge, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_merge_edge_min(s : SortcomparemergeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_edge_min(s : SortcomparemergeEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_edge_max(s : SortcomparemergeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_edge_max(s : SortcomparemergeEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_edge_to_string(s : SortcomparemergeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_merge_path_set(s : SortcomparemergePath, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_merge_path_sum(s : SortcomparemergePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_path_sum(s : SortcomparemergePath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_path_mean(s : SortcomparemergePath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_path_mean(s : SortcomparemergePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_path_scale(s : SortcomparemergePath, f : Double) -> SortcomparemergePath {
   let result = sort_compare_merge_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_merge_path_fill(s : SortcomparemergePath, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_merge_path_min(s : SortcomparemergePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_path_min(s : SortcomparemergePath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_path_max(s : SortcomparemergePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_path_max(s : SortcomparemergePath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_path_to_string(s : SortcomparemergePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_merge_cluster_set(s : SortcomparemergeCluster, i : Int, v : 
   result
 }
 
-pub fn sort_compare_merge_cluster_sum(s : SortcomparemergeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_cluster_sum(s : SortcomparemergeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_cluster_mean(s : SortcomparemergeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_cluster_mean(s : SortcomparemergeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_cluster_scale(s : SortcomparemergeCluster, f : Double) -> SortcomparemergeCluster {
   let result = sort_compare_merge_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_merge_cluster_fill(s : SortcomparemergeCluster, v : Double) 
   result
 }
 
-pub fn sort_compare_merge_cluster_min(s : SortcomparemergeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_cluster_min(s : SortcomparemergeCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_cluster_max(s : SortcomparemergeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_cluster_max(s : SortcomparemergeCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_cluster_to_string(s : SortcomparemergeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_merge_model_set(s : SortcomparemergeModel, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_merge_model_sum(s : SortcomparemergeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_model_sum(s : SortcomparemergeModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_model_mean(s : SortcomparemergeModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_model_mean(s : SortcomparemergeModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_model_scale(s : SortcomparemergeModel, f : Double) -> SortcomparemergeModel {
   let result = sort_compare_merge_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_merge_model_fill(s : SortcomparemergeModel, v : Double) -> S
   result
 }
 
-pub fn sort_compare_merge_model_min(s : SortcomparemergeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_model_min(s : SortcomparemergeModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_model_max(s : SortcomparemergeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_model_max(s : SortcomparemergeModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_model_to_string(s : SortcomparemergeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_merge_layer_set(s : SortcomparemergeLayer, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_merge_layer_sum(s : SortcomparemergeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_layer_sum(s : SortcomparemergeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_layer_mean(s : SortcomparemergeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_layer_mean(s : SortcomparemergeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_layer_scale(s : SortcomparemergeLayer, f : Double) -> SortcomparemergeLayer {
   let result = sort_compare_merge_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_merge_layer_fill(s : SortcomparemergeLayer, v : Double) -> S
   result
 }
 
-pub fn sort_compare_merge_layer_min(s : SortcomparemergeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_layer_min(s : SortcomparemergeLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_layer_max(s : SortcomparemergeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_layer_max(s : SortcomparemergeLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_layer_to_string(s : SortcomparemergeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_merge_buffer_set(s : SortcomparemergeBuffer, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_merge_buffer_sum(s : SortcomparemergeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_buffer_sum(s : SortcomparemergeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_buffer_mean(s : SortcomparemergeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_buffer_mean(s : SortcomparemergeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_buffer_scale(s : SortcomparemergeBuffer, f : Double) -> SortcomparemergeBuffer {
   let result = sort_compare_merge_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_merge_buffer_fill(s : SortcomparemergeBuffer, v : Double) ->
   result
 }
 
-pub fn sort_compare_merge_buffer_min(s : SortcomparemergeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_buffer_min(s : SortcomparemergeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_buffer_max(s : SortcomparemergeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_buffer_max(s : SortcomparemergeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_buffer_to_string(s : SortcomparemergeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_merge_cursor_set(s : SortcomparemergeCursor, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_merge_cursor_sum(s : SortcomparemergeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_cursor_sum(s : SortcomparemergeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_cursor_mean(s : SortcomparemergeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_cursor_mean(s : SortcomparemergeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_cursor_scale(s : SortcomparemergeCursor, f : Double) -> SortcomparemergeCursor {
   let result = sort_compare_merge_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_merge_cursor_fill(s : SortcomparemergeCursor, v : Double) ->
   result
 }
 
-pub fn sort_compare_merge_cursor_min(s : SortcomparemergeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_cursor_min(s : SortcomparemergeCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_cursor_max(s : SortcomparemergeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_cursor_max(s : SortcomparemergeCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_cursor_to_string(s : SortcomparemergeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_merge_view_set(s : SortcomparemergeView, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_merge_view_sum(s : SortcomparemergeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_view_sum(s : SortcomparemergeView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_view_mean(s : SortcomparemergeView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_view_mean(s : SortcomparemergeView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_view_scale(s : SortcomparemergeView, f : Double) -> SortcomparemergeView {
   let result = sort_compare_merge_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_merge_view_fill(s : SortcomparemergeView, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_merge_view_min(s : SortcomparemergeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_view_min(s : SortcomparemergeView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_view_max(s : SortcomparemergeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_view_max(s : SortcomparemergeView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_view_to_string(s : SortcomparemergeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_merge_range_set(s : SortcomparemergeRange, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_merge_range_sum(s : SortcomparemergeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_range_sum(s : SortcomparemergeRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_range_mean(s : SortcomparemergeRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_range_mean(s : SortcomparemergeRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_range_scale(s : SortcomparemergeRange, f : Double) -> SortcomparemergeRange {
   let result = sort_compare_merge_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_merge_range_fill(s : SortcomparemergeRange, v : Double) -> S
   result
 }
 
-pub fn sort_compare_merge_range_min(s : SortcomparemergeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_range_min(s : SortcomparemergeRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_range_max(s : SortcomparemergeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_range_max(s : SortcomparemergeRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_range_to_string(s : SortcomparemergeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_merge_slice_set(s : SortcomparemergeSlice, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_merge_slice_sum(s : SortcomparemergeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_merge_slice_sum(s : SortcomparemergeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_merge_slice_mean(s : SortcomparemergeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_merge_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_merge_slice_mean(s : SortcomparemergeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_merge_slice_scale(s : SortcomparemergeSlice, f : Double) -> SortcomparemergeSlice {
   let result = sort_compare_merge_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_merge_slice_fill(s : SortcomparemergeSlice, v : Double) -> S
   result
 }
 
-pub fn sort_compare_merge_slice_min(s : SortcomparemergeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_slice_min(s : SortcomparemergeSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_merge_slice_max(s : SortcomparemergeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_merge_slice_max(s : SortcomparemergeSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_merge_slice_to_string(s : SortcomparemergeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

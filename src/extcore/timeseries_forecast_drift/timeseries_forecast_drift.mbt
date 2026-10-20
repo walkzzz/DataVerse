@@ -88,11 +88,7 @@ pub fn timeseries_forecast_drift_make_series(vals : Array[Double], name : String
 
 pub fn timeseries_forecast_drift_series_len(s : TimeseriesforecastdriftSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_drift_series_sum(s : TimeseriesforecastdriftSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_drift_series_sum(s : TimeseriesforecastdriftSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_drift_series_mean(s : TimeseriesforecastdriftSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_drift_frame_set(s : TimeseriesforecastdriftFrame, i :
   result
 }
 
-pub fn timeseries_forecast_drift_frame_sum(s : TimeseriesforecastdriftFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_frame_sum(s : TimeseriesforecastdriftFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_frame_mean(s : TimeseriesforecastdriftFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_frame_mean(s : TimeseriesforecastdriftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_frame_scale(s : TimeseriesforecastdriftFrame, f : Double) -> TimeseriesforecastdriftFrame {
   let result = timeseries_forecast_drift_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_drift_frame_fill(s : TimeseriesforecastdriftFrame, v 
   result
 }
 
-pub fn timeseries_forecast_drift_frame_min(s : TimeseriesforecastdriftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_frame_min(s : TimeseriesforecastdriftFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_frame_max(s : TimeseriesforecastdriftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_frame_max(s : TimeseriesforecastdriftFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_frame_to_string(s : TimeseriesforecastdriftFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_drift_table_set(s : TimeseriesforecastdriftTable, i :
   result
 }
 
-pub fn timeseries_forecast_drift_table_sum(s : TimeseriesforecastdriftTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_table_sum(s : TimeseriesforecastdriftTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_table_mean(s : TimeseriesforecastdriftTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_table_mean(s : TimeseriesforecastdriftTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_table_scale(s : TimeseriesforecastdriftTable, f : Double) -> TimeseriesforecastdriftTable {
   let result = timeseries_forecast_drift_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_drift_table_fill(s : TimeseriesforecastdriftTable, v 
   result
 }
 
-pub fn timeseries_forecast_drift_table_min(s : TimeseriesforecastdriftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_table_min(s : TimeseriesforecastdriftTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_table_max(s : TimeseriesforecastdriftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_table_max(s : TimeseriesforecastdriftTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_table_to_string(s : TimeseriesforecastdriftTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_drift_graphn_set(s : TimeseriesforecastdriftGraphN, i
   result
 }
 
-pub fn timeseries_forecast_drift_graphn_sum(s : TimeseriesforecastdriftGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_graphn_sum(s : TimeseriesforecastdriftGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_graphn_mean(s : TimeseriesforecastdriftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_graphn_mean(s : TimeseriesforecastdriftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_graphn_scale(s : TimeseriesforecastdriftGraphN, f : Double) -> TimeseriesforecastdriftGraphN {
   let result = timeseries_forecast_drift_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_drift_graphn_fill(s : TimeseriesforecastdriftGraphN, 
   result
 }
 
-pub fn timeseries_forecast_drift_graphn_min(s : TimeseriesforecastdriftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_graphn_min(s : TimeseriesforecastdriftGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_graphn_max(s : TimeseriesforecastdriftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_graphn_max(s : TimeseriesforecastdriftGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_graphn_to_string(s : TimeseriesforecastdriftGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_drift_node_set(s : TimeseriesforecastdriftNode, i : I
   result
 }
 
-pub fn timeseries_forecast_drift_node_sum(s : TimeseriesforecastdriftNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_node_sum(s : TimeseriesforecastdriftNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_node_mean(s : TimeseriesforecastdriftNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_node_mean(s : TimeseriesforecastdriftNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_node_scale(s : TimeseriesforecastdriftNode, f : Double) -> TimeseriesforecastdriftNode {
   let result = timeseries_forecast_drift_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_drift_node_fill(s : TimeseriesforecastdriftNode, v : 
   result
 }
 
-pub fn timeseries_forecast_drift_node_min(s : TimeseriesforecastdriftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_node_min(s : TimeseriesforecastdriftNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_node_max(s : TimeseriesforecastdriftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_node_max(s : TimeseriesforecastdriftNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_node_to_string(s : TimeseriesforecastdriftNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_drift_edge_set(s : TimeseriesforecastdriftEdge, i : I
   result
 }
 
-pub fn timeseries_forecast_drift_edge_sum(s : TimeseriesforecastdriftEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_edge_sum(s : TimeseriesforecastdriftEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_edge_mean(s : TimeseriesforecastdriftEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_edge_mean(s : TimeseriesforecastdriftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_edge_scale(s : TimeseriesforecastdriftEdge, f : Double) -> TimeseriesforecastdriftEdge {
   let result = timeseries_forecast_drift_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_drift_edge_fill(s : TimeseriesforecastdriftEdge, v : 
   result
 }
 
-pub fn timeseries_forecast_drift_edge_min(s : TimeseriesforecastdriftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_edge_min(s : TimeseriesforecastdriftEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_edge_max(s : TimeseriesforecastdriftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_edge_max(s : TimeseriesforecastdriftEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_edge_to_string(s : TimeseriesforecastdriftEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_drift_path_set(s : TimeseriesforecastdriftPath, i : I
   result
 }
 
-pub fn timeseries_forecast_drift_path_sum(s : TimeseriesforecastdriftPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_path_sum(s : TimeseriesforecastdriftPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_path_mean(s : TimeseriesforecastdriftPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_path_mean(s : TimeseriesforecastdriftPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_path_scale(s : TimeseriesforecastdriftPath, f : Double) -> TimeseriesforecastdriftPath {
   let result = timeseries_forecast_drift_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_drift_path_fill(s : TimeseriesforecastdriftPath, v : 
   result
 }
 
-pub fn timeseries_forecast_drift_path_min(s : TimeseriesforecastdriftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_path_min(s : TimeseriesforecastdriftPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_path_max(s : TimeseriesforecastdriftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_path_max(s : TimeseriesforecastdriftPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_path_to_string(s : TimeseriesforecastdriftPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_drift_cluster_set(s : TimeseriesforecastdriftCluster,
   result
 }
 
-pub fn timeseries_forecast_drift_cluster_sum(s : TimeseriesforecastdriftCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_cluster_sum(s : TimeseriesforecastdriftCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_cluster_mean(s : TimeseriesforecastdriftCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_cluster_mean(s : TimeseriesforecastdriftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_cluster_scale(s : TimeseriesforecastdriftCluster, f : Double) -> TimeseriesforecastdriftCluster {
   let result = timeseries_forecast_drift_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_drift_cluster_fill(s : TimeseriesforecastdriftCluster
   result
 }
 
-pub fn timeseries_forecast_drift_cluster_min(s : TimeseriesforecastdriftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_cluster_min(s : TimeseriesforecastdriftCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_cluster_max(s : TimeseriesforecastdriftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_cluster_max(s : TimeseriesforecastdriftCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_cluster_to_string(s : TimeseriesforecastdriftCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_drift_model_set(s : TimeseriesforecastdriftModel, i :
   result
 }
 
-pub fn timeseries_forecast_drift_model_sum(s : TimeseriesforecastdriftModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_model_sum(s : TimeseriesforecastdriftModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_model_mean(s : TimeseriesforecastdriftModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_model_mean(s : TimeseriesforecastdriftModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_model_scale(s : TimeseriesforecastdriftModel, f : Double) -> TimeseriesforecastdriftModel {
   let result = timeseries_forecast_drift_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_drift_model_fill(s : TimeseriesforecastdriftModel, v 
   result
 }
 
-pub fn timeseries_forecast_drift_model_min(s : TimeseriesforecastdriftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_model_min(s : TimeseriesforecastdriftModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_model_max(s : TimeseriesforecastdriftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_model_max(s : TimeseriesforecastdriftModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_model_to_string(s : TimeseriesforecastdriftModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_drift_layer_set(s : TimeseriesforecastdriftLayer, i :
   result
 }
 
-pub fn timeseries_forecast_drift_layer_sum(s : TimeseriesforecastdriftLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_layer_sum(s : TimeseriesforecastdriftLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_layer_mean(s : TimeseriesforecastdriftLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_layer_mean(s : TimeseriesforecastdriftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_layer_scale(s : TimeseriesforecastdriftLayer, f : Double) -> TimeseriesforecastdriftLayer {
   let result = timeseries_forecast_drift_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_drift_layer_fill(s : TimeseriesforecastdriftLayer, v 
   result
 }
 
-pub fn timeseries_forecast_drift_layer_min(s : TimeseriesforecastdriftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_layer_min(s : TimeseriesforecastdriftLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_layer_max(s : TimeseriesforecastdriftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_layer_max(s : TimeseriesforecastdriftLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_layer_to_string(s : TimeseriesforecastdriftLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_drift_buffer_set(s : TimeseriesforecastdriftBuffer, i
   result
 }
 
-pub fn timeseries_forecast_drift_buffer_sum(s : TimeseriesforecastdriftBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_buffer_sum(s : TimeseriesforecastdriftBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_buffer_mean(s : TimeseriesforecastdriftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_buffer_mean(s : TimeseriesforecastdriftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_buffer_scale(s : TimeseriesforecastdriftBuffer, f : Double) -> TimeseriesforecastdriftBuffer {
   let result = timeseries_forecast_drift_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_drift_buffer_fill(s : TimeseriesforecastdriftBuffer, 
   result
 }
 
-pub fn timeseries_forecast_drift_buffer_min(s : TimeseriesforecastdriftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_buffer_min(s : TimeseriesforecastdriftBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_buffer_max(s : TimeseriesforecastdriftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_buffer_max(s : TimeseriesforecastdriftBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_buffer_to_string(s : TimeseriesforecastdriftBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_drift_cursor_set(s : TimeseriesforecastdriftCursor, i
   result
 }
 
-pub fn timeseries_forecast_drift_cursor_sum(s : TimeseriesforecastdriftCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_cursor_sum(s : TimeseriesforecastdriftCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_cursor_mean(s : TimeseriesforecastdriftCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_cursor_mean(s : TimeseriesforecastdriftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_cursor_scale(s : TimeseriesforecastdriftCursor, f : Double) -> TimeseriesforecastdriftCursor {
   let result = timeseries_forecast_drift_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_drift_cursor_fill(s : TimeseriesforecastdriftCursor, 
   result
 }
 
-pub fn timeseries_forecast_drift_cursor_min(s : TimeseriesforecastdriftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_cursor_min(s : TimeseriesforecastdriftCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_cursor_max(s : TimeseriesforecastdriftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_cursor_max(s : TimeseriesforecastdriftCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_cursor_to_string(s : TimeseriesforecastdriftCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_drift_view_set(s : TimeseriesforecastdriftView, i : I
   result
 }
 
-pub fn timeseries_forecast_drift_view_sum(s : TimeseriesforecastdriftView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_view_sum(s : TimeseriesforecastdriftView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_view_mean(s : TimeseriesforecastdriftView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_view_mean(s : TimeseriesforecastdriftView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_view_scale(s : TimeseriesforecastdriftView, f : Double) -> TimeseriesforecastdriftView {
   let result = timeseries_forecast_drift_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_drift_view_fill(s : TimeseriesforecastdriftView, v : 
   result
 }
 
-pub fn timeseries_forecast_drift_view_min(s : TimeseriesforecastdriftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_view_min(s : TimeseriesforecastdriftView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_view_max(s : TimeseriesforecastdriftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_view_max(s : TimeseriesforecastdriftView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_view_to_string(s : TimeseriesforecastdriftView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_drift_range_set(s : TimeseriesforecastdriftRange, i :
   result
 }
 
-pub fn timeseries_forecast_drift_range_sum(s : TimeseriesforecastdriftRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_range_sum(s : TimeseriesforecastdriftRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_range_mean(s : TimeseriesforecastdriftRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_range_mean(s : TimeseriesforecastdriftRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_range_scale(s : TimeseriesforecastdriftRange, f : Double) -> TimeseriesforecastdriftRange {
   let result = timeseries_forecast_drift_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_drift_range_fill(s : TimeseriesforecastdriftRange, v 
   result
 }
 
-pub fn timeseries_forecast_drift_range_min(s : TimeseriesforecastdriftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_range_min(s : TimeseriesforecastdriftRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_range_max(s : TimeseriesforecastdriftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_range_max(s : TimeseriesforecastdriftRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_range_to_string(s : TimeseriesforecastdriftRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_drift_slice_set(s : TimeseriesforecastdriftSlice, i :
   result
 }
 
-pub fn timeseries_forecast_drift_slice_sum(s : TimeseriesforecastdriftSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_drift_slice_sum(s : TimeseriesforecastdriftSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_drift_slice_mean(s : TimeseriesforecastdriftSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_drift_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_drift_slice_mean(s : TimeseriesforecastdriftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_drift_slice_scale(s : TimeseriesforecastdriftSlice, f : Double) -> TimeseriesforecastdriftSlice {
   let result = timeseries_forecast_drift_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_drift_slice_fill(s : TimeseriesforecastdriftSlice, v 
   result
 }
 
-pub fn timeseries_forecast_drift_slice_min(s : TimeseriesforecastdriftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_slice_min(s : TimeseriesforecastdriftSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_drift_slice_max(s : TimeseriesforecastdriftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_drift_slice_max(s : TimeseriesforecastdriftSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_drift_slice_to_string(s : TimeseriesforecastdriftSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

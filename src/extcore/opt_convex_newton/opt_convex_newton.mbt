@@ -88,11 +88,7 @@ pub fn opt_convex_newton_make_series(vals : Array[Double], name : String) -> Opt
 
 pub fn opt_convex_newton_series_len(s : OptconvexnewtonSeries) -> Int { s.vals.length() }
 
-pub fn opt_convex_newton_series_sum(s : OptconvexnewtonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_convex_newton_series_sum(s : OptconvexnewtonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_convex_newton_series_mean(s : OptconvexnewtonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_convex_newton_frame_set(s : OptconvexnewtonFrame, i : Int, v : Double
   result
 }
 
-pub fn opt_convex_newton_frame_sum(s : OptconvexnewtonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_frame_sum(s : OptconvexnewtonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_frame_mean(s : OptconvexnewtonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_frame_mean(s : OptconvexnewtonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_frame_scale(s : OptconvexnewtonFrame, f : Double) -> OptconvexnewtonFrame {
   let result = opt_convex_newton_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_convex_newton_frame_fill(s : OptconvexnewtonFrame, v : Double) -> Opt
   result
 }
 
-pub fn opt_convex_newton_frame_min(s : OptconvexnewtonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_frame_min(s : OptconvexnewtonFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_frame_max(s : OptconvexnewtonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_frame_max(s : OptconvexnewtonFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_frame_to_string(s : OptconvexnewtonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_convex_newton_table_set(s : OptconvexnewtonTable, i : Int, v : Double
   result
 }
 
-pub fn opt_convex_newton_table_sum(s : OptconvexnewtonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_table_sum(s : OptconvexnewtonTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_table_mean(s : OptconvexnewtonTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_table_mean(s : OptconvexnewtonTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_table_scale(s : OptconvexnewtonTable, f : Double) -> OptconvexnewtonTable {
   let result = opt_convex_newton_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_convex_newton_table_fill(s : OptconvexnewtonTable, v : Double) -> Opt
   result
 }
 
-pub fn opt_convex_newton_table_min(s : OptconvexnewtonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_table_min(s : OptconvexnewtonTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_table_max(s : OptconvexnewtonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_table_max(s : OptconvexnewtonTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_table_to_string(s : OptconvexnewtonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_convex_newton_graphn_set(s : OptconvexnewtonGraphN, i : Int, v : Doub
   result
 }
 
-pub fn opt_convex_newton_graphn_sum(s : OptconvexnewtonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_graphn_sum(s : OptconvexnewtonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_graphn_mean(s : OptconvexnewtonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_graphn_mean(s : OptconvexnewtonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_graphn_scale(s : OptconvexnewtonGraphN, f : Double) -> OptconvexnewtonGraphN {
   let result = opt_convex_newton_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_convex_newton_graphn_fill(s : OptconvexnewtonGraphN, v : Double) -> O
   result
 }
 
-pub fn opt_convex_newton_graphn_min(s : OptconvexnewtonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_graphn_min(s : OptconvexnewtonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_graphn_max(s : OptconvexnewtonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_graphn_max(s : OptconvexnewtonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_graphn_to_string(s : OptconvexnewtonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_convex_newton_node_set(s : OptconvexnewtonNode, i : Int, v : Double) 
   result
 }
 
-pub fn opt_convex_newton_node_sum(s : OptconvexnewtonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_node_sum(s : OptconvexnewtonNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_node_mean(s : OptconvexnewtonNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_node_mean(s : OptconvexnewtonNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_node_scale(s : OptconvexnewtonNode, f : Double) -> OptconvexnewtonNode {
   let result = opt_convex_newton_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_convex_newton_node_fill(s : OptconvexnewtonNode, v : Double) -> Optco
   result
 }
 
-pub fn opt_convex_newton_node_min(s : OptconvexnewtonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_node_min(s : OptconvexnewtonNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_node_max(s : OptconvexnewtonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_node_max(s : OptconvexnewtonNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_node_to_string(s : OptconvexnewtonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_convex_newton_edge_set(s : OptconvexnewtonEdge, i : Int, v : Double) 
   result
 }
 
-pub fn opt_convex_newton_edge_sum(s : OptconvexnewtonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_edge_sum(s : OptconvexnewtonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_edge_mean(s : OptconvexnewtonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_edge_mean(s : OptconvexnewtonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_edge_scale(s : OptconvexnewtonEdge, f : Double) -> OptconvexnewtonEdge {
   let result = opt_convex_newton_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_convex_newton_edge_fill(s : OptconvexnewtonEdge, v : Double) -> Optco
   result
 }
 
-pub fn opt_convex_newton_edge_min(s : OptconvexnewtonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_edge_min(s : OptconvexnewtonEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_edge_max(s : OptconvexnewtonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_edge_max(s : OptconvexnewtonEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_edge_to_string(s : OptconvexnewtonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_convex_newton_path_set(s : OptconvexnewtonPath, i : Int, v : Double) 
   result
 }
 
-pub fn opt_convex_newton_path_sum(s : OptconvexnewtonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_path_sum(s : OptconvexnewtonPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_path_mean(s : OptconvexnewtonPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_path_mean(s : OptconvexnewtonPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_path_scale(s : OptconvexnewtonPath, f : Double) -> OptconvexnewtonPath {
   let result = opt_convex_newton_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_convex_newton_path_fill(s : OptconvexnewtonPath, v : Double) -> Optco
   result
 }
 
-pub fn opt_convex_newton_path_min(s : OptconvexnewtonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_path_min(s : OptconvexnewtonPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_path_max(s : OptconvexnewtonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_path_max(s : OptconvexnewtonPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_path_to_string(s : OptconvexnewtonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_convex_newton_cluster_set(s : OptconvexnewtonCluster, i : Int, v : Do
   result
 }
 
-pub fn opt_convex_newton_cluster_sum(s : OptconvexnewtonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_cluster_sum(s : OptconvexnewtonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_cluster_mean(s : OptconvexnewtonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_cluster_mean(s : OptconvexnewtonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_cluster_scale(s : OptconvexnewtonCluster, f : Double) -> OptconvexnewtonCluster {
   let result = opt_convex_newton_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_convex_newton_cluster_fill(s : OptconvexnewtonCluster, v : Double) ->
   result
 }
 
-pub fn opt_convex_newton_cluster_min(s : OptconvexnewtonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_cluster_min(s : OptconvexnewtonCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_cluster_max(s : OptconvexnewtonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_cluster_max(s : OptconvexnewtonCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_cluster_to_string(s : OptconvexnewtonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_convex_newton_model_set(s : OptconvexnewtonModel, i : Int, v : Double
   result
 }
 
-pub fn opt_convex_newton_model_sum(s : OptconvexnewtonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_model_sum(s : OptconvexnewtonModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_model_mean(s : OptconvexnewtonModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_model_mean(s : OptconvexnewtonModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_model_scale(s : OptconvexnewtonModel, f : Double) -> OptconvexnewtonModel {
   let result = opt_convex_newton_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_convex_newton_model_fill(s : OptconvexnewtonModel, v : Double) -> Opt
   result
 }
 
-pub fn opt_convex_newton_model_min(s : OptconvexnewtonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_model_min(s : OptconvexnewtonModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_model_max(s : OptconvexnewtonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_model_max(s : OptconvexnewtonModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_model_to_string(s : OptconvexnewtonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_convex_newton_layer_set(s : OptconvexnewtonLayer, i : Int, v : Double
   result
 }
 
-pub fn opt_convex_newton_layer_sum(s : OptconvexnewtonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_layer_sum(s : OptconvexnewtonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_layer_mean(s : OptconvexnewtonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_layer_mean(s : OptconvexnewtonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_layer_scale(s : OptconvexnewtonLayer, f : Double) -> OptconvexnewtonLayer {
   let result = opt_convex_newton_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_convex_newton_layer_fill(s : OptconvexnewtonLayer, v : Double) -> Opt
   result
 }
 
-pub fn opt_convex_newton_layer_min(s : OptconvexnewtonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_layer_min(s : OptconvexnewtonLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_layer_max(s : OptconvexnewtonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_layer_max(s : OptconvexnewtonLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_layer_to_string(s : OptconvexnewtonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_convex_newton_buffer_set(s : OptconvexnewtonBuffer, i : Int, v : Doub
   result
 }
 
-pub fn opt_convex_newton_buffer_sum(s : OptconvexnewtonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_buffer_sum(s : OptconvexnewtonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_buffer_mean(s : OptconvexnewtonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_buffer_mean(s : OptconvexnewtonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_buffer_scale(s : OptconvexnewtonBuffer, f : Double) -> OptconvexnewtonBuffer {
   let result = opt_convex_newton_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_convex_newton_buffer_fill(s : OptconvexnewtonBuffer, v : Double) -> O
   result
 }
 
-pub fn opt_convex_newton_buffer_min(s : OptconvexnewtonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_buffer_min(s : OptconvexnewtonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_buffer_max(s : OptconvexnewtonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_buffer_max(s : OptconvexnewtonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_buffer_to_string(s : OptconvexnewtonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_convex_newton_cursor_set(s : OptconvexnewtonCursor, i : Int, v : Doub
   result
 }
 
-pub fn opt_convex_newton_cursor_sum(s : OptconvexnewtonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_cursor_sum(s : OptconvexnewtonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_cursor_mean(s : OptconvexnewtonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_cursor_mean(s : OptconvexnewtonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_cursor_scale(s : OptconvexnewtonCursor, f : Double) -> OptconvexnewtonCursor {
   let result = opt_convex_newton_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_convex_newton_cursor_fill(s : OptconvexnewtonCursor, v : Double) -> O
   result
 }
 
-pub fn opt_convex_newton_cursor_min(s : OptconvexnewtonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_cursor_min(s : OptconvexnewtonCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_cursor_max(s : OptconvexnewtonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_cursor_max(s : OptconvexnewtonCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_cursor_to_string(s : OptconvexnewtonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_convex_newton_view_set(s : OptconvexnewtonView, i : Int, v : Double) 
   result
 }
 
-pub fn opt_convex_newton_view_sum(s : OptconvexnewtonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_view_sum(s : OptconvexnewtonView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_view_mean(s : OptconvexnewtonView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_view_mean(s : OptconvexnewtonView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_view_scale(s : OptconvexnewtonView, f : Double) -> OptconvexnewtonView {
   let result = opt_convex_newton_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_convex_newton_view_fill(s : OptconvexnewtonView, v : Double) -> Optco
   result
 }
 
-pub fn opt_convex_newton_view_min(s : OptconvexnewtonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_view_min(s : OptconvexnewtonView) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_view_max(s : OptconvexnewtonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_view_max(s : OptconvexnewtonView) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_view_to_string(s : OptconvexnewtonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_convex_newton_range_set(s : OptconvexnewtonRange, i : Int, v : Double
   result
 }
 
-pub fn opt_convex_newton_range_sum(s : OptconvexnewtonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_range_sum(s : OptconvexnewtonRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_range_mean(s : OptconvexnewtonRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_range_mean(s : OptconvexnewtonRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_range_scale(s : OptconvexnewtonRange, f : Double) -> OptconvexnewtonRange {
   let result = opt_convex_newton_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_convex_newton_range_fill(s : OptconvexnewtonRange, v : Double) -> Opt
   result
 }
 
-pub fn opt_convex_newton_range_min(s : OptconvexnewtonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_range_min(s : OptconvexnewtonRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_range_max(s : OptconvexnewtonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_range_max(s : OptconvexnewtonRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_range_to_string(s : OptconvexnewtonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_convex_newton_slice_set(s : OptconvexnewtonSlice, i : Int, v : Double
   result
 }
 
-pub fn opt_convex_newton_slice_sum(s : OptconvexnewtonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_newton_slice_sum(s : OptconvexnewtonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_newton_slice_mean(s : OptconvexnewtonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_newton_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_newton_slice_mean(s : OptconvexnewtonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_newton_slice_scale(s : OptconvexnewtonSlice, f : Double) -> OptconvexnewtonSlice {
   let result = opt_convex_newton_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_convex_newton_slice_fill(s : OptconvexnewtonSlice, v : Double) -> Opt
   result
 }
 
-pub fn opt_convex_newton_slice_min(s : OptconvexnewtonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_slice_min(s : OptconvexnewtonSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_newton_slice_max(s : OptconvexnewtonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_newton_slice_max(s : OptconvexnewtonSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_newton_slice_to_string(s : OptconvexnewtonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn nlp_embed_doc2vec_make_series(vals : Array[Double], name : String) -> Nlp
 
 pub fn nlp_embed_doc2vec_series_len(s : Nlpembeddoc2vecSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_doc2vec_series_sum(s : Nlpembeddoc2vecSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_series_sum(s : Nlpembeddoc2vecSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_doc2vec_series_mean(s : Nlpembeddoc2vecSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_doc2vec_frame_set(s : Nlpembeddoc2vecFrame, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_doc2vec_frame_sum(s : Nlpembeddoc2vecFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_frame_sum(s : Nlpembeddoc2vecFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_frame_mean(s : Nlpembeddoc2vecFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_frame_mean(s : Nlpembeddoc2vecFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_frame_scale(s : Nlpembeddoc2vecFrame, f : Double) -> Nlpembeddoc2vecFrame {
   let result = nlp_embed_doc2vec_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_doc2vec_frame_fill(s : Nlpembeddoc2vecFrame, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_doc2vec_frame_min(s : Nlpembeddoc2vecFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_frame_min(s : Nlpembeddoc2vecFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_frame_max(s : Nlpembeddoc2vecFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_frame_max(s : Nlpembeddoc2vecFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_frame_to_string(s : Nlpembeddoc2vecFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_doc2vec_table_set(s : Nlpembeddoc2vecTable, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_doc2vec_table_sum(s : Nlpembeddoc2vecTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_table_sum(s : Nlpembeddoc2vecTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_table_mean(s : Nlpembeddoc2vecTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_table_mean(s : Nlpembeddoc2vecTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_table_scale(s : Nlpembeddoc2vecTable, f : Double) -> Nlpembeddoc2vecTable {
   let result = nlp_embed_doc2vec_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_doc2vec_table_fill(s : Nlpembeddoc2vecTable, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_doc2vec_table_min(s : Nlpembeddoc2vecTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_table_min(s : Nlpembeddoc2vecTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_table_max(s : Nlpembeddoc2vecTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_table_max(s : Nlpembeddoc2vecTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_table_to_string(s : Nlpembeddoc2vecTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_doc2vec_graphn_set(s : Nlpembeddoc2vecGraphN, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_doc2vec_graphn_sum(s : Nlpembeddoc2vecGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_graphn_sum(s : Nlpembeddoc2vecGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_graphn_mean(s : Nlpembeddoc2vecGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_graphn_mean(s : Nlpembeddoc2vecGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_graphn_scale(s : Nlpembeddoc2vecGraphN, f : Double) -> Nlpembeddoc2vecGraphN {
   let result = nlp_embed_doc2vec_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_doc2vec_graphn_fill(s : Nlpembeddoc2vecGraphN, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_doc2vec_graphn_min(s : Nlpembeddoc2vecGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_graphn_min(s : Nlpembeddoc2vecGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_graphn_max(s : Nlpembeddoc2vecGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_graphn_max(s : Nlpembeddoc2vecGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_graphn_to_string(s : Nlpembeddoc2vecGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_doc2vec_node_set(s : Nlpembeddoc2vecNode, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_doc2vec_node_sum(s : Nlpembeddoc2vecNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_node_sum(s : Nlpembeddoc2vecNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_node_mean(s : Nlpembeddoc2vecNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_node_mean(s : Nlpembeddoc2vecNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_node_scale(s : Nlpembeddoc2vecNode, f : Double) -> Nlpembeddoc2vecNode {
   let result = nlp_embed_doc2vec_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_doc2vec_node_fill(s : Nlpembeddoc2vecNode, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_doc2vec_node_min(s : Nlpembeddoc2vecNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_node_min(s : Nlpembeddoc2vecNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_node_max(s : Nlpembeddoc2vecNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_node_max(s : Nlpembeddoc2vecNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_node_to_string(s : Nlpembeddoc2vecNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_doc2vec_edge_set(s : Nlpembeddoc2vecEdge, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_doc2vec_edge_sum(s : Nlpembeddoc2vecEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_edge_sum(s : Nlpembeddoc2vecEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_edge_mean(s : Nlpembeddoc2vecEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_edge_mean(s : Nlpembeddoc2vecEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_edge_scale(s : Nlpembeddoc2vecEdge, f : Double) -> Nlpembeddoc2vecEdge {
   let result = nlp_embed_doc2vec_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_doc2vec_edge_fill(s : Nlpembeddoc2vecEdge, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_doc2vec_edge_min(s : Nlpembeddoc2vecEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_edge_min(s : Nlpembeddoc2vecEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_edge_max(s : Nlpembeddoc2vecEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_edge_max(s : Nlpembeddoc2vecEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_edge_to_string(s : Nlpembeddoc2vecEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_doc2vec_path_set(s : Nlpembeddoc2vecPath, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_doc2vec_path_sum(s : Nlpembeddoc2vecPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_path_sum(s : Nlpembeddoc2vecPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_path_mean(s : Nlpembeddoc2vecPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_path_mean(s : Nlpembeddoc2vecPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_path_scale(s : Nlpembeddoc2vecPath, f : Double) -> Nlpembeddoc2vecPath {
   let result = nlp_embed_doc2vec_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_doc2vec_path_fill(s : Nlpembeddoc2vecPath, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_doc2vec_path_min(s : Nlpembeddoc2vecPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_path_min(s : Nlpembeddoc2vecPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_path_max(s : Nlpembeddoc2vecPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_path_max(s : Nlpembeddoc2vecPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_path_to_string(s : Nlpembeddoc2vecPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_doc2vec_cluster_set(s : Nlpembeddoc2vecCluster, i : Int, v : Do
   result
 }
 
-pub fn nlp_embed_doc2vec_cluster_sum(s : Nlpembeddoc2vecCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_cluster_sum(s : Nlpembeddoc2vecCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_cluster_mean(s : Nlpembeddoc2vecCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_cluster_mean(s : Nlpembeddoc2vecCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_cluster_scale(s : Nlpembeddoc2vecCluster, f : Double) -> Nlpembeddoc2vecCluster {
   let result = nlp_embed_doc2vec_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_doc2vec_cluster_fill(s : Nlpembeddoc2vecCluster, v : Double) ->
   result
 }
 
-pub fn nlp_embed_doc2vec_cluster_min(s : Nlpembeddoc2vecCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_cluster_min(s : Nlpembeddoc2vecCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_cluster_max(s : Nlpembeddoc2vecCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_cluster_max(s : Nlpembeddoc2vecCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_cluster_to_string(s : Nlpembeddoc2vecCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_doc2vec_model_set(s : Nlpembeddoc2vecModel, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_doc2vec_model_sum(s : Nlpembeddoc2vecModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_model_sum(s : Nlpembeddoc2vecModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_model_mean(s : Nlpembeddoc2vecModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_model_mean(s : Nlpembeddoc2vecModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_model_scale(s : Nlpembeddoc2vecModel, f : Double) -> Nlpembeddoc2vecModel {
   let result = nlp_embed_doc2vec_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_doc2vec_model_fill(s : Nlpembeddoc2vecModel, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_doc2vec_model_min(s : Nlpembeddoc2vecModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_model_min(s : Nlpembeddoc2vecModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_model_max(s : Nlpembeddoc2vecModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_model_max(s : Nlpembeddoc2vecModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_model_to_string(s : Nlpembeddoc2vecModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_doc2vec_layer_set(s : Nlpembeddoc2vecLayer, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_doc2vec_layer_sum(s : Nlpembeddoc2vecLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_layer_sum(s : Nlpembeddoc2vecLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_layer_mean(s : Nlpembeddoc2vecLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_layer_mean(s : Nlpembeddoc2vecLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_layer_scale(s : Nlpembeddoc2vecLayer, f : Double) -> Nlpembeddoc2vecLayer {
   let result = nlp_embed_doc2vec_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_doc2vec_layer_fill(s : Nlpembeddoc2vecLayer, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_doc2vec_layer_min(s : Nlpembeddoc2vecLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_layer_min(s : Nlpembeddoc2vecLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_layer_max(s : Nlpembeddoc2vecLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_layer_max(s : Nlpembeddoc2vecLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_layer_to_string(s : Nlpembeddoc2vecLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_doc2vec_buffer_set(s : Nlpembeddoc2vecBuffer, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_doc2vec_buffer_sum(s : Nlpembeddoc2vecBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_buffer_sum(s : Nlpembeddoc2vecBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_buffer_mean(s : Nlpembeddoc2vecBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_buffer_mean(s : Nlpembeddoc2vecBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_buffer_scale(s : Nlpembeddoc2vecBuffer, f : Double) -> Nlpembeddoc2vecBuffer {
   let result = nlp_embed_doc2vec_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_doc2vec_buffer_fill(s : Nlpembeddoc2vecBuffer, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_doc2vec_buffer_min(s : Nlpembeddoc2vecBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_buffer_min(s : Nlpembeddoc2vecBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_buffer_max(s : Nlpembeddoc2vecBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_buffer_max(s : Nlpembeddoc2vecBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_buffer_to_string(s : Nlpembeddoc2vecBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_doc2vec_cursor_set(s : Nlpembeddoc2vecCursor, i : Int, v : Doub
   result
 }
 
-pub fn nlp_embed_doc2vec_cursor_sum(s : Nlpembeddoc2vecCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_cursor_sum(s : Nlpembeddoc2vecCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_cursor_mean(s : Nlpembeddoc2vecCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_cursor_mean(s : Nlpembeddoc2vecCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_cursor_scale(s : Nlpembeddoc2vecCursor, f : Double) -> Nlpembeddoc2vecCursor {
   let result = nlp_embed_doc2vec_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_doc2vec_cursor_fill(s : Nlpembeddoc2vecCursor, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_doc2vec_cursor_min(s : Nlpembeddoc2vecCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_cursor_min(s : Nlpembeddoc2vecCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_cursor_max(s : Nlpembeddoc2vecCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_cursor_max(s : Nlpembeddoc2vecCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_cursor_to_string(s : Nlpembeddoc2vecCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_doc2vec_view_set(s : Nlpembeddoc2vecView, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_doc2vec_view_sum(s : Nlpembeddoc2vecView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_view_sum(s : Nlpembeddoc2vecView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_view_mean(s : Nlpembeddoc2vecView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_view_mean(s : Nlpembeddoc2vecView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_view_scale(s : Nlpembeddoc2vecView, f : Double) -> Nlpembeddoc2vecView {
   let result = nlp_embed_doc2vec_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_doc2vec_view_fill(s : Nlpembeddoc2vecView, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_doc2vec_view_min(s : Nlpembeddoc2vecView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_view_min(s : Nlpembeddoc2vecView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_view_max(s : Nlpembeddoc2vecView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_view_max(s : Nlpembeddoc2vecView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_view_to_string(s : Nlpembeddoc2vecView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_doc2vec_range_set(s : Nlpembeddoc2vecRange, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_doc2vec_range_sum(s : Nlpembeddoc2vecRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_range_sum(s : Nlpembeddoc2vecRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_range_mean(s : Nlpembeddoc2vecRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_range_mean(s : Nlpembeddoc2vecRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_range_scale(s : Nlpembeddoc2vecRange, f : Double) -> Nlpembeddoc2vecRange {
   let result = nlp_embed_doc2vec_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_doc2vec_range_fill(s : Nlpembeddoc2vecRange, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_doc2vec_range_min(s : Nlpembeddoc2vecRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_range_min(s : Nlpembeddoc2vecRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_range_max(s : Nlpembeddoc2vecRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_range_max(s : Nlpembeddoc2vecRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_range_to_string(s : Nlpembeddoc2vecRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_doc2vec_slice_set(s : Nlpembeddoc2vecSlice, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_doc2vec_slice_sum(s : Nlpembeddoc2vecSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_doc2vec_slice_sum(s : Nlpembeddoc2vecSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_doc2vec_slice_mean(s : Nlpembeddoc2vecSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_doc2vec_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_doc2vec_slice_mean(s : Nlpembeddoc2vecSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_doc2vec_slice_scale(s : Nlpembeddoc2vecSlice, f : Double) -> Nlpembeddoc2vecSlice {
   let result = nlp_embed_doc2vec_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_doc2vec_slice_fill(s : Nlpembeddoc2vecSlice, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_doc2vec_slice_min(s : Nlpembeddoc2vecSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_slice_min(s : Nlpembeddoc2vecSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_doc2vec_slice_max(s : Nlpembeddoc2vecSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_doc2vec_slice_max(s : Nlpembeddoc2vecSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_doc2vec_slice_to_string(s : Nlpembeddoc2vecSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ds_list_skip_make_series(vals : Array[Double], name : String) -> Dslistsk
 
 pub fn ds_list_skip_series_len(s : DslistskipSeries) -> Int { s.vals.length() }
 
-pub fn ds_list_skip_series_sum(s : DslistskipSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_list_skip_series_sum(s : DslistskipSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_list_skip_series_mean(s : DslistskipSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_list_skip_frame_set(s : DslistskipFrame, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_skip_frame_sum(s : DslistskipFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_frame_sum(s : DslistskipFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_frame_mean(s : DslistskipFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_frame_mean(s : DslistskipFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_frame_scale(s : DslistskipFrame, f : Double) -> DslistskipFrame {
   let result = ds_list_skip_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_list_skip_frame_fill(s : DslistskipFrame, v : Double) -> DslistskipFra
   result
 }
 
-pub fn ds_list_skip_frame_min(s : DslistskipFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_frame_min(s : DslistskipFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_frame_max(s : DslistskipFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_frame_max(s : DslistskipFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_frame_to_string(s : DslistskipFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_list_skip_table_set(s : DslistskipTable, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_skip_table_sum(s : DslistskipTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_table_sum(s : DslistskipTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_table_mean(s : DslistskipTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_table_mean(s : DslistskipTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_table_scale(s : DslistskipTable, f : Double) -> DslistskipTable {
   let result = ds_list_skip_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_list_skip_table_fill(s : DslistskipTable, v : Double) -> DslistskipTab
   result
 }
 
-pub fn ds_list_skip_table_min(s : DslistskipTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_table_min(s : DslistskipTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_table_max(s : DslistskipTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_table_max(s : DslistskipTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_table_to_string(s : DslistskipTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_list_skip_graphn_set(s : DslistskipGraphN, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_skip_graphn_sum(s : DslistskipGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_graphn_sum(s : DslistskipGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_graphn_mean(s : DslistskipGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_graphn_mean(s : DslistskipGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_graphn_scale(s : DslistskipGraphN, f : Double) -> DslistskipGraphN {
   let result = ds_list_skip_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_list_skip_graphn_fill(s : DslistskipGraphN, v : Double) -> DslistskipG
   result
 }
 
-pub fn ds_list_skip_graphn_min(s : DslistskipGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_graphn_min(s : DslistskipGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_graphn_max(s : DslistskipGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_graphn_max(s : DslistskipGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_graphn_to_string(s : DslistskipGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_list_skip_node_set(s : DslistskipNode, i : Int, v : Double) -> Dslists
   result
 }
 
-pub fn ds_list_skip_node_sum(s : DslistskipNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_node_sum(s : DslistskipNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_node_mean(s : DslistskipNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_node_mean(s : DslistskipNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_node_scale(s : DslistskipNode, f : Double) -> DslistskipNode {
   let result = ds_list_skip_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_list_skip_node_fill(s : DslistskipNode, v : Double) -> DslistskipNode 
   result
 }
 
-pub fn ds_list_skip_node_min(s : DslistskipNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_node_min(s : DslistskipNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_node_max(s : DslistskipNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_node_max(s : DslistskipNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_node_to_string(s : DslistskipNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_list_skip_edge_set(s : DslistskipEdge, i : Int, v : Double) -> Dslists
   result
 }
 
-pub fn ds_list_skip_edge_sum(s : DslistskipEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_edge_sum(s : DslistskipEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_edge_mean(s : DslistskipEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_edge_mean(s : DslistskipEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_edge_scale(s : DslistskipEdge, f : Double) -> DslistskipEdge {
   let result = ds_list_skip_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_list_skip_edge_fill(s : DslistskipEdge, v : Double) -> DslistskipEdge 
   result
 }
 
-pub fn ds_list_skip_edge_min(s : DslistskipEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_edge_min(s : DslistskipEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_edge_max(s : DslistskipEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_edge_max(s : DslistskipEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_edge_to_string(s : DslistskipEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_list_skip_path_set(s : DslistskipPath, i : Int, v : Double) -> Dslists
   result
 }
 
-pub fn ds_list_skip_path_sum(s : DslistskipPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_path_sum(s : DslistskipPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_path_mean(s : DslistskipPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_path_mean(s : DslistskipPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_path_scale(s : DslistskipPath, f : Double) -> DslistskipPath {
   let result = ds_list_skip_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_list_skip_path_fill(s : DslistskipPath, v : Double) -> DslistskipPath 
   result
 }
 
-pub fn ds_list_skip_path_min(s : DslistskipPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_path_min(s : DslistskipPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_path_max(s : DslistskipPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_path_max(s : DslistskipPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_path_to_string(s : DslistskipPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_list_skip_cluster_set(s : DslistskipCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_skip_cluster_sum(s : DslistskipCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_cluster_sum(s : DslistskipCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_cluster_mean(s : DslistskipCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_cluster_mean(s : DslistskipCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_cluster_scale(s : DslistskipCluster, f : Double) -> DslistskipCluster {
   let result = ds_list_skip_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_list_skip_cluster_fill(s : DslistskipCluster, v : Double) -> Dslistski
   result
 }
 
-pub fn ds_list_skip_cluster_min(s : DslistskipCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_cluster_min(s : DslistskipCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_cluster_max(s : DslistskipCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_cluster_max(s : DslistskipCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_cluster_to_string(s : DslistskipCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_list_skip_model_set(s : DslistskipModel, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_skip_model_sum(s : DslistskipModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_model_sum(s : DslistskipModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_model_mean(s : DslistskipModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_model_mean(s : DslistskipModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_model_scale(s : DslistskipModel, f : Double) -> DslistskipModel {
   let result = ds_list_skip_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_list_skip_model_fill(s : DslistskipModel, v : Double) -> DslistskipMod
   result
 }
 
-pub fn ds_list_skip_model_min(s : DslistskipModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_model_min(s : DslistskipModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_model_max(s : DslistskipModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_model_max(s : DslistskipModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_model_to_string(s : DslistskipModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_list_skip_layer_set(s : DslistskipLayer, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_skip_layer_sum(s : DslistskipLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_layer_sum(s : DslistskipLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_layer_mean(s : DslistskipLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_layer_mean(s : DslistskipLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_layer_scale(s : DslistskipLayer, f : Double) -> DslistskipLayer {
   let result = ds_list_skip_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_list_skip_layer_fill(s : DslistskipLayer, v : Double) -> DslistskipLay
   result
 }
 
-pub fn ds_list_skip_layer_min(s : DslistskipLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_layer_min(s : DslistskipLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_layer_max(s : DslistskipLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_layer_max(s : DslistskipLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_layer_to_string(s : DslistskipLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_list_skip_buffer_set(s : DslistskipBuffer, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_skip_buffer_sum(s : DslistskipBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_buffer_sum(s : DslistskipBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_buffer_mean(s : DslistskipBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_buffer_mean(s : DslistskipBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_buffer_scale(s : DslistskipBuffer, f : Double) -> DslistskipBuffer {
   let result = ds_list_skip_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_list_skip_buffer_fill(s : DslistskipBuffer, v : Double) -> DslistskipB
   result
 }
 
-pub fn ds_list_skip_buffer_min(s : DslistskipBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_buffer_min(s : DslistskipBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_buffer_max(s : DslistskipBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_buffer_max(s : DslistskipBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_buffer_to_string(s : DslistskipBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_list_skip_cursor_set(s : DslistskipCursor, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_skip_cursor_sum(s : DslistskipCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_cursor_sum(s : DslistskipCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_cursor_mean(s : DslistskipCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_cursor_mean(s : DslistskipCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_cursor_scale(s : DslistskipCursor, f : Double) -> DslistskipCursor {
   let result = ds_list_skip_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_list_skip_cursor_fill(s : DslistskipCursor, v : Double) -> DslistskipC
   result
 }
 
-pub fn ds_list_skip_cursor_min(s : DslistskipCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_cursor_min(s : DslistskipCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_cursor_max(s : DslistskipCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_cursor_max(s : DslistskipCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_cursor_to_string(s : DslistskipCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_list_skip_view_set(s : DslistskipView, i : Int, v : Double) -> Dslists
   result
 }
 
-pub fn ds_list_skip_view_sum(s : DslistskipView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_view_sum(s : DslistskipView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_view_mean(s : DslistskipView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_view_mean(s : DslistskipView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_view_scale(s : DslistskipView, f : Double) -> DslistskipView {
   let result = ds_list_skip_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_list_skip_view_fill(s : DslistskipView, v : Double) -> DslistskipView 
   result
 }
 
-pub fn ds_list_skip_view_min(s : DslistskipView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_view_min(s : DslistskipView) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_view_max(s : DslistskipView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_view_max(s : DslistskipView) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_view_to_string(s : DslistskipView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_list_skip_range_set(s : DslistskipRange, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_skip_range_sum(s : DslistskipRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_range_sum(s : DslistskipRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_range_mean(s : DslistskipRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_range_mean(s : DslistskipRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_range_scale(s : DslistskipRange, f : Double) -> DslistskipRange {
   let result = ds_list_skip_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_list_skip_range_fill(s : DslistskipRange, v : Double) -> DslistskipRan
   result
 }
 
-pub fn ds_list_skip_range_min(s : DslistskipRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_range_min(s : DslistskipRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_range_max(s : DslistskipRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_range_max(s : DslistskipRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_range_to_string(s : DslistskipRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_list_skip_slice_set(s : DslistskipSlice, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_skip_slice_sum(s : DslistskipSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_skip_slice_sum(s : DslistskipSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_skip_slice_mean(s : DslistskipSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_skip_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_skip_slice_mean(s : DslistskipSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_skip_slice_scale(s : DslistskipSlice, f : Double) -> DslistskipSlice {
   let result = ds_list_skip_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_list_skip_slice_fill(s : DslistskipSlice, v : Double) -> DslistskipSli
   result
 }
 
-pub fn ds_list_skip_slice_min(s : DslistskipSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_slice_min(s : DslistskipSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_skip_slice_max(s : DslistskipSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_skip_slice_max(s : DslistskipSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_skip_slice_to_string(s : DslistskipSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn nlp_parse_dependency_make_series(vals : Array[Double], name : String) -> 
 
 pub fn nlp_parse_dependency_series_len(s : NlpparsedependencySeries) -> Int { s.vals.length() }
 
-pub fn nlp_parse_dependency_series_sum(s : NlpparsedependencySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_parse_dependency_series_sum(s : NlpparsedependencySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_parse_dependency_series_mean(s : NlpparsedependencySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_parse_dependency_frame_set(s : NlpparsedependencyFrame, i : Int, v : 
   result
 }
 
-pub fn nlp_parse_dependency_frame_sum(s : NlpparsedependencyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_frame_sum(s : NlpparsedependencyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_frame_mean(s : NlpparsedependencyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_frame_mean(s : NlpparsedependencyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_frame_scale(s : NlpparsedependencyFrame, f : Double) -> NlpparsedependencyFrame {
   let result = nlp_parse_dependency_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_parse_dependency_frame_fill(s : NlpparsedependencyFrame, v : Double) 
   result
 }
 
-pub fn nlp_parse_dependency_frame_min(s : NlpparsedependencyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_frame_min(s : NlpparsedependencyFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_frame_max(s : NlpparsedependencyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_frame_max(s : NlpparsedependencyFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_frame_to_string(s : NlpparsedependencyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_parse_dependency_table_set(s : NlpparsedependencyTable, i : Int, v : 
   result
 }
 
-pub fn nlp_parse_dependency_table_sum(s : NlpparsedependencyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_table_sum(s : NlpparsedependencyTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_table_mean(s : NlpparsedependencyTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_table_mean(s : NlpparsedependencyTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_table_scale(s : NlpparsedependencyTable, f : Double) -> NlpparsedependencyTable {
   let result = nlp_parse_dependency_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_parse_dependency_table_fill(s : NlpparsedependencyTable, v : Double) 
   result
 }
 
-pub fn nlp_parse_dependency_table_min(s : NlpparsedependencyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_table_min(s : NlpparsedependencyTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_table_max(s : NlpparsedependencyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_table_max(s : NlpparsedependencyTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_table_to_string(s : NlpparsedependencyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_parse_dependency_graphn_set(s : NlpparsedependencyGraphN, i : Int, v 
   result
 }
 
-pub fn nlp_parse_dependency_graphn_sum(s : NlpparsedependencyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_graphn_sum(s : NlpparsedependencyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_graphn_mean(s : NlpparsedependencyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_graphn_mean(s : NlpparsedependencyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_graphn_scale(s : NlpparsedependencyGraphN, f : Double) -> NlpparsedependencyGraphN {
   let result = nlp_parse_dependency_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_parse_dependency_graphn_fill(s : NlpparsedependencyGraphN, v : Double
   result
 }
 
-pub fn nlp_parse_dependency_graphn_min(s : NlpparsedependencyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_graphn_min(s : NlpparsedependencyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_graphn_max(s : NlpparsedependencyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_graphn_max(s : NlpparsedependencyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_graphn_to_string(s : NlpparsedependencyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_parse_dependency_node_set(s : NlpparsedependencyNode, i : Int, v : Do
   result
 }
 
-pub fn nlp_parse_dependency_node_sum(s : NlpparsedependencyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_node_sum(s : NlpparsedependencyNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_node_mean(s : NlpparsedependencyNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_node_mean(s : NlpparsedependencyNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_node_scale(s : NlpparsedependencyNode, f : Double) -> NlpparsedependencyNode {
   let result = nlp_parse_dependency_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_parse_dependency_node_fill(s : NlpparsedependencyNode, v : Double) ->
   result
 }
 
-pub fn nlp_parse_dependency_node_min(s : NlpparsedependencyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_node_min(s : NlpparsedependencyNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_node_max(s : NlpparsedependencyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_node_max(s : NlpparsedependencyNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_node_to_string(s : NlpparsedependencyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_parse_dependency_edge_set(s : NlpparsedependencyEdge, i : Int, v : Do
   result
 }
 
-pub fn nlp_parse_dependency_edge_sum(s : NlpparsedependencyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_edge_sum(s : NlpparsedependencyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_edge_mean(s : NlpparsedependencyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_edge_mean(s : NlpparsedependencyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_edge_scale(s : NlpparsedependencyEdge, f : Double) -> NlpparsedependencyEdge {
   let result = nlp_parse_dependency_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_parse_dependency_edge_fill(s : NlpparsedependencyEdge, v : Double) ->
   result
 }
 
-pub fn nlp_parse_dependency_edge_min(s : NlpparsedependencyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_edge_min(s : NlpparsedependencyEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_edge_max(s : NlpparsedependencyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_edge_max(s : NlpparsedependencyEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_edge_to_string(s : NlpparsedependencyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_parse_dependency_path_set(s : NlpparsedependencyPath, i : Int, v : Do
   result
 }
 
-pub fn nlp_parse_dependency_path_sum(s : NlpparsedependencyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_path_sum(s : NlpparsedependencyPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_path_mean(s : NlpparsedependencyPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_path_mean(s : NlpparsedependencyPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_path_scale(s : NlpparsedependencyPath, f : Double) -> NlpparsedependencyPath {
   let result = nlp_parse_dependency_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_parse_dependency_path_fill(s : NlpparsedependencyPath, v : Double) ->
   result
 }
 
-pub fn nlp_parse_dependency_path_min(s : NlpparsedependencyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_path_min(s : NlpparsedependencyPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_path_max(s : NlpparsedependencyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_path_max(s : NlpparsedependencyPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_path_to_string(s : NlpparsedependencyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_parse_dependency_cluster_set(s : NlpparsedependencyCluster, i : Int, 
   result
 }
 
-pub fn nlp_parse_dependency_cluster_sum(s : NlpparsedependencyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_cluster_sum(s : NlpparsedependencyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_cluster_mean(s : NlpparsedependencyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_cluster_mean(s : NlpparsedependencyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_cluster_scale(s : NlpparsedependencyCluster, f : Double) -> NlpparsedependencyCluster {
   let result = nlp_parse_dependency_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_parse_dependency_cluster_fill(s : NlpparsedependencyCluster, v : Doub
   result
 }
 
-pub fn nlp_parse_dependency_cluster_min(s : NlpparsedependencyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_cluster_min(s : NlpparsedependencyCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_cluster_max(s : NlpparsedependencyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_cluster_max(s : NlpparsedependencyCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_cluster_to_string(s : NlpparsedependencyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_parse_dependency_model_set(s : NlpparsedependencyModel, i : Int, v : 
   result
 }
 
-pub fn nlp_parse_dependency_model_sum(s : NlpparsedependencyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_model_sum(s : NlpparsedependencyModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_model_mean(s : NlpparsedependencyModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_model_mean(s : NlpparsedependencyModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_model_scale(s : NlpparsedependencyModel, f : Double) -> NlpparsedependencyModel {
   let result = nlp_parse_dependency_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_parse_dependency_model_fill(s : NlpparsedependencyModel, v : Double) 
   result
 }
 
-pub fn nlp_parse_dependency_model_min(s : NlpparsedependencyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_model_min(s : NlpparsedependencyModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_model_max(s : NlpparsedependencyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_model_max(s : NlpparsedependencyModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_model_to_string(s : NlpparsedependencyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_parse_dependency_layer_set(s : NlpparsedependencyLayer, i : Int, v : 
   result
 }
 
-pub fn nlp_parse_dependency_layer_sum(s : NlpparsedependencyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_layer_sum(s : NlpparsedependencyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_layer_mean(s : NlpparsedependencyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_layer_mean(s : NlpparsedependencyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_layer_scale(s : NlpparsedependencyLayer, f : Double) -> NlpparsedependencyLayer {
   let result = nlp_parse_dependency_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_parse_dependency_layer_fill(s : NlpparsedependencyLayer, v : Double) 
   result
 }
 
-pub fn nlp_parse_dependency_layer_min(s : NlpparsedependencyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_layer_min(s : NlpparsedependencyLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_layer_max(s : NlpparsedependencyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_layer_max(s : NlpparsedependencyLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_layer_to_string(s : NlpparsedependencyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_parse_dependency_buffer_set(s : NlpparsedependencyBuffer, i : Int, v 
   result
 }
 
-pub fn nlp_parse_dependency_buffer_sum(s : NlpparsedependencyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_buffer_sum(s : NlpparsedependencyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_buffer_mean(s : NlpparsedependencyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_buffer_mean(s : NlpparsedependencyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_buffer_scale(s : NlpparsedependencyBuffer, f : Double) -> NlpparsedependencyBuffer {
   let result = nlp_parse_dependency_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_parse_dependency_buffer_fill(s : NlpparsedependencyBuffer, v : Double
   result
 }
 
-pub fn nlp_parse_dependency_buffer_min(s : NlpparsedependencyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_buffer_min(s : NlpparsedependencyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_buffer_max(s : NlpparsedependencyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_buffer_max(s : NlpparsedependencyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_buffer_to_string(s : NlpparsedependencyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_parse_dependency_cursor_set(s : NlpparsedependencyCursor, i : Int, v 
   result
 }
 
-pub fn nlp_parse_dependency_cursor_sum(s : NlpparsedependencyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_cursor_sum(s : NlpparsedependencyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_cursor_mean(s : NlpparsedependencyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_cursor_mean(s : NlpparsedependencyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_cursor_scale(s : NlpparsedependencyCursor, f : Double) -> NlpparsedependencyCursor {
   let result = nlp_parse_dependency_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_parse_dependency_cursor_fill(s : NlpparsedependencyCursor, v : Double
   result
 }
 
-pub fn nlp_parse_dependency_cursor_min(s : NlpparsedependencyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_cursor_min(s : NlpparsedependencyCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_cursor_max(s : NlpparsedependencyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_cursor_max(s : NlpparsedependencyCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_cursor_to_string(s : NlpparsedependencyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_parse_dependency_view_set(s : NlpparsedependencyView, i : Int, v : Do
   result
 }
 
-pub fn nlp_parse_dependency_view_sum(s : NlpparsedependencyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_view_sum(s : NlpparsedependencyView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_view_mean(s : NlpparsedependencyView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_view_mean(s : NlpparsedependencyView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_view_scale(s : NlpparsedependencyView, f : Double) -> NlpparsedependencyView {
   let result = nlp_parse_dependency_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_parse_dependency_view_fill(s : NlpparsedependencyView, v : Double) ->
   result
 }
 
-pub fn nlp_parse_dependency_view_min(s : NlpparsedependencyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_view_min(s : NlpparsedependencyView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_view_max(s : NlpparsedependencyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_view_max(s : NlpparsedependencyView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_view_to_string(s : NlpparsedependencyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_parse_dependency_range_set(s : NlpparsedependencyRange, i : Int, v : 
   result
 }
 
-pub fn nlp_parse_dependency_range_sum(s : NlpparsedependencyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_range_sum(s : NlpparsedependencyRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_range_mean(s : NlpparsedependencyRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_range_mean(s : NlpparsedependencyRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_range_scale(s : NlpparsedependencyRange, f : Double) -> NlpparsedependencyRange {
   let result = nlp_parse_dependency_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_parse_dependency_range_fill(s : NlpparsedependencyRange, v : Double) 
   result
 }
 
-pub fn nlp_parse_dependency_range_min(s : NlpparsedependencyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_range_min(s : NlpparsedependencyRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_range_max(s : NlpparsedependencyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_range_max(s : NlpparsedependencyRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_range_to_string(s : NlpparsedependencyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_parse_dependency_slice_set(s : NlpparsedependencySlice, i : Int, v : 
   result
 }
 
-pub fn nlp_parse_dependency_slice_sum(s : NlpparsedependencySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_dependency_slice_sum(s : NlpparsedependencySlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_dependency_slice_mean(s : NlpparsedependencySlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_dependency_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_dependency_slice_mean(s : NlpparsedependencySlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_dependency_slice_scale(s : NlpparsedependencySlice, f : Double) -> NlpparsedependencySlice {
   let result = nlp_parse_dependency_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_parse_dependency_slice_fill(s : NlpparsedependencySlice, v : Double) 
   result
 }
 
-pub fn nlp_parse_dependency_slice_min(s : NlpparsedependencySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_slice_min(s : NlpparsedependencySlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_dependency_slice_max(s : NlpparsedependencySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_dependency_slice_max(s : NlpparsedependencySlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_dependency_slice_to_string(s : NlpparsedependencySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

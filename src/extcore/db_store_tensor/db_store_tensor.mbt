@@ -88,11 +88,7 @@ pub fn db_store_tensor_make_series(vals : Array[Double], name : String) -> Dbsto
 
 pub fn db_store_tensor_series_len(s : DbstoretensorSeries) -> Int { s.vals.length() }
 
-pub fn db_store_tensor_series_sum(s : DbstoretensorSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_tensor_series_sum(s : DbstoretensorSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_tensor_series_mean(s : DbstoretensorSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_tensor_frame_set(s : DbstoretensorFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_tensor_frame_sum(s : DbstoretensorFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_frame_sum(s : DbstoretensorFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_frame_mean(s : DbstoretensorFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_frame_mean(s : DbstoretensorFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_frame_scale(s : DbstoretensorFrame, f : Double) -> DbstoretensorFrame {
   let result = db_store_tensor_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_tensor_frame_fill(s : DbstoretensorFrame, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_tensor_frame_min(s : DbstoretensorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_frame_min(s : DbstoretensorFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_frame_max(s : DbstoretensorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_frame_max(s : DbstoretensorFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_frame_to_string(s : DbstoretensorFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_tensor_table_set(s : DbstoretensorTable, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_tensor_table_sum(s : DbstoretensorTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_table_sum(s : DbstoretensorTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_table_mean(s : DbstoretensorTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_table_mean(s : DbstoretensorTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_table_scale(s : DbstoretensorTable, f : Double) -> DbstoretensorTable {
   let result = db_store_tensor_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_tensor_table_fill(s : DbstoretensorTable, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_tensor_table_min(s : DbstoretensorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_table_min(s : DbstoretensorTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_table_max(s : DbstoretensorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_table_max(s : DbstoretensorTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_table_to_string(s : DbstoretensorTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_tensor_graphn_set(s : DbstoretensorGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_tensor_graphn_sum(s : DbstoretensorGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_graphn_sum(s : DbstoretensorGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_graphn_mean(s : DbstoretensorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_graphn_mean(s : DbstoretensorGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_graphn_scale(s : DbstoretensorGraphN, f : Double) -> DbstoretensorGraphN {
   let result = db_store_tensor_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_tensor_graphn_fill(s : DbstoretensorGraphN, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_tensor_graphn_min(s : DbstoretensorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_graphn_min(s : DbstoretensorGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_graphn_max(s : DbstoretensorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_graphn_max(s : DbstoretensorGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_graphn_to_string(s : DbstoretensorGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_tensor_node_set(s : DbstoretensorNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_tensor_node_sum(s : DbstoretensorNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_node_sum(s : DbstoretensorNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_node_mean(s : DbstoretensorNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_node_mean(s : DbstoretensorNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_node_scale(s : DbstoretensorNode, f : Double) -> DbstoretensorNode {
   let result = db_store_tensor_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_tensor_node_fill(s : DbstoretensorNode, v : Double) -> Dbstorete
   result
 }
 
-pub fn db_store_tensor_node_min(s : DbstoretensorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_node_min(s : DbstoretensorNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_node_max(s : DbstoretensorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_node_max(s : DbstoretensorNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_node_to_string(s : DbstoretensorNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_tensor_edge_set(s : DbstoretensorEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_tensor_edge_sum(s : DbstoretensorEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_edge_sum(s : DbstoretensorEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_edge_mean(s : DbstoretensorEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_edge_mean(s : DbstoretensorEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_edge_scale(s : DbstoretensorEdge, f : Double) -> DbstoretensorEdge {
   let result = db_store_tensor_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_tensor_edge_fill(s : DbstoretensorEdge, v : Double) -> Dbstorete
   result
 }
 
-pub fn db_store_tensor_edge_min(s : DbstoretensorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_edge_min(s : DbstoretensorEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_edge_max(s : DbstoretensorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_edge_max(s : DbstoretensorEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_edge_to_string(s : DbstoretensorEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_tensor_path_set(s : DbstoretensorPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_tensor_path_sum(s : DbstoretensorPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_path_sum(s : DbstoretensorPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_path_mean(s : DbstoretensorPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_path_mean(s : DbstoretensorPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_path_scale(s : DbstoretensorPath, f : Double) -> DbstoretensorPath {
   let result = db_store_tensor_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_tensor_path_fill(s : DbstoretensorPath, v : Double) -> Dbstorete
   result
 }
 
-pub fn db_store_tensor_path_min(s : DbstoretensorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_path_min(s : DbstoretensorPath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_path_max(s : DbstoretensorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_path_max(s : DbstoretensorPath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_path_to_string(s : DbstoretensorPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_tensor_cluster_set(s : DbstoretensorCluster, i : Int, v : Double
   result
 }
 
-pub fn db_store_tensor_cluster_sum(s : DbstoretensorCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_cluster_sum(s : DbstoretensorCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_cluster_mean(s : DbstoretensorCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_cluster_mean(s : DbstoretensorCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_cluster_scale(s : DbstoretensorCluster, f : Double) -> DbstoretensorCluster {
   let result = db_store_tensor_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_tensor_cluster_fill(s : DbstoretensorCluster, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_tensor_cluster_min(s : DbstoretensorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_cluster_min(s : DbstoretensorCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_cluster_max(s : DbstoretensorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_cluster_max(s : DbstoretensorCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_cluster_to_string(s : DbstoretensorCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_tensor_model_set(s : DbstoretensorModel, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_tensor_model_sum(s : DbstoretensorModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_model_sum(s : DbstoretensorModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_model_mean(s : DbstoretensorModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_model_mean(s : DbstoretensorModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_model_scale(s : DbstoretensorModel, f : Double) -> DbstoretensorModel {
   let result = db_store_tensor_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_tensor_model_fill(s : DbstoretensorModel, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_tensor_model_min(s : DbstoretensorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_model_min(s : DbstoretensorModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_model_max(s : DbstoretensorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_model_max(s : DbstoretensorModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_model_to_string(s : DbstoretensorModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_tensor_layer_set(s : DbstoretensorLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_tensor_layer_sum(s : DbstoretensorLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_layer_sum(s : DbstoretensorLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_layer_mean(s : DbstoretensorLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_layer_mean(s : DbstoretensorLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_layer_scale(s : DbstoretensorLayer, f : Double) -> DbstoretensorLayer {
   let result = db_store_tensor_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_tensor_layer_fill(s : DbstoretensorLayer, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_tensor_layer_min(s : DbstoretensorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_layer_min(s : DbstoretensorLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_layer_max(s : DbstoretensorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_layer_max(s : DbstoretensorLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_layer_to_string(s : DbstoretensorLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_tensor_buffer_set(s : DbstoretensorBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_tensor_buffer_sum(s : DbstoretensorBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_buffer_sum(s : DbstoretensorBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_buffer_mean(s : DbstoretensorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_buffer_mean(s : DbstoretensorBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_buffer_scale(s : DbstoretensorBuffer, f : Double) -> DbstoretensorBuffer {
   let result = db_store_tensor_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_tensor_buffer_fill(s : DbstoretensorBuffer, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_tensor_buffer_min(s : DbstoretensorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_buffer_min(s : DbstoretensorBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_buffer_max(s : DbstoretensorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_buffer_max(s : DbstoretensorBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_buffer_to_string(s : DbstoretensorBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_tensor_cursor_set(s : DbstoretensorCursor, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_tensor_cursor_sum(s : DbstoretensorCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_cursor_sum(s : DbstoretensorCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_cursor_mean(s : DbstoretensorCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_cursor_mean(s : DbstoretensorCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_cursor_scale(s : DbstoretensorCursor, f : Double) -> DbstoretensorCursor {
   let result = db_store_tensor_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_tensor_cursor_fill(s : DbstoretensorCursor, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_tensor_cursor_min(s : DbstoretensorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_cursor_min(s : DbstoretensorCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_cursor_max(s : DbstoretensorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_cursor_max(s : DbstoretensorCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_cursor_to_string(s : DbstoretensorCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_tensor_view_set(s : DbstoretensorView, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_tensor_view_sum(s : DbstoretensorView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_view_sum(s : DbstoretensorView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_view_mean(s : DbstoretensorView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_view_mean(s : DbstoretensorView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_view_scale(s : DbstoretensorView, f : Double) -> DbstoretensorView {
   let result = db_store_tensor_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_tensor_view_fill(s : DbstoretensorView, v : Double) -> Dbstorete
   result
 }
 
-pub fn db_store_tensor_view_min(s : DbstoretensorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_view_min(s : DbstoretensorView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_view_max(s : DbstoretensorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_view_max(s : DbstoretensorView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_view_to_string(s : DbstoretensorView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_tensor_range_set(s : DbstoretensorRange, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_tensor_range_sum(s : DbstoretensorRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_range_sum(s : DbstoretensorRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_range_mean(s : DbstoretensorRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_range_mean(s : DbstoretensorRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_range_scale(s : DbstoretensorRange, f : Double) -> DbstoretensorRange {
   let result = db_store_tensor_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_tensor_range_fill(s : DbstoretensorRange, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_tensor_range_min(s : DbstoretensorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_range_min(s : DbstoretensorRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_range_max(s : DbstoretensorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_range_max(s : DbstoretensorRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_range_to_string(s : DbstoretensorRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_tensor_slice_set(s : DbstoretensorSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_tensor_slice_sum(s : DbstoretensorSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_tensor_slice_sum(s : DbstoretensorSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_tensor_slice_mean(s : DbstoretensorSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_tensor_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_tensor_slice_mean(s : DbstoretensorSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_tensor_slice_scale(s : DbstoretensorSlice, f : Double) -> DbstoretensorSlice {
   let result = db_store_tensor_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_tensor_slice_fill(s : DbstoretensorSlice, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_tensor_slice_min(s : DbstoretensorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_slice_min(s : DbstoretensorSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_tensor_slice_max(s : DbstoretensorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_tensor_slice_max(s : DbstoretensorSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_tensor_slice_to_string(s : DbstoretensorSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

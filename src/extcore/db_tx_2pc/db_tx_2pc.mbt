@@ -88,11 +88,7 @@ pub fn db_tx_2pc_make_series(vals : Array[Double], name : String) -> Dbtx2pcSeri
 
 pub fn db_tx_2pc_series_len(s : Dbtx2pcSeries) -> Int { s.vals.length() }
 
-pub fn db_tx_2pc_series_sum(s : Dbtx2pcSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_tx_2pc_series_sum(s : Dbtx2pcSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_tx_2pc_series_mean(s : Dbtx2pcSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_tx_2pc_frame_set(s : Dbtx2pcFrame, i : Int, v : Double) -> Dbtx2pcFram
   result
 }
 
-pub fn db_tx_2pc_frame_sum(s : Dbtx2pcFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_frame_sum(s : Dbtx2pcFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_frame_mean(s : Dbtx2pcFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_frame_mean(s : Dbtx2pcFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_frame_scale(s : Dbtx2pcFrame, f : Double) -> Dbtx2pcFrame {
   let result = db_tx_2pc_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_tx_2pc_frame_fill(s : Dbtx2pcFrame, v : Double) -> Dbtx2pcFrame {
   result
 }
 
-pub fn db_tx_2pc_frame_min(s : Dbtx2pcFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_frame_min(s : Dbtx2pcFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_frame_max(s : Dbtx2pcFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_frame_max(s : Dbtx2pcFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_frame_to_string(s : Dbtx2pcFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_tx_2pc_table_set(s : Dbtx2pcTable, i : Int, v : Double) -> Dbtx2pcTabl
   result
 }
 
-pub fn db_tx_2pc_table_sum(s : Dbtx2pcTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_table_sum(s : Dbtx2pcTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_table_mean(s : Dbtx2pcTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_table_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_table_mean(s : Dbtx2pcTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_table_scale(s : Dbtx2pcTable, f : Double) -> Dbtx2pcTable {
   let result = db_tx_2pc_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_tx_2pc_table_fill(s : Dbtx2pcTable, v : Double) -> Dbtx2pcTable {
   result
 }
 
-pub fn db_tx_2pc_table_min(s : Dbtx2pcTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_table_min(s : Dbtx2pcTable) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_table_max(s : Dbtx2pcTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_table_max(s : Dbtx2pcTable) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_table_to_string(s : Dbtx2pcTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_tx_2pc_graphn_set(s : Dbtx2pcGraphN, i : Int, v : Double) -> Dbtx2pcGr
   result
 }
 
-pub fn db_tx_2pc_graphn_sum(s : Dbtx2pcGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_graphn_sum(s : Dbtx2pcGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_graphn_mean(s : Dbtx2pcGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_graphn_mean(s : Dbtx2pcGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_graphn_scale(s : Dbtx2pcGraphN, f : Double) -> Dbtx2pcGraphN {
   let result = db_tx_2pc_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_tx_2pc_graphn_fill(s : Dbtx2pcGraphN, v : Double) -> Dbtx2pcGraphN {
   result
 }
 
-pub fn db_tx_2pc_graphn_min(s : Dbtx2pcGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_graphn_min(s : Dbtx2pcGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_graphn_max(s : Dbtx2pcGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_graphn_max(s : Dbtx2pcGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_graphn_to_string(s : Dbtx2pcGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_tx_2pc_node_set(s : Dbtx2pcNode, i : Int, v : Double) -> Dbtx2pcNode {
   result
 }
 
-pub fn db_tx_2pc_node_sum(s : Dbtx2pcNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_node_sum(s : Dbtx2pcNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_node_mean(s : Dbtx2pcNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_node_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_node_mean(s : Dbtx2pcNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_node_scale(s : Dbtx2pcNode, f : Double) -> Dbtx2pcNode {
   let result = db_tx_2pc_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_tx_2pc_node_fill(s : Dbtx2pcNode, v : Double) -> Dbtx2pcNode {
   result
 }
 
-pub fn db_tx_2pc_node_min(s : Dbtx2pcNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_node_min(s : Dbtx2pcNode) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_node_max(s : Dbtx2pcNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_node_max(s : Dbtx2pcNode) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_node_to_string(s : Dbtx2pcNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_tx_2pc_edge_set(s : Dbtx2pcEdge, i : Int, v : Double) -> Dbtx2pcEdge {
   result
 }
 
-pub fn db_tx_2pc_edge_sum(s : Dbtx2pcEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_edge_sum(s : Dbtx2pcEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_edge_mean(s : Dbtx2pcEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_edge_mean(s : Dbtx2pcEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_edge_scale(s : Dbtx2pcEdge, f : Double) -> Dbtx2pcEdge {
   let result = db_tx_2pc_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_tx_2pc_edge_fill(s : Dbtx2pcEdge, v : Double) -> Dbtx2pcEdge {
   result
 }
 
-pub fn db_tx_2pc_edge_min(s : Dbtx2pcEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_edge_min(s : Dbtx2pcEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_edge_max(s : Dbtx2pcEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_edge_max(s : Dbtx2pcEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_edge_to_string(s : Dbtx2pcEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_tx_2pc_path_set(s : Dbtx2pcPath, i : Int, v : Double) -> Dbtx2pcPath {
   result
 }
 
-pub fn db_tx_2pc_path_sum(s : Dbtx2pcPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_path_sum(s : Dbtx2pcPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_path_mean(s : Dbtx2pcPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_path_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_path_mean(s : Dbtx2pcPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_path_scale(s : Dbtx2pcPath, f : Double) -> Dbtx2pcPath {
   let result = db_tx_2pc_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_tx_2pc_path_fill(s : Dbtx2pcPath, v : Double) -> Dbtx2pcPath {
   result
 }
 
-pub fn db_tx_2pc_path_min(s : Dbtx2pcPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_path_min(s : Dbtx2pcPath) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_path_max(s : Dbtx2pcPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_path_max(s : Dbtx2pcPath) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_path_to_string(s : Dbtx2pcPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_tx_2pc_cluster_set(s : Dbtx2pcCluster, i : Int, v : Double) -> Dbtx2pc
   result
 }
 
-pub fn db_tx_2pc_cluster_sum(s : Dbtx2pcCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_cluster_sum(s : Dbtx2pcCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_cluster_mean(s : Dbtx2pcCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_cluster_mean(s : Dbtx2pcCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_cluster_scale(s : Dbtx2pcCluster, f : Double) -> Dbtx2pcCluster {
   let result = db_tx_2pc_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_tx_2pc_cluster_fill(s : Dbtx2pcCluster, v : Double) -> Dbtx2pcCluster 
   result
 }
 
-pub fn db_tx_2pc_cluster_min(s : Dbtx2pcCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_cluster_min(s : Dbtx2pcCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_cluster_max(s : Dbtx2pcCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_cluster_max(s : Dbtx2pcCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_cluster_to_string(s : Dbtx2pcCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_tx_2pc_model_set(s : Dbtx2pcModel, i : Int, v : Double) -> Dbtx2pcMode
   result
 }
 
-pub fn db_tx_2pc_model_sum(s : Dbtx2pcModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_model_sum(s : Dbtx2pcModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_model_mean(s : Dbtx2pcModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_model_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_model_mean(s : Dbtx2pcModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_model_scale(s : Dbtx2pcModel, f : Double) -> Dbtx2pcModel {
   let result = db_tx_2pc_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_tx_2pc_model_fill(s : Dbtx2pcModel, v : Double) -> Dbtx2pcModel {
   result
 }
 
-pub fn db_tx_2pc_model_min(s : Dbtx2pcModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_model_min(s : Dbtx2pcModel) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_model_max(s : Dbtx2pcModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_model_max(s : Dbtx2pcModel) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_model_to_string(s : Dbtx2pcModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_tx_2pc_layer_set(s : Dbtx2pcLayer, i : Int, v : Double) -> Dbtx2pcLaye
   result
 }
 
-pub fn db_tx_2pc_layer_sum(s : Dbtx2pcLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_layer_sum(s : Dbtx2pcLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_layer_mean(s : Dbtx2pcLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_layer_mean(s : Dbtx2pcLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_layer_scale(s : Dbtx2pcLayer, f : Double) -> Dbtx2pcLayer {
   let result = db_tx_2pc_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_tx_2pc_layer_fill(s : Dbtx2pcLayer, v : Double) -> Dbtx2pcLayer {
   result
 }
 
-pub fn db_tx_2pc_layer_min(s : Dbtx2pcLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_layer_min(s : Dbtx2pcLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_layer_max(s : Dbtx2pcLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_layer_max(s : Dbtx2pcLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_layer_to_string(s : Dbtx2pcLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_tx_2pc_buffer_set(s : Dbtx2pcBuffer, i : Int, v : Double) -> Dbtx2pcBu
   result
 }
 
-pub fn db_tx_2pc_buffer_sum(s : Dbtx2pcBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_buffer_sum(s : Dbtx2pcBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_buffer_mean(s : Dbtx2pcBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_buffer_mean(s : Dbtx2pcBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_buffer_scale(s : Dbtx2pcBuffer, f : Double) -> Dbtx2pcBuffer {
   let result = db_tx_2pc_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_tx_2pc_buffer_fill(s : Dbtx2pcBuffer, v : Double) -> Dbtx2pcBuffer {
   result
 }
 
-pub fn db_tx_2pc_buffer_min(s : Dbtx2pcBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_buffer_min(s : Dbtx2pcBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_buffer_max(s : Dbtx2pcBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_buffer_max(s : Dbtx2pcBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_buffer_to_string(s : Dbtx2pcBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_tx_2pc_cursor_set(s : Dbtx2pcCursor, i : Int, v : Double) -> Dbtx2pcCu
   result
 }
 
-pub fn db_tx_2pc_cursor_sum(s : Dbtx2pcCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_cursor_sum(s : Dbtx2pcCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_cursor_mean(s : Dbtx2pcCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_cursor_mean(s : Dbtx2pcCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_cursor_scale(s : Dbtx2pcCursor, f : Double) -> Dbtx2pcCursor {
   let result = db_tx_2pc_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_tx_2pc_cursor_fill(s : Dbtx2pcCursor, v : Double) -> Dbtx2pcCursor {
   result
 }
 
-pub fn db_tx_2pc_cursor_min(s : Dbtx2pcCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_cursor_min(s : Dbtx2pcCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_cursor_max(s : Dbtx2pcCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_cursor_max(s : Dbtx2pcCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_cursor_to_string(s : Dbtx2pcCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_tx_2pc_view_set(s : Dbtx2pcView, i : Int, v : Double) -> Dbtx2pcView {
   result
 }
 
-pub fn db_tx_2pc_view_sum(s : Dbtx2pcView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_view_sum(s : Dbtx2pcView) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_view_mean(s : Dbtx2pcView) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_view_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_view_mean(s : Dbtx2pcView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_view_scale(s : Dbtx2pcView, f : Double) -> Dbtx2pcView {
   let result = db_tx_2pc_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_tx_2pc_view_fill(s : Dbtx2pcView, v : Double) -> Dbtx2pcView {
   result
 }
 
-pub fn db_tx_2pc_view_min(s : Dbtx2pcView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_view_min(s : Dbtx2pcView) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_view_max(s : Dbtx2pcView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_view_max(s : Dbtx2pcView) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_view_to_string(s : Dbtx2pcView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_tx_2pc_range_set(s : Dbtx2pcRange, i : Int, v : Double) -> Dbtx2pcRang
   result
 }
 
-pub fn db_tx_2pc_range_sum(s : Dbtx2pcRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_range_sum(s : Dbtx2pcRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_range_mean(s : Dbtx2pcRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_range_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_range_mean(s : Dbtx2pcRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_range_scale(s : Dbtx2pcRange, f : Double) -> Dbtx2pcRange {
   let result = db_tx_2pc_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_tx_2pc_range_fill(s : Dbtx2pcRange, v : Double) -> Dbtx2pcRange {
   result
 }
 
-pub fn db_tx_2pc_range_min(s : Dbtx2pcRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_range_min(s : Dbtx2pcRange) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_range_max(s : Dbtx2pcRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_range_max(s : Dbtx2pcRange) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_range_to_string(s : Dbtx2pcRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_tx_2pc_slice_set(s : Dbtx2pcSlice, i : Int, v : Double) -> Dbtx2pcSlic
   result
 }
 
-pub fn db_tx_2pc_slice_sum(s : Dbtx2pcSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_2pc_slice_sum(s : Dbtx2pcSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_2pc_slice_mean(s : Dbtx2pcSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_2pc_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_2pc_slice_mean(s : Dbtx2pcSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_2pc_slice_scale(s : Dbtx2pcSlice, f : Double) -> Dbtx2pcSlice {
   let result = db_tx_2pc_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_tx_2pc_slice_fill(s : Dbtx2pcSlice, v : Double) -> Dbtx2pcSlice {
   result
 }
 
-pub fn db_tx_2pc_slice_min(s : Dbtx2pcSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_slice_min(s : Dbtx2pcSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_2pc_slice_max(s : Dbtx2pcSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_2pc_slice_max(s : Dbtx2pcSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_2pc_slice_to_string(s : Dbtx2pcSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

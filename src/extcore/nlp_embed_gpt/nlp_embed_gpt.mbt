@@ -88,11 +88,7 @@ pub fn nlp_embed_gpt_make_series(vals : Array[Double], name : String) -> Nlpembe
 
 pub fn nlp_embed_gpt_series_len(s : NlpembedgptSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_gpt_series_sum(s : NlpembedgptSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_gpt_series_sum(s : NlpembedgptSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_gpt_series_mean(s : NlpembedgptSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_gpt_frame_set(s : NlpembedgptFrame, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_gpt_frame_sum(s : NlpembedgptFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_frame_sum(s : NlpembedgptFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_frame_mean(s : NlpembedgptFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_frame_mean(s : NlpembedgptFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_frame_scale(s : NlpembedgptFrame, f : Double) -> NlpembedgptFrame {
   let result = nlp_embed_gpt_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_gpt_frame_fill(s : NlpembedgptFrame, v : Double) -> Nlpembedgpt
   result
 }
 
-pub fn nlp_embed_gpt_frame_min(s : NlpembedgptFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_frame_min(s : NlpembedgptFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_frame_max(s : NlpembedgptFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_frame_max(s : NlpembedgptFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_frame_to_string(s : NlpembedgptFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_gpt_table_set(s : NlpembedgptTable, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_gpt_table_sum(s : NlpembedgptTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_table_sum(s : NlpembedgptTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_table_mean(s : NlpembedgptTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_table_mean(s : NlpembedgptTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_table_scale(s : NlpembedgptTable, f : Double) -> NlpembedgptTable {
   let result = nlp_embed_gpt_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_gpt_table_fill(s : NlpembedgptTable, v : Double) -> Nlpembedgpt
   result
 }
 
-pub fn nlp_embed_gpt_table_min(s : NlpembedgptTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_table_min(s : NlpembedgptTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_table_max(s : NlpembedgptTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_table_max(s : NlpembedgptTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_table_to_string(s : NlpembedgptTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_gpt_graphn_set(s : NlpembedgptGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_gpt_graphn_sum(s : NlpembedgptGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_graphn_sum(s : NlpembedgptGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_graphn_mean(s : NlpembedgptGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_graphn_mean(s : NlpembedgptGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_graphn_scale(s : NlpembedgptGraphN, f : Double) -> NlpembedgptGraphN {
   let result = nlp_embed_gpt_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_gpt_graphn_fill(s : NlpembedgptGraphN, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_gpt_graphn_min(s : NlpembedgptGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_graphn_min(s : NlpembedgptGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_graphn_max(s : NlpembedgptGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_graphn_max(s : NlpembedgptGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_graphn_to_string(s : NlpembedgptGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_gpt_node_set(s : NlpembedgptNode, i : Int, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_gpt_node_sum(s : NlpembedgptNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_node_sum(s : NlpembedgptNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_node_mean(s : NlpembedgptNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_node_mean(s : NlpembedgptNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_node_scale(s : NlpembedgptNode, f : Double) -> NlpembedgptNode {
   let result = nlp_embed_gpt_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_gpt_node_fill(s : NlpembedgptNode, v : Double) -> NlpembedgptNo
   result
 }
 
-pub fn nlp_embed_gpt_node_min(s : NlpembedgptNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_node_min(s : NlpembedgptNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_node_max(s : NlpembedgptNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_node_max(s : NlpembedgptNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_node_to_string(s : NlpembedgptNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_gpt_edge_set(s : NlpembedgptEdge, i : Int, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_gpt_edge_sum(s : NlpembedgptEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_edge_sum(s : NlpembedgptEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_edge_mean(s : NlpembedgptEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_edge_mean(s : NlpembedgptEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_edge_scale(s : NlpembedgptEdge, f : Double) -> NlpembedgptEdge {
   let result = nlp_embed_gpt_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_gpt_edge_fill(s : NlpembedgptEdge, v : Double) -> NlpembedgptEd
   result
 }
 
-pub fn nlp_embed_gpt_edge_min(s : NlpembedgptEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_edge_min(s : NlpembedgptEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_edge_max(s : NlpembedgptEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_edge_max(s : NlpembedgptEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_edge_to_string(s : NlpembedgptEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_gpt_path_set(s : NlpembedgptPath, i : Int, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_gpt_path_sum(s : NlpembedgptPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_path_sum(s : NlpembedgptPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_path_mean(s : NlpembedgptPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_path_mean(s : NlpembedgptPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_path_scale(s : NlpembedgptPath, f : Double) -> NlpembedgptPath {
   let result = nlp_embed_gpt_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_gpt_path_fill(s : NlpembedgptPath, v : Double) -> NlpembedgptPa
   result
 }
 
-pub fn nlp_embed_gpt_path_min(s : NlpembedgptPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_path_min(s : NlpembedgptPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_path_max(s : NlpembedgptPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_path_max(s : NlpembedgptPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_path_to_string(s : NlpembedgptPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_gpt_cluster_set(s : NlpembedgptCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_gpt_cluster_sum(s : NlpembedgptCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_cluster_sum(s : NlpembedgptCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_cluster_mean(s : NlpembedgptCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_cluster_mean(s : NlpembedgptCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_cluster_scale(s : NlpembedgptCluster, f : Double) -> NlpembedgptCluster {
   let result = nlp_embed_gpt_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_gpt_cluster_fill(s : NlpembedgptCluster, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_gpt_cluster_min(s : NlpembedgptCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_cluster_min(s : NlpembedgptCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_cluster_max(s : NlpembedgptCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_cluster_max(s : NlpembedgptCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_cluster_to_string(s : NlpembedgptCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_gpt_model_set(s : NlpembedgptModel, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_gpt_model_sum(s : NlpembedgptModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_model_sum(s : NlpembedgptModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_model_mean(s : NlpembedgptModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_model_mean(s : NlpembedgptModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_model_scale(s : NlpembedgptModel, f : Double) -> NlpembedgptModel {
   let result = nlp_embed_gpt_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_gpt_model_fill(s : NlpembedgptModel, v : Double) -> Nlpembedgpt
   result
 }
 
-pub fn nlp_embed_gpt_model_min(s : NlpembedgptModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_model_min(s : NlpembedgptModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_model_max(s : NlpembedgptModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_model_max(s : NlpembedgptModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_model_to_string(s : NlpembedgptModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_gpt_layer_set(s : NlpembedgptLayer, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_gpt_layer_sum(s : NlpembedgptLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_layer_sum(s : NlpembedgptLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_layer_mean(s : NlpembedgptLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_layer_mean(s : NlpembedgptLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_layer_scale(s : NlpembedgptLayer, f : Double) -> NlpembedgptLayer {
   let result = nlp_embed_gpt_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_gpt_layer_fill(s : NlpembedgptLayer, v : Double) -> Nlpembedgpt
   result
 }
 
-pub fn nlp_embed_gpt_layer_min(s : NlpembedgptLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_layer_min(s : NlpembedgptLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_layer_max(s : NlpembedgptLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_layer_max(s : NlpembedgptLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_layer_to_string(s : NlpembedgptLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_gpt_buffer_set(s : NlpembedgptBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_gpt_buffer_sum(s : NlpembedgptBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_buffer_sum(s : NlpembedgptBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_buffer_mean(s : NlpembedgptBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_buffer_mean(s : NlpembedgptBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_buffer_scale(s : NlpembedgptBuffer, f : Double) -> NlpembedgptBuffer {
   let result = nlp_embed_gpt_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_gpt_buffer_fill(s : NlpembedgptBuffer, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_gpt_buffer_min(s : NlpembedgptBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_buffer_min(s : NlpembedgptBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_buffer_max(s : NlpembedgptBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_buffer_max(s : NlpembedgptBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_buffer_to_string(s : NlpembedgptBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_gpt_cursor_set(s : NlpembedgptCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_gpt_cursor_sum(s : NlpembedgptCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_cursor_sum(s : NlpembedgptCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_cursor_mean(s : NlpembedgptCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_cursor_mean(s : NlpembedgptCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_cursor_scale(s : NlpembedgptCursor, f : Double) -> NlpembedgptCursor {
   let result = nlp_embed_gpt_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_gpt_cursor_fill(s : NlpembedgptCursor, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_gpt_cursor_min(s : NlpembedgptCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_cursor_min(s : NlpembedgptCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_cursor_max(s : NlpembedgptCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_cursor_max(s : NlpembedgptCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_cursor_to_string(s : NlpembedgptCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_gpt_view_set(s : NlpembedgptView, i : Int, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_gpt_view_sum(s : NlpembedgptView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_view_sum(s : NlpembedgptView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_view_mean(s : NlpembedgptView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_view_mean(s : NlpembedgptView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_view_scale(s : NlpembedgptView, f : Double) -> NlpembedgptView {
   let result = nlp_embed_gpt_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_gpt_view_fill(s : NlpembedgptView, v : Double) -> NlpembedgptVi
   result
 }
 
-pub fn nlp_embed_gpt_view_min(s : NlpembedgptView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_view_min(s : NlpembedgptView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_view_max(s : NlpembedgptView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_view_max(s : NlpembedgptView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_view_to_string(s : NlpembedgptView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_gpt_range_set(s : NlpembedgptRange, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_gpt_range_sum(s : NlpembedgptRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_range_sum(s : NlpembedgptRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_range_mean(s : NlpembedgptRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_range_mean(s : NlpembedgptRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_range_scale(s : NlpembedgptRange, f : Double) -> NlpembedgptRange {
   let result = nlp_embed_gpt_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_gpt_range_fill(s : NlpembedgptRange, v : Double) -> Nlpembedgpt
   result
 }
 
-pub fn nlp_embed_gpt_range_min(s : NlpembedgptRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_range_min(s : NlpembedgptRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_range_max(s : NlpembedgptRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_range_max(s : NlpembedgptRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_range_to_string(s : NlpembedgptRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_gpt_slice_set(s : NlpembedgptSlice, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_gpt_slice_sum(s : NlpembedgptSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_gpt_slice_sum(s : NlpembedgptSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_gpt_slice_mean(s : NlpembedgptSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_gpt_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_gpt_slice_mean(s : NlpembedgptSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_gpt_slice_scale(s : NlpembedgptSlice, f : Double) -> NlpembedgptSlice {
   let result = nlp_embed_gpt_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_gpt_slice_fill(s : NlpembedgptSlice, v : Double) -> Nlpembedgpt
   result
 }
 
-pub fn nlp_embed_gpt_slice_min(s : NlpembedgptSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_slice_min(s : NlpembedgptSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_gpt_slice_max(s : NlpembedgptSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_gpt_slice_max(s : NlpembedgptSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_gpt_slice_to_string(s : NlpembedgptSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

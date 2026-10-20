@@ -88,11 +88,7 @@ pub fn chem_mol_props_stereo_make_series(vals : Array[Double], name : String) ->
 
 pub fn chem_mol_props_stereo_series_len(s : ChemmolpropsstereoSeries) -> Int { s.vals.length() }
 
-pub fn chem_mol_props_stereo_series_sum(s : ChemmolpropsstereoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_mol_props_stereo_series_sum(s : ChemmolpropsstereoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_mol_props_stereo_series_mean(s : ChemmolpropsstereoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_mol_props_stereo_frame_set(s : ChemmolpropsstereoFrame, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_stereo_frame_sum(s : ChemmolpropsstereoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_frame_sum(s : ChemmolpropsstereoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_frame_mean(s : ChemmolpropsstereoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_frame_mean(s : ChemmolpropsstereoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_frame_scale(s : ChemmolpropsstereoFrame, f : Double) -> ChemmolpropsstereoFrame {
   let result = chem_mol_props_stereo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_mol_props_stereo_frame_fill(s : ChemmolpropsstereoFrame, v : Double)
   result
 }
 
-pub fn chem_mol_props_stereo_frame_min(s : ChemmolpropsstereoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_frame_min(s : ChemmolpropsstereoFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_frame_max(s : ChemmolpropsstereoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_frame_max(s : ChemmolpropsstereoFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_frame_to_string(s : ChemmolpropsstereoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_mol_props_stereo_table_set(s : ChemmolpropsstereoTable, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_stereo_table_sum(s : ChemmolpropsstereoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_table_sum(s : ChemmolpropsstereoTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_table_mean(s : ChemmolpropsstereoTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_table_mean(s : ChemmolpropsstereoTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_table_scale(s : ChemmolpropsstereoTable, f : Double) -> ChemmolpropsstereoTable {
   let result = chem_mol_props_stereo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_mol_props_stereo_table_fill(s : ChemmolpropsstereoTable, v : Double)
   result
 }
 
-pub fn chem_mol_props_stereo_table_min(s : ChemmolpropsstereoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_table_min(s : ChemmolpropsstereoTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_table_max(s : ChemmolpropsstereoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_table_max(s : ChemmolpropsstereoTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_table_to_string(s : ChemmolpropsstereoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_mol_props_stereo_graphn_set(s : ChemmolpropsstereoGraphN, i : Int, v
   result
 }
 
-pub fn chem_mol_props_stereo_graphn_sum(s : ChemmolpropsstereoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_graphn_sum(s : ChemmolpropsstereoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_graphn_mean(s : ChemmolpropsstereoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_graphn_mean(s : ChemmolpropsstereoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_graphn_scale(s : ChemmolpropsstereoGraphN, f : Double) -> ChemmolpropsstereoGraphN {
   let result = chem_mol_props_stereo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_mol_props_stereo_graphn_fill(s : ChemmolpropsstereoGraphN, v : Doubl
   result
 }
 
-pub fn chem_mol_props_stereo_graphn_min(s : ChemmolpropsstereoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_graphn_min(s : ChemmolpropsstereoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_graphn_max(s : ChemmolpropsstereoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_graphn_max(s : ChemmolpropsstereoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_graphn_to_string(s : ChemmolpropsstereoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_mol_props_stereo_node_set(s : ChemmolpropsstereoNode, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_stereo_node_sum(s : ChemmolpropsstereoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_node_sum(s : ChemmolpropsstereoNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_node_mean(s : ChemmolpropsstereoNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_node_mean(s : ChemmolpropsstereoNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_node_scale(s : ChemmolpropsstereoNode, f : Double) -> ChemmolpropsstereoNode {
   let result = chem_mol_props_stereo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_mol_props_stereo_node_fill(s : ChemmolpropsstereoNode, v : Double) -
   result
 }
 
-pub fn chem_mol_props_stereo_node_min(s : ChemmolpropsstereoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_node_min(s : ChemmolpropsstereoNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_node_max(s : ChemmolpropsstereoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_node_max(s : ChemmolpropsstereoNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_node_to_string(s : ChemmolpropsstereoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_mol_props_stereo_edge_set(s : ChemmolpropsstereoEdge, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_stereo_edge_sum(s : ChemmolpropsstereoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_edge_sum(s : ChemmolpropsstereoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_edge_mean(s : ChemmolpropsstereoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_edge_mean(s : ChemmolpropsstereoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_edge_scale(s : ChemmolpropsstereoEdge, f : Double) -> ChemmolpropsstereoEdge {
   let result = chem_mol_props_stereo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_mol_props_stereo_edge_fill(s : ChemmolpropsstereoEdge, v : Double) -
   result
 }
 
-pub fn chem_mol_props_stereo_edge_min(s : ChemmolpropsstereoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_edge_min(s : ChemmolpropsstereoEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_edge_max(s : ChemmolpropsstereoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_edge_max(s : ChemmolpropsstereoEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_edge_to_string(s : ChemmolpropsstereoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_mol_props_stereo_path_set(s : ChemmolpropsstereoPath, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_stereo_path_sum(s : ChemmolpropsstereoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_path_sum(s : ChemmolpropsstereoPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_path_mean(s : ChemmolpropsstereoPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_path_mean(s : ChemmolpropsstereoPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_path_scale(s : ChemmolpropsstereoPath, f : Double) -> ChemmolpropsstereoPath {
   let result = chem_mol_props_stereo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_mol_props_stereo_path_fill(s : ChemmolpropsstereoPath, v : Double) -
   result
 }
 
-pub fn chem_mol_props_stereo_path_min(s : ChemmolpropsstereoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_path_min(s : ChemmolpropsstereoPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_path_max(s : ChemmolpropsstereoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_path_max(s : ChemmolpropsstereoPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_path_to_string(s : ChemmolpropsstereoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_mol_props_stereo_cluster_set(s : ChemmolpropsstereoCluster, i : Int,
   result
 }
 
-pub fn chem_mol_props_stereo_cluster_sum(s : ChemmolpropsstereoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_cluster_sum(s : ChemmolpropsstereoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_cluster_mean(s : ChemmolpropsstereoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_cluster_mean(s : ChemmolpropsstereoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_cluster_scale(s : ChemmolpropsstereoCluster, f : Double) -> ChemmolpropsstereoCluster {
   let result = chem_mol_props_stereo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_mol_props_stereo_cluster_fill(s : ChemmolpropsstereoCluster, v : Dou
   result
 }
 
-pub fn chem_mol_props_stereo_cluster_min(s : ChemmolpropsstereoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_cluster_min(s : ChemmolpropsstereoCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_cluster_max(s : ChemmolpropsstereoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_cluster_max(s : ChemmolpropsstereoCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_cluster_to_string(s : ChemmolpropsstereoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_mol_props_stereo_model_set(s : ChemmolpropsstereoModel, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_stereo_model_sum(s : ChemmolpropsstereoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_model_sum(s : ChemmolpropsstereoModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_model_mean(s : ChemmolpropsstereoModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_model_mean(s : ChemmolpropsstereoModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_model_scale(s : ChemmolpropsstereoModel, f : Double) -> ChemmolpropsstereoModel {
   let result = chem_mol_props_stereo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_mol_props_stereo_model_fill(s : ChemmolpropsstereoModel, v : Double)
   result
 }
 
-pub fn chem_mol_props_stereo_model_min(s : ChemmolpropsstereoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_model_min(s : ChemmolpropsstereoModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_model_max(s : ChemmolpropsstereoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_model_max(s : ChemmolpropsstereoModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_model_to_string(s : ChemmolpropsstereoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_mol_props_stereo_layer_set(s : ChemmolpropsstereoLayer, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_stereo_layer_sum(s : ChemmolpropsstereoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_layer_sum(s : ChemmolpropsstereoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_layer_mean(s : ChemmolpropsstereoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_layer_mean(s : ChemmolpropsstereoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_layer_scale(s : ChemmolpropsstereoLayer, f : Double) -> ChemmolpropsstereoLayer {
   let result = chem_mol_props_stereo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_mol_props_stereo_layer_fill(s : ChemmolpropsstereoLayer, v : Double)
   result
 }
 
-pub fn chem_mol_props_stereo_layer_min(s : ChemmolpropsstereoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_layer_min(s : ChemmolpropsstereoLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_layer_max(s : ChemmolpropsstereoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_layer_max(s : ChemmolpropsstereoLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_layer_to_string(s : ChemmolpropsstereoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_mol_props_stereo_buffer_set(s : ChemmolpropsstereoBuffer, i : Int, v
   result
 }
 
-pub fn chem_mol_props_stereo_buffer_sum(s : ChemmolpropsstereoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_buffer_sum(s : ChemmolpropsstereoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_buffer_mean(s : ChemmolpropsstereoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_buffer_mean(s : ChemmolpropsstereoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_buffer_scale(s : ChemmolpropsstereoBuffer, f : Double) -> ChemmolpropsstereoBuffer {
   let result = chem_mol_props_stereo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_mol_props_stereo_buffer_fill(s : ChemmolpropsstereoBuffer, v : Doubl
   result
 }
 
-pub fn chem_mol_props_stereo_buffer_min(s : ChemmolpropsstereoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_buffer_min(s : ChemmolpropsstereoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_buffer_max(s : ChemmolpropsstereoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_buffer_max(s : ChemmolpropsstereoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_buffer_to_string(s : ChemmolpropsstereoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_mol_props_stereo_cursor_set(s : ChemmolpropsstereoCursor, i : Int, v
   result
 }
 
-pub fn chem_mol_props_stereo_cursor_sum(s : ChemmolpropsstereoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_cursor_sum(s : ChemmolpropsstereoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_cursor_mean(s : ChemmolpropsstereoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_cursor_mean(s : ChemmolpropsstereoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_cursor_scale(s : ChemmolpropsstereoCursor, f : Double) -> ChemmolpropsstereoCursor {
   let result = chem_mol_props_stereo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_mol_props_stereo_cursor_fill(s : ChemmolpropsstereoCursor, v : Doubl
   result
 }
 
-pub fn chem_mol_props_stereo_cursor_min(s : ChemmolpropsstereoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_cursor_min(s : ChemmolpropsstereoCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_cursor_max(s : ChemmolpropsstereoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_cursor_max(s : ChemmolpropsstereoCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_cursor_to_string(s : ChemmolpropsstereoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_mol_props_stereo_view_set(s : ChemmolpropsstereoView, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_stereo_view_sum(s : ChemmolpropsstereoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_view_sum(s : ChemmolpropsstereoView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_view_mean(s : ChemmolpropsstereoView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_view_mean(s : ChemmolpropsstereoView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_view_scale(s : ChemmolpropsstereoView, f : Double) -> ChemmolpropsstereoView {
   let result = chem_mol_props_stereo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_mol_props_stereo_view_fill(s : ChemmolpropsstereoView, v : Double) -
   result
 }
 
-pub fn chem_mol_props_stereo_view_min(s : ChemmolpropsstereoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_view_min(s : ChemmolpropsstereoView) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_view_max(s : ChemmolpropsstereoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_view_max(s : ChemmolpropsstereoView) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_view_to_string(s : ChemmolpropsstereoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_mol_props_stereo_range_set(s : ChemmolpropsstereoRange, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_stereo_range_sum(s : ChemmolpropsstereoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_range_sum(s : ChemmolpropsstereoRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_range_mean(s : ChemmolpropsstereoRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_range_mean(s : ChemmolpropsstereoRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_range_scale(s : ChemmolpropsstereoRange, f : Double) -> ChemmolpropsstereoRange {
   let result = chem_mol_props_stereo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_mol_props_stereo_range_fill(s : ChemmolpropsstereoRange, v : Double)
   result
 }
 
-pub fn chem_mol_props_stereo_range_min(s : ChemmolpropsstereoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_range_min(s : ChemmolpropsstereoRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_range_max(s : ChemmolpropsstereoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_range_max(s : ChemmolpropsstereoRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_range_to_string(s : ChemmolpropsstereoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_mol_props_stereo_slice_set(s : ChemmolpropsstereoSlice, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_stereo_slice_sum(s : ChemmolpropsstereoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_stereo_slice_sum(s : ChemmolpropsstereoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_stereo_slice_mean(s : ChemmolpropsstereoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_stereo_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_stereo_slice_mean(s : ChemmolpropsstereoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_stereo_slice_scale(s : ChemmolpropsstereoSlice, f : Double) -> ChemmolpropsstereoSlice {
   let result = chem_mol_props_stereo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_mol_props_stereo_slice_fill(s : ChemmolpropsstereoSlice, v : Double)
   result
 }
 
-pub fn chem_mol_props_stereo_slice_min(s : ChemmolpropsstereoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_slice_min(s : ChemmolpropsstereoSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_stereo_slice_max(s : ChemmolpropsstereoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_stereo_slice_max(s : ChemmolpropsstereoSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_stereo_slice_to_string(s : ChemmolpropsstereoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

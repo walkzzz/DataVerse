@@ -88,11 +88,7 @@ pub fn graph_tree_center_make_series(vals : Array[Double], name : String) -> Gra
 
 pub fn graph_tree_center_series_len(s : GraphtreecenterSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_center_series_sum(s : GraphtreecenterSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_center_series_sum(s : GraphtreecenterSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_center_series_mean(s : GraphtreecenterSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_center_frame_set(s : GraphtreecenterFrame, i : Int, v : Double
   result
 }
 
-pub fn graph_tree_center_frame_sum(s : GraphtreecenterFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_frame_sum(s : GraphtreecenterFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_frame_mean(s : GraphtreecenterFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_frame_mean(s : GraphtreecenterFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_frame_scale(s : GraphtreecenterFrame, f : Double) -> GraphtreecenterFrame {
   let result = graph_tree_center_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_center_frame_fill(s : GraphtreecenterFrame, v : Double) -> Gra
   result
 }
 
-pub fn graph_tree_center_frame_min(s : GraphtreecenterFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_frame_min(s : GraphtreecenterFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_frame_max(s : GraphtreecenterFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_frame_max(s : GraphtreecenterFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_frame_to_string(s : GraphtreecenterFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_center_table_set(s : GraphtreecenterTable, i : Int, v : Double
   result
 }
 
-pub fn graph_tree_center_table_sum(s : GraphtreecenterTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_table_sum(s : GraphtreecenterTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_table_mean(s : GraphtreecenterTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_table_mean(s : GraphtreecenterTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_table_scale(s : GraphtreecenterTable, f : Double) -> GraphtreecenterTable {
   let result = graph_tree_center_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_center_table_fill(s : GraphtreecenterTable, v : Double) -> Gra
   result
 }
 
-pub fn graph_tree_center_table_min(s : GraphtreecenterTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_table_min(s : GraphtreecenterTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_table_max(s : GraphtreecenterTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_table_max(s : GraphtreecenterTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_table_to_string(s : GraphtreecenterTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_center_graphn_set(s : GraphtreecenterGraphN, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_center_graphn_sum(s : GraphtreecenterGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_graphn_sum(s : GraphtreecenterGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_graphn_mean(s : GraphtreecenterGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_graphn_mean(s : GraphtreecenterGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_graphn_scale(s : GraphtreecenterGraphN, f : Double) -> GraphtreecenterGraphN {
   let result = graph_tree_center_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_center_graphn_fill(s : GraphtreecenterGraphN, v : Double) -> G
   result
 }
 
-pub fn graph_tree_center_graphn_min(s : GraphtreecenterGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_graphn_min(s : GraphtreecenterGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_graphn_max(s : GraphtreecenterGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_graphn_max(s : GraphtreecenterGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_graphn_to_string(s : GraphtreecenterGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_center_node_set(s : GraphtreecenterNode, i : Int, v : Double) 
   result
 }
 
-pub fn graph_tree_center_node_sum(s : GraphtreecenterNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_node_sum(s : GraphtreecenterNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_node_mean(s : GraphtreecenterNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_node_mean(s : GraphtreecenterNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_node_scale(s : GraphtreecenterNode, f : Double) -> GraphtreecenterNode {
   let result = graph_tree_center_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_center_node_fill(s : GraphtreecenterNode, v : Double) -> Graph
   result
 }
 
-pub fn graph_tree_center_node_min(s : GraphtreecenterNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_node_min(s : GraphtreecenterNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_node_max(s : GraphtreecenterNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_node_max(s : GraphtreecenterNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_node_to_string(s : GraphtreecenterNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_center_edge_set(s : GraphtreecenterEdge, i : Int, v : Double) 
   result
 }
 
-pub fn graph_tree_center_edge_sum(s : GraphtreecenterEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_edge_sum(s : GraphtreecenterEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_edge_mean(s : GraphtreecenterEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_edge_mean(s : GraphtreecenterEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_edge_scale(s : GraphtreecenterEdge, f : Double) -> GraphtreecenterEdge {
   let result = graph_tree_center_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_center_edge_fill(s : GraphtreecenterEdge, v : Double) -> Graph
   result
 }
 
-pub fn graph_tree_center_edge_min(s : GraphtreecenterEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_edge_min(s : GraphtreecenterEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_edge_max(s : GraphtreecenterEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_edge_max(s : GraphtreecenterEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_edge_to_string(s : GraphtreecenterEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_center_path_set(s : GraphtreecenterPath, i : Int, v : Double) 
   result
 }
 
-pub fn graph_tree_center_path_sum(s : GraphtreecenterPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_path_sum(s : GraphtreecenterPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_path_mean(s : GraphtreecenterPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_path_mean(s : GraphtreecenterPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_path_scale(s : GraphtreecenterPath, f : Double) -> GraphtreecenterPath {
   let result = graph_tree_center_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_center_path_fill(s : GraphtreecenterPath, v : Double) -> Graph
   result
 }
 
-pub fn graph_tree_center_path_min(s : GraphtreecenterPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_path_min(s : GraphtreecenterPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_path_max(s : GraphtreecenterPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_path_max(s : GraphtreecenterPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_path_to_string(s : GraphtreecenterPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_center_cluster_set(s : GraphtreecenterCluster, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_center_cluster_sum(s : GraphtreecenterCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_cluster_sum(s : GraphtreecenterCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_cluster_mean(s : GraphtreecenterCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_cluster_mean(s : GraphtreecenterCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_cluster_scale(s : GraphtreecenterCluster, f : Double) -> GraphtreecenterCluster {
   let result = graph_tree_center_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_center_cluster_fill(s : GraphtreecenterCluster, v : Double) ->
   result
 }
 
-pub fn graph_tree_center_cluster_min(s : GraphtreecenterCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_cluster_min(s : GraphtreecenterCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_cluster_max(s : GraphtreecenterCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_cluster_max(s : GraphtreecenterCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_cluster_to_string(s : GraphtreecenterCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_center_model_set(s : GraphtreecenterModel, i : Int, v : Double
   result
 }
 
-pub fn graph_tree_center_model_sum(s : GraphtreecenterModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_model_sum(s : GraphtreecenterModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_model_mean(s : GraphtreecenterModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_model_mean(s : GraphtreecenterModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_model_scale(s : GraphtreecenterModel, f : Double) -> GraphtreecenterModel {
   let result = graph_tree_center_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_center_model_fill(s : GraphtreecenterModel, v : Double) -> Gra
   result
 }
 
-pub fn graph_tree_center_model_min(s : GraphtreecenterModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_model_min(s : GraphtreecenterModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_model_max(s : GraphtreecenterModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_model_max(s : GraphtreecenterModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_model_to_string(s : GraphtreecenterModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_center_layer_set(s : GraphtreecenterLayer, i : Int, v : Double
   result
 }
 
-pub fn graph_tree_center_layer_sum(s : GraphtreecenterLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_layer_sum(s : GraphtreecenterLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_layer_mean(s : GraphtreecenterLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_layer_mean(s : GraphtreecenterLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_layer_scale(s : GraphtreecenterLayer, f : Double) -> GraphtreecenterLayer {
   let result = graph_tree_center_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_center_layer_fill(s : GraphtreecenterLayer, v : Double) -> Gra
   result
 }
 
-pub fn graph_tree_center_layer_min(s : GraphtreecenterLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_layer_min(s : GraphtreecenterLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_layer_max(s : GraphtreecenterLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_layer_max(s : GraphtreecenterLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_layer_to_string(s : GraphtreecenterLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_center_buffer_set(s : GraphtreecenterBuffer, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_center_buffer_sum(s : GraphtreecenterBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_buffer_sum(s : GraphtreecenterBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_buffer_mean(s : GraphtreecenterBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_buffer_mean(s : GraphtreecenterBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_buffer_scale(s : GraphtreecenterBuffer, f : Double) -> GraphtreecenterBuffer {
   let result = graph_tree_center_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_center_buffer_fill(s : GraphtreecenterBuffer, v : Double) -> G
   result
 }
 
-pub fn graph_tree_center_buffer_min(s : GraphtreecenterBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_buffer_min(s : GraphtreecenterBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_buffer_max(s : GraphtreecenterBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_buffer_max(s : GraphtreecenterBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_buffer_to_string(s : GraphtreecenterBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_center_cursor_set(s : GraphtreecenterCursor, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_center_cursor_sum(s : GraphtreecenterCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_cursor_sum(s : GraphtreecenterCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_cursor_mean(s : GraphtreecenterCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_cursor_mean(s : GraphtreecenterCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_cursor_scale(s : GraphtreecenterCursor, f : Double) -> GraphtreecenterCursor {
   let result = graph_tree_center_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_center_cursor_fill(s : GraphtreecenterCursor, v : Double) -> G
   result
 }
 
-pub fn graph_tree_center_cursor_min(s : GraphtreecenterCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_cursor_min(s : GraphtreecenterCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_cursor_max(s : GraphtreecenterCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_cursor_max(s : GraphtreecenterCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_cursor_to_string(s : GraphtreecenterCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_center_view_set(s : GraphtreecenterView, i : Int, v : Double) 
   result
 }
 
-pub fn graph_tree_center_view_sum(s : GraphtreecenterView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_view_sum(s : GraphtreecenterView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_view_mean(s : GraphtreecenterView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_view_mean(s : GraphtreecenterView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_view_scale(s : GraphtreecenterView, f : Double) -> GraphtreecenterView {
   let result = graph_tree_center_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_center_view_fill(s : GraphtreecenterView, v : Double) -> Graph
   result
 }
 
-pub fn graph_tree_center_view_min(s : GraphtreecenterView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_view_min(s : GraphtreecenterView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_view_max(s : GraphtreecenterView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_view_max(s : GraphtreecenterView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_view_to_string(s : GraphtreecenterView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_center_range_set(s : GraphtreecenterRange, i : Int, v : Double
   result
 }
 
-pub fn graph_tree_center_range_sum(s : GraphtreecenterRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_range_sum(s : GraphtreecenterRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_range_mean(s : GraphtreecenterRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_range_mean(s : GraphtreecenterRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_range_scale(s : GraphtreecenterRange, f : Double) -> GraphtreecenterRange {
   let result = graph_tree_center_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_center_range_fill(s : GraphtreecenterRange, v : Double) -> Gra
   result
 }
 
-pub fn graph_tree_center_range_min(s : GraphtreecenterRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_range_min(s : GraphtreecenterRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_range_max(s : GraphtreecenterRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_range_max(s : GraphtreecenterRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_range_to_string(s : GraphtreecenterRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_center_slice_set(s : GraphtreecenterSlice, i : Int, v : Double
   result
 }
 
-pub fn graph_tree_center_slice_sum(s : GraphtreecenterSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_center_slice_sum(s : GraphtreecenterSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_center_slice_mean(s : GraphtreecenterSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_center_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_center_slice_mean(s : GraphtreecenterSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_center_slice_scale(s : GraphtreecenterSlice, f : Double) -> GraphtreecenterSlice {
   let result = graph_tree_center_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_center_slice_fill(s : GraphtreecenterSlice, v : Double) -> Gra
   result
 }
 
-pub fn graph_tree_center_slice_min(s : GraphtreecenterSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_slice_min(s : GraphtreecenterSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_center_slice_max(s : GraphtreecenterSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_center_slice_max(s : GraphtreecenterSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_center_slice_to_string(s : GraphtreecenterSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

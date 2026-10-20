@@ -88,11 +88,7 @@ pub fn geo_dist_spherical_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_dist_spherical_series_len(s : GeodistsphericalSeries) -> Int { s.vals.length() }
 
-pub fn geo_dist_spherical_series_sum(s : GeodistsphericalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_dist_spherical_series_sum(s : GeodistsphericalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_dist_spherical_series_mean(s : GeodistsphericalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_dist_spherical_frame_set(s : GeodistsphericalFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_spherical_frame_sum(s : GeodistsphericalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_frame_sum(s : GeodistsphericalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_frame_mean(s : GeodistsphericalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_frame_mean(s : GeodistsphericalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_frame_scale(s : GeodistsphericalFrame, f : Double) -> GeodistsphericalFrame {
   let result = geo_dist_spherical_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_dist_spherical_frame_fill(s : GeodistsphericalFrame, v : Double) -> G
   result
 }
 
-pub fn geo_dist_spherical_frame_min(s : GeodistsphericalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_frame_min(s : GeodistsphericalFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_frame_max(s : GeodistsphericalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_frame_max(s : GeodistsphericalFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_frame_to_string(s : GeodistsphericalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_dist_spherical_table_set(s : GeodistsphericalTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_spherical_table_sum(s : GeodistsphericalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_table_sum(s : GeodistsphericalTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_table_mean(s : GeodistsphericalTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_table_mean(s : GeodistsphericalTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_table_scale(s : GeodistsphericalTable, f : Double) -> GeodistsphericalTable {
   let result = geo_dist_spherical_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_dist_spherical_table_fill(s : GeodistsphericalTable, v : Double) -> G
   result
 }
 
-pub fn geo_dist_spherical_table_min(s : GeodistsphericalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_table_min(s : GeodistsphericalTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_table_max(s : GeodistsphericalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_table_max(s : GeodistsphericalTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_table_to_string(s : GeodistsphericalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_dist_spherical_graphn_set(s : GeodistsphericalGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_spherical_graphn_sum(s : GeodistsphericalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_graphn_sum(s : GeodistsphericalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_graphn_mean(s : GeodistsphericalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_graphn_mean(s : GeodistsphericalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_graphn_scale(s : GeodistsphericalGraphN, f : Double) -> GeodistsphericalGraphN {
   let result = geo_dist_spherical_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_dist_spherical_graphn_fill(s : GeodistsphericalGraphN, v : Double) ->
   result
 }
 
-pub fn geo_dist_spherical_graphn_min(s : GeodistsphericalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_graphn_min(s : GeodistsphericalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_graphn_max(s : GeodistsphericalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_graphn_max(s : GeodistsphericalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_graphn_to_string(s : GeodistsphericalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_dist_spherical_node_set(s : GeodistsphericalNode, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_spherical_node_sum(s : GeodistsphericalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_node_sum(s : GeodistsphericalNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_node_mean(s : GeodistsphericalNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_node_mean(s : GeodistsphericalNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_node_scale(s : GeodistsphericalNode, f : Double) -> GeodistsphericalNode {
   let result = geo_dist_spherical_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_dist_spherical_node_fill(s : GeodistsphericalNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_spherical_node_min(s : GeodistsphericalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_node_min(s : GeodistsphericalNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_node_max(s : GeodistsphericalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_node_max(s : GeodistsphericalNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_node_to_string(s : GeodistsphericalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_dist_spherical_edge_set(s : GeodistsphericalEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_spherical_edge_sum(s : GeodistsphericalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_edge_sum(s : GeodistsphericalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_edge_mean(s : GeodistsphericalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_edge_mean(s : GeodistsphericalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_edge_scale(s : GeodistsphericalEdge, f : Double) -> GeodistsphericalEdge {
   let result = geo_dist_spherical_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_dist_spherical_edge_fill(s : GeodistsphericalEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_spherical_edge_min(s : GeodistsphericalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_edge_min(s : GeodistsphericalEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_edge_max(s : GeodistsphericalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_edge_max(s : GeodistsphericalEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_edge_to_string(s : GeodistsphericalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_dist_spherical_path_set(s : GeodistsphericalPath, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_spherical_path_sum(s : GeodistsphericalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_path_sum(s : GeodistsphericalPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_path_mean(s : GeodistsphericalPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_path_mean(s : GeodistsphericalPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_path_scale(s : GeodistsphericalPath, f : Double) -> GeodistsphericalPath {
   let result = geo_dist_spherical_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_dist_spherical_path_fill(s : GeodistsphericalPath, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_spherical_path_min(s : GeodistsphericalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_path_min(s : GeodistsphericalPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_path_max(s : GeodistsphericalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_path_max(s : GeodistsphericalPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_path_to_string(s : GeodistsphericalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_dist_spherical_cluster_set(s : GeodistsphericalCluster, i : Int, v : 
   result
 }
 
-pub fn geo_dist_spherical_cluster_sum(s : GeodistsphericalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_cluster_sum(s : GeodistsphericalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_cluster_mean(s : GeodistsphericalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_cluster_mean(s : GeodistsphericalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_cluster_scale(s : GeodistsphericalCluster, f : Double) -> GeodistsphericalCluster {
   let result = geo_dist_spherical_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_dist_spherical_cluster_fill(s : GeodistsphericalCluster, v : Double) 
   result
 }
 
-pub fn geo_dist_spherical_cluster_min(s : GeodistsphericalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_cluster_min(s : GeodistsphericalCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_cluster_max(s : GeodistsphericalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_cluster_max(s : GeodistsphericalCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_cluster_to_string(s : GeodistsphericalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_dist_spherical_model_set(s : GeodistsphericalModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_spherical_model_sum(s : GeodistsphericalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_model_sum(s : GeodistsphericalModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_model_mean(s : GeodistsphericalModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_model_mean(s : GeodistsphericalModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_model_scale(s : GeodistsphericalModel, f : Double) -> GeodistsphericalModel {
   let result = geo_dist_spherical_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_dist_spherical_model_fill(s : GeodistsphericalModel, v : Double) -> G
   result
 }
 
-pub fn geo_dist_spherical_model_min(s : GeodistsphericalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_model_min(s : GeodistsphericalModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_model_max(s : GeodistsphericalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_model_max(s : GeodistsphericalModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_model_to_string(s : GeodistsphericalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_dist_spherical_layer_set(s : GeodistsphericalLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_spherical_layer_sum(s : GeodistsphericalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_layer_sum(s : GeodistsphericalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_layer_mean(s : GeodistsphericalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_layer_mean(s : GeodistsphericalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_layer_scale(s : GeodistsphericalLayer, f : Double) -> GeodistsphericalLayer {
   let result = geo_dist_spherical_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_dist_spherical_layer_fill(s : GeodistsphericalLayer, v : Double) -> G
   result
 }
 
-pub fn geo_dist_spherical_layer_min(s : GeodistsphericalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_layer_min(s : GeodistsphericalLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_layer_max(s : GeodistsphericalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_layer_max(s : GeodistsphericalLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_layer_to_string(s : GeodistsphericalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_dist_spherical_buffer_set(s : GeodistsphericalBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_spherical_buffer_sum(s : GeodistsphericalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_buffer_sum(s : GeodistsphericalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_buffer_mean(s : GeodistsphericalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_buffer_mean(s : GeodistsphericalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_buffer_scale(s : GeodistsphericalBuffer, f : Double) -> GeodistsphericalBuffer {
   let result = geo_dist_spherical_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_dist_spherical_buffer_fill(s : GeodistsphericalBuffer, v : Double) ->
   result
 }
 
-pub fn geo_dist_spherical_buffer_min(s : GeodistsphericalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_buffer_min(s : GeodistsphericalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_buffer_max(s : GeodistsphericalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_buffer_max(s : GeodistsphericalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_buffer_to_string(s : GeodistsphericalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_dist_spherical_cursor_set(s : GeodistsphericalCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_spherical_cursor_sum(s : GeodistsphericalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_cursor_sum(s : GeodistsphericalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_cursor_mean(s : GeodistsphericalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_cursor_mean(s : GeodistsphericalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_cursor_scale(s : GeodistsphericalCursor, f : Double) -> GeodistsphericalCursor {
   let result = geo_dist_spherical_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_dist_spherical_cursor_fill(s : GeodistsphericalCursor, v : Double) ->
   result
 }
 
-pub fn geo_dist_spherical_cursor_min(s : GeodistsphericalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_cursor_min(s : GeodistsphericalCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_cursor_max(s : GeodistsphericalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_cursor_max(s : GeodistsphericalCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_cursor_to_string(s : GeodistsphericalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_dist_spherical_view_set(s : GeodistsphericalView, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_spherical_view_sum(s : GeodistsphericalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_view_sum(s : GeodistsphericalView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_view_mean(s : GeodistsphericalView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_view_mean(s : GeodistsphericalView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_view_scale(s : GeodistsphericalView, f : Double) -> GeodistsphericalView {
   let result = geo_dist_spherical_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_dist_spherical_view_fill(s : GeodistsphericalView, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_spherical_view_min(s : GeodistsphericalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_view_min(s : GeodistsphericalView) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_view_max(s : GeodistsphericalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_view_max(s : GeodistsphericalView) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_view_to_string(s : GeodistsphericalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_dist_spherical_range_set(s : GeodistsphericalRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_spherical_range_sum(s : GeodistsphericalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_range_sum(s : GeodistsphericalRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_range_mean(s : GeodistsphericalRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_range_mean(s : GeodistsphericalRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_range_scale(s : GeodistsphericalRange, f : Double) -> GeodistsphericalRange {
   let result = geo_dist_spherical_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_dist_spherical_range_fill(s : GeodistsphericalRange, v : Double) -> G
   result
 }
 
-pub fn geo_dist_spherical_range_min(s : GeodistsphericalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_range_min(s : GeodistsphericalRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_range_max(s : GeodistsphericalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_range_max(s : GeodistsphericalRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_range_to_string(s : GeodistsphericalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_dist_spherical_slice_set(s : GeodistsphericalSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_spherical_slice_sum(s : GeodistsphericalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_spherical_slice_sum(s : GeodistsphericalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_spherical_slice_mean(s : GeodistsphericalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_spherical_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_spherical_slice_mean(s : GeodistsphericalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_spherical_slice_scale(s : GeodistsphericalSlice, f : Double) -> GeodistsphericalSlice {
   let result = geo_dist_spherical_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_dist_spherical_slice_fill(s : GeodistsphericalSlice, v : Double) -> G
   result
 }
 
-pub fn geo_dist_spherical_slice_min(s : GeodistsphericalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_slice_min(s : GeodistsphericalSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_spherical_slice_max(s : GeodistsphericalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_spherical_slice_max(s : GeodistsphericalSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_spherical_slice_to_string(s : GeodistsphericalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

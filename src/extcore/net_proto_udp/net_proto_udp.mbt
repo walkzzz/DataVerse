@@ -88,11 +88,7 @@ pub fn net_proto_udp_make_series(vals : Array[Double], name : String) -> Netprot
 
 pub fn net_proto_udp_series_len(s : NetprotoudpSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_udp_series_sum(s : NetprotoudpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_udp_series_sum(s : NetprotoudpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_udp_series_mean(s : NetprotoudpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_udp_frame_set(s : NetprotoudpFrame, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_udp_frame_sum(s : NetprotoudpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_frame_sum(s : NetprotoudpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_frame_mean(s : NetprotoudpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_frame_mean(s : NetprotoudpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_frame_scale(s : NetprotoudpFrame, f : Double) -> NetprotoudpFrame {
   let result = net_proto_udp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_udp_frame_fill(s : NetprotoudpFrame, v : Double) -> Netprotoudp
   result
 }
 
-pub fn net_proto_udp_frame_min(s : NetprotoudpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_frame_min(s : NetprotoudpFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_frame_max(s : NetprotoudpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_frame_max(s : NetprotoudpFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_frame_to_string(s : NetprotoudpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_udp_table_set(s : NetprotoudpTable, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_udp_table_sum(s : NetprotoudpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_table_sum(s : NetprotoudpTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_table_mean(s : NetprotoudpTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_table_mean(s : NetprotoudpTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_table_scale(s : NetprotoudpTable, f : Double) -> NetprotoudpTable {
   let result = net_proto_udp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_udp_table_fill(s : NetprotoudpTable, v : Double) -> Netprotoudp
   result
 }
 
-pub fn net_proto_udp_table_min(s : NetprotoudpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_table_min(s : NetprotoudpTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_table_max(s : NetprotoudpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_table_max(s : NetprotoudpTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_table_to_string(s : NetprotoudpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_udp_graphn_set(s : NetprotoudpGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_udp_graphn_sum(s : NetprotoudpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_graphn_sum(s : NetprotoudpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_graphn_mean(s : NetprotoudpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_graphn_mean(s : NetprotoudpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_graphn_scale(s : NetprotoudpGraphN, f : Double) -> NetprotoudpGraphN {
   let result = net_proto_udp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_udp_graphn_fill(s : NetprotoudpGraphN, v : Double) -> Netprotou
   result
 }
 
-pub fn net_proto_udp_graphn_min(s : NetprotoudpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_graphn_min(s : NetprotoudpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_graphn_max(s : NetprotoudpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_graphn_max(s : NetprotoudpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_graphn_to_string(s : NetprotoudpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_udp_node_set(s : NetprotoudpNode, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_udp_node_sum(s : NetprotoudpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_node_sum(s : NetprotoudpNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_node_mean(s : NetprotoudpNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_node_mean(s : NetprotoudpNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_node_scale(s : NetprotoudpNode, f : Double) -> NetprotoudpNode {
   let result = net_proto_udp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_udp_node_fill(s : NetprotoudpNode, v : Double) -> NetprotoudpNo
   result
 }
 
-pub fn net_proto_udp_node_min(s : NetprotoudpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_node_min(s : NetprotoudpNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_node_max(s : NetprotoudpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_node_max(s : NetprotoudpNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_node_to_string(s : NetprotoudpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_udp_edge_set(s : NetprotoudpEdge, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_udp_edge_sum(s : NetprotoudpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_edge_sum(s : NetprotoudpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_edge_mean(s : NetprotoudpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_edge_mean(s : NetprotoudpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_edge_scale(s : NetprotoudpEdge, f : Double) -> NetprotoudpEdge {
   let result = net_proto_udp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_udp_edge_fill(s : NetprotoudpEdge, v : Double) -> NetprotoudpEd
   result
 }
 
-pub fn net_proto_udp_edge_min(s : NetprotoudpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_edge_min(s : NetprotoudpEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_edge_max(s : NetprotoudpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_edge_max(s : NetprotoudpEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_edge_to_string(s : NetprotoudpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_udp_path_set(s : NetprotoudpPath, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_udp_path_sum(s : NetprotoudpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_path_sum(s : NetprotoudpPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_path_mean(s : NetprotoudpPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_path_mean(s : NetprotoudpPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_path_scale(s : NetprotoudpPath, f : Double) -> NetprotoudpPath {
   let result = net_proto_udp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_udp_path_fill(s : NetprotoudpPath, v : Double) -> NetprotoudpPa
   result
 }
 
-pub fn net_proto_udp_path_min(s : NetprotoudpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_path_min(s : NetprotoudpPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_path_max(s : NetprotoudpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_path_max(s : NetprotoudpPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_path_to_string(s : NetprotoudpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_udp_cluster_set(s : NetprotoudpCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_udp_cluster_sum(s : NetprotoudpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_cluster_sum(s : NetprotoudpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_cluster_mean(s : NetprotoudpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_cluster_mean(s : NetprotoudpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_cluster_scale(s : NetprotoudpCluster, f : Double) -> NetprotoudpCluster {
   let result = net_proto_udp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_udp_cluster_fill(s : NetprotoudpCluster, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_udp_cluster_min(s : NetprotoudpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_cluster_min(s : NetprotoudpCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_cluster_max(s : NetprotoudpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_cluster_max(s : NetprotoudpCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_cluster_to_string(s : NetprotoudpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_udp_model_set(s : NetprotoudpModel, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_udp_model_sum(s : NetprotoudpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_model_sum(s : NetprotoudpModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_model_mean(s : NetprotoudpModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_model_mean(s : NetprotoudpModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_model_scale(s : NetprotoudpModel, f : Double) -> NetprotoudpModel {
   let result = net_proto_udp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_udp_model_fill(s : NetprotoudpModel, v : Double) -> Netprotoudp
   result
 }
 
-pub fn net_proto_udp_model_min(s : NetprotoudpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_model_min(s : NetprotoudpModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_model_max(s : NetprotoudpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_model_max(s : NetprotoudpModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_model_to_string(s : NetprotoudpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_udp_layer_set(s : NetprotoudpLayer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_udp_layer_sum(s : NetprotoudpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_layer_sum(s : NetprotoudpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_layer_mean(s : NetprotoudpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_layer_mean(s : NetprotoudpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_layer_scale(s : NetprotoudpLayer, f : Double) -> NetprotoudpLayer {
   let result = net_proto_udp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_udp_layer_fill(s : NetprotoudpLayer, v : Double) -> Netprotoudp
   result
 }
 
-pub fn net_proto_udp_layer_min(s : NetprotoudpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_layer_min(s : NetprotoudpLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_layer_max(s : NetprotoudpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_layer_max(s : NetprotoudpLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_layer_to_string(s : NetprotoudpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_udp_buffer_set(s : NetprotoudpBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_udp_buffer_sum(s : NetprotoudpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_buffer_sum(s : NetprotoudpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_buffer_mean(s : NetprotoudpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_buffer_mean(s : NetprotoudpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_buffer_scale(s : NetprotoudpBuffer, f : Double) -> NetprotoudpBuffer {
   let result = net_proto_udp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_udp_buffer_fill(s : NetprotoudpBuffer, v : Double) -> Netprotou
   result
 }
 
-pub fn net_proto_udp_buffer_min(s : NetprotoudpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_buffer_min(s : NetprotoudpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_buffer_max(s : NetprotoudpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_buffer_max(s : NetprotoudpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_buffer_to_string(s : NetprotoudpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_udp_cursor_set(s : NetprotoudpCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_udp_cursor_sum(s : NetprotoudpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_cursor_sum(s : NetprotoudpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_cursor_mean(s : NetprotoudpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_cursor_mean(s : NetprotoudpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_cursor_scale(s : NetprotoudpCursor, f : Double) -> NetprotoudpCursor {
   let result = net_proto_udp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_udp_cursor_fill(s : NetprotoudpCursor, v : Double) -> Netprotou
   result
 }
 
-pub fn net_proto_udp_cursor_min(s : NetprotoudpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_cursor_min(s : NetprotoudpCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_cursor_max(s : NetprotoudpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_cursor_max(s : NetprotoudpCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_cursor_to_string(s : NetprotoudpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_udp_view_set(s : NetprotoudpView, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_udp_view_sum(s : NetprotoudpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_view_sum(s : NetprotoudpView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_view_mean(s : NetprotoudpView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_view_mean(s : NetprotoudpView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_view_scale(s : NetprotoudpView, f : Double) -> NetprotoudpView {
   let result = net_proto_udp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_udp_view_fill(s : NetprotoudpView, v : Double) -> NetprotoudpVi
   result
 }
 
-pub fn net_proto_udp_view_min(s : NetprotoudpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_view_min(s : NetprotoudpView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_view_max(s : NetprotoudpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_view_max(s : NetprotoudpView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_view_to_string(s : NetprotoudpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_udp_range_set(s : NetprotoudpRange, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_udp_range_sum(s : NetprotoudpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_range_sum(s : NetprotoudpRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_range_mean(s : NetprotoudpRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_range_mean(s : NetprotoudpRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_range_scale(s : NetprotoudpRange, f : Double) -> NetprotoudpRange {
   let result = net_proto_udp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_udp_range_fill(s : NetprotoudpRange, v : Double) -> Netprotoudp
   result
 }
 
-pub fn net_proto_udp_range_min(s : NetprotoudpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_range_min(s : NetprotoudpRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_range_max(s : NetprotoudpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_range_max(s : NetprotoudpRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_range_to_string(s : NetprotoudpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_udp_slice_set(s : NetprotoudpSlice, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_udp_slice_sum(s : NetprotoudpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_udp_slice_sum(s : NetprotoudpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_udp_slice_mean(s : NetprotoudpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_udp_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_udp_slice_mean(s : NetprotoudpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_udp_slice_scale(s : NetprotoudpSlice, f : Double) -> NetprotoudpSlice {
   let result = net_proto_udp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_udp_slice_fill(s : NetprotoudpSlice, v : Double) -> Netprotoudp
   result
 }
 
-pub fn net_proto_udp_slice_min(s : NetprotoudpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_slice_min(s : NetprotoudpSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_udp_slice_max(s : NetprotoudpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_udp_slice_max(s : NetprotoudpSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_udp_slice_to_string(s : NetprotoudpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn bio_seq_align_profile_make_series(vals : Array[Double], name : String) ->
 
 pub fn bio_seq_align_profile_series_len(s : BioseqalignprofileSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_align_profile_series_sum(s : BioseqalignprofileSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_align_profile_series_sum(s : BioseqalignprofileSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_align_profile_series_mean(s : BioseqalignprofileSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_align_profile_frame_set(s : BioseqalignprofileFrame, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_profile_frame_sum(s : BioseqalignprofileFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_frame_sum(s : BioseqalignprofileFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_frame_mean(s : BioseqalignprofileFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_frame_mean(s : BioseqalignprofileFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_frame_scale(s : BioseqalignprofileFrame, f : Double) -> BioseqalignprofileFrame {
   let result = bio_seq_align_profile_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_align_profile_frame_fill(s : BioseqalignprofileFrame, v : Double)
   result
 }
 
-pub fn bio_seq_align_profile_frame_min(s : BioseqalignprofileFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_frame_min(s : BioseqalignprofileFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_frame_max(s : BioseqalignprofileFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_frame_max(s : BioseqalignprofileFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_frame_to_string(s : BioseqalignprofileFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_align_profile_table_set(s : BioseqalignprofileTable, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_profile_table_sum(s : BioseqalignprofileTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_table_sum(s : BioseqalignprofileTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_table_mean(s : BioseqalignprofileTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_table_mean(s : BioseqalignprofileTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_table_scale(s : BioseqalignprofileTable, f : Double) -> BioseqalignprofileTable {
   let result = bio_seq_align_profile_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_align_profile_table_fill(s : BioseqalignprofileTable, v : Double)
   result
 }
 
-pub fn bio_seq_align_profile_table_min(s : BioseqalignprofileTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_table_min(s : BioseqalignprofileTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_table_max(s : BioseqalignprofileTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_table_max(s : BioseqalignprofileTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_table_to_string(s : BioseqalignprofileTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_align_profile_graphn_set(s : BioseqalignprofileGraphN, i : Int, v
   result
 }
 
-pub fn bio_seq_align_profile_graphn_sum(s : BioseqalignprofileGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_graphn_sum(s : BioseqalignprofileGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_graphn_mean(s : BioseqalignprofileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_graphn_mean(s : BioseqalignprofileGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_graphn_scale(s : BioseqalignprofileGraphN, f : Double) -> BioseqalignprofileGraphN {
   let result = bio_seq_align_profile_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_align_profile_graphn_fill(s : BioseqalignprofileGraphN, v : Doubl
   result
 }
 
-pub fn bio_seq_align_profile_graphn_min(s : BioseqalignprofileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_graphn_min(s : BioseqalignprofileGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_graphn_max(s : BioseqalignprofileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_graphn_max(s : BioseqalignprofileGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_graphn_to_string(s : BioseqalignprofileGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_align_profile_node_set(s : BioseqalignprofileNode, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_profile_node_sum(s : BioseqalignprofileNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_node_sum(s : BioseqalignprofileNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_node_mean(s : BioseqalignprofileNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_node_mean(s : BioseqalignprofileNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_node_scale(s : BioseqalignprofileNode, f : Double) -> BioseqalignprofileNode {
   let result = bio_seq_align_profile_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_align_profile_node_fill(s : BioseqalignprofileNode, v : Double) -
   result
 }
 
-pub fn bio_seq_align_profile_node_min(s : BioseqalignprofileNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_node_min(s : BioseqalignprofileNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_node_max(s : BioseqalignprofileNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_node_max(s : BioseqalignprofileNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_node_to_string(s : BioseqalignprofileNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_align_profile_edge_set(s : BioseqalignprofileEdge, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_profile_edge_sum(s : BioseqalignprofileEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_edge_sum(s : BioseqalignprofileEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_edge_mean(s : BioseqalignprofileEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_edge_mean(s : BioseqalignprofileEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_edge_scale(s : BioseqalignprofileEdge, f : Double) -> BioseqalignprofileEdge {
   let result = bio_seq_align_profile_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_align_profile_edge_fill(s : BioseqalignprofileEdge, v : Double) -
   result
 }
 
-pub fn bio_seq_align_profile_edge_min(s : BioseqalignprofileEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_edge_min(s : BioseqalignprofileEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_edge_max(s : BioseqalignprofileEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_edge_max(s : BioseqalignprofileEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_edge_to_string(s : BioseqalignprofileEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_align_profile_path_set(s : BioseqalignprofilePath, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_profile_path_sum(s : BioseqalignprofilePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_path_sum(s : BioseqalignprofilePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_path_mean(s : BioseqalignprofilePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_path_mean(s : BioseqalignprofilePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_path_scale(s : BioseqalignprofilePath, f : Double) -> BioseqalignprofilePath {
   let result = bio_seq_align_profile_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_align_profile_path_fill(s : BioseqalignprofilePath, v : Double) -
   result
 }
 
-pub fn bio_seq_align_profile_path_min(s : BioseqalignprofilePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_path_min(s : BioseqalignprofilePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_path_max(s : BioseqalignprofilePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_path_max(s : BioseqalignprofilePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_path_to_string(s : BioseqalignprofilePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_align_profile_cluster_set(s : BioseqalignprofileCluster, i : Int,
   result
 }
 
-pub fn bio_seq_align_profile_cluster_sum(s : BioseqalignprofileCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_cluster_sum(s : BioseqalignprofileCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_cluster_mean(s : BioseqalignprofileCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_cluster_mean(s : BioseqalignprofileCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_cluster_scale(s : BioseqalignprofileCluster, f : Double) -> BioseqalignprofileCluster {
   let result = bio_seq_align_profile_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_align_profile_cluster_fill(s : BioseqalignprofileCluster, v : Dou
   result
 }
 
-pub fn bio_seq_align_profile_cluster_min(s : BioseqalignprofileCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_cluster_min(s : BioseqalignprofileCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_cluster_max(s : BioseqalignprofileCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_cluster_max(s : BioseqalignprofileCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_cluster_to_string(s : BioseqalignprofileCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_align_profile_model_set(s : BioseqalignprofileModel, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_profile_model_sum(s : BioseqalignprofileModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_model_sum(s : BioseqalignprofileModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_model_mean(s : BioseqalignprofileModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_model_mean(s : BioseqalignprofileModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_model_scale(s : BioseqalignprofileModel, f : Double) -> BioseqalignprofileModel {
   let result = bio_seq_align_profile_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_align_profile_model_fill(s : BioseqalignprofileModel, v : Double)
   result
 }
 
-pub fn bio_seq_align_profile_model_min(s : BioseqalignprofileModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_model_min(s : BioseqalignprofileModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_model_max(s : BioseqalignprofileModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_model_max(s : BioseqalignprofileModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_model_to_string(s : BioseqalignprofileModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_align_profile_layer_set(s : BioseqalignprofileLayer, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_profile_layer_sum(s : BioseqalignprofileLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_layer_sum(s : BioseqalignprofileLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_layer_mean(s : BioseqalignprofileLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_layer_mean(s : BioseqalignprofileLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_layer_scale(s : BioseqalignprofileLayer, f : Double) -> BioseqalignprofileLayer {
   let result = bio_seq_align_profile_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_align_profile_layer_fill(s : BioseqalignprofileLayer, v : Double)
   result
 }
 
-pub fn bio_seq_align_profile_layer_min(s : BioseqalignprofileLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_layer_min(s : BioseqalignprofileLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_layer_max(s : BioseqalignprofileLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_layer_max(s : BioseqalignprofileLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_layer_to_string(s : BioseqalignprofileLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_align_profile_buffer_set(s : BioseqalignprofileBuffer, i : Int, v
   result
 }
 
-pub fn bio_seq_align_profile_buffer_sum(s : BioseqalignprofileBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_buffer_sum(s : BioseqalignprofileBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_buffer_mean(s : BioseqalignprofileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_buffer_mean(s : BioseqalignprofileBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_buffer_scale(s : BioseqalignprofileBuffer, f : Double) -> BioseqalignprofileBuffer {
   let result = bio_seq_align_profile_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_align_profile_buffer_fill(s : BioseqalignprofileBuffer, v : Doubl
   result
 }
 
-pub fn bio_seq_align_profile_buffer_min(s : BioseqalignprofileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_buffer_min(s : BioseqalignprofileBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_buffer_max(s : BioseqalignprofileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_buffer_max(s : BioseqalignprofileBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_buffer_to_string(s : BioseqalignprofileBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_align_profile_cursor_set(s : BioseqalignprofileCursor, i : Int, v
   result
 }
 
-pub fn bio_seq_align_profile_cursor_sum(s : BioseqalignprofileCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_cursor_sum(s : BioseqalignprofileCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_cursor_mean(s : BioseqalignprofileCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_cursor_mean(s : BioseqalignprofileCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_cursor_scale(s : BioseqalignprofileCursor, f : Double) -> BioseqalignprofileCursor {
   let result = bio_seq_align_profile_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_align_profile_cursor_fill(s : BioseqalignprofileCursor, v : Doubl
   result
 }
 
-pub fn bio_seq_align_profile_cursor_min(s : BioseqalignprofileCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_cursor_min(s : BioseqalignprofileCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_cursor_max(s : BioseqalignprofileCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_cursor_max(s : BioseqalignprofileCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_cursor_to_string(s : BioseqalignprofileCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_align_profile_view_set(s : BioseqalignprofileView, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_profile_view_sum(s : BioseqalignprofileView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_view_sum(s : BioseqalignprofileView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_view_mean(s : BioseqalignprofileView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_view_mean(s : BioseqalignprofileView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_view_scale(s : BioseqalignprofileView, f : Double) -> BioseqalignprofileView {
   let result = bio_seq_align_profile_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_align_profile_view_fill(s : BioseqalignprofileView, v : Double) -
   result
 }
 
-pub fn bio_seq_align_profile_view_min(s : BioseqalignprofileView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_view_min(s : BioseqalignprofileView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_view_max(s : BioseqalignprofileView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_view_max(s : BioseqalignprofileView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_view_to_string(s : BioseqalignprofileView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_align_profile_range_set(s : BioseqalignprofileRange, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_profile_range_sum(s : BioseqalignprofileRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_range_sum(s : BioseqalignprofileRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_range_mean(s : BioseqalignprofileRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_range_mean(s : BioseqalignprofileRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_range_scale(s : BioseqalignprofileRange, f : Double) -> BioseqalignprofileRange {
   let result = bio_seq_align_profile_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_align_profile_range_fill(s : BioseqalignprofileRange, v : Double)
   result
 }
 
-pub fn bio_seq_align_profile_range_min(s : BioseqalignprofileRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_range_min(s : BioseqalignprofileRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_range_max(s : BioseqalignprofileRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_range_max(s : BioseqalignprofileRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_range_to_string(s : BioseqalignprofileRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_align_profile_slice_set(s : BioseqalignprofileSlice, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_profile_slice_sum(s : BioseqalignprofileSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_profile_slice_sum(s : BioseqalignprofileSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_profile_slice_mean(s : BioseqalignprofileSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_profile_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_profile_slice_mean(s : BioseqalignprofileSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_profile_slice_scale(s : BioseqalignprofileSlice, f : Double) -> BioseqalignprofileSlice {
   let result = bio_seq_align_profile_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_align_profile_slice_fill(s : BioseqalignprofileSlice, v : Double)
   result
 }
 
-pub fn bio_seq_align_profile_slice_min(s : BioseqalignprofileSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_slice_min(s : BioseqalignprofileSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_profile_slice_max(s : BioseqalignprofileSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_profile_slice_max(s : BioseqalignprofileSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_profile_slice_to_string(s : BioseqalignprofileSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

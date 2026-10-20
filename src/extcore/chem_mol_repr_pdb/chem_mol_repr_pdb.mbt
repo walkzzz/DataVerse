@@ -88,11 +88,7 @@ pub fn chem_mol_repr_pdb_make_series(vals : Array[Double], name : String) -> Che
 
 pub fn chem_mol_repr_pdb_series_len(s : ChemmolreprpdbSeries) -> Int { s.vals.length() }
 
-pub fn chem_mol_repr_pdb_series_sum(s : ChemmolreprpdbSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_series_sum(s : ChemmolreprpdbSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_mol_repr_pdb_series_mean(s : ChemmolreprpdbSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_mol_repr_pdb_frame_set(s : ChemmolreprpdbFrame, i : Int, v : Double)
   result
 }
 
-pub fn chem_mol_repr_pdb_frame_sum(s : ChemmolreprpdbFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_frame_sum(s : ChemmolreprpdbFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_frame_mean(s : ChemmolreprpdbFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_frame_mean(s : ChemmolreprpdbFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_frame_scale(s : ChemmolreprpdbFrame, f : Double) -> ChemmolreprpdbFrame {
   let result = chem_mol_repr_pdb_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_mol_repr_pdb_frame_fill(s : ChemmolreprpdbFrame, v : Double) -> Chem
   result
 }
 
-pub fn chem_mol_repr_pdb_frame_min(s : ChemmolreprpdbFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_frame_min(s : ChemmolreprpdbFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_frame_max(s : ChemmolreprpdbFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_frame_max(s : ChemmolreprpdbFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_frame_to_string(s : ChemmolreprpdbFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_mol_repr_pdb_table_set(s : ChemmolreprpdbTable, i : Int, v : Double)
   result
 }
 
-pub fn chem_mol_repr_pdb_table_sum(s : ChemmolreprpdbTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_table_sum(s : ChemmolreprpdbTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_table_mean(s : ChemmolreprpdbTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_table_mean(s : ChemmolreprpdbTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_table_scale(s : ChemmolreprpdbTable, f : Double) -> ChemmolreprpdbTable {
   let result = chem_mol_repr_pdb_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_mol_repr_pdb_table_fill(s : ChemmolreprpdbTable, v : Double) -> Chem
   result
 }
 
-pub fn chem_mol_repr_pdb_table_min(s : ChemmolreprpdbTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_table_min(s : ChemmolreprpdbTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_table_max(s : ChemmolreprpdbTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_table_max(s : ChemmolreprpdbTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_table_to_string(s : ChemmolreprpdbTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_mol_repr_pdb_graphn_set(s : ChemmolreprpdbGraphN, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_repr_pdb_graphn_sum(s : ChemmolreprpdbGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_graphn_sum(s : ChemmolreprpdbGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_graphn_mean(s : ChemmolreprpdbGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_graphn_mean(s : ChemmolreprpdbGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_graphn_scale(s : ChemmolreprpdbGraphN, f : Double) -> ChemmolreprpdbGraphN {
   let result = chem_mol_repr_pdb_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_mol_repr_pdb_graphn_fill(s : ChemmolreprpdbGraphN, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_repr_pdb_graphn_min(s : ChemmolreprpdbGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_graphn_min(s : ChemmolreprpdbGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_graphn_max(s : ChemmolreprpdbGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_graphn_max(s : ChemmolreprpdbGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_graphn_to_string(s : ChemmolreprpdbGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_mol_repr_pdb_node_set(s : ChemmolreprpdbNode, i : Int, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_pdb_node_sum(s : ChemmolreprpdbNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_node_sum(s : ChemmolreprpdbNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_node_mean(s : ChemmolreprpdbNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_node_mean(s : ChemmolreprpdbNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_node_scale(s : ChemmolreprpdbNode, f : Double) -> ChemmolreprpdbNode {
   let result = chem_mol_repr_pdb_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_mol_repr_pdb_node_fill(s : ChemmolreprpdbNode, v : Double) -> Chemmo
   result
 }
 
-pub fn chem_mol_repr_pdb_node_min(s : ChemmolreprpdbNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_node_min(s : ChemmolreprpdbNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_node_max(s : ChemmolreprpdbNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_node_max(s : ChemmolreprpdbNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_node_to_string(s : ChemmolreprpdbNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_mol_repr_pdb_edge_set(s : ChemmolreprpdbEdge, i : Int, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_pdb_edge_sum(s : ChemmolreprpdbEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_edge_sum(s : ChemmolreprpdbEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_edge_mean(s : ChemmolreprpdbEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_edge_mean(s : ChemmolreprpdbEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_edge_scale(s : ChemmolreprpdbEdge, f : Double) -> ChemmolreprpdbEdge {
   let result = chem_mol_repr_pdb_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_mol_repr_pdb_edge_fill(s : ChemmolreprpdbEdge, v : Double) -> Chemmo
   result
 }
 
-pub fn chem_mol_repr_pdb_edge_min(s : ChemmolreprpdbEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_edge_min(s : ChemmolreprpdbEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_edge_max(s : ChemmolreprpdbEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_edge_max(s : ChemmolreprpdbEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_edge_to_string(s : ChemmolreprpdbEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_mol_repr_pdb_path_set(s : ChemmolreprpdbPath, i : Int, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_pdb_path_sum(s : ChemmolreprpdbPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_path_sum(s : ChemmolreprpdbPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_path_mean(s : ChemmolreprpdbPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_path_mean(s : ChemmolreprpdbPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_path_scale(s : ChemmolreprpdbPath, f : Double) -> ChemmolreprpdbPath {
   let result = chem_mol_repr_pdb_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_mol_repr_pdb_path_fill(s : ChemmolreprpdbPath, v : Double) -> Chemmo
   result
 }
 
-pub fn chem_mol_repr_pdb_path_min(s : ChemmolreprpdbPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_path_min(s : ChemmolreprpdbPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_path_max(s : ChemmolreprpdbPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_path_max(s : ChemmolreprpdbPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_path_to_string(s : ChemmolreprpdbPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_mol_repr_pdb_cluster_set(s : ChemmolreprpdbCluster, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_repr_pdb_cluster_sum(s : ChemmolreprpdbCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_cluster_sum(s : ChemmolreprpdbCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_cluster_mean(s : ChemmolreprpdbCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_cluster_mean(s : ChemmolreprpdbCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_cluster_scale(s : ChemmolreprpdbCluster, f : Double) -> ChemmolreprpdbCluster {
   let result = chem_mol_repr_pdb_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_mol_repr_pdb_cluster_fill(s : ChemmolreprpdbCluster, v : Double) -> 
   result
 }
 
-pub fn chem_mol_repr_pdb_cluster_min(s : ChemmolreprpdbCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_cluster_min(s : ChemmolreprpdbCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_cluster_max(s : ChemmolreprpdbCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_cluster_max(s : ChemmolreprpdbCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_cluster_to_string(s : ChemmolreprpdbCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_mol_repr_pdb_model_set(s : ChemmolreprpdbModel, i : Int, v : Double)
   result
 }
 
-pub fn chem_mol_repr_pdb_model_sum(s : ChemmolreprpdbModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_model_sum(s : ChemmolreprpdbModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_model_mean(s : ChemmolreprpdbModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_model_mean(s : ChemmolreprpdbModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_model_scale(s : ChemmolreprpdbModel, f : Double) -> ChemmolreprpdbModel {
   let result = chem_mol_repr_pdb_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_mol_repr_pdb_model_fill(s : ChemmolreprpdbModel, v : Double) -> Chem
   result
 }
 
-pub fn chem_mol_repr_pdb_model_min(s : ChemmolreprpdbModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_model_min(s : ChemmolreprpdbModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_model_max(s : ChemmolreprpdbModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_model_max(s : ChemmolreprpdbModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_model_to_string(s : ChemmolreprpdbModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_mol_repr_pdb_layer_set(s : ChemmolreprpdbLayer, i : Int, v : Double)
   result
 }
 
-pub fn chem_mol_repr_pdb_layer_sum(s : ChemmolreprpdbLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_layer_sum(s : ChemmolreprpdbLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_layer_mean(s : ChemmolreprpdbLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_layer_mean(s : ChemmolreprpdbLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_layer_scale(s : ChemmolreprpdbLayer, f : Double) -> ChemmolreprpdbLayer {
   let result = chem_mol_repr_pdb_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_mol_repr_pdb_layer_fill(s : ChemmolreprpdbLayer, v : Double) -> Chem
   result
 }
 
-pub fn chem_mol_repr_pdb_layer_min(s : ChemmolreprpdbLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_layer_min(s : ChemmolreprpdbLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_layer_max(s : ChemmolreprpdbLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_layer_max(s : ChemmolreprpdbLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_layer_to_string(s : ChemmolreprpdbLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_mol_repr_pdb_buffer_set(s : ChemmolreprpdbBuffer, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_repr_pdb_buffer_sum(s : ChemmolreprpdbBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_buffer_sum(s : ChemmolreprpdbBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_buffer_mean(s : ChemmolreprpdbBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_buffer_mean(s : ChemmolreprpdbBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_buffer_scale(s : ChemmolreprpdbBuffer, f : Double) -> ChemmolreprpdbBuffer {
   let result = chem_mol_repr_pdb_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_mol_repr_pdb_buffer_fill(s : ChemmolreprpdbBuffer, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_repr_pdb_buffer_min(s : ChemmolreprpdbBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_buffer_min(s : ChemmolreprpdbBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_buffer_max(s : ChemmolreprpdbBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_buffer_max(s : ChemmolreprpdbBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_buffer_to_string(s : ChemmolreprpdbBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_mol_repr_pdb_cursor_set(s : ChemmolreprpdbCursor, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_repr_pdb_cursor_sum(s : ChemmolreprpdbCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_cursor_sum(s : ChemmolreprpdbCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_cursor_mean(s : ChemmolreprpdbCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_cursor_mean(s : ChemmolreprpdbCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_cursor_scale(s : ChemmolreprpdbCursor, f : Double) -> ChemmolreprpdbCursor {
   let result = chem_mol_repr_pdb_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_mol_repr_pdb_cursor_fill(s : ChemmolreprpdbCursor, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_repr_pdb_cursor_min(s : ChemmolreprpdbCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_cursor_min(s : ChemmolreprpdbCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_cursor_max(s : ChemmolreprpdbCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_cursor_max(s : ChemmolreprpdbCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_cursor_to_string(s : ChemmolreprpdbCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_mol_repr_pdb_view_set(s : ChemmolreprpdbView, i : Int, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_pdb_view_sum(s : ChemmolreprpdbView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_view_sum(s : ChemmolreprpdbView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_view_mean(s : ChemmolreprpdbView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_view_mean(s : ChemmolreprpdbView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_view_scale(s : ChemmolreprpdbView, f : Double) -> ChemmolreprpdbView {
   let result = chem_mol_repr_pdb_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_mol_repr_pdb_view_fill(s : ChemmolreprpdbView, v : Double) -> Chemmo
   result
 }
 
-pub fn chem_mol_repr_pdb_view_min(s : ChemmolreprpdbView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_view_min(s : ChemmolreprpdbView) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_view_max(s : ChemmolreprpdbView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_view_max(s : ChemmolreprpdbView) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_view_to_string(s : ChemmolreprpdbView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_mol_repr_pdb_range_set(s : ChemmolreprpdbRange, i : Int, v : Double)
   result
 }
 
-pub fn chem_mol_repr_pdb_range_sum(s : ChemmolreprpdbRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_range_sum(s : ChemmolreprpdbRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_range_mean(s : ChemmolreprpdbRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_range_mean(s : ChemmolreprpdbRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_range_scale(s : ChemmolreprpdbRange, f : Double) -> ChemmolreprpdbRange {
   let result = chem_mol_repr_pdb_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_mol_repr_pdb_range_fill(s : ChemmolreprpdbRange, v : Double) -> Chem
   result
 }
 
-pub fn chem_mol_repr_pdb_range_min(s : ChemmolreprpdbRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_range_min(s : ChemmolreprpdbRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_range_max(s : ChemmolreprpdbRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_range_max(s : ChemmolreprpdbRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_range_to_string(s : ChemmolreprpdbRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_mol_repr_pdb_slice_set(s : ChemmolreprpdbSlice, i : Int, v : Double)
   result
 }
 
-pub fn chem_mol_repr_pdb_slice_sum(s : ChemmolreprpdbSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_pdb_slice_sum(s : ChemmolreprpdbSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_pdb_slice_mean(s : ChemmolreprpdbSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_pdb_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_pdb_slice_mean(s : ChemmolreprpdbSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_pdb_slice_scale(s : ChemmolreprpdbSlice, f : Double) -> ChemmolreprpdbSlice {
   let result = chem_mol_repr_pdb_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_mol_repr_pdb_slice_fill(s : ChemmolreprpdbSlice, v : Double) -> Chem
   result
 }
 
-pub fn chem_mol_repr_pdb_slice_min(s : ChemmolreprpdbSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_slice_min(s : ChemmolreprpdbSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_pdb_slice_max(s : ChemmolreprpdbSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_pdb_slice_max(s : ChemmolreprpdbSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_pdb_slice_to_string(s : ChemmolreprpdbSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

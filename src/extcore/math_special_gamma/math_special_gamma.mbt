@@ -88,11 +88,7 @@ pub fn math_special_gamma_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_special_gamma_series_len(s : MathspecialgammaSeries) -> Int { s.vals.length() }
 
-pub fn math_special_gamma_series_sum(s : MathspecialgammaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_gamma_series_sum(s : MathspecialgammaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_gamma_series_mean(s : MathspecialgammaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_gamma_frame_set(s : MathspecialgammaFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_special_gamma_frame_sum(s : MathspecialgammaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_frame_sum(s : MathspecialgammaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_frame_mean(s : MathspecialgammaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_frame_mean(s : MathspecialgammaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_frame_scale(s : MathspecialgammaFrame, f : Double) -> MathspecialgammaFrame {
   let result = math_special_gamma_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_gamma_frame_fill(s : MathspecialgammaFrame, v : Double) -> M
   result
 }
 
-pub fn math_special_gamma_frame_min(s : MathspecialgammaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_frame_min(s : MathspecialgammaFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_frame_max(s : MathspecialgammaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_frame_max(s : MathspecialgammaFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_frame_to_string(s : MathspecialgammaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_gamma_table_set(s : MathspecialgammaTable, i : Int, v : Doub
   result
 }
 
-pub fn math_special_gamma_table_sum(s : MathspecialgammaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_table_sum(s : MathspecialgammaTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_table_mean(s : MathspecialgammaTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_table_mean(s : MathspecialgammaTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_table_scale(s : MathspecialgammaTable, f : Double) -> MathspecialgammaTable {
   let result = math_special_gamma_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_gamma_table_fill(s : MathspecialgammaTable, v : Double) -> M
   result
 }
 
-pub fn math_special_gamma_table_min(s : MathspecialgammaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_table_min(s : MathspecialgammaTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_table_max(s : MathspecialgammaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_table_max(s : MathspecialgammaTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_table_to_string(s : MathspecialgammaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_gamma_graphn_set(s : MathspecialgammaGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_special_gamma_graphn_sum(s : MathspecialgammaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_graphn_sum(s : MathspecialgammaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_graphn_mean(s : MathspecialgammaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_graphn_mean(s : MathspecialgammaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_graphn_scale(s : MathspecialgammaGraphN, f : Double) -> MathspecialgammaGraphN {
   let result = math_special_gamma_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_gamma_graphn_fill(s : MathspecialgammaGraphN, v : Double) ->
   result
 }
 
-pub fn math_special_gamma_graphn_min(s : MathspecialgammaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_graphn_min(s : MathspecialgammaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_graphn_max(s : MathspecialgammaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_graphn_max(s : MathspecialgammaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_graphn_to_string(s : MathspecialgammaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_gamma_node_set(s : MathspecialgammaNode, i : Int, v : Double
   result
 }
 
-pub fn math_special_gamma_node_sum(s : MathspecialgammaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_node_sum(s : MathspecialgammaNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_node_mean(s : MathspecialgammaNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_node_mean(s : MathspecialgammaNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_node_scale(s : MathspecialgammaNode, f : Double) -> MathspecialgammaNode {
   let result = math_special_gamma_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_gamma_node_fill(s : MathspecialgammaNode, v : Double) -> Mat
   result
 }
 
-pub fn math_special_gamma_node_min(s : MathspecialgammaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_node_min(s : MathspecialgammaNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_node_max(s : MathspecialgammaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_node_max(s : MathspecialgammaNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_node_to_string(s : MathspecialgammaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_gamma_edge_set(s : MathspecialgammaEdge, i : Int, v : Double
   result
 }
 
-pub fn math_special_gamma_edge_sum(s : MathspecialgammaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_edge_sum(s : MathspecialgammaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_edge_mean(s : MathspecialgammaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_edge_mean(s : MathspecialgammaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_edge_scale(s : MathspecialgammaEdge, f : Double) -> MathspecialgammaEdge {
   let result = math_special_gamma_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_gamma_edge_fill(s : MathspecialgammaEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_special_gamma_edge_min(s : MathspecialgammaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_edge_min(s : MathspecialgammaEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_edge_max(s : MathspecialgammaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_edge_max(s : MathspecialgammaEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_edge_to_string(s : MathspecialgammaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_gamma_path_set(s : MathspecialgammaPath, i : Int, v : Double
   result
 }
 
-pub fn math_special_gamma_path_sum(s : MathspecialgammaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_path_sum(s : MathspecialgammaPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_path_mean(s : MathspecialgammaPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_path_mean(s : MathspecialgammaPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_path_scale(s : MathspecialgammaPath, f : Double) -> MathspecialgammaPath {
   let result = math_special_gamma_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_gamma_path_fill(s : MathspecialgammaPath, v : Double) -> Mat
   result
 }
 
-pub fn math_special_gamma_path_min(s : MathspecialgammaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_path_min(s : MathspecialgammaPath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_path_max(s : MathspecialgammaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_path_max(s : MathspecialgammaPath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_path_to_string(s : MathspecialgammaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_gamma_cluster_set(s : MathspecialgammaCluster, i : Int, v : 
   result
 }
 
-pub fn math_special_gamma_cluster_sum(s : MathspecialgammaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_cluster_sum(s : MathspecialgammaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_cluster_mean(s : MathspecialgammaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_cluster_mean(s : MathspecialgammaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_cluster_scale(s : MathspecialgammaCluster, f : Double) -> MathspecialgammaCluster {
   let result = math_special_gamma_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_gamma_cluster_fill(s : MathspecialgammaCluster, v : Double) 
   result
 }
 
-pub fn math_special_gamma_cluster_min(s : MathspecialgammaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_cluster_min(s : MathspecialgammaCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_cluster_max(s : MathspecialgammaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_cluster_max(s : MathspecialgammaCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_cluster_to_string(s : MathspecialgammaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_gamma_model_set(s : MathspecialgammaModel, i : Int, v : Doub
   result
 }
 
-pub fn math_special_gamma_model_sum(s : MathspecialgammaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_model_sum(s : MathspecialgammaModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_model_mean(s : MathspecialgammaModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_model_mean(s : MathspecialgammaModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_model_scale(s : MathspecialgammaModel, f : Double) -> MathspecialgammaModel {
   let result = math_special_gamma_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_gamma_model_fill(s : MathspecialgammaModel, v : Double) -> M
   result
 }
 
-pub fn math_special_gamma_model_min(s : MathspecialgammaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_model_min(s : MathspecialgammaModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_model_max(s : MathspecialgammaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_model_max(s : MathspecialgammaModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_model_to_string(s : MathspecialgammaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_gamma_layer_set(s : MathspecialgammaLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_special_gamma_layer_sum(s : MathspecialgammaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_layer_sum(s : MathspecialgammaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_layer_mean(s : MathspecialgammaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_layer_mean(s : MathspecialgammaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_layer_scale(s : MathspecialgammaLayer, f : Double) -> MathspecialgammaLayer {
   let result = math_special_gamma_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_gamma_layer_fill(s : MathspecialgammaLayer, v : Double) -> M
   result
 }
 
-pub fn math_special_gamma_layer_min(s : MathspecialgammaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_layer_min(s : MathspecialgammaLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_layer_max(s : MathspecialgammaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_layer_max(s : MathspecialgammaLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_layer_to_string(s : MathspecialgammaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_gamma_buffer_set(s : MathspecialgammaBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_special_gamma_buffer_sum(s : MathspecialgammaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_buffer_sum(s : MathspecialgammaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_buffer_mean(s : MathspecialgammaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_buffer_mean(s : MathspecialgammaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_buffer_scale(s : MathspecialgammaBuffer, f : Double) -> MathspecialgammaBuffer {
   let result = math_special_gamma_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_gamma_buffer_fill(s : MathspecialgammaBuffer, v : Double) ->
   result
 }
 
-pub fn math_special_gamma_buffer_min(s : MathspecialgammaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_buffer_min(s : MathspecialgammaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_buffer_max(s : MathspecialgammaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_buffer_max(s : MathspecialgammaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_buffer_to_string(s : MathspecialgammaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_gamma_cursor_set(s : MathspecialgammaCursor, i : Int, v : Do
   result
 }
 
-pub fn math_special_gamma_cursor_sum(s : MathspecialgammaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_cursor_sum(s : MathspecialgammaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_cursor_mean(s : MathspecialgammaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_cursor_mean(s : MathspecialgammaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_cursor_scale(s : MathspecialgammaCursor, f : Double) -> MathspecialgammaCursor {
   let result = math_special_gamma_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_gamma_cursor_fill(s : MathspecialgammaCursor, v : Double) ->
   result
 }
 
-pub fn math_special_gamma_cursor_min(s : MathspecialgammaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_cursor_min(s : MathspecialgammaCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_cursor_max(s : MathspecialgammaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_cursor_max(s : MathspecialgammaCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_cursor_to_string(s : MathspecialgammaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_gamma_view_set(s : MathspecialgammaView, i : Int, v : Double
   result
 }
 
-pub fn math_special_gamma_view_sum(s : MathspecialgammaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_view_sum(s : MathspecialgammaView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_view_mean(s : MathspecialgammaView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_view_mean(s : MathspecialgammaView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_view_scale(s : MathspecialgammaView, f : Double) -> MathspecialgammaView {
   let result = math_special_gamma_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_gamma_view_fill(s : MathspecialgammaView, v : Double) -> Mat
   result
 }
 
-pub fn math_special_gamma_view_min(s : MathspecialgammaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_view_min(s : MathspecialgammaView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_view_max(s : MathspecialgammaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_view_max(s : MathspecialgammaView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_view_to_string(s : MathspecialgammaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_gamma_range_set(s : MathspecialgammaRange, i : Int, v : Doub
   result
 }
 
-pub fn math_special_gamma_range_sum(s : MathspecialgammaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_range_sum(s : MathspecialgammaRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_range_mean(s : MathspecialgammaRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_range_mean(s : MathspecialgammaRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_range_scale(s : MathspecialgammaRange, f : Double) -> MathspecialgammaRange {
   let result = math_special_gamma_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_gamma_range_fill(s : MathspecialgammaRange, v : Double) -> M
   result
 }
 
-pub fn math_special_gamma_range_min(s : MathspecialgammaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_range_min(s : MathspecialgammaRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_range_max(s : MathspecialgammaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_range_max(s : MathspecialgammaRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_range_to_string(s : MathspecialgammaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_gamma_slice_set(s : MathspecialgammaSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_special_gamma_slice_sum(s : MathspecialgammaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_gamma_slice_sum(s : MathspecialgammaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_gamma_slice_mean(s : MathspecialgammaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_gamma_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_gamma_slice_mean(s : MathspecialgammaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_gamma_slice_scale(s : MathspecialgammaSlice, f : Double) -> MathspecialgammaSlice {
   let result = math_special_gamma_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_gamma_slice_fill(s : MathspecialgammaSlice, v : Double) -> M
   result
 }
 
-pub fn math_special_gamma_slice_min(s : MathspecialgammaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_slice_min(s : MathspecialgammaSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_gamma_slice_max(s : MathspecialgammaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_gamma_slice_max(s : MathspecialgammaSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_gamma_slice_to_string(s : MathspecialgammaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn image_morph_open_make_series(vals : Array[Double], name : String) -> Imag
 
 pub fn image_morph_open_series_len(s : ImagemorphopenSeries) -> Int { s.vals.length() }
 
-pub fn image_morph_open_series_sum(s : ImagemorphopenSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_morph_open_series_sum(s : ImagemorphopenSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_morph_open_series_mean(s : ImagemorphopenSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_morph_open_frame_set(s : ImagemorphopenFrame, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_open_frame_sum(s : ImagemorphopenFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_frame_sum(s : ImagemorphopenFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_frame_mean(s : ImagemorphopenFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_frame_mean(s : ImagemorphopenFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_frame_scale(s : ImagemorphopenFrame, f : Double) -> ImagemorphopenFrame {
   let result = image_morph_open_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_morph_open_frame_fill(s : ImagemorphopenFrame, v : Double) -> Image
   result
 }
 
-pub fn image_morph_open_frame_min(s : ImagemorphopenFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_frame_min(s : ImagemorphopenFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_frame_max(s : ImagemorphopenFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_frame_max(s : ImagemorphopenFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_frame_to_string(s : ImagemorphopenFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_morph_open_table_set(s : ImagemorphopenTable, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_open_table_sum(s : ImagemorphopenTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_table_sum(s : ImagemorphopenTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_table_mean(s : ImagemorphopenTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_table_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_table_mean(s : ImagemorphopenTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_table_scale(s : ImagemorphopenTable, f : Double) -> ImagemorphopenTable {
   let result = image_morph_open_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_morph_open_table_fill(s : ImagemorphopenTable, v : Double) -> Image
   result
 }
 
-pub fn image_morph_open_table_min(s : ImagemorphopenTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_table_min(s : ImagemorphopenTable) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_table_max(s : ImagemorphopenTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_table_max(s : ImagemorphopenTable) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_table_to_string(s : ImagemorphopenTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_morph_open_graphn_set(s : ImagemorphopenGraphN, i : Int, v : Double
   result
 }
 
-pub fn image_morph_open_graphn_sum(s : ImagemorphopenGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_graphn_sum(s : ImagemorphopenGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_graphn_mean(s : ImagemorphopenGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_graphn_mean(s : ImagemorphopenGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_graphn_scale(s : ImagemorphopenGraphN, f : Double) -> ImagemorphopenGraphN {
   let result = image_morph_open_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_morph_open_graphn_fill(s : ImagemorphopenGraphN, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_open_graphn_min(s : ImagemorphopenGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_graphn_min(s : ImagemorphopenGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_graphn_max(s : ImagemorphopenGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_graphn_max(s : ImagemorphopenGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_graphn_to_string(s : ImagemorphopenGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_morph_open_node_set(s : ImagemorphopenNode, i : Int, v : Double) ->
   result
 }
 
-pub fn image_morph_open_node_sum(s : ImagemorphopenNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_node_sum(s : ImagemorphopenNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_node_mean(s : ImagemorphopenNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_node_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_node_mean(s : ImagemorphopenNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_node_scale(s : ImagemorphopenNode, f : Double) -> ImagemorphopenNode {
   let result = image_morph_open_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_morph_open_node_fill(s : ImagemorphopenNode, v : Double) -> Imagemo
   result
 }
 
-pub fn image_morph_open_node_min(s : ImagemorphopenNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_node_min(s : ImagemorphopenNode) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_node_max(s : ImagemorphopenNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_node_max(s : ImagemorphopenNode) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_node_to_string(s : ImagemorphopenNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_morph_open_edge_set(s : ImagemorphopenEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn image_morph_open_edge_sum(s : ImagemorphopenEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_edge_sum(s : ImagemorphopenEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_edge_mean(s : ImagemorphopenEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_edge_mean(s : ImagemorphopenEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_edge_scale(s : ImagemorphopenEdge, f : Double) -> ImagemorphopenEdge {
   let result = image_morph_open_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_morph_open_edge_fill(s : ImagemorphopenEdge, v : Double) -> Imagemo
   result
 }
 
-pub fn image_morph_open_edge_min(s : ImagemorphopenEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_edge_min(s : ImagemorphopenEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_edge_max(s : ImagemorphopenEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_edge_max(s : ImagemorphopenEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_edge_to_string(s : ImagemorphopenEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_morph_open_path_set(s : ImagemorphopenPath, i : Int, v : Double) ->
   result
 }
 
-pub fn image_morph_open_path_sum(s : ImagemorphopenPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_path_sum(s : ImagemorphopenPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_path_mean(s : ImagemorphopenPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_path_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_path_mean(s : ImagemorphopenPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_path_scale(s : ImagemorphopenPath, f : Double) -> ImagemorphopenPath {
   let result = image_morph_open_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_morph_open_path_fill(s : ImagemorphopenPath, v : Double) -> Imagemo
   result
 }
 
-pub fn image_morph_open_path_min(s : ImagemorphopenPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_path_min(s : ImagemorphopenPath) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_path_max(s : ImagemorphopenPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_path_max(s : ImagemorphopenPath) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_path_to_string(s : ImagemorphopenPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_morph_open_cluster_set(s : ImagemorphopenCluster, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_open_cluster_sum(s : ImagemorphopenCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_cluster_sum(s : ImagemorphopenCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_cluster_mean(s : ImagemorphopenCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_cluster_mean(s : ImagemorphopenCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_cluster_scale(s : ImagemorphopenCluster, f : Double) -> ImagemorphopenCluster {
   let result = image_morph_open_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_morph_open_cluster_fill(s : ImagemorphopenCluster, v : Double) -> I
   result
 }
 
-pub fn image_morph_open_cluster_min(s : ImagemorphopenCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_cluster_min(s : ImagemorphopenCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_cluster_max(s : ImagemorphopenCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_cluster_max(s : ImagemorphopenCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_cluster_to_string(s : ImagemorphopenCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_morph_open_model_set(s : ImagemorphopenModel, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_open_model_sum(s : ImagemorphopenModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_model_sum(s : ImagemorphopenModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_model_mean(s : ImagemorphopenModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_model_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_model_mean(s : ImagemorphopenModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_model_scale(s : ImagemorphopenModel, f : Double) -> ImagemorphopenModel {
   let result = image_morph_open_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_morph_open_model_fill(s : ImagemorphopenModel, v : Double) -> Image
   result
 }
 
-pub fn image_morph_open_model_min(s : ImagemorphopenModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_model_min(s : ImagemorphopenModel) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_model_max(s : ImagemorphopenModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_model_max(s : ImagemorphopenModel) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_model_to_string(s : ImagemorphopenModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_morph_open_layer_set(s : ImagemorphopenLayer, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_open_layer_sum(s : ImagemorphopenLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_layer_sum(s : ImagemorphopenLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_layer_mean(s : ImagemorphopenLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_layer_mean(s : ImagemorphopenLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_layer_scale(s : ImagemorphopenLayer, f : Double) -> ImagemorphopenLayer {
   let result = image_morph_open_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_morph_open_layer_fill(s : ImagemorphopenLayer, v : Double) -> Image
   result
 }
 
-pub fn image_morph_open_layer_min(s : ImagemorphopenLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_layer_min(s : ImagemorphopenLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_layer_max(s : ImagemorphopenLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_layer_max(s : ImagemorphopenLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_layer_to_string(s : ImagemorphopenLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_morph_open_buffer_set(s : ImagemorphopenBuffer, i : Int, v : Double
   result
 }
 
-pub fn image_morph_open_buffer_sum(s : ImagemorphopenBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_buffer_sum(s : ImagemorphopenBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_buffer_mean(s : ImagemorphopenBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_buffer_mean(s : ImagemorphopenBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_buffer_scale(s : ImagemorphopenBuffer, f : Double) -> ImagemorphopenBuffer {
   let result = image_morph_open_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_morph_open_buffer_fill(s : ImagemorphopenBuffer, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_open_buffer_min(s : ImagemorphopenBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_buffer_min(s : ImagemorphopenBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_buffer_max(s : ImagemorphopenBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_buffer_max(s : ImagemorphopenBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_buffer_to_string(s : ImagemorphopenBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_morph_open_cursor_set(s : ImagemorphopenCursor, i : Int, v : Double
   result
 }
 
-pub fn image_morph_open_cursor_sum(s : ImagemorphopenCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_cursor_sum(s : ImagemorphopenCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_cursor_mean(s : ImagemorphopenCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_cursor_mean(s : ImagemorphopenCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_cursor_scale(s : ImagemorphopenCursor, f : Double) -> ImagemorphopenCursor {
   let result = image_morph_open_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_morph_open_cursor_fill(s : ImagemorphopenCursor, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_open_cursor_min(s : ImagemorphopenCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_cursor_min(s : ImagemorphopenCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_cursor_max(s : ImagemorphopenCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_cursor_max(s : ImagemorphopenCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_cursor_to_string(s : ImagemorphopenCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_morph_open_view_set(s : ImagemorphopenView, i : Int, v : Double) ->
   result
 }
 
-pub fn image_morph_open_view_sum(s : ImagemorphopenView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_view_sum(s : ImagemorphopenView) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_view_mean(s : ImagemorphopenView) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_view_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_view_mean(s : ImagemorphopenView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_view_scale(s : ImagemorphopenView, f : Double) -> ImagemorphopenView {
   let result = image_morph_open_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_morph_open_view_fill(s : ImagemorphopenView, v : Double) -> Imagemo
   result
 }
 
-pub fn image_morph_open_view_min(s : ImagemorphopenView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_view_min(s : ImagemorphopenView) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_view_max(s : ImagemorphopenView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_view_max(s : ImagemorphopenView) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_view_to_string(s : ImagemorphopenView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_morph_open_range_set(s : ImagemorphopenRange, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_open_range_sum(s : ImagemorphopenRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_range_sum(s : ImagemorphopenRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_range_mean(s : ImagemorphopenRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_range_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_range_mean(s : ImagemorphopenRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_range_scale(s : ImagemorphopenRange, f : Double) -> ImagemorphopenRange {
   let result = image_morph_open_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_morph_open_range_fill(s : ImagemorphopenRange, v : Double) -> Image
   result
 }
 
-pub fn image_morph_open_range_min(s : ImagemorphopenRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_range_min(s : ImagemorphopenRange) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_range_max(s : ImagemorphopenRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_range_max(s : ImagemorphopenRange) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_range_to_string(s : ImagemorphopenRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_morph_open_slice_set(s : ImagemorphopenSlice, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_open_slice_sum(s : ImagemorphopenSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_open_slice_sum(s : ImagemorphopenSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_open_slice_mean(s : ImagemorphopenSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_open_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_open_slice_mean(s : ImagemorphopenSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_open_slice_scale(s : ImagemorphopenSlice, f : Double) -> ImagemorphopenSlice {
   let result = image_morph_open_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_morph_open_slice_fill(s : ImagemorphopenSlice, v : Double) -> Image
   result
 }
 
-pub fn image_morph_open_slice_min(s : ImagemorphopenSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_slice_min(s : ImagemorphopenSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_open_slice_max(s : ImagemorphopenSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_open_slice_max(s : ImagemorphopenSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_open_slice_to_string(s : ImagemorphopenSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

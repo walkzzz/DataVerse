@@ -88,11 +88,7 @@ pub fn ml_rl_ppo_make_series(vals : Array[Double], name : String) -> MlrlppoSeri
 
 pub fn ml_rl_ppo_series_len(s : MlrlppoSeries) -> Int { s.vals.length() }
 
-pub fn ml_rl_ppo_series_sum(s : MlrlppoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_rl_ppo_series_sum(s : MlrlppoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_rl_ppo_series_mean(s : MlrlppoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_rl_ppo_frame_set(s : MlrlppoFrame, i : Int, v : Double) -> MlrlppoFram
   result
 }
 
-pub fn ml_rl_ppo_frame_sum(s : MlrlppoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_frame_sum(s : MlrlppoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_frame_mean(s : MlrlppoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_frame_mean(s : MlrlppoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_frame_scale(s : MlrlppoFrame, f : Double) -> MlrlppoFrame {
   let result = ml_rl_ppo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_rl_ppo_frame_fill(s : MlrlppoFrame, v : Double) -> MlrlppoFrame {
   result
 }
 
-pub fn ml_rl_ppo_frame_min(s : MlrlppoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_frame_min(s : MlrlppoFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_frame_max(s : MlrlppoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_frame_max(s : MlrlppoFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_frame_to_string(s : MlrlppoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_rl_ppo_table_set(s : MlrlppoTable, i : Int, v : Double) -> MlrlppoTabl
   result
 }
 
-pub fn ml_rl_ppo_table_sum(s : MlrlppoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_table_sum(s : MlrlppoTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_table_mean(s : MlrlppoTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_table_mean(s : MlrlppoTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_table_scale(s : MlrlppoTable, f : Double) -> MlrlppoTable {
   let result = ml_rl_ppo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_rl_ppo_table_fill(s : MlrlppoTable, v : Double) -> MlrlppoTable {
   result
 }
 
-pub fn ml_rl_ppo_table_min(s : MlrlppoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_table_min(s : MlrlppoTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_table_max(s : MlrlppoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_table_max(s : MlrlppoTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_table_to_string(s : MlrlppoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_rl_ppo_graphn_set(s : MlrlppoGraphN, i : Int, v : Double) -> MlrlppoGr
   result
 }
 
-pub fn ml_rl_ppo_graphn_sum(s : MlrlppoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_graphn_sum(s : MlrlppoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_graphn_mean(s : MlrlppoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_graphn_mean(s : MlrlppoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_graphn_scale(s : MlrlppoGraphN, f : Double) -> MlrlppoGraphN {
   let result = ml_rl_ppo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_rl_ppo_graphn_fill(s : MlrlppoGraphN, v : Double) -> MlrlppoGraphN {
   result
 }
 
-pub fn ml_rl_ppo_graphn_min(s : MlrlppoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_graphn_min(s : MlrlppoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_graphn_max(s : MlrlppoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_graphn_max(s : MlrlppoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_graphn_to_string(s : MlrlppoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_rl_ppo_node_set(s : MlrlppoNode, i : Int, v : Double) -> MlrlppoNode {
   result
 }
 
-pub fn ml_rl_ppo_node_sum(s : MlrlppoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_node_sum(s : MlrlppoNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_node_mean(s : MlrlppoNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_node_mean(s : MlrlppoNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_node_scale(s : MlrlppoNode, f : Double) -> MlrlppoNode {
   let result = ml_rl_ppo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_rl_ppo_node_fill(s : MlrlppoNode, v : Double) -> MlrlppoNode {
   result
 }
 
-pub fn ml_rl_ppo_node_min(s : MlrlppoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_node_min(s : MlrlppoNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_node_max(s : MlrlppoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_node_max(s : MlrlppoNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_node_to_string(s : MlrlppoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_rl_ppo_edge_set(s : MlrlppoEdge, i : Int, v : Double) -> MlrlppoEdge {
   result
 }
 
-pub fn ml_rl_ppo_edge_sum(s : MlrlppoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_edge_sum(s : MlrlppoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_edge_mean(s : MlrlppoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_edge_mean(s : MlrlppoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_edge_scale(s : MlrlppoEdge, f : Double) -> MlrlppoEdge {
   let result = ml_rl_ppo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_rl_ppo_edge_fill(s : MlrlppoEdge, v : Double) -> MlrlppoEdge {
   result
 }
 
-pub fn ml_rl_ppo_edge_min(s : MlrlppoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_edge_min(s : MlrlppoEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_edge_max(s : MlrlppoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_edge_max(s : MlrlppoEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_edge_to_string(s : MlrlppoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_rl_ppo_path_set(s : MlrlppoPath, i : Int, v : Double) -> MlrlppoPath {
   result
 }
 
-pub fn ml_rl_ppo_path_sum(s : MlrlppoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_path_sum(s : MlrlppoPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_path_mean(s : MlrlppoPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_path_mean(s : MlrlppoPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_path_scale(s : MlrlppoPath, f : Double) -> MlrlppoPath {
   let result = ml_rl_ppo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_rl_ppo_path_fill(s : MlrlppoPath, v : Double) -> MlrlppoPath {
   result
 }
 
-pub fn ml_rl_ppo_path_min(s : MlrlppoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_path_min(s : MlrlppoPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_path_max(s : MlrlppoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_path_max(s : MlrlppoPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_path_to_string(s : MlrlppoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_rl_ppo_cluster_set(s : MlrlppoCluster, i : Int, v : Double) -> Mlrlppo
   result
 }
 
-pub fn ml_rl_ppo_cluster_sum(s : MlrlppoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_cluster_sum(s : MlrlppoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_cluster_mean(s : MlrlppoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_cluster_mean(s : MlrlppoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_cluster_scale(s : MlrlppoCluster, f : Double) -> MlrlppoCluster {
   let result = ml_rl_ppo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_rl_ppo_cluster_fill(s : MlrlppoCluster, v : Double) -> MlrlppoCluster 
   result
 }
 
-pub fn ml_rl_ppo_cluster_min(s : MlrlppoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_cluster_min(s : MlrlppoCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_cluster_max(s : MlrlppoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_cluster_max(s : MlrlppoCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_cluster_to_string(s : MlrlppoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_rl_ppo_model_set(s : MlrlppoModel, i : Int, v : Double) -> MlrlppoMode
   result
 }
 
-pub fn ml_rl_ppo_model_sum(s : MlrlppoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_model_sum(s : MlrlppoModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_model_mean(s : MlrlppoModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_model_mean(s : MlrlppoModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_model_scale(s : MlrlppoModel, f : Double) -> MlrlppoModel {
   let result = ml_rl_ppo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_rl_ppo_model_fill(s : MlrlppoModel, v : Double) -> MlrlppoModel {
   result
 }
 
-pub fn ml_rl_ppo_model_min(s : MlrlppoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_model_min(s : MlrlppoModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_model_max(s : MlrlppoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_model_max(s : MlrlppoModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_model_to_string(s : MlrlppoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_rl_ppo_layer_set(s : MlrlppoLayer, i : Int, v : Double) -> MlrlppoLaye
   result
 }
 
-pub fn ml_rl_ppo_layer_sum(s : MlrlppoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_layer_sum(s : MlrlppoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_layer_mean(s : MlrlppoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_layer_mean(s : MlrlppoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_layer_scale(s : MlrlppoLayer, f : Double) -> MlrlppoLayer {
   let result = ml_rl_ppo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_rl_ppo_layer_fill(s : MlrlppoLayer, v : Double) -> MlrlppoLayer {
   result
 }
 
-pub fn ml_rl_ppo_layer_min(s : MlrlppoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_layer_min(s : MlrlppoLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_layer_max(s : MlrlppoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_layer_max(s : MlrlppoLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_layer_to_string(s : MlrlppoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_rl_ppo_buffer_set(s : MlrlppoBuffer, i : Int, v : Double) -> MlrlppoBu
   result
 }
 
-pub fn ml_rl_ppo_buffer_sum(s : MlrlppoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_buffer_sum(s : MlrlppoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_buffer_mean(s : MlrlppoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_buffer_mean(s : MlrlppoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_buffer_scale(s : MlrlppoBuffer, f : Double) -> MlrlppoBuffer {
   let result = ml_rl_ppo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_rl_ppo_buffer_fill(s : MlrlppoBuffer, v : Double) -> MlrlppoBuffer {
   result
 }
 
-pub fn ml_rl_ppo_buffer_min(s : MlrlppoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_buffer_min(s : MlrlppoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_buffer_max(s : MlrlppoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_buffer_max(s : MlrlppoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_buffer_to_string(s : MlrlppoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_rl_ppo_cursor_set(s : MlrlppoCursor, i : Int, v : Double) -> MlrlppoCu
   result
 }
 
-pub fn ml_rl_ppo_cursor_sum(s : MlrlppoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_cursor_sum(s : MlrlppoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_cursor_mean(s : MlrlppoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_cursor_mean(s : MlrlppoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_cursor_scale(s : MlrlppoCursor, f : Double) -> MlrlppoCursor {
   let result = ml_rl_ppo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_rl_ppo_cursor_fill(s : MlrlppoCursor, v : Double) -> MlrlppoCursor {
   result
 }
 
-pub fn ml_rl_ppo_cursor_min(s : MlrlppoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_cursor_min(s : MlrlppoCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_cursor_max(s : MlrlppoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_cursor_max(s : MlrlppoCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_cursor_to_string(s : MlrlppoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_rl_ppo_view_set(s : MlrlppoView, i : Int, v : Double) -> MlrlppoView {
   result
 }
 
-pub fn ml_rl_ppo_view_sum(s : MlrlppoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_view_sum(s : MlrlppoView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_view_mean(s : MlrlppoView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_view_mean(s : MlrlppoView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_view_scale(s : MlrlppoView, f : Double) -> MlrlppoView {
   let result = ml_rl_ppo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_rl_ppo_view_fill(s : MlrlppoView, v : Double) -> MlrlppoView {
   result
 }
 
-pub fn ml_rl_ppo_view_min(s : MlrlppoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_view_min(s : MlrlppoView) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_view_max(s : MlrlppoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_view_max(s : MlrlppoView) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_view_to_string(s : MlrlppoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_rl_ppo_range_set(s : MlrlppoRange, i : Int, v : Double) -> MlrlppoRang
   result
 }
 
-pub fn ml_rl_ppo_range_sum(s : MlrlppoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_range_sum(s : MlrlppoRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_range_mean(s : MlrlppoRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_range_mean(s : MlrlppoRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_range_scale(s : MlrlppoRange, f : Double) -> MlrlppoRange {
   let result = ml_rl_ppo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_rl_ppo_range_fill(s : MlrlppoRange, v : Double) -> MlrlppoRange {
   result
 }
 
-pub fn ml_rl_ppo_range_min(s : MlrlppoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_range_min(s : MlrlppoRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_range_max(s : MlrlppoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_range_max(s : MlrlppoRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_range_to_string(s : MlrlppoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_rl_ppo_slice_set(s : MlrlppoSlice, i : Int, v : Double) -> MlrlppoSlic
   result
 }
 
-pub fn ml_rl_ppo_slice_sum(s : MlrlppoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ppo_slice_sum(s : MlrlppoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ppo_slice_mean(s : MlrlppoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ppo_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ppo_slice_mean(s : MlrlppoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ppo_slice_scale(s : MlrlppoSlice, f : Double) -> MlrlppoSlice {
   let result = ml_rl_ppo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_rl_ppo_slice_fill(s : MlrlppoSlice, v : Double) -> MlrlppoSlice {
   result
 }
 
-pub fn ml_rl_ppo_slice_min(s : MlrlppoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_slice_min(s : MlrlppoSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ppo_slice_max(s : MlrlppoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ppo_slice_max(s : MlrlppoSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ppo_slice_to_string(s : MlrlppoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

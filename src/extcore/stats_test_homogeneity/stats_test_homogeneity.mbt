@@ -88,11 +88,7 @@ pub fn stats_test_homogeneity_make_series(vals : Array[Double], name : String) -
 
 pub fn stats_test_homogeneity_series_len(s : StatstesthomogeneitySeries) -> Int { s.vals.length() }
 
-pub fn stats_test_homogeneity_series_sum(s : StatstesthomogeneitySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_homogeneity_series_sum(s : StatstesthomogeneitySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_homogeneity_series_mean(s : StatstesthomogeneitySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_homogeneity_frame_set(s : StatstesthomogeneityFrame, i : Int, 
   result
 }
 
-pub fn stats_test_homogeneity_frame_sum(s : StatstesthomogeneityFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_frame_sum(s : StatstesthomogeneityFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_frame_mean(s : StatstesthomogeneityFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_frame_mean(s : StatstesthomogeneityFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_frame_scale(s : StatstesthomogeneityFrame, f : Double) -> StatstesthomogeneityFrame {
   let result = stats_test_homogeneity_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_homogeneity_frame_fill(s : StatstesthomogeneityFrame, v : Doub
   result
 }
 
-pub fn stats_test_homogeneity_frame_min(s : StatstesthomogeneityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_frame_min(s : StatstesthomogeneityFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_frame_max(s : StatstesthomogeneityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_frame_max(s : StatstesthomogeneityFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_frame_to_string(s : StatstesthomogeneityFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_homogeneity_table_set(s : StatstesthomogeneityTable, i : Int, 
   result
 }
 
-pub fn stats_test_homogeneity_table_sum(s : StatstesthomogeneityTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_table_sum(s : StatstesthomogeneityTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_table_mean(s : StatstesthomogeneityTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_table_mean(s : StatstesthomogeneityTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_table_scale(s : StatstesthomogeneityTable, f : Double) -> StatstesthomogeneityTable {
   let result = stats_test_homogeneity_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_homogeneity_table_fill(s : StatstesthomogeneityTable, v : Doub
   result
 }
 
-pub fn stats_test_homogeneity_table_min(s : StatstesthomogeneityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_table_min(s : StatstesthomogeneityTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_table_max(s : StatstesthomogeneityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_table_max(s : StatstesthomogeneityTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_table_to_string(s : StatstesthomogeneityTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_homogeneity_graphn_set(s : StatstesthomogeneityGraphN, i : Int
   result
 }
 
-pub fn stats_test_homogeneity_graphn_sum(s : StatstesthomogeneityGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_graphn_sum(s : StatstesthomogeneityGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_graphn_mean(s : StatstesthomogeneityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_graphn_mean(s : StatstesthomogeneityGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_graphn_scale(s : StatstesthomogeneityGraphN, f : Double) -> StatstesthomogeneityGraphN {
   let result = stats_test_homogeneity_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_homogeneity_graphn_fill(s : StatstesthomogeneityGraphN, v : Do
   result
 }
 
-pub fn stats_test_homogeneity_graphn_min(s : StatstesthomogeneityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_graphn_min(s : StatstesthomogeneityGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_graphn_max(s : StatstesthomogeneityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_graphn_max(s : StatstesthomogeneityGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_graphn_to_string(s : StatstesthomogeneityGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_homogeneity_node_set(s : StatstesthomogeneityNode, i : Int, v 
   result
 }
 
-pub fn stats_test_homogeneity_node_sum(s : StatstesthomogeneityNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_node_sum(s : StatstesthomogeneityNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_node_mean(s : StatstesthomogeneityNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_node_mean(s : StatstesthomogeneityNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_node_scale(s : StatstesthomogeneityNode, f : Double) -> StatstesthomogeneityNode {
   let result = stats_test_homogeneity_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_homogeneity_node_fill(s : StatstesthomogeneityNode, v : Double
   result
 }
 
-pub fn stats_test_homogeneity_node_min(s : StatstesthomogeneityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_node_min(s : StatstesthomogeneityNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_node_max(s : StatstesthomogeneityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_node_max(s : StatstesthomogeneityNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_node_to_string(s : StatstesthomogeneityNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_homogeneity_edge_set(s : StatstesthomogeneityEdge, i : Int, v 
   result
 }
 
-pub fn stats_test_homogeneity_edge_sum(s : StatstesthomogeneityEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_edge_sum(s : StatstesthomogeneityEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_edge_mean(s : StatstesthomogeneityEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_edge_mean(s : StatstesthomogeneityEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_edge_scale(s : StatstesthomogeneityEdge, f : Double) -> StatstesthomogeneityEdge {
   let result = stats_test_homogeneity_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_homogeneity_edge_fill(s : StatstesthomogeneityEdge, v : Double
   result
 }
 
-pub fn stats_test_homogeneity_edge_min(s : StatstesthomogeneityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_edge_min(s : StatstesthomogeneityEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_edge_max(s : StatstesthomogeneityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_edge_max(s : StatstesthomogeneityEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_edge_to_string(s : StatstesthomogeneityEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_homogeneity_path_set(s : StatstesthomogeneityPath, i : Int, v 
   result
 }
 
-pub fn stats_test_homogeneity_path_sum(s : StatstesthomogeneityPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_path_sum(s : StatstesthomogeneityPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_path_mean(s : StatstesthomogeneityPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_path_mean(s : StatstesthomogeneityPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_path_scale(s : StatstesthomogeneityPath, f : Double) -> StatstesthomogeneityPath {
   let result = stats_test_homogeneity_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_homogeneity_path_fill(s : StatstesthomogeneityPath, v : Double
   result
 }
 
-pub fn stats_test_homogeneity_path_min(s : StatstesthomogeneityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_path_min(s : StatstesthomogeneityPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_path_max(s : StatstesthomogeneityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_path_max(s : StatstesthomogeneityPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_path_to_string(s : StatstesthomogeneityPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_homogeneity_cluster_set(s : StatstesthomogeneityCluster, i : I
   result
 }
 
-pub fn stats_test_homogeneity_cluster_sum(s : StatstesthomogeneityCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_cluster_sum(s : StatstesthomogeneityCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_cluster_mean(s : StatstesthomogeneityCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_cluster_mean(s : StatstesthomogeneityCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_cluster_scale(s : StatstesthomogeneityCluster, f : Double) -> StatstesthomogeneityCluster {
   let result = stats_test_homogeneity_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_homogeneity_cluster_fill(s : StatstesthomogeneityCluster, v : 
   result
 }
 
-pub fn stats_test_homogeneity_cluster_min(s : StatstesthomogeneityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_cluster_min(s : StatstesthomogeneityCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_cluster_max(s : StatstesthomogeneityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_cluster_max(s : StatstesthomogeneityCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_cluster_to_string(s : StatstesthomogeneityCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_homogeneity_model_set(s : StatstesthomogeneityModel, i : Int, 
   result
 }
 
-pub fn stats_test_homogeneity_model_sum(s : StatstesthomogeneityModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_model_sum(s : StatstesthomogeneityModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_model_mean(s : StatstesthomogeneityModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_model_mean(s : StatstesthomogeneityModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_model_scale(s : StatstesthomogeneityModel, f : Double) -> StatstesthomogeneityModel {
   let result = stats_test_homogeneity_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_homogeneity_model_fill(s : StatstesthomogeneityModel, v : Doub
   result
 }
 
-pub fn stats_test_homogeneity_model_min(s : StatstesthomogeneityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_model_min(s : StatstesthomogeneityModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_model_max(s : StatstesthomogeneityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_model_max(s : StatstesthomogeneityModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_model_to_string(s : StatstesthomogeneityModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_homogeneity_layer_set(s : StatstesthomogeneityLayer, i : Int, 
   result
 }
 
-pub fn stats_test_homogeneity_layer_sum(s : StatstesthomogeneityLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_layer_sum(s : StatstesthomogeneityLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_layer_mean(s : StatstesthomogeneityLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_layer_mean(s : StatstesthomogeneityLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_layer_scale(s : StatstesthomogeneityLayer, f : Double) -> StatstesthomogeneityLayer {
   let result = stats_test_homogeneity_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_homogeneity_layer_fill(s : StatstesthomogeneityLayer, v : Doub
   result
 }
 
-pub fn stats_test_homogeneity_layer_min(s : StatstesthomogeneityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_layer_min(s : StatstesthomogeneityLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_layer_max(s : StatstesthomogeneityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_layer_max(s : StatstesthomogeneityLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_layer_to_string(s : StatstesthomogeneityLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_homogeneity_buffer_set(s : StatstesthomogeneityBuffer, i : Int
   result
 }
 
-pub fn stats_test_homogeneity_buffer_sum(s : StatstesthomogeneityBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_buffer_sum(s : StatstesthomogeneityBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_buffer_mean(s : StatstesthomogeneityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_buffer_mean(s : StatstesthomogeneityBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_buffer_scale(s : StatstesthomogeneityBuffer, f : Double) -> StatstesthomogeneityBuffer {
   let result = stats_test_homogeneity_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_homogeneity_buffer_fill(s : StatstesthomogeneityBuffer, v : Do
   result
 }
 
-pub fn stats_test_homogeneity_buffer_min(s : StatstesthomogeneityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_buffer_min(s : StatstesthomogeneityBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_buffer_max(s : StatstesthomogeneityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_buffer_max(s : StatstesthomogeneityBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_buffer_to_string(s : StatstesthomogeneityBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_homogeneity_cursor_set(s : StatstesthomogeneityCursor, i : Int
   result
 }
 
-pub fn stats_test_homogeneity_cursor_sum(s : StatstesthomogeneityCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_cursor_sum(s : StatstesthomogeneityCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_cursor_mean(s : StatstesthomogeneityCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_cursor_mean(s : StatstesthomogeneityCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_cursor_scale(s : StatstesthomogeneityCursor, f : Double) -> StatstesthomogeneityCursor {
   let result = stats_test_homogeneity_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_homogeneity_cursor_fill(s : StatstesthomogeneityCursor, v : Do
   result
 }
 
-pub fn stats_test_homogeneity_cursor_min(s : StatstesthomogeneityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_cursor_min(s : StatstesthomogeneityCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_cursor_max(s : StatstesthomogeneityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_cursor_max(s : StatstesthomogeneityCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_cursor_to_string(s : StatstesthomogeneityCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_homogeneity_view_set(s : StatstesthomogeneityView, i : Int, v 
   result
 }
 
-pub fn stats_test_homogeneity_view_sum(s : StatstesthomogeneityView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_view_sum(s : StatstesthomogeneityView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_view_mean(s : StatstesthomogeneityView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_view_mean(s : StatstesthomogeneityView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_view_scale(s : StatstesthomogeneityView, f : Double) -> StatstesthomogeneityView {
   let result = stats_test_homogeneity_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_homogeneity_view_fill(s : StatstesthomogeneityView, v : Double
   result
 }
 
-pub fn stats_test_homogeneity_view_min(s : StatstesthomogeneityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_view_min(s : StatstesthomogeneityView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_view_max(s : StatstesthomogeneityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_view_max(s : StatstesthomogeneityView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_view_to_string(s : StatstesthomogeneityView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_homogeneity_range_set(s : StatstesthomogeneityRange, i : Int, 
   result
 }
 
-pub fn stats_test_homogeneity_range_sum(s : StatstesthomogeneityRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_range_sum(s : StatstesthomogeneityRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_range_mean(s : StatstesthomogeneityRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_range_mean(s : StatstesthomogeneityRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_range_scale(s : StatstesthomogeneityRange, f : Double) -> StatstesthomogeneityRange {
   let result = stats_test_homogeneity_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_homogeneity_range_fill(s : StatstesthomogeneityRange, v : Doub
   result
 }
 
-pub fn stats_test_homogeneity_range_min(s : StatstesthomogeneityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_range_min(s : StatstesthomogeneityRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_range_max(s : StatstesthomogeneityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_range_max(s : StatstesthomogeneityRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_range_to_string(s : StatstesthomogeneityRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_homogeneity_slice_set(s : StatstesthomogeneitySlice, i : Int, 
   result
 }
 
-pub fn stats_test_homogeneity_slice_sum(s : StatstesthomogeneitySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_homogeneity_slice_sum(s : StatstesthomogeneitySlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_homogeneity_slice_mean(s : StatstesthomogeneitySlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_homogeneity_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_homogeneity_slice_mean(s : StatstesthomogeneitySlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_homogeneity_slice_scale(s : StatstesthomogeneitySlice, f : Double) -> StatstesthomogeneitySlice {
   let result = stats_test_homogeneity_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_homogeneity_slice_fill(s : StatstesthomogeneitySlice, v : Doub
   result
 }
 
-pub fn stats_test_homogeneity_slice_min(s : StatstesthomogeneitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_slice_min(s : StatstesthomogeneitySlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_homogeneity_slice_max(s : StatstesthomogeneitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_homogeneity_slice_max(s : StatstesthomogeneitySlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_homogeneity_slice_to_string(s : StatstesthomogeneitySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

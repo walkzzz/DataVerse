@@ -88,11 +88,7 @@ pub fn graph_tree_mst_prim_make_series(vals : Array[Double], name : String) -> G
 
 pub fn graph_tree_mst_prim_series_len(s : GraphtreemstprimSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_mst_prim_series_sum(s : GraphtreemstprimSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_mst_prim_series_sum(s : GraphtreemstprimSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_mst_prim_series_mean(s : GraphtreemstprimSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_mst_prim_frame_set(s : GraphtreemstprimFrame, i : Int, v : Dou
   result
 }
 
-pub fn graph_tree_mst_prim_frame_sum(s : GraphtreemstprimFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_frame_sum(s : GraphtreemstprimFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_frame_mean(s : GraphtreemstprimFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_frame_mean(s : GraphtreemstprimFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_frame_scale(s : GraphtreemstprimFrame, f : Double) -> GraphtreemstprimFrame {
   let result = graph_tree_mst_prim_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_mst_prim_frame_fill(s : GraphtreemstprimFrame, v : Double) -> 
   result
 }
 
-pub fn graph_tree_mst_prim_frame_min(s : GraphtreemstprimFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_frame_min(s : GraphtreemstprimFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_frame_max(s : GraphtreemstprimFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_frame_max(s : GraphtreemstprimFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_frame_to_string(s : GraphtreemstprimFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_mst_prim_table_set(s : GraphtreemstprimTable, i : Int, v : Dou
   result
 }
 
-pub fn graph_tree_mst_prim_table_sum(s : GraphtreemstprimTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_table_sum(s : GraphtreemstprimTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_table_mean(s : GraphtreemstprimTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_table_mean(s : GraphtreemstprimTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_table_scale(s : GraphtreemstprimTable, f : Double) -> GraphtreemstprimTable {
   let result = graph_tree_mst_prim_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_mst_prim_table_fill(s : GraphtreemstprimTable, v : Double) -> 
   result
 }
 
-pub fn graph_tree_mst_prim_table_min(s : GraphtreemstprimTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_table_min(s : GraphtreemstprimTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_table_max(s : GraphtreemstprimTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_table_max(s : GraphtreemstprimTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_table_to_string(s : GraphtreemstprimTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_mst_prim_graphn_set(s : GraphtreemstprimGraphN, i : Int, v : D
   result
 }
 
-pub fn graph_tree_mst_prim_graphn_sum(s : GraphtreemstprimGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_graphn_sum(s : GraphtreemstprimGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_graphn_mean(s : GraphtreemstprimGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_graphn_mean(s : GraphtreemstprimGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_graphn_scale(s : GraphtreemstprimGraphN, f : Double) -> GraphtreemstprimGraphN {
   let result = graph_tree_mst_prim_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_mst_prim_graphn_fill(s : GraphtreemstprimGraphN, v : Double) -
   result
 }
 
-pub fn graph_tree_mst_prim_graphn_min(s : GraphtreemstprimGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_graphn_min(s : GraphtreemstprimGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_graphn_max(s : GraphtreemstprimGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_graphn_max(s : GraphtreemstprimGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_graphn_to_string(s : GraphtreemstprimGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_mst_prim_node_set(s : GraphtreemstprimNode, i : Int, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_prim_node_sum(s : GraphtreemstprimNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_node_sum(s : GraphtreemstprimNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_node_mean(s : GraphtreemstprimNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_node_mean(s : GraphtreemstprimNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_node_scale(s : GraphtreemstprimNode, f : Double) -> GraphtreemstprimNode {
   let result = graph_tree_mst_prim_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_mst_prim_node_fill(s : GraphtreemstprimNode, v : Double) -> Gr
   result
 }
 
-pub fn graph_tree_mst_prim_node_min(s : GraphtreemstprimNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_node_min(s : GraphtreemstprimNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_node_max(s : GraphtreemstprimNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_node_max(s : GraphtreemstprimNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_node_to_string(s : GraphtreemstprimNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_mst_prim_edge_set(s : GraphtreemstprimEdge, i : Int, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_prim_edge_sum(s : GraphtreemstprimEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_edge_sum(s : GraphtreemstprimEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_edge_mean(s : GraphtreemstprimEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_edge_mean(s : GraphtreemstprimEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_edge_scale(s : GraphtreemstprimEdge, f : Double) -> GraphtreemstprimEdge {
   let result = graph_tree_mst_prim_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_mst_prim_edge_fill(s : GraphtreemstprimEdge, v : Double) -> Gr
   result
 }
 
-pub fn graph_tree_mst_prim_edge_min(s : GraphtreemstprimEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_edge_min(s : GraphtreemstprimEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_edge_max(s : GraphtreemstprimEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_edge_max(s : GraphtreemstprimEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_edge_to_string(s : GraphtreemstprimEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_mst_prim_path_set(s : GraphtreemstprimPath, i : Int, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_prim_path_sum(s : GraphtreemstprimPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_path_sum(s : GraphtreemstprimPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_path_mean(s : GraphtreemstprimPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_path_mean(s : GraphtreemstprimPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_path_scale(s : GraphtreemstprimPath, f : Double) -> GraphtreemstprimPath {
   let result = graph_tree_mst_prim_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_mst_prim_path_fill(s : GraphtreemstprimPath, v : Double) -> Gr
   result
 }
 
-pub fn graph_tree_mst_prim_path_min(s : GraphtreemstprimPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_path_min(s : GraphtreemstprimPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_path_max(s : GraphtreemstprimPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_path_max(s : GraphtreemstprimPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_path_to_string(s : GraphtreemstprimPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_mst_prim_cluster_set(s : GraphtreemstprimCluster, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_prim_cluster_sum(s : GraphtreemstprimCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_cluster_sum(s : GraphtreemstprimCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_cluster_mean(s : GraphtreemstprimCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_cluster_mean(s : GraphtreemstprimCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_cluster_scale(s : GraphtreemstprimCluster, f : Double) -> GraphtreemstprimCluster {
   let result = graph_tree_mst_prim_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_mst_prim_cluster_fill(s : GraphtreemstprimCluster, v : Double)
   result
 }
 
-pub fn graph_tree_mst_prim_cluster_min(s : GraphtreemstprimCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_cluster_min(s : GraphtreemstprimCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_cluster_max(s : GraphtreemstprimCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_cluster_max(s : GraphtreemstprimCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_cluster_to_string(s : GraphtreemstprimCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_mst_prim_model_set(s : GraphtreemstprimModel, i : Int, v : Dou
   result
 }
 
-pub fn graph_tree_mst_prim_model_sum(s : GraphtreemstprimModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_model_sum(s : GraphtreemstprimModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_model_mean(s : GraphtreemstprimModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_model_mean(s : GraphtreemstprimModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_model_scale(s : GraphtreemstprimModel, f : Double) -> GraphtreemstprimModel {
   let result = graph_tree_mst_prim_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_mst_prim_model_fill(s : GraphtreemstprimModel, v : Double) -> 
   result
 }
 
-pub fn graph_tree_mst_prim_model_min(s : GraphtreemstprimModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_model_min(s : GraphtreemstprimModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_model_max(s : GraphtreemstprimModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_model_max(s : GraphtreemstprimModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_model_to_string(s : GraphtreemstprimModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_mst_prim_layer_set(s : GraphtreemstprimLayer, i : Int, v : Dou
   result
 }
 
-pub fn graph_tree_mst_prim_layer_sum(s : GraphtreemstprimLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_layer_sum(s : GraphtreemstprimLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_layer_mean(s : GraphtreemstprimLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_layer_mean(s : GraphtreemstprimLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_layer_scale(s : GraphtreemstprimLayer, f : Double) -> GraphtreemstprimLayer {
   let result = graph_tree_mst_prim_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_mst_prim_layer_fill(s : GraphtreemstprimLayer, v : Double) -> 
   result
 }
 
-pub fn graph_tree_mst_prim_layer_min(s : GraphtreemstprimLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_layer_min(s : GraphtreemstprimLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_layer_max(s : GraphtreemstprimLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_layer_max(s : GraphtreemstprimLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_layer_to_string(s : GraphtreemstprimLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_mst_prim_buffer_set(s : GraphtreemstprimBuffer, i : Int, v : D
   result
 }
 
-pub fn graph_tree_mst_prim_buffer_sum(s : GraphtreemstprimBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_buffer_sum(s : GraphtreemstprimBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_buffer_mean(s : GraphtreemstprimBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_buffer_mean(s : GraphtreemstprimBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_buffer_scale(s : GraphtreemstprimBuffer, f : Double) -> GraphtreemstprimBuffer {
   let result = graph_tree_mst_prim_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_mst_prim_buffer_fill(s : GraphtreemstprimBuffer, v : Double) -
   result
 }
 
-pub fn graph_tree_mst_prim_buffer_min(s : GraphtreemstprimBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_buffer_min(s : GraphtreemstprimBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_buffer_max(s : GraphtreemstprimBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_buffer_max(s : GraphtreemstprimBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_buffer_to_string(s : GraphtreemstprimBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_mst_prim_cursor_set(s : GraphtreemstprimCursor, i : Int, v : D
   result
 }
 
-pub fn graph_tree_mst_prim_cursor_sum(s : GraphtreemstprimCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_cursor_sum(s : GraphtreemstprimCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_cursor_mean(s : GraphtreemstprimCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_cursor_mean(s : GraphtreemstprimCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_cursor_scale(s : GraphtreemstprimCursor, f : Double) -> GraphtreemstprimCursor {
   let result = graph_tree_mst_prim_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_mst_prim_cursor_fill(s : GraphtreemstprimCursor, v : Double) -
   result
 }
 
-pub fn graph_tree_mst_prim_cursor_min(s : GraphtreemstprimCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_cursor_min(s : GraphtreemstprimCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_cursor_max(s : GraphtreemstprimCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_cursor_max(s : GraphtreemstprimCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_cursor_to_string(s : GraphtreemstprimCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_mst_prim_view_set(s : GraphtreemstprimView, i : Int, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_prim_view_sum(s : GraphtreemstprimView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_view_sum(s : GraphtreemstprimView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_view_mean(s : GraphtreemstprimView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_view_mean(s : GraphtreemstprimView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_view_scale(s : GraphtreemstprimView, f : Double) -> GraphtreemstprimView {
   let result = graph_tree_mst_prim_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_mst_prim_view_fill(s : GraphtreemstprimView, v : Double) -> Gr
   result
 }
 
-pub fn graph_tree_mst_prim_view_min(s : GraphtreemstprimView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_view_min(s : GraphtreemstprimView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_view_max(s : GraphtreemstprimView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_view_max(s : GraphtreemstprimView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_view_to_string(s : GraphtreemstprimView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_mst_prim_range_set(s : GraphtreemstprimRange, i : Int, v : Dou
   result
 }
 
-pub fn graph_tree_mst_prim_range_sum(s : GraphtreemstprimRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_range_sum(s : GraphtreemstprimRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_range_mean(s : GraphtreemstprimRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_range_mean(s : GraphtreemstprimRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_range_scale(s : GraphtreemstprimRange, f : Double) -> GraphtreemstprimRange {
   let result = graph_tree_mst_prim_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_mst_prim_range_fill(s : GraphtreemstprimRange, v : Double) -> 
   result
 }
 
-pub fn graph_tree_mst_prim_range_min(s : GraphtreemstprimRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_range_min(s : GraphtreemstprimRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_range_max(s : GraphtreemstprimRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_range_max(s : GraphtreemstprimRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_range_to_string(s : GraphtreemstprimRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_mst_prim_slice_set(s : GraphtreemstprimSlice, i : Int, v : Dou
   result
 }
 
-pub fn graph_tree_mst_prim_slice_sum(s : GraphtreemstprimSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_prim_slice_sum(s : GraphtreemstprimSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_prim_slice_mean(s : GraphtreemstprimSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_prim_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_prim_slice_mean(s : GraphtreemstprimSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_prim_slice_scale(s : GraphtreemstprimSlice, f : Double) -> GraphtreemstprimSlice {
   let result = graph_tree_mst_prim_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_mst_prim_slice_fill(s : GraphtreemstprimSlice, v : Double) -> 
   result
 }
 
-pub fn graph_tree_mst_prim_slice_min(s : GraphtreemstprimSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_slice_min(s : GraphtreemstprimSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_prim_slice_max(s : GraphtreemstprimSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_prim_slice_max(s : GraphtreemstprimSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_prim_slice_to_string(s : GraphtreemstprimSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

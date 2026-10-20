@@ -88,11 +88,7 @@ pub fn ds_tree_trie_make_series(vals : Array[Double], name : String) -> Dstreetr
 
 pub fn ds_tree_trie_series_len(s : DstreetrieSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_trie_series_sum(s : DstreetrieSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_trie_series_sum(s : DstreetrieSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_trie_series_mean(s : DstreetrieSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_trie_frame_set(s : DstreetrieFrame, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_trie_frame_sum(s : DstreetrieFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_frame_sum(s : DstreetrieFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_frame_mean(s : DstreetrieFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_frame_mean(s : DstreetrieFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_frame_scale(s : DstreetrieFrame, f : Double) -> DstreetrieFrame {
   let result = ds_tree_trie_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_trie_frame_fill(s : DstreetrieFrame, v : Double) -> DstreetrieFra
   result
 }
 
-pub fn ds_tree_trie_frame_min(s : DstreetrieFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_frame_min(s : DstreetrieFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_frame_max(s : DstreetrieFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_frame_max(s : DstreetrieFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_frame_to_string(s : DstreetrieFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_trie_table_set(s : DstreetrieTable, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_trie_table_sum(s : DstreetrieTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_table_sum(s : DstreetrieTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_table_mean(s : DstreetrieTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_table_mean(s : DstreetrieTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_table_scale(s : DstreetrieTable, f : Double) -> DstreetrieTable {
   let result = ds_tree_trie_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_trie_table_fill(s : DstreetrieTable, v : Double) -> DstreetrieTab
   result
 }
 
-pub fn ds_tree_trie_table_min(s : DstreetrieTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_table_min(s : DstreetrieTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_table_max(s : DstreetrieTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_table_max(s : DstreetrieTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_table_to_string(s : DstreetrieTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_trie_graphn_set(s : DstreetrieGraphN, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_trie_graphn_sum(s : DstreetrieGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_graphn_sum(s : DstreetrieGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_graphn_mean(s : DstreetrieGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_graphn_mean(s : DstreetrieGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_graphn_scale(s : DstreetrieGraphN, f : Double) -> DstreetrieGraphN {
   let result = ds_tree_trie_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_trie_graphn_fill(s : DstreetrieGraphN, v : Double) -> DstreetrieG
   result
 }
 
-pub fn ds_tree_trie_graphn_min(s : DstreetrieGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_graphn_min(s : DstreetrieGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_graphn_max(s : DstreetrieGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_graphn_max(s : DstreetrieGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_graphn_to_string(s : DstreetrieGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_trie_node_set(s : DstreetrieNode, i : Int, v : Double) -> Dstreet
   result
 }
 
-pub fn ds_tree_trie_node_sum(s : DstreetrieNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_node_sum(s : DstreetrieNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_node_mean(s : DstreetrieNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_node_mean(s : DstreetrieNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_node_scale(s : DstreetrieNode, f : Double) -> DstreetrieNode {
   let result = ds_tree_trie_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_trie_node_fill(s : DstreetrieNode, v : Double) -> DstreetrieNode 
   result
 }
 
-pub fn ds_tree_trie_node_min(s : DstreetrieNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_node_min(s : DstreetrieNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_node_max(s : DstreetrieNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_node_max(s : DstreetrieNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_node_to_string(s : DstreetrieNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_trie_edge_set(s : DstreetrieEdge, i : Int, v : Double) -> Dstreet
   result
 }
 
-pub fn ds_tree_trie_edge_sum(s : DstreetrieEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_edge_sum(s : DstreetrieEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_edge_mean(s : DstreetrieEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_edge_mean(s : DstreetrieEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_edge_scale(s : DstreetrieEdge, f : Double) -> DstreetrieEdge {
   let result = ds_tree_trie_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_trie_edge_fill(s : DstreetrieEdge, v : Double) -> DstreetrieEdge 
   result
 }
 
-pub fn ds_tree_trie_edge_min(s : DstreetrieEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_edge_min(s : DstreetrieEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_edge_max(s : DstreetrieEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_edge_max(s : DstreetrieEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_edge_to_string(s : DstreetrieEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_trie_path_set(s : DstreetriePath, i : Int, v : Double) -> Dstreet
   result
 }
 
-pub fn ds_tree_trie_path_sum(s : DstreetriePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_path_sum(s : DstreetriePath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_path_mean(s : DstreetriePath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_path_mean(s : DstreetriePath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_path_scale(s : DstreetriePath, f : Double) -> DstreetriePath {
   let result = ds_tree_trie_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_trie_path_fill(s : DstreetriePath, v : Double) -> DstreetriePath 
   result
 }
 
-pub fn ds_tree_trie_path_min(s : DstreetriePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_path_min(s : DstreetriePath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_path_max(s : DstreetriePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_path_max(s : DstreetriePath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_path_to_string(s : DstreetriePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_trie_cluster_set(s : DstreetrieCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_trie_cluster_sum(s : DstreetrieCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_cluster_sum(s : DstreetrieCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_cluster_mean(s : DstreetrieCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_cluster_mean(s : DstreetrieCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_cluster_scale(s : DstreetrieCluster, f : Double) -> DstreetrieCluster {
   let result = ds_tree_trie_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_trie_cluster_fill(s : DstreetrieCluster, v : Double) -> Dstreetri
   result
 }
 
-pub fn ds_tree_trie_cluster_min(s : DstreetrieCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_cluster_min(s : DstreetrieCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_cluster_max(s : DstreetrieCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_cluster_max(s : DstreetrieCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_cluster_to_string(s : DstreetrieCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_trie_model_set(s : DstreetrieModel, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_trie_model_sum(s : DstreetrieModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_model_sum(s : DstreetrieModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_model_mean(s : DstreetrieModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_model_mean(s : DstreetrieModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_model_scale(s : DstreetrieModel, f : Double) -> DstreetrieModel {
   let result = ds_tree_trie_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_trie_model_fill(s : DstreetrieModel, v : Double) -> DstreetrieMod
   result
 }
 
-pub fn ds_tree_trie_model_min(s : DstreetrieModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_model_min(s : DstreetrieModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_model_max(s : DstreetrieModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_model_max(s : DstreetrieModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_model_to_string(s : DstreetrieModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_trie_layer_set(s : DstreetrieLayer, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_trie_layer_sum(s : DstreetrieLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_layer_sum(s : DstreetrieLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_layer_mean(s : DstreetrieLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_layer_mean(s : DstreetrieLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_layer_scale(s : DstreetrieLayer, f : Double) -> DstreetrieLayer {
   let result = ds_tree_trie_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_trie_layer_fill(s : DstreetrieLayer, v : Double) -> DstreetrieLay
   result
 }
 
-pub fn ds_tree_trie_layer_min(s : DstreetrieLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_layer_min(s : DstreetrieLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_layer_max(s : DstreetrieLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_layer_max(s : DstreetrieLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_layer_to_string(s : DstreetrieLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_trie_buffer_set(s : DstreetrieBuffer, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_trie_buffer_sum(s : DstreetrieBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_buffer_sum(s : DstreetrieBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_buffer_mean(s : DstreetrieBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_buffer_mean(s : DstreetrieBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_buffer_scale(s : DstreetrieBuffer, f : Double) -> DstreetrieBuffer {
   let result = ds_tree_trie_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_trie_buffer_fill(s : DstreetrieBuffer, v : Double) -> DstreetrieB
   result
 }
 
-pub fn ds_tree_trie_buffer_min(s : DstreetrieBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_buffer_min(s : DstreetrieBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_buffer_max(s : DstreetrieBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_buffer_max(s : DstreetrieBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_buffer_to_string(s : DstreetrieBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_trie_cursor_set(s : DstreetrieCursor, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_trie_cursor_sum(s : DstreetrieCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_cursor_sum(s : DstreetrieCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_cursor_mean(s : DstreetrieCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_cursor_mean(s : DstreetrieCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_cursor_scale(s : DstreetrieCursor, f : Double) -> DstreetrieCursor {
   let result = ds_tree_trie_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_trie_cursor_fill(s : DstreetrieCursor, v : Double) -> DstreetrieC
   result
 }
 
-pub fn ds_tree_trie_cursor_min(s : DstreetrieCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_cursor_min(s : DstreetrieCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_cursor_max(s : DstreetrieCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_cursor_max(s : DstreetrieCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_cursor_to_string(s : DstreetrieCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_trie_view_set(s : DstreetrieView, i : Int, v : Double) -> Dstreet
   result
 }
 
-pub fn ds_tree_trie_view_sum(s : DstreetrieView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_view_sum(s : DstreetrieView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_view_mean(s : DstreetrieView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_view_mean(s : DstreetrieView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_view_scale(s : DstreetrieView, f : Double) -> DstreetrieView {
   let result = ds_tree_trie_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_trie_view_fill(s : DstreetrieView, v : Double) -> DstreetrieView 
   result
 }
 
-pub fn ds_tree_trie_view_min(s : DstreetrieView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_view_min(s : DstreetrieView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_view_max(s : DstreetrieView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_view_max(s : DstreetrieView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_view_to_string(s : DstreetrieView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_trie_range_set(s : DstreetrieRange, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_trie_range_sum(s : DstreetrieRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_range_sum(s : DstreetrieRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_range_mean(s : DstreetrieRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_range_mean(s : DstreetrieRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_range_scale(s : DstreetrieRange, f : Double) -> DstreetrieRange {
   let result = ds_tree_trie_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_trie_range_fill(s : DstreetrieRange, v : Double) -> DstreetrieRan
   result
 }
 
-pub fn ds_tree_trie_range_min(s : DstreetrieRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_range_min(s : DstreetrieRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_range_max(s : DstreetrieRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_range_max(s : DstreetrieRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_range_to_string(s : DstreetrieRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_trie_slice_set(s : DstreetrieSlice, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_trie_slice_sum(s : DstreetrieSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_trie_slice_sum(s : DstreetrieSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_trie_slice_mean(s : DstreetrieSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_trie_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_trie_slice_mean(s : DstreetrieSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_trie_slice_scale(s : DstreetrieSlice, f : Double) -> DstreetrieSlice {
   let result = ds_tree_trie_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_trie_slice_fill(s : DstreetrieSlice, v : Double) -> DstreetrieSli
   result
 }
 
-pub fn ds_tree_trie_slice_min(s : DstreetrieSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_slice_min(s : DstreetrieSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_trie_slice_max(s : DstreetrieSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_trie_slice_max(s : DstreetrieSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_trie_slice_to_string(s : DstreetrieSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

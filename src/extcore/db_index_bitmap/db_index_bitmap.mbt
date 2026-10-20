@@ -88,11 +88,7 @@ pub fn db_index_bitmap_make_series(vals : Array[Double], name : String) -> Dbind
 
 pub fn db_index_bitmap_series_len(s : DbindexbitmapSeries) -> Int { s.vals.length() }
 
-pub fn db_index_bitmap_series_sum(s : DbindexbitmapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_bitmap_series_sum(s : DbindexbitmapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_bitmap_series_mean(s : DbindexbitmapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_bitmap_frame_set(s : DbindexbitmapFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_bitmap_frame_sum(s : DbindexbitmapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_frame_sum(s : DbindexbitmapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_frame_mean(s : DbindexbitmapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_frame_mean(s : DbindexbitmapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_frame_scale(s : DbindexbitmapFrame, f : Double) -> DbindexbitmapFrame {
   let result = db_index_bitmap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_bitmap_frame_fill(s : DbindexbitmapFrame, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_bitmap_frame_min(s : DbindexbitmapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_frame_min(s : DbindexbitmapFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_frame_max(s : DbindexbitmapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_frame_max(s : DbindexbitmapFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_frame_to_string(s : DbindexbitmapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_bitmap_table_set(s : DbindexbitmapTable, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_bitmap_table_sum(s : DbindexbitmapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_table_sum(s : DbindexbitmapTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_table_mean(s : DbindexbitmapTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_table_mean(s : DbindexbitmapTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_table_scale(s : DbindexbitmapTable, f : Double) -> DbindexbitmapTable {
   let result = db_index_bitmap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_bitmap_table_fill(s : DbindexbitmapTable, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_bitmap_table_min(s : DbindexbitmapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_table_min(s : DbindexbitmapTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_table_max(s : DbindexbitmapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_table_max(s : DbindexbitmapTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_table_to_string(s : DbindexbitmapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_bitmap_graphn_set(s : DbindexbitmapGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_bitmap_graphn_sum(s : DbindexbitmapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_graphn_sum(s : DbindexbitmapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_graphn_mean(s : DbindexbitmapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_graphn_mean(s : DbindexbitmapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_graphn_scale(s : DbindexbitmapGraphN, f : Double) -> DbindexbitmapGraphN {
   let result = db_index_bitmap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_bitmap_graphn_fill(s : DbindexbitmapGraphN, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_bitmap_graphn_min(s : DbindexbitmapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_graphn_min(s : DbindexbitmapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_graphn_max(s : DbindexbitmapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_graphn_max(s : DbindexbitmapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_graphn_to_string(s : DbindexbitmapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_bitmap_node_set(s : DbindexbitmapNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_bitmap_node_sum(s : DbindexbitmapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_node_sum(s : DbindexbitmapNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_node_mean(s : DbindexbitmapNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_node_mean(s : DbindexbitmapNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_node_scale(s : DbindexbitmapNode, f : Double) -> DbindexbitmapNode {
   let result = db_index_bitmap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_bitmap_node_fill(s : DbindexbitmapNode, v : Double) -> Dbindexbi
   result
 }
 
-pub fn db_index_bitmap_node_min(s : DbindexbitmapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_node_min(s : DbindexbitmapNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_node_max(s : DbindexbitmapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_node_max(s : DbindexbitmapNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_node_to_string(s : DbindexbitmapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_bitmap_edge_set(s : DbindexbitmapEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_bitmap_edge_sum(s : DbindexbitmapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_edge_sum(s : DbindexbitmapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_edge_mean(s : DbindexbitmapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_edge_mean(s : DbindexbitmapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_edge_scale(s : DbindexbitmapEdge, f : Double) -> DbindexbitmapEdge {
   let result = db_index_bitmap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_bitmap_edge_fill(s : DbindexbitmapEdge, v : Double) -> Dbindexbi
   result
 }
 
-pub fn db_index_bitmap_edge_min(s : DbindexbitmapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_edge_min(s : DbindexbitmapEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_edge_max(s : DbindexbitmapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_edge_max(s : DbindexbitmapEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_edge_to_string(s : DbindexbitmapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_bitmap_path_set(s : DbindexbitmapPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_bitmap_path_sum(s : DbindexbitmapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_path_sum(s : DbindexbitmapPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_path_mean(s : DbindexbitmapPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_path_mean(s : DbindexbitmapPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_path_scale(s : DbindexbitmapPath, f : Double) -> DbindexbitmapPath {
   let result = db_index_bitmap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_bitmap_path_fill(s : DbindexbitmapPath, v : Double) -> Dbindexbi
   result
 }
 
-pub fn db_index_bitmap_path_min(s : DbindexbitmapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_path_min(s : DbindexbitmapPath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_path_max(s : DbindexbitmapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_path_max(s : DbindexbitmapPath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_path_to_string(s : DbindexbitmapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_bitmap_cluster_set(s : DbindexbitmapCluster, i : Int, v : Double
   result
 }
 
-pub fn db_index_bitmap_cluster_sum(s : DbindexbitmapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_cluster_sum(s : DbindexbitmapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_cluster_mean(s : DbindexbitmapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_cluster_mean(s : DbindexbitmapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_cluster_scale(s : DbindexbitmapCluster, f : Double) -> DbindexbitmapCluster {
   let result = db_index_bitmap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_bitmap_cluster_fill(s : DbindexbitmapCluster, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_bitmap_cluster_min(s : DbindexbitmapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_cluster_min(s : DbindexbitmapCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_cluster_max(s : DbindexbitmapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_cluster_max(s : DbindexbitmapCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_cluster_to_string(s : DbindexbitmapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_bitmap_model_set(s : DbindexbitmapModel, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_bitmap_model_sum(s : DbindexbitmapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_model_sum(s : DbindexbitmapModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_model_mean(s : DbindexbitmapModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_model_mean(s : DbindexbitmapModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_model_scale(s : DbindexbitmapModel, f : Double) -> DbindexbitmapModel {
   let result = db_index_bitmap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_bitmap_model_fill(s : DbindexbitmapModel, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_bitmap_model_min(s : DbindexbitmapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_model_min(s : DbindexbitmapModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_model_max(s : DbindexbitmapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_model_max(s : DbindexbitmapModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_model_to_string(s : DbindexbitmapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_bitmap_layer_set(s : DbindexbitmapLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_bitmap_layer_sum(s : DbindexbitmapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_layer_sum(s : DbindexbitmapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_layer_mean(s : DbindexbitmapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_layer_mean(s : DbindexbitmapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_layer_scale(s : DbindexbitmapLayer, f : Double) -> DbindexbitmapLayer {
   let result = db_index_bitmap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_bitmap_layer_fill(s : DbindexbitmapLayer, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_bitmap_layer_min(s : DbindexbitmapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_layer_min(s : DbindexbitmapLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_layer_max(s : DbindexbitmapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_layer_max(s : DbindexbitmapLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_layer_to_string(s : DbindexbitmapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_bitmap_buffer_set(s : DbindexbitmapBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_bitmap_buffer_sum(s : DbindexbitmapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_buffer_sum(s : DbindexbitmapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_buffer_mean(s : DbindexbitmapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_buffer_mean(s : DbindexbitmapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_buffer_scale(s : DbindexbitmapBuffer, f : Double) -> DbindexbitmapBuffer {
   let result = db_index_bitmap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_bitmap_buffer_fill(s : DbindexbitmapBuffer, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_bitmap_buffer_min(s : DbindexbitmapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_buffer_min(s : DbindexbitmapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_buffer_max(s : DbindexbitmapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_buffer_max(s : DbindexbitmapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_buffer_to_string(s : DbindexbitmapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_bitmap_cursor_set(s : DbindexbitmapCursor, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_bitmap_cursor_sum(s : DbindexbitmapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_cursor_sum(s : DbindexbitmapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_cursor_mean(s : DbindexbitmapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_cursor_mean(s : DbindexbitmapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_cursor_scale(s : DbindexbitmapCursor, f : Double) -> DbindexbitmapCursor {
   let result = db_index_bitmap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_bitmap_cursor_fill(s : DbindexbitmapCursor, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_bitmap_cursor_min(s : DbindexbitmapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_cursor_min(s : DbindexbitmapCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_cursor_max(s : DbindexbitmapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_cursor_max(s : DbindexbitmapCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_cursor_to_string(s : DbindexbitmapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_bitmap_view_set(s : DbindexbitmapView, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_bitmap_view_sum(s : DbindexbitmapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_view_sum(s : DbindexbitmapView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_view_mean(s : DbindexbitmapView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_view_mean(s : DbindexbitmapView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_view_scale(s : DbindexbitmapView, f : Double) -> DbindexbitmapView {
   let result = db_index_bitmap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_bitmap_view_fill(s : DbindexbitmapView, v : Double) -> Dbindexbi
   result
 }
 
-pub fn db_index_bitmap_view_min(s : DbindexbitmapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_view_min(s : DbindexbitmapView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_view_max(s : DbindexbitmapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_view_max(s : DbindexbitmapView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_view_to_string(s : DbindexbitmapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_bitmap_range_set(s : DbindexbitmapRange, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_bitmap_range_sum(s : DbindexbitmapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_range_sum(s : DbindexbitmapRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_range_mean(s : DbindexbitmapRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_range_mean(s : DbindexbitmapRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_range_scale(s : DbindexbitmapRange, f : Double) -> DbindexbitmapRange {
   let result = db_index_bitmap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_bitmap_range_fill(s : DbindexbitmapRange, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_bitmap_range_min(s : DbindexbitmapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_range_min(s : DbindexbitmapRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_range_max(s : DbindexbitmapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_range_max(s : DbindexbitmapRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_range_to_string(s : DbindexbitmapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_bitmap_slice_set(s : DbindexbitmapSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_bitmap_slice_sum(s : DbindexbitmapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_bitmap_slice_sum(s : DbindexbitmapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_bitmap_slice_mean(s : DbindexbitmapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_bitmap_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_bitmap_slice_mean(s : DbindexbitmapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_bitmap_slice_scale(s : DbindexbitmapSlice, f : Double) -> DbindexbitmapSlice {
   let result = db_index_bitmap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_bitmap_slice_fill(s : DbindexbitmapSlice, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_bitmap_slice_min(s : DbindexbitmapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_slice_min(s : DbindexbitmapSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_bitmap_slice_max(s : DbindexbitmapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_bitmap_slice_max(s : DbindexbitmapSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_bitmap_slice_to_string(s : DbindexbitmapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

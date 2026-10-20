@@ -88,11 +88,7 @@ pub fn image_transform_rotate_make_series(vals : Array[Double], name : String) -
 
 pub fn image_transform_rotate_series_len(s : ImagetransformrotateSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_rotate_series_sum(s : ImagetransformrotateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_rotate_series_sum(s : ImagetransformrotateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_rotate_series_mean(s : ImagetransformrotateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_rotate_frame_set(s : ImagetransformrotateFrame, i : Int, 
   result
 }
 
-pub fn image_transform_rotate_frame_sum(s : ImagetransformrotateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_frame_sum(s : ImagetransformrotateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_frame_mean(s : ImagetransformrotateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_frame_mean(s : ImagetransformrotateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_frame_scale(s : ImagetransformrotateFrame, f : Double) -> ImagetransformrotateFrame {
   let result = image_transform_rotate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_rotate_frame_fill(s : ImagetransformrotateFrame, v : Doub
   result
 }
 
-pub fn image_transform_rotate_frame_min(s : ImagetransformrotateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_frame_min(s : ImagetransformrotateFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_frame_max(s : ImagetransformrotateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_frame_max(s : ImagetransformrotateFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_frame_to_string(s : ImagetransformrotateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_rotate_table_set(s : ImagetransformrotateTable, i : Int, 
   result
 }
 
-pub fn image_transform_rotate_table_sum(s : ImagetransformrotateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_table_sum(s : ImagetransformrotateTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_table_mean(s : ImagetransformrotateTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_table_mean(s : ImagetransformrotateTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_table_scale(s : ImagetransformrotateTable, f : Double) -> ImagetransformrotateTable {
   let result = image_transform_rotate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_rotate_table_fill(s : ImagetransformrotateTable, v : Doub
   result
 }
 
-pub fn image_transform_rotate_table_min(s : ImagetransformrotateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_table_min(s : ImagetransformrotateTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_table_max(s : ImagetransformrotateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_table_max(s : ImagetransformrotateTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_table_to_string(s : ImagetransformrotateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_rotate_graphn_set(s : ImagetransformrotateGraphN, i : Int
   result
 }
 
-pub fn image_transform_rotate_graphn_sum(s : ImagetransformrotateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_graphn_sum(s : ImagetransformrotateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_graphn_mean(s : ImagetransformrotateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_graphn_mean(s : ImagetransformrotateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_graphn_scale(s : ImagetransformrotateGraphN, f : Double) -> ImagetransformrotateGraphN {
   let result = image_transform_rotate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_rotate_graphn_fill(s : ImagetransformrotateGraphN, v : Do
   result
 }
 
-pub fn image_transform_rotate_graphn_min(s : ImagetransformrotateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_graphn_min(s : ImagetransformrotateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_graphn_max(s : ImagetransformrotateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_graphn_max(s : ImagetransformrotateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_graphn_to_string(s : ImagetransformrotateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_rotate_node_set(s : ImagetransformrotateNode, i : Int, v 
   result
 }
 
-pub fn image_transform_rotate_node_sum(s : ImagetransformrotateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_node_sum(s : ImagetransformrotateNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_node_mean(s : ImagetransformrotateNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_node_mean(s : ImagetransformrotateNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_node_scale(s : ImagetransformrotateNode, f : Double) -> ImagetransformrotateNode {
   let result = image_transform_rotate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_rotate_node_fill(s : ImagetransformrotateNode, v : Double
   result
 }
 
-pub fn image_transform_rotate_node_min(s : ImagetransformrotateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_node_min(s : ImagetransformrotateNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_node_max(s : ImagetransformrotateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_node_max(s : ImagetransformrotateNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_node_to_string(s : ImagetransformrotateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_rotate_edge_set(s : ImagetransformrotateEdge, i : Int, v 
   result
 }
 
-pub fn image_transform_rotate_edge_sum(s : ImagetransformrotateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_edge_sum(s : ImagetransformrotateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_edge_mean(s : ImagetransformrotateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_edge_mean(s : ImagetransformrotateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_edge_scale(s : ImagetransformrotateEdge, f : Double) -> ImagetransformrotateEdge {
   let result = image_transform_rotate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_rotate_edge_fill(s : ImagetransformrotateEdge, v : Double
   result
 }
 
-pub fn image_transform_rotate_edge_min(s : ImagetransformrotateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_edge_min(s : ImagetransformrotateEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_edge_max(s : ImagetransformrotateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_edge_max(s : ImagetransformrotateEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_edge_to_string(s : ImagetransformrotateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_rotate_path_set(s : ImagetransformrotatePath, i : Int, v 
   result
 }
 
-pub fn image_transform_rotate_path_sum(s : ImagetransformrotatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_path_sum(s : ImagetransformrotatePath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_path_mean(s : ImagetransformrotatePath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_path_mean(s : ImagetransformrotatePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_path_scale(s : ImagetransformrotatePath, f : Double) -> ImagetransformrotatePath {
   let result = image_transform_rotate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_rotate_path_fill(s : ImagetransformrotatePath, v : Double
   result
 }
 
-pub fn image_transform_rotate_path_min(s : ImagetransformrotatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_path_min(s : ImagetransformrotatePath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_path_max(s : ImagetransformrotatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_path_max(s : ImagetransformrotatePath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_path_to_string(s : ImagetransformrotatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_rotate_cluster_set(s : ImagetransformrotateCluster, i : I
   result
 }
 
-pub fn image_transform_rotate_cluster_sum(s : ImagetransformrotateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_cluster_sum(s : ImagetransformrotateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_cluster_mean(s : ImagetransformrotateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_cluster_mean(s : ImagetransformrotateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_cluster_scale(s : ImagetransformrotateCluster, f : Double) -> ImagetransformrotateCluster {
   let result = image_transform_rotate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_rotate_cluster_fill(s : ImagetransformrotateCluster, v : 
   result
 }
 
-pub fn image_transform_rotate_cluster_min(s : ImagetransformrotateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_cluster_min(s : ImagetransformrotateCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_cluster_max(s : ImagetransformrotateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_cluster_max(s : ImagetransformrotateCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_cluster_to_string(s : ImagetransformrotateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_rotate_model_set(s : ImagetransformrotateModel, i : Int, 
   result
 }
 
-pub fn image_transform_rotate_model_sum(s : ImagetransformrotateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_model_sum(s : ImagetransformrotateModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_model_mean(s : ImagetransformrotateModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_model_mean(s : ImagetransformrotateModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_model_scale(s : ImagetransformrotateModel, f : Double) -> ImagetransformrotateModel {
   let result = image_transform_rotate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_rotate_model_fill(s : ImagetransformrotateModel, v : Doub
   result
 }
 
-pub fn image_transform_rotate_model_min(s : ImagetransformrotateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_model_min(s : ImagetransformrotateModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_model_max(s : ImagetransformrotateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_model_max(s : ImagetransformrotateModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_model_to_string(s : ImagetransformrotateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_rotate_layer_set(s : ImagetransformrotateLayer, i : Int, 
   result
 }
 
-pub fn image_transform_rotate_layer_sum(s : ImagetransformrotateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_layer_sum(s : ImagetransformrotateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_layer_mean(s : ImagetransformrotateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_layer_mean(s : ImagetransformrotateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_layer_scale(s : ImagetransformrotateLayer, f : Double) -> ImagetransformrotateLayer {
   let result = image_transform_rotate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_rotate_layer_fill(s : ImagetransformrotateLayer, v : Doub
   result
 }
 
-pub fn image_transform_rotate_layer_min(s : ImagetransformrotateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_layer_min(s : ImagetransformrotateLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_layer_max(s : ImagetransformrotateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_layer_max(s : ImagetransformrotateLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_layer_to_string(s : ImagetransformrotateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_rotate_buffer_set(s : ImagetransformrotateBuffer, i : Int
   result
 }
 
-pub fn image_transform_rotate_buffer_sum(s : ImagetransformrotateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_buffer_sum(s : ImagetransformrotateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_buffer_mean(s : ImagetransformrotateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_buffer_mean(s : ImagetransformrotateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_buffer_scale(s : ImagetransformrotateBuffer, f : Double) -> ImagetransformrotateBuffer {
   let result = image_transform_rotate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_rotate_buffer_fill(s : ImagetransformrotateBuffer, v : Do
   result
 }
 
-pub fn image_transform_rotate_buffer_min(s : ImagetransformrotateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_buffer_min(s : ImagetransformrotateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_buffer_max(s : ImagetransformrotateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_buffer_max(s : ImagetransformrotateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_buffer_to_string(s : ImagetransformrotateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_rotate_cursor_set(s : ImagetransformrotateCursor, i : Int
   result
 }
 
-pub fn image_transform_rotate_cursor_sum(s : ImagetransformrotateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_cursor_sum(s : ImagetransformrotateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_cursor_mean(s : ImagetransformrotateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_cursor_mean(s : ImagetransformrotateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_cursor_scale(s : ImagetransformrotateCursor, f : Double) -> ImagetransformrotateCursor {
   let result = image_transform_rotate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_rotate_cursor_fill(s : ImagetransformrotateCursor, v : Do
   result
 }
 
-pub fn image_transform_rotate_cursor_min(s : ImagetransformrotateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_cursor_min(s : ImagetransformrotateCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_cursor_max(s : ImagetransformrotateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_cursor_max(s : ImagetransformrotateCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_cursor_to_string(s : ImagetransformrotateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_rotate_view_set(s : ImagetransformrotateView, i : Int, v 
   result
 }
 
-pub fn image_transform_rotate_view_sum(s : ImagetransformrotateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_view_sum(s : ImagetransformrotateView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_view_mean(s : ImagetransformrotateView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_view_mean(s : ImagetransformrotateView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_view_scale(s : ImagetransformrotateView, f : Double) -> ImagetransformrotateView {
   let result = image_transform_rotate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_rotate_view_fill(s : ImagetransformrotateView, v : Double
   result
 }
 
-pub fn image_transform_rotate_view_min(s : ImagetransformrotateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_view_min(s : ImagetransformrotateView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_view_max(s : ImagetransformrotateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_view_max(s : ImagetransformrotateView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_view_to_string(s : ImagetransformrotateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_rotate_range_set(s : ImagetransformrotateRange, i : Int, 
   result
 }
 
-pub fn image_transform_rotate_range_sum(s : ImagetransformrotateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_range_sum(s : ImagetransformrotateRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_range_mean(s : ImagetransformrotateRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_range_mean(s : ImagetransformrotateRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_range_scale(s : ImagetransformrotateRange, f : Double) -> ImagetransformrotateRange {
   let result = image_transform_rotate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_rotate_range_fill(s : ImagetransformrotateRange, v : Doub
   result
 }
 
-pub fn image_transform_rotate_range_min(s : ImagetransformrotateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_range_min(s : ImagetransformrotateRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_range_max(s : ImagetransformrotateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_range_max(s : ImagetransformrotateRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_range_to_string(s : ImagetransformrotateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_rotate_slice_set(s : ImagetransformrotateSlice, i : Int, 
   result
 }
 
-pub fn image_transform_rotate_slice_sum(s : ImagetransformrotateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_rotate_slice_sum(s : ImagetransformrotateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_rotate_slice_mean(s : ImagetransformrotateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_rotate_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_rotate_slice_mean(s : ImagetransformrotateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_rotate_slice_scale(s : ImagetransformrotateSlice, f : Double) -> ImagetransformrotateSlice {
   let result = image_transform_rotate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_rotate_slice_fill(s : ImagetransformrotateSlice, v : Doub
   result
 }
 
-pub fn image_transform_rotate_slice_min(s : ImagetransformrotateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_slice_min(s : ImagetransformrotateSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_rotate_slice_max(s : ImagetransformrotateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_rotate_slice_max(s : ImagetransformrotateSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_rotate_slice_to_string(s : ImagetransformrotateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

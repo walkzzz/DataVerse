@@ -88,11 +88,7 @@ pub fn sort_dist_flash_make_series(vals : Array[Double], name : String) -> Sortd
 
 pub fn sort_dist_flash_series_len(s : SortdistflashSeries) -> Int { s.vals.length() }
 
-pub fn sort_dist_flash_series_sum(s : SortdistflashSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_dist_flash_series_sum(s : SortdistflashSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_dist_flash_series_mean(s : SortdistflashSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_dist_flash_frame_set(s : SortdistflashFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_dist_flash_frame_sum(s : SortdistflashFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_frame_sum(s : SortdistflashFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_frame_mean(s : SortdistflashFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_frame_mean(s : SortdistflashFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_frame_scale(s : SortdistflashFrame, f : Double) -> SortdistflashFrame {
   let result = sort_dist_flash_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_dist_flash_frame_fill(s : SortdistflashFrame, v : Double) -> Sortdis
   result
 }
 
-pub fn sort_dist_flash_frame_min(s : SortdistflashFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_frame_min(s : SortdistflashFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_frame_max(s : SortdistflashFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_frame_max(s : SortdistflashFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_frame_to_string(s : SortdistflashFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_dist_flash_table_set(s : SortdistflashTable, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_dist_flash_table_sum(s : SortdistflashTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_table_sum(s : SortdistflashTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_table_mean(s : SortdistflashTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_table_mean(s : SortdistflashTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_table_scale(s : SortdistflashTable, f : Double) -> SortdistflashTable {
   let result = sort_dist_flash_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_dist_flash_table_fill(s : SortdistflashTable, v : Double) -> Sortdis
   result
 }
 
-pub fn sort_dist_flash_table_min(s : SortdistflashTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_table_min(s : SortdistflashTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_table_max(s : SortdistflashTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_table_max(s : SortdistflashTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_table_to_string(s : SortdistflashTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_dist_flash_graphn_set(s : SortdistflashGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_flash_graphn_sum(s : SortdistflashGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_graphn_sum(s : SortdistflashGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_graphn_mean(s : SortdistflashGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_graphn_mean(s : SortdistflashGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_graphn_scale(s : SortdistflashGraphN, f : Double) -> SortdistflashGraphN {
   let result = sort_dist_flash_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_dist_flash_graphn_fill(s : SortdistflashGraphN, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_flash_graphn_min(s : SortdistflashGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_graphn_min(s : SortdistflashGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_graphn_max(s : SortdistflashGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_graphn_max(s : SortdistflashGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_graphn_to_string(s : SortdistflashGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_dist_flash_node_set(s : SortdistflashNode, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_dist_flash_node_sum(s : SortdistflashNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_node_sum(s : SortdistflashNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_node_mean(s : SortdistflashNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_node_mean(s : SortdistflashNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_node_scale(s : SortdistflashNode, f : Double) -> SortdistflashNode {
   let result = sort_dist_flash_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_dist_flash_node_fill(s : SortdistflashNode, v : Double) -> Sortdistf
   result
 }
 
-pub fn sort_dist_flash_node_min(s : SortdistflashNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_node_min(s : SortdistflashNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_node_max(s : SortdistflashNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_node_max(s : SortdistflashNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_node_to_string(s : SortdistflashNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_dist_flash_edge_set(s : SortdistflashEdge, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_dist_flash_edge_sum(s : SortdistflashEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_edge_sum(s : SortdistflashEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_edge_mean(s : SortdistflashEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_edge_mean(s : SortdistflashEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_edge_scale(s : SortdistflashEdge, f : Double) -> SortdistflashEdge {
   let result = sort_dist_flash_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_dist_flash_edge_fill(s : SortdistflashEdge, v : Double) -> Sortdistf
   result
 }
 
-pub fn sort_dist_flash_edge_min(s : SortdistflashEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_edge_min(s : SortdistflashEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_edge_max(s : SortdistflashEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_edge_max(s : SortdistflashEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_edge_to_string(s : SortdistflashEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_dist_flash_path_set(s : SortdistflashPath, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_dist_flash_path_sum(s : SortdistflashPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_path_sum(s : SortdistflashPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_path_mean(s : SortdistflashPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_path_mean(s : SortdistflashPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_path_scale(s : SortdistflashPath, f : Double) -> SortdistflashPath {
   let result = sort_dist_flash_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_dist_flash_path_fill(s : SortdistflashPath, v : Double) -> Sortdistf
   result
 }
 
-pub fn sort_dist_flash_path_min(s : SortdistflashPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_path_min(s : SortdistflashPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_path_max(s : SortdistflashPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_path_max(s : SortdistflashPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_path_to_string(s : SortdistflashPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_dist_flash_cluster_set(s : SortdistflashCluster, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_flash_cluster_sum(s : SortdistflashCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_cluster_sum(s : SortdistflashCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_cluster_mean(s : SortdistflashCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_cluster_mean(s : SortdistflashCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_cluster_scale(s : SortdistflashCluster, f : Double) -> SortdistflashCluster {
   let result = sort_dist_flash_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_dist_flash_cluster_fill(s : SortdistflashCluster, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_flash_cluster_min(s : SortdistflashCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_cluster_min(s : SortdistflashCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_cluster_max(s : SortdistflashCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_cluster_max(s : SortdistflashCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_cluster_to_string(s : SortdistflashCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_dist_flash_model_set(s : SortdistflashModel, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_dist_flash_model_sum(s : SortdistflashModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_model_sum(s : SortdistflashModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_model_mean(s : SortdistflashModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_model_mean(s : SortdistflashModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_model_scale(s : SortdistflashModel, f : Double) -> SortdistflashModel {
   let result = sort_dist_flash_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_dist_flash_model_fill(s : SortdistflashModel, v : Double) -> Sortdis
   result
 }
 
-pub fn sort_dist_flash_model_min(s : SortdistflashModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_model_min(s : SortdistflashModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_model_max(s : SortdistflashModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_model_max(s : SortdistflashModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_model_to_string(s : SortdistflashModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_dist_flash_layer_set(s : SortdistflashLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_dist_flash_layer_sum(s : SortdistflashLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_layer_sum(s : SortdistflashLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_layer_mean(s : SortdistflashLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_layer_mean(s : SortdistflashLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_layer_scale(s : SortdistflashLayer, f : Double) -> SortdistflashLayer {
   let result = sort_dist_flash_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_dist_flash_layer_fill(s : SortdistflashLayer, v : Double) -> Sortdis
   result
 }
 
-pub fn sort_dist_flash_layer_min(s : SortdistflashLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_layer_min(s : SortdistflashLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_layer_max(s : SortdistflashLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_layer_max(s : SortdistflashLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_layer_to_string(s : SortdistflashLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_dist_flash_buffer_set(s : SortdistflashBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_flash_buffer_sum(s : SortdistflashBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_buffer_sum(s : SortdistflashBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_buffer_mean(s : SortdistflashBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_buffer_mean(s : SortdistflashBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_buffer_scale(s : SortdistflashBuffer, f : Double) -> SortdistflashBuffer {
   let result = sort_dist_flash_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_dist_flash_buffer_fill(s : SortdistflashBuffer, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_flash_buffer_min(s : SortdistflashBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_buffer_min(s : SortdistflashBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_buffer_max(s : SortdistflashBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_buffer_max(s : SortdistflashBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_buffer_to_string(s : SortdistflashBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_dist_flash_cursor_set(s : SortdistflashCursor, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_flash_cursor_sum(s : SortdistflashCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_cursor_sum(s : SortdistflashCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_cursor_mean(s : SortdistflashCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_cursor_mean(s : SortdistflashCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_cursor_scale(s : SortdistflashCursor, f : Double) -> SortdistflashCursor {
   let result = sort_dist_flash_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_dist_flash_cursor_fill(s : SortdistflashCursor, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_flash_cursor_min(s : SortdistflashCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_cursor_min(s : SortdistflashCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_cursor_max(s : SortdistflashCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_cursor_max(s : SortdistflashCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_cursor_to_string(s : SortdistflashCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_dist_flash_view_set(s : SortdistflashView, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_dist_flash_view_sum(s : SortdistflashView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_view_sum(s : SortdistflashView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_view_mean(s : SortdistflashView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_view_mean(s : SortdistflashView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_view_scale(s : SortdistflashView, f : Double) -> SortdistflashView {
   let result = sort_dist_flash_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_dist_flash_view_fill(s : SortdistflashView, v : Double) -> Sortdistf
   result
 }
 
-pub fn sort_dist_flash_view_min(s : SortdistflashView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_view_min(s : SortdistflashView) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_view_max(s : SortdistflashView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_view_max(s : SortdistflashView) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_view_to_string(s : SortdistflashView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_dist_flash_range_set(s : SortdistflashRange, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_dist_flash_range_sum(s : SortdistflashRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_range_sum(s : SortdistflashRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_range_mean(s : SortdistflashRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_range_mean(s : SortdistflashRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_range_scale(s : SortdistflashRange, f : Double) -> SortdistflashRange {
   let result = sort_dist_flash_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_dist_flash_range_fill(s : SortdistflashRange, v : Double) -> Sortdis
   result
 }
 
-pub fn sort_dist_flash_range_min(s : SortdistflashRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_range_min(s : SortdistflashRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_range_max(s : SortdistflashRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_range_max(s : SortdistflashRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_range_to_string(s : SortdistflashRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_dist_flash_slice_set(s : SortdistflashSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_dist_flash_slice_sum(s : SortdistflashSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_flash_slice_sum(s : SortdistflashSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_flash_slice_mean(s : SortdistflashSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_flash_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_flash_slice_mean(s : SortdistflashSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_flash_slice_scale(s : SortdistflashSlice, f : Double) -> SortdistflashSlice {
   let result = sort_dist_flash_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_dist_flash_slice_fill(s : SortdistflashSlice, v : Double) -> Sortdis
   result
 }
 
-pub fn sort_dist_flash_slice_min(s : SortdistflashSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_slice_min(s : SortdistflashSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_flash_slice_max(s : SortdistflashSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_flash_slice_max(s : SortdistflashSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_flash_slice_to_string(s : SortdistflashSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

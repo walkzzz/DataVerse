@@ -88,11 +88,7 @@ pub fn geo_dist_euclidean_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_dist_euclidean_series_len(s : GeodisteuclideanSeries) -> Int { s.vals.length() }
 
-pub fn geo_dist_euclidean_series_sum(s : GeodisteuclideanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_dist_euclidean_series_sum(s : GeodisteuclideanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_dist_euclidean_series_mean(s : GeodisteuclideanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_dist_euclidean_frame_set(s : GeodisteuclideanFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_euclidean_frame_sum(s : GeodisteuclideanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_frame_sum(s : GeodisteuclideanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_frame_mean(s : GeodisteuclideanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_frame_mean(s : GeodisteuclideanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_frame_scale(s : GeodisteuclideanFrame, f : Double) -> GeodisteuclideanFrame {
   let result = geo_dist_euclidean_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_dist_euclidean_frame_fill(s : GeodisteuclideanFrame, v : Double) -> G
   result
 }
 
-pub fn geo_dist_euclidean_frame_min(s : GeodisteuclideanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_frame_min(s : GeodisteuclideanFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_frame_max(s : GeodisteuclideanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_frame_max(s : GeodisteuclideanFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_frame_to_string(s : GeodisteuclideanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_dist_euclidean_table_set(s : GeodisteuclideanTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_euclidean_table_sum(s : GeodisteuclideanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_table_sum(s : GeodisteuclideanTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_table_mean(s : GeodisteuclideanTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_table_mean(s : GeodisteuclideanTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_table_scale(s : GeodisteuclideanTable, f : Double) -> GeodisteuclideanTable {
   let result = geo_dist_euclidean_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_dist_euclidean_table_fill(s : GeodisteuclideanTable, v : Double) -> G
   result
 }
 
-pub fn geo_dist_euclidean_table_min(s : GeodisteuclideanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_table_min(s : GeodisteuclideanTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_table_max(s : GeodisteuclideanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_table_max(s : GeodisteuclideanTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_table_to_string(s : GeodisteuclideanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_dist_euclidean_graphn_set(s : GeodisteuclideanGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_euclidean_graphn_sum(s : GeodisteuclideanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_graphn_sum(s : GeodisteuclideanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_graphn_mean(s : GeodisteuclideanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_graphn_mean(s : GeodisteuclideanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_graphn_scale(s : GeodisteuclideanGraphN, f : Double) -> GeodisteuclideanGraphN {
   let result = geo_dist_euclidean_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_dist_euclidean_graphn_fill(s : GeodisteuclideanGraphN, v : Double) ->
   result
 }
 
-pub fn geo_dist_euclidean_graphn_min(s : GeodisteuclideanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_graphn_min(s : GeodisteuclideanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_graphn_max(s : GeodisteuclideanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_graphn_max(s : GeodisteuclideanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_graphn_to_string(s : GeodisteuclideanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_dist_euclidean_node_set(s : GeodisteuclideanNode, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_euclidean_node_sum(s : GeodisteuclideanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_node_sum(s : GeodisteuclideanNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_node_mean(s : GeodisteuclideanNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_node_mean(s : GeodisteuclideanNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_node_scale(s : GeodisteuclideanNode, f : Double) -> GeodisteuclideanNode {
   let result = geo_dist_euclidean_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_dist_euclidean_node_fill(s : GeodisteuclideanNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_euclidean_node_min(s : GeodisteuclideanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_node_min(s : GeodisteuclideanNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_node_max(s : GeodisteuclideanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_node_max(s : GeodisteuclideanNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_node_to_string(s : GeodisteuclideanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_dist_euclidean_edge_set(s : GeodisteuclideanEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_euclidean_edge_sum(s : GeodisteuclideanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_edge_sum(s : GeodisteuclideanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_edge_mean(s : GeodisteuclideanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_edge_mean(s : GeodisteuclideanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_edge_scale(s : GeodisteuclideanEdge, f : Double) -> GeodisteuclideanEdge {
   let result = geo_dist_euclidean_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_dist_euclidean_edge_fill(s : GeodisteuclideanEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_euclidean_edge_min(s : GeodisteuclideanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_edge_min(s : GeodisteuclideanEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_edge_max(s : GeodisteuclideanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_edge_max(s : GeodisteuclideanEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_edge_to_string(s : GeodisteuclideanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_dist_euclidean_path_set(s : GeodisteuclideanPath, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_euclidean_path_sum(s : GeodisteuclideanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_path_sum(s : GeodisteuclideanPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_path_mean(s : GeodisteuclideanPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_path_mean(s : GeodisteuclideanPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_path_scale(s : GeodisteuclideanPath, f : Double) -> GeodisteuclideanPath {
   let result = geo_dist_euclidean_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_dist_euclidean_path_fill(s : GeodisteuclideanPath, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_euclidean_path_min(s : GeodisteuclideanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_path_min(s : GeodisteuclideanPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_path_max(s : GeodisteuclideanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_path_max(s : GeodisteuclideanPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_path_to_string(s : GeodisteuclideanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_dist_euclidean_cluster_set(s : GeodisteuclideanCluster, i : Int, v : 
   result
 }
 
-pub fn geo_dist_euclidean_cluster_sum(s : GeodisteuclideanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_cluster_sum(s : GeodisteuclideanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_cluster_mean(s : GeodisteuclideanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_cluster_mean(s : GeodisteuclideanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_cluster_scale(s : GeodisteuclideanCluster, f : Double) -> GeodisteuclideanCluster {
   let result = geo_dist_euclidean_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_dist_euclidean_cluster_fill(s : GeodisteuclideanCluster, v : Double) 
   result
 }
 
-pub fn geo_dist_euclidean_cluster_min(s : GeodisteuclideanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_cluster_min(s : GeodisteuclideanCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_cluster_max(s : GeodisteuclideanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_cluster_max(s : GeodisteuclideanCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_cluster_to_string(s : GeodisteuclideanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_dist_euclidean_model_set(s : GeodisteuclideanModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_euclidean_model_sum(s : GeodisteuclideanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_model_sum(s : GeodisteuclideanModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_model_mean(s : GeodisteuclideanModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_model_mean(s : GeodisteuclideanModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_model_scale(s : GeodisteuclideanModel, f : Double) -> GeodisteuclideanModel {
   let result = geo_dist_euclidean_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_dist_euclidean_model_fill(s : GeodisteuclideanModel, v : Double) -> G
   result
 }
 
-pub fn geo_dist_euclidean_model_min(s : GeodisteuclideanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_model_min(s : GeodisteuclideanModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_model_max(s : GeodisteuclideanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_model_max(s : GeodisteuclideanModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_model_to_string(s : GeodisteuclideanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_dist_euclidean_layer_set(s : GeodisteuclideanLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_euclidean_layer_sum(s : GeodisteuclideanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_layer_sum(s : GeodisteuclideanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_layer_mean(s : GeodisteuclideanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_layer_mean(s : GeodisteuclideanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_layer_scale(s : GeodisteuclideanLayer, f : Double) -> GeodisteuclideanLayer {
   let result = geo_dist_euclidean_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_dist_euclidean_layer_fill(s : GeodisteuclideanLayer, v : Double) -> G
   result
 }
 
-pub fn geo_dist_euclidean_layer_min(s : GeodisteuclideanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_layer_min(s : GeodisteuclideanLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_layer_max(s : GeodisteuclideanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_layer_max(s : GeodisteuclideanLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_layer_to_string(s : GeodisteuclideanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_dist_euclidean_buffer_set(s : GeodisteuclideanBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_euclidean_buffer_sum(s : GeodisteuclideanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_buffer_sum(s : GeodisteuclideanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_buffer_mean(s : GeodisteuclideanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_buffer_mean(s : GeodisteuclideanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_buffer_scale(s : GeodisteuclideanBuffer, f : Double) -> GeodisteuclideanBuffer {
   let result = geo_dist_euclidean_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_dist_euclidean_buffer_fill(s : GeodisteuclideanBuffer, v : Double) ->
   result
 }
 
-pub fn geo_dist_euclidean_buffer_min(s : GeodisteuclideanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_buffer_min(s : GeodisteuclideanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_buffer_max(s : GeodisteuclideanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_buffer_max(s : GeodisteuclideanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_buffer_to_string(s : GeodisteuclideanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_dist_euclidean_cursor_set(s : GeodisteuclideanCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_euclidean_cursor_sum(s : GeodisteuclideanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_cursor_sum(s : GeodisteuclideanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_cursor_mean(s : GeodisteuclideanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_cursor_mean(s : GeodisteuclideanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_cursor_scale(s : GeodisteuclideanCursor, f : Double) -> GeodisteuclideanCursor {
   let result = geo_dist_euclidean_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_dist_euclidean_cursor_fill(s : GeodisteuclideanCursor, v : Double) ->
   result
 }
 
-pub fn geo_dist_euclidean_cursor_min(s : GeodisteuclideanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_cursor_min(s : GeodisteuclideanCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_cursor_max(s : GeodisteuclideanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_cursor_max(s : GeodisteuclideanCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_cursor_to_string(s : GeodisteuclideanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_dist_euclidean_view_set(s : GeodisteuclideanView, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_euclidean_view_sum(s : GeodisteuclideanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_view_sum(s : GeodisteuclideanView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_view_mean(s : GeodisteuclideanView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_view_mean(s : GeodisteuclideanView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_view_scale(s : GeodisteuclideanView, f : Double) -> GeodisteuclideanView {
   let result = geo_dist_euclidean_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_dist_euclidean_view_fill(s : GeodisteuclideanView, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_euclidean_view_min(s : GeodisteuclideanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_view_min(s : GeodisteuclideanView) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_view_max(s : GeodisteuclideanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_view_max(s : GeodisteuclideanView) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_view_to_string(s : GeodisteuclideanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_dist_euclidean_range_set(s : GeodisteuclideanRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_euclidean_range_sum(s : GeodisteuclideanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_range_sum(s : GeodisteuclideanRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_range_mean(s : GeodisteuclideanRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_range_mean(s : GeodisteuclideanRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_range_scale(s : GeodisteuclideanRange, f : Double) -> GeodisteuclideanRange {
   let result = geo_dist_euclidean_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_dist_euclidean_range_fill(s : GeodisteuclideanRange, v : Double) -> G
   result
 }
 
-pub fn geo_dist_euclidean_range_min(s : GeodisteuclideanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_range_min(s : GeodisteuclideanRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_range_max(s : GeodisteuclideanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_range_max(s : GeodisteuclideanRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_range_to_string(s : GeodisteuclideanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_dist_euclidean_slice_set(s : GeodisteuclideanSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_euclidean_slice_sum(s : GeodisteuclideanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_euclidean_slice_sum(s : GeodisteuclideanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_euclidean_slice_mean(s : GeodisteuclideanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_euclidean_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_euclidean_slice_mean(s : GeodisteuclideanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_euclidean_slice_scale(s : GeodisteuclideanSlice, f : Double) -> GeodisteuclideanSlice {
   let result = geo_dist_euclidean_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_dist_euclidean_slice_fill(s : GeodisteuclideanSlice, v : Double) -> G
   result
 }
 
-pub fn geo_dist_euclidean_slice_min(s : GeodisteuclideanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_slice_min(s : GeodisteuclideanSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_euclidean_slice_max(s : GeodisteuclideanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_euclidean_slice_max(s : GeodisteuclideanSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_euclidean_slice_to_string(s : GeodisteuclideanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_flow_congestion_make_series(vals : Array[Double], name : String) -> N
 
 pub fn net_flow_congestion_series_len(s : NetflowcongestionSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_congestion_series_sum(s : NetflowcongestionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_congestion_series_sum(s : NetflowcongestionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_congestion_series_mean(s : NetflowcongestionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_congestion_frame_set(s : NetflowcongestionFrame, i : Int, v : Do
   result
 }
 
-pub fn net_flow_congestion_frame_sum(s : NetflowcongestionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_frame_sum(s : NetflowcongestionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_frame_mean(s : NetflowcongestionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_frame_mean(s : NetflowcongestionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_frame_scale(s : NetflowcongestionFrame, f : Double) -> NetflowcongestionFrame {
   let result = net_flow_congestion_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_congestion_frame_fill(s : NetflowcongestionFrame, v : Double) ->
   result
 }
 
-pub fn net_flow_congestion_frame_min(s : NetflowcongestionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_frame_min(s : NetflowcongestionFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_frame_max(s : NetflowcongestionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_frame_max(s : NetflowcongestionFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_frame_to_string(s : NetflowcongestionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_congestion_table_set(s : NetflowcongestionTable, i : Int, v : Do
   result
 }
 
-pub fn net_flow_congestion_table_sum(s : NetflowcongestionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_table_sum(s : NetflowcongestionTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_table_mean(s : NetflowcongestionTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_table_mean(s : NetflowcongestionTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_table_scale(s : NetflowcongestionTable, f : Double) -> NetflowcongestionTable {
   let result = net_flow_congestion_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_congestion_table_fill(s : NetflowcongestionTable, v : Double) ->
   result
 }
 
-pub fn net_flow_congestion_table_min(s : NetflowcongestionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_table_min(s : NetflowcongestionTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_table_max(s : NetflowcongestionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_table_max(s : NetflowcongestionTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_table_to_string(s : NetflowcongestionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_congestion_graphn_set(s : NetflowcongestionGraphN, i : Int, v : 
   result
 }
 
-pub fn net_flow_congestion_graphn_sum(s : NetflowcongestionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_graphn_sum(s : NetflowcongestionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_graphn_mean(s : NetflowcongestionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_graphn_mean(s : NetflowcongestionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_graphn_scale(s : NetflowcongestionGraphN, f : Double) -> NetflowcongestionGraphN {
   let result = net_flow_congestion_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_congestion_graphn_fill(s : NetflowcongestionGraphN, v : Double) 
   result
 }
 
-pub fn net_flow_congestion_graphn_min(s : NetflowcongestionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_graphn_min(s : NetflowcongestionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_graphn_max(s : NetflowcongestionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_graphn_max(s : NetflowcongestionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_graphn_to_string(s : NetflowcongestionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_congestion_node_set(s : NetflowcongestionNode, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_congestion_node_sum(s : NetflowcongestionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_node_sum(s : NetflowcongestionNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_node_mean(s : NetflowcongestionNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_node_mean(s : NetflowcongestionNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_node_scale(s : NetflowcongestionNode, f : Double) -> NetflowcongestionNode {
   let result = net_flow_congestion_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_congestion_node_fill(s : NetflowcongestionNode, v : Double) -> N
   result
 }
 
-pub fn net_flow_congestion_node_min(s : NetflowcongestionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_node_min(s : NetflowcongestionNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_node_max(s : NetflowcongestionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_node_max(s : NetflowcongestionNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_node_to_string(s : NetflowcongestionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_congestion_edge_set(s : NetflowcongestionEdge, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_congestion_edge_sum(s : NetflowcongestionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_edge_sum(s : NetflowcongestionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_edge_mean(s : NetflowcongestionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_edge_mean(s : NetflowcongestionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_edge_scale(s : NetflowcongestionEdge, f : Double) -> NetflowcongestionEdge {
   let result = net_flow_congestion_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_congestion_edge_fill(s : NetflowcongestionEdge, v : Double) -> N
   result
 }
 
-pub fn net_flow_congestion_edge_min(s : NetflowcongestionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_edge_min(s : NetflowcongestionEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_edge_max(s : NetflowcongestionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_edge_max(s : NetflowcongestionEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_edge_to_string(s : NetflowcongestionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_congestion_path_set(s : NetflowcongestionPath, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_congestion_path_sum(s : NetflowcongestionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_path_sum(s : NetflowcongestionPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_path_mean(s : NetflowcongestionPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_path_mean(s : NetflowcongestionPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_path_scale(s : NetflowcongestionPath, f : Double) -> NetflowcongestionPath {
   let result = net_flow_congestion_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_congestion_path_fill(s : NetflowcongestionPath, v : Double) -> N
   result
 }
 
-pub fn net_flow_congestion_path_min(s : NetflowcongestionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_path_min(s : NetflowcongestionPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_path_max(s : NetflowcongestionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_path_max(s : NetflowcongestionPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_path_to_string(s : NetflowcongestionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_congestion_cluster_set(s : NetflowcongestionCluster, i : Int, v 
   result
 }
 
-pub fn net_flow_congestion_cluster_sum(s : NetflowcongestionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_cluster_sum(s : NetflowcongestionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_cluster_mean(s : NetflowcongestionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_cluster_mean(s : NetflowcongestionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_cluster_scale(s : NetflowcongestionCluster, f : Double) -> NetflowcongestionCluster {
   let result = net_flow_congestion_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_congestion_cluster_fill(s : NetflowcongestionCluster, v : Double
   result
 }
 
-pub fn net_flow_congestion_cluster_min(s : NetflowcongestionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_cluster_min(s : NetflowcongestionCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_cluster_max(s : NetflowcongestionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_cluster_max(s : NetflowcongestionCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_cluster_to_string(s : NetflowcongestionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_congestion_model_set(s : NetflowcongestionModel, i : Int, v : Do
   result
 }
 
-pub fn net_flow_congestion_model_sum(s : NetflowcongestionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_model_sum(s : NetflowcongestionModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_model_mean(s : NetflowcongestionModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_model_mean(s : NetflowcongestionModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_model_scale(s : NetflowcongestionModel, f : Double) -> NetflowcongestionModel {
   let result = net_flow_congestion_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_congestion_model_fill(s : NetflowcongestionModel, v : Double) ->
   result
 }
 
-pub fn net_flow_congestion_model_min(s : NetflowcongestionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_model_min(s : NetflowcongestionModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_model_max(s : NetflowcongestionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_model_max(s : NetflowcongestionModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_model_to_string(s : NetflowcongestionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_congestion_layer_set(s : NetflowcongestionLayer, i : Int, v : Do
   result
 }
 
-pub fn net_flow_congestion_layer_sum(s : NetflowcongestionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_layer_sum(s : NetflowcongestionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_layer_mean(s : NetflowcongestionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_layer_mean(s : NetflowcongestionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_layer_scale(s : NetflowcongestionLayer, f : Double) -> NetflowcongestionLayer {
   let result = net_flow_congestion_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_congestion_layer_fill(s : NetflowcongestionLayer, v : Double) ->
   result
 }
 
-pub fn net_flow_congestion_layer_min(s : NetflowcongestionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_layer_min(s : NetflowcongestionLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_layer_max(s : NetflowcongestionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_layer_max(s : NetflowcongestionLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_layer_to_string(s : NetflowcongestionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_congestion_buffer_set(s : NetflowcongestionBuffer, i : Int, v : 
   result
 }
 
-pub fn net_flow_congestion_buffer_sum(s : NetflowcongestionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_buffer_sum(s : NetflowcongestionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_buffer_mean(s : NetflowcongestionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_buffer_mean(s : NetflowcongestionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_buffer_scale(s : NetflowcongestionBuffer, f : Double) -> NetflowcongestionBuffer {
   let result = net_flow_congestion_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_congestion_buffer_fill(s : NetflowcongestionBuffer, v : Double) 
   result
 }
 
-pub fn net_flow_congestion_buffer_min(s : NetflowcongestionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_buffer_min(s : NetflowcongestionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_buffer_max(s : NetflowcongestionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_buffer_max(s : NetflowcongestionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_buffer_to_string(s : NetflowcongestionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_congestion_cursor_set(s : NetflowcongestionCursor, i : Int, v : 
   result
 }
 
-pub fn net_flow_congestion_cursor_sum(s : NetflowcongestionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_cursor_sum(s : NetflowcongestionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_cursor_mean(s : NetflowcongestionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_cursor_mean(s : NetflowcongestionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_cursor_scale(s : NetflowcongestionCursor, f : Double) -> NetflowcongestionCursor {
   let result = net_flow_congestion_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_congestion_cursor_fill(s : NetflowcongestionCursor, v : Double) 
   result
 }
 
-pub fn net_flow_congestion_cursor_min(s : NetflowcongestionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_cursor_min(s : NetflowcongestionCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_cursor_max(s : NetflowcongestionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_cursor_max(s : NetflowcongestionCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_cursor_to_string(s : NetflowcongestionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_congestion_view_set(s : NetflowcongestionView, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_congestion_view_sum(s : NetflowcongestionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_view_sum(s : NetflowcongestionView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_view_mean(s : NetflowcongestionView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_view_mean(s : NetflowcongestionView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_view_scale(s : NetflowcongestionView, f : Double) -> NetflowcongestionView {
   let result = net_flow_congestion_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_congestion_view_fill(s : NetflowcongestionView, v : Double) -> N
   result
 }
 
-pub fn net_flow_congestion_view_min(s : NetflowcongestionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_view_min(s : NetflowcongestionView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_view_max(s : NetflowcongestionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_view_max(s : NetflowcongestionView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_view_to_string(s : NetflowcongestionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_congestion_range_set(s : NetflowcongestionRange, i : Int, v : Do
   result
 }
 
-pub fn net_flow_congestion_range_sum(s : NetflowcongestionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_range_sum(s : NetflowcongestionRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_range_mean(s : NetflowcongestionRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_range_mean(s : NetflowcongestionRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_range_scale(s : NetflowcongestionRange, f : Double) -> NetflowcongestionRange {
   let result = net_flow_congestion_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_congestion_range_fill(s : NetflowcongestionRange, v : Double) ->
   result
 }
 
-pub fn net_flow_congestion_range_min(s : NetflowcongestionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_range_min(s : NetflowcongestionRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_range_max(s : NetflowcongestionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_range_max(s : NetflowcongestionRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_range_to_string(s : NetflowcongestionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_congestion_slice_set(s : NetflowcongestionSlice, i : Int, v : Do
   result
 }
 
-pub fn net_flow_congestion_slice_sum(s : NetflowcongestionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_congestion_slice_sum(s : NetflowcongestionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_congestion_slice_mean(s : NetflowcongestionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_congestion_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_congestion_slice_mean(s : NetflowcongestionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_congestion_slice_scale(s : NetflowcongestionSlice, f : Double) -> NetflowcongestionSlice {
   let result = net_flow_congestion_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_congestion_slice_fill(s : NetflowcongestionSlice, v : Double) ->
   result
 }
 
-pub fn net_flow_congestion_slice_min(s : NetflowcongestionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_slice_min(s : NetflowcongestionSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_congestion_slice_max(s : NetflowcongestionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_congestion_slice_max(s : NetflowcongestionSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_congestion_slice_to_string(s : NetflowcongestionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

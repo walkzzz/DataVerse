@@ -88,11 +88,7 @@ pub fn crypto_asym_dh_make_series(vals : Array[Double], name : String) -> Crypto
 
 pub fn crypto_asym_dh_series_len(s : CryptoasymdhSeries) -> Int { s.vals.length() }
 
-pub fn crypto_asym_dh_series_sum(s : CryptoasymdhSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_asym_dh_series_sum(s : CryptoasymdhSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_asym_dh_series_mean(s : CryptoasymdhSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_asym_dh_frame_set(s : CryptoasymdhFrame, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_dh_frame_sum(s : CryptoasymdhFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_frame_sum(s : CryptoasymdhFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_frame_mean(s : CryptoasymdhFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_frame_mean(s : CryptoasymdhFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_frame_scale(s : CryptoasymdhFrame, f : Double) -> CryptoasymdhFrame {
   let result = crypto_asym_dh_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_asym_dh_frame_fill(s : CryptoasymdhFrame, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_dh_frame_min(s : CryptoasymdhFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_frame_min(s : CryptoasymdhFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_frame_max(s : CryptoasymdhFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_frame_max(s : CryptoasymdhFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_frame_to_string(s : CryptoasymdhFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_asym_dh_table_set(s : CryptoasymdhTable, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_dh_table_sum(s : CryptoasymdhTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_table_sum(s : CryptoasymdhTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_table_mean(s : CryptoasymdhTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_table_mean(s : CryptoasymdhTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_table_scale(s : CryptoasymdhTable, f : Double) -> CryptoasymdhTable {
   let result = crypto_asym_dh_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_asym_dh_table_fill(s : CryptoasymdhTable, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_dh_table_min(s : CryptoasymdhTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_table_min(s : CryptoasymdhTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_table_max(s : CryptoasymdhTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_table_max(s : CryptoasymdhTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_table_to_string(s : CryptoasymdhTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_asym_dh_graphn_set(s : CryptoasymdhGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_dh_graphn_sum(s : CryptoasymdhGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_graphn_sum(s : CryptoasymdhGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_graphn_mean(s : CryptoasymdhGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_graphn_mean(s : CryptoasymdhGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_graphn_scale(s : CryptoasymdhGraphN, f : Double) -> CryptoasymdhGraphN {
   let result = crypto_asym_dh_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_asym_dh_graphn_fill(s : CryptoasymdhGraphN, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_dh_graphn_min(s : CryptoasymdhGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_graphn_min(s : CryptoasymdhGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_graphn_max(s : CryptoasymdhGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_graphn_max(s : CryptoasymdhGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_graphn_to_string(s : CryptoasymdhGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_asym_dh_node_set(s : CryptoasymdhNode, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_dh_node_sum(s : CryptoasymdhNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_node_sum(s : CryptoasymdhNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_node_mean(s : CryptoasymdhNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_node_mean(s : CryptoasymdhNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_node_scale(s : CryptoasymdhNode, f : Double) -> CryptoasymdhNode {
   let result = crypto_asym_dh_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_asym_dh_node_fill(s : CryptoasymdhNode, v : Double) -> Cryptoasymd
   result
 }
 
-pub fn crypto_asym_dh_node_min(s : CryptoasymdhNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_node_min(s : CryptoasymdhNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_node_max(s : CryptoasymdhNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_node_max(s : CryptoasymdhNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_node_to_string(s : CryptoasymdhNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_asym_dh_edge_set(s : CryptoasymdhEdge, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_dh_edge_sum(s : CryptoasymdhEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_edge_sum(s : CryptoasymdhEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_edge_mean(s : CryptoasymdhEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_edge_mean(s : CryptoasymdhEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_edge_scale(s : CryptoasymdhEdge, f : Double) -> CryptoasymdhEdge {
   let result = crypto_asym_dh_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_asym_dh_edge_fill(s : CryptoasymdhEdge, v : Double) -> Cryptoasymd
   result
 }
 
-pub fn crypto_asym_dh_edge_min(s : CryptoasymdhEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_edge_min(s : CryptoasymdhEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_edge_max(s : CryptoasymdhEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_edge_max(s : CryptoasymdhEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_edge_to_string(s : CryptoasymdhEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_asym_dh_path_set(s : CryptoasymdhPath, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_dh_path_sum(s : CryptoasymdhPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_path_sum(s : CryptoasymdhPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_path_mean(s : CryptoasymdhPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_path_mean(s : CryptoasymdhPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_path_scale(s : CryptoasymdhPath, f : Double) -> CryptoasymdhPath {
   let result = crypto_asym_dh_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_asym_dh_path_fill(s : CryptoasymdhPath, v : Double) -> Cryptoasymd
   result
 }
 
-pub fn crypto_asym_dh_path_min(s : CryptoasymdhPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_path_min(s : CryptoasymdhPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_path_max(s : CryptoasymdhPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_path_max(s : CryptoasymdhPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_path_to_string(s : CryptoasymdhPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_asym_dh_cluster_set(s : CryptoasymdhCluster, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_dh_cluster_sum(s : CryptoasymdhCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_cluster_sum(s : CryptoasymdhCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_cluster_mean(s : CryptoasymdhCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_cluster_mean(s : CryptoasymdhCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_cluster_scale(s : CryptoasymdhCluster, f : Double) -> CryptoasymdhCluster {
   let result = crypto_asym_dh_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_asym_dh_cluster_fill(s : CryptoasymdhCluster, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_dh_cluster_min(s : CryptoasymdhCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_cluster_min(s : CryptoasymdhCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_cluster_max(s : CryptoasymdhCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_cluster_max(s : CryptoasymdhCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_cluster_to_string(s : CryptoasymdhCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_asym_dh_model_set(s : CryptoasymdhModel, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_dh_model_sum(s : CryptoasymdhModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_model_sum(s : CryptoasymdhModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_model_mean(s : CryptoasymdhModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_model_mean(s : CryptoasymdhModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_model_scale(s : CryptoasymdhModel, f : Double) -> CryptoasymdhModel {
   let result = crypto_asym_dh_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_asym_dh_model_fill(s : CryptoasymdhModel, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_dh_model_min(s : CryptoasymdhModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_model_min(s : CryptoasymdhModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_model_max(s : CryptoasymdhModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_model_max(s : CryptoasymdhModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_model_to_string(s : CryptoasymdhModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_asym_dh_layer_set(s : CryptoasymdhLayer, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_dh_layer_sum(s : CryptoasymdhLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_layer_sum(s : CryptoasymdhLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_layer_mean(s : CryptoasymdhLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_layer_mean(s : CryptoasymdhLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_layer_scale(s : CryptoasymdhLayer, f : Double) -> CryptoasymdhLayer {
   let result = crypto_asym_dh_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_asym_dh_layer_fill(s : CryptoasymdhLayer, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_dh_layer_min(s : CryptoasymdhLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_layer_min(s : CryptoasymdhLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_layer_max(s : CryptoasymdhLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_layer_max(s : CryptoasymdhLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_layer_to_string(s : CryptoasymdhLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_asym_dh_buffer_set(s : CryptoasymdhBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_dh_buffer_sum(s : CryptoasymdhBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_buffer_sum(s : CryptoasymdhBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_buffer_mean(s : CryptoasymdhBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_buffer_mean(s : CryptoasymdhBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_buffer_scale(s : CryptoasymdhBuffer, f : Double) -> CryptoasymdhBuffer {
   let result = crypto_asym_dh_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_asym_dh_buffer_fill(s : CryptoasymdhBuffer, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_dh_buffer_min(s : CryptoasymdhBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_buffer_min(s : CryptoasymdhBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_buffer_max(s : CryptoasymdhBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_buffer_max(s : CryptoasymdhBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_buffer_to_string(s : CryptoasymdhBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_asym_dh_cursor_set(s : CryptoasymdhCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_dh_cursor_sum(s : CryptoasymdhCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_cursor_sum(s : CryptoasymdhCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_cursor_mean(s : CryptoasymdhCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_cursor_mean(s : CryptoasymdhCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_cursor_scale(s : CryptoasymdhCursor, f : Double) -> CryptoasymdhCursor {
   let result = crypto_asym_dh_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_asym_dh_cursor_fill(s : CryptoasymdhCursor, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_dh_cursor_min(s : CryptoasymdhCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_cursor_min(s : CryptoasymdhCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_cursor_max(s : CryptoasymdhCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_cursor_max(s : CryptoasymdhCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_cursor_to_string(s : CryptoasymdhCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_asym_dh_view_set(s : CryptoasymdhView, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_dh_view_sum(s : CryptoasymdhView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_view_sum(s : CryptoasymdhView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_view_mean(s : CryptoasymdhView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_view_mean(s : CryptoasymdhView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_view_scale(s : CryptoasymdhView, f : Double) -> CryptoasymdhView {
   let result = crypto_asym_dh_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_asym_dh_view_fill(s : CryptoasymdhView, v : Double) -> Cryptoasymd
   result
 }
 
-pub fn crypto_asym_dh_view_min(s : CryptoasymdhView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_view_min(s : CryptoasymdhView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_view_max(s : CryptoasymdhView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_view_max(s : CryptoasymdhView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_view_to_string(s : CryptoasymdhView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_asym_dh_range_set(s : CryptoasymdhRange, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_dh_range_sum(s : CryptoasymdhRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_range_sum(s : CryptoasymdhRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_range_mean(s : CryptoasymdhRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_range_mean(s : CryptoasymdhRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_range_scale(s : CryptoasymdhRange, f : Double) -> CryptoasymdhRange {
   let result = crypto_asym_dh_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_asym_dh_range_fill(s : CryptoasymdhRange, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_dh_range_min(s : CryptoasymdhRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_range_min(s : CryptoasymdhRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_range_max(s : CryptoasymdhRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_range_max(s : CryptoasymdhRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_range_to_string(s : CryptoasymdhRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_asym_dh_slice_set(s : CryptoasymdhSlice, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_dh_slice_sum(s : CryptoasymdhSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_dh_slice_sum(s : CryptoasymdhSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_dh_slice_mean(s : CryptoasymdhSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_dh_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_dh_slice_mean(s : CryptoasymdhSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_dh_slice_scale(s : CryptoasymdhSlice, f : Double) -> CryptoasymdhSlice {
   let result = crypto_asym_dh_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_asym_dh_slice_fill(s : CryptoasymdhSlice, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_dh_slice_min(s : CryptoasymdhSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_slice_min(s : CryptoasymdhSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_dh_slice_max(s : CryptoasymdhSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_dh_slice_max(s : CryptoasymdhSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_dh_slice_to_string(s : CryptoasymdhSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

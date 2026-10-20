@@ -88,11 +88,7 @@ pub fn nlp_embed_bert_make_series(vals : Array[Double], name : String) -> Nlpemb
 
 pub fn nlp_embed_bert_series_len(s : NlpembedbertSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_bert_series_sum(s : NlpembedbertSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_bert_series_sum(s : NlpembedbertSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_bert_series_mean(s : NlpembedbertSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_bert_frame_set(s : NlpembedbertFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_bert_frame_sum(s : NlpembedbertFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_frame_sum(s : NlpembedbertFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_frame_mean(s : NlpembedbertFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_frame_mean(s : NlpembedbertFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_frame_scale(s : NlpembedbertFrame, f : Double) -> NlpembedbertFrame {
   let result = nlp_embed_bert_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_bert_frame_fill(s : NlpembedbertFrame, v : Double) -> Nlpembedb
   result
 }
 
-pub fn nlp_embed_bert_frame_min(s : NlpembedbertFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_frame_min(s : NlpembedbertFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_frame_max(s : NlpembedbertFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_frame_max(s : NlpembedbertFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_frame_to_string(s : NlpembedbertFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_bert_table_set(s : NlpembedbertTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_bert_table_sum(s : NlpembedbertTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_table_sum(s : NlpembedbertTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_table_mean(s : NlpembedbertTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_table_mean(s : NlpembedbertTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_table_scale(s : NlpembedbertTable, f : Double) -> NlpembedbertTable {
   let result = nlp_embed_bert_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_bert_table_fill(s : NlpembedbertTable, v : Double) -> Nlpembedb
   result
 }
 
-pub fn nlp_embed_bert_table_min(s : NlpembedbertTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_table_min(s : NlpembedbertTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_table_max(s : NlpembedbertTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_table_max(s : NlpembedbertTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_table_to_string(s : NlpembedbertTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_bert_graphn_set(s : NlpembedbertGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_bert_graphn_sum(s : NlpembedbertGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_graphn_sum(s : NlpembedbertGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_graphn_mean(s : NlpembedbertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_graphn_mean(s : NlpembedbertGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_graphn_scale(s : NlpembedbertGraphN, f : Double) -> NlpembedbertGraphN {
   let result = nlp_embed_bert_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_bert_graphn_fill(s : NlpembedbertGraphN, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_bert_graphn_min(s : NlpembedbertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_graphn_min(s : NlpembedbertGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_graphn_max(s : NlpembedbertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_graphn_max(s : NlpembedbertGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_graphn_to_string(s : NlpembedbertGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_bert_node_set(s : NlpembedbertNode, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_bert_node_sum(s : NlpembedbertNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_node_sum(s : NlpembedbertNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_node_mean(s : NlpembedbertNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_node_mean(s : NlpembedbertNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_node_scale(s : NlpembedbertNode, f : Double) -> NlpembedbertNode {
   let result = nlp_embed_bert_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_bert_node_fill(s : NlpembedbertNode, v : Double) -> Nlpembedber
   result
 }
 
-pub fn nlp_embed_bert_node_min(s : NlpembedbertNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_node_min(s : NlpembedbertNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_node_max(s : NlpembedbertNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_node_max(s : NlpembedbertNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_node_to_string(s : NlpembedbertNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_bert_edge_set(s : NlpembedbertEdge, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_bert_edge_sum(s : NlpembedbertEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_edge_sum(s : NlpembedbertEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_edge_mean(s : NlpembedbertEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_edge_mean(s : NlpembedbertEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_edge_scale(s : NlpembedbertEdge, f : Double) -> NlpembedbertEdge {
   let result = nlp_embed_bert_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_bert_edge_fill(s : NlpembedbertEdge, v : Double) -> Nlpembedber
   result
 }
 
-pub fn nlp_embed_bert_edge_min(s : NlpembedbertEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_edge_min(s : NlpembedbertEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_edge_max(s : NlpembedbertEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_edge_max(s : NlpembedbertEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_edge_to_string(s : NlpembedbertEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_bert_path_set(s : NlpembedbertPath, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_bert_path_sum(s : NlpembedbertPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_path_sum(s : NlpembedbertPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_path_mean(s : NlpembedbertPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_path_mean(s : NlpembedbertPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_path_scale(s : NlpembedbertPath, f : Double) -> NlpembedbertPath {
   let result = nlp_embed_bert_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_bert_path_fill(s : NlpembedbertPath, v : Double) -> Nlpembedber
   result
 }
 
-pub fn nlp_embed_bert_path_min(s : NlpembedbertPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_path_min(s : NlpembedbertPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_path_max(s : NlpembedbertPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_path_max(s : NlpembedbertPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_path_to_string(s : NlpembedbertPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_bert_cluster_set(s : NlpembedbertCluster, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_bert_cluster_sum(s : NlpembedbertCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_cluster_sum(s : NlpembedbertCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_cluster_mean(s : NlpembedbertCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_cluster_mean(s : NlpembedbertCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_cluster_scale(s : NlpembedbertCluster, f : Double) -> NlpembedbertCluster {
   let result = nlp_embed_bert_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_bert_cluster_fill(s : NlpembedbertCluster, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_bert_cluster_min(s : NlpembedbertCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_cluster_min(s : NlpembedbertCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_cluster_max(s : NlpembedbertCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_cluster_max(s : NlpembedbertCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_cluster_to_string(s : NlpembedbertCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_bert_model_set(s : NlpembedbertModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_bert_model_sum(s : NlpembedbertModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_model_sum(s : NlpembedbertModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_model_mean(s : NlpembedbertModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_model_mean(s : NlpembedbertModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_model_scale(s : NlpembedbertModel, f : Double) -> NlpembedbertModel {
   let result = nlp_embed_bert_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_bert_model_fill(s : NlpembedbertModel, v : Double) -> Nlpembedb
   result
 }
 
-pub fn nlp_embed_bert_model_min(s : NlpembedbertModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_model_min(s : NlpembedbertModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_model_max(s : NlpembedbertModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_model_max(s : NlpembedbertModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_model_to_string(s : NlpembedbertModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_bert_layer_set(s : NlpembedbertLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_bert_layer_sum(s : NlpembedbertLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_layer_sum(s : NlpembedbertLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_layer_mean(s : NlpembedbertLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_layer_mean(s : NlpembedbertLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_layer_scale(s : NlpembedbertLayer, f : Double) -> NlpembedbertLayer {
   let result = nlp_embed_bert_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_bert_layer_fill(s : NlpembedbertLayer, v : Double) -> Nlpembedb
   result
 }
 
-pub fn nlp_embed_bert_layer_min(s : NlpembedbertLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_layer_min(s : NlpembedbertLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_layer_max(s : NlpembedbertLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_layer_max(s : NlpembedbertLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_layer_to_string(s : NlpembedbertLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_bert_buffer_set(s : NlpembedbertBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_bert_buffer_sum(s : NlpembedbertBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_buffer_sum(s : NlpembedbertBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_buffer_mean(s : NlpembedbertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_buffer_mean(s : NlpembedbertBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_buffer_scale(s : NlpembedbertBuffer, f : Double) -> NlpembedbertBuffer {
   let result = nlp_embed_bert_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_bert_buffer_fill(s : NlpembedbertBuffer, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_bert_buffer_min(s : NlpembedbertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_buffer_min(s : NlpembedbertBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_buffer_max(s : NlpembedbertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_buffer_max(s : NlpembedbertBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_buffer_to_string(s : NlpembedbertBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_bert_cursor_set(s : NlpembedbertCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_bert_cursor_sum(s : NlpembedbertCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_cursor_sum(s : NlpembedbertCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_cursor_mean(s : NlpembedbertCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_cursor_mean(s : NlpembedbertCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_cursor_scale(s : NlpembedbertCursor, f : Double) -> NlpembedbertCursor {
   let result = nlp_embed_bert_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_bert_cursor_fill(s : NlpembedbertCursor, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_bert_cursor_min(s : NlpembedbertCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_cursor_min(s : NlpembedbertCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_cursor_max(s : NlpembedbertCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_cursor_max(s : NlpembedbertCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_cursor_to_string(s : NlpembedbertCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_bert_view_set(s : NlpembedbertView, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_bert_view_sum(s : NlpembedbertView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_view_sum(s : NlpembedbertView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_view_mean(s : NlpembedbertView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_view_mean(s : NlpembedbertView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_view_scale(s : NlpembedbertView, f : Double) -> NlpembedbertView {
   let result = nlp_embed_bert_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_bert_view_fill(s : NlpembedbertView, v : Double) -> Nlpembedber
   result
 }
 
-pub fn nlp_embed_bert_view_min(s : NlpembedbertView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_view_min(s : NlpembedbertView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_view_max(s : NlpembedbertView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_view_max(s : NlpembedbertView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_view_to_string(s : NlpembedbertView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_bert_range_set(s : NlpembedbertRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_bert_range_sum(s : NlpembedbertRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_range_sum(s : NlpembedbertRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_range_mean(s : NlpembedbertRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_range_mean(s : NlpembedbertRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_range_scale(s : NlpembedbertRange, f : Double) -> NlpembedbertRange {
   let result = nlp_embed_bert_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_bert_range_fill(s : NlpembedbertRange, v : Double) -> Nlpembedb
   result
 }
 
-pub fn nlp_embed_bert_range_min(s : NlpembedbertRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_range_min(s : NlpembedbertRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_range_max(s : NlpembedbertRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_range_max(s : NlpembedbertRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_range_to_string(s : NlpembedbertRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_bert_slice_set(s : NlpembedbertSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_bert_slice_sum(s : NlpembedbertSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_bert_slice_sum(s : NlpembedbertSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_bert_slice_mean(s : NlpembedbertSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_bert_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_bert_slice_mean(s : NlpembedbertSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_bert_slice_scale(s : NlpembedbertSlice, f : Double) -> NlpembedbertSlice {
   let result = nlp_embed_bert_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_bert_slice_fill(s : NlpembedbertSlice, v : Double) -> Nlpembedb
   result
 }
 
-pub fn nlp_embed_bert_slice_min(s : NlpembedbertSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_slice_min(s : NlpembedbertSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_bert_slice_max(s : NlpembedbertSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_bert_slice_max(s : NlpembedbertSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_bert_slice_to_string(s : NlpembedbertSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn signal_window_blackman_make_series(vals : Array[Double], name : String) -
 
 pub fn signal_window_blackman_series_len(s : SignalwindowblackmanSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_blackman_series_sum(s : SignalwindowblackmanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_blackman_series_sum(s : SignalwindowblackmanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_blackman_series_mean(s : SignalwindowblackmanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_blackman_frame_set(s : SignalwindowblackmanFrame, i : Int, 
   result
 }
 
-pub fn signal_window_blackman_frame_sum(s : SignalwindowblackmanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_frame_sum(s : SignalwindowblackmanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_frame_mean(s : SignalwindowblackmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_frame_mean(s : SignalwindowblackmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_frame_scale(s : SignalwindowblackmanFrame, f : Double) -> SignalwindowblackmanFrame {
   let result = signal_window_blackman_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_blackman_frame_fill(s : SignalwindowblackmanFrame, v : Doub
   result
 }
 
-pub fn signal_window_blackman_frame_min(s : SignalwindowblackmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_frame_min(s : SignalwindowblackmanFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_frame_max(s : SignalwindowblackmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_frame_max(s : SignalwindowblackmanFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_frame_to_string(s : SignalwindowblackmanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_blackman_table_set(s : SignalwindowblackmanTable, i : Int, 
   result
 }
 
-pub fn signal_window_blackman_table_sum(s : SignalwindowblackmanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_table_sum(s : SignalwindowblackmanTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_table_mean(s : SignalwindowblackmanTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_table_mean(s : SignalwindowblackmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_table_scale(s : SignalwindowblackmanTable, f : Double) -> SignalwindowblackmanTable {
   let result = signal_window_blackman_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_blackman_table_fill(s : SignalwindowblackmanTable, v : Doub
   result
 }
 
-pub fn signal_window_blackman_table_min(s : SignalwindowblackmanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_table_min(s : SignalwindowblackmanTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_table_max(s : SignalwindowblackmanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_table_max(s : SignalwindowblackmanTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_table_to_string(s : SignalwindowblackmanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_blackman_graphn_set(s : SignalwindowblackmanGraphN, i : Int
   result
 }
 
-pub fn signal_window_blackman_graphn_sum(s : SignalwindowblackmanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_graphn_sum(s : SignalwindowblackmanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_graphn_mean(s : SignalwindowblackmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_graphn_mean(s : SignalwindowblackmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_graphn_scale(s : SignalwindowblackmanGraphN, f : Double) -> SignalwindowblackmanGraphN {
   let result = signal_window_blackman_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_blackman_graphn_fill(s : SignalwindowblackmanGraphN, v : Do
   result
 }
 
-pub fn signal_window_blackman_graphn_min(s : SignalwindowblackmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_graphn_min(s : SignalwindowblackmanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_graphn_max(s : SignalwindowblackmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_graphn_max(s : SignalwindowblackmanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_graphn_to_string(s : SignalwindowblackmanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_blackman_node_set(s : SignalwindowblackmanNode, i : Int, v 
   result
 }
 
-pub fn signal_window_blackman_node_sum(s : SignalwindowblackmanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_node_sum(s : SignalwindowblackmanNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_node_mean(s : SignalwindowblackmanNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_node_mean(s : SignalwindowblackmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_node_scale(s : SignalwindowblackmanNode, f : Double) -> SignalwindowblackmanNode {
   let result = signal_window_blackman_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_blackman_node_fill(s : SignalwindowblackmanNode, v : Double
   result
 }
 
-pub fn signal_window_blackman_node_min(s : SignalwindowblackmanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_node_min(s : SignalwindowblackmanNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_node_max(s : SignalwindowblackmanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_node_max(s : SignalwindowblackmanNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_node_to_string(s : SignalwindowblackmanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_blackman_edge_set(s : SignalwindowblackmanEdge, i : Int, v 
   result
 }
 
-pub fn signal_window_blackman_edge_sum(s : SignalwindowblackmanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_edge_sum(s : SignalwindowblackmanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_edge_mean(s : SignalwindowblackmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_edge_mean(s : SignalwindowblackmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_edge_scale(s : SignalwindowblackmanEdge, f : Double) -> SignalwindowblackmanEdge {
   let result = signal_window_blackman_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_blackman_edge_fill(s : SignalwindowblackmanEdge, v : Double
   result
 }
 
-pub fn signal_window_blackman_edge_min(s : SignalwindowblackmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_edge_min(s : SignalwindowblackmanEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_edge_max(s : SignalwindowblackmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_edge_max(s : SignalwindowblackmanEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_edge_to_string(s : SignalwindowblackmanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_blackman_path_set(s : SignalwindowblackmanPath, i : Int, v 
   result
 }
 
-pub fn signal_window_blackman_path_sum(s : SignalwindowblackmanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_path_sum(s : SignalwindowblackmanPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_path_mean(s : SignalwindowblackmanPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_path_mean(s : SignalwindowblackmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_path_scale(s : SignalwindowblackmanPath, f : Double) -> SignalwindowblackmanPath {
   let result = signal_window_blackman_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_blackman_path_fill(s : SignalwindowblackmanPath, v : Double
   result
 }
 
-pub fn signal_window_blackman_path_min(s : SignalwindowblackmanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_path_min(s : SignalwindowblackmanPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_path_max(s : SignalwindowblackmanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_path_max(s : SignalwindowblackmanPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_path_to_string(s : SignalwindowblackmanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_blackman_cluster_set(s : SignalwindowblackmanCluster, i : I
   result
 }
 
-pub fn signal_window_blackman_cluster_sum(s : SignalwindowblackmanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_cluster_sum(s : SignalwindowblackmanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_cluster_mean(s : SignalwindowblackmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_cluster_mean(s : SignalwindowblackmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_cluster_scale(s : SignalwindowblackmanCluster, f : Double) -> SignalwindowblackmanCluster {
   let result = signal_window_blackman_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_blackman_cluster_fill(s : SignalwindowblackmanCluster, v : 
   result
 }
 
-pub fn signal_window_blackman_cluster_min(s : SignalwindowblackmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_cluster_min(s : SignalwindowblackmanCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_cluster_max(s : SignalwindowblackmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_cluster_max(s : SignalwindowblackmanCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_cluster_to_string(s : SignalwindowblackmanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_blackman_model_set(s : SignalwindowblackmanModel, i : Int, 
   result
 }
 
-pub fn signal_window_blackman_model_sum(s : SignalwindowblackmanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_model_sum(s : SignalwindowblackmanModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_model_mean(s : SignalwindowblackmanModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_model_mean(s : SignalwindowblackmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_model_scale(s : SignalwindowblackmanModel, f : Double) -> SignalwindowblackmanModel {
   let result = signal_window_blackman_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_blackman_model_fill(s : SignalwindowblackmanModel, v : Doub
   result
 }
 
-pub fn signal_window_blackman_model_min(s : SignalwindowblackmanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_model_min(s : SignalwindowblackmanModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_model_max(s : SignalwindowblackmanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_model_max(s : SignalwindowblackmanModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_model_to_string(s : SignalwindowblackmanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_blackman_layer_set(s : SignalwindowblackmanLayer, i : Int, 
   result
 }
 
-pub fn signal_window_blackman_layer_sum(s : SignalwindowblackmanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_layer_sum(s : SignalwindowblackmanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_layer_mean(s : SignalwindowblackmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_layer_mean(s : SignalwindowblackmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_layer_scale(s : SignalwindowblackmanLayer, f : Double) -> SignalwindowblackmanLayer {
   let result = signal_window_blackman_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_blackman_layer_fill(s : SignalwindowblackmanLayer, v : Doub
   result
 }
 
-pub fn signal_window_blackman_layer_min(s : SignalwindowblackmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_layer_min(s : SignalwindowblackmanLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_layer_max(s : SignalwindowblackmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_layer_max(s : SignalwindowblackmanLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_layer_to_string(s : SignalwindowblackmanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_blackman_buffer_set(s : SignalwindowblackmanBuffer, i : Int
   result
 }
 
-pub fn signal_window_blackman_buffer_sum(s : SignalwindowblackmanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_buffer_sum(s : SignalwindowblackmanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_buffer_mean(s : SignalwindowblackmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_buffer_mean(s : SignalwindowblackmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_buffer_scale(s : SignalwindowblackmanBuffer, f : Double) -> SignalwindowblackmanBuffer {
   let result = signal_window_blackman_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_blackman_buffer_fill(s : SignalwindowblackmanBuffer, v : Do
   result
 }
 
-pub fn signal_window_blackman_buffer_min(s : SignalwindowblackmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_buffer_min(s : SignalwindowblackmanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_buffer_max(s : SignalwindowblackmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_buffer_max(s : SignalwindowblackmanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_buffer_to_string(s : SignalwindowblackmanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_blackman_cursor_set(s : SignalwindowblackmanCursor, i : Int
   result
 }
 
-pub fn signal_window_blackman_cursor_sum(s : SignalwindowblackmanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_cursor_sum(s : SignalwindowblackmanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_cursor_mean(s : SignalwindowblackmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_cursor_mean(s : SignalwindowblackmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_cursor_scale(s : SignalwindowblackmanCursor, f : Double) -> SignalwindowblackmanCursor {
   let result = signal_window_blackman_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_blackman_cursor_fill(s : SignalwindowblackmanCursor, v : Do
   result
 }
 
-pub fn signal_window_blackman_cursor_min(s : SignalwindowblackmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_cursor_min(s : SignalwindowblackmanCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_cursor_max(s : SignalwindowblackmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_cursor_max(s : SignalwindowblackmanCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_cursor_to_string(s : SignalwindowblackmanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_blackman_view_set(s : SignalwindowblackmanView, i : Int, v 
   result
 }
 
-pub fn signal_window_blackman_view_sum(s : SignalwindowblackmanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_view_sum(s : SignalwindowblackmanView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_view_mean(s : SignalwindowblackmanView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_view_mean(s : SignalwindowblackmanView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_view_scale(s : SignalwindowblackmanView, f : Double) -> SignalwindowblackmanView {
   let result = signal_window_blackman_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_blackman_view_fill(s : SignalwindowblackmanView, v : Double
   result
 }
 
-pub fn signal_window_blackman_view_min(s : SignalwindowblackmanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_view_min(s : SignalwindowblackmanView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_view_max(s : SignalwindowblackmanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_view_max(s : SignalwindowblackmanView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_view_to_string(s : SignalwindowblackmanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_blackman_range_set(s : SignalwindowblackmanRange, i : Int, 
   result
 }
 
-pub fn signal_window_blackman_range_sum(s : SignalwindowblackmanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_range_sum(s : SignalwindowblackmanRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_range_mean(s : SignalwindowblackmanRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_range_mean(s : SignalwindowblackmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_range_scale(s : SignalwindowblackmanRange, f : Double) -> SignalwindowblackmanRange {
   let result = signal_window_blackman_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_blackman_range_fill(s : SignalwindowblackmanRange, v : Doub
   result
 }
 
-pub fn signal_window_blackman_range_min(s : SignalwindowblackmanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_range_min(s : SignalwindowblackmanRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_range_max(s : SignalwindowblackmanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_range_max(s : SignalwindowblackmanRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_range_to_string(s : SignalwindowblackmanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_blackman_slice_set(s : SignalwindowblackmanSlice, i : Int, 
   result
 }
 
-pub fn signal_window_blackman_slice_sum(s : SignalwindowblackmanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_blackman_slice_sum(s : SignalwindowblackmanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_blackman_slice_mean(s : SignalwindowblackmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_blackman_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_blackman_slice_mean(s : SignalwindowblackmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_blackman_slice_scale(s : SignalwindowblackmanSlice, f : Double) -> SignalwindowblackmanSlice {
   let result = signal_window_blackman_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_blackman_slice_fill(s : SignalwindowblackmanSlice, v : Doub
   result
 }
 
-pub fn signal_window_blackman_slice_min(s : SignalwindowblackmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_slice_min(s : SignalwindowblackmanSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_blackman_slice_max(s : SignalwindowblackmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_blackman_slice_max(s : SignalwindowblackmanSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_blackman_slice_to_string(s : SignalwindowblackmanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

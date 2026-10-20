@@ -88,11 +88,7 @@ pub fn opt_meta_pso_make_series(vals : Array[Double], name : String) -> Optmetap
 
 pub fn opt_meta_pso_series_len(s : OptmetapsoSeries) -> Int { s.vals.length() }
 
-pub fn opt_meta_pso_series_sum(s : OptmetapsoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_meta_pso_series_sum(s : OptmetapsoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_meta_pso_series_mean(s : OptmetapsoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_meta_pso_frame_set(s : OptmetapsoFrame, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_pso_frame_sum(s : OptmetapsoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_frame_sum(s : OptmetapsoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_frame_mean(s : OptmetapsoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_frame_mean(s : OptmetapsoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_frame_scale(s : OptmetapsoFrame, f : Double) -> OptmetapsoFrame {
   let result = opt_meta_pso_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_meta_pso_frame_fill(s : OptmetapsoFrame, v : Double) -> OptmetapsoFra
   result
 }
 
-pub fn opt_meta_pso_frame_min(s : OptmetapsoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_frame_min(s : OptmetapsoFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_frame_max(s : OptmetapsoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_frame_max(s : OptmetapsoFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_frame_to_string(s : OptmetapsoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_meta_pso_table_set(s : OptmetapsoTable, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_pso_table_sum(s : OptmetapsoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_table_sum(s : OptmetapsoTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_table_mean(s : OptmetapsoTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_table_mean(s : OptmetapsoTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_table_scale(s : OptmetapsoTable, f : Double) -> OptmetapsoTable {
   let result = opt_meta_pso_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_meta_pso_table_fill(s : OptmetapsoTable, v : Double) -> OptmetapsoTab
   result
 }
 
-pub fn opt_meta_pso_table_min(s : OptmetapsoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_table_min(s : OptmetapsoTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_table_max(s : OptmetapsoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_table_max(s : OptmetapsoTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_table_to_string(s : OptmetapsoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_meta_pso_graphn_set(s : OptmetapsoGraphN, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_pso_graphn_sum(s : OptmetapsoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_graphn_sum(s : OptmetapsoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_graphn_mean(s : OptmetapsoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_graphn_mean(s : OptmetapsoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_graphn_scale(s : OptmetapsoGraphN, f : Double) -> OptmetapsoGraphN {
   let result = opt_meta_pso_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_meta_pso_graphn_fill(s : OptmetapsoGraphN, v : Double) -> OptmetapsoG
   result
 }
 
-pub fn opt_meta_pso_graphn_min(s : OptmetapsoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_graphn_min(s : OptmetapsoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_graphn_max(s : OptmetapsoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_graphn_max(s : OptmetapsoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_graphn_to_string(s : OptmetapsoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_meta_pso_node_set(s : OptmetapsoNode, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_pso_node_sum(s : OptmetapsoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_node_sum(s : OptmetapsoNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_node_mean(s : OptmetapsoNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_node_mean(s : OptmetapsoNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_node_scale(s : OptmetapsoNode, f : Double) -> OptmetapsoNode {
   let result = opt_meta_pso_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_meta_pso_node_fill(s : OptmetapsoNode, v : Double) -> OptmetapsoNode 
   result
 }
 
-pub fn opt_meta_pso_node_min(s : OptmetapsoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_node_min(s : OptmetapsoNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_node_max(s : OptmetapsoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_node_max(s : OptmetapsoNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_node_to_string(s : OptmetapsoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_meta_pso_edge_set(s : OptmetapsoEdge, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_pso_edge_sum(s : OptmetapsoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_edge_sum(s : OptmetapsoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_edge_mean(s : OptmetapsoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_edge_mean(s : OptmetapsoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_edge_scale(s : OptmetapsoEdge, f : Double) -> OptmetapsoEdge {
   let result = opt_meta_pso_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_meta_pso_edge_fill(s : OptmetapsoEdge, v : Double) -> OptmetapsoEdge 
   result
 }
 
-pub fn opt_meta_pso_edge_min(s : OptmetapsoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_edge_min(s : OptmetapsoEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_edge_max(s : OptmetapsoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_edge_max(s : OptmetapsoEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_edge_to_string(s : OptmetapsoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_meta_pso_path_set(s : OptmetapsoPath, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_pso_path_sum(s : OptmetapsoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_path_sum(s : OptmetapsoPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_path_mean(s : OptmetapsoPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_path_mean(s : OptmetapsoPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_path_scale(s : OptmetapsoPath, f : Double) -> OptmetapsoPath {
   let result = opt_meta_pso_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_meta_pso_path_fill(s : OptmetapsoPath, v : Double) -> OptmetapsoPath 
   result
 }
 
-pub fn opt_meta_pso_path_min(s : OptmetapsoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_path_min(s : OptmetapsoPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_path_max(s : OptmetapsoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_path_max(s : OptmetapsoPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_path_to_string(s : OptmetapsoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_meta_pso_cluster_set(s : OptmetapsoCluster, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_pso_cluster_sum(s : OptmetapsoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_cluster_sum(s : OptmetapsoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_cluster_mean(s : OptmetapsoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_cluster_mean(s : OptmetapsoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_cluster_scale(s : OptmetapsoCluster, f : Double) -> OptmetapsoCluster {
   let result = opt_meta_pso_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_meta_pso_cluster_fill(s : OptmetapsoCluster, v : Double) -> Optmetaps
   result
 }
 
-pub fn opt_meta_pso_cluster_min(s : OptmetapsoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_cluster_min(s : OptmetapsoCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_cluster_max(s : OptmetapsoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_cluster_max(s : OptmetapsoCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_cluster_to_string(s : OptmetapsoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_meta_pso_model_set(s : OptmetapsoModel, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_pso_model_sum(s : OptmetapsoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_model_sum(s : OptmetapsoModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_model_mean(s : OptmetapsoModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_model_mean(s : OptmetapsoModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_model_scale(s : OptmetapsoModel, f : Double) -> OptmetapsoModel {
   let result = opt_meta_pso_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_meta_pso_model_fill(s : OptmetapsoModel, v : Double) -> OptmetapsoMod
   result
 }
 
-pub fn opt_meta_pso_model_min(s : OptmetapsoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_model_min(s : OptmetapsoModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_model_max(s : OptmetapsoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_model_max(s : OptmetapsoModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_model_to_string(s : OptmetapsoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_meta_pso_layer_set(s : OptmetapsoLayer, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_pso_layer_sum(s : OptmetapsoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_layer_sum(s : OptmetapsoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_layer_mean(s : OptmetapsoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_layer_mean(s : OptmetapsoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_layer_scale(s : OptmetapsoLayer, f : Double) -> OptmetapsoLayer {
   let result = opt_meta_pso_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_meta_pso_layer_fill(s : OptmetapsoLayer, v : Double) -> OptmetapsoLay
   result
 }
 
-pub fn opt_meta_pso_layer_min(s : OptmetapsoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_layer_min(s : OptmetapsoLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_layer_max(s : OptmetapsoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_layer_max(s : OptmetapsoLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_layer_to_string(s : OptmetapsoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_meta_pso_buffer_set(s : OptmetapsoBuffer, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_pso_buffer_sum(s : OptmetapsoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_buffer_sum(s : OptmetapsoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_buffer_mean(s : OptmetapsoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_buffer_mean(s : OptmetapsoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_buffer_scale(s : OptmetapsoBuffer, f : Double) -> OptmetapsoBuffer {
   let result = opt_meta_pso_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_meta_pso_buffer_fill(s : OptmetapsoBuffer, v : Double) -> OptmetapsoB
   result
 }
 
-pub fn opt_meta_pso_buffer_min(s : OptmetapsoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_buffer_min(s : OptmetapsoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_buffer_max(s : OptmetapsoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_buffer_max(s : OptmetapsoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_buffer_to_string(s : OptmetapsoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_meta_pso_cursor_set(s : OptmetapsoCursor, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_pso_cursor_sum(s : OptmetapsoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_cursor_sum(s : OptmetapsoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_cursor_mean(s : OptmetapsoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_cursor_mean(s : OptmetapsoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_cursor_scale(s : OptmetapsoCursor, f : Double) -> OptmetapsoCursor {
   let result = opt_meta_pso_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_meta_pso_cursor_fill(s : OptmetapsoCursor, v : Double) -> OptmetapsoC
   result
 }
 
-pub fn opt_meta_pso_cursor_min(s : OptmetapsoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_cursor_min(s : OptmetapsoCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_cursor_max(s : OptmetapsoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_cursor_max(s : OptmetapsoCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_cursor_to_string(s : OptmetapsoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_meta_pso_view_set(s : OptmetapsoView, i : Int, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_pso_view_sum(s : OptmetapsoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_view_sum(s : OptmetapsoView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_view_mean(s : OptmetapsoView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_view_mean(s : OptmetapsoView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_view_scale(s : OptmetapsoView, f : Double) -> OptmetapsoView {
   let result = opt_meta_pso_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_meta_pso_view_fill(s : OptmetapsoView, v : Double) -> OptmetapsoView 
   result
 }
 
-pub fn opt_meta_pso_view_min(s : OptmetapsoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_view_min(s : OptmetapsoView) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_view_max(s : OptmetapsoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_view_max(s : OptmetapsoView) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_view_to_string(s : OptmetapsoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_meta_pso_range_set(s : OptmetapsoRange, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_pso_range_sum(s : OptmetapsoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_range_sum(s : OptmetapsoRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_range_mean(s : OptmetapsoRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_range_mean(s : OptmetapsoRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_range_scale(s : OptmetapsoRange, f : Double) -> OptmetapsoRange {
   let result = opt_meta_pso_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_meta_pso_range_fill(s : OptmetapsoRange, v : Double) -> OptmetapsoRan
   result
 }
 
-pub fn opt_meta_pso_range_min(s : OptmetapsoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_range_min(s : OptmetapsoRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_range_max(s : OptmetapsoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_range_max(s : OptmetapsoRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_range_to_string(s : OptmetapsoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_meta_pso_slice_set(s : OptmetapsoSlice, i : Int, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_pso_slice_sum(s : OptmetapsoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_pso_slice_sum(s : OptmetapsoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_pso_slice_mean(s : OptmetapsoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_pso_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_pso_slice_mean(s : OptmetapsoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_pso_slice_scale(s : OptmetapsoSlice, f : Double) -> OptmetapsoSlice {
   let result = opt_meta_pso_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_meta_pso_slice_fill(s : OptmetapsoSlice, v : Double) -> OptmetapsoSli
   result
 }
 
-pub fn opt_meta_pso_slice_min(s : OptmetapsoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_slice_min(s : OptmetapsoSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_pso_slice_max(s : OptmetapsoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_pso_slice_max(s : OptmetapsoSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_pso_slice_to_string(s : OptmetapsoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

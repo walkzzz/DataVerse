@@ -88,11 +88,7 @@ pub fn ds_heap_leftist_make_series(vals : Array[Double], name : String) -> Dshea
 
 pub fn ds_heap_leftist_series_len(s : DsheapleftistSeries) -> Int { s.vals.length() }
 
-pub fn ds_heap_leftist_series_sum(s : DsheapleftistSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_heap_leftist_series_sum(s : DsheapleftistSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_heap_leftist_series_mean(s : DsheapleftistSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_heap_leftist_frame_set(s : DsheapleftistFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_leftist_frame_sum(s : DsheapleftistFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_frame_sum(s : DsheapleftistFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_frame_mean(s : DsheapleftistFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_frame_mean(s : DsheapleftistFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_frame_scale(s : DsheapleftistFrame, f : Double) -> DsheapleftistFrame {
   let result = ds_heap_leftist_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_heap_leftist_frame_fill(s : DsheapleftistFrame, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_leftist_frame_min(s : DsheapleftistFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_frame_min(s : DsheapleftistFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_frame_max(s : DsheapleftistFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_frame_max(s : DsheapleftistFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_frame_to_string(s : DsheapleftistFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_heap_leftist_table_set(s : DsheapleftistTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_leftist_table_sum(s : DsheapleftistTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_table_sum(s : DsheapleftistTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_table_mean(s : DsheapleftistTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_table_mean(s : DsheapleftistTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_table_scale(s : DsheapleftistTable, f : Double) -> DsheapleftistTable {
   let result = ds_heap_leftist_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_heap_leftist_table_fill(s : DsheapleftistTable, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_leftist_table_min(s : DsheapleftistTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_table_min(s : DsheapleftistTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_table_max(s : DsheapleftistTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_table_max(s : DsheapleftistTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_table_to_string(s : DsheapleftistTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_heap_leftist_graphn_set(s : DsheapleftistGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_leftist_graphn_sum(s : DsheapleftistGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_graphn_sum(s : DsheapleftistGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_graphn_mean(s : DsheapleftistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_graphn_mean(s : DsheapleftistGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_graphn_scale(s : DsheapleftistGraphN, f : Double) -> DsheapleftistGraphN {
   let result = ds_heap_leftist_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_heap_leftist_graphn_fill(s : DsheapleftistGraphN, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_leftist_graphn_min(s : DsheapleftistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_graphn_min(s : DsheapleftistGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_graphn_max(s : DsheapleftistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_graphn_max(s : DsheapleftistGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_graphn_to_string(s : DsheapleftistGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_heap_leftist_node_set(s : DsheapleftistNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_leftist_node_sum(s : DsheapleftistNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_node_sum(s : DsheapleftistNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_node_mean(s : DsheapleftistNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_node_mean(s : DsheapleftistNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_node_scale(s : DsheapleftistNode, f : Double) -> DsheapleftistNode {
   let result = ds_heap_leftist_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_heap_leftist_node_fill(s : DsheapleftistNode, v : Double) -> Dsheaplef
   result
 }
 
-pub fn ds_heap_leftist_node_min(s : DsheapleftistNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_node_min(s : DsheapleftistNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_node_max(s : DsheapleftistNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_node_max(s : DsheapleftistNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_node_to_string(s : DsheapleftistNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_heap_leftist_edge_set(s : DsheapleftistEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_leftist_edge_sum(s : DsheapleftistEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_edge_sum(s : DsheapleftistEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_edge_mean(s : DsheapleftistEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_edge_mean(s : DsheapleftistEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_edge_scale(s : DsheapleftistEdge, f : Double) -> DsheapleftistEdge {
   let result = ds_heap_leftist_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_heap_leftist_edge_fill(s : DsheapleftistEdge, v : Double) -> Dsheaplef
   result
 }
 
-pub fn ds_heap_leftist_edge_min(s : DsheapleftistEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_edge_min(s : DsheapleftistEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_edge_max(s : DsheapleftistEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_edge_max(s : DsheapleftistEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_edge_to_string(s : DsheapleftistEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_heap_leftist_path_set(s : DsheapleftistPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_leftist_path_sum(s : DsheapleftistPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_path_sum(s : DsheapleftistPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_path_mean(s : DsheapleftistPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_path_mean(s : DsheapleftistPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_path_scale(s : DsheapleftistPath, f : Double) -> DsheapleftistPath {
   let result = ds_heap_leftist_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_heap_leftist_path_fill(s : DsheapleftistPath, v : Double) -> Dsheaplef
   result
 }
 
-pub fn ds_heap_leftist_path_min(s : DsheapleftistPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_path_min(s : DsheapleftistPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_path_max(s : DsheapleftistPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_path_max(s : DsheapleftistPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_path_to_string(s : DsheapleftistPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_heap_leftist_cluster_set(s : DsheapleftistCluster, i : Int, v : Double
   result
 }
 
-pub fn ds_heap_leftist_cluster_sum(s : DsheapleftistCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_cluster_sum(s : DsheapleftistCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_cluster_mean(s : DsheapleftistCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_cluster_mean(s : DsheapleftistCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_cluster_scale(s : DsheapleftistCluster, f : Double) -> DsheapleftistCluster {
   let result = ds_heap_leftist_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_heap_leftist_cluster_fill(s : DsheapleftistCluster, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_leftist_cluster_min(s : DsheapleftistCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_cluster_min(s : DsheapleftistCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_cluster_max(s : DsheapleftistCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_cluster_max(s : DsheapleftistCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_cluster_to_string(s : DsheapleftistCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_heap_leftist_model_set(s : DsheapleftistModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_leftist_model_sum(s : DsheapleftistModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_model_sum(s : DsheapleftistModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_model_mean(s : DsheapleftistModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_model_mean(s : DsheapleftistModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_model_scale(s : DsheapleftistModel, f : Double) -> DsheapleftistModel {
   let result = ds_heap_leftist_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_heap_leftist_model_fill(s : DsheapleftistModel, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_leftist_model_min(s : DsheapleftistModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_model_min(s : DsheapleftistModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_model_max(s : DsheapleftistModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_model_max(s : DsheapleftistModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_model_to_string(s : DsheapleftistModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_heap_leftist_layer_set(s : DsheapleftistLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_leftist_layer_sum(s : DsheapleftistLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_layer_sum(s : DsheapleftistLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_layer_mean(s : DsheapleftistLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_layer_mean(s : DsheapleftistLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_layer_scale(s : DsheapleftistLayer, f : Double) -> DsheapleftistLayer {
   let result = ds_heap_leftist_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_heap_leftist_layer_fill(s : DsheapleftistLayer, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_leftist_layer_min(s : DsheapleftistLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_layer_min(s : DsheapleftistLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_layer_max(s : DsheapleftistLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_layer_max(s : DsheapleftistLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_layer_to_string(s : DsheapleftistLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_heap_leftist_buffer_set(s : DsheapleftistBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_leftist_buffer_sum(s : DsheapleftistBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_buffer_sum(s : DsheapleftistBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_buffer_mean(s : DsheapleftistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_buffer_mean(s : DsheapleftistBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_buffer_scale(s : DsheapleftistBuffer, f : Double) -> DsheapleftistBuffer {
   let result = ds_heap_leftist_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_heap_leftist_buffer_fill(s : DsheapleftistBuffer, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_leftist_buffer_min(s : DsheapleftistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_buffer_min(s : DsheapleftistBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_buffer_max(s : DsheapleftistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_buffer_max(s : DsheapleftistBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_buffer_to_string(s : DsheapleftistBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_heap_leftist_cursor_set(s : DsheapleftistCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_leftist_cursor_sum(s : DsheapleftistCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_cursor_sum(s : DsheapleftistCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_cursor_mean(s : DsheapleftistCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_cursor_mean(s : DsheapleftistCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_cursor_scale(s : DsheapleftistCursor, f : Double) -> DsheapleftistCursor {
   let result = ds_heap_leftist_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_heap_leftist_cursor_fill(s : DsheapleftistCursor, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_leftist_cursor_min(s : DsheapleftistCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_cursor_min(s : DsheapleftistCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_cursor_max(s : DsheapleftistCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_cursor_max(s : DsheapleftistCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_cursor_to_string(s : DsheapleftistCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_heap_leftist_view_set(s : DsheapleftistView, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_leftist_view_sum(s : DsheapleftistView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_view_sum(s : DsheapleftistView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_view_mean(s : DsheapleftistView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_view_mean(s : DsheapleftistView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_view_scale(s : DsheapleftistView, f : Double) -> DsheapleftistView {
   let result = ds_heap_leftist_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_heap_leftist_view_fill(s : DsheapleftistView, v : Double) -> Dsheaplef
   result
 }
 
-pub fn ds_heap_leftist_view_min(s : DsheapleftistView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_view_min(s : DsheapleftistView) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_view_max(s : DsheapleftistView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_view_max(s : DsheapleftistView) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_view_to_string(s : DsheapleftistView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_heap_leftist_range_set(s : DsheapleftistRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_leftist_range_sum(s : DsheapleftistRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_range_sum(s : DsheapleftistRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_range_mean(s : DsheapleftistRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_range_mean(s : DsheapleftistRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_range_scale(s : DsheapleftistRange, f : Double) -> DsheapleftistRange {
   let result = ds_heap_leftist_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_heap_leftist_range_fill(s : DsheapleftistRange, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_leftist_range_min(s : DsheapleftistRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_range_min(s : DsheapleftistRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_range_max(s : DsheapleftistRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_range_max(s : DsheapleftistRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_range_to_string(s : DsheapleftistRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_heap_leftist_slice_set(s : DsheapleftistSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_leftist_slice_sum(s : DsheapleftistSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_leftist_slice_sum(s : DsheapleftistSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_leftist_slice_mean(s : DsheapleftistSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_leftist_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_leftist_slice_mean(s : DsheapleftistSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_leftist_slice_scale(s : DsheapleftistSlice, f : Double) -> DsheapleftistSlice {
   let result = ds_heap_leftist_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_heap_leftist_slice_fill(s : DsheapleftistSlice, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_leftist_slice_min(s : DsheapleftistSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_slice_min(s : DsheapleftistSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_leftist_slice_max(s : DsheapleftistSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_leftist_slice_max(s : DsheapleftistSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_leftist_slice_to_string(s : DsheapleftistSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

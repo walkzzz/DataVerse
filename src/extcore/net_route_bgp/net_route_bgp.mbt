@@ -88,11 +88,7 @@ pub fn net_route_bgp_make_series(vals : Array[Double], name : String) -> Netrout
 
 pub fn net_route_bgp_series_len(s : NetroutebgpSeries) -> Int { s.vals.length() }
 
-pub fn net_route_bgp_series_sum(s : NetroutebgpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_bgp_series_sum(s : NetroutebgpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_bgp_series_mean(s : NetroutebgpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_bgp_frame_set(s : NetroutebgpFrame, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_bgp_frame_sum(s : NetroutebgpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_frame_sum(s : NetroutebgpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_frame_mean(s : NetroutebgpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_frame_mean(s : NetroutebgpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_frame_scale(s : NetroutebgpFrame, f : Double) -> NetroutebgpFrame {
   let result = net_route_bgp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_bgp_frame_fill(s : NetroutebgpFrame, v : Double) -> Netroutebgp
   result
 }
 
-pub fn net_route_bgp_frame_min(s : NetroutebgpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_frame_min(s : NetroutebgpFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_frame_max(s : NetroutebgpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_frame_max(s : NetroutebgpFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_frame_to_string(s : NetroutebgpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_bgp_table_set(s : NetroutebgpTable, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_bgp_table_sum(s : NetroutebgpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_table_sum(s : NetroutebgpTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_table_mean(s : NetroutebgpTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_table_mean(s : NetroutebgpTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_table_scale(s : NetroutebgpTable, f : Double) -> NetroutebgpTable {
   let result = net_route_bgp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_bgp_table_fill(s : NetroutebgpTable, v : Double) -> Netroutebgp
   result
 }
 
-pub fn net_route_bgp_table_min(s : NetroutebgpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_table_min(s : NetroutebgpTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_table_max(s : NetroutebgpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_table_max(s : NetroutebgpTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_table_to_string(s : NetroutebgpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_bgp_graphn_set(s : NetroutebgpGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_bgp_graphn_sum(s : NetroutebgpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_graphn_sum(s : NetroutebgpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_graphn_mean(s : NetroutebgpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_graphn_mean(s : NetroutebgpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_graphn_scale(s : NetroutebgpGraphN, f : Double) -> NetroutebgpGraphN {
   let result = net_route_bgp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_bgp_graphn_fill(s : NetroutebgpGraphN, v : Double) -> Netrouteb
   result
 }
 
-pub fn net_route_bgp_graphn_min(s : NetroutebgpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_graphn_min(s : NetroutebgpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_graphn_max(s : NetroutebgpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_graphn_max(s : NetroutebgpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_graphn_to_string(s : NetroutebgpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_bgp_node_set(s : NetroutebgpNode, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bgp_node_sum(s : NetroutebgpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_node_sum(s : NetroutebgpNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_node_mean(s : NetroutebgpNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_node_mean(s : NetroutebgpNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_node_scale(s : NetroutebgpNode, f : Double) -> NetroutebgpNode {
   let result = net_route_bgp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_bgp_node_fill(s : NetroutebgpNode, v : Double) -> NetroutebgpNo
   result
 }
 
-pub fn net_route_bgp_node_min(s : NetroutebgpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_node_min(s : NetroutebgpNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_node_max(s : NetroutebgpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_node_max(s : NetroutebgpNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_node_to_string(s : NetroutebgpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_bgp_edge_set(s : NetroutebgpEdge, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bgp_edge_sum(s : NetroutebgpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_edge_sum(s : NetroutebgpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_edge_mean(s : NetroutebgpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_edge_mean(s : NetroutebgpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_edge_scale(s : NetroutebgpEdge, f : Double) -> NetroutebgpEdge {
   let result = net_route_bgp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_bgp_edge_fill(s : NetroutebgpEdge, v : Double) -> NetroutebgpEd
   result
 }
 
-pub fn net_route_bgp_edge_min(s : NetroutebgpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_edge_min(s : NetroutebgpEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_edge_max(s : NetroutebgpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_edge_max(s : NetroutebgpEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_edge_to_string(s : NetroutebgpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_bgp_path_set(s : NetroutebgpPath, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bgp_path_sum(s : NetroutebgpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_path_sum(s : NetroutebgpPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_path_mean(s : NetroutebgpPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_path_mean(s : NetroutebgpPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_path_scale(s : NetroutebgpPath, f : Double) -> NetroutebgpPath {
   let result = net_route_bgp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_bgp_path_fill(s : NetroutebgpPath, v : Double) -> NetroutebgpPa
   result
 }
 
-pub fn net_route_bgp_path_min(s : NetroutebgpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_path_min(s : NetroutebgpPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_path_max(s : NetroutebgpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_path_max(s : NetroutebgpPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_path_to_string(s : NetroutebgpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_bgp_cluster_set(s : NetroutebgpCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_bgp_cluster_sum(s : NetroutebgpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_cluster_sum(s : NetroutebgpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_cluster_mean(s : NetroutebgpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_cluster_mean(s : NetroutebgpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_cluster_scale(s : NetroutebgpCluster, f : Double) -> NetroutebgpCluster {
   let result = net_route_bgp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_bgp_cluster_fill(s : NetroutebgpCluster, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_bgp_cluster_min(s : NetroutebgpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_cluster_min(s : NetroutebgpCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_cluster_max(s : NetroutebgpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_cluster_max(s : NetroutebgpCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_cluster_to_string(s : NetroutebgpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_bgp_model_set(s : NetroutebgpModel, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_bgp_model_sum(s : NetroutebgpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_model_sum(s : NetroutebgpModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_model_mean(s : NetroutebgpModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_model_mean(s : NetroutebgpModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_model_scale(s : NetroutebgpModel, f : Double) -> NetroutebgpModel {
   let result = net_route_bgp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_bgp_model_fill(s : NetroutebgpModel, v : Double) -> Netroutebgp
   result
 }
 
-pub fn net_route_bgp_model_min(s : NetroutebgpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_model_min(s : NetroutebgpModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_model_max(s : NetroutebgpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_model_max(s : NetroutebgpModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_model_to_string(s : NetroutebgpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_bgp_layer_set(s : NetroutebgpLayer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_bgp_layer_sum(s : NetroutebgpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_layer_sum(s : NetroutebgpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_layer_mean(s : NetroutebgpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_layer_mean(s : NetroutebgpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_layer_scale(s : NetroutebgpLayer, f : Double) -> NetroutebgpLayer {
   let result = net_route_bgp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_bgp_layer_fill(s : NetroutebgpLayer, v : Double) -> Netroutebgp
   result
 }
 
-pub fn net_route_bgp_layer_min(s : NetroutebgpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_layer_min(s : NetroutebgpLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_layer_max(s : NetroutebgpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_layer_max(s : NetroutebgpLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_layer_to_string(s : NetroutebgpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_bgp_buffer_set(s : NetroutebgpBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_bgp_buffer_sum(s : NetroutebgpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_buffer_sum(s : NetroutebgpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_buffer_mean(s : NetroutebgpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_buffer_mean(s : NetroutebgpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_buffer_scale(s : NetroutebgpBuffer, f : Double) -> NetroutebgpBuffer {
   let result = net_route_bgp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_bgp_buffer_fill(s : NetroutebgpBuffer, v : Double) -> Netrouteb
   result
 }
 
-pub fn net_route_bgp_buffer_min(s : NetroutebgpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_buffer_min(s : NetroutebgpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_buffer_max(s : NetroutebgpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_buffer_max(s : NetroutebgpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_buffer_to_string(s : NetroutebgpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_bgp_cursor_set(s : NetroutebgpCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_bgp_cursor_sum(s : NetroutebgpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_cursor_sum(s : NetroutebgpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_cursor_mean(s : NetroutebgpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_cursor_mean(s : NetroutebgpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_cursor_scale(s : NetroutebgpCursor, f : Double) -> NetroutebgpCursor {
   let result = net_route_bgp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_bgp_cursor_fill(s : NetroutebgpCursor, v : Double) -> Netrouteb
   result
 }
 
-pub fn net_route_bgp_cursor_min(s : NetroutebgpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_cursor_min(s : NetroutebgpCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_cursor_max(s : NetroutebgpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_cursor_max(s : NetroutebgpCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_cursor_to_string(s : NetroutebgpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_bgp_view_set(s : NetroutebgpView, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bgp_view_sum(s : NetroutebgpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_view_sum(s : NetroutebgpView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_view_mean(s : NetroutebgpView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_view_mean(s : NetroutebgpView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_view_scale(s : NetroutebgpView, f : Double) -> NetroutebgpView {
   let result = net_route_bgp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_bgp_view_fill(s : NetroutebgpView, v : Double) -> NetroutebgpVi
   result
 }
 
-pub fn net_route_bgp_view_min(s : NetroutebgpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_view_min(s : NetroutebgpView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_view_max(s : NetroutebgpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_view_max(s : NetroutebgpView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_view_to_string(s : NetroutebgpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_bgp_range_set(s : NetroutebgpRange, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_bgp_range_sum(s : NetroutebgpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_range_sum(s : NetroutebgpRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_range_mean(s : NetroutebgpRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_range_mean(s : NetroutebgpRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_range_scale(s : NetroutebgpRange, f : Double) -> NetroutebgpRange {
   let result = net_route_bgp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_bgp_range_fill(s : NetroutebgpRange, v : Double) -> Netroutebgp
   result
 }
 
-pub fn net_route_bgp_range_min(s : NetroutebgpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_range_min(s : NetroutebgpRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_range_max(s : NetroutebgpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_range_max(s : NetroutebgpRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_range_to_string(s : NetroutebgpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_bgp_slice_set(s : NetroutebgpSlice, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_bgp_slice_sum(s : NetroutebgpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bgp_slice_sum(s : NetroutebgpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bgp_slice_mean(s : NetroutebgpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bgp_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bgp_slice_mean(s : NetroutebgpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bgp_slice_scale(s : NetroutebgpSlice, f : Double) -> NetroutebgpSlice {
   let result = net_route_bgp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_bgp_slice_fill(s : NetroutebgpSlice, v : Double) -> Netroutebgp
   result
 }
 
-pub fn net_route_bgp_slice_min(s : NetroutebgpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_slice_min(s : NetroutebgpSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bgp_slice_max(s : NetroutebgpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bgp_slice_max(s : NetroutebgpSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bgp_slice_to_string(s : NetroutebgpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn finance_risk_stress_make_series(vals : Array[Double], name : String) -> F
 
 pub fn finance_risk_stress_series_len(s : FinanceriskstressSeries) -> Int { s.vals.length() }
 
-pub fn finance_risk_stress_series_sum(s : FinanceriskstressSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_risk_stress_series_sum(s : FinanceriskstressSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_risk_stress_series_mean(s : FinanceriskstressSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_risk_stress_frame_set(s : FinanceriskstressFrame, i : Int, v : Do
   result
 }
 
-pub fn finance_risk_stress_frame_sum(s : FinanceriskstressFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_frame_sum(s : FinanceriskstressFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_frame_mean(s : FinanceriskstressFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_frame_mean(s : FinanceriskstressFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_frame_scale(s : FinanceriskstressFrame, f : Double) -> FinanceriskstressFrame {
   let result = finance_risk_stress_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_risk_stress_frame_fill(s : FinanceriskstressFrame, v : Double) ->
   result
 }
 
-pub fn finance_risk_stress_frame_min(s : FinanceriskstressFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_frame_min(s : FinanceriskstressFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_frame_max(s : FinanceriskstressFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_frame_max(s : FinanceriskstressFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_frame_to_string(s : FinanceriskstressFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_risk_stress_table_set(s : FinanceriskstressTable, i : Int, v : Do
   result
 }
 
-pub fn finance_risk_stress_table_sum(s : FinanceriskstressTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_table_sum(s : FinanceriskstressTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_table_mean(s : FinanceriskstressTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_table_mean(s : FinanceriskstressTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_table_scale(s : FinanceriskstressTable, f : Double) -> FinanceriskstressTable {
   let result = finance_risk_stress_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_risk_stress_table_fill(s : FinanceriskstressTable, v : Double) ->
   result
 }
 
-pub fn finance_risk_stress_table_min(s : FinanceriskstressTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_table_min(s : FinanceriskstressTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_table_max(s : FinanceriskstressTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_table_max(s : FinanceriskstressTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_table_to_string(s : FinanceriskstressTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_risk_stress_graphn_set(s : FinanceriskstressGraphN, i : Int, v : 
   result
 }
 
-pub fn finance_risk_stress_graphn_sum(s : FinanceriskstressGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_graphn_sum(s : FinanceriskstressGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_graphn_mean(s : FinanceriskstressGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_graphn_mean(s : FinanceriskstressGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_graphn_scale(s : FinanceriskstressGraphN, f : Double) -> FinanceriskstressGraphN {
   let result = finance_risk_stress_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_risk_stress_graphn_fill(s : FinanceriskstressGraphN, v : Double) 
   result
 }
 
-pub fn finance_risk_stress_graphn_min(s : FinanceriskstressGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_graphn_min(s : FinanceriskstressGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_graphn_max(s : FinanceriskstressGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_graphn_max(s : FinanceriskstressGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_graphn_to_string(s : FinanceriskstressGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_risk_stress_node_set(s : FinanceriskstressNode, i : Int, v : Doub
   result
 }
 
-pub fn finance_risk_stress_node_sum(s : FinanceriskstressNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_node_sum(s : FinanceriskstressNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_node_mean(s : FinanceriskstressNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_node_mean(s : FinanceriskstressNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_node_scale(s : FinanceriskstressNode, f : Double) -> FinanceriskstressNode {
   let result = finance_risk_stress_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_risk_stress_node_fill(s : FinanceriskstressNode, v : Double) -> F
   result
 }
 
-pub fn finance_risk_stress_node_min(s : FinanceriskstressNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_node_min(s : FinanceriskstressNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_node_max(s : FinanceriskstressNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_node_max(s : FinanceriskstressNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_node_to_string(s : FinanceriskstressNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_risk_stress_edge_set(s : FinanceriskstressEdge, i : Int, v : Doub
   result
 }
 
-pub fn finance_risk_stress_edge_sum(s : FinanceriskstressEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_edge_sum(s : FinanceriskstressEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_edge_mean(s : FinanceriskstressEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_edge_mean(s : FinanceriskstressEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_edge_scale(s : FinanceriskstressEdge, f : Double) -> FinanceriskstressEdge {
   let result = finance_risk_stress_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_risk_stress_edge_fill(s : FinanceriskstressEdge, v : Double) -> F
   result
 }
 
-pub fn finance_risk_stress_edge_min(s : FinanceriskstressEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_edge_min(s : FinanceriskstressEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_edge_max(s : FinanceriskstressEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_edge_max(s : FinanceriskstressEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_edge_to_string(s : FinanceriskstressEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_risk_stress_path_set(s : FinanceriskstressPath, i : Int, v : Doub
   result
 }
 
-pub fn finance_risk_stress_path_sum(s : FinanceriskstressPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_path_sum(s : FinanceriskstressPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_path_mean(s : FinanceriskstressPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_path_mean(s : FinanceriskstressPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_path_scale(s : FinanceriskstressPath, f : Double) -> FinanceriskstressPath {
   let result = finance_risk_stress_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_risk_stress_path_fill(s : FinanceriskstressPath, v : Double) -> F
   result
 }
 
-pub fn finance_risk_stress_path_min(s : FinanceriskstressPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_path_min(s : FinanceriskstressPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_path_max(s : FinanceriskstressPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_path_max(s : FinanceriskstressPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_path_to_string(s : FinanceriskstressPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_risk_stress_cluster_set(s : FinanceriskstressCluster, i : Int, v 
   result
 }
 
-pub fn finance_risk_stress_cluster_sum(s : FinanceriskstressCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_cluster_sum(s : FinanceriskstressCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_cluster_mean(s : FinanceriskstressCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_cluster_mean(s : FinanceriskstressCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_cluster_scale(s : FinanceriskstressCluster, f : Double) -> FinanceriskstressCluster {
   let result = finance_risk_stress_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_risk_stress_cluster_fill(s : FinanceriskstressCluster, v : Double
   result
 }
 
-pub fn finance_risk_stress_cluster_min(s : FinanceriskstressCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_cluster_min(s : FinanceriskstressCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_cluster_max(s : FinanceriskstressCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_cluster_max(s : FinanceriskstressCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_cluster_to_string(s : FinanceriskstressCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_risk_stress_model_set(s : FinanceriskstressModel, i : Int, v : Do
   result
 }
 
-pub fn finance_risk_stress_model_sum(s : FinanceriskstressModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_model_sum(s : FinanceriskstressModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_model_mean(s : FinanceriskstressModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_model_mean(s : FinanceriskstressModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_model_scale(s : FinanceriskstressModel, f : Double) -> FinanceriskstressModel {
   let result = finance_risk_stress_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_risk_stress_model_fill(s : FinanceriskstressModel, v : Double) ->
   result
 }
 
-pub fn finance_risk_stress_model_min(s : FinanceriskstressModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_model_min(s : FinanceriskstressModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_model_max(s : FinanceriskstressModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_model_max(s : FinanceriskstressModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_model_to_string(s : FinanceriskstressModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_risk_stress_layer_set(s : FinanceriskstressLayer, i : Int, v : Do
   result
 }
 
-pub fn finance_risk_stress_layer_sum(s : FinanceriskstressLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_layer_sum(s : FinanceriskstressLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_layer_mean(s : FinanceriskstressLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_layer_mean(s : FinanceriskstressLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_layer_scale(s : FinanceriskstressLayer, f : Double) -> FinanceriskstressLayer {
   let result = finance_risk_stress_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_risk_stress_layer_fill(s : FinanceriskstressLayer, v : Double) ->
   result
 }
 
-pub fn finance_risk_stress_layer_min(s : FinanceriskstressLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_layer_min(s : FinanceriskstressLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_layer_max(s : FinanceriskstressLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_layer_max(s : FinanceriskstressLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_layer_to_string(s : FinanceriskstressLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_risk_stress_buffer_set(s : FinanceriskstressBuffer, i : Int, v : 
   result
 }
 
-pub fn finance_risk_stress_buffer_sum(s : FinanceriskstressBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_buffer_sum(s : FinanceriskstressBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_buffer_mean(s : FinanceriskstressBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_buffer_mean(s : FinanceriskstressBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_buffer_scale(s : FinanceriskstressBuffer, f : Double) -> FinanceriskstressBuffer {
   let result = finance_risk_stress_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_risk_stress_buffer_fill(s : FinanceriskstressBuffer, v : Double) 
   result
 }
 
-pub fn finance_risk_stress_buffer_min(s : FinanceriskstressBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_buffer_min(s : FinanceriskstressBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_buffer_max(s : FinanceriskstressBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_buffer_max(s : FinanceriskstressBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_buffer_to_string(s : FinanceriskstressBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_risk_stress_cursor_set(s : FinanceriskstressCursor, i : Int, v : 
   result
 }
 
-pub fn finance_risk_stress_cursor_sum(s : FinanceriskstressCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_cursor_sum(s : FinanceriskstressCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_cursor_mean(s : FinanceriskstressCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_cursor_mean(s : FinanceriskstressCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_cursor_scale(s : FinanceriskstressCursor, f : Double) -> FinanceriskstressCursor {
   let result = finance_risk_stress_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_risk_stress_cursor_fill(s : FinanceriskstressCursor, v : Double) 
   result
 }
 
-pub fn finance_risk_stress_cursor_min(s : FinanceriskstressCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_cursor_min(s : FinanceriskstressCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_cursor_max(s : FinanceriskstressCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_cursor_max(s : FinanceriskstressCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_cursor_to_string(s : FinanceriskstressCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_risk_stress_view_set(s : FinanceriskstressView, i : Int, v : Doub
   result
 }
 
-pub fn finance_risk_stress_view_sum(s : FinanceriskstressView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_view_sum(s : FinanceriskstressView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_view_mean(s : FinanceriskstressView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_view_mean(s : FinanceriskstressView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_view_scale(s : FinanceriskstressView, f : Double) -> FinanceriskstressView {
   let result = finance_risk_stress_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_risk_stress_view_fill(s : FinanceriskstressView, v : Double) -> F
   result
 }
 
-pub fn finance_risk_stress_view_min(s : FinanceriskstressView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_view_min(s : FinanceriskstressView) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_view_max(s : FinanceriskstressView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_view_max(s : FinanceriskstressView) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_view_to_string(s : FinanceriskstressView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_risk_stress_range_set(s : FinanceriskstressRange, i : Int, v : Do
   result
 }
 
-pub fn finance_risk_stress_range_sum(s : FinanceriskstressRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_range_sum(s : FinanceriskstressRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_range_mean(s : FinanceriskstressRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_range_mean(s : FinanceriskstressRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_range_scale(s : FinanceriskstressRange, f : Double) -> FinanceriskstressRange {
   let result = finance_risk_stress_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_risk_stress_range_fill(s : FinanceriskstressRange, v : Double) ->
   result
 }
 
-pub fn finance_risk_stress_range_min(s : FinanceriskstressRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_range_min(s : FinanceriskstressRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_range_max(s : FinanceriskstressRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_range_max(s : FinanceriskstressRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_range_to_string(s : FinanceriskstressRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_risk_stress_slice_set(s : FinanceriskstressSlice, i : Int, v : Do
   result
 }
 
-pub fn finance_risk_stress_slice_sum(s : FinanceriskstressSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_stress_slice_sum(s : FinanceriskstressSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_stress_slice_mean(s : FinanceriskstressSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_stress_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_stress_slice_mean(s : FinanceriskstressSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_stress_slice_scale(s : FinanceriskstressSlice, f : Double) -> FinanceriskstressSlice {
   let result = finance_risk_stress_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_risk_stress_slice_fill(s : FinanceriskstressSlice, v : Double) ->
   result
 }
 
-pub fn finance_risk_stress_slice_min(s : FinanceriskstressSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_slice_min(s : FinanceriskstressSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_stress_slice_max(s : FinanceriskstressSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_stress_slice_max(s : FinanceriskstressSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_stress_slice_to_string(s : FinanceriskstressSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

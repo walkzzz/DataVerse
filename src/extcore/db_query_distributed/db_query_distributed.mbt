@@ -88,11 +88,7 @@ pub fn db_query_distributed_make_series(vals : Array[Double], name : String) -> 
 
 pub fn db_query_distributed_series_len(s : DbquerydistributedSeries) -> Int { s.vals.length() }
 
-pub fn db_query_distributed_series_sum(s : DbquerydistributedSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_distributed_series_sum(s : DbquerydistributedSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_distributed_series_mean(s : DbquerydistributedSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_distributed_frame_set(s : DbquerydistributedFrame, i : Int, v : 
   result
 }
 
-pub fn db_query_distributed_frame_sum(s : DbquerydistributedFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_frame_sum(s : DbquerydistributedFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_frame_mean(s : DbquerydistributedFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_frame_mean(s : DbquerydistributedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_frame_scale(s : DbquerydistributedFrame, f : Double) -> DbquerydistributedFrame {
   let result = db_query_distributed_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_distributed_frame_fill(s : DbquerydistributedFrame, v : Double) 
   result
 }
 
-pub fn db_query_distributed_frame_min(s : DbquerydistributedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_frame_min(s : DbquerydistributedFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_frame_max(s : DbquerydistributedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_frame_max(s : DbquerydistributedFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_frame_to_string(s : DbquerydistributedFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_distributed_table_set(s : DbquerydistributedTable, i : Int, v : 
   result
 }
 
-pub fn db_query_distributed_table_sum(s : DbquerydistributedTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_table_sum(s : DbquerydistributedTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_table_mean(s : DbquerydistributedTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_table_mean(s : DbquerydistributedTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_table_scale(s : DbquerydistributedTable, f : Double) -> DbquerydistributedTable {
   let result = db_query_distributed_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_distributed_table_fill(s : DbquerydistributedTable, v : Double) 
   result
 }
 
-pub fn db_query_distributed_table_min(s : DbquerydistributedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_table_min(s : DbquerydistributedTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_table_max(s : DbquerydistributedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_table_max(s : DbquerydistributedTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_table_to_string(s : DbquerydistributedTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_distributed_graphn_set(s : DbquerydistributedGraphN, i : Int, v 
   result
 }
 
-pub fn db_query_distributed_graphn_sum(s : DbquerydistributedGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_graphn_sum(s : DbquerydistributedGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_graphn_mean(s : DbquerydistributedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_graphn_mean(s : DbquerydistributedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_graphn_scale(s : DbquerydistributedGraphN, f : Double) -> DbquerydistributedGraphN {
   let result = db_query_distributed_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_distributed_graphn_fill(s : DbquerydistributedGraphN, v : Double
   result
 }
 
-pub fn db_query_distributed_graphn_min(s : DbquerydistributedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_graphn_min(s : DbquerydistributedGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_graphn_max(s : DbquerydistributedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_graphn_max(s : DbquerydistributedGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_graphn_to_string(s : DbquerydistributedGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_distributed_node_set(s : DbquerydistributedNode, i : Int, v : Do
   result
 }
 
-pub fn db_query_distributed_node_sum(s : DbquerydistributedNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_node_sum(s : DbquerydistributedNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_node_mean(s : DbquerydistributedNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_node_mean(s : DbquerydistributedNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_node_scale(s : DbquerydistributedNode, f : Double) -> DbquerydistributedNode {
   let result = db_query_distributed_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_distributed_node_fill(s : DbquerydistributedNode, v : Double) ->
   result
 }
 
-pub fn db_query_distributed_node_min(s : DbquerydistributedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_node_min(s : DbquerydistributedNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_node_max(s : DbquerydistributedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_node_max(s : DbquerydistributedNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_node_to_string(s : DbquerydistributedNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_distributed_edge_set(s : DbquerydistributedEdge, i : Int, v : Do
   result
 }
 
-pub fn db_query_distributed_edge_sum(s : DbquerydistributedEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_edge_sum(s : DbquerydistributedEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_edge_mean(s : DbquerydistributedEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_edge_mean(s : DbquerydistributedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_edge_scale(s : DbquerydistributedEdge, f : Double) -> DbquerydistributedEdge {
   let result = db_query_distributed_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_distributed_edge_fill(s : DbquerydistributedEdge, v : Double) ->
   result
 }
 
-pub fn db_query_distributed_edge_min(s : DbquerydistributedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_edge_min(s : DbquerydistributedEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_edge_max(s : DbquerydistributedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_edge_max(s : DbquerydistributedEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_edge_to_string(s : DbquerydistributedEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_distributed_path_set(s : DbquerydistributedPath, i : Int, v : Do
   result
 }
 
-pub fn db_query_distributed_path_sum(s : DbquerydistributedPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_path_sum(s : DbquerydistributedPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_path_mean(s : DbquerydistributedPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_path_mean(s : DbquerydistributedPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_path_scale(s : DbquerydistributedPath, f : Double) -> DbquerydistributedPath {
   let result = db_query_distributed_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_distributed_path_fill(s : DbquerydistributedPath, v : Double) ->
   result
 }
 
-pub fn db_query_distributed_path_min(s : DbquerydistributedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_path_min(s : DbquerydistributedPath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_path_max(s : DbquerydistributedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_path_max(s : DbquerydistributedPath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_path_to_string(s : DbquerydistributedPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_distributed_cluster_set(s : DbquerydistributedCluster, i : Int, 
   result
 }
 
-pub fn db_query_distributed_cluster_sum(s : DbquerydistributedCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_cluster_sum(s : DbquerydistributedCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_cluster_mean(s : DbquerydistributedCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_cluster_mean(s : DbquerydistributedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_cluster_scale(s : DbquerydistributedCluster, f : Double) -> DbquerydistributedCluster {
   let result = db_query_distributed_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_distributed_cluster_fill(s : DbquerydistributedCluster, v : Doub
   result
 }
 
-pub fn db_query_distributed_cluster_min(s : DbquerydistributedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_cluster_min(s : DbquerydistributedCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_cluster_max(s : DbquerydistributedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_cluster_max(s : DbquerydistributedCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_cluster_to_string(s : DbquerydistributedCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_distributed_model_set(s : DbquerydistributedModel, i : Int, v : 
   result
 }
 
-pub fn db_query_distributed_model_sum(s : DbquerydistributedModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_model_sum(s : DbquerydistributedModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_model_mean(s : DbquerydistributedModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_model_mean(s : DbquerydistributedModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_model_scale(s : DbquerydistributedModel, f : Double) -> DbquerydistributedModel {
   let result = db_query_distributed_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_distributed_model_fill(s : DbquerydistributedModel, v : Double) 
   result
 }
 
-pub fn db_query_distributed_model_min(s : DbquerydistributedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_model_min(s : DbquerydistributedModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_model_max(s : DbquerydistributedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_model_max(s : DbquerydistributedModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_model_to_string(s : DbquerydistributedModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_distributed_layer_set(s : DbquerydistributedLayer, i : Int, v : 
   result
 }
 
-pub fn db_query_distributed_layer_sum(s : DbquerydistributedLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_layer_sum(s : DbquerydistributedLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_layer_mean(s : DbquerydistributedLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_layer_mean(s : DbquerydistributedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_layer_scale(s : DbquerydistributedLayer, f : Double) -> DbquerydistributedLayer {
   let result = db_query_distributed_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_distributed_layer_fill(s : DbquerydistributedLayer, v : Double) 
   result
 }
 
-pub fn db_query_distributed_layer_min(s : DbquerydistributedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_layer_min(s : DbquerydistributedLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_layer_max(s : DbquerydistributedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_layer_max(s : DbquerydistributedLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_layer_to_string(s : DbquerydistributedLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_distributed_buffer_set(s : DbquerydistributedBuffer, i : Int, v 
   result
 }
 
-pub fn db_query_distributed_buffer_sum(s : DbquerydistributedBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_buffer_sum(s : DbquerydistributedBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_buffer_mean(s : DbquerydistributedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_buffer_mean(s : DbquerydistributedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_buffer_scale(s : DbquerydistributedBuffer, f : Double) -> DbquerydistributedBuffer {
   let result = db_query_distributed_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_distributed_buffer_fill(s : DbquerydistributedBuffer, v : Double
   result
 }
 
-pub fn db_query_distributed_buffer_min(s : DbquerydistributedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_buffer_min(s : DbquerydistributedBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_buffer_max(s : DbquerydistributedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_buffer_max(s : DbquerydistributedBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_buffer_to_string(s : DbquerydistributedBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_distributed_cursor_set(s : DbquerydistributedCursor, i : Int, v 
   result
 }
 
-pub fn db_query_distributed_cursor_sum(s : DbquerydistributedCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_cursor_sum(s : DbquerydistributedCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_cursor_mean(s : DbquerydistributedCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_cursor_mean(s : DbquerydistributedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_cursor_scale(s : DbquerydistributedCursor, f : Double) -> DbquerydistributedCursor {
   let result = db_query_distributed_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_distributed_cursor_fill(s : DbquerydistributedCursor, v : Double
   result
 }
 
-pub fn db_query_distributed_cursor_min(s : DbquerydistributedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_cursor_min(s : DbquerydistributedCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_cursor_max(s : DbquerydistributedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_cursor_max(s : DbquerydistributedCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_cursor_to_string(s : DbquerydistributedCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_distributed_view_set(s : DbquerydistributedView, i : Int, v : Do
   result
 }
 
-pub fn db_query_distributed_view_sum(s : DbquerydistributedView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_view_sum(s : DbquerydistributedView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_view_mean(s : DbquerydistributedView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_view_mean(s : DbquerydistributedView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_view_scale(s : DbquerydistributedView, f : Double) -> DbquerydistributedView {
   let result = db_query_distributed_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_distributed_view_fill(s : DbquerydistributedView, v : Double) ->
   result
 }
 
-pub fn db_query_distributed_view_min(s : DbquerydistributedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_view_min(s : DbquerydistributedView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_view_max(s : DbquerydistributedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_view_max(s : DbquerydistributedView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_view_to_string(s : DbquerydistributedView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_distributed_range_set(s : DbquerydistributedRange, i : Int, v : 
   result
 }
 
-pub fn db_query_distributed_range_sum(s : DbquerydistributedRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_range_sum(s : DbquerydistributedRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_range_mean(s : DbquerydistributedRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_range_mean(s : DbquerydistributedRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_range_scale(s : DbquerydistributedRange, f : Double) -> DbquerydistributedRange {
   let result = db_query_distributed_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_distributed_range_fill(s : DbquerydistributedRange, v : Double) 
   result
 }
 
-pub fn db_query_distributed_range_min(s : DbquerydistributedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_range_min(s : DbquerydistributedRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_range_max(s : DbquerydistributedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_range_max(s : DbquerydistributedRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_range_to_string(s : DbquerydistributedRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_distributed_slice_set(s : DbquerydistributedSlice, i : Int, v : 
   result
 }
 
-pub fn db_query_distributed_slice_sum(s : DbquerydistributedSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_distributed_slice_sum(s : DbquerydistributedSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_distributed_slice_mean(s : DbquerydistributedSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_distributed_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_distributed_slice_mean(s : DbquerydistributedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_distributed_slice_scale(s : DbquerydistributedSlice, f : Double) -> DbquerydistributedSlice {
   let result = db_query_distributed_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_distributed_slice_fill(s : DbquerydistributedSlice, v : Double) 
   result
 }
 
-pub fn db_query_distributed_slice_min(s : DbquerydistributedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_slice_min(s : DbquerydistributedSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_distributed_slice_max(s : DbquerydistributedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_distributed_slice_max(s : DbquerydistributedSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_distributed_slice_to_string(s : DbquerydistributedSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

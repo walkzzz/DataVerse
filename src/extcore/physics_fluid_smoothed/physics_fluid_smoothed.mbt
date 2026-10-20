@@ -88,11 +88,7 @@ pub fn physics_fluid_smoothed_make_series(vals : Array[Double], name : String) -
 
 pub fn physics_fluid_smoothed_series_len(s : PhysicsfluidsmoothedSeries) -> Int { s.vals.length() }
 
-pub fn physics_fluid_smoothed_series_sum(s : PhysicsfluidsmoothedSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_fluid_smoothed_series_sum(s : PhysicsfluidsmoothedSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_fluid_smoothed_series_mean(s : PhysicsfluidsmoothedSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_fluid_smoothed_frame_set(s : PhysicsfluidsmoothedFrame, i : Int, 
   result
 }
 
-pub fn physics_fluid_smoothed_frame_sum(s : PhysicsfluidsmoothedFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_frame_sum(s : PhysicsfluidsmoothedFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_frame_mean(s : PhysicsfluidsmoothedFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_frame_mean(s : PhysicsfluidsmoothedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_frame_scale(s : PhysicsfluidsmoothedFrame, f : Double) -> PhysicsfluidsmoothedFrame {
   let result = physics_fluid_smoothed_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_fluid_smoothed_frame_fill(s : PhysicsfluidsmoothedFrame, v : Doub
   result
 }
 
-pub fn physics_fluid_smoothed_frame_min(s : PhysicsfluidsmoothedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_frame_min(s : PhysicsfluidsmoothedFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_frame_max(s : PhysicsfluidsmoothedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_frame_max(s : PhysicsfluidsmoothedFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_frame_to_string(s : PhysicsfluidsmoothedFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_fluid_smoothed_table_set(s : PhysicsfluidsmoothedTable, i : Int, 
   result
 }
 
-pub fn physics_fluid_smoothed_table_sum(s : PhysicsfluidsmoothedTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_table_sum(s : PhysicsfluidsmoothedTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_table_mean(s : PhysicsfluidsmoothedTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_table_mean(s : PhysicsfluidsmoothedTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_table_scale(s : PhysicsfluidsmoothedTable, f : Double) -> PhysicsfluidsmoothedTable {
   let result = physics_fluid_smoothed_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_fluid_smoothed_table_fill(s : PhysicsfluidsmoothedTable, v : Doub
   result
 }
 
-pub fn physics_fluid_smoothed_table_min(s : PhysicsfluidsmoothedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_table_min(s : PhysicsfluidsmoothedTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_table_max(s : PhysicsfluidsmoothedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_table_max(s : PhysicsfluidsmoothedTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_table_to_string(s : PhysicsfluidsmoothedTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_fluid_smoothed_graphn_set(s : PhysicsfluidsmoothedGraphN, i : Int
   result
 }
 
-pub fn physics_fluid_smoothed_graphn_sum(s : PhysicsfluidsmoothedGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_graphn_sum(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_graphn_mean(s : PhysicsfluidsmoothedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_graphn_mean(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_graphn_scale(s : PhysicsfluidsmoothedGraphN, f : Double) -> PhysicsfluidsmoothedGraphN {
   let result = physics_fluid_smoothed_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_fluid_smoothed_graphn_fill(s : PhysicsfluidsmoothedGraphN, v : Do
   result
 }
 
-pub fn physics_fluid_smoothed_graphn_min(s : PhysicsfluidsmoothedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_graphn_min(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_graphn_max(s : PhysicsfluidsmoothedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_graphn_max(s : PhysicsfluidsmoothedGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_graphn_to_string(s : PhysicsfluidsmoothedGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_fluid_smoothed_node_set(s : PhysicsfluidsmoothedNode, i : Int, v 
   result
 }
 
-pub fn physics_fluid_smoothed_node_sum(s : PhysicsfluidsmoothedNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_node_sum(s : PhysicsfluidsmoothedNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_node_mean(s : PhysicsfluidsmoothedNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_node_mean(s : PhysicsfluidsmoothedNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_node_scale(s : PhysicsfluidsmoothedNode, f : Double) -> PhysicsfluidsmoothedNode {
   let result = physics_fluid_smoothed_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_fluid_smoothed_node_fill(s : PhysicsfluidsmoothedNode, v : Double
   result
 }
 
-pub fn physics_fluid_smoothed_node_min(s : PhysicsfluidsmoothedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_node_min(s : PhysicsfluidsmoothedNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_node_max(s : PhysicsfluidsmoothedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_node_max(s : PhysicsfluidsmoothedNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_node_to_string(s : PhysicsfluidsmoothedNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_fluid_smoothed_edge_set(s : PhysicsfluidsmoothedEdge, i : Int, v 
   result
 }
 
-pub fn physics_fluid_smoothed_edge_sum(s : PhysicsfluidsmoothedEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_edge_sum(s : PhysicsfluidsmoothedEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_edge_mean(s : PhysicsfluidsmoothedEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_edge_mean(s : PhysicsfluidsmoothedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_edge_scale(s : PhysicsfluidsmoothedEdge, f : Double) -> PhysicsfluidsmoothedEdge {
   let result = physics_fluid_smoothed_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_fluid_smoothed_edge_fill(s : PhysicsfluidsmoothedEdge, v : Double
   result
 }
 
-pub fn physics_fluid_smoothed_edge_min(s : PhysicsfluidsmoothedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_edge_min(s : PhysicsfluidsmoothedEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_edge_max(s : PhysicsfluidsmoothedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_edge_max(s : PhysicsfluidsmoothedEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_edge_to_string(s : PhysicsfluidsmoothedEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_fluid_smoothed_path_set(s : PhysicsfluidsmoothedPath, i : Int, v 
   result
 }
 
-pub fn physics_fluid_smoothed_path_sum(s : PhysicsfluidsmoothedPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_path_sum(s : PhysicsfluidsmoothedPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_path_mean(s : PhysicsfluidsmoothedPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_path_mean(s : PhysicsfluidsmoothedPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_path_scale(s : PhysicsfluidsmoothedPath, f : Double) -> PhysicsfluidsmoothedPath {
   let result = physics_fluid_smoothed_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_fluid_smoothed_path_fill(s : PhysicsfluidsmoothedPath, v : Double
   result
 }
 
-pub fn physics_fluid_smoothed_path_min(s : PhysicsfluidsmoothedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_path_min(s : PhysicsfluidsmoothedPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_path_max(s : PhysicsfluidsmoothedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_path_max(s : PhysicsfluidsmoothedPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_path_to_string(s : PhysicsfluidsmoothedPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_fluid_smoothed_cluster_set(s : PhysicsfluidsmoothedCluster, i : I
   result
 }
 
-pub fn physics_fluid_smoothed_cluster_sum(s : PhysicsfluidsmoothedCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_cluster_sum(s : PhysicsfluidsmoothedCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_cluster_mean(s : PhysicsfluidsmoothedCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_cluster_mean(s : PhysicsfluidsmoothedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_cluster_scale(s : PhysicsfluidsmoothedCluster, f : Double) -> PhysicsfluidsmoothedCluster {
   let result = physics_fluid_smoothed_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_fluid_smoothed_cluster_fill(s : PhysicsfluidsmoothedCluster, v : 
   result
 }
 
-pub fn physics_fluid_smoothed_cluster_min(s : PhysicsfluidsmoothedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_cluster_min(s : PhysicsfluidsmoothedCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_cluster_max(s : PhysicsfluidsmoothedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_cluster_max(s : PhysicsfluidsmoothedCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_cluster_to_string(s : PhysicsfluidsmoothedCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_fluid_smoothed_model_set(s : PhysicsfluidsmoothedModel, i : Int, 
   result
 }
 
-pub fn physics_fluid_smoothed_model_sum(s : PhysicsfluidsmoothedModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_model_sum(s : PhysicsfluidsmoothedModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_model_mean(s : PhysicsfluidsmoothedModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_model_mean(s : PhysicsfluidsmoothedModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_model_scale(s : PhysicsfluidsmoothedModel, f : Double) -> PhysicsfluidsmoothedModel {
   let result = physics_fluid_smoothed_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_fluid_smoothed_model_fill(s : PhysicsfluidsmoothedModel, v : Doub
   result
 }
 
-pub fn physics_fluid_smoothed_model_min(s : PhysicsfluidsmoothedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_model_min(s : PhysicsfluidsmoothedModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_model_max(s : PhysicsfluidsmoothedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_model_max(s : PhysicsfluidsmoothedModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_model_to_string(s : PhysicsfluidsmoothedModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_fluid_smoothed_layer_set(s : PhysicsfluidsmoothedLayer, i : Int, 
   result
 }
 
-pub fn physics_fluid_smoothed_layer_sum(s : PhysicsfluidsmoothedLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_layer_sum(s : PhysicsfluidsmoothedLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_layer_mean(s : PhysicsfluidsmoothedLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_layer_mean(s : PhysicsfluidsmoothedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_layer_scale(s : PhysicsfluidsmoothedLayer, f : Double) -> PhysicsfluidsmoothedLayer {
   let result = physics_fluid_smoothed_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_fluid_smoothed_layer_fill(s : PhysicsfluidsmoothedLayer, v : Doub
   result
 }
 
-pub fn physics_fluid_smoothed_layer_min(s : PhysicsfluidsmoothedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_layer_min(s : PhysicsfluidsmoothedLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_layer_max(s : PhysicsfluidsmoothedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_layer_max(s : PhysicsfluidsmoothedLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_layer_to_string(s : PhysicsfluidsmoothedLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_fluid_smoothed_buffer_set(s : PhysicsfluidsmoothedBuffer, i : Int
   result
 }
 
-pub fn physics_fluid_smoothed_buffer_sum(s : PhysicsfluidsmoothedBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_buffer_sum(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_buffer_mean(s : PhysicsfluidsmoothedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_buffer_mean(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_buffer_scale(s : PhysicsfluidsmoothedBuffer, f : Double) -> PhysicsfluidsmoothedBuffer {
   let result = physics_fluid_smoothed_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_fluid_smoothed_buffer_fill(s : PhysicsfluidsmoothedBuffer, v : Do
   result
 }
 
-pub fn physics_fluid_smoothed_buffer_min(s : PhysicsfluidsmoothedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_buffer_min(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_buffer_max(s : PhysicsfluidsmoothedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_buffer_max(s : PhysicsfluidsmoothedBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_buffer_to_string(s : PhysicsfluidsmoothedBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_fluid_smoothed_cursor_set(s : PhysicsfluidsmoothedCursor, i : Int
   result
 }
 
-pub fn physics_fluid_smoothed_cursor_sum(s : PhysicsfluidsmoothedCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_cursor_sum(s : PhysicsfluidsmoothedCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_cursor_mean(s : PhysicsfluidsmoothedCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_cursor_mean(s : PhysicsfluidsmoothedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_cursor_scale(s : PhysicsfluidsmoothedCursor, f : Double) -> PhysicsfluidsmoothedCursor {
   let result = physics_fluid_smoothed_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_fluid_smoothed_cursor_fill(s : PhysicsfluidsmoothedCursor, v : Do
   result
 }
 
-pub fn physics_fluid_smoothed_cursor_min(s : PhysicsfluidsmoothedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_cursor_min(s : PhysicsfluidsmoothedCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_cursor_max(s : PhysicsfluidsmoothedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_cursor_max(s : PhysicsfluidsmoothedCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_cursor_to_string(s : PhysicsfluidsmoothedCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_fluid_smoothed_view_set(s : PhysicsfluidsmoothedView, i : Int, v 
   result
 }
 
-pub fn physics_fluid_smoothed_view_sum(s : PhysicsfluidsmoothedView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_view_sum(s : PhysicsfluidsmoothedView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_view_mean(s : PhysicsfluidsmoothedView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_view_mean(s : PhysicsfluidsmoothedView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_view_scale(s : PhysicsfluidsmoothedView, f : Double) -> PhysicsfluidsmoothedView {
   let result = physics_fluid_smoothed_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_fluid_smoothed_view_fill(s : PhysicsfluidsmoothedView, v : Double
   result
 }
 
-pub fn physics_fluid_smoothed_view_min(s : PhysicsfluidsmoothedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_view_min(s : PhysicsfluidsmoothedView) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_view_max(s : PhysicsfluidsmoothedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_view_max(s : PhysicsfluidsmoothedView) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_view_to_string(s : PhysicsfluidsmoothedView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_fluid_smoothed_range_set(s : PhysicsfluidsmoothedRange, i : Int, 
   result
 }
 
-pub fn physics_fluid_smoothed_range_sum(s : PhysicsfluidsmoothedRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_range_sum(s : PhysicsfluidsmoothedRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_range_mean(s : PhysicsfluidsmoothedRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_range_mean(s : PhysicsfluidsmoothedRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_range_scale(s : PhysicsfluidsmoothedRange, f : Double) -> PhysicsfluidsmoothedRange {
   let result = physics_fluid_smoothed_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_fluid_smoothed_range_fill(s : PhysicsfluidsmoothedRange, v : Doub
   result
 }
 
-pub fn physics_fluid_smoothed_range_min(s : PhysicsfluidsmoothedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_range_min(s : PhysicsfluidsmoothedRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_range_max(s : PhysicsfluidsmoothedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_range_max(s : PhysicsfluidsmoothedRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_range_to_string(s : PhysicsfluidsmoothedRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_fluid_smoothed_slice_set(s : PhysicsfluidsmoothedSlice, i : Int, 
   result
 }
 
-pub fn physics_fluid_smoothed_slice_sum(s : PhysicsfluidsmoothedSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_smoothed_slice_sum(s : PhysicsfluidsmoothedSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_smoothed_slice_mean(s : PhysicsfluidsmoothedSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_smoothed_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_smoothed_slice_mean(s : PhysicsfluidsmoothedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_smoothed_slice_scale(s : PhysicsfluidsmoothedSlice, f : Double) -> PhysicsfluidsmoothedSlice {
   let result = physics_fluid_smoothed_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_fluid_smoothed_slice_fill(s : PhysicsfluidsmoothedSlice, v : Doub
   result
 }
 
-pub fn physics_fluid_smoothed_slice_min(s : PhysicsfluidsmoothedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_slice_min(s : PhysicsfluidsmoothedSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_smoothed_slice_max(s : PhysicsfluidsmoothedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_smoothed_slice_max(s : PhysicsfluidsmoothedSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_smoothed_slice_to_string(s : PhysicsfluidsmoothedSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

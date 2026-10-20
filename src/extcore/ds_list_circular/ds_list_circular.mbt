@@ -88,11 +88,7 @@ pub fn ds_list_circular_make_series(vals : Array[Double], name : String) -> Dsli
 
 pub fn ds_list_circular_series_len(s : DslistcircularSeries) -> Int { s.vals.length() }
 
-pub fn ds_list_circular_series_sum(s : DslistcircularSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_list_circular_series_sum(s : DslistcircularSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_list_circular_series_mean(s : DslistcircularSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_list_circular_frame_set(s : DslistcircularFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_circular_frame_sum(s : DslistcircularFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_frame_sum(s : DslistcircularFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_frame_mean(s : DslistcircularFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_frame_mean(s : DslistcircularFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_frame_scale(s : DslistcircularFrame, f : Double) -> DslistcircularFrame {
   let result = ds_list_circular_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_list_circular_frame_fill(s : DslistcircularFrame, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_circular_frame_min(s : DslistcircularFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_frame_min(s : DslistcircularFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_frame_max(s : DslistcircularFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_frame_max(s : DslistcircularFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_frame_to_string(s : DslistcircularFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_list_circular_table_set(s : DslistcircularTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_circular_table_sum(s : DslistcircularTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_table_sum(s : DslistcircularTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_table_mean(s : DslistcircularTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_table_mean(s : DslistcircularTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_table_scale(s : DslistcircularTable, f : Double) -> DslistcircularTable {
   let result = ds_list_circular_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_list_circular_table_fill(s : DslistcircularTable, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_circular_table_min(s : DslistcircularTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_table_min(s : DslistcircularTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_table_max(s : DslistcircularTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_table_max(s : DslistcircularTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_table_to_string(s : DslistcircularTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_list_circular_graphn_set(s : DslistcircularGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_list_circular_graphn_sum(s : DslistcircularGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_graphn_sum(s : DslistcircularGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_graphn_mean(s : DslistcircularGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_graphn_mean(s : DslistcircularGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_graphn_scale(s : DslistcircularGraphN, f : Double) -> DslistcircularGraphN {
   let result = ds_list_circular_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_list_circular_graphn_fill(s : DslistcircularGraphN, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_circular_graphn_min(s : DslistcircularGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_graphn_min(s : DslistcircularGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_graphn_max(s : DslistcircularGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_graphn_max(s : DslistcircularGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_graphn_to_string(s : DslistcircularGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_list_circular_node_set(s : DslistcircularNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_circular_node_sum(s : DslistcircularNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_node_sum(s : DslistcircularNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_node_mean(s : DslistcircularNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_node_mean(s : DslistcircularNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_node_scale(s : DslistcircularNode, f : Double) -> DslistcircularNode {
   let result = ds_list_circular_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_list_circular_node_fill(s : DslistcircularNode, v : Double) -> Dslistc
   result
 }
 
-pub fn ds_list_circular_node_min(s : DslistcircularNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_node_min(s : DslistcircularNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_node_max(s : DslistcircularNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_node_max(s : DslistcircularNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_node_to_string(s : DslistcircularNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_list_circular_edge_set(s : DslistcircularEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_circular_edge_sum(s : DslistcircularEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_edge_sum(s : DslistcircularEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_edge_mean(s : DslistcircularEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_edge_mean(s : DslistcircularEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_edge_scale(s : DslistcircularEdge, f : Double) -> DslistcircularEdge {
   let result = ds_list_circular_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_list_circular_edge_fill(s : DslistcircularEdge, v : Double) -> Dslistc
   result
 }
 
-pub fn ds_list_circular_edge_min(s : DslistcircularEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_edge_min(s : DslistcircularEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_edge_max(s : DslistcircularEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_edge_max(s : DslistcircularEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_edge_to_string(s : DslistcircularEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_list_circular_path_set(s : DslistcircularPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_circular_path_sum(s : DslistcircularPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_path_sum(s : DslistcircularPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_path_mean(s : DslistcircularPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_path_mean(s : DslistcircularPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_path_scale(s : DslistcircularPath, f : Double) -> DslistcircularPath {
   let result = ds_list_circular_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_list_circular_path_fill(s : DslistcircularPath, v : Double) -> Dslistc
   result
 }
 
-pub fn ds_list_circular_path_min(s : DslistcircularPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_path_min(s : DslistcircularPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_path_max(s : DslistcircularPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_path_max(s : DslistcircularPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_path_to_string(s : DslistcircularPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_list_circular_cluster_set(s : DslistcircularCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_circular_cluster_sum(s : DslistcircularCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_cluster_sum(s : DslistcircularCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_cluster_mean(s : DslistcircularCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_cluster_mean(s : DslistcircularCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_cluster_scale(s : DslistcircularCluster, f : Double) -> DslistcircularCluster {
   let result = ds_list_circular_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_list_circular_cluster_fill(s : DslistcircularCluster, v : Double) -> D
   result
 }
 
-pub fn ds_list_circular_cluster_min(s : DslistcircularCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_cluster_min(s : DslistcircularCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_cluster_max(s : DslistcircularCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_cluster_max(s : DslistcircularCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_cluster_to_string(s : DslistcircularCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_list_circular_model_set(s : DslistcircularModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_circular_model_sum(s : DslistcircularModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_model_sum(s : DslistcircularModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_model_mean(s : DslistcircularModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_model_mean(s : DslistcircularModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_model_scale(s : DslistcircularModel, f : Double) -> DslistcircularModel {
   let result = ds_list_circular_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_list_circular_model_fill(s : DslistcircularModel, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_circular_model_min(s : DslistcircularModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_model_min(s : DslistcircularModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_model_max(s : DslistcircularModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_model_max(s : DslistcircularModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_model_to_string(s : DslistcircularModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_list_circular_layer_set(s : DslistcircularLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_circular_layer_sum(s : DslistcircularLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_layer_sum(s : DslistcircularLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_layer_mean(s : DslistcircularLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_layer_mean(s : DslistcircularLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_layer_scale(s : DslistcircularLayer, f : Double) -> DslistcircularLayer {
   let result = ds_list_circular_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_list_circular_layer_fill(s : DslistcircularLayer, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_circular_layer_min(s : DslistcircularLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_layer_min(s : DslistcircularLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_layer_max(s : DslistcircularLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_layer_max(s : DslistcircularLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_layer_to_string(s : DslistcircularLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_list_circular_buffer_set(s : DslistcircularBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_list_circular_buffer_sum(s : DslistcircularBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_buffer_sum(s : DslistcircularBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_buffer_mean(s : DslistcircularBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_buffer_mean(s : DslistcircularBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_buffer_scale(s : DslistcircularBuffer, f : Double) -> DslistcircularBuffer {
   let result = ds_list_circular_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_list_circular_buffer_fill(s : DslistcircularBuffer, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_circular_buffer_min(s : DslistcircularBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_buffer_min(s : DslistcircularBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_buffer_max(s : DslistcircularBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_buffer_max(s : DslistcircularBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_buffer_to_string(s : DslistcircularBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_list_circular_cursor_set(s : DslistcircularCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_list_circular_cursor_sum(s : DslistcircularCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_cursor_sum(s : DslistcircularCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_cursor_mean(s : DslistcircularCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_cursor_mean(s : DslistcircularCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_cursor_scale(s : DslistcircularCursor, f : Double) -> DslistcircularCursor {
   let result = ds_list_circular_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_list_circular_cursor_fill(s : DslistcircularCursor, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_circular_cursor_min(s : DslistcircularCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_cursor_min(s : DslistcircularCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_cursor_max(s : DslistcircularCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_cursor_max(s : DslistcircularCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_cursor_to_string(s : DslistcircularCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_list_circular_view_set(s : DslistcircularView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_circular_view_sum(s : DslistcircularView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_view_sum(s : DslistcircularView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_view_mean(s : DslistcircularView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_view_mean(s : DslistcircularView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_view_scale(s : DslistcircularView, f : Double) -> DslistcircularView {
   let result = ds_list_circular_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_list_circular_view_fill(s : DslistcircularView, v : Double) -> Dslistc
   result
 }
 
-pub fn ds_list_circular_view_min(s : DslistcircularView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_view_min(s : DslistcircularView) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_view_max(s : DslistcircularView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_view_max(s : DslistcircularView) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_view_to_string(s : DslistcircularView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_list_circular_range_set(s : DslistcircularRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_circular_range_sum(s : DslistcircularRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_range_sum(s : DslistcircularRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_range_mean(s : DslistcircularRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_range_mean(s : DslistcircularRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_range_scale(s : DslistcircularRange, f : Double) -> DslistcircularRange {
   let result = ds_list_circular_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_list_circular_range_fill(s : DslistcircularRange, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_circular_range_min(s : DslistcircularRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_range_min(s : DslistcircularRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_range_max(s : DslistcircularRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_range_max(s : DslistcircularRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_range_to_string(s : DslistcircularRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_list_circular_slice_set(s : DslistcircularSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_circular_slice_sum(s : DslistcircularSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_circular_slice_sum(s : DslistcircularSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_circular_slice_mean(s : DslistcircularSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_circular_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_circular_slice_mean(s : DslistcircularSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_circular_slice_scale(s : DslistcircularSlice, f : Double) -> DslistcircularSlice {
   let result = ds_list_circular_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_list_circular_slice_fill(s : DslistcircularSlice, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_circular_slice_min(s : DslistcircularSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_slice_min(s : DslistcircularSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_circular_slice_max(s : DslistcircularSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_circular_slice_max(s : DslistcircularSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_circular_slice_to_string(s : DslistcircularSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

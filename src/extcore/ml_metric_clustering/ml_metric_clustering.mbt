@@ -88,11 +88,7 @@ pub fn ml_metric_clustering_make_series(vals : Array[Double], name : String) -> 
 
 pub fn ml_metric_clustering_series_len(s : MlmetricclusteringSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_clustering_series_sum(s : MlmetricclusteringSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_clustering_series_sum(s : MlmetricclusteringSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_clustering_series_mean(s : MlmetricclusteringSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_clustering_frame_set(s : MlmetricclusteringFrame, i : Int, v : 
   result
 }
 
-pub fn ml_metric_clustering_frame_sum(s : MlmetricclusteringFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_frame_sum(s : MlmetricclusteringFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_frame_mean(s : MlmetricclusteringFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_frame_mean(s : MlmetricclusteringFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_frame_scale(s : MlmetricclusteringFrame, f : Double) -> MlmetricclusteringFrame {
   let result = ml_metric_clustering_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_clustering_frame_fill(s : MlmetricclusteringFrame, v : Double) 
   result
 }
 
-pub fn ml_metric_clustering_frame_min(s : MlmetricclusteringFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_frame_min(s : MlmetricclusteringFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_frame_max(s : MlmetricclusteringFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_frame_max(s : MlmetricclusteringFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_frame_to_string(s : MlmetricclusteringFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_clustering_table_set(s : MlmetricclusteringTable, i : Int, v : 
   result
 }
 
-pub fn ml_metric_clustering_table_sum(s : MlmetricclusteringTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_table_sum(s : MlmetricclusteringTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_table_mean(s : MlmetricclusteringTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_table_mean(s : MlmetricclusteringTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_table_scale(s : MlmetricclusteringTable, f : Double) -> MlmetricclusteringTable {
   let result = ml_metric_clustering_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_clustering_table_fill(s : MlmetricclusteringTable, v : Double) 
   result
 }
 
-pub fn ml_metric_clustering_table_min(s : MlmetricclusteringTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_table_min(s : MlmetricclusteringTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_table_max(s : MlmetricclusteringTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_table_max(s : MlmetricclusteringTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_table_to_string(s : MlmetricclusteringTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_clustering_graphn_set(s : MlmetricclusteringGraphN, i : Int, v 
   result
 }
 
-pub fn ml_metric_clustering_graphn_sum(s : MlmetricclusteringGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_graphn_sum(s : MlmetricclusteringGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_graphn_mean(s : MlmetricclusteringGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_graphn_mean(s : MlmetricclusteringGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_graphn_scale(s : MlmetricclusteringGraphN, f : Double) -> MlmetricclusteringGraphN {
   let result = ml_metric_clustering_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_clustering_graphn_fill(s : MlmetricclusteringGraphN, v : Double
   result
 }
 
-pub fn ml_metric_clustering_graphn_min(s : MlmetricclusteringGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_graphn_min(s : MlmetricclusteringGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_graphn_max(s : MlmetricclusteringGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_graphn_max(s : MlmetricclusteringGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_graphn_to_string(s : MlmetricclusteringGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_clustering_node_set(s : MlmetricclusteringNode, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_clustering_node_sum(s : MlmetricclusteringNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_node_sum(s : MlmetricclusteringNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_node_mean(s : MlmetricclusteringNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_node_mean(s : MlmetricclusteringNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_node_scale(s : MlmetricclusteringNode, f : Double) -> MlmetricclusteringNode {
   let result = ml_metric_clustering_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_clustering_node_fill(s : MlmetricclusteringNode, v : Double) ->
   result
 }
 
-pub fn ml_metric_clustering_node_min(s : MlmetricclusteringNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_node_min(s : MlmetricclusteringNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_node_max(s : MlmetricclusteringNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_node_max(s : MlmetricclusteringNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_node_to_string(s : MlmetricclusteringNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_clustering_edge_set(s : MlmetricclusteringEdge, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_clustering_edge_sum(s : MlmetricclusteringEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_edge_sum(s : MlmetricclusteringEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_edge_mean(s : MlmetricclusteringEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_edge_mean(s : MlmetricclusteringEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_edge_scale(s : MlmetricclusteringEdge, f : Double) -> MlmetricclusteringEdge {
   let result = ml_metric_clustering_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_clustering_edge_fill(s : MlmetricclusteringEdge, v : Double) ->
   result
 }
 
-pub fn ml_metric_clustering_edge_min(s : MlmetricclusteringEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_edge_min(s : MlmetricclusteringEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_edge_max(s : MlmetricclusteringEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_edge_max(s : MlmetricclusteringEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_edge_to_string(s : MlmetricclusteringEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_clustering_path_set(s : MlmetricclusteringPath, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_clustering_path_sum(s : MlmetricclusteringPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_path_sum(s : MlmetricclusteringPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_path_mean(s : MlmetricclusteringPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_path_mean(s : MlmetricclusteringPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_path_scale(s : MlmetricclusteringPath, f : Double) -> MlmetricclusteringPath {
   let result = ml_metric_clustering_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_clustering_path_fill(s : MlmetricclusteringPath, v : Double) ->
   result
 }
 
-pub fn ml_metric_clustering_path_min(s : MlmetricclusteringPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_path_min(s : MlmetricclusteringPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_path_max(s : MlmetricclusteringPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_path_max(s : MlmetricclusteringPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_path_to_string(s : MlmetricclusteringPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_clustering_cluster_set(s : MlmetricclusteringCluster, i : Int, 
   result
 }
 
-pub fn ml_metric_clustering_cluster_sum(s : MlmetricclusteringCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_cluster_sum(s : MlmetricclusteringCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_cluster_mean(s : MlmetricclusteringCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_cluster_mean(s : MlmetricclusteringCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_cluster_scale(s : MlmetricclusteringCluster, f : Double) -> MlmetricclusteringCluster {
   let result = ml_metric_clustering_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_clustering_cluster_fill(s : MlmetricclusteringCluster, v : Doub
   result
 }
 
-pub fn ml_metric_clustering_cluster_min(s : MlmetricclusteringCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_cluster_min(s : MlmetricclusteringCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_cluster_max(s : MlmetricclusteringCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_cluster_max(s : MlmetricclusteringCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_cluster_to_string(s : MlmetricclusteringCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_clustering_model_set(s : MlmetricclusteringModel, i : Int, v : 
   result
 }
 
-pub fn ml_metric_clustering_model_sum(s : MlmetricclusteringModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_model_sum(s : MlmetricclusteringModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_model_mean(s : MlmetricclusteringModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_model_mean(s : MlmetricclusteringModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_model_scale(s : MlmetricclusteringModel, f : Double) -> MlmetricclusteringModel {
   let result = ml_metric_clustering_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_clustering_model_fill(s : MlmetricclusteringModel, v : Double) 
   result
 }
 
-pub fn ml_metric_clustering_model_min(s : MlmetricclusteringModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_model_min(s : MlmetricclusteringModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_model_max(s : MlmetricclusteringModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_model_max(s : MlmetricclusteringModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_model_to_string(s : MlmetricclusteringModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_clustering_layer_set(s : MlmetricclusteringLayer, i : Int, v : 
   result
 }
 
-pub fn ml_metric_clustering_layer_sum(s : MlmetricclusteringLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_layer_sum(s : MlmetricclusteringLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_layer_mean(s : MlmetricclusteringLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_layer_mean(s : MlmetricclusteringLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_layer_scale(s : MlmetricclusteringLayer, f : Double) -> MlmetricclusteringLayer {
   let result = ml_metric_clustering_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_clustering_layer_fill(s : MlmetricclusteringLayer, v : Double) 
   result
 }
 
-pub fn ml_metric_clustering_layer_min(s : MlmetricclusteringLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_layer_min(s : MlmetricclusteringLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_layer_max(s : MlmetricclusteringLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_layer_max(s : MlmetricclusteringLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_layer_to_string(s : MlmetricclusteringLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_clustering_buffer_set(s : MlmetricclusteringBuffer, i : Int, v 
   result
 }
 
-pub fn ml_metric_clustering_buffer_sum(s : MlmetricclusteringBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_buffer_sum(s : MlmetricclusteringBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_buffer_mean(s : MlmetricclusteringBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_buffer_mean(s : MlmetricclusteringBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_buffer_scale(s : MlmetricclusteringBuffer, f : Double) -> MlmetricclusteringBuffer {
   let result = ml_metric_clustering_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_clustering_buffer_fill(s : MlmetricclusteringBuffer, v : Double
   result
 }
 
-pub fn ml_metric_clustering_buffer_min(s : MlmetricclusteringBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_buffer_min(s : MlmetricclusteringBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_buffer_max(s : MlmetricclusteringBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_buffer_max(s : MlmetricclusteringBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_buffer_to_string(s : MlmetricclusteringBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_clustering_cursor_set(s : MlmetricclusteringCursor, i : Int, v 
   result
 }
 
-pub fn ml_metric_clustering_cursor_sum(s : MlmetricclusteringCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_cursor_sum(s : MlmetricclusteringCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_cursor_mean(s : MlmetricclusteringCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_cursor_mean(s : MlmetricclusteringCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_cursor_scale(s : MlmetricclusteringCursor, f : Double) -> MlmetricclusteringCursor {
   let result = ml_metric_clustering_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_clustering_cursor_fill(s : MlmetricclusteringCursor, v : Double
   result
 }
 
-pub fn ml_metric_clustering_cursor_min(s : MlmetricclusteringCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_cursor_min(s : MlmetricclusteringCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_cursor_max(s : MlmetricclusteringCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_cursor_max(s : MlmetricclusteringCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_cursor_to_string(s : MlmetricclusteringCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_clustering_view_set(s : MlmetricclusteringView, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_clustering_view_sum(s : MlmetricclusteringView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_view_sum(s : MlmetricclusteringView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_view_mean(s : MlmetricclusteringView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_view_mean(s : MlmetricclusteringView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_view_scale(s : MlmetricclusteringView, f : Double) -> MlmetricclusteringView {
   let result = ml_metric_clustering_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_clustering_view_fill(s : MlmetricclusteringView, v : Double) ->
   result
 }
 
-pub fn ml_metric_clustering_view_min(s : MlmetricclusteringView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_view_min(s : MlmetricclusteringView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_view_max(s : MlmetricclusteringView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_view_max(s : MlmetricclusteringView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_view_to_string(s : MlmetricclusteringView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_clustering_range_set(s : MlmetricclusteringRange, i : Int, v : 
   result
 }
 
-pub fn ml_metric_clustering_range_sum(s : MlmetricclusteringRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_range_sum(s : MlmetricclusteringRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_range_mean(s : MlmetricclusteringRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_range_mean(s : MlmetricclusteringRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_range_scale(s : MlmetricclusteringRange, f : Double) -> MlmetricclusteringRange {
   let result = ml_metric_clustering_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_clustering_range_fill(s : MlmetricclusteringRange, v : Double) 
   result
 }
 
-pub fn ml_metric_clustering_range_min(s : MlmetricclusteringRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_range_min(s : MlmetricclusteringRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_range_max(s : MlmetricclusteringRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_range_max(s : MlmetricclusteringRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_range_to_string(s : MlmetricclusteringRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_clustering_slice_set(s : MlmetricclusteringSlice, i : Int, v : 
   result
 }
 
-pub fn ml_metric_clustering_slice_sum(s : MlmetricclusteringSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_clustering_slice_sum(s : MlmetricclusteringSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_clustering_slice_mean(s : MlmetricclusteringSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_clustering_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_clustering_slice_mean(s : MlmetricclusteringSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_clustering_slice_scale(s : MlmetricclusteringSlice, f : Double) -> MlmetricclusteringSlice {
   let result = ml_metric_clustering_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_clustering_slice_fill(s : MlmetricclusteringSlice, v : Double) 
   result
 }
 
-pub fn ml_metric_clustering_slice_min(s : MlmetricclusteringSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_slice_min(s : MlmetricclusteringSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_clustering_slice_max(s : MlmetricclusteringSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_clustering_slice_max(s : MlmetricclusteringSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_clustering_slice_to_string(s : MlmetricclusteringSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

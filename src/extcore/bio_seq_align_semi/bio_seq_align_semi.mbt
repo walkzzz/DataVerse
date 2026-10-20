@@ -88,11 +88,7 @@ pub fn bio_seq_align_semi_make_series(vals : Array[Double], name : String) -> Bi
 
 pub fn bio_seq_align_semi_series_len(s : BioseqalignsemiSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_align_semi_series_sum(s : BioseqalignsemiSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_align_semi_series_sum(s : BioseqalignsemiSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_align_semi_series_mean(s : BioseqalignsemiSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_align_semi_frame_set(s : BioseqalignsemiFrame, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_semi_frame_sum(s : BioseqalignsemiFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_frame_sum(s : BioseqalignsemiFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_frame_mean(s : BioseqalignsemiFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_frame_mean(s : BioseqalignsemiFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_frame_scale(s : BioseqalignsemiFrame, f : Double) -> BioseqalignsemiFrame {
   let result = bio_seq_align_semi_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_align_semi_frame_fill(s : BioseqalignsemiFrame, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_semi_frame_min(s : BioseqalignsemiFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_frame_min(s : BioseqalignsemiFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_frame_max(s : BioseqalignsemiFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_frame_max(s : BioseqalignsemiFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_frame_to_string(s : BioseqalignsemiFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_align_semi_table_set(s : BioseqalignsemiTable, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_semi_table_sum(s : BioseqalignsemiTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_table_sum(s : BioseqalignsemiTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_table_mean(s : BioseqalignsemiTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_table_mean(s : BioseqalignsemiTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_table_scale(s : BioseqalignsemiTable, f : Double) -> BioseqalignsemiTable {
   let result = bio_seq_align_semi_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_align_semi_table_fill(s : BioseqalignsemiTable, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_semi_table_min(s : BioseqalignsemiTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_table_min(s : BioseqalignsemiTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_table_max(s : BioseqalignsemiTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_table_max(s : BioseqalignsemiTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_table_to_string(s : BioseqalignsemiTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_align_semi_graphn_set(s : BioseqalignsemiGraphN, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_semi_graphn_sum(s : BioseqalignsemiGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_graphn_sum(s : BioseqalignsemiGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_graphn_mean(s : BioseqalignsemiGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_graphn_mean(s : BioseqalignsemiGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_graphn_scale(s : BioseqalignsemiGraphN, f : Double) -> BioseqalignsemiGraphN {
   let result = bio_seq_align_semi_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_align_semi_graphn_fill(s : BioseqalignsemiGraphN, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_semi_graphn_min(s : BioseqalignsemiGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_graphn_min(s : BioseqalignsemiGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_graphn_max(s : BioseqalignsemiGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_graphn_max(s : BioseqalignsemiGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_graphn_to_string(s : BioseqalignsemiGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_align_semi_node_set(s : BioseqalignsemiNode, i : Int, v : Double)
   result
 }
 
-pub fn bio_seq_align_semi_node_sum(s : BioseqalignsemiNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_node_sum(s : BioseqalignsemiNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_node_mean(s : BioseqalignsemiNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_node_mean(s : BioseqalignsemiNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_node_scale(s : BioseqalignsemiNode, f : Double) -> BioseqalignsemiNode {
   let result = bio_seq_align_semi_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_align_semi_node_fill(s : BioseqalignsemiNode, v : Double) -> Bios
   result
 }
 
-pub fn bio_seq_align_semi_node_min(s : BioseqalignsemiNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_node_min(s : BioseqalignsemiNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_node_max(s : BioseqalignsemiNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_node_max(s : BioseqalignsemiNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_node_to_string(s : BioseqalignsemiNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_align_semi_edge_set(s : BioseqalignsemiEdge, i : Int, v : Double)
   result
 }
 
-pub fn bio_seq_align_semi_edge_sum(s : BioseqalignsemiEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_edge_sum(s : BioseqalignsemiEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_edge_mean(s : BioseqalignsemiEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_edge_mean(s : BioseqalignsemiEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_edge_scale(s : BioseqalignsemiEdge, f : Double) -> BioseqalignsemiEdge {
   let result = bio_seq_align_semi_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_align_semi_edge_fill(s : BioseqalignsemiEdge, v : Double) -> Bios
   result
 }
 
-pub fn bio_seq_align_semi_edge_min(s : BioseqalignsemiEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_edge_min(s : BioseqalignsemiEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_edge_max(s : BioseqalignsemiEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_edge_max(s : BioseqalignsemiEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_edge_to_string(s : BioseqalignsemiEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_align_semi_path_set(s : BioseqalignsemiPath, i : Int, v : Double)
   result
 }
 
-pub fn bio_seq_align_semi_path_sum(s : BioseqalignsemiPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_path_sum(s : BioseqalignsemiPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_path_mean(s : BioseqalignsemiPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_path_mean(s : BioseqalignsemiPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_path_scale(s : BioseqalignsemiPath, f : Double) -> BioseqalignsemiPath {
   let result = bio_seq_align_semi_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_align_semi_path_fill(s : BioseqalignsemiPath, v : Double) -> Bios
   result
 }
 
-pub fn bio_seq_align_semi_path_min(s : BioseqalignsemiPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_path_min(s : BioseqalignsemiPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_path_max(s : BioseqalignsemiPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_path_max(s : BioseqalignsemiPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_path_to_string(s : BioseqalignsemiPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_align_semi_cluster_set(s : BioseqalignsemiCluster, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_semi_cluster_sum(s : BioseqalignsemiCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_cluster_sum(s : BioseqalignsemiCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_cluster_mean(s : BioseqalignsemiCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_cluster_mean(s : BioseqalignsemiCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_cluster_scale(s : BioseqalignsemiCluster, f : Double) -> BioseqalignsemiCluster {
   let result = bio_seq_align_semi_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_align_semi_cluster_fill(s : BioseqalignsemiCluster, v : Double) -
   result
 }
 
-pub fn bio_seq_align_semi_cluster_min(s : BioseqalignsemiCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_cluster_min(s : BioseqalignsemiCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_cluster_max(s : BioseqalignsemiCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_cluster_max(s : BioseqalignsemiCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_cluster_to_string(s : BioseqalignsemiCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_align_semi_model_set(s : BioseqalignsemiModel, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_semi_model_sum(s : BioseqalignsemiModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_model_sum(s : BioseqalignsemiModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_model_mean(s : BioseqalignsemiModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_model_mean(s : BioseqalignsemiModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_model_scale(s : BioseqalignsemiModel, f : Double) -> BioseqalignsemiModel {
   let result = bio_seq_align_semi_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_align_semi_model_fill(s : BioseqalignsemiModel, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_semi_model_min(s : BioseqalignsemiModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_model_min(s : BioseqalignsemiModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_model_max(s : BioseqalignsemiModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_model_max(s : BioseqalignsemiModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_model_to_string(s : BioseqalignsemiModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_align_semi_layer_set(s : BioseqalignsemiLayer, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_semi_layer_sum(s : BioseqalignsemiLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_layer_sum(s : BioseqalignsemiLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_layer_mean(s : BioseqalignsemiLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_layer_mean(s : BioseqalignsemiLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_layer_scale(s : BioseqalignsemiLayer, f : Double) -> BioseqalignsemiLayer {
   let result = bio_seq_align_semi_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_align_semi_layer_fill(s : BioseqalignsemiLayer, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_semi_layer_min(s : BioseqalignsemiLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_layer_min(s : BioseqalignsemiLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_layer_max(s : BioseqalignsemiLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_layer_max(s : BioseqalignsemiLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_layer_to_string(s : BioseqalignsemiLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_align_semi_buffer_set(s : BioseqalignsemiBuffer, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_semi_buffer_sum(s : BioseqalignsemiBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_buffer_sum(s : BioseqalignsemiBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_buffer_mean(s : BioseqalignsemiBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_buffer_mean(s : BioseqalignsemiBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_buffer_scale(s : BioseqalignsemiBuffer, f : Double) -> BioseqalignsemiBuffer {
   let result = bio_seq_align_semi_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_align_semi_buffer_fill(s : BioseqalignsemiBuffer, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_semi_buffer_min(s : BioseqalignsemiBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_buffer_min(s : BioseqalignsemiBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_buffer_max(s : BioseqalignsemiBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_buffer_max(s : BioseqalignsemiBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_buffer_to_string(s : BioseqalignsemiBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_align_semi_cursor_set(s : BioseqalignsemiCursor, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_semi_cursor_sum(s : BioseqalignsemiCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_cursor_sum(s : BioseqalignsemiCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_cursor_mean(s : BioseqalignsemiCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_cursor_mean(s : BioseqalignsemiCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_cursor_scale(s : BioseqalignsemiCursor, f : Double) -> BioseqalignsemiCursor {
   let result = bio_seq_align_semi_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_align_semi_cursor_fill(s : BioseqalignsemiCursor, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_semi_cursor_min(s : BioseqalignsemiCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_cursor_min(s : BioseqalignsemiCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_cursor_max(s : BioseqalignsemiCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_cursor_max(s : BioseqalignsemiCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_cursor_to_string(s : BioseqalignsemiCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_align_semi_view_set(s : BioseqalignsemiView, i : Int, v : Double)
   result
 }
 
-pub fn bio_seq_align_semi_view_sum(s : BioseqalignsemiView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_view_sum(s : BioseqalignsemiView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_view_mean(s : BioseqalignsemiView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_view_mean(s : BioseqalignsemiView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_view_scale(s : BioseqalignsemiView, f : Double) -> BioseqalignsemiView {
   let result = bio_seq_align_semi_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_align_semi_view_fill(s : BioseqalignsemiView, v : Double) -> Bios
   result
 }
 
-pub fn bio_seq_align_semi_view_min(s : BioseqalignsemiView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_view_min(s : BioseqalignsemiView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_view_max(s : BioseqalignsemiView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_view_max(s : BioseqalignsemiView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_view_to_string(s : BioseqalignsemiView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_align_semi_range_set(s : BioseqalignsemiRange, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_semi_range_sum(s : BioseqalignsemiRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_range_sum(s : BioseqalignsemiRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_range_mean(s : BioseqalignsemiRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_range_mean(s : BioseqalignsemiRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_range_scale(s : BioseqalignsemiRange, f : Double) -> BioseqalignsemiRange {
   let result = bio_seq_align_semi_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_align_semi_range_fill(s : BioseqalignsemiRange, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_semi_range_min(s : BioseqalignsemiRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_range_min(s : BioseqalignsemiRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_range_max(s : BioseqalignsemiRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_range_max(s : BioseqalignsemiRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_range_to_string(s : BioseqalignsemiRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_align_semi_slice_set(s : BioseqalignsemiSlice, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_semi_slice_sum(s : BioseqalignsemiSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_semi_slice_sum(s : BioseqalignsemiSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_semi_slice_mean(s : BioseqalignsemiSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_semi_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_semi_slice_mean(s : BioseqalignsemiSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_semi_slice_scale(s : BioseqalignsemiSlice, f : Double) -> BioseqalignsemiSlice {
   let result = bio_seq_align_semi_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_align_semi_slice_fill(s : BioseqalignsemiSlice, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_semi_slice_min(s : BioseqalignsemiSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_slice_min(s : BioseqalignsemiSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_semi_slice_max(s : BioseqalignsemiSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_semi_slice_max(s : BioseqalignsemiSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_semi_slice_to_string(s : BioseqalignsemiSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

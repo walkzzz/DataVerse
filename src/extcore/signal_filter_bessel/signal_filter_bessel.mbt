@@ -88,11 +88,7 @@ pub fn signal_filter_bessel_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_filter_bessel_series_len(s : SignalfilterbesselSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_bessel_series_sum(s : SignalfilterbesselSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_bessel_series_sum(s : SignalfilterbesselSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_bessel_series_mean(s : SignalfilterbesselSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_bessel_frame_set(s : SignalfilterbesselFrame, i : Int, v : 
   result
 }
 
-pub fn signal_filter_bessel_frame_sum(s : SignalfilterbesselFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_frame_sum(s : SignalfilterbesselFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_frame_mean(s : SignalfilterbesselFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_frame_mean(s : SignalfilterbesselFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_frame_scale(s : SignalfilterbesselFrame, f : Double) -> SignalfilterbesselFrame {
   let result = signal_filter_bessel_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_bessel_frame_fill(s : SignalfilterbesselFrame, v : Double) 
   result
 }
 
-pub fn signal_filter_bessel_frame_min(s : SignalfilterbesselFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_frame_min(s : SignalfilterbesselFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_frame_max(s : SignalfilterbesselFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_frame_max(s : SignalfilterbesselFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_frame_to_string(s : SignalfilterbesselFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_bessel_table_set(s : SignalfilterbesselTable, i : Int, v : 
   result
 }
 
-pub fn signal_filter_bessel_table_sum(s : SignalfilterbesselTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_table_sum(s : SignalfilterbesselTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_table_mean(s : SignalfilterbesselTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_table_mean(s : SignalfilterbesselTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_table_scale(s : SignalfilterbesselTable, f : Double) -> SignalfilterbesselTable {
   let result = signal_filter_bessel_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_bessel_table_fill(s : SignalfilterbesselTable, v : Double) 
   result
 }
 
-pub fn signal_filter_bessel_table_min(s : SignalfilterbesselTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_table_min(s : SignalfilterbesselTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_table_max(s : SignalfilterbesselTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_table_max(s : SignalfilterbesselTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_table_to_string(s : SignalfilterbesselTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_bessel_graphn_set(s : SignalfilterbesselGraphN, i : Int, v 
   result
 }
 
-pub fn signal_filter_bessel_graphn_sum(s : SignalfilterbesselGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_graphn_sum(s : SignalfilterbesselGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_graphn_mean(s : SignalfilterbesselGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_graphn_mean(s : SignalfilterbesselGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_graphn_scale(s : SignalfilterbesselGraphN, f : Double) -> SignalfilterbesselGraphN {
   let result = signal_filter_bessel_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_bessel_graphn_fill(s : SignalfilterbesselGraphN, v : Double
   result
 }
 
-pub fn signal_filter_bessel_graphn_min(s : SignalfilterbesselGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_graphn_min(s : SignalfilterbesselGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_graphn_max(s : SignalfilterbesselGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_graphn_max(s : SignalfilterbesselGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_graphn_to_string(s : SignalfilterbesselGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_bessel_node_set(s : SignalfilterbesselNode, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_bessel_node_sum(s : SignalfilterbesselNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_node_sum(s : SignalfilterbesselNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_node_mean(s : SignalfilterbesselNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_node_mean(s : SignalfilterbesselNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_node_scale(s : SignalfilterbesselNode, f : Double) -> SignalfilterbesselNode {
   let result = signal_filter_bessel_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_bessel_node_fill(s : SignalfilterbesselNode, v : Double) ->
   result
 }
 
-pub fn signal_filter_bessel_node_min(s : SignalfilterbesselNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_node_min(s : SignalfilterbesselNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_node_max(s : SignalfilterbesselNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_node_max(s : SignalfilterbesselNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_node_to_string(s : SignalfilterbesselNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_bessel_edge_set(s : SignalfilterbesselEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_bessel_edge_sum(s : SignalfilterbesselEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_edge_sum(s : SignalfilterbesselEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_edge_mean(s : SignalfilterbesselEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_edge_mean(s : SignalfilterbesselEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_edge_scale(s : SignalfilterbesselEdge, f : Double) -> SignalfilterbesselEdge {
   let result = signal_filter_bessel_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_bessel_edge_fill(s : SignalfilterbesselEdge, v : Double) ->
   result
 }
 
-pub fn signal_filter_bessel_edge_min(s : SignalfilterbesselEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_edge_min(s : SignalfilterbesselEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_edge_max(s : SignalfilterbesselEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_edge_max(s : SignalfilterbesselEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_edge_to_string(s : SignalfilterbesselEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_bessel_path_set(s : SignalfilterbesselPath, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_bessel_path_sum(s : SignalfilterbesselPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_path_sum(s : SignalfilterbesselPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_path_mean(s : SignalfilterbesselPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_path_mean(s : SignalfilterbesselPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_path_scale(s : SignalfilterbesselPath, f : Double) -> SignalfilterbesselPath {
   let result = signal_filter_bessel_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_bessel_path_fill(s : SignalfilterbesselPath, v : Double) ->
   result
 }
 
-pub fn signal_filter_bessel_path_min(s : SignalfilterbesselPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_path_min(s : SignalfilterbesselPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_path_max(s : SignalfilterbesselPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_path_max(s : SignalfilterbesselPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_path_to_string(s : SignalfilterbesselPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_bessel_cluster_set(s : SignalfilterbesselCluster, i : Int, 
   result
 }
 
-pub fn signal_filter_bessel_cluster_sum(s : SignalfilterbesselCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_cluster_sum(s : SignalfilterbesselCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_cluster_mean(s : SignalfilterbesselCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_cluster_mean(s : SignalfilterbesselCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_cluster_scale(s : SignalfilterbesselCluster, f : Double) -> SignalfilterbesselCluster {
   let result = signal_filter_bessel_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_bessel_cluster_fill(s : SignalfilterbesselCluster, v : Doub
   result
 }
 
-pub fn signal_filter_bessel_cluster_min(s : SignalfilterbesselCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_cluster_min(s : SignalfilterbesselCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_cluster_max(s : SignalfilterbesselCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_cluster_max(s : SignalfilterbesselCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_cluster_to_string(s : SignalfilterbesselCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_bessel_model_set(s : SignalfilterbesselModel, i : Int, v : 
   result
 }
 
-pub fn signal_filter_bessel_model_sum(s : SignalfilterbesselModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_model_sum(s : SignalfilterbesselModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_model_mean(s : SignalfilterbesselModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_model_mean(s : SignalfilterbesselModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_model_scale(s : SignalfilterbesselModel, f : Double) -> SignalfilterbesselModel {
   let result = signal_filter_bessel_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_bessel_model_fill(s : SignalfilterbesselModel, v : Double) 
   result
 }
 
-pub fn signal_filter_bessel_model_min(s : SignalfilterbesselModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_model_min(s : SignalfilterbesselModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_model_max(s : SignalfilterbesselModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_model_max(s : SignalfilterbesselModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_model_to_string(s : SignalfilterbesselModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_bessel_layer_set(s : SignalfilterbesselLayer, i : Int, v : 
   result
 }
 
-pub fn signal_filter_bessel_layer_sum(s : SignalfilterbesselLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_layer_sum(s : SignalfilterbesselLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_layer_mean(s : SignalfilterbesselLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_layer_mean(s : SignalfilterbesselLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_layer_scale(s : SignalfilterbesselLayer, f : Double) -> SignalfilterbesselLayer {
   let result = signal_filter_bessel_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_bessel_layer_fill(s : SignalfilterbesselLayer, v : Double) 
   result
 }
 
-pub fn signal_filter_bessel_layer_min(s : SignalfilterbesselLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_layer_min(s : SignalfilterbesselLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_layer_max(s : SignalfilterbesselLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_layer_max(s : SignalfilterbesselLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_layer_to_string(s : SignalfilterbesselLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_bessel_buffer_set(s : SignalfilterbesselBuffer, i : Int, v 
   result
 }
 
-pub fn signal_filter_bessel_buffer_sum(s : SignalfilterbesselBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_buffer_sum(s : SignalfilterbesselBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_buffer_mean(s : SignalfilterbesselBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_buffer_mean(s : SignalfilterbesselBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_buffer_scale(s : SignalfilterbesselBuffer, f : Double) -> SignalfilterbesselBuffer {
   let result = signal_filter_bessel_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_bessel_buffer_fill(s : SignalfilterbesselBuffer, v : Double
   result
 }
 
-pub fn signal_filter_bessel_buffer_min(s : SignalfilterbesselBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_buffer_min(s : SignalfilterbesselBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_buffer_max(s : SignalfilterbesselBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_buffer_max(s : SignalfilterbesselBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_buffer_to_string(s : SignalfilterbesselBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_bessel_cursor_set(s : SignalfilterbesselCursor, i : Int, v 
   result
 }
 
-pub fn signal_filter_bessel_cursor_sum(s : SignalfilterbesselCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_cursor_sum(s : SignalfilterbesselCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_cursor_mean(s : SignalfilterbesselCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_cursor_mean(s : SignalfilterbesselCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_cursor_scale(s : SignalfilterbesselCursor, f : Double) -> SignalfilterbesselCursor {
   let result = signal_filter_bessel_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_bessel_cursor_fill(s : SignalfilterbesselCursor, v : Double
   result
 }
 
-pub fn signal_filter_bessel_cursor_min(s : SignalfilterbesselCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_cursor_min(s : SignalfilterbesselCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_cursor_max(s : SignalfilterbesselCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_cursor_max(s : SignalfilterbesselCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_cursor_to_string(s : SignalfilterbesselCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_bessel_view_set(s : SignalfilterbesselView, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_bessel_view_sum(s : SignalfilterbesselView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_view_sum(s : SignalfilterbesselView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_view_mean(s : SignalfilterbesselView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_view_mean(s : SignalfilterbesselView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_view_scale(s : SignalfilterbesselView, f : Double) -> SignalfilterbesselView {
   let result = signal_filter_bessel_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_bessel_view_fill(s : SignalfilterbesselView, v : Double) ->
   result
 }
 
-pub fn signal_filter_bessel_view_min(s : SignalfilterbesselView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_view_min(s : SignalfilterbesselView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_view_max(s : SignalfilterbesselView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_view_max(s : SignalfilterbesselView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_view_to_string(s : SignalfilterbesselView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_bessel_range_set(s : SignalfilterbesselRange, i : Int, v : 
   result
 }
 
-pub fn signal_filter_bessel_range_sum(s : SignalfilterbesselRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_range_sum(s : SignalfilterbesselRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_range_mean(s : SignalfilterbesselRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_range_mean(s : SignalfilterbesselRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_range_scale(s : SignalfilterbesselRange, f : Double) -> SignalfilterbesselRange {
   let result = signal_filter_bessel_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_bessel_range_fill(s : SignalfilterbesselRange, v : Double) 
   result
 }
 
-pub fn signal_filter_bessel_range_min(s : SignalfilterbesselRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_range_min(s : SignalfilterbesselRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_range_max(s : SignalfilterbesselRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_range_max(s : SignalfilterbesselRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_range_to_string(s : SignalfilterbesselRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_bessel_slice_set(s : SignalfilterbesselSlice, i : Int, v : 
   result
 }
 
-pub fn signal_filter_bessel_slice_sum(s : SignalfilterbesselSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_bessel_slice_sum(s : SignalfilterbesselSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_bessel_slice_mean(s : SignalfilterbesselSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_bessel_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_bessel_slice_mean(s : SignalfilterbesselSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_bessel_slice_scale(s : SignalfilterbesselSlice, f : Double) -> SignalfilterbesselSlice {
   let result = signal_filter_bessel_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_bessel_slice_fill(s : SignalfilterbesselSlice, v : Double) 
   result
 }
 
-pub fn signal_filter_bessel_slice_min(s : SignalfilterbesselSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_slice_min(s : SignalfilterbesselSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_bessel_slice_max(s : SignalfilterbesselSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_bessel_slice_max(s : SignalfilterbesselSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_bessel_slice_to_string(s : SignalfilterbesselSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

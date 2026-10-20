@@ -88,11 +88,7 @@ pub fn signal_window_gaussian_make_series(vals : Array[Double], name : String) -
 
 pub fn signal_window_gaussian_series_len(s : SignalwindowgaussianSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_gaussian_series_sum(s : SignalwindowgaussianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_gaussian_series_sum(s : SignalwindowgaussianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_gaussian_series_mean(s : SignalwindowgaussianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_gaussian_frame_set(s : SignalwindowgaussianFrame, i : Int, 
   result
 }
 
-pub fn signal_window_gaussian_frame_sum(s : SignalwindowgaussianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_frame_sum(s : SignalwindowgaussianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_frame_mean(s : SignalwindowgaussianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_frame_mean(s : SignalwindowgaussianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_frame_scale(s : SignalwindowgaussianFrame, f : Double) -> SignalwindowgaussianFrame {
   let result = signal_window_gaussian_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_gaussian_frame_fill(s : SignalwindowgaussianFrame, v : Doub
   result
 }
 
-pub fn signal_window_gaussian_frame_min(s : SignalwindowgaussianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_frame_min(s : SignalwindowgaussianFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_frame_max(s : SignalwindowgaussianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_frame_max(s : SignalwindowgaussianFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_frame_to_string(s : SignalwindowgaussianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_gaussian_table_set(s : SignalwindowgaussianTable, i : Int, 
   result
 }
 
-pub fn signal_window_gaussian_table_sum(s : SignalwindowgaussianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_table_sum(s : SignalwindowgaussianTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_table_mean(s : SignalwindowgaussianTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_table_mean(s : SignalwindowgaussianTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_table_scale(s : SignalwindowgaussianTable, f : Double) -> SignalwindowgaussianTable {
   let result = signal_window_gaussian_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_gaussian_table_fill(s : SignalwindowgaussianTable, v : Doub
   result
 }
 
-pub fn signal_window_gaussian_table_min(s : SignalwindowgaussianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_table_min(s : SignalwindowgaussianTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_table_max(s : SignalwindowgaussianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_table_max(s : SignalwindowgaussianTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_table_to_string(s : SignalwindowgaussianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_gaussian_graphn_set(s : SignalwindowgaussianGraphN, i : Int
   result
 }
 
-pub fn signal_window_gaussian_graphn_sum(s : SignalwindowgaussianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_graphn_sum(s : SignalwindowgaussianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_graphn_mean(s : SignalwindowgaussianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_graphn_mean(s : SignalwindowgaussianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_graphn_scale(s : SignalwindowgaussianGraphN, f : Double) -> SignalwindowgaussianGraphN {
   let result = signal_window_gaussian_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_gaussian_graphn_fill(s : SignalwindowgaussianGraphN, v : Do
   result
 }
 
-pub fn signal_window_gaussian_graphn_min(s : SignalwindowgaussianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_graphn_min(s : SignalwindowgaussianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_graphn_max(s : SignalwindowgaussianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_graphn_max(s : SignalwindowgaussianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_graphn_to_string(s : SignalwindowgaussianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_gaussian_node_set(s : SignalwindowgaussianNode, i : Int, v 
   result
 }
 
-pub fn signal_window_gaussian_node_sum(s : SignalwindowgaussianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_node_sum(s : SignalwindowgaussianNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_node_mean(s : SignalwindowgaussianNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_node_mean(s : SignalwindowgaussianNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_node_scale(s : SignalwindowgaussianNode, f : Double) -> SignalwindowgaussianNode {
   let result = signal_window_gaussian_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_gaussian_node_fill(s : SignalwindowgaussianNode, v : Double
   result
 }
 
-pub fn signal_window_gaussian_node_min(s : SignalwindowgaussianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_node_min(s : SignalwindowgaussianNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_node_max(s : SignalwindowgaussianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_node_max(s : SignalwindowgaussianNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_node_to_string(s : SignalwindowgaussianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_gaussian_edge_set(s : SignalwindowgaussianEdge, i : Int, v 
   result
 }
 
-pub fn signal_window_gaussian_edge_sum(s : SignalwindowgaussianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_edge_sum(s : SignalwindowgaussianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_edge_mean(s : SignalwindowgaussianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_edge_mean(s : SignalwindowgaussianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_edge_scale(s : SignalwindowgaussianEdge, f : Double) -> SignalwindowgaussianEdge {
   let result = signal_window_gaussian_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_gaussian_edge_fill(s : SignalwindowgaussianEdge, v : Double
   result
 }
 
-pub fn signal_window_gaussian_edge_min(s : SignalwindowgaussianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_edge_min(s : SignalwindowgaussianEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_edge_max(s : SignalwindowgaussianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_edge_max(s : SignalwindowgaussianEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_edge_to_string(s : SignalwindowgaussianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_gaussian_path_set(s : SignalwindowgaussianPath, i : Int, v 
   result
 }
 
-pub fn signal_window_gaussian_path_sum(s : SignalwindowgaussianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_path_sum(s : SignalwindowgaussianPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_path_mean(s : SignalwindowgaussianPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_path_mean(s : SignalwindowgaussianPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_path_scale(s : SignalwindowgaussianPath, f : Double) -> SignalwindowgaussianPath {
   let result = signal_window_gaussian_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_gaussian_path_fill(s : SignalwindowgaussianPath, v : Double
   result
 }
 
-pub fn signal_window_gaussian_path_min(s : SignalwindowgaussianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_path_min(s : SignalwindowgaussianPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_path_max(s : SignalwindowgaussianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_path_max(s : SignalwindowgaussianPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_path_to_string(s : SignalwindowgaussianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_gaussian_cluster_set(s : SignalwindowgaussianCluster, i : I
   result
 }
 
-pub fn signal_window_gaussian_cluster_sum(s : SignalwindowgaussianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_cluster_sum(s : SignalwindowgaussianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_cluster_mean(s : SignalwindowgaussianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_cluster_mean(s : SignalwindowgaussianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_cluster_scale(s : SignalwindowgaussianCluster, f : Double) -> SignalwindowgaussianCluster {
   let result = signal_window_gaussian_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_gaussian_cluster_fill(s : SignalwindowgaussianCluster, v : 
   result
 }
 
-pub fn signal_window_gaussian_cluster_min(s : SignalwindowgaussianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_cluster_min(s : SignalwindowgaussianCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_cluster_max(s : SignalwindowgaussianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_cluster_max(s : SignalwindowgaussianCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_cluster_to_string(s : SignalwindowgaussianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_gaussian_model_set(s : SignalwindowgaussianModel, i : Int, 
   result
 }
 
-pub fn signal_window_gaussian_model_sum(s : SignalwindowgaussianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_model_sum(s : SignalwindowgaussianModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_model_mean(s : SignalwindowgaussianModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_model_mean(s : SignalwindowgaussianModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_model_scale(s : SignalwindowgaussianModel, f : Double) -> SignalwindowgaussianModel {
   let result = signal_window_gaussian_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_gaussian_model_fill(s : SignalwindowgaussianModel, v : Doub
   result
 }
 
-pub fn signal_window_gaussian_model_min(s : SignalwindowgaussianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_model_min(s : SignalwindowgaussianModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_model_max(s : SignalwindowgaussianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_model_max(s : SignalwindowgaussianModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_model_to_string(s : SignalwindowgaussianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_gaussian_layer_set(s : SignalwindowgaussianLayer, i : Int, 
   result
 }
 
-pub fn signal_window_gaussian_layer_sum(s : SignalwindowgaussianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_layer_sum(s : SignalwindowgaussianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_layer_mean(s : SignalwindowgaussianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_layer_mean(s : SignalwindowgaussianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_layer_scale(s : SignalwindowgaussianLayer, f : Double) -> SignalwindowgaussianLayer {
   let result = signal_window_gaussian_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_gaussian_layer_fill(s : SignalwindowgaussianLayer, v : Doub
   result
 }
 
-pub fn signal_window_gaussian_layer_min(s : SignalwindowgaussianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_layer_min(s : SignalwindowgaussianLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_layer_max(s : SignalwindowgaussianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_layer_max(s : SignalwindowgaussianLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_layer_to_string(s : SignalwindowgaussianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_gaussian_buffer_set(s : SignalwindowgaussianBuffer, i : Int
   result
 }
 
-pub fn signal_window_gaussian_buffer_sum(s : SignalwindowgaussianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_buffer_sum(s : SignalwindowgaussianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_buffer_mean(s : SignalwindowgaussianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_buffer_mean(s : SignalwindowgaussianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_buffer_scale(s : SignalwindowgaussianBuffer, f : Double) -> SignalwindowgaussianBuffer {
   let result = signal_window_gaussian_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_gaussian_buffer_fill(s : SignalwindowgaussianBuffer, v : Do
   result
 }
 
-pub fn signal_window_gaussian_buffer_min(s : SignalwindowgaussianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_buffer_min(s : SignalwindowgaussianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_buffer_max(s : SignalwindowgaussianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_buffer_max(s : SignalwindowgaussianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_buffer_to_string(s : SignalwindowgaussianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_gaussian_cursor_set(s : SignalwindowgaussianCursor, i : Int
   result
 }
 
-pub fn signal_window_gaussian_cursor_sum(s : SignalwindowgaussianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_cursor_sum(s : SignalwindowgaussianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_cursor_mean(s : SignalwindowgaussianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_cursor_mean(s : SignalwindowgaussianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_cursor_scale(s : SignalwindowgaussianCursor, f : Double) -> SignalwindowgaussianCursor {
   let result = signal_window_gaussian_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_gaussian_cursor_fill(s : SignalwindowgaussianCursor, v : Do
   result
 }
 
-pub fn signal_window_gaussian_cursor_min(s : SignalwindowgaussianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_cursor_min(s : SignalwindowgaussianCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_cursor_max(s : SignalwindowgaussianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_cursor_max(s : SignalwindowgaussianCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_cursor_to_string(s : SignalwindowgaussianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_gaussian_view_set(s : SignalwindowgaussianView, i : Int, v 
   result
 }
 
-pub fn signal_window_gaussian_view_sum(s : SignalwindowgaussianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_view_sum(s : SignalwindowgaussianView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_view_mean(s : SignalwindowgaussianView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_view_mean(s : SignalwindowgaussianView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_view_scale(s : SignalwindowgaussianView, f : Double) -> SignalwindowgaussianView {
   let result = signal_window_gaussian_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_gaussian_view_fill(s : SignalwindowgaussianView, v : Double
   result
 }
 
-pub fn signal_window_gaussian_view_min(s : SignalwindowgaussianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_view_min(s : SignalwindowgaussianView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_view_max(s : SignalwindowgaussianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_view_max(s : SignalwindowgaussianView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_view_to_string(s : SignalwindowgaussianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_gaussian_range_set(s : SignalwindowgaussianRange, i : Int, 
   result
 }
 
-pub fn signal_window_gaussian_range_sum(s : SignalwindowgaussianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_range_sum(s : SignalwindowgaussianRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_range_mean(s : SignalwindowgaussianRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_range_mean(s : SignalwindowgaussianRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_range_scale(s : SignalwindowgaussianRange, f : Double) -> SignalwindowgaussianRange {
   let result = signal_window_gaussian_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_gaussian_range_fill(s : SignalwindowgaussianRange, v : Doub
   result
 }
 
-pub fn signal_window_gaussian_range_min(s : SignalwindowgaussianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_range_min(s : SignalwindowgaussianRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_range_max(s : SignalwindowgaussianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_range_max(s : SignalwindowgaussianRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_range_to_string(s : SignalwindowgaussianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_gaussian_slice_set(s : SignalwindowgaussianSlice, i : Int, 
   result
 }
 
-pub fn signal_window_gaussian_slice_sum(s : SignalwindowgaussianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_gaussian_slice_sum(s : SignalwindowgaussianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_gaussian_slice_mean(s : SignalwindowgaussianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_gaussian_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_gaussian_slice_mean(s : SignalwindowgaussianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_gaussian_slice_scale(s : SignalwindowgaussianSlice, f : Double) -> SignalwindowgaussianSlice {
   let result = signal_window_gaussian_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_gaussian_slice_fill(s : SignalwindowgaussianSlice, v : Doub
   result
 }
 
-pub fn signal_window_gaussian_slice_min(s : SignalwindowgaussianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_slice_min(s : SignalwindowgaussianSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_gaussian_slice_max(s : SignalwindowgaussianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_gaussian_slice_max(s : SignalwindowgaussianSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_gaussian_slice_to_string(s : SignalwindowgaussianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

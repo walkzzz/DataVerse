@@ -88,11 +88,7 @@ pub fn opt_meta_cmaes_make_series(vals : Array[Double], name : String) -> Optmet
 
 pub fn opt_meta_cmaes_series_len(s : OptmetacmaesSeries) -> Int { s.vals.length() }
 
-pub fn opt_meta_cmaes_series_sum(s : OptmetacmaesSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_meta_cmaes_series_sum(s : OptmetacmaesSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_meta_cmaes_series_mean(s : OptmetacmaesSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_meta_cmaes_frame_set(s : OptmetacmaesFrame, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_cmaes_frame_sum(s : OptmetacmaesFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_frame_sum(s : OptmetacmaesFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_frame_mean(s : OptmetacmaesFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_frame_mean(s : OptmetacmaesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_frame_scale(s : OptmetacmaesFrame, f : Double) -> OptmetacmaesFrame {
   let result = opt_meta_cmaes_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_meta_cmaes_frame_fill(s : OptmetacmaesFrame, v : Double) -> Optmetacm
   result
 }
 
-pub fn opt_meta_cmaes_frame_min(s : OptmetacmaesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_frame_min(s : OptmetacmaesFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_frame_max(s : OptmetacmaesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_frame_max(s : OptmetacmaesFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_frame_to_string(s : OptmetacmaesFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_meta_cmaes_table_set(s : OptmetacmaesTable, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_cmaes_table_sum(s : OptmetacmaesTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_table_sum(s : OptmetacmaesTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_table_mean(s : OptmetacmaesTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_table_mean(s : OptmetacmaesTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_table_scale(s : OptmetacmaesTable, f : Double) -> OptmetacmaesTable {
   let result = opt_meta_cmaes_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_meta_cmaes_table_fill(s : OptmetacmaesTable, v : Double) -> Optmetacm
   result
 }
 
-pub fn opt_meta_cmaes_table_min(s : OptmetacmaesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_table_min(s : OptmetacmaesTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_table_max(s : OptmetacmaesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_table_max(s : OptmetacmaesTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_table_to_string(s : OptmetacmaesTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_meta_cmaes_graphn_set(s : OptmetacmaesGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_cmaes_graphn_sum(s : OptmetacmaesGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_graphn_sum(s : OptmetacmaesGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_graphn_mean(s : OptmetacmaesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_graphn_mean(s : OptmetacmaesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_graphn_scale(s : OptmetacmaesGraphN, f : Double) -> OptmetacmaesGraphN {
   let result = opt_meta_cmaes_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_meta_cmaes_graphn_fill(s : OptmetacmaesGraphN, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_cmaes_graphn_min(s : OptmetacmaesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_graphn_min(s : OptmetacmaesGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_graphn_max(s : OptmetacmaesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_graphn_max(s : OptmetacmaesGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_graphn_to_string(s : OptmetacmaesGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_meta_cmaes_node_set(s : OptmetacmaesNode, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_cmaes_node_sum(s : OptmetacmaesNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_node_sum(s : OptmetacmaesNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_node_mean(s : OptmetacmaesNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_node_mean(s : OptmetacmaesNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_node_scale(s : OptmetacmaesNode, f : Double) -> OptmetacmaesNode {
   let result = opt_meta_cmaes_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_meta_cmaes_node_fill(s : OptmetacmaesNode, v : Double) -> Optmetacmae
   result
 }
 
-pub fn opt_meta_cmaes_node_min(s : OptmetacmaesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_node_min(s : OptmetacmaesNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_node_max(s : OptmetacmaesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_node_max(s : OptmetacmaesNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_node_to_string(s : OptmetacmaesNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_meta_cmaes_edge_set(s : OptmetacmaesEdge, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_cmaes_edge_sum(s : OptmetacmaesEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_edge_sum(s : OptmetacmaesEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_edge_mean(s : OptmetacmaesEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_edge_mean(s : OptmetacmaesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_edge_scale(s : OptmetacmaesEdge, f : Double) -> OptmetacmaesEdge {
   let result = opt_meta_cmaes_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_meta_cmaes_edge_fill(s : OptmetacmaesEdge, v : Double) -> Optmetacmae
   result
 }
 
-pub fn opt_meta_cmaes_edge_min(s : OptmetacmaesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_edge_min(s : OptmetacmaesEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_edge_max(s : OptmetacmaesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_edge_max(s : OptmetacmaesEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_edge_to_string(s : OptmetacmaesEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_meta_cmaes_path_set(s : OptmetacmaesPath, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_cmaes_path_sum(s : OptmetacmaesPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_path_sum(s : OptmetacmaesPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_path_mean(s : OptmetacmaesPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_path_mean(s : OptmetacmaesPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_path_scale(s : OptmetacmaesPath, f : Double) -> OptmetacmaesPath {
   let result = opt_meta_cmaes_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_meta_cmaes_path_fill(s : OptmetacmaesPath, v : Double) -> Optmetacmae
   result
 }
 
-pub fn opt_meta_cmaes_path_min(s : OptmetacmaesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_path_min(s : OptmetacmaesPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_path_max(s : OptmetacmaesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_path_max(s : OptmetacmaesPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_path_to_string(s : OptmetacmaesPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_meta_cmaes_cluster_set(s : OptmetacmaesCluster, i : Int, v : Double) 
   result
 }
 
-pub fn opt_meta_cmaes_cluster_sum(s : OptmetacmaesCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_cluster_sum(s : OptmetacmaesCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_cluster_mean(s : OptmetacmaesCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_cluster_mean(s : OptmetacmaesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_cluster_scale(s : OptmetacmaesCluster, f : Double) -> OptmetacmaesCluster {
   let result = opt_meta_cmaes_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_meta_cmaes_cluster_fill(s : OptmetacmaesCluster, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_cmaes_cluster_min(s : OptmetacmaesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_cluster_min(s : OptmetacmaesCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_cluster_max(s : OptmetacmaesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_cluster_max(s : OptmetacmaesCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_cluster_to_string(s : OptmetacmaesCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_meta_cmaes_model_set(s : OptmetacmaesModel, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_cmaes_model_sum(s : OptmetacmaesModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_model_sum(s : OptmetacmaesModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_model_mean(s : OptmetacmaesModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_model_mean(s : OptmetacmaesModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_model_scale(s : OptmetacmaesModel, f : Double) -> OptmetacmaesModel {
   let result = opt_meta_cmaes_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_meta_cmaes_model_fill(s : OptmetacmaesModel, v : Double) -> Optmetacm
   result
 }
 
-pub fn opt_meta_cmaes_model_min(s : OptmetacmaesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_model_min(s : OptmetacmaesModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_model_max(s : OptmetacmaesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_model_max(s : OptmetacmaesModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_model_to_string(s : OptmetacmaesModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_meta_cmaes_layer_set(s : OptmetacmaesLayer, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_cmaes_layer_sum(s : OptmetacmaesLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_layer_sum(s : OptmetacmaesLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_layer_mean(s : OptmetacmaesLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_layer_mean(s : OptmetacmaesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_layer_scale(s : OptmetacmaesLayer, f : Double) -> OptmetacmaesLayer {
   let result = opt_meta_cmaes_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_meta_cmaes_layer_fill(s : OptmetacmaesLayer, v : Double) -> Optmetacm
   result
 }
 
-pub fn opt_meta_cmaes_layer_min(s : OptmetacmaesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_layer_min(s : OptmetacmaesLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_layer_max(s : OptmetacmaesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_layer_max(s : OptmetacmaesLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_layer_to_string(s : OptmetacmaesLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_meta_cmaes_buffer_set(s : OptmetacmaesBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_cmaes_buffer_sum(s : OptmetacmaesBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_buffer_sum(s : OptmetacmaesBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_buffer_mean(s : OptmetacmaesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_buffer_mean(s : OptmetacmaesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_buffer_scale(s : OptmetacmaesBuffer, f : Double) -> OptmetacmaesBuffer {
   let result = opt_meta_cmaes_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_meta_cmaes_buffer_fill(s : OptmetacmaesBuffer, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_cmaes_buffer_min(s : OptmetacmaesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_buffer_min(s : OptmetacmaesBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_buffer_max(s : OptmetacmaesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_buffer_max(s : OptmetacmaesBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_buffer_to_string(s : OptmetacmaesBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_meta_cmaes_cursor_set(s : OptmetacmaesCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_cmaes_cursor_sum(s : OptmetacmaesCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_cursor_sum(s : OptmetacmaesCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_cursor_mean(s : OptmetacmaesCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_cursor_mean(s : OptmetacmaesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_cursor_scale(s : OptmetacmaesCursor, f : Double) -> OptmetacmaesCursor {
   let result = opt_meta_cmaes_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_meta_cmaes_cursor_fill(s : OptmetacmaesCursor, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_cmaes_cursor_min(s : OptmetacmaesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_cursor_min(s : OptmetacmaesCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_cursor_max(s : OptmetacmaesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_cursor_max(s : OptmetacmaesCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_cursor_to_string(s : OptmetacmaesCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_meta_cmaes_view_set(s : OptmetacmaesView, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_cmaes_view_sum(s : OptmetacmaesView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_view_sum(s : OptmetacmaesView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_view_mean(s : OptmetacmaesView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_view_mean(s : OptmetacmaesView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_view_scale(s : OptmetacmaesView, f : Double) -> OptmetacmaesView {
   let result = opt_meta_cmaes_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_meta_cmaes_view_fill(s : OptmetacmaesView, v : Double) -> Optmetacmae
   result
 }
 
-pub fn opt_meta_cmaes_view_min(s : OptmetacmaesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_view_min(s : OptmetacmaesView) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_view_max(s : OptmetacmaesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_view_max(s : OptmetacmaesView) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_view_to_string(s : OptmetacmaesView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_meta_cmaes_range_set(s : OptmetacmaesRange, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_cmaes_range_sum(s : OptmetacmaesRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_range_sum(s : OptmetacmaesRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_range_mean(s : OptmetacmaesRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_range_mean(s : OptmetacmaesRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_range_scale(s : OptmetacmaesRange, f : Double) -> OptmetacmaesRange {
   let result = opt_meta_cmaes_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_meta_cmaes_range_fill(s : OptmetacmaesRange, v : Double) -> Optmetacm
   result
 }
 
-pub fn opt_meta_cmaes_range_min(s : OptmetacmaesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_range_min(s : OptmetacmaesRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_range_max(s : OptmetacmaesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_range_max(s : OptmetacmaesRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_range_to_string(s : OptmetacmaesRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_meta_cmaes_slice_set(s : OptmetacmaesSlice, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_cmaes_slice_sum(s : OptmetacmaesSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_cmaes_slice_sum(s : OptmetacmaesSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_cmaes_slice_mean(s : OptmetacmaesSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_cmaes_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_cmaes_slice_mean(s : OptmetacmaesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_cmaes_slice_scale(s : OptmetacmaesSlice, f : Double) -> OptmetacmaesSlice {
   let result = opt_meta_cmaes_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_meta_cmaes_slice_fill(s : OptmetacmaesSlice, v : Double) -> Optmetacm
   result
 }
 
-pub fn opt_meta_cmaes_slice_min(s : OptmetacmaesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_slice_min(s : OptmetacmaesSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_cmaes_slice_max(s : OptmetacmaesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_cmaes_slice_max(s : OptmetacmaesSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_cmaes_slice_to_string(s : OptmetacmaesSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_metric_fairness_make_series(vals : Array[Double], name : String) -> Ml
 
 pub fn ml_metric_fairness_series_len(s : MlmetricfairnessSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_fairness_series_sum(s : MlmetricfairnessSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_fairness_series_sum(s : MlmetricfairnessSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_fairness_series_mean(s : MlmetricfairnessSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_fairness_frame_set(s : MlmetricfairnessFrame, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_fairness_frame_sum(s : MlmetricfairnessFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_frame_sum(s : MlmetricfairnessFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_frame_mean(s : MlmetricfairnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_frame_mean(s : MlmetricfairnessFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_frame_scale(s : MlmetricfairnessFrame, f : Double) -> MlmetricfairnessFrame {
   let result = ml_metric_fairness_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_fairness_frame_fill(s : MlmetricfairnessFrame, v : Double) -> M
   result
 }
 
-pub fn ml_metric_fairness_frame_min(s : MlmetricfairnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_frame_min(s : MlmetricfairnessFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_frame_max(s : MlmetricfairnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_frame_max(s : MlmetricfairnessFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_frame_to_string(s : MlmetricfairnessFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_fairness_table_set(s : MlmetricfairnessTable, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_fairness_table_sum(s : MlmetricfairnessTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_table_sum(s : MlmetricfairnessTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_table_mean(s : MlmetricfairnessTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_table_mean(s : MlmetricfairnessTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_table_scale(s : MlmetricfairnessTable, f : Double) -> MlmetricfairnessTable {
   let result = ml_metric_fairness_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_fairness_table_fill(s : MlmetricfairnessTable, v : Double) -> M
   result
 }
 
-pub fn ml_metric_fairness_table_min(s : MlmetricfairnessTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_table_min(s : MlmetricfairnessTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_table_max(s : MlmetricfairnessTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_table_max(s : MlmetricfairnessTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_table_to_string(s : MlmetricfairnessTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_fairness_graphn_set(s : MlmetricfairnessGraphN, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_fairness_graphn_sum(s : MlmetricfairnessGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_graphn_sum(s : MlmetricfairnessGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_graphn_mean(s : MlmetricfairnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_graphn_mean(s : MlmetricfairnessGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_graphn_scale(s : MlmetricfairnessGraphN, f : Double) -> MlmetricfairnessGraphN {
   let result = ml_metric_fairness_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_fairness_graphn_fill(s : MlmetricfairnessGraphN, v : Double) ->
   result
 }
 
-pub fn ml_metric_fairness_graphn_min(s : MlmetricfairnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_graphn_min(s : MlmetricfairnessGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_graphn_max(s : MlmetricfairnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_graphn_max(s : MlmetricfairnessGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_graphn_to_string(s : MlmetricfairnessGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_fairness_node_set(s : MlmetricfairnessNode, i : Int, v : Double
   result
 }
 
-pub fn ml_metric_fairness_node_sum(s : MlmetricfairnessNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_node_sum(s : MlmetricfairnessNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_node_mean(s : MlmetricfairnessNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_node_mean(s : MlmetricfairnessNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_node_scale(s : MlmetricfairnessNode, f : Double) -> MlmetricfairnessNode {
   let result = ml_metric_fairness_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_fairness_node_fill(s : MlmetricfairnessNode, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_fairness_node_min(s : MlmetricfairnessNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_node_min(s : MlmetricfairnessNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_node_max(s : MlmetricfairnessNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_node_max(s : MlmetricfairnessNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_node_to_string(s : MlmetricfairnessNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_fairness_edge_set(s : MlmetricfairnessEdge, i : Int, v : Double
   result
 }
 
-pub fn ml_metric_fairness_edge_sum(s : MlmetricfairnessEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_edge_sum(s : MlmetricfairnessEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_edge_mean(s : MlmetricfairnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_edge_mean(s : MlmetricfairnessEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_edge_scale(s : MlmetricfairnessEdge, f : Double) -> MlmetricfairnessEdge {
   let result = ml_metric_fairness_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_fairness_edge_fill(s : MlmetricfairnessEdge, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_fairness_edge_min(s : MlmetricfairnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_edge_min(s : MlmetricfairnessEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_edge_max(s : MlmetricfairnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_edge_max(s : MlmetricfairnessEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_edge_to_string(s : MlmetricfairnessEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_fairness_path_set(s : MlmetricfairnessPath, i : Int, v : Double
   result
 }
 
-pub fn ml_metric_fairness_path_sum(s : MlmetricfairnessPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_path_sum(s : MlmetricfairnessPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_path_mean(s : MlmetricfairnessPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_path_mean(s : MlmetricfairnessPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_path_scale(s : MlmetricfairnessPath, f : Double) -> MlmetricfairnessPath {
   let result = ml_metric_fairness_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_fairness_path_fill(s : MlmetricfairnessPath, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_fairness_path_min(s : MlmetricfairnessPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_path_min(s : MlmetricfairnessPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_path_max(s : MlmetricfairnessPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_path_max(s : MlmetricfairnessPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_path_to_string(s : MlmetricfairnessPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_fairness_cluster_set(s : MlmetricfairnessCluster, i : Int, v : 
   result
 }
 
-pub fn ml_metric_fairness_cluster_sum(s : MlmetricfairnessCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_cluster_sum(s : MlmetricfairnessCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_cluster_mean(s : MlmetricfairnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_cluster_mean(s : MlmetricfairnessCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_cluster_scale(s : MlmetricfairnessCluster, f : Double) -> MlmetricfairnessCluster {
   let result = ml_metric_fairness_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_fairness_cluster_fill(s : MlmetricfairnessCluster, v : Double) 
   result
 }
 
-pub fn ml_metric_fairness_cluster_min(s : MlmetricfairnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_cluster_min(s : MlmetricfairnessCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_cluster_max(s : MlmetricfairnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_cluster_max(s : MlmetricfairnessCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_cluster_to_string(s : MlmetricfairnessCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_fairness_model_set(s : MlmetricfairnessModel, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_fairness_model_sum(s : MlmetricfairnessModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_model_sum(s : MlmetricfairnessModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_model_mean(s : MlmetricfairnessModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_model_mean(s : MlmetricfairnessModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_model_scale(s : MlmetricfairnessModel, f : Double) -> MlmetricfairnessModel {
   let result = ml_metric_fairness_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_fairness_model_fill(s : MlmetricfairnessModel, v : Double) -> M
   result
 }
 
-pub fn ml_metric_fairness_model_min(s : MlmetricfairnessModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_model_min(s : MlmetricfairnessModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_model_max(s : MlmetricfairnessModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_model_max(s : MlmetricfairnessModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_model_to_string(s : MlmetricfairnessModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_fairness_layer_set(s : MlmetricfairnessLayer, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_fairness_layer_sum(s : MlmetricfairnessLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_layer_sum(s : MlmetricfairnessLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_layer_mean(s : MlmetricfairnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_layer_mean(s : MlmetricfairnessLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_layer_scale(s : MlmetricfairnessLayer, f : Double) -> MlmetricfairnessLayer {
   let result = ml_metric_fairness_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_fairness_layer_fill(s : MlmetricfairnessLayer, v : Double) -> M
   result
 }
 
-pub fn ml_metric_fairness_layer_min(s : MlmetricfairnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_layer_min(s : MlmetricfairnessLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_layer_max(s : MlmetricfairnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_layer_max(s : MlmetricfairnessLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_layer_to_string(s : MlmetricfairnessLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_fairness_buffer_set(s : MlmetricfairnessBuffer, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_fairness_buffer_sum(s : MlmetricfairnessBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_buffer_sum(s : MlmetricfairnessBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_buffer_mean(s : MlmetricfairnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_buffer_mean(s : MlmetricfairnessBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_buffer_scale(s : MlmetricfairnessBuffer, f : Double) -> MlmetricfairnessBuffer {
   let result = ml_metric_fairness_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_fairness_buffer_fill(s : MlmetricfairnessBuffer, v : Double) ->
   result
 }
 
-pub fn ml_metric_fairness_buffer_min(s : MlmetricfairnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_buffer_min(s : MlmetricfairnessBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_buffer_max(s : MlmetricfairnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_buffer_max(s : MlmetricfairnessBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_buffer_to_string(s : MlmetricfairnessBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_fairness_cursor_set(s : MlmetricfairnessCursor, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_fairness_cursor_sum(s : MlmetricfairnessCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_cursor_sum(s : MlmetricfairnessCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_cursor_mean(s : MlmetricfairnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_cursor_mean(s : MlmetricfairnessCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_cursor_scale(s : MlmetricfairnessCursor, f : Double) -> MlmetricfairnessCursor {
   let result = ml_metric_fairness_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_fairness_cursor_fill(s : MlmetricfairnessCursor, v : Double) ->
   result
 }
 
-pub fn ml_metric_fairness_cursor_min(s : MlmetricfairnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_cursor_min(s : MlmetricfairnessCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_cursor_max(s : MlmetricfairnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_cursor_max(s : MlmetricfairnessCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_cursor_to_string(s : MlmetricfairnessCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_fairness_view_set(s : MlmetricfairnessView, i : Int, v : Double
   result
 }
 
-pub fn ml_metric_fairness_view_sum(s : MlmetricfairnessView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_view_sum(s : MlmetricfairnessView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_view_mean(s : MlmetricfairnessView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_view_mean(s : MlmetricfairnessView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_view_scale(s : MlmetricfairnessView, f : Double) -> MlmetricfairnessView {
   let result = ml_metric_fairness_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_fairness_view_fill(s : MlmetricfairnessView, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_fairness_view_min(s : MlmetricfairnessView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_view_min(s : MlmetricfairnessView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_view_max(s : MlmetricfairnessView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_view_max(s : MlmetricfairnessView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_view_to_string(s : MlmetricfairnessView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_fairness_range_set(s : MlmetricfairnessRange, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_fairness_range_sum(s : MlmetricfairnessRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_range_sum(s : MlmetricfairnessRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_range_mean(s : MlmetricfairnessRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_range_mean(s : MlmetricfairnessRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_range_scale(s : MlmetricfairnessRange, f : Double) -> MlmetricfairnessRange {
   let result = ml_metric_fairness_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_fairness_range_fill(s : MlmetricfairnessRange, v : Double) -> M
   result
 }
 
-pub fn ml_metric_fairness_range_min(s : MlmetricfairnessRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_range_min(s : MlmetricfairnessRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_range_max(s : MlmetricfairnessRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_range_max(s : MlmetricfairnessRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_range_to_string(s : MlmetricfairnessRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_fairness_slice_set(s : MlmetricfairnessSlice, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_fairness_slice_sum(s : MlmetricfairnessSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_fairness_slice_sum(s : MlmetricfairnessSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_fairness_slice_mean(s : MlmetricfairnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_fairness_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_fairness_slice_mean(s : MlmetricfairnessSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_fairness_slice_scale(s : MlmetricfairnessSlice, f : Double) -> MlmetricfairnessSlice {
   let result = ml_metric_fairness_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_fairness_slice_fill(s : MlmetricfairnessSlice, v : Double) -> M
   result
 }
 
-pub fn ml_metric_fairness_slice_min(s : MlmetricfairnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_slice_min(s : MlmetricfairnessSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_fairness_slice_max(s : MlmetricfairnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_fairness_slice_max(s : MlmetricfairnessSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_fairness_slice_to_string(s : MlmetricfairnessSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

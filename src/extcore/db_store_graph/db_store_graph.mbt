@@ -88,11 +88,7 @@ pub fn db_store_graph_make_series(vals : Array[Double], name : String) -> Dbstor
 
 pub fn db_store_graph_series_len(s : DbstoregraphSeries) -> Int { s.vals.length() }
 
-pub fn db_store_graph_series_sum(s : DbstoregraphSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_graph_series_sum(s : DbstoregraphSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_graph_series_mean(s : DbstoregraphSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_graph_frame_set(s : DbstoregraphFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_graph_frame_sum(s : DbstoregraphFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_frame_sum(s : DbstoregraphFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_frame_mean(s : DbstoregraphFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_frame_mean(s : DbstoregraphFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_frame_scale(s : DbstoregraphFrame, f : Double) -> DbstoregraphFrame {
   let result = db_store_graph_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_graph_frame_fill(s : DbstoregraphFrame, v : Double) -> Dbstoregr
   result
 }
 
-pub fn db_store_graph_frame_min(s : DbstoregraphFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_frame_min(s : DbstoregraphFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_frame_max(s : DbstoregraphFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_frame_max(s : DbstoregraphFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_frame_to_string(s : DbstoregraphFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_graph_table_set(s : DbstoregraphTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_graph_table_sum(s : DbstoregraphTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_table_sum(s : DbstoregraphTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_table_mean(s : DbstoregraphTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_table_mean(s : DbstoregraphTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_table_scale(s : DbstoregraphTable, f : Double) -> DbstoregraphTable {
   let result = db_store_graph_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_graph_table_fill(s : DbstoregraphTable, v : Double) -> Dbstoregr
   result
 }
 
-pub fn db_store_graph_table_min(s : DbstoregraphTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_table_min(s : DbstoregraphTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_table_max(s : DbstoregraphTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_table_max(s : DbstoregraphTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_table_to_string(s : DbstoregraphTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_graph_graphn_set(s : DbstoregraphGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_graph_graphn_sum(s : DbstoregraphGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_graphn_sum(s : DbstoregraphGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_graphn_mean(s : DbstoregraphGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_graphn_mean(s : DbstoregraphGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_graphn_scale(s : DbstoregraphGraphN, f : Double) -> DbstoregraphGraphN {
   let result = db_store_graph_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_graph_graphn_fill(s : DbstoregraphGraphN, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_graph_graphn_min(s : DbstoregraphGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_graphn_min(s : DbstoregraphGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_graphn_max(s : DbstoregraphGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_graphn_max(s : DbstoregraphGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_graphn_to_string(s : DbstoregraphGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_graph_node_set(s : DbstoregraphNode, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_graph_node_sum(s : DbstoregraphNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_node_sum(s : DbstoregraphNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_node_mean(s : DbstoregraphNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_node_mean(s : DbstoregraphNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_node_scale(s : DbstoregraphNode, f : Double) -> DbstoregraphNode {
   let result = db_store_graph_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_graph_node_fill(s : DbstoregraphNode, v : Double) -> Dbstoregrap
   result
 }
 
-pub fn db_store_graph_node_min(s : DbstoregraphNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_node_min(s : DbstoregraphNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_node_max(s : DbstoregraphNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_node_max(s : DbstoregraphNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_node_to_string(s : DbstoregraphNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_graph_edge_set(s : DbstoregraphEdge, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_graph_edge_sum(s : DbstoregraphEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_edge_sum(s : DbstoregraphEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_edge_mean(s : DbstoregraphEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_edge_mean(s : DbstoregraphEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_edge_scale(s : DbstoregraphEdge, f : Double) -> DbstoregraphEdge {
   let result = db_store_graph_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_graph_edge_fill(s : DbstoregraphEdge, v : Double) -> Dbstoregrap
   result
 }
 
-pub fn db_store_graph_edge_min(s : DbstoregraphEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_edge_min(s : DbstoregraphEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_edge_max(s : DbstoregraphEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_edge_max(s : DbstoregraphEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_edge_to_string(s : DbstoregraphEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_graph_path_set(s : DbstoregraphPath, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_graph_path_sum(s : DbstoregraphPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_path_sum(s : DbstoregraphPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_path_mean(s : DbstoregraphPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_path_mean(s : DbstoregraphPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_path_scale(s : DbstoregraphPath, f : Double) -> DbstoregraphPath {
   let result = db_store_graph_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_graph_path_fill(s : DbstoregraphPath, v : Double) -> Dbstoregrap
   result
 }
 
-pub fn db_store_graph_path_min(s : DbstoregraphPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_path_min(s : DbstoregraphPath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_path_max(s : DbstoregraphPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_path_max(s : DbstoregraphPath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_path_to_string(s : DbstoregraphPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_graph_cluster_set(s : DbstoregraphCluster, i : Int, v : Double) 
   result
 }
 
-pub fn db_store_graph_cluster_sum(s : DbstoregraphCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_cluster_sum(s : DbstoregraphCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_cluster_mean(s : DbstoregraphCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_cluster_mean(s : DbstoregraphCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_cluster_scale(s : DbstoregraphCluster, f : Double) -> DbstoregraphCluster {
   let result = db_store_graph_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_graph_cluster_fill(s : DbstoregraphCluster, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_graph_cluster_min(s : DbstoregraphCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_cluster_min(s : DbstoregraphCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_cluster_max(s : DbstoregraphCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_cluster_max(s : DbstoregraphCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_cluster_to_string(s : DbstoregraphCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_graph_model_set(s : DbstoregraphModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_graph_model_sum(s : DbstoregraphModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_model_sum(s : DbstoregraphModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_model_mean(s : DbstoregraphModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_model_mean(s : DbstoregraphModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_model_scale(s : DbstoregraphModel, f : Double) -> DbstoregraphModel {
   let result = db_store_graph_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_graph_model_fill(s : DbstoregraphModel, v : Double) -> Dbstoregr
   result
 }
 
-pub fn db_store_graph_model_min(s : DbstoregraphModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_model_min(s : DbstoregraphModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_model_max(s : DbstoregraphModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_model_max(s : DbstoregraphModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_model_to_string(s : DbstoregraphModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_graph_layer_set(s : DbstoregraphLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_graph_layer_sum(s : DbstoregraphLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_layer_sum(s : DbstoregraphLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_layer_mean(s : DbstoregraphLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_layer_mean(s : DbstoregraphLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_layer_scale(s : DbstoregraphLayer, f : Double) -> DbstoregraphLayer {
   let result = db_store_graph_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_graph_layer_fill(s : DbstoregraphLayer, v : Double) -> Dbstoregr
   result
 }
 
-pub fn db_store_graph_layer_min(s : DbstoregraphLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_layer_min(s : DbstoregraphLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_layer_max(s : DbstoregraphLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_layer_max(s : DbstoregraphLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_layer_to_string(s : DbstoregraphLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_graph_buffer_set(s : DbstoregraphBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_graph_buffer_sum(s : DbstoregraphBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_buffer_sum(s : DbstoregraphBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_buffer_mean(s : DbstoregraphBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_buffer_mean(s : DbstoregraphBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_buffer_scale(s : DbstoregraphBuffer, f : Double) -> DbstoregraphBuffer {
   let result = db_store_graph_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_graph_buffer_fill(s : DbstoregraphBuffer, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_graph_buffer_min(s : DbstoregraphBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_buffer_min(s : DbstoregraphBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_buffer_max(s : DbstoregraphBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_buffer_max(s : DbstoregraphBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_buffer_to_string(s : DbstoregraphBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_graph_cursor_set(s : DbstoregraphCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn db_store_graph_cursor_sum(s : DbstoregraphCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_cursor_sum(s : DbstoregraphCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_cursor_mean(s : DbstoregraphCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_cursor_mean(s : DbstoregraphCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_cursor_scale(s : DbstoregraphCursor, f : Double) -> DbstoregraphCursor {
   let result = db_store_graph_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_graph_cursor_fill(s : DbstoregraphCursor, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_graph_cursor_min(s : DbstoregraphCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_cursor_min(s : DbstoregraphCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_cursor_max(s : DbstoregraphCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_cursor_max(s : DbstoregraphCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_cursor_to_string(s : DbstoregraphCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_graph_view_set(s : DbstoregraphView, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_graph_view_sum(s : DbstoregraphView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_view_sum(s : DbstoregraphView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_view_mean(s : DbstoregraphView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_view_mean(s : DbstoregraphView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_view_scale(s : DbstoregraphView, f : Double) -> DbstoregraphView {
   let result = db_store_graph_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_graph_view_fill(s : DbstoregraphView, v : Double) -> Dbstoregrap
   result
 }
 
-pub fn db_store_graph_view_min(s : DbstoregraphView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_view_min(s : DbstoregraphView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_view_max(s : DbstoregraphView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_view_max(s : DbstoregraphView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_view_to_string(s : DbstoregraphView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_graph_range_set(s : DbstoregraphRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_graph_range_sum(s : DbstoregraphRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_range_sum(s : DbstoregraphRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_range_mean(s : DbstoregraphRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_range_mean(s : DbstoregraphRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_range_scale(s : DbstoregraphRange, f : Double) -> DbstoregraphRange {
   let result = db_store_graph_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_graph_range_fill(s : DbstoregraphRange, v : Double) -> Dbstoregr
   result
 }
 
-pub fn db_store_graph_range_min(s : DbstoregraphRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_range_min(s : DbstoregraphRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_range_max(s : DbstoregraphRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_range_max(s : DbstoregraphRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_range_to_string(s : DbstoregraphRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_graph_slice_set(s : DbstoregraphSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_graph_slice_sum(s : DbstoregraphSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_graph_slice_sum(s : DbstoregraphSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_graph_slice_mean(s : DbstoregraphSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_graph_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_graph_slice_mean(s : DbstoregraphSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_graph_slice_scale(s : DbstoregraphSlice, f : Double) -> DbstoregraphSlice {
   let result = db_store_graph_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_graph_slice_fill(s : DbstoregraphSlice, v : Double) -> Dbstoregr
   result
 }
 
-pub fn db_store_graph_slice_min(s : DbstoregraphSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_slice_min(s : DbstoregraphSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_graph_slice_max(s : DbstoregraphSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_graph_slice_max(s : DbstoregraphSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_graph_slice_to_string(s : DbstoregraphSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

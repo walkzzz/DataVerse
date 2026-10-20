@@ -88,11 +88,7 @@ pub fn ml_classify_qda_make_series(vals : Array[Double], name : String) -> Mlcla
 
 pub fn ml_classify_qda_series_len(s : MlclassifyqdaSeries) -> Int { s.vals.length() }
 
-pub fn ml_classify_qda_series_sum(s : MlclassifyqdaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_classify_qda_series_sum(s : MlclassifyqdaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_classify_qda_series_mean(s : MlclassifyqdaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_classify_qda_frame_set(s : MlclassifyqdaFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_qda_frame_sum(s : MlclassifyqdaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_frame_sum(s : MlclassifyqdaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_frame_mean(s : MlclassifyqdaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_frame_mean(s : MlclassifyqdaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_frame_scale(s : MlclassifyqdaFrame, f : Double) -> MlclassifyqdaFrame {
   let result = ml_classify_qda_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_classify_qda_frame_fill(s : MlclassifyqdaFrame, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_qda_frame_min(s : MlclassifyqdaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_frame_min(s : MlclassifyqdaFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_frame_max(s : MlclassifyqdaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_frame_max(s : MlclassifyqdaFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_frame_to_string(s : MlclassifyqdaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_classify_qda_table_set(s : MlclassifyqdaTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_qda_table_sum(s : MlclassifyqdaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_table_sum(s : MlclassifyqdaTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_table_mean(s : MlclassifyqdaTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_table_mean(s : MlclassifyqdaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_table_scale(s : MlclassifyqdaTable, f : Double) -> MlclassifyqdaTable {
   let result = ml_classify_qda_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_classify_qda_table_fill(s : MlclassifyqdaTable, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_qda_table_min(s : MlclassifyqdaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_table_min(s : MlclassifyqdaTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_table_max(s : MlclassifyqdaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_table_max(s : MlclassifyqdaTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_table_to_string(s : MlclassifyqdaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_classify_qda_graphn_set(s : MlclassifyqdaGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_qda_graphn_sum(s : MlclassifyqdaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_graphn_sum(s : MlclassifyqdaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_graphn_mean(s : MlclassifyqdaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_graphn_mean(s : MlclassifyqdaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_graphn_scale(s : MlclassifyqdaGraphN, f : Double) -> MlclassifyqdaGraphN {
   let result = ml_classify_qda_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_classify_qda_graphn_fill(s : MlclassifyqdaGraphN, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_qda_graphn_min(s : MlclassifyqdaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_graphn_min(s : MlclassifyqdaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_graphn_max(s : MlclassifyqdaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_graphn_max(s : MlclassifyqdaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_graphn_to_string(s : MlclassifyqdaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_classify_qda_node_set(s : MlclassifyqdaNode, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_qda_node_sum(s : MlclassifyqdaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_node_sum(s : MlclassifyqdaNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_node_mean(s : MlclassifyqdaNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_node_mean(s : MlclassifyqdaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_node_scale(s : MlclassifyqdaNode, f : Double) -> MlclassifyqdaNode {
   let result = ml_classify_qda_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_classify_qda_node_fill(s : MlclassifyqdaNode, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_qda_node_min(s : MlclassifyqdaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_node_min(s : MlclassifyqdaNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_node_max(s : MlclassifyqdaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_node_max(s : MlclassifyqdaNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_node_to_string(s : MlclassifyqdaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_classify_qda_edge_set(s : MlclassifyqdaEdge, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_qda_edge_sum(s : MlclassifyqdaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_edge_sum(s : MlclassifyqdaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_edge_mean(s : MlclassifyqdaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_edge_mean(s : MlclassifyqdaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_edge_scale(s : MlclassifyqdaEdge, f : Double) -> MlclassifyqdaEdge {
   let result = ml_classify_qda_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_classify_qda_edge_fill(s : MlclassifyqdaEdge, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_qda_edge_min(s : MlclassifyqdaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_edge_min(s : MlclassifyqdaEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_edge_max(s : MlclassifyqdaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_edge_max(s : MlclassifyqdaEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_edge_to_string(s : MlclassifyqdaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_classify_qda_path_set(s : MlclassifyqdaPath, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_qda_path_sum(s : MlclassifyqdaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_path_sum(s : MlclassifyqdaPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_path_mean(s : MlclassifyqdaPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_path_mean(s : MlclassifyqdaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_path_scale(s : MlclassifyqdaPath, f : Double) -> MlclassifyqdaPath {
   let result = ml_classify_qda_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_classify_qda_path_fill(s : MlclassifyqdaPath, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_qda_path_min(s : MlclassifyqdaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_path_min(s : MlclassifyqdaPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_path_max(s : MlclassifyqdaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_path_max(s : MlclassifyqdaPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_path_to_string(s : MlclassifyqdaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_classify_qda_cluster_set(s : MlclassifyqdaCluster, i : Int, v : Double
   result
 }
 
-pub fn ml_classify_qda_cluster_sum(s : MlclassifyqdaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_cluster_sum(s : MlclassifyqdaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_cluster_mean(s : MlclassifyqdaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_cluster_mean(s : MlclassifyqdaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_cluster_scale(s : MlclassifyqdaCluster, f : Double) -> MlclassifyqdaCluster {
   let result = ml_classify_qda_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_classify_qda_cluster_fill(s : MlclassifyqdaCluster, v : Double) -> Mlc
   result
 }
 
-pub fn ml_classify_qda_cluster_min(s : MlclassifyqdaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_cluster_min(s : MlclassifyqdaCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_cluster_max(s : MlclassifyqdaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_cluster_max(s : MlclassifyqdaCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_cluster_to_string(s : MlclassifyqdaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_classify_qda_model_set(s : MlclassifyqdaModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_qda_model_sum(s : MlclassifyqdaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_model_sum(s : MlclassifyqdaModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_model_mean(s : MlclassifyqdaModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_model_mean(s : MlclassifyqdaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_model_scale(s : MlclassifyqdaModel, f : Double) -> MlclassifyqdaModel {
   let result = ml_classify_qda_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_classify_qda_model_fill(s : MlclassifyqdaModel, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_qda_model_min(s : MlclassifyqdaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_model_min(s : MlclassifyqdaModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_model_max(s : MlclassifyqdaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_model_max(s : MlclassifyqdaModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_model_to_string(s : MlclassifyqdaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_classify_qda_layer_set(s : MlclassifyqdaLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_qda_layer_sum(s : MlclassifyqdaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_layer_sum(s : MlclassifyqdaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_layer_mean(s : MlclassifyqdaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_layer_mean(s : MlclassifyqdaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_layer_scale(s : MlclassifyqdaLayer, f : Double) -> MlclassifyqdaLayer {
   let result = ml_classify_qda_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_classify_qda_layer_fill(s : MlclassifyqdaLayer, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_qda_layer_min(s : MlclassifyqdaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_layer_min(s : MlclassifyqdaLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_layer_max(s : MlclassifyqdaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_layer_max(s : MlclassifyqdaLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_layer_to_string(s : MlclassifyqdaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_classify_qda_buffer_set(s : MlclassifyqdaBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_qda_buffer_sum(s : MlclassifyqdaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_buffer_sum(s : MlclassifyqdaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_buffer_mean(s : MlclassifyqdaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_buffer_mean(s : MlclassifyqdaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_buffer_scale(s : MlclassifyqdaBuffer, f : Double) -> MlclassifyqdaBuffer {
   let result = ml_classify_qda_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_classify_qda_buffer_fill(s : MlclassifyqdaBuffer, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_qda_buffer_min(s : MlclassifyqdaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_buffer_min(s : MlclassifyqdaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_buffer_max(s : MlclassifyqdaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_buffer_max(s : MlclassifyqdaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_buffer_to_string(s : MlclassifyqdaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_classify_qda_cursor_set(s : MlclassifyqdaCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_qda_cursor_sum(s : MlclassifyqdaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_cursor_sum(s : MlclassifyqdaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_cursor_mean(s : MlclassifyqdaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_cursor_mean(s : MlclassifyqdaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_cursor_scale(s : MlclassifyqdaCursor, f : Double) -> MlclassifyqdaCursor {
   let result = ml_classify_qda_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_classify_qda_cursor_fill(s : MlclassifyqdaCursor, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_qda_cursor_min(s : MlclassifyqdaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_cursor_min(s : MlclassifyqdaCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_cursor_max(s : MlclassifyqdaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_cursor_max(s : MlclassifyqdaCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_cursor_to_string(s : MlclassifyqdaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_classify_qda_view_set(s : MlclassifyqdaView, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_qda_view_sum(s : MlclassifyqdaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_view_sum(s : MlclassifyqdaView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_view_mean(s : MlclassifyqdaView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_view_mean(s : MlclassifyqdaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_view_scale(s : MlclassifyqdaView, f : Double) -> MlclassifyqdaView {
   let result = ml_classify_qda_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_classify_qda_view_fill(s : MlclassifyqdaView, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_qda_view_min(s : MlclassifyqdaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_view_min(s : MlclassifyqdaView) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_view_max(s : MlclassifyqdaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_view_max(s : MlclassifyqdaView) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_view_to_string(s : MlclassifyqdaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_classify_qda_range_set(s : MlclassifyqdaRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_qda_range_sum(s : MlclassifyqdaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_range_sum(s : MlclassifyqdaRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_range_mean(s : MlclassifyqdaRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_range_mean(s : MlclassifyqdaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_range_scale(s : MlclassifyqdaRange, f : Double) -> MlclassifyqdaRange {
   let result = ml_classify_qda_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_classify_qda_range_fill(s : MlclassifyqdaRange, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_qda_range_min(s : MlclassifyqdaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_range_min(s : MlclassifyqdaRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_range_max(s : MlclassifyqdaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_range_max(s : MlclassifyqdaRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_range_to_string(s : MlclassifyqdaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_classify_qda_slice_set(s : MlclassifyqdaSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_qda_slice_sum(s : MlclassifyqdaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_qda_slice_sum(s : MlclassifyqdaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_qda_slice_mean(s : MlclassifyqdaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_qda_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_qda_slice_mean(s : MlclassifyqdaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_qda_slice_scale(s : MlclassifyqdaSlice, f : Double) -> MlclassifyqdaSlice {
   let result = ml_classify_qda_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_classify_qda_slice_fill(s : MlclassifyqdaSlice, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_qda_slice_min(s : MlclassifyqdaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_slice_min(s : MlclassifyqdaSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_qda_slice_max(s : MlclassifyqdaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_qda_slice_max(s : MlclassifyqdaSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_qda_slice_to_string(s : MlclassifyqdaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

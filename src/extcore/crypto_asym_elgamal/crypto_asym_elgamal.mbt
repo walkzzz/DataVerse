@@ -88,11 +88,7 @@ pub fn crypto_asym_elgamal_make_series(vals : Array[Double], name : String) -> C
 
 pub fn crypto_asym_elgamal_series_len(s : CryptoasymelgamalSeries) -> Int { s.vals.length() }
 
-pub fn crypto_asym_elgamal_series_sum(s : CryptoasymelgamalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_asym_elgamal_series_sum(s : CryptoasymelgamalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_asym_elgamal_series_mean(s : CryptoasymelgamalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_asym_elgamal_frame_set(s : CryptoasymelgamalFrame, i : Int, v : Do
   result
 }
 
-pub fn crypto_asym_elgamal_frame_sum(s : CryptoasymelgamalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_frame_sum(s : CryptoasymelgamalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_frame_mean(s : CryptoasymelgamalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_frame_mean(s : CryptoasymelgamalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_frame_scale(s : CryptoasymelgamalFrame, f : Double) -> CryptoasymelgamalFrame {
   let result = crypto_asym_elgamal_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_asym_elgamal_frame_fill(s : CryptoasymelgamalFrame, v : Double) ->
   result
 }
 
-pub fn crypto_asym_elgamal_frame_min(s : CryptoasymelgamalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_frame_min(s : CryptoasymelgamalFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_frame_max(s : CryptoasymelgamalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_frame_max(s : CryptoasymelgamalFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_frame_to_string(s : CryptoasymelgamalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_asym_elgamal_table_set(s : CryptoasymelgamalTable, i : Int, v : Do
   result
 }
 
-pub fn crypto_asym_elgamal_table_sum(s : CryptoasymelgamalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_table_sum(s : CryptoasymelgamalTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_table_mean(s : CryptoasymelgamalTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_table_mean(s : CryptoasymelgamalTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_table_scale(s : CryptoasymelgamalTable, f : Double) -> CryptoasymelgamalTable {
   let result = crypto_asym_elgamal_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_asym_elgamal_table_fill(s : CryptoasymelgamalTable, v : Double) ->
   result
 }
 
-pub fn crypto_asym_elgamal_table_min(s : CryptoasymelgamalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_table_min(s : CryptoasymelgamalTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_table_max(s : CryptoasymelgamalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_table_max(s : CryptoasymelgamalTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_table_to_string(s : CryptoasymelgamalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_asym_elgamal_graphn_set(s : CryptoasymelgamalGraphN, i : Int, v : 
   result
 }
 
-pub fn crypto_asym_elgamal_graphn_sum(s : CryptoasymelgamalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_graphn_sum(s : CryptoasymelgamalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_graphn_mean(s : CryptoasymelgamalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_graphn_mean(s : CryptoasymelgamalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_graphn_scale(s : CryptoasymelgamalGraphN, f : Double) -> CryptoasymelgamalGraphN {
   let result = crypto_asym_elgamal_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_asym_elgamal_graphn_fill(s : CryptoasymelgamalGraphN, v : Double) 
   result
 }
 
-pub fn crypto_asym_elgamal_graphn_min(s : CryptoasymelgamalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_graphn_min(s : CryptoasymelgamalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_graphn_max(s : CryptoasymelgamalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_graphn_max(s : CryptoasymelgamalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_graphn_to_string(s : CryptoasymelgamalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_asym_elgamal_node_set(s : CryptoasymelgamalNode, i : Int, v : Doub
   result
 }
 
-pub fn crypto_asym_elgamal_node_sum(s : CryptoasymelgamalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_node_sum(s : CryptoasymelgamalNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_node_mean(s : CryptoasymelgamalNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_node_mean(s : CryptoasymelgamalNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_node_scale(s : CryptoasymelgamalNode, f : Double) -> CryptoasymelgamalNode {
   let result = crypto_asym_elgamal_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_asym_elgamal_node_fill(s : CryptoasymelgamalNode, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_elgamal_node_min(s : CryptoasymelgamalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_node_min(s : CryptoasymelgamalNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_node_max(s : CryptoasymelgamalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_node_max(s : CryptoasymelgamalNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_node_to_string(s : CryptoasymelgamalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_asym_elgamal_edge_set(s : CryptoasymelgamalEdge, i : Int, v : Doub
   result
 }
 
-pub fn crypto_asym_elgamal_edge_sum(s : CryptoasymelgamalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_edge_sum(s : CryptoasymelgamalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_edge_mean(s : CryptoasymelgamalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_edge_mean(s : CryptoasymelgamalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_edge_scale(s : CryptoasymelgamalEdge, f : Double) -> CryptoasymelgamalEdge {
   let result = crypto_asym_elgamal_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_asym_elgamal_edge_fill(s : CryptoasymelgamalEdge, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_elgamal_edge_min(s : CryptoasymelgamalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_edge_min(s : CryptoasymelgamalEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_edge_max(s : CryptoasymelgamalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_edge_max(s : CryptoasymelgamalEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_edge_to_string(s : CryptoasymelgamalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_asym_elgamal_path_set(s : CryptoasymelgamalPath, i : Int, v : Doub
   result
 }
 
-pub fn crypto_asym_elgamal_path_sum(s : CryptoasymelgamalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_path_sum(s : CryptoasymelgamalPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_path_mean(s : CryptoasymelgamalPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_path_mean(s : CryptoasymelgamalPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_path_scale(s : CryptoasymelgamalPath, f : Double) -> CryptoasymelgamalPath {
   let result = crypto_asym_elgamal_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_asym_elgamal_path_fill(s : CryptoasymelgamalPath, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_elgamal_path_min(s : CryptoasymelgamalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_path_min(s : CryptoasymelgamalPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_path_max(s : CryptoasymelgamalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_path_max(s : CryptoasymelgamalPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_path_to_string(s : CryptoasymelgamalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_asym_elgamal_cluster_set(s : CryptoasymelgamalCluster, i : Int, v 
   result
 }
 
-pub fn crypto_asym_elgamal_cluster_sum(s : CryptoasymelgamalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_cluster_sum(s : CryptoasymelgamalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_cluster_mean(s : CryptoasymelgamalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_cluster_mean(s : CryptoasymelgamalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_cluster_scale(s : CryptoasymelgamalCluster, f : Double) -> CryptoasymelgamalCluster {
   let result = crypto_asym_elgamal_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_asym_elgamal_cluster_fill(s : CryptoasymelgamalCluster, v : Double
   result
 }
 
-pub fn crypto_asym_elgamal_cluster_min(s : CryptoasymelgamalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_cluster_min(s : CryptoasymelgamalCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_cluster_max(s : CryptoasymelgamalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_cluster_max(s : CryptoasymelgamalCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_cluster_to_string(s : CryptoasymelgamalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_asym_elgamal_model_set(s : CryptoasymelgamalModel, i : Int, v : Do
   result
 }
 
-pub fn crypto_asym_elgamal_model_sum(s : CryptoasymelgamalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_model_sum(s : CryptoasymelgamalModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_model_mean(s : CryptoasymelgamalModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_model_mean(s : CryptoasymelgamalModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_model_scale(s : CryptoasymelgamalModel, f : Double) -> CryptoasymelgamalModel {
   let result = crypto_asym_elgamal_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_asym_elgamal_model_fill(s : CryptoasymelgamalModel, v : Double) ->
   result
 }
 
-pub fn crypto_asym_elgamal_model_min(s : CryptoasymelgamalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_model_min(s : CryptoasymelgamalModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_model_max(s : CryptoasymelgamalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_model_max(s : CryptoasymelgamalModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_model_to_string(s : CryptoasymelgamalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_asym_elgamal_layer_set(s : CryptoasymelgamalLayer, i : Int, v : Do
   result
 }
 
-pub fn crypto_asym_elgamal_layer_sum(s : CryptoasymelgamalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_layer_sum(s : CryptoasymelgamalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_layer_mean(s : CryptoasymelgamalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_layer_mean(s : CryptoasymelgamalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_layer_scale(s : CryptoasymelgamalLayer, f : Double) -> CryptoasymelgamalLayer {
   let result = crypto_asym_elgamal_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_asym_elgamal_layer_fill(s : CryptoasymelgamalLayer, v : Double) ->
   result
 }
 
-pub fn crypto_asym_elgamal_layer_min(s : CryptoasymelgamalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_layer_min(s : CryptoasymelgamalLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_layer_max(s : CryptoasymelgamalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_layer_max(s : CryptoasymelgamalLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_layer_to_string(s : CryptoasymelgamalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_asym_elgamal_buffer_set(s : CryptoasymelgamalBuffer, i : Int, v : 
   result
 }
 
-pub fn crypto_asym_elgamal_buffer_sum(s : CryptoasymelgamalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_buffer_sum(s : CryptoasymelgamalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_buffer_mean(s : CryptoasymelgamalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_buffer_mean(s : CryptoasymelgamalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_buffer_scale(s : CryptoasymelgamalBuffer, f : Double) -> CryptoasymelgamalBuffer {
   let result = crypto_asym_elgamal_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_asym_elgamal_buffer_fill(s : CryptoasymelgamalBuffer, v : Double) 
   result
 }
 
-pub fn crypto_asym_elgamal_buffer_min(s : CryptoasymelgamalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_buffer_min(s : CryptoasymelgamalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_buffer_max(s : CryptoasymelgamalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_buffer_max(s : CryptoasymelgamalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_buffer_to_string(s : CryptoasymelgamalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_asym_elgamal_cursor_set(s : CryptoasymelgamalCursor, i : Int, v : 
   result
 }
 
-pub fn crypto_asym_elgamal_cursor_sum(s : CryptoasymelgamalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_cursor_sum(s : CryptoasymelgamalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_cursor_mean(s : CryptoasymelgamalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_cursor_mean(s : CryptoasymelgamalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_cursor_scale(s : CryptoasymelgamalCursor, f : Double) -> CryptoasymelgamalCursor {
   let result = crypto_asym_elgamal_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_asym_elgamal_cursor_fill(s : CryptoasymelgamalCursor, v : Double) 
   result
 }
 
-pub fn crypto_asym_elgamal_cursor_min(s : CryptoasymelgamalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_cursor_min(s : CryptoasymelgamalCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_cursor_max(s : CryptoasymelgamalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_cursor_max(s : CryptoasymelgamalCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_cursor_to_string(s : CryptoasymelgamalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_asym_elgamal_view_set(s : CryptoasymelgamalView, i : Int, v : Doub
   result
 }
 
-pub fn crypto_asym_elgamal_view_sum(s : CryptoasymelgamalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_view_sum(s : CryptoasymelgamalView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_view_mean(s : CryptoasymelgamalView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_view_mean(s : CryptoasymelgamalView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_view_scale(s : CryptoasymelgamalView, f : Double) -> CryptoasymelgamalView {
   let result = crypto_asym_elgamal_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_asym_elgamal_view_fill(s : CryptoasymelgamalView, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_elgamal_view_min(s : CryptoasymelgamalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_view_min(s : CryptoasymelgamalView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_view_max(s : CryptoasymelgamalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_view_max(s : CryptoasymelgamalView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_view_to_string(s : CryptoasymelgamalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_asym_elgamal_range_set(s : CryptoasymelgamalRange, i : Int, v : Do
   result
 }
 
-pub fn crypto_asym_elgamal_range_sum(s : CryptoasymelgamalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_range_sum(s : CryptoasymelgamalRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_range_mean(s : CryptoasymelgamalRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_range_mean(s : CryptoasymelgamalRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_range_scale(s : CryptoasymelgamalRange, f : Double) -> CryptoasymelgamalRange {
   let result = crypto_asym_elgamal_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_asym_elgamal_range_fill(s : CryptoasymelgamalRange, v : Double) ->
   result
 }
 
-pub fn crypto_asym_elgamal_range_min(s : CryptoasymelgamalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_range_min(s : CryptoasymelgamalRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_range_max(s : CryptoasymelgamalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_range_max(s : CryptoasymelgamalRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_range_to_string(s : CryptoasymelgamalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_asym_elgamal_slice_set(s : CryptoasymelgamalSlice, i : Int, v : Do
   result
 }
 
-pub fn crypto_asym_elgamal_slice_sum(s : CryptoasymelgamalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_elgamal_slice_sum(s : CryptoasymelgamalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_elgamal_slice_mean(s : CryptoasymelgamalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_elgamal_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_elgamal_slice_mean(s : CryptoasymelgamalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_elgamal_slice_scale(s : CryptoasymelgamalSlice, f : Double) -> CryptoasymelgamalSlice {
   let result = crypto_asym_elgamal_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_asym_elgamal_slice_fill(s : CryptoasymelgamalSlice, v : Double) ->
   result
 }
 
-pub fn crypto_asym_elgamal_slice_min(s : CryptoasymelgamalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_slice_min(s : CryptoasymelgamalSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_elgamal_slice_max(s : CryptoasymelgamalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_elgamal_slice_max(s : CryptoasymelgamalSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_elgamal_slice_to_string(s : CryptoasymelgamalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

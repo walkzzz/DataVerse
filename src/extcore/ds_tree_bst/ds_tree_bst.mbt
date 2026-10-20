@@ -88,11 +88,7 @@ pub fn ds_tree_bst_make_series(vals : Array[Double], name : String) -> Dstreebst
 
 pub fn ds_tree_bst_series_len(s : DstreebstSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_bst_series_sum(s : DstreebstSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_bst_series_sum(s : DstreebstSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_bst_series_mean(s : DstreebstSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_bst_frame_set(s : DstreebstFrame, i : Int, v : Double) -> Dstreeb
   result
 }
 
-pub fn ds_tree_bst_frame_sum(s : DstreebstFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_frame_sum(s : DstreebstFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_frame_mean(s : DstreebstFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_frame_mean(s : DstreebstFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_frame_scale(s : DstreebstFrame, f : Double) -> DstreebstFrame {
   let result = ds_tree_bst_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_bst_frame_fill(s : DstreebstFrame, v : Double) -> DstreebstFrame 
   result
 }
 
-pub fn ds_tree_bst_frame_min(s : DstreebstFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_frame_min(s : DstreebstFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_frame_max(s : DstreebstFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_frame_max(s : DstreebstFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_frame_to_string(s : DstreebstFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_bst_table_set(s : DstreebstTable, i : Int, v : Double) -> Dstreeb
   result
 }
 
-pub fn ds_tree_bst_table_sum(s : DstreebstTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_table_sum(s : DstreebstTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_table_mean(s : DstreebstTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_table_mean(s : DstreebstTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_table_scale(s : DstreebstTable, f : Double) -> DstreebstTable {
   let result = ds_tree_bst_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_bst_table_fill(s : DstreebstTable, v : Double) -> DstreebstTable 
   result
 }
 
-pub fn ds_tree_bst_table_min(s : DstreebstTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_table_min(s : DstreebstTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_table_max(s : DstreebstTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_table_max(s : DstreebstTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_table_to_string(s : DstreebstTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_bst_graphn_set(s : DstreebstGraphN, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_bst_graphn_sum(s : DstreebstGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_graphn_sum(s : DstreebstGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_graphn_mean(s : DstreebstGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_graphn_mean(s : DstreebstGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_graphn_scale(s : DstreebstGraphN, f : Double) -> DstreebstGraphN {
   let result = ds_tree_bst_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_bst_graphn_fill(s : DstreebstGraphN, v : Double) -> DstreebstGrap
   result
 }
 
-pub fn ds_tree_bst_graphn_min(s : DstreebstGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_graphn_min(s : DstreebstGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_graphn_max(s : DstreebstGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_graphn_max(s : DstreebstGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_graphn_to_string(s : DstreebstGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_bst_node_set(s : DstreebstNode, i : Int, v : Double) -> Dstreebst
   result
 }
 
-pub fn ds_tree_bst_node_sum(s : DstreebstNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_node_sum(s : DstreebstNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_node_mean(s : DstreebstNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_node_mean(s : DstreebstNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_node_scale(s : DstreebstNode, f : Double) -> DstreebstNode {
   let result = ds_tree_bst_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_bst_node_fill(s : DstreebstNode, v : Double) -> DstreebstNode {
   result
 }
 
-pub fn ds_tree_bst_node_min(s : DstreebstNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_node_min(s : DstreebstNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_node_max(s : DstreebstNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_node_max(s : DstreebstNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_node_to_string(s : DstreebstNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_bst_edge_set(s : DstreebstEdge, i : Int, v : Double) -> Dstreebst
   result
 }
 
-pub fn ds_tree_bst_edge_sum(s : DstreebstEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_edge_sum(s : DstreebstEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_edge_mean(s : DstreebstEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_edge_mean(s : DstreebstEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_edge_scale(s : DstreebstEdge, f : Double) -> DstreebstEdge {
   let result = ds_tree_bst_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_bst_edge_fill(s : DstreebstEdge, v : Double) -> DstreebstEdge {
   result
 }
 
-pub fn ds_tree_bst_edge_min(s : DstreebstEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_edge_min(s : DstreebstEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_edge_max(s : DstreebstEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_edge_max(s : DstreebstEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_edge_to_string(s : DstreebstEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_bst_path_set(s : DstreebstPath, i : Int, v : Double) -> Dstreebst
   result
 }
 
-pub fn ds_tree_bst_path_sum(s : DstreebstPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_path_sum(s : DstreebstPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_path_mean(s : DstreebstPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_path_mean(s : DstreebstPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_path_scale(s : DstreebstPath, f : Double) -> DstreebstPath {
   let result = ds_tree_bst_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_bst_path_fill(s : DstreebstPath, v : Double) -> DstreebstPath {
   result
 }
 
-pub fn ds_tree_bst_path_min(s : DstreebstPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_path_min(s : DstreebstPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_path_max(s : DstreebstPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_path_max(s : DstreebstPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_path_to_string(s : DstreebstPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_bst_cluster_set(s : DstreebstCluster, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_bst_cluster_sum(s : DstreebstCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_cluster_sum(s : DstreebstCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_cluster_mean(s : DstreebstCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_cluster_mean(s : DstreebstCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_cluster_scale(s : DstreebstCluster, f : Double) -> DstreebstCluster {
   let result = ds_tree_bst_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_bst_cluster_fill(s : DstreebstCluster, v : Double) -> DstreebstCl
   result
 }
 
-pub fn ds_tree_bst_cluster_min(s : DstreebstCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_cluster_min(s : DstreebstCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_cluster_max(s : DstreebstCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_cluster_max(s : DstreebstCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_cluster_to_string(s : DstreebstCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_bst_model_set(s : DstreebstModel, i : Int, v : Double) -> Dstreeb
   result
 }
 
-pub fn ds_tree_bst_model_sum(s : DstreebstModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_model_sum(s : DstreebstModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_model_mean(s : DstreebstModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_model_mean(s : DstreebstModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_model_scale(s : DstreebstModel, f : Double) -> DstreebstModel {
   let result = ds_tree_bst_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_bst_model_fill(s : DstreebstModel, v : Double) -> DstreebstModel 
   result
 }
 
-pub fn ds_tree_bst_model_min(s : DstreebstModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_model_min(s : DstreebstModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_model_max(s : DstreebstModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_model_max(s : DstreebstModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_model_to_string(s : DstreebstModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_bst_layer_set(s : DstreebstLayer, i : Int, v : Double) -> Dstreeb
   result
 }
 
-pub fn ds_tree_bst_layer_sum(s : DstreebstLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_layer_sum(s : DstreebstLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_layer_mean(s : DstreebstLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_layer_mean(s : DstreebstLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_layer_scale(s : DstreebstLayer, f : Double) -> DstreebstLayer {
   let result = ds_tree_bst_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_bst_layer_fill(s : DstreebstLayer, v : Double) -> DstreebstLayer 
   result
 }
 
-pub fn ds_tree_bst_layer_min(s : DstreebstLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_layer_min(s : DstreebstLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_layer_max(s : DstreebstLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_layer_max(s : DstreebstLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_layer_to_string(s : DstreebstLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_bst_buffer_set(s : DstreebstBuffer, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_bst_buffer_sum(s : DstreebstBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_buffer_sum(s : DstreebstBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_buffer_mean(s : DstreebstBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_buffer_mean(s : DstreebstBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_buffer_scale(s : DstreebstBuffer, f : Double) -> DstreebstBuffer {
   let result = ds_tree_bst_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_bst_buffer_fill(s : DstreebstBuffer, v : Double) -> DstreebstBuff
   result
 }
 
-pub fn ds_tree_bst_buffer_min(s : DstreebstBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_buffer_min(s : DstreebstBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_buffer_max(s : DstreebstBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_buffer_max(s : DstreebstBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_buffer_to_string(s : DstreebstBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_bst_cursor_set(s : DstreebstCursor, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_bst_cursor_sum(s : DstreebstCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_cursor_sum(s : DstreebstCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_cursor_mean(s : DstreebstCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_cursor_mean(s : DstreebstCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_cursor_scale(s : DstreebstCursor, f : Double) -> DstreebstCursor {
   let result = ds_tree_bst_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_bst_cursor_fill(s : DstreebstCursor, v : Double) -> DstreebstCurs
   result
 }
 
-pub fn ds_tree_bst_cursor_min(s : DstreebstCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_cursor_min(s : DstreebstCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_cursor_max(s : DstreebstCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_cursor_max(s : DstreebstCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_cursor_to_string(s : DstreebstCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_bst_view_set(s : DstreebstView, i : Int, v : Double) -> Dstreebst
   result
 }
 
-pub fn ds_tree_bst_view_sum(s : DstreebstView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_view_sum(s : DstreebstView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_view_mean(s : DstreebstView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_view_mean(s : DstreebstView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_view_scale(s : DstreebstView, f : Double) -> DstreebstView {
   let result = ds_tree_bst_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_bst_view_fill(s : DstreebstView, v : Double) -> DstreebstView {
   result
 }
 
-pub fn ds_tree_bst_view_min(s : DstreebstView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_view_min(s : DstreebstView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_view_max(s : DstreebstView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_view_max(s : DstreebstView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_view_to_string(s : DstreebstView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_bst_range_set(s : DstreebstRange, i : Int, v : Double) -> Dstreeb
   result
 }
 
-pub fn ds_tree_bst_range_sum(s : DstreebstRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_range_sum(s : DstreebstRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_range_mean(s : DstreebstRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_range_mean(s : DstreebstRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_range_scale(s : DstreebstRange, f : Double) -> DstreebstRange {
   let result = ds_tree_bst_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_bst_range_fill(s : DstreebstRange, v : Double) -> DstreebstRange 
   result
 }
 
-pub fn ds_tree_bst_range_min(s : DstreebstRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_range_min(s : DstreebstRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_range_max(s : DstreebstRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_range_max(s : DstreebstRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_range_to_string(s : DstreebstRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_bst_slice_set(s : DstreebstSlice, i : Int, v : Double) -> Dstreeb
   result
 }
 
-pub fn ds_tree_bst_slice_sum(s : DstreebstSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_bst_slice_sum(s : DstreebstSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_bst_slice_mean(s : DstreebstSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_bst_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_bst_slice_mean(s : DstreebstSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_bst_slice_scale(s : DstreebstSlice, f : Double) -> DstreebstSlice {
   let result = ds_tree_bst_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_bst_slice_fill(s : DstreebstSlice, v : Double) -> DstreebstSlice 
   result
 }
 
-pub fn ds_tree_bst_slice_min(s : DstreebstSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_slice_min(s : DstreebstSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_bst_slice_max(s : DstreebstSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_bst_slice_max(s : DstreebstSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_bst_slice_to_string(s : DstreebstSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

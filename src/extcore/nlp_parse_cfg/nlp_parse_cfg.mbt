@@ -88,11 +88,7 @@ pub fn nlp_parse_cfg_make_series(vals : Array[Double], name : String) -> Nlppars
 
 pub fn nlp_parse_cfg_series_len(s : NlpparsecfgSeries) -> Int { s.vals.length() }
 
-pub fn nlp_parse_cfg_series_sum(s : NlpparsecfgSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_parse_cfg_series_sum(s : NlpparsecfgSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_parse_cfg_series_mean(s : NlpparsecfgSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_parse_cfg_frame_set(s : NlpparsecfgFrame, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cfg_frame_sum(s : NlpparsecfgFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_frame_sum(s : NlpparsecfgFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_frame_mean(s : NlpparsecfgFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_frame_mean(s : NlpparsecfgFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_frame_scale(s : NlpparsecfgFrame, f : Double) -> NlpparsecfgFrame {
   let result = nlp_parse_cfg_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_parse_cfg_frame_fill(s : NlpparsecfgFrame, v : Double) -> Nlpparsecfg
   result
 }
 
-pub fn nlp_parse_cfg_frame_min(s : NlpparsecfgFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_frame_min(s : NlpparsecfgFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_frame_max(s : NlpparsecfgFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_frame_max(s : NlpparsecfgFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_frame_to_string(s : NlpparsecfgFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_parse_cfg_table_set(s : NlpparsecfgTable, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cfg_table_sum(s : NlpparsecfgTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_table_sum(s : NlpparsecfgTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_table_mean(s : NlpparsecfgTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_table_mean(s : NlpparsecfgTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_table_scale(s : NlpparsecfgTable, f : Double) -> NlpparsecfgTable {
   let result = nlp_parse_cfg_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_parse_cfg_table_fill(s : NlpparsecfgTable, v : Double) -> Nlpparsecfg
   result
 }
 
-pub fn nlp_parse_cfg_table_min(s : NlpparsecfgTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_table_min(s : NlpparsecfgTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_table_max(s : NlpparsecfgTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_table_max(s : NlpparsecfgTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_table_to_string(s : NlpparsecfgTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_parse_cfg_graphn_set(s : NlpparsecfgGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_cfg_graphn_sum(s : NlpparsecfgGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_graphn_sum(s : NlpparsecfgGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_graphn_mean(s : NlpparsecfgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_graphn_mean(s : NlpparsecfgGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_graphn_scale(s : NlpparsecfgGraphN, f : Double) -> NlpparsecfgGraphN {
   let result = nlp_parse_cfg_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_parse_cfg_graphn_fill(s : NlpparsecfgGraphN, v : Double) -> Nlpparsec
   result
 }
 
-pub fn nlp_parse_cfg_graphn_min(s : NlpparsecfgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_graphn_min(s : NlpparsecfgGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_graphn_max(s : NlpparsecfgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_graphn_max(s : NlpparsecfgGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_graphn_to_string(s : NlpparsecfgGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_parse_cfg_node_set(s : NlpparsecfgNode, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cfg_node_sum(s : NlpparsecfgNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_node_sum(s : NlpparsecfgNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_node_mean(s : NlpparsecfgNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_node_mean(s : NlpparsecfgNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_node_scale(s : NlpparsecfgNode, f : Double) -> NlpparsecfgNode {
   let result = nlp_parse_cfg_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_parse_cfg_node_fill(s : NlpparsecfgNode, v : Double) -> NlpparsecfgNo
   result
 }
 
-pub fn nlp_parse_cfg_node_min(s : NlpparsecfgNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_node_min(s : NlpparsecfgNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_node_max(s : NlpparsecfgNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_node_max(s : NlpparsecfgNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_node_to_string(s : NlpparsecfgNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_parse_cfg_edge_set(s : NlpparsecfgEdge, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cfg_edge_sum(s : NlpparsecfgEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_edge_sum(s : NlpparsecfgEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_edge_mean(s : NlpparsecfgEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_edge_mean(s : NlpparsecfgEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_edge_scale(s : NlpparsecfgEdge, f : Double) -> NlpparsecfgEdge {
   let result = nlp_parse_cfg_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_parse_cfg_edge_fill(s : NlpparsecfgEdge, v : Double) -> NlpparsecfgEd
   result
 }
 
-pub fn nlp_parse_cfg_edge_min(s : NlpparsecfgEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_edge_min(s : NlpparsecfgEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_edge_max(s : NlpparsecfgEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_edge_max(s : NlpparsecfgEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_edge_to_string(s : NlpparsecfgEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_parse_cfg_path_set(s : NlpparsecfgPath, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cfg_path_sum(s : NlpparsecfgPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_path_sum(s : NlpparsecfgPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_path_mean(s : NlpparsecfgPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_path_mean(s : NlpparsecfgPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_path_scale(s : NlpparsecfgPath, f : Double) -> NlpparsecfgPath {
   let result = nlp_parse_cfg_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_parse_cfg_path_fill(s : NlpparsecfgPath, v : Double) -> NlpparsecfgPa
   result
 }
 
-pub fn nlp_parse_cfg_path_min(s : NlpparsecfgPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_path_min(s : NlpparsecfgPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_path_max(s : NlpparsecfgPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_path_max(s : NlpparsecfgPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_path_to_string(s : NlpparsecfgPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_parse_cfg_cluster_set(s : NlpparsecfgCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_cfg_cluster_sum(s : NlpparsecfgCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_cluster_sum(s : NlpparsecfgCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_cluster_mean(s : NlpparsecfgCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_cluster_mean(s : NlpparsecfgCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_cluster_scale(s : NlpparsecfgCluster, f : Double) -> NlpparsecfgCluster {
   let result = nlp_parse_cfg_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_parse_cfg_cluster_fill(s : NlpparsecfgCluster, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_cfg_cluster_min(s : NlpparsecfgCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_cluster_min(s : NlpparsecfgCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_cluster_max(s : NlpparsecfgCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_cluster_max(s : NlpparsecfgCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_cluster_to_string(s : NlpparsecfgCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_parse_cfg_model_set(s : NlpparsecfgModel, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cfg_model_sum(s : NlpparsecfgModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_model_sum(s : NlpparsecfgModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_model_mean(s : NlpparsecfgModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_model_mean(s : NlpparsecfgModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_model_scale(s : NlpparsecfgModel, f : Double) -> NlpparsecfgModel {
   let result = nlp_parse_cfg_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_parse_cfg_model_fill(s : NlpparsecfgModel, v : Double) -> Nlpparsecfg
   result
 }
 
-pub fn nlp_parse_cfg_model_min(s : NlpparsecfgModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_model_min(s : NlpparsecfgModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_model_max(s : NlpparsecfgModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_model_max(s : NlpparsecfgModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_model_to_string(s : NlpparsecfgModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_parse_cfg_layer_set(s : NlpparsecfgLayer, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cfg_layer_sum(s : NlpparsecfgLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_layer_sum(s : NlpparsecfgLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_layer_mean(s : NlpparsecfgLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_layer_mean(s : NlpparsecfgLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_layer_scale(s : NlpparsecfgLayer, f : Double) -> NlpparsecfgLayer {
   let result = nlp_parse_cfg_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_parse_cfg_layer_fill(s : NlpparsecfgLayer, v : Double) -> Nlpparsecfg
   result
 }
 
-pub fn nlp_parse_cfg_layer_min(s : NlpparsecfgLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_layer_min(s : NlpparsecfgLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_layer_max(s : NlpparsecfgLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_layer_max(s : NlpparsecfgLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_layer_to_string(s : NlpparsecfgLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_parse_cfg_buffer_set(s : NlpparsecfgBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_cfg_buffer_sum(s : NlpparsecfgBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_buffer_sum(s : NlpparsecfgBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_buffer_mean(s : NlpparsecfgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_buffer_mean(s : NlpparsecfgBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_buffer_scale(s : NlpparsecfgBuffer, f : Double) -> NlpparsecfgBuffer {
   let result = nlp_parse_cfg_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_parse_cfg_buffer_fill(s : NlpparsecfgBuffer, v : Double) -> Nlpparsec
   result
 }
 
-pub fn nlp_parse_cfg_buffer_min(s : NlpparsecfgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_buffer_min(s : NlpparsecfgBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_buffer_max(s : NlpparsecfgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_buffer_max(s : NlpparsecfgBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_buffer_to_string(s : NlpparsecfgBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_parse_cfg_cursor_set(s : NlpparsecfgCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_cfg_cursor_sum(s : NlpparsecfgCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_cursor_sum(s : NlpparsecfgCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_cursor_mean(s : NlpparsecfgCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_cursor_mean(s : NlpparsecfgCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_cursor_scale(s : NlpparsecfgCursor, f : Double) -> NlpparsecfgCursor {
   let result = nlp_parse_cfg_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_parse_cfg_cursor_fill(s : NlpparsecfgCursor, v : Double) -> Nlpparsec
   result
 }
 
-pub fn nlp_parse_cfg_cursor_min(s : NlpparsecfgCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_cursor_min(s : NlpparsecfgCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_cursor_max(s : NlpparsecfgCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_cursor_max(s : NlpparsecfgCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_cursor_to_string(s : NlpparsecfgCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_parse_cfg_view_set(s : NlpparsecfgView, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cfg_view_sum(s : NlpparsecfgView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_view_sum(s : NlpparsecfgView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_view_mean(s : NlpparsecfgView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_view_mean(s : NlpparsecfgView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_view_scale(s : NlpparsecfgView, f : Double) -> NlpparsecfgView {
   let result = nlp_parse_cfg_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_parse_cfg_view_fill(s : NlpparsecfgView, v : Double) -> NlpparsecfgVi
   result
 }
 
-pub fn nlp_parse_cfg_view_min(s : NlpparsecfgView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_view_min(s : NlpparsecfgView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_view_max(s : NlpparsecfgView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_view_max(s : NlpparsecfgView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_view_to_string(s : NlpparsecfgView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_parse_cfg_range_set(s : NlpparsecfgRange, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cfg_range_sum(s : NlpparsecfgRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_range_sum(s : NlpparsecfgRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_range_mean(s : NlpparsecfgRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_range_mean(s : NlpparsecfgRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_range_scale(s : NlpparsecfgRange, f : Double) -> NlpparsecfgRange {
   let result = nlp_parse_cfg_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_parse_cfg_range_fill(s : NlpparsecfgRange, v : Double) -> Nlpparsecfg
   result
 }
 
-pub fn nlp_parse_cfg_range_min(s : NlpparsecfgRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_range_min(s : NlpparsecfgRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_range_max(s : NlpparsecfgRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_range_max(s : NlpparsecfgRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_range_to_string(s : NlpparsecfgRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_parse_cfg_slice_set(s : NlpparsecfgSlice, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cfg_slice_sum(s : NlpparsecfgSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cfg_slice_sum(s : NlpparsecfgSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cfg_slice_mean(s : NlpparsecfgSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cfg_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cfg_slice_mean(s : NlpparsecfgSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cfg_slice_scale(s : NlpparsecfgSlice, f : Double) -> NlpparsecfgSlice {
   let result = nlp_parse_cfg_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_parse_cfg_slice_fill(s : NlpparsecfgSlice, v : Double) -> Nlpparsecfg
   result
 }
 
-pub fn nlp_parse_cfg_slice_min(s : NlpparsecfgSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_slice_min(s : NlpparsecfgSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cfg_slice_max(s : NlpparsecfgSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cfg_slice_max(s : NlpparsecfgSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cfg_slice_to_string(s : NlpparsecfgSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

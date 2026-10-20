@@ -88,11 +88,7 @@ pub fn geo_proj_azimuthal_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_proj_azimuthal_series_len(s : GeoprojazimuthalSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_azimuthal_series_sum(s : GeoprojazimuthalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_azimuthal_series_sum(s : GeoprojazimuthalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_azimuthal_series_mean(s : GeoprojazimuthalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_azimuthal_frame_set(s : GeoprojazimuthalFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_azimuthal_frame_sum(s : GeoprojazimuthalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_frame_sum(s : GeoprojazimuthalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_frame_mean(s : GeoprojazimuthalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_frame_mean(s : GeoprojazimuthalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_frame_scale(s : GeoprojazimuthalFrame, f : Double) -> GeoprojazimuthalFrame {
   let result = geo_proj_azimuthal_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_azimuthal_frame_fill(s : GeoprojazimuthalFrame, v : Double) -> G
   result
 }
 
-pub fn geo_proj_azimuthal_frame_min(s : GeoprojazimuthalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_frame_min(s : GeoprojazimuthalFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_frame_max(s : GeoprojazimuthalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_frame_max(s : GeoprojazimuthalFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_frame_to_string(s : GeoprojazimuthalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_azimuthal_table_set(s : GeoprojazimuthalTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_azimuthal_table_sum(s : GeoprojazimuthalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_table_sum(s : GeoprojazimuthalTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_table_mean(s : GeoprojazimuthalTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_table_mean(s : GeoprojazimuthalTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_table_scale(s : GeoprojazimuthalTable, f : Double) -> GeoprojazimuthalTable {
   let result = geo_proj_azimuthal_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_azimuthal_table_fill(s : GeoprojazimuthalTable, v : Double) -> G
   result
 }
 
-pub fn geo_proj_azimuthal_table_min(s : GeoprojazimuthalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_table_min(s : GeoprojazimuthalTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_table_max(s : GeoprojazimuthalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_table_max(s : GeoprojazimuthalTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_table_to_string(s : GeoprojazimuthalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_azimuthal_graphn_set(s : GeoprojazimuthalGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_azimuthal_graphn_sum(s : GeoprojazimuthalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_graphn_sum(s : GeoprojazimuthalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_graphn_mean(s : GeoprojazimuthalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_graphn_mean(s : GeoprojazimuthalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_graphn_scale(s : GeoprojazimuthalGraphN, f : Double) -> GeoprojazimuthalGraphN {
   let result = geo_proj_azimuthal_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_azimuthal_graphn_fill(s : GeoprojazimuthalGraphN, v : Double) ->
   result
 }
 
-pub fn geo_proj_azimuthal_graphn_min(s : GeoprojazimuthalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_graphn_min(s : GeoprojazimuthalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_graphn_max(s : GeoprojazimuthalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_graphn_max(s : GeoprojazimuthalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_graphn_to_string(s : GeoprojazimuthalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_azimuthal_node_set(s : GeoprojazimuthalNode, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_azimuthal_node_sum(s : GeoprojazimuthalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_node_sum(s : GeoprojazimuthalNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_node_mean(s : GeoprojazimuthalNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_node_mean(s : GeoprojazimuthalNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_node_scale(s : GeoprojazimuthalNode, f : Double) -> GeoprojazimuthalNode {
   let result = geo_proj_azimuthal_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_azimuthal_node_fill(s : GeoprojazimuthalNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_azimuthal_node_min(s : GeoprojazimuthalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_node_min(s : GeoprojazimuthalNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_node_max(s : GeoprojazimuthalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_node_max(s : GeoprojazimuthalNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_node_to_string(s : GeoprojazimuthalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_azimuthal_edge_set(s : GeoprojazimuthalEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_azimuthal_edge_sum(s : GeoprojazimuthalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_edge_sum(s : GeoprojazimuthalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_edge_mean(s : GeoprojazimuthalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_edge_mean(s : GeoprojazimuthalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_edge_scale(s : GeoprojazimuthalEdge, f : Double) -> GeoprojazimuthalEdge {
   let result = geo_proj_azimuthal_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_azimuthal_edge_fill(s : GeoprojazimuthalEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_azimuthal_edge_min(s : GeoprojazimuthalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_edge_min(s : GeoprojazimuthalEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_edge_max(s : GeoprojazimuthalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_edge_max(s : GeoprojazimuthalEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_edge_to_string(s : GeoprojazimuthalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_azimuthal_path_set(s : GeoprojazimuthalPath, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_azimuthal_path_sum(s : GeoprojazimuthalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_path_sum(s : GeoprojazimuthalPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_path_mean(s : GeoprojazimuthalPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_path_mean(s : GeoprojazimuthalPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_path_scale(s : GeoprojazimuthalPath, f : Double) -> GeoprojazimuthalPath {
   let result = geo_proj_azimuthal_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_azimuthal_path_fill(s : GeoprojazimuthalPath, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_azimuthal_path_min(s : GeoprojazimuthalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_path_min(s : GeoprojazimuthalPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_path_max(s : GeoprojazimuthalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_path_max(s : GeoprojazimuthalPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_path_to_string(s : GeoprojazimuthalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_azimuthal_cluster_set(s : GeoprojazimuthalCluster, i : Int, v : 
   result
 }
 
-pub fn geo_proj_azimuthal_cluster_sum(s : GeoprojazimuthalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_cluster_sum(s : GeoprojazimuthalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_cluster_mean(s : GeoprojazimuthalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_cluster_mean(s : GeoprojazimuthalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_cluster_scale(s : GeoprojazimuthalCluster, f : Double) -> GeoprojazimuthalCluster {
   let result = geo_proj_azimuthal_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_azimuthal_cluster_fill(s : GeoprojazimuthalCluster, v : Double) 
   result
 }
 
-pub fn geo_proj_azimuthal_cluster_min(s : GeoprojazimuthalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_cluster_min(s : GeoprojazimuthalCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_cluster_max(s : GeoprojazimuthalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_cluster_max(s : GeoprojazimuthalCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_cluster_to_string(s : GeoprojazimuthalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_azimuthal_model_set(s : GeoprojazimuthalModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_azimuthal_model_sum(s : GeoprojazimuthalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_model_sum(s : GeoprojazimuthalModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_model_mean(s : GeoprojazimuthalModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_model_mean(s : GeoprojazimuthalModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_model_scale(s : GeoprojazimuthalModel, f : Double) -> GeoprojazimuthalModel {
   let result = geo_proj_azimuthal_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_azimuthal_model_fill(s : GeoprojazimuthalModel, v : Double) -> G
   result
 }
 
-pub fn geo_proj_azimuthal_model_min(s : GeoprojazimuthalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_model_min(s : GeoprojazimuthalModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_model_max(s : GeoprojazimuthalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_model_max(s : GeoprojazimuthalModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_model_to_string(s : GeoprojazimuthalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_azimuthal_layer_set(s : GeoprojazimuthalLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_azimuthal_layer_sum(s : GeoprojazimuthalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_layer_sum(s : GeoprojazimuthalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_layer_mean(s : GeoprojazimuthalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_layer_mean(s : GeoprojazimuthalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_layer_scale(s : GeoprojazimuthalLayer, f : Double) -> GeoprojazimuthalLayer {
   let result = geo_proj_azimuthal_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_azimuthal_layer_fill(s : GeoprojazimuthalLayer, v : Double) -> G
   result
 }
 
-pub fn geo_proj_azimuthal_layer_min(s : GeoprojazimuthalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_layer_min(s : GeoprojazimuthalLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_layer_max(s : GeoprojazimuthalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_layer_max(s : GeoprojazimuthalLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_layer_to_string(s : GeoprojazimuthalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_azimuthal_buffer_set(s : GeoprojazimuthalBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_azimuthal_buffer_sum(s : GeoprojazimuthalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_buffer_sum(s : GeoprojazimuthalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_buffer_mean(s : GeoprojazimuthalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_buffer_mean(s : GeoprojazimuthalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_buffer_scale(s : GeoprojazimuthalBuffer, f : Double) -> GeoprojazimuthalBuffer {
   let result = geo_proj_azimuthal_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_azimuthal_buffer_fill(s : GeoprojazimuthalBuffer, v : Double) ->
   result
 }
 
-pub fn geo_proj_azimuthal_buffer_min(s : GeoprojazimuthalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_buffer_min(s : GeoprojazimuthalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_buffer_max(s : GeoprojazimuthalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_buffer_max(s : GeoprojazimuthalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_buffer_to_string(s : GeoprojazimuthalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_azimuthal_cursor_set(s : GeoprojazimuthalCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_azimuthal_cursor_sum(s : GeoprojazimuthalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_cursor_sum(s : GeoprojazimuthalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_cursor_mean(s : GeoprojazimuthalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_cursor_mean(s : GeoprojazimuthalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_cursor_scale(s : GeoprojazimuthalCursor, f : Double) -> GeoprojazimuthalCursor {
   let result = geo_proj_azimuthal_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_azimuthal_cursor_fill(s : GeoprojazimuthalCursor, v : Double) ->
   result
 }
 
-pub fn geo_proj_azimuthal_cursor_min(s : GeoprojazimuthalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_cursor_min(s : GeoprojazimuthalCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_cursor_max(s : GeoprojazimuthalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_cursor_max(s : GeoprojazimuthalCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_cursor_to_string(s : GeoprojazimuthalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_azimuthal_view_set(s : GeoprojazimuthalView, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_azimuthal_view_sum(s : GeoprojazimuthalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_view_sum(s : GeoprojazimuthalView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_view_mean(s : GeoprojazimuthalView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_view_mean(s : GeoprojazimuthalView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_view_scale(s : GeoprojazimuthalView, f : Double) -> GeoprojazimuthalView {
   let result = geo_proj_azimuthal_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_azimuthal_view_fill(s : GeoprojazimuthalView, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_azimuthal_view_min(s : GeoprojazimuthalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_view_min(s : GeoprojazimuthalView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_view_max(s : GeoprojazimuthalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_view_max(s : GeoprojazimuthalView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_view_to_string(s : GeoprojazimuthalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_azimuthal_range_set(s : GeoprojazimuthalRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_azimuthal_range_sum(s : GeoprojazimuthalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_range_sum(s : GeoprojazimuthalRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_range_mean(s : GeoprojazimuthalRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_range_mean(s : GeoprojazimuthalRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_range_scale(s : GeoprojazimuthalRange, f : Double) -> GeoprojazimuthalRange {
   let result = geo_proj_azimuthal_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_azimuthal_range_fill(s : GeoprojazimuthalRange, v : Double) -> G
   result
 }
 
-pub fn geo_proj_azimuthal_range_min(s : GeoprojazimuthalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_range_min(s : GeoprojazimuthalRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_range_max(s : GeoprojazimuthalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_range_max(s : GeoprojazimuthalRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_range_to_string(s : GeoprojazimuthalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_azimuthal_slice_set(s : GeoprojazimuthalSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_azimuthal_slice_sum(s : GeoprojazimuthalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_azimuthal_slice_sum(s : GeoprojazimuthalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_azimuthal_slice_mean(s : GeoprojazimuthalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_azimuthal_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_azimuthal_slice_mean(s : GeoprojazimuthalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_azimuthal_slice_scale(s : GeoprojazimuthalSlice, f : Double) -> GeoprojazimuthalSlice {
   let result = geo_proj_azimuthal_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_azimuthal_slice_fill(s : GeoprojazimuthalSlice, v : Double) -> G
   result
 }
 
-pub fn geo_proj_azimuthal_slice_min(s : GeoprojazimuthalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_slice_min(s : GeoprojazimuthalSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_azimuthal_slice_max(s : GeoprojazimuthalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_azimuthal_slice_max(s : GeoprojazimuthalSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_azimuthal_slice_to_string(s : GeoprojazimuthalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

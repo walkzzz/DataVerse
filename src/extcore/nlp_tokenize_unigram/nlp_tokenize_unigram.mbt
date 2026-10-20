@@ -88,11 +88,7 @@ pub fn nlp_tokenize_unigram_make_series(vals : Array[Double], name : String) -> 
 
 pub fn nlp_tokenize_unigram_series_len(s : NlptokenizeunigramSeries) -> Int { s.vals.length() }
 
-pub fn nlp_tokenize_unigram_series_sum(s : NlptokenizeunigramSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_series_sum(s : NlptokenizeunigramSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_tokenize_unigram_series_mean(s : NlptokenizeunigramSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_tokenize_unigram_frame_set(s : NlptokenizeunigramFrame, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_unigram_frame_sum(s : NlptokenizeunigramFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_frame_sum(s : NlptokenizeunigramFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_frame_mean(s : NlptokenizeunigramFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_frame_mean(s : NlptokenizeunigramFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_frame_scale(s : NlptokenizeunigramFrame, f : Double) -> NlptokenizeunigramFrame {
   let result = nlp_tokenize_unigram_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_tokenize_unigram_frame_fill(s : NlptokenizeunigramFrame, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_unigram_frame_min(s : NlptokenizeunigramFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_frame_min(s : NlptokenizeunigramFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_frame_max(s : NlptokenizeunigramFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_frame_max(s : NlptokenizeunigramFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_frame_to_string(s : NlptokenizeunigramFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_tokenize_unigram_table_set(s : NlptokenizeunigramTable, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_unigram_table_sum(s : NlptokenizeunigramTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_table_sum(s : NlptokenizeunigramTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_table_mean(s : NlptokenizeunigramTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_table_mean(s : NlptokenizeunigramTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_table_scale(s : NlptokenizeunigramTable, f : Double) -> NlptokenizeunigramTable {
   let result = nlp_tokenize_unigram_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_tokenize_unigram_table_fill(s : NlptokenizeunigramTable, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_unigram_table_min(s : NlptokenizeunigramTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_table_min(s : NlptokenizeunigramTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_table_max(s : NlptokenizeunigramTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_table_max(s : NlptokenizeunigramTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_table_to_string(s : NlptokenizeunigramTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_tokenize_unigram_graphn_set(s : NlptokenizeunigramGraphN, i : Int, v 
   result
 }
 
-pub fn nlp_tokenize_unigram_graphn_sum(s : NlptokenizeunigramGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_graphn_sum(s : NlptokenizeunigramGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_graphn_mean(s : NlptokenizeunigramGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_graphn_mean(s : NlptokenizeunigramGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_graphn_scale(s : NlptokenizeunigramGraphN, f : Double) -> NlptokenizeunigramGraphN {
   let result = nlp_tokenize_unigram_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_tokenize_unigram_graphn_fill(s : NlptokenizeunigramGraphN, v : Double
   result
 }
 
-pub fn nlp_tokenize_unigram_graphn_min(s : NlptokenizeunigramGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_graphn_min(s : NlptokenizeunigramGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_graphn_max(s : NlptokenizeunigramGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_graphn_max(s : NlptokenizeunigramGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_graphn_to_string(s : NlptokenizeunigramGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_tokenize_unigram_node_set(s : NlptokenizeunigramNode, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_unigram_node_sum(s : NlptokenizeunigramNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_node_sum(s : NlptokenizeunigramNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_node_mean(s : NlptokenizeunigramNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_node_mean(s : NlptokenizeunigramNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_node_scale(s : NlptokenizeunigramNode, f : Double) -> NlptokenizeunigramNode {
   let result = nlp_tokenize_unigram_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_tokenize_unigram_node_fill(s : NlptokenizeunigramNode, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_unigram_node_min(s : NlptokenizeunigramNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_node_min(s : NlptokenizeunigramNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_node_max(s : NlptokenizeunigramNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_node_max(s : NlptokenizeunigramNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_node_to_string(s : NlptokenizeunigramNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_tokenize_unigram_edge_set(s : NlptokenizeunigramEdge, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_unigram_edge_sum(s : NlptokenizeunigramEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_edge_sum(s : NlptokenizeunigramEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_edge_mean(s : NlptokenizeunigramEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_edge_mean(s : NlptokenizeunigramEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_edge_scale(s : NlptokenizeunigramEdge, f : Double) -> NlptokenizeunigramEdge {
   let result = nlp_tokenize_unigram_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_tokenize_unigram_edge_fill(s : NlptokenizeunigramEdge, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_unigram_edge_min(s : NlptokenizeunigramEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_edge_min(s : NlptokenizeunigramEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_edge_max(s : NlptokenizeunigramEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_edge_max(s : NlptokenizeunigramEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_edge_to_string(s : NlptokenizeunigramEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_tokenize_unigram_path_set(s : NlptokenizeunigramPath, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_unigram_path_sum(s : NlptokenizeunigramPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_path_sum(s : NlptokenizeunigramPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_path_mean(s : NlptokenizeunigramPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_path_mean(s : NlptokenizeunigramPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_path_scale(s : NlptokenizeunigramPath, f : Double) -> NlptokenizeunigramPath {
   let result = nlp_tokenize_unigram_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_tokenize_unigram_path_fill(s : NlptokenizeunigramPath, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_unigram_path_min(s : NlptokenizeunigramPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_path_min(s : NlptokenizeunigramPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_path_max(s : NlptokenizeunigramPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_path_max(s : NlptokenizeunigramPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_path_to_string(s : NlptokenizeunigramPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_tokenize_unigram_cluster_set(s : NlptokenizeunigramCluster, i : Int, 
   result
 }
 
-pub fn nlp_tokenize_unigram_cluster_sum(s : NlptokenizeunigramCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_cluster_sum(s : NlptokenizeunigramCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_cluster_mean(s : NlptokenizeunigramCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_cluster_mean(s : NlptokenizeunigramCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_cluster_scale(s : NlptokenizeunigramCluster, f : Double) -> NlptokenizeunigramCluster {
   let result = nlp_tokenize_unigram_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_tokenize_unigram_cluster_fill(s : NlptokenizeunigramCluster, v : Doub
   result
 }
 
-pub fn nlp_tokenize_unigram_cluster_min(s : NlptokenizeunigramCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_cluster_min(s : NlptokenizeunigramCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_cluster_max(s : NlptokenizeunigramCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_cluster_max(s : NlptokenizeunigramCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_cluster_to_string(s : NlptokenizeunigramCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_tokenize_unigram_model_set(s : NlptokenizeunigramModel, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_unigram_model_sum(s : NlptokenizeunigramModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_model_sum(s : NlptokenizeunigramModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_model_mean(s : NlptokenizeunigramModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_model_mean(s : NlptokenizeunigramModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_model_scale(s : NlptokenizeunigramModel, f : Double) -> NlptokenizeunigramModel {
   let result = nlp_tokenize_unigram_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_tokenize_unigram_model_fill(s : NlptokenizeunigramModel, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_unigram_model_min(s : NlptokenizeunigramModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_model_min(s : NlptokenizeunigramModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_model_max(s : NlptokenizeunigramModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_model_max(s : NlptokenizeunigramModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_model_to_string(s : NlptokenizeunigramModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_tokenize_unigram_layer_set(s : NlptokenizeunigramLayer, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_unigram_layer_sum(s : NlptokenizeunigramLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_layer_sum(s : NlptokenizeunigramLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_layer_mean(s : NlptokenizeunigramLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_layer_mean(s : NlptokenizeunigramLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_layer_scale(s : NlptokenizeunigramLayer, f : Double) -> NlptokenizeunigramLayer {
   let result = nlp_tokenize_unigram_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_tokenize_unigram_layer_fill(s : NlptokenizeunigramLayer, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_unigram_layer_min(s : NlptokenizeunigramLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_layer_min(s : NlptokenizeunigramLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_layer_max(s : NlptokenizeunigramLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_layer_max(s : NlptokenizeunigramLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_layer_to_string(s : NlptokenizeunigramLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_tokenize_unigram_buffer_set(s : NlptokenizeunigramBuffer, i : Int, v 
   result
 }
 
-pub fn nlp_tokenize_unigram_buffer_sum(s : NlptokenizeunigramBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_buffer_sum(s : NlptokenizeunigramBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_buffer_mean(s : NlptokenizeunigramBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_buffer_mean(s : NlptokenizeunigramBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_buffer_scale(s : NlptokenizeunigramBuffer, f : Double) -> NlptokenizeunigramBuffer {
   let result = nlp_tokenize_unigram_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_tokenize_unigram_buffer_fill(s : NlptokenizeunigramBuffer, v : Double
   result
 }
 
-pub fn nlp_tokenize_unigram_buffer_min(s : NlptokenizeunigramBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_buffer_min(s : NlptokenizeunigramBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_buffer_max(s : NlptokenizeunigramBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_buffer_max(s : NlptokenizeunigramBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_buffer_to_string(s : NlptokenizeunigramBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_tokenize_unigram_cursor_set(s : NlptokenizeunigramCursor, i : Int, v 
   result
 }
 
-pub fn nlp_tokenize_unigram_cursor_sum(s : NlptokenizeunigramCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_cursor_sum(s : NlptokenizeunigramCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_cursor_mean(s : NlptokenizeunigramCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_cursor_mean(s : NlptokenizeunigramCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_cursor_scale(s : NlptokenizeunigramCursor, f : Double) -> NlptokenizeunigramCursor {
   let result = nlp_tokenize_unigram_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_tokenize_unigram_cursor_fill(s : NlptokenizeunigramCursor, v : Double
   result
 }
 
-pub fn nlp_tokenize_unigram_cursor_min(s : NlptokenizeunigramCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_cursor_min(s : NlptokenizeunigramCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_cursor_max(s : NlptokenizeunigramCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_cursor_max(s : NlptokenizeunigramCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_cursor_to_string(s : NlptokenizeunigramCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_tokenize_unigram_view_set(s : NlptokenizeunigramView, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_unigram_view_sum(s : NlptokenizeunigramView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_view_sum(s : NlptokenizeunigramView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_view_mean(s : NlptokenizeunigramView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_view_mean(s : NlptokenizeunigramView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_view_scale(s : NlptokenizeunigramView, f : Double) -> NlptokenizeunigramView {
   let result = nlp_tokenize_unigram_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_tokenize_unigram_view_fill(s : NlptokenizeunigramView, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_unigram_view_min(s : NlptokenizeunigramView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_view_min(s : NlptokenizeunigramView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_view_max(s : NlptokenizeunigramView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_view_max(s : NlptokenizeunigramView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_view_to_string(s : NlptokenizeunigramView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_tokenize_unigram_range_set(s : NlptokenizeunigramRange, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_unigram_range_sum(s : NlptokenizeunigramRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_range_sum(s : NlptokenizeunigramRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_range_mean(s : NlptokenizeunigramRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_range_mean(s : NlptokenizeunigramRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_range_scale(s : NlptokenizeunigramRange, f : Double) -> NlptokenizeunigramRange {
   let result = nlp_tokenize_unigram_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_tokenize_unigram_range_fill(s : NlptokenizeunigramRange, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_unigram_range_min(s : NlptokenizeunigramRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_range_min(s : NlptokenizeunigramRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_range_max(s : NlptokenizeunigramRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_range_max(s : NlptokenizeunigramRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_range_to_string(s : NlptokenizeunigramRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_tokenize_unigram_slice_set(s : NlptokenizeunigramSlice, i : Int, v : 
   result
 }
 
-pub fn nlp_tokenize_unigram_slice_sum(s : NlptokenizeunigramSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_unigram_slice_sum(s : NlptokenizeunigramSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_unigram_slice_mean(s : NlptokenizeunigramSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_unigram_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_unigram_slice_mean(s : NlptokenizeunigramSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_unigram_slice_scale(s : NlptokenizeunigramSlice, f : Double) -> NlptokenizeunigramSlice {
   let result = nlp_tokenize_unigram_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_tokenize_unigram_slice_fill(s : NlptokenizeunigramSlice, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_unigram_slice_min(s : NlptokenizeunigramSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_slice_min(s : NlptokenizeunigramSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_unigram_slice_max(s : NlptokenizeunigramSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_unigram_slice_max(s : NlptokenizeunigramSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_unigram_slice_to_string(s : NlptokenizeunigramSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn image_feature_sift_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_feature_sift_series_len(s : ImagefeaturesiftSeries) -> Int { s.vals.length() }
 
-pub fn image_feature_sift_series_sum(s : ImagefeaturesiftSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_feature_sift_series_sum(s : ImagefeaturesiftSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_feature_sift_series_mean(s : ImagefeaturesiftSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_feature_sift_frame_set(s : ImagefeaturesiftFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_sift_frame_sum(s : ImagefeaturesiftFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_frame_sum(s : ImagefeaturesiftFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_frame_mean(s : ImagefeaturesiftFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_frame_mean(s : ImagefeaturesiftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_frame_scale(s : ImagefeaturesiftFrame, f : Double) -> ImagefeaturesiftFrame {
   let result = image_feature_sift_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_feature_sift_frame_fill(s : ImagefeaturesiftFrame, v : Double) -> I
   result
 }
 
-pub fn image_feature_sift_frame_min(s : ImagefeaturesiftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_frame_min(s : ImagefeaturesiftFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_frame_max(s : ImagefeaturesiftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_frame_max(s : ImagefeaturesiftFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_frame_to_string(s : ImagefeaturesiftFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_feature_sift_table_set(s : ImagefeaturesiftTable, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_sift_table_sum(s : ImagefeaturesiftTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_table_sum(s : ImagefeaturesiftTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_table_mean(s : ImagefeaturesiftTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_table_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_table_mean(s : ImagefeaturesiftTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_table_scale(s : ImagefeaturesiftTable, f : Double) -> ImagefeaturesiftTable {
   let result = image_feature_sift_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_feature_sift_table_fill(s : ImagefeaturesiftTable, v : Double) -> I
   result
 }
 
-pub fn image_feature_sift_table_min(s : ImagefeaturesiftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_table_min(s : ImagefeaturesiftTable) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_table_max(s : ImagefeaturesiftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_table_max(s : ImagefeaturesiftTable) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_table_to_string(s : ImagefeaturesiftTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_feature_sift_graphn_set(s : ImagefeaturesiftGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_feature_sift_graphn_sum(s : ImagefeaturesiftGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_graphn_sum(s : ImagefeaturesiftGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_graphn_mean(s : ImagefeaturesiftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_graphn_mean(s : ImagefeaturesiftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_graphn_scale(s : ImagefeaturesiftGraphN, f : Double) -> ImagefeaturesiftGraphN {
   let result = image_feature_sift_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_feature_sift_graphn_fill(s : ImagefeaturesiftGraphN, v : Double) ->
   result
 }
 
-pub fn image_feature_sift_graphn_min(s : ImagefeaturesiftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_graphn_min(s : ImagefeaturesiftGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_graphn_max(s : ImagefeaturesiftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_graphn_max(s : ImagefeaturesiftGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_graphn_to_string(s : ImagefeaturesiftGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_feature_sift_node_set(s : ImagefeaturesiftNode, i : Int, v : Double
   result
 }
 
-pub fn image_feature_sift_node_sum(s : ImagefeaturesiftNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_node_sum(s : ImagefeaturesiftNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_node_mean(s : ImagefeaturesiftNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_node_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_node_mean(s : ImagefeaturesiftNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_node_scale(s : ImagefeaturesiftNode, f : Double) -> ImagefeaturesiftNode {
   let result = image_feature_sift_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_feature_sift_node_fill(s : ImagefeaturesiftNode, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_sift_node_min(s : ImagefeaturesiftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_node_min(s : ImagefeaturesiftNode) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_node_max(s : ImagefeaturesiftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_node_max(s : ImagefeaturesiftNode) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_node_to_string(s : ImagefeaturesiftNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_feature_sift_edge_set(s : ImagefeaturesiftEdge, i : Int, v : Double
   result
 }
 
-pub fn image_feature_sift_edge_sum(s : ImagefeaturesiftEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_edge_sum(s : ImagefeaturesiftEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_edge_mean(s : ImagefeaturesiftEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_edge_mean(s : ImagefeaturesiftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_edge_scale(s : ImagefeaturesiftEdge, f : Double) -> ImagefeaturesiftEdge {
   let result = image_feature_sift_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_feature_sift_edge_fill(s : ImagefeaturesiftEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_sift_edge_min(s : ImagefeaturesiftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_edge_min(s : ImagefeaturesiftEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_edge_max(s : ImagefeaturesiftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_edge_max(s : ImagefeaturesiftEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_edge_to_string(s : ImagefeaturesiftEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_feature_sift_path_set(s : ImagefeaturesiftPath, i : Int, v : Double
   result
 }
 
-pub fn image_feature_sift_path_sum(s : ImagefeaturesiftPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_path_sum(s : ImagefeaturesiftPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_path_mean(s : ImagefeaturesiftPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_path_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_path_mean(s : ImagefeaturesiftPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_path_scale(s : ImagefeaturesiftPath, f : Double) -> ImagefeaturesiftPath {
   let result = image_feature_sift_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_feature_sift_path_fill(s : ImagefeaturesiftPath, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_sift_path_min(s : ImagefeaturesiftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_path_min(s : ImagefeaturesiftPath) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_path_max(s : ImagefeaturesiftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_path_max(s : ImagefeaturesiftPath) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_path_to_string(s : ImagefeaturesiftPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_feature_sift_cluster_set(s : ImagefeaturesiftCluster, i : Int, v : 
   result
 }
 
-pub fn image_feature_sift_cluster_sum(s : ImagefeaturesiftCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_cluster_sum(s : ImagefeaturesiftCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_cluster_mean(s : ImagefeaturesiftCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_cluster_mean(s : ImagefeaturesiftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_cluster_scale(s : ImagefeaturesiftCluster, f : Double) -> ImagefeaturesiftCluster {
   let result = image_feature_sift_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_feature_sift_cluster_fill(s : ImagefeaturesiftCluster, v : Double) 
   result
 }
 
-pub fn image_feature_sift_cluster_min(s : ImagefeaturesiftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_cluster_min(s : ImagefeaturesiftCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_cluster_max(s : ImagefeaturesiftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_cluster_max(s : ImagefeaturesiftCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_cluster_to_string(s : ImagefeaturesiftCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_feature_sift_model_set(s : ImagefeaturesiftModel, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_sift_model_sum(s : ImagefeaturesiftModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_model_sum(s : ImagefeaturesiftModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_model_mean(s : ImagefeaturesiftModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_model_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_model_mean(s : ImagefeaturesiftModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_model_scale(s : ImagefeaturesiftModel, f : Double) -> ImagefeaturesiftModel {
   let result = image_feature_sift_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_feature_sift_model_fill(s : ImagefeaturesiftModel, v : Double) -> I
   result
 }
 
-pub fn image_feature_sift_model_min(s : ImagefeaturesiftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_model_min(s : ImagefeaturesiftModel) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_model_max(s : ImagefeaturesiftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_model_max(s : ImagefeaturesiftModel) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_model_to_string(s : ImagefeaturesiftModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_feature_sift_layer_set(s : ImagefeaturesiftLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_sift_layer_sum(s : ImagefeaturesiftLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_layer_sum(s : ImagefeaturesiftLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_layer_mean(s : ImagefeaturesiftLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_layer_mean(s : ImagefeaturesiftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_layer_scale(s : ImagefeaturesiftLayer, f : Double) -> ImagefeaturesiftLayer {
   let result = image_feature_sift_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_feature_sift_layer_fill(s : ImagefeaturesiftLayer, v : Double) -> I
   result
 }
 
-pub fn image_feature_sift_layer_min(s : ImagefeaturesiftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_layer_min(s : ImagefeaturesiftLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_layer_max(s : ImagefeaturesiftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_layer_max(s : ImagefeaturesiftLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_layer_to_string(s : ImagefeaturesiftLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_feature_sift_buffer_set(s : ImagefeaturesiftBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_feature_sift_buffer_sum(s : ImagefeaturesiftBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_buffer_sum(s : ImagefeaturesiftBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_buffer_mean(s : ImagefeaturesiftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_buffer_mean(s : ImagefeaturesiftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_buffer_scale(s : ImagefeaturesiftBuffer, f : Double) -> ImagefeaturesiftBuffer {
   let result = image_feature_sift_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_feature_sift_buffer_fill(s : ImagefeaturesiftBuffer, v : Double) ->
   result
 }
 
-pub fn image_feature_sift_buffer_min(s : ImagefeaturesiftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_buffer_min(s : ImagefeaturesiftBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_buffer_max(s : ImagefeaturesiftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_buffer_max(s : ImagefeaturesiftBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_buffer_to_string(s : ImagefeaturesiftBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_feature_sift_cursor_set(s : ImagefeaturesiftCursor, i : Int, v : Do
   result
 }
 
-pub fn image_feature_sift_cursor_sum(s : ImagefeaturesiftCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_cursor_sum(s : ImagefeaturesiftCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_cursor_mean(s : ImagefeaturesiftCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_cursor_mean(s : ImagefeaturesiftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_cursor_scale(s : ImagefeaturesiftCursor, f : Double) -> ImagefeaturesiftCursor {
   let result = image_feature_sift_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_feature_sift_cursor_fill(s : ImagefeaturesiftCursor, v : Double) ->
   result
 }
 
-pub fn image_feature_sift_cursor_min(s : ImagefeaturesiftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_cursor_min(s : ImagefeaturesiftCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_cursor_max(s : ImagefeaturesiftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_cursor_max(s : ImagefeaturesiftCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_cursor_to_string(s : ImagefeaturesiftCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_feature_sift_view_set(s : ImagefeaturesiftView, i : Int, v : Double
   result
 }
 
-pub fn image_feature_sift_view_sum(s : ImagefeaturesiftView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_view_sum(s : ImagefeaturesiftView) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_view_mean(s : ImagefeaturesiftView) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_view_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_view_mean(s : ImagefeaturesiftView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_view_scale(s : ImagefeaturesiftView, f : Double) -> ImagefeaturesiftView {
   let result = image_feature_sift_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_feature_sift_view_fill(s : ImagefeaturesiftView, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_sift_view_min(s : ImagefeaturesiftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_view_min(s : ImagefeaturesiftView) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_view_max(s : ImagefeaturesiftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_view_max(s : ImagefeaturesiftView) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_view_to_string(s : ImagefeaturesiftView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_feature_sift_range_set(s : ImagefeaturesiftRange, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_sift_range_sum(s : ImagefeaturesiftRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_range_sum(s : ImagefeaturesiftRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_range_mean(s : ImagefeaturesiftRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_range_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_range_mean(s : ImagefeaturesiftRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_range_scale(s : ImagefeaturesiftRange, f : Double) -> ImagefeaturesiftRange {
   let result = image_feature_sift_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_feature_sift_range_fill(s : ImagefeaturesiftRange, v : Double) -> I
   result
 }
 
-pub fn image_feature_sift_range_min(s : ImagefeaturesiftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_range_min(s : ImagefeaturesiftRange) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_range_max(s : ImagefeaturesiftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_range_max(s : ImagefeaturesiftRange) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_range_to_string(s : ImagefeaturesiftRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_feature_sift_slice_set(s : ImagefeaturesiftSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_sift_slice_sum(s : ImagefeaturesiftSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_sift_slice_sum(s : ImagefeaturesiftSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_sift_slice_mean(s : ImagefeaturesiftSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_sift_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_sift_slice_mean(s : ImagefeaturesiftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_sift_slice_scale(s : ImagefeaturesiftSlice, f : Double) -> ImagefeaturesiftSlice {
   let result = image_feature_sift_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_feature_sift_slice_fill(s : ImagefeaturesiftSlice, v : Double) -> I
   result
 }
 
-pub fn image_feature_sift_slice_min(s : ImagefeaturesiftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_slice_min(s : ImagefeaturesiftSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_sift_slice_max(s : ImagefeaturesiftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_sift_slice_max(s : ImagefeaturesiftSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_sift_slice_to_string(s : ImagefeaturesiftSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

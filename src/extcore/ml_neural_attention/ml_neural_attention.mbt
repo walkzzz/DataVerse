@@ -88,11 +88,7 @@ pub fn ml_neural_attention_make_series(vals : Array[Double], name : String) -> M
 
 pub fn ml_neural_attention_series_len(s : MlneuralattentionSeries) -> Int { s.vals.length() }
 
-pub fn ml_neural_attention_series_sum(s : MlneuralattentionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_neural_attention_series_sum(s : MlneuralattentionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_neural_attention_series_mean(s : MlneuralattentionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_neural_attention_frame_set(s : MlneuralattentionFrame, i : Int, v : Do
   result
 }
 
-pub fn ml_neural_attention_frame_sum(s : MlneuralattentionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_frame_sum(s : MlneuralattentionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_frame_mean(s : MlneuralattentionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_frame_mean(s : MlneuralattentionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_frame_scale(s : MlneuralattentionFrame, f : Double) -> MlneuralattentionFrame {
   let result = ml_neural_attention_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_neural_attention_frame_fill(s : MlneuralattentionFrame, v : Double) ->
   result
 }
 
-pub fn ml_neural_attention_frame_min(s : MlneuralattentionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_frame_min(s : MlneuralattentionFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_frame_max(s : MlneuralattentionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_frame_max(s : MlneuralattentionFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_frame_to_string(s : MlneuralattentionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_neural_attention_table_set(s : MlneuralattentionTable, i : Int, v : Do
   result
 }
 
-pub fn ml_neural_attention_table_sum(s : MlneuralattentionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_table_sum(s : MlneuralattentionTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_table_mean(s : MlneuralattentionTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_table_mean(s : MlneuralattentionTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_table_scale(s : MlneuralattentionTable, f : Double) -> MlneuralattentionTable {
   let result = ml_neural_attention_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_neural_attention_table_fill(s : MlneuralattentionTable, v : Double) ->
   result
 }
 
-pub fn ml_neural_attention_table_min(s : MlneuralattentionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_table_min(s : MlneuralattentionTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_table_max(s : MlneuralattentionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_table_max(s : MlneuralattentionTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_table_to_string(s : MlneuralattentionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_neural_attention_graphn_set(s : MlneuralattentionGraphN, i : Int, v : 
   result
 }
 
-pub fn ml_neural_attention_graphn_sum(s : MlneuralattentionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_graphn_sum(s : MlneuralattentionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_graphn_mean(s : MlneuralattentionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_graphn_mean(s : MlneuralattentionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_graphn_scale(s : MlneuralattentionGraphN, f : Double) -> MlneuralattentionGraphN {
   let result = ml_neural_attention_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_neural_attention_graphn_fill(s : MlneuralattentionGraphN, v : Double) 
   result
 }
 
-pub fn ml_neural_attention_graphn_min(s : MlneuralattentionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_graphn_min(s : MlneuralattentionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_graphn_max(s : MlneuralattentionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_graphn_max(s : MlneuralattentionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_graphn_to_string(s : MlneuralattentionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_neural_attention_node_set(s : MlneuralattentionNode, i : Int, v : Doub
   result
 }
 
-pub fn ml_neural_attention_node_sum(s : MlneuralattentionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_node_sum(s : MlneuralattentionNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_node_mean(s : MlneuralattentionNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_node_mean(s : MlneuralattentionNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_node_scale(s : MlneuralattentionNode, f : Double) -> MlneuralattentionNode {
   let result = ml_neural_attention_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_neural_attention_node_fill(s : MlneuralattentionNode, v : Double) -> M
   result
 }
 
-pub fn ml_neural_attention_node_min(s : MlneuralattentionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_node_min(s : MlneuralattentionNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_node_max(s : MlneuralattentionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_node_max(s : MlneuralattentionNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_node_to_string(s : MlneuralattentionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_neural_attention_edge_set(s : MlneuralattentionEdge, i : Int, v : Doub
   result
 }
 
-pub fn ml_neural_attention_edge_sum(s : MlneuralattentionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_edge_sum(s : MlneuralattentionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_edge_mean(s : MlneuralattentionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_edge_mean(s : MlneuralattentionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_edge_scale(s : MlneuralattentionEdge, f : Double) -> MlneuralattentionEdge {
   let result = ml_neural_attention_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_neural_attention_edge_fill(s : MlneuralattentionEdge, v : Double) -> M
   result
 }
 
-pub fn ml_neural_attention_edge_min(s : MlneuralattentionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_edge_min(s : MlneuralattentionEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_edge_max(s : MlneuralattentionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_edge_max(s : MlneuralattentionEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_edge_to_string(s : MlneuralattentionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_neural_attention_path_set(s : MlneuralattentionPath, i : Int, v : Doub
   result
 }
 
-pub fn ml_neural_attention_path_sum(s : MlneuralattentionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_path_sum(s : MlneuralattentionPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_path_mean(s : MlneuralattentionPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_path_mean(s : MlneuralattentionPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_path_scale(s : MlneuralattentionPath, f : Double) -> MlneuralattentionPath {
   let result = ml_neural_attention_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_neural_attention_path_fill(s : MlneuralattentionPath, v : Double) -> M
   result
 }
 
-pub fn ml_neural_attention_path_min(s : MlneuralattentionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_path_min(s : MlneuralattentionPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_path_max(s : MlneuralattentionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_path_max(s : MlneuralattentionPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_path_to_string(s : MlneuralattentionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_neural_attention_cluster_set(s : MlneuralattentionCluster, i : Int, v 
   result
 }
 
-pub fn ml_neural_attention_cluster_sum(s : MlneuralattentionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_cluster_sum(s : MlneuralattentionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_cluster_mean(s : MlneuralattentionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_cluster_mean(s : MlneuralattentionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_cluster_scale(s : MlneuralattentionCluster, f : Double) -> MlneuralattentionCluster {
   let result = ml_neural_attention_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_neural_attention_cluster_fill(s : MlneuralattentionCluster, v : Double
   result
 }
 
-pub fn ml_neural_attention_cluster_min(s : MlneuralattentionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_cluster_min(s : MlneuralattentionCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_cluster_max(s : MlneuralattentionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_cluster_max(s : MlneuralattentionCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_cluster_to_string(s : MlneuralattentionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_neural_attention_model_set(s : MlneuralattentionModel, i : Int, v : Do
   result
 }
 
-pub fn ml_neural_attention_model_sum(s : MlneuralattentionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_model_sum(s : MlneuralattentionModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_model_mean(s : MlneuralattentionModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_model_mean(s : MlneuralattentionModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_model_scale(s : MlneuralattentionModel, f : Double) -> MlneuralattentionModel {
   let result = ml_neural_attention_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_neural_attention_model_fill(s : MlneuralattentionModel, v : Double) ->
   result
 }
 
-pub fn ml_neural_attention_model_min(s : MlneuralattentionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_model_min(s : MlneuralattentionModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_model_max(s : MlneuralattentionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_model_max(s : MlneuralattentionModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_model_to_string(s : MlneuralattentionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_neural_attention_layer_set(s : MlneuralattentionLayer, i : Int, v : Do
   result
 }
 
-pub fn ml_neural_attention_layer_sum(s : MlneuralattentionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_layer_sum(s : MlneuralattentionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_layer_mean(s : MlneuralattentionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_layer_mean(s : MlneuralattentionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_layer_scale(s : MlneuralattentionLayer, f : Double) -> MlneuralattentionLayer {
   let result = ml_neural_attention_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_neural_attention_layer_fill(s : MlneuralattentionLayer, v : Double) ->
   result
 }
 
-pub fn ml_neural_attention_layer_min(s : MlneuralattentionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_layer_min(s : MlneuralattentionLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_layer_max(s : MlneuralattentionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_layer_max(s : MlneuralattentionLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_layer_to_string(s : MlneuralattentionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_neural_attention_buffer_set(s : MlneuralattentionBuffer, i : Int, v : 
   result
 }
 
-pub fn ml_neural_attention_buffer_sum(s : MlneuralattentionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_buffer_sum(s : MlneuralattentionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_buffer_mean(s : MlneuralattentionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_buffer_mean(s : MlneuralattentionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_buffer_scale(s : MlneuralattentionBuffer, f : Double) -> MlneuralattentionBuffer {
   let result = ml_neural_attention_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_neural_attention_buffer_fill(s : MlneuralattentionBuffer, v : Double) 
   result
 }
 
-pub fn ml_neural_attention_buffer_min(s : MlneuralattentionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_buffer_min(s : MlneuralattentionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_buffer_max(s : MlneuralattentionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_buffer_max(s : MlneuralattentionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_buffer_to_string(s : MlneuralattentionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_neural_attention_cursor_set(s : MlneuralattentionCursor, i : Int, v : 
   result
 }
 
-pub fn ml_neural_attention_cursor_sum(s : MlneuralattentionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_cursor_sum(s : MlneuralattentionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_cursor_mean(s : MlneuralattentionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_cursor_mean(s : MlneuralattentionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_cursor_scale(s : MlneuralattentionCursor, f : Double) -> MlneuralattentionCursor {
   let result = ml_neural_attention_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_neural_attention_cursor_fill(s : MlneuralattentionCursor, v : Double) 
   result
 }
 
-pub fn ml_neural_attention_cursor_min(s : MlneuralattentionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_cursor_min(s : MlneuralattentionCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_cursor_max(s : MlneuralattentionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_cursor_max(s : MlneuralattentionCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_cursor_to_string(s : MlneuralattentionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_neural_attention_view_set(s : MlneuralattentionView, i : Int, v : Doub
   result
 }
 
-pub fn ml_neural_attention_view_sum(s : MlneuralattentionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_view_sum(s : MlneuralattentionView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_view_mean(s : MlneuralattentionView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_view_mean(s : MlneuralattentionView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_view_scale(s : MlneuralattentionView, f : Double) -> MlneuralattentionView {
   let result = ml_neural_attention_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_neural_attention_view_fill(s : MlneuralattentionView, v : Double) -> M
   result
 }
 
-pub fn ml_neural_attention_view_min(s : MlneuralattentionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_view_min(s : MlneuralattentionView) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_view_max(s : MlneuralattentionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_view_max(s : MlneuralattentionView) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_view_to_string(s : MlneuralattentionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_neural_attention_range_set(s : MlneuralattentionRange, i : Int, v : Do
   result
 }
 
-pub fn ml_neural_attention_range_sum(s : MlneuralattentionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_range_sum(s : MlneuralattentionRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_range_mean(s : MlneuralattentionRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_range_mean(s : MlneuralattentionRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_range_scale(s : MlneuralattentionRange, f : Double) -> MlneuralattentionRange {
   let result = ml_neural_attention_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_neural_attention_range_fill(s : MlneuralattentionRange, v : Double) ->
   result
 }
 
-pub fn ml_neural_attention_range_min(s : MlneuralattentionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_range_min(s : MlneuralattentionRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_range_max(s : MlneuralattentionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_range_max(s : MlneuralattentionRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_range_to_string(s : MlneuralattentionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_neural_attention_slice_set(s : MlneuralattentionSlice, i : Int, v : Do
   result
 }
 
-pub fn ml_neural_attention_slice_sum(s : MlneuralattentionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_attention_slice_sum(s : MlneuralattentionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_attention_slice_mean(s : MlneuralattentionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_attention_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_attention_slice_mean(s : MlneuralattentionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_attention_slice_scale(s : MlneuralattentionSlice, f : Double) -> MlneuralattentionSlice {
   let result = ml_neural_attention_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_neural_attention_slice_fill(s : MlneuralattentionSlice, v : Double) ->
   result
 }
 
-pub fn ml_neural_attention_slice_min(s : MlneuralattentionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_slice_min(s : MlneuralattentionSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_attention_slice_max(s : MlneuralattentionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_attention_slice_max(s : MlneuralattentionSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_attention_slice_to_string(s : MlneuralattentionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

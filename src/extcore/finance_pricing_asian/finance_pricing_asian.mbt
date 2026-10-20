@@ -88,11 +88,7 @@ pub fn finance_pricing_asian_make_series(vals : Array[Double], name : String) ->
 
 pub fn finance_pricing_asian_series_len(s : FinancepricingasianSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_asian_series_sum(s : FinancepricingasianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_asian_series_sum(s : FinancepricingasianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_asian_series_mean(s : FinancepricingasianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_asian_frame_set(s : FinancepricingasianFrame, i : Int, v 
   result
 }
 
-pub fn finance_pricing_asian_frame_sum(s : FinancepricingasianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_frame_sum(s : FinancepricingasianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_frame_mean(s : FinancepricingasianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_frame_mean(s : FinancepricingasianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_frame_scale(s : FinancepricingasianFrame, f : Double) -> FinancepricingasianFrame {
   let result = finance_pricing_asian_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_asian_frame_fill(s : FinancepricingasianFrame, v : Double
   result
 }
 
-pub fn finance_pricing_asian_frame_min(s : FinancepricingasianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_frame_min(s : FinancepricingasianFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_frame_max(s : FinancepricingasianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_frame_max(s : FinancepricingasianFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_frame_to_string(s : FinancepricingasianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_asian_table_set(s : FinancepricingasianTable, i : Int, v 
   result
 }
 
-pub fn finance_pricing_asian_table_sum(s : FinancepricingasianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_table_sum(s : FinancepricingasianTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_table_mean(s : FinancepricingasianTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_table_mean(s : FinancepricingasianTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_table_scale(s : FinancepricingasianTable, f : Double) -> FinancepricingasianTable {
   let result = finance_pricing_asian_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_asian_table_fill(s : FinancepricingasianTable, v : Double
   result
 }
 
-pub fn finance_pricing_asian_table_min(s : FinancepricingasianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_table_min(s : FinancepricingasianTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_table_max(s : FinancepricingasianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_table_max(s : FinancepricingasianTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_table_to_string(s : FinancepricingasianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_asian_graphn_set(s : FinancepricingasianGraphN, i : Int, 
   result
 }
 
-pub fn finance_pricing_asian_graphn_sum(s : FinancepricingasianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_graphn_sum(s : FinancepricingasianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_graphn_mean(s : FinancepricingasianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_graphn_mean(s : FinancepricingasianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_graphn_scale(s : FinancepricingasianGraphN, f : Double) -> FinancepricingasianGraphN {
   let result = finance_pricing_asian_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_asian_graphn_fill(s : FinancepricingasianGraphN, v : Doub
   result
 }
 
-pub fn finance_pricing_asian_graphn_min(s : FinancepricingasianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_graphn_min(s : FinancepricingasianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_graphn_max(s : FinancepricingasianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_graphn_max(s : FinancepricingasianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_graphn_to_string(s : FinancepricingasianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_asian_node_set(s : FinancepricingasianNode, i : Int, v : 
   result
 }
 
-pub fn finance_pricing_asian_node_sum(s : FinancepricingasianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_node_sum(s : FinancepricingasianNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_node_mean(s : FinancepricingasianNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_node_mean(s : FinancepricingasianNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_node_scale(s : FinancepricingasianNode, f : Double) -> FinancepricingasianNode {
   let result = finance_pricing_asian_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_asian_node_fill(s : FinancepricingasianNode, v : Double) 
   result
 }
 
-pub fn finance_pricing_asian_node_min(s : FinancepricingasianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_node_min(s : FinancepricingasianNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_node_max(s : FinancepricingasianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_node_max(s : FinancepricingasianNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_node_to_string(s : FinancepricingasianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_asian_edge_set(s : FinancepricingasianEdge, i : Int, v : 
   result
 }
 
-pub fn finance_pricing_asian_edge_sum(s : FinancepricingasianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_edge_sum(s : FinancepricingasianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_edge_mean(s : FinancepricingasianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_edge_mean(s : FinancepricingasianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_edge_scale(s : FinancepricingasianEdge, f : Double) -> FinancepricingasianEdge {
   let result = finance_pricing_asian_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_asian_edge_fill(s : FinancepricingasianEdge, v : Double) 
   result
 }
 
-pub fn finance_pricing_asian_edge_min(s : FinancepricingasianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_edge_min(s : FinancepricingasianEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_edge_max(s : FinancepricingasianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_edge_max(s : FinancepricingasianEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_edge_to_string(s : FinancepricingasianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_asian_path_set(s : FinancepricingasianPath, i : Int, v : 
   result
 }
 
-pub fn finance_pricing_asian_path_sum(s : FinancepricingasianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_path_sum(s : FinancepricingasianPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_path_mean(s : FinancepricingasianPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_path_mean(s : FinancepricingasianPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_path_scale(s : FinancepricingasianPath, f : Double) -> FinancepricingasianPath {
   let result = finance_pricing_asian_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_asian_path_fill(s : FinancepricingasianPath, v : Double) 
   result
 }
 
-pub fn finance_pricing_asian_path_min(s : FinancepricingasianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_path_min(s : FinancepricingasianPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_path_max(s : FinancepricingasianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_path_max(s : FinancepricingasianPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_path_to_string(s : FinancepricingasianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_asian_cluster_set(s : FinancepricingasianCluster, i : Int
   result
 }
 
-pub fn finance_pricing_asian_cluster_sum(s : FinancepricingasianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_cluster_sum(s : FinancepricingasianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_cluster_mean(s : FinancepricingasianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_cluster_mean(s : FinancepricingasianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_cluster_scale(s : FinancepricingasianCluster, f : Double) -> FinancepricingasianCluster {
   let result = finance_pricing_asian_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_asian_cluster_fill(s : FinancepricingasianCluster, v : Do
   result
 }
 
-pub fn finance_pricing_asian_cluster_min(s : FinancepricingasianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_cluster_min(s : FinancepricingasianCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_cluster_max(s : FinancepricingasianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_cluster_max(s : FinancepricingasianCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_cluster_to_string(s : FinancepricingasianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_asian_model_set(s : FinancepricingasianModel, i : Int, v 
   result
 }
 
-pub fn finance_pricing_asian_model_sum(s : FinancepricingasianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_model_sum(s : FinancepricingasianModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_model_mean(s : FinancepricingasianModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_model_mean(s : FinancepricingasianModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_model_scale(s : FinancepricingasianModel, f : Double) -> FinancepricingasianModel {
   let result = finance_pricing_asian_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_asian_model_fill(s : FinancepricingasianModel, v : Double
   result
 }
 
-pub fn finance_pricing_asian_model_min(s : FinancepricingasianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_model_min(s : FinancepricingasianModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_model_max(s : FinancepricingasianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_model_max(s : FinancepricingasianModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_model_to_string(s : FinancepricingasianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_asian_layer_set(s : FinancepricingasianLayer, i : Int, v 
   result
 }
 
-pub fn finance_pricing_asian_layer_sum(s : FinancepricingasianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_layer_sum(s : FinancepricingasianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_layer_mean(s : FinancepricingasianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_layer_mean(s : FinancepricingasianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_layer_scale(s : FinancepricingasianLayer, f : Double) -> FinancepricingasianLayer {
   let result = finance_pricing_asian_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_asian_layer_fill(s : FinancepricingasianLayer, v : Double
   result
 }
 
-pub fn finance_pricing_asian_layer_min(s : FinancepricingasianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_layer_min(s : FinancepricingasianLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_layer_max(s : FinancepricingasianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_layer_max(s : FinancepricingasianLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_layer_to_string(s : FinancepricingasianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_asian_buffer_set(s : FinancepricingasianBuffer, i : Int, 
   result
 }
 
-pub fn finance_pricing_asian_buffer_sum(s : FinancepricingasianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_buffer_sum(s : FinancepricingasianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_buffer_mean(s : FinancepricingasianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_buffer_mean(s : FinancepricingasianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_buffer_scale(s : FinancepricingasianBuffer, f : Double) -> FinancepricingasianBuffer {
   let result = finance_pricing_asian_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_asian_buffer_fill(s : FinancepricingasianBuffer, v : Doub
   result
 }
 
-pub fn finance_pricing_asian_buffer_min(s : FinancepricingasianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_buffer_min(s : FinancepricingasianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_buffer_max(s : FinancepricingasianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_buffer_max(s : FinancepricingasianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_buffer_to_string(s : FinancepricingasianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_asian_cursor_set(s : FinancepricingasianCursor, i : Int, 
   result
 }
 
-pub fn finance_pricing_asian_cursor_sum(s : FinancepricingasianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_cursor_sum(s : FinancepricingasianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_cursor_mean(s : FinancepricingasianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_cursor_mean(s : FinancepricingasianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_cursor_scale(s : FinancepricingasianCursor, f : Double) -> FinancepricingasianCursor {
   let result = finance_pricing_asian_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_asian_cursor_fill(s : FinancepricingasianCursor, v : Doub
   result
 }
 
-pub fn finance_pricing_asian_cursor_min(s : FinancepricingasianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_cursor_min(s : FinancepricingasianCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_cursor_max(s : FinancepricingasianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_cursor_max(s : FinancepricingasianCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_cursor_to_string(s : FinancepricingasianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_asian_view_set(s : FinancepricingasianView, i : Int, v : 
   result
 }
 
-pub fn finance_pricing_asian_view_sum(s : FinancepricingasianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_view_sum(s : FinancepricingasianView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_view_mean(s : FinancepricingasianView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_view_mean(s : FinancepricingasianView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_view_scale(s : FinancepricingasianView, f : Double) -> FinancepricingasianView {
   let result = finance_pricing_asian_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_asian_view_fill(s : FinancepricingasianView, v : Double) 
   result
 }
 
-pub fn finance_pricing_asian_view_min(s : FinancepricingasianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_view_min(s : FinancepricingasianView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_view_max(s : FinancepricingasianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_view_max(s : FinancepricingasianView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_view_to_string(s : FinancepricingasianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_asian_range_set(s : FinancepricingasianRange, i : Int, v 
   result
 }
 
-pub fn finance_pricing_asian_range_sum(s : FinancepricingasianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_range_sum(s : FinancepricingasianRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_range_mean(s : FinancepricingasianRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_range_mean(s : FinancepricingasianRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_range_scale(s : FinancepricingasianRange, f : Double) -> FinancepricingasianRange {
   let result = finance_pricing_asian_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_asian_range_fill(s : FinancepricingasianRange, v : Double
   result
 }
 
-pub fn finance_pricing_asian_range_min(s : FinancepricingasianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_range_min(s : FinancepricingasianRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_range_max(s : FinancepricingasianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_range_max(s : FinancepricingasianRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_range_to_string(s : FinancepricingasianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_asian_slice_set(s : FinancepricingasianSlice, i : Int, v 
   result
 }
 
-pub fn finance_pricing_asian_slice_sum(s : FinancepricingasianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_asian_slice_sum(s : FinancepricingasianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_asian_slice_mean(s : FinancepricingasianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_asian_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_asian_slice_mean(s : FinancepricingasianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_asian_slice_scale(s : FinancepricingasianSlice, f : Double) -> FinancepricingasianSlice {
   let result = finance_pricing_asian_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_asian_slice_fill(s : FinancepricingasianSlice, v : Double
   result
 }
 
-pub fn finance_pricing_asian_slice_min(s : FinancepricingasianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_slice_min(s : FinancepricingasianSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_asian_slice_max(s : FinancepricingasianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_asian_slice_max(s : FinancepricingasianSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_asian_slice_to_string(s : FinancepricingasianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

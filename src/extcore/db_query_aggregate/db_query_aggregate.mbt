@@ -88,11 +88,7 @@ pub fn db_query_aggregate_make_series(vals : Array[Double], name : String) -> Db
 
 pub fn db_query_aggregate_series_len(s : DbqueryaggregateSeries) -> Int { s.vals.length() }
 
-pub fn db_query_aggregate_series_sum(s : DbqueryaggregateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_aggregate_series_sum(s : DbqueryaggregateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_aggregate_series_mean(s : DbqueryaggregateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_aggregate_frame_set(s : DbqueryaggregateFrame, i : Int, v : Doub
   result
 }
 
-pub fn db_query_aggregate_frame_sum(s : DbqueryaggregateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_frame_sum(s : DbqueryaggregateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_frame_mean(s : DbqueryaggregateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_frame_mean(s : DbqueryaggregateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_frame_scale(s : DbqueryaggregateFrame, f : Double) -> DbqueryaggregateFrame {
   let result = db_query_aggregate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_aggregate_frame_fill(s : DbqueryaggregateFrame, v : Double) -> D
   result
 }
 
-pub fn db_query_aggregate_frame_min(s : DbqueryaggregateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_frame_min(s : DbqueryaggregateFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_frame_max(s : DbqueryaggregateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_frame_max(s : DbqueryaggregateFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_frame_to_string(s : DbqueryaggregateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_aggregate_table_set(s : DbqueryaggregateTable, i : Int, v : Doub
   result
 }
 
-pub fn db_query_aggregate_table_sum(s : DbqueryaggregateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_table_sum(s : DbqueryaggregateTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_table_mean(s : DbqueryaggregateTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_table_mean(s : DbqueryaggregateTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_table_scale(s : DbqueryaggregateTable, f : Double) -> DbqueryaggregateTable {
   let result = db_query_aggregate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_aggregate_table_fill(s : DbqueryaggregateTable, v : Double) -> D
   result
 }
 
-pub fn db_query_aggregate_table_min(s : DbqueryaggregateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_table_min(s : DbqueryaggregateTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_table_max(s : DbqueryaggregateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_table_max(s : DbqueryaggregateTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_table_to_string(s : DbqueryaggregateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_aggregate_graphn_set(s : DbqueryaggregateGraphN, i : Int, v : Do
   result
 }
 
-pub fn db_query_aggregate_graphn_sum(s : DbqueryaggregateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_graphn_sum(s : DbqueryaggregateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_graphn_mean(s : DbqueryaggregateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_graphn_mean(s : DbqueryaggregateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_graphn_scale(s : DbqueryaggregateGraphN, f : Double) -> DbqueryaggregateGraphN {
   let result = db_query_aggregate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_aggregate_graphn_fill(s : DbqueryaggregateGraphN, v : Double) ->
   result
 }
 
-pub fn db_query_aggregate_graphn_min(s : DbqueryaggregateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_graphn_min(s : DbqueryaggregateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_graphn_max(s : DbqueryaggregateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_graphn_max(s : DbqueryaggregateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_graphn_to_string(s : DbqueryaggregateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_aggregate_node_set(s : DbqueryaggregateNode, i : Int, v : Double
   result
 }
 
-pub fn db_query_aggregate_node_sum(s : DbqueryaggregateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_node_sum(s : DbqueryaggregateNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_node_mean(s : DbqueryaggregateNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_node_mean(s : DbqueryaggregateNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_node_scale(s : DbqueryaggregateNode, f : Double) -> DbqueryaggregateNode {
   let result = db_query_aggregate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_aggregate_node_fill(s : DbqueryaggregateNode, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_aggregate_node_min(s : DbqueryaggregateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_node_min(s : DbqueryaggregateNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_node_max(s : DbqueryaggregateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_node_max(s : DbqueryaggregateNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_node_to_string(s : DbqueryaggregateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_aggregate_edge_set(s : DbqueryaggregateEdge, i : Int, v : Double
   result
 }
 
-pub fn db_query_aggregate_edge_sum(s : DbqueryaggregateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_edge_sum(s : DbqueryaggregateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_edge_mean(s : DbqueryaggregateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_edge_mean(s : DbqueryaggregateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_edge_scale(s : DbqueryaggregateEdge, f : Double) -> DbqueryaggregateEdge {
   let result = db_query_aggregate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_aggregate_edge_fill(s : DbqueryaggregateEdge, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_aggregate_edge_min(s : DbqueryaggregateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_edge_min(s : DbqueryaggregateEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_edge_max(s : DbqueryaggregateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_edge_max(s : DbqueryaggregateEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_edge_to_string(s : DbqueryaggregateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_aggregate_path_set(s : DbqueryaggregatePath, i : Int, v : Double
   result
 }
 
-pub fn db_query_aggregate_path_sum(s : DbqueryaggregatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_path_sum(s : DbqueryaggregatePath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_path_mean(s : DbqueryaggregatePath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_path_mean(s : DbqueryaggregatePath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_path_scale(s : DbqueryaggregatePath, f : Double) -> DbqueryaggregatePath {
   let result = db_query_aggregate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_aggregate_path_fill(s : DbqueryaggregatePath, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_aggregate_path_min(s : DbqueryaggregatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_path_min(s : DbqueryaggregatePath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_path_max(s : DbqueryaggregatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_path_max(s : DbqueryaggregatePath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_path_to_string(s : DbqueryaggregatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_aggregate_cluster_set(s : DbqueryaggregateCluster, i : Int, v : 
   result
 }
 
-pub fn db_query_aggregate_cluster_sum(s : DbqueryaggregateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_cluster_sum(s : DbqueryaggregateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_cluster_mean(s : DbqueryaggregateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_cluster_mean(s : DbqueryaggregateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_cluster_scale(s : DbqueryaggregateCluster, f : Double) -> DbqueryaggregateCluster {
   let result = db_query_aggregate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_aggregate_cluster_fill(s : DbqueryaggregateCluster, v : Double) 
   result
 }
 
-pub fn db_query_aggregate_cluster_min(s : DbqueryaggregateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_cluster_min(s : DbqueryaggregateCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_cluster_max(s : DbqueryaggregateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_cluster_max(s : DbqueryaggregateCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_cluster_to_string(s : DbqueryaggregateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_aggregate_model_set(s : DbqueryaggregateModel, i : Int, v : Doub
   result
 }
 
-pub fn db_query_aggregate_model_sum(s : DbqueryaggregateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_model_sum(s : DbqueryaggregateModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_model_mean(s : DbqueryaggregateModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_model_mean(s : DbqueryaggregateModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_model_scale(s : DbqueryaggregateModel, f : Double) -> DbqueryaggregateModel {
   let result = db_query_aggregate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_aggregate_model_fill(s : DbqueryaggregateModel, v : Double) -> D
   result
 }
 
-pub fn db_query_aggregate_model_min(s : DbqueryaggregateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_model_min(s : DbqueryaggregateModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_model_max(s : DbqueryaggregateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_model_max(s : DbqueryaggregateModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_model_to_string(s : DbqueryaggregateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_aggregate_layer_set(s : DbqueryaggregateLayer, i : Int, v : Doub
   result
 }
 
-pub fn db_query_aggregate_layer_sum(s : DbqueryaggregateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_layer_sum(s : DbqueryaggregateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_layer_mean(s : DbqueryaggregateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_layer_mean(s : DbqueryaggregateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_layer_scale(s : DbqueryaggregateLayer, f : Double) -> DbqueryaggregateLayer {
   let result = db_query_aggregate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_aggregate_layer_fill(s : DbqueryaggregateLayer, v : Double) -> D
   result
 }
 
-pub fn db_query_aggregate_layer_min(s : DbqueryaggregateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_layer_min(s : DbqueryaggregateLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_layer_max(s : DbqueryaggregateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_layer_max(s : DbqueryaggregateLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_layer_to_string(s : DbqueryaggregateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_aggregate_buffer_set(s : DbqueryaggregateBuffer, i : Int, v : Do
   result
 }
 
-pub fn db_query_aggregate_buffer_sum(s : DbqueryaggregateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_buffer_sum(s : DbqueryaggregateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_buffer_mean(s : DbqueryaggregateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_buffer_mean(s : DbqueryaggregateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_buffer_scale(s : DbqueryaggregateBuffer, f : Double) -> DbqueryaggregateBuffer {
   let result = db_query_aggregate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_aggregate_buffer_fill(s : DbqueryaggregateBuffer, v : Double) ->
   result
 }
 
-pub fn db_query_aggregate_buffer_min(s : DbqueryaggregateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_buffer_min(s : DbqueryaggregateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_buffer_max(s : DbqueryaggregateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_buffer_max(s : DbqueryaggregateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_buffer_to_string(s : DbqueryaggregateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_aggregate_cursor_set(s : DbqueryaggregateCursor, i : Int, v : Do
   result
 }
 
-pub fn db_query_aggregate_cursor_sum(s : DbqueryaggregateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_cursor_sum(s : DbqueryaggregateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_cursor_mean(s : DbqueryaggregateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_cursor_mean(s : DbqueryaggregateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_cursor_scale(s : DbqueryaggregateCursor, f : Double) -> DbqueryaggregateCursor {
   let result = db_query_aggregate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_aggregate_cursor_fill(s : DbqueryaggregateCursor, v : Double) ->
   result
 }
 
-pub fn db_query_aggregate_cursor_min(s : DbqueryaggregateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_cursor_min(s : DbqueryaggregateCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_cursor_max(s : DbqueryaggregateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_cursor_max(s : DbqueryaggregateCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_cursor_to_string(s : DbqueryaggregateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_aggregate_view_set(s : DbqueryaggregateView, i : Int, v : Double
   result
 }
 
-pub fn db_query_aggregate_view_sum(s : DbqueryaggregateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_view_sum(s : DbqueryaggregateView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_view_mean(s : DbqueryaggregateView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_view_mean(s : DbqueryaggregateView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_view_scale(s : DbqueryaggregateView, f : Double) -> DbqueryaggregateView {
   let result = db_query_aggregate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_aggregate_view_fill(s : DbqueryaggregateView, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_aggregate_view_min(s : DbqueryaggregateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_view_min(s : DbqueryaggregateView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_view_max(s : DbqueryaggregateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_view_max(s : DbqueryaggregateView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_view_to_string(s : DbqueryaggregateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_aggregate_range_set(s : DbqueryaggregateRange, i : Int, v : Doub
   result
 }
 
-pub fn db_query_aggregate_range_sum(s : DbqueryaggregateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_range_sum(s : DbqueryaggregateRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_range_mean(s : DbqueryaggregateRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_range_mean(s : DbqueryaggregateRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_range_scale(s : DbqueryaggregateRange, f : Double) -> DbqueryaggregateRange {
   let result = db_query_aggregate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_aggregate_range_fill(s : DbqueryaggregateRange, v : Double) -> D
   result
 }
 
-pub fn db_query_aggregate_range_min(s : DbqueryaggregateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_range_min(s : DbqueryaggregateRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_range_max(s : DbqueryaggregateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_range_max(s : DbqueryaggregateRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_range_to_string(s : DbqueryaggregateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_aggregate_slice_set(s : DbqueryaggregateSlice, i : Int, v : Doub
   result
 }
 
-pub fn db_query_aggregate_slice_sum(s : DbqueryaggregateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_aggregate_slice_sum(s : DbqueryaggregateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_aggregate_slice_mean(s : DbqueryaggregateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_aggregate_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_aggregate_slice_mean(s : DbqueryaggregateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_aggregate_slice_scale(s : DbqueryaggregateSlice, f : Double) -> DbqueryaggregateSlice {
   let result = db_query_aggregate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_aggregate_slice_fill(s : DbqueryaggregateSlice, v : Double) -> D
   result
 }
 
-pub fn db_query_aggregate_slice_min(s : DbqueryaggregateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_slice_min(s : DbqueryaggregateSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_aggregate_slice_max(s : DbqueryaggregateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_aggregate_slice_max(s : DbqueryaggregateSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_aggregate_slice_to_string(s : DbqueryaggregateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

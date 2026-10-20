@@ -88,11 +88,7 @@ pub fn signal_filter_butterworth_make_series(vals : Array[Double], name : String
 
 pub fn signal_filter_butterworth_series_len(s : SignalfilterbutterworthSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_butterworth_series_sum(s : SignalfilterbutterworthSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_butterworth_series_sum(s : SignalfilterbutterworthSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_butterworth_series_mean(s : SignalfilterbutterworthSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_butterworth_frame_set(s : SignalfilterbutterworthFrame, i :
   result
 }
 
-pub fn signal_filter_butterworth_frame_sum(s : SignalfilterbutterworthFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_frame_sum(s : SignalfilterbutterworthFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_frame_mean(s : SignalfilterbutterworthFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_frame_mean(s : SignalfilterbutterworthFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_frame_scale(s : SignalfilterbutterworthFrame, f : Double) -> SignalfilterbutterworthFrame {
   let result = signal_filter_butterworth_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_butterworth_frame_fill(s : SignalfilterbutterworthFrame, v 
   result
 }
 
-pub fn signal_filter_butterworth_frame_min(s : SignalfilterbutterworthFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_frame_min(s : SignalfilterbutterworthFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_frame_max(s : SignalfilterbutterworthFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_frame_max(s : SignalfilterbutterworthFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_frame_to_string(s : SignalfilterbutterworthFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_butterworth_table_set(s : SignalfilterbutterworthTable, i :
   result
 }
 
-pub fn signal_filter_butterworth_table_sum(s : SignalfilterbutterworthTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_table_sum(s : SignalfilterbutterworthTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_table_mean(s : SignalfilterbutterworthTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_table_mean(s : SignalfilterbutterworthTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_table_scale(s : SignalfilterbutterworthTable, f : Double) -> SignalfilterbutterworthTable {
   let result = signal_filter_butterworth_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_butterworth_table_fill(s : SignalfilterbutterworthTable, v 
   result
 }
 
-pub fn signal_filter_butterworth_table_min(s : SignalfilterbutterworthTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_table_min(s : SignalfilterbutterworthTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_table_max(s : SignalfilterbutterworthTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_table_max(s : SignalfilterbutterworthTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_table_to_string(s : SignalfilterbutterworthTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_butterworth_graphn_set(s : SignalfilterbutterworthGraphN, i
   result
 }
 
-pub fn signal_filter_butterworth_graphn_sum(s : SignalfilterbutterworthGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_graphn_sum(s : SignalfilterbutterworthGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_graphn_mean(s : SignalfilterbutterworthGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_graphn_mean(s : SignalfilterbutterworthGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_graphn_scale(s : SignalfilterbutterworthGraphN, f : Double) -> SignalfilterbutterworthGraphN {
   let result = signal_filter_butterworth_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_butterworth_graphn_fill(s : SignalfilterbutterworthGraphN, 
   result
 }
 
-pub fn signal_filter_butterworth_graphn_min(s : SignalfilterbutterworthGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_graphn_min(s : SignalfilterbutterworthGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_graphn_max(s : SignalfilterbutterworthGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_graphn_max(s : SignalfilterbutterworthGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_graphn_to_string(s : SignalfilterbutterworthGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_butterworth_node_set(s : SignalfilterbutterworthNode, i : I
   result
 }
 
-pub fn signal_filter_butterworth_node_sum(s : SignalfilterbutterworthNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_node_sum(s : SignalfilterbutterworthNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_node_mean(s : SignalfilterbutterworthNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_node_mean(s : SignalfilterbutterworthNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_node_scale(s : SignalfilterbutterworthNode, f : Double) -> SignalfilterbutterworthNode {
   let result = signal_filter_butterworth_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_butterworth_node_fill(s : SignalfilterbutterworthNode, v : 
   result
 }
 
-pub fn signal_filter_butterworth_node_min(s : SignalfilterbutterworthNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_node_min(s : SignalfilterbutterworthNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_node_max(s : SignalfilterbutterworthNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_node_max(s : SignalfilterbutterworthNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_node_to_string(s : SignalfilterbutterworthNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_butterworth_edge_set(s : SignalfilterbutterworthEdge, i : I
   result
 }
 
-pub fn signal_filter_butterworth_edge_sum(s : SignalfilterbutterworthEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_edge_sum(s : SignalfilterbutterworthEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_edge_mean(s : SignalfilterbutterworthEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_edge_mean(s : SignalfilterbutterworthEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_edge_scale(s : SignalfilterbutterworthEdge, f : Double) -> SignalfilterbutterworthEdge {
   let result = signal_filter_butterworth_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_butterworth_edge_fill(s : SignalfilterbutterworthEdge, v : 
   result
 }
 
-pub fn signal_filter_butterworth_edge_min(s : SignalfilterbutterworthEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_edge_min(s : SignalfilterbutterworthEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_edge_max(s : SignalfilterbutterworthEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_edge_max(s : SignalfilterbutterworthEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_edge_to_string(s : SignalfilterbutterworthEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_butterworth_path_set(s : SignalfilterbutterworthPath, i : I
   result
 }
 
-pub fn signal_filter_butterworth_path_sum(s : SignalfilterbutterworthPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_path_sum(s : SignalfilterbutterworthPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_path_mean(s : SignalfilterbutterworthPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_path_mean(s : SignalfilterbutterworthPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_path_scale(s : SignalfilterbutterworthPath, f : Double) -> SignalfilterbutterworthPath {
   let result = signal_filter_butterworth_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_butterworth_path_fill(s : SignalfilterbutterworthPath, v : 
   result
 }
 
-pub fn signal_filter_butterworth_path_min(s : SignalfilterbutterworthPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_path_min(s : SignalfilterbutterworthPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_path_max(s : SignalfilterbutterworthPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_path_max(s : SignalfilterbutterworthPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_path_to_string(s : SignalfilterbutterworthPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_butterworth_cluster_set(s : SignalfilterbutterworthCluster,
   result
 }
 
-pub fn signal_filter_butterworth_cluster_sum(s : SignalfilterbutterworthCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_cluster_sum(s : SignalfilterbutterworthCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_cluster_mean(s : SignalfilterbutterworthCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_cluster_mean(s : SignalfilterbutterworthCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_cluster_scale(s : SignalfilterbutterworthCluster, f : Double) -> SignalfilterbutterworthCluster {
   let result = signal_filter_butterworth_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_butterworth_cluster_fill(s : SignalfilterbutterworthCluster
   result
 }
 
-pub fn signal_filter_butterworth_cluster_min(s : SignalfilterbutterworthCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_cluster_min(s : SignalfilterbutterworthCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_cluster_max(s : SignalfilterbutterworthCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_cluster_max(s : SignalfilterbutterworthCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_cluster_to_string(s : SignalfilterbutterworthCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_butterworth_model_set(s : SignalfilterbutterworthModel, i :
   result
 }
 
-pub fn signal_filter_butterworth_model_sum(s : SignalfilterbutterworthModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_model_sum(s : SignalfilterbutterworthModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_model_mean(s : SignalfilterbutterworthModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_model_mean(s : SignalfilterbutterworthModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_model_scale(s : SignalfilterbutterworthModel, f : Double) -> SignalfilterbutterworthModel {
   let result = signal_filter_butterworth_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_butterworth_model_fill(s : SignalfilterbutterworthModel, v 
   result
 }
 
-pub fn signal_filter_butterworth_model_min(s : SignalfilterbutterworthModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_model_min(s : SignalfilterbutterworthModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_model_max(s : SignalfilterbutterworthModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_model_max(s : SignalfilterbutterworthModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_model_to_string(s : SignalfilterbutterworthModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_butterworth_layer_set(s : SignalfilterbutterworthLayer, i :
   result
 }
 
-pub fn signal_filter_butterworth_layer_sum(s : SignalfilterbutterworthLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_layer_sum(s : SignalfilterbutterworthLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_layer_mean(s : SignalfilterbutterworthLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_layer_mean(s : SignalfilterbutterworthLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_layer_scale(s : SignalfilterbutterworthLayer, f : Double) -> SignalfilterbutterworthLayer {
   let result = signal_filter_butterworth_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_butterworth_layer_fill(s : SignalfilterbutterworthLayer, v 
   result
 }
 
-pub fn signal_filter_butterworth_layer_min(s : SignalfilterbutterworthLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_layer_min(s : SignalfilterbutterworthLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_layer_max(s : SignalfilterbutterworthLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_layer_max(s : SignalfilterbutterworthLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_layer_to_string(s : SignalfilterbutterworthLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_butterworth_buffer_set(s : SignalfilterbutterworthBuffer, i
   result
 }
 
-pub fn signal_filter_butterworth_buffer_sum(s : SignalfilterbutterworthBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_buffer_sum(s : SignalfilterbutterworthBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_buffer_mean(s : SignalfilterbutterworthBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_buffer_mean(s : SignalfilterbutterworthBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_buffer_scale(s : SignalfilterbutterworthBuffer, f : Double) -> SignalfilterbutterworthBuffer {
   let result = signal_filter_butterworth_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_butterworth_buffer_fill(s : SignalfilterbutterworthBuffer, 
   result
 }
 
-pub fn signal_filter_butterworth_buffer_min(s : SignalfilterbutterworthBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_buffer_min(s : SignalfilterbutterworthBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_buffer_max(s : SignalfilterbutterworthBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_buffer_max(s : SignalfilterbutterworthBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_buffer_to_string(s : SignalfilterbutterworthBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_butterworth_cursor_set(s : SignalfilterbutterworthCursor, i
   result
 }
 
-pub fn signal_filter_butterworth_cursor_sum(s : SignalfilterbutterworthCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_cursor_sum(s : SignalfilterbutterworthCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_cursor_mean(s : SignalfilterbutterworthCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_cursor_mean(s : SignalfilterbutterworthCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_cursor_scale(s : SignalfilterbutterworthCursor, f : Double) -> SignalfilterbutterworthCursor {
   let result = signal_filter_butterworth_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_butterworth_cursor_fill(s : SignalfilterbutterworthCursor, 
   result
 }
 
-pub fn signal_filter_butterworth_cursor_min(s : SignalfilterbutterworthCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_cursor_min(s : SignalfilterbutterworthCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_cursor_max(s : SignalfilterbutterworthCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_cursor_max(s : SignalfilterbutterworthCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_cursor_to_string(s : SignalfilterbutterworthCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_butterworth_view_set(s : SignalfilterbutterworthView, i : I
   result
 }
 
-pub fn signal_filter_butterworth_view_sum(s : SignalfilterbutterworthView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_view_sum(s : SignalfilterbutterworthView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_view_mean(s : SignalfilterbutterworthView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_view_mean(s : SignalfilterbutterworthView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_view_scale(s : SignalfilterbutterworthView, f : Double) -> SignalfilterbutterworthView {
   let result = signal_filter_butterworth_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_butterworth_view_fill(s : SignalfilterbutterworthView, v : 
   result
 }
 
-pub fn signal_filter_butterworth_view_min(s : SignalfilterbutterworthView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_view_min(s : SignalfilterbutterworthView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_view_max(s : SignalfilterbutterworthView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_view_max(s : SignalfilterbutterworthView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_view_to_string(s : SignalfilterbutterworthView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_butterworth_range_set(s : SignalfilterbutterworthRange, i :
   result
 }
 
-pub fn signal_filter_butterworth_range_sum(s : SignalfilterbutterworthRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_range_sum(s : SignalfilterbutterworthRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_range_mean(s : SignalfilterbutterworthRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_range_mean(s : SignalfilterbutterworthRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_range_scale(s : SignalfilterbutterworthRange, f : Double) -> SignalfilterbutterworthRange {
   let result = signal_filter_butterworth_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_butterworth_range_fill(s : SignalfilterbutterworthRange, v 
   result
 }
 
-pub fn signal_filter_butterworth_range_min(s : SignalfilterbutterworthRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_range_min(s : SignalfilterbutterworthRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_range_max(s : SignalfilterbutterworthRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_range_max(s : SignalfilterbutterworthRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_range_to_string(s : SignalfilterbutterworthRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_butterworth_slice_set(s : SignalfilterbutterworthSlice, i :
   result
 }
 
-pub fn signal_filter_butterworth_slice_sum(s : SignalfilterbutterworthSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_butterworth_slice_sum(s : SignalfilterbutterworthSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_butterworth_slice_mean(s : SignalfilterbutterworthSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_butterworth_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_butterworth_slice_mean(s : SignalfilterbutterworthSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_butterworth_slice_scale(s : SignalfilterbutterworthSlice, f : Double) -> SignalfilterbutterworthSlice {
   let result = signal_filter_butterworth_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_butterworth_slice_fill(s : SignalfilterbutterworthSlice, v 
   result
 }
 
-pub fn signal_filter_butterworth_slice_min(s : SignalfilterbutterworthSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_slice_min(s : SignalfilterbutterworthSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_butterworth_slice_max(s : SignalfilterbutterworthSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_butterworth_slice_max(s : SignalfilterbutterworthSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_butterworth_slice_to_string(s : SignalfilterbutterworthSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

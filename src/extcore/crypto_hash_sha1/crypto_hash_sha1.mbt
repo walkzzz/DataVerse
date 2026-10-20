@@ -88,11 +88,7 @@ pub fn crypto_hash_sha1_make_series(vals : Array[Double], name : String) -> Cryp
 
 pub fn crypto_hash_sha1_series_len(s : Cryptohashsha1Series) -> Int { s.vals.length() }
 
-pub fn crypto_hash_sha1_series_sum(s : Cryptohashsha1Series) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_hash_sha1_series_sum(s : Cryptohashsha1Series) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_hash_sha1_series_mean(s : Cryptohashsha1Series) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_hash_sha1_frame_set(s : Cryptohashsha1Frame, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_hash_sha1_frame_sum(s : Cryptohashsha1Frame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_frame_sum(s : Cryptohashsha1Frame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_frame_mean(s : Cryptohashsha1Frame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_frame_mean(s : Cryptohashsha1Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_frame_scale(s : Cryptohashsha1Frame, f : Double) -> Cryptohashsha1Frame {
   let result = crypto_hash_sha1_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_hash_sha1_frame_fill(s : Cryptohashsha1Frame, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_hash_sha1_frame_min(s : Cryptohashsha1Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_frame_min(s : Cryptohashsha1Frame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_frame_max(s : Cryptohashsha1Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_frame_max(s : Cryptohashsha1Frame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_frame_to_string(s : Cryptohashsha1Frame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_hash_sha1_table_set(s : Cryptohashsha1Table, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_hash_sha1_table_sum(s : Cryptohashsha1Table) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_table_sum(s : Cryptohashsha1Table) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_table_mean(s : Cryptohashsha1Table) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_table_mean(s : Cryptohashsha1Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_table_scale(s : Cryptohashsha1Table, f : Double) -> Cryptohashsha1Table {
   let result = crypto_hash_sha1_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_hash_sha1_table_fill(s : Cryptohashsha1Table, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_hash_sha1_table_min(s : Cryptohashsha1Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_table_min(s : Cryptohashsha1Table) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_table_max(s : Cryptohashsha1Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_table_max(s : Cryptohashsha1Table) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_table_to_string(s : Cryptohashsha1Table) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_hash_sha1_graphn_set(s : Cryptohashsha1GraphN, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_sha1_graphn_sum(s : Cryptohashsha1GraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_graphn_sum(s : Cryptohashsha1GraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_graphn_mean(s : Cryptohashsha1GraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_graphn_mean(s : Cryptohashsha1GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_graphn_scale(s : Cryptohashsha1GraphN, f : Double) -> Cryptohashsha1GraphN {
   let result = crypto_hash_sha1_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_hash_sha1_graphn_fill(s : Cryptohashsha1GraphN, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_sha1_graphn_min(s : Cryptohashsha1GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_graphn_min(s : Cryptohashsha1GraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_graphn_max(s : Cryptohashsha1GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_graphn_max(s : Cryptohashsha1GraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_graphn_to_string(s : Cryptohashsha1GraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_hash_sha1_node_set(s : Cryptohashsha1Node, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_hash_sha1_node_sum(s : Cryptohashsha1Node) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_node_sum(s : Cryptohashsha1Node) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_node_mean(s : Cryptohashsha1Node) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_node_mean(s : Cryptohashsha1Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_node_scale(s : Cryptohashsha1Node, f : Double) -> Cryptohashsha1Node {
   let result = crypto_hash_sha1_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_hash_sha1_node_fill(s : Cryptohashsha1Node, v : Double) -> Cryptoh
   result
 }
 
-pub fn crypto_hash_sha1_node_min(s : Cryptohashsha1Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_node_min(s : Cryptohashsha1Node) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_node_max(s : Cryptohashsha1Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_node_max(s : Cryptohashsha1Node) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_node_to_string(s : Cryptohashsha1Node) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_hash_sha1_edge_set(s : Cryptohashsha1Edge, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_hash_sha1_edge_sum(s : Cryptohashsha1Edge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_edge_sum(s : Cryptohashsha1Edge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_edge_mean(s : Cryptohashsha1Edge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_edge_mean(s : Cryptohashsha1Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_edge_scale(s : Cryptohashsha1Edge, f : Double) -> Cryptohashsha1Edge {
   let result = crypto_hash_sha1_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_hash_sha1_edge_fill(s : Cryptohashsha1Edge, v : Double) -> Cryptoh
   result
 }
 
-pub fn crypto_hash_sha1_edge_min(s : Cryptohashsha1Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_edge_min(s : Cryptohashsha1Edge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_edge_max(s : Cryptohashsha1Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_edge_max(s : Cryptohashsha1Edge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_edge_to_string(s : Cryptohashsha1Edge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_hash_sha1_path_set(s : Cryptohashsha1Path, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_hash_sha1_path_sum(s : Cryptohashsha1Path) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_path_sum(s : Cryptohashsha1Path) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_path_mean(s : Cryptohashsha1Path) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_path_mean(s : Cryptohashsha1Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_path_scale(s : Cryptohashsha1Path, f : Double) -> Cryptohashsha1Path {
   let result = crypto_hash_sha1_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_hash_sha1_path_fill(s : Cryptohashsha1Path, v : Double) -> Cryptoh
   result
 }
 
-pub fn crypto_hash_sha1_path_min(s : Cryptohashsha1Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_path_min(s : Cryptohashsha1Path) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_path_max(s : Cryptohashsha1Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_path_max(s : Cryptohashsha1Path) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_path_to_string(s : Cryptohashsha1Path) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_hash_sha1_cluster_set(s : Cryptohashsha1Cluster, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_sha1_cluster_sum(s : Cryptohashsha1Cluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_cluster_sum(s : Cryptohashsha1Cluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_cluster_mean(s : Cryptohashsha1Cluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_cluster_mean(s : Cryptohashsha1Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_cluster_scale(s : Cryptohashsha1Cluster, f : Double) -> Cryptohashsha1Cluster {
   let result = crypto_hash_sha1_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_hash_sha1_cluster_fill(s : Cryptohashsha1Cluster, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_sha1_cluster_min(s : Cryptohashsha1Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_cluster_min(s : Cryptohashsha1Cluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_cluster_max(s : Cryptohashsha1Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_cluster_max(s : Cryptohashsha1Cluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_cluster_to_string(s : Cryptohashsha1Cluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_hash_sha1_model_set(s : Cryptohashsha1Model, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_hash_sha1_model_sum(s : Cryptohashsha1Model) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_model_sum(s : Cryptohashsha1Model) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_model_mean(s : Cryptohashsha1Model) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_model_mean(s : Cryptohashsha1Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_model_scale(s : Cryptohashsha1Model, f : Double) -> Cryptohashsha1Model {
   let result = crypto_hash_sha1_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_hash_sha1_model_fill(s : Cryptohashsha1Model, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_hash_sha1_model_min(s : Cryptohashsha1Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_model_min(s : Cryptohashsha1Model) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_model_max(s : Cryptohashsha1Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_model_max(s : Cryptohashsha1Model) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_model_to_string(s : Cryptohashsha1Model) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_hash_sha1_layer_set(s : Cryptohashsha1Layer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_hash_sha1_layer_sum(s : Cryptohashsha1Layer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_layer_sum(s : Cryptohashsha1Layer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_layer_mean(s : Cryptohashsha1Layer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_layer_mean(s : Cryptohashsha1Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_layer_scale(s : Cryptohashsha1Layer, f : Double) -> Cryptohashsha1Layer {
   let result = crypto_hash_sha1_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_hash_sha1_layer_fill(s : Cryptohashsha1Layer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_hash_sha1_layer_min(s : Cryptohashsha1Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_layer_min(s : Cryptohashsha1Layer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_layer_max(s : Cryptohashsha1Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_layer_max(s : Cryptohashsha1Layer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_layer_to_string(s : Cryptohashsha1Layer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_hash_sha1_buffer_set(s : Cryptohashsha1Buffer, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_sha1_buffer_sum(s : Cryptohashsha1Buffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_buffer_sum(s : Cryptohashsha1Buffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_buffer_mean(s : Cryptohashsha1Buffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_buffer_mean(s : Cryptohashsha1Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_buffer_scale(s : Cryptohashsha1Buffer, f : Double) -> Cryptohashsha1Buffer {
   let result = crypto_hash_sha1_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_hash_sha1_buffer_fill(s : Cryptohashsha1Buffer, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_sha1_buffer_min(s : Cryptohashsha1Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_buffer_min(s : Cryptohashsha1Buffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_buffer_max(s : Cryptohashsha1Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_buffer_max(s : Cryptohashsha1Buffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_buffer_to_string(s : Cryptohashsha1Buffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_hash_sha1_cursor_set(s : Cryptohashsha1Cursor, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_sha1_cursor_sum(s : Cryptohashsha1Cursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_cursor_sum(s : Cryptohashsha1Cursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_cursor_mean(s : Cryptohashsha1Cursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_cursor_mean(s : Cryptohashsha1Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_cursor_scale(s : Cryptohashsha1Cursor, f : Double) -> Cryptohashsha1Cursor {
   let result = crypto_hash_sha1_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_hash_sha1_cursor_fill(s : Cryptohashsha1Cursor, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_sha1_cursor_min(s : Cryptohashsha1Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_cursor_min(s : Cryptohashsha1Cursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_cursor_max(s : Cryptohashsha1Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_cursor_max(s : Cryptohashsha1Cursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_cursor_to_string(s : Cryptohashsha1Cursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_hash_sha1_view_set(s : Cryptohashsha1View, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_hash_sha1_view_sum(s : Cryptohashsha1View) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_view_sum(s : Cryptohashsha1View) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_view_mean(s : Cryptohashsha1View) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_view_mean(s : Cryptohashsha1View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_view_scale(s : Cryptohashsha1View, f : Double) -> Cryptohashsha1View {
   let result = crypto_hash_sha1_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_hash_sha1_view_fill(s : Cryptohashsha1View, v : Double) -> Cryptoh
   result
 }
 
-pub fn crypto_hash_sha1_view_min(s : Cryptohashsha1View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_view_min(s : Cryptohashsha1View) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_view_max(s : Cryptohashsha1View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_view_max(s : Cryptohashsha1View) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_view_to_string(s : Cryptohashsha1View) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_hash_sha1_range_set(s : Cryptohashsha1Range, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_hash_sha1_range_sum(s : Cryptohashsha1Range) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_range_sum(s : Cryptohashsha1Range) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_range_mean(s : Cryptohashsha1Range) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_range_mean(s : Cryptohashsha1Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_range_scale(s : Cryptohashsha1Range, f : Double) -> Cryptohashsha1Range {
   let result = crypto_hash_sha1_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_hash_sha1_range_fill(s : Cryptohashsha1Range, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_hash_sha1_range_min(s : Cryptohashsha1Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_range_min(s : Cryptohashsha1Range) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_range_max(s : Cryptohashsha1Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_range_max(s : Cryptohashsha1Range) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_range_to_string(s : Cryptohashsha1Range) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_hash_sha1_slice_set(s : Cryptohashsha1Slice, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_hash_sha1_slice_sum(s : Cryptohashsha1Slice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_sha1_slice_sum(s : Cryptohashsha1Slice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_sha1_slice_mean(s : Cryptohashsha1Slice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_sha1_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_sha1_slice_mean(s : Cryptohashsha1Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_sha1_slice_scale(s : Cryptohashsha1Slice, f : Double) -> Cryptohashsha1Slice {
   let result = crypto_hash_sha1_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_hash_sha1_slice_fill(s : Cryptohashsha1Slice, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_hash_sha1_slice_min(s : Cryptohashsha1Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_slice_min(s : Cryptohashsha1Slice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_sha1_slice_max(s : Cryptohashsha1Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_sha1_slice_max(s : Cryptohashsha1Slice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_sha1_slice_to_string(s : Cryptohashsha1Slice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

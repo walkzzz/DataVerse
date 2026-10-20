@@ -88,11 +88,7 @@ pub fn crypto_sign_group_make_series(vals : Array[Double], name : String) -> Cry
 
 pub fn crypto_sign_group_series_len(s : CryptosigngroupSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sign_group_series_sum(s : CryptosigngroupSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sign_group_series_sum(s : CryptosigngroupSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sign_group_series_mean(s : CryptosigngroupSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sign_group_frame_set(s : CryptosigngroupFrame, i : Int, v : Double
   result
 }
 
-pub fn crypto_sign_group_frame_sum(s : CryptosigngroupFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_frame_sum(s : CryptosigngroupFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_frame_mean(s : CryptosigngroupFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_frame_mean(s : CryptosigngroupFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_frame_scale(s : CryptosigngroupFrame, f : Double) -> CryptosigngroupFrame {
   let result = crypto_sign_group_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sign_group_frame_fill(s : CryptosigngroupFrame, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sign_group_frame_min(s : CryptosigngroupFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_frame_min(s : CryptosigngroupFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_frame_max(s : CryptosigngroupFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_frame_max(s : CryptosigngroupFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_frame_to_string(s : CryptosigngroupFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sign_group_table_set(s : CryptosigngroupTable, i : Int, v : Double
   result
 }
 
-pub fn crypto_sign_group_table_sum(s : CryptosigngroupTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_table_sum(s : CryptosigngroupTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_table_mean(s : CryptosigngroupTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_table_mean(s : CryptosigngroupTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_table_scale(s : CryptosigngroupTable, f : Double) -> CryptosigngroupTable {
   let result = crypto_sign_group_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sign_group_table_fill(s : CryptosigngroupTable, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sign_group_table_min(s : CryptosigngroupTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_table_min(s : CryptosigngroupTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_table_max(s : CryptosigngroupTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_table_max(s : CryptosigngroupTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_table_to_string(s : CryptosigngroupTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sign_group_graphn_set(s : CryptosigngroupGraphN, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_group_graphn_sum(s : CryptosigngroupGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_graphn_sum(s : CryptosigngroupGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_graphn_mean(s : CryptosigngroupGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_graphn_mean(s : CryptosigngroupGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_graphn_scale(s : CryptosigngroupGraphN, f : Double) -> CryptosigngroupGraphN {
   let result = crypto_sign_group_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sign_group_graphn_fill(s : CryptosigngroupGraphN, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_group_graphn_min(s : CryptosigngroupGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_graphn_min(s : CryptosigngroupGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_graphn_max(s : CryptosigngroupGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_graphn_max(s : CryptosigngroupGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_graphn_to_string(s : CryptosigngroupGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sign_group_node_set(s : CryptosigngroupNode, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sign_group_node_sum(s : CryptosigngroupNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_node_sum(s : CryptosigngroupNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_node_mean(s : CryptosigngroupNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_node_mean(s : CryptosigngroupNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_node_scale(s : CryptosigngroupNode, f : Double) -> CryptosigngroupNode {
   let result = crypto_sign_group_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sign_group_node_fill(s : CryptosigngroupNode, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sign_group_node_min(s : CryptosigngroupNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_node_min(s : CryptosigngroupNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_node_max(s : CryptosigngroupNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_node_max(s : CryptosigngroupNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_node_to_string(s : CryptosigngroupNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sign_group_edge_set(s : CryptosigngroupEdge, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sign_group_edge_sum(s : CryptosigngroupEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_edge_sum(s : CryptosigngroupEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_edge_mean(s : CryptosigngroupEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_edge_mean(s : CryptosigngroupEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_edge_scale(s : CryptosigngroupEdge, f : Double) -> CryptosigngroupEdge {
   let result = crypto_sign_group_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sign_group_edge_fill(s : CryptosigngroupEdge, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sign_group_edge_min(s : CryptosigngroupEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_edge_min(s : CryptosigngroupEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_edge_max(s : CryptosigngroupEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_edge_max(s : CryptosigngroupEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_edge_to_string(s : CryptosigngroupEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sign_group_path_set(s : CryptosigngroupPath, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sign_group_path_sum(s : CryptosigngroupPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_path_sum(s : CryptosigngroupPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_path_mean(s : CryptosigngroupPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_path_mean(s : CryptosigngroupPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_path_scale(s : CryptosigngroupPath, f : Double) -> CryptosigngroupPath {
   let result = crypto_sign_group_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sign_group_path_fill(s : CryptosigngroupPath, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sign_group_path_min(s : CryptosigngroupPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_path_min(s : CryptosigngroupPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_path_max(s : CryptosigngroupPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_path_max(s : CryptosigngroupPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_path_to_string(s : CryptosigngroupPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sign_group_cluster_set(s : CryptosigngroupCluster, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_group_cluster_sum(s : CryptosigngroupCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_cluster_sum(s : CryptosigngroupCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_cluster_mean(s : CryptosigngroupCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_cluster_mean(s : CryptosigngroupCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_cluster_scale(s : CryptosigngroupCluster, f : Double) -> CryptosigngroupCluster {
   let result = crypto_sign_group_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sign_group_cluster_fill(s : CryptosigngroupCluster, v : Double) ->
   result
 }
 
-pub fn crypto_sign_group_cluster_min(s : CryptosigngroupCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_cluster_min(s : CryptosigngroupCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_cluster_max(s : CryptosigngroupCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_cluster_max(s : CryptosigngroupCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_cluster_to_string(s : CryptosigngroupCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sign_group_model_set(s : CryptosigngroupModel, i : Int, v : Double
   result
 }
 
-pub fn crypto_sign_group_model_sum(s : CryptosigngroupModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_model_sum(s : CryptosigngroupModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_model_mean(s : CryptosigngroupModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_model_mean(s : CryptosigngroupModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_model_scale(s : CryptosigngroupModel, f : Double) -> CryptosigngroupModel {
   let result = crypto_sign_group_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sign_group_model_fill(s : CryptosigngroupModel, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sign_group_model_min(s : CryptosigngroupModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_model_min(s : CryptosigngroupModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_model_max(s : CryptosigngroupModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_model_max(s : CryptosigngroupModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_model_to_string(s : CryptosigngroupModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sign_group_layer_set(s : CryptosigngroupLayer, i : Int, v : Double
   result
 }
 
-pub fn crypto_sign_group_layer_sum(s : CryptosigngroupLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_layer_sum(s : CryptosigngroupLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_layer_mean(s : CryptosigngroupLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_layer_mean(s : CryptosigngroupLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_layer_scale(s : CryptosigngroupLayer, f : Double) -> CryptosigngroupLayer {
   let result = crypto_sign_group_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sign_group_layer_fill(s : CryptosigngroupLayer, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sign_group_layer_min(s : CryptosigngroupLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_layer_min(s : CryptosigngroupLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_layer_max(s : CryptosigngroupLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_layer_max(s : CryptosigngroupLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_layer_to_string(s : CryptosigngroupLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sign_group_buffer_set(s : CryptosigngroupBuffer, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_group_buffer_sum(s : CryptosigngroupBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_buffer_sum(s : CryptosigngroupBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_buffer_mean(s : CryptosigngroupBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_buffer_mean(s : CryptosigngroupBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_buffer_scale(s : CryptosigngroupBuffer, f : Double) -> CryptosigngroupBuffer {
   let result = crypto_sign_group_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sign_group_buffer_fill(s : CryptosigngroupBuffer, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_group_buffer_min(s : CryptosigngroupBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_buffer_min(s : CryptosigngroupBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_buffer_max(s : CryptosigngroupBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_buffer_max(s : CryptosigngroupBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_buffer_to_string(s : CryptosigngroupBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sign_group_cursor_set(s : CryptosigngroupCursor, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_group_cursor_sum(s : CryptosigngroupCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_cursor_sum(s : CryptosigngroupCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_cursor_mean(s : CryptosigngroupCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_cursor_mean(s : CryptosigngroupCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_cursor_scale(s : CryptosigngroupCursor, f : Double) -> CryptosigngroupCursor {
   let result = crypto_sign_group_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sign_group_cursor_fill(s : CryptosigngroupCursor, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_group_cursor_min(s : CryptosigngroupCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_cursor_min(s : CryptosigngroupCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_cursor_max(s : CryptosigngroupCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_cursor_max(s : CryptosigngroupCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_cursor_to_string(s : CryptosigngroupCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sign_group_view_set(s : CryptosigngroupView, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sign_group_view_sum(s : CryptosigngroupView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_view_sum(s : CryptosigngroupView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_view_mean(s : CryptosigngroupView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_view_mean(s : CryptosigngroupView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_view_scale(s : CryptosigngroupView, f : Double) -> CryptosigngroupView {
   let result = crypto_sign_group_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sign_group_view_fill(s : CryptosigngroupView, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sign_group_view_min(s : CryptosigngroupView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_view_min(s : CryptosigngroupView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_view_max(s : CryptosigngroupView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_view_max(s : CryptosigngroupView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_view_to_string(s : CryptosigngroupView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sign_group_range_set(s : CryptosigngroupRange, i : Int, v : Double
   result
 }
 
-pub fn crypto_sign_group_range_sum(s : CryptosigngroupRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_range_sum(s : CryptosigngroupRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_range_mean(s : CryptosigngroupRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_range_mean(s : CryptosigngroupRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_range_scale(s : CryptosigngroupRange, f : Double) -> CryptosigngroupRange {
   let result = crypto_sign_group_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sign_group_range_fill(s : CryptosigngroupRange, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sign_group_range_min(s : CryptosigngroupRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_range_min(s : CryptosigngroupRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_range_max(s : CryptosigngroupRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_range_max(s : CryptosigngroupRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_range_to_string(s : CryptosigngroupRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sign_group_slice_set(s : CryptosigngroupSlice, i : Int, v : Double
   result
 }
 
-pub fn crypto_sign_group_slice_sum(s : CryptosigngroupSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_group_slice_sum(s : CryptosigngroupSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_group_slice_mean(s : CryptosigngroupSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_group_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_group_slice_mean(s : CryptosigngroupSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_group_slice_scale(s : CryptosigngroupSlice, f : Double) -> CryptosigngroupSlice {
   let result = crypto_sign_group_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sign_group_slice_fill(s : CryptosigngroupSlice, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sign_group_slice_min(s : CryptosigngroupSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_slice_min(s : CryptosigngroupSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_group_slice_max(s : CryptosigngroupSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_group_slice_max(s : CryptosigngroupSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_group_slice_to_string(s : CryptosigngroupSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

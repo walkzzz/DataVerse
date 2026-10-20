@@ -88,11 +88,7 @@ pub fn sort_hybrid_powersort_make_series(vals : Array[Double], name : String) ->
 
 pub fn sort_hybrid_powersort_series_len(s : SorthybridpowersortSeries) -> Int { s.vals.length() }
 
-pub fn sort_hybrid_powersort_series_sum(s : SorthybridpowersortSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_hybrid_powersort_series_sum(s : SorthybridpowersortSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_hybrid_powersort_series_mean(s : SorthybridpowersortSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_hybrid_powersort_frame_set(s : SorthybridpowersortFrame, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_powersort_frame_sum(s : SorthybridpowersortFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_frame_sum(s : SorthybridpowersortFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_frame_mean(s : SorthybridpowersortFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_frame_mean(s : SorthybridpowersortFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_frame_scale(s : SorthybridpowersortFrame, f : Double) -> SorthybridpowersortFrame {
   let result = sort_hybrid_powersort_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_hybrid_powersort_frame_fill(s : SorthybridpowersortFrame, v : Double
   result
 }
 
-pub fn sort_hybrid_powersort_frame_min(s : SorthybridpowersortFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_frame_min(s : SorthybridpowersortFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_frame_max(s : SorthybridpowersortFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_frame_max(s : SorthybridpowersortFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_frame_to_string(s : SorthybridpowersortFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_hybrid_powersort_table_set(s : SorthybridpowersortTable, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_powersort_table_sum(s : SorthybridpowersortTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_table_sum(s : SorthybridpowersortTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_table_mean(s : SorthybridpowersortTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_table_mean(s : SorthybridpowersortTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_table_scale(s : SorthybridpowersortTable, f : Double) -> SorthybridpowersortTable {
   let result = sort_hybrid_powersort_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_hybrid_powersort_table_fill(s : SorthybridpowersortTable, v : Double
   result
 }
 
-pub fn sort_hybrid_powersort_table_min(s : SorthybridpowersortTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_table_min(s : SorthybridpowersortTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_table_max(s : SorthybridpowersortTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_table_max(s : SorthybridpowersortTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_table_to_string(s : SorthybridpowersortTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_hybrid_powersort_graphn_set(s : SorthybridpowersortGraphN, i : Int, 
   result
 }
 
-pub fn sort_hybrid_powersort_graphn_sum(s : SorthybridpowersortGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_graphn_sum(s : SorthybridpowersortGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_graphn_mean(s : SorthybridpowersortGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_graphn_mean(s : SorthybridpowersortGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_graphn_scale(s : SorthybridpowersortGraphN, f : Double) -> SorthybridpowersortGraphN {
   let result = sort_hybrid_powersort_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_hybrid_powersort_graphn_fill(s : SorthybridpowersortGraphN, v : Doub
   result
 }
 
-pub fn sort_hybrid_powersort_graphn_min(s : SorthybridpowersortGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_graphn_min(s : SorthybridpowersortGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_graphn_max(s : SorthybridpowersortGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_graphn_max(s : SorthybridpowersortGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_graphn_to_string(s : SorthybridpowersortGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_hybrid_powersort_node_set(s : SorthybridpowersortNode, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_powersort_node_sum(s : SorthybridpowersortNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_node_sum(s : SorthybridpowersortNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_node_mean(s : SorthybridpowersortNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_node_mean(s : SorthybridpowersortNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_node_scale(s : SorthybridpowersortNode, f : Double) -> SorthybridpowersortNode {
   let result = sort_hybrid_powersort_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_hybrid_powersort_node_fill(s : SorthybridpowersortNode, v : Double) 
   result
 }
 
-pub fn sort_hybrid_powersort_node_min(s : SorthybridpowersortNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_node_min(s : SorthybridpowersortNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_node_max(s : SorthybridpowersortNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_node_max(s : SorthybridpowersortNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_node_to_string(s : SorthybridpowersortNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_hybrid_powersort_edge_set(s : SorthybridpowersortEdge, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_powersort_edge_sum(s : SorthybridpowersortEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_edge_sum(s : SorthybridpowersortEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_edge_mean(s : SorthybridpowersortEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_edge_mean(s : SorthybridpowersortEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_edge_scale(s : SorthybridpowersortEdge, f : Double) -> SorthybridpowersortEdge {
   let result = sort_hybrid_powersort_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_hybrid_powersort_edge_fill(s : SorthybridpowersortEdge, v : Double) 
   result
 }
 
-pub fn sort_hybrid_powersort_edge_min(s : SorthybridpowersortEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_edge_min(s : SorthybridpowersortEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_edge_max(s : SorthybridpowersortEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_edge_max(s : SorthybridpowersortEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_edge_to_string(s : SorthybridpowersortEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_hybrid_powersort_path_set(s : SorthybridpowersortPath, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_powersort_path_sum(s : SorthybridpowersortPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_path_sum(s : SorthybridpowersortPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_path_mean(s : SorthybridpowersortPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_path_mean(s : SorthybridpowersortPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_path_scale(s : SorthybridpowersortPath, f : Double) -> SorthybridpowersortPath {
   let result = sort_hybrid_powersort_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_hybrid_powersort_path_fill(s : SorthybridpowersortPath, v : Double) 
   result
 }
 
-pub fn sort_hybrid_powersort_path_min(s : SorthybridpowersortPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_path_min(s : SorthybridpowersortPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_path_max(s : SorthybridpowersortPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_path_max(s : SorthybridpowersortPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_path_to_string(s : SorthybridpowersortPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_hybrid_powersort_cluster_set(s : SorthybridpowersortCluster, i : Int
   result
 }
 
-pub fn sort_hybrid_powersort_cluster_sum(s : SorthybridpowersortCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_cluster_sum(s : SorthybridpowersortCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_cluster_mean(s : SorthybridpowersortCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_cluster_mean(s : SorthybridpowersortCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_cluster_scale(s : SorthybridpowersortCluster, f : Double) -> SorthybridpowersortCluster {
   let result = sort_hybrid_powersort_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_hybrid_powersort_cluster_fill(s : SorthybridpowersortCluster, v : Do
   result
 }
 
-pub fn sort_hybrid_powersort_cluster_min(s : SorthybridpowersortCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_cluster_min(s : SorthybridpowersortCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_cluster_max(s : SorthybridpowersortCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_cluster_max(s : SorthybridpowersortCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_cluster_to_string(s : SorthybridpowersortCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_hybrid_powersort_model_set(s : SorthybridpowersortModel, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_powersort_model_sum(s : SorthybridpowersortModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_model_sum(s : SorthybridpowersortModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_model_mean(s : SorthybridpowersortModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_model_mean(s : SorthybridpowersortModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_model_scale(s : SorthybridpowersortModel, f : Double) -> SorthybridpowersortModel {
   let result = sort_hybrid_powersort_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_hybrid_powersort_model_fill(s : SorthybridpowersortModel, v : Double
   result
 }
 
-pub fn sort_hybrid_powersort_model_min(s : SorthybridpowersortModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_model_min(s : SorthybridpowersortModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_model_max(s : SorthybridpowersortModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_model_max(s : SorthybridpowersortModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_model_to_string(s : SorthybridpowersortModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_hybrid_powersort_layer_set(s : SorthybridpowersortLayer, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_powersort_layer_sum(s : SorthybridpowersortLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_layer_sum(s : SorthybridpowersortLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_layer_mean(s : SorthybridpowersortLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_layer_mean(s : SorthybridpowersortLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_layer_scale(s : SorthybridpowersortLayer, f : Double) -> SorthybridpowersortLayer {
   let result = sort_hybrid_powersort_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_hybrid_powersort_layer_fill(s : SorthybridpowersortLayer, v : Double
   result
 }
 
-pub fn sort_hybrid_powersort_layer_min(s : SorthybridpowersortLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_layer_min(s : SorthybridpowersortLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_layer_max(s : SorthybridpowersortLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_layer_max(s : SorthybridpowersortLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_layer_to_string(s : SorthybridpowersortLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_hybrid_powersort_buffer_set(s : SorthybridpowersortBuffer, i : Int, 
   result
 }
 
-pub fn sort_hybrid_powersort_buffer_sum(s : SorthybridpowersortBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_buffer_sum(s : SorthybridpowersortBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_buffer_mean(s : SorthybridpowersortBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_buffer_mean(s : SorthybridpowersortBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_buffer_scale(s : SorthybridpowersortBuffer, f : Double) -> SorthybridpowersortBuffer {
   let result = sort_hybrid_powersort_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_hybrid_powersort_buffer_fill(s : SorthybridpowersortBuffer, v : Doub
   result
 }
 
-pub fn sort_hybrid_powersort_buffer_min(s : SorthybridpowersortBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_buffer_min(s : SorthybridpowersortBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_buffer_max(s : SorthybridpowersortBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_buffer_max(s : SorthybridpowersortBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_buffer_to_string(s : SorthybridpowersortBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_hybrid_powersort_cursor_set(s : SorthybridpowersortCursor, i : Int, 
   result
 }
 
-pub fn sort_hybrid_powersort_cursor_sum(s : SorthybridpowersortCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_cursor_sum(s : SorthybridpowersortCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_cursor_mean(s : SorthybridpowersortCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_cursor_mean(s : SorthybridpowersortCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_cursor_scale(s : SorthybridpowersortCursor, f : Double) -> SorthybridpowersortCursor {
   let result = sort_hybrid_powersort_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_hybrid_powersort_cursor_fill(s : SorthybridpowersortCursor, v : Doub
   result
 }
 
-pub fn sort_hybrid_powersort_cursor_min(s : SorthybridpowersortCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_cursor_min(s : SorthybridpowersortCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_cursor_max(s : SorthybridpowersortCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_cursor_max(s : SorthybridpowersortCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_cursor_to_string(s : SorthybridpowersortCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_hybrid_powersort_view_set(s : SorthybridpowersortView, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_powersort_view_sum(s : SorthybridpowersortView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_view_sum(s : SorthybridpowersortView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_view_mean(s : SorthybridpowersortView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_view_mean(s : SorthybridpowersortView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_view_scale(s : SorthybridpowersortView, f : Double) -> SorthybridpowersortView {
   let result = sort_hybrid_powersort_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_hybrid_powersort_view_fill(s : SorthybridpowersortView, v : Double) 
   result
 }
 
-pub fn sort_hybrid_powersort_view_min(s : SorthybridpowersortView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_view_min(s : SorthybridpowersortView) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_view_max(s : SorthybridpowersortView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_view_max(s : SorthybridpowersortView) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_view_to_string(s : SorthybridpowersortView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_hybrid_powersort_range_set(s : SorthybridpowersortRange, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_powersort_range_sum(s : SorthybridpowersortRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_range_sum(s : SorthybridpowersortRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_range_mean(s : SorthybridpowersortRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_range_mean(s : SorthybridpowersortRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_range_scale(s : SorthybridpowersortRange, f : Double) -> SorthybridpowersortRange {
   let result = sort_hybrid_powersort_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_hybrid_powersort_range_fill(s : SorthybridpowersortRange, v : Double
   result
 }
 
-pub fn sort_hybrid_powersort_range_min(s : SorthybridpowersortRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_range_min(s : SorthybridpowersortRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_range_max(s : SorthybridpowersortRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_range_max(s : SorthybridpowersortRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_range_to_string(s : SorthybridpowersortRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_hybrid_powersort_slice_set(s : SorthybridpowersortSlice, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_powersort_slice_sum(s : SorthybridpowersortSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_powersort_slice_sum(s : SorthybridpowersortSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_powersort_slice_mean(s : SorthybridpowersortSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_powersort_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_powersort_slice_mean(s : SorthybridpowersortSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_powersort_slice_scale(s : SorthybridpowersortSlice, f : Double) -> SorthybridpowersortSlice {
   let result = sort_hybrid_powersort_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_hybrid_powersort_slice_fill(s : SorthybridpowersortSlice, v : Double
   result
 }
 
-pub fn sort_hybrid_powersort_slice_min(s : SorthybridpowersortSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_slice_min(s : SorthybridpowersortSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_powersort_slice_max(s : SorthybridpowersortSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_powersort_slice_max(s : SorthybridpowersortSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_powersort_slice_to_string(s : SorthybridpowersortSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

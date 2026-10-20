@@ -88,11 +88,7 @@ pub fn geo_proj_lambert_make_series(vals : Array[Double], name : String) -> Geop
 
 pub fn geo_proj_lambert_series_len(s : GeoprojlambertSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_lambert_series_sum(s : GeoprojlambertSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_lambert_series_sum(s : GeoprojlambertSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_lambert_series_mean(s : GeoprojlambertSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_lambert_frame_set(s : GeoprojlambertFrame, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_lambert_frame_sum(s : GeoprojlambertFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_frame_sum(s : GeoprojlambertFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_frame_mean(s : GeoprojlambertFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_frame_mean(s : GeoprojlambertFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_frame_scale(s : GeoprojlambertFrame, f : Double) -> GeoprojlambertFrame {
   let result = geo_proj_lambert_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_lambert_frame_fill(s : GeoprojlambertFrame, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_lambert_frame_min(s : GeoprojlambertFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_frame_min(s : GeoprojlambertFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_frame_max(s : GeoprojlambertFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_frame_max(s : GeoprojlambertFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_frame_to_string(s : GeoprojlambertFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_lambert_table_set(s : GeoprojlambertTable, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_lambert_table_sum(s : GeoprojlambertTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_table_sum(s : GeoprojlambertTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_table_mean(s : GeoprojlambertTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_table_mean(s : GeoprojlambertTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_table_scale(s : GeoprojlambertTable, f : Double) -> GeoprojlambertTable {
   let result = geo_proj_lambert_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_lambert_table_fill(s : GeoprojlambertTable, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_lambert_table_min(s : GeoprojlambertTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_table_min(s : GeoprojlambertTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_table_max(s : GeoprojlambertTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_table_max(s : GeoprojlambertTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_table_to_string(s : GeoprojlambertTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_lambert_graphn_set(s : GeoprojlambertGraphN, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_lambert_graphn_sum(s : GeoprojlambertGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_graphn_sum(s : GeoprojlambertGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_graphn_mean(s : GeoprojlambertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_graphn_mean(s : GeoprojlambertGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_graphn_scale(s : GeoprojlambertGraphN, f : Double) -> GeoprojlambertGraphN {
   let result = geo_proj_lambert_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_lambert_graphn_fill(s : GeoprojlambertGraphN, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_lambert_graphn_min(s : GeoprojlambertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_graphn_min(s : GeoprojlambertGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_graphn_max(s : GeoprojlambertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_graphn_max(s : GeoprojlambertGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_graphn_to_string(s : GeoprojlambertGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_lambert_node_set(s : GeoprojlambertNode, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_lambert_node_sum(s : GeoprojlambertNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_node_sum(s : GeoprojlambertNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_node_mean(s : GeoprojlambertNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_node_mean(s : GeoprojlambertNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_node_scale(s : GeoprojlambertNode, f : Double) -> GeoprojlambertNode {
   let result = geo_proj_lambert_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_lambert_node_fill(s : GeoprojlambertNode, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_lambert_node_min(s : GeoprojlambertNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_node_min(s : GeoprojlambertNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_node_max(s : GeoprojlambertNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_node_max(s : GeoprojlambertNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_node_to_string(s : GeoprojlambertNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_lambert_edge_set(s : GeoprojlambertEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_lambert_edge_sum(s : GeoprojlambertEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_edge_sum(s : GeoprojlambertEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_edge_mean(s : GeoprojlambertEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_edge_mean(s : GeoprojlambertEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_edge_scale(s : GeoprojlambertEdge, f : Double) -> GeoprojlambertEdge {
   let result = geo_proj_lambert_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_lambert_edge_fill(s : GeoprojlambertEdge, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_lambert_edge_min(s : GeoprojlambertEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_edge_min(s : GeoprojlambertEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_edge_max(s : GeoprojlambertEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_edge_max(s : GeoprojlambertEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_edge_to_string(s : GeoprojlambertEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_lambert_path_set(s : GeoprojlambertPath, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_lambert_path_sum(s : GeoprojlambertPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_path_sum(s : GeoprojlambertPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_path_mean(s : GeoprojlambertPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_path_mean(s : GeoprojlambertPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_path_scale(s : GeoprojlambertPath, f : Double) -> GeoprojlambertPath {
   let result = geo_proj_lambert_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_lambert_path_fill(s : GeoprojlambertPath, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_lambert_path_min(s : GeoprojlambertPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_path_min(s : GeoprojlambertPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_path_max(s : GeoprojlambertPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_path_max(s : GeoprojlambertPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_path_to_string(s : GeoprojlambertPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_lambert_cluster_set(s : GeoprojlambertCluster, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_lambert_cluster_sum(s : GeoprojlambertCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_cluster_sum(s : GeoprojlambertCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_cluster_mean(s : GeoprojlambertCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_cluster_mean(s : GeoprojlambertCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_cluster_scale(s : GeoprojlambertCluster, f : Double) -> GeoprojlambertCluster {
   let result = geo_proj_lambert_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_lambert_cluster_fill(s : GeoprojlambertCluster, v : Double) -> G
   result
 }
 
-pub fn geo_proj_lambert_cluster_min(s : GeoprojlambertCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_cluster_min(s : GeoprojlambertCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_cluster_max(s : GeoprojlambertCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_cluster_max(s : GeoprojlambertCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_cluster_to_string(s : GeoprojlambertCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_lambert_model_set(s : GeoprojlambertModel, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_lambert_model_sum(s : GeoprojlambertModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_model_sum(s : GeoprojlambertModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_model_mean(s : GeoprojlambertModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_model_mean(s : GeoprojlambertModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_model_scale(s : GeoprojlambertModel, f : Double) -> GeoprojlambertModel {
   let result = geo_proj_lambert_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_lambert_model_fill(s : GeoprojlambertModel, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_lambert_model_min(s : GeoprojlambertModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_model_min(s : GeoprojlambertModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_model_max(s : GeoprojlambertModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_model_max(s : GeoprojlambertModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_model_to_string(s : GeoprojlambertModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_lambert_layer_set(s : GeoprojlambertLayer, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_lambert_layer_sum(s : GeoprojlambertLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_layer_sum(s : GeoprojlambertLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_layer_mean(s : GeoprojlambertLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_layer_mean(s : GeoprojlambertLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_layer_scale(s : GeoprojlambertLayer, f : Double) -> GeoprojlambertLayer {
   let result = geo_proj_lambert_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_lambert_layer_fill(s : GeoprojlambertLayer, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_lambert_layer_min(s : GeoprojlambertLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_layer_min(s : GeoprojlambertLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_layer_max(s : GeoprojlambertLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_layer_max(s : GeoprojlambertLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_layer_to_string(s : GeoprojlambertLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_lambert_buffer_set(s : GeoprojlambertBuffer, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_lambert_buffer_sum(s : GeoprojlambertBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_buffer_sum(s : GeoprojlambertBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_buffer_mean(s : GeoprojlambertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_buffer_mean(s : GeoprojlambertBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_buffer_scale(s : GeoprojlambertBuffer, f : Double) -> GeoprojlambertBuffer {
   let result = geo_proj_lambert_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_lambert_buffer_fill(s : GeoprojlambertBuffer, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_lambert_buffer_min(s : GeoprojlambertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_buffer_min(s : GeoprojlambertBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_buffer_max(s : GeoprojlambertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_buffer_max(s : GeoprojlambertBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_buffer_to_string(s : GeoprojlambertBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_lambert_cursor_set(s : GeoprojlambertCursor, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_lambert_cursor_sum(s : GeoprojlambertCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_cursor_sum(s : GeoprojlambertCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_cursor_mean(s : GeoprojlambertCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_cursor_mean(s : GeoprojlambertCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_cursor_scale(s : GeoprojlambertCursor, f : Double) -> GeoprojlambertCursor {
   let result = geo_proj_lambert_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_lambert_cursor_fill(s : GeoprojlambertCursor, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_lambert_cursor_min(s : GeoprojlambertCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_cursor_min(s : GeoprojlambertCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_cursor_max(s : GeoprojlambertCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_cursor_max(s : GeoprojlambertCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_cursor_to_string(s : GeoprojlambertCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_lambert_view_set(s : GeoprojlambertView, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_proj_lambert_view_sum(s : GeoprojlambertView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_view_sum(s : GeoprojlambertView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_view_mean(s : GeoprojlambertView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_view_mean(s : GeoprojlambertView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_view_scale(s : GeoprojlambertView, f : Double) -> GeoprojlambertView {
   let result = geo_proj_lambert_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_lambert_view_fill(s : GeoprojlambertView, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_lambert_view_min(s : GeoprojlambertView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_view_min(s : GeoprojlambertView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_view_max(s : GeoprojlambertView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_view_max(s : GeoprojlambertView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_view_to_string(s : GeoprojlambertView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_lambert_range_set(s : GeoprojlambertRange, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_lambert_range_sum(s : GeoprojlambertRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_range_sum(s : GeoprojlambertRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_range_mean(s : GeoprojlambertRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_range_mean(s : GeoprojlambertRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_range_scale(s : GeoprojlambertRange, f : Double) -> GeoprojlambertRange {
   let result = geo_proj_lambert_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_lambert_range_fill(s : GeoprojlambertRange, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_lambert_range_min(s : GeoprojlambertRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_range_min(s : GeoprojlambertRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_range_max(s : GeoprojlambertRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_range_max(s : GeoprojlambertRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_range_to_string(s : GeoprojlambertRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_lambert_slice_set(s : GeoprojlambertSlice, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_lambert_slice_sum(s : GeoprojlambertSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_lambert_slice_sum(s : GeoprojlambertSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_lambert_slice_mean(s : GeoprojlambertSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_lambert_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_lambert_slice_mean(s : GeoprojlambertSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_lambert_slice_scale(s : GeoprojlambertSlice, f : Double) -> GeoprojlambertSlice {
   let result = geo_proj_lambert_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_lambert_slice_fill(s : GeoprojlambertSlice, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_lambert_slice_min(s : GeoprojlambertSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_slice_min(s : GeoprojlambertSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_lambert_slice_max(s : GeoprojlambertSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_lambert_slice_max(s : GeoprojlambertSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_lambert_slice_to_string(s : GeoprojlambertSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

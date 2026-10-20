@@ -88,11 +88,7 @@ pub fn math_matrix_decomp_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_matrix_decomp_series_len(s : MathmatrixdecompSeries) -> Int { s.vals.length() }
 
-pub fn math_matrix_decomp_series_sum(s : MathmatrixdecompSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_matrix_decomp_series_sum(s : MathmatrixdecompSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_matrix_decomp_series_mean(s : MathmatrixdecompSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_matrix_decomp_frame_set(s : MathmatrixdecompFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_matrix_decomp_frame_sum(s : MathmatrixdecompFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_frame_sum(s : MathmatrixdecompFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_frame_mean(s : MathmatrixdecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_frame_mean(s : MathmatrixdecompFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_frame_scale(s : MathmatrixdecompFrame, f : Double) -> MathmatrixdecompFrame {
   let result = math_matrix_decomp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_matrix_decomp_frame_fill(s : MathmatrixdecompFrame, v : Double) -> M
   result
 }
 
-pub fn math_matrix_decomp_frame_min(s : MathmatrixdecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_frame_min(s : MathmatrixdecompFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_frame_max(s : MathmatrixdecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_frame_max(s : MathmatrixdecompFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_frame_to_string(s : MathmatrixdecompFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_matrix_decomp_table_set(s : MathmatrixdecompTable, i : Int, v : Doub
   result
 }
 
-pub fn math_matrix_decomp_table_sum(s : MathmatrixdecompTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_table_sum(s : MathmatrixdecompTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_table_mean(s : MathmatrixdecompTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_table_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_table_mean(s : MathmatrixdecompTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_table_scale(s : MathmatrixdecompTable, f : Double) -> MathmatrixdecompTable {
   let result = math_matrix_decomp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_matrix_decomp_table_fill(s : MathmatrixdecompTable, v : Double) -> M
   result
 }
 
-pub fn math_matrix_decomp_table_min(s : MathmatrixdecompTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_table_min(s : MathmatrixdecompTable) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_table_max(s : MathmatrixdecompTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_table_max(s : MathmatrixdecompTable) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_table_to_string(s : MathmatrixdecompTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_matrix_decomp_graphn_set(s : MathmatrixdecompGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_matrix_decomp_graphn_sum(s : MathmatrixdecompGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_graphn_sum(s : MathmatrixdecompGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_graphn_mean(s : MathmatrixdecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_graphn_mean(s : MathmatrixdecompGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_graphn_scale(s : MathmatrixdecompGraphN, f : Double) -> MathmatrixdecompGraphN {
   let result = math_matrix_decomp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_matrix_decomp_graphn_fill(s : MathmatrixdecompGraphN, v : Double) ->
   result
 }
 
-pub fn math_matrix_decomp_graphn_min(s : MathmatrixdecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_graphn_min(s : MathmatrixdecompGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_graphn_max(s : MathmatrixdecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_graphn_max(s : MathmatrixdecompGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_graphn_to_string(s : MathmatrixdecompGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_matrix_decomp_node_set(s : MathmatrixdecompNode, i : Int, v : Double
   result
 }
 
-pub fn math_matrix_decomp_node_sum(s : MathmatrixdecompNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_node_sum(s : MathmatrixdecompNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_node_mean(s : MathmatrixdecompNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_node_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_node_mean(s : MathmatrixdecompNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_node_scale(s : MathmatrixdecompNode, f : Double) -> MathmatrixdecompNode {
   let result = math_matrix_decomp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_matrix_decomp_node_fill(s : MathmatrixdecompNode, v : Double) -> Mat
   result
 }
 
-pub fn math_matrix_decomp_node_min(s : MathmatrixdecompNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_node_min(s : MathmatrixdecompNode) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_node_max(s : MathmatrixdecompNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_node_max(s : MathmatrixdecompNode) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_node_to_string(s : MathmatrixdecompNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_matrix_decomp_edge_set(s : MathmatrixdecompEdge, i : Int, v : Double
   result
 }
 
-pub fn math_matrix_decomp_edge_sum(s : MathmatrixdecompEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_edge_sum(s : MathmatrixdecompEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_edge_mean(s : MathmatrixdecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_edge_mean(s : MathmatrixdecompEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_edge_scale(s : MathmatrixdecompEdge, f : Double) -> MathmatrixdecompEdge {
   let result = math_matrix_decomp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_matrix_decomp_edge_fill(s : MathmatrixdecompEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_matrix_decomp_edge_min(s : MathmatrixdecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_edge_min(s : MathmatrixdecompEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_edge_max(s : MathmatrixdecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_edge_max(s : MathmatrixdecompEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_edge_to_string(s : MathmatrixdecompEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_matrix_decomp_path_set(s : MathmatrixdecompPath, i : Int, v : Double
   result
 }
 
-pub fn math_matrix_decomp_path_sum(s : MathmatrixdecompPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_path_sum(s : MathmatrixdecompPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_path_mean(s : MathmatrixdecompPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_path_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_path_mean(s : MathmatrixdecompPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_path_scale(s : MathmatrixdecompPath, f : Double) -> MathmatrixdecompPath {
   let result = math_matrix_decomp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_matrix_decomp_path_fill(s : MathmatrixdecompPath, v : Double) -> Mat
   result
 }
 
-pub fn math_matrix_decomp_path_min(s : MathmatrixdecompPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_path_min(s : MathmatrixdecompPath) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_path_max(s : MathmatrixdecompPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_path_max(s : MathmatrixdecompPath) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_path_to_string(s : MathmatrixdecompPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_matrix_decomp_cluster_set(s : MathmatrixdecompCluster, i : Int, v : 
   result
 }
 
-pub fn math_matrix_decomp_cluster_sum(s : MathmatrixdecompCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_cluster_sum(s : MathmatrixdecompCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_cluster_mean(s : MathmatrixdecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_cluster_mean(s : MathmatrixdecompCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_cluster_scale(s : MathmatrixdecompCluster, f : Double) -> MathmatrixdecompCluster {
   let result = math_matrix_decomp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_matrix_decomp_cluster_fill(s : MathmatrixdecompCluster, v : Double) 
   result
 }
 
-pub fn math_matrix_decomp_cluster_min(s : MathmatrixdecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_cluster_min(s : MathmatrixdecompCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_cluster_max(s : MathmatrixdecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_cluster_max(s : MathmatrixdecompCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_cluster_to_string(s : MathmatrixdecompCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_matrix_decomp_model_set(s : MathmatrixdecompModel, i : Int, v : Doub
   result
 }
 
-pub fn math_matrix_decomp_model_sum(s : MathmatrixdecompModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_model_sum(s : MathmatrixdecompModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_model_mean(s : MathmatrixdecompModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_model_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_model_mean(s : MathmatrixdecompModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_model_scale(s : MathmatrixdecompModel, f : Double) -> MathmatrixdecompModel {
   let result = math_matrix_decomp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_matrix_decomp_model_fill(s : MathmatrixdecompModel, v : Double) -> M
   result
 }
 
-pub fn math_matrix_decomp_model_min(s : MathmatrixdecompModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_model_min(s : MathmatrixdecompModel) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_model_max(s : MathmatrixdecompModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_model_max(s : MathmatrixdecompModel) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_model_to_string(s : MathmatrixdecompModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_matrix_decomp_layer_set(s : MathmatrixdecompLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_matrix_decomp_layer_sum(s : MathmatrixdecompLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_layer_sum(s : MathmatrixdecompLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_layer_mean(s : MathmatrixdecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_layer_mean(s : MathmatrixdecompLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_layer_scale(s : MathmatrixdecompLayer, f : Double) -> MathmatrixdecompLayer {
   let result = math_matrix_decomp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_matrix_decomp_layer_fill(s : MathmatrixdecompLayer, v : Double) -> M
   result
 }
 
-pub fn math_matrix_decomp_layer_min(s : MathmatrixdecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_layer_min(s : MathmatrixdecompLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_layer_max(s : MathmatrixdecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_layer_max(s : MathmatrixdecompLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_layer_to_string(s : MathmatrixdecompLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_matrix_decomp_buffer_set(s : MathmatrixdecompBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_matrix_decomp_buffer_sum(s : MathmatrixdecompBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_buffer_sum(s : MathmatrixdecompBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_buffer_mean(s : MathmatrixdecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_buffer_mean(s : MathmatrixdecompBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_buffer_scale(s : MathmatrixdecompBuffer, f : Double) -> MathmatrixdecompBuffer {
   let result = math_matrix_decomp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_matrix_decomp_buffer_fill(s : MathmatrixdecompBuffer, v : Double) ->
   result
 }
 
-pub fn math_matrix_decomp_buffer_min(s : MathmatrixdecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_buffer_min(s : MathmatrixdecompBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_buffer_max(s : MathmatrixdecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_buffer_max(s : MathmatrixdecompBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_buffer_to_string(s : MathmatrixdecompBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_matrix_decomp_cursor_set(s : MathmatrixdecompCursor, i : Int, v : Do
   result
 }
 
-pub fn math_matrix_decomp_cursor_sum(s : MathmatrixdecompCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_cursor_sum(s : MathmatrixdecompCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_cursor_mean(s : MathmatrixdecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_cursor_mean(s : MathmatrixdecompCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_cursor_scale(s : MathmatrixdecompCursor, f : Double) -> MathmatrixdecompCursor {
   let result = math_matrix_decomp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_matrix_decomp_cursor_fill(s : MathmatrixdecompCursor, v : Double) ->
   result
 }
 
-pub fn math_matrix_decomp_cursor_min(s : MathmatrixdecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_cursor_min(s : MathmatrixdecompCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_cursor_max(s : MathmatrixdecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_cursor_max(s : MathmatrixdecompCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_cursor_to_string(s : MathmatrixdecompCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_matrix_decomp_view_set(s : MathmatrixdecompView, i : Int, v : Double
   result
 }
 
-pub fn math_matrix_decomp_view_sum(s : MathmatrixdecompView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_view_sum(s : MathmatrixdecompView) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_view_mean(s : MathmatrixdecompView) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_view_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_view_mean(s : MathmatrixdecompView) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_view_scale(s : MathmatrixdecompView, f : Double) -> MathmatrixdecompView {
   let result = math_matrix_decomp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_matrix_decomp_view_fill(s : MathmatrixdecompView, v : Double) -> Mat
   result
 }
 
-pub fn math_matrix_decomp_view_min(s : MathmatrixdecompView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_view_min(s : MathmatrixdecompView) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_view_max(s : MathmatrixdecompView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_view_max(s : MathmatrixdecompView) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_view_to_string(s : MathmatrixdecompView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_matrix_decomp_range_set(s : MathmatrixdecompRange, i : Int, v : Doub
   result
 }
 
-pub fn math_matrix_decomp_range_sum(s : MathmatrixdecompRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_range_sum(s : MathmatrixdecompRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_range_mean(s : MathmatrixdecompRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_range_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_range_mean(s : MathmatrixdecompRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_range_scale(s : MathmatrixdecompRange, f : Double) -> MathmatrixdecompRange {
   let result = math_matrix_decomp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_matrix_decomp_range_fill(s : MathmatrixdecompRange, v : Double) -> M
   result
 }
 
-pub fn math_matrix_decomp_range_min(s : MathmatrixdecompRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_range_min(s : MathmatrixdecompRange) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_range_max(s : MathmatrixdecompRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_range_max(s : MathmatrixdecompRange) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_range_to_string(s : MathmatrixdecompRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_matrix_decomp_slice_set(s : MathmatrixdecompSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_matrix_decomp_slice_sum(s : MathmatrixdecompSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_matrix_decomp_slice_sum(s : MathmatrixdecompSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_matrix_decomp_slice_mean(s : MathmatrixdecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_matrix_decomp_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_matrix_decomp_slice_mean(s : MathmatrixdecompSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_matrix_decomp_slice_scale(s : MathmatrixdecompSlice, f : Double) -> MathmatrixdecompSlice {
   let result = math_matrix_decomp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_matrix_decomp_slice_fill(s : MathmatrixdecompSlice, v : Double) -> M
   result
 }
 
-pub fn math_matrix_decomp_slice_min(s : MathmatrixdecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_slice_min(s : MathmatrixdecompSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_matrix_decomp_slice_max(s : MathmatrixdecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_matrix_decomp_slice_max(s : MathmatrixdecompSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_matrix_decomp_slice_to_string(s : MathmatrixdecompSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

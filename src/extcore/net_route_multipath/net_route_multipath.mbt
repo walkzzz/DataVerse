@@ -88,11 +88,7 @@ pub fn net_route_multipath_make_series(vals : Array[Double], name : String) -> N
 
 pub fn net_route_multipath_series_len(s : NetroutemultipathSeries) -> Int { s.vals.length() }
 
-pub fn net_route_multipath_series_sum(s : NetroutemultipathSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_multipath_series_sum(s : NetroutemultipathSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_multipath_series_mean(s : NetroutemultipathSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_multipath_frame_set(s : NetroutemultipathFrame, i : Int, v : Do
   result
 }
 
-pub fn net_route_multipath_frame_sum(s : NetroutemultipathFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_frame_sum(s : NetroutemultipathFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_frame_mean(s : NetroutemultipathFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_frame_mean(s : NetroutemultipathFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_frame_scale(s : NetroutemultipathFrame, f : Double) -> NetroutemultipathFrame {
   let result = net_route_multipath_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_multipath_frame_fill(s : NetroutemultipathFrame, v : Double) ->
   result
 }
 
-pub fn net_route_multipath_frame_min(s : NetroutemultipathFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_frame_min(s : NetroutemultipathFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_frame_max(s : NetroutemultipathFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_frame_max(s : NetroutemultipathFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_frame_to_string(s : NetroutemultipathFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_multipath_table_set(s : NetroutemultipathTable, i : Int, v : Do
   result
 }
 
-pub fn net_route_multipath_table_sum(s : NetroutemultipathTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_table_sum(s : NetroutemultipathTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_table_mean(s : NetroutemultipathTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_table_mean(s : NetroutemultipathTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_table_scale(s : NetroutemultipathTable, f : Double) -> NetroutemultipathTable {
   let result = net_route_multipath_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_multipath_table_fill(s : NetroutemultipathTable, v : Double) ->
   result
 }
 
-pub fn net_route_multipath_table_min(s : NetroutemultipathTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_table_min(s : NetroutemultipathTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_table_max(s : NetroutemultipathTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_table_max(s : NetroutemultipathTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_table_to_string(s : NetroutemultipathTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_multipath_graphn_set(s : NetroutemultipathGraphN, i : Int, v : 
   result
 }
 
-pub fn net_route_multipath_graphn_sum(s : NetroutemultipathGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_graphn_sum(s : NetroutemultipathGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_graphn_mean(s : NetroutemultipathGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_graphn_mean(s : NetroutemultipathGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_graphn_scale(s : NetroutemultipathGraphN, f : Double) -> NetroutemultipathGraphN {
   let result = net_route_multipath_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_multipath_graphn_fill(s : NetroutemultipathGraphN, v : Double) 
   result
 }
 
-pub fn net_route_multipath_graphn_min(s : NetroutemultipathGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_graphn_min(s : NetroutemultipathGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_graphn_max(s : NetroutemultipathGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_graphn_max(s : NetroutemultipathGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_graphn_to_string(s : NetroutemultipathGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_multipath_node_set(s : NetroutemultipathNode, i : Int, v : Doub
   result
 }
 
-pub fn net_route_multipath_node_sum(s : NetroutemultipathNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_node_sum(s : NetroutemultipathNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_node_mean(s : NetroutemultipathNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_node_mean(s : NetroutemultipathNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_node_scale(s : NetroutemultipathNode, f : Double) -> NetroutemultipathNode {
   let result = net_route_multipath_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_multipath_node_fill(s : NetroutemultipathNode, v : Double) -> N
   result
 }
 
-pub fn net_route_multipath_node_min(s : NetroutemultipathNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_node_min(s : NetroutemultipathNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_node_max(s : NetroutemultipathNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_node_max(s : NetroutemultipathNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_node_to_string(s : NetroutemultipathNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_multipath_edge_set(s : NetroutemultipathEdge, i : Int, v : Doub
   result
 }
 
-pub fn net_route_multipath_edge_sum(s : NetroutemultipathEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_edge_sum(s : NetroutemultipathEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_edge_mean(s : NetroutemultipathEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_edge_mean(s : NetroutemultipathEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_edge_scale(s : NetroutemultipathEdge, f : Double) -> NetroutemultipathEdge {
   let result = net_route_multipath_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_multipath_edge_fill(s : NetroutemultipathEdge, v : Double) -> N
   result
 }
 
-pub fn net_route_multipath_edge_min(s : NetroutemultipathEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_edge_min(s : NetroutemultipathEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_edge_max(s : NetroutemultipathEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_edge_max(s : NetroutemultipathEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_edge_to_string(s : NetroutemultipathEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_multipath_path_set(s : NetroutemultipathPath, i : Int, v : Doub
   result
 }
 
-pub fn net_route_multipath_path_sum(s : NetroutemultipathPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_path_sum(s : NetroutemultipathPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_path_mean(s : NetroutemultipathPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_path_mean(s : NetroutemultipathPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_path_scale(s : NetroutemultipathPath, f : Double) -> NetroutemultipathPath {
   let result = net_route_multipath_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_multipath_path_fill(s : NetroutemultipathPath, v : Double) -> N
   result
 }
 
-pub fn net_route_multipath_path_min(s : NetroutemultipathPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_path_min(s : NetroutemultipathPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_path_max(s : NetroutemultipathPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_path_max(s : NetroutemultipathPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_path_to_string(s : NetroutemultipathPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_multipath_cluster_set(s : NetroutemultipathCluster, i : Int, v 
   result
 }
 
-pub fn net_route_multipath_cluster_sum(s : NetroutemultipathCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_cluster_sum(s : NetroutemultipathCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_cluster_mean(s : NetroutemultipathCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_cluster_mean(s : NetroutemultipathCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_cluster_scale(s : NetroutemultipathCluster, f : Double) -> NetroutemultipathCluster {
   let result = net_route_multipath_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_multipath_cluster_fill(s : NetroutemultipathCluster, v : Double
   result
 }
 
-pub fn net_route_multipath_cluster_min(s : NetroutemultipathCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_cluster_min(s : NetroutemultipathCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_cluster_max(s : NetroutemultipathCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_cluster_max(s : NetroutemultipathCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_cluster_to_string(s : NetroutemultipathCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_multipath_model_set(s : NetroutemultipathModel, i : Int, v : Do
   result
 }
 
-pub fn net_route_multipath_model_sum(s : NetroutemultipathModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_model_sum(s : NetroutemultipathModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_model_mean(s : NetroutemultipathModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_model_mean(s : NetroutemultipathModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_model_scale(s : NetroutemultipathModel, f : Double) -> NetroutemultipathModel {
   let result = net_route_multipath_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_multipath_model_fill(s : NetroutemultipathModel, v : Double) ->
   result
 }
 
-pub fn net_route_multipath_model_min(s : NetroutemultipathModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_model_min(s : NetroutemultipathModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_model_max(s : NetroutemultipathModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_model_max(s : NetroutemultipathModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_model_to_string(s : NetroutemultipathModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_multipath_layer_set(s : NetroutemultipathLayer, i : Int, v : Do
   result
 }
 
-pub fn net_route_multipath_layer_sum(s : NetroutemultipathLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_layer_sum(s : NetroutemultipathLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_layer_mean(s : NetroutemultipathLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_layer_mean(s : NetroutemultipathLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_layer_scale(s : NetroutemultipathLayer, f : Double) -> NetroutemultipathLayer {
   let result = net_route_multipath_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_multipath_layer_fill(s : NetroutemultipathLayer, v : Double) ->
   result
 }
 
-pub fn net_route_multipath_layer_min(s : NetroutemultipathLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_layer_min(s : NetroutemultipathLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_layer_max(s : NetroutemultipathLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_layer_max(s : NetroutemultipathLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_layer_to_string(s : NetroutemultipathLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_multipath_buffer_set(s : NetroutemultipathBuffer, i : Int, v : 
   result
 }
 
-pub fn net_route_multipath_buffer_sum(s : NetroutemultipathBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_buffer_sum(s : NetroutemultipathBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_buffer_mean(s : NetroutemultipathBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_buffer_mean(s : NetroutemultipathBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_buffer_scale(s : NetroutemultipathBuffer, f : Double) -> NetroutemultipathBuffer {
   let result = net_route_multipath_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_multipath_buffer_fill(s : NetroutemultipathBuffer, v : Double) 
   result
 }
 
-pub fn net_route_multipath_buffer_min(s : NetroutemultipathBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_buffer_min(s : NetroutemultipathBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_buffer_max(s : NetroutemultipathBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_buffer_max(s : NetroutemultipathBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_buffer_to_string(s : NetroutemultipathBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_multipath_cursor_set(s : NetroutemultipathCursor, i : Int, v : 
   result
 }
 
-pub fn net_route_multipath_cursor_sum(s : NetroutemultipathCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_cursor_sum(s : NetroutemultipathCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_cursor_mean(s : NetroutemultipathCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_cursor_mean(s : NetroutemultipathCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_cursor_scale(s : NetroutemultipathCursor, f : Double) -> NetroutemultipathCursor {
   let result = net_route_multipath_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_multipath_cursor_fill(s : NetroutemultipathCursor, v : Double) 
   result
 }
 
-pub fn net_route_multipath_cursor_min(s : NetroutemultipathCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_cursor_min(s : NetroutemultipathCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_cursor_max(s : NetroutemultipathCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_cursor_max(s : NetroutemultipathCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_cursor_to_string(s : NetroutemultipathCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_multipath_view_set(s : NetroutemultipathView, i : Int, v : Doub
   result
 }
 
-pub fn net_route_multipath_view_sum(s : NetroutemultipathView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_view_sum(s : NetroutemultipathView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_view_mean(s : NetroutemultipathView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_view_mean(s : NetroutemultipathView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_view_scale(s : NetroutemultipathView, f : Double) -> NetroutemultipathView {
   let result = net_route_multipath_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_multipath_view_fill(s : NetroutemultipathView, v : Double) -> N
   result
 }
 
-pub fn net_route_multipath_view_min(s : NetroutemultipathView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_view_min(s : NetroutemultipathView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_view_max(s : NetroutemultipathView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_view_max(s : NetroutemultipathView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_view_to_string(s : NetroutemultipathView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_multipath_range_set(s : NetroutemultipathRange, i : Int, v : Do
   result
 }
 
-pub fn net_route_multipath_range_sum(s : NetroutemultipathRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_range_sum(s : NetroutemultipathRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_range_mean(s : NetroutemultipathRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_range_mean(s : NetroutemultipathRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_range_scale(s : NetroutemultipathRange, f : Double) -> NetroutemultipathRange {
   let result = net_route_multipath_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_multipath_range_fill(s : NetroutemultipathRange, v : Double) ->
   result
 }
 
-pub fn net_route_multipath_range_min(s : NetroutemultipathRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_range_min(s : NetroutemultipathRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_range_max(s : NetroutemultipathRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_range_max(s : NetroutemultipathRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_range_to_string(s : NetroutemultipathRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_multipath_slice_set(s : NetroutemultipathSlice, i : Int, v : Do
   result
 }
 
-pub fn net_route_multipath_slice_sum(s : NetroutemultipathSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_multipath_slice_sum(s : NetroutemultipathSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_multipath_slice_mean(s : NetroutemultipathSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_multipath_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_multipath_slice_mean(s : NetroutemultipathSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_multipath_slice_scale(s : NetroutemultipathSlice, f : Double) -> NetroutemultipathSlice {
   let result = net_route_multipath_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_multipath_slice_fill(s : NetroutemultipathSlice, v : Double) ->
   result
 }
 
-pub fn net_route_multipath_slice_min(s : NetroutemultipathSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_slice_min(s : NetroutemultipathSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_multipath_slice_max(s : NetroutemultipathSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_multipath_slice_max(s : NetroutemultipathSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_multipath_slice_to_string(s : NetroutemultipathSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

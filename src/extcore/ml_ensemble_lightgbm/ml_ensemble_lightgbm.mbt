@@ -88,11 +88,7 @@ pub fn ml_ensemble_lightgbm_make_series(vals : Array[Double], name : String) -> 
 
 pub fn ml_ensemble_lightgbm_series_len(s : MlensemblelightgbmSeries) -> Int { s.vals.length() }
 
-pub fn ml_ensemble_lightgbm_series_sum(s : MlensemblelightgbmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_series_sum(s : MlensemblelightgbmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_ensemble_lightgbm_series_mean(s : MlensemblelightgbmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_ensemble_lightgbm_frame_set(s : MlensemblelightgbmFrame, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_lightgbm_frame_sum(s : MlensemblelightgbmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_frame_sum(s : MlensemblelightgbmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_frame_mean(s : MlensemblelightgbmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_frame_mean(s : MlensemblelightgbmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_frame_scale(s : MlensemblelightgbmFrame, f : Double) -> MlensemblelightgbmFrame {
   let result = ml_ensemble_lightgbm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_ensemble_lightgbm_frame_fill(s : MlensemblelightgbmFrame, v : Double) 
   result
 }
 
-pub fn ml_ensemble_lightgbm_frame_min(s : MlensemblelightgbmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_frame_min(s : MlensemblelightgbmFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_frame_max(s : MlensemblelightgbmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_frame_max(s : MlensemblelightgbmFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_frame_to_string(s : MlensemblelightgbmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_ensemble_lightgbm_table_set(s : MlensemblelightgbmTable, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_lightgbm_table_sum(s : MlensemblelightgbmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_table_sum(s : MlensemblelightgbmTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_table_mean(s : MlensemblelightgbmTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_table_mean(s : MlensemblelightgbmTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_table_scale(s : MlensemblelightgbmTable, f : Double) -> MlensemblelightgbmTable {
   let result = ml_ensemble_lightgbm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_ensemble_lightgbm_table_fill(s : MlensemblelightgbmTable, v : Double) 
   result
 }
 
-pub fn ml_ensemble_lightgbm_table_min(s : MlensemblelightgbmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_table_min(s : MlensemblelightgbmTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_table_max(s : MlensemblelightgbmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_table_max(s : MlensemblelightgbmTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_table_to_string(s : MlensemblelightgbmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_ensemble_lightgbm_graphn_set(s : MlensemblelightgbmGraphN, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_lightgbm_graphn_sum(s : MlensemblelightgbmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_graphn_sum(s : MlensemblelightgbmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_graphn_mean(s : MlensemblelightgbmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_graphn_mean(s : MlensemblelightgbmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_graphn_scale(s : MlensemblelightgbmGraphN, f : Double) -> MlensemblelightgbmGraphN {
   let result = ml_ensemble_lightgbm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_ensemble_lightgbm_graphn_fill(s : MlensemblelightgbmGraphN, v : Double
   result
 }
 
-pub fn ml_ensemble_lightgbm_graphn_min(s : MlensemblelightgbmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_graphn_min(s : MlensemblelightgbmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_graphn_max(s : MlensemblelightgbmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_graphn_max(s : MlensemblelightgbmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_graphn_to_string(s : MlensemblelightgbmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_ensemble_lightgbm_node_set(s : MlensemblelightgbmNode, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_lightgbm_node_sum(s : MlensemblelightgbmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_node_sum(s : MlensemblelightgbmNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_node_mean(s : MlensemblelightgbmNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_node_mean(s : MlensemblelightgbmNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_node_scale(s : MlensemblelightgbmNode, f : Double) -> MlensemblelightgbmNode {
   let result = ml_ensemble_lightgbm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_ensemble_lightgbm_node_fill(s : MlensemblelightgbmNode, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_lightgbm_node_min(s : MlensemblelightgbmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_node_min(s : MlensemblelightgbmNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_node_max(s : MlensemblelightgbmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_node_max(s : MlensemblelightgbmNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_node_to_string(s : MlensemblelightgbmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_ensemble_lightgbm_edge_set(s : MlensemblelightgbmEdge, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_lightgbm_edge_sum(s : MlensemblelightgbmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_edge_sum(s : MlensemblelightgbmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_edge_mean(s : MlensemblelightgbmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_edge_mean(s : MlensemblelightgbmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_edge_scale(s : MlensemblelightgbmEdge, f : Double) -> MlensemblelightgbmEdge {
   let result = ml_ensemble_lightgbm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_ensemble_lightgbm_edge_fill(s : MlensemblelightgbmEdge, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_lightgbm_edge_min(s : MlensemblelightgbmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_edge_min(s : MlensemblelightgbmEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_edge_max(s : MlensemblelightgbmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_edge_max(s : MlensemblelightgbmEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_edge_to_string(s : MlensemblelightgbmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_ensemble_lightgbm_path_set(s : MlensemblelightgbmPath, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_lightgbm_path_sum(s : MlensemblelightgbmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_path_sum(s : MlensemblelightgbmPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_path_mean(s : MlensemblelightgbmPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_path_mean(s : MlensemblelightgbmPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_path_scale(s : MlensemblelightgbmPath, f : Double) -> MlensemblelightgbmPath {
   let result = ml_ensemble_lightgbm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_ensemble_lightgbm_path_fill(s : MlensemblelightgbmPath, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_lightgbm_path_min(s : MlensemblelightgbmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_path_min(s : MlensemblelightgbmPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_path_max(s : MlensemblelightgbmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_path_max(s : MlensemblelightgbmPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_path_to_string(s : MlensemblelightgbmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_ensemble_lightgbm_cluster_set(s : MlensemblelightgbmCluster, i : Int, 
   result
 }
 
-pub fn ml_ensemble_lightgbm_cluster_sum(s : MlensemblelightgbmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_cluster_sum(s : MlensemblelightgbmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_cluster_mean(s : MlensemblelightgbmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_cluster_mean(s : MlensemblelightgbmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_cluster_scale(s : MlensemblelightgbmCluster, f : Double) -> MlensemblelightgbmCluster {
   let result = ml_ensemble_lightgbm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_ensemble_lightgbm_cluster_fill(s : MlensemblelightgbmCluster, v : Doub
   result
 }
 
-pub fn ml_ensemble_lightgbm_cluster_min(s : MlensemblelightgbmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_cluster_min(s : MlensemblelightgbmCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_cluster_max(s : MlensemblelightgbmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_cluster_max(s : MlensemblelightgbmCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_cluster_to_string(s : MlensemblelightgbmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_ensemble_lightgbm_model_set(s : MlensemblelightgbmModel, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_lightgbm_model_sum(s : MlensemblelightgbmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_model_sum(s : MlensemblelightgbmModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_model_mean(s : MlensemblelightgbmModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_model_mean(s : MlensemblelightgbmModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_model_scale(s : MlensemblelightgbmModel, f : Double) -> MlensemblelightgbmModel {
   let result = ml_ensemble_lightgbm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_ensemble_lightgbm_model_fill(s : MlensemblelightgbmModel, v : Double) 
   result
 }
 
-pub fn ml_ensemble_lightgbm_model_min(s : MlensemblelightgbmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_model_min(s : MlensemblelightgbmModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_model_max(s : MlensemblelightgbmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_model_max(s : MlensemblelightgbmModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_model_to_string(s : MlensemblelightgbmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_ensemble_lightgbm_layer_set(s : MlensemblelightgbmLayer, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_lightgbm_layer_sum(s : MlensemblelightgbmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_layer_sum(s : MlensemblelightgbmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_layer_mean(s : MlensemblelightgbmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_layer_mean(s : MlensemblelightgbmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_layer_scale(s : MlensemblelightgbmLayer, f : Double) -> MlensemblelightgbmLayer {
   let result = ml_ensemble_lightgbm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_ensemble_lightgbm_layer_fill(s : MlensemblelightgbmLayer, v : Double) 
   result
 }
 
-pub fn ml_ensemble_lightgbm_layer_min(s : MlensemblelightgbmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_layer_min(s : MlensemblelightgbmLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_layer_max(s : MlensemblelightgbmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_layer_max(s : MlensemblelightgbmLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_layer_to_string(s : MlensemblelightgbmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_ensemble_lightgbm_buffer_set(s : MlensemblelightgbmBuffer, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_lightgbm_buffer_sum(s : MlensemblelightgbmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_buffer_sum(s : MlensemblelightgbmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_buffer_mean(s : MlensemblelightgbmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_buffer_mean(s : MlensemblelightgbmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_buffer_scale(s : MlensemblelightgbmBuffer, f : Double) -> MlensemblelightgbmBuffer {
   let result = ml_ensemble_lightgbm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_ensemble_lightgbm_buffer_fill(s : MlensemblelightgbmBuffer, v : Double
   result
 }
 
-pub fn ml_ensemble_lightgbm_buffer_min(s : MlensemblelightgbmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_buffer_min(s : MlensemblelightgbmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_buffer_max(s : MlensemblelightgbmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_buffer_max(s : MlensemblelightgbmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_buffer_to_string(s : MlensemblelightgbmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_ensemble_lightgbm_cursor_set(s : MlensemblelightgbmCursor, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_lightgbm_cursor_sum(s : MlensemblelightgbmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_cursor_sum(s : MlensemblelightgbmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_cursor_mean(s : MlensemblelightgbmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_cursor_mean(s : MlensemblelightgbmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_cursor_scale(s : MlensemblelightgbmCursor, f : Double) -> MlensemblelightgbmCursor {
   let result = ml_ensemble_lightgbm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_ensemble_lightgbm_cursor_fill(s : MlensemblelightgbmCursor, v : Double
   result
 }
 
-pub fn ml_ensemble_lightgbm_cursor_min(s : MlensemblelightgbmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_cursor_min(s : MlensemblelightgbmCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_cursor_max(s : MlensemblelightgbmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_cursor_max(s : MlensemblelightgbmCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_cursor_to_string(s : MlensemblelightgbmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_ensemble_lightgbm_view_set(s : MlensemblelightgbmView, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_lightgbm_view_sum(s : MlensemblelightgbmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_view_sum(s : MlensemblelightgbmView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_view_mean(s : MlensemblelightgbmView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_view_mean(s : MlensemblelightgbmView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_view_scale(s : MlensemblelightgbmView, f : Double) -> MlensemblelightgbmView {
   let result = ml_ensemble_lightgbm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_ensemble_lightgbm_view_fill(s : MlensemblelightgbmView, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_lightgbm_view_min(s : MlensemblelightgbmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_view_min(s : MlensemblelightgbmView) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_view_max(s : MlensemblelightgbmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_view_max(s : MlensemblelightgbmView) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_view_to_string(s : MlensemblelightgbmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_ensemble_lightgbm_range_set(s : MlensemblelightgbmRange, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_lightgbm_range_sum(s : MlensemblelightgbmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_range_sum(s : MlensemblelightgbmRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_range_mean(s : MlensemblelightgbmRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_range_mean(s : MlensemblelightgbmRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_range_scale(s : MlensemblelightgbmRange, f : Double) -> MlensemblelightgbmRange {
   let result = ml_ensemble_lightgbm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_ensemble_lightgbm_range_fill(s : MlensemblelightgbmRange, v : Double) 
   result
 }
 
-pub fn ml_ensemble_lightgbm_range_min(s : MlensemblelightgbmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_range_min(s : MlensemblelightgbmRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_range_max(s : MlensemblelightgbmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_range_max(s : MlensemblelightgbmRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_range_to_string(s : MlensemblelightgbmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_ensemble_lightgbm_slice_set(s : MlensemblelightgbmSlice, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_lightgbm_slice_sum(s : MlensemblelightgbmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_lightgbm_slice_sum(s : MlensemblelightgbmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_lightgbm_slice_mean(s : MlensemblelightgbmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_lightgbm_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_lightgbm_slice_mean(s : MlensemblelightgbmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_lightgbm_slice_scale(s : MlensemblelightgbmSlice, f : Double) -> MlensemblelightgbmSlice {
   let result = ml_ensemble_lightgbm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_ensemble_lightgbm_slice_fill(s : MlensemblelightgbmSlice, v : Double) 
   result
 }
 
-pub fn ml_ensemble_lightgbm_slice_min(s : MlensemblelightgbmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_slice_min(s : MlensemblelightgbmSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_lightgbm_slice_max(s : MlensemblelightgbmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_lightgbm_slice_max(s : MlensemblelightgbmSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_lightgbm_slice_to_string(s : MlensemblelightgbmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

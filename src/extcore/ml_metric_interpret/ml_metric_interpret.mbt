@@ -88,11 +88,7 @@ pub fn ml_metric_interpret_make_series(vals : Array[Double], name : String) -> M
 
 pub fn ml_metric_interpret_series_len(s : MlmetricinterpretSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_interpret_series_sum(s : MlmetricinterpretSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_interpret_series_sum(s : MlmetricinterpretSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_interpret_series_mean(s : MlmetricinterpretSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_interpret_frame_set(s : MlmetricinterpretFrame, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_interpret_frame_sum(s : MlmetricinterpretFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_frame_sum(s : MlmetricinterpretFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_frame_mean(s : MlmetricinterpretFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_frame_mean(s : MlmetricinterpretFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_frame_scale(s : MlmetricinterpretFrame, f : Double) -> MlmetricinterpretFrame {
   let result = ml_metric_interpret_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_interpret_frame_fill(s : MlmetricinterpretFrame, v : Double) ->
   result
 }
 
-pub fn ml_metric_interpret_frame_min(s : MlmetricinterpretFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_frame_min(s : MlmetricinterpretFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_frame_max(s : MlmetricinterpretFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_frame_max(s : MlmetricinterpretFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_frame_to_string(s : MlmetricinterpretFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_interpret_table_set(s : MlmetricinterpretTable, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_interpret_table_sum(s : MlmetricinterpretTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_table_sum(s : MlmetricinterpretTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_table_mean(s : MlmetricinterpretTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_table_mean(s : MlmetricinterpretTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_table_scale(s : MlmetricinterpretTable, f : Double) -> MlmetricinterpretTable {
   let result = ml_metric_interpret_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_interpret_table_fill(s : MlmetricinterpretTable, v : Double) ->
   result
 }
 
-pub fn ml_metric_interpret_table_min(s : MlmetricinterpretTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_table_min(s : MlmetricinterpretTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_table_max(s : MlmetricinterpretTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_table_max(s : MlmetricinterpretTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_table_to_string(s : MlmetricinterpretTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_interpret_graphn_set(s : MlmetricinterpretGraphN, i : Int, v : 
   result
 }
 
-pub fn ml_metric_interpret_graphn_sum(s : MlmetricinterpretGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_graphn_sum(s : MlmetricinterpretGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_graphn_mean(s : MlmetricinterpretGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_graphn_mean(s : MlmetricinterpretGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_graphn_scale(s : MlmetricinterpretGraphN, f : Double) -> MlmetricinterpretGraphN {
   let result = ml_metric_interpret_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_interpret_graphn_fill(s : MlmetricinterpretGraphN, v : Double) 
   result
 }
 
-pub fn ml_metric_interpret_graphn_min(s : MlmetricinterpretGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_graphn_min(s : MlmetricinterpretGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_graphn_max(s : MlmetricinterpretGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_graphn_max(s : MlmetricinterpretGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_graphn_to_string(s : MlmetricinterpretGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_interpret_node_set(s : MlmetricinterpretNode, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_interpret_node_sum(s : MlmetricinterpretNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_node_sum(s : MlmetricinterpretNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_node_mean(s : MlmetricinterpretNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_node_mean(s : MlmetricinterpretNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_node_scale(s : MlmetricinterpretNode, f : Double) -> MlmetricinterpretNode {
   let result = ml_metric_interpret_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_interpret_node_fill(s : MlmetricinterpretNode, v : Double) -> M
   result
 }
 
-pub fn ml_metric_interpret_node_min(s : MlmetricinterpretNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_node_min(s : MlmetricinterpretNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_node_max(s : MlmetricinterpretNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_node_max(s : MlmetricinterpretNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_node_to_string(s : MlmetricinterpretNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_interpret_edge_set(s : MlmetricinterpretEdge, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_interpret_edge_sum(s : MlmetricinterpretEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_edge_sum(s : MlmetricinterpretEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_edge_mean(s : MlmetricinterpretEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_edge_mean(s : MlmetricinterpretEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_edge_scale(s : MlmetricinterpretEdge, f : Double) -> MlmetricinterpretEdge {
   let result = ml_metric_interpret_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_interpret_edge_fill(s : MlmetricinterpretEdge, v : Double) -> M
   result
 }
 
-pub fn ml_metric_interpret_edge_min(s : MlmetricinterpretEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_edge_min(s : MlmetricinterpretEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_edge_max(s : MlmetricinterpretEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_edge_max(s : MlmetricinterpretEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_edge_to_string(s : MlmetricinterpretEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_interpret_path_set(s : MlmetricinterpretPath, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_interpret_path_sum(s : MlmetricinterpretPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_path_sum(s : MlmetricinterpretPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_path_mean(s : MlmetricinterpretPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_path_mean(s : MlmetricinterpretPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_path_scale(s : MlmetricinterpretPath, f : Double) -> MlmetricinterpretPath {
   let result = ml_metric_interpret_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_interpret_path_fill(s : MlmetricinterpretPath, v : Double) -> M
   result
 }
 
-pub fn ml_metric_interpret_path_min(s : MlmetricinterpretPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_path_min(s : MlmetricinterpretPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_path_max(s : MlmetricinterpretPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_path_max(s : MlmetricinterpretPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_path_to_string(s : MlmetricinterpretPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_interpret_cluster_set(s : MlmetricinterpretCluster, i : Int, v 
   result
 }
 
-pub fn ml_metric_interpret_cluster_sum(s : MlmetricinterpretCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_cluster_sum(s : MlmetricinterpretCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_cluster_mean(s : MlmetricinterpretCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_cluster_mean(s : MlmetricinterpretCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_cluster_scale(s : MlmetricinterpretCluster, f : Double) -> MlmetricinterpretCluster {
   let result = ml_metric_interpret_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_interpret_cluster_fill(s : MlmetricinterpretCluster, v : Double
   result
 }
 
-pub fn ml_metric_interpret_cluster_min(s : MlmetricinterpretCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_cluster_min(s : MlmetricinterpretCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_cluster_max(s : MlmetricinterpretCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_cluster_max(s : MlmetricinterpretCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_cluster_to_string(s : MlmetricinterpretCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_interpret_model_set(s : MlmetricinterpretModel, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_interpret_model_sum(s : MlmetricinterpretModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_model_sum(s : MlmetricinterpretModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_model_mean(s : MlmetricinterpretModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_model_mean(s : MlmetricinterpretModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_model_scale(s : MlmetricinterpretModel, f : Double) -> MlmetricinterpretModel {
   let result = ml_metric_interpret_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_interpret_model_fill(s : MlmetricinterpretModel, v : Double) ->
   result
 }
 
-pub fn ml_metric_interpret_model_min(s : MlmetricinterpretModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_model_min(s : MlmetricinterpretModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_model_max(s : MlmetricinterpretModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_model_max(s : MlmetricinterpretModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_model_to_string(s : MlmetricinterpretModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_interpret_layer_set(s : MlmetricinterpretLayer, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_interpret_layer_sum(s : MlmetricinterpretLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_layer_sum(s : MlmetricinterpretLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_layer_mean(s : MlmetricinterpretLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_layer_mean(s : MlmetricinterpretLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_layer_scale(s : MlmetricinterpretLayer, f : Double) -> MlmetricinterpretLayer {
   let result = ml_metric_interpret_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_interpret_layer_fill(s : MlmetricinterpretLayer, v : Double) ->
   result
 }
 
-pub fn ml_metric_interpret_layer_min(s : MlmetricinterpretLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_layer_min(s : MlmetricinterpretLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_layer_max(s : MlmetricinterpretLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_layer_max(s : MlmetricinterpretLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_layer_to_string(s : MlmetricinterpretLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_interpret_buffer_set(s : MlmetricinterpretBuffer, i : Int, v : 
   result
 }
 
-pub fn ml_metric_interpret_buffer_sum(s : MlmetricinterpretBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_buffer_sum(s : MlmetricinterpretBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_buffer_mean(s : MlmetricinterpretBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_buffer_mean(s : MlmetricinterpretBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_buffer_scale(s : MlmetricinterpretBuffer, f : Double) -> MlmetricinterpretBuffer {
   let result = ml_metric_interpret_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_interpret_buffer_fill(s : MlmetricinterpretBuffer, v : Double) 
   result
 }
 
-pub fn ml_metric_interpret_buffer_min(s : MlmetricinterpretBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_buffer_min(s : MlmetricinterpretBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_buffer_max(s : MlmetricinterpretBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_buffer_max(s : MlmetricinterpretBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_buffer_to_string(s : MlmetricinterpretBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_interpret_cursor_set(s : MlmetricinterpretCursor, i : Int, v : 
   result
 }
 
-pub fn ml_metric_interpret_cursor_sum(s : MlmetricinterpretCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_cursor_sum(s : MlmetricinterpretCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_cursor_mean(s : MlmetricinterpretCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_cursor_mean(s : MlmetricinterpretCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_cursor_scale(s : MlmetricinterpretCursor, f : Double) -> MlmetricinterpretCursor {
   let result = ml_metric_interpret_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_interpret_cursor_fill(s : MlmetricinterpretCursor, v : Double) 
   result
 }
 
-pub fn ml_metric_interpret_cursor_min(s : MlmetricinterpretCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_cursor_min(s : MlmetricinterpretCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_cursor_max(s : MlmetricinterpretCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_cursor_max(s : MlmetricinterpretCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_cursor_to_string(s : MlmetricinterpretCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_interpret_view_set(s : MlmetricinterpretView, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_interpret_view_sum(s : MlmetricinterpretView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_view_sum(s : MlmetricinterpretView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_view_mean(s : MlmetricinterpretView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_view_mean(s : MlmetricinterpretView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_view_scale(s : MlmetricinterpretView, f : Double) -> MlmetricinterpretView {
   let result = ml_metric_interpret_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_interpret_view_fill(s : MlmetricinterpretView, v : Double) -> M
   result
 }
 
-pub fn ml_metric_interpret_view_min(s : MlmetricinterpretView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_view_min(s : MlmetricinterpretView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_view_max(s : MlmetricinterpretView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_view_max(s : MlmetricinterpretView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_view_to_string(s : MlmetricinterpretView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_interpret_range_set(s : MlmetricinterpretRange, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_interpret_range_sum(s : MlmetricinterpretRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_range_sum(s : MlmetricinterpretRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_range_mean(s : MlmetricinterpretRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_range_mean(s : MlmetricinterpretRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_range_scale(s : MlmetricinterpretRange, f : Double) -> MlmetricinterpretRange {
   let result = ml_metric_interpret_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_interpret_range_fill(s : MlmetricinterpretRange, v : Double) ->
   result
 }
 
-pub fn ml_metric_interpret_range_min(s : MlmetricinterpretRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_range_min(s : MlmetricinterpretRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_range_max(s : MlmetricinterpretRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_range_max(s : MlmetricinterpretRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_range_to_string(s : MlmetricinterpretRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_interpret_slice_set(s : MlmetricinterpretSlice, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_interpret_slice_sum(s : MlmetricinterpretSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_interpret_slice_sum(s : MlmetricinterpretSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_interpret_slice_mean(s : MlmetricinterpretSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_interpret_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_interpret_slice_mean(s : MlmetricinterpretSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_interpret_slice_scale(s : MlmetricinterpretSlice, f : Double) -> MlmetricinterpretSlice {
   let result = ml_metric_interpret_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_interpret_slice_fill(s : MlmetricinterpretSlice, v : Double) ->
   result
 }
 
-pub fn ml_metric_interpret_slice_min(s : MlmetricinterpretSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_slice_min(s : MlmetricinterpretSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_interpret_slice_max(s : MlmetricinterpretSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_interpret_slice_max(s : MlmetricinterpretSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_interpret_slice_to_string(s : MlmetricinterpretSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

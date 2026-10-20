@@ -88,11 +88,7 @@ pub fn stats_infer_nonparam_make_series(vals : Array[Double], name : String) -> 
 
 pub fn stats_infer_nonparam_series_len(s : StatsinfernonparamSeries) -> Int { s.vals.length() }
 
-pub fn stats_infer_nonparam_series_sum(s : StatsinfernonparamSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_infer_nonparam_series_sum(s : StatsinfernonparamSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_infer_nonparam_series_mean(s : StatsinfernonparamSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_infer_nonparam_frame_set(s : StatsinfernonparamFrame, i : Int, v : 
   result
 }
 
-pub fn stats_infer_nonparam_frame_sum(s : StatsinfernonparamFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_frame_sum(s : StatsinfernonparamFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_frame_mean(s : StatsinfernonparamFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_frame_mean(s : StatsinfernonparamFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_frame_scale(s : StatsinfernonparamFrame, f : Double) -> StatsinfernonparamFrame {
   let result = stats_infer_nonparam_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_infer_nonparam_frame_fill(s : StatsinfernonparamFrame, v : Double) 
   result
 }
 
-pub fn stats_infer_nonparam_frame_min(s : StatsinfernonparamFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_frame_min(s : StatsinfernonparamFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_frame_max(s : StatsinfernonparamFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_frame_max(s : StatsinfernonparamFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_frame_to_string(s : StatsinfernonparamFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_infer_nonparam_table_set(s : StatsinfernonparamTable, i : Int, v : 
   result
 }
 
-pub fn stats_infer_nonparam_table_sum(s : StatsinfernonparamTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_table_sum(s : StatsinfernonparamTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_table_mean(s : StatsinfernonparamTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_table_mean(s : StatsinfernonparamTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_table_scale(s : StatsinfernonparamTable, f : Double) -> StatsinfernonparamTable {
   let result = stats_infer_nonparam_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_infer_nonparam_table_fill(s : StatsinfernonparamTable, v : Double) 
   result
 }
 
-pub fn stats_infer_nonparam_table_min(s : StatsinfernonparamTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_table_min(s : StatsinfernonparamTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_table_max(s : StatsinfernonparamTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_table_max(s : StatsinfernonparamTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_table_to_string(s : StatsinfernonparamTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_infer_nonparam_graphn_set(s : StatsinfernonparamGraphN, i : Int, v 
   result
 }
 
-pub fn stats_infer_nonparam_graphn_sum(s : StatsinfernonparamGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_graphn_sum(s : StatsinfernonparamGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_graphn_mean(s : StatsinfernonparamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_graphn_mean(s : StatsinfernonparamGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_graphn_scale(s : StatsinfernonparamGraphN, f : Double) -> StatsinfernonparamGraphN {
   let result = stats_infer_nonparam_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_infer_nonparam_graphn_fill(s : StatsinfernonparamGraphN, v : Double
   result
 }
 
-pub fn stats_infer_nonparam_graphn_min(s : StatsinfernonparamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_graphn_min(s : StatsinfernonparamGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_graphn_max(s : StatsinfernonparamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_graphn_max(s : StatsinfernonparamGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_graphn_to_string(s : StatsinfernonparamGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_infer_nonparam_node_set(s : StatsinfernonparamNode, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_nonparam_node_sum(s : StatsinfernonparamNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_node_sum(s : StatsinfernonparamNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_node_mean(s : StatsinfernonparamNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_node_mean(s : StatsinfernonparamNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_node_scale(s : StatsinfernonparamNode, f : Double) -> StatsinfernonparamNode {
   let result = stats_infer_nonparam_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_infer_nonparam_node_fill(s : StatsinfernonparamNode, v : Double) ->
   result
 }
 
-pub fn stats_infer_nonparam_node_min(s : StatsinfernonparamNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_node_min(s : StatsinfernonparamNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_node_max(s : StatsinfernonparamNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_node_max(s : StatsinfernonparamNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_node_to_string(s : StatsinfernonparamNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_infer_nonparam_edge_set(s : StatsinfernonparamEdge, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_nonparam_edge_sum(s : StatsinfernonparamEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_edge_sum(s : StatsinfernonparamEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_edge_mean(s : StatsinfernonparamEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_edge_mean(s : StatsinfernonparamEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_edge_scale(s : StatsinfernonparamEdge, f : Double) -> StatsinfernonparamEdge {
   let result = stats_infer_nonparam_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_infer_nonparam_edge_fill(s : StatsinfernonparamEdge, v : Double) ->
   result
 }
 
-pub fn stats_infer_nonparam_edge_min(s : StatsinfernonparamEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_edge_min(s : StatsinfernonparamEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_edge_max(s : StatsinfernonparamEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_edge_max(s : StatsinfernonparamEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_edge_to_string(s : StatsinfernonparamEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_infer_nonparam_path_set(s : StatsinfernonparamPath, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_nonparam_path_sum(s : StatsinfernonparamPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_path_sum(s : StatsinfernonparamPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_path_mean(s : StatsinfernonparamPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_path_mean(s : StatsinfernonparamPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_path_scale(s : StatsinfernonparamPath, f : Double) -> StatsinfernonparamPath {
   let result = stats_infer_nonparam_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_infer_nonparam_path_fill(s : StatsinfernonparamPath, v : Double) ->
   result
 }
 
-pub fn stats_infer_nonparam_path_min(s : StatsinfernonparamPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_path_min(s : StatsinfernonparamPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_path_max(s : StatsinfernonparamPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_path_max(s : StatsinfernonparamPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_path_to_string(s : StatsinfernonparamPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_infer_nonparam_cluster_set(s : StatsinfernonparamCluster, i : Int, 
   result
 }
 
-pub fn stats_infer_nonparam_cluster_sum(s : StatsinfernonparamCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_cluster_sum(s : StatsinfernonparamCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_cluster_mean(s : StatsinfernonparamCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_cluster_mean(s : StatsinfernonparamCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_cluster_scale(s : StatsinfernonparamCluster, f : Double) -> StatsinfernonparamCluster {
   let result = stats_infer_nonparam_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_infer_nonparam_cluster_fill(s : StatsinfernonparamCluster, v : Doub
   result
 }
 
-pub fn stats_infer_nonparam_cluster_min(s : StatsinfernonparamCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_cluster_min(s : StatsinfernonparamCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_cluster_max(s : StatsinfernonparamCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_cluster_max(s : StatsinfernonparamCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_cluster_to_string(s : StatsinfernonparamCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_infer_nonparam_model_set(s : StatsinfernonparamModel, i : Int, v : 
   result
 }
 
-pub fn stats_infer_nonparam_model_sum(s : StatsinfernonparamModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_model_sum(s : StatsinfernonparamModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_model_mean(s : StatsinfernonparamModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_model_mean(s : StatsinfernonparamModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_model_scale(s : StatsinfernonparamModel, f : Double) -> StatsinfernonparamModel {
   let result = stats_infer_nonparam_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_infer_nonparam_model_fill(s : StatsinfernonparamModel, v : Double) 
   result
 }
 
-pub fn stats_infer_nonparam_model_min(s : StatsinfernonparamModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_model_min(s : StatsinfernonparamModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_model_max(s : StatsinfernonparamModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_model_max(s : StatsinfernonparamModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_model_to_string(s : StatsinfernonparamModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_infer_nonparam_layer_set(s : StatsinfernonparamLayer, i : Int, v : 
   result
 }
 
-pub fn stats_infer_nonparam_layer_sum(s : StatsinfernonparamLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_layer_sum(s : StatsinfernonparamLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_layer_mean(s : StatsinfernonparamLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_layer_mean(s : StatsinfernonparamLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_layer_scale(s : StatsinfernonparamLayer, f : Double) -> StatsinfernonparamLayer {
   let result = stats_infer_nonparam_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_infer_nonparam_layer_fill(s : StatsinfernonparamLayer, v : Double) 
   result
 }
 
-pub fn stats_infer_nonparam_layer_min(s : StatsinfernonparamLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_layer_min(s : StatsinfernonparamLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_layer_max(s : StatsinfernonparamLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_layer_max(s : StatsinfernonparamLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_layer_to_string(s : StatsinfernonparamLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_infer_nonparam_buffer_set(s : StatsinfernonparamBuffer, i : Int, v 
   result
 }
 
-pub fn stats_infer_nonparam_buffer_sum(s : StatsinfernonparamBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_buffer_sum(s : StatsinfernonparamBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_buffer_mean(s : StatsinfernonparamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_buffer_mean(s : StatsinfernonparamBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_buffer_scale(s : StatsinfernonparamBuffer, f : Double) -> StatsinfernonparamBuffer {
   let result = stats_infer_nonparam_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_infer_nonparam_buffer_fill(s : StatsinfernonparamBuffer, v : Double
   result
 }
 
-pub fn stats_infer_nonparam_buffer_min(s : StatsinfernonparamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_buffer_min(s : StatsinfernonparamBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_buffer_max(s : StatsinfernonparamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_buffer_max(s : StatsinfernonparamBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_buffer_to_string(s : StatsinfernonparamBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_infer_nonparam_cursor_set(s : StatsinfernonparamCursor, i : Int, v 
   result
 }
 
-pub fn stats_infer_nonparam_cursor_sum(s : StatsinfernonparamCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_cursor_sum(s : StatsinfernonparamCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_cursor_mean(s : StatsinfernonparamCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_cursor_mean(s : StatsinfernonparamCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_cursor_scale(s : StatsinfernonparamCursor, f : Double) -> StatsinfernonparamCursor {
   let result = stats_infer_nonparam_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_infer_nonparam_cursor_fill(s : StatsinfernonparamCursor, v : Double
   result
 }
 
-pub fn stats_infer_nonparam_cursor_min(s : StatsinfernonparamCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_cursor_min(s : StatsinfernonparamCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_cursor_max(s : StatsinfernonparamCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_cursor_max(s : StatsinfernonparamCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_cursor_to_string(s : StatsinfernonparamCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_infer_nonparam_view_set(s : StatsinfernonparamView, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_nonparam_view_sum(s : StatsinfernonparamView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_view_sum(s : StatsinfernonparamView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_view_mean(s : StatsinfernonparamView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_view_mean(s : StatsinfernonparamView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_view_scale(s : StatsinfernonparamView, f : Double) -> StatsinfernonparamView {
   let result = stats_infer_nonparam_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_infer_nonparam_view_fill(s : StatsinfernonparamView, v : Double) ->
   result
 }
 
-pub fn stats_infer_nonparam_view_min(s : StatsinfernonparamView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_view_min(s : StatsinfernonparamView) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_view_max(s : StatsinfernonparamView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_view_max(s : StatsinfernonparamView) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_view_to_string(s : StatsinfernonparamView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_infer_nonparam_range_set(s : StatsinfernonparamRange, i : Int, v : 
   result
 }
 
-pub fn stats_infer_nonparam_range_sum(s : StatsinfernonparamRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_range_sum(s : StatsinfernonparamRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_range_mean(s : StatsinfernonparamRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_range_mean(s : StatsinfernonparamRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_range_scale(s : StatsinfernonparamRange, f : Double) -> StatsinfernonparamRange {
   let result = stats_infer_nonparam_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_infer_nonparam_range_fill(s : StatsinfernonparamRange, v : Double) 
   result
 }
 
-pub fn stats_infer_nonparam_range_min(s : StatsinfernonparamRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_range_min(s : StatsinfernonparamRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_range_max(s : StatsinfernonparamRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_range_max(s : StatsinfernonparamRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_range_to_string(s : StatsinfernonparamRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_infer_nonparam_slice_set(s : StatsinfernonparamSlice, i : Int, v : 
   result
 }
 
-pub fn stats_infer_nonparam_slice_sum(s : StatsinfernonparamSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_nonparam_slice_sum(s : StatsinfernonparamSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_nonparam_slice_mean(s : StatsinfernonparamSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_nonparam_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_nonparam_slice_mean(s : StatsinfernonparamSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_nonparam_slice_scale(s : StatsinfernonparamSlice, f : Double) -> StatsinfernonparamSlice {
   let result = stats_infer_nonparam_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_infer_nonparam_slice_fill(s : StatsinfernonparamSlice, v : Double) 
   result
 }
 
-pub fn stats_infer_nonparam_slice_min(s : StatsinfernonparamSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_slice_min(s : StatsinfernonparamSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_nonparam_slice_max(s : StatsinfernonparamSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_nonparam_slice_max(s : StatsinfernonparamSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_nonparam_slice_to_string(s : StatsinfernonparamSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

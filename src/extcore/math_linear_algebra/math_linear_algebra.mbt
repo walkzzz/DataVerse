@@ -88,11 +88,7 @@ pub fn math_linear_algebra_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_linear_algebra_series_len(s : MathlinearalgebraSeries) -> Int { s.vals.length() }
 
-pub fn math_linear_algebra_series_sum(s : MathlinearalgebraSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_linear_algebra_series_sum(s : MathlinearalgebraSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_linear_algebra_series_mean(s : MathlinearalgebraSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_linear_algebra_frame_set(s : MathlinearalgebraFrame, i : Int, v : Do
   result
 }
 
-pub fn math_linear_algebra_frame_sum(s : MathlinearalgebraFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_frame_sum(s : MathlinearalgebraFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_frame_mean(s : MathlinearalgebraFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_frame_mean(s : MathlinearalgebraFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_frame_scale(s : MathlinearalgebraFrame, f : Double) -> MathlinearalgebraFrame {
   let result = math_linear_algebra_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_linear_algebra_frame_fill(s : MathlinearalgebraFrame, v : Double) ->
   result
 }
 
-pub fn math_linear_algebra_frame_min(s : MathlinearalgebraFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_frame_min(s : MathlinearalgebraFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_frame_max(s : MathlinearalgebraFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_frame_max(s : MathlinearalgebraFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_frame_to_string(s : MathlinearalgebraFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_linear_algebra_table_set(s : MathlinearalgebraTable, i : Int, v : Do
   result
 }
 
-pub fn math_linear_algebra_table_sum(s : MathlinearalgebraTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_table_sum(s : MathlinearalgebraTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_table_mean(s : MathlinearalgebraTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_table_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_table_mean(s : MathlinearalgebraTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_table_scale(s : MathlinearalgebraTable, f : Double) -> MathlinearalgebraTable {
   let result = math_linear_algebra_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_linear_algebra_table_fill(s : MathlinearalgebraTable, v : Double) ->
   result
 }
 
-pub fn math_linear_algebra_table_min(s : MathlinearalgebraTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_table_min(s : MathlinearalgebraTable) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_table_max(s : MathlinearalgebraTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_table_max(s : MathlinearalgebraTable) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_table_to_string(s : MathlinearalgebraTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_linear_algebra_graphn_set(s : MathlinearalgebraGraphN, i : Int, v : 
   result
 }
 
-pub fn math_linear_algebra_graphn_sum(s : MathlinearalgebraGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_graphn_sum(s : MathlinearalgebraGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_graphn_mean(s : MathlinearalgebraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_graphn_mean(s : MathlinearalgebraGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_graphn_scale(s : MathlinearalgebraGraphN, f : Double) -> MathlinearalgebraGraphN {
   let result = math_linear_algebra_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_linear_algebra_graphn_fill(s : MathlinearalgebraGraphN, v : Double) 
   result
 }
 
-pub fn math_linear_algebra_graphn_min(s : MathlinearalgebraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_graphn_min(s : MathlinearalgebraGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_graphn_max(s : MathlinearalgebraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_graphn_max(s : MathlinearalgebraGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_graphn_to_string(s : MathlinearalgebraGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_linear_algebra_node_set(s : MathlinearalgebraNode, i : Int, v : Doub
   result
 }
 
-pub fn math_linear_algebra_node_sum(s : MathlinearalgebraNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_node_sum(s : MathlinearalgebraNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_node_mean(s : MathlinearalgebraNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_node_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_node_mean(s : MathlinearalgebraNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_node_scale(s : MathlinearalgebraNode, f : Double) -> MathlinearalgebraNode {
   let result = math_linear_algebra_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_linear_algebra_node_fill(s : MathlinearalgebraNode, v : Double) -> M
   result
 }
 
-pub fn math_linear_algebra_node_min(s : MathlinearalgebraNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_node_min(s : MathlinearalgebraNode) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_node_max(s : MathlinearalgebraNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_node_max(s : MathlinearalgebraNode) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_node_to_string(s : MathlinearalgebraNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_linear_algebra_edge_set(s : MathlinearalgebraEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_linear_algebra_edge_sum(s : MathlinearalgebraEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_edge_sum(s : MathlinearalgebraEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_edge_mean(s : MathlinearalgebraEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_edge_mean(s : MathlinearalgebraEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_edge_scale(s : MathlinearalgebraEdge, f : Double) -> MathlinearalgebraEdge {
   let result = math_linear_algebra_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_linear_algebra_edge_fill(s : MathlinearalgebraEdge, v : Double) -> M
   result
 }
 
-pub fn math_linear_algebra_edge_min(s : MathlinearalgebraEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_edge_min(s : MathlinearalgebraEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_edge_max(s : MathlinearalgebraEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_edge_max(s : MathlinearalgebraEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_edge_to_string(s : MathlinearalgebraEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_linear_algebra_path_set(s : MathlinearalgebraPath, i : Int, v : Doub
   result
 }
 
-pub fn math_linear_algebra_path_sum(s : MathlinearalgebraPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_path_sum(s : MathlinearalgebraPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_path_mean(s : MathlinearalgebraPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_path_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_path_mean(s : MathlinearalgebraPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_path_scale(s : MathlinearalgebraPath, f : Double) -> MathlinearalgebraPath {
   let result = math_linear_algebra_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_linear_algebra_path_fill(s : MathlinearalgebraPath, v : Double) -> M
   result
 }
 
-pub fn math_linear_algebra_path_min(s : MathlinearalgebraPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_path_min(s : MathlinearalgebraPath) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_path_max(s : MathlinearalgebraPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_path_max(s : MathlinearalgebraPath) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_path_to_string(s : MathlinearalgebraPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_linear_algebra_cluster_set(s : MathlinearalgebraCluster, i : Int, v 
   result
 }
 
-pub fn math_linear_algebra_cluster_sum(s : MathlinearalgebraCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_cluster_sum(s : MathlinearalgebraCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_cluster_mean(s : MathlinearalgebraCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_cluster_mean(s : MathlinearalgebraCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_cluster_scale(s : MathlinearalgebraCluster, f : Double) -> MathlinearalgebraCluster {
   let result = math_linear_algebra_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_linear_algebra_cluster_fill(s : MathlinearalgebraCluster, v : Double
   result
 }
 
-pub fn math_linear_algebra_cluster_min(s : MathlinearalgebraCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_cluster_min(s : MathlinearalgebraCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_cluster_max(s : MathlinearalgebraCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_cluster_max(s : MathlinearalgebraCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_cluster_to_string(s : MathlinearalgebraCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_linear_algebra_model_set(s : MathlinearalgebraModel, i : Int, v : Do
   result
 }
 
-pub fn math_linear_algebra_model_sum(s : MathlinearalgebraModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_model_sum(s : MathlinearalgebraModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_model_mean(s : MathlinearalgebraModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_model_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_model_mean(s : MathlinearalgebraModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_model_scale(s : MathlinearalgebraModel, f : Double) -> MathlinearalgebraModel {
   let result = math_linear_algebra_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_linear_algebra_model_fill(s : MathlinearalgebraModel, v : Double) ->
   result
 }
 
-pub fn math_linear_algebra_model_min(s : MathlinearalgebraModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_model_min(s : MathlinearalgebraModel) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_model_max(s : MathlinearalgebraModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_model_max(s : MathlinearalgebraModel) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_model_to_string(s : MathlinearalgebraModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_linear_algebra_layer_set(s : MathlinearalgebraLayer, i : Int, v : Do
   result
 }
 
-pub fn math_linear_algebra_layer_sum(s : MathlinearalgebraLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_layer_sum(s : MathlinearalgebraLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_layer_mean(s : MathlinearalgebraLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_layer_mean(s : MathlinearalgebraLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_layer_scale(s : MathlinearalgebraLayer, f : Double) -> MathlinearalgebraLayer {
   let result = math_linear_algebra_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_linear_algebra_layer_fill(s : MathlinearalgebraLayer, v : Double) ->
   result
 }
 
-pub fn math_linear_algebra_layer_min(s : MathlinearalgebraLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_layer_min(s : MathlinearalgebraLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_layer_max(s : MathlinearalgebraLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_layer_max(s : MathlinearalgebraLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_layer_to_string(s : MathlinearalgebraLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_linear_algebra_buffer_set(s : MathlinearalgebraBuffer, i : Int, v : 
   result
 }
 
-pub fn math_linear_algebra_buffer_sum(s : MathlinearalgebraBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_buffer_sum(s : MathlinearalgebraBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_buffer_mean(s : MathlinearalgebraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_buffer_mean(s : MathlinearalgebraBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_buffer_scale(s : MathlinearalgebraBuffer, f : Double) -> MathlinearalgebraBuffer {
   let result = math_linear_algebra_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_linear_algebra_buffer_fill(s : MathlinearalgebraBuffer, v : Double) 
   result
 }
 
-pub fn math_linear_algebra_buffer_min(s : MathlinearalgebraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_buffer_min(s : MathlinearalgebraBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_buffer_max(s : MathlinearalgebraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_buffer_max(s : MathlinearalgebraBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_buffer_to_string(s : MathlinearalgebraBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_linear_algebra_cursor_set(s : MathlinearalgebraCursor, i : Int, v : 
   result
 }
 
-pub fn math_linear_algebra_cursor_sum(s : MathlinearalgebraCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_cursor_sum(s : MathlinearalgebraCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_cursor_mean(s : MathlinearalgebraCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_cursor_mean(s : MathlinearalgebraCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_cursor_scale(s : MathlinearalgebraCursor, f : Double) -> MathlinearalgebraCursor {
   let result = math_linear_algebra_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_linear_algebra_cursor_fill(s : MathlinearalgebraCursor, v : Double) 
   result
 }
 
-pub fn math_linear_algebra_cursor_min(s : MathlinearalgebraCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_cursor_min(s : MathlinearalgebraCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_cursor_max(s : MathlinearalgebraCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_cursor_max(s : MathlinearalgebraCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_cursor_to_string(s : MathlinearalgebraCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_linear_algebra_view_set(s : MathlinearalgebraView, i : Int, v : Doub
   result
 }
 
-pub fn math_linear_algebra_view_sum(s : MathlinearalgebraView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_view_sum(s : MathlinearalgebraView) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_view_mean(s : MathlinearalgebraView) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_view_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_view_mean(s : MathlinearalgebraView) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_view_scale(s : MathlinearalgebraView, f : Double) -> MathlinearalgebraView {
   let result = math_linear_algebra_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_linear_algebra_view_fill(s : MathlinearalgebraView, v : Double) -> M
   result
 }
 
-pub fn math_linear_algebra_view_min(s : MathlinearalgebraView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_view_min(s : MathlinearalgebraView) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_view_max(s : MathlinearalgebraView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_view_max(s : MathlinearalgebraView) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_view_to_string(s : MathlinearalgebraView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_linear_algebra_range_set(s : MathlinearalgebraRange, i : Int, v : Do
   result
 }
 
-pub fn math_linear_algebra_range_sum(s : MathlinearalgebraRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_range_sum(s : MathlinearalgebraRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_range_mean(s : MathlinearalgebraRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_range_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_range_mean(s : MathlinearalgebraRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_range_scale(s : MathlinearalgebraRange, f : Double) -> MathlinearalgebraRange {
   let result = math_linear_algebra_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_linear_algebra_range_fill(s : MathlinearalgebraRange, v : Double) ->
   result
 }
 
-pub fn math_linear_algebra_range_min(s : MathlinearalgebraRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_range_min(s : MathlinearalgebraRange) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_range_max(s : MathlinearalgebraRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_range_max(s : MathlinearalgebraRange) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_range_to_string(s : MathlinearalgebraRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_linear_algebra_slice_set(s : MathlinearalgebraSlice, i : Int, v : Do
   result
 }
 
-pub fn math_linear_algebra_slice_sum(s : MathlinearalgebraSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_algebra_slice_sum(s : MathlinearalgebraSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_algebra_slice_mean(s : MathlinearalgebraSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_algebra_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_algebra_slice_mean(s : MathlinearalgebraSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_algebra_slice_scale(s : MathlinearalgebraSlice, f : Double) -> MathlinearalgebraSlice {
   let result = math_linear_algebra_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_linear_algebra_slice_fill(s : MathlinearalgebraSlice, v : Double) ->
   result
 }
 
-pub fn math_linear_algebra_slice_min(s : MathlinearalgebraSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_slice_min(s : MathlinearalgebraSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_algebra_slice_max(s : MathlinearalgebraSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_algebra_slice_max(s : MathlinearalgebraSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_algebra_slice_to_string(s : MathlinearalgebraSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

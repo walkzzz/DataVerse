@@ -88,11 +88,7 @@ pub fn image_transform_affine_make_series(vals : Array[Double], name : String) -
 
 pub fn image_transform_affine_series_len(s : ImagetransformaffineSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_affine_series_sum(s : ImagetransformaffineSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_affine_series_sum(s : ImagetransformaffineSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_affine_series_mean(s : ImagetransformaffineSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_affine_frame_set(s : ImagetransformaffineFrame, i : Int, 
   result
 }
 
-pub fn image_transform_affine_frame_sum(s : ImagetransformaffineFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_frame_sum(s : ImagetransformaffineFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_frame_mean(s : ImagetransformaffineFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_frame_mean(s : ImagetransformaffineFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_frame_scale(s : ImagetransformaffineFrame, f : Double) -> ImagetransformaffineFrame {
   let result = image_transform_affine_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_affine_frame_fill(s : ImagetransformaffineFrame, v : Doub
   result
 }
 
-pub fn image_transform_affine_frame_min(s : ImagetransformaffineFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_frame_min(s : ImagetransformaffineFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_frame_max(s : ImagetransformaffineFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_frame_max(s : ImagetransformaffineFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_frame_to_string(s : ImagetransformaffineFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_affine_table_set(s : ImagetransformaffineTable, i : Int, 
   result
 }
 
-pub fn image_transform_affine_table_sum(s : ImagetransformaffineTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_table_sum(s : ImagetransformaffineTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_table_mean(s : ImagetransformaffineTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_table_mean(s : ImagetransformaffineTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_table_scale(s : ImagetransformaffineTable, f : Double) -> ImagetransformaffineTable {
   let result = image_transform_affine_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_affine_table_fill(s : ImagetransformaffineTable, v : Doub
   result
 }
 
-pub fn image_transform_affine_table_min(s : ImagetransformaffineTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_table_min(s : ImagetransformaffineTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_table_max(s : ImagetransformaffineTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_table_max(s : ImagetransformaffineTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_table_to_string(s : ImagetransformaffineTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_affine_graphn_set(s : ImagetransformaffineGraphN, i : Int
   result
 }
 
-pub fn image_transform_affine_graphn_sum(s : ImagetransformaffineGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_graphn_sum(s : ImagetransformaffineGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_graphn_mean(s : ImagetransformaffineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_graphn_mean(s : ImagetransformaffineGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_graphn_scale(s : ImagetransformaffineGraphN, f : Double) -> ImagetransformaffineGraphN {
   let result = image_transform_affine_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_affine_graphn_fill(s : ImagetransformaffineGraphN, v : Do
   result
 }
 
-pub fn image_transform_affine_graphn_min(s : ImagetransformaffineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_graphn_min(s : ImagetransformaffineGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_graphn_max(s : ImagetransformaffineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_graphn_max(s : ImagetransformaffineGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_graphn_to_string(s : ImagetransformaffineGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_affine_node_set(s : ImagetransformaffineNode, i : Int, v 
   result
 }
 
-pub fn image_transform_affine_node_sum(s : ImagetransformaffineNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_node_sum(s : ImagetransformaffineNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_node_mean(s : ImagetransformaffineNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_node_mean(s : ImagetransformaffineNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_node_scale(s : ImagetransformaffineNode, f : Double) -> ImagetransformaffineNode {
   let result = image_transform_affine_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_affine_node_fill(s : ImagetransformaffineNode, v : Double
   result
 }
 
-pub fn image_transform_affine_node_min(s : ImagetransformaffineNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_node_min(s : ImagetransformaffineNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_node_max(s : ImagetransformaffineNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_node_max(s : ImagetransformaffineNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_node_to_string(s : ImagetransformaffineNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_affine_edge_set(s : ImagetransformaffineEdge, i : Int, v 
   result
 }
 
-pub fn image_transform_affine_edge_sum(s : ImagetransformaffineEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_edge_sum(s : ImagetransformaffineEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_edge_mean(s : ImagetransformaffineEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_edge_mean(s : ImagetransformaffineEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_edge_scale(s : ImagetransformaffineEdge, f : Double) -> ImagetransformaffineEdge {
   let result = image_transform_affine_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_affine_edge_fill(s : ImagetransformaffineEdge, v : Double
   result
 }
 
-pub fn image_transform_affine_edge_min(s : ImagetransformaffineEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_edge_min(s : ImagetransformaffineEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_edge_max(s : ImagetransformaffineEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_edge_max(s : ImagetransformaffineEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_edge_to_string(s : ImagetransformaffineEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_affine_path_set(s : ImagetransformaffinePath, i : Int, v 
   result
 }
 
-pub fn image_transform_affine_path_sum(s : ImagetransformaffinePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_path_sum(s : ImagetransformaffinePath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_path_mean(s : ImagetransformaffinePath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_path_mean(s : ImagetransformaffinePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_path_scale(s : ImagetransformaffinePath, f : Double) -> ImagetransformaffinePath {
   let result = image_transform_affine_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_affine_path_fill(s : ImagetransformaffinePath, v : Double
   result
 }
 
-pub fn image_transform_affine_path_min(s : ImagetransformaffinePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_path_min(s : ImagetransformaffinePath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_path_max(s : ImagetransformaffinePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_path_max(s : ImagetransformaffinePath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_path_to_string(s : ImagetransformaffinePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_affine_cluster_set(s : ImagetransformaffineCluster, i : I
   result
 }
 
-pub fn image_transform_affine_cluster_sum(s : ImagetransformaffineCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_cluster_sum(s : ImagetransformaffineCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_cluster_mean(s : ImagetransformaffineCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_cluster_mean(s : ImagetransformaffineCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_cluster_scale(s : ImagetransformaffineCluster, f : Double) -> ImagetransformaffineCluster {
   let result = image_transform_affine_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_affine_cluster_fill(s : ImagetransformaffineCluster, v : 
   result
 }
 
-pub fn image_transform_affine_cluster_min(s : ImagetransformaffineCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_cluster_min(s : ImagetransformaffineCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_cluster_max(s : ImagetransformaffineCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_cluster_max(s : ImagetransformaffineCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_cluster_to_string(s : ImagetransformaffineCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_affine_model_set(s : ImagetransformaffineModel, i : Int, 
   result
 }
 
-pub fn image_transform_affine_model_sum(s : ImagetransformaffineModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_model_sum(s : ImagetransformaffineModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_model_mean(s : ImagetransformaffineModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_model_mean(s : ImagetransformaffineModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_model_scale(s : ImagetransformaffineModel, f : Double) -> ImagetransformaffineModel {
   let result = image_transform_affine_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_affine_model_fill(s : ImagetransformaffineModel, v : Doub
   result
 }
 
-pub fn image_transform_affine_model_min(s : ImagetransformaffineModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_model_min(s : ImagetransformaffineModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_model_max(s : ImagetransformaffineModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_model_max(s : ImagetransformaffineModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_model_to_string(s : ImagetransformaffineModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_affine_layer_set(s : ImagetransformaffineLayer, i : Int, 
   result
 }
 
-pub fn image_transform_affine_layer_sum(s : ImagetransformaffineLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_layer_sum(s : ImagetransformaffineLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_layer_mean(s : ImagetransformaffineLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_layer_mean(s : ImagetransformaffineLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_layer_scale(s : ImagetransformaffineLayer, f : Double) -> ImagetransformaffineLayer {
   let result = image_transform_affine_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_affine_layer_fill(s : ImagetransformaffineLayer, v : Doub
   result
 }
 
-pub fn image_transform_affine_layer_min(s : ImagetransformaffineLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_layer_min(s : ImagetransformaffineLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_layer_max(s : ImagetransformaffineLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_layer_max(s : ImagetransformaffineLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_layer_to_string(s : ImagetransformaffineLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_affine_buffer_set(s : ImagetransformaffineBuffer, i : Int
   result
 }
 
-pub fn image_transform_affine_buffer_sum(s : ImagetransformaffineBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_buffer_sum(s : ImagetransformaffineBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_buffer_mean(s : ImagetransformaffineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_buffer_mean(s : ImagetransformaffineBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_buffer_scale(s : ImagetransformaffineBuffer, f : Double) -> ImagetransformaffineBuffer {
   let result = image_transform_affine_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_affine_buffer_fill(s : ImagetransformaffineBuffer, v : Do
   result
 }
 
-pub fn image_transform_affine_buffer_min(s : ImagetransformaffineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_buffer_min(s : ImagetransformaffineBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_buffer_max(s : ImagetransformaffineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_buffer_max(s : ImagetransformaffineBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_buffer_to_string(s : ImagetransformaffineBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_affine_cursor_set(s : ImagetransformaffineCursor, i : Int
   result
 }
 
-pub fn image_transform_affine_cursor_sum(s : ImagetransformaffineCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_cursor_sum(s : ImagetransformaffineCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_cursor_mean(s : ImagetransformaffineCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_cursor_mean(s : ImagetransformaffineCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_cursor_scale(s : ImagetransformaffineCursor, f : Double) -> ImagetransformaffineCursor {
   let result = image_transform_affine_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_affine_cursor_fill(s : ImagetransformaffineCursor, v : Do
   result
 }
 
-pub fn image_transform_affine_cursor_min(s : ImagetransformaffineCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_cursor_min(s : ImagetransformaffineCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_cursor_max(s : ImagetransformaffineCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_cursor_max(s : ImagetransformaffineCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_cursor_to_string(s : ImagetransformaffineCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_affine_view_set(s : ImagetransformaffineView, i : Int, v 
   result
 }
 
-pub fn image_transform_affine_view_sum(s : ImagetransformaffineView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_view_sum(s : ImagetransformaffineView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_view_mean(s : ImagetransformaffineView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_view_mean(s : ImagetransformaffineView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_view_scale(s : ImagetransformaffineView, f : Double) -> ImagetransformaffineView {
   let result = image_transform_affine_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_affine_view_fill(s : ImagetransformaffineView, v : Double
   result
 }
 
-pub fn image_transform_affine_view_min(s : ImagetransformaffineView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_view_min(s : ImagetransformaffineView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_view_max(s : ImagetransformaffineView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_view_max(s : ImagetransformaffineView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_view_to_string(s : ImagetransformaffineView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_affine_range_set(s : ImagetransformaffineRange, i : Int, 
   result
 }
 
-pub fn image_transform_affine_range_sum(s : ImagetransformaffineRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_range_sum(s : ImagetransformaffineRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_range_mean(s : ImagetransformaffineRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_range_mean(s : ImagetransformaffineRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_range_scale(s : ImagetransformaffineRange, f : Double) -> ImagetransformaffineRange {
   let result = image_transform_affine_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_affine_range_fill(s : ImagetransformaffineRange, v : Doub
   result
 }
 
-pub fn image_transform_affine_range_min(s : ImagetransformaffineRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_range_min(s : ImagetransformaffineRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_range_max(s : ImagetransformaffineRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_range_max(s : ImagetransformaffineRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_range_to_string(s : ImagetransformaffineRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_affine_slice_set(s : ImagetransformaffineSlice, i : Int, 
   result
 }
 
-pub fn image_transform_affine_slice_sum(s : ImagetransformaffineSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_affine_slice_sum(s : ImagetransformaffineSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_affine_slice_mean(s : ImagetransformaffineSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_affine_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_affine_slice_mean(s : ImagetransformaffineSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_affine_slice_scale(s : ImagetransformaffineSlice, f : Double) -> ImagetransformaffineSlice {
   let result = image_transform_affine_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_affine_slice_fill(s : ImagetransformaffineSlice, v : Doub
   result
 }
 
-pub fn image_transform_affine_slice_min(s : ImagetransformaffineSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_slice_min(s : ImagetransformaffineSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_affine_slice_max(s : ImagetransformaffineSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_affine_slice_max(s : ImagetransformaffineSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_affine_slice_to_string(s : ImagetransformaffineSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

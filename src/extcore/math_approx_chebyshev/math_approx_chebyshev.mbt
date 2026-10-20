@@ -88,11 +88,7 @@ pub fn math_approx_chebyshev_make_series(vals : Array[Double], name : String) ->
 
 pub fn math_approx_chebyshev_series_len(s : MathapproxchebyshevSeries) -> Int { s.vals.length() }
 
-pub fn math_approx_chebyshev_series_sum(s : MathapproxchebyshevSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_chebyshev_series_sum(s : MathapproxchebyshevSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_chebyshev_series_mean(s : MathapproxchebyshevSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_chebyshev_frame_set(s : MathapproxchebyshevFrame, i : Int, v 
   result
 }
 
-pub fn math_approx_chebyshev_frame_sum(s : MathapproxchebyshevFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_frame_sum(s : MathapproxchebyshevFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_frame_mean(s : MathapproxchebyshevFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_frame_mean(s : MathapproxchebyshevFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_frame_scale(s : MathapproxchebyshevFrame, f : Double) -> MathapproxchebyshevFrame {
   let result = math_approx_chebyshev_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_chebyshev_frame_fill(s : MathapproxchebyshevFrame, v : Double
   result
 }
 
-pub fn math_approx_chebyshev_frame_min(s : MathapproxchebyshevFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_frame_min(s : MathapproxchebyshevFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_frame_max(s : MathapproxchebyshevFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_frame_max(s : MathapproxchebyshevFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_frame_to_string(s : MathapproxchebyshevFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_chebyshev_table_set(s : MathapproxchebyshevTable, i : Int, v 
   result
 }
 
-pub fn math_approx_chebyshev_table_sum(s : MathapproxchebyshevTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_table_sum(s : MathapproxchebyshevTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_table_mean(s : MathapproxchebyshevTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_table_mean(s : MathapproxchebyshevTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_table_scale(s : MathapproxchebyshevTable, f : Double) -> MathapproxchebyshevTable {
   let result = math_approx_chebyshev_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_chebyshev_table_fill(s : MathapproxchebyshevTable, v : Double
   result
 }
 
-pub fn math_approx_chebyshev_table_min(s : MathapproxchebyshevTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_table_min(s : MathapproxchebyshevTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_table_max(s : MathapproxchebyshevTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_table_max(s : MathapproxchebyshevTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_table_to_string(s : MathapproxchebyshevTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_chebyshev_graphn_set(s : MathapproxchebyshevGraphN, i : Int, 
   result
 }
 
-pub fn math_approx_chebyshev_graphn_sum(s : MathapproxchebyshevGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_graphn_sum(s : MathapproxchebyshevGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_graphn_mean(s : MathapproxchebyshevGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_graphn_mean(s : MathapproxchebyshevGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_graphn_scale(s : MathapproxchebyshevGraphN, f : Double) -> MathapproxchebyshevGraphN {
   let result = math_approx_chebyshev_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_chebyshev_graphn_fill(s : MathapproxchebyshevGraphN, v : Doub
   result
 }
 
-pub fn math_approx_chebyshev_graphn_min(s : MathapproxchebyshevGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_graphn_min(s : MathapproxchebyshevGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_graphn_max(s : MathapproxchebyshevGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_graphn_max(s : MathapproxchebyshevGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_graphn_to_string(s : MathapproxchebyshevGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_chebyshev_node_set(s : MathapproxchebyshevNode, i : Int, v : 
   result
 }
 
-pub fn math_approx_chebyshev_node_sum(s : MathapproxchebyshevNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_node_sum(s : MathapproxchebyshevNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_node_mean(s : MathapproxchebyshevNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_node_mean(s : MathapproxchebyshevNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_node_scale(s : MathapproxchebyshevNode, f : Double) -> MathapproxchebyshevNode {
   let result = math_approx_chebyshev_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_chebyshev_node_fill(s : MathapproxchebyshevNode, v : Double) 
   result
 }
 
-pub fn math_approx_chebyshev_node_min(s : MathapproxchebyshevNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_node_min(s : MathapproxchebyshevNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_node_max(s : MathapproxchebyshevNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_node_max(s : MathapproxchebyshevNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_node_to_string(s : MathapproxchebyshevNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_chebyshev_edge_set(s : MathapproxchebyshevEdge, i : Int, v : 
   result
 }
 
-pub fn math_approx_chebyshev_edge_sum(s : MathapproxchebyshevEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_edge_sum(s : MathapproxchebyshevEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_edge_mean(s : MathapproxchebyshevEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_edge_mean(s : MathapproxchebyshevEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_edge_scale(s : MathapproxchebyshevEdge, f : Double) -> MathapproxchebyshevEdge {
   let result = math_approx_chebyshev_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_chebyshev_edge_fill(s : MathapproxchebyshevEdge, v : Double) 
   result
 }
 
-pub fn math_approx_chebyshev_edge_min(s : MathapproxchebyshevEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_edge_min(s : MathapproxchebyshevEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_edge_max(s : MathapproxchebyshevEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_edge_max(s : MathapproxchebyshevEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_edge_to_string(s : MathapproxchebyshevEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_chebyshev_path_set(s : MathapproxchebyshevPath, i : Int, v : 
   result
 }
 
-pub fn math_approx_chebyshev_path_sum(s : MathapproxchebyshevPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_path_sum(s : MathapproxchebyshevPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_path_mean(s : MathapproxchebyshevPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_path_mean(s : MathapproxchebyshevPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_path_scale(s : MathapproxchebyshevPath, f : Double) -> MathapproxchebyshevPath {
   let result = math_approx_chebyshev_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_chebyshev_path_fill(s : MathapproxchebyshevPath, v : Double) 
   result
 }
 
-pub fn math_approx_chebyshev_path_min(s : MathapproxchebyshevPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_path_min(s : MathapproxchebyshevPath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_path_max(s : MathapproxchebyshevPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_path_max(s : MathapproxchebyshevPath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_path_to_string(s : MathapproxchebyshevPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_chebyshev_cluster_set(s : MathapproxchebyshevCluster, i : Int
   result
 }
 
-pub fn math_approx_chebyshev_cluster_sum(s : MathapproxchebyshevCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_cluster_sum(s : MathapproxchebyshevCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_cluster_mean(s : MathapproxchebyshevCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_cluster_mean(s : MathapproxchebyshevCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_cluster_scale(s : MathapproxchebyshevCluster, f : Double) -> MathapproxchebyshevCluster {
   let result = math_approx_chebyshev_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_chebyshev_cluster_fill(s : MathapproxchebyshevCluster, v : Do
   result
 }
 
-pub fn math_approx_chebyshev_cluster_min(s : MathapproxchebyshevCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_cluster_min(s : MathapproxchebyshevCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_cluster_max(s : MathapproxchebyshevCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_cluster_max(s : MathapproxchebyshevCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_cluster_to_string(s : MathapproxchebyshevCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_chebyshev_model_set(s : MathapproxchebyshevModel, i : Int, v 
   result
 }
 
-pub fn math_approx_chebyshev_model_sum(s : MathapproxchebyshevModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_model_sum(s : MathapproxchebyshevModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_model_mean(s : MathapproxchebyshevModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_model_mean(s : MathapproxchebyshevModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_model_scale(s : MathapproxchebyshevModel, f : Double) -> MathapproxchebyshevModel {
   let result = math_approx_chebyshev_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_chebyshev_model_fill(s : MathapproxchebyshevModel, v : Double
   result
 }
 
-pub fn math_approx_chebyshev_model_min(s : MathapproxchebyshevModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_model_min(s : MathapproxchebyshevModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_model_max(s : MathapproxchebyshevModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_model_max(s : MathapproxchebyshevModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_model_to_string(s : MathapproxchebyshevModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_chebyshev_layer_set(s : MathapproxchebyshevLayer, i : Int, v 
   result
 }
 
-pub fn math_approx_chebyshev_layer_sum(s : MathapproxchebyshevLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_layer_sum(s : MathapproxchebyshevLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_layer_mean(s : MathapproxchebyshevLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_layer_mean(s : MathapproxchebyshevLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_layer_scale(s : MathapproxchebyshevLayer, f : Double) -> MathapproxchebyshevLayer {
   let result = math_approx_chebyshev_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_chebyshev_layer_fill(s : MathapproxchebyshevLayer, v : Double
   result
 }
 
-pub fn math_approx_chebyshev_layer_min(s : MathapproxchebyshevLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_layer_min(s : MathapproxchebyshevLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_layer_max(s : MathapproxchebyshevLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_layer_max(s : MathapproxchebyshevLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_layer_to_string(s : MathapproxchebyshevLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_chebyshev_buffer_set(s : MathapproxchebyshevBuffer, i : Int, 
   result
 }
 
-pub fn math_approx_chebyshev_buffer_sum(s : MathapproxchebyshevBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_buffer_sum(s : MathapproxchebyshevBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_buffer_mean(s : MathapproxchebyshevBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_buffer_mean(s : MathapproxchebyshevBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_buffer_scale(s : MathapproxchebyshevBuffer, f : Double) -> MathapproxchebyshevBuffer {
   let result = math_approx_chebyshev_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_chebyshev_buffer_fill(s : MathapproxchebyshevBuffer, v : Doub
   result
 }
 
-pub fn math_approx_chebyshev_buffer_min(s : MathapproxchebyshevBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_buffer_min(s : MathapproxchebyshevBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_buffer_max(s : MathapproxchebyshevBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_buffer_max(s : MathapproxchebyshevBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_buffer_to_string(s : MathapproxchebyshevBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_chebyshev_cursor_set(s : MathapproxchebyshevCursor, i : Int, 
   result
 }
 
-pub fn math_approx_chebyshev_cursor_sum(s : MathapproxchebyshevCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_cursor_sum(s : MathapproxchebyshevCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_cursor_mean(s : MathapproxchebyshevCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_cursor_mean(s : MathapproxchebyshevCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_cursor_scale(s : MathapproxchebyshevCursor, f : Double) -> MathapproxchebyshevCursor {
   let result = math_approx_chebyshev_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_chebyshev_cursor_fill(s : MathapproxchebyshevCursor, v : Doub
   result
 }
 
-pub fn math_approx_chebyshev_cursor_min(s : MathapproxchebyshevCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_cursor_min(s : MathapproxchebyshevCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_cursor_max(s : MathapproxchebyshevCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_cursor_max(s : MathapproxchebyshevCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_cursor_to_string(s : MathapproxchebyshevCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_chebyshev_view_set(s : MathapproxchebyshevView, i : Int, v : 
   result
 }
 
-pub fn math_approx_chebyshev_view_sum(s : MathapproxchebyshevView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_view_sum(s : MathapproxchebyshevView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_view_mean(s : MathapproxchebyshevView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_view_mean(s : MathapproxchebyshevView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_view_scale(s : MathapproxchebyshevView, f : Double) -> MathapproxchebyshevView {
   let result = math_approx_chebyshev_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_chebyshev_view_fill(s : MathapproxchebyshevView, v : Double) 
   result
 }
 
-pub fn math_approx_chebyshev_view_min(s : MathapproxchebyshevView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_view_min(s : MathapproxchebyshevView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_view_max(s : MathapproxchebyshevView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_view_max(s : MathapproxchebyshevView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_view_to_string(s : MathapproxchebyshevView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_chebyshev_range_set(s : MathapproxchebyshevRange, i : Int, v 
   result
 }
 
-pub fn math_approx_chebyshev_range_sum(s : MathapproxchebyshevRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_range_sum(s : MathapproxchebyshevRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_range_mean(s : MathapproxchebyshevRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_range_mean(s : MathapproxchebyshevRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_range_scale(s : MathapproxchebyshevRange, f : Double) -> MathapproxchebyshevRange {
   let result = math_approx_chebyshev_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_chebyshev_range_fill(s : MathapproxchebyshevRange, v : Double
   result
 }
 
-pub fn math_approx_chebyshev_range_min(s : MathapproxchebyshevRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_range_min(s : MathapproxchebyshevRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_range_max(s : MathapproxchebyshevRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_range_max(s : MathapproxchebyshevRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_range_to_string(s : MathapproxchebyshevRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_chebyshev_slice_set(s : MathapproxchebyshevSlice, i : Int, v 
   result
 }
 
-pub fn math_approx_chebyshev_slice_sum(s : MathapproxchebyshevSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_chebyshev_slice_sum(s : MathapproxchebyshevSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_chebyshev_slice_mean(s : MathapproxchebyshevSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_chebyshev_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_chebyshev_slice_mean(s : MathapproxchebyshevSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_chebyshev_slice_scale(s : MathapproxchebyshevSlice, f : Double) -> MathapproxchebyshevSlice {
   let result = math_approx_chebyshev_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_chebyshev_slice_fill(s : MathapproxchebyshevSlice, v : Double
   result
 }
 
-pub fn math_approx_chebyshev_slice_min(s : MathapproxchebyshevSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_slice_min(s : MathapproxchebyshevSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_chebyshev_slice_max(s : MathapproxchebyshevSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_chebyshev_slice_max(s : MathapproxchebyshevSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_chebyshev_slice_to_string(s : MathapproxchebyshevSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn stats_model_nonlinear_make_series(vals : Array[Double], name : String) ->
 
 pub fn stats_model_nonlinear_series_len(s : StatsmodelnonlinearSeries) -> Int { s.vals.length() }
 
-pub fn stats_model_nonlinear_series_sum(s : StatsmodelnonlinearSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_model_nonlinear_series_sum(s : StatsmodelnonlinearSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_model_nonlinear_series_mean(s : StatsmodelnonlinearSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_model_nonlinear_frame_set(s : StatsmodelnonlinearFrame, i : Int, v 
   result
 }
 
-pub fn stats_model_nonlinear_frame_sum(s : StatsmodelnonlinearFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_frame_sum(s : StatsmodelnonlinearFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_frame_mean(s : StatsmodelnonlinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_frame_mean(s : StatsmodelnonlinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_frame_scale(s : StatsmodelnonlinearFrame, f : Double) -> StatsmodelnonlinearFrame {
   let result = stats_model_nonlinear_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_model_nonlinear_frame_fill(s : StatsmodelnonlinearFrame, v : Double
   result
 }
 
-pub fn stats_model_nonlinear_frame_min(s : StatsmodelnonlinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_frame_min(s : StatsmodelnonlinearFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_frame_max(s : StatsmodelnonlinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_frame_max(s : StatsmodelnonlinearFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_frame_to_string(s : StatsmodelnonlinearFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_model_nonlinear_table_set(s : StatsmodelnonlinearTable, i : Int, v 
   result
 }
 
-pub fn stats_model_nonlinear_table_sum(s : StatsmodelnonlinearTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_table_sum(s : StatsmodelnonlinearTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_table_mean(s : StatsmodelnonlinearTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_table_mean(s : StatsmodelnonlinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_table_scale(s : StatsmodelnonlinearTable, f : Double) -> StatsmodelnonlinearTable {
   let result = stats_model_nonlinear_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_model_nonlinear_table_fill(s : StatsmodelnonlinearTable, v : Double
   result
 }
 
-pub fn stats_model_nonlinear_table_min(s : StatsmodelnonlinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_table_min(s : StatsmodelnonlinearTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_table_max(s : StatsmodelnonlinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_table_max(s : StatsmodelnonlinearTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_table_to_string(s : StatsmodelnonlinearTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_model_nonlinear_graphn_set(s : StatsmodelnonlinearGraphN, i : Int, 
   result
 }
 
-pub fn stats_model_nonlinear_graphn_sum(s : StatsmodelnonlinearGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_graphn_sum(s : StatsmodelnonlinearGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_graphn_mean(s : StatsmodelnonlinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_graphn_mean(s : StatsmodelnonlinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_graphn_scale(s : StatsmodelnonlinearGraphN, f : Double) -> StatsmodelnonlinearGraphN {
   let result = stats_model_nonlinear_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_model_nonlinear_graphn_fill(s : StatsmodelnonlinearGraphN, v : Doub
   result
 }
 
-pub fn stats_model_nonlinear_graphn_min(s : StatsmodelnonlinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_graphn_min(s : StatsmodelnonlinearGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_graphn_max(s : StatsmodelnonlinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_graphn_max(s : StatsmodelnonlinearGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_graphn_to_string(s : StatsmodelnonlinearGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_model_nonlinear_node_set(s : StatsmodelnonlinearNode, i : Int, v : 
   result
 }
 
-pub fn stats_model_nonlinear_node_sum(s : StatsmodelnonlinearNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_node_sum(s : StatsmodelnonlinearNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_node_mean(s : StatsmodelnonlinearNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_node_mean(s : StatsmodelnonlinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_node_scale(s : StatsmodelnonlinearNode, f : Double) -> StatsmodelnonlinearNode {
   let result = stats_model_nonlinear_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_model_nonlinear_node_fill(s : StatsmodelnonlinearNode, v : Double) 
   result
 }
 
-pub fn stats_model_nonlinear_node_min(s : StatsmodelnonlinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_node_min(s : StatsmodelnonlinearNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_node_max(s : StatsmodelnonlinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_node_max(s : StatsmodelnonlinearNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_node_to_string(s : StatsmodelnonlinearNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_model_nonlinear_edge_set(s : StatsmodelnonlinearEdge, i : Int, v : 
   result
 }
 
-pub fn stats_model_nonlinear_edge_sum(s : StatsmodelnonlinearEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_edge_sum(s : StatsmodelnonlinearEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_edge_mean(s : StatsmodelnonlinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_edge_mean(s : StatsmodelnonlinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_edge_scale(s : StatsmodelnonlinearEdge, f : Double) -> StatsmodelnonlinearEdge {
   let result = stats_model_nonlinear_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_model_nonlinear_edge_fill(s : StatsmodelnonlinearEdge, v : Double) 
   result
 }
 
-pub fn stats_model_nonlinear_edge_min(s : StatsmodelnonlinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_edge_min(s : StatsmodelnonlinearEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_edge_max(s : StatsmodelnonlinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_edge_max(s : StatsmodelnonlinearEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_edge_to_string(s : StatsmodelnonlinearEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_model_nonlinear_path_set(s : StatsmodelnonlinearPath, i : Int, v : 
   result
 }
 
-pub fn stats_model_nonlinear_path_sum(s : StatsmodelnonlinearPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_path_sum(s : StatsmodelnonlinearPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_path_mean(s : StatsmodelnonlinearPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_path_mean(s : StatsmodelnonlinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_path_scale(s : StatsmodelnonlinearPath, f : Double) -> StatsmodelnonlinearPath {
   let result = stats_model_nonlinear_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_model_nonlinear_path_fill(s : StatsmodelnonlinearPath, v : Double) 
   result
 }
 
-pub fn stats_model_nonlinear_path_min(s : StatsmodelnonlinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_path_min(s : StatsmodelnonlinearPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_path_max(s : StatsmodelnonlinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_path_max(s : StatsmodelnonlinearPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_path_to_string(s : StatsmodelnonlinearPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_model_nonlinear_cluster_set(s : StatsmodelnonlinearCluster, i : Int
   result
 }
 
-pub fn stats_model_nonlinear_cluster_sum(s : StatsmodelnonlinearCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_cluster_sum(s : StatsmodelnonlinearCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_cluster_mean(s : StatsmodelnonlinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_cluster_mean(s : StatsmodelnonlinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_cluster_scale(s : StatsmodelnonlinearCluster, f : Double) -> StatsmodelnonlinearCluster {
   let result = stats_model_nonlinear_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_model_nonlinear_cluster_fill(s : StatsmodelnonlinearCluster, v : Do
   result
 }
 
-pub fn stats_model_nonlinear_cluster_min(s : StatsmodelnonlinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_cluster_min(s : StatsmodelnonlinearCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_cluster_max(s : StatsmodelnonlinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_cluster_max(s : StatsmodelnonlinearCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_cluster_to_string(s : StatsmodelnonlinearCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_model_nonlinear_model_set(s : StatsmodelnonlinearModel, i : Int, v 
   result
 }
 
-pub fn stats_model_nonlinear_model_sum(s : StatsmodelnonlinearModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_model_sum(s : StatsmodelnonlinearModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_model_mean(s : StatsmodelnonlinearModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_model_mean(s : StatsmodelnonlinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_model_scale(s : StatsmodelnonlinearModel, f : Double) -> StatsmodelnonlinearModel {
   let result = stats_model_nonlinear_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_model_nonlinear_model_fill(s : StatsmodelnonlinearModel, v : Double
   result
 }
 
-pub fn stats_model_nonlinear_model_min(s : StatsmodelnonlinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_model_min(s : StatsmodelnonlinearModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_model_max(s : StatsmodelnonlinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_model_max(s : StatsmodelnonlinearModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_model_to_string(s : StatsmodelnonlinearModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_model_nonlinear_layer_set(s : StatsmodelnonlinearLayer, i : Int, v 
   result
 }
 
-pub fn stats_model_nonlinear_layer_sum(s : StatsmodelnonlinearLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_layer_sum(s : StatsmodelnonlinearLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_layer_mean(s : StatsmodelnonlinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_layer_mean(s : StatsmodelnonlinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_layer_scale(s : StatsmodelnonlinearLayer, f : Double) -> StatsmodelnonlinearLayer {
   let result = stats_model_nonlinear_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_model_nonlinear_layer_fill(s : StatsmodelnonlinearLayer, v : Double
   result
 }
 
-pub fn stats_model_nonlinear_layer_min(s : StatsmodelnonlinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_layer_min(s : StatsmodelnonlinearLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_layer_max(s : StatsmodelnonlinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_layer_max(s : StatsmodelnonlinearLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_layer_to_string(s : StatsmodelnonlinearLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_model_nonlinear_buffer_set(s : StatsmodelnonlinearBuffer, i : Int, 
   result
 }
 
-pub fn stats_model_nonlinear_buffer_sum(s : StatsmodelnonlinearBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_buffer_sum(s : StatsmodelnonlinearBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_buffer_mean(s : StatsmodelnonlinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_buffer_mean(s : StatsmodelnonlinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_buffer_scale(s : StatsmodelnonlinearBuffer, f : Double) -> StatsmodelnonlinearBuffer {
   let result = stats_model_nonlinear_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_model_nonlinear_buffer_fill(s : StatsmodelnonlinearBuffer, v : Doub
   result
 }
 
-pub fn stats_model_nonlinear_buffer_min(s : StatsmodelnonlinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_buffer_min(s : StatsmodelnonlinearBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_buffer_max(s : StatsmodelnonlinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_buffer_max(s : StatsmodelnonlinearBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_buffer_to_string(s : StatsmodelnonlinearBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_model_nonlinear_cursor_set(s : StatsmodelnonlinearCursor, i : Int, 
   result
 }
 
-pub fn stats_model_nonlinear_cursor_sum(s : StatsmodelnonlinearCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_cursor_sum(s : StatsmodelnonlinearCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_cursor_mean(s : StatsmodelnonlinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_cursor_mean(s : StatsmodelnonlinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_cursor_scale(s : StatsmodelnonlinearCursor, f : Double) -> StatsmodelnonlinearCursor {
   let result = stats_model_nonlinear_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_model_nonlinear_cursor_fill(s : StatsmodelnonlinearCursor, v : Doub
   result
 }
 
-pub fn stats_model_nonlinear_cursor_min(s : StatsmodelnonlinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_cursor_min(s : StatsmodelnonlinearCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_cursor_max(s : StatsmodelnonlinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_cursor_max(s : StatsmodelnonlinearCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_cursor_to_string(s : StatsmodelnonlinearCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_model_nonlinear_view_set(s : StatsmodelnonlinearView, i : Int, v : 
   result
 }
 
-pub fn stats_model_nonlinear_view_sum(s : StatsmodelnonlinearView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_view_sum(s : StatsmodelnonlinearView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_view_mean(s : StatsmodelnonlinearView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_view_mean(s : StatsmodelnonlinearView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_view_scale(s : StatsmodelnonlinearView, f : Double) -> StatsmodelnonlinearView {
   let result = stats_model_nonlinear_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_model_nonlinear_view_fill(s : StatsmodelnonlinearView, v : Double) 
   result
 }
 
-pub fn stats_model_nonlinear_view_min(s : StatsmodelnonlinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_view_min(s : StatsmodelnonlinearView) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_view_max(s : StatsmodelnonlinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_view_max(s : StatsmodelnonlinearView) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_view_to_string(s : StatsmodelnonlinearView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_model_nonlinear_range_set(s : StatsmodelnonlinearRange, i : Int, v 
   result
 }
 
-pub fn stats_model_nonlinear_range_sum(s : StatsmodelnonlinearRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_range_sum(s : StatsmodelnonlinearRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_range_mean(s : StatsmodelnonlinearRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_range_mean(s : StatsmodelnonlinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_range_scale(s : StatsmodelnonlinearRange, f : Double) -> StatsmodelnonlinearRange {
   let result = stats_model_nonlinear_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_model_nonlinear_range_fill(s : StatsmodelnonlinearRange, v : Double
   result
 }
 
-pub fn stats_model_nonlinear_range_min(s : StatsmodelnonlinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_range_min(s : StatsmodelnonlinearRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_range_max(s : StatsmodelnonlinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_range_max(s : StatsmodelnonlinearRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_range_to_string(s : StatsmodelnonlinearRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_model_nonlinear_slice_set(s : StatsmodelnonlinearSlice, i : Int, v 
   result
 }
 
-pub fn stats_model_nonlinear_slice_sum(s : StatsmodelnonlinearSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_nonlinear_slice_sum(s : StatsmodelnonlinearSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_nonlinear_slice_mean(s : StatsmodelnonlinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_nonlinear_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_nonlinear_slice_mean(s : StatsmodelnonlinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_nonlinear_slice_scale(s : StatsmodelnonlinearSlice, f : Double) -> StatsmodelnonlinearSlice {
   let result = stats_model_nonlinear_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_model_nonlinear_slice_fill(s : StatsmodelnonlinearSlice, v : Double
   result
 }
 
-pub fn stats_model_nonlinear_slice_min(s : StatsmodelnonlinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_slice_min(s : StatsmodelnonlinearSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_nonlinear_slice_max(s : StatsmodelnonlinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_nonlinear_slice_max(s : StatsmodelnonlinearSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_nonlinear_slice_to_string(s : StatsmodelnonlinearSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

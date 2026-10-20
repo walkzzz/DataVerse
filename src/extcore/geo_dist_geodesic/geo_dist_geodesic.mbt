@@ -88,11 +88,7 @@ pub fn geo_dist_geodesic_make_series(vals : Array[Double], name : String) -> Geo
 
 pub fn geo_dist_geodesic_series_len(s : GeodistgeodesicSeries) -> Int { s.vals.length() }
 
-pub fn geo_dist_geodesic_series_sum(s : GeodistgeodesicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_dist_geodesic_series_sum(s : GeodistgeodesicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_dist_geodesic_series_mean(s : GeodistgeodesicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_dist_geodesic_frame_set(s : GeodistgeodesicFrame, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_geodesic_frame_sum(s : GeodistgeodesicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_frame_sum(s : GeodistgeodesicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_frame_mean(s : GeodistgeodesicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_frame_mean(s : GeodistgeodesicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_frame_scale(s : GeodistgeodesicFrame, f : Double) -> GeodistgeodesicFrame {
   let result = geo_dist_geodesic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_dist_geodesic_frame_fill(s : GeodistgeodesicFrame, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_geodesic_frame_min(s : GeodistgeodesicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_frame_min(s : GeodistgeodesicFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_frame_max(s : GeodistgeodesicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_frame_max(s : GeodistgeodesicFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_frame_to_string(s : GeodistgeodesicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_dist_geodesic_table_set(s : GeodistgeodesicTable, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_geodesic_table_sum(s : GeodistgeodesicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_table_sum(s : GeodistgeodesicTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_table_mean(s : GeodistgeodesicTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_table_mean(s : GeodistgeodesicTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_table_scale(s : GeodistgeodesicTable, f : Double) -> GeodistgeodesicTable {
   let result = geo_dist_geodesic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_dist_geodesic_table_fill(s : GeodistgeodesicTable, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_geodesic_table_min(s : GeodistgeodesicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_table_min(s : GeodistgeodesicTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_table_max(s : GeodistgeodesicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_table_max(s : GeodistgeodesicTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_table_to_string(s : GeodistgeodesicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_dist_geodesic_graphn_set(s : GeodistgeodesicGraphN, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_geodesic_graphn_sum(s : GeodistgeodesicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_graphn_sum(s : GeodistgeodesicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_graphn_mean(s : GeodistgeodesicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_graphn_mean(s : GeodistgeodesicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_graphn_scale(s : GeodistgeodesicGraphN, f : Double) -> GeodistgeodesicGraphN {
   let result = geo_dist_geodesic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_dist_geodesic_graphn_fill(s : GeodistgeodesicGraphN, v : Double) -> G
   result
 }
 
-pub fn geo_dist_geodesic_graphn_min(s : GeodistgeodesicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_graphn_min(s : GeodistgeodesicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_graphn_max(s : GeodistgeodesicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_graphn_max(s : GeodistgeodesicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_graphn_to_string(s : GeodistgeodesicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_dist_geodesic_node_set(s : GeodistgeodesicNode, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_geodesic_node_sum(s : GeodistgeodesicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_node_sum(s : GeodistgeodesicNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_node_mean(s : GeodistgeodesicNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_node_mean(s : GeodistgeodesicNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_node_scale(s : GeodistgeodesicNode, f : Double) -> GeodistgeodesicNode {
   let result = geo_dist_geodesic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_dist_geodesic_node_fill(s : GeodistgeodesicNode, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_geodesic_node_min(s : GeodistgeodesicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_node_min(s : GeodistgeodesicNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_node_max(s : GeodistgeodesicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_node_max(s : GeodistgeodesicNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_node_to_string(s : GeodistgeodesicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_dist_geodesic_edge_set(s : GeodistgeodesicEdge, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_geodesic_edge_sum(s : GeodistgeodesicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_edge_sum(s : GeodistgeodesicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_edge_mean(s : GeodistgeodesicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_edge_mean(s : GeodistgeodesicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_edge_scale(s : GeodistgeodesicEdge, f : Double) -> GeodistgeodesicEdge {
   let result = geo_dist_geodesic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_dist_geodesic_edge_fill(s : GeodistgeodesicEdge, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_geodesic_edge_min(s : GeodistgeodesicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_edge_min(s : GeodistgeodesicEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_edge_max(s : GeodistgeodesicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_edge_max(s : GeodistgeodesicEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_edge_to_string(s : GeodistgeodesicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_dist_geodesic_path_set(s : GeodistgeodesicPath, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_geodesic_path_sum(s : GeodistgeodesicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_path_sum(s : GeodistgeodesicPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_path_mean(s : GeodistgeodesicPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_path_mean(s : GeodistgeodesicPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_path_scale(s : GeodistgeodesicPath, f : Double) -> GeodistgeodesicPath {
   let result = geo_dist_geodesic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_dist_geodesic_path_fill(s : GeodistgeodesicPath, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_geodesic_path_min(s : GeodistgeodesicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_path_min(s : GeodistgeodesicPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_path_max(s : GeodistgeodesicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_path_max(s : GeodistgeodesicPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_path_to_string(s : GeodistgeodesicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_dist_geodesic_cluster_set(s : GeodistgeodesicCluster, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_geodesic_cluster_sum(s : GeodistgeodesicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_cluster_sum(s : GeodistgeodesicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_cluster_mean(s : GeodistgeodesicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_cluster_mean(s : GeodistgeodesicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_cluster_scale(s : GeodistgeodesicCluster, f : Double) -> GeodistgeodesicCluster {
   let result = geo_dist_geodesic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_dist_geodesic_cluster_fill(s : GeodistgeodesicCluster, v : Double) ->
   result
 }
 
-pub fn geo_dist_geodesic_cluster_min(s : GeodistgeodesicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_cluster_min(s : GeodistgeodesicCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_cluster_max(s : GeodistgeodesicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_cluster_max(s : GeodistgeodesicCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_cluster_to_string(s : GeodistgeodesicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_dist_geodesic_model_set(s : GeodistgeodesicModel, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_geodesic_model_sum(s : GeodistgeodesicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_model_sum(s : GeodistgeodesicModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_model_mean(s : GeodistgeodesicModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_model_mean(s : GeodistgeodesicModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_model_scale(s : GeodistgeodesicModel, f : Double) -> GeodistgeodesicModel {
   let result = geo_dist_geodesic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_dist_geodesic_model_fill(s : GeodistgeodesicModel, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_geodesic_model_min(s : GeodistgeodesicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_model_min(s : GeodistgeodesicModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_model_max(s : GeodistgeodesicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_model_max(s : GeodistgeodesicModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_model_to_string(s : GeodistgeodesicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_dist_geodesic_layer_set(s : GeodistgeodesicLayer, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_geodesic_layer_sum(s : GeodistgeodesicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_layer_sum(s : GeodistgeodesicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_layer_mean(s : GeodistgeodesicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_layer_mean(s : GeodistgeodesicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_layer_scale(s : GeodistgeodesicLayer, f : Double) -> GeodistgeodesicLayer {
   let result = geo_dist_geodesic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_dist_geodesic_layer_fill(s : GeodistgeodesicLayer, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_geodesic_layer_min(s : GeodistgeodesicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_layer_min(s : GeodistgeodesicLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_layer_max(s : GeodistgeodesicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_layer_max(s : GeodistgeodesicLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_layer_to_string(s : GeodistgeodesicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_dist_geodesic_buffer_set(s : GeodistgeodesicBuffer, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_geodesic_buffer_sum(s : GeodistgeodesicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_buffer_sum(s : GeodistgeodesicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_buffer_mean(s : GeodistgeodesicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_buffer_mean(s : GeodistgeodesicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_buffer_scale(s : GeodistgeodesicBuffer, f : Double) -> GeodistgeodesicBuffer {
   let result = geo_dist_geodesic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_dist_geodesic_buffer_fill(s : GeodistgeodesicBuffer, v : Double) -> G
   result
 }
 
-pub fn geo_dist_geodesic_buffer_min(s : GeodistgeodesicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_buffer_min(s : GeodistgeodesicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_buffer_max(s : GeodistgeodesicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_buffer_max(s : GeodistgeodesicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_buffer_to_string(s : GeodistgeodesicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_dist_geodesic_cursor_set(s : GeodistgeodesicCursor, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_geodesic_cursor_sum(s : GeodistgeodesicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_cursor_sum(s : GeodistgeodesicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_cursor_mean(s : GeodistgeodesicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_cursor_mean(s : GeodistgeodesicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_cursor_scale(s : GeodistgeodesicCursor, f : Double) -> GeodistgeodesicCursor {
   let result = geo_dist_geodesic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_dist_geodesic_cursor_fill(s : GeodistgeodesicCursor, v : Double) -> G
   result
 }
 
-pub fn geo_dist_geodesic_cursor_min(s : GeodistgeodesicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_cursor_min(s : GeodistgeodesicCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_cursor_max(s : GeodistgeodesicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_cursor_max(s : GeodistgeodesicCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_cursor_to_string(s : GeodistgeodesicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_dist_geodesic_view_set(s : GeodistgeodesicView, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_geodesic_view_sum(s : GeodistgeodesicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_view_sum(s : GeodistgeodesicView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_view_mean(s : GeodistgeodesicView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_view_mean(s : GeodistgeodesicView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_view_scale(s : GeodistgeodesicView, f : Double) -> GeodistgeodesicView {
   let result = geo_dist_geodesic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_dist_geodesic_view_fill(s : GeodistgeodesicView, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_geodesic_view_min(s : GeodistgeodesicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_view_min(s : GeodistgeodesicView) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_view_max(s : GeodistgeodesicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_view_max(s : GeodistgeodesicView) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_view_to_string(s : GeodistgeodesicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_dist_geodesic_range_set(s : GeodistgeodesicRange, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_geodesic_range_sum(s : GeodistgeodesicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_range_sum(s : GeodistgeodesicRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_range_mean(s : GeodistgeodesicRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_range_mean(s : GeodistgeodesicRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_range_scale(s : GeodistgeodesicRange, f : Double) -> GeodistgeodesicRange {
   let result = geo_dist_geodesic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_dist_geodesic_range_fill(s : GeodistgeodesicRange, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_geodesic_range_min(s : GeodistgeodesicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_range_min(s : GeodistgeodesicRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_range_max(s : GeodistgeodesicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_range_max(s : GeodistgeodesicRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_range_to_string(s : GeodistgeodesicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_dist_geodesic_slice_set(s : GeodistgeodesicSlice, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_geodesic_slice_sum(s : GeodistgeodesicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_geodesic_slice_sum(s : GeodistgeodesicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_geodesic_slice_mean(s : GeodistgeodesicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_geodesic_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_geodesic_slice_mean(s : GeodistgeodesicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_geodesic_slice_scale(s : GeodistgeodesicSlice, f : Double) -> GeodistgeodesicSlice {
   let result = geo_dist_geodesic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_dist_geodesic_slice_fill(s : GeodistgeodesicSlice, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_geodesic_slice_min(s : GeodistgeodesicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_slice_min(s : GeodistgeodesicSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_geodesic_slice_max(s : GeodistgeodesicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_geodesic_slice_max(s : GeodistgeodesicSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_geodesic_slice_to_string(s : GeodistgeodesicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

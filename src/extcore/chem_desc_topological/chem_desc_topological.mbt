@@ -88,11 +88,7 @@ pub fn chem_desc_topological_make_series(vals : Array[Double], name : String) ->
 
 pub fn chem_desc_topological_series_len(s : ChemdesctopologicalSeries) -> Int { s.vals.length() }
 
-pub fn chem_desc_topological_series_sum(s : ChemdesctopologicalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_desc_topological_series_sum(s : ChemdesctopologicalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_desc_topological_series_mean(s : ChemdesctopologicalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_desc_topological_frame_set(s : ChemdesctopologicalFrame, i : Int, v 
   result
 }
 
-pub fn chem_desc_topological_frame_sum(s : ChemdesctopologicalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_frame_sum(s : ChemdesctopologicalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_frame_mean(s : ChemdesctopologicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_frame_mean(s : ChemdesctopologicalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_frame_scale(s : ChemdesctopologicalFrame, f : Double) -> ChemdesctopologicalFrame {
   let result = chem_desc_topological_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_desc_topological_frame_fill(s : ChemdesctopologicalFrame, v : Double
   result
 }
 
-pub fn chem_desc_topological_frame_min(s : ChemdesctopologicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_frame_min(s : ChemdesctopologicalFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_frame_max(s : ChemdesctopologicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_frame_max(s : ChemdesctopologicalFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_frame_to_string(s : ChemdesctopologicalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_desc_topological_table_set(s : ChemdesctopologicalTable, i : Int, v 
   result
 }
 
-pub fn chem_desc_topological_table_sum(s : ChemdesctopologicalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_table_sum(s : ChemdesctopologicalTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_table_mean(s : ChemdesctopologicalTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_table_mean(s : ChemdesctopologicalTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_table_scale(s : ChemdesctopologicalTable, f : Double) -> ChemdesctopologicalTable {
   let result = chem_desc_topological_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_desc_topological_table_fill(s : ChemdesctopologicalTable, v : Double
   result
 }
 
-pub fn chem_desc_topological_table_min(s : ChemdesctopologicalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_table_min(s : ChemdesctopologicalTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_table_max(s : ChemdesctopologicalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_table_max(s : ChemdesctopologicalTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_table_to_string(s : ChemdesctopologicalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_desc_topological_graphn_set(s : ChemdesctopologicalGraphN, i : Int, 
   result
 }
 
-pub fn chem_desc_topological_graphn_sum(s : ChemdesctopologicalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_graphn_sum(s : ChemdesctopologicalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_graphn_mean(s : ChemdesctopologicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_graphn_mean(s : ChemdesctopologicalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_graphn_scale(s : ChemdesctopologicalGraphN, f : Double) -> ChemdesctopologicalGraphN {
   let result = chem_desc_topological_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_desc_topological_graphn_fill(s : ChemdesctopologicalGraphN, v : Doub
   result
 }
 
-pub fn chem_desc_topological_graphn_min(s : ChemdesctopologicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_graphn_min(s : ChemdesctopologicalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_graphn_max(s : ChemdesctopologicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_graphn_max(s : ChemdesctopologicalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_graphn_to_string(s : ChemdesctopologicalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_desc_topological_node_set(s : ChemdesctopologicalNode, i : Int, v : 
   result
 }
 
-pub fn chem_desc_topological_node_sum(s : ChemdesctopologicalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_node_sum(s : ChemdesctopologicalNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_node_mean(s : ChemdesctopologicalNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_node_mean(s : ChemdesctopologicalNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_node_scale(s : ChemdesctopologicalNode, f : Double) -> ChemdesctopologicalNode {
   let result = chem_desc_topological_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_desc_topological_node_fill(s : ChemdesctopologicalNode, v : Double) 
   result
 }
 
-pub fn chem_desc_topological_node_min(s : ChemdesctopologicalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_node_min(s : ChemdesctopologicalNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_node_max(s : ChemdesctopologicalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_node_max(s : ChemdesctopologicalNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_node_to_string(s : ChemdesctopologicalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_desc_topological_edge_set(s : ChemdesctopologicalEdge, i : Int, v : 
   result
 }
 
-pub fn chem_desc_topological_edge_sum(s : ChemdesctopologicalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_edge_sum(s : ChemdesctopologicalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_edge_mean(s : ChemdesctopologicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_edge_mean(s : ChemdesctopologicalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_edge_scale(s : ChemdesctopologicalEdge, f : Double) -> ChemdesctopologicalEdge {
   let result = chem_desc_topological_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_desc_topological_edge_fill(s : ChemdesctopologicalEdge, v : Double) 
   result
 }
 
-pub fn chem_desc_topological_edge_min(s : ChemdesctopologicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_edge_min(s : ChemdesctopologicalEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_edge_max(s : ChemdesctopologicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_edge_max(s : ChemdesctopologicalEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_edge_to_string(s : ChemdesctopologicalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_desc_topological_path_set(s : ChemdesctopologicalPath, i : Int, v : 
   result
 }
 
-pub fn chem_desc_topological_path_sum(s : ChemdesctopologicalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_path_sum(s : ChemdesctopologicalPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_path_mean(s : ChemdesctopologicalPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_path_mean(s : ChemdesctopologicalPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_path_scale(s : ChemdesctopologicalPath, f : Double) -> ChemdesctopologicalPath {
   let result = chem_desc_topological_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_desc_topological_path_fill(s : ChemdesctopologicalPath, v : Double) 
   result
 }
 
-pub fn chem_desc_topological_path_min(s : ChemdesctopologicalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_path_min(s : ChemdesctopologicalPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_path_max(s : ChemdesctopologicalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_path_max(s : ChemdesctopologicalPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_path_to_string(s : ChemdesctopologicalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_desc_topological_cluster_set(s : ChemdesctopologicalCluster, i : Int
   result
 }
 
-pub fn chem_desc_topological_cluster_sum(s : ChemdesctopologicalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_cluster_sum(s : ChemdesctopologicalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_cluster_mean(s : ChemdesctopologicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_cluster_mean(s : ChemdesctopologicalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_cluster_scale(s : ChemdesctopologicalCluster, f : Double) -> ChemdesctopologicalCluster {
   let result = chem_desc_topological_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_desc_topological_cluster_fill(s : ChemdesctopologicalCluster, v : Do
   result
 }
 
-pub fn chem_desc_topological_cluster_min(s : ChemdesctopologicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_cluster_min(s : ChemdesctopologicalCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_cluster_max(s : ChemdesctopologicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_cluster_max(s : ChemdesctopologicalCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_cluster_to_string(s : ChemdesctopologicalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_desc_topological_model_set(s : ChemdesctopologicalModel, i : Int, v 
   result
 }
 
-pub fn chem_desc_topological_model_sum(s : ChemdesctopologicalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_model_sum(s : ChemdesctopologicalModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_model_mean(s : ChemdesctopologicalModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_model_mean(s : ChemdesctopologicalModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_model_scale(s : ChemdesctopologicalModel, f : Double) -> ChemdesctopologicalModel {
   let result = chem_desc_topological_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_desc_topological_model_fill(s : ChemdesctopologicalModel, v : Double
   result
 }
 
-pub fn chem_desc_topological_model_min(s : ChemdesctopologicalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_model_min(s : ChemdesctopologicalModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_model_max(s : ChemdesctopologicalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_model_max(s : ChemdesctopologicalModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_model_to_string(s : ChemdesctopologicalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_desc_topological_layer_set(s : ChemdesctopologicalLayer, i : Int, v 
   result
 }
 
-pub fn chem_desc_topological_layer_sum(s : ChemdesctopologicalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_layer_sum(s : ChemdesctopologicalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_layer_mean(s : ChemdesctopologicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_layer_mean(s : ChemdesctopologicalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_layer_scale(s : ChemdesctopologicalLayer, f : Double) -> ChemdesctopologicalLayer {
   let result = chem_desc_topological_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_desc_topological_layer_fill(s : ChemdesctopologicalLayer, v : Double
   result
 }
 
-pub fn chem_desc_topological_layer_min(s : ChemdesctopologicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_layer_min(s : ChemdesctopologicalLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_layer_max(s : ChemdesctopologicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_layer_max(s : ChemdesctopologicalLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_layer_to_string(s : ChemdesctopologicalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_desc_topological_buffer_set(s : ChemdesctopologicalBuffer, i : Int, 
   result
 }
 
-pub fn chem_desc_topological_buffer_sum(s : ChemdesctopologicalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_buffer_sum(s : ChemdesctopologicalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_buffer_mean(s : ChemdesctopologicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_buffer_mean(s : ChemdesctopologicalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_buffer_scale(s : ChemdesctopologicalBuffer, f : Double) -> ChemdesctopologicalBuffer {
   let result = chem_desc_topological_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_desc_topological_buffer_fill(s : ChemdesctopologicalBuffer, v : Doub
   result
 }
 
-pub fn chem_desc_topological_buffer_min(s : ChemdesctopologicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_buffer_min(s : ChemdesctopologicalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_buffer_max(s : ChemdesctopologicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_buffer_max(s : ChemdesctopologicalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_buffer_to_string(s : ChemdesctopologicalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_desc_topological_cursor_set(s : ChemdesctopologicalCursor, i : Int, 
   result
 }
 
-pub fn chem_desc_topological_cursor_sum(s : ChemdesctopologicalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_cursor_sum(s : ChemdesctopologicalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_cursor_mean(s : ChemdesctopologicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_cursor_mean(s : ChemdesctopologicalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_cursor_scale(s : ChemdesctopologicalCursor, f : Double) -> ChemdesctopologicalCursor {
   let result = chem_desc_topological_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_desc_topological_cursor_fill(s : ChemdesctopologicalCursor, v : Doub
   result
 }
 
-pub fn chem_desc_topological_cursor_min(s : ChemdesctopologicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_cursor_min(s : ChemdesctopologicalCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_cursor_max(s : ChemdesctopologicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_cursor_max(s : ChemdesctopologicalCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_cursor_to_string(s : ChemdesctopologicalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_desc_topological_view_set(s : ChemdesctopologicalView, i : Int, v : 
   result
 }
 
-pub fn chem_desc_topological_view_sum(s : ChemdesctopologicalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_view_sum(s : ChemdesctopologicalView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_view_mean(s : ChemdesctopologicalView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_view_mean(s : ChemdesctopologicalView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_view_scale(s : ChemdesctopologicalView, f : Double) -> ChemdesctopologicalView {
   let result = chem_desc_topological_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_desc_topological_view_fill(s : ChemdesctopologicalView, v : Double) 
   result
 }
 
-pub fn chem_desc_topological_view_min(s : ChemdesctopologicalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_view_min(s : ChemdesctopologicalView) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_view_max(s : ChemdesctopologicalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_view_max(s : ChemdesctopologicalView) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_view_to_string(s : ChemdesctopologicalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_desc_topological_range_set(s : ChemdesctopologicalRange, i : Int, v 
   result
 }
 
-pub fn chem_desc_topological_range_sum(s : ChemdesctopologicalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_range_sum(s : ChemdesctopologicalRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_range_mean(s : ChemdesctopologicalRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_range_mean(s : ChemdesctopologicalRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_range_scale(s : ChemdesctopologicalRange, f : Double) -> ChemdesctopologicalRange {
   let result = chem_desc_topological_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_desc_topological_range_fill(s : ChemdesctopologicalRange, v : Double
   result
 }
 
-pub fn chem_desc_topological_range_min(s : ChemdesctopologicalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_range_min(s : ChemdesctopologicalRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_range_max(s : ChemdesctopologicalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_range_max(s : ChemdesctopologicalRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_range_to_string(s : ChemdesctopologicalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_desc_topological_slice_set(s : ChemdesctopologicalSlice, i : Int, v 
   result
 }
 
-pub fn chem_desc_topological_slice_sum(s : ChemdesctopologicalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_topological_slice_sum(s : ChemdesctopologicalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_topological_slice_mean(s : ChemdesctopologicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_topological_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_topological_slice_mean(s : ChemdesctopologicalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_topological_slice_scale(s : ChemdesctopologicalSlice, f : Double) -> ChemdesctopologicalSlice {
   let result = chem_desc_topological_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_desc_topological_slice_fill(s : ChemdesctopologicalSlice, v : Double
   result
 }
 
-pub fn chem_desc_topological_slice_min(s : ChemdesctopologicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_slice_min(s : ChemdesctopologicalSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_topological_slice_max(s : ChemdesctopologicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_topological_slice_max(s : ChemdesctopologicalSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_topological_slice_to_string(s : ChemdesctopologicalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_quaternion_make_series(vals : Array[Double], name : String) -> Mathq
 
 pub fn math_quaternion_series_len(s : MathquaternionSeries) -> Int { s.vals.length() }
 
-pub fn math_quaternion_series_sum(s : MathquaternionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_quaternion_series_sum(s : MathquaternionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_quaternion_series_mean(s : MathquaternionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_quaternion_frame_set(s : MathquaternionFrame, i : Int, v : Double) -
   result
 }
 
-pub fn math_quaternion_frame_sum(s : MathquaternionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_frame_sum(s : MathquaternionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_frame_mean(s : MathquaternionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_frame_mean(s : MathquaternionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_frame_scale(s : MathquaternionFrame, f : Double) -> MathquaternionFrame {
   let result = math_quaternion_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_quaternion_frame_fill(s : MathquaternionFrame, v : Double) -> Mathqu
   result
 }
 
-pub fn math_quaternion_frame_min(s : MathquaternionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_frame_min(s : MathquaternionFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_frame_max(s : MathquaternionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_frame_max(s : MathquaternionFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_frame_to_string(s : MathquaternionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_quaternion_table_set(s : MathquaternionTable, i : Int, v : Double) -
   result
 }
 
-pub fn math_quaternion_table_sum(s : MathquaternionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_table_sum(s : MathquaternionTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_table_mean(s : MathquaternionTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_table_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_table_mean(s : MathquaternionTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_table_scale(s : MathquaternionTable, f : Double) -> MathquaternionTable {
   let result = math_quaternion_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_quaternion_table_fill(s : MathquaternionTable, v : Double) -> Mathqu
   result
 }
 
-pub fn math_quaternion_table_min(s : MathquaternionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_table_min(s : MathquaternionTable) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_table_max(s : MathquaternionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_table_max(s : MathquaternionTable) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_table_to_string(s : MathquaternionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_quaternion_graphn_set(s : MathquaternionGraphN, i : Int, v : Double)
   result
 }
 
-pub fn math_quaternion_graphn_sum(s : MathquaternionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_graphn_sum(s : MathquaternionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_graphn_mean(s : MathquaternionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_graphn_mean(s : MathquaternionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_graphn_scale(s : MathquaternionGraphN, f : Double) -> MathquaternionGraphN {
   let result = math_quaternion_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_quaternion_graphn_fill(s : MathquaternionGraphN, v : Double) -> Math
   result
 }
 
-pub fn math_quaternion_graphn_min(s : MathquaternionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_graphn_min(s : MathquaternionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_graphn_max(s : MathquaternionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_graphn_max(s : MathquaternionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_graphn_to_string(s : MathquaternionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_quaternion_node_set(s : MathquaternionNode, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_quaternion_node_sum(s : MathquaternionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_node_sum(s : MathquaternionNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_node_mean(s : MathquaternionNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_node_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_node_mean(s : MathquaternionNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_node_scale(s : MathquaternionNode, f : Double) -> MathquaternionNode {
   let result = math_quaternion_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_quaternion_node_fill(s : MathquaternionNode, v : Double) -> Mathquat
   result
 }
 
-pub fn math_quaternion_node_min(s : MathquaternionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_node_min(s : MathquaternionNode) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_node_max(s : MathquaternionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_node_max(s : MathquaternionNode) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_node_to_string(s : MathquaternionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_quaternion_edge_set(s : MathquaternionEdge, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_quaternion_edge_sum(s : MathquaternionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_edge_sum(s : MathquaternionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_edge_mean(s : MathquaternionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_edge_mean(s : MathquaternionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_edge_scale(s : MathquaternionEdge, f : Double) -> MathquaternionEdge {
   let result = math_quaternion_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_quaternion_edge_fill(s : MathquaternionEdge, v : Double) -> Mathquat
   result
 }
 
-pub fn math_quaternion_edge_min(s : MathquaternionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_edge_min(s : MathquaternionEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_edge_max(s : MathquaternionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_edge_max(s : MathquaternionEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_edge_to_string(s : MathquaternionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_quaternion_path_set(s : MathquaternionPath, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_quaternion_path_sum(s : MathquaternionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_path_sum(s : MathquaternionPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_path_mean(s : MathquaternionPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_path_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_path_mean(s : MathquaternionPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_path_scale(s : MathquaternionPath, f : Double) -> MathquaternionPath {
   let result = math_quaternion_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_quaternion_path_fill(s : MathquaternionPath, v : Double) -> Mathquat
   result
 }
 
-pub fn math_quaternion_path_min(s : MathquaternionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_path_min(s : MathquaternionPath) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_path_max(s : MathquaternionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_path_max(s : MathquaternionPath) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_path_to_string(s : MathquaternionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_quaternion_cluster_set(s : MathquaternionCluster, i : Int, v : Doubl
   result
 }
 
-pub fn math_quaternion_cluster_sum(s : MathquaternionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_cluster_sum(s : MathquaternionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_cluster_mean(s : MathquaternionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_cluster_mean(s : MathquaternionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_cluster_scale(s : MathquaternionCluster, f : Double) -> MathquaternionCluster {
   let result = math_quaternion_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_quaternion_cluster_fill(s : MathquaternionCluster, v : Double) -> Ma
   result
 }
 
-pub fn math_quaternion_cluster_min(s : MathquaternionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_cluster_min(s : MathquaternionCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_cluster_max(s : MathquaternionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_cluster_max(s : MathquaternionCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_cluster_to_string(s : MathquaternionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_quaternion_model_set(s : MathquaternionModel, i : Int, v : Double) -
   result
 }
 
-pub fn math_quaternion_model_sum(s : MathquaternionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_model_sum(s : MathquaternionModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_model_mean(s : MathquaternionModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_model_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_model_mean(s : MathquaternionModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_model_scale(s : MathquaternionModel, f : Double) -> MathquaternionModel {
   let result = math_quaternion_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_quaternion_model_fill(s : MathquaternionModel, v : Double) -> Mathqu
   result
 }
 
-pub fn math_quaternion_model_min(s : MathquaternionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_model_min(s : MathquaternionModel) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_model_max(s : MathquaternionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_model_max(s : MathquaternionModel) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_model_to_string(s : MathquaternionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_quaternion_layer_set(s : MathquaternionLayer, i : Int, v : Double) -
   result
 }
 
-pub fn math_quaternion_layer_sum(s : MathquaternionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_layer_sum(s : MathquaternionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_layer_mean(s : MathquaternionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_layer_mean(s : MathquaternionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_layer_scale(s : MathquaternionLayer, f : Double) -> MathquaternionLayer {
   let result = math_quaternion_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_quaternion_layer_fill(s : MathquaternionLayer, v : Double) -> Mathqu
   result
 }
 
-pub fn math_quaternion_layer_min(s : MathquaternionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_layer_min(s : MathquaternionLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_layer_max(s : MathquaternionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_layer_max(s : MathquaternionLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_layer_to_string(s : MathquaternionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_quaternion_buffer_set(s : MathquaternionBuffer, i : Int, v : Double)
   result
 }
 
-pub fn math_quaternion_buffer_sum(s : MathquaternionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_buffer_sum(s : MathquaternionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_buffer_mean(s : MathquaternionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_buffer_mean(s : MathquaternionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_buffer_scale(s : MathquaternionBuffer, f : Double) -> MathquaternionBuffer {
   let result = math_quaternion_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_quaternion_buffer_fill(s : MathquaternionBuffer, v : Double) -> Math
   result
 }
 
-pub fn math_quaternion_buffer_min(s : MathquaternionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_buffer_min(s : MathquaternionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_buffer_max(s : MathquaternionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_buffer_max(s : MathquaternionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_buffer_to_string(s : MathquaternionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_quaternion_cursor_set(s : MathquaternionCursor, i : Int, v : Double)
   result
 }
 
-pub fn math_quaternion_cursor_sum(s : MathquaternionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_cursor_sum(s : MathquaternionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_cursor_mean(s : MathquaternionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_cursor_mean(s : MathquaternionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_cursor_scale(s : MathquaternionCursor, f : Double) -> MathquaternionCursor {
   let result = math_quaternion_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_quaternion_cursor_fill(s : MathquaternionCursor, v : Double) -> Math
   result
 }
 
-pub fn math_quaternion_cursor_min(s : MathquaternionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_cursor_min(s : MathquaternionCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_cursor_max(s : MathquaternionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_cursor_max(s : MathquaternionCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_cursor_to_string(s : MathquaternionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_quaternion_view_set(s : MathquaternionView, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_quaternion_view_sum(s : MathquaternionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_view_sum(s : MathquaternionView) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_view_mean(s : MathquaternionView) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_view_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_view_mean(s : MathquaternionView) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_view_scale(s : MathquaternionView, f : Double) -> MathquaternionView {
   let result = math_quaternion_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_quaternion_view_fill(s : MathquaternionView, v : Double) -> Mathquat
   result
 }
 
-pub fn math_quaternion_view_min(s : MathquaternionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_view_min(s : MathquaternionView) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_view_max(s : MathquaternionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_view_max(s : MathquaternionView) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_view_to_string(s : MathquaternionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_quaternion_range_set(s : MathquaternionRange, i : Int, v : Double) -
   result
 }
 
-pub fn math_quaternion_range_sum(s : MathquaternionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_range_sum(s : MathquaternionRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_range_mean(s : MathquaternionRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_range_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_range_mean(s : MathquaternionRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_range_scale(s : MathquaternionRange, f : Double) -> MathquaternionRange {
   let result = math_quaternion_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_quaternion_range_fill(s : MathquaternionRange, v : Double) -> Mathqu
   result
 }
 
-pub fn math_quaternion_range_min(s : MathquaternionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_range_min(s : MathquaternionRange) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_range_max(s : MathquaternionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_range_max(s : MathquaternionRange) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_range_to_string(s : MathquaternionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_quaternion_slice_set(s : MathquaternionSlice, i : Int, v : Double) -
   result
 }
 
-pub fn math_quaternion_slice_sum(s : MathquaternionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quaternion_slice_sum(s : MathquaternionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_quaternion_slice_mean(s : MathquaternionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_quaternion_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_quaternion_slice_mean(s : MathquaternionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_quaternion_slice_scale(s : MathquaternionSlice, f : Double) -> MathquaternionSlice {
   let result = math_quaternion_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_quaternion_slice_fill(s : MathquaternionSlice, v : Double) -> Mathqu
   result
 }
 
-pub fn math_quaternion_slice_min(s : MathquaternionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_slice_min(s : MathquaternionSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_quaternion_slice_max(s : MathquaternionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quaternion_slice_max(s : MathquaternionSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_quaternion_slice_to_string(s : MathquaternionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

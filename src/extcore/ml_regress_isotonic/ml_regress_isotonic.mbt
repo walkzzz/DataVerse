@@ -88,11 +88,7 @@ pub fn ml_regress_isotonic_make_series(vals : Array[Double], name : String) -> M
 
 pub fn ml_regress_isotonic_series_len(s : MlregressisotonicSeries) -> Int { s.vals.length() }
 
-pub fn ml_regress_isotonic_series_sum(s : MlregressisotonicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_regress_isotonic_series_sum(s : MlregressisotonicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_regress_isotonic_series_mean(s : MlregressisotonicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_regress_isotonic_frame_set(s : MlregressisotonicFrame, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_isotonic_frame_sum(s : MlregressisotonicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_frame_sum(s : MlregressisotonicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_frame_mean(s : MlregressisotonicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_frame_mean(s : MlregressisotonicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_frame_scale(s : MlregressisotonicFrame, f : Double) -> MlregressisotonicFrame {
   let result = ml_regress_isotonic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_regress_isotonic_frame_fill(s : MlregressisotonicFrame, v : Double) ->
   result
 }
 
-pub fn ml_regress_isotonic_frame_min(s : MlregressisotonicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_frame_min(s : MlregressisotonicFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_frame_max(s : MlregressisotonicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_frame_max(s : MlregressisotonicFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_frame_to_string(s : MlregressisotonicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_regress_isotonic_table_set(s : MlregressisotonicTable, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_isotonic_table_sum(s : MlregressisotonicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_table_sum(s : MlregressisotonicTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_table_mean(s : MlregressisotonicTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_table_mean(s : MlregressisotonicTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_table_scale(s : MlregressisotonicTable, f : Double) -> MlregressisotonicTable {
   let result = ml_regress_isotonic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_regress_isotonic_table_fill(s : MlregressisotonicTable, v : Double) ->
   result
 }
 
-pub fn ml_regress_isotonic_table_min(s : MlregressisotonicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_table_min(s : MlregressisotonicTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_table_max(s : MlregressisotonicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_table_max(s : MlregressisotonicTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_table_to_string(s : MlregressisotonicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_regress_isotonic_graphn_set(s : MlregressisotonicGraphN, i : Int, v : 
   result
 }
 
-pub fn ml_regress_isotonic_graphn_sum(s : MlregressisotonicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_graphn_sum(s : MlregressisotonicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_graphn_mean(s : MlregressisotonicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_graphn_mean(s : MlregressisotonicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_graphn_scale(s : MlregressisotonicGraphN, f : Double) -> MlregressisotonicGraphN {
   let result = ml_regress_isotonic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_regress_isotonic_graphn_fill(s : MlregressisotonicGraphN, v : Double) 
   result
 }
 
-pub fn ml_regress_isotonic_graphn_min(s : MlregressisotonicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_graphn_min(s : MlregressisotonicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_graphn_max(s : MlregressisotonicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_graphn_max(s : MlregressisotonicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_graphn_to_string(s : MlregressisotonicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_regress_isotonic_node_set(s : MlregressisotonicNode, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_isotonic_node_sum(s : MlregressisotonicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_node_sum(s : MlregressisotonicNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_node_mean(s : MlregressisotonicNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_node_mean(s : MlregressisotonicNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_node_scale(s : MlregressisotonicNode, f : Double) -> MlregressisotonicNode {
   let result = ml_regress_isotonic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_regress_isotonic_node_fill(s : MlregressisotonicNode, v : Double) -> M
   result
 }
 
-pub fn ml_regress_isotonic_node_min(s : MlregressisotonicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_node_min(s : MlregressisotonicNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_node_max(s : MlregressisotonicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_node_max(s : MlregressisotonicNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_node_to_string(s : MlregressisotonicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_regress_isotonic_edge_set(s : MlregressisotonicEdge, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_isotonic_edge_sum(s : MlregressisotonicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_edge_sum(s : MlregressisotonicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_edge_mean(s : MlregressisotonicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_edge_mean(s : MlregressisotonicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_edge_scale(s : MlregressisotonicEdge, f : Double) -> MlregressisotonicEdge {
   let result = ml_regress_isotonic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_regress_isotonic_edge_fill(s : MlregressisotonicEdge, v : Double) -> M
   result
 }
 
-pub fn ml_regress_isotonic_edge_min(s : MlregressisotonicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_edge_min(s : MlregressisotonicEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_edge_max(s : MlregressisotonicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_edge_max(s : MlregressisotonicEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_edge_to_string(s : MlregressisotonicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_regress_isotonic_path_set(s : MlregressisotonicPath, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_isotonic_path_sum(s : MlregressisotonicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_path_sum(s : MlregressisotonicPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_path_mean(s : MlregressisotonicPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_path_mean(s : MlregressisotonicPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_path_scale(s : MlregressisotonicPath, f : Double) -> MlregressisotonicPath {
   let result = ml_regress_isotonic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_regress_isotonic_path_fill(s : MlregressisotonicPath, v : Double) -> M
   result
 }
 
-pub fn ml_regress_isotonic_path_min(s : MlregressisotonicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_path_min(s : MlregressisotonicPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_path_max(s : MlregressisotonicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_path_max(s : MlregressisotonicPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_path_to_string(s : MlregressisotonicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_regress_isotonic_cluster_set(s : MlregressisotonicCluster, i : Int, v 
   result
 }
 
-pub fn ml_regress_isotonic_cluster_sum(s : MlregressisotonicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_cluster_sum(s : MlregressisotonicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_cluster_mean(s : MlregressisotonicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_cluster_mean(s : MlregressisotonicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_cluster_scale(s : MlregressisotonicCluster, f : Double) -> MlregressisotonicCluster {
   let result = ml_regress_isotonic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_regress_isotonic_cluster_fill(s : MlregressisotonicCluster, v : Double
   result
 }
 
-pub fn ml_regress_isotonic_cluster_min(s : MlregressisotonicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_cluster_min(s : MlregressisotonicCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_cluster_max(s : MlregressisotonicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_cluster_max(s : MlregressisotonicCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_cluster_to_string(s : MlregressisotonicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_regress_isotonic_model_set(s : MlregressisotonicModel, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_isotonic_model_sum(s : MlregressisotonicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_model_sum(s : MlregressisotonicModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_model_mean(s : MlregressisotonicModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_model_mean(s : MlregressisotonicModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_model_scale(s : MlregressisotonicModel, f : Double) -> MlregressisotonicModel {
   let result = ml_regress_isotonic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_regress_isotonic_model_fill(s : MlregressisotonicModel, v : Double) ->
   result
 }
 
-pub fn ml_regress_isotonic_model_min(s : MlregressisotonicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_model_min(s : MlregressisotonicModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_model_max(s : MlregressisotonicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_model_max(s : MlregressisotonicModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_model_to_string(s : MlregressisotonicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_regress_isotonic_layer_set(s : MlregressisotonicLayer, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_isotonic_layer_sum(s : MlregressisotonicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_layer_sum(s : MlregressisotonicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_layer_mean(s : MlregressisotonicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_layer_mean(s : MlregressisotonicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_layer_scale(s : MlregressisotonicLayer, f : Double) -> MlregressisotonicLayer {
   let result = ml_regress_isotonic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_regress_isotonic_layer_fill(s : MlregressisotonicLayer, v : Double) ->
   result
 }
 
-pub fn ml_regress_isotonic_layer_min(s : MlregressisotonicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_layer_min(s : MlregressisotonicLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_layer_max(s : MlregressisotonicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_layer_max(s : MlregressisotonicLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_layer_to_string(s : MlregressisotonicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_regress_isotonic_buffer_set(s : MlregressisotonicBuffer, i : Int, v : 
   result
 }
 
-pub fn ml_regress_isotonic_buffer_sum(s : MlregressisotonicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_buffer_sum(s : MlregressisotonicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_buffer_mean(s : MlregressisotonicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_buffer_mean(s : MlregressisotonicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_buffer_scale(s : MlregressisotonicBuffer, f : Double) -> MlregressisotonicBuffer {
   let result = ml_regress_isotonic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_regress_isotonic_buffer_fill(s : MlregressisotonicBuffer, v : Double) 
   result
 }
 
-pub fn ml_regress_isotonic_buffer_min(s : MlregressisotonicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_buffer_min(s : MlregressisotonicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_buffer_max(s : MlregressisotonicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_buffer_max(s : MlregressisotonicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_buffer_to_string(s : MlregressisotonicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_regress_isotonic_cursor_set(s : MlregressisotonicCursor, i : Int, v : 
   result
 }
 
-pub fn ml_regress_isotonic_cursor_sum(s : MlregressisotonicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_cursor_sum(s : MlregressisotonicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_cursor_mean(s : MlregressisotonicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_cursor_mean(s : MlregressisotonicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_cursor_scale(s : MlregressisotonicCursor, f : Double) -> MlregressisotonicCursor {
   let result = ml_regress_isotonic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_regress_isotonic_cursor_fill(s : MlregressisotonicCursor, v : Double) 
   result
 }
 
-pub fn ml_regress_isotonic_cursor_min(s : MlregressisotonicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_cursor_min(s : MlregressisotonicCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_cursor_max(s : MlregressisotonicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_cursor_max(s : MlregressisotonicCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_cursor_to_string(s : MlregressisotonicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_regress_isotonic_view_set(s : MlregressisotonicView, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_isotonic_view_sum(s : MlregressisotonicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_view_sum(s : MlregressisotonicView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_view_mean(s : MlregressisotonicView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_view_mean(s : MlregressisotonicView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_view_scale(s : MlregressisotonicView, f : Double) -> MlregressisotonicView {
   let result = ml_regress_isotonic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_regress_isotonic_view_fill(s : MlregressisotonicView, v : Double) -> M
   result
 }
 
-pub fn ml_regress_isotonic_view_min(s : MlregressisotonicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_view_min(s : MlregressisotonicView) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_view_max(s : MlregressisotonicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_view_max(s : MlregressisotonicView) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_view_to_string(s : MlregressisotonicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_regress_isotonic_range_set(s : MlregressisotonicRange, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_isotonic_range_sum(s : MlregressisotonicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_range_sum(s : MlregressisotonicRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_range_mean(s : MlregressisotonicRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_range_mean(s : MlregressisotonicRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_range_scale(s : MlregressisotonicRange, f : Double) -> MlregressisotonicRange {
   let result = ml_regress_isotonic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_regress_isotonic_range_fill(s : MlregressisotonicRange, v : Double) ->
   result
 }
 
-pub fn ml_regress_isotonic_range_min(s : MlregressisotonicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_range_min(s : MlregressisotonicRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_range_max(s : MlregressisotonicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_range_max(s : MlregressisotonicRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_range_to_string(s : MlregressisotonicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_regress_isotonic_slice_set(s : MlregressisotonicSlice, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_isotonic_slice_sum(s : MlregressisotonicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_isotonic_slice_sum(s : MlregressisotonicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_isotonic_slice_mean(s : MlregressisotonicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_isotonic_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_isotonic_slice_mean(s : MlregressisotonicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_isotonic_slice_scale(s : MlregressisotonicSlice, f : Double) -> MlregressisotonicSlice {
   let result = ml_regress_isotonic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_regress_isotonic_slice_fill(s : MlregressisotonicSlice, v : Double) ->
   result
 }
 
-pub fn ml_regress_isotonic_slice_min(s : MlregressisotonicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_slice_min(s : MlregressisotonicSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_isotonic_slice_max(s : MlregressisotonicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_isotonic_slice_max(s : MlregressisotonicSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_isotonic_slice_to_string(s : MlregressisotonicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

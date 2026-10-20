@@ -88,11 +88,7 @@ pub fn sort_compare_quick_make_series(vals : Array[Double], name : String) -> So
 
 pub fn sort_compare_quick_series_len(s : SortcomparequickSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_quick_series_sum(s : SortcomparequickSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_quick_series_sum(s : SortcomparequickSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_quick_series_mean(s : SortcomparequickSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_quick_frame_set(s : SortcomparequickFrame, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_quick_frame_sum(s : SortcomparequickFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_frame_sum(s : SortcomparequickFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_frame_mean(s : SortcomparequickFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_frame_mean(s : SortcomparequickFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_frame_scale(s : SortcomparequickFrame, f : Double) -> SortcomparequickFrame {
   let result = sort_compare_quick_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_quick_frame_fill(s : SortcomparequickFrame, v : Double) -> S
   result
 }
 
-pub fn sort_compare_quick_frame_min(s : SortcomparequickFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_frame_min(s : SortcomparequickFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_frame_max(s : SortcomparequickFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_frame_max(s : SortcomparequickFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_frame_to_string(s : SortcomparequickFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_quick_table_set(s : SortcomparequickTable, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_quick_table_sum(s : SortcomparequickTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_table_sum(s : SortcomparequickTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_table_mean(s : SortcomparequickTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_table_mean(s : SortcomparequickTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_table_scale(s : SortcomparequickTable, f : Double) -> SortcomparequickTable {
   let result = sort_compare_quick_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_quick_table_fill(s : SortcomparequickTable, v : Double) -> S
   result
 }
 
-pub fn sort_compare_quick_table_min(s : SortcomparequickTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_table_min(s : SortcomparequickTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_table_max(s : SortcomparequickTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_table_max(s : SortcomparequickTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_table_to_string(s : SortcomparequickTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_quick_graphn_set(s : SortcomparequickGraphN, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_quick_graphn_sum(s : SortcomparequickGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_graphn_sum(s : SortcomparequickGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_graphn_mean(s : SortcomparequickGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_graphn_mean(s : SortcomparequickGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_graphn_scale(s : SortcomparequickGraphN, f : Double) -> SortcomparequickGraphN {
   let result = sort_compare_quick_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_quick_graphn_fill(s : SortcomparequickGraphN, v : Double) ->
   result
 }
 
-pub fn sort_compare_quick_graphn_min(s : SortcomparequickGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_graphn_min(s : SortcomparequickGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_graphn_max(s : SortcomparequickGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_graphn_max(s : SortcomparequickGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_graphn_to_string(s : SortcomparequickGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_quick_node_set(s : SortcomparequickNode, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_quick_node_sum(s : SortcomparequickNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_node_sum(s : SortcomparequickNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_node_mean(s : SortcomparequickNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_node_mean(s : SortcomparequickNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_node_scale(s : SortcomparequickNode, f : Double) -> SortcomparequickNode {
   let result = sort_compare_quick_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_quick_node_fill(s : SortcomparequickNode, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_quick_node_min(s : SortcomparequickNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_node_min(s : SortcomparequickNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_node_max(s : SortcomparequickNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_node_max(s : SortcomparequickNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_node_to_string(s : SortcomparequickNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_quick_edge_set(s : SortcomparequickEdge, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_quick_edge_sum(s : SortcomparequickEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_edge_sum(s : SortcomparequickEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_edge_mean(s : SortcomparequickEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_edge_mean(s : SortcomparequickEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_edge_scale(s : SortcomparequickEdge, f : Double) -> SortcomparequickEdge {
   let result = sort_compare_quick_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_quick_edge_fill(s : SortcomparequickEdge, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_quick_edge_min(s : SortcomparequickEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_edge_min(s : SortcomparequickEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_edge_max(s : SortcomparequickEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_edge_max(s : SortcomparequickEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_edge_to_string(s : SortcomparequickEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_quick_path_set(s : SortcomparequickPath, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_quick_path_sum(s : SortcomparequickPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_path_sum(s : SortcomparequickPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_path_mean(s : SortcomparequickPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_path_mean(s : SortcomparequickPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_path_scale(s : SortcomparequickPath, f : Double) -> SortcomparequickPath {
   let result = sort_compare_quick_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_quick_path_fill(s : SortcomparequickPath, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_quick_path_min(s : SortcomparequickPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_path_min(s : SortcomparequickPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_path_max(s : SortcomparequickPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_path_max(s : SortcomparequickPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_path_to_string(s : SortcomparequickPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_quick_cluster_set(s : SortcomparequickCluster, i : Int, v : 
   result
 }
 
-pub fn sort_compare_quick_cluster_sum(s : SortcomparequickCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_cluster_sum(s : SortcomparequickCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_cluster_mean(s : SortcomparequickCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_cluster_mean(s : SortcomparequickCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_cluster_scale(s : SortcomparequickCluster, f : Double) -> SortcomparequickCluster {
   let result = sort_compare_quick_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_quick_cluster_fill(s : SortcomparequickCluster, v : Double) 
   result
 }
 
-pub fn sort_compare_quick_cluster_min(s : SortcomparequickCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_cluster_min(s : SortcomparequickCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_cluster_max(s : SortcomparequickCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_cluster_max(s : SortcomparequickCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_cluster_to_string(s : SortcomparequickCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_quick_model_set(s : SortcomparequickModel, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_quick_model_sum(s : SortcomparequickModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_model_sum(s : SortcomparequickModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_model_mean(s : SortcomparequickModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_model_mean(s : SortcomparequickModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_model_scale(s : SortcomparequickModel, f : Double) -> SortcomparequickModel {
   let result = sort_compare_quick_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_quick_model_fill(s : SortcomparequickModel, v : Double) -> S
   result
 }
 
-pub fn sort_compare_quick_model_min(s : SortcomparequickModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_model_min(s : SortcomparequickModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_model_max(s : SortcomparequickModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_model_max(s : SortcomparequickModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_model_to_string(s : SortcomparequickModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_quick_layer_set(s : SortcomparequickLayer, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_quick_layer_sum(s : SortcomparequickLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_layer_sum(s : SortcomparequickLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_layer_mean(s : SortcomparequickLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_layer_mean(s : SortcomparequickLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_layer_scale(s : SortcomparequickLayer, f : Double) -> SortcomparequickLayer {
   let result = sort_compare_quick_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_quick_layer_fill(s : SortcomparequickLayer, v : Double) -> S
   result
 }
 
-pub fn sort_compare_quick_layer_min(s : SortcomparequickLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_layer_min(s : SortcomparequickLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_layer_max(s : SortcomparequickLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_layer_max(s : SortcomparequickLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_layer_to_string(s : SortcomparequickLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_quick_buffer_set(s : SortcomparequickBuffer, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_quick_buffer_sum(s : SortcomparequickBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_buffer_sum(s : SortcomparequickBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_buffer_mean(s : SortcomparequickBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_buffer_mean(s : SortcomparequickBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_buffer_scale(s : SortcomparequickBuffer, f : Double) -> SortcomparequickBuffer {
   let result = sort_compare_quick_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_quick_buffer_fill(s : SortcomparequickBuffer, v : Double) ->
   result
 }
 
-pub fn sort_compare_quick_buffer_min(s : SortcomparequickBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_buffer_min(s : SortcomparequickBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_buffer_max(s : SortcomparequickBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_buffer_max(s : SortcomparequickBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_buffer_to_string(s : SortcomparequickBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_quick_cursor_set(s : SortcomparequickCursor, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_quick_cursor_sum(s : SortcomparequickCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_cursor_sum(s : SortcomparequickCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_cursor_mean(s : SortcomparequickCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_cursor_mean(s : SortcomparequickCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_cursor_scale(s : SortcomparequickCursor, f : Double) -> SortcomparequickCursor {
   let result = sort_compare_quick_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_quick_cursor_fill(s : SortcomparequickCursor, v : Double) ->
   result
 }
 
-pub fn sort_compare_quick_cursor_min(s : SortcomparequickCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_cursor_min(s : SortcomparequickCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_cursor_max(s : SortcomparequickCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_cursor_max(s : SortcomparequickCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_cursor_to_string(s : SortcomparequickCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_quick_view_set(s : SortcomparequickView, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_quick_view_sum(s : SortcomparequickView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_view_sum(s : SortcomparequickView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_view_mean(s : SortcomparequickView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_view_mean(s : SortcomparequickView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_view_scale(s : SortcomparequickView, f : Double) -> SortcomparequickView {
   let result = sort_compare_quick_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_quick_view_fill(s : SortcomparequickView, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_quick_view_min(s : SortcomparequickView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_view_min(s : SortcomparequickView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_view_max(s : SortcomparequickView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_view_max(s : SortcomparequickView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_view_to_string(s : SortcomparequickView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_quick_range_set(s : SortcomparequickRange, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_quick_range_sum(s : SortcomparequickRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_range_sum(s : SortcomparequickRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_range_mean(s : SortcomparequickRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_range_mean(s : SortcomparequickRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_range_scale(s : SortcomparequickRange, f : Double) -> SortcomparequickRange {
   let result = sort_compare_quick_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_quick_range_fill(s : SortcomparequickRange, v : Double) -> S
   result
 }
 
-pub fn sort_compare_quick_range_min(s : SortcomparequickRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_range_min(s : SortcomparequickRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_range_max(s : SortcomparequickRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_range_max(s : SortcomparequickRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_range_to_string(s : SortcomparequickRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_quick_slice_set(s : SortcomparequickSlice, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_quick_slice_sum(s : SortcomparequickSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_quick_slice_sum(s : SortcomparequickSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_quick_slice_mean(s : SortcomparequickSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_quick_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_quick_slice_mean(s : SortcomparequickSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_quick_slice_scale(s : SortcomparequickSlice, f : Double) -> SortcomparequickSlice {
   let result = sort_compare_quick_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_quick_slice_fill(s : SortcomparequickSlice, v : Double) -> S
   result
 }
 
-pub fn sort_compare_quick_slice_min(s : SortcomparequickSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_slice_min(s : SortcomparequickSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_quick_slice_max(s : SortcomparequickSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_quick_slice_max(s : SortcomparequickSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_quick_slice_to_string(s : SortcomparequickSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

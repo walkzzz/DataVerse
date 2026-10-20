@@ -88,11 +88,7 @@ pub fn stats_model_linear_make_series(vals : Array[Double], name : String) -> St
 
 pub fn stats_model_linear_series_len(s : StatsmodellinearSeries) -> Int { s.vals.length() }
 
-pub fn stats_model_linear_series_sum(s : StatsmodellinearSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_model_linear_series_sum(s : StatsmodellinearSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_model_linear_series_mean(s : StatsmodellinearSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_model_linear_frame_set(s : StatsmodellinearFrame, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_linear_frame_sum(s : StatsmodellinearFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_frame_sum(s : StatsmodellinearFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_frame_mean(s : StatsmodellinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_frame_mean(s : StatsmodellinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_frame_scale(s : StatsmodellinearFrame, f : Double) -> StatsmodellinearFrame {
   let result = stats_model_linear_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_model_linear_frame_fill(s : StatsmodellinearFrame, v : Double) -> S
   result
 }
 
-pub fn stats_model_linear_frame_min(s : StatsmodellinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_frame_min(s : StatsmodellinearFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_frame_max(s : StatsmodellinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_frame_max(s : StatsmodellinearFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_frame_to_string(s : StatsmodellinearFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_model_linear_table_set(s : StatsmodellinearTable, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_linear_table_sum(s : StatsmodellinearTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_table_sum(s : StatsmodellinearTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_table_mean(s : StatsmodellinearTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_table_mean(s : StatsmodellinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_table_scale(s : StatsmodellinearTable, f : Double) -> StatsmodellinearTable {
   let result = stats_model_linear_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_model_linear_table_fill(s : StatsmodellinearTable, v : Double) -> S
   result
 }
 
-pub fn stats_model_linear_table_min(s : StatsmodellinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_table_min(s : StatsmodellinearTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_table_max(s : StatsmodellinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_table_max(s : StatsmodellinearTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_table_to_string(s : StatsmodellinearTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_model_linear_graphn_set(s : StatsmodellinearGraphN, i : Int, v : Do
   result
 }
 
-pub fn stats_model_linear_graphn_sum(s : StatsmodellinearGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_graphn_sum(s : StatsmodellinearGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_graphn_mean(s : StatsmodellinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_graphn_mean(s : StatsmodellinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_graphn_scale(s : StatsmodellinearGraphN, f : Double) -> StatsmodellinearGraphN {
   let result = stats_model_linear_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_model_linear_graphn_fill(s : StatsmodellinearGraphN, v : Double) ->
   result
 }
 
-pub fn stats_model_linear_graphn_min(s : StatsmodellinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_graphn_min(s : StatsmodellinearGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_graphn_max(s : StatsmodellinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_graphn_max(s : StatsmodellinearGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_graphn_to_string(s : StatsmodellinearGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_model_linear_node_set(s : StatsmodellinearNode, i : Int, v : Double
   result
 }
 
-pub fn stats_model_linear_node_sum(s : StatsmodellinearNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_node_sum(s : StatsmodellinearNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_node_mean(s : StatsmodellinearNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_node_mean(s : StatsmodellinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_node_scale(s : StatsmodellinearNode, f : Double) -> StatsmodellinearNode {
   let result = stats_model_linear_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_model_linear_node_fill(s : StatsmodellinearNode, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_linear_node_min(s : StatsmodellinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_node_min(s : StatsmodellinearNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_node_max(s : StatsmodellinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_node_max(s : StatsmodellinearNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_node_to_string(s : StatsmodellinearNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_model_linear_edge_set(s : StatsmodellinearEdge, i : Int, v : Double
   result
 }
 
-pub fn stats_model_linear_edge_sum(s : StatsmodellinearEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_edge_sum(s : StatsmodellinearEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_edge_mean(s : StatsmodellinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_edge_mean(s : StatsmodellinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_edge_scale(s : StatsmodellinearEdge, f : Double) -> StatsmodellinearEdge {
   let result = stats_model_linear_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_model_linear_edge_fill(s : StatsmodellinearEdge, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_linear_edge_min(s : StatsmodellinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_edge_min(s : StatsmodellinearEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_edge_max(s : StatsmodellinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_edge_max(s : StatsmodellinearEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_edge_to_string(s : StatsmodellinearEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_model_linear_path_set(s : StatsmodellinearPath, i : Int, v : Double
   result
 }
 
-pub fn stats_model_linear_path_sum(s : StatsmodellinearPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_path_sum(s : StatsmodellinearPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_path_mean(s : StatsmodellinearPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_path_mean(s : StatsmodellinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_path_scale(s : StatsmodellinearPath, f : Double) -> StatsmodellinearPath {
   let result = stats_model_linear_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_model_linear_path_fill(s : StatsmodellinearPath, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_linear_path_min(s : StatsmodellinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_path_min(s : StatsmodellinearPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_path_max(s : StatsmodellinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_path_max(s : StatsmodellinearPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_path_to_string(s : StatsmodellinearPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_model_linear_cluster_set(s : StatsmodellinearCluster, i : Int, v : 
   result
 }
 
-pub fn stats_model_linear_cluster_sum(s : StatsmodellinearCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_cluster_sum(s : StatsmodellinearCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_cluster_mean(s : StatsmodellinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_cluster_mean(s : StatsmodellinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_cluster_scale(s : StatsmodellinearCluster, f : Double) -> StatsmodellinearCluster {
   let result = stats_model_linear_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_model_linear_cluster_fill(s : StatsmodellinearCluster, v : Double) 
   result
 }
 
-pub fn stats_model_linear_cluster_min(s : StatsmodellinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_cluster_min(s : StatsmodellinearCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_cluster_max(s : StatsmodellinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_cluster_max(s : StatsmodellinearCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_cluster_to_string(s : StatsmodellinearCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_model_linear_model_set(s : StatsmodellinearModel, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_linear_model_sum(s : StatsmodellinearModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_model_sum(s : StatsmodellinearModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_model_mean(s : StatsmodellinearModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_model_mean(s : StatsmodellinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_model_scale(s : StatsmodellinearModel, f : Double) -> StatsmodellinearModel {
   let result = stats_model_linear_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_model_linear_model_fill(s : StatsmodellinearModel, v : Double) -> S
   result
 }
 
-pub fn stats_model_linear_model_min(s : StatsmodellinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_model_min(s : StatsmodellinearModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_model_max(s : StatsmodellinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_model_max(s : StatsmodellinearModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_model_to_string(s : StatsmodellinearModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_model_linear_layer_set(s : StatsmodellinearLayer, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_linear_layer_sum(s : StatsmodellinearLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_layer_sum(s : StatsmodellinearLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_layer_mean(s : StatsmodellinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_layer_mean(s : StatsmodellinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_layer_scale(s : StatsmodellinearLayer, f : Double) -> StatsmodellinearLayer {
   let result = stats_model_linear_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_model_linear_layer_fill(s : StatsmodellinearLayer, v : Double) -> S
   result
 }
 
-pub fn stats_model_linear_layer_min(s : StatsmodellinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_layer_min(s : StatsmodellinearLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_layer_max(s : StatsmodellinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_layer_max(s : StatsmodellinearLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_layer_to_string(s : StatsmodellinearLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_model_linear_buffer_set(s : StatsmodellinearBuffer, i : Int, v : Do
   result
 }
 
-pub fn stats_model_linear_buffer_sum(s : StatsmodellinearBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_buffer_sum(s : StatsmodellinearBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_buffer_mean(s : StatsmodellinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_buffer_mean(s : StatsmodellinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_buffer_scale(s : StatsmodellinearBuffer, f : Double) -> StatsmodellinearBuffer {
   let result = stats_model_linear_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_model_linear_buffer_fill(s : StatsmodellinearBuffer, v : Double) ->
   result
 }
 
-pub fn stats_model_linear_buffer_min(s : StatsmodellinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_buffer_min(s : StatsmodellinearBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_buffer_max(s : StatsmodellinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_buffer_max(s : StatsmodellinearBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_buffer_to_string(s : StatsmodellinearBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_model_linear_cursor_set(s : StatsmodellinearCursor, i : Int, v : Do
   result
 }
 
-pub fn stats_model_linear_cursor_sum(s : StatsmodellinearCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_cursor_sum(s : StatsmodellinearCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_cursor_mean(s : StatsmodellinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_cursor_mean(s : StatsmodellinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_cursor_scale(s : StatsmodellinearCursor, f : Double) -> StatsmodellinearCursor {
   let result = stats_model_linear_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_model_linear_cursor_fill(s : StatsmodellinearCursor, v : Double) ->
   result
 }
 
-pub fn stats_model_linear_cursor_min(s : StatsmodellinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_cursor_min(s : StatsmodellinearCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_cursor_max(s : StatsmodellinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_cursor_max(s : StatsmodellinearCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_cursor_to_string(s : StatsmodellinearCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_model_linear_view_set(s : StatsmodellinearView, i : Int, v : Double
   result
 }
 
-pub fn stats_model_linear_view_sum(s : StatsmodellinearView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_view_sum(s : StatsmodellinearView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_view_mean(s : StatsmodellinearView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_view_mean(s : StatsmodellinearView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_view_scale(s : StatsmodellinearView, f : Double) -> StatsmodellinearView {
   let result = stats_model_linear_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_model_linear_view_fill(s : StatsmodellinearView, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_linear_view_min(s : StatsmodellinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_view_min(s : StatsmodellinearView) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_view_max(s : StatsmodellinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_view_max(s : StatsmodellinearView) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_view_to_string(s : StatsmodellinearView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_model_linear_range_set(s : StatsmodellinearRange, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_linear_range_sum(s : StatsmodellinearRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_range_sum(s : StatsmodellinearRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_range_mean(s : StatsmodellinearRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_range_mean(s : StatsmodellinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_range_scale(s : StatsmodellinearRange, f : Double) -> StatsmodellinearRange {
   let result = stats_model_linear_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_model_linear_range_fill(s : StatsmodellinearRange, v : Double) -> S
   result
 }
 
-pub fn stats_model_linear_range_min(s : StatsmodellinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_range_min(s : StatsmodellinearRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_range_max(s : StatsmodellinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_range_max(s : StatsmodellinearRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_range_to_string(s : StatsmodellinearRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_model_linear_slice_set(s : StatsmodellinearSlice, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_linear_slice_sum(s : StatsmodellinearSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_linear_slice_sum(s : StatsmodellinearSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_linear_slice_mean(s : StatsmodellinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_linear_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_linear_slice_mean(s : StatsmodellinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_linear_slice_scale(s : StatsmodellinearSlice, f : Double) -> StatsmodellinearSlice {
   let result = stats_model_linear_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_model_linear_slice_fill(s : StatsmodellinearSlice, v : Double) -> S
   result
 }
 
-pub fn stats_model_linear_slice_min(s : StatsmodellinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_slice_min(s : StatsmodellinearSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_linear_slice_max(s : StatsmodellinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_linear_slice_max(s : StatsmodellinearSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_linear_slice_to_string(s : StatsmodellinearSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

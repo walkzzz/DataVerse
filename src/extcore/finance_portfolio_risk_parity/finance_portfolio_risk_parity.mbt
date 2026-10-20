@@ -88,11 +88,7 @@ pub fn finance_portfolio_risk_parity_make_series(vals : Array[Double], name : St
 
 pub fn finance_portfolio_risk_parity_series_len(s : FinanceportfolioriskparitySeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_risk_parity_series_sum(s : FinanceportfolioriskparitySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_series_sum(s : FinanceportfolioriskparitySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_risk_parity_series_mean(s : FinanceportfolioriskparitySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_risk_parity_frame_set(s : FinanceportfolioriskparityFra
   result
 }
 
-pub fn finance_portfolio_risk_parity_frame_sum(s : FinanceportfolioriskparityFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_frame_sum(s : FinanceportfolioriskparityFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_frame_mean(s : FinanceportfolioriskparityFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_frame_mean(s : FinanceportfolioriskparityFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_frame_scale(s : FinanceportfolioriskparityFrame, f : Double) -> FinanceportfolioriskparityFrame {
   let result = finance_portfolio_risk_parity_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_risk_parity_frame_fill(s : FinanceportfolioriskparityFr
   result
 }
 
-pub fn finance_portfolio_risk_parity_frame_min(s : FinanceportfolioriskparityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_frame_min(s : FinanceportfolioriskparityFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_frame_max(s : FinanceportfolioriskparityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_frame_max(s : FinanceportfolioriskparityFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_frame_to_string(s : FinanceportfolioriskparityFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_risk_parity_table_set(s : FinanceportfolioriskparityTab
   result
 }
 
-pub fn finance_portfolio_risk_parity_table_sum(s : FinanceportfolioriskparityTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_table_sum(s : FinanceportfolioriskparityTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_table_mean(s : FinanceportfolioriskparityTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_table_mean(s : FinanceportfolioriskparityTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_table_scale(s : FinanceportfolioriskparityTable, f : Double) -> FinanceportfolioriskparityTable {
   let result = finance_portfolio_risk_parity_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_risk_parity_table_fill(s : FinanceportfolioriskparityTa
   result
 }
 
-pub fn finance_portfolio_risk_parity_table_min(s : FinanceportfolioriskparityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_table_min(s : FinanceportfolioriskparityTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_table_max(s : FinanceportfolioriskparityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_table_max(s : FinanceportfolioriskparityTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_table_to_string(s : FinanceportfolioriskparityTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_risk_parity_graphn_set(s : FinanceportfolioriskparityGr
   result
 }
 
-pub fn finance_portfolio_risk_parity_graphn_sum(s : FinanceportfolioriskparityGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_graphn_sum(s : FinanceportfolioriskparityGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_graphn_mean(s : FinanceportfolioriskparityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_graphn_mean(s : FinanceportfolioriskparityGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_graphn_scale(s : FinanceportfolioriskparityGraphN, f : Double) -> FinanceportfolioriskparityGraphN {
   let result = finance_portfolio_risk_parity_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_risk_parity_graphn_fill(s : FinanceportfolioriskparityG
   result
 }
 
-pub fn finance_portfolio_risk_parity_graphn_min(s : FinanceportfolioriskparityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_graphn_min(s : FinanceportfolioriskparityGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_graphn_max(s : FinanceportfolioriskparityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_graphn_max(s : FinanceportfolioriskparityGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_graphn_to_string(s : FinanceportfolioriskparityGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_risk_parity_node_set(s : FinanceportfolioriskparityNode
   result
 }
 
-pub fn finance_portfolio_risk_parity_node_sum(s : FinanceportfolioriskparityNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_node_sum(s : FinanceportfolioriskparityNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_node_mean(s : FinanceportfolioriskparityNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_node_mean(s : FinanceportfolioriskparityNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_node_scale(s : FinanceportfolioriskparityNode, f : Double) -> FinanceportfolioriskparityNode {
   let result = finance_portfolio_risk_parity_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_risk_parity_node_fill(s : FinanceportfolioriskparityNod
   result
 }
 
-pub fn finance_portfolio_risk_parity_node_min(s : FinanceportfolioriskparityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_node_min(s : FinanceportfolioriskparityNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_node_max(s : FinanceportfolioriskparityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_node_max(s : FinanceportfolioriskparityNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_node_to_string(s : FinanceportfolioriskparityNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_risk_parity_edge_set(s : FinanceportfolioriskparityEdge
   result
 }
 
-pub fn finance_portfolio_risk_parity_edge_sum(s : FinanceportfolioriskparityEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_edge_sum(s : FinanceportfolioriskparityEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_edge_mean(s : FinanceportfolioriskparityEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_edge_mean(s : FinanceportfolioriskparityEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_edge_scale(s : FinanceportfolioriskparityEdge, f : Double) -> FinanceportfolioriskparityEdge {
   let result = finance_portfolio_risk_parity_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_risk_parity_edge_fill(s : FinanceportfolioriskparityEdg
   result
 }
 
-pub fn finance_portfolio_risk_parity_edge_min(s : FinanceportfolioriskparityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_edge_min(s : FinanceportfolioriskparityEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_edge_max(s : FinanceportfolioriskparityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_edge_max(s : FinanceportfolioriskparityEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_edge_to_string(s : FinanceportfolioriskparityEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_risk_parity_path_set(s : FinanceportfolioriskparityPath
   result
 }
 
-pub fn finance_portfolio_risk_parity_path_sum(s : FinanceportfolioriskparityPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_path_sum(s : FinanceportfolioriskparityPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_path_mean(s : FinanceportfolioriskparityPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_path_mean(s : FinanceportfolioriskparityPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_path_scale(s : FinanceportfolioriskparityPath, f : Double) -> FinanceportfolioriskparityPath {
   let result = finance_portfolio_risk_parity_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_risk_parity_path_fill(s : FinanceportfolioriskparityPat
   result
 }
 
-pub fn finance_portfolio_risk_parity_path_min(s : FinanceportfolioriskparityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_path_min(s : FinanceportfolioriskparityPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_path_max(s : FinanceportfolioriskparityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_path_max(s : FinanceportfolioriskparityPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_path_to_string(s : FinanceportfolioriskparityPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_risk_parity_cluster_set(s : FinanceportfolioriskparityC
   result
 }
 
-pub fn finance_portfolio_risk_parity_cluster_sum(s : FinanceportfolioriskparityCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_cluster_sum(s : FinanceportfolioriskparityCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_cluster_mean(s : FinanceportfolioriskparityCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_cluster_mean(s : FinanceportfolioriskparityCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_cluster_scale(s : FinanceportfolioriskparityCluster, f : Double) -> FinanceportfolioriskparityCluster {
   let result = finance_portfolio_risk_parity_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_risk_parity_cluster_fill(s : Financeportfolioriskparity
   result
 }
 
-pub fn finance_portfolio_risk_parity_cluster_min(s : FinanceportfolioriskparityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_cluster_min(s : FinanceportfolioriskparityCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_cluster_max(s : FinanceportfolioriskparityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_cluster_max(s : FinanceportfolioriskparityCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_cluster_to_string(s : FinanceportfolioriskparityCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_risk_parity_model_set(s : FinanceportfolioriskparityMod
   result
 }
 
-pub fn finance_portfolio_risk_parity_model_sum(s : FinanceportfolioriskparityModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_model_sum(s : FinanceportfolioriskparityModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_model_mean(s : FinanceportfolioriskparityModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_model_mean(s : FinanceportfolioriskparityModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_model_scale(s : FinanceportfolioriskparityModel, f : Double) -> FinanceportfolioriskparityModel {
   let result = finance_portfolio_risk_parity_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_risk_parity_model_fill(s : FinanceportfolioriskparityMo
   result
 }
 
-pub fn finance_portfolio_risk_parity_model_min(s : FinanceportfolioriskparityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_model_min(s : FinanceportfolioriskparityModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_model_max(s : FinanceportfolioriskparityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_model_max(s : FinanceportfolioriskparityModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_model_to_string(s : FinanceportfolioriskparityModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_risk_parity_layer_set(s : FinanceportfolioriskparityLay
   result
 }
 
-pub fn finance_portfolio_risk_parity_layer_sum(s : FinanceportfolioriskparityLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_layer_sum(s : FinanceportfolioriskparityLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_layer_mean(s : FinanceportfolioriskparityLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_layer_mean(s : FinanceportfolioriskparityLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_layer_scale(s : FinanceportfolioriskparityLayer, f : Double) -> FinanceportfolioriskparityLayer {
   let result = finance_portfolio_risk_parity_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_risk_parity_layer_fill(s : FinanceportfolioriskparityLa
   result
 }
 
-pub fn finance_portfolio_risk_parity_layer_min(s : FinanceportfolioriskparityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_layer_min(s : FinanceportfolioriskparityLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_layer_max(s : FinanceportfolioriskparityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_layer_max(s : FinanceportfolioriskparityLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_layer_to_string(s : FinanceportfolioriskparityLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_risk_parity_buffer_set(s : FinanceportfolioriskparityBu
   result
 }
 
-pub fn finance_portfolio_risk_parity_buffer_sum(s : FinanceportfolioriskparityBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_buffer_sum(s : FinanceportfolioriskparityBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_buffer_mean(s : FinanceportfolioriskparityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_buffer_mean(s : FinanceportfolioriskparityBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_buffer_scale(s : FinanceportfolioriskparityBuffer, f : Double) -> FinanceportfolioriskparityBuffer {
   let result = finance_portfolio_risk_parity_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_risk_parity_buffer_fill(s : FinanceportfolioriskparityB
   result
 }
 
-pub fn finance_portfolio_risk_parity_buffer_min(s : FinanceportfolioriskparityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_buffer_min(s : FinanceportfolioriskparityBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_buffer_max(s : FinanceportfolioriskparityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_buffer_max(s : FinanceportfolioriskparityBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_buffer_to_string(s : FinanceportfolioriskparityBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_risk_parity_cursor_set(s : FinanceportfolioriskparityCu
   result
 }
 
-pub fn finance_portfolio_risk_parity_cursor_sum(s : FinanceportfolioriskparityCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_cursor_sum(s : FinanceportfolioriskparityCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_cursor_mean(s : FinanceportfolioriskparityCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_cursor_mean(s : FinanceportfolioriskparityCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_cursor_scale(s : FinanceportfolioriskparityCursor, f : Double) -> FinanceportfolioriskparityCursor {
   let result = finance_portfolio_risk_parity_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_risk_parity_cursor_fill(s : FinanceportfolioriskparityC
   result
 }
 
-pub fn finance_portfolio_risk_parity_cursor_min(s : FinanceportfolioriskparityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_cursor_min(s : FinanceportfolioriskparityCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_cursor_max(s : FinanceportfolioriskparityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_cursor_max(s : FinanceportfolioriskparityCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_cursor_to_string(s : FinanceportfolioriskparityCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_risk_parity_view_set(s : FinanceportfolioriskparityView
   result
 }
 
-pub fn finance_portfolio_risk_parity_view_sum(s : FinanceportfolioriskparityView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_view_sum(s : FinanceportfolioriskparityView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_view_mean(s : FinanceportfolioriskparityView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_view_mean(s : FinanceportfolioriskparityView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_view_scale(s : FinanceportfolioriskparityView, f : Double) -> FinanceportfolioriskparityView {
   let result = finance_portfolio_risk_parity_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_risk_parity_view_fill(s : FinanceportfolioriskparityVie
   result
 }
 
-pub fn finance_portfolio_risk_parity_view_min(s : FinanceportfolioriskparityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_view_min(s : FinanceportfolioriskparityView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_view_max(s : FinanceportfolioriskparityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_view_max(s : FinanceportfolioriskparityView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_view_to_string(s : FinanceportfolioriskparityView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_risk_parity_range_set(s : FinanceportfolioriskparityRan
   result
 }
 
-pub fn finance_portfolio_risk_parity_range_sum(s : FinanceportfolioriskparityRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_range_sum(s : FinanceportfolioriskparityRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_range_mean(s : FinanceportfolioriskparityRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_range_mean(s : FinanceportfolioriskparityRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_range_scale(s : FinanceportfolioriskparityRange, f : Double) -> FinanceportfolioriskparityRange {
   let result = finance_portfolio_risk_parity_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_risk_parity_range_fill(s : FinanceportfolioriskparityRa
   result
 }
 
-pub fn finance_portfolio_risk_parity_range_min(s : FinanceportfolioriskparityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_range_min(s : FinanceportfolioriskparityRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_range_max(s : FinanceportfolioriskparityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_range_max(s : FinanceportfolioriskparityRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_range_to_string(s : FinanceportfolioriskparityRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_risk_parity_slice_set(s : FinanceportfolioriskparitySli
   result
 }
 
-pub fn finance_portfolio_risk_parity_slice_sum(s : FinanceportfolioriskparitySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_risk_parity_slice_sum(s : FinanceportfolioriskparitySlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_risk_parity_slice_mean(s : FinanceportfolioriskparitySlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_risk_parity_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_risk_parity_slice_mean(s : FinanceportfolioriskparitySlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_risk_parity_slice_scale(s : FinanceportfolioriskparitySlice, f : Double) -> FinanceportfolioriskparitySlice {
   let result = finance_portfolio_risk_parity_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_risk_parity_slice_fill(s : FinanceportfolioriskparitySl
   result
 }
 
-pub fn finance_portfolio_risk_parity_slice_min(s : FinanceportfolioriskparitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_slice_min(s : FinanceportfolioriskparitySlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_risk_parity_slice_max(s : FinanceportfolioriskparitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_risk_parity_slice_max(s : FinanceportfolioriskparitySlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_risk_parity_slice_to_string(s : FinanceportfolioriskparitySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

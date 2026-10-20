@@ -88,11 +88,7 @@ pub fn ds_tree_avl_make_series(vals : Array[Double], name : String) -> Dstreeavl
 
 pub fn ds_tree_avl_series_len(s : DstreeavlSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_avl_series_sum(s : DstreeavlSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_avl_series_sum(s : DstreeavlSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_avl_series_mean(s : DstreeavlSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_avl_frame_set(s : DstreeavlFrame, i : Int, v : Double) -> Dstreea
   result
 }
 
-pub fn ds_tree_avl_frame_sum(s : DstreeavlFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_frame_sum(s : DstreeavlFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_frame_mean(s : DstreeavlFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_frame_mean(s : DstreeavlFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_frame_scale(s : DstreeavlFrame, f : Double) -> DstreeavlFrame {
   let result = ds_tree_avl_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_avl_frame_fill(s : DstreeavlFrame, v : Double) -> DstreeavlFrame 
   result
 }
 
-pub fn ds_tree_avl_frame_min(s : DstreeavlFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_frame_min(s : DstreeavlFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_frame_max(s : DstreeavlFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_frame_max(s : DstreeavlFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_frame_to_string(s : DstreeavlFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_avl_table_set(s : DstreeavlTable, i : Int, v : Double) -> Dstreea
   result
 }
 
-pub fn ds_tree_avl_table_sum(s : DstreeavlTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_table_sum(s : DstreeavlTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_table_mean(s : DstreeavlTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_table_mean(s : DstreeavlTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_table_scale(s : DstreeavlTable, f : Double) -> DstreeavlTable {
   let result = ds_tree_avl_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_avl_table_fill(s : DstreeavlTable, v : Double) -> DstreeavlTable 
   result
 }
 
-pub fn ds_tree_avl_table_min(s : DstreeavlTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_table_min(s : DstreeavlTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_table_max(s : DstreeavlTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_table_max(s : DstreeavlTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_table_to_string(s : DstreeavlTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_avl_graphn_set(s : DstreeavlGraphN, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_avl_graphn_sum(s : DstreeavlGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_graphn_sum(s : DstreeavlGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_graphn_mean(s : DstreeavlGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_graphn_mean(s : DstreeavlGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_graphn_scale(s : DstreeavlGraphN, f : Double) -> DstreeavlGraphN {
   let result = ds_tree_avl_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_avl_graphn_fill(s : DstreeavlGraphN, v : Double) -> DstreeavlGrap
   result
 }
 
-pub fn ds_tree_avl_graphn_min(s : DstreeavlGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_graphn_min(s : DstreeavlGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_graphn_max(s : DstreeavlGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_graphn_max(s : DstreeavlGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_graphn_to_string(s : DstreeavlGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_avl_node_set(s : DstreeavlNode, i : Int, v : Double) -> Dstreeavl
   result
 }
 
-pub fn ds_tree_avl_node_sum(s : DstreeavlNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_node_sum(s : DstreeavlNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_node_mean(s : DstreeavlNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_node_mean(s : DstreeavlNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_node_scale(s : DstreeavlNode, f : Double) -> DstreeavlNode {
   let result = ds_tree_avl_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_avl_node_fill(s : DstreeavlNode, v : Double) -> DstreeavlNode {
   result
 }
 
-pub fn ds_tree_avl_node_min(s : DstreeavlNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_node_min(s : DstreeavlNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_node_max(s : DstreeavlNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_node_max(s : DstreeavlNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_node_to_string(s : DstreeavlNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_avl_edge_set(s : DstreeavlEdge, i : Int, v : Double) -> Dstreeavl
   result
 }
 
-pub fn ds_tree_avl_edge_sum(s : DstreeavlEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_edge_sum(s : DstreeavlEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_edge_mean(s : DstreeavlEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_edge_mean(s : DstreeavlEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_edge_scale(s : DstreeavlEdge, f : Double) -> DstreeavlEdge {
   let result = ds_tree_avl_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_avl_edge_fill(s : DstreeavlEdge, v : Double) -> DstreeavlEdge {
   result
 }
 
-pub fn ds_tree_avl_edge_min(s : DstreeavlEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_edge_min(s : DstreeavlEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_edge_max(s : DstreeavlEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_edge_max(s : DstreeavlEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_edge_to_string(s : DstreeavlEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_avl_path_set(s : DstreeavlPath, i : Int, v : Double) -> Dstreeavl
   result
 }
 
-pub fn ds_tree_avl_path_sum(s : DstreeavlPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_path_sum(s : DstreeavlPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_path_mean(s : DstreeavlPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_path_mean(s : DstreeavlPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_path_scale(s : DstreeavlPath, f : Double) -> DstreeavlPath {
   let result = ds_tree_avl_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_avl_path_fill(s : DstreeavlPath, v : Double) -> DstreeavlPath {
   result
 }
 
-pub fn ds_tree_avl_path_min(s : DstreeavlPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_path_min(s : DstreeavlPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_path_max(s : DstreeavlPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_path_max(s : DstreeavlPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_path_to_string(s : DstreeavlPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_avl_cluster_set(s : DstreeavlCluster, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_avl_cluster_sum(s : DstreeavlCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_cluster_sum(s : DstreeavlCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_cluster_mean(s : DstreeavlCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_cluster_mean(s : DstreeavlCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_cluster_scale(s : DstreeavlCluster, f : Double) -> DstreeavlCluster {
   let result = ds_tree_avl_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_avl_cluster_fill(s : DstreeavlCluster, v : Double) -> DstreeavlCl
   result
 }
 
-pub fn ds_tree_avl_cluster_min(s : DstreeavlCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_cluster_min(s : DstreeavlCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_cluster_max(s : DstreeavlCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_cluster_max(s : DstreeavlCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_cluster_to_string(s : DstreeavlCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_avl_model_set(s : DstreeavlModel, i : Int, v : Double) -> Dstreea
   result
 }
 
-pub fn ds_tree_avl_model_sum(s : DstreeavlModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_model_sum(s : DstreeavlModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_model_mean(s : DstreeavlModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_model_mean(s : DstreeavlModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_model_scale(s : DstreeavlModel, f : Double) -> DstreeavlModel {
   let result = ds_tree_avl_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_avl_model_fill(s : DstreeavlModel, v : Double) -> DstreeavlModel 
   result
 }
 
-pub fn ds_tree_avl_model_min(s : DstreeavlModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_model_min(s : DstreeavlModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_model_max(s : DstreeavlModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_model_max(s : DstreeavlModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_model_to_string(s : DstreeavlModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_avl_layer_set(s : DstreeavlLayer, i : Int, v : Double) -> Dstreea
   result
 }
 
-pub fn ds_tree_avl_layer_sum(s : DstreeavlLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_layer_sum(s : DstreeavlLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_layer_mean(s : DstreeavlLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_layer_mean(s : DstreeavlLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_layer_scale(s : DstreeavlLayer, f : Double) -> DstreeavlLayer {
   let result = ds_tree_avl_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_avl_layer_fill(s : DstreeavlLayer, v : Double) -> DstreeavlLayer 
   result
 }
 
-pub fn ds_tree_avl_layer_min(s : DstreeavlLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_layer_min(s : DstreeavlLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_layer_max(s : DstreeavlLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_layer_max(s : DstreeavlLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_layer_to_string(s : DstreeavlLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_avl_buffer_set(s : DstreeavlBuffer, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_avl_buffer_sum(s : DstreeavlBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_buffer_sum(s : DstreeavlBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_buffer_mean(s : DstreeavlBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_buffer_mean(s : DstreeavlBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_buffer_scale(s : DstreeavlBuffer, f : Double) -> DstreeavlBuffer {
   let result = ds_tree_avl_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_avl_buffer_fill(s : DstreeavlBuffer, v : Double) -> DstreeavlBuff
   result
 }
 
-pub fn ds_tree_avl_buffer_min(s : DstreeavlBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_buffer_min(s : DstreeavlBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_buffer_max(s : DstreeavlBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_buffer_max(s : DstreeavlBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_buffer_to_string(s : DstreeavlBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_avl_cursor_set(s : DstreeavlCursor, i : Int, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_avl_cursor_sum(s : DstreeavlCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_cursor_sum(s : DstreeavlCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_cursor_mean(s : DstreeavlCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_cursor_mean(s : DstreeavlCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_cursor_scale(s : DstreeavlCursor, f : Double) -> DstreeavlCursor {
   let result = ds_tree_avl_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_avl_cursor_fill(s : DstreeavlCursor, v : Double) -> DstreeavlCurs
   result
 }
 
-pub fn ds_tree_avl_cursor_min(s : DstreeavlCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_cursor_min(s : DstreeavlCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_cursor_max(s : DstreeavlCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_cursor_max(s : DstreeavlCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_cursor_to_string(s : DstreeavlCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_avl_view_set(s : DstreeavlView, i : Int, v : Double) -> Dstreeavl
   result
 }
 
-pub fn ds_tree_avl_view_sum(s : DstreeavlView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_view_sum(s : DstreeavlView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_view_mean(s : DstreeavlView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_view_mean(s : DstreeavlView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_view_scale(s : DstreeavlView, f : Double) -> DstreeavlView {
   let result = ds_tree_avl_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_avl_view_fill(s : DstreeavlView, v : Double) -> DstreeavlView {
   result
 }
 
-pub fn ds_tree_avl_view_min(s : DstreeavlView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_view_min(s : DstreeavlView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_view_max(s : DstreeavlView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_view_max(s : DstreeavlView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_view_to_string(s : DstreeavlView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_avl_range_set(s : DstreeavlRange, i : Int, v : Double) -> Dstreea
   result
 }
 
-pub fn ds_tree_avl_range_sum(s : DstreeavlRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_range_sum(s : DstreeavlRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_range_mean(s : DstreeavlRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_range_mean(s : DstreeavlRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_range_scale(s : DstreeavlRange, f : Double) -> DstreeavlRange {
   let result = ds_tree_avl_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_avl_range_fill(s : DstreeavlRange, v : Double) -> DstreeavlRange 
   result
 }
 
-pub fn ds_tree_avl_range_min(s : DstreeavlRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_range_min(s : DstreeavlRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_range_max(s : DstreeavlRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_range_max(s : DstreeavlRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_range_to_string(s : DstreeavlRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_avl_slice_set(s : DstreeavlSlice, i : Int, v : Double) -> Dstreea
   result
 }
 
-pub fn ds_tree_avl_slice_sum(s : DstreeavlSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_avl_slice_sum(s : DstreeavlSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_avl_slice_mean(s : DstreeavlSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_avl_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_avl_slice_mean(s : DstreeavlSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_avl_slice_scale(s : DstreeavlSlice, f : Double) -> DstreeavlSlice {
   let result = ds_tree_avl_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_avl_slice_fill(s : DstreeavlSlice, v : Double) -> DstreeavlSlice 
   result
 }
 
-pub fn ds_tree_avl_slice_min(s : DstreeavlSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_slice_min(s : DstreeavlSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_avl_slice_max(s : DstreeavlSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_avl_slice_max(s : DstreeavlSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_avl_slice_to_string(s : DstreeavlSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

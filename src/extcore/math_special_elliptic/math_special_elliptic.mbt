@@ -88,11 +88,7 @@ pub fn math_special_elliptic_make_series(vals : Array[Double], name : String) ->
 
 pub fn math_special_elliptic_series_len(s : MathspecialellipticSeries) -> Int { s.vals.length() }
 
-pub fn math_special_elliptic_series_sum(s : MathspecialellipticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_elliptic_series_sum(s : MathspecialellipticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_elliptic_series_mean(s : MathspecialellipticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_elliptic_frame_set(s : MathspecialellipticFrame, i : Int, v 
   result
 }
 
-pub fn math_special_elliptic_frame_sum(s : MathspecialellipticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_frame_sum(s : MathspecialellipticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_frame_mean(s : MathspecialellipticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_frame_mean(s : MathspecialellipticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_frame_scale(s : MathspecialellipticFrame, f : Double) -> MathspecialellipticFrame {
   let result = math_special_elliptic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_elliptic_frame_fill(s : MathspecialellipticFrame, v : Double
   result
 }
 
-pub fn math_special_elliptic_frame_min(s : MathspecialellipticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_frame_min(s : MathspecialellipticFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_frame_max(s : MathspecialellipticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_frame_max(s : MathspecialellipticFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_frame_to_string(s : MathspecialellipticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_elliptic_table_set(s : MathspecialellipticTable, i : Int, v 
   result
 }
 
-pub fn math_special_elliptic_table_sum(s : MathspecialellipticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_table_sum(s : MathspecialellipticTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_table_mean(s : MathspecialellipticTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_table_mean(s : MathspecialellipticTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_table_scale(s : MathspecialellipticTable, f : Double) -> MathspecialellipticTable {
   let result = math_special_elliptic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_elliptic_table_fill(s : MathspecialellipticTable, v : Double
   result
 }
 
-pub fn math_special_elliptic_table_min(s : MathspecialellipticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_table_min(s : MathspecialellipticTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_table_max(s : MathspecialellipticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_table_max(s : MathspecialellipticTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_table_to_string(s : MathspecialellipticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_elliptic_graphn_set(s : MathspecialellipticGraphN, i : Int, 
   result
 }
 
-pub fn math_special_elliptic_graphn_sum(s : MathspecialellipticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_graphn_sum(s : MathspecialellipticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_graphn_mean(s : MathspecialellipticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_graphn_mean(s : MathspecialellipticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_graphn_scale(s : MathspecialellipticGraphN, f : Double) -> MathspecialellipticGraphN {
   let result = math_special_elliptic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_elliptic_graphn_fill(s : MathspecialellipticGraphN, v : Doub
   result
 }
 
-pub fn math_special_elliptic_graphn_min(s : MathspecialellipticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_graphn_min(s : MathspecialellipticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_graphn_max(s : MathspecialellipticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_graphn_max(s : MathspecialellipticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_graphn_to_string(s : MathspecialellipticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_elliptic_node_set(s : MathspecialellipticNode, i : Int, v : 
   result
 }
 
-pub fn math_special_elliptic_node_sum(s : MathspecialellipticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_node_sum(s : MathspecialellipticNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_node_mean(s : MathspecialellipticNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_node_mean(s : MathspecialellipticNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_node_scale(s : MathspecialellipticNode, f : Double) -> MathspecialellipticNode {
   let result = math_special_elliptic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_elliptic_node_fill(s : MathspecialellipticNode, v : Double) 
   result
 }
 
-pub fn math_special_elliptic_node_min(s : MathspecialellipticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_node_min(s : MathspecialellipticNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_node_max(s : MathspecialellipticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_node_max(s : MathspecialellipticNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_node_to_string(s : MathspecialellipticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_elliptic_edge_set(s : MathspecialellipticEdge, i : Int, v : 
   result
 }
 
-pub fn math_special_elliptic_edge_sum(s : MathspecialellipticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_edge_sum(s : MathspecialellipticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_edge_mean(s : MathspecialellipticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_edge_mean(s : MathspecialellipticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_edge_scale(s : MathspecialellipticEdge, f : Double) -> MathspecialellipticEdge {
   let result = math_special_elliptic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_elliptic_edge_fill(s : MathspecialellipticEdge, v : Double) 
   result
 }
 
-pub fn math_special_elliptic_edge_min(s : MathspecialellipticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_edge_min(s : MathspecialellipticEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_edge_max(s : MathspecialellipticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_edge_max(s : MathspecialellipticEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_edge_to_string(s : MathspecialellipticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_elliptic_path_set(s : MathspecialellipticPath, i : Int, v : 
   result
 }
 
-pub fn math_special_elliptic_path_sum(s : MathspecialellipticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_path_sum(s : MathspecialellipticPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_path_mean(s : MathspecialellipticPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_path_mean(s : MathspecialellipticPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_path_scale(s : MathspecialellipticPath, f : Double) -> MathspecialellipticPath {
   let result = math_special_elliptic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_elliptic_path_fill(s : MathspecialellipticPath, v : Double) 
   result
 }
 
-pub fn math_special_elliptic_path_min(s : MathspecialellipticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_path_min(s : MathspecialellipticPath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_path_max(s : MathspecialellipticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_path_max(s : MathspecialellipticPath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_path_to_string(s : MathspecialellipticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_elliptic_cluster_set(s : MathspecialellipticCluster, i : Int
   result
 }
 
-pub fn math_special_elliptic_cluster_sum(s : MathspecialellipticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_cluster_sum(s : MathspecialellipticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_cluster_mean(s : MathspecialellipticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_cluster_mean(s : MathspecialellipticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_cluster_scale(s : MathspecialellipticCluster, f : Double) -> MathspecialellipticCluster {
   let result = math_special_elliptic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_elliptic_cluster_fill(s : MathspecialellipticCluster, v : Do
   result
 }
 
-pub fn math_special_elliptic_cluster_min(s : MathspecialellipticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_cluster_min(s : MathspecialellipticCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_cluster_max(s : MathspecialellipticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_cluster_max(s : MathspecialellipticCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_cluster_to_string(s : MathspecialellipticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_elliptic_model_set(s : MathspecialellipticModel, i : Int, v 
   result
 }
 
-pub fn math_special_elliptic_model_sum(s : MathspecialellipticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_model_sum(s : MathspecialellipticModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_model_mean(s : MathspecialellipticModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_model_mean(s : MathspecialellipticModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_model_scale(s : MathspecialellipticModel, f : Double) -> MathspecialellipticModel {
   let result = math_special_elliptic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_elliptic_model_fill(s : MathspecialellipticModel, v : Double
   result
 }
 
-pub fn math_special_elliptic_model_min(s : MathspecialellipticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_model_min(s : MathspecialellipticModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_model_max(s : MathspecialellipticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_model_max(s : MathspecialellipticModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_model_to_string(s : MathspecialellipticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_elliptic_layer_set(s : MathspecialellipticLayer, i : Int, v 
   result
 }
 
-pub fn math_special_elliptic_layer_sum(s : MathspecialellipticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_layer_sum(s : MathspecialellipticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_layer_mean(s : MathspecialellipticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_layer_mean(s : MathspecialellipticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_layer_scale(s : MathspecialellipticLayer, f : Double) -> MathspecialellipticLayer {
   let result = math_special_elliptic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_elliptic_layer_fill(s : MathspecialellipticLayer, v : Double
   result
 }
 
-pub fn math_special_elliptic_layer_min(s : MathspecialellipticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_layer_min(s : MathspecialellipticLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_layer_max(s : MathspecialellipticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_layer_max(s : MathspecialellipticLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_layer_to_string(s : MathspecialellipticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_elliptic_buffer_set(s : MathspecialellipticBuffer, i : Int, 
   result
 }
 
-pub fn math_special_elliptic_buffer_sum(s : MathspecialellipticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_buffer_sum(s : MathspecialellipticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_buffer_mean(s : MathspecialellipticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_buffer_mean(s : MathspecialellipticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_buffer_scale(s : MathspecialellipticBuffer, f : Double) -> MathspecialellipticBuffer {
   let result = math_special_elliptic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_elliptic_buffer_fill(s : MathspecialellipticBuffer, v : Doub
   result
 }
 
-pub fn math_special_elliptic_buffer_min(s : MathspecialellipticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_buffer_min(s : MathspecialellipticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_buffer_max(s : MathspecialellipticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_buffer_max(s : MathspecialellipticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_buffer_to_string(s : MathspecialellipticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_elliptic_cursor_set(s : MathspecialellipticCursor, i : Int, 
   result
 }
 
-pub fn math_special_elliptic_cursor_sum(s : MathspecialellipticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_cursor_sum(s : MathspecialellipticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_cursor_mean(s : MathspecialellipticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_cursor_mean(s : MathspecialellipticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_cursor_scale(s : MathspecialellipticCursor, f : Double) -> MathspecialellipticCursor {
   let result = math_special_elliptic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_elliptic_cursor_fill(s : MathspecialellipticCursor, v : Doub
   result
 }
 
-pub fn math_special_elliptic_cursor_min(s : MathspecialellipticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_cursor_min(s : MathspecialellipticCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_cursor_max(s : MathspecialellipticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_cursor_max(s : MathspecialellipticCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_cursor_to_string(s : MathspecialellipticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_elliptic_view_set(s : MathspecialellipticView, i : Int, v : 
   result
 }
 
-pub fn math_special_elliptic_view_sum(s : MathspecialellipticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_view_sum(s : MathspecialellipticView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_view_mean(s : MathspecialellipticView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_view_mean(s : MathspecialellipticView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_view_scale(s : MathspecialellipticView, f : Double) -> MathspecialellipticView {
   let result = math_special_elliptic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_elliptic_view_fill(s : MathspecialellipticView, v : Double) 
   result
 }
 
-pub fn math_special_elliptic_view_min(s : MathspecialellipticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_view_min(s : MathspecialellipticView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_view_max(s : MathspecialellipticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_view_max(s : MathspecialellipticView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_view_to_string(s : MathspecialellipticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_elliptic_range_set(s : MathspecialellipticRange, i : Int, v 
   result
 }
 
-pub fn math_special_elliptic_range_sum(s : MathspecialellipticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_range_sum(s : MathspecialellipticRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_range_mean(s : MathspecialellipticRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_range_mean(s : MathspecialellipticRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_range_scale(s : MathspecialellipticRange, f : Double) -> MathspecialellipticRange {
   let result = math_special_elliptic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_elliptic_range_fill(s : MathspecialellipticRange, v : Double
   result
 }
 
-pub fn math_special_elliptic_range_min(s : MathspecialellipticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_range_min(s : MathspecialellipticRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_range_max(s : MathspecialellipticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_range_max(s : MathspecialellipticRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_range_to_string(s : MathspecialellipticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_elliptic_slice_set(s : MathspecialellipticSlice, i : Int, v 
   result
 }
 
-pub fn math_special_elliptic_slice_sum(s : MathspecialellipticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_elliptic_slice_sum(s : MathspecialellipticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_elliptic_slice_mean(s : MathspecialellipticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_elliptic_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_elliptic_slice_mean(s : MathspecialellipticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_elliptic_slice_scale(s : MathspecialellipticSlice, f : Double) -> MathspecialellipticSlice {
   let result = math_special_elliptic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_elliptic_slice_fill(s : MathspecialellipticSlice, v : Double
   result
 }
 
-pub fn math_special_elliptic_slice_min(s : MathspecialellipticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_slice_min(s : MathspecialellipticSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_elliptic_slice_max(s : MathspecialellipticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_elliptic_slice_max(s : MathspecialellipticSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_elliptic_slice_to_string(s : MathspecialellipticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn image_filter_canny_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_filter_canny_series_len(s : ImagefiltercannySeries) -> Int { s.vals.length() }
 
-pub fn image_filter_canny_series_sum(s : ImagefiltercannySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_canny_series_sum(s : ImagefiltercannySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_canny_series_mean(s : ImagefiltercannySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_canny_frame_set(s : ImagefiltercannyFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_canny_frame_sum(s : ImagefiltercannyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_frame_sum(s : ImagefiltercannyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_frame_mean(s : ImagefiltercannyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_frame_mean(s : ImagefiltercannyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_frame_scale(s : ImagefiltercannyFrame, f : Double) -> ImagefiltercannyFrame {
   let result = image_filter_canny_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_canny_frame_fill(s : ImagefiltercannyFrame, v : Double) -> I
   result
 }
 
-pub fn image_filter_canny_frame_min(s : ImagefiltercannyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_frame_min(s : ImagefiltercannyFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_frame_max(s : ImagefiltercannyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_frame_max(s : ImagefiltercannyFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_frame_to_string(s : ImagefiltercannyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_canny_table_set(s : ImagefiltercannyTable, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_canny_table_sum(s : ImagefiltercannyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_table_sum(s : ImagefiltercannyTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_table_mean(s : ImagefiltercannyTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_table_mean(s : ImagefiltercannyTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_table_scale(s : ImagefiltercannyTable, f : Double) -> ImagefiltercannyTable {
   let result = image_filter_canny_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_canny_table_fill(s : ImagefiltercannyTable, v : Double) -> I
   result
 }
 
-pub fn image_filter_canny_table_min(s : ImagefiltercannyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_table_min(s : ImagefiltercannyTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_table_max(s : ImagefiltercannyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_table_max(s : ImagefiltercannyTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_table_to_string(s : ImagefiltercannyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_canny_graphn_set(s : ImagefiltercannyGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_filter_canny_graphn_sum(s : ImagefiltercannyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_graphn_sum(s : ImagefiltercannyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_graphn_mean(s : ImagefiltercannyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_graphn_mean(s : ImagefiltercannyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_graphn_scale(s : ImagefiltercannyGraphN, f : Double) -> ImagefiltercannyGraphN {
   let result = image_filter_canny_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_canny_graphn_fill(s : ImagefiltercannyGraphN, v : Double) ->
   result
 }
 
-pub fn image_filter_canny_graphn_min(s : ImagefiltercannyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_graphn_min(s : ImagefiltercannyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_graphn_max(s : ImagefiltercannyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_graphn_max(s : ImagefiltercannyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_graphn_to_string(s : ImagefiltercannyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_canny_node_set(s : ImagefiltercannyNode, i : Int, v : Double
   result
 }
 
-pub fn image_filter_canny_node_sum(s : ImagefiltercannyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_node_sum(s : ImagefiltercannyNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_node_mean(s : ImagefiltercannyNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_node_mean(s : ImagefiltercannyNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_node_scale(s : ImagefiltercannyNode, f : Double) -> ImagefiltercannyNode {
   let result = image_filter_canny_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_canny_node_fill(s : ImagefiltercannyNode, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_canny_node_min(s : ImagefiltercannyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_node_min(s : ImagefiltercannyNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_node_max(s : ImagefiltercannyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_node_max(s : ImagefiltercannyNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_node_to_string(s : ImagefiltercannyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_canny_edge_set(s : ImagefiltercannyEdge, i : Int, v : Double
   result
 }
 
-pub fn image_filter_canny_edge_sum(s : ImagefiltercannyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_edge_sum(s : ImagefiltercannyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_edge_mean(s : ImagefiltercannyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_edge_mean(s : ImagefiltercannyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_edge_scale(s : ImagefiltercannyEdge, f : Double) -> ImagefiltercannyEdge {
   let result = image_filter_canny_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_canny_edge_fill(s : ImagefiltercannyEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_canny_edge_min(s : ImagefiltercannyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_edge_min(s : ImagefiltercannyEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_edge_max(s : ImagefiltercannyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_edge_max(s : ImagefiltercannyEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_edge_to_string(s : ImagefiltercannyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_canny_path_set(s : ImagefiltercannyPath, i : Int, v : Double
   result
 }
 
-pub fn image_filter_canny_path_sum(s : ImagefiltercannyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_path_sum(s : ImagefiltercannyPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_path_mean(s : ImagefiltercannyPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_path_mean(s : ImagefiltercannyPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_path_scale(s : ImagefiltercannyPath, f : Double) -> ImagefiltercannyPath {
   let result = image_filter_canny_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_canny_path_fill(s : ImagefiltercannyPath, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_canny_path_min(s : ImagefiltercannyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_path_min(s : ImagefiltercannyPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_path_max(s : ImagefiltercannyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_path_max(s : ImagefiltercannyPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_path_to_string(s : ImagefiltercannyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_canny_cluster_set(s : ImagefiltercannyCluster, i : Int, v : 
   result
 }
 
-pub fn image_filter_canny_cluster_sum(s : ImagefiltercannyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_cluster_sum(s : ImagefiltercannyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_cluster_mean(s : ImagefiltercannyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_cluster_mean(s : ImagefiltercannyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_cluster_scale(s : ImagefiltercannyCluster, f : Double) -> ImagefiltercannyCluster {
   let result = image_filter_canny_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_canny_cluster_fill(s : ImagefiltercannyCluster, v : Double) 
   result
 }
 
-pub fn image_filter_canny_cluster_min(s : ImagefiltercannyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_cluster_min(s : ImagefiltercannyCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_cluster_max(s : ImagefiltercannyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_cluster_max(s : ImagefiltercannyCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_cluster_to_string(s : ImagefiltercannyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_canny_model_set(s : ImagefiltercannyModel, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_canny_model_sum(s : ImagefiltercannyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_model_sum(s : ImagefiltercannyModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_model_mean(s : ImagefiltercannyModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_model_mean(s : ImagefiltercannyModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_model_scale(s : ImagefiltercannyModel, f : Double) -> ImagefiltercannyModel {
   let result = image_filter_canny_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_canny_model_fill(s : ImagefiltercannyModel, v : Double) -> I
   result
 }
 
-pub fn image_filter_canny_model_min(s : ImagefiltercannyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_model_min(s : ImagefiltercannyModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_model_max(s : ImagefiltercannyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_model_max(s : ImagefiltercannyModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_model_to_string(s : ImagefiltercannyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_canny_layer_set(s : ImagefiltercannyLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_canny_layer_sum(s : ImagefiltercannyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_layer_sum(s : ImagefiltercannyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_layer_mean(s : ImagefiltercannyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_layer_mean(s : ImagefiltercannyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_layer_scale(s : ImagefiltercannyLayer, f : Double) -> ImagefiltercannyLayer {
   let result = image_filter_canny_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_canny_layer_fill(s : ImagefiltercannyLayer, v : Double) -> I
   result
 }
 
-pub fn image_filter_canny_layer_min(s : ImagefiltercannyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_layer_min(s : ImagefiltercannyLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_layer_max(s : ImagefiltercannyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_layer_max(s : ImagefiltercannyLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_layer_to_string(s : ImagefiltercannyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_canny_buffer_set(s : ImagefiltercannyBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_filter_canny_buffer_sum(s : ImagefiltercannyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_buffer_sum(s : ImagefiltercannyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_buffer_mean(s : ImagefiltercannyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_buffer_mean(s : ImagefiltercannyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_buffer_scale(s : ImagefiltercannyBuffer, f : Double) -> ImagefiltercannyBuffer {
   let result = image_filter_canny_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_canny_buffer_fill(s : ImagefiltercannyBuffer, v : Double) ->
   result
 }
 
-pub fn image_filter_canny_buffer_min(s : ImagefiltercannyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_buffer_min(s : ImagefiltercannyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_buffer_max(s : ImagefiltercannyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_buffer_max(s : ImagefiltercannyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_buffer_to_string(s : ImagefiltercannyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_canny_cursor_set(s : ImagefiltercannyCursor, i : Int, v : Do
   result
 }
 
-pub fn image_filter_canny_cursor_sum(s : ImagefiltercannyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_cursor_sum(s : ImagefiltercannyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_cursor_mean(s : ImagefiltercannyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_cursor_mean(s : ImagefiltercannyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_cursor_scale(s : ImagefiltercannyCursor, f : Double) -> ImagefiltercannyCursor {
   let result = image_filter_canny_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_canny_cursor_fill(s : ImagefiltercannyCursor, v : Double) ->
   result
 }
 
-pub fn image_filter_canny_cursor_min(s : ImagefiltercannyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_cursor_min(s : ImagefiltercannyCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_cursor_max(s : ImagefiltercannyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_cursor_max(s : ImagefiltercannyCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_cursor_to_string(s : ImagefiltercannyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_canny_view_set(s : ImagefiltercannyView, i : Int, v : Double
   result
 }
 
-pub fn image_filter_canny_view_sum(s : ImagefiltercannyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_view_sum(s : ImagefiltercannyView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_view_mean(s : ImagefiltercannyView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_view_mean(s : ImagefiltercannyView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_view_scale(s : ImagefiltercannyView, f : Double) -> ImagefiltercannyView {
   let result = image_filter_canny_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_canny_view_fill(s : ImagefiltercannyView, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_canny_view_min(s : ImagefiltercannyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_view_min(s : ImagefiltercannyView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_view_max(s : ImagefiltercannyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_view_max(s : ImagefiltercannyView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_view_to_string(s : ImagefiltercannyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_canny_range_set(s : ImagefiltercannyRange, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_canny_range_sum(s : ImagefiltercannyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_range_sum(s : ImagefiltercannyRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_range_mean(s : ImagefiltercannyRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_range_mean(s : ImagefiltercannyRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_range_scale(s : ImagefiltercannyRange, f : Double) -> ImagefiltercannyRange {
   let result = image_filter_canny_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_canny_range_fill(s : ImagefiltercannyRange, v : Double) -> I
   result
 }
 
-pub fn image_filter_canny_range_min(s : ImagefiltercannyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_range_min(s : ImagefiltercannyRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_range_max(s : ImagefiltercannyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_range_max(s : ImagefiltercannyRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_range_to_string(s : ImagefiltercannyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_canny_slice_set(s : ImagefiltercannySlice, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_canny_slice_sum(s : ImagefiltercannySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_canny_slice_sum(s : ImagefiltercannySlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_canny_slice_mean(s : ImagefiltercannySlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_canny_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_canny_slice_mean(s : ImagefiltercannySlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_canny_slice_scale(s : ImagefiltercannySlice, f : Double) -> ImagefiltercannySlice {
   let result = image_filter_canny_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_canny_slice_fill(s : ImagefiltercannySlice, v : Double) -> I
   result
 }
 
-pub fn image_filter_canny_slice_min(s : ImagefiltercannySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_slice_min(s : ImagefiltercannySlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_canny_slice_max(s : ImagefiltercannySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_canny_slice_max(s : ImagefiltercannySlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_canny_slice_to_string(s : ImagefiltercannySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

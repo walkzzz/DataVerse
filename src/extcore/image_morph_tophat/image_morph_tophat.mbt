@@ -88,11 +88,7 @@ pub fn image_morph_tophat_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_morph_tophat_series_len(s : ImagemorphtophatSeries) -> Int { s.vals.length() }
 
-pub fn image_morph_tophat_series_sum(s : ImagemorphtophatSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_morph_tophat_series_sum(s : ImagemorphtophatSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_morph_tophat_series_mean(s : ImagemorphtophatSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_morph_tophat_frame_set(s : ImagemorphtophatFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_tophat_frame_sum(s : ImagemorphtophatFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_frame_sum(s : ImagemorphtophatFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_frame_mean(s : ImagemorphtophatFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_frame_mean(s : ImagemorphtophatFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_frame_scale(s : ImagemorphtophatFrame, f : Double) -> ImagemorphtophatFrame {
   let result = image_morph_tophat_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_morph_tophat_frame_fill(s : ImagemorphtophatFrame, v : Double) -> I
   result
 }
 
-pub fn image_morph_tophat_frame_min(s : ImagemorphtophatFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_frame_min(s : ImagemorphtophatFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_frame_max(s : ImagemorphtophatFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_frame_max(s : ImagemorphtophatFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_frame_to_string(s : ImagemorphtophatFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_morph_tophat_table_set(s : ImagemorphtophatTable, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_tophat_table_sum(s : ImagemorphtophatTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_table_sum(s : ImagemorphtophatTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_table_mean(s : ImagemorphtophatTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_table_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_table_mean(s : ImagemorphtophatTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_table_scale(s : ImagemorphtophatTable, f : Double) -> ImagemorphtophatTable {
   let result = image_morph_tophat_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_morph_tophat_table_fill(s : ImagemorphtophatTable, v : Double) -> I
   result
 }
 
-pub fn image_morph_tophat_table_min(s : ImagemorphtophatTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_table_min(s : ImagemorphtophatTable) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_table_max(s : ImagemorphtophatTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_table_max(s : ImagemorphtophatTable) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_table_to_string(s : ImagemorphtophatTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_morph_tophat_graphn_set(s : ImagemorphtophatGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_morph_tophat_graphn_sum(s : ImagemorphtophatGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_graphn_sum(s : ImagemorphtophatGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_graphn_mean(s : ImagemorphtophatGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_graphn_mean(s : ImagemorphtophatGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_graphn_scale(s : ImagemorphtophatGraphN, f : Double) -> ImagemorphtophatGraphN {
   let result = image_morph_tophat_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_morph_tophat_graphn_fill(s : ImagemorphtophatGraphN, v : Double) ->
   result
 }
 
-pub fn image_morph_tophat_graphn_min(s : ImagemorphtophatGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_graphn_min(s : ImagemorphtophatGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_graphn_max(s : ImagemorphtophatGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_graphn_max(s : ImagemorphtophatGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_graphn_to_string(s : ImagemorphtophatGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_morph_tophat_node_set(s : ImagemorphtophatNode, i : Int, v : Double
   result
 }
 
-pub fn image_morph_tophat_node_sum(s : ImagemorphtophatNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_node_sum(s : ImagemorphtophatNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_node_mean(s : ImagemorphtophatNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_node_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_node_mean(s : ImagemorphtophatNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_node_scale(s : ImagemorphtophatNode, f : Double) -> ImagemorphtophatNode {
   let result = image_morph_tophat_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_morph_tophat_node_fill(s : ImagemorphtophatNode, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_tophat_node_min(s : ImagemorphtophatNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_node_min(s : ImagemorphtophatNode) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_node_max(s : ImagemorphtophatNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_node_max(s : ImagemorphtophatNode) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_node_to_string(s : ImagemorphtophatNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_morph_tophat_edge_set(s : ImagemorphtophatEdge, i : Int, v : Double
   result
 }
 
-pub fn image_morph_tophat_edge_sum(s : ImagemorphtophatEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_edge_sum(s : ImagemorphtophatEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_edge_mean(s : ImagemorphtophatEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_edge_mean(s : ImagemorphtophatEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_edge_scale(s : ImagemorphtophatEdge, f : Double) -> ImagemorphtophatEdge {
   let result = image_morph_tophat_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_morph_tophat_edge_fill(s : ImagemorphtophatEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_tophat_edge_min(s : ImagemorphtophatEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_edge_min(s : ImagemorphtophatEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_edge_max(s : ImagemorphtophatEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_edge_max(s : ImagemorphtophatEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_edge_to_string(s : ImagemorphtophatEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_morph_tophat_path_set(s : ImagemorphtophatPath, i : Int, v : Double
   result
 }
 
-pub fn image_morph_tophat_path_sum(s : ImagemorphtophatPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_path_sum(s : ImagemorphtophatPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_path_mean(s : ImagemorphtophatPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_path_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_path_mean(s : ImagemorphtophatPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_path_scale(s : ImagemorphtophatPath, f : Double) -> ImagemorphtophatPath {
   let result = image_morph_tophat_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_morph_tophat_path_fill(s : ImagemorphtophatPath, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_tophat_path_min(s : ImagemorphtophatPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_path_min(s : ImagemorphtophatPath) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_path_max(s : ImagemorphtophatPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_path_max(s : ImagemorphtophatPath) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_path_to_string(s : ImagemorphtophatPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_morph_tophat_cluster_set(s : ImagemorphtophatCluster, i : Int, v : 
   result
 }
 
-pub fn image_morph_tophat_cluster_sum(s : ImagemorphtophatCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_cluster_sum(s : ImagemorphtophatCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_cluster_mean(s : ImagemorphtophatCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_cluster_mean(s : ImagemorphtophatCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_cluster_scale(s : ImagemorphtophatCluster, f : Double) -> ImagemorphtophatCluster {
   let result = image_morph_tophat_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_morph_tophat_cluster_fill(s : ImagemorphtophatCluster, v : Double) 
   result
 }
 
-pub fn image_morph_tophat_cluster_min(s : ImagemorphtophatCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_cluster_min(s : ImagemorphtophatCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_cluster_max(s : ImagemorphtophatCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_cluster_max(s : ImagemorphtophatCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_cluster_to_string(s : ImagemorphtophatCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_morph_tophat_model_set(s : ImagemorphtophatModel, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_tophat_model_sum(s : ImagemorphtophatModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_model_sum(s : ImagemorphtophatModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_model_mean(s : ImagemorphtophatModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_model_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_model_mean(s : ImagemorphtophatModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_model_scale(s : ImagemorphtophatModel, f : Double) -> ImagemorphtophatModel {
   let result = image_morph_tophat_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_morph_tophat_model_fill(s : ImagemorphtophatModel, v : Double) -> I
   result
 }
 
-pub fn image_morph_tophat_model_min(s : ImagemorphtophatModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_model_min(s : ImagemorphtophatModel) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_model_max(s : ImagemorphtophatModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_model_max(s : ImagemorphtophatModel) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_model_to_string(s : ImagemorphtophatModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_morph_tophat_layer_set(s : ImagemorphtophatLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_tophat_layer_sum(s : ImagemorphtophatLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_layer_sum(s : ImagemorphtophatLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_layer_mean(s : ImagemorphtophatLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_layer_mean(s : ImagemorphtophatLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_layer_scale(s : ImagemorphtophatLayer, f : Double) -> ImagemorphtophatLayer {
   let result = image_morph_tophat_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_morph_tophat_layer_fill(s : ImagemorphtophatLayer, v : Double) -> I
   result
 }
 
-pub fn image_morph_tophat_layer_min(s : ImagemorphtophatLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_layer_min(s : ImagemorphtophatLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_layer_max(s : ImagemorphtophatLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_layer_max(s : ImagemorphtophatLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_layer_to_string(s : ImagemorphtophatLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_morph_tophat_buffer_set(s : ImagemorphtophatBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_morph_tophat_buffer_sum(s : ImagemorphtophatBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_buffer_sum(s : ImagemorphtophatBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_buffer_mean(s : ImagemorphtophatBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_buffer_mean(s : ImagemorphtophatBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_buffer_scale(s : ImagemorphtophatBuffer, f : Double) -> ImagemorphtophatBuffer {
   let result = image_morph_tophat_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_morph_tophat_buffer_fill(s : ImagemorphtophatBuffer, v : Double) ->
   result
 }
 
-pub fn image_morph_tophat_buffer_min(s : ImagemorphtophatBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_buffer_min(s : ImagemorphtophatBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_buffer_max(s : ImagemorphtophatBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_buffer_max(s : ImagemorphtophatBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_buffer_to_string(s : ImagemorphtophatBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_morph_tophat_cursor_set(s : ImagemorphtophatCursor, i : Int, v : Do
   result
 }
 
-pub fn image_morph_tophat_cursor_sum(s : ImagemorphtophatCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_cursor_sum(s : ImagemorphtophatCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_cursor_mean(s : ImagemorphtophatCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_cursor_mean(s : ImagemorphtophatCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_cursor_scale(s : ImagemorphtophatCursor, f : Double) -> ImagemorphtophatCursor {
   let result = image_morph_tophat_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_morph_tophat_cursor_fill(s : ImagemorphtophatCursor, v : Double) ->
   result
 }
 
-pub fn image_morph_tophat_cursor_min(s : ImagemorphtophatCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_cursor_min(s : ImagemorphtophatCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_cursor_max(s : ImagemorphtophatCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_cursor_max(s : ImagemorphtophatCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_cursor_to_string(s : ImagemorphtophatCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_morph_tophat_view_set(s : ImagemorphtophatView, i : Int, v : Double
   result
 }
 
-pub fn image_morph_tophat_view_sum(s : ImagemorphtophatView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_view_sum(s : ImagemorphtophatView) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_view_mean(s : ImagemorphtophatView) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_view_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_view_mean(s : ImagemorphtophatView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_view_scale(s : ImagemorphtophatView, f : Double) -> ImagemorphtophatView {
   let result = image_morph_tophat_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_morph_tophat_view_fill(s : ImagemorphtophatView, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_tophat_view_min(s : ImagemorphtophatView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_view_min(s : ImagemorphtophatView) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_view_max(s : ImagemorphtophatView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_view_max(s : ImagemorphtophatView) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_view_to_string(s : ImagemorphtophatView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_morph_tophat_range_set(s : ImagemorphtophatRange, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_tophat_range_sum(s : ImagemorphtophatRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_range_sum(s : ImagemorphtophatRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_range_mean(s : ImagemorphtophatRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_range_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_range_mean(s : ImagemorphtophatRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_range_scale(s : ImagemorphtophatRange, f : Double) -> ImagemorphtophatRange {
   let result = image_morph_tophat_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_morph_tophat_range_fill(s : ImagemorphtophatRange, v : Double) -> I
   result
 }
 
-pub fn image_morph_tophat_range_min(s : ImagemorphtophatRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_range_min(s : ImagemorphtophatRange) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_range_max(s : ImagemorphtophatRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_range_max(s : ImagemorphtophatRange) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_range_to_string(s : ImagemorphtophatRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_morph_tophat_slice_set(s : ImagemorphtophatSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_tophat_slice_sum(s : ImagemorphtophatSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_tophat_slice_sum(s : ImagemorphtophatSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_tophat_slice_mean(s : ImagemorphtophatSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_tophat_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_tophat_slice_mean(s : ImagemorphtophatSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_tophat_slice_scale(s : ImagemorphtophatSlice, f : Double) -> ImagemorphtophatSlice {
   let result = image_morph_tophat_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_morph_tophat_slice_fill(s : ImagemorphtophatSlice, v : Double) -> I
   result
 }
 
-pub fn image_morph_tophat_slice_min(s : ImagemorphtophatSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_slice_min(s : ImagemorphtophatSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_tophat_slice_max(s : ImagemorphtophatSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_tophat_slice_max(s : ImagemorphtophatSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_tophat_slice_to_string(s : ImagemorphtophatSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

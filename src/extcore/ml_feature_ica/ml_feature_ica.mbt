@@ -88,11 +88,7 @@ pub fn ml_feature_ica_make_series(vals : Array[Double], name : String) -> Mlfeat
 
 pub fn ml_feature_ica_series_len(s : MlfeatureicaSeries) -> Int { s.vals.length() }
 
-pub fn ml_feature_ica_series_sum(s : MlfeatureicaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_feature_ica_series_sum(s : MlfeatureicaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_feature_ica_series_mean(s : MlfeatureicaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_feature_ica_frame_set(s : MlfeatureicaFrame, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_ica_frame_sum(s : MlfeatureicaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_frame_sum(s : MlfeatureicaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_frame_mean(s : MlfeatureicaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_frame_mean(s : MlfeatureicaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_frame_scale(s : MlfeatureicaFrame, f : Double) -> MlfeatureicaFrame {
   let result = ml_feature_ica_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_feature_ica_frame_fill(s : MlfeatureicaFrame, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_ica_frame_min(s : MlfeatureicaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_frame_min(s : MlfeatureicaFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_frame_max(s : MlfeatureicaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_frame_max(s : MlfeatureicaFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_frame_to_string(s : MlfeatureicaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_feature_ica_table_set(s : MlfeatureicaTable, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_ica_table_sum(s : MlfeatureicaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_table_sum(s : MlfeatureicaTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_table_mean(s : MlfeatureicaTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_table_mean(s : MlfeatureicaTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_table_scale(s : MlfeatureicaTable, f : Double) -> MlfeatureicaTable {
   let result = ml_feature_ica_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_feature_ica_table_fill(s : MlfeatureicaTable, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_ica_table_min(s : MlfeatureicaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_table_min(s : MlfeatureicaTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_table_max(s : MlfeatureicaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_table_max(s : MlfeatureicaTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_table_to_string(s : MlfeatureicaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_feature_ica_graphn_set(s : MlfeatureicaGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_ica_graphn_sum(s : MlfeatureicaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_graphn_sum(s : MlfeatureicaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_graphn_mean(s : MlfeatureicaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_graphn_mean(s : MlfeatureicaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_graphn_scale(s : MlfeatureicaGraphN, f : Double) -> MlfeatureicaGraphN {
   let result = ml_feature_ica_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_feature_ica_graphn_fill(s : MlfeatureicaGraphN, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_ica_graphn_min(s : MlfeatureicaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_graphn_min(s : MlfeatureicaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_graphn_max(s : MlfeatureicaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_graphn_max(s : MlfeatureicaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_graphn_to_string(s : MlfeatureicaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_feature_ica_node_set(s : MlfeatureicaNode, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_ica_node_sum(s : MlfeatureicaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_node_sum(s : MlfeatureicaNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_node_mean(s : MlfeatureicaNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_node_mean(s : MlfeatureicaNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_node_scale(s : MlfeatureicaNode, f : Double) -> MlfeatureicaNode {
   let result = ml_feature_ica_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_feature_ica_node_fill(s : MlfeatureicaNode, v : Double) -> Mlfeatureic
   result
 }
 
-pub fn ml_feature_ica_node_min(s : MlfeatureicaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_node_min(s : MlfeatureicaNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_node_max(s : MlfeatureicaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_node_max(s : MlfeatureicaNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_node_to_string(s : MlfeatureicaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_feature_ica_edge_set(s : MlfeatureicaEdge, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_ica_edge_sum(s : MlfeatureicaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_edge_sum(s : MlfeatureicaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_edge_mean(s : MlfeatureicaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_edge_mean(s : MlfeatureicaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_edge_scale(s : MlfeatureicaEdge, f : Double) -> MlfeatureicaEdge {
   let result = ml_feature_ica_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_feature_ica_edge_fill(s : MlfeatureicaEdge, v : Double) -> Mlfeatureic
   result
 }
 
-pub fn ml_feature_ica_edge_min(s : MlfeatureicaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_edge_min(s : MlfeatureicaEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_edge_max(s : MlfeatureicaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_edge_max(s : MlfeatureicaEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_edge_to_string(s : MlfeatureicaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_feature_ica_path_set(s : MlfeatureicaPath, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_ica_path_sum(s : MlfeatureicaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_path_sum(s : MlfeatureicaPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_path_mean(s : MlfeatureicaPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_path_mean(s : MlfeatureicaPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_path_scale(s : MlfeatureicaPath, f : Double) -> MlfeatureicaPath {
   let result = ml_feature_ica_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_feature_ica_path_fill(s : MlfeatureicaPath, v : Double) -> Mlfeatureic
   result
 }
 
-pub fn ml_feature_ica_path_min(s : MlfeatureicaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_path_min(s : MlfeatureicaPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_path_max(s : MlfeatureicaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_path_max(s : MlfeatureicaPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_path_to_string(s : MlfeatureicaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_feature_ica_cluster_set(s : MlfeatureicaCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_ica_cluster_sum(s : MlfeatureicaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_cluster_sum(s : MlfeatureicaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_cluster_mean(s : MlfeatureicaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_cluster_mean(s : MlfeatureicaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_cluster_scale(s : MlfeatureicaCluster, f : Double) -> MlfeatureicaCluster {
   let result = ml_feature_ica_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_feature_ica_cluster_fill(s : MlfeatureicaCluster, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_ica_cluster_min(s : MlfeatureicaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_cluster_min(s : MlfeatureicaCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_cluster_max(s : MlfeatureicaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_cluster_max(s : MlfeatureicaCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_cluster_to_string(s : MlfeatureicaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_feature_ica_model_set(s : MlfeatureicaModel, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_ica_model_sum(s : MlfeatureicaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_model_sum(s : MlfeatureicaModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_model_mean(s : MlfeatureicaModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_model_mean(s : MlfeatureicaModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_model_scale(s : MlfeatureicaModel, f : Double) -> MlfeatureicaModel {
   let result = ml_feature_ica_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_feature_ica_model_fill(s : MlfeatureicaModel, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_ica_model_min(s : MlfeatureicaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_model_min(s : MlfeatureicaModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_model_max(s : MlfeatureicaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_model_max(s : MlfeatureicaModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_model_to_string(s : MlfeatureicaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_feature_ica_layer_set(s : MlfeatureicaLayer, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_ica_layer_sum(s : MlfeatureicaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_layer_sum(s : MlfeatureicaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_layer_mean(s : MlfeatureicaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_layer_mean(s : MlfeatureicaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_layer_scale(s : MlfeatureicaLayer, f : Double) -> MlfeatureicaLayer {
   let result = ml_feature_ica_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_feature_ica_layer_fill(s : MlfeatureicaLayer, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_ica_layer_min(s : MlfeatureicaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_layer_min(s : MlfeatureicaLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_layer_max(s : MlfeatureicaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_layer_max(s : MlfeatureicaLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_layer_to_string(s : MlfeatureicaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_feature_ica_buffer_set(s : MlfeatureicaBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_ica_buffer_sum(s : MlfeatureicaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_buffer_sum(s : MlfeatureicaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_buffer_mean(s : MlfeatureicaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_buffer_mean(s : MlfeatureicaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_buffer_scale(s : MlfeatureicaBuffer, f : Double) -> MlfeatureicaBuffer {
   let result = ml_feature_ica_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_feature_ica_buffer_fill(s : MlfeatureicaBuffer, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_ica_buffer_min(s : MlfeatureicaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_buffer_min(s : MlfeatureicaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_buffer_max(s : MlfeatureicaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_buffer_max(s : MlfeatureicaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_buffer_to_string(s : MlfeatureicaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_feature_ica_cursor_set(s : MlfeatureicaCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_ica_cursor_sum(s : MlfeatureicaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_cursor_sum(s : MlfeatureicaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_cursor_mean(s : MlfeatureicaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_cursor_mean(s : MlfeatureicaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_cursor_scale(s : MlfeatureicaCursor, f : Double) -> MlfeatureicaCursor {
   let result = ml_feature_ica_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_feature_ica_cursor_fill(s : MlfeatureicaCursor, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_ica_cursor_min(s : MlfeatureicaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_cursor_min(s : MlfeatureicaCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_cursor_max(s : MlfeatureicaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_cursor_max(s : MlfeatureicaCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_cursor_to_string(s : MlfeatureicaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_feature_ica_view_set(s : MlfeatureicaView, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_ica_view_sum(s : MlfeatureicaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_view_sum(s : MlfeatureicaView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_view_mean(s : MlfeatureicaView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_view_mean(s : MlfeatureicaView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_view_scale(s : MlfeatureicaView, f : Double) -> MlfeatureicaView {
   let result = ml_feature_ica_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_feature_ica_view_fill(s : MlfeatureicaView, v : Double) -> Mlfeatureic
   result
 }
 
-pub fn ml_feature_ica_view_min(s : MlfeatureicaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_view_min(s : MlfeatureicaView) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_view_max(s : MlfeatureicaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_view_max(s : MlfeatureicaView) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_view_to_string(s : MlfeatureicaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_feature_ica_range_set(s : MlfeatureicaRange, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_ica_range_sum(s : MlfeatureicaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_range_sum(s : MlfeatureicaRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_range_mean(s : MlfeatureicaRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_range_mean(s : MlfeatureicaRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_range_scale(s : MlfeatureicaRange, f : Double) -> MlfeatureicaRange {
   let result = ml_feature_ica_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_feature_ica_range_fill(s : MlfeatureicaRange, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_ica_range_min(s : MlfeatureicaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_range_min(s : MlfeatureicaRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_range_max(s : MlfeatureicaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_range_max(s : MlfeatureicaRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_range_to_string(s : MlfeatureicaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_feature_ica_slice_set(s : MlfeatureicaSlice, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_ica_slice_sum(s : MlfeatureicaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_ica_slice_sum(s : MlfeatureicaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_ica_slice_mean(s : MlfeatureicaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_ica_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_ica_slice_mean(s : MlfeatureicaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_ica_slice_scale(s : MlfeatureicaSlice, f : Double) -> MlfeatureicaSlice {
   let result = ml_feature_ica_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_feature_ica_slice_fill(s : MlfeatureicaSlice, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_ica_slice_min(s : MlfeatureicaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_slice_min(s : MlfeatureicaSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_ica_slice_max(s : MlfeatureicaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_ica_slice_max(s : MlfeatureicaSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_ica_slice_to_string(s : MlfeatureicaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

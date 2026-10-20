@@ -88,11 +88,7 @@ pub fn image_filter_prewitt_make_series(vals : Array[Double], name : String) -> 
 
 pub fn image_filter_prewitt_series_len(s : ImagefilterprewittSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_prewitt_series_sum(s : ImagefilterprewittSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_prewitt_series_sum(s : ImagefilterprewittSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_prewitt_series_mean(s : ImagefilterprewittSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_prewitt_frame_set(s : ImagefilterprewittFrame, i : Int, v : 
   result
 }
 
-pub fn image_filter_prewitt_frame_sum(s : ImagefilterprewittFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_frame_sum(s : ImagefilterprewittFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_frame_mean(s : ImagefilterprewittFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_frame_mean(s : ImagefilterprewittFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_frame_scale(s : ImagefilterprewittFrame, f : Double) -> ImagefilterprewittFrame {
   let result = image_filter_prewitt_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_prewitt_frame_fill(s : ImagefilterprewittFrame, v : Double) 
   result
 }
 
-pub fn image_filter_prewitt_frame_min(s : ImagefilterprewittFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_frame_min(s : ImagefilterprewittFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_frame_max(s : ImagefilterprewittFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_frame_max(s : ImagefilterprewittFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_frame_to_string(s : ImagefilterprewittFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_prewitt_table_set(s : ImagefilterprewittTable, i : Int, v : 
   result
 }
 
-pub fn image_filter_prewitt_table_sum(s : ImagefilterprewittTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_table_sum(s : ImagefilterprewittTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_table_mean(s : ImagefilterprewittTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_table_mean(s : ImagefilterprewittTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_table_scale(s : ImagefilterprewittTable, f : Double) -> ImagefilterprewittTable {
   let result = image_filter_prewitt_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_prewitt_table_fill(s : ImagefilterprewittTable, v : Double) 
   result
 }
 
-pub fn image_filter_prewitt_table_min(s : ImagefilterprewittTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_table_min(s : ImagefilterprewittTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_table_max(s : ImagefilterprewittTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_table_max(s : ImagefilterprewittTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_table_to_string(s : ImagefilterprewittTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_prewitt_graphn_set(s : ImagefilterprewittGraphN, i : Int, v 
   result
 }
 
-pub fn image_filter_prewitt_graphn_sum(s : ImagefilterprewittGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_graphn_sum(s : ImagefilterprewittGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_graphn_mean(s : ImagefilterprewittGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_graphn_mean(s : ImagefilterprewittGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_graphn_scale(s : ImagefilterprewittGraphN, f : Double) -> ImagefilterprewittGraphN {
   let result = image_filter_prewitt_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_prewitt_graphn_fill(s : ImagefilterprewittGraphN, v : Double
   result
 }
 
-pub fn image_filter_prewitt_graphn_min(s : ImagefilterprewittGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_graphn_min(s : ImagefilterprewittGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_graphn_max(s : ImagefilterprewittGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_graphn_max(s : ImagefilterprewittGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_graphn_to_string(s : ImagefilterprewittGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_prewitt_node_set(s : ImagefilterprewittNode, i : Int, v : Do
   result
 }
 
-pub fn image_filter_prewitt_node_sum(s : ImagefilterprewittNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_node_sum(s : ImagefilterprewittNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_node_mean(s : ImagefilterprewittNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_node_mean(s : ImagefilterprewittNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_node_scale(s : ImagefilterprewittNode, f : Double) -> ImagefilterprewittNode {
   let result = image_filter_prewitt_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_prewitt_node_fill(s : ImagefilterprewittNode, v : Double) ->
   result
 }
 
-pub fn image_filter_prewitt_node_min(s : ImagefilterprewittNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_node_min(s : ImagefilterprewittNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_node_max(s : ImagefilterprewittNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_node_max(s : ImagefilterprewittNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_node_to_string(s : ImagefilterprewittNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_prewitt_edge_set(s : ImagefilterprewittEdge, i : Int, v : Do
   result
 }
 
-pub fn image_filter_prewitt_edge_sum(s : ImagefilterprewittEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_edge_sum(s : ImagefilterprewittEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_edge_mean(s : ImagefilterprewittEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_edge_mean(s : ImagefilterprewittEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_edge_scale(s : ImagefilterprewittEdge, f : Double) -> ImagefilterprewittEdge {
   let result = image_filter_prewitt_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_prewitt_edge_fill(s : ImagefilterprewittEdge, v : Double) ->
   result
 }
 
-pub fn image_filter_prewitt_edge_min(s : ImagefilterprewittEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_edge_min(s : ImagefilterprewittEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_edge_max(s : ImagefilterprewittEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_edge_max(s : ImagefilterprewittEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_edge_to_string(s : ImagefilterprewittEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_prewitt_path_set(s : ImagefilterprewittPath, i : Int, v : Do
   result
 }
 
-pub fn image_filter_prewitt_path_sum(s : ImagefilterprewittPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_path_sum(s : ImagefilterprewittPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_path_mean(s : ImagefilterprewittPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_path_mean(s : ImagefilterprewittPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_path_scale(s : ImagefilterprewittPath, f : Double) -> ImagefilterprewittPath {
   let result = image_filter_prewitt_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_prewitt_path_fill(s : ImagefilterprewittPath, v : Double) ->
   result
 }
 
-pub fn image_filter_prewitt_path_min(s : ImagefilterprewittPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_path_min(s : ImagefilterprewittPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_path_max(s : ImagefilterprewittPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_path_max(s : ImagefilterprewittPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_path_to_string(s : ImagefilterprewittPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_prewitt_cluster_set(s : ImagefilterprewittCluster, i : Int, 
   result
 }
 
-pub fn image_filter_prewitt_cluster_sum(s : ImagefilterprewittCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_cluster_sum(s : ImagefilterprewittCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_cluster_mean(s : ImagefilterprewittCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_cluster_mean(s : ImagefilterprewittCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_cluster_scale(s : ImagefilterprewittCluster, f : Double) -> ImagefilterprewittCluster {
   let result = image_filter_prewitt_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_prewitt_cluster_fill(s : ImagefilterprewittCluster, v : Doub
   result
 }
 
-pub fn image_filter_prewitt_cluster_min(s : ImagefilterprewittCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_cluster_min(s : ImagefilterprewittCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_cluster_max(s : ImagefilterprewittCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_cluster_max(s : ImagefilterprewittCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_cluster_to_string(s : ImagefilterprewittCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_prewitt_model_set(s : ImagefilterprewittModel, i : Int, v : 
   result
 }
 
-pub fn image_filter_prewitt_model_sum(s : ImagefilterprewittModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_model_sum(s : ImagefilterprewittModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_model_mean(s : ImagefilterprewittModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_model_mean(s : ImagefilterprewittModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_model_scale(s : ImagefilterprewittModel, f : Double) -> ImagefilterprewittModel {
   let result = image_filter_prewitt_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_prewitt_model_fill(s : ImagefilterprewittModel, v : Double) 
   result
 }
 
-pub fn image_filter_prewitt_model_min(s : ImagefilterprewittModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_model_min(s : ImagefilterprewittModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_model_max(s : ImagefilterprewittModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_model_max(s : ImagefilterprewittModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_model_to_string(s : ImagefilterprewittModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_prewitt_layer_set(s : ImagefilterprewittLayer, i : Int, v : 
   result
 }
 
-pub fn image_filter_prewitt_layer_sum(s : ImagefilterprewittLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_layer_sum(s : ImagefilterprewittLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_layer_mean(s : ImagefilterprewittLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_layer_mean(s : ImagefilterprewittLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_layer_scale(s : ImagefilterprewittLayer, f : Double) -> ImagefilterprewittLayer {
   let result = image_filter_prewitt_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_prewitt_layer_fill(s : ImagefilterprewittLayer, v : Double) 
   result
 }
 
-pub fn image_filter_prewitt_layer_min(s : ImagefilterprewittLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_layer_min(s : ImagefilterprewittLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_layer_max(s : ImagefilterprewittLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_layer_max(s : ImagefilterprewittLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_layer_to_string(s : ImagefilterprewittLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_prewitt_buffer_set(s : ImagefilterprewittBuffer, i : Int, v 
   result
 }
 
-pub fn image_filter_prewitt_buffer_sum(s : ImagefilterprewittBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_buffer_sum(s : ImagefilterprewittBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_buffer_mean(s : ImagefilterprewittBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_buffer_mean(s : ImagefilterprewittBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_buffer_scale(s : ImagefilterprewittBuffer, f : Double) -> ImagefilterprewittBuffer {
   let result = image_filter_prewitt_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_prewitt_buffer_fill(s : ImagefilterprewittBuffer, v : Double
   result
 }
 
-pub fn image_filter_prewitt_buffer_min(s : ImagefilterprewittBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_buffer_min(s : ImagefilterprewittBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_buffer_max(s : ImagefilterprewittBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_buffer_max(s : ImagefilterprewittBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_buffer_to_string(s : ImagefilterprewittBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_prewitt_cursor_set(s : ImagefilterprewittCursor, i : Int, v 
   result
 }
 
-pub fn image_filter_prewitt_cursor_sum(s : ImagefilterprewittCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_cursor_sum(s : ImagefilterprewittCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_cursor_mean(s : ImagefilterprewittCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_cursor_mean(s : ImagefilterprewittCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_cursor_scale(s : ImagefilterprewittCursor, f : Double) -> ImagefilterprewittCursor {
   let result = image_filter_prewitt_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_prewitt_cursor_fill(s : ImagefilterprewittCursor, v : Double
   result
 }
 
-pub fn image_filter_prewitt_cursor_min(s : ImagefilterprewittCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_cursor_min(s : ImagefilterprewittCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_cursor_max(s : ImagefilterprewittCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_cursor_max(s : ImagefilterprewittCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_cursor_to_string(s : ImagefilterprewittCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_prewitt_view_set(s : ImagefilterprewittView, i : Int, v : Do
   result
 }
 
-pub fn image_filter_prewitt_view_sum(s : ImagefilterprewittView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_view_sum(s : ImagefilterprewittView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_view_mean(s : ImagefilterprewittView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_view_mean(s : ImagefilterprewittView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_view_scale(s : ImagefilterprewittView, f : Double) -> ImagefilterprewittView {
   let result = image_filter_prewitt_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_prewitt_view_fill(s : ImagefilterprewittView, v : Double) ->
   result
 }
 
-pub fn image_filter_prewitt_view_min(s : ImagefilterprewittView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_view_min(s : ImagefilterprewittView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_view_max(s : ImagefilterprewittView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_view_max(s : ImagefilterprewittView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_view_to_string(s : ImagefilterprewittView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_prewitt_range_set(s : ImagefilterprewittRange, i : Int, v : 
   result
 }
 
-pub fn image_filter_prewitt_range_sum(s : ImagefilterprewittRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_range_sum(s : ImagefilterprewittRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_range_mean(s : ImagefilterprewittRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_range_mean(s : ImagefilterprewittRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_range_scale(s : ImagefilterprewittRange, f : Double) -> ImagefilterprewittRange {
   let result = image_filter_prewitt_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_prewitt_range_fill(s : ImagefilterprewittRange, v : Double) 
   result
 }
 
-pub fn image_filter_prewitt_range_min(s : ImagefilterprewittRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_range_min(s : ImagefilterprewittRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_range_max(s : ImagefilterprewittRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_range_max(s : ImagefilterprewittRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_range_to_string(s : ImagefilterprewittRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_prewitt_slice_set(s : ImagefilterprewittSlice, i : Int, v : 
   result
 }
 
-pub fn image_filter_prewitt_slice_sum(s : ImagefilterprewittSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_prewitt_slice_sum(s : ImagefilterprewittSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_prewitt_slice_mean(s : ImagefilterprewittSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_prewitt_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_prewitt_slice_mean(s : ImagefilterprewittSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_prewitt_slice_scale(s : ImagefilterprewittSlice, f : Double) -> ImagefilterprewittSlice {
   let result = image_filter_prewitt_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_prewitt_slice_fill(s : ImagefilterprewittSlice, v : Double) 
   result
 }
 
-pub fn image_filter_prewitt_slice_min(s : ImagefilterprewittSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_slice_min(s : ImagefilterprewittSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_prewitt_slice_max(s : ImagefilterprewittSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_prewitt_slice_max(s : ImagefilterprewittSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_prewitt_slice_to_string(s : ImagefilterprewittSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ds_list_lockfree_make_series(vals : Array[Double], name : String) -> Dsli
 
 pub fn ds_list_lockfree_series_len(s : DslistlockfreeSeries) -> Int { s.vals.length() }
 
-pub fn ds_list_lockfree_series_sum(s : DslistlockfreeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_list_lockfree_series_sum(s : DslistlockfreeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_list_lockfree_series_mean(s : DslistlockfreeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_list_lockfree_frame_set(s : DslistlockfreeFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_lockfree_frame_sum(s : DslistlockfreeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_frame_sum(s : DslistlockfreeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_frame_mean(s : DslistlockfreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_frame_mean(s : DslistlockfreeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_frame_scale(s : DslistlockfreeFrame, f : Double) -> DslistlockfreeFrame {
   let result = ds_list_lockfree_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_list_lockfree_frame_fill(s : DslistlockfreeFrame, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_lockfree_frame_min(s : DslistlockfreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_frame_min(s : DslistlockfreeFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_frame_max(s : DslistlockfreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_frame_max(s : DslistlockfreeFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_frame_to_string(s : DslistlockfreeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_list_lockfree_table_set(s : DslistlockfreeTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_lockfree_table_sum(s : DslistlockfreeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_table_sum(s : DslistlockfreeTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_table_mean(s : DslistlockfreeTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_table_mean(s : DslistlockfreeTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_table_scale(s : DslistlockfreeTable, f : Double) -> DslistlockfreeTable {
   let result = ds_list_lockfree_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_list_lockfree_table_fill(s : DslistlockfreeTable, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_lockfree_table_min(s : DslistlockfreeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_table_min(s : DslistlockfreeTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_table_max(s : DslistlockfreeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_table_max(s : DslistlockfreeTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_table_to_string(s : DslistlockfreeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_list_lockfree_graphn_set(s : DslistlockfreeGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_list_lockfree_graphn_sum(s : DslistlockfreeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_graphn_sum(s : DslistlockfreeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_graphn_mean(s : DslistlockfreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_graphn_mean(s : DslistlockfreeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_graphn_scale(s : DslistlockfreeGraphN, f : Double) -> DslistlockfreeGraphN {
   let result = ds_list_lockfree_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_list_lockfree_graphn_fill(s : DslistlockfreeGraphN, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_lockfree_graphn_min(s : DslistlockfreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_graphn_min(s : DslistlockfreeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_graphn_max(s : DslistlockfreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_graphn_max(s : DslistlockfreeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_graphn_to_string(s : DslistlockfreeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_list_lockfree_node_set(s : DslistlockfreeNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_lockfree_node_sum(s : DslistlockfreeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_node_sum(s : DslistlockfreeNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_node_mean(s : DslistlockfreeNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_node_mean(s : DslistlockfreeNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_node_scale(s : DslistlockfreeNode, f : Double) -> DslistlockfreeNode {
   let result = ds_list_lockfree_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_list_lockfree_node_fill(s : DslistlockfreeNode, v : Double) -> Dslistl
   result
 }
 
-pub fn ds_list_lockfree_node_min(s : DslistlockfreeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_node_min(s : DslistlockfreeNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_node_max(s : DslistlockfreeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_node_max(s : DslistlockfreeNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_node_to_string(s : DslistlockfreeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_list_lockfree_edge_set(s : DslistlockfreeEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_lockfree_edge_sum(s : DslistlockfreeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_edge_sum(s : DslistlockfreeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_edge_mean(s : DslistlockfreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_edge_mean(s : DslistlockfreeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_edge_scale(s : DslistlockfreeEdge, f : Double) -> DslistlockfreeEdge {
   let result = ds_list_lockfree_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_list_lockfree_edge_fill(s : DslistlockfreeEdge, v : Double) -> Dslistl
   result
 }
 
-pub fn ds_list_lockfree_edge_min(s : DslistlockfreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_edge_min(s : DslistlockfreeEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_edge_max(s : DslistlockfreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_edge_max(s : DslistlockfreeEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_edge_to_string(s : DslistlockfreeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_list_lockfree_path_set(s : DslistlockfreePath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_lockfree_path_sum(s : DslistlockfreePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_path_sum(s : DslistlockfreePath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_path_mean(s : DslistlockfreePath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_path_mean(s : DslistlockfreePath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_path_scale(s : DslistlockfreePath, f : Double) -> DslistlockfreePath {
   let result = ds_list_lockfree_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_list_lockfree_path_fill(s : DslistlockfreePath, v : Double) -> Dslistl
   result
 }
 
-pub fn ds_list_lockfree_path_min(s : DslistlockfreePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_path_min(s : DslistlockfreePath) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_path_max(s : DslistlockfreePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_path_max(s : DslistlockfreePath) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_path_to_string(s : DslistlockfreePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_list_lockfree_cluster_set(s : DslistlockfreeCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_lockfree_cluster_sum(s : DslistlockfreeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_cluster_sum(s : DslistlockfreeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_cluster_mean(s : DslistlockfreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_cluster_mean(s : DslistlockfreeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_cluster_scale(s : DslistlockfreeCluster, f : Double) -> DslistlockfreeCluster {
   let result = ds_list_lockfree_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_list_lockfree_cluster_fill(s : DslistlockfreeCluster, v : Double) -> D
   result
 }
 
-pub fn ds_list_lockfree_cluster_min(s : DslistlockfreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_cluster_min(s : DslistlockfreeCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_cluster_max(s : DslistlockfreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_cluster_max(s : DslistlockfreeCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_cluster_to_string(s : DslistlockfreeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_list_lockfree_model_set(s : DslistlockfreeModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_lockfree_model_sum(s : DslistlockfreeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_model_sum(s : DslistlockfreeModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_model_mean(s : DslistlockfreeModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_model_mean(s : DslistlockfreeModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_model_scale(s : DslistlockfreeModel, f : Double) -> DslistlockfreeModel {
   let result = ds_list_lockfree_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_list_lockfree_model_fill(s : DslistlockfreeModel, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_lockfree_model_min(s : DslistlockfreeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_model_min(s : DslistlockfreeModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_model_max(s : DslistlockfreeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_model_max(s : DslistlockfreeModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_model_to_string(s : DslistlockfreeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_list_lockfree_layer_set(s : DslistlockfreeLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_lockfree_layer_sum(s : DslistlockfreeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_layer_sum(s : DslistlockfreeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_layer_mean(s : DslistlockfreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_layer_mean(s : DslistlockfreeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_layer_scale(s : DslistlockfreeLayer, f : Double) -> DslistlockfreeLayer {
   let result = ds_list_lockfree_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_list_lockfree_layer_fill(s : DslistlockfreeLayer, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_lockfree_layer_min(s : DslistlockfreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_layer_min(s : DslistlockfreeLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_layer_max(s : DslistlockfreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_layer_max(s : DslistlockfreeLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_layer_to_string(s : DslistlockfreeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_list_lockfree_buffer_set(s : DslistlockfreeBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_list_lockfree_buffer_sum(s : DslistlockfreeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_buffer_sum(s : DslistlockfreeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_buffer_mean(s : DslistlockfreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_buffer_mean(s : DslistlockfreeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_buffer_scale(s : DslistlockfreeBuffer, f : Double) -> DslistlockfreeBuffer {
   let result = ds_list_lockfree_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_list_lockfree_buffer_fill(s : DslistlockfreeBuffer, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_lockfree_buffer_min(s : DslistlockfreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_buffer_min(s : DslistlockfreeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_buffer_max(s : DslistlockfreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_buffer_max(s : DslistlockfreeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_buffer_to_string(s : DslistlockfreeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_list_lockfree_cursor_set(s : DslistlockfreeCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_list_lockfree_cursor_sum(s : DslistlockfreeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_cursor_sum(s : DslistlockfreeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_cursor_mean(s : DslistlockfreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_cursor_mean(s : DslistlockfreeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_cursor_scale(s : DslistlockfreeCursor, f : Double) -> DslistlockfreeCursor {
   let result = ds_list_lockfree_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_list_lockfree_cursor_fill(s : DslistlockfreeCursor, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_lockfree_cursor_min(s : DslistlockfreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_cursor_min(s : DslistlockfreeCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_cursor_max(s : DslistlockfreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_cursor_max(s : DslistlockfreeCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_cursor_to_string(s : DslistlockfreeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_list_lockfree_view_set(s : DslistlockfreeView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_lockfree_view_sum(s : DslistlockfreeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_view_sum(s : DslistlockfreeView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_view_mean(s : DslistlockfreeView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_view_mean(s : DslistlockfreeView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_view_scale(s : DslistlockfreeView, f : Double) -> DslistlockfreeView {
   let result = ds_list_lockfree_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_list_lockfree_view_fill(s : DslistlockfreeView, v : Double) -> Dslistl
   result
 }
 
-pub fn ds_list_lockfree_view_min(s : DslistlockfreeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_view_min(s : DslistlockfreeView) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_view_max(s : DslistlockfreeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_view_max(s : DslistlockfreeView) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_view_to_string(s : DslistlockfreeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_list_lockfree_range_set(s : DslistlockfreeRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_lockfree_range_sum(s : DslistlockfreeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_range_sum(s : DslistlockfreeRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_range_mean(s : DslistlockfreeRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_range_mean(s : DslistlockfreeRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_range_scale(s : DslistlockfreeRange, f : Double) -> DslistlockfreeRange {
   let result = ds_list_lockfree_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_list_lockfree_range_fill(s : DslistlockfreeRange, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_lockfree_range_min(s : DslistlockfreeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_range_min(s : DslistlockfreeRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_range_max(s : DslistlockfreeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_range_max(s : DslistlockfreeRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_range_to_string(s : DslistlockfreeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_list_lockfree_slice_set(s : DslistlockfreeSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_lockfree_slice_sum(s : DslistlockfreeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_lockfree_slice_sum(s : DslistlockfreeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_lockfree_slice_mean(s : DslistlockfreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_lockfree_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_lockfree_slice_mean(s : DslistlockfreeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_lockfree_slice_scale(s : DslistlockfreeSlice, f : Double) -> DslistlockfreeSlice {
   let result = ds_list_lockfree_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_list_lockfree_slice_fill(s : DslistlockfreeSlice, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_lockfree_slice_min(s : DslistlockfreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_slice_min(s : DslistlockfreeSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_lockfree_slice_max(s : DslistlockfreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_lockfree_slice_max(s : DslistlockfreeSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_lockfree_slice_to_string(s : DslistlockfreeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

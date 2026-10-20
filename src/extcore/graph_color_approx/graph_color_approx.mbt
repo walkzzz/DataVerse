@@ -88,11 +88,7 @@ pub fn graph_color_approx_make_series(vals : Array[Double], name : String) -> Gr
 
 pub fn graph_color_approx_series_len(s : GraphcolorapproxSeries) -> Int { s.vals.length() }
 
-pub fn graph_color_approx_series_sum(s : GraphcolorapproxSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_color_approx_series_sum(s : GraphcolorapproxSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_color_approx_series_mean(s : GraphcolorapproxSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_color_approx_frame_set(s : GraphcolorapproxFrame, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_approx_frame_sum(s : GraphcolorapproxFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_frame_sum(s : GraphcolorapproxFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_frame_mean(s : GraphcolorapproxFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_frame_mean(s : GraphcolorapproxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_frame_scale(s : GraphcolorapproxFrame, f : Double) -> GraphcolorapproxFrame {
   let result = graph_color_approx_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_color_approx_frame_fill(s : GraphcolorapproxFrame, v : Double) -> G
   result
 }
 
-pub fn graph_color_approx_frame_min(s : GraphcolorapproxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_frame_min(s : GraphcolorapproxFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_frame_max(s : GraphcolorapproxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_frame_max(s : GraphcolorapproxFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_frame_to_string(s : GraphcolorapproxFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_color_approx_table_set(s : GraphcolorapproxTable, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_approx_table_sum(s : GraphcolorapproxTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_table_sum(s : GraphcolorapproxTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_table_mean(s : GraphcolorapproxTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_table_mean(s : GraphcolorapproxTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_table_scale(s : GraphcolorapproxTable, f : Double) -> GraphcolorapproxTable {
   let result = graph_color_approx_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_color_approx_table_fill(s : GraphcolorapproxTable, v : Double) -> G
   result
 }
 
-pub fn graph_color_approx_table_min(s : GraphcolorapproxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_table_min(s : GraphcolorapproxTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_table_max(s : GraphcolorapproxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_table_max(s : GraphcolorapproxTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_table_to_string(s : GraphcolorapproxTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_color_approx_graphn_set(s : GraphcolorapproxGraphN, i : Int, v : Do
   result
 }
 
-pub fn graph_color_approx_graphn_sum(s : GraphcolorapproxGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_graphn_sum(s : GraphcolorapproxGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_graphn_mean(s : GraphcolorapproxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_graphn_mean(s : GraphcolorapproxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_graphn_scale(s : GraphcolorapproxGraphN, f : Double) -> GraphcolorapproxGraphN {
   let result = graph_color_approx_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_color_approx_graphn_fill(s : GraphcolorapproxGraphN, v : Double) ->
   result
 }
 
-pub fn graph_color_approx_graphn_min(s : GraphcolorapproxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_graphn_min(s : GraphcolorapproxGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_graphn_max(s : GraphcolorapproxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_graphn_max(s : GraphcolorapproxGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_graphn_to_string(s : GraphcolorapproxGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_color_approx_node_set(s : GraphcolorapproxNode, i : Int, v : Double
   result
 }
 
-pub fn graph_color_approx_node_sum(s : GraphcolorapproxNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_node_sum(s : GraphcolorapproxNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_node_mean(s : GraphcolorapproxNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_node_mean(s : GraphcolorapproxNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_node_scale(s : GraphcolorapproxNode, f : Double) -> GraphcolorapproxNode {
   let result = graph_color_approx_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_color_approx_node_fill(s : GraphcolorapproxNode, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_approx_node_min(s : GraphcolorapproxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_node_min(s : GraphcolorapproxNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_node_max(s : GraphcolorapproxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_node_max(s : GraphcolorapproxNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_node_to_string(s : GraphcolorapproxNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_color_approx_edge_set(s : GraphcolorapproxEdge, i : Int, v : Double
   result
 }
 
-pub fn graph_color_approx_edge_sum(s : GraphcolorapproxEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_edge_sum(s : GraphcolorapproxEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_edge_mean(s : GraphcolorapproxEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_edge_mean(s : GraphcolorapproxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_edge_scale(s : GraphcolorapproxEdge, f : Double) -> GraphcolorapproxEdge {
   let result = graph_color_approx_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_color_approx_edge_fill(s : GraphcolorapproxEdge, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_approx_edge_min(s : GraphcolorapproxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_edge_min(s : GraphcolorapproxEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_edge_max(s : GraphcolorapproxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_edge_max(s : GraphcolorapproxEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_edge_to_string(s : GraphcolorapproxEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_color_approx_path_set(s : GraphcolorapproxPath, i : Int, v : Double
   result
 }
 
-pub fn graph_color_approx_path_sum(s : GraphcolorapproxPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_path_sum(s : GraphcolorapproxPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_path_mean(s : GraphcolorapproxPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_path_mean(s : GraphcolorapproxPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_path_scale(s : GraphcolorapproxPath, f : Double) -> GraphcolorapproxPath {
   let result = graph_color_approx_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_color_approx_path_fill(s : GraphcolorapproxPath, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_approx_path_min(s : GraphcolorapproxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_path_min(s : GraphcolorapproxPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_path_max(s : GraphcolorapproxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_path_max(s : GraphcolorapproxPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_path_to_string(s : GraphcolorapproxPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_color_approx_cluster_set(s : GraphcolorapproxCluster, i : Int, v : 
   result
 }
 
-pub fn graph_color_approx_cluster_sum(s : GraphcolorapproxCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_cluster_sum(s : GraphcolorapproxCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_cluster_mean(s : GraphcolorapproxCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_cluster_mean(s : GraphcolorapproxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_cluster_scale(s : GraphcolorapproxCluster, f : Double) -> GraphcolorapproxCluster {
   let result = graph_color_approx_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_color_approx_cluster_fill(s : GraphcolorapproxCluster, v : Double) 
   result
 }
 
-pub fn graph_color_approx_cluster_min(s : GraphcolorapproxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_cluster_min(s : GraphcolorapproxCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_cluster_max(s : GraphcolorapproxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_cluster_max(s : GraphcolorapproxCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_cluster_to_string(s : GraphcolorapproxCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_color_approx_model_set(s : GraphcolorapproxModel, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_approx_model_sum(s : GraphcolorapproxModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_model_sum(s : GraphcolorapproxModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_model_mean(s : GraphcolorapproxModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_model_mean(s : GraphcolorapproxModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_model_scale(s : GraphcolorapproxModel, f : Double) -> GraphcolorapproxModel {
   let result = graph_color_approx_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_color_approx_model_fill(s : GraphcolorapproxModel, v : Double) -> G
   result
 }
 
-pub fn graph_color_approx_model_min(s : GraphcolorapproxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_model_min(s : GraphcolorapproxModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_model_max(s : GraphcolorapproxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_model_max(s : GraphcolorapproxModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_model_to_string(s : GraphcolorapproxModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_color_approx_layer_set(s : GraphcolorapproxLayer, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_approx_layer_sum(s : GraphcolorapproxLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_layer_sum(s : GraphcolorapproxLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_layer_mean(s : GraphcolorapproxLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_layer_mean(s : GraphcolorapproxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_layer_scale(s : GraphcolorapproxLayer, f : Double) -> GraphcolorapproxLayer {
   let result = graph_color_approx_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_color_approx_layer_fill(s : GraphcolorapproxLayer, v : Double) -> G
   result
 }
 
-pub fn graph_color_approx_layer_min(s : GraphcolorapproxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_layer_min(s : GraphcolorapproxLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_layer_max(s : GraphcolorapproxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_layer_max(s : GraphcolorapproxLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_layer_to_string(s : GraphcolorapproxLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_color_approx_buffer_set(s : GraphcolorapproxBuffer, i : Int, v : Do
   result
 }
 
-pub fn graph_color_approx_buffer_sum(s : GraphcolorapproxBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_buffer_sum(s : GraphcolorapproxBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_buffer_mean(s : GraphcolorapproxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_buffer_mean(s : GraphcolorapproxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_buffer_scale(s : GraphcolorapproxBuffer, f : Double) -> GraphcolorapproxBuffer {
   let result = graph_color_approx_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_color_approx_buffer_fill(s : GraphcolorapproxBuffer, v : Double) ->
   result
 }
 
-pub fn graph_color_approx_buffer_min(s : GraphcolorapproxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_buffer_min(s : GraphcolorapproxBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_buffer_max(s : GraphcolorapproxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_buffer_max(s : GraphcolorapproxBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_buffer_to_string(s : GraphcolorapproxBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_color_approx_cursor_set(s : GraphcolorapproxCursor, i : Int, v : Do
   result
 }
 
-pub fn graph_color_approx_cursor_sum(s : GraphcolorapproxCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_cursor_sum(s : GraphcolorapproxCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_cursor_mean(s : GraphcolorapproxCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_cursor_mean(s : GraphcolorapproxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_cursor_scale(s : GraphcolorapproxCursor, f : Double) -> GraphcolorapproxCursor {
   let result = graph_color_approx_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_color_approx_cursor_fill(s : GraphcolorapproxCursor, v : Double) ->
   result
 }
 
-pub fn graph_color_approx_cursor_min(s : GraphcolorapproxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_cursor_min(s : GraphcolorapproxCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_cursor_max(s : GraphcolorapproxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_cursor_max(s : GraphcolorapproxCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_cursor_to_string(s : GraphcolorapproxCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_color_approx_view_set(s : GraphcolorapproxView, i : Int, v : Double
   result
 }
 
-pub fn graph_color_approx_view_sum(s : GraphcolorapproxView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_view_sum(s : GraphcolorapproxView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_view_mean(s : GraphcolorapproxView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_view_mean(s : GraphcolorapproxView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_view_scale(s : GraphcolorapproxView, f : Double) -> GraphcolorapproxView {
   let result = graph_color_approx_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_color_approx_view_fill(s : GraphcolorapproxView, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_approx_view_min(s : GraphcolorapproxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_view_min(s : GraphcolorapproxView) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_view_max(s : GraphcolorapproxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_view_max(s : GraphcolorapproxView) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_view_to_string(s : GraphcolorapproxView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_color_approx_range_set(s : GraphcolorapproxRange, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_approx_range_sum(s : GraphcolorapproxRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_range_sum(s : GraphcolorapproxRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_range_mean(s : GraphcolorapproxRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_range_mean(s : GraphcolorapproxRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_range_scale(s : GraphcolorapproxRange, f : Double) -> GraphcolorapproxRange {
   let result = graph_color_approx_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_color_approx_range_fill(s : GraphcolorapproxRange, v : Double) -> G
   result
 }
 
-pub fn graph_color_approx_range_min(s : GraphcolorapproxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_range_min(s : GraphcolorapproxRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_range_max(s : GraphcolorapproxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_range_max(s : GraphcolorapproxRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_range_to_string(s : GraphcolorapproxRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_color_approx_slice_set(s : GraphcolorapproxSlice, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_approx_slice_sum(s : GraphcolorapproxSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_approx_slice_sum(s : GraphcolorapproxSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_approx_slice_mean(s : GraphcolorapproxSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_approx_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_approx_slice_mean(s : GraphcolorapproxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_approx_slice_scale(s : GraphcolorapproxSlice, f : Double) -> GraphcolorapproxSlice {
   let result = graph_color_approx_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_color_approx_slice_fill(s : GraphcolorapproxSlice, v : Double) -> G
   result
 }
 
-pub fn graph_color_approx_slice_min(s : GraphcolorapproxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_slice_min(s : GraphcolorapproxSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_approx_slice_max(s : GraphcolorapproxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_approx_slice_max(s : GraphcolorapproxSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_approx_slice_to_string(s : GraphcolorapproxSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

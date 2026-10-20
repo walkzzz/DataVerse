@@ -88,11 +88,7 @@ pub fn ds_graph_hyper_make_series(vals : Array[Double], name : String) -> Dsgrap
 
 pub fn ds_graph_hyper_series_len(s : DsgraphhyperSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_hyper_series_sum(s : DsgraphhyperSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_hyper_series_sum(s : DsgraphhyperSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_hyper_series_mean(s : DsgraphhyperSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_hyper_frame_set(s : DsgraphhyperFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_graph_hyper_frame_sum(s : DsgraphhyperFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_frame_sum(s : DsgraphhyperFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_frame_mean(s : DsgraphhyperFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_frame_mean(s : DsgraphhyperFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_frame_scale(s : DsgraphhyperFrame, f : Double) -> DsgraphhyperFrame {
   let result = ds_graph_hyper_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_hyper_frame_fill(s : DsgraphhyperFrame, v : Double) -> Dsgraphhy
   result
 }
 
-pub fn ds_graph_hyper_frame_min(s : DsgraphhyperFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_frame_min(s : DsgraphhyperFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_frame_max(s : DsgraphhyperFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_frame_max(s : DsgraphhyperFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_frame_to_string(s : DsgraphhyperFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_hyper_table_set(s : DsgraphhyperTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_graph_hyper_table_sum(s : DsgraphhyperTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_table_sum(s : DsgraphhyperTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_table_mean(s : DsgraphhyperTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_table_mean(s : DsgraphhyperTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_table_scale(s : DsgraphhyperTable, f : Double) -> DsgraphhyperTable {
   let result = ds_graph_hyper_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_hyper_table_fill(s : DsgraphhyperTable, v : Double) -> Dsgraphhy
   result
 }
 
-pub fn ds_graph_hyper_table_min(s : DsgraphhyperTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_table_min(s : DsgraphhyperTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_table_max(s : DsgraphhyperTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_table_max(s : DsgraphhyperTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_table_to_string(s : DsgraphhyperTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_hyper_graphn_set(s : DsgraphhyperGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_hyper_graphn_sum(s : DsgraphhyperGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_graphn_sum(s : DsgraphhyperGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_graphn_mean(s : DsgraphhyperGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_graphn_mean(s : DsgraphhyperGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_graphn_scale(s : DsgraphhyperGraphN, f : Double) -> DsgraphhyperGraphN {
   let result = ds_graph_hyper_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_hyper_graphn_fill(s : DsgraphhyperGraphN, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_hyper_graphn_min(s : DsgraphhyperGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_graphn_min(s : DsgraphhyperGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_graphn_max(s : DsgraphhyperGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_graphn_max(s : DsgraphhyperGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_graphn_to_string(s : DsgraphhyperGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_hyper_node_set(s : DsgraphhyperNode, i : Int, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_hyper_node_sum(s : DsgraphhyperNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_node_sum(s : DsgraphhyperNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_node_mean(s : DsgraphhyperNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_node_mean(s : DsgraphhyperNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_node_scale(s : DsgraphhyperNode, f : Double) -> DsgraphhyperNode {
   let result = ds_graph_hyper_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_hyper_node_fill(s : DsgraphhyperNode, v : Double) -> Dsgraphhype
   result
 }
 
-pub fn ds_graph_hyper_node_min(s : DsgraphhyperNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_node_min(s : DsgraphhyperNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_node_max(s : DsgraphhyperNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_node_max(s : DsgraphhyperNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_node_to_string(s : DsgraphhyperNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_hyper_edge_set(s : DsgraphhyperEdge, i : Int, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_hyper_edge_sum(s : DsgraphhyperEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_edge_sum(s : DsgraphhyperEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_edge_mean(s : DsgraphhyperEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_edge_mean(s : DsgraphhyperEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_edge_scale(s : DsgraphhyperEdge, f : Double) -> DsgraphhyperEdge {
   let result = ds_graph_hyper_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_hyper_edge_fill(s : DsgraphhyperEdge, v : Double) -> Dsgraphhype
   result
 }
 
-pub fn ds_graph_hyper_edge_min(s : DsgraphhyperEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_edge_min(s : DsgraphhyperEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_edge_max(s : DsgraphhyperEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_edge_max(s : DsgraphhyperEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_edge_to_string(s : DsgraphhyperEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_hyper_path_set(s : DsgraphhyperPath, i : Int, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_hyper_path_sum(s : DsgraphhyperPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_path_sum(s : DsgraphhyperPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_path_mean(s : DsgraphhyperPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_path_mean(s : DsgraphhyperPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_path_scale(s : DsgraphhyperPath, f : Double) -> DsgraphhyperPath {
   let result = ds_graph_hyper_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_hyper_path_fill(s : DsgraphhyperPath, v : Double) -> Dsgraphhype
   result
 }
 
-pub fn ds_graph_hyper_path_min(s : DsgraphhyperPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_path_min(s : DsgraphhyperPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_path_max(s : DsgraphhyperPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_path_max(s : DsgraphhyperPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_path_to_string(s : DsgraphhyperPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_hyper_cluster_set(s : DsgraphhyperCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_hyper_cluster_sum(s : DsgraphhyperCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_cluster_sum(s : DsgraphhyperCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_cluster_mean(s : DsgraphhyperCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_cluster_mean(s : DsgraphhyperCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_cluster_scale(s : DsgraphhyperCluster, f : Double) -> DsgraphhyperCluster {
   let result = ds_graph_hyper_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_hyper_cluster_fill(s : DsgraphhyperCluster, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_hyper_cluster_min(s : DsgraphhyperCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_cluster_min(s : DsgraphhyperCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_cluster_max(s : DsgraphhyperCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_cluster_max(s : DsgraphhyperCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_cluster_to_string(s : DsgraphhyperCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_hyper_model_set(s : DsgraphhyperModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_graph_hyper_model_sum(s : DsgraphhyperModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_model_sum(s : DsgraphhyperModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_model_mean(s : DsgraphhyperModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_model_mean(s : DsgraphhyperModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_model_scale(s : DsgraphhyperModel, f : Double) -> DsgraphhyperModel {
   let result = ds_graph_hyper_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_hyper_model_fill(s : DsgraphhyperModel, v : Double) -> Dsgraphhy
   result
 }
 
-pub fn ds_graph_hyper_model_min(s : DsgraphhyperModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_model_min(s : DsgraphhyperModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_model_max(s : DsgraphhyperModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_model_max(s : DsgraphhyperModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_model_to_string(s : DsgraphhyperModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_hyper_layer_set(s : DsgraphhyperLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_graph_hyper_layer_sum(s : DsgraphhyperLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_layer_sum(s : DsgraphhyperLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_layer_mean(s : DsgraphhyperLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_layer_mean(s : DsgraphhyperLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_layer_scale(s : DsgraphhyperLayer, f : Double) -> DsgraphhyperLayer {
   let result = ds_graph_hyper_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_hyper_layer_fill(s : DsgraphhyperLayer, v : Double) -> Dsgraphhy
   result
 }
 
-pub fn ds_graph_hyper_layer_min(s : DsgraphhyperLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_layer_min(s : DsgraphhyperLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_layer_max(s : DsgraphhyperLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_layer_max(s : DsgraphhyperLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_layer_to_string(s : DsgraphhyperLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_hyper_buffer_set(s : DsgraphhyperBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_hyper_buffer_sum(s : DsgraphhyperBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_buffer_sum(s : DsgraphhyperBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_buffer_mean(s : DsgraphhyperBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_buffer_mean(s : DsgraphhyperBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_buffer_scale(s : DsgraphhyperBuffer, f : Double) -> DsgraphhyperBuffer {
   let result = ds_graph_hyper_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_hyper_buffer_fill(s : DsgraphhyperBuffer, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_hyper_buffer_min(s : DsgraphhyperBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_buffer_min(s : DsgraphhyperBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_buffer_max(s : DsgraphhyperBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_buffer_max(s : DsgraphhyperBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_buffer_to_string(s : DsgraphhyperBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_hyper_cursor_set(s : DsgraphhyperCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_hyper_cursor_sum(s : DsgraphhyperCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_cursor_sum(s : DsgraphhyperCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_cursor_mean(s : DsgraphhyperCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_cursor_mean(s : DsgraphhyperCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_cursor_scale(s : DsgraphhyperCursor, f : Double) -> DsgraphhyperCursor {
   let result = ds_graph_hyper_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_hyper_cursor_fill(s : DsgraphhyperCursor, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_hyper_cursor_min(s : DsgraphhyperCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_cursor_min(s : DsgraphhyperCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_cursor_max(s : DsgraphhyperCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_cursor_max(s : DsgraphhyperCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_cursor_to_string(s : DsgraphhyperCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_hyper_view_set(s : DsgraphhyperView, i : Int, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_hyper_view_sum(s : DsgraphhyperView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_view_sum(s : DsgraphhyperView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_view_mean(s : DsgraphhyperView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_view_mean(s : DsgraphhyperView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_view_scale(s : DsgraphhyperView, f : Double) -> DsgraphhyperView {
   let result = ds_graph_hyper_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_hyper_view_fill(s : DsgraphhyperView, v : Double) -> Dsgraphhype
   result
 }
 
-pub fn ds_graph_hyper_view_min(s : DsgraphhyperView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_view_min(s : DsgraphhyperView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_view_max(s : DsgraphhyperView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_view_max(s : DsgraphhyperView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_view_to_string(s : DsgraphhyperView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_hyper_range_set(s : DsgraphhyperRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_graph_hyper_range_sum(s : DsgraphhyperRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_range_sum(s : DsgraphhyperRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_range_mean(s : DsgraphhyperRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_range_mean(s : DsgraphhyperRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_range_scale(s : DsgraphhyperRange, f : Double) -> DsgraphhyperRange {
   let result = ds_graph_hyper_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_hyper_range_fill(s : DsgraphhyperRange, v : Double) -> Dsgraphhy
   result
 }
 
-pub fn ds_graph_hyper_range_min(s : DsgraphhyperRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_range_min(s : DsgraphhyperRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_range_max(s : DsgraphhyperRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_range_max(s : DsgraphhyperRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_range_to_string(s : DsgraphhyperRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_hyper_slice_set(s : DsgraphhyperSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_graph_hyper_slice_sum(s : DsgraphhyperSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_hyper_slice_sum(s : DsgraphhyperSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_hyper_slice_mean(s : DsgraphhyperSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_hyper_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_hyper_slice_mean(s : DsgraphhyperSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_hyper_slice_scale(s : DsgraphhyperSlice, f : Double) -> DsgraphhyperSlice {
   let result = ds_graph_hyper_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_hyper_slice_fill(s : DsgraphhyperSlice, v : Double) -> Dsgraphhy
   result
 }
 
-pub fn ds_graph_hyper_slice_min(s : DsgraphhyperSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_slice_min(s : DsgraphhyperSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_hyper_slice_max(s : DsgraphhyperSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_hyper_slice_max(s : DsgraphhyperSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_hyper_slice_to_string(s : DsgraphhyperSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

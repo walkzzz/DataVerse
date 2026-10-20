@@ -88,11 +88,7 @@ pub fn geo_proj_stereographic_make_series(vals : Array[Double], name : String) -
 
 pub fn geo_proj_stereographic_series_len(s : GeoprojstereographicSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_stereographic_series_sum(s : GeoprojstereographicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_stereographic_series_sum(s : GeoprojstereographicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_stereographic_series_mean(s : GeoprojstereographicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_stereographic_frame_set(s : GeoprojstereographicFrame, i : Int, 
   result
 }
 
-pub fn geo_proj_stereographic_frame_sum(s : GeoprojstereographicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_frame_sum(s : GeoprojstereographicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_frame_mean(s : GeoprojstereographicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_frame_mean(s : GeoprojstereographicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_frame_scale(s : GeoprojstereographicFrame, f : Double) -> GeoprojstereographicFrame {
   let result = geo_proj_stereographic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_stereographic_frame_fill(s : GeoprojstereographicFrame, v : Doub
   result
 }
 
-pub fn geo_proj_stereographic_frame_min(s : GeoprojstereographicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_frame_min(s : GeoprojstereographicFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_frame_max(s : GeoprojstereographicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_frame_max(s : GeoprojstereographicFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_frame_to_string(s : GeoprojstereographicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_stereographic_table_set(s : GeoprojstereographicTable, i : Int, 
   result
 }
 
-pub fn geo_proj_stereographic_table_sum(s : GeoprojstereographicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_table_sum(s : GeoprojstereographicTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_table_mean(s : GeoprojstereographicTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_table_mean(s : GeoprojstereographicTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_table_scale(s : GeoprojstereographicTable, f : Double) -> GeoprojstereographicTable {
   let result = geo_proj_stereographic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_stereographic_table_fill(s : GeoprojstereographicTable, v : Doub
   result
 }
 
-pub fn geo_proj_stereographic_table_min(s : GeoprojstereographicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_table_min(s : GeoprojstereographicTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_table_max(s : GeoprojstereographicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_table_max(s : GeoprojstereographicTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_table_to_string(s : GeoprojstereographicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_stereographic_graphn_set(s : GeoprojstereographicGraphN, i : Int
   result
 }
 
-pub fn geo_proj_stereographic_graphn_sum(s : GeoprojstereographicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_graphn_sum(s : GeoprojstereographicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_graphn_mean(s : GeoprojstereographicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_graphn_mean(s : GeoprojstereographicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_graphn_scale(s : GeoprojstereographicGraphN, f : Double) -> GeoprojstereographicGraphN {
   let result = geo_proj_stereographic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_stereographic_graphn_fill(s : GeoprojstereographicGraphN, v : Do
   result
 }
 
-pub fn geo_proj_stereographic_graphn_min(s : GeoprojstereographicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_graphn_min(s : GeoprojstereographicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_graphn_max(s : GeoprojstereographicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_graphn_max(s : GeoprojstereographicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_graphn_to_string(s : GeoprojstereographicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_stereographic_node_set(s : GeoprojstereographicNode, i : Int, v 
   result
 }
 
-pub fn geo_proj_stereographic_node_sum(s : GeoprojstereographicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_node_sum(s : GeoprojstereographicNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_node_mean(s : GeoprojstereographicNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_node_mean(s : GeoprojstereographicNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_node_scale(s : GeoprojstereographicNode, f : Double) -> GeoprojstereographicNode {
   let result = geo_proj_stereographic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_stereographic_node_fill(s : GeoprojstereographicNode, v : Double
   result
 }
 
-pub fn geo_proj_stereographic_node_min(s : GeoprojstereographicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_node_min(s : GeoprojstereographicNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_node_max(s : GeoprojstereographicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_node_max(s : GeoprojstereographicNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_node_to_string(s : GeoprojstereographicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_stereographic_edge_set(s : GeoprojstereographicEdge, i : Int, v 
   result
 }
 
-pub fn geo_proj_stereographic_edge_sum(s : GeoprojstereographicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_edge_sum(s : GeoprojstereographicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_edge_mean(s : GeoprojstereographicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_edge_mean(s : GeoprojstereographicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_edge_scale(s : GeoprojstereographicEdge, f : Double) -> GeoprojstereographicEdge {
   let result = geo_proj_stereographic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_stereographic_edge_fill(s : GeoprojstereographicEdge, v : Double
   result
 }
 
-pub fn geo_proj_stereographic_edge_min(s : GeoprojstereographicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_edge_min(s : GeoprojstereographicEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_edge_max(s : GeoprojstereographicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_edge_max(s : GeoprojstereographicEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_edge_to_string(s : GeoprojstereographicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_stereographic_path_set(s : GeoprojstereographicPath, i : Int, v 
   result
 }
 
-pub fn geo_proj_stereographic_path_sum(s : GeoprojstereographicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_path_sum(s : GeoprojstereographicPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_path_mean(s : GeoprojstereographicPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_path_mean(s : GeoprojstereographicPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_path_scale(s : GeoprojstereographicPath, f : Double) -> GeoprojstereographicPath {
   let result = geo_proj_stereographic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_stereographic_path_fill(s : GeoprojstereographicPath, v : Double
   result
 }
 
-pub fn geo_proj_stereographic_path_min(s : GeoprojstereographicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_path_min(s : GeoprojstereographicPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_path_max(s : GeoprojstereographicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_path_max(s : GeoprojstereographicPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_path_to_string(s : GeoprojstereographicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_stereographic_cluster_set(s : GeoprojstereographicCluster, i : I
   result
 }
 
-pub fn geo_proj_stereographic_cluster_sum(s : GeoprojstereographicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_cluster_sum(s : GeoprojstereographicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_cluster_mean(s : GeoprojstereographicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_cluster_mean(s : GeoprojstereographicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_cluster_scale(s : GeoprojstereographicCluster, f : Double) -> GeoprojstereographicCluster {
   let result = geo_proj_stereographic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_stereographic_cluster_fill(s : GeoprojstereographicCluster, v : 
   result
 }
 
-pub fn geo_proj_stereographic_cluster_min(s : GeoprojstereographicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_cluster_min(s : GeoprojstereographicCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_cluster_max(s : GeoprojstereographicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_cluster_max(s : GeoprojstereographicCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_cluster_to_string(s : GeoprojstereographicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_stereographic_model_set(s : GeoprojstereographicModel, i : Int, 
   result
 }
 
-pub fn geo_proj_stereographic_model_sum(s : GeoprojstereographicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_model_sum(s : GeoprojstereographicModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_model_mean(s : GeoprojstereographicModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_model_mean(s : GeoprojstereographicModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_model_scale(s : GeoprojstereographicModel, f : Double) -> GeoprojstereographicModel {
   let result = geo_proj_stereographic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_stereographic_model_fill(s : GeoprojstereographicModel, v : Doub
   result
 }
 
-pub fn geo_proj_stereographic_model_min(s : GeoprojstereographicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_model_min(s : GeoprojstereographicModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_model_max(s : GeoprojstereographicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_model_max(s : GeoprojstereographicModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_model_to_string(s : GeoprojstereographicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_stereographic_layer_set(s : GeoprojstereographicLayer, i : Int, 
   result
 }
 
-pub fn geo_proj_stereographic_layer_sum(s : GeoprojstereographicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_layer_sum(s : GeoprojstereographicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_layer_mean(s : GeoprojstereographicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_layer_mean(s : GeoprojstereographicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_layer_scale(s : GeoprojstereographicLayer, f : Double) -> GeoprojstereographicLayer {
   let result = geo_proj_stereographic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_stereographic_layer_fill(s : GeoprojstereographicLayer, v : Doub
   result
 }
 
-pub fn geo_proj_stereographic_layer_min(s : GeoprojstereographicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_layer_min(s : GeoprojstereographicLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_layer_max(s : GeoprojstereographicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_layer_max(s : GeoprojstereographicLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_layer_to_string(s : GeoprojstereographicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_stereographic_buffer_set(s : GeoprojstereographicBuffer, i : Int
   result
 }
 
-pub fn geo_proj_stereographic_buffer_sum(s : GeoprojstereographicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_buffer_sum(s : GeoprojstereographicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_buffer_mean(s : GeoprojstereographicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_buffer_mean(s : GeoprojstereographicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_buffer_scale(s : GeoprojstereographicBuffer, f : Double) -> GeoprojstereographicBuffer {
   let result = geo_proj_stereographic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_stereographic_buffer_fill(s : GeoprojstereographicBuffer, v : Do
   result
 }
 
-pub fn geo_proj_stereographic_buffer_min(s : GeoprojstereographicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_buffer_min(s : GeoprojstereographicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_buffer_max(s : GeoprojstereographicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_buffer_max(s : GeoprojstereographicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_buffer_to_string(s : GeoprojstereographicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_stereographic_cursor_set(s : GeoprojstereographicCursor, i : Int
   result
 }
 
-pub fn geo_proj_stereographic_cursor_sum(s : GeoprojstereographicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_cursor_sum(s : GeoprojstereographicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_cursor_mean(s : GeoprojstereographicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_cursor_mean(s : GeoprojstereographicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_cursor_scale(s : GeoprojstereographicCursor, f : Double) -> GeoprojstereographicCursor {
   let result = geo_proj_stereographic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_stereographic_cursor_fill(s : GeoprojstereographicCursor, v : Do
   result
 }
 
-pub fn geo_proj_stereographic_cursor_min(s : GeoprojstereographicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_cursor_min(s : GeoprojstereographicCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_cursor_max(s : GeoprojstereographicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_cursor_max(s : GeoprojstereographicCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_cursor_to_string(s : GeoprojstereographicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_stereographic_view_set(s : GeoprojstereographicView, i : Int, v 
   result
 }
 
-pub fn geo_proj_stereographic_view_sum(s : GeoprojstereographicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_view_sum(s : GeoprojstereographicView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_view_mean(s : GeoprojstereographicView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_view_mean(s : GeoprojstereographicView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_view_scale(s : GeoprojstereographicView, f : Double) -> GeoprojstereographicView {
   let result = geo_proj_stereographic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_stereographic_view_fill(s : GeoprojstereographicView, v : Double
   result
 }
 
-pub fn geo_proj_stereographic_view_min(s : GeoprojstereographicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_view_min(s : GeoprojstereographicView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_view_max(s : GeoprojstereographicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_view_max(s : GeoprojstereographicView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_view_to_string(s : GeoprojstereographicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_stereographic_range_set(s : GeoprojstereographicRange, i : Int, 
   result
 }
 
-pub fn geo_proj_stereographic_range_sum(s : GeoprojstereographicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_range_sum(s : GeoprojstereographicRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_range_mean(s : GeoprojstereographicRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_range_mean(s : GeoprojstereographicRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_range_scale(s : GeoprojstereographicRange, f : Double) -> GeoprojstereographicRange {
   let result = geo_proj_stereographic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_stereographic_range_fill(s : GeoprojstereographicRange, v : Doub
   result
 }
 
-pub fn geo_proj_stereographic_range_min(s : GeoprojstereographicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_range_min(s : GeoprojstereographicRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_range_max(s : GeoprojstereographicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_range_max(s : GeoprojstereographicRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_range_to_string(s : GeoprojstereographicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_stereographic_slice_set(s : GeoprojstereographicSlice, i : Int, 
   result
 }
 
-pub fn geo_proj_stereographic_slice_sum(s : GeoprojstereographicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_stereographic_slice_sum(s : GeoprojstereographicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_stereographic_slice_mean(s : GeoprojstereographicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_stereographic_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_stereographic_slice_mean(s : GeoprojstereographicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_stereographic_slice_scale(s : GeoprojstereographicSlice, f : Double) -> GeoprojstereographicSlice {
   let result = geo_proj_stereographic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_stereographic_slice_fill(s : GeoprojstereographicSlice, v : Doub
   result
 }
 
-pub fn geo_proj_stereographic_slice_min(s : GeoprojstereographicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_slice_min(s : GeoprojstereographicSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_stereographic_slice_max(s : GeoprojstereographicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_stereographic_slice_max(s : GeoprojstereographicSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_stereographic_slice_to_string(s : GeoprojstereographicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

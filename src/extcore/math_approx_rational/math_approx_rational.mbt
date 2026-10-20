@@ -88,11 +88,7 @@ pub fn math_approx_rational_make_series(vals : Array[Double], name : String) -> 
 
 pub fn math_approx_rational_series_len(s : MathapproxrationalSeries) -> Int { s.vals.length() }
 
-pub fn math_approx_rational_series_sum(s : MathapproxrationalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_rational_series_sum(s : MathapproxrationalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_rational_series_mean(s : MathapproxrationalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_rational_frame_set(s : MathapproxrationalFrame, i : Int, v : 
   result
 }
 
-pub fn math_approx_rational_frame_sum(s : MathapproxrationalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_frame_sum(s : MathapproxrationalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_frame_mean(s : MathapproxrationalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_frame_mean(s : MathapproxrationalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_frame_scale(s : MathapproxrationalFrame, f : Double) -> MathapproxrationalFrame {
   let result = math_approx_rational_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_rational_frame_fill(s : MathapproxrationalFrame, v : Double) 
   result
 }
 
-pub fn math_approx_rational_frame_min(s : MathapproxrationalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_frame_min(s : MathapproxrationalFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_frame_max(s : MathapproxrationalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_frame_max(s : MathapproxrationalFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_frame_to_string(s : MathapproxrationalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_rational_table_set(s : MathapproxrationalTable, i : Int, v : 
   result
 }
 
-pub fn math_approx_rational_table_sum(s : MathapproxrationalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_table_sum(s : MathapproxrationalTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_table_mean(s : MathapproxrationalTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_table_mean(s : MathapproxrationalTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_table_scale(s : MathapproxrationalTable, f : Double) -> MathapproxrationalTable {
   let result = math_approx_rational_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_rational_table_fill(s : MathapproxrationalTable, v : Double) 
   result
 }
 
-pub fn math_approx_rational_table_min(s : MathapproxrationalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_table_min(s : MathapproxrationalTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_table_max(s : MathapproxrationalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_table_max(s : MathapproxrationalTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_table_to_string(s : MathapproxrationalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_rational_graphn_set(s : MathapproxrationalGraphN, i : Int, v 
   result
 }
 
-pub fn math_approx_rational_graphn_sum(s : MathapproxrationalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_graphn_sum(s : MathapproxrationalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_graphn_mean(s : MathapproxrationalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_graphn_mean(s : MathapproxrationalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_graphn_scale(s : MathapproxrationalGraphN, f : Double) -> MathapproxrationalGraphN {
   let result = math_approx_rational_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_rational_graphn_fill(s : MathapproxrationalGraphN, v : Double
   result
 }
 
-pub fn math_approx_rational_graphn_min(s : MathapproxrationalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_graphn_min(s : MathapproxrationalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_graphn_max(s : MathapproxrationalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_graphn_max(s : MathapproxrationalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_graphn_to_string(s : MathapproxrationalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_rational_node_set(s : MathapproxrationalNode, i : Int, v : Do
   result
 }
 
-pub fn math_approx_rational_node_sum(s : MathapproxrationalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_node_sum(s : MathapproxrationalNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_node_mean(s : MathapproxrationalNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_node_mean(s : MathapproxrationalNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_node_scale(s : MathapproxrationalNode, f : Double) -> MathapproxrationalNode {
   let result = math_approx_rational_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_rational_node_fill(s : MathapproxrationalNode, v : Double) ->
   result
 }
 
-pub fn math_approx_rational_node_min(s : MathapproxrationalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_node_min(s : MathapproxrationalNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_node_max(s : MathapproxrationalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_node_max(s : MathapproxrationalNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_node_to_string(s : MathapproxrationalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_rational_edge_set(s : MathapproxrationalEdge, i : Int, v : Do
   result
 }
 
-pub fn math_approx_rational_edge_sum(s : MathapproxrationalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_edge_sum(s : MathapproxrationalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_edge_mean(s : MathapproxrationalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_edge_mean(s : MathapproxrationalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_edge_scale(s : MathapproxrationalEdge, f : Double) -> MathapproxrationalEdge {
   let result = math_approx_rational_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_rational_edge_fill(s : MathapproxrationalEdge, v : Double) ->
   result
 }
 
-pub fn math_approx_rational_edge_min(s : MathapproxrationalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_edge_min(s : MathapproxrationalEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_edge_max(s : MathapproxrationalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_edge_max(s : MathapproxrationalEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_edge_to_string(s : MathapproxrationalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_rational_path_set(s : MathapproxrationalPath, i : Int, v : Do
   result
 }
 
-pub fn math_approx_rational_path_sum(s : MathapproxrationalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_path_sum(s : MathapproxrationalPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_path_mean(s : MathapproxrationalPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_path_mean(s : MathapproxrationalPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_path_scale(s : MathapproxrationalPath, f : Double) -> MathapproxrationalPath {
   let result = math_approx_rational_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_rational_path_fill(s : MathapproxrationalPath, v : Double) ->
   result
 }
 
-pub fn math_approx_rational_path_min(s : MathapproxrationalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_path_min(s : MathapproxrationalPath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_path_max(s : MathapproxrationalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_path_max(s : MathapproxrationalPath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_path_to_string(s : MathapproxrationalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_rational_cluster_set(s : MathapproxrationalCluster, i : Int, 
   result
 }
 
-pub fn math_approx_rational_cluster_sum(s : MathapproxrationalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_cluster_sum(s : MathapproxrationalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_cluster_mean(s : MathapproxrationalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_cluster_mean(s : MathapproxrationalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_cluster_scale(s : MathapproxrationalCluster, f : Double) -> MathapproxrationalCluster {
   let result = math_approx_rational_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_rational_cluster_fill(s : MathapproxrationalCluster, v : Doub
   result
 }
 
-pub fn math_approx_rational_cluster_min(s : MathapproxrationalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_cluster_min(s : MathapproxrationalCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_cluster_max(s : MathapproxrationalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_cluster_max(s : MathapproxrationalCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_cluster_to_string(s : MathapproxrationalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_rational_model_set(s : MathapproxrationalModel, i : Int, v : 
   result
 }
 
-pub fn math_approx_rational_model_sum(s : MathapproxrationalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_model_sum(s : MathapproxrationalModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_model_mean(s : MathapproxrationalModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_model_mean(s : MathapproxrationalModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_model_scale(s : MathapproxrationalModel, f : Double) -> MathapproxrationalModel {
   let result = math_approx_rational_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_rational_model_fill(s : MathapproxrationalModel, v : Double) 
   result
 }
 
-pub fn math_approx_rational_model_min(s : MathapproxrationalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_model_min(s : MathapproxrationalModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_model_max(s : MathapproxrationalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_model_max(s : MathapproxrationalModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_model_to_string(s : MathapproxrationalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_rational_layer_set(s : MathapproxrationalLayer, i : Int, v : 
   result
 }
 
-pub fn math_approx_rational_layer_sum(s : MathapproxrationalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_layer_sum(s : MathapproxrationalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_layer_mean(s : MathapproxrationalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_layer_mean(s : MathapproxrationalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_layer_scale(s : MathapproxrationalLayer, f : Double) -> MathapproxrationalLayer {
   let result = math_approx_rational_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_rational_layer_fill(s : MathapproxrationalLayer, v : Double) 
   result
 }
 
-pub fn math_approx_rational_layer_min(s : MathapproxrationalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_layer_min(s : MathapproxrationalLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_layer_max(s : MathapproxrationalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_layer_max(s : MathapproxrationalLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_layer_to_string(s : MathapproxrationalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_rational_buffer_set(s : MathapproxrationalBuffer, i : Int, v 
   result
 }
 
-pub fn math_approx_rational_buffer_sum(s : MathapproxrationalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_buffer_sum(s : MathapproxrationalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_buffer_mean(s : MathapproxrationalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_buffer_mean(s : MathapproxrationalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_buffer_scale(s : MathapproxrationalBuffer, f : Double) -> MathapproxrationalBuffer {
   let result = math_approx_rational_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_rational_buffer_fill(s : MathapproxrationalBuffer, v : Double
   result
 }
 
-pub fn math_approx_rational_buffer_min(s : MathapproxrationalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_buffer_min(s : MathapproxrationalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_buffer_max(s : MathapproxrationalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_buffer_max(s : MathapproxrationalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_buffer_to_string(s : MathapproxrationalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_rational_cursor_set(s : MathapproxrationalCursor, i : Int, v 
   result
 }
 
-pub fn math_approx_rational_cursor_sum(s : MathapproxrationalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_cursor_sum(s : MathapproxrationalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_cursor_mean(s : MathapproxrationalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_cursor_mean(s : MathapproxrationalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_cursor_scale(s : MathapproxrationalCursor, f : Double) -> MathapproxrationalCursor {
   let result = math_approx_rational_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_rational_cursor_fill(s : MathapproxrationalCursor, v : Double
   result
 }
 
-pub fn math_approx_rational_cursor_min(s : MathapproxrationalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_cursor_min(s : MathapproxrationalCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_cursor_max(s : MathapproxrationalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_cursor_max(s : MathapproxrationalCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_cursor_to_string(s : MathapproxrationalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_rational_view_set(s : MathapproxrationalView, i : Int, v : Do
   result
 }
 
-pub fn math_approx_rational_view_sum(s : MathapproxrationalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_view_sum(s : MathapproxrationalView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_view_mean(s : MathapproxrationalView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_view_mean(s : MathapproxrationalView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_view_scale(s : MathapproxrationalView, f : Double) -> MathapproxrationalView {
   let result = math_approx_rational_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_rational_view_fill(s : MathapproxrationalView, v : Double) ->
   result
 }
 
-pub fn math_approx_rational_view_min(s : MathapproxrationalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_view_min(s : MathapproxrationalView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_view_max(s : MathapproxrationalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_view_max(s : MathapproxrationalView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_view_to_string(s : MathapproxrationalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_rational_range_set(s : MathapproxrationalRange, i : Int, v : 
   result
 }
 
-pub fn math_approx_rational_range_sum(s : MathapproxrationalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_range_sum(s : MathapproxrationalRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_range_mean(s : MathapproxrationalRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_range_mean(s : MathapproxrationalRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_range_scale(s : MathapproxrationalRange, f : Double) -> MathapproxrationalRange {
   let result = math_approx_rational_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_rational_range_fill(s : MathapproxrationalRange, v : Double) 
   result
 }
 
-pub fn math_approx_rational_range_min(s : MathapproxrationalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_range_min(s : MathapproxrationalRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_range_max(s : MathapproxrationalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_range_max(s : MathapproxrationalRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_range_to_string(s : MathapproxrationalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_rational_slice_set(s : MathapproxrationalSlice, i : Int, v : 
   result
 }
 
-pub fn math_approx_rational_slice_sum(s : MathapproxrationalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_rational_slice_sum(s : MathapproxrationalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_rational_slice_mean(s : MathapproxrationalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_rational_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_rational_slice_mean(s : MathapproxrationalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_rational_slice_scale(s : MathapproxrationalSlice, f : Double) -> MathapproxrationalSlice {
   let result = math_approx_rational_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_rational_slice_fill(s : MathapproxrationalSlice, v : Double) 
   result
 }
 
-pub fn math_approx_rational_slice_min(s : MathapproxrationalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_slice_min(s : MathapproxrationalSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_rational_slice_max(s : MathapproxrationalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_rational_slice_max(s : MathapproxrationalSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_rational_slice_to_string(s : MathapproxrationalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

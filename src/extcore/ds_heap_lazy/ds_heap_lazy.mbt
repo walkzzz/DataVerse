@@ -88,11 +88,7 @@ pub fn ds_heap_lazy_make_series(vals : Array[Double], name : String) -> Dsheapla
 
 pub fn ds_heap_lazy_series_len(s : DsheaplazySeries) -> Int { s.vals.length() }
 
-pub fn ds_heap_lazy_series_sum(s : DsheaplazySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_heap_lazy_series_sum(s : DsheaplazySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_heap_lazy_series_mean(s : DsheaplazySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_heap_lazy_frame_set(s : DsheaplazyFrame, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_lazy_frame_sum(s : DsheaplazyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_frame_sum(s : DsheaplazyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_frame_mean(s : DsheaplazyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_frame_mean(s : DsheaplazyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_frame_scale(s : DsheaplazyFrame, f : Double) -> DsheaplazyFrame {
   let result = ds_heap_lazy_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_heap_lazy_frame_fill(s : DsheaplazyFrame, v : Double) -> DsheaplazyFra
   result
 }
 
-pub fn ds_heap_lazy_frame_min(s : DsheaplazyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_frame_min(s : DsheaplazyFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_frame_max(s : DsheaplazyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_frame_max(s : DsheaplazyFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_frame_to_string(s : DsheaplazyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_heap_lazy_table_set(s : DsheaplazyTable, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_lazy_table_sum(s : DsheaplazyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_table_sum(s : DsheaplazyTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_table_mean(s : DsheaplazyTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_table_mean(s : DsheaplazyTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_table_scale(s : DsheaplazyTable, f : Double) -> DsheaplazyTable {
   let result = ds_heap_lazy_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_heap_lazy_table_fill(s : DsheaplazyTable, v : Double) -> DsheaplazyTab
   result
 }
 
-pub fn ds_heap_lazy_table_min(s : DsheaplazyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_table_min(s : DsheaplazyTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_table_max(s : DsheaplazyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_table_max(s : DsheaplazyTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_table_to_string(s : DsheaplazyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_heap_lazy_graphn_set(s : DsheaplazyGraphN, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_lazy_graphn_sum(s : DsheaplazyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_graphn_sum(s : DsheaplazyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_graphn_mean(s : DsheaplazyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_graphn_mean(s : DsheaplazyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_graphn_scale(s : DsheaplazyGraphN, f : Double) -> DsheaplazyGraphN {
   let result = ds_heap_lazy_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_heap_lazy_graphn_fill(s : DsheaplazyGraphN, v : Double) -> DsheaplazyG
   result
 }
 
-pub fn ds_heap_lazy_graphn_min(s : DsheaplazyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_graphn_min(s : DsheaplazyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_graphn_max(s : DsheaplazyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_graphn_max(s : DsheaplazyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_graphn_to_string(s : DsheaplazyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_heap_lazy_node_set(s : DsheaplazyNode, i : Int, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_lazy_node_sum(s : DsheaplazyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_node_sum(s : DsheaplazyNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_node_mean(s : DsheaplazyNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_node_mean(s : DsheaplazyNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_node_scale(s : DsheaplazyNode, f : Double) -> DsheaplazyNode {
   let result = ds_heap_lazy_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_heap_lazy_node_fill(s : DsheaplazyNode, v : Double) -> DsheaplazyNode 
   result
 }
 
-pub fn ds_heap_lazy_node_min(s : DsheaplazyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_node_min(s : DsheaplazyNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_node_max(s : DsheaplazyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_node_max(s : DsheaplazyNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_node_to_string(s : DsheaplazyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_heap_lazy_edge_set(s : DsheaplazyEdge, i : Int, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_lazy_edge_sum(s : DsheaplazyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_edge_sum(s : DsheaplazyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_edge_mean(s : DsheaplazyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_edge_mean(s : DsheaplazyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_edge_scale(s : DsheaplazyEdge, f : Double) -> DsheaplazyEdge {
   let result = ds_heap_lazy_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_heap_lazy_edge_fill(s : DsheaplazyEdge, v : Double) -> DsheaplazyEdge 
   result
 }
 
-pub fn ds_heap_lazy_edge_min(s : DsheaplazyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_edge_min(s : DsheaplazyEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_edge_max(s : DsheaplazyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_edge_max(s : DsheaplazyEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_edge_to_string(s : DsheaplazyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_heap_lazy_path_set(s : DsheaplazyPath, i : Int, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_lazy_path_sum(s : DsheaplazyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_path_sum(s : DsheaplazyPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_path_mean(s : DsheaplazyPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_path_mean(s : DsheaplazyPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_path_scale(s : DsheaplazyPath, f : Double) -> DsheaplazyPath {
   let result = ds_heap_lazy_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_heap_lazy_path_fill(s : DsheaplazyPath, v : Double) -> DsheaplazyPath 
   result
 }
 
-pub fn ds_heap_lazy_path_min(s : DsheaplazyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_path_min(s : DsheaplazyPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_path_max(s : DsheaplazyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_path_max(s : DsheaplazyPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_path_to_string(s : DsheaplazyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_heap_lazy_cluster_set(s : DsheaplazyCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_lazy_cluster_sum(s : DsheaplazyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_cluster_sum(s : DsheaplazyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_cluster_mean(s : DsheaplazyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_cluster_mean(s : DsheaplazyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_cluster_scale(s : DsheaplazyCluster, f : Double) -> DsheaplazyCluster {
   let result = ds_heap_lazy_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_heap_lazy_cluster_fill(s : DsheaplazyCluster, v : Double) -> Dsheaplaz
   result
 }
 
-pub fn ds_heap_lazy_cluster_min(s : DsheaplazyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_cluster_min(s : DsheaplazyCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_cluster_max(s : DsheaplazyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_cluster_max(s : DsheaplazyCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_cluster_to_string(s : DsheaplazyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_heap_lazy_model_set(s : DsheaplazyModel, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_lazy_model_sum(s : DsheaplazyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_model_sum(s : DsheaplazyModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_model_mean(s : DsheaplazyModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_model_mean(s : DsheaplazyModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_model_scale(s : DsheaplazyModel, f : Double) -> DsheaplazyModel {
   let result = ds_heap_lazy_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_heap_lazy_model_fill(s : DsheaplazyModel, v : Double) -> DsheaplazyMod
   result
 }
 
-pub fn ds_heap_lazy_model_min(s : DsheaplazyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_model_min(s : DsheaplazyModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_model_max(s : DsheaplazyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_model_max(s : DsheaplazyModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_model_to_string(s : DsheaplazyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_heap_lazy_layer_set(s : DsheaplazyLayer, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_lazy_layer_sum(s : DsheaplazyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_layer_sum(s : DsheaplazyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_layer_mean(s : DsheaplazyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_layer_mean(s : DsheaplazyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_layer_scale(s : DsheaplazyLayer, f : Double) -> DsheaplazyLayer {
   let result = ds_heap_lazy_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_heap_lazy_layer_fill(s : DsheaplazyLayer, v : Double) -> DsheaplazyLay
   result
 }
 
-pub fn ds_heap_lazy_layer_min(s : DsheaplazyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_layer_min(s : DsheaplazyLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_layer_max(s : DsheaplazyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_layer_max(s : DsheaplazyLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_layer_to_string(s : DsheaplazyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_heap_lazy_buffer_set(s : DsheaplazyBuffer, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_lazy_buffer_sum(s : DsheaplazyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_buffer_sum(s : DsheaplazyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_buffer_mean(s : DsheaplazyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_buffer_mean(s : DsheaplazyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_buffer_scale(s : DsheaplazyBuffer, f : Double) -> DsheaplazyBuffer {
   let result = ds_heap_lazy_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_heap_lazy_buffer_fill(s : DsheaplazyBuffer, v : Double) -> DsheaplazyB
   result
 }
 
-pub fn ds_heap_lazy_buffer_min(s : DsheaplazyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_buffer_min(s : DsheaplazyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_buffer_max(s : DsheaplazyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_buffer_max(s : DsheaplazyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_buffer_to_string(s : DsheaplazyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_heap_lazy_cursor_set(s : DsheaplazyCursor, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_lazy_cursor_sum(s : DsheaplazyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_cursor_sum(s : DsheaplazyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_cursor_mean(s : DsheaplazyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_cursor_mean(s : DsheaplazyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_cursor_scale(s : DsheaplazyCursor, f : Double) -> DsheaplazyCursor {
   let result = ds_heap_lazy_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_heap_lazy_cursor_fill(s : DsheaplazyCursor, v : Double) -> DsheaplazyC
   result
 }
 
-pub fn ds_heap_lazy_cursor_min(s : DsheaplazyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_cursor_min(s : DsheaplazyCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_cursor_max(s : DsheaplazyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_cursor_max(s : DsheaplazyCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_cursor_to_string(s : DsheaplazyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_heap_lazy_view_set(s : DsheaplazyView, i : Int, v : Double) -> Dsheapl
   result
 }
 
-pub fn ds_heap_lazy_view_sum(s : DsheaplazyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_view_sum(s : DsheaplazyView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_view_mean(s : DsheaplazyView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_view_mean(s : DsheaplazyView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_view_scale(s : DsheaplazyView, f : Double) -> DsheaplazyView {
   let result = ds_heap_lazy_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_heap_lazy_view_fill(s : DsheaplazyView, v : Double) -> DsheaplazyView 
   result
 }
 
-pub fn ds_heap_lazy_view_min(s : DsheaplazyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_view_min(s : DsheaplazyView) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_view_max(s : DsheaplazyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_view_max(s : DsheaplazyView) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_view_to_string(s : DsheaplazyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_heap_lazy_range_set(s : DsheaplazyRange, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_lazy_range_sum(s : DsheaplazyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_range_sum(s : DsheaplazyRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_range_mean(s : DsheaplazyRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_range_mean(s : DsheaplazyRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_range_scale(s : DsheaplazyRange, f : Double) -> DsheaplazyRange {
   let result = ds_heap_lazy_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_heap_lazy_range_fill(s : DsheaplazyRange, v : Double) -> DsheaplazyRan
   result
 }
 
-pub fn ds_heap_lazy_range_min(s : DsheaplazyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_range_min(s : DsheaplazyRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_range_max(s : DsheaplazyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_range_max(s : DsheaplazyRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_range_to_string(s : DsheaplazyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_heap_lazy_slice_set(s : DsheaplazySlice, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_lazy_slice_sum(s : DsheaplazySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_lazy_slice_sum(s : DsheaplazySlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_lazy_slice_mean(s : DsheaplazySlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_lazy_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_lazy_slice_mean(s : DsheaplazySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_lazy_slice_scale(s : DsheaplazySlice, f : Double) -> DsheaplazySlice {
   let result = ds_heap_lazy_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_heap_lazy_slice_fill(s : DsheaplazySlice, v : Double) -> DsheaplazySli
   result
 }
 
-pub fn ds_heap_lazy_slice_min(s : DsheaplazySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_slice_min(s : DsheaplazySlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_lazy_slice_max(s : DsheaplazySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_lazy_slice_max(s : DsheaplazySlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_lazy_slice_to_string(s : DsheaplazySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

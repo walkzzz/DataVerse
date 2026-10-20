@@ -88,11 +88,7 @@ pub fn db_index_lsm_make_series(vals : Array[Double], name : String) -> Dbindexl
 
 pub fn db_index_lsm_series_len(s : DbindexlsmSeries) -> Int { s.vals.length() }
 
-pub fn db_index_lsm_series_sum(s : DbindexlsmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_lsm_series_sum(s : DbindexlsmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_lsm_series_mean(s : DbindexlsmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_lsm_frame_set(s : DbindexlsmFrame, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_lsm_frame_sum(s : DbindexlsmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_frame_sum(s : DbindexlsmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_frame_mean(s : DbindexlsmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_frame_mean(s : DbindexlsmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_frame_scale(s : DbindexlsmFrame, f : Double) -> DbindexlsmFrame {
   let result = db_index_lsm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_lsm_frame_fill(s : DbindexlsmFrame, v : Double) -> DbindexlsmFra
   result
 }
 
-pub fn db_index_lsm_frame_min(s : DbindexlsmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_frame_min(s : DbindexlsmFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_frame_max(s : DbindexlsmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_frame_max(s : DbindexlsmFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_frame_to_string(s : DbindexlsmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_lsm_table_set(s : DbindexlsmTable, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_lsm_table_sum(s : DbindexlsmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_table_sum(s : DbindexlsmTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_table_mean(s : DbindexlsmTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_table_mean(s : DbindexlsmTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_table_scale(s : DbindexlsmTable, f : Double) -> DbindexlsmTable {
   let result = db_index_lsm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_lsm_table_fill(s : DbindexlsmTable, v : Double) -> DbindexlsmTab
   result
 }
 
-pub fn db_index_lsm_table_min(s : DbindexlsmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_table_min(s : DbindexlsmTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_table_max(s : DbindexlsmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_table_max(s : DbindexlsmTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_table_to_string(s : DbindexlsmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_lsm_graphn_set(s : DbindexlsmGraphN, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_lsm_graphn_sum(s : DbindexlsmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_graphn_sum(s : DbindexlsmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_graphn_mean(s : DbindexlsmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_graphn_mean(s : DbindexlsmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_graphn_scale(s : DbindexlsmGraphN, f : Double) -> DbindexlsmGraphN {
   let result = db_index_lsm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_lsm_graphn_fill(s : DbindexlsmGraphN, v : Double) -> DbindexlsmG
   result
 }
 
-pub fn db_index_lsm_graphn_min(s : DbindexlsmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_graphn_min(s : DbindexlsmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_graphn_max(s : DbindexlsmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_graphn_max(s : DbindexlsmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_graphn_to_string(s : DbindexlsmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_lsm_node_set(s : DbindexlsmNode, i : Int, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_lsm_node_sum(s : DbindexlsmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_node_sum(s : DbindexlsmNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_node_mean(s : DbindexlsmNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_node_mean(s : DbindexlsmNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_node_scale(s : DbindexlsmNode, f : Double) -> DbindexlsmNode {
   let result = db_index_lsm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_lsm_node_fill(s : DbindexlsmNode, v : Double) -> DbindexlsmNode 
   result
 }
 
-pub fn db_index_lsm_node_min(s : DbindexlsmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_node_min(s : DbindexlsmNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_node_max(s : DbindexlsmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_node_max(s : DbindexlsmNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_node_to_string(s : DbindexlsmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_lsm_edge_set(s : DbindexlsmEdge, i : Int, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_lsm_edge_sum(s : DbindexlsmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_edge_sum(s : DbindexlsmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_edge_mean(s : DbindexlsmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_edge_mean(s : DbindexlsmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_edge_scale(s : DbindexlsmEdge, f : Double) -> DbindexlsmEdge {
   let result = db_index_lsm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_lsm_edge_fill(s : DbindexlsmEdge, v : Double) -> DbindexlsmEdge 
   result
 }
 
-pub fn db_index_lsm_edge_min(s : DbindexlsmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_edge_min(s : DbindexlsmEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_edge_max(s : DbindexlsmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_edge_max(s : DbindexlsmEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_edge_to_string(s : DbindexlsmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_lsm_path_set(s : DbindexlsmPath, i : Int, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_lsm_path_sum(s : DbindexlsmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_path_sum(s : DbindexlsmPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_path_mean(s : DbindexlsmPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_path_mean(s : DbindexlsmPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_path_scale(s : DbindexlsmPath, f : Double) -> DbindexlsmPath {
   let result = db_index_lsm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_lsm_path_fill(s : DbindexlsmPath, v : Double) -> DbindexlsmPath 
   result
 }
 
-pub fn db_index_lsm_path_min(s : DbindexlsmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_path_min(s : DbindexlsmPath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_path_max(s : DbindexlsmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_path_max(s : DbindexlsmPath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_path_to_string(s : DbindexlsmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_lsm_cluster_set(s : DbindexlsmCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_lsm_cluster_sum(s : DbindexlsmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_cluster_sum(s : DbindexlsmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_cluster_mean(s : DbindexlsmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_cluster_mean(s : DbindexlsmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_cluster_scale(s : DbindexlsmCluster, f : Double) -> DbindexlsmCluster {
   let result = db_index_lsm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_lsm_cluster_fill(s : DbindexlsmCluster, v : Double) -> Dbindexls
   result
 }
 
-pub fn db_index_lsm_cluster_min(s : DbindexlsmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_cluster_min(s : DbindexlsmCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_cluster_max(s : DbindexlsmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_cluster_max(s : DbindexlsmCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_cluster_to_string(s : DbindexlsmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_lsm_model_set(s : DbindexlsmModel, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_lsm_model_sum(s : DbindexlsmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_model_sum(s : DbindexlsmModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_model_mean(s : DbindexlsmModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_model_mean(s : DbindexlsmModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_model_scale(s : DbindexlsmModel, f : Double) -> DbindexlsmModel {
   let result = db_index_lsm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_lsm_model_fill(s : DbindexlsmModel, v : Double) -> DbindexlsmMod
   result
 }
 
-pub fn db_index_lsm_model_min(s : DbindexlsmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_model_min(s : DbindexlsmModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_model_max(s : DbindexlsmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_model_max(s : DbindexlsmModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_model_to_string(s : DbindexlsmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_lsm_layer_set(s : DbindexlsmLayer, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_lsm_layer_sum(s : DbindexlsmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_layer_sum(s : DbindexlsmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_layer_mean(s : DbindexlsmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_layer_mean(s : DbindexlsmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_layer_scale(s : DbindexlsmLayer, f : Double) -> DbindexlsmLayer {
   let result = db_index_lsm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_lsm_layer_fill(s : DbindexlsmLayer, v : Double) -> DbindexlsmLay
   result
 }
 
-pub fn db_index_lsm_layer_min(s : DbindexlsmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_layer_min(s : DbindexlsmLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_layer_max(s : DbindexlsmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_layer_max(s : DbindexlsmLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_layer_to_string(s : DbindexlsmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_lsm_buffer_set(s : DbindexlsmBuffer, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_lsm_buffer_sum(s : DbindexlsmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_buffer_sum(s : DbindexlsmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_buffer_mean(s : DbindexlsmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_buffer_mean(s : DbindexlsmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_buffer_scale(s : DbindexlsmBuffer, f : Double) -> DbindexlsmBuffer {
   let result = db_index_lsm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_lsm_buffer_fill(s : DbindexlsmBuffer, v : Double) -> DbindexlsmB
   result
 }
 
-pub fn db_index_lsm_buffer_min(s : DbindexlsmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_buffer_min(s : DbindexlsmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_buffer_max(s : DbindexlsmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_buffer_max(s : DbindexlsmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_buffer_to_string(s : DbindexlsmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_lsm_cursor_set(s : DbindexlsmCursor, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_lsm_cursor_sum(s : DbindexlsmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_cursor_sum(s : DbindexlsmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_cursor_mean(s : DbindexlsmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_cursor_mean(s : DbindexlsmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_cursor_scale(s : DbindexlsmCursor, f : Double) -> DbindexlsmCursor {
   let result = db_index_lsm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_lsm_cursor_fill(s : DbindexlsmCursor, v : Double) -> DbindexlsmC
   result
 }
 
-pub fn db_index_lsm_cursor_min(s : DbindexlsmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_cursor_min(s : DbindexlsmCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_cursor_max(s : DbindexlsmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_cursor_max(s : DbindexlsmCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_cursor_to_string(s : DbindexlsmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_lsm_view_set(s : DbindexlsmView, i : Int, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_lsm_view_sum(s : DbindexlsmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_view_sum(s : DbindexlsmView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_view_mean(s : DbindexlsmView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_view_mean(s : DbindexlsmView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_view_scale(s : DbindexlsmView, f : Double) -> DbindexlsmView {
   let result = db_index_lsm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_lsm_view_fill(s : DbindexlsmView, v : Double) -> DbindexlsmView 
   result
 }
 
-pub fn db_index_lsm_view_min(s : DbindexlsmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_view_min(s : DbindexlsmView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_view_max(s : DbindexlsmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_view_max(s : DbindexlsmView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_view_to_string(s : DbindexlsmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_lsm_range_set(s : DbindexlsmRange, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_lsm_range_sum(s : DbindexlsmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_range_sum(s : DbindexlsmRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_range_mean(s : DbindexlsmRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_range_mean(s : DbindexlsmRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_range_scale(s : DbindexlsmRange, f : Double) -> DbindexlsmRange {
   let result = db_index_lsm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_lsm_range_fill(s : DbindexlsmRange, v : Double) -> DbindexlsmRan
   result
 }
 
-pub fn db_index_lsm_range_min(s : DbindexlsmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_range_min(s : DbindexlsmRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_range_max(s : DbindexlsmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_range_max(s : DbindexlsmRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_range_to_string(s : DbindexlsmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_lsm_slice_set(s : DbindexlsmSlice, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_lsm_slice_sum(s : DbindexlsmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_lsm_slice_sum(s : DbindexlsmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_lsm_slice_mean(s : DbindexlsmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_lsm_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_lsm_slice_mean(s : DbindexlsmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_lsm_slice_scale(s : DbindexlsmSlice, f : Double) -> DbindexlsmSlice {
   let result = db_index_lsm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_lsm_slice_fill(s : DbindexlsmSlice, v : Double) -> DbindexlsmSli
   result
 }
 
-pub fn db_index_lsm_slice_min(s : DbindexlsmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_slice_min(s : DbindexlsmSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_lsm_slice_max(s : DbindexlsmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_lsm_slice_max(s : DbindexlsmSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_lsm_slice_to_string(s : DbindexlsmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

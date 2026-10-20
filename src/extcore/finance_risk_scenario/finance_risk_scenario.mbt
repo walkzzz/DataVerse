@@ -88,11 +88,7 @@ pub fn finance_risk_scenario_make_series(vals : Array[Double], name : String) ->
 
 pub fn finance_risk_scenario_series_len(s : FinanceriskscenarioSeries) -> Int { s.vals.length() }
 
-pub fn finance_risk_scenario_series_sum(s : FinanceriskscenarioSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_risk_scenario_series_sum(s : FinanceriskscenarioSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_risk_scenario_series_mean(s : FinanceriskscenarioSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_risk_scenario_frame_set(s : FinanceriskscenarioFrame, i : Int, v 
   result
 }
 
-pub fn finance_risk_scenario_frame_sum(s : FinanceriskscenarioFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_frame_sum(s : FinanceriskscenarioFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_frame_mean(s : FinanceriskscenarioFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_frame_mean(s : FinanceriskscenarioFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_frame_scale(s : FinanceriskscenarioFrame, f : Double) -> FinanceriskscenarioFrame {
   let result = finance_risk_scenario_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_risk_scenario_frame_fill(s : FinanceriskscenarioFrame, v : Double
   result
 }
 
-pub fn finance_risk_scenario_frame_min(s : FinanceriskscenarioFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_frame_min(s : FinanceriskscenarioFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_frame_max(s : FinanceriskscenarioFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_frame_max(s : FinanceriskscenarioFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_frame_to_string(s : FinanceriskscenarioFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_risk_scenario_table_set(s : FinanceriskscenarioTable, i : Int, v 
   result
 }
 
-pub fn finance_risk_scenario_table_sum(s : FinanceriskscenarioTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_table_sum(s : FinanceriskscenarioTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_table_mean(s : FinanceriskscenarioTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_table_mean(s : FinanceriskscenarioTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_table_scale(s : FinanceriskscenarioTable, f : Double) -> FinanceriskscenarioTable {
   let result = finance_risk_scenario_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_risk_scenario_table_fill(s : FinanceriskscenarioTable, v : Double
   result
 }
 
-pub fn finance_risk_scenario_table_min(s : FinanceriskscenarioTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_table_min(s : FinanceriskscenarioTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_table_max(s : FinanceriskscenarioTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_table_max(s : FinanceriskscenarioTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_table_to_string(s : FinanceriskscenarioTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_risk_scenario_graphn_set(s : FinanceriskscenarioGraphN, i : Int, 
   result
 }
 
-pub fn finance_risk_scenario_graphn_sum(s : FinanceriskscenarioGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_graphn_sum(s : FinanceriskscenarioGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_graphn_mean(s : FinanceriskscenarioGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_graphn_mean(s : FinanceriskscenarioGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_graphn_scale(s : FinanceriskscenarioGraphN, f : Double) -> FinanceriskscenarioGraphN {
   let result = finance_risk_scenario_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_risk_scenario_graphn_fill(s : FinanceriskscenarioGraphN, v : Doub
   result
 }
 
-pub fn finance_risk_scenario_graphn_min(s : FinanceriskscenarioGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_graphn_min(s : FinanceriskscenarioGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_graphn_max(s : FinanceriskscenarioGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_graphn_max(s : FinanceriskscenarioGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_graphn_to_string(s : FinanceriskscenarioGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_risk_scenario_node_set(s : FinanceriskscenarioNode, i : Int, v : 
   result
 }
 
-pub fn finance_risk_scenario_node_sum(s : FinanceriskscenarioNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_node_sum(s : FinanceriskscenarioNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_node_mean(s : FinanceriskscenarioNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_node_mean(s : FinanceriskscenarioNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_node_scale(s : FinanceriskscenarioNode, f : Double) -> FinanceriskscenarioNode {
   let result = finance_risk_scenario_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_risk_scenario_node_fill(s : FinanceriskscenarioNode, v : Double) 
   result
 }
 
-pub fn finance_risk_scenario_node_min(s : FinanceriskscenarioNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_node_min(s : FinanceriskscenarioNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_node_max(s : FinanceriskscenarioNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_node_max(s : FinanceriskscenarioNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_node_to_string(s : FinanceriskscenarioNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_risk_scenario_edge_set(s : FinanceriskscenarioEdge, i : Int, v : 
   result
 }
 
-pub fn finance_risk_scenario_edge_sum(s : FinanceriskscenarioEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_edge_sum(s : FinanceriskscenarioEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_edge_mean(s : FinanceriskscenarioEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_edge_mean(s : FinanceriskscenarioEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_edge_scale(s : FinanceriskscenarioEdge, f : Double) -> FinanceriskscenarioEdge {
   let result = finance_risk_scenario_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_risk_scenario_edge_fill(s : FinanceriskscenarioEdge, v : Double) 
   result
 }
 
-pub fn finance_risk_scenario_edge_min(s : FinanceriskscenarioEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_edge_min(s : FinanceriskscenarioEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_edge_max(s : FinanceriskscenarioEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_edge_max(s : FinanceriskscenarioEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_edge_to_string(s : FinanceriskscenarioEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_risk_scenario_path_set(s : FinanceriskscenarioPath, i : Int, v : 
   result
 }
 
-pub fn finance_risk_scenario_path_sum(s : FinanceriskscenarioPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_path_sum(s : FinanceriskscenarioPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_path_mean(s : FinanceriskscenarioPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_path_mean(s : FinanceriskscenarioPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_path_scale(s : FinanceriskscenarioPath, f : Double) -> FinanceriskscenarioPath {
   let result = finance_risk_scenario_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_risk_scenario_path_fill(s : FinanceriskscenarioPath, v : Double) 
   result
 }
 
-pub fn finance_risk_scenario_path_min(s : FinanceriskscenarioPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_path_min(s : FinanceriskscenarioPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_path_max(s : FinanceriskscenarioPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_path_max(s : FinanceriskscenarioPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_path_to_string(s : FinanceriskscenarioPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_risk_scenario_cluster_set(s : FinanceriskscenarioCluster, i : Int
   result
 }
 
-pub fn finance_risk_scenario_cluster_sum(s : FinanceriskscenarioCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_cluster_sum(s : FinanceriskscenarioCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_cluster_mean(s : FinanceriskscenarioCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_cluster_mean(s : FinanceriskscenarioCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_cluster_scale(s : FinanceriskscenarioCluster, f : Double) -> FinanceriskscenarioCluster {
   let result = finance_risk_scenario_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_risk_scenario_cluster_fill(s : FinanceriskscenarioCluster, v : Do
   result
 }
 
-pub fn finance_risk_scenario_cluster_min(s : FinanceriskscenarioCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_cluster_min(s : FinanceriskscenarioCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_cluster_max(s : FinanceriskscenarioCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_cluster_max(s : FinanceriskscenarioCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_cluster_to_string(s : FinanceriskscenarioCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_risk_scenario_model_set(s : FinanceriskscenarioModel, i : Int, v 
   result
 }
 
-pub fn finance_risk_scenario_model_sum(s : FinanceriskscenarioModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_model_sum(s : FinanceriskscenarioModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_model_mean(s : FinanceriskscenarioModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_model_mean(s : FinanceriskscenarioModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_model_scale(s : FinanceriskscenarioModel, f : Double) -> FinanceriskscenarioModel {
   let result = finance_risk_scenario_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_risk_scenario_model_fill(s : FinanceriskscenarioModel, v : Double
   result
 }
 
-pub fn finance_risk_scenario_model_min(s : FinanceriskscenarioModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_model_min(s : FinanceriskscenarioModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_model_max(s : FinanceriskscenarioModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_model_max(s : FinanceriskscenarioModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_model_to_string(s : FinanceriskscenarioModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_risk_scenario_layer_set(s : FinanceriskscenarioLayer, i : Int, v 
   result
 }
 
-pub fn finance_risk_scenario_layer_sum(s : FinanceriskscenarioLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_layer_sum(s : FinanceriskscenarioLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_layer_mean(s : FinanceriskscenarioLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_layer_mean(s : FinanceriskscenarioLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_layer_scale(s : FinanceriskscenarioLayer, f : Double) -> FinanceriskscenarioLayer {
   let result = finance_risk_scenario_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_risk_scenario_layer_fill(s : FinanceriskscenarioLayer, v : Double
   result
 }
 
-pub fn finance_risk_scenario_layer_min(s : FinanceriskscenarioLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_layer_min(s : FinanceriskscenarioLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_layer_max(s : FinanceriskscenarioLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_layer_max(s : FinanceriskscenarioLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_layer_to_string(s : FinanceriskscenarioLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_risk_scenario_buffer_set(s : FinanceriskscenarioBuffer, i : Int, 
   result
 }
 
-pub fn finance_risk_scenario_buffer_sum(s : FinanceriskscenarioBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_buffer_sum(s : FinanceriskscenarioBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_buffer_mean(s : FinanceriskscenarioBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_buffer_mean(s : FinanceriskscenarioBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_buffer_scale(s : FinanceriskscenarioBuffer, f : Double) -> FinanceriskscenarioBuffer {
   let result = finance_risk_scenario_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_risk_scenario_buffer_fill(s : FinanceriskscenarioBuffer, v : Doub
   result
 }
 
-pub fn finance_risk_scenario_buffer_min(s : FinanceriskscenarioBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_buffer_min(s : FinanceriskscenarioBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_buffer_max(s : FinanceriskscenarioBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_buffer_max(s : FinanceriskscenarioBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_buffer_to_string(s : FinanceriskscenarioBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_risk_scenario_cursor_set(s : FinanceriskscenarioCursor, i : Int, 
   result
 }
 
-pub fn finance_risk_scenario_cursor_sum(s : FinanceriskscenarioCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_cursor_sum(s : FinanceriskscenarioCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_cursor_mean(s : FinanceriskscenarioCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_cursor_mean(s : FinanceriskscenarioCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_cursor_scale(s : FinanceriskscenarioCursor, f : Double) -> FinanceriskscenarioCursor {
   let result = finance_risk_scenario_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_risk_scenario_cursor_fill(s : FinanceriskscenarioCursor, v : Doub
   result
 }
 
-pub fn finance_risk_scenario_cursor_min(s : FinanceriskscenarioCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_cursor_min(s : FinanceriskscenarioCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_cursor_max(s : FinanceriskscenarioCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_cursor_max(s : FinanceriskscenarioCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_cursor_to_string(s : FinanceriskscenarioCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_risk_scenario_view_set(s : FinanceriskscenarioView, i : Int, v : 
   result
 }
 
-pub fn finance_risk_scenario_view_sum(s : FinanceriskscenarioView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_view_sum(s : FinanceriskscenarioView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_view_mean(s : FinanceriskscenarioView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_view_mean(s : FinanceriskscenarioView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_view_scale(s : FinanceriskscenarioView, f : Double) -> FinanceriskscenarioView {
   let result = finance_risk_scenario_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_risk_scenario_view_fill(s : FinanceriskscenarioView, v : Double) 
   result
 }
 
-pub fn finance_risk_scenario_view_min(s : FinanceriskscenarioView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_view_min(s : FinanceriskscenarioView) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_view_max(s : FinanceriskscenarioView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_view_max(s : FinanceriskscenarioView) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_view_to_string(s : FinanceriskscenarioView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_risk_scenario_range_set(s : FinanceriskscenarioRange, i : Int, v 
   result
 }
 
-pub fn finance_risk_scenario_range_sum(s : FinanceriskscenarioRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_range_sum(s : FinanceriskscenarioRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_range_mean(s : FinanceriskscenarioRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_range_mean(s : FinanceriskscenarioRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_range_scale(s : FinanceriskscenarioRange, f : Double) -> FinanceriskscenarioRange {
   let result = finance_risk_scenario_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_risk_scenario_range_fill(s : FinanceriskscenarioRange, v : Double
   result
 }
 
-pub fn finance_risk_scenario_range_min(s : FinanceriskscenarioRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_range_min(s : FinanceriskscenarioRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_range_max(s : FinanceriskscenarioRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_range_max(s : FinanceriskscenarioRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_range_to_string(s : FinanceriskscenarioRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_risk_scenario_slice_set(s : FinanceriskscenarioSlice, i : Int, v 
   result
 }
 
-pub fn finance_risk_scenario_slice_sum(s : FinanceriskscenarioSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_scenario_slice_sum(s : FinanceriskscenarioSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_scenario_slice_mean(s : FinanceriskscenarioSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_scenario_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_scenario_slice_mean(s : FinanceriskscenarioSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_scenario_slice_scale(s : FinanceriskscenarioSlice, f : Double) -> FinanceriskscenarioSlice {
   let result = finance_risk_scenario_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_risk_scenario_slice_fill(s : FinanceriskscenarioSlice, v : Double
   result
 }
 
-pub fn finance_risk_scenario_slice_min(s : FinanceriskscenarioSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_slice_min(s : FinanceriskscenarioSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_scenario_slice_max(s : FinanceriskscenarioSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_scenario_slice_max(s : FinanceriskscenarioSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_scenario_slice_to_string(s : FinanceriskscenarioSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

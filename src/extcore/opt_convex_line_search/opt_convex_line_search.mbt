@@ -88,11 +88,7 @@ pub fn opt_convex_line_search_make_series(vals : Array[Double], name : String) -
 
 pub fn opt_convex_line_search_series_len(s : OptconvexlinesearchSeries) -> Int { s.vals.length() }
 
-pub fn opt_convex_line_search_series_sum(s : OptconvexlinesearchSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_convex_line_search_series_sum(s : OptconvexlinesearchSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_convex_line_search_series_mean(s : OptconvexlinesearchSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_convex_line_search_frame_set(s : OptconvexlinesearchFrame, i : Int, v
   result
 }
 
-pub fn opt_convex_line_search_frame_sum(s : OptconvexlinesearchFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_frame_sum(s : OptconvexlinesearchFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_frame_mean(s : OptconvexlinesearchFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_frame_mean(s : OptconvexlinesearchFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_frame_scale(s : OptconvexlinesearchFrame, f : Double) -> OptconvexlinesearchFrame {
   let result = opt_convex_line_search_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_convex_line_search_frame_fill(s : OptconvexlinesearchFrame, v : Doubl
   result
 }
 
-pub fn opt_convex_line_search_frame_min(s : OptconvexlinesearchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_frame_min(s : OptconvexlinesearchFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_frame_max(s : OptconvexlinesearchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_frame_max(s : OptconvexlinesearchFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_frame_to_string(s : OptconvexlinesearchFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_convex_line_search_table_set(s : OptconvexlinesearchTable, i : Int, v
   result
 }
 
-pub fn opt_convex_line_search_table_sum(s : OptconvexlinesearchTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_table_sum(s : OptconvexlinesearchTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_table_mean(s : OptconvexlinesearchTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_table_mean(s : OptconvexlinesearchTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_table_scale(s : OptconvexlinesearchTable, f : Double) -> OptconvexlinesearchTable {
   let result = opt_convex_line_search_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_convex_line_search_table_fill(s : OptconvexlinesearchTable, v : Doubl
   result
 }
 
-pub fn opt_convex_line_search_table_min(s : OptconvexlinesearchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_table_min(s : OptconvexlinesearchTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_table_max(s : OptconvexlinesearchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_table_max(s : OptconvexlinesearchTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_table_to_string(s : OptconvexlinesearchTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_convex_line_search_graphn_set(s : OptconvexlinesearchGraphN, i : Int,
   result
 }
 
-pub fn opt_convex_line_search_graphn_sum(s : OptconvexlinesearchGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_graphn_sum(s : OptconvexlinesearchGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_graphn_mean(s : OptconvexlinesearchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_graphn_mean(s : OptconvexlinesearchGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_graphn_scale(s : OptconvexlinesearchGraphN, f : Double) -> OptconvexlinesearchGraphN {
   let result = opt_convex_line_search_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_convex_line_search_graphn_fill(s : OptconvexlinesearchGraphN, v : Dou
   result
 }
 
-pub fn opt_convex_line_search_graphn_min(s : OptconvexlinesearchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_graphn_min(s : OptconvexlinesearchGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_graphn_max(s : OptconvexlinesearchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_graphn_max(s : OptconvexlinesearchGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_graphn_to_string(s : OptconvexlinesearchGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_convex_line_search_node_set(s : OptconvexlinesearchNode, i : Int, v :
   result
 }
 
-pub fn opt_convex_line_search_node_sum(s : OptconvexlinesearchNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_node_sum(s : OptconvexlinesearchNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_node_mean(s : OptconvexlinesearchNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_node_mean(s : OptconvexlinesearchNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_node_scale(s : OptconvexlinesearchNode, f : Double) -> OptconvexlinesearchNode {
   let result = opt_convex_line_search_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_convex_line_search_node_fill(s : OptconvexlinesearchNode, v : Double)
   result
 }
 
-pub fn opt_convex_line_search_node_min(s : OptconvexlinesearchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_node_min(s : OptconvexlinesearchNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_node_max(s : OptconvexlinesearchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_node_max(s : OptconvexlinesearchNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_node_to_string(s : OptconvexlinesearchNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_convex_line_search_edge_set(s : OptconvexlinesearchEdge, i : Int, v :
   result
 }
 
-pub fn opt_convex_line_search_edge_sum(s : OptconvexlinesearchEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_edge_sum(s : OptconvexlinesearchEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_edge_mean(s : OptconvexlinesearchEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_edge_mean(s : OptconvexlinesearchEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_edge_scale(s : OptconvexlinesearchEdge, f : Double) -> OptconvexlinesearchEdge {
   let result = opt_convex_line_search_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_convex_line_search_edge_fill(s : OptconvexlinesearchEdge, v : Double)
   result
 }
 
-pub fn opt_convex_line_search_edge_min(s : OptconvexlinesearchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_edge_min(s : OptconvexlinesearchEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_edge_max(s : OptconvexlinesearchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_edge_max(s : OptconvexlinesearchEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_edge_to_string(s : OptconvexlinesearchEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_convex_line_search_path_set(s : OptconvexlinesearchPath, i : Int, v :
   result
 }
 
-pub fn opt_convex_line_search_path_sum(s : OptconvexlinesearchPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_path_sum(s : OptconvexlinesearchPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_path_mean(s : OptconvexlinesearchPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_path_mean(s : OptconvexlinesearchPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_path_scale(s : OptconvexlinesearchPath, f : Double) -> OptconvexlinesearchPath {
   let result = opt_convex_line_search_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_convex_line_search_path_fill(s : OptconvexlinesearchPath, v : Double)
   result
 }
 
-pub fn opt_convex_line_search_path_min(s : OptconvexlinesearchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_path_min(s : OptconvexlinesearchPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_path_max(s : OptconvexlinesearchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_path_max(s : OptconvexlinesearchPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_path_to_string(s : OptconvexlinesearchPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_convex_line_search_cluster_set(s : OptconvexlinesearchCluster, i : In
   result
 }
 
-pub fn opt_convex_line_search_cluster_sum(s : OptconvexlinesearchCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_cluster_sum(s : OptconvexlinesearchCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_cluster_mean(s : OptconvexlinesearchCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_cluster_mean(s : OptconvexlinesearchCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_cluster_scale(s : OptconvexlinesearchCluster, f : Double) -> OptconvexlinesearchCluster {
   let result = opt_convex_line_search_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_convex_line_search_cluster_fill(s : OptconvexlinesearchCluster, v : D
   result
 }
 
-pub fn opt_convex_line_search_cluster_min(s : OptconvexlinesearchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_cluster_min(s : OptconvexlinesearchCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_cluster_max(s : OptconvexlinesearchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_cluster_max(s : OptconvexlinesearchCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_cluster_to_string(s : OptconvexlinesearchCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_convex_line_search_model_set(s : OptconvexlinesearchModel, i : Int, v
   result
 }
 
-pub fn opt_convex_line_search_model_sum(s : OptconvexlinesearchModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_model_sum(s : OptconvexlinesearchModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_model_mean(s : OptconvexlinesearchModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_model_mean(s : OptconvexlinesearchModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_model_scale(s : OptconvexlinesearchModel, f : Double) -> OptconvexlinesearchModel {
   let result = opt_convex_line_search_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_convex_line_search_model_fill(s : OptconvexlinesearchModel, v : Doubl
   result
 }
 
-pub fn opt_convex_line_search_model_min(s : OptconvexlinesearchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_model_min(s : OptconvexlinesearchModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_model_max(s : OptconvexlinesearchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_model_max(s : OptconvexlinesearchModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_model_to_string(s : OptconvexlinesearchModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_convex_line_search_layer_set(s : OptconvexlinesearchLayer, i : Int, v
   result
 }
 
-pub fn opt_convex_line_search_layer_sum(s : OptconvexlinesearchLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_layer_sum(s : OptconvexlinesearchLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_layer_mean(s : OptconvexlinesearchLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_layer_mean(s : OptconvexlinesearchLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_layer_scale(s : OptconvexlinesearchLayer, f : Double) -> OptconvexlinesearchLayer {
   let result = opt_convex_line_search_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_convex_line_search_layer_fill(s : OptconvexlinesearchLayer, v : Doubl
   result
 }
 
-pub fn opt_convex_line_search_layer_min(s : OptconvexlinesearchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_layer_min(s : OptconvexlinesearchLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_layer_max(s : OptconvexlinesearchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_layer_max(s : OptconvexlinesearchLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_layer_to_string(s : OptconvexlinesearchLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_convex_line_search_buffer_set(s : OptconvexlinesearchBuffer, i : Int,
   result
 }
 
-pub fn opt_convex_line_search_buffer_sum(s : OptconvexlinesearchBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_buffer_sum(s : OptconvexlinesearchBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_buffer_mean(s : OptconvexlinesearchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_buffer_mean(s : OptconvexlinesearchBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_buffer_scale(s : OptconvexlinesearchBuffer, f : Double) -> OptconvexlinesearchBuffer {
   let result = opt_convex_line_search_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_convex_line_search_buffer_fill(s : OptconvexlinesearchBuffer, v : Dou
   result
 }
 
-pub fn opt_convex_line_search_buffer_min(s : OptconvexlinesearchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_buffer_min(s : OptconvexlinesearchBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_buffer_max(s : OptconvexlinesearchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_buffer_max(s : OptconvexlinesearchBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_buffer_to_string(s : OptconvexlinesearchBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_convex_line_search_cursor_set(s : OptconvexlinesearchCursor, i : Int,
   result
 }
 
-pub fn opt_convex_line_search_cursor_sum(s : OptconvexlinesearchCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_cursor_sum(s : OptconvexlinesearchCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_cursor_mean(s : OptconvexlinesearchCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_cursor_mean(s : OptconvexlinesearchCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_cursor_scale(s : OptconvexlinesearchCursor, f : Double) -> OptconvexlinesearchCursor {
   let result = opt_convex_line_search_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_convex_line_search_cursor_fill(s : OptconvexlinesearchCursor, v : Dou
   result
 }
 
-pub fn opt_convex_line_search_cursor_min(s : OptconvexlinesearchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_cursor_min(s : OptconvexlinesearchCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_cursor_max(s : OptconvexlinesearchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_cursor_max(s : OptconvexlinesearchCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_cursor_to_string(s : OptconvexlinesearchCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_convex_line_search_view_set(s : OptconvexlinesearchView, i : Int, v :
   result
 }
 
-pub fn opt_convex_line_search_view_sum(s : OptconvexlinesearchView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_view_sum(s : OptconvexlinesearchView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_view_mean(s : OptconvexlinesearchView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_view_mean(s : OptconvexlinesearchView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_view_scale(s : OptconvexlinesearchView, f : Double) -> OptconvexlinesearchView {
   let result = opt_convex_line_search_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_convex_line_search_view_fill(s : OptconvexlinesearchView, v : Double)
   result
 }
 
-pub fn opt_convex_line_search_view_min(s : OptconvexlinesearchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_view_min(s : OptconvexlinesearchView) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_view_max(s : OptconvexlinesearchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_view_max(s : OptconvexlinesearchView) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_view_to_string(s : OptconvexlinesearchView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_convex_line_search_range_set(s : OptconvexlinesearchRange, i : Int, v
   result
 }
 
-pub fn opt_convex_line_search_range_sum(s : OptconvexlinesearchRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_range_sum(s : OptconvexlinesearchRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_range_mean(s : OptconvexlinesearchRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_range_mean(s : OptconvexlinesearchRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_range_scale(s : OptconvexlinesearchRange, f : Double) -> OptconvexlinesearchRange {
   let result = opt_convex_line_search_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_convex_line_search_range_fill(s : OptconvexlinesearchRange, v : Doubl
   result
 }
 
-pub fn opt_convex_line_search_range_min(s : OptconvexlinesearchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_range_min(s : OptconvexlinesearchRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_range_max(s : OptconvexlinesearchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_range_max(s : OptconvexlinesearchRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_range_to_string(s : OptconvexlinesearchRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_convex_line_search_slice_set(s : OptconvexlinesearchSlice, i : Int, v
   result
 }
 
-pub fn opt_convex_line_search_slice_sum(s : OptconvexlinesearchSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_line_search_slice_sum(s : OptconvexlinesearchSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_line_search_slice_mean(s : OptconvexlinesearchSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_line_search_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_line_search_slice_mean(s : OptconvexlinesearchSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_line_search_slice_scale(s : OptconvexlinesearchSlice, f : Double) -> OptconvexlinesearchSlice {
   let result = opt_convex_line_search_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_convex_line_search_slice_fill(s : OptconvexlinesearchSlice, v : Doubl
   result
 }
 
-pub fn opt_convex_line_search_slice_min(s : OptconvexlinesearchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_slice_min(s : OptconvexlinesearchSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_line_search_slice_max(s : OptconvexlinesearchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_line_search_slice_max(s : OptconvexlinesearchSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_line_search_slice_to_string(s : OptconvexlinesearchSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

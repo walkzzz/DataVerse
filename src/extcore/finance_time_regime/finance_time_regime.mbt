@@ -88,11 +88,7 @@ pub fn finance_time_regime_make_series(vals : Array[Double], name : String) -> F
 
 pub fn finance_time_regime_series_len(s : FinancetimeregimeSeries) -> Int { s.vals.length() }
 
-pub fn finance_time_regime_series_sum(s : FinancetimeregimeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_time_regime_series_sum(s : FinancetimeregimeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_time_regime_series_mean(s : FinancetimeregimeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_time_regime_frame_set(s : FinancetimeregimeFrame, i : Int, v : Do
   result
 }
 
-pub fn finance_time_regime_frame_sum(s : FinancetimeregimeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_frame_sum(s : FinancetimeregimeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_frame_mean(s : FinancetimeregimeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_frame_mean(s : FinancetimeregimeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_frame_scale(s : FinancetimeregimeFrame, f : Double) -> FinancetimeregimeFrame {
   let result = finance_time_regime_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_time_regime_frame_fill(s : FinancetimeregimeFrame, v : Double) ->
   result
 }
 
-pub fn finance_time_regime_frame_min(s : FinancetimeregimeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_frame_min(s : FinancetimeregimeFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_frame_max(s : FinancetimeregimeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_frame_max(s : FinancetimeregimeFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_frame_to_string(s : FinancetimeregimeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_time_regime_table_set(s : FinancetimeregimeTable, i : Int, v : Do
   result
 }
 
-pub fn finance_time_regime_table_sum(s : FinancetimeregimeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_table_sum(s : FinancetimeregimeTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_table_mean(s : FinancetimeregimeTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_table_mean(s : FinancetimeregimeTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_table_scale(s : FinancetimeregimeTable, f : Double) -> FinancetimeregimeTable {
   let result = finance_time_regime_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_time_regime_table_fill(s : FinancetimeregimeTable, v : Double) ->
   result
 }
 
-pub fn finance_time_regime_table_min(s : FinancetimeregimeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_table_min(s : FinancetimeregimeTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_table_max(s : FinancetimeregimeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_table_max(s : FinancetimeregimeTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_table_to_string(s : FinancetimeregimeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_time_regime_graphn_set(s : FinancetimeregimeGraphN, i : Int, v : 
   result
 }
 
-pub fn finance_time_regime_graphn_sum(s : FinancetimeregimeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_graphn_sum(s : FinancetimeregimeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_graphn_mean(s : FinancetimeregimeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_graphn_mean(s : FinancetimeregimeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_graphn_scale(s : FinancetimeregimeGraphN, f : Double) -> FinancetimeregimeGraphN {
   let result = finance_time_regime_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_time_regime_graphn_fill(s : FinancetimeregimeGraphN, v : Double) 
   result
 }
 
-pub fn finance_time_regime_graphn_min(s : FinancetimeregimeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_graphn_min(s : FinancetimeregimeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_graphn_max(s : FinancetimeregimeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_graphn_max(s : FinancetimeregimeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_graphn_to_string(s : FinancetimeregimeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_time_regime_node_set(s : FinancetimeregimeNode, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_regime_node_sum(s : FinancetimeregimeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_node_sum(s : FinancetimeregimeNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_node_mean(s : FinancetimeregimeNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_node_mean(s : FinancetimeregimeNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_node_scale(s : FinancetimeregimeNode, f : Double) -> FinancetimeregimeNode {
   let result = finance_time_regime_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_time_regime_node_fill(s : FinancetimeregimeNode, v : Double) -> F
   result
 }
 
-pub fn finance_time_regime_node_min(s : FinancetimeregimeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_node_min(s : FinancetimeregimeNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_node_max(s : FinancetimeregimeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_node_max(s : FinancetimeregimeNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_node_to_string(s : FinancetimeregimeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_time_regime_edge_set(s : FinancetimeregimeEdge, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_regime_edge_sum(s : FinancetimeregimeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_edge_sum(s : FinancetimeregimeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_edge_mean(s : FinancetimeregimeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_edge_mean(s : FinancetimeregimeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_edge_scale(s : FinancetimeregimeEdge, f : Double) -> FinancetimeregimeEdge {
   let result = finance_time_regime_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_time_regime_edge_fill(s : FinancetimeregimeEdge, v : Double) -> F
   result
 }
 
-pub fn finance_time_regime_edge_min(s : FinancetimeregimeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_edge_min(s : FinancetimeregimeEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_edge_max(s : FinancetimeregimeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_edge_max(s : FinancetimeregimeEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_edge_to_string(s : FinancetimeregimeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_time_regime_path_set(s : FinancetimeregimePath, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_regime_path_sum(s : FinancetimeregimePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_path_sum(s : FinancetimeregimePath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_path_mean(s : FinancetimeregimePath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_path_mean(s : FinancetimeregimePath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_path_scale(s : FinancetimeregimePath, f : Double) -> FinancetimeregimePath {
   let result = finance_time_regime_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_time_regime_path_fill(s : FinancetimeregimePath, v : Double) -> F
   result
 }
 
-pub fn finance_time_regime_path_min(s : FinancetimeregimePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_path_min(s : FinancetimeregimePath) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_path_max(s : FinancetimeregimePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_path_max(s : FinancetimeregimePath) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_path_to_string(s : FinancetimeregimePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_time_regime_cluster_set(s : FinancetimeregimeCluster, i : Int, v 
   result
 }
 
-pub fn finance_time_regime_cluster_sum(s : FinancetimeregimeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_cluster_sum(s : FinancetimeregimeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_cluster_mean(s : FinancetimeregimeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_cluster_mean(s : FinancetimeregimeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_cluster_scale(s : FinancetimeregimeCluster, f : Double) -> FinancetimeregimeCluster {
   let result = finance_time_regime_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_time_regime_cluster_fill(s : FinancetimeregimeCluster, v : Double
   result
 }
 
-pub fn finance_time_regime_cluster_min(s : FinancetimeregimeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_cluster_min(s : FinancetimeregimeCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_cluster_max(s : FinancetimeregimeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_cluster_max(s : FinancetimeregimeCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_cluster_to_string(s : FinancetimeregimeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_time_regime_model_set(s : FinancetimeregimeModel, i : Int, v : Do
   result
 }
 
-pub fn finance_time_regime_model_sum(s : FinancetimeregimeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_model_sum(s : FinancetimeregimeModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_model_mean(s : FinancetimeregimeModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_model_mean(s : FinancetimeregimeModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_model_scale(s : FinancetimeregimeModel, f : Double) -> FinancetimeregimeModel {
   let result = finance_time_regime_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_time_regime_model_fill(s : FinancetimeregimeModel, v : Double) ->
   result
 }
 
-pub fn finance_time_regime_model_min(s : FinancetimeregimeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_model_min(s : FinancetimeregimeModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_model_max(s : FinancetimeregimeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_model_max(s : FinancetimeregimeModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_model_to_string(s : FinancetimeregimeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_time_regime_layer_set(s : FinancetimeregimeLayer, i : Int, v : Do
   result
 }
 
-pub fn finance_time_regime_layer_sum(s : FinancetimeregimeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_layer_sum(s : FinancetimeregimeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_layer_mean(s : FinancetimeregimeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_layer_mean(s : FinancetimeregimeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_layer_scale(s : FinancetimeregimeLayer, f : Double) -> FinancetimeregimeLayer {
   let result = finance_time_regime_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_time_regime_layer_fill(s : FinancetimeregimeLayer, v : Double) ->
   result
 }
 
-pub fn finance_time_regime_layer_min(s : FinancetimeregimeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_layer_min(s : FinancetimeregimeLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_layer_max(s : FinancetimeregimeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_layer_max(s : FinancetimeregimeLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_layer_to_string(s : FinancetimeregimeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_time_regime_buffer_set(s : FinancetimeregimeBuffer, i : Int, v : 
   result
 }
 
-pub fn finance_time_regime_buffer_sum(s : FinancetimeregimeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_buffer_sum(s : FinancetimeregimeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_buffer_mean(s : FinancetimeregimeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_buffer_mean(s : FinancetimeregimeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_buffer_scale(s : FinancetimeregimeBuffer, f : Double) -> FinancetimeregimeBuffer {
   let result = finance_time_regime_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_time_regime_buffer_fill(s : FinancetimeregimeBuffer, v : Double) 
   result
 }
 
-pub fn finance_time_regime_buffer_min(s : FinancetimeregimeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_buffer_min(s : FinancetimeregimeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_buffer_max(s : FinancetimeregimeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_buffer_max(s : FinancetimeregimeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_buffer_to_string(s : FinancetimeregimeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_time_regime_cursor_set(s : FinancetimeregimeCursor, i : Int, v : 
   result
 }
 
-pub fn finance_time_regime_cursor_sum(s : FinancetimeregimeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_cursor_sum(s : FinancetimeregimeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_cursor_mean(s : FinancetimeregimeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_cursor_mean(s : FinancetimeregimeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_cursor_scale(s : FinancetimeregimeCursor, f : Double) -> FinancetimeregimeCursor {
   let result = finance_time_regime_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_time_regime_cursor_fill(s : FinancetimeregimeCursor, v : Double) 
   result
 }
 
-pub fn finance_time_regime_cursor_min(s : FinancetimeregimeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_cursor_min(s : FinancetimeregimeCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_cursor_max(s : FinancetimeregimeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_cursor_max(s : FinancetimeregimeCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_cursor_to_string(s : FinancetimeregimeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_time_regime_view_set(s : FinancetimeregimeView, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_regime_view_sum(s : FinancetimeregimeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_view_sum(s : FinancetimeregimeView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_view_mean(s : FinancetimeregimeView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_view_mean(s : FinancetimeregimeView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_view_scale(s : FinancetimeregimeView, f : Double) -> FinancetimeregimeView {
   let result = finance_time_regime_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_time_regime_view_fill(s : FinancetimeregimeView, v : Double) -> F
   result
 }
 
-pub fn finance_time_regime_view_min(s : FinancetimeregimeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_view_min(s : FinancetimeregimeView) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_view_max(s : FinancetimeregimeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_view_max(s : FinancetimeregimeView) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_view_to_string(s : FinancetimeregimeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_time_regime_range_set(s : FinancetimeregimeRange, i : Int, v : Do
   result
 }
 
-pub fn finance_time_regime_range_sum(s : FinancetimeregimeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_range_sum(s : FinancetimeregimeRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_range_mean(s : FinancetimeregimeRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_range_mean(s : FinancetimeregimeRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_range_scale(s : FinancetimeregimeRange, f : Double) -> FinancetimeregimeRange {
   let result = finance_time_regime_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_time_regime_range_fill(s : FinancetimeregimeRange, v : Double) ->
   result
 }
 
-pub fn finance_time_regime_range_min(s : FinancetimeregimeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_range_min(s : FinancetimeregimeRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_range_max(s : FinancetimeregimeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_range_max(s : FinancetimeregimeRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_range_to_string(s : FinancetimeregimeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_time_regime_slice_set(s : FinancetimeregimeSlice, i : Int, v : Do
   result
 }
 
-pub fn finance_time_regime_slice_sum(s : FinancetimeregimeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_regime_slice_sum(s : FinancetimeregimeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_regime_slice_mean(s : FinancetimeregimeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_regime_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_regime_slice_mean(s : FinancetimeregimeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_regime_slice_scale(s : FinancetimeregimeSlice, f : Double) -> FinancetimeregimeSlice {
   let result = finance_time_regime_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_time_regime_slice_fill(s : FinancetimeregimeSlice, v : Double) ->
   result
 }
 
-pub fn finance_time_regime_slice_min(s : FinancetimeregimeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_slice_min(s : FinancetimeregimeSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_regime_slice_max(s : FinancetimeregimeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_regime_slice_max(s : FinancetimeregimeSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_regime_slice_to_string(s : FinancetimeregimeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

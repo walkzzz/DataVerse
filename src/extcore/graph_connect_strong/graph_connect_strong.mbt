@@ -88,11 +88,7 @@ pub fn graph_connect_strong_make_series(vals : Array[Double], name : String) -> 
 
 pub fn graph_connect_strong_series_len(s : GraphconnectstrongSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_strong_series_sum(s : GraphconnectstrongSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_strong_series_sum(s : GraphconnectstrongSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_strong_series_mean(s : GraphconnectstrongSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_strong_frame_set(s : GraphconnectstrongFrame, i : Int, v : 
   result
 }
 
-pub fn graph_connect_strong_frame_sum(s : GraphconnectstrongFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_frame_sum(s : GraphconnectstrongFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_frame_mean(s : GraphconnectstrongFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_frame_mean(s : GraphconnectstrongFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_frame_scale(s : GraphconnectstrongFrame, f : Double) -> GraphconnectstrongFrame {
   let result = graph_connect_strong_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_strong_frame_fill(s : GraphconnectstrongFrame, v : Double) 
   result
 }
 
-pub fn graph_connect_strong_frame_min(s : GraphconnectstrongFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_frame_min(s : GraphconnectstrongFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_frame_max(s : GraphconnectstrongFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_frame_max(s : GraphconnectstrongFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_frame_to_string(s : GraphconnectstrongFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_strong_table_set(s : GraphconnectstrongTable, i : Int, v : 
   result
 }
 
-pub fn graph_connect_strong_table_sum(s : GraphconnectstrongTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_table_sum(s : GraphconnectstrongTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_table_mean(s : GraphconnectstrongTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_table_mean(s : GraphconnectstrongTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_table_scale(s : GraphconnectstrongTable, f : Double) -> GraphconnectstrongTable {
   let result = graph_connect_strong_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_strong_table_fill(s : GraphconnectstrongTable, v : Double) 
   result
 }
 
-pub fn graph_connect_strong_table_min(s : GraphconnectstrongTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_table_min(s : GraphconnectstrongTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_table_max(s : GraphconnectstrongTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_table_max(s : GraphconnectstrongTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_table_to_string(s : GraphconnectstrongTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_strong_graphn_set(s : GraphconnectstrongGraphN, i : Int, v 
   result
 }
 
-pub fn graph_connect_strong_graphn_sum(s : GraphconnectstrongGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_graphn_sum(s : GraphconnectstrongGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_graphn_mean(s : GraphconnectstrongGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_graphn_mean(s : GraphconnectstrongGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_graphn_scale(s : GraphconnectstrongGraphN, f : Double) -> GraphconnectstrongGraphN {
   let result = graph_connect_strong_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_strong_graphn_fill(s : GraphconnectstrongGraphN, v : Double
   result
 }
 
-pub fn graph_connect_strong_graphn_min(s : GraphconnectstrongGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_graphn_min(s : GraphconnectstrongGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_graphn_max(s : GraphconnectstrongGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_graphn_max(s : GraphconnectstrongGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_graphn_to_string(s : GraphconnectstrongGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_strong_node_set(s : GraphconnectstrongNode, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_strong_node_sum(s : GraphconnectstrongNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_node_sum(s : GraphconnectstrongNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_node_mean(s : GraphconnectstrongNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_node_mean(s : GraphconnectstrongNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_node_scale(s : GraphconnectstrongNode, f : Double) -> GraphconnectstrongNode {
   let result = graph_connect_strong_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_strong_node_fill(s : GraphconnectstrongNode, v : Double) ->
   result
 }
 
-pub fn graph_connect_strong_node_min(s : GraphconnectstrongNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_node_min(s : GraphconnectstrongNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_node_max(s : GraphconnectstrongNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_node_max(s : GraphconnectstrongNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_node_to_string(s : GraphconnectstrongNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_strong_edge_set(s : GraphconnectstrongEdge, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_strong_edge_sum(s : GraphconnectstrongEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_edge_sum(s : GraphconnectstrongEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_edge_mean(s : GraphconnectstrongEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_edge_mean(s : GraphconnectstrongEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_edge_scale(s : GraphconnectstrongEdge, f : Double) -> GraphconnectstrongEdge {
   let result = graph_connect_strong_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_strong_edge_fill(s : GraphconnectstrongEdge, v : Double) ->
   result
 }
 
-pub fn graph_connect_strong_edge_min(s : GraphconnectstrongEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_edge_min(s : GraphconnectstrongEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_edge_max(s : GraphconnectstrongEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_edge_max(s : GraphconnectstrongEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_edge_to_string(s : GraphconnectstrongEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_strong_path_set(s : GraphconnectstrongPath, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_strong_path_sum(s : GraphconnectstrongPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_path_sum(s : GraphconnectstrongPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_path_mean(s : GraphconnectstrongPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_path_mean(s : GraphconnectstrongPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_path_scale(s : GraphconnectstrongPath, f : Double) -> GraphconnectstrongPath {
   let result = graph_connect_strong_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_strong_path_fill(s : GraphconnectstrongPath, v : Double) ->
   result
 }
 
-pub fn graph_connect_strong_path_min(s : GraphconnectstrongPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_path_min(s : GraphconnectstrongPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_path_max(s : GraphconnectstrongPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_path_max(s : GraphconnectstrongPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_path_to_string(s : GraphconnectstrongPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_strong_cluster_set(s : GraphconnectstrongCluster, i : Int, 
   result
 }
 
-pub fn graph_connect_strong_cluster_sum(s : GraphconnectstrongCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_cluster_sum(s : GraphconnectstrongCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_cluster_mean(s : GraphconnectstrongCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_cluster_mean(s : GraphconnectstrongCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_cluster_scale(s : GraphconnectstrongCluster, f : Double) -> GraphconnectstrongCluster {
   let result = graph_connect_strong_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_strong_cluster_fill(s : GraphconnectstrongCluster, v : Doub
   result
 }
 
-pub fn graph_connect_strong_cluster_min(s : GraphconnectstrongCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_cluster_min(s : GraphconnectstrongCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_cluster_max(s : GraphconnectstrongCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_cluster_max(s : GraphconnectstrongCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_cluster_to_string(s : GraphconnectstrongCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_strong_model_set(s : GraphconnectstrongModel, i : Int, v : 
   result
 }
 
-pub fn graph_connect_strong_model_sum(s : GraphconnectstrongModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_model_sum(s : GraphconnectstrongModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_model_mean(s : GraphconnectstrongModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_model_mean(s : GraphconnectstrongModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_model_scale(s : GraphconnectstrongModel, f : Double) -> GraphconnectstrongModel {
   let result = graph_connect_strong_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_strong_model_fill(s : GraphconnectstrongModel, v : Double) 
   result
 }
 
-pub fn graph_connect_strong_model_min(s : GraphconnectstrongModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_model_min(s : GraphconnectstrongModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_model_max(s : GraphconnectstrongModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_model_max(s : GraphconnectstrongModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_model_to_string(s : GraphconnectstrongModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_strong_layer_set(s : GraphconnectstrongLayer, i : Int, v : 
   result
 }
 
-pub fn graph_connect_strong_layer_sum(s : GraphconnectstrongLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_layer_sum(s : GraphconnectstrongLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_layer_mean(s : GraphconnectstrongLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_layer_mean(s : GraphconnectstrongLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_layer_scale(s : GraphconnectstrongLayer, f : Double) -> GraphconnectstrongLayer {
   let result = graph_connect_strong_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_strong_layer_fill(s : GraphconnectstrongLayer, v : Double) 
   result
 }
 
-pub fn graph_connect_strong_layer_min(s : GraphconnectstrongLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_layer_min(s : GraphconnectstrongLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_layer_max(s : GraphconnectstrongLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_layer_max(s : GraphconnectstrongLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_layer_to_string(s : GraphconnectstrongLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_strong_buffer_set(s : GraphconnectstrongBuffer, i : Int, v 
   result
 }
 
-pub fn graph_connect_strong_buffer_sum(s : GraphconnectstrongBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_buffer_sum(s : GraphconnectstrongBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_buffer_mean(s : GraphconnectstrongBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_buffer_mean(s : GraphconnectstrongBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_buffer_scale(s : GraphconnectstrongBuffer, f : Double) -> GraphconnectstrongBuffer {
   let result = graph_connect_strong_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_strong_buffer_fill(s : GraphconnectstrongBuffer, v : Double
   result
 }
 
-pub fn graph_connect_strong_buffer_min(s : GraphconnectstrongBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_buffer_min(s : GraphconnectstrongBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_buffer_max(s : GraphconnectstrongBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_buffer_max(s : GraphconnectstrongBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_buffer_to_string(s : GraphconnectstrongBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_strong_cursor_set(s : GraphconnectstrongCursor, i : Int, v 
   result
 }
 
-pub fn graph_connect_strong_cursor_sum(s : GraphconnectstrongCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_cursor_sum(s : GraphconnectstrongCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_cursor_mean(s : GraphconnectstrongCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_cursor_mean(s : GraphconnectstrongCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_cursor_scale(s : GraphconnectstrongCursor, f : Double) -> GraphconnectstrongCursor {
   let result = graph_connect_strong_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_strong_cursor_fill(s : GraphconnectstrongCursor, v : Double
   result
 }
 
-pub fn graph_connect_strong_cursor_min(s : GraphconnectstrongCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_cursor_min(s : GraphconnectstrongCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_cursor_max(s : GraphconnectstrongCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_cursor_max(s : GraphconnectstrongCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_cursor_to_string(s : GraphconnectstrongCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_strong_view_set(s : GraphconnectstrongView, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_strong_view_sum(s : GraphconnectstrongView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_view_sum(s : GraphconnectstrongView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_view_mean(s : GraphconnectstrongView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_view_mean(s : GraphconnectstrongView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_view_scale(s : GraphconnectstrongView, f : Double) -> GraphconnectstrongView {
   let result = graph_connect_strong_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_strong_view_fill(s : GraphconnectstrongView, v : Double) ->
   result
 }
 
-pub fn graph_connect_strong_view_min(s : GraphconnectstrongView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_view_min(s : GraphconnectstrongView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_view_max(s : GraphconnectstrongView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_view_max(s : GraphconnectstrongView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_view_to_string(s : GraphconnectstrongView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_strong_range_set(s : GraphconnectstrongRange, i : Int, v : 
   result
 }
 
-pub fn graph_connect_strong_range_sum(s : GraphconnectstrongRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_range_sum(s : GraphconnectstrongRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_range_mean(s : GraphconnectstrongRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_range_mean(s : GraphconnectstrongRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_range_scale(s : GraphconnectstrongRange, f : Double) -> GraphconnectstrongRange {
   let result = graph_connect_strong_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_strong_range_fill(s : GraphconnectstrongRange, v : Double) 
   result
 }
 
-pub fn graph_connect_strong_range_min(s : GraphconnectstrongRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_range_min(s : GraphconnectstrongRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_range_max(s : GraphconnectstrongRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_range_max(s : GraphconnectstrongRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_range_to_string(s : GraphconnectstrongRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_strong_slice_set(s : GraphconnectstrongSlice, i : Int, v : 
   result
 }
 
-pub fn graph_connect_strong_slice_sum(s : GraphconnectstrongSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_strong_slice_sum(s : GraphconnectstrongSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_strong_slice_mean(s : GraphconnectstrongSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_strong_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_strong_slice_mean(s : GraphconnectstrongSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_strong_slice_scale(s : GraphconnectstrongSlice, f : Double) -> GraphconnectstrongSlice {
   let result = graph_connect_strong_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_strong_slice_fill(s : GraphconnectstrongSlice, v : Double) 
   result
 }
 
-pub fn graph_connect_strong_slice_min(s : GraphconnectstrongSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_slice_min(s : GraphconnectstrongSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_strong_slice_max(s : GraphconnectstrongSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_strong_slice_max(s : GraphconnectstrongSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_strong_slice_to_string(s : GraphconnectstrongSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn chem_mol_repr_smiles_make_series(vals : Array[Double], name : String) -> 
 
 pub fn chem_mol_repr_smiles_series_len(s : ChemmolreprsmilesSeries) -> Int { s.vals.length() }
 
-pub fn chem_mol_repr_smiles_series_sum(s : ChemmolreprsmilesSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_series_sum(s : ChemmolreprsmilesSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_mol_repr_smiles_series_mean(s : ChemmolreprsmilesSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_mol_repr_smiles_frame_set(s : ChemmolreprsmilesFrame, i : Int, v : D
   result
 }
 
-pub fn chem_mol_repr_smiles_frame_sum(s : ChemmolreprsmilesFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_frame_sum(s : ChemmolreprsmilesFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_frame_mean(s : ChemmolreprsmilesFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_frame_mean(s : ChemmolreprsmilesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_frame_scale(s : ChemmolreprsmilesFrame, f : Double) -> ChemmolreprsmilesFrame {
   let result = chem_mol_repr_smiles_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_mol_repr_smiles_frame_fill(s : ChemmolreprsmilesFrame, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_smiles_frame_min(s : ChemmolreprsmilesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_frame_min(s : ChemmolreprsmilesFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_frame_max(s : ChemmolreprsmilesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_frame_max(s : ChemmolreprsmilesFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_frame_to_string(s : ChemmolreprsmilesFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_mol_repr_smiles_table_set(s : ChemmolreprsmilesTable, i : Int, v : D
   result
 }
 
-pub fn chem_mol_repr_smiles_table_sum(s : ChemmolreprsmilesTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_table_sum(s : ChemmolreprsmilesTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_table_mean(s : ChemmolreprsmilesTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_table_mean(s : ChemmolreprsmilesTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_table_scale(s : ChemmolreprsmilesTable, f : Double) -> ChemmolreprsmilesTable {
   let result = chem_mol_repr_smiles_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_mol_repr_smiles_table_fill(s : ChemmolreprsmilesTable, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_smiles_table_min(s : ChemmolreprsmilesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_table_min(s : ChemmolreprsmilesTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_table_max(s : ChemmolreprsmilesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_table_max(s : ChemmolreprsmilesTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_table_to_string(s : ChemmolreprsmilesTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_mol_repr_smiles_graphn_set(s : ChemmolreprsmilesGraphN, i : Int, v :
   result
 }
 
-pub fn chem_mol_repr_smiles_graphn_sum(s : ChemmolreprsmilesGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_graphn_sum(s : ChemmolreprsmilesGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_graphn_mean(s : ChemmolreprsmilesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_graphn_mean(s : ChemmolreprsmilesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_graphn_scale(s : ChemmolreprsmilesGraphN, f : Double) -> ChemmolreprsmilesGraphN {
   let result = chem_mol_repr_smiles_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_mol_repr_smiles_graphn_fill(s : ChemmolreprsmilesGraphN, v : Double)
   result
 }
 
-pub fn chem_mol_repr_smiles_graphn_min(s : ChemmolreprsmilesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_graphn_min(s : ChemmolreprsmilesGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_graphn_max(s : ChemmolreprsmilesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_graphn_max(s : ChemmolreprsmilesGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_graphn_to_string(s : ChemmolreprsmilesGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_mol_repr_smiles_node_set(s : ChemmolreprsmilesNode, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_repr_smiles_node_sum(s : ChemmolreprsmilesNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_node_sum(s : ChemmolreprsmilesNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_node_mean(s : ChemmolreprsmilesNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_node_mean(s : ChemmolreprsmilesNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_node_scale(s : ChemmolreprsmilesNode, f : Double) -> ChemmolreprsmilesNode {
   let result = chem_mol_repr_smiles_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_mol_repr_smiles_node_fill(s : ChemmolreprsmilesNode, v : Double) -> 
   result
 }
 
-pub fn chem_mol_repr_smiles_node_min(s : ChemmolreprsmilesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_node_min(s : ChemmolreprsmilesNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_node_max(s : ChemmolreprsmilesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_node_max(s : ChemmolreprsmilesNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_node_to_string(s : ChemmolreprsmilesNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_mol_repr_smiles_edge_set(s : ChemmolreprsmilesEdge, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_repr_smiles_edge_sum(s : ChemmolreprsmilesEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_edge_sum(s : ChemmolreprsmilesEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_edge_mean(s : ChemmolreprsmilesEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_edge_mean(s : ChemmolreprsmilesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_edge_scale(s : ChemmolreprsmilesEdge, f : Double) -> ChemmolreprsmilesEdge {
   let result = chem_mol_repr_smiles_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_mol_repr_smiles_edge_fill(s : ChemmolreprsmilesEdge, v : Double) -> 
   result
 }
 
-pub fn chem_mol_repr_smiles_edge_min(s : ChemmolreprsmilesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_edge_min(s : ChemmolreprsmilesEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_edge_max(s : ChemmolreprsmilesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_edge_max(s : ChemmolreprsmilesEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_edge_to_string(s : ChemmolreprsmilesEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_mol_repr_smiles_path_set(s : ChemmolreprsmilesPath, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_repr_smiles_path_sum(s : ChemmolreprsmilesPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_path_sum(s : ChemmolreprsmilesPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_path_mean(s : ChemmolreprsmilesPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_path_mean(s : ChemmolreprsmilesPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_path_scale(s : ChemmolreprsmilesPath, f : Double) -> ChemmolreprsmilesPath {
   let result = chem_mol_repr_smiles_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_mol_repr_smiles_path_fill(s : ChemmolreprsmilesPath, v : Double) -> 
   result
 }
 
-pub fn chem_mol_repr_smiles_path_min(s : ChemmolreprsmilesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_path_min(s : ChemmolreprsmilesPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_path_max(s : ChemmolreprsmilesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_path_max(s : ChemmolreprsmilesPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_path_to_string(s : ChemmolreprsmilesPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_mol_repr_smiles_cluster_set(s : ChemmolreprsmilesCluster, i : Int, v
   result
 }
 
-pub fn chem_mol_repr_smiles_cluster_sum(s : ChemmolreprsmilesCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_cluster_sum(s : ChemmolreprsmilesCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_cluster_mean(s : ChemmolreprsmilesCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_cluster_mean(s : ChemmolreprsmilesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_cluster_scale(s : ChemmolreprsmilesCluster, f : Double) -> ChemmolreprsmilesCluster {
   let result = chem_mol_repr_smiles_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_mol_repr_smiles_cluster_fill(s : ChemmolreprsmilesCluster, v : Doubl
   result
 }
 
-pub fn chem_mol_repr_smiles_cluster_min(s : ChemmolreprsmilesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_cluster_min(s : ChemmolreprsmilesCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_cluster_max(s : ChemmolreprsmilesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_cluster_max(s : ChemmolreprsmilesCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_cluster_to_string(s : ChemmolreprsmilesCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_mol_repr_smiles_model_set(s : ChemmolreprsmilesModel, i : Int, v : D
   result
 }
 
-pub fn chem_mol_repr_smiles_model_sum(s : ChemmolreprsmilesModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_model_sum(s : ChemmolreprsmilesModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_model_mean(s : ChemmolreprsmilesModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_model_mean(s : ChemmolreprsmilesModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_model_scale(s : ChemmolreprsmilesModel, f : Double) -> ChemmolreprsmilesModel {
   let result = chem_mol_repr_smiles_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_mol_repr_smiles_model_fill(s : ChemmolreprsmilesModel, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_smiles_model_min(s : ChemmolreprsmilesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_model_min(s : ChemmolreprsmilesModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_model_max(s : ChemmolreprsmilesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_model_max(s : ChemmolreprsmilesModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_model_to_string(s : ChemmolreprsmilesModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_mol_repr_smiles_layer_set(s : ChemmolreprsmilesLayer, i : Int, v : D
   result
 }
 
-pub fn chem_mol_repr_smiles_layer_sum(s : ChemmolreprsmilesLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_layer_sum(s : ChemmolreprsmilesLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_layer_mean(s : ChemmolreprsmilesLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_layer_mean(s : ChemmolreprsmilesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_layer_scale(s : ChemmolreprsmilesLayer, f : Double) -> ChemmolreprsmilesLayer {
   let result = chem_mol_repr_smiles_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_mol_repr_smiles_layer_fill(s : ChemmolreprsmilesLayer, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_smiles_layer_min(s : ChemmolreprsmilesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_layer_min(s : ChemmolreprsmilesLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_layer_max(s : ChemmolreprsmilesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_layer_max(s : ChemmolreprsmilesLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_layer_to_string(s : ChemmolreprsmilesLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_mol_repr_smiles_buffer_set(s : ChemmolreprsmilesBuffer, i : Int, v :
   result
 }
 
-pub fn chem_mol_repr_smiles_buffer_sum(s : ChemmolreprsmilesBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_buffer_sum(s : ChemmolreprsmilesBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_buffer_mean(s : ChemmolreprsmilesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_buffer_mean(s : ChemmolreprsmilesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_buffer_scale(s : ChemmolreprsmilesBuffer, f : Double) -> ChemmolreprsmilesBuffer {
   let result = chem_mol_repr_smiles_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_mol_repr_smiles_buffer_fill(s : ChemmolreprsmilesBuffer, v : Double)
   result
 }
 
-pub fn chem_mol_repr_smiles_buffer_min(s : ChemmolreprsmilesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_buffer_min(s : ChemmolreprsmilesBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_buffer_max(s : ChemmolreprsmilesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_buffer_max(s : ChemmolreprsmilesBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_buffer_to_string(s : ChemmolreprsmilesBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_mol_repr_smiles_cursor_set(s : ChemmolreprsmilesCursor, i : Int, v :
   result
 }
 
-pub fn chem_mol_repr_smiles_cursor_sum(s : ChemmolreprsmilesCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_cursor_sum(s : ChemmolreprsmilesCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_cursor_mean(s : ChemmolreprsmilesCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_cursor_mean(s : ChemmolreprsmilesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_cursor_scale(s : ChemmolreprsmilesCursor, f : Double) -> ChemmolreprsmilesCursor {
   let result = chem_mol_repr_smiles_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_mol_repr_smiles_cursor_fill(s : ChemmolreprsmilesCursor, v : Double)
   result
 }
 
-pub fn chem_mol_repr_smiles_cursor_min(s : ChemmolreprsmilesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_cursor_min(s : ChemmolreprsmilesCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_cursor_max(s : ChemmolreprsmilesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_cursor_max(s : ChemmolreprsmilesCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_cursor_to_string(s : ChemmolreprsmilesCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_mol_repr_smiles_view_set(s : ChemmolreprsmilesView, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_repr_smiles_view_sum(s : ChemmolreprsmilesView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_view_sum(s : ChemmolreprsmilesView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_view_mean(s : ChemmolreprsmilesView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_view_mean(s : ChemmolreprsmilesView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_view_scale(s : ChemmolreprsmilesView, f : Double) -> ChemmolreprsmilesView {
   let result = chem_mol_repr_smiles_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_mol_repr_smiles_view_fill(s : ChemmolreprsmilesView, v : Double) -> 
   result
 }
 
-pub fn chem_mol_repr_smiles_view_min(s : ChemmolreprsmilesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_view_min(s : ChemmolreprsmilesView) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_view_max(s : ChemmolreprsmilesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_view_max(s : ChemmolreprsmilesView) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_view_to_string(s : ChemmolreprsmilesView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_mol_repr_smiles_range_set(s : ChemmolreprsmilesRange, i : Int, v : D
   result
 }
 
-pub fn chem_mol_repr_smiles_range_sum(s : ChemmolreprsmilesRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_range_sum(s : ChemmolreprsmilesRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_range_mean(s : ChemmolreprsmilesRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_range_mean(s : ChemmolreprsmilesRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_range_scale(s : ChemmolreprsmilesRange, f : Double) -> ChemmolreprsmilesRange {
   let result = chem_mol_repr_smiles_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_mol_repr_smiles_range_fill(s : ChemmolreprsmilesRange, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_smiles_range_min(s : ChemmolreprsmilesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_range_min(s : ChemmolreprsmilesRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_range_max(s : ChemmolreprsmilesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_range_max(s : ChemmolreprsmilesRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_range_to_string(s : ChemmolreprsmilesRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_mol_repr_smiles_slice_set(s : ChemmolreprsmilesSlice, i : Int, v : D
   result
 }
 
-pub fn chem_mol_repr_smiles_slice_sum(s : ChemmolreprsmilesSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_repr_smiles_slice_sum(s : ChemmolreprsmilesSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_repr_smiles_slice_mean(s : ChemmolreprsmilesSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_repr_smiles_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_repr_smiles_slice_mean(s : ChemmolreprsmilesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_repr_smiles_slice_scale(s : ChemmolreprsmilesSlice, f : Double) -> ChemmolreprsmilesSlice {
   let result = chem_mol_repr_smiles_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_mol_repr_smiles_slice_fill(s : ChemmolreprsmilesSlice, v : Double) -
   result
 }
 
-pub fn chem_mol_repr_smiles_slice_min(s : ChemmolreprsmilesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_slice_min(s : ChemmolreprsmilesSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_repr_smiles_slice_max(s : ChemmolreprsmilesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_repr_smiles_slice_max(s : ChemmolreprsmilesSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_repr_smiles_slice_to_string(s : ChemmolreprsmilesSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

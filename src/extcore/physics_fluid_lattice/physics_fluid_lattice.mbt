@@ -88,11 +88,7 @@ pub fn physics_fluid_lattice_make_series(vals : Array[Double], name : String) ->
 
 pub fn physics_fluid_lattice_series_len(s : PhysicsfluidlatticeSeries) -> Int { s.vals.length() }
 
-pub fn physics_fluid_lattice_series_sum(s : PhysicsfluidlatticeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_fluid_lattice_series_sum(s : PhysicsfluidlatticeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_fluid_lattice_series_mean(s : PhysicsfluidlatticeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_fluid_lattice_frame_set(s : PhysicsfluidlatticeFrame, i : Int, v 
   result
 }
 
-pub fn physics_fluid_lattice_frame_sum(s : PhysicsfluidlatticeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_frame_sum(s : PhysicsfluidlatticeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_frame_mean(s : PhysicsfluidlatticeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_frame_mean(s : PhysicsfluidlatticeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_frame_scale(s : PhysicsfluidlatticeFrame, f : Double) -> PhysicsfluidlatticeFrame {
   let result = physics_fluid_lattice_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_fluid_lattice_frame_fill(s : PhysicsfluidlatticeFrame, v : Double
   result
 }
 
-pub fn physics_fluid_lattice_frame_min(s : PhysicsfluidlatticeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_frame_min(s : PhysicsfluidlatticeFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_frame_max(s : PhysicsfluidlatticeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_frame_max(s : PhysicsfluidlatticeFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_frame_to_string(s : PhysicsfluidlatticeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_fluid_lattice_table_set(s : PhysicsfluidlatticeTable, i : Int, v 
   result
 }
 
-pub fn physics_fluid_lattice_table_sum(s : PhysicsfluidlatticeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_table_sum(s : PhysicsfluidlatticeTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_table_mean(s : PhysicsfluidlatticeTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_table_mean(s : PhysicsfluidlatticeTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_table_scale(s : PhysicsfluidlatticeTable, f : Double) -> PhysicsfluidlatticeTable {
   let result = physics_fluid_lattice_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_fluid_lattice_table_fill(s : PhysicsfluidlatticeTable, v : Double
   result
 }
 
-pub fn physics_fluid_lattice_table_min(s : PhysicsfluidlatticeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_table_min(s : PhysicsfluidlatticeTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_table_max(s : PhysicsfluidlatticeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_table_max(s : PhysicsfluidlatticeTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_table_to_string(s : PhysicsfluidlatticeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_fluid_lattice_graphn_set(s : PhysicsfluidlatticeGraphN, i : Int, 
   result
 }
 
-pub fn physics_fluid_lattice_graphn_sum(s : PhysicsfluidlatticeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_graphn_sum(s : PhysicsfluidlatticeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_graphn_mean(s : PhysicsfluidlatticeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_graphn_mean(s : PhysicsfluidlatticeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_graphn_scale(s : PhysicsfluidlatticeGraphN, f : Double) -> PhysicsfluidlatticeGraphN {
   let result = physics_fluid_lattice_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_fluid_lattice_graphn_fill(s : PhysicsfluidlatticeGraphN, v : Doub
   result
 }
 
-pub fn physics_fluid_lattice_graphn_min(s : PhysicsfluidlatticeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_graphn_min(s : PhysicsfluidlatticeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_graphn_max(s : PhysicsfluidlatticeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_graphn_max(s : PhysicsfluidlatticeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_graphn_to_string(s : PhysicsfluidlatticeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_fluid_lattice_node_set(s : PhysicsfluidlatticeNode, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_lattice_node_sum(s : PhysicsfluidlatticeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_node_sum(s : PhysicsfluidlatticeNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_node_mean(s : PhysicsfluidlatticeNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_node_mean(s : PhysicsfluidlatticeNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_node_scale(s : PhysicsfluidlatticeNode, f : Double) -> PhysicsfluidlatticeNode {
   let result = physics_fluid_lattice_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_fluid_lattice_node_fill(s : PhysicsfluidlatticeNode, v : Double) 
   result
 }
 
-pub fn physics_fluid_lattice_node_min(s : PhysicsfluidlatticeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_node_min(s : PhysicsfluidlatticeNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_node_max(s : PhysicsfluidlatticeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_node_max(s : PhysicsfluidlatticeNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_node_to_string(s : PhysicsfluidlatticeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_fluid_lattice_edge_set(s : PhysicsfluidlatticeEdge, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_lattice_edge_sum(s : PhysicsfluidlatticeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_edge_sum(s : PhysicsfluidlatticeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_edge_mean(s : PhysicsfluidlatticeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_edge_mean(s : PhysicsfluidlatticeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_edge_scale(s : PhysicsfluidlatticeEdge, f : Double) -> PhysicsfluidlatticeEdge {
   let result = physics_fluid_lattice_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_fluid_lattice_edge_fill(s : PhysicsfluidlatticeEdge, v : Double) 
   result
 }
 
-pub fn physics_fluid_lattice_edge_min(s : PhysicsfluidlatticeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_edge_min(s : PhysicsfluidlatticeEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_edge_max(s : PhysicsfluidlatticeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_edge_max(s : PhysicsfluidlatticeEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_edge_to_string(s : PhysicsfluidlatticeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_fluid_lattice_path_set(s : PhysicsfluidlatticePath, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_lattice_path_sum(s : PhysicsfluidlatticePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_path_sum(s : PhysicsfluidlatticePath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_path_mean(s : PhysicsfluidlatticePath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_path_mean(s : PhysicsfluidlatticePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_path_scale(s : PhysicsfluidlatticePath, f : Double) -> PhysicsfluidlatticePath {
   let result = physics_fluid_lattice_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_fluid_lattice_path_fill(s : PhysicsfluidlatticePath, v : Double) 
   result
 }
 
-pub fn physics_fluid_lattice_path_min(s : PhysicsfluidlatticePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_path_min(s : PhysicsfluidlatticePath) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_path_max(s : PhysicsfluidlatticePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_path_max(s : PhysicsfluidlatticePath) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_path_to_string(s : PhysicsfluidlatticePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_fluid_lattice_cluster_set(s : PhysicsfluidlatticeCluster, i : Int
   result
 }
 
-pub fn physics_fluid_lattice_cluster_sum(s : PhysicsfluidlatticeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_cluster_sum(s : PhysicsfluidlatticeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_cluster_mean(s : PhysicsfluidlatticeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_cluster_mean(s : PhysicsfluidlatticeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_cluster_scale(s : PhysicsfluidlatticeCluster, f : Double) -> PhysicsfluidlatticeCluster {
   let result = physics_fluid_lattice_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_fluid_lattice_cluster_fill(s : PhysicsfluidlatticeCluster, v : Do
   result
 }
 
-pub fn physics_fluid_lattice_cluster_min(s : PhysicsfluidlatticeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_cluster_min(s : PhysicsfluidlatticeCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_cluster_max(s : PhysicsfluidlatticeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_cluster_max(s : PhysicsfluidlatticeCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_cluster_to_string(s : PhysicsfluidlatticeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_fluid_lattice_model_set(s : PhysicsfluidlatticeModel, i : Int, v 
   result
 }
 
-pub fn physics_fluid_lattice_model_sum(s : PhysicsfluidlatticeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_model_sum(s : PhysicsfluidlatticeModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_model_mean(s : PhysicsfluidlatticeModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_model_mean(s : PhysicsfluidlatticeModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_model_scale(s : PhysicsfluidlatticeModel, f : Double) -> PhysicsfluidlatticeModel {
   let result = physics_fluid_lattice_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_fluid_lattice_model_fill(s : PhysicsfluidlatticeModel, v : Double
   result
 }
 
-pub fn physics_fluid_lattice_model_min(s : PhysicsfluidlatticeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_model_min(s : PhysicsfluidlatticeModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_model_max(s : PhysicsfluidlatticeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_model_max(s : PhysicsfluidlatticeModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_model_to_string(s : PhysicsfluidlatticeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_fluid_lattice_layer_set(s : PhysicsfluidlatticeLayer, i : Int, v 
   result
 }
 
-pub fn physics_fluid_lattice_layer_sum(s : PhysicsfluidlatticeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_layer_sum(s : PhysicsfluidlatticeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_layer_mean(s : PhysicsfluidlatticeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_layer_mean(s : PhysicsfluidlatticeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_layer_scale(s : PhysicsfluidlatticeLayer, f : Double) -> PhysicsfluidlatticeLayer {
   let result = physics_fluid_lattice_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_fluid_lattice_layer_fill(s : PhysicsfluidlatticeLayer, v : Double
   result
 }
 
-pub fn physics_fluid_lattice_layer_min(s : PhysicsfluidlatticeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_layer_min(s : PhysicsfluidlatticeLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_layer_max(s : PhysicsfluidlatticeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_layer_max(s : PhysicsfluidlatticeLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_layer_to_string(s : PhysicsfluidlatticeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_fluid_lattice_buffer_set(s : PhysicsfluidlatticeBuffer, i : Int, 
   result
 }
 
-pub fn physics_fluid_lattice_buffer_sum(s : PhysicsfluidlatticeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_buffer_sum(s : PhysicsfluidlatticeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_buffer_mean(s : PhysicsfluidlatticeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_buffer_mean(s : PhysicsfluidlatticeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_buffer_scale(s : PhysicsfluidlatticeBuffer, f : Double) -> PhysicsfluidlatticeBuffer {
   let result = physics_fluid_lattice_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_fluid_lattice_buffer_fill(s : PhysicsfluidlatticeBuffer, v : Doub
   result
 }
 
-pub fn physics_fluid_lattice_buffer_min(s : PhysicsfluidlatticeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_buffer_min(s : PhysicsfluidlatticeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_buffer_max(s : PhysicsfluidlatticeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_buffer_max(s : PhysicsfluidlatticeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_buffer_to_string(s : PhysicsfluidlatticeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_fluid_lattice_cursor_set(s : PhysicsfluidlatticeCursor, i : Int, 
   result
 }
 
-pub fn physics_fluid_lattice_cursor_sum(s : PhysicsfluidlatticeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_cursor_sum(s : PhysicsfluidlatticeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_cursor_mean(s : PhysicsfluidlatticeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_cursor_mean(s : PhysicsfluidlatticeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_cursor_scale(s : PhysicsfluidlatticeCursor, f : Double) -> PhysicsfluidlatticeCursor {
   let result = physics_fluid_lattice_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_fluid_lattice_cursor_fill(s : PhysicsfluidlatticeCursor, v : Doub
   result
 }
 
-pub fn physics_fluid_lattice_cursor_min(s : PhysicsfluidlatticeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_cursor_min(s : PhysicsfluidlatticeCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_cursor_max(s : PhysicsfluidlatticeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_cursor_max(s : PhysicsfluidlatticeCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_cursor_to_string(s : PhysicsfluidlatticeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_fluid_lattice_view_set(s : PhysicsfluidlatticeView, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_lattice_view_sum(s : PhysicsfluidlatticeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_view_sum(s : PhysicsfluidlatticeView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_view_mean(s : PhysicsfluidlatticeView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_view_mean(s : PhysicsfluidlatticeView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_view_scale(s : PhysicsfluidlatticeView, f : Double) -> PhysicsfluidlatticeView {
   let result = physics_fluid_lattice_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_fluid_lattice_view_fill(s : PhysicsfluidlatticeView, v : Double) 
   result
 }
 
-pub fn physics_fluid_lattice_view_min(s : PhysicsfluidlatticeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_view_min(s : PhysicsfluidlatticeView) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_view_max(s : PhysicsfluidlatticeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_view_max(s : PhysicsfluidlatticeView) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_view_to_string(s : PhysicsfluidlatticeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_fluid_lattice_range_set(s : PhysicsfluidlatticeRange, i : Int, v 
   result
 }
 
-pub fn physics_fluid_lattice_range_sum(s : PhysicsfluidlatticeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_range_sum(s : PhysicsfluidlatticeRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_range_mean(s : PhysicsfluidlatticeRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_range_mean(s : PhysicsfluidlatticeRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_range_scale(s : PhysicsfluidlatticeRange, f : Double) -> PhysicsfluidlatticeRange {
   let result = physics_fluid_lattice_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_fluid_lattice_range_fill(s : PhysicsfluidlatticeRange, v : Double
   result
 }
 
-pub fn physics_fluid_lattice_range_min(s : PhysicsfluidlatticeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_range_min(s : PhysicsfluidlatticeRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_range_max(s : PhysicsfluidlatticeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_range_max(s : PhysicsfluidlatticeRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_range_to_string(s : PhysicsfluidlatticeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_fluid_lattice_slice_set(s : PhysicsfluidlatticeSlice, i : Int, v 
   result
 }
 
-pub fn physics_fluid_lattice_slice_sum(s : PhysicsfluidlatticeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_lattice_slice_sum(s : PhysicsfluidlatticeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_lattice_slice_mean(s : PhysicsfluidlatticeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_lattice_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_lattice_slice_mean(s : PhysicsfluidlatticeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_lattice_slice_scale(s : PhysicsfluidlatticeSlice, f : Double) -> PhysicsfluidlatticeSlice {
   let result = physics_fluid_lattice_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_fluid_lattice_slice_fill(s : PhysicsfluidlatticeSlice, v : Double
   result
 }
 
-pub fn physics_fluid_lattice_slice_min(s : PhysicsfluidlatticeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_slice_min(s : PhysicsfluidlatticeSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_lattice_slice_max(s : PhysicsfluidlatticeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_lattice_slice_max(s : PhysicsfluidlatticeSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_lattice_slice_to_string(s : PhysicsfluidlatticeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

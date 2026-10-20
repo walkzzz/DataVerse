@@ -88,11 +88,7 @@ pub fn signal_filter_wiener_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_filter_wiener_series_len(s : SignalfilterwienerSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_wiener_series_sum(s : SignalfilterwienerSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_wiener_series_sum(s : SignalfilterwienerSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_wiener_series_mean(s : SignalfilterwienerSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_wiener_frame_set(s : SignalfilterwienerFrame, i : Int, v : 
   result
 }
 
-pub fn signal_filter_wiener_frame_sum(s : SignalfilterwienerFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_frame_sum(s : SignalfilterwienerFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_frame_mean(s : SignalfilterwienerFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_frame_mean(s : SignalfilterwienerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_frame_scale(s : SignalfilterwienerFrame, f : Double) -> SignalfilterwienerFrame {
   let result = signal_filter_wiener_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_wiener_frame_fill(s : SignalfilterwienerFrame, v : Double) 
   result
 }
 
-pub fn signal_filter_wiener_frame_min(s : SignalfilterwienerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_frame_min(s : SignalfilterwienerFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_frame_max(s : SignalfilterwienerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_frame_max(s : SignalfilterwienerFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_frame_to_string(s : SignalfilterwienerFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_wiener_table_set(s : SignalfilterwienerTable, i : Int, v : 
   result
 }
 
-pub fn signal_filter_wiener_table_sum(s : SignalfilterwienerTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_table_sum(s : SignalfilterwienerTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_table_mean(s : SignalfilterwienerTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_table_mean(s : SignalfilterwienerTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_table_scale(s : SignalfilterwienerTable, f : Double) -> SignalfilterwienerTable {
   let result = signal_filter_wiener_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_wiener_table_fill(s : SignalfilterwienerTable, v : Double) 
   result
 }
 
-pub fn signal_filter_wiener_table_min(s : SignalfilterwienerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_table_min(s : SignalfilterwienerTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_table_max(s : SignalfilterwienerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_table_max(s : SignalfilterwienerTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_table_to_string(s : SignalfilterwienerTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_wiener_graphn_set(s : SignalfilterwienerGraphN, i : Int, v 
   result
 }
 
-pub fn signal_filter_wiener_graphn_sum(s : SignalfilterwienerGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_graphn_sum(s : SignalfilterwienerGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_graphn_mean(s : SignalfilterwienerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_graphn_mean(s : SignalfilterwienerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_graphn_scale(s : SignalfilterwienerGraphN, f : Double) -> SignalfilterwienerGraphN {
   let result = signal_filter_wiener_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_wiener_graphn_fill(s : SignalfilterwienerGraphN, v : Double
   result
 }
 
-pub fn signal_filter_wiener_graphn_min(s : SignalfilterwienerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_graphn_min(s : SignalfilterwienerGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_graphn_max(s : SignalfilterwienerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_graphn_max(s : SignalfilterwienerGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_graphn_to_string(s : SignalfilterwienerGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_wiener_node_set(s : SignalfilterwienerNode, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_wiener_node_sum(s : SignalfilterwienerNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_node_sum(s : SignalfilterwienerNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_node_mean(s : SignalfilterwienerNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_node_mean(s : SignalfilterwienerNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_node_scale(s : SignalfilterwienerNode, f : Double) -> SignalfilterwienerNode {
   let result = signal_filter_wiener_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_wiener_node_fill(s : SignalfilterwienerNode, v : Double) ->
   result
 }
 
-pub fn signal_filter_wiener_node_min(s : SignalfilterwienerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_node_min(s : SignalfilterwienerNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_node_max(s : SignalfilterwienerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_node_max(s : SignalfilterwienerNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_node_to_string(s : SignalfilterwienerNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_wiener_edge_set(s : SignalfilterwienerEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_wiener_edge_sum(s : SignalfilterwienerEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_edge_sum(s : SignalfilterwienerEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_edge_mean(s : SignalfilterwienerEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_edge_mean(s : SignalfilterwienerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_edge_scale(s : SignalfilterwienerEdge, f : Double) -> SignalfilterwienerEdge {
   let result = signal_filter_wiener_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_wiener_edge_fill(s : SignalfilterwienerEdge, v : Double) ->
   result
 }
 
-pub fn signal_filter_wiener_edge_min(s : SignalfilterwienerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_edge_min(s : SignalfilterwienerEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_edge_max(s : SignalfilterwienerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_edge_max(s : SignalfilterwienerEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_edge_to_string(s : SignalfilterwienerEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_wiener_path_set(s : SignalfilterwienerPath, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_wiener_path_sum(s : SignalfilterwienerPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_path_sum(s : SignalfilterwienerPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_path_mean(s : SignalfilterwienerPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_path_mean(s : SignalfilterwienerPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_path_scale(s : SignalfilterwienerPath, f : Double) -> SignalfilterwienerPath {
   let result = signal_filter_wiener_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_wiener_path_fill(s : SignalfilterwienerPath, v : Double) ->
   result
 }
 
-pub fn signal_filter_wiener_path_min(s : SignalfilterwienerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_path_min(s : SignalfilterwienerPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_path_max(s : SignalfilterwienerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_path_max(s : SignalfilterwienerPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_path_to_string(s : SignalfilterwienerPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_wiener_cluster_set(s : SignalfilterwienerCluster, i : Int, 
   result
 }
 
-pub fn signal_filter_wiener_cluster_sum(s : SignalfilterwienerCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_cluster_sum(s : SignalfilterwienerCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_cluster_mean(s : SignalfilterwienerCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_cluster_mean(s : SignalfilterwienerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_cluster_scale(s : SignalfilterwienerCluster, f : Double) -> SignalfilterwienerCluster {
   let result = signal_filter_wiener_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_wiener_cluster_fill(s : SignalfilterwienerCluster, v : Doub
   result
 }
 
-pub fn signal_filter_wiener_cluster_min(s : SignalfilterwienerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_cluster_min(s : SignalfilterwienerCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_cluster_max(s : SignalfilterwienerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_cluster_max(s : SignalfilterwienerCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_cluster_to_string(s : SignalfilterwienerCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_wiener_model_set(s : SignalfilterwienerModel, i : Int, v : 
   result
 }
 
-pub fn signal_filter_wiener_model_sum(s : SignalfilterwienerModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_model_sum(s : SignalfilterwienerModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_model_mean(s : SignalfilterwienerModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_model_mean(s : SignalfilterwienerModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_model_scale(s : SignalfilterwienerModel, f : Double) -> SignalfilterwienerModel {
   let result = signal_filter_wiener_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_wiener_model_fill(s : SignalfilterwienerModel, v : Double) 
   result
 }
 
-pub fn signal_filter_wiener_model_min(s : SignalfilterwienerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_model_min(s : SignalfilterwienerModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_model_max(s : SignalfilterwienerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_model_max(s : SignalfilterwienerModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_model_to_string(s : SignalfilterwienerModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_wiener_layer_set(s : SignalfilterwienerLayer, i : Int, v : 
   result
 }
 
-pub fn signal_filter_wiener_layer_sum(s : SignalfilterwienerLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_layer_sum(s : SignalfilterwienerLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_layer_mean(s : SignalfilterwienerLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_layer_mean(s : SignalfilterwienerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_layer_scale(s : SignalfilterwienerLayer, f : Double) -> SignalfilterwienerLayer {
   let result = signal_filter_wiener_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_wiener_layer_fill(s : SignalfilterwienerLayer, v : Double) 
   result
 }
 
-pub fn signal_filter_wiener_layer_min(s : SignalfilterwienerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_layer_min(s : SignalfilterwienerLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_layer_max(s : SignalfilterwienerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_layer_max(s : SignalfilterwienerLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_layer_to_string(s : SignalfilterwienerLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_wiener_buffer_set(s : SignalfilterwienerBuffer, i : Int, v 
   result
 }
 
-pub fn signal_filter_wiener_buffer_sum(s : SignalfilterwienerBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_buffer_sum(s : SignalfilterwienerBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_buffer_mean(s : SignalfilterwienerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_buffer_mean(s : SignalfilterwienerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_buffer_scale(s : SignalfilterwienerBuffer, f : Double) -> SignalfilterwienerBuffer {
   let result = signal_filter_wiener_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_wiener_buffer_fill(s : SignalfilterwienerBuffer, v : Double
   result
 }
 
-pub fn signal_filter_wiener_buffer_min(s : SignalfilterwienerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_buffer_min(s : SignalfilterwienerBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_buffer_max(s : SignalfilterwienerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_buffer_max(s : SignalfilterwienerBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_buffer_to_string(s : SignalfilterwienerBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_wiener_cursor_set(s : SignalfilterwienerCursor, i : Int, v 
   result
 }
 
-pub fn signal_filter_wiener_cursor_sum(s : SignalfilterwienerCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_cursor_sum(s : SignalfilterwienerCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_cursor_mean(s : SignalfilterwienerCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_cursor_mean(s : SignalfilterwienerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_cursor_scale(s : SignalfilterwienerCursor, f : Double) -> SignalfilterwienerCursor {
   let result = signal_filter_wiener_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_wiener_cursor_fill(s : SignalfilterwienerCursor, v : Double
   result
 }
 
-pub fn signal_filter_wiener_cursor_min(s : SignalfilterwienerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_cursor_min(s : SignalfilterwienerCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_cursor_max(s : SignalfilterwienerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_cursor_max(s : SignalfilterwienerCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_cursor_to_string(s : SignalfilterwienerCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_wiener_view_set(s : SignalfilterwienerView, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_wiener_view_sum(s : SignalfilterwienerView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_view_sum(s : SignalfilterwienerView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_view_mean(s : SignalfilterwienerView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_view_mean(s : SignalfilterwienerView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_view_scale(s : SignalfilterwienerView, f : Double) -> SignalfilterwienerView {
   let result = signal_filter_wiener_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_wiener_view_fill(s : SignalfilterwienerView, v : Double) ->
   result
 }
 
-pub fn signal_filter_wiener_view_min(s : SignalfilterwienerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_view_min(s : SignalfilterwienerView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_view_max(s : SignalfilterwienerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_view_max(s : SignalfilterwienerView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_view_to_string(s : SignalfilterwienerView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_wiener_range_set(s : SignalfilterwienerRange, i : Int, v : 
   result
 }
 
-pub fn signal_filter_wiener_range_sum(s : SignalfilterwienerRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_range_sum(s : SignalfilterwienerRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_range_mean(s : SignalfilterwienerRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_range_mean(s : SignalfilterwienerRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_range_scale(s : SignalfilterwienerRange, f : Double) -> SignalfilterwienerRange {
   let result = signal_filter_wiener_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_wiener_range_fill(s : SignalfilterwienerRange, v : Double) 
   result
 }
 
-pub fn signal_filter_wiener_range_min(s : SignalfilterwienerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_range_min(s : SignalfilterwienerRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_range_max(s : SignalfilterwienerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_range_max(s : SignalfilterwienerRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_range_to_string(s : SignalfilterwienerRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_wiener_slice_set(s : SignalfilterwienerSlice, i : Int, v : 
   result
 }
 
-pub fn signal_filter_wiener_slice_sum(s : SignalfilterwienerSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_wiener_slice_sum(s : SignalfilterwienerSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_wiener_slice_mean(s : SignalfilterwienerSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_wiener_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_wiener_slice_mean(s : SignalfilterwienerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_wiener_slice_scale(s : SignalfilterwienerSlice, f : Double) -> SignalfilterwienerSlice {
   let result = signal_filter_wiener_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_wiener_slice_fill(s : SignalfilterwienerSlice, v : Double) 
   result
 }
 
-pub fn signal_filter_wiener_slice_min(s : SignalfilterwienerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_slice_min(s : SignalfilterwienerSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_wiener_slice_max(s : SignalfilterwienerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_wiener_slice_max(s : SignalfilterwienerSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_wiener_slice_to_string(s : SignalfilterwienerSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

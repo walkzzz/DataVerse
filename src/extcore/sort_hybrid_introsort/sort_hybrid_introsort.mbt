@@ -88,11 +88,7 @@ pub fn sort_hybrid_introsort_make_series(vals : Array[Double], name : String) ->
 
 pub fn sort_hybrid_introsort_series_len(s : SorthybridintrosortSeries) -> Int { s.vals.length() }
 
-pub fn sort_hybrid_introsort_series_sum(s : SorthybridintrosortSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_hybrid_introsort_series_sum(s : SorthybridintrosortSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_hybrid_introsort_series_mean(s : SorthybridintrosortSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_hybrid_introsort_frame_set(s : SorthybridintrosortFrame, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_introsort_frame_sum(s : SorthybridintrosortFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_frame_sum(s : SorthybridintrosortFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_frame_mean(s : SorthybridintrosortFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_frame_mean(s : SorthybridintrosortFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_frame_scale(s : SorthybridintrosortFrame, f : Double) -> SorthybridintrosortFrame {
   let result = sort_hybrid_introsort_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_hybrid_introsort_frame_fill(s : SorthybridintrosortFrame, v : Double
   result
 }
 
-pub fn sort_hybrid_introsort_frame_min(s : SorthybridintrosortFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_frame_min(s : SorthybridintrosortFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_frame_max(s : SorthybridintrosortFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_frame_max(s : SorthybridintrosortFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_frame_to_string(s : SorthybridintrosortFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_hybrid_introsort_table_set(s : SorthybridintrosortTable, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_introsort_table_sum(s : SorthybridintrosortTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_table_sum(s : SorthybridintrosortTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_table_mean(s : SorthybridintrosortTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_table_mean(s : SorthybridintrosortTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_table_scale(s : SorthybridintrosortTable, f : Double) -> SorthybridintrosortTable {
   let result = sort_hybrid_introsort_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_hybrid_introsort_table_fill(s : SorthybridintrosortTable, v : Double
   result
 }
 
-pub fn sort_hybrid_introsort_table_min(s : SorthybridintrosortTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_table_min(s : SorthybridintrosortTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_table_max(s : SorthybridintrosortTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_table_max(s : SorthybridintrosortTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_table_to_string(s : SorthybridintrosortTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_hybrid_introsort_graphn_set(s : SorthybridintrosortGraphN, i : Int, 
   result
 }
 
-pub fn sort_hybrid_introsort_graphn_sum(s : SorthybridintrosortGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_graphn_sum(s : SorthybridintrosortGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_graphn_mean(s : SorthybridintrosortGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_graphn_mean(s : SorthybridintrosortGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_graphn_scale(s : SorthybridintrosortGraphN, f : Double) -> SorthybridintrosortGraphN {
   let result = sort_hybrid_introsort_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_hybrid_introsort_graphn_fill(s : SorthybridintrosortGraphN, v : Doub
   result
 }
 
-pub fn sort_hybrid_introsort_graphn_min(s : SorthybridintrosortGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_graphn_min(s : SorthybridintrosortGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_graphn_max(s : SorthybridintrosortGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_graphn_max(s : SorthybridintrosortGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_graphn_to_string(s : SorthybridintrosortGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_hybrid_introsort_node_set(s : SorthybridintrosortNode, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_introsort_node_sum(s : SorthybridintrosortNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_node_sum(s : SorthybridintrosortNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_node_mean(s : SorthybridintrosortNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_node_mean(s : SorthybridintrosortNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_node_scale(s : SorthybridintrosortNode, f : Double) -> SorthybridintrosortNode {
   let result = sort_hybrid_introsort_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_hybrid_introsort_node_fill(s : SorthybridintrosortNode, v : Double) 
   result
 }
 
-pub fn sort_hybrid_introsort_node_min(s : SorthybridintrosortNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_node_min(s : SorthybridintrosortNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_node_max(s : SorthybridintrosortNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_node_max(s : SorthybridintrosortNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_node_to_string(s : SorthybridintrosortNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_hybrid_introsort_edge_set(s : SorthybridintrosortEdge, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_introsort_edge_sum(s : SorthybridintrosortEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_edge_sum(s : SorthybridintrosortEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_edge_mean(s : SorthybridintrosortEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_edge_mean(s : SorthybridintrosortEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_edge_scale(s : SorthybridintrosortEdge, f : Double) -> SorthybridintrosortEdge {
   let result = sort_hybrid_introsort_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_hybrid_introsort_edge_fill(s : SorthybridintrosortEdge, v : Double) 
   result
 }
 
-pub fn sort_hybrid_introsort_edge_min(s : SorthybridintrosortEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_edge_min(s : SorthybridintrosortEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_edge_max(s : SorthybridintrosortEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_edge_max(s : SorthybridintrosortEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_edge_to_string(s : SorthybridintrosortEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_hybrid_introsort_path_set(s : SorthybridintrosortPath, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_introsort_path_sum(s : SorthybridintrosortPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_path_sum(s : SorthybridintrosortPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_path_mean(s : SorthybridintrosortPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_path_mean(s : SorthybridintrosortPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_path_scale(s : SorthybridintrosortPath, f : Double) -> SorthybridintrosortPath {
   let result = sort_hybrid_introsort_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_hybrid_introsort_path_fill(s : SorthybridintrosortPath, v : Double) 
   result
 }
 
-pub fn sort_hybrid_introsort_path_min(s : SorthybridintrosortPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_path_min(s : SorthybridintrosortPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_path_max(s : SorthybridintrosortPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_path_max(s : SorthybridintrosortPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_path_to_string(s : SorthybridintrosortPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_hybrid_introsort_cluster_set(s : SorthybridintrosortCluster, i : Int
   result
 }
 
-pub fn sort_hybrid_introsort_cluster_sum(s : SorthybridintrosortCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_cluster_sum(s : SorthybridintrosortCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_cluster_mean(s : SorthybridintrosortCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_cluster_mean(s : SorthybridintrosortCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_cluster_scale(s : SorthybridintrosortCluster, f : Double) -> SorthybridintrosortCluster {
   let result = sort_hybrid_introsort_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_hybrid_introsort_cluster_fill(s : SorthybridintrosortCluster, v : Do
   result
 }
 
-pub fn sort_hybrid_introsort_cluster_min(s : SorthybridintrosortCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_cluster_min(s : SorthybridintrosortCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_cluster_max(s : SorthybridintrosortCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_cluster_max(s : SorthybridintrosortCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_cluster_to_string(s : SorthybridintrosortCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_hybrid_introsort_model_set(s : SorthybridintrosortModel, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_introsort_model_sum(s : SorthybridintrosortModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_model_sum(s : SorthybridintrosortModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_model_mean(s : SorthybridintrosortModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_model_mean(s : SorthybridintrosortModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_model_scale(s : SorthybridintrosortModel, f : Double) -> SorthybridintrosortModel {
   let result = sort_hybrid_introsort_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_hybrid_introsort_model_fill(s : SorthybridintrosortModel, v : Double
   result
 }
 
-pub fn sort_hybrid_introsort_model_min(s : SorthybridintrosortModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_model_min(s : SorthybridintrosortModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_model_max(s : SorthybridintrosortModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_model_max(s : SorthybridintrosortModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_model_to_string(s : SorthybridintrosortModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_hybrid_introsort_layer_set(s : SorthybridintrosortLayer, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_introsort_layer_sum(s : SorthybridintrosortLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_layer_sum(s : SorthybridintrosortLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_layer_mean(s : SorthybridintrosortLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_layer_mean(s : SorthybridintrosortLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_layer_scale(s : SorthybridintrosortLayer, f : Double) -> SorthybridintrosortLayer {
   let result = sort_hybrid_introsort_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_hybrid_introsort_layer_fill(s : SorthybridintrosortLayer, v : Double
   result
 }
 
-pub fn sort_hybrid_introsort_layer_min(s : SorthybridintrosortLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_layer_min(s : SorthybridintrosortLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_layer_max(s : SorthybridintrosortLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_layer_max(s : SorthybridintrosortLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_layer_to_string(s : SorthybridintrosortLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_hybrid_introsort_buffer_set(s : SorthybridintrosortBuffer, i : Int, 
   result
 }
 
-pub fn sort_hybrid_introsort_buffer_sum(s : SorthybridintrosortBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_buffer_sum(s : SorthybridintrosortBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_buffer_mean(s : SorthybridintrosortBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_buffer_mean(s : SorthybridintrosortBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_buffer_scale(s : SorthybridintrosortBuffer, f : Double) -> SorthybridintrosortBuffer {
   let result = sort_hybrid_introsort_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_hybrid_introsort_buffer_fill(s : SorthybridintrosortBuffer, v : Doub
   result
 }
 
-pub fn sort_hybrid_introsort_buffer_min(s : SorthybridintrosortBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_buffer_min(s : SorthybridintrosortBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_buffer_max(s : SorthybridintrosortBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_buffer_max(s : SorthybridintrosortBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_buffer_to_string(s : SorthybridintrosortBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_hybrid_introsort_cursor_set(s : SorthybridintrosortCursor, i : Int, 
   result
 }
 
-pub fn sort_hybrid_introsort_cursor_sum(s : SorthybridintrosortCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_cursor_sum(s : SorthybridintrosortCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_cursor_mean(s : SorthybridintrosortCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_cursor_mean(s : SorthybridintrosortCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_cursor_scale(s : SorthybridintrosortCursor, f : Double) -> SorthybridintrosortCursor {
   let result = sort_hybrid_introsort_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_hybrid_introsort_cursor_fill(s : SorthybridintrosortCursor, v : Doub
   result
 }
 
-pub fn sort_hybrid_introsort_cursor_min(s : SorthybridintrosortCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_cursor_min(s : SorthybridintrosortCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_cursor_max(s : SorthybridintrosortCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_cursor_max(s : SorthybridintrosortCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_cursor_to_string(s : SorthybridintrosortCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_hybrid_introsort_view_set(s : SorthybridintrosortView, i : Int, v : 
   result
 }
 
-pub fn sort_hybrid_introsort_view_sum(s : SorthybridintrosortView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_view_sum(s : SorthybridintrosortView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_view_mean(s : SorthybridintrosortView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_view_mean(s : SorthybridintrosortView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_view_scale(s : SorthybridintrosortView, f : Double) -> SorthybridintrosortView {
   let result = sort_hybrid_introsort_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_hybrid_introsort_view_fill(s : SorthybridintrosortView, v : Double) 
   result
 }
 
-pub fn sort_hybrid_introsort_view_min(s : SorthybridintrosortView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_view_min(s : SorthybridintrosortView) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_view_max(s : SorthybridintrosortView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_view_max(s : SorthybridintrosortView) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_view_to_string(s : SorthybridintrosortView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_hybrid_introsort_range_set(s : SorthybridintrosortRange, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_introsort_range_sum(s : SorthybridintrosortRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_range_sum(s : SorthybridintrosortRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_range_mean(s : SorthybridintrosortRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_range_mean(s : SorthybridintrosortRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_range_scale(s : SorthybridintrosortRange, f : Double) -> SorthybridintrosortRange {
   let result = sort_hybrid_introsort_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_hybrid_introsort_range_fill(s : SorthybridintrosortRange, v : Double
   result
 }
 
-pub fn sort_hybrid_introsort_range_min(s : SorthybridintrosortRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_range_min(s : SorthybridintrosortRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_range_max(s : SorthybridintrosortRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_range_max(s : SorthybridintrosortRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_range_to_string(s : SorthybridintrosortRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_hybrid_introsort_slice_set(s : SorthybridintrosortSlice, i : Int, v 
   result
 }
 
-pub fn sort_hybrid_introsort_slice_sum(s : SorthybridintrosortSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_hybrid_introsort_slice_sum(s : SorthybridintrosortSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_hybrid_introsort_slice_mean(s : SorthybridintrosortSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_hybrid_introsort_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_hybrid_introsort_slice_mean(s : SorthybridintrosortSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_hybrid_introsort_slice_scale(s : SorthybridintrosortSlice, f : Double) -> SorthybridintrosortSlice {
   let result = sort_hybrid_introsort_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_hybrid_introsort_slice_fill(s : SorthybridintrosortSlice, v : Double
   result
 }
 
-pub fn sort_hybrid_introsort_slice_min(s : SorthybridintrosortSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_slice_min(s : SorthybridintrosortSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_hybrid_introsort_slice_max(s : SorthybridintrosortSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_hybrid_introsort_slice_max(s : SorthybridintrosortSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_hybrid_introsort_slice_to_string(s : SorthybridintrosortSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

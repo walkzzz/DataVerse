@@ -88,11 +88,7 @@ pub fn bio_struct_motif_make_series(vals : Array[Double], name : String) -> Bios
 
 pub fn bio_struct_motif_series_len(s : BiostructmotifSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_motif_series_sum(s : BiostructmotifSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_motif_series_sum(s : BiostructmotifSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_motif_series_mean(s : BiostructmotifSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_motif_frame_set(s : BiostructmotifFrame, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_motif_frame_sum(s : BiostructmotifFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_frame_sum(s : BiostructmotifFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_frame_mean(s : BiostructmotifFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_frame_mean(s : BiostructmotifFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_frame_scale(s : BiostructmotifFrame, f : Double) -> BiostructmotifFrame {
   let result = bio_struct_motif_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_motif_frame_fill(s : BiostructmotifFrame, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_motif_frame_min(s : BiostructmotifFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_frame_min(s : BiostructmotifFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_frame_max(s : BiostructmotifFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_frame_max(s : BiostructmotifFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_frame_to_string(s : BiostructmotifFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_motif_table_set(s : BiostructmotifTable, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_motif_table_sum(s : BiostructmotifTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_table_sum(s : BiostructmotifTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_table_mean(s : BiostructmotifTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_table_mean(s : BiostructmotifTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_table_scale(s : BiostructmotifTable, f : Double) -> BiostructmotifTable {
   let result = bio_struct_motif_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_motif_table_fill(s : BiostructmotifTable, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_motif_table_min(s : BiostructmotifTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_table_min(s : BiostructmotifTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_table_max(s : BiostructmotifTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_table_max(s : BiostructmotifTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_table_to_string(s : BiostructmotifTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_motif_graphn_set(s : BiostructmotifGraphN, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_motif_graphn_sum(s : BiostructmotifGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_graphn_sum(s : BiostructmotifGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_graphn_mean(s : BiostructmotifGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_graphn_mean(s : BiostructmotifGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_graphn_scale(s : BiostructmotifGraphN, f : Double) -> BiostructmotifGraphN {
   let result = bio_struct_motif_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_motif_graphn_fill(s : BiostructmotifGraphN, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_motif_graphn_min(s : BiostructmotifGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_graphn_min(s : BiostructmotifGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_graphn_max(s : BiostructmotifGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_graphn_max(s : BiostructmotifGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_graphn_to_string(s : BiostructmotifGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_motif_node_set(s : BiostructmotifNode, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_motif_node_sum(s : BiostructmotifNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_node_sum(s : BiostructmotifNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_node_mean(s : BiostructmotifNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_node_mean(s : BiostructmotifNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_node_scale(s : BiostructmotifNode, f : Double) -> BiostructmotifNode {
   let result = bio_struct_motif_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_motif_node_fill(s : BiostructmotifNode, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_motif_node_min(s : BiostructmotifNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_node_min(s : BiostructmotifNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_node_max(s : BiostructmotifNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_node_max(s : BiostructmotifNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_node_to_string(s : BiostructmotifNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_motif_edge_set(s : BiostructmotifEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_motif_edge_sum(s : BiostructmotifEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_edge_sum(s : BiostructmotifEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_edge_mean(s : BiostructmotifEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_edge_mean(s : BiostructmotifEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_edge_scale(s : BiostructmotifEdge, f : Double) -> BiostructmotifEdge {
   let result = bio_struct_motif_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_motif_edge_fill(s : BiostructmotifEdge, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_motif_edge_min(s : BiostructmotifEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_edge_min(s : BiostructmotifEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_edge_max(s : BiostructmotifEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_edge_max(s : BiostructmotifEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_edge_to_string(s : BiostructmotifEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_motif_path_set(s : BiostructmotifPath, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_motif_path_sum(s : BiostructmotifPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_path_sum(s : BiostructmotifPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_path_mean(s : BiostructmotifPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_path_mean(s : BiostructmotifPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_path_scale(s : BiostructmotifPath, f : Double) -> BiostructmotifPath {
   let result = bio_struct_motif_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_motif_path_fill(s : BiostructmotifPath, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_motif_path_min(s : BiostructmotifPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_path_min(s : BiostructmotifPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_path_max(s : BiostructmotifPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_path_max(s : BiostructmotifPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_path_to_string(s : BiostructmotifPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_motif_cluster_set(s : BiostructmotifCluster, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_motif_cluster_sum(s : BiostructmotifCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_cluster_sum(s : BiostructmotifCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_cluster_mean(s : BiostructmotifCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_cluster_mean(s : BiostructmotifCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_cluster_scale(s : BiostructmotifCluster, f : Double) -> BiostructmotifCluster {
   let result = bio_struct_motif_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_motif_cluster_fill(s : BiostructmotifCluster, v : Double) -> B
   result
 }
 
-pub fn bio_struct_motif_cluster_min(s : BiostructmotifCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_cluster_min(s : BiostructmotifCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_cluster_max(s : BiostructmotifCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_cluster_max(s : BiostructmotifCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_cluster_to_string(s : BiostructmotifCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_motif_model_set(s : BiostructmotifModel, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_motif_model_sum(s : BiostructmotifModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_model_sum(s : BiostructmotifModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_model_mean(s : BiostructmotifModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_model_mean(s : BiostructmotifModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_model_scale(s : BiostructmotifModel, f : Double) -> BiostructmotifModel {
   let result = bio_struct_motif_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_motif_model_fill(s : BiostructmotifModel, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_motif_model_min(s : BiostructmotifModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_model_min(s : BiostructmotifModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_model_max(s : BiostructmotifModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_model_max(s : BiostructmotifModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_model_to_string(s : BiostructmotifModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_motif_layer_set(s : BiostructmotifLayer, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_motif_layer_sum(s : BiostructmotifLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_layer_sum(s : BiostructmotifLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_layer_mean(s : BiostructmotifLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_layer_mean(s : BiostructmotifLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_layer_scale(s : BiostructmotifLayer, f : Double) -> BiostructmotifLayer {
   let result = bio_struct_motif_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_motif_layer_fill(s : BiostructmotifLayer, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_motif_layer_min(s : BiostructmotifLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_layer_min(s : BiostructmotifLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_layer_max(s : BiostructmotifLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_layer_max(s : BiostructmotifLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_layer_to_string(s : BiostructmotifLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_motif_buffer_set(s : BiostructmotifBuffer, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_motif_buffer_sum(s : BiostructmotifBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_buffer_sum(s : BiostructmotifBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_buffer_mean(s : BiostructmotifBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_buffer_mean(s : BiostructmotifBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_buffer_scale(s : BiostructmotifBuffer, f : Double) -> BiostructmotifBuffer {
   let result = bio_struct_motif_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_motif_buffer_fill(s : BiostructmotifBuffer, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_motif_buffer_min(s : BiostructmotifBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_buffer_min(s : BiostructmotifBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_buffer_max(s : BiostructmotifBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_buffer_max(s : BiostructmotifBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_buffer_to_string(s : BiostructmotifBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_motif_cursor_set(s : BiostructmotifCursor, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_motif_cursor_sum(s : BiostructmotifCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_cursor_sum(s : BiostructmotifCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_cursor_mean(s : BiostructmotifCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_cursor_mean(s : BiostructmotifCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_cursor_scale(s : BiostructmotifCursor, f : Double) -> BiostructmotifCursor {
   let result = bio_struct_motif_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_motif_cursor_fill(s : BiostructmotifCursor, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_motif_cursor_min(s : BiostructmotifCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_cursor_min(s : BiostructmotifCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_cursor_max(s : BiostructmotifCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_cursor_max(s : BiostructmotifCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_cursor_to_string(s : BiostructmotifCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_motif_view_set(s : BiostructmotifView, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_motif_view_sum(s : BiostructmotifView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_view_sum(s : BiostructmotifView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_view_mean(s : BiostructmotifView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_view_mean(s : BiostructmotifView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_view_scale(s : BiostructmotifView, f : Double) -> BiostructmotifView {
   let result = bio_struct_motif_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_motif_view_fill(s : BiostructmotifView, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_motif_view_min(s : BiostructmotifView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_view_min(s : BiostructmotifView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_view_max(s : BiostructmotifView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_view_max(s : BiostructmotifView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_view_to_string(s : BiostructmotifView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_motif_range_set(s : BiostructmotifRange, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_motif_range_sum(s : BiostructmotifRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_range_sum(s : BiostructmotifRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_range_mean(s : BiostructmotifRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_range_mean(s : BiostructmotifRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_range_scale(s : BiostructmotifRange, f : Double) -> BiostructmotifRange {
   let result = bio_struct_motif_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_motif_range_fill(s : BiostructmotifRange, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_motif_range_min(s : BiostructmotifRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_range_min(s : BiostructmotifRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_range_max(s : BiostructmotifRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_range_max(s : BiostructmotifRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_range_to_string(s : BiostructmotifRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_motif_slice_set(s : BiostructmotifSlice, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_motif_slice_sum(s : BiostructmotifSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_motif_slice_sum(s : BiostructmotifSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_motif_slice_mean(s : BiostructmotifSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_motif_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_motif_slice_mean(s : BiostructmotifSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_motif_slice_scale(s : BiostructmotifSlice, f : Double) -> BiostructmotifSlice {
   let result = bio_struct_motif_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_motif_slice_fill(s : BiostructmotifSlice, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_motif_slice_min(s : BiostructmotifSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_slice_min(s : BiostructmotifSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_motif_slice_max(s : BiostructmotifSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_motif_slice_max(s : BiostructmotifSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_motif_slice_to_string(s : BiostructmotifSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

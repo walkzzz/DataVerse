@@ -88,11 +88,7 @@ pub fn db_query_recursive_make_series(vals : Array[Double], name : String) -> Db
 
 pub fn db_query_recursive_series_len(s : DbqueryrecursiveSeries) -> Int { s.vals.length() }
 
-pub fn db_query_recursive_series_sum(s : DbqueryrecursiveSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_recursive_series_sum(s : DbqueryrecursiveSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_recursive_series_mean(s : DbqueryrecursiveSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_recursive_frame_set(s : DbqueryrecursiveFrame, i : Int, v : Doub
   result
 }
 
-pub fn db_query_recursive_frame_sum(s : DbqueryrecursiveFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_frame_sum(s : DbqueryrecursiveFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_frame_mean(s : DbqueryrecursiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_frame_mean(s : DbqueryrecursiveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_frame_scale(s : DbqueryrecursiveFrame, f : Double) -> DbqueryrecursiveFrame {
   let result = db_query_recursive_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_recursive_frame_fill(s : DbqueryrecursiveFrame, v : Double) -> D
   result
 }
 
-pub fn db_query_recursive_frame_min(s : DbqueryrecursiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_frame_min(s : DbqueryrecursiveFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_frame_max(s : DbqueryrecursiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_frame_max(s : DbqueryrecursiveFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_frame_to_string(s : DbqueryrecursiveFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_recursive_table_set(s : DbqueryrecursiveTable, i : Int, v : Doub
   result
 }
 
-pub fn db_query_recursive_table_sum(s : DbqueryrecursiveTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_table_sum(s : DbqueryrecursiveTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_table_mean(s : DbqueryrecursiveTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_table_mean(s : DbqueryrecursiveTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_table_scale(s : DbqueryrecursiveTable, f : Double) -> DbqueryrecursiveTable {
   let result = db_query_recursive_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_recursive_table_fill(s : DbqueryrecursiveTable, v : Double) -> D
   result
 }
 
-pub fn db_query_recursive_table_min(s : DbqueryrecursiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_table_min(s : DbqueryrecursiveTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_table_max(s : DbqueryrecursiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_table_max(s : DbqueryrecursiveTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_table_to_string(s : DbqueryrecursiveTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_recursive_graphn_set(s : DbqueryrecursiveGraphN, i : Int, v : Do
   result
 }
 
-pub fn db_query_recursive_graphn_sum(s : DbqueryrecursiveGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_graphn_sum(s : DbqueryrecursiveGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_graphn_mean(s : DbqueryrecursiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_graphn_mean(s : DbqueryrecursiveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_graphn_scale(s : DbqueryrecursiveGraphN, f : Double) -> DbqueryrecursiveGraphN {
   let result = db_query_recursive_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_recursive_graphn_fill(s : DbqueryrecursiveGraphN, v : Double) ->
   result
 }
 
-pub fn db_query_recursive_graphn_min(s : DbqueryrecursiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_graphn_min(s : DbqueryrecursiveGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_graphn_max(s : DbqueryrecursiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_graphn_max(s : DbqueryrecursiveGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_graphn_to_string(s : DbqueryrecursiveGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_recursive_node_set(s : DbqueryrecursiveNode, i : Int, v : Double
   result
 }
 
-pub fn db_query_recursive_node_sum(s : DbqueryrecursiveNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_node_sum(s : DbqueryrecursiveNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_node_mean(s : DbqueryrecursiveNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_node_mean(s : DbqueryrecursiveNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_node_scale(s : DbqueryrecursiveNode, f : Double) -> DbqueryrecursiveNode {
   let result = db_query_recursive_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_recursive_node_fill(s : DbqueryrecursiveNode, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_recursive_node_min(s : DbqueryrecursiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_node_min(s : DbqueryrecursiveNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_node_max(s : DbqueryrecursiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_node_max(s : DbqueryrecursiveNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_node_to_string(s : DbqueryrecursiveNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_recursive_edge_set(s : DbqueryrecursiveEdge, i : Int, v : Double
   result
 }
 
-pub fn db_query_recursive_edge_sum(s : DbqueryrecursiveEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_edge_sum(s : DbqueryrecursiveEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_edge_mean(s : DbqueryrecursiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_edge_mean(s : DbqueryrecursiveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_edge_scale(s : DbqueryrecursiveEdge, f : Double) -> DbqueryrecursiveEdge {
   let result = db_query_recursive_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_recursive_edge_fill(s : DbqueryrecursiveEdge, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_recursive_edge_min(s : DbqueryrecursiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_edge_min(s : DbqueryrecursiveEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_edge_max(s : DbqueryrecursiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_edge_max(s : DbqueryrecursiveEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_edge_to_string(s : DbqueryrecursiveEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_recursive_path_set(s : DbqueryrecursivePath, i : Int, v : Double
   result
 }
 
-pub fn db_query_recursive_path_sum(s : DbqueryrecursivePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_path_sum(s : DbqueryrecursivePath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_path_mean(s : DbqueryrecursivePath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_path_mean(s : DbqueryrecursivePath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_path_scale(s : DbqueryrecursivePath, f : Double) -> DbqueryrecursivePath {
   let result = db_query_recursive_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_recursive_path_fill(s : DbqueryrecursivePath, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_recursive_path_min(s : DbqueryrecursivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_path_min(s : DbqueryrecursivePath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_path_max(s : DbqueryrecursivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_path_max(s : DbqueryrecursivePath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_path_to_string(s : DbqueryrecursivePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_recursive_cluster_set(s : DbqueryrecursiveCluster, i : Int, v : 
   result
 }
 
-pub fn db_query_recursive_cluster_sum(s : DbqueryrecursiveCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_cluster_sum(s : DbqueryrecursiveCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_cluster_mean(s : DbqueryrecursiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_cluster_mean(s : DbqueryrecursiveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_cluster_scale(s : DbqueryrecursiveCluster, f : Double) -> DbqueryrecursiveCluster {
   let result = db_query_recursive_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_recursive_cluster_fill(s : DbqueryrecursiveCluster, v : Double) 
   result
 }
 
-pub fn db_query_recursive_cluster_min(s : DbqueryrecursiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_cluster_min(s : DbqueryrecursiveCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_cluster_max(s : DbqueryrecursiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_cluster_max(s : DbqueryrecursiveCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_cluster_to_string(s : DbqueryrecursiveCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_recursive_model_set(s : DbqueryrecursiveModel, i : Int, v : Doub
   result
 }
 
-pub fn db_query_recursive_model_sum(s : DbqueryrecursiveModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_model_sum(s : DbqueryrecursiveModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_model_mean(s : DbqueryrecursiveModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_model_mean(s : DbqueryrecursiveModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_model_scale(s : DbqueryrecursiveModel, f : Double) -> DbqueryrecursiveModel {
   let result = db_query_recursive_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_recursive_model_fill(s : DbqueryrecursiveModel, v : Double) -> D
   result
 }
 
-pub fn db_query_recursive_model_min(s : DbqueryrecursiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_model_min(s : DbqueryrecursiveModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_model_max(s : DbqueryrecursiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_model_max(s : DbqueryrecursiveModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_model_to_string(s : DbqueryrecursiveModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_recursive_layer_set(s : DbqueryrecursiveLayer, i : Int, v : Doub
   result
 }
 
-pub fn db_query_recursive_layer_sum(s : DbqueryrecursiveLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_layer_sum(s : DbqueryrecursiveLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_layer_mean(s : DbqueryrecursiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_layer_mean(s : DbqueryrecursiveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_layer_scale(s : DbqueryrecursiveLayer, f : Double) -> DbqueryrecursiveLayer {
   let result = db_query_recursive_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_recursive_layer_fill(s : DbqueryrecursiveLayer, v : Double) -> D
   result
 }
 
-pub fn db_query_recursive_layer_min(s : DbqueryrecursiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_layer_min(s : DbqueryrecursiveLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_layer_max(s : DbqueryrecursiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_layer_max(s : DbqueryrecursiveLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_layer_to_string(s : DbqueryrecursiveLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_recursive_buffer_set(s : DbqueryrecursiveBuffer, i : Int, v : Do
   result
 }
 
-pub fn db_query_recursive_buffer_sum(s : DbqueryrecursiveBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_buffer_sum(s : DbqueryrecursiveBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_buffer_mean(s : DbqueryrecursiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_buffer_mean(s : DbqueryrecursiveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_buffer_scale(s : DbqueryrecursiveBuffer, f : Double) -> DbqueryrecursiveBuffer {
   let result = db_query_recursive_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_recursive_buffer_fill(s : DbqueryrecursiveBuffer, v : Double) ->
   result
 }
 
-pub fn db_query_recursive_buffer_min(s : DbqueryrecursiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_buffer_min(s : DbqueryrecursiveBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_buffer_max(s : DbqueryrecursiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_buffer_max(s : DbqueryrecursiveBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_buffer_to_string(s : DbqueryrecursiveBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_recursive_cursor_set(s : DbqueryrecursiveCursor, i : Int, v : Do
   result
 }
 
-pub fn db_query_recursive_cursor_sum(s : DbqueryrecursiveCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_cursor_sum(s : DbqueryrecursiveCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_cursor_mean(s : DbqueryrecursiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_cursor_mean(s : DbqueryrecursiveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_cursor_scale(s : DbqueryrecursiveCursor, f : Double) -> DbqueryrecursiveCursor {
   let result = db_query_recursive_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_recursive_cursor_fill(s : DbqueryrecursiveCursor, v : Double) ->
   result
 }
 
-pub fn db_query_recursive_cursor_min(s : DbqueryrecursiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_cursor_min(s : DbqueryrecursiveCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_cursor_max(s : DbqueryrecursiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_cursor_max(s : DbqueryrecursiveCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_cursor_to_string(s : DbqueryrecursiveCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_recursive_view_set(s : DbqueryrecursiveView, i : Int, v : Double
   result
 }
 
-pub fn db_query_recursive_view_sum(s : DbqueryrecursiveView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_view_sum(s : DbqueryrecursiveView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_view_mean(s : DbqueryrecursiveView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_view_mean(s : DbqueryrecursiveView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_view_scale(s : DbqueryrecursiveView, f : Double) -> DbqueryrecursiveView {
   let result = db_query_recursive_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_recursive_view_fill(s : DbqueryrecursiveView, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_recursive_view_min(s : DbqueryrecursiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_view_min(s : DbqueryrecursiveView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_view_max(s : DbqueryrecursiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_view_max(s : DbqueryrecursiveView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_view_to_string(s : DbqueryrecursiveView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_recursive_range_set(s : DbqueryrecursiveRange, i : Int, v : Doub
   result
 }
 
-pub fn db_query_recursive_range_sum(s : DbqueryrecursiveRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_range_sum(s : DbqueryrecursiveRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_range_mean(s : DbqueryrecursiveRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_range_mean(s : DbqueryrecursiveRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_range_scale(s : DbqueryrecursiveRange, f : Double) -> DbqueryrecursiveRange {
   let result = db_query_recursive_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_recursive_range_fill(s : DbqueryrecursiveRange, v : Double) -> D
   result
 }
 
-pub fn db_query_recursive_range_min(s : DbqueryrecursiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_range_min(s : DbqueryrecursiveRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_range_max(s : DbqueryrecursiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_range_max(s : DbqueryrecursiveRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_range_to_string(s : DbqueryrecursiveRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_recursive_slice_set(s : DbqueryrecursiveSlice, i : Int, v : Doub
   result
 }
 
-pub fn db_query_recursive_slice_sum(s : DbqueryrecursiveSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_recursive_slice_sum(s : DbqueryrecursiveSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_recursive_slice_mean(s : DbqueryrecursiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_recursive_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_recursive_slice_mean(s : DbqueryrecursiveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_recursive_slice_scale(s : DbqueryrecursiveSlice, f : Double) -> DbqueryrecursiveSlice {
   let result = db_query_recursive_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_recursive_slice_fill(s : DbqueryrecursiveSlice, v : Double) -> D
   result
 }
 
-pub fn db_query_recursive_slice_min(s : DbqueryrecursiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_slice_min(s : DbqueryrecursiveSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_recursive_slice_max(s : DbqueryrecursiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_recursive_slice_max(s : DbqueryrecursiveSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_recursive_slice_to_string(s : DbqueryrecursiveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

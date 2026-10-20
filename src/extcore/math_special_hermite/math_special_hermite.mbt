@@ -88,11 +88,7 @@ pub fn math_special_hermite_make_series(vals : Array[Double], name : String) -> 
 
 pub fn math_special_hermite_series_len(s : MathspecialhermiteSeries) -> Int { s.vals.length() }
 
-pub fn math_special_hermite_series_sum(s : MathspecialhermiteSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_hermite_series_sum(s : MathspecialhermiteSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_hermite_series_mean(s : MathspecialhermiteSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_hermite_frame_set(s : MathspecialhermiteFrame, i : Int, v : 
   result
 }
 
-pub fn math_special_hermite_frame_sum(s : MathspecialhermiteFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_frame_sum(s : MathspecialhermiteFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_frame_mean(s : MathspecialhermiteFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_frame_mean(s : MathspecialhermiteFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_frame_scale(s : MathspecialhermiteFrame, f : Double) -> MathspecialhermiteFrame {
   let result = math_special_hermite_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_hermite_frame_fill(s : MathspecialhermiteFrame, v : Double) 
   result
 }
 
-pub fn math_special_hermite_frame_min(s : MathspecialhermiteFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_frame_min(s : MathspecialhermiteFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_frame_max(s : MathspecialhermiteFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_frame_max(s : MathspecialhermiteFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_frame_to_string(s : MathspecialhermiteFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_hermite_table_set(s : MathspecialhermiteTable, i : Int, v : 
   result
 }
 
-pub fn math_special_hermite_table_sum(s : MathspecialhermiteTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_table_sum(s : MathspecialhermiteTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_table_mean(s : MathspecialhermiteTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_table_mean(s : MathspecialhermiteTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_table_scale(s : MathspecialhermiteTable, f : Double) -> MathspecialhermiteTable {
   let result = math_special_hermite_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_hermite_table_fill(s : MathspecialhermiteTable, v : Double) 
   result
 }
 
-pub fn math_special_hermite_table_min(s : MathspecialhermiteTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_table_min(s : MathspecialhermiteTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_table_max(s : MathspecialhermiteTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_table_max(s : MathspecialhermiteTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_table_to_string(s : MathspecialhermiteTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_hermite_graphn_set(s : MathspecialhermiteGraphN, i : Int, v 
   result
 }
 
-pub fn math_special_hermite_graphn_sum(s : MathspecialhermiteGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_graphn_sum(s : MathspecialhermiteGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_graphn_mean(s : MathspecialhermiteGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_graphn_mean(s : MathspecialhermiteGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_graphn_scale(s : MathspecialhermiteGraphN, f : Double) -> MathspecialhermiteGraphN {
   let result = math_special_hermite_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_hermite_graphn_fill(s : MathspecialhermiteGraphN, v : Double
   result
 }
 
-pub fn math_special_hermite_graphn_min(s : MathspecialhermiteGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_graphn_min(s : MathspecialhermiteGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_graphn_max(s : MathspecialhermiteGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_graphn_max(s : MathspecialhermiteGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_graphn_to_string(s : MathspecialhermiteGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_hermite_node_set(s : MathspecialhermiteNode, i : Int, v : Do
   result
 }
 
-pub fn math_special_hermite_node_sum(s : MathspecialhermiteNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_node_sum(s : MathspecialhermiteNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_node_mean(s : MathspecialhermiteNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_node_mean(s : MathspecialhermiteNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_node_scale(s : MathspecialhermiteNode, f : Double) -> MathspecialhermiteNode {
   let result = math_special_hermite_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_hermite_node_fill(s : MathspecialhermiteNode, v : Double) ->
   result
 }
 
-pub fn math_special_hermite_node_min(s : MathspecialhermiteNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_node_min(s : MathspecialhermiteNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_node_max(s : MathspecialhermiteNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_node_max(s : MathspecialhermiteNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_node_to_string(s : MathspecialhermiteNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_hermite_edge_set(s : MathspecialhermiteEdge, i : Int, v : Do
   result
 }
 
-pub fn math_special_hermite_edge_sum(s : MathspecialhermiteEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_edge_sum(s : MathspecialhermiteEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_edge_mean(s : MathspecialhermiteEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_edge_mean(s : MathspecialhermiteEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_edge_scale(s : MathspecialhermiteEdge, f : Double) -> MathspecialhermiteEdge {
   let result = math_special_hermite_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_hermite_edge_fill(s : MathspecialhermiteEdge, v : Double) ->
   result
 }
 
-pub fn math_special_hermite_edge_min(s : MathspecialhermiteEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_edge_min(s : MathspecialhermiteEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_edge_max(s : MathspecialhermiteEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_edge_max(s : MathspecialhermiteEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_edge_to_string(s : MathspecialhermiteEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_hermite_path_set(s : MathspecialhermitePath, i : Int, v : Do
   result
 }
 
-pub fn math_special_hermite_path_sum(s : MathspecialhermitePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_path_sum(s : MathspecialhermitePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_path_mean(s : MathspecialhermitePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_path_mean(s : MathspecialhermitePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_path_scale(s : MathspecialhermitePath, f : Double) -> MathspecialhermitePath {
   let result = math_special_hermite_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_hermite_path_fill(s : MathspecialhermitePath, v : Double) ->
   result
 }
 
-pub fn math_special_hermite_path_min(s : MathspecialhermitePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_path_min(s : MathspecialhermitePath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_path_max(s : MathspecialhermitePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_path_max(s : MathspecialhermitePath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_path_to_string(s : MathspecialhermitePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_hermite_cluster_set(s : MathspecialhermiteCluster, i : Int, 
   result
 }
 
-pub fn math_special_hermite_cluster_sum(s : MathspecialhermiteCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_cluster_sum(s : MathspecialhermiteCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_cluster_mean(s : MathspecialhermiteCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_cluster_mean(s : MathspecialhermiteCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_cluster_scale(s : MathspecialhermiteCluster, f : Double) -> MathspecialhermiteCluster {
   let result = math_special_hermite_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_hermite_cluster_fill(s : MathspecialhermiteCluster, v : Doub
   result
 }
 
-pub fn math_special_hermite_cluster_min(s : MathspecialhermiteCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_cluster_min(s : MathspecialhermiteCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_cluster_max(s : MathspecialhermiteCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_cluster_max(s : MathspecialhermiteCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_cluster_to_string(s : MathspecialhermiteCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_hermite_model_set(s : MathspecialhermiteModel, i : Int, v : 
   result
 }
 
-pub fn math_special_hermite_model_sum(s : MathspecialhermiteModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_model_sum(s : MathspecialhermiteModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_model_mean(s : MathspecialhermiteModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_model_mean(s : MathspecialhermiteModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_model_scale(s : MathspecialhermiteModel, f : Double) -> MathspecialhermiteModel {
   let result = math_special_hermite_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_hermite_model_fill(s : MathspecialhermiteModel, v : Double) 
   result
 }
 
-pub fn math_special_hermite_model_min(s : MathspecialhermiteModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_model_min(s : MathspecialhermiteModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_model_max(s : MathspecialhermiteModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_model_max(s : MathspecialhermiteModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_model_to_string(s : MathspecialhermiteModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_hermite_layer_set(s : MathspecialhermiteLayer, i : Int, v : 
   result
 }
 
-pub fn math_special_hermite_layer_sum(s : MathspecialhermiteLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_layer_sum(s : MathspecialhermiteLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_layer_mean(s : MathspecialhermiteLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_layer_mean(s : MathspecialhermiteLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_layer_scale(s : MathspecialhermiteLayer, f : Double) -> MathspecialhermiteLayer {
   let result = math_special_hermite_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_hermite_layer_fill(s : MathspecialhermiteLayer, v : Double) 
   result
 }
 
-pub fn math_special_hermite_layer_min(s : MathspecialhermiteLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_layer_min(s : MathspecialhermiteLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_layer_max(s : MathspecialhermiteLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_layer_max(s : MathspecialhermiteLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_layer_to_string(s : MathspecialhermiteLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_hermite_buffer_set(s : MathspecialhermiteBuffer, i : Int, v 
   result
 }
 
-pub fn math_special_hermite_buffer_sum(s : MathspecialhermiteBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_buffer_sum(s : MathspecialhermiteBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_buffer_mean(s : MathspecialhermiteBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_buffer_mean(s : MathspecialhermiteBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_buffer_scale(s : MathspecialhermiteBuffer, f : Double) -> MathspecialhermiteBuffer {
   let result = math_special_hermite_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_hermite_buffer_fill(s : MathspecialhermiteBuffer, v : Double
   result
 }
 
-pub fn math_special_hermite_buffer_min(s : MathspecialhermiteBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_buffer_min(s : MathspecialhermiteBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_buffer_max(s : MathspecialhermiteBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_buffer_max(s : MathspecialhermiteBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_buffer_to_string(s : MathspecialhermiteBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_hermite_cursor_set(s : MathspecialhermiteCursor, i : Int, v 
   result
 }
 
-pub fn math_special_hermite_cursor_sum(s : MathspecialhermiteCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_cursor_sum(s : MathspecialhermiteCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_cursor_mean(s : MathspecialhermiteCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_cursor_mean(s : MathspecialhermiteCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_cursor_scale(s : MathspecialhermiteCursor, f : Double) -> MathspecialhermiteCursor {
   let result = math_special_hermite_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_hermite_cursor_fill(s : MathspecialhermiteCursor, v : Double
   result
 }
 
-pub fn math_special_hermite_cursor_min(s : MathspecialhermiteCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_cursor_min(s : MathspecialhermiteCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_cursor_max(s : MathspecialhermiteCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_cursor_max(s : MathspecialhermiteCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_cursor_to_string(s : MathspecialhermiteCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_hermite_view_set(s : MathspecialhermiteView, i : Int, v : Do
   result
 }
 
-pub fn math_special_hermite_view_sum(s : MathspecialhermiteView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_view_sum(s : MathspecialhermiteView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_view_mean(s : MathspecialhermiteView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_view_mean(s : MathspecialhermiteView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_view_scale(s : MathspecialhermiteView, f : Double) -> MathspecialhermiteView {
   let result = math_special_hermite_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_hermite_view_fill(s : MathspecialhermiteView, v : Double) ->
   result
 }
 
-pub fn math_special_hermite_view_min(s : MathspecialhermiteView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_view_min(s : MathspecialhermiteView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_view_max(s : MathspecialhermiteView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_view_max(s : MathspecialhermiteView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_view_to_string(s : MathspecialhermiteView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_hermite_range_set(s : MathspecialhermiteRange, i : Int, v : 
   result
 }
 
-pub fn math_special_hermite_range_sum(s : MathspecialhermiteRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_range_sum(s : MathspecialhermiteRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_range_mean(s : MathspecialhermiteRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_range_mean(s : MathspecialhermiteRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_range_scale(s : MathspecialhermiteRange, f : Double) -> MathspecialhermiteRange {
   let result = math_special_hermite_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_hermite_range_fill(s : MathspecialhermiteRange, v : Double) 
   result
 }
 
-pub fn math_special_hermite_range_min(s : MathspecialhermiteRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_range_min(s : MathspecialhermiteRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_range_max(s : MathspecialhermiteRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_range_max(s : MathspecialhermiteRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_range_to_string(s : MathspecialhermiteRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_hermite_slice_set(s : MathspecialhermiteSlice, i : Int, v : 
   result
 }
 
-pub fn math_special_hermite_slice_sum(s : MathspecialhermiteSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hermite_slice_sum(s : MathspecialhermiteSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hermite_slice_mean(s : MathspecialhermiteSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hermite_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hermite_slice_mean(s : MathspecialhermiteSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hermite_slice_scale(s : MathspecialhermiteSlice, f : Double) -> MathspecialhermiteSlice {
   let result = math_special_hermite_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_hermite_slice_fill(s : MathspecialhermiteSlice, v : Double) 
   result
 }
 
-pub fn math_special_hermite_slice_min(s : MathspecialhermiteSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_slice_min(s : MathspecialhermiteSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hermite_slice_max(s : MathspecialhermiteSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hermite_slice_max(s : MathspecialhermiteSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hermite_slice_to_string(s : MathspecialhermiteSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

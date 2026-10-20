@@ -88,11 +88,7 @@ pub fn chem_desc_rdkit_make_series(vals : Array[Double], name : String) -> Chemd
 
 pub fn chem_desc_rdkit_series_len(s : ChemdescrdkitSeries) -> Int { s.vals.length() }
 
-pub fn chem_desc_rdkit_series_sum(s : ChemdescrdkitSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_desc_rdkit_series_sum(s : ChemdescrdkitSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_desc_rdkit_series_mean(s : ChemdescrdkitSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_desc_rdkit_frame_set(s : ChemdescrdkitFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_rdkit_frame_sum(s : ChemdescrdkitFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_frame_sum(s : ChemdescrdkitFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_frame_mean(s : ChemdescrdkitFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_frame_mean(s : ChemdescrdkitFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_frame_scale(s : ChemdescrdkitFrame, f : Double) -> ChemdescrdkitFrame {
   let result = chem_desc_rdkit_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_desc_rdkit_frame_fill(s : ChemdescrdkitFrame, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_rdkit_frame_min(s : ChemdescrdkitFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_frame_min(s : ChemdescrdkitFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_frame_max(s : ChemdescrdkitFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_frame_max(s : ChemdescrdkitFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_frame_to_string(s : ChemdescrdkitFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_desc_rdkit_table_set(s : ChemdescrdkitTable, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_rdkit_table_sum(s : ChemdescrdkitTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_table_sum(s : ChemdescrdkitTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_table_mean(s : ChemdescrdkitTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_table_mean(s : ChemdescrdkitTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_table_scale(s : ChemdescrdkitTable, f : Double) -> ChemdescrdkitTable {
   let result = chem_desc_rdkit_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_desc_rdkit_table_fill(s : ChemdescrdkitTable, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_rdkit_table_min(s : ChemdescrdkitTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_table_min(s : ChemdescrdkitTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_table_max(s : ChemdescrdkitTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_table_max(s : ChemdescrdkitTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_table_to_string(s : ChemdescrdkitTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_desc_rdkit_graphn_set(s : ChemdescrdkitGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn chem_desc_rdkit_graphn_sum(s : ChemdescrdkitGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_graphn_sum(s : ChemdescrdkitGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_graphn_mean(s : ChemdescrdkitGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_graphn_mean(s : ChemdescrdkitGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_graphn_scale(s : ChemdescrdkitGraphN, f : Double) -> ChemdescrdkitGraphN {
   let result = chem_desc_rdkit_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_desc_rdkit_graphn_fill(s : ChemdescrdkitGraphN, v : Double) -> Chemd
   result
 }
 
-pub fn chem_desc_rdkit_graphn_min(s : ChemdescrdkitGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_graphn_min(s : ChemdescrdkitGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_graphn_max(s : ChemdescrdkitGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_graphn_max(s : ChemdescrdkitGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_graphn_to_string(s : ChemdescrdkitGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_desc_rdkit_node_set(s : ChemdescrdkitNode, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_rdkit_node_sum(s : ChemdescrdkitNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_node_sum(s : ChemdescrdkitNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_node_mean(s : ChemdescrdkitNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_node_mean(s : ChemdescrdkitNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_node_scale(s : ChemdescrdkitNode, f : Double) -> ChemdescrdkitNode {
   let result = chem_desc_rdkit_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_desc_rdkit_node_fill(s : ChemdescrdkitNode, v : Double) -> Chemdescr
   result
 }
 
-pub fn chem_desc_rdkit_node_min(s : ChemdescrdkitNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_node_min(s : ChemdescrdkitNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_node_max(s : ChemdescrdkitNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_node_max(s : ChemdescrdkitNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_node_to_string(s : ChemdescrdkitNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_desc_rdkit_edge_set(s : ChemdescrdkitEdge, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_rdkit_edge_sum(s : ChemdescrdkitEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_edge_sum(s : ChemdescrdkitEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_edge_mean(s : ChemdescrdkitEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_edge_mean(s : ChemdescrdkitEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_edge_scale(s : ChemdescrdkitEdge, f : Double) -> ChemdescrdkitEdge {
   let result = chem_desc_rdkit_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_desc_rdkit_edge_fill(s : ChemdescrdkitEdge, v : Double) -> Chemdescr
   result
 }
 
-pub fn chem_desc_rdkit_edge_min(s : ChemdescrdkitEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_edge_min(s : ChemdescrdkitEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_edge_max(s : ChemdescrdkitEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_edge_max(s : ChemdescrdkitEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_edge_to_string(s : ChemdescrdkitEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_desc_rdkit_path_set(s : ChemdescrdkitPath, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_rdkit_path_sum(s : ChemdescrdkitPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_path_sum(s : ChemdescrdkitPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_path_mean(s : ChemdescrdkitPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_path_mean(s : ChemdescrdkitPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_path_scale(s : ChemdescrdkitPath, f : Double) -> ChemdescrdkitPath {
   let result = chem_desc_rdkit_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_desc_rdkit_path_fill(s : ChemdescrdkitPath, v : Double) -> Chemdescr
   result
 }
 
-pub fn chem_desc_rdkit_path_min(s : ChemdescrdkitPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_path_min(s : ChemdescrdkitPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_path_max(s : ChemdescrdkitPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_path_max(s : ChemdescrdkitPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_path_to_string(s : ChemdescrdkitPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_desc_rdkit_cluster_set(s : ChemdescrdkitCluster, i : Int, v : Double
   result
 }
 
-pub fn chem_desc_rdkit_cluster_sum(s : ChemdescrdkitCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_cluster_sum(s : ChemdescrdkitCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_cluster_mean(s : ChemdescrdkitCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_cluster_mean(s : ChemdescrdkitCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_cluster_scale(s : ChemdescrdkitCluster, f : Double) -> ChemdescrdkitCluster {
   let result = chem_desc_rdkit_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_desc_rdkit_cluster_fill(s : ChemdescrdkitCluster, v : Double) -> Che
   result
 }
 
-pub fn chem_desc_rdkit_cluster_min(s : ChemdescrdkitCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_cluster_min(s : ChemdescrdkitCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_cluster_max(s : ChemdescrdkitCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_cluster_max(s : ChemdescrdkitCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_cluster_to_string(s : ChemdescrdkitCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_desc_rdkit_model_set(s : ChemdescrdkitModel, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_rdkit_model_sum(s : ChemdescrdkitModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_model_sum(s : ChemdescrdkitModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_model_mean(s : ChemdescrdkitModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_model_mean(s : ChemdescrdkitModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_model_scale(s : ChemdescrdkitModel, f : Double) -> ChemdescrdkitModel {
   let result = chem_desc_rdkit_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_desc_rdkit_model_fill(s : ChemdescrdkitModel, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_rdkit_model_min(s : ChemdescrdkitModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_model_min(s : ChemdescrdkitModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_model_max(s : ChemdescrdkitModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_model_max(s : ChemdescrdkitModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_model_to_string(s : ChemdescrdkitModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_desc_rdkit_layer_set(s : ChemdescrdkitLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_rdkit_layer_sum(s : ChemdescrdkitLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_layer_sum(s : ChemdescrdkitLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_layer_mean(s : ChemdescrdkitLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_layer_mean(s : ChemdescrdkitLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_layer_scale(s : ChemdescrdkitLayer, f : Double) -> ChemdescrdkitLayer {
   let result = chem_desc_rdkit_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_desc_rdkit_layer_fill(s : ChemdescrdkitLayer, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_rdkit_layer_min(s : ChemdescrdkitLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_layer_min(s : ChemdescrdkitLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_layer_max(s : ChemdescrdkitLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_layer_max(s : ChemdescrdkitLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_layer_to_string(s : ChemdescrdkitLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_desc_rdkit_buffer_set(s : ChemdescrdkitBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn chem_desc_rdkit_buffer_sum(s : ChemdescrdkitBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_buffer_sum(s : ChemdescrdkitBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_buffer_mean(s : ChemdescrdkitBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_buffer_mean(s : ChemdescrdkitBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_buffer_scale(s : ChemdescrdkitBuffer, f : Double) -> ChemdescrdkitBuffer {
   let result = chem_desc_rdkit_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_desc_rdkit_buffer_fill(s : ChemdescrdkitBuffer, v : Double) -> Chemd
   result
 }
 
-pub fn chem_desc_rdkit_buffer_min(s : ChemdescrdkitBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_buffer_min(s : ChemdescrdkitBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_buffer_max(s : ChemdescrdkitBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_buffer_max(s : ChemdescrdkitBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_buffer_to_string(s : ChemdescrdkitBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_desc_rdkit_cursor_set(s : ChemdescrdkitCursor, i : Int, v : Double) 
   result
 }
 
-pub fn chem_desc_rdkit_cursor_sum(s : ChemdescrdkitCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_cursor_sum(s : ChemdescrdkitCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_cursor_mean(s : ChemdescrdkitCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_cursor_mean(s : ChemdescrdkitCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_cursor_scale(s : ChemdescrdkitCursor, f : Double) -> ChemdescrdkitCursor {
   let result = chem_desc_rdkit_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_desc_rdkit_cursor_fill(s : ChemdescrdkitCursor, v : Double) -> Chemd
   result
 }
 
-pub fn chem_desc_rdkit_cursor_min(s : ChemdescrdkitCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_cursor_min(s : ChemdescrdkitCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_cursor_max(s : ChemdescrdkitCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_cursor_max(s : ChemdescrdkitCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_cursor_to_string(s : ChemdescrdkitCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_desc_rdkit_view_set(s : ChemdescrdkitView, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_desc_rdkit_view_sum(s : ChemdescrdkitView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_view_sum(s : ChemdescrdkitView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_view_mean(s : ChemdescrdkitView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_view_mean(s : ChemdescrdkitView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_view_scale(s : ChemdescrdkitView, f : Double) -> ChemdescrdkitView {
   let result = chem_desc_rdkit_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_desc_rdkit_view_fill(s : ChemdescrdkitView, v : Double) -> Chemdescr
   result
 }
 
-pub fn chem_desc_rdkit_view_min(s : ChemdescrdkitView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_view_min(s : ChemdescrdkitView) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_view_max(s : ChemdescrdkitView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_view_max(s : ChemdescrdkitView) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_view_to_string(s : ChemdescrdkitView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_desc_rdkit_range_set(s : ChemdescrdkitRange, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_rdkit_range_sum(s : ChemdescrdkitRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_range_sum(s : ChemdescrdkitRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_range_mean(s : ChemdescrdkitRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_range_mean(s : ChemdescrdkitRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_range_scale(s : ChemdescrdkitRange, f : Double) -> ChemdescrdkitRange {
   let result = chem_desc_rdkit_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_desc_rdkit_range_fill(s : ChemdescrdkitRange, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_rdkit_range_min(s : ChemdescrdkitRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_range_min(s : ChemdescrdkitRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_range_max(s : ChemdescrdkitRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_range_max(s : ChemdescrdkitRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_range_to_string(s : ChemdescrdkitRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_desc_rdkit_slice_set(s : ChemdescrdkitSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_desc_rdkit_slice_sum(s : ChemdescrdkitSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_rdkit_slice_sum(s : ChemdescrdkitSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_rdkit_slice_mean(s : ChemdescrdkitSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_rdkit_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_rdkit_slice_mean(s : ChemdescrdkitSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_rdkit_slice_scale(s : ChemdescrdkitSlice, f : Double) -> ChemdescrdkitSlice {
   let result = chem_desc_rdkit_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_desc_rdkit_slice_fill(s : ChemdescrdkitSlice, v : Double) -> Chemdes
   result
 }
 
-pub fn chem_desc_rdkit_slice_min(s : ChemdescrdkitSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_slice_min(s : ChemdescrdkitSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_rdkit_slice_max(s : ChemdescrdkitSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_rdkit_slice_max(s : ChemdescrdkitSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_rdkit_slice_to_string(s : ChemdescrdkitSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

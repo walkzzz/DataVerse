@@ -88,11 +88,7 @@ pub fn image_filter_gaussian_make_series(vals : Array[Double], name : String) ->
 
 pub fn image_filter_gaussian_series_len(s : ImagefiltergaussianSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_gaussian_series_sum(s : ImagefiltergaussianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_gaussian_series_sum(s : ImagefiltergaussianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_gaussian_series_mean(s : ImagefiltergaussianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_gaussian_frame_set(s : ImagefiltergaussianFrame, i : Int, v 
   result
 }
 
-pub fn image_filter_gaussian_frame_sum(s : ImagefiltergaussianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_frame_sum(s : ImagefiltergaussianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_frame_mean(s : ImagefiltergaussianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_frame_mean(s : ImagefiltergaussianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_frame_scale(s : ImagefiltergaussianFrame, f : Double) -> ImagefiltergaussianFrame {
   let result = image_filter_gaussian_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_gaussian_frame_fill(s : ImagefiltergaussianFrame, v : Double
   result
 }
 
-pub fn image_filter_gaussian_frame_min(s : ImagefiltergaussianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_frame_min(s : ImagefiltergaussianFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_frame_max(s : ImagefiltergaussianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_frame_max(s : ImagefiltergaussianFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_frame_to_string(s : ImagefiltergaussianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_gaussian_table_set(s : ImagefiltergaussianTable, i : Int, v 
   result
 }
 
-pub fn image_filter_gaussian_table_sum(s : ImagefiltergaussianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_table_sum(s : ImagefiltergaussianTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_table_mean(s : ImagefiltergaussianTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_table_mean(s : ImagefiltergaussianTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_table_scale(s : ImagefiltergaussianTable, f : Double) -> ImagefiltergaussianTable {
   let result = image_filter_gaussian_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_gaussian_table_fill(s : ImagefiltergaussianTable, v : Double
   result
 }
 
-pub fn image_filter_gaussian_table_min(s : ImagefiltergaussianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_table_min(s : ImagefiltergaussianTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_table_max(s : ImagefiltergaussianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_table_max(s : ImagefiltergaussianTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_table_to_string(s : ImagefiltergaussianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_gaussian_graphn_set(s : ImagefiltergaussianGraphN, i : Int, 
   result
 }
 
-pub fn image_filter_gaussian_graphn_sum(s : ImagefiltergaussianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_graphn_sum(s : ImagefiltergaussianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_graphn_mean(s : ImagefiltergaussianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_graphn_mean(s : ImagefiltergaussianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_graphn_scale(s : ImagefiltergaussianGraphN, f : Double) -> ImagefiltergaussianGraphN {
   let result = image_filter_gaussian_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_gaussian_graphn_fill(s : ImagefiltergaussianGraphN, v : Doub
   result
 }
 
-pub fn image_filter_gaussian_graphn_min(s : ImagefiltergaussianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_graphn_min(s : ImagefiltergaussianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_graphn_max(s : ImagefiltergaussianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_graphn_max(s : ImagefiltergaussianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_graphn_to_string(s : ImagefiltergaussianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_gaussian_node_set(s : ImagefiltergaussianNode, i : Int, v : 
   result
 }
 
-pub fn image_filter_gaussian_node_sum(s : ImagefiltergaussianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_node_sum(s : ImagefiltergaussianNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_node_mean(s : ImagefiltergaussianNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_node_mean(s : ImagefiltergaussianNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_node_scale(s : ImagefiltergaussianNode, f : Double) -> ImagefiltergaussianNode {
   let result = image_filter_gaussian_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_gaussian_node_fill(s : ImagefiltergaussianNode, v : Double) 
   result
 }
 
-pub fn image_filter_gaussian_node_min(s : ImagefiltergaussianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_node_min(s : ImagefiltergaussianNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_node_max(s : ImagefiltergaussianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_node_max(s : ImagefiltergaussianNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_node_to_string(s : ImagefiltergaussianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_gaussian_edge_set(s : ImagefiltergaussianEdge, i : Int, v : 
   result
 }
 
-pub fn image_filter_gaussian_edge_sum(s : ImagefiltergaussianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_edge_sum(s : ImagefiltergaussianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_edge_mean(s : ImagefiltergaussianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_edge_mean(s : ImagefiltergaussianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_edge_scale(s : ImagefiltergaussianEdge, f : Double) -> ImagefiltergaussianEdge {
   let result = image_filter_gaussian_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_gaussian_edge_fill(s : ImagefiltergaussianEdge, v : Double) 
   result
 }
 
-pub fn image_filter_gaussian_edge_min(s : ImagefiltergaussianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_edge_min(s : ImagefiltergaussianEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_edge_max(s : ImagefiltergaussianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_edge_max(s : ImagefiltergaussianEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_edge_to_string(s : ImagefiltergaussianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_gaussian_path_set(s : ImagefiltergaussianPath, i : Int, v : 
   result
 }
 
-pub fn image_filter_gaussian_path_sum(s : ImagefiltergaussianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_path_sum(s : ImagefiltergaussianPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_path_mean(s : ImagefiltergaussianPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_path_mean(s : ImagefiltergaussianPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_path_scale(s : ImagefiltergaussianPath, f : Double) -> ImagefiltergaussianPath {
   let result = image_filter_gaussian_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_gaussian_path_fill(s : ImagefiltergaussianPath, v : Double) 
   result
 }
 
-pub fn image_filter_gaussian_path_min(s : ImagefiltergaussianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_path_min(s : ImagefiltergaussianPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_path_max(s : ImagefiltergaussianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_path_max(s : ImagefiltergaussianPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_path_to_string(s : ImagefiltergaussianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_gaussian_cluster_set(s : ImagefiltergaussianCluster, i : Int
   result
 }
 
-pub fn image_filter_gaussian_cluster_sum(s : ImagefiltergaussianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_cluster_sum(s : ImagefiltergaussianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_cluster_mean(s : ImagefiltergaussianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_cluster_mean(s : ImagefiltergaussianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_cluster_scale(s : ImagefiltergaussianCluster, f : Double) -> ImagefiltergaussianCluster {
   let result = image_filter_gaussian_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_gaussian_cluster_fill(s : ImagefiltergaussianCluster, v : Do
   result
 }
 
-pub fn image_filter_gaussian_cluster_min(s : ImagefiltergaussianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_cluster_min(s : ImagefiltergaussianCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_cluster_max(s : ImagefiltergaussianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_cluster_max(s : ImagefiltergaussianCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_cluster_to_string(s : ImagefiltergaussianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_gaussian_model_set(s : ImagefiltergaussianModel, i : Int, v 
   result
 }
 
-pub fn image_filter_gaussian_model_sum(s : ImagefiltergaussianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_model_sum(s : ImagefiltergaussianModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_model_mean(s : ImagefiltergaussianModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_model_mean(s : ImagefiltergaussianModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_model_scale(s : ImagefiltergaussianModel, f : Double) -> ImagefiltergaussianModel {
   let result = image_filter_gaussian_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_gaussian_model_fill(s : ImagefiltergaussianModel, v : Double
   result
 }
 
-pub fn image_filter_gaussian_model_min(s : ImagefiltergaussianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_model_min(s : ImagefiltergaussianModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_model_max(s : ImagefiltergaussianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_model_max(s : ImagefiltergaussianModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_model_to_string(s : ImagefiltergaussianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_gaussian_layer_set(s : ImagefiltergaussianLayer, i : Int, v 
   result
 }
 
-pub fn image_filter_gaussian_layer_sum(s : ImagefiltergaussianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_layer_sum(s : ImagefiltergaussianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_layer_mean(s : ImagefiltergaussianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_layer_mean(s : ImagefiltergaussianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_layer_scale(s : ImagefiltergaussianLayer, f : Double) -> ImagefiltergaussianLayer {
   let result = image_filter_gaussian_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_gaussian_layer_fill(s : ImagefiltergaussianLayer, v : Double
   result
 }
 
-pub fn image_filter_gaussian_layer_min(s : ImagefiltergaussianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_layer_min(s : ImagefiltergaussianLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_layer_max(s : ImagefiltergaussianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_layer_max(s : ImagefiltergaussianLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_layer_to_string(s : ImagefiltergaussianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_gaussian_buffer_set(s : ImagefiltergaussianBuffer, i : Int, 
   result
 }
 
-pub fn image_filter_gaussian_buffer_sum(s : ImagefiltergaussianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_buffer_sum(s : ImagefiltergaussianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_buffer_mean(s : ImagefiltergaussianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_buffer_mean(s : ImagefiltergaussianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_buffer_scale(s : ImagefiltergaussianBuffer, f : Double) -> ImagefiltergaussianBuffer {
   let result = image_filter_gaussian_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_gaussian_buffer_fill(s : ImagefiltergaussianBuffer, v : Doub
   result
 }
 
-pub fn image_filter_gaussian_buffer_min(s : ImagefiltergaussianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_buffer_min(s : ImagefiltergaussianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_buffer_max(s : ImagefiltergaussianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_buffer_max(s : ImagefiltergaussianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_buffer_to_string(s : ImagefiltergaussianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_gaussian_cursor_set(s : ImagefiltergaussianCursor, i : Int, 
   result
 }
 
-pub fn image_filter_gaussian_cursor_sum(s : ImagefiltergaussianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_cursor_sum(s : ImagefiltergaussianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_cursor_mean(s : ImagefiltergaussianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_cursor_mean(s : ImagefiltergaussianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_cursor_scale(s : ImagefiltergaussianCursor, f : Double) -> ImagefiltergaussianCursor {
   let result = image_filter_gaussian_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_gaussian_cursor_fill(s : ImagefiltergaussianCursor, v : Doub
   result
 }
 
-pub fn image_filter_gaussian_cursor_min(s : ImagefiltergaussianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_cursor_min(s : ImagefiltergaussianCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_cursor_max(s : ImagefiltergaussianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_cursor_max(s : ImagefiltergaussianCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_cursor_to_string(s : ImagefiltergaussianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_gaussian_view_set(s : ImagefiltergaussianView, i : Int, v : 
   result
 }
 
-pub fn image_filter_gaussian_view_sum(s : ImagefiltergaussianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_view_sum(s : ImagefiltergaussianView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_view_mean(s : ImagefiltergaussianView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_view_mean(s : ImagefiltergaussianView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_view_scale(s : ImagefiltergaussianView, f : Double) -> ImagefiltergaussianView {
   let result = image_filter_gaussian_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_gaussian_view_fill(s : ImagefiltergaussianView, v : Double) 
   result
 }
 
-pub fn image_filter_gaussian_view_min(s : ImagefiltergaussianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_view_min(s : ImagefiltergaussianView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_view_max(s : ImagefiltergaussianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_view_max(s : ImagefiltergaussianView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_view_to_string(s : ImagefiltergaussianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_gaussian_range_set(s : ImagefiltergaussianRange, i : Int, v 
   result
 }
 
-pub fn image_filter_gaussian_range_sum(s : ImagefiltergaussianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_range_sum(s : ImagefiltergaussianRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_range_mean(s : ImagefiltergaussianRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_range_mean(s : ImagefiltergaussianRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_range_scale(s : ImagefiltergaussianRange, f : Double) -> ImagefiltergaussianRange {
   let result = image_filter_gaussian_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_gaussian_range_fill(s : ImagefiltergaussianRange, v : Double
   result
 }
 
-pub fn image_filter_gaussian_range_min(s : ImagefiltergaussianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_range_min(s : ImagefiltergaussianRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_range_max(s : ImagefiltergaussianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_range_max(s : ImagefiltergaussianRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_range_to_string(s : ImagefiltergaussianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_gaussian_slice_set(s : ImagefiltergaussianSlice, i : Int, v 
   result
 }
 
-pub fn image_filter_gaussian_slice_sum(s : ImagefiltergaussianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_gaussian_slice_sum(s : ImagefiltergaussianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_gaussian_slice_mean(s : ImagefiltergaussianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_gaussian_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_gaussian_slice_mean(s : ImagefiltergaussianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_gaussian_slice_scale(s : ImagefiltergaussianSlice, f : Double) -> ImagefiltergaussianSlice {
   let result = image_filter_gaussian_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_gaussian_slice_fill(s : ImagefiltergaussianSlice, v : Double
   result
 }
 
-pub fn image_filter_gaussian_slice_min(s : ImagefiltergaussianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_slice_min(s : ImagefiltergaussianSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_gaussian_slice_max(s : ImagefiltergaussianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_gaussian_slice_max(s : ImagefiltergaussianSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_gaussian_slice_to_string(s : ImagefiltergaussianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

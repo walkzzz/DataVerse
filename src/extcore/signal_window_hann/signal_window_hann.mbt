@@ -88,11 +88,7 @@ pub fn signal_window_hann_make_series(vals : Array[Double], name : String) -> Si
 
 pub fn signal_window_hann_series_len(s : SignalwindowhannSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_hann_series_sum(s : SignalwindowhannSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_hann_series_sum(s : SignalwindowhannSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_hann_series_mean(s : SignalwindowhannSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_hann_frame_set(s : SignalwindowhannFrame, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_hann_frame_sum(s : SignalwindowhannFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_frame_sum(s : SignalwindowhannFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_frame_mean(s : SignalwindowhannFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_frame_mean(s : SignalwindowhannFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_frame_scale(s : SignalwindowhannFrame, f : Double) -> SignalwindowhannFrame {
   let result = signal_window_hann_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_hann_frame_fill(s : SignalwindowhannFrame, v : Double) -> S
   result
 }
 
-pub fn signal_window_hann_frame_min(s : SignalwindowhannFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_frame_min(s : SignalwindowhannFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_frame_max(s : SignalwindowhannFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_frame_max(s : SignalwindowhannFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_frame_to_string(s : SignalwindowhannFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_hann_table_set(s : SignalwindowhannTable, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_hann_table_sum(s : SignalwindowhannTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_table_sum(s : SignalwindowhannTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_table_mean(s : SignalwindowhannTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_table_mean(s : SignalwindowhannTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_table_scale(s : SignalwindowhannTable, f : Double) -> SignalwindowhannTable {
   let result = signal_window_hann_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_hann_table_fill(s : SignalwindowhannTable, v : Double) -> S
   result
 }
 
-pub fn signal_window_hann_table_min(s : SignalwindowhannTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_table_min(s : SignalwindowhannTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_table_max(s : SignalwindowhannTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_table_max(s : SignalwindowhannTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_table_to_string(s : SignalwindowhannTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_hann_graphn_set(s : SignalwindowhannGraphN, i : Int, v : Do
   result
 }
 
-pub fn signal_window_hann_graphn_sum(s : SignalwindowhannGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_graphn_sum(s : SignalwindowhannGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_graphn_mean(s : SignalwindowhannGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_graphn_mean(s : SignalwindowhannGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_graphn_scale(s : SignalwindowhannGraphN, f : Double) -> SignalwindowhannGraphN {
   let result = signal_window_hann_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_hann_graphn_fill(s : SignalwindowhannGraphN, v : Double) ->
   result
 }
 
-pub fn signal_window_hann_graphn_min(s : SignalwindowhannGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_graphn_min(s : SignalwindowhannGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_graphn_max(s : SignalwindowhannGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_graphn_max(s : SignalwindowhannGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_graphn_to_string(s : SignalwindowhannGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_hann_node_set(s : SignalwindowhannNode, i : Int, v : Double
   result
 }
 
-pub fn signal_window_hann_node_sum(s : SignalwindowhannNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_node_sum(s : SignalwindowhannNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_node_mean(s : SignalwindowhannNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_node_mean(s : SignalwindowhannNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_node_scale(s : SignalwindowhannNode, f : Double) -> SignalwindowhannNode {
   let result = signal_window_hann_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_hann_node_fill(s : SignalwindowhannNode, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_hann_node_min(s : SignalwindowhannNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_node_min(s : SignalwindowhannNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_node_max(s : SignalwindowhannNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_node_max(s : SignalwindowhannNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_node_to_string(s : SignalwindowhannNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_hann_edge_set(s : SignalwindowhannEdge, i : Int, v : Double
   result
 }
 
-pub fn signal_window_hann_edge_sum(s : SignalwindowhannEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_edge_sum(s : SignalwindowhannEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_edge_mean(s : SignalwindowhannEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_edge_mean(s : SignalwindowhannEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_edge_scale(s : SignalwindowhannEdge, f : Double) -> SignalwindowhannEdge {
   let result = signal_window_hann_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_hann_edge_fill(s : SignalwindowhannEdge, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_hann_edge_min(s : SignalwindowhannEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_edge_min(s : SignalwindowhannEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_edge_max(s : SignalwindowhannEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_edge_max(s : SignalwindowhannEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_edge_to_string(s : SignalwindowhannEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_hann_path_set(s : SignalwindowhannPath, i : Int, v : Double
   result
 }
 
-pub fn signal_window_hann_path_sum(s : SignalwindowhannPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_path_sum(s : SignalwindowhannPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_path_mean(s : SignalwindowhannPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_path_mean(s : SignalwindowhannPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_path_scale(s : SignalwindowhannPath, f : Double) -> SignalwindowhannPath {
   let result = signal_window_hann_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_hann_path_fill(s : SignalwindowhannPath, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_hann_path_min(s : SignalwindowhannPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_path_min(s : SignalwindowhannPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_path_max(s : SignalwindowhannPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_path_max(s : SignalwindowhannPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_path_to_string(s : SignalwindowhannPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_hann_cluster_set(s : SignalwindowhannCluster, i : Int, v : 
   result
 }
 
-pub fn signal_window_hann_cluster_sum(s : SignalwindowhannCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_cluster_sum(s : SignalwindowhannCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_cluster_mean(s : SignalwindowhannCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_cluster_mean(s : SignalwindowhannCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_cluster_scale(s : SignalwindowhannCluster, f : Double) -> SignalwindowhannCluster {
   let result = signal_window_hann_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_hann_cluster_fill(s : SignalwindowhannCluster, v : Double) 
   result
 }
 
-pub fn signal_window_hann_cluster_min(s : SignalwindowhannCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_cluster_min(s : SignalwindowhannCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_cluster_max(s : SignalwindowhannCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_cluster_max(s : SignalwindowhannCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_cluster_to_string(s : SignalwindowhannCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_hann_model_set(s : SignalwindowhannModel, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_hann_model_sum(s : SignalwindowhannModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_model_sum(s : SignalwindowhannModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_model_mean(s : SignalwindowhannModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_model_mean(s : SignalwindowhannModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_model_scale(s : SignalwindowhannModel, f : Double) -> SignalwindowhannModel {
   let result = signal_window_hann_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_hann_model_fill(s : SignalwindowhannModel, v : Double) -> S
   result
 }
 
-pub fn signal_window_hann_model_min(s : SignalwindowhannModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_model_min(s : SignalwindowhannModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_model_max(s : SignalwindowhannModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_model_max(s : SignalwindowhannModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_model_to_string(s : SignalwindowhannModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_hann_layer_set(s : SignalwindowhannLayer, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_hann_layer_sum(s : SignalwindowhannLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_layer_sum(s : SignalwindowhannLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_layer_mean(s : SignalwindowhannLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_layer_mean(s : SignalwindowhannLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_layer_scale(s : SignalwindowhannLayer, f : Double) -> SignalwindowhannLayer {
   let result = signal_window_hann_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_hann_layer_fill(s : SignalwindowhannLayer, v : Double) -> S
   result
 }
 
-pub fn signal_window_hann_layer_min(s : SignalwindowhannLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_layer_min(s : SignalwindowhannLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_layer_max(s : SignalwindowhannLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_layer_max(s : SignalwindowhannLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_layer_to_string(s : SignalwindowhannLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_hann_buffer_set(s : SignalwindowhannBuffer, i : Int, v : Do
   result
 }
 
-pub fn signal_window_hann_buffer_sum(s : SignalwindowhannBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_buffer_sum(s : SignalwindowhannBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_buffer_mean(s : SignalwindowhannBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_buffer_mean(s : SignalwindowhannBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_buffer_scale(s : SignalwindowhannBuffer, f : Double) -> SignalwindowhannBuffer {
   let result = signal_window_hann_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_hann_buffer_fill(s : SignalwindowhannBuffer, v : Double) ->
   result
 }
 
-pub fn signal_window_hann_buffer_min(s : SignalwindowhannBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_buffer_min(s : SignalwindowhannBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_buffer_max(s : SignalwindowhannBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_buffer_max(s : SignalwindowhannBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_buffer_to_string(s : SignalwindowhannBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_hann_cursor_set(s : SignalwindowhannCursor, i : Int, v : Do
   result
 }
 
-pub fn signal_window_hann_cursor_sum(s : SignalwindowhannCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_cursor_sum(s : SignalwindowhannCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_cursor_mean(s : SignalwindowhannCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_cursor_mean(s : SignalwindowhannCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_cursor_scale(s : SignalwindowhannCursor, f : Double) -> SignalwindowhannCursor {
   let result = signal_window_hann_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_hann_cursor_fill(s : SignalwindowhannCursor, v : Double) ->
   result
 }
 
-pub fn signal_window_hann_cursor_min(s : SignalwindowhannCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_cursor_min(s : SignalwindowhannCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_cursor_max(s : SignalwindowhannCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_cursor_max(s : SignalwindowhannCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_cursor_to_string(s : SignalwindowhannCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_hann_view_set(s : SignalwindowhannView, i : Int, v : Double
   result
 }
 
-pub fn signal_window_hann_view_sum(s : SignalwindowhannView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_view_sum(s : SignalwindowhannView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_view_mean(s : SignalwindowhannView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_view_mean(s : SignalwindowhannView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_view_scale(s : SignalwindowhannView, f : Double) -> SignalwindowhannView {
   let result = signal_window_hann_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_hann_view_fill(s : SignalwindowhannView, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_hann_view_min(s : SignalwindowhannView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_view_min(s : SignalwindowhannView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_view_max(s : SignalwindowhannView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_view_max(s : SignalwindowhannView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_view_to_string(s : SignalwindowhannView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_hann_range_set(s : SignalwindowhannRange, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_hann_range_sum(s : SignalwindowhannRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_range_sum(s : SignalwindowhannRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_range_mean(s : SignalwindowhannRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_range_mean(s : SignalwindowhannRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_range_scale(s : SignalwindowhannRange, f : Double) -> SignalwindowhannRange {
   let result = signal_window_hann_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_hann_range_fill(s : SignalwindowhannRange, v : Double) -> S
   result
 }
 
-pub fn signal_window_hann_range_min(s : SignalwindowhannRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_range_min(s : SignalwindowhannRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_range_max(s : SignalwindowhannRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_range_max(s : SignalwindowhannRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_range_to_string(s : SignalwindowhannRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_hann_slice_set(s : SignalwindowhannSlice, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_hann_slice_sum(s : SignalwindowhannSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_hann_slice_sum(s : SignalwindowhannSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_hann_slice_mean(s : SignalwindowhannSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_hann_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_hann_slice_mean(s : SignalwindowhannSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_hann_slice_scale(s : SignalwindowhannSlice, f : Double) -> SignalwindowhannSlice {
   let result = signal_window_hann_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_hann_slice_fill(s : SignalwindowhannSlice, v : Double) -> S
   result
 }
 
-pub fn signal_window_hann_slice_min(s : SignalwindowhannSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_slice_min(s : SignalwindowhannSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_hann_slice_max(s : SignalwindowhannSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_hann_slice_max(s : SignalwindowhannSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_hann_slice_to_string(s : SignalwindowhannSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

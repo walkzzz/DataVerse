@@ -88,11 +88,7 @@ pub fn physics_em_magnetostatic_make_series(vals : Array[Double], name : String)
 
 pub fn physics_em_magnetostatic_series_len(s : PhysicsemmagnetostaticSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_magnetostatic_series_sum(s : PhysicsemmagnetostaticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_magnetostatic_series_sum(s : PhysicsemmagnetostaticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_magnetostatic_series_mean(s : PhysicsemmagnetostaticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_magnetostatic_frame_set(s : PhysicsemmagnetostaticFrame, i : I
   result
 }
 
-pub fn physics_em_magnetostatic_frame_sum(s : PhysicsemmagnetostaticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_frame_sum(s : PhysicsemmagnetostaticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_frame_mean(s : PhysicsemmagnetostaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_frame_mean(s : PhysicsemmagnetostaticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_frame_scale(s : PhysicsemmagnetostaticFrame, f : Double) -> PhysicsemmagnetostaticFrame {
   let result = physics_em_magnetostatic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_magnetostatic_frame_fill(s : PhysicsemmagnetostaticFrame, v : 
   result
 }
 
-pub fn physics_em_magnetostatic_frame_min(s : PhysicsemmagnetostaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_frame_min(s : PhysicsemmagnetostaticFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_frame_max(s : PhysicsemmagnetostaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_frame_max(s : PhysicsemmagnetostaticFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_frame_to_string(s : PhysicsemmagnetostaticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_magnetostatic_table_set(s : PhysicsemmagnetostaticTable, i : I
   result
 }
 
-pub fn physics_em_magnetostatic_table_sum(s : PhysicsemmagnetostaticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_table_sum(s : PhysicsemmagnetostaticTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_table_mean(s : PhysicsemmagnetostaticTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_table_mean(s : PhysicsemmagnetostaticTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_table_scale(s : PhysicsemmagnetostaticTable, f : Double) -> PhysicsemmagnetostaticTable {
   let result = physics_em_magnetostatic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_magnetostatic_table_fill(s : PhysicsemmagnetostaticTable, v : 
   result
 }
 
-pub fn physics_em_magnetostatic_table_min(s : PhysicsemmagnetostaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_table_min(s : PhysicsemmagnetostaticTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_table_max(s : PhysicsemmagnetostaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_table_max(s : PhysicsemmagnetostaticTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_table_to_string(s : PhysicsemmagnetostaticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_magnetostatic_graphn_set(s : PhysicsemmagnetostaticGraphN, i :
   result
 }
 
-pub fn physics_em_magnetostatic_graphn_sum(s : PhysicsemmagnetostaticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_graphn_sum(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_graphn_mean(s : PhysicsemmagnetostaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_graphn_mean(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_graphn_scale(s : PhysicsemmagnetostaticGraphN, f : Double) -> PhysicsemmagnetostaticGraphN {
   let result = physics_em_magnetostatic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_magnetostatic_graphn_fill(s : PhysicsemmagnetostaticGraphN, v 
   result
 }
 
-pub fn physics_em_magnetostatic_graphn_min(s : PhysicsemmagnetostaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_graphn_min(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_graphn_max(s : PhysicsemmagnetostaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_graphn_max(s : PhysicsemmagnetostaticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_graphn_to_string(s : PhysicsemmagnetostaticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_magnetostatic_node_set(s : PhysicsemmagnetostaticNode, i : Int
   result
 }
 
-pub fn physics_em_magnetostatic_node_sum(s : PhysicsemmagnetostaticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_node_sum(s : PhysicsemmagnetostaticNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_node_mean(s : PhysicsemmagnetostaticNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_node_mean(s : PhysicsemmagnetostaticNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_node_scale(s : PhysicsemmagnetostaticNode, f : Double) -> PhysicsemmagnetostaticNode {
   let result = physics_em_magnetostatic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_magnetostatic_node_fill(s : PhysicsemmagnetostaticNode, v : Do
   result
 }
 
-pub fn physics_em_magnetostatic_node_min(s : PhysicsemmagnetostaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_node_min(s : PhysicsemmagnetostaticNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_node_max(s : PhysicsemmagnetostaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_node_max(s : PhysicsemmagnetostaticNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_node_to_string(s : PhysicsemmagnetostaticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_magnetostatic_edge_set(s : PhysicsemmagnetostaticEdge, i : Int
   result
 }
 
-pub fn physics_em_magnetostatic_edge_sum(s : PhysicsemmagnetostaticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_edge_sum(s : PhysicsemmagnetostaticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_edge_mean(s : PhysicsemmagnetostaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_edge_mean(s : PhysicsemmagnetostaticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_edge_scale(s : PhysicsemmagnetostaticEdge, f : Double) -> PhysicsemmagnetostaticEdge {
   let result = physics_em_magnetostatic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_magnetostatic_edge_fill(s : PhysicsemmagnetostaticEdge, v : Do
   result
 }
 
-pub fn physics_em_magnetostatic_edge_min(s : PhysicsemmagnetostaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_edge_min(s : PhysicsemmagnetostaticEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_edge_max(s : PhysicsemmagnetostaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_edge_max(s : PhysicsemmagnetostaticEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_edge_to_string(s : PhysicsemmagnetostaticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_magnetostatic_path_set(s : PhysicsemmagnetostaticPath, i : Int
   result
 }
 
-pub fn physics_em_magnetostatic_path_sum(s : PhysicsemmagnetostaticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_path_sum(s : PhysicsemmagnetostaticPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_path_mean(s : PhysicsemmagnetostaticPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_path_mean(s : PhysicsemmagnetostaticPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_path_scale(s : PhysicsemmagnetostaticPath, f : Double) -> PhysicsemmagnetostaticPath {
   let result = physics_em_magnetostatic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_magnetostatic_path_fill(s : PhysicsemmagnetostaticPath, v : Do
   result
 }
 
-pub fn physics_em_magnetostatic_path_min(s : PhysicsemmagnetostaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_path_min(s : PhysicsemmagnetostaticPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_path_max(s : PhysicsemmagnetostaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_path_max(s : PhysicsemmagnetostaticPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_path_to_string(s : PhysicsemmagnetostaticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_magnetostatic_cluster_set(s : PhysicsemmagnetostaticCluster, i
   result
 }
 
-pub fn physics_em_magnetostatic_cluster_sum(s : PhysicsemmagnetostaticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_cluster_sum(s : PhysicsemmagnetostaticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_cluster_mean(s : PhysicsemmagnetostaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_cluster_mean(s : PhysicsemmagnetostaticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_cluster_scale(s : PhysicsemmagnetostaticCluster, f : Double) -> PhysicsemmagnetostaticCluster {
   let result = physics_em_magnetostatic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_magnetostatic_cluster_fill(s : PhysicsemmagnetostaticCluster, 
   result
 }
 
-pub fn physics_em_magnetostatic_cluster_min(s : PhysicsemmagnetostaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_cluster_min(s : PhysicsemmagnetostaticCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_cluster_max(s : PhysicsemmagnetostaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_cluster_max(s : PhysicsemmagnetostaticCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_cluster_to_string(s : PhysicsemmagnetostaticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_magnetostatic_model_set(s : PhysicsemmagnetostaticModel, i : I
   result
 }
 
-pub fn physics_em_magnetostatic_model_sum(s : PhysicsemmagnetostaticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_model_sum(s : PhysicsemmagnetostaticModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_model_mean(s : PhysicsemmagnetostaticModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_model_mean(s : PhysicsemmagnetostaticModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_model_scale(s : PhysicsemmagnetostaticModel, f : Double) -> PhysicsemmagnetostaticModel {
   let result = physics_em_magnetostatic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_magnetostatic_model_fill(s : PhysicsemmagnetostaticModel, v : 
   result
 }
 
-pub fn physics_em_magnetostatic_model_min(s : PhysicsemmagnetostaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_model_min(s : PhysicsemmagnetostaticModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_model_max(s : PhysicsemmagnetostaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_model_max(s : PhysicsemmagnetostaticModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_model_to_string(s : PhysicsemmagnetostaticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_magnetostatic_layer_set(s : PhysicsemmagnetostaticLayer, i : I
   result
 }
 
-pub fn physics_em_magnetostatic_layer_sum(s : PhysicsemmagnetostaticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_layer_sum(s : PhysicsemmagnetostaticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_layer_mean(s : PhysicsemmagnetostaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_layer_mean(s : PhysicsemmagnetostaticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_layer_scale(s : PhysicsemmagnetostaticLayer, f : Double) -> PhysicsemmagnetostaticLayer {
   let result = physics_em_magnetostatic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_magnetostatic_layer_fill(s : PhysicsemmagnetostaticLayer, v : 
   result
 }
 
-pub fn physics_em_magnetostatic_layer_min(s : PhysicsemmagnetostaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_layer_min(s : PhysicsemmagnetostaticLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_layer_max(s : PhysicsemmagnetostaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_layer_max(s : PhysicsemmagnetostaticLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_layer_to_string(s : PhysicsemmagnetostaticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_magnetostatic_buffer_set(s : PhysicsemmagnetostaticBuffer, i :
   result
 }
 
-pub fn physics_em_magnetostatic_buffer_sum(s : PhysicsemmagnetostaticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_buffer_sum(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_buffer_mean(s : PhysicsemmagnetostaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_buffer_mean(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_buffer_scale(s : PhysicsemmagnetostaticBuffer, f : Double) -> PhysicsemmagnetostaticBuffer {
   let result = physics_em_magnetostatic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_magnetostatic_buffer_fill(s : PhysicsemmagnetostaticBuffer, v 
   result
 }
 
-pub fn physics_em_magnetostatic_buffer_min(s : PhysicsemmagnetostaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_buffer_min(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_buffer_max(s : PhysicsemmagnetostaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_buffer_max(s : PhysicsemmagnetostaticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_buffer_to_string(s : PhysicsemmagnetostaticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_magnetostatic_cursor_set(s : PhysicsemmagnetostaticCursor, i :
   result
 }
 
-pub fn physics_em_magnetostatic_cursor_sum(s : PhysicsemmagnetostaticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_cursor_sum(s : PhysicsemmagnetostaticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_cursor_mean(s : PhysicsemmagnetostaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_cursor_mean(s : PhysicsemmagnetostaticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_cursor_scale(s : PhysicsemmagnetostaticCursor, f : Double) -> PhysicsemmagnetostaticCursor {
   let result = physics_em_magnetostatic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_magnetostatic_cursor_fill(s : PhysicsemmagnetostaticCursor, v 
   result
 }
 
-pub fn physics_em_magnetostatic_cursor_min(s : PhysicsemmagnetostaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_cursor_min(s : PhysicsemmagnetostaticCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_cursor_max(s : PhysicsemmagnetostaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_cursor_max(s : PhysicsemmagnetostaticCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_cursor_to_string(s : PhysicsemmagnetostaticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_magnetostatic_view_set(s : PhysicsemmagnetostaticView, i : Int
   result
 }
 
-pub fn physics_em_magnetostatic_view_sum(s : PhysicsemmagnetostaticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_view_sum(s : PhysicsemmagnetostaticView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_view_mean(s : PhysicsemmagnetostaticView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_view_mean(s : PhysicsemmagnetostaticView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_view_scale(s : PhysicsemmagnetostaticView, f : Double) -> PhysicsemmagnetostaticView {
   let result = physics_em_magnetostatic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_magnetostatic_view_fill(s : PhysicsemmagnetostaticView, v : Do
   result
 }
 
-pub fn physics_em_magnetostatic_view_min(s : PhysicsemmagnetostaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_view_min(s : PhysicsemmagnetostaticView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_view_max(s : PhysicsemmagnetostaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_view_max(s : PhysicsemmagnetostaticView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_view_to_string(s : PhysicsemmagnetostaticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_magnetostatic_range_set(s : PhysicsemmagnetostaticRange, i : I
   result
 }
 
-pub fn physics_em_magnetostatic_range_sum(s : PhysicsemmagnetostaticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_range_sum(s : PhysicsemmagnetostaticRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_range_mean(s : PhysicsemmagnetostaticRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_range_mean(s : PhysicsemmagnetostaticRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_range_scale(s : PhysicsemmagnetostaticRange, f : Double) -> PhysicsemmagnetostaticRange {
   let result = physics_em_magnetostatic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_magnetostatic_range_fill(s : PhysicsemmagnetostaticRange, v : 
   result
 }
 
-pub fn physics_em_magnetostatic_range_min(s : PhysicsemmagnetostaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_range_min(s : PhysicsemmagnetostaticRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_range_max(s : PhysicsemmagnetostaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_range_max(s : PhysicsemmagnetostaticRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_range_to_string(s : PhysicsemmagnetostaticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_magnetostatic_slice_set(s : PhysicsemmagnetostaticSlice, i : I
   result
 }
 
-pub fn physics_em_magnetostatic_slice_sum(s : PhysicsemmagnetostaticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_magnetostatic_slice_sum(s : PhysicsemmagnetostaticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_magnetostatic_slice_mean(s : PhysicsemmagnetostaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_magnetostatic_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_magnetostatic_slice_mean(s : PhysicsemmagnetostaticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_magnetostatic_slice_scale(s : PhysicsemmagnetostaticSlice, f : Double) -> PhysicsemmagnetostaticSlice {
   let result = physics_em_magnetostatic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_magnetostatic_slice_fill(s : PhysicsemmagnetostaticSlice, v : 
   result
 }
 
-pub fn physics_em_magnetostatic_slice_min(s : PhysicsemmagnetostaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_slice_min(s : PhysicsemmagnetostaticSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_magnetostatic_slice_max(s : PhysicsemmagnetostaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_magnetostatic_slice_max(s : PhysicsemmagnetostaticSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_magnetostatic_slice_to_string(s : PhysicsemmagnetostaticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn crypto_sign_threshold_make_series(vals : Array[Double], name : String) ->
 
 pub fn crypto_sign_threshold_series_len(s : CryptosignthresholdSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sign_threshold_series_sum(s : CryptosignthresholdSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sign_threshold_series_sum(s : CryptosignthresholdSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sign_threshold_series_mean(s : CryptosignthresholdSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sign_threshold_frame_set(s : CryptosignthresholdFrame, i : Int, v 
   result
 }
 
-pub fn crypto_sign_threshold_frame_sum(s : CryptosignthresholdFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_frame_sum(s : CryptosignthresholdFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_frame_mean(s : CryptosignthresholdFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_frame_mean(s : CryptosignthresholdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_frame_scale(s : CryptosignthresholdFrame, f : Double) -> CryptosignthresholdFrame {
   let result = crypto_sign_threshold_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sign_threshold_frame_fill(s : CryptosignthresholdFrame, v : Double
   result
 }
 
-pub fn crypto_sign_threshold_frame_min(s : CryptosignthresholdFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_frame_min(s : CryptosignthresholdFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_frame_max(s : CryptosignthresholdFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_frame_max(s : CryptosignthresholdFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_frame_to_string(s : CryptosignthresholdFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sign_threshold_table_set(s : CryptosignthresholdTable, i : Int, v 
   result
 }
 
-pub fn crypto_sign_threshold_table_sum(s : CryptosignthresholdTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_table_sum(s : CryptosignthresholdTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_table_mean(s : CryptosignthresholdTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_table_mean(s : CryptosignthresholdTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_table_scale(s : CryptosignthresholdTable, f : Double) -> CryptosignthresholdTable {
   let result = crypto_sign_threshold_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sign_threshold_table_fill(s : CryptosignthresholdTable, v : Double
   result
 }
 
-pub fn crypto_sign_threshold_table_min(s : CryptosignthresholdTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_table_min(s : CryptosignthresholdTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_table_max(s : CryptosignthresholdTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_table_max(s : CryptosignthresholdTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_table_to_string(s : CryptosignthresholdTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sign_threshold_graphn_set(s : CryptosignthresholdGraphN, i : Int, 
   result
 }
 
-pub fn crypto_sign_threshold_graphn_sum(s : CryptosignthresholdGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_graphn_sum(s : CryptosignthresholdGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_graphn_mean(s : CryptosignthresholdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_graphn_mean(s : CryptosignthresholdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_graphn_scale(s : CryptosignthresholdGraphN, f : Double) -> CryptosignthresholdGraphN {
   let result = crypto_sign_threshold_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sign_threshold_graphn_fill(s : CryptosignthresholdGraphN, v : Doub
   result
 }
 
-pub fn crypto_sign_threshold_graphn_min(s : CryptosignthresholdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_graphn_min(s : CryptosignthresholdGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_graphn_max(s : CryptosignthresholdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_graphn_max(s : CryptosignthresholdGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_graphn_to_string(s : CryptosignthresholdGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sign_threshold_node_set(s : CryptosignthresholdNode, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_threshold_node_sum(s : CryptosignthresholdNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_node_sum(s : CryptosignthresholdNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_node_mean(s : CryptosignthresholdNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_node_mean(s : CryptosignthresholdNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_node_scale(s : CryptosignthresholdNode, f : Double) -> CryptosignthresholdNode {
   let result = crypto_sign_threshold_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sign_threshold_node_fill(s : CryptosignthresholdNode, v : Double) 
   result
 }
 
-pub fn crypto_sign_threshold_node_min(s : CryptosignthresholdNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_node_min(s : CryptosignthresholdNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_node_max(s : CryptosignthresholdNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_node_max(s : CryptosignthresholdNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_node_to_string(s : CryptosignthresholdNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sign_threshold_edge_set(s : CryptosignthresholdEdge, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_threshold_edge_sum(s : CryptosignthresholdEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_edge_sum(s : CryptosignthresholdEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_edge_mean(s : CryptosignthresholdEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_edge_mean(s : CryptosignthresholdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_edge_scale(s : CryptosignthresholdEdge, f : Double) -> CryptosignthresholdEdge {
   let result = crypto_sign_threshold_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sign_threshold_edge_fill(s : CryptosignthresholdEdge, v : Double) 
   result
 }
 
-pub fn crypto_sign_threshold_edge_min(s : CryptosignthresholdEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_edge_min(s : CryptosignthresholdEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_edge_max(s : CryptosignthresholdEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_edge_max(s : CryptosignthresholdEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_edge_to_string(s : CryptosignthresholdEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sign_threshold_path_set(s : CryptosignthresholdPath, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_threshold_path_sum(s : CryptosignthresholdPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_path_sum(s : CryptosignthresholdPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_path_mean(s : CryptosignthresholdPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_path_mean(s : CryptosignthresholdPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_path_scale(s : CryptosignthresholdPath, f : Double) -> CryptosignthresholdPath {
   let result = crypto_sign_threshold_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sign_threshold_path_fill(s : CryptosignthresholdPath, v : Double) 
   result
 }
 
-pub fn crypto_sign_threshold_path_min(s : CryptosignthresholdPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_path_min(s : CryptosignthresholdPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_path_max(s : CryptosignthresholdPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_path_max(s : CryptosignthresholdPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_path_to_string(s : CryptosignthresholdPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sign_threshold_cluster_set(s : CryptosignthresholdCluster, i : Int
   result
 }
 
-pub fn crypto_sign_threshold_cluster_sum(s : CryptosignthresholdCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_cluster_sum(s : CryptosignthresholdCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_cluster_mean(s : CryptosignthresholdCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_cluster_mean(s : CryptosignthresholdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_cluster_scale(s : CryptosignthresholdCluster, f : Double) -> CryptosignthresholdCluster {
   let result = crypto_sign_threshold_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sign_threshold_cluster_fill(s : CryptosignthresholdCluster, v : Do
   result
 }
 
-pub fn crypto_sign_threshold_cluster_min(s : CryptosignthresholdCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_cluster_min(s : CryptosignthresholdCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_cluster_max(s : CryptosignthresholdCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_cluster_max(s : CryptosignthresholdCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_cluster_to_string(s : CryptosignthresholdCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sign_threshold_model_set(s : CryptosignthresholdModel, i : Int, v 
   result
 }
 
-pub fn crypto_sign_threshold_model_sum(s : CryptosignthresholdModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_model_sum(s : CryptosignthresholdModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_model_mean(s : CryptosignthresholdModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_model_mean(s : CryptosignthresholdModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_model_scale(s : CryptosignthresholdModel, f : Double) -> CryptosignthresholdModel {
   let result = crypto_sign_threshold_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sign_threshold_model_fill(s : CryptosignthresholdModel, v : Double
   result
 }
 
-pub fn crypto_sign_threshold_model_min(s : CryptosignthresholdModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_model_min(s : CryptosignthresholdModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_model_max(s : CryptosignthresholdModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_model_max(s : CryptosignthresholdModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_model_to_string(s : CryptosignthresholdModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sign_threshold_layer_set(s : CryptosignthresholdLayer, i : Int, v 
   result
 }
 
-pub fn crypto_sign_threshold_layer_sum(s : CryptosignthresholdLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_layer_sum(s : CryptosignthresholdLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_layer_mean(s : CryptosignthresholdLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_layer_mean(s : CryptosignthresholdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_layer_scale(s : CryptosignthresholdLayer, f : Double) -> CryptosignthresholdLayer {
   let result = crypto_sign_threshold_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sign_threshold_layer_fill(s : CryptosignthresholdLayer, v : Double
   result
 }
 
-pub fn crypto_sign_threshold_layer_min(s : CryptosignthresholdLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_layer_min(s : CryptosignthresholdLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_layer_max(s : CryptosignthresholdLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_layer_max(s : CryptosignthresholdLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_layer_to_string(s : CryptosignthresholdLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sign_threshold_buffer_set(s : CryptosignthresholdBuffer, i : Int, 
   result
 }
 
-pub fn crypto_sign_threshold_buffer_sum(s : CryptosignthresholdBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_buffer_sum(s : CryptosignthresholdBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_buffer_mean(s : CryptosignthresholdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_buffer_mean(s : CryptosignthresholdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_buffer_scale(s : CryptosignthresholdBuffer, f : Double) -> CryptosignthresholdBuffer {
   let result = crypto_sign_threshold_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sign_threshold_buffer_fill(s : CryptosignthresholdBuffer, v : Doub
   result
 }
 
-pub fn crypto_sign_threshold_buffer_min(s : CryptosignthresholdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_buffer_min(s : CryptosignthresholdBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_buffer_max(s : CryptosignthresholdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_buffer_max(s : CryptosignthresholdBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_buffer_to_string(s : CryptosignthresholdBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sign_threshold_cursor_set(s : CryptosignthresholdCursor, i : Int, 
   result
 }
 
-pub fn crypto_sign_threshold_cursor_sum(s : CryptosignthresholdCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_cursor_sum(s : CryptosignthresholdCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_cursor_mean(s : CryptosignthresholdCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_cursor_mean(s : CryptosignthresholdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_cursor_scale(s : CryptosignthresholdCursor, f : Double) -> CryptosignthresholdCursor {
   let result = crypto_sign_threshold_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sign_threshold_cursor_fill(s : CryptosignthresholdCursor, v : Doub
   result
 }
 
-pub fn crypto_sign_threshold_cursor_min(s : CryptosignthresholdCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_cursor_min(s : CryptosignthresholdCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_cursor_max(s : CryptosignthresholdCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_cursor_max(s : CryptosignthresholdCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_cursor_to_string(s : CryptosignthresholdCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sign_threshold_view_set(s : CryptosignthresholdView, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_threshold_view_sum(s : CryptosignthresholdView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_view_sum(s : CryptosignthresholdView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_view_mean(s : CryptosignthresholdView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_view_mean(s : CryptosignthresholdView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_view_scale(s : CryptosignthresholdView, f : Double) -> CryptosignthresholdView {
   let result = crypto_sign_threshold_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sign_threshold_view_fill(s : CryptosignthresholdView, v : Double) 
   result
 }
 
-pub fn crypto_sign_threshold_view_min(s : CryptosignthresholdView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_view_min(s : CryptosignthresholdView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_view_max(s : CryptosignthresholdView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_view_max(s : CryptosignthresholdView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_view_to_string(s : CryptosignthresholdView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sign_threshold_range_set(s : CryptosignthresholdRange, i : Int, v 
   result
 }
 
-pub fn crypto_sign_threshold_range_sum(s : CryptosignthresholdRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_range_sum(s : CryptosignthresholdRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_range_mean(s : CryptosignthresholdRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_range_mean(s : CryptosignthresholdRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_range_scale(s : CryptosignthresholdRange, f : Double) -> CryptosignthresholdRange {
   let result = crypto_sign_threshold_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sign_threshold_range_fill(s : CryptosignthresholdRange, v : Double
   result
 }
 
-pub fn crypto_sign_threshold_range_min(s : CryptosignthresholdRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_range_min(s : CryptosignthresholdRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_range_max(s : CryptosignthresholdRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_range_max(s : CryptosignthresholdRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_range_to_string(s : CryptosignthresholdRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sign_threshold_slice_set(s : CryptosignthresholdSlice, i : Int, v 
   result
 }
 
-pub fn crypto_sign_threshold_slice_sum(s : CryptosignthresholdSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_threshold_slice_sum(s : CryptosignthresholdSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_threshold_slice_mean(s : CryptosignthresholdSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_threshold_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_threshold_slice_mean(s : CryptosignthresholdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_threshold_slice_scale(s : CryptosignthresholdSlice, f : Double) -> CryptosignthresholdSlice {
   let result = crypto_sign_threshold_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sign_threshold_slice_fill(s : CryptosignthresholdSlice, v : Double
   result
 }
 
-pub fn crypto_sign_threshold_slice_min(s : CryptosignthresholdSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_slice_min(s : CryptosignthresholdSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_threshold_slice_max(s : CryptosignthresholdSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_threshold_slice_max(s : CryptosignthresholdSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_threshold_slice_to_string(s : CryptosignthresholdSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

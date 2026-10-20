@@ -88,11 +88,7 @@ pub fn ds_list_doubly_make_series(vals : Array[Double], name : String) -> Dslist
 
 pub fn ds_list_doubly_series_len(s : DslistdoublySeries) -> Int { s.vals.length() }
 
-pub fn ds_list_doubly_series_sum(s : DslistdoublySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_list_doubly_series_sum(s : DslistdoublySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_list_doubly_series_mean(s : DslistdoublySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_list_doubly_frame_set(s : DslistdoublyFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_doubly_frame_sum(s : DslistdoublyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_frame_sum(s : DslistdoublyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_frame_mean(s : DslistdoublyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_frame_mean(s : DslistdoublyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_frame_scale(s : DslistdoublyFrame, f : Double) -> DslistdoublyFrame {
   let result = ds_list_doubly_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_list_doubly_frame_fill(s : DslistdoublyFrame, v : Double) -> Dslistdou
   result
 }
 
-pub fn ds_list_doubly_frame_min(s : DslistdoublyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_frame_min(s : DslistdoublyFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_frame_max(s : DslistdoublyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_frame_max(s : DslistdoublyFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_frame_to_string(s : DslistdoublyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_list_doubly_table_set(s : DslistdoublyTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_doubly_table_sum(s : DslistdoublyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_table_sum(s : DslistdoublyTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_table_mean(s : DslistdoublyTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_table_mean(s : DslistdoublyTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_table_scale(s : DslistdoublyTable, f : Double) -> DslistdoublyTable {
   let result = ds_list_doubly_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_list_doubly_table_fill(s : DslistdoublyTable, v : Double) -> Dslistdou
   result
 }
 
-pub fn ds_list_doubly_table_min(s : DslistdoublyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_table_min(s : DslistdoublyTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_table_max(s : DslistdoublyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_table_max(s : DslistdoublyTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_table_to_string(s : DslistdoublyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_list_doubly_graphn_set(s : DslistdoublyGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_doubly_graphn_sum(s : DslistdoublyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_graphn_sum(s : DslistdoublyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_graphn_mean(s : DslistdoublyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_graphn_mean(s : DslistdoublyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_graphn_scale(s : DslistdoublyGraphN, f : Double) -> DslistdoublyGraphN {
   let result = ds_list_doubly_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_list_doubly_graphn_fill(s : DslistdoublyGraphN, v : Double) -> Dslistd
   result
 }
 
-pub fn ds_list_doubly_graphn_min(s : DslistdoublyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_graphn_min(s : DslistdoublyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_graphn_max(s : DslistdoublyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_graphn_max(s : DslistdoublyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_graphn_to_string(s : DslistdoublyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_list_doubly_node_set(s : DslistdoublyNode, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_doubly_node_sum(s : DslistdoublyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_node_sum(s : DslistdoublyNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_node_mean(s : DslistdoublyNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_node_mean(s : DslistdoublyNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_node_scale(s : DslistdoublyNode, f : Double) -> DslistdoublyNode {
   let result = ds_list_doubly_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_list_doubly_node_fill(s : DslistdoublyNode, v : Double) -> Dslistdoubl
   result
 }
 
-pub fn ds_list_doubly_node_min(s : DslistdoublyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_node_min(s : DslistdoublyNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_node_max(s : DslistdoublyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_node_max(s : DslistdoublyNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_node_to_string(s : DslistdoublyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_list_doubly_edge_set(s : DslistdoublyEdge, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_doubly_edge_sum(s : DslistdoublyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_edge_sum(s : DslistdoublyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_edge_mean(s : DslistdoublyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_edge_mean(s : DslistdoublyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_edge_scale(s : DslistdoublyEdge, f : Double) -> DslistdoublyEdge {
   let result = ds_list_doubly_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_list_doubly_edge_fill(s : DslistdoublyEdge, v : Double) -> Dslistdoubl
   result
 }
 
-pub fn ds_list_doubly_edge_min(s : DslistdoublyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_edge_min(s : DslistdoublyEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_edge_max(s : DslistdoublyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_edge_max(s : DslistdoublyEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_edge_to_string(s : DslistdoublyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_list_doubly_path_set(s : DslistdoublyPath, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_doubly_path_sum(s : DslistdoublyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_path_sum(s : DslistdoublyPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_path_mean(s : DslistdoublyPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_path_mean(s : DslistdoublyPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_path_scale(s : DslistdoublyPath, f : Double) -> DslistdoublyPath {
   let result = ds_list_doubly_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_list_doubly_path_fill(s : DslistdoublyPath, v : Double) -> Dslistdoubl
   result
 }
 
-pub fn ds_list_doubly_path_min(s : DslistdoublyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_path_min(s : DslistdoublyPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_path_max(s : DslistdoublyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_path_max(s : DslistdoublyPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_path_to_string(s : DslistdoublyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_list_doubly_cluster_set(s : DslistdoublyCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ds_list_doubly_cluster_sum(s : DslistdoublyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_cluster_sum(s : DslistdoublyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_cluster_mean(s : DslistdoublyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_cluster_mean(s : DslistdoublyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_cluster_scale(s : DslistdoublyCluster, f : Double) -> DslistdoublyCluster {
   let result = ds_list_doubly_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_list_doubly_cluster_fill(s : DslistdoublyCluster, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_doubly_cluster_min(s : DslistdoublyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_cluster_min(s : DslistdoublyCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_cluster_max(s : DslistdoublyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_cluster_max(s : DslistdoublyCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_cluster_to_string(s : DslistdoublyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_list_doubly_model_set(s : DslistdoublyModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_doubly_model_sum(s : DslistdoublyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_model_sum(s : DslistdoublyModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_model_mean(s : DslistdoublyModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_model_mean(s : DslistdoublyModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_model_scale(s : DslistdoublyModel, f : Double) -> DslistdoublyModel {
   let result = ds_list_doubly_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_list_doubly_model_fill(s : DslistdoublyModel, v : Double) -> Dslistdou
   result
 }
 
-pub fn ds_list_doubly_model_min(s : DslistdoublyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_model_min(s : DslistdoublyModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_model_max(s : DslistdoublyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_model_max(s : DslistdoublyModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_model_to_string(s : DslistdoublyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_list_doubly_layer_set(s : DslistdoublyLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_doubly_layer_sum(s : DslistdoublyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_layer_sum(s : DslistdoublyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_layer_mean(s : DslistdoublyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_layer_mean(s : DslistdoublyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_layer_scale(s : DslistdoublyLayer, f : Double) -> DslistdoublyLayer {
   let result = ds_list_doubly_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_list_doubly_layer_fill(s : DslistdoublyLayer, v : Double) -> Dslistdou
   result
 }
 
-pub fn ds_list_doubly_layer_min(s : DslistdoublyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_layer_min(s : DslistdoublyLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_layer_max(s : DslistdoublyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_layer_max(s : DslistdoublyLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_layer_to_string(s : DslistdoublyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_list_doubly_buffer_set(s : DslistdoublyBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_doubly_buffer_sum(s : DslistdoublyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_buffer_sum(s : DslistdoublyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_buffer_mean(s : DslistdoublyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_buffer_mean(s : DslistdoublyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_buffer_scale(s : DslistdoublyBuffer, f : Double) -> DslistdoublyBuffer {
   let result = ds_list_doubly_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_list_doubly_buffer_fill(s : DslistdoublyBuffer, v : Double) -> Dslistd
   result
 }
 
-pub fn ds_list_doubly_buffer_min(s : DslistdoublyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_buffer_min(s : DslistdoublyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_buffer_max(s : DslistdoublyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_buffer_max(s : DslistdoublyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_buffer_to_string(s : DslistdoublyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_list_doubly_cursor_set(s : DslistdoublyCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_list_doubly_cursor_sum(s : DslistdoublyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_cursor_sum(s : DslistdoublyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_cursor_mean(s : DslistdoublyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_cursor_mean(s : DslistdoublyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_cursor_scale(s : DslistdoublyCursor, f : Double) -> DslistdoublyCursor {
   let result = ds_list_doubly_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_list_doubly_cursor_fill(s : DslistdoublyCursor, v : Double) -> Dslistd
   result
 }
 
-pub fn ds_list_doubly_cursor_min(s : DslistdoublyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_cursor_min(s : DslistdoublyCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_cursor_max(s : DslistdoublyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_cursor_max(s : DslistdoublyCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_cursor_to_string(s : DslistdoublyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_list_doubly_view_set(s : DslistdoublyView, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_doubly_view_sum(s : DslistdoublyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_view_sum(s : DslistdoublyView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_view_mean(s : DslistdoublyView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_view_mean(s : DslistdoublyView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_view_scale(s : DslistdoublyView, f : Double) -> DslistdoublyView {
   let result = ds_list_doubly_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_list_doubly_view_fill(s : DslistdoublyView, v : Double) -> Dslistdoubl
   result
 }
 
-pub fn ds_list_doubly_view_min(s : DslistdoublyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_view_min(s : DslistdoublyView) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_view_max(s : DslistdoublyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_view_max(s : DslistdoublyView) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_view_to_string(s : DslistdoublyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_list_doubly_range_set(s : DslistdoublyRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_doubly_range_sum(s : DslistdoublyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_range_sum(s : DslistdoublyRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_range_mean(s : DslistdoublyRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_range_mean(s : DslistdoublyRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_range_scale(s : DslistdoublyRange, f : Double) -> DslistdoublyRange {
   let result = ds_list_doubly_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_list_doubly_range_fill(s : DslistdoublyRange, v : Double) -> Dslistdou
   result
 }
 
-pub fn ds_list_doubly_range_min(s : DslistdoublyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_range_min(s : DslistdoublyRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_range_max(s : DslistdoublyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_range_max(s : DslistdoublyRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_range_to_string(s : DslistdoublyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_list_doubly_slice_set(s : DslistdoublySlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_list_doubly_slice_sum(s : DslistdoublySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_doubly_slice_sum(s : DslistdoublySlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_doubly_slice_mean(s : DslistdoublySlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_doubly_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_doubly_slice_mean(s : DslistdoublySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_doubly_slice_scale(s : DslistdoublySlice, f : Double) -> DslistdoublySlice {
   let result = ds_list_doubly_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_list_doubly_slice_fill(s : DslistdoublySlice, v : Double) -> Dslistdou
   result
 }
 
-pub fn ds_list_doubly_slice_min(s : DslistdoublySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_slice_min(s : DslistdoublySlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_doubly_slice_max(s : DslistdoublySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_doubly_slice_max(s : DslistdoublySlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_doubly_slice_to_string(s : DslistdoublySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

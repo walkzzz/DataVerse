@@ -88,11 +88,7 @@ pub fn sort_compare_patience_make_series(vals : Array[Double], name : String) ->
 
 pub fn sort_compare_patience_series_len(s : SortcomparepatienceSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_patience_series_sum(s : SortcomparepatienceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_patience_series_sum(s : SortcomparepatienceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_patience_series_mean(s : SortcomparepatienceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_patience_frame_set(s : SortcomparepatienceFrame, i : Int, v 
   result
 }
 
-pub fn sort_compare_patience_frame_sum(s : SortcomparepatienceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_frame_sum(s : SortcomparepatienceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_frame_mean(s : SortcomparepatienceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_frame_mean(s : SortcomparepatienceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_frame_scale(s : SortcomparepatienceFrame, f : Double) -> SortcomparepatienceFrame {
   let result = sort_compare_patience_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_patience_frame_fill(s : SortcomparepatienceFrame, v : Double
   result
 }
 
-pub fn sort_compare_patience_frame_min(s : SortcomparepatienceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_frame_min(s : SortcomparepatienceFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_frame_max(s : SortcomparepatienceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_frame_max(s : SortcomparepatienceFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_frame_to_string(s : SortcomparepatienceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_patience_table_set(s : SortcomparepatienceTable, i : Int, v 
   result
 }
 
-pub fn sort_compare_patience_table_sum(s : SortcomparepatienceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_table_sum(s : SortcomparepatienceTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_table_mean(s : SortcomparepatienceTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_table_mean(s : SortcomparepatienceTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_table_scale(s : SortcomparepatienceTable, f : Double) -> SortcomparepatienceTable {
   let result = sort_compare_patience_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_patience_table_fill(s : SortcomparepatienceTable, v : Double
   result
 }
 
-pub fn sort_compare_patience_table_min(s : SortcomparepatienceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_table_min(s : SortcomparepatienceTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_table_max(s : SortcomparepatienceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_table_max(s : SortcomparepatienceTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_table_to_string(s : SortcomparepatienceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_patience_graphn_set(s : SortcomparepatienceGraphN, i : Int, 
   result
 }
 
-pub fn sort_compare_patience_graphn_sum(s : SortcomparepatienceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_graphn_sum(s : SortcomparepatienceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_graphn_mean(s : SortcomparepatienceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_graphn_mean(s : SortcomparepatienceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_graphn_scale(s : SortcomparepatienceGraphN, f : Double) -> SortcomparepatienceGraphN {
   let result = sort_compare_patience_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_patience_graphn_fill(s : SortcomparepatienceGraphN, v : Doub
   result
 }
 
-pub fn sort_compare_patience_graphn_min(s : SortcomparepatienceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_graphn_min(s : SortcomparepatienceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_graphn_max(s : SortcomparepatienceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_graphn_max(s : SortcomparepatienceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_graphn_to_string(s : SortcomparepatienceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_patience_node_set(s : SortcomparepatienceNode, i : Int, v : 
   result
 }
 
-pub fn sort_compare_patience_node_sum(s : SortcomparepatienceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_node_sum(s : SortcomparepatienceNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_node_mean(s : SortcomparepatienceNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_node_mean(s : SortcomparepatienceNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_node_scale(s : SortcomparepatienceNode, f : Double) -> SortcomparepatienceNode {
   let result = sort_compare_patience_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_patience_node_fill(s : SortcomparepatienceNode, v : Double) 
   result
 }
 
-pub fn sort_compare_patience_node_min(s : SortcomparepatienceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_node_min(s : SortcomparepatienceNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_node_max(s : SortcomparepatienceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_node_max(s : SortcomparepatienceNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_node_to_string(s : SortcomparepatienceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_patience_edge_set(s : SortcomparepatienceEdge, i : Int, v : 
   result
 }
 
-pub fn sort_compare_patience_edge_sum(s : SortcomparepatienceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_edge_sum(s : SortcomparepatienceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_edge_mean(s : SortcomparepatienceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_edge_mean(s : SortcomparepatienceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_edge_scale(s : SortcomparepatienceEdge, f : Double) -> SortcomparepatienceEdge {
   let result = sort_compare_patience_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_patience_edge_fill(s : SortcomparepatienceEdge, v : Double) 
   result
 }
 
-pub fn sort_compare_patience_edge_min(s : SortcomparepatienceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_edge_min(s : SortcomparepatienceEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_edge_max(s : SortcomparepatienceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_edge_max(s : SortcomparepatienceEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_edge_to_string(s : SortcomparepatienceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_patience_path_set(s : SortcomparepatiencePath, i : Int, v : 
   result
 }
 
-pub fn sort_compare_patience_path_sum(s : SortcomparepatiencePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_path_sum(s : SortcomparepatiencePath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_path_mean(s : SortcomparepatiencePath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_path_mean(s : SortcomparepatiencePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_path_scale(s : SortcomparepatiencePath, f : Double) -> SortcomparepatiencePath {
   let result = sort_compare_patience_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_patience_path_fill(s : SortcomparepatiencePath, v : Double) 
   result
 }
 
-pub fn sort_compare_patience_path_min(s : SortcomparepatiencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_path_min(s : SortcomparepatiencePath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_path_max(s : SortcomparepatiencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_path_max(s : SortcomparepatiencePath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_path_to_string(s : SortcomparepatiencePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_patience_cluster_set(s : SortcomparepatienceCluster, i : Int
   result
 }
 
-pub fn sort_compare_patience_cluster_sum(s : SortcomparepatienceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_cluster_sum(s : SortcomparepatienceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_cluster_mean(s : SortcomparepatienceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_cluster_mean(s : SortcomparepatienceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_cluster_scale(s : SortcomparepatienceCluster, f : Double) -> SortcomparepatienceCluster {
   let result = sort_compare_patience_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_patience_cluster_fill(s : SortcomparepatienceCluster, v : Do
   result
 }
 
-pub fn sort_compare_patience_cluster_min(s : SortcomparepatienceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_cluster_min(s : SortcomparepatienceCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_cluster_max(s : SortcomparepatienceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_cluster_max(s : SortcomparepatienceCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_cluster_to_string(s : SortcomparepatienceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_patience_model_set(s : SortcomparepatienceModel, i : Int, v 
   result
 }
 
-pub fn sort_compare_patience_model_sum(s : SortcomparepatienceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_model_sum(s : SortcomparepatienceModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_model_mean(s : SortcomparepatienceModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_model_mean(s : SortcomparepatienceModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_model_scale(s : SortcomparepatienceModel, f : Double) -> SortcomparepatienceModel {
   let result = sort_compare_patience_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_patience_model_fill(s : SortcomparepatienceModel, v : Double
   result
 }
 
-pub fn sort_compare_patience_model_min(s : SortcomparepatienceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_model_min(s : SortcomparepatienceModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_model_max(s : SortcomparepatienceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_model_max(s : SortcomparepatienceModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_model_to_string(s : SortcomparepatienceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_patience_layer_set(s : SortcomparepatienceLayer, i : Int, v 
   result
 }
 
-pub fn sort_compare_patience_layer_sum(s : SortcomparepatienceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_layer_sum(s : SortcomparepatienceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_layer_mean(s : SortcomparepatienceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_layer_mean(s : SortcomparepatienceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_layer_scale(s : SortcomparepatienceLayer, f : Double) -> SortcomparepatienceLayer {
   let result = sort_compare_patience_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_patience_layer_fill(s : SortcomparepatienceLayer, v : Double
   result
 }
 
-pub fn sort_compare_patience_layer_min(s : SortcomparepatienceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_layer_min(s : SortcomparepatienceLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_layer_max(s : SortcomparepatienceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_layer_max(s : SortcomparepatienceLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_layer_to_string(s : SortcomparepatienceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_patience_buffer_set(s : SortcomparepatienceBuffer, i : Int, 
   result
 }
 
-pub fn sort_compare_patience_buffer_sum(s : SortcomparepatienceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_buffer_sum(s : SortcomparepatienceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_buffer_mean(s : SortcomparepatienceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_buffer_mean(s : SortcomparepatienceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_buffer_scale(s : SortcomparepatienceBuffer, f : Double) -> SortcomparepatienceBuffer {
   let result = sort_compare_patience_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_patience_buffer_fill(s : SortcomparepatienceBuffer, v : Doub
   result
 }
 
-pub fn sort_compare_patience_buffer_min(s : SortcomparepatienceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_buffer_min(s : SortcomparepatienceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_buffer_max(s : SortcomparepatienceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_buffer_max(s : SortcomparepatienceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_buffer_to_string(s : SortcomparepatienceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_patience_cursor_set(s : SortcomparepatienceCursor, i : Int, 
   result
 }
 
-pub fn sort_compare_patience_cursor_sum(s : SortcomparepatienceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_cursor_sum(s : SortcomparepatienceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_cursor_mean(s : SortcomparepatienceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_cursor_mean(s : SortcomparepatienceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_cursor_scale(s : SortcomparepatienceCursor, f : Double) -> SortcomparepatienceCursor {
   let result = sort_compare_patience_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_patience_cursor_fill(s : SortcomparepatienceCursor, v : Doub
   result
 }
 
-pub fn sort_compare_patience_cursor_min(s : SortcomparepatienceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_cursor_min(s : SortcomparepatienceCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_cursor_max(s : SortcomparepatienceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_cursor_max(s : SortcomparepatienceCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_cursor_to_string(s : SortcomparepatienceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_patience_view_set(s : SortcomparepatienceView, i : Int, v : 
   result
 }
 
-pub fn sort_compare_patience_view_sum(s : SortcomparepatienceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_view_sum(s : SortcomparepatienceView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_view_mean(s : SortcomparepatienceView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_view_mean(s : SortcomparepatienceView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_view_scale(s : SortcomparepatienceView, f : Double) -> SortcomparepatienceView {
   let result = sort_compare_patience_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_patience_view_fill(s : SortcomparepatienceView, v : Double) 
   result
 }
 
-pub fn sort_compare_patience_view_min(s : SortcomparepatienceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_view_min(s : SortcomparepatienceView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_view_max(s : SortcomparepatienceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_view_max(s : SortcomparepatienceView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_view_to_string(s : SortcomparepatienceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_patience_range_set(s : SortcomparepatienceRange, i : Int, v 
   result
 }
 
-pub fn sort_compare_patience_range_sum(s : SortcomparepatienceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_range_sum(s : SortcomparepatienceRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_range_mean(s : SortcomparepatienceRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_range_mean(s : SortcomparepatienceRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_range_scale(s : SortcomparepatienceRange, f : Double) -> SortcomparepatienceRange {
   let result = sort_compare_patience_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_patience_range_fill(s : SortcomparepatienceRange, v : Double
   result
 }
 
-pub fn sort_compare_patience_range_min(s : SortcomparepatienceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_range_min(s : SortcomparepatienceRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_range_max(s : SortcomparepatienceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_range_max(s : SortcomparepatienceRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_range_to_string(s : SortcomparepatienceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_patience_slice_set(s : SortcomparepatienceSlice, i : Int, v 
   result
 }
 
-pub fn sort_compare_patience_slice_sum(s : SortcomparepatienceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_patience_slice_sum(s : SortcomparepatienceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_patience_slice_mean(s : SortcomparepatienceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_patience_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_patience_slice_mean(s : SortcomparepatienceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_patience_slice_scale(s : SortcomparepatienceSlice, f : Double) -> SortcomparepatienceSlice {
   let result = sort_compare_patience_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_patience_slice_fill(s : SortcomparepatienceSlice, v : Double
   result
 }
 
-pub fn sort_compare_patience_slice_min(s : SortcomparepatienceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_slice_min(s : SortcomparepatienceSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_patience_slice_max(s : SortcomparepatienceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_patience_slice_max(s : SortcomparepatienceSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_patience_slice_to_string(s : SortcomparepatienceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

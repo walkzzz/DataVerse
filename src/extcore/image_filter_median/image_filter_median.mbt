@@ -88,11 +88,7 @@ pub fn image_filter_median_make_series(vals : Array[Double], name : String) -> I
 
 pub fn image_filter_median_series_len(s : ImagefiltermedianSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_median_series_sum(s : ImagefiltermedianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_median_series_sum(s : ImagefiltermedianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_median_series_mean(s : ImagefiltermedianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_median_frame_set(s : ImagefiltermedianFrame, i : Int, v : Do
   result
 }
 
-pub fn image_filter_median_frame_sum(s : ImagefiltermedianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_frame_sum(s : ImagefiltermedianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_frame_mean(s : ImagefiltermedianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_frame_mean(s : ImagefiltermedianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_frame_scale(s : ImagefiltermedianFrame, f : Double) -> ImagefiltermedianFrame {
   let result = image_filter_median_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_median_frame_fill(s : ImagefiltermedianFrame, v : Double) ->
   result
 }
 
-pub fn image_filter_median_frame_min(s : ImagefiltermedianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_frame_min(s : ImagefiltermedianFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_frame_max(s : ImagefiltermedianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_frame_max(s : ImagefiltermedianFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_frame_to_string(s : ImagefiltermedianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_median_table_set(s : ImagefiltermedianTable, i : Int, v : Do
   result
 }
 
-pub fn image_filter_median_table_sum(s : ImagefiltermedianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_table_sum(s : ImagefiltermedianTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_table_mean(s : ImagefiltermedianTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_table_mean(s : ImagefiltermedianTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_table_scale(s : ImagefiltermedianTable, f : Double) -> ImagefiltermedianTable {
   let result = image_filter_median_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_median_table_fill(s : ImagefiltermedianTable, v : Double) ->
   result
 }
 
-pub fn image_filter_median_table_min(s : ImagefiltermedianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_table_min(s : ImagefiltermedianTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_table_max(s : ImagefiltermedianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_table_max(s : ImagefiltermedianTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_table_to_string(s : ImagefiltermedianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_median_graphn_set(s : ImagefiltermedianGraphN, i : Int, v : 
   result
 }
 
-pub fn image_filter_median_graphn_sum(s : ImagefiltermedianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_graphn_sum(s : ImagefiltermedianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_graphn_mean(s : ImagefiltermedianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_graphn_mean(s : ImagefiltermedianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_graphn_scale(s : ImagefiltermedianGraphN, f : Double) -> ImagefiltermedianGraphN {
   let result = image_filter_median_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_median_graphn_fill(s : ImagefiltermedianGraphN, v : Double) 
   result
 }
 
-pub fn image_filter_median_graphn_min(s : ImagefiltermedianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_graphn_min(s : ImagefiltermedianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_graphn_max(s : ImagefiltermedianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_graphn_max(s : ImagefiltermedianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_graphn_to_string(s : ImagefiltermedianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_median_node_set(s : ImagefiltermedianNode, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_median_node_sum(s : ImagefiltermedianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_node_sum(s : ImagefiltermedianNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_node_mean(s : ImagefiltermedianNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_node_mean(s : ImagefiltermedianNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_node_scale(s : ImagefiltermedianNode, f : Double) -> ImagefiltermedianNode {
   let result = image_filter_median_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_median_node_fill(s : ImagefiltermedianNode, v : Double) -> I
   result
 }
 
-pub fn image_filter_median_node_min(s : ImagefiltermedianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_node_min(s : ImagefiltermedianNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_node_max(s : ImagefiltermedianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_node_max(s : ImagefiltermedianNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_node_to_string(s : ImagefiltermedianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_median_edge_set(s : ImagefiltermedianEdge, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_median_edge_sum(s : ImagefiltermedianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_edge_sum(s : ImagefiltermedianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_edge_mean(s : ImagefiltermedianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_edge_mean(s : ImagefiltermedianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_edge_scale(s : ImagefiltermedianEdge, f : Double) -> ImagefiltermedianEdge {
   let result = image_filter_median_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_median_edge_fill(s : ImagefiltermedianEdge, v : Double) -> I
   result
 }
 
-pub fn image_filter_median_edge_min(s : ImagefiltermedianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_edge_min(s : ImagefiltermedianEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_edge_max(s : ImagefiltermedianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_edge_max(s : ImagefiltermedianEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_edge_to_string(s : ImagefiltermedianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_median_path_set(s : ImagefiltermedianPath, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_median_path_sum(s : ImagefiltermedianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_path_sum(s : ImagefiltermedianPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_path_mean(s : ImagefiltermedianPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_path_mean(s : ImagefiltermedianPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_path_scale(s : ImagefiltermedianPath, f : Double) -> ImagefiltermedianPath {
   let result = image_filter_median_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_median_path_fill(s : ImagefiltermedianPath, v : Double) -> I
   result
 }
 
-pub fn image_filter_median_path_min(s : ImagefiltermedianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_path_min(s : ImagefiltermedianPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_path_max(s : ImagefiltermedianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_path_max(s : ImagefiltermedianPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_path_to_string(s : ImagefiltermedianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_median_cluster_set(s : ImagefiltermedianCluster, i : Int, v 
   result
 }
 
-pub fn image_filter_median_cluster_sum(s : ImagefiltermedianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_cluster_sum(s : ImagefiltermedianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_cluster_mean(s : ImagefiltermedianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_cluster_mean(s : ImagefiltermedianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_cluster_scale(s : ImagefiltermedianCluster, f : Double) -> ImagefiltermedianCluster {
   let result = image_filter_median_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_median_cluster_fill(s : ImagefiltermedianCluster, v : Double
   result
 }
 
-pub fn image_filter_median_cluster_min(s : ImagefiltermedianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_cluster_min(s : ImagefiltermedianCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_cluster_max(s : ImagefiltermedianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_cluster_max(s : ImagefiltermedianCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_cluster_to_string(s : ImagefiltermedianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_median_model_set(s : ImagefiltermedianModel, i : Int, v : Do
   result
 }
 
-pub fn image_filter_median_model_sum(s : ImagefiltermedianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_model_sum(s : ImagefiltermedianModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_model_mean(s : ImagefiltermedianModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_model_mean(s : ImagefiltermedianModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_model_scale(s : ImagefiltermedianModel, f : Double) -> ImagefiltermedianModel {
   let result = image_filter_median_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_median_model_fill(s : ImagefiltermedianModel, v : Double) ->
   result
 }
 
-pub fn image_filter_median_model_min(s : ImagefiltermedianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_model_min(s : ImagefiltermedianModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_model_max(s : ImagefiltermedianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_model_max(s : ImagefiltermedianModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_model_to_string(s : ImagefiltermedianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_median_layer_set(s : ImagefiltermedianLayer, i : Int, v : Do
   result
 }
 
-pub fn image_filter_median_layer_sum(s : ImagefiltermedianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_layer_sum(s : ImagefiltermedianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_layer_mean(s : ImagefiltermedianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_layer_mean(s : ImagefiltermedianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_layer_scale(s : ImagefiltermedianLayer, f : Double) -> ImagefiltermedianLayer {
   let result = image_filter_median_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_median_layer_fill(s : ImagefiltermedianLayer, v : Double) ->
   result
 }
 
-pub fn image_filter_median_layer_min(s : ImagefiltermedianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_layer_min(s : ImagefiltermedianLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_layer_max(s : ImagefiltermedianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_layer_max(s : ImagefiltermedianLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_layer_to_string(s : ImagefiltermedianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_median_buffer_set(s : ImagefiltermedianBuffer, i : Int, v : 
   result
 }
 
-pub fn image_filter_median_buffer_sum(s : ImagefiltermedianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_buffer_sum(s : ImagefiltermedianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_buffer_mean(s : ImagefiltermedianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_buffer_mean(s : ImagefiltermedianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_buffer_scale(s : ImagefiltermedianBuffer, f : Double) -> ImagefiltermedianBuffer {
   let result = image_filter_median_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_median_buffer_fill(s : ImagefiltermedianBuffer, v : Double) 
   result
 }
 
-pub fn image_filter_median_buffer_min(s : ImagefiltermedianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_buffer_min(s : ImagefiltermedianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_buffer_max(s : ImagefiltermedianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_buffer_max(s : ImagefiltermedianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_buffer_to_string(s : ImagefiltermedianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_median_cursor_set(s : ImagefiltermedianCursor, i : Int, v : 
   result
 }
 
-pub fn image_filter_median_cursor_sum(s : ImagefiltermedianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_cursor_sum(s : ImagefiltermedianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_cursor_mean(s : ImagefiltermedianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_cursor_mean(s : ImagefiltermedianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_cursor_scale(s : ImagefiltermedianCursor, f : Double) -> ImagefiltermedianCursor {
   let result = image_filter_median_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_median_cursor_fill(s : ImagefiltermedianCursor, v : Double) 
   result
 }
 
-pub fn image_filter_median_cursor_min(s : ImagefiltermedianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_cursor_min(s : ImagefiltermedianCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_cursor_max(s : ImagefiltermedianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_cursor_max(s : ImagefiltermedianCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_cursor_to_string(s : ImagefiltermedianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_median_view_set(s : ImagefiltermedianView, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_median_view_sum(s : ImagefiltermedianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_view_sum(s : ImagefiltermedianView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_view_mean(s : ImagefiltermedianView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_view_mean(s : ImagefiltermedianView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_view_scale(s : ImagefiltermedianView, f : Double) -> ImagefiltermedianView {
   let result = image_filter_median_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_median_view_fill(s : ImagefiltermedianView, v : Double) -> I
   result
 }
 
-pub fn image_filter_median_view_min(s : ImagefiltermedianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_view_min(s : ImagefiltermedianView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_view_max(s : ImagefiltermedianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_view_max(s : ImagefiltermedianView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_view_to_string(s : ImagefiltermedianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_median_range_set(s : ImagefiltermedianRange, i : Int, v : Do
   result
 }
 
-pub fn image_filter_median_range_sum(s : ImagefiltermedianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_range_sum(s : ImagefiltermedianRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_range_mean(s : ImagefiltermedianRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_range_mean(s : ImagefiltermedianRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_range_scale(s : ImagefiltermedianRange, f : Double) -> ImagefiltermedianRange {
   let result = image_filter_median_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_median_range_fill(s : ImagefiltermedianRange, v : Double) ->
   result
 }
 
-pub fn image_filter_median_range_min(s : ImagefiltermedianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_range_min(s : ImagefiltermedianRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_range_max(s : ImagefiltermedianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_range_max(s : ImagefiltermedianRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_range_to_string(s : ImagefiltermedianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_median_slice_set(s : ImagefiltermedianSlice, i : Int, v : Do
   result
 }
 
-pub fn image_filter_median_slice_sum(s : ImagefiltermedianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_median_slice_sum(s : ImagefiltermedianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_median_slice_mean(s : ImagefiltermedianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_median_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_median_slice_mean(s : ImagefiltermedianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_median_slice_scale(s : ImagefiltermedianSlice, f : Double) -> ImagefiltermedianSlice {
   let result = image_filter_median_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_median_slice_fill(s : ImagefiltermedianSlice, v : Double) ->
   result
 }
 
-pub fn image_filter_median_slice_min(s : ImagefiltermedianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_slice_min(s : ImagefiltermedianSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_median_slice_max(s : ImagefiltermedianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_median_slice_max(s : ImagefiltermedianSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_median_slice_to_string(s : ImagefiltermedianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

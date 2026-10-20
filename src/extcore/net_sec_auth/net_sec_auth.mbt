@@ -88,11 +88,7 @@ pub fn net_sec_auth_make_series(vals : Array[Double], name : String) -> Netsecau
 
 pub fn net_sec_auth_series_len(s : NetsecauthSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_auth_series_sum(s : NetsecauthSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_auth_series_sum(s : NetsecauthSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_auth_series_mean(s : NetsecauthSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_auth_frame_set(s : NetsecauthFrame, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_auth_frame_sum(s : NetsecauthFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_frame_sum(s : NetsecauthFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_frame_mean(s : NetsecauthFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_frame_mean(s : NetsecauthFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_frame_scale(s : NetsecauthFrame, f : Double) -> NetsecauthFrame {
   let result = net_sec_auth_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_auth_frame_fill(s : NetsecauthFrame, v : Double) -> NetsecauthFra
   result
 }
 
-pub fn net_sec_auth_frame_min(s : NetsecauthFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_frame_min(s : NetsecauthFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_frame_max(s : NetsecauthFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_frame_max(s : NetsecauthFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_frame_to_string(s : NetsecauthFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_auth_table_set(s : NetsecauthTable, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_auth_table_sum(s : NetsecauthTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_table_sum(s : NetsecauthTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_table_mean(s : NetsecauthTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_table_mean(s : NetsecauthTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_table_scale(s : NetsecauthTable, f : Double) -> NetsecauthTable {
   let result = net_sec_auth_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_auth_table_fill(s : NetsecauthTable, v : Double) -> NetsecauthTab
   result
 }
 
-pub fn net_sec_auth_table_min(s : NetsecauthTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_table_min(s : NetsecauthTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_table_max(s : NetsecauthTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_table_max(s : NetsecauthTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_table_to_string(s : NetsecauthTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_auth_graphn_set(s : NetsecauthGraphN, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_auth_graphn_sum(s : NetsecauthGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_graphn_sum(s : NetsecauthGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_graphn_mean(s : NetsecauthGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_graphn_mean(s : NetsecauthGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_graphn_scale(s : NetsecauthGraphN, f : Double) -> NetsecauthGraphN {
   let result = net_sec_auth_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_auth_graphn_fill(s : NetsecauthGraphN, v : Double) -> NetsecauthG
   result
 }
 
-pub fn net_sec_auth_graphn_min(s : NetsecauthGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_graphn_min(s : NetsecauthGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_graphn_max(s : NetsecauthGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_graphn_max(s : NetsecauthGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_graphn_to_string(s : NetsecauthGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_auth_node_set(s : NetsecauthNode, i : Int, v : Double) -> Netseca
   result
 }
 
-pub fn net_sec_auth_node_sum(s : NetsecauthNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_node_sum(s : NetsecauthNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_node_mean(s : NetsecauthNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_node_mean(s : NetsecauthNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_node_scale(s : NetsecauthNode, f : Double) -> NetsecauthNode {
   let result = net_sec_auth_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_auth_node_fill(s : NetsecauthNode, v : Double) -> NetsecauthNode 
   result
 }
 
-pub fn net_sec_auth_node_min(s : NetsecauthNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_node_min(s : NetsecauthNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_node_max(s : NetsecauthNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_node_max(s : NetsecauthNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_node_to_string(s : NetsecauthNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_auth_edge_set(s : NetsecauthEdge, i : Int, v : Double) -> Netseca
   result
 }
 
-pub fn net_sec_auth_edge_sum(s : NetsecauthEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_edge_sum(s : NetsecauthEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_edge_mean(s : NetsecauthEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_edge_mean(s : NetsecauthEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_edge_scale(s : NetsecauthEdge, f : Double) -> NetsecauthEdge {
   let result = net_sec_auth_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_auth_edge_fill(s : NetsecauthEdge, v : Double) -> NetsecauthEdge 
   result
 }
 
-pub fn net_sec_auth_edge_min(s : NetsecauthEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_edge_min(s : NetsecauthEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_edge_max(s : NetsecauthEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_edge_max(s : NetsecauthEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_edge_to_string(s : NetsecauthEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_auth_path_set(s : NetsecauthPath, i : Int, v : Double) -> Netseca
   result
 }
 
-pub fn net_sec_auth_path_sum(s : NetsecauthPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_path_sum(s : NetsecauthPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_path_mean(s : NetsecauthPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_path_mean(s : NetsecauthPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_path_scale(s : NetsecauthPath, f : Double) -> NetsecauthPath {
   let result = net_sec_auth_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_auth_path_fill(s : NetsecauthPath, v : Double) -> NetsecauthPath 
   result
 }
 
-pub fn net_sec_auth_path_min(s : NetsecauthPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_path_min(s : NetsecauthPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_path_max(s : NetsecauthPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_path_max(s : NetsecauthPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_path_to_string(s : NetsecauthPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_auth_cluster_set(s : NetsecauthCluster, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_sec_auth_cluster_sum(s : NetsecauthCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_cluster_sum(s : NetsecauthCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_cluster_mean(s : NetsecauthCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_cluster_mean(s : NetsecauthCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_cluster_scale(s : NetsecauthCluster, f : Double) -> NetsecauthCluster {
   let result = net_sec_auth_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_auth_cluster_fill(s : NetsecauthCluster, v : Double) -> Netsecaut
   result
 }
 
-pub fn net_sec_auth_cluster_min(s : NetsecauthCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_cluster_min(s : NetsecauthCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_cluster_max(s : NetsecauthCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_cluster_max(s : NetsecauthCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_cluster_to_string(s : NetsecauthCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_auth_model_set(s : NetsecauthModel, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_auth_model_sum(s : NetsecauthModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_model_sum(s : NetsecauthModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_model_mean(s : NetsecauthModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_model_mean(s : NetsecauthModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_model_scale(s : NetsecauthModel, f : Double) -> NetsecauthModel {
   let result = net_sec_auth_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_auth_model_fill(s : NetsecauthModel, v : Double) -> NetsecauthMod
   result
 }
 
-pub fn net_sec_auth_model_min(s : NetsecauthModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_model_min(s : NetsecauthModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_model_max(s : NetsecauthModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_model_max(s : NetsecauthModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_model_to_string(s : NetsecauthModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_auth_layer_set(s : NetsecauthLayer, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_auth_layer_sum(s : NetsecauthLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_layer_sum(s : NetsecauthLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_layer_mean(s : NetsecauthLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_layer_mean(s : NetsecauthLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_layer_scale(s : NetsecauthLayer, f : Double) -> NetsecauthLayer {
   let result = net_sec_auth_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_auth_layer_fill(s : NetsecauthLayer, v : Double) -> NetsecauthLay
   result
 }
 
-pub fn net_sec_auth_layer_min(s : NetsecauthLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_layer_min(s : NetsecauthLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_layer_max(s : NetsecauthLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_layer_max(s : NetsecauthLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_layer_to_string(s : NetsecauthLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_auth_buffer_set(s : NetsecauthBuffer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_auth_buffer_sum(s : NetsecauthBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_buffer_sum(s : NetsecauthBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_buffer_mean(s : NetsecauthBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_buffer_mean(s : NetsecauthBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_buffer_scale(s : NetsecauthBuffer, f : Double) -> NetsecauthBuffer {
   let result = net_sec_auth_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_auth_buffer_fill(s : NetsecauthBuffer, v : Double) -> NetsecauthB
   result
 }
 
-pub fn net_sec_auth_buffer_min(s : NetsecauthBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_buffer_min(s : NetsecauthBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_buffer_max(s : NetsecauthBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_buffer_max(s : NetsecauthBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_buffer_to_string(s : NetsecauthBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_auth_cursor_set(s : NetsecauthCursor, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_auth_cursor_sum(s : NetsecauthCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_cursor_sum(s : NetsecauthCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_cursor_mean(s : NetsecauthCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_cursor_mean(s : NetsecauthCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_cursor_scale(s : NetsecauthCursor, f : Double) -> NetsecauthCursor {
   let result = net_sec_auth_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_auth_cursor_fill(s : NetsecauthCursor, v : Double) -> NetsecauthC
   result
 }
 
-pub fn net_sec_auth_cursor_min(s : NetsecauthCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_cursor_min(s : NetsecauthCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_cursor_max(s : NetsecauthCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_cursor_max(s : NetsecauthCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_cursor_to_string(s : NetsecauthCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_auth_view_set(s : NetsecauthView, i : Int, v : Double) -> Netseca
   result
 }
 
-pub fn net_sec_auth_view_sum(s : NetsecauthView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_view_sum(s : NetsecauthView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_view_mean(s : NetsecauthView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_view_mean(s : NetsecauthView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_view_scale(s : NetsecauthView, f : Double) -> NetsecauthView {
   let result = net_sec_auth_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_auth_view_fill(s : NetsecauthView, v : Double) -> NetsecauthView 
   result
 }
 
-pub fn net_sec_auth_view_min(s : NetsecauthView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_view_min(s : NetsecauthView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_view_max(s : NetsecauthView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_view_max(s : NetsecauthView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_view_to_string(s : NetsecauthView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_auth_range_set(s : NetsecauthRange, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_auth_range_sum(s : NetsecauthRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_range_sum(s : NetsecauthRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_range_mean(s : NetsecauthRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_range_mean(s : NetsecauthRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_range_scale(s : NetsecauthRange, f : Double) -> NetsecauthRange {
   let result = net_sec_auth_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_auth_range_fill(s : NetsecauthRange, v : Double) -> NetsecauthRan
   result
 }
 
-pub fn net_sec_auth_range_min(s : NetsecauthRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_range_min(s : NetsecauthRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_range_max(s : NetsecauthRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_range_max(s : NetsecauthRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_range_to_string(s : NetsecauthRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_auth_slice_set(s : NetsecauthSlice, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_auth_slice_sum(s : NetsecauthSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_auth_slice_sum(s : NetsecauthSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_auth_slice_mean(s : NetsecauthSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_auth_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_auth_slice_mean(s : NetsecauthSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_auth_slice_scale(s : NetsecauthSlice, f : Double) -> NetsecauthSlice {
   let result = net_sec_auth_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_auth_slice_fill(s : NetsecauthSlice, v : Double) -> NetsecauthSli
   result
 }
 
-pub fn net_sec_auth_slice_min(s : NetsecauthSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_slice_min(s : NetsecauthSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_auth_slice_max(s : NetsecauthSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_auth_slice_max(s : NetsecauthSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_auth_slice_to_string(s : NetsecauthSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

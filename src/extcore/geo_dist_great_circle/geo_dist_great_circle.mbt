@@ -88,11 +88,7 @@ pub fn geo_dist_great_circle_make_series(vals : Array[Double], name : String) ->
 
 pub fn geo_dist_great_circle_series_len(s : GeodistgreatcircleSeries) -> Int { s.vals.length() }
 
-pub fn geo_dist_great_circle_series_sum(s : GeodistgreatcircleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_dist_great_circle_series_sum(s : GeodistgreatcircleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_dist_great_circle_series_mean(s : GeodistgreatcircleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_dist_great_circle_frame_set(s : GeodistgreatcircleFrame, i : Int, v :
   result
 }
 
-pub fn geo_dist_great_circle_frame_sum(s : GeodistgreatcircleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_frame_sum(s : GeodistgreatcircleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_frame_mean(s : GeodistgreatcircleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_frame_mean(s : GeodistgreatcircleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_frame_scale(s : GeodistgreatcircleFrame, f : Double) -> GeodistgreatcircleFrame {
   let result = geo_dist_great_circle_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_dist_great_circle_frame_fill(s : GeodistgreatcircleFrame, v : Double)
   result
 }
 
-pub fn geo_dist_great_circle_frame_min(s : GeodistgreatcircleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_frame_min(s : GeodistgreatcircleFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_frame_max(s : GeodistgreatcircleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_frame_max(s : GeodistgreatcircleFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_frame_to_string(s : GeodistgreatcircleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_dist_great_circle_table_set(s : GeodistgreatcircleTable, i : Int, v :
   result
 }
 
-pub fn geo_dist_great_circle_table_sum(s : GeodistgreatcircleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_table_sum(s : GeodistgreatcircleTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_table_mean(s : GeodistgreatcircleTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_table_mean(s : GeodistgreatcircleTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_table_scale(s : GeodistgreatcircleTable, f : Double) -> GeodistgreatcircleTable {
   let result = geo_dist_great_circle_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_dist_great_circle_table_fill(s : GeodistgreatcircleTable, v : Double)
   result
 }
 
-pub fn geo_dist_great_circle_table_min(s : GeodistgreatcircleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_table_min(s : GeodistgreatcircleTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_table_max(s : GeodistgreatcircleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_table_max(s : GeodistgreatcircleTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_table_to_string(s : GeodistgreatcircleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_dist_great_circle_graphn_set(s : GeodistgreatcircleGraphN, i : Int, v
   result
 }
 
-pub fn geo_dist_great_circle_graphn_sum(s : GeodistgreatcircleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_graphn_sum(s : GeodistgreatcircleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_graphn_mean(s : GeodistgreatcircleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_graphn_mean(s : GeodistgreatcircleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_graphn_scale(s : GeodistgreatcircleGraphN, f : Double) -> GeodistgreatcircleGraphN {
   let result = geo_dist_great_circle_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_dist_great_circle_graphn_fill(s : GeodistgreatcircleGraphN, v : Doubl
   result
 }
 
-pub fn geo_dist_great_circle_graphn_min(s : GeodistgreatcircleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_graphn_min(s : GeodistgreatcircleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_graphn_max(s : GeodistgreatcircleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_graphn_max(s : GeodistgreatcircleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_graphn_to_string(s : GeodistgreatcircleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_dist_great_circle_node_set(s : GeodistgreatcircleNode, i : Int, v : D
   result
 }
 
-pub fn geo_dist_great_circle_node_sum(s : GeodistgreatcircleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_node_sum(s : GeodistgreatcircleNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_node_mean(s : GeodistgreatcircleNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_node_mean(s : GeodistgreatcircleNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_node_scale(s : GeodistgreatcircleNode, f : Double) -> GeodistgreatcircleNode {
   let result = geo_dist_great_circle_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_dist_great_circle_node_fill(s : GeodistgreatcircleNode, v : Double) -
   result
 }
 
-pub fn geo_dist_great_circle_node_min(s : GeodistgreatcircleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_node_min(s : GeodistgreatcircleNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_node_max(s : GeodistgreatcircleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_node_max(s : GeodistgreatcircleNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_node_to_string(s : GeodistgreatcircleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_dist_great_circle_edge_set(s : GeodistgreatcircleEdge, i : Int, v : D
   result
 }
 
-pub fn geo_dist_great_circle_edge_sum(s : GeodistgreatcircleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_edge_sum(s : GeodistgreatcircleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_edge_mean(s : GeodistgreatcircleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_edge_mean(s : GeodistgreatcircleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_edge_scale(s : GeodistgreatcircleEdge, f : Double) -> GeodistgreatcircleEdge {
   let result = geo_dist_great_circle_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_dist_great_circle_edge_fill(s : GeodistgreatcircleEdge, v : Double) -
   result
 }
 
-pub fn geo_dist_great_circle_edge_min(s : GeodistgreatcircleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_edge_min(s : GeodistgreatcircleEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_edge_max(s : GeodistgreatcircleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_edge_max(s : GeodistgreatcircleEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_edge_to_string(s : GeodistgreatcircleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_dist_great_circle_path_set(s : GeodistgreatcirclePath, i : Int, v : D
   result
 }
 
-pub fn geo_dist_great_circle_path_sum(s : GeodistgreatcirclePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_path_sum(s : GeodistgreatcirclePath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_path_mean(s : GeodistgreatcirclePath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_path_mean(s : GeodistgreatcirclePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_path_scale(s : GeodistgreatcirclePath, f : Double) -> GeodistgreatcirclePath {
   let result = geo_dist_great_circle_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_dist_great_circle_path_fill(s : GeodistgreatcirclePath, v : Double) -
   result
 }
 
-pub fn geo_dist_great_circle_path_min(s : GeodistgreatcirclePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_path_min(s : GeodistgreatcirclePath) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_path_max(s : GeodistgreatcirclePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_path_max(s : GeodistgreatcirclePath) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_path_to_string(s : GeodistgreatcirclePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_dist_great_circle_cluster_set(s : GeodistgreatcircleCluster, i : Int,
   result
 }
 
-pub fn geo_dist_great_circle_cluster_sum(s : GeodistgreatcircleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_cluster_sum(s : GeodistgreatcircleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_cluster_mean(s : GeodistgreatcircleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_cluster_mean(s : GeodistgreatcircleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_cluster_scale(s : GeodistgreatcircleCluster, f : Double) -> GeodistgreatcircleCluster {
   let result = geo_dist_great_circle_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_dist_great_circle_cluster_fill(s : GeodistgreatcircleCluster, v : Dou
   result
 }
 
-pub fn geo_dist_great_circle_cluster_min(s : GeodistgreatcircleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_cluster_min(s : GeodistgreatcircleCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_cluster_max(s : GeodistgreatcircleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_cluster_max(s : GeodistgreatcircleCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_cluster_to_string(s : GeodistgreatcircleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_dist_great_circle_model_set(s : GeodistgreatcircleModel, i : Int, v :
   result
 }
 
-pub fn geo_dist_great_circle_model_sum(s : GeodistgreatcircleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_model_sum(s : GeodistgreatcircleModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_model_mean(s : GeodistgreatcircleModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_model_mean(s : GeodistgreatcircleModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_model_scale(s : GeodistgreatcircleModel, f : Double) -> GeodistgreatcircleModel {
   let result = geo_dist_great_circle_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_dist_great_circle_model_fill(s : GeodistgreatcircleModel, v : Double)
   result
 }
 
-pub fn geo_dist_great_circle_model_min(s : GeodistgreatcircleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_model_min(s : GeodistgreatcircleModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_model_max(s : GeodistgreatcircleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_model_max(s : GeodistgreatcircleModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_model_to_string(s : GeodistgreatcircleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_dist_great_circle_layer_set(s : GeodistgreatcircleLayer, i : Int, v :
   result
 }
 
-pub fn geo_dist_great_circle_layer_sum(s : GeodistgreatcircleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_layer_sum(s : GeodistgreatcircleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_layer_mean(s : GeodistgreatcircleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_layer_mean(s : GeodistgreatcircleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_layer_scale(s : GeodistgreatcircleLayer, f : Double) -> GeodistgreatcircleLayer {
   let result = geo_dist_great_circle_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_dist_great_circle_layer_fill(s : GeodistgreatcircleLayer, v : Double)
   result
 }
 
-pub fn geo_dist_great_circle_layer_min(s : GeodistgreatcircleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_layer_min(s : GeodistgreatcircleLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_layer_max(s : GeodistgreatcircleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_layer_max(s : GeodistgreatcircleLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_layer_to_string(s : GeodistgreatcircleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_dist_great_circle_buffer_set(s : GeodistgreatcircleBuffer, i : Int, v
   result
 }
 
-pub fn geo_dist_great_circle_buffer_sum(s : GeodistgreatcircleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_buffer_sum(s : GeodistgreatcircleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_buffer_mean(s : GeodistgreatcircleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_buffer_mean(s : GeodistgreatcircleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_buffer_scale(s : GeodistgreatcircleBuffer, f : Double) -> GeodistgreatcircleBuffer {
   let result = geo_dist_great_circle_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_dist_great_circle_buffer_fill(s : GeodistgreatcircleBuffer, v : Doubl
   result
 }
 
-pub fn geo_dist_great_circle_buffer_min(s : GeodistgreatcircleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_buffer_min(s : GeodistgreatcircleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_buffer_max(s : GeodistgreatcircleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_buffer_max(s : GeodistgreatcircleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_buffer_to_string(s : GeodistgreatcircleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_dist_great_circle_cursor_set(s : GeodistgreatcircleCursor, i : Int, v
   result
 }
 
-pub fn geo_dist_great_circle_cursor_sum(s : GeodistgreatcircleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_cursor_sum(s : GeodistgreatcircleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_cursor_mean(s : GeodistgreatcircleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_cursor_mean(s : GeodistgreatcircleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_cursor_scale(s : GeodistgreatcircleCursor, f : Double) -> GeodistgreatcircleCursor {
   let result = geo_dist_great_circle_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_dist_great_circle_cursor_fill(s : GeodistgreatcircleCursor, v : Doubl
   result
 }
 
-pub fn geo_dist_great_circle_cursor_min(s : GeodistgreatcircleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_cursor_min(s : GeodistgreatcircleCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_cursor_max(s : GeodistgreatcircleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_cursor_max(s : GeodistgreatcircleCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_cursor_to_string(s : GeodistgreatcircleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_dist_great_circle_view_set(s : GeodistgreatcircleView, i : Int, v : D
   result
 }
 
-pub fn geo_dist_great_circle_view_sum(s : GeodistgreatcircleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_view_sum(s : GeodistgreatcircleView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_view_mean(s : GeodistgreatcircleView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_view_mean(s : GeodistgreatcircleView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_view_scale(s : GeodistgreatcircleView, f : Double) -> GeodistgreatcircleView {
   let result = geo_dist_great_circle_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_dist_great_circle_view_fill(s : GeodistgreatcircleView, v : Double) -
   result
 }
 
-pub fn geo_dist_great_circle_view_min(s : GeodistgreatcircleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_view_min(s : GeodistgreatcircleView) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_view_max(s : GeodistgreatcircleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_view_max(s : GeodistgreatcircleView) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_view_to_string(s : GeodistgreatcircleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_dist_great_circle_range_set(s : GeodistgreatcircleRange, i : Int, v :
   result
 }
 
-pub fn geo_dist_great_circle_range_sum(s : GeodistgreatcircleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_range_sum(s : GeodistgreatcircleRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_range_mean(s : GeodistgreatcircleRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_range_mean(s : GeodistgreatcircleRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_range_scale(s : GeodistgreatcircleRange, f : Double) -> GeodistgreatcircleRange {
   let result = geo_dist_great_circle_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_dist_great_circle_range_fill(s : GeodistgreatcircleRange, v : Double)
   result
 }
 
-pub fn geo_dist_great_circle_range_min(s : GeodistgreatcircleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_range_min(s : GeodistgreatcircleRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_range_max(s : GeodistgreatcircleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_range_max(s : GeodistgreatcircleRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_range_to_string(s : GeodistgreatcircleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_dist_great_circle_slice_set(s : GeodistgreatcircleSlice, i : Int, v :
   result
 }
 
-pub fn geo_dist_great_circle_slice_sum(s : GeodistgreatcircleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_great_circle_slice_sum(s : GeodistgreatcircleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_great_circle_slice_mean(s : GeodistgreatcircleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_great_circle_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_great_circle_slice_mean(s : GeodistgreatcircleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_great_circle_slice_scale(s : GeodistgreatcircleSlice, f : Double) -> GeodistgreatcircleSlice {
   let result = geo_dist_great_circle_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_dist_great_circle_slice_fill(s : GeodistgreatcircleSlice, v : Double)
   result
 }
 
-pub fn geo_dist_great_circle_slice_min(s : GeodistgreatcircleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_slice_min(s : GeodistgreatcircleSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_great_circle_slice_max(s : GeodistgreatcircleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_great_circle_slice_max(s : GeodistgreatcircleSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_great_circle_slice_to_string(s : GeodistgreatcircleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_metric_roc_make_series(vals : Array[Double], name : String) -> Mlmetri
 
 pub fn ml_metric_roc_series_len(s : MlmetricrocSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_roc_series_sum(s : MlmetricrocSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_roc_series_sum(s : MlmetricrocSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_roc_series_mean(s : MlmetricrocSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_roc_frame_set(s : MlmetricrocFrame, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_roc_frame_sum(s : MlmetricrocFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_frame_sum(s : MlmetricrocFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_frame_mean(s : MlmetricrocFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_frame_mean(s : MlmetricrocFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_frame_scale(s : MlmetricrocFrame, f : Double) -> MlmetricrocFrame {
   let result = ml_metric_roc_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_roc_frame_fill(s : MlmetricrocFrame, v : Double) -> Mlmetricroc
   result
 }
 
-pub fn ml_metric_roc_frame_min(s : MlmetricrocFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_frame_min(s : MlmetricrocFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_frame_max(s : MlmetricrocFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_frame_max(s : MlmetricrocFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_frame_to_string(s : MlmetricrocFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_roc_table_set(s : MlmetricrocTable, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_roc_table_sum(s : MlmetricrocTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_table_sum(s : MlmetricrocTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_table_mean(s : MlmetricrocTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_table_mean(s : MlmetricrocTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_table_scale(s : MlmetricrocTable, f : Double) -> MlmetricrocTable {
   let result = ml_metric_roc_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_roc_table_fill(s : MlmetricrocTable, v : Double) -> Mlmetricroc
   result
 }
 
-pub fn ml_metric_roc_table_min(s : MlmetricrocTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_table_min(s : MlmetricrocTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_table_max(s : MlmetricrocTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_table_max(s : MlmetricrocTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_table_to_string(s : MlmetricrocTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_roc_graphn_set(s : MlmetricrocGraphN, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_metric_roc_graphn_sum(s : MlmetricrocGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_graphn_sum(s : MlmetricrocGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_graphn_mean(s : MlmetricrocGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_graphn_mean(s : MlmetricrocGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_graphn_scale(s : MlmetricrocGraphN, f : Double) -> MlmetricrocGraphN {
   let result = ml_metric_roc_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_roc_graphn_fill(s : MlmetricrocGraphN, v : Double) -> Mlmetricr
   result
 }
 
-pub fn ml_metric_roc_graphn_min(s : MlmetricrocGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_graphn_min(s : MlmetricrocGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_graphn_max(s : MlmetricrocGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_graphn_max(s : MlmetricrocGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_graphn_to_string(s : MlmetricrocGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_roc_node_set(s : MlmetricrocNode, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_roc_node_sum(s : MlmetricrocNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_node_sum(s : MlmetricrocNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_node_mean(s : MlmetricrocNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_node_mean(s : MlmetricrocNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_node_scale(s : MlmetricrocNode, f : Double) -> MlmetricrocNode {
   let result = ml_metric_roc_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_roc_node_fill(s : MlmetricrocNode, v : Double) -> MlmetricrocNo
   result
 }
 
-pub fn ml_metric_roc_node_min(s : MlmetricrocNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_node_min(s : MlmetricrocNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_node_max(s : MlmetricrocNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_node_max(s : MlmetricrocNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_node_to_string(s : MlmetricrocNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_roc_edge_set(s : MlmetricrocEdge, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_roc_edge_sum(s : MlmetricrocEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_edge_sum(s : MlmetricrocEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_edge_mean(s : MlmetricrocEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_edge_mean(s : MlmetricrocEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_edge_scale(s : MlmetricrocEdge, f : Double) -> MlmetricrocEdge {
   let result = ml_metric_roc_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_roc_edge_fill(s : MlmetricrocEdge, v : Double) -> MlmetricrocEd
   result
 }
 
-pub fn ml_metric_roc_edge_min(s : MlmetricrocEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_edge_min(s : MlmetricrocEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_edge_max(s : MlmetricrocEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_edge_max(s : MlmetricrocEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_edge_to_string(s : MlmetricrocEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_roc_path_set(s : MlmetricrocPath, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_roc_path_sum(s : MlmetricrocPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_path_sum(s : MlmetricrocPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_path_mean(s : MlmetricrocPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_path_mean(s : MlmetricrocPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_path_scale(s : MlmetricrocPath, f : Double) -> MlmetricrocPath {
   let result = ml_metric_roc_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_roc_path_fill(s : MlmetricrocPath, v : Double) -> MlmetricrocPa
   result
 }
 
-pub fn ml_metric_roc_path_min(s : MlmetricrocPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_path_min(s : MlmetricrocPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_path_max(s : MlmetricrocPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_path_max(s : MlmetricrocPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_path_to_string(s : MlmetricrocPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_roc_cluster_set(s : MlmetricrocCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_metric_roc_cluster_sum(s : MlmetricrocCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_cluster_sum(s : MlmetricrocCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_cluster_mean(s : MlmetricrocCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_cluster_mean(s : MlmetricrocCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_cluster_scale(s : MlmetricrocCluster, f : Double) -> MlmetricrocCluster {
   let result = ml_metric_roc_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_roc_cluster_fill(s : MlmetricrocCluster, v : Double) -> Mlmetri
   result
 }
 
-pub fn ml_metric_roc_cluster_min(s : MlmetricrocCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_cluster_min(s : MlmetricrocCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_cluster_max(s : MlmetricrocCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_cluster_max(s : MlmetricrocCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_cluster_to_string(s : MlmetricrocCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_roc_model_set(s : MlmetricrocModel, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_roc_model_sum(s : MlmetricrocModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_model_sum(s : MlmetricrocModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_model_mean(s : MlmetricrocModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_model_mean(s : MlmetricrocModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_model_scale(s : MlmetricrocModel, f : Double) -> MlmetricrocModel {
   let result = ml_metric_roc_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_roc_model_fill(s : MlmetricrocModel, v : Double) -> Mlmetricroc
   result
 }
 
-pub fn ml_metric_roc_model_min(s : MlmetricrocModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_model_min(s : MlmetricrocModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_model_max(s : MlmetricrocModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_model_max(s : MlmetricrocModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_model_to_string(s : MlmetricrocModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_roc_layer_set(s : MlmetricrocLayer, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_roc_layer_sum(s : MlmetricrocLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_layer_sum(s : MlmetricrocLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_layer_mean(s : MlmetricrocLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_layer_mean(s : MlmetricrocLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_layer_scale(s : MlmetricrocLayer, f : Double) -> MlmetricrocLayer {
   let result = ml_metric_roc_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_roc_layer_fill(s : MlmetricrocLayer, v : Double) -> Mlmetricroc
   result
 }
 
-pub fn ml_metric_roc_layer_min(s : MlmetricrocLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_layer_min(s : MlmetricrocLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_layer_max(s : MlmetricrocLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_layer_max(s : MlmetricrocLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_layer_to_string(s : MlmetricrocLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_roc_buffer_set(s : MlmetricrocBuffer, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_metric_roc_buffer_sum(s : MlmetricrocBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_buffer_sum(s : MlmetricrocBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_buffer_mean(s : MlmetricrocBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_buffer_mean(s : MlmetricrocBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_buffer_scale(s : MlmetricrocBuffer, f : Double) -> MlmetricrocBuffer {
   let result = ml_metric_roc_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_roc_buffer_fill(s : MlmetricrocBuffer, v : Double) -> Mlmetricr
   result
 }
 
-pub fn ml_metric_roc_buffer_min(s : MlmetricrocBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_buffer_min(s : MlmetricrocBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_buffer_max(s : MlmetricrocBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_buffer_max(s : MlmetricrocBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_buffer_to_string(s : MlmetricrocBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_roc_cursor_set(s : MlmetricrocCursor, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_metric_roc_cursor_sum(s : MlmetricrocCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_cursor_sum(s : MlmetricrocCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_cursor_mean(s : MlmetricrocCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_cursor_mean(s : MlmetricrocCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_cursor_scale(s : MlmetricrocCursor, f : Double) -> MlmetricrocCursor {
   let result = ml_metric_roc_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_roc_cursor_fill(s : MlmetricrocCursor, v : Double) -> Mlmetricr
   result
 }
 
-pub fn ml_metric_roc_cursor_min(s : MlmetricrocCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_cursor_min(s : MlmetricrocCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_cursor_max(s : MlmetricrocCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_cursor_max(s : MlmetricrocCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_cursor_to_string(s : MlmetricrocCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_roc_view_set(s : MlmetricrocView, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_roc_view_sum(s : MlmetricrocView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_view_sum(s : MlmetricrocView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_view_mean(s : MlmetricrocView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_view_mean(s : MlmetricrocView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_view_scale(s : MlmetricrocView, f : Double) -> MlmetricrocView {
   let result = ml_metric_roc_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_roc_view_fill(s : MlmetricrocView, v : Double) -> MlmetricrocVi
   result
 }
 
-pub fn ml_metric_roc_view_min(s : MlmetricrocView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_view_min(s : MlmetricrocView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_view_max(s : MlmetricrocView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_view_max(s : MlmetricrocView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_view_to_string(s : MlmetricrocView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_roc_range_set(s : MlmetricrocRange, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_roc_range_sum(s : MlmetricrocRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_range_sum(s : MlmetricrocRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_range_mean(s : MlmetricrocRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_range_mean(s : MlmetricrocRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_range_scale(s : MlmetricrocRange, f : Double) -> MlmetricrocRange {
   let result = ml_metric_roc_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_roc_range_fill(s : MlmetricrocRange, v : Double) -> Mlmetricroc
   result
 }
 
-pub fn ml_metric_roc_range_min(s : MlmetricrocRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_range_min(s : MlmetricrocRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_range_max(s : MlmetricrocRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_range_max(s : MlmetricrocRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_range_to_string(s : MlmetricrocRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_roc_slice_set(s : MlmetricrocSlice, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_roc_slice_sum(s : MlmetricrocSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_roc_slice_sum(s : MlmetricrocSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_roc_slice_mean(s : MlmetricrocSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_roc_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_roc_slice_mean(s : MlmetricrocSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_roc_slice_scale(s : MlmetricrocSlice, f : Double) -> MlmetricrocSlice {
   let result = ml_metric_roc_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_roc_slice_fill(s : MlmetricrocSlice, v : Double) -> Mlmetricroc
   result
 }
 
-pub fn ml_metric_roc_slice_min(s : MlmetricrocSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_slice_min(s : MlmetricrocSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_roc_slice_max(s : MlmetricrocSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_roc_slice_max(s : MlmetricrocSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_roc_slice_to_string(s : MlmetricrocSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_numerical_diff_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_numerical_diff_series_len(s : MathnumericaldiffSeries) -> Int { s.vals.length() }
 
-pub fn math_numerical_diff_series_sum(s : MathnumericaldiffSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_numerical_diff_series_sum(s : MathnumericaldiffSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_numerical_diff_series_mean(s : MathnumericaldiffSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_numerical_diff_frame_set(s : MathnumericaldiffFrame, i : Int, v : Do
   result
 }
 
-pub fn math_numerical_diff_frame_sum(s : MathnumericaldiffFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_frame_sum(s : MathnumericaldiffFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_frame_mean(s : MathnumericaldiffFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_frame_mean(s : MathnumericaldiffFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_frame_scale(s : MathnumericaldiffFrame, f : Double) -> MathnumericaldiffFrame {
   let result = math_numerical_diff_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_numerical_diff_frame_fill(s : MathnumericaldiffFrame, v : Double) ->
   result
 }
 
-pub fn math_numerical_diff_frame_min(s : MathnumericaldiffFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_frame_min(s : MathnumericaldiffFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_frame_max(s : MathnumericaldiffFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_frame_max(s : MathnumericaldiffFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_frame_to_string(s : MathnumericaldiffFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_numerical_diff_table_set(s : MathnumericaldiffTable, i : Int, v : Do
   result
 }
 
-pub fn math_numerical_diff_table_sum(s : MathnumericaldiffTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_table_sum(s : MathnumericaldiffTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_table_mean(s : MathnumericaldiffTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_table_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_table_mean(s : MathnumericaldiffTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_table_scale(s : MathnumericaldiffTable, f : Double) -> MathnumericaldiffTable {
   let result = math_numerical_diff_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_numerical_diff_table_fill(s : MathnumericaldiffTable, v : Double) ->
   result
 }
 
-pub fn math_numerical_diff_table_min(s : MathnumericaldiffTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_table_min(s : MathnumericaldiffTable) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_table_max(s : MathnumericaldiffTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_table_max(s : MathnumericaldiffTable) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_table_to_string(s : MathnumericaldiffTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_numerical_diff_graphn_set(s : MathnumericaldiffGraphN, i : Int, v : 
   result
 }
 
-pub fn math_numerical_diff_graphn_sum(s : MathnumericaldiffGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_graphn_sum(s : MathnumericaldiffGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_graphn_mean(s : MathnumericaldiffGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_graphn_mean(s : MathnumericaldiffGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_graphn_scale(s : MathnumericaldiffGraphN, f : Double) -> MathnumericaldiffGraphN {
   let result = math_numerical_diff_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_numerical_diff_graphn_fill(s : MathnumericaldiffGraphN, v : Double) 
   result
 }
 
-pub fn math_numerical_diff_graphn_min(s : MathnumericaldiffGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_graphn_min(s : MathnumericaldiffGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_graphn_max(s : MathnumericaldiffGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_graphn_max(s : MathnumericaldiffGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_graphn_to_string(s : MathnumericaldiffGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_numerical_diff_node_set(s : MathnumericaldiffNode, i : Int, v : Doub
   result
 }
 
-pub fn math_numerical_diff_node_sum(s : MathnumericaldiffNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_node_sum(s : MathnumericaldiffNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_node_mean(s : MathnumericaldiffNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_node_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_node_mean(s : MathnumericaldiffNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_node_scale(s : MathnumericaldiffNode, f : Double) -> MathnumericaldiffNode {
   let result = math_numerical_diff_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_numerical_diff_node_fill(s : MathnumericaldiffNode, v : Double) -> M
   result
 }
 
-pub fn math_numerical_diff_node_min(s : MathnumericaldiffNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_node_min(s : MathnumericaldiffNode) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_node_max(s : MathnumericaldiffNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_node_max(s : MathnumericaldiffNode) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_node_to_string(s : MathnumericaldiffNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_numerical_diff_edge_set(s : MathnumericaldiffEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_numerical_diff_edge_sum(s : MathnumericaldiffEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_edge_sum(s : MathnumericaldiffEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_edge_mean(s : MathnumericaldiffEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_edge_mean(s : MathnumericaldiffEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_edge_scale(s : MathnumericaldiffEdge, f : Double) -> MathnumericaldiffEdge {
   let result = math_numerical_diff_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_numerical_diff_edge_fill(s : MathnumericaldiffEdge, v : Double) -> M
   result
 }
 
-pub fn math_numerical_diff_edge_min(s : MathnumericaldiffEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_edge_min(s : MathnumericaldiffEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_edge_max(s : MathnumericaldiffEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_edge_max(s : MathnumericaldiffEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_edge_to_string(s : MathnumericaldiffEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_numerical_diff_path_set(s : MathnumericaldiffPath, i : Int, v : Doub
   result
 }
 
-pub fn math_numerical_diff_path_sum(s : MathnumericaldiffPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_path_sum(s : MathnumericaldiffPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_path_mean(s : MathnumericaldiffPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_path_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_path_mean(s : MathnumericaldiffPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_path_scale(s : MathnumericaldiffPath, f : Double) -> MathnumericaldiffPath {
   let result = math_numerical_diff_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_numerical_diff_path_fill(s : MathnumericaldiffPath, v : Double) -> M
   result
 }
 
-pub fn math_numerical_diff_path_min(s : MathnumericaldiffPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_path_min(s : MathnumericaldiffPath) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_path_max(s : MathnumericaldiffPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_path_max(s : MathnumericaldiffPath) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_path_to_string(s : MathnumericaldiffPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_numerical_diff_cluster_set(s : MathnumericaldiffCluster, i : Int, v 
   result
 }
 
-pub fn math_numerical_diff_cluster_sum(s : MathnumericaldiffCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_cluster_sum(s : MathnumericaldiffCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_cluster_mean(s : MathnumericaldiffCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_cluster_mean(s : MathnumericaldiffCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_cluster_scale(s : MathnumericaldiffCluster, f : Double) -> MathnumericaldiffCluster {
   let result = math_numerical_diff_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_numerical_diff_cluster_fill(s : MathnumericaldiffCluster, v : Double
   result
 }
 
-pub fn math_numerical_diff_cluster_min(s : MathnumericaldiffCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_cluster_min(s : MathnumericaldiffCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_cluster_max(s : MathnumericaldiffCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_cluster_max(s : MathnumericaldiffCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_cluster_to_string(s : MathnumericaldiffCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_numerical_diff_model_set(s : MathnumericaldiffModel, i : Int, v : Do
   result
 }
 
-pub fn math_numerical_diff_model_sum(s : MathnumericaldiffModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_model_sum(s : MathnumericaldiffModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_model_mean(s : MathnumericaldiffModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_model_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_model_mean(s : MathnumericaldiffModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_model_scale(s : MathnumericaldiffModel, f : Double) -> MathnumericaldiffModel {
   let result = math_numerical_diff_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_numerical_diff_model_fill(s : MathnumericaldiffModel, v : Double) ->
   result
 }
 
-pub fn math_numerical_diff_model_min(s : MathnumericaldiffModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_model_min(s : MathnumericaldiffModel) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_model_max(s : MathnumericaldiffModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_model_max(s : MathnumericaldiffModel) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_model_to_string(s : MathnumericaldiffModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_numerical_diff_layer_set(s : MathnumericaldiffLayer, i : Int, v : Do
   result
 }
 
-pub fn math_numerical_diff_layer_sum(s : MathnumericaldiffLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_layer_sum(s : MathnumericaldiffLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_layer_mean(s : MathnumericaldiffLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_layer_mean(s : MathnumericaldiffLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_layer_scale(s : MathnumericaldiffLayer, f : Double) -> MathnumericaldiffLayer {
   let result = math_numerical_diff_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_numerical_diff_layer_fill(s : MathnumericaldiffLayer, v : Double) ->
   result
 }
 
-pub fn math_numerical_diff_layer_min(s : MathnumericaldiffLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_layer_min(s : MathnumericaldiffLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_layer_max(s : MathnumericaldiffLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_layer_max(s : MathnumericaldiffLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_layer_to_string(s : MathnumericaldiffLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_numerical_diff_buffer_set(s : MathnumericaldiffBuffer, i : Int, v : 
   result
 }
 
-pub fn math_numerical_diff_buffer_sum(s : MathnumericaldiffBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_buffer_sum(s : MathnumericaldiffBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_buffer_mean(s : MathnumericaldiffBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_buffer_mean(s : MathnumericaldiffBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_buffer_scale(s : MathnumericaldiffBuffer, f : Double) -> MathnumericaldiffBuffer {
   let result = math_numerical_diff_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_numerical_diff_buffer_fill(s : MathnumericaldiffBuffer, v : Double) 
   result
 }
 
-pub fn math_numerical_diff_buffer_min(s : MathnumericaldiffBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_buffer_min(s : MathnumericaldiffBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_buffer_max(s : MathnumericaldiffBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_buffer_max(s : MathnumericaldiffBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_buffer_to_string(s : MathnumericaldiffBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_numerical_diff_cursor_set(s : MathnumericaldiffCursor, i : Int, v : 
   result
 }
 
-pub fn math_numerical_diff_cursor_sum(s : MathnumericaldiffCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_cursor_sum(s : MathnumericaldiffCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_cursor_mean(s : MathnumericaldiffCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_cursor_mean(s : MathnumericaldiffCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_cursor_scale(s : MathnumericaldiffCursor, f : Double) -> MathnumericaldiffCursor {
   let result = math_numerical_diff_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_numerical_diff_cursor_fill(s : MathnumericaldiffCursor, v : Double) 
   result
 }
 
-pub fn math_numerical_diff_cursor_min(s : MathnumericaldiffCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_cursor_min(s : MathnumericaldiffCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_cursor_max(s : MathnumericaldiffCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_cursor_max(s : MathnumericaldiffCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_cursor_to_string(s : MathnumericaldiffCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_numerical_diff_view_set(s : MathnumericaldiffView, i : Int, v : Doub
   result
 }
 
-pub fn math_numerical_diff_view_sum(s : MathnumericaldiffView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_view_sum(s : MathnumericaldiffView) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_view_mean(s : MathnumericaldiffView) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_view_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_view_mean(s : MathnumericaldiffView) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_view_scale(s : MathnumericaldiffView, f : Double) -> MathnumericaldiffView {
   let result = math_numerical_diff_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_numerical_diff_view_fill(s : MathnumericaldiffView, v : Double) -> M
   result
 }
 
-pub fn math_numerical_diff_view_min(s : MathnumericaldiffView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_view_min(s : MathnumericaldiffView) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_view_max(s : MathnumericaldiffView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_view_max(s : MathnumericaldiffView) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_view_to_string(s : MathnumericaldiffView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_numerical_diff_range_set(s : MathnumericaldiffRange, i : Int, v : Do
   result
 }
 
-pub fn math_numerical_diff_range_sum(s : MathnumericaldiffRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_range_sum(s : MathnumericaldiffRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_range_mean(s : MathnumericaldiffRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_range_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_range_mean(s : MathnumericaldiffRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_range_scale(s : MathnumericaldiffRange, f : Double) -> MathnumericaldiffRange {
   let result = math_numerical_diff_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_numerical_diff_range_fill(s : MathnumericaldiffRange, v : Double) ->
   result
 }
 
-pub fn math_numerical_diff_range_min(s : MathnumericaldiffRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_range_min(s : MathnumericaldiffRange) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_range_max(s : MathnumericaldiffRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_range_max(s : MathnumericaldiffRange) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_range_to_string(s : MathnumericaldiffRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_numerical_diff_slice_set(s : MathnumericaldiffSlice, i : Int, v : Do
   result
 }
 
-pub fn math_numerical_diff_slice_sum(s : MathnumericaldiffSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_numerical_diff_slice_sum(s : MathnumericaldiffSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_numerical_diff_slice_mean(s : MathnumericaldiffSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_numerical_diff_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_numerical_diff_slice_mean(s : MathnumericaldiffSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_numerical_diff_slice_scale(s : MathnumericaldiffSlice, f : Double) -> MathnumericaldiffSlice {
   let result = math_numerical_diff_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_numerical_diff_slice_fill(s : MathnumericaldiffSlice, v : Double) ->
   result
 }
 
-pub fn math_numerical_diff_slice_min(s : MathnumericaldiffSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_slice_min(s : MathnumericaldiffSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_numerical_diff_slice_max(s : MathnumericaldiffSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_numerical_diff_slice_max(s : MathnumericaldiffSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_numerical_diff_slice_to_string(s : MathnumericaldiffSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

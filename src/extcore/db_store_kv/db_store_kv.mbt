@@ -88,11 +88,7 @@ pub fn db_store_kv_make_series(vals : Array[Double], name : String) -> Dbstorekv
 
 pub fn db_store_kv_series_len(s : DbstorekvSeries) -> Int { s.vals.length() }
 
-pub fn db_store_kv_series_sum(s : DbstorekvSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_kv_series_sum(s : DbstorekvSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_kv_series_mean(s : DbstorekvSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_kv_frame_set(s : DbstorekvFrame, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_kv_frame_sum(s : DbstorekvFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_frame_sum(s : DbstorekvFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_frame_mean(s : DbstorekvFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_frame_mean(s : DbstorekvFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_frame_scale(s : DbstorekvFrame, f : Double) -> DbstorekvFrame {
   let result = db_store_kv_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_kv_frame_fill(s : DbstorekvFrame, v : Double) -> DbstorekvFrame 
   result
 }
 
-pub fn db_store_kv_frame_min(s : DbstorekvFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_frame_min(s : DbstorekvFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_frame_max(s : DbstorekvFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_frame_max(s : DbstorekvFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_frame_to_string(s : DbstorekvFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_kv_table_set(s : DbstorekvTable, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_kv_table_sum(s : DbstorekvTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_table_sum(s : DbstorekvTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_table_mean(s : DbstorekvTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_table_mean(s : DbstorekvTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_table_scale(s : DbstorekvTable, f : Double) -> DbstorekvTable {
   let result = db_store_kv_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_kv_table_fill(s : DbstorekvTable, v : Double) -> DbstorekvTable 
   result
 }
 
-pub fn db_store_kv_table_min(s : DbstorekvTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_table_min(s : DbstorekvTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_table_max(s : DbstorekvTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_table_max(s : DbstorekvTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_table_to_string(s : DbstorekvTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_kv_graphn_set(s : DbstorekvGraphN, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_kv_graphn_sum(s : DbstorekvGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_graphn_sum(s : DbstorekvGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_graphn_mean(s : DbstorekvGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_graphn_mean(s : DbstorekvGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_graphn_scale(s : DbstorekvGraphN, f : Double) -> DbstorekvGraphN {
   let result = db_store_kv_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_kv_graphn_fill(s : DbstorekvGraphN, v : Double) -> DbstorekvGrap
   result
 }
 
-pub fn db_store_kv_graphn_min(s : DbstorekvGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_graphn_min(s : DbstorekvGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_graphn_max(s : DbstorekvGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_graphn_max(s : DbstorekvGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_graphn_to_string(s : DbstorekvGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_kv_node_set(s : DbstorekvNode, i : Int, v : Double) -> Dbstorekv
   result
 }
 
-pub fn db_store_kv_node_sum(s : DbstorekvNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_node_sum(s : DbstorekvNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_node_mean(s : DbstorekvNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_node_mean(s : DbstorekvNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_node_scale(s : DbstorekvNode, f : Double) -> DbstorekvNode {
   let result = db_store_kv_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_kv_node_fill(s : DbstorekvNode, v : Double) -> DbstorekvNode {
   result
 }
 
-pub fn db_store_kv_node_min(s : DbstorekvNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_node_min(s : DbstorekvNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_node_max(s : DbstorekvNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_node_max(s : DbstorekvNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_node_to_string(s : DbstorekvNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_kv_edge_set(s : DbstorekvEdge, i : Int, v : Double) -> Dbstorekv
   result
 }
 
-pub fn db_store_kv_edge_sum(s : DbstorekvEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_edge_sum(s : DbstorekvEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_edge_mean(s : DbstorekvEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_edge_mean(s : DbstorekvEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_edge_scale(s : DbstorekvEdge, f : Double) -> DbstorekvEdge {
   let result = db_store_kv_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_kv_edge_fill(s : DbstorekvEdge, v : Double) -> DbstorekvEdge {
   result
 }
 
-pub fn db_store_kv_edge_min(s : DbstorekvEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_edge_min(s : DbstorekvEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_edge_max(s : DbstorekvEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_edge_max(s : DbstorekvEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_edge_to_string(s : DbstorekvEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_kv_path_set(s : DbstorekvPath, i : Int, v : Double) -> Dbstorekv
   result
 }
 
-pub fn db_store_kv_path_sum(s : DbstorekvPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_path_sum(s : DbstorekvPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_path_mean(s : DbstorekvPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_path_mean(s : DbstorekvPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_path_scale(s : DbstorekvPath, f : Double) -> DbstorekvPath {
   let result = db_store_kv_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_kv_path_fill(s : DbstorekvPath, v : Double) -> DbstorekvPath {
   result
 }
 
-pub fn db_store_kv_path_min(s : DbstorekvPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_path_min(s : DbstorekvPath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_path_max(s : DbstorekvPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_path_max(s : DbstorekvPath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_path_to_string(s : DbstorekvPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_kv_cluster_set(s : DbstorekvCluster, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_kv_cluster_sum(s : DbstorekvCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_cluster_sum(s : DbstorekvCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_cluster_mean(s : DbstorekvCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_cluster_mean(s : DbstorekvCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_cluster_scale(s : DbstorekvCluster, f : Double) -> DbstorekvCluster {
   let result = db_store_kv_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_kv_cluster_fill(s : DbstorekvCluster, v : Double) -> DbstorekvCl
   result
 }
 
-pub fn db_store_kv_cluster_min(s : DbstorekvCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_cluster_min(s : DbstorekvCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_cluster_max(s : DbstorekvCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_cluster_max(s : DbstorekvCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_cluster_to_string(s : DbstorekvCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_kv_model_set(s : DbstorekvModel, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_kv_model_sum(s : DbstorekvModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_model_sum(s : DbstorekvModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_model_mean(s : DbstorekvModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_model_mean(s : DbstorekvModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_model_scale(s : DbstorekvModel, f : Double) -> DbstorekvModel {
   let result = db_store_kv_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_kv_model_fill(s : DbstorekvModel, v : Double) -> DbstorekvModel 
   result
 }
 
-pub fn db_store_kv_model_min(s : DbstorekvModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_model_min(s : DbstorekvModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_model_max(s : DbstorekvModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_model_max(s : DbstorekvModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_model_to_string(s : DbstorekvModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_kv_layer_set(s : DbstorekvLayer, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_kv_layer_sum(s : DbstorekvLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_layer_sum(s : DbstorekvLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_layer_mean(s : DbstorekvLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_layer_mean(s : DbstorekvLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_layer_scale(s : DbstorekvLayer, f : Double) -> DbstorekvLayer {
   let result = db_store_kv_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_kv_layer_fill(s : DbstorekvLayer, v : Double) -> DbstorekvLayer 
   result
 }
 
-pub fn db_store_kv_layer_min(s : DbstorekvLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_layer_min(s : DbstorekvLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_layer_max(s : DbstorekvLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_layer_max(s : DbstorekvLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_layer_to_string(s : DbstorekvLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_kv_buffer_set(s : DbstorekvBuffer, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_kv_buffer_sum(s : DbstorekvBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_buffer_sum(s : DbstorekvBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_buffer_mean(s : DbstorekvBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_buffer_mean(s : DbstorekvBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_buffer_scale(s : DbstorekvBuffer, f : Double) -> DbstorekvBuffer {
   let result = db_store_kv_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_kv_buffer_fill(s : DbstorekvBuffer, v : Double) -> DbstorekvBuff
   result
 }
 
-pub fn db_store_kv_buffer_min(s : DbstorekvBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_buffer_min(s : DbstorekvBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_buffer_max(s : DbstorekvBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_buffer_max(s : DbstorekvBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_buffer_to_string(s : DbstorekvBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_kv_cursor_set(s : DbstorekvCursor, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_kv_cursor_sum(s : DbstorekvCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_cursor_sum(s : DbstorekvCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_cursor_mean(s : DbstorekvCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_cursor_mean(s : DbstorekvCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_cursor_scale(s : DbstorekvCursor, f : Double) -> DbstorekvCursor {
   let result = db_store_kv_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_kv_cursor_fill(s : DbstorekvCursor, v : Double) -> DbstorekvCurs
   result
 }
 
-pub fn db_store_kv_cursor_min(s : DbstorekvCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_cursor_min(s : DbstorekvCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_cursor_max(s : DbstorekvCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_cursor_max(s : DbstorekvCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_cursor_to_string(s : DbstorekvCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_kv_view_set(s : DbstorekvView, i : Int, v : Double) -> Dbstorekv
   result
 }
 
-pub fn db_store_kv_view_sum(s : DbstorekvView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_view_sum(s : DbstorekvView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_view_mean(s : DbstorekvView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_view_mean(s : DbstorekvView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_view_scale(s : DbstorekvView, f : Double) -> DbstorekvView {
   let result = db_store_kv_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_kv_view_fill(s : DbstorekvView, v : Double) -> DbstorekvView {
   result
 }
 
-pub fn db_store_kv_view_min(s : DbstorekvView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_view_min(s : DbstorekvView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_view_max(s : DbstorekvView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_view_max(s : DbstorekvView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_view_to_string(s : DbstorekvView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_kv_range_set(s : DbstorekvRange, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_kv_range_sum(s : DbstorekvRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_range_sum(s : DbstorekvRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_range_mean(s : DbstorekvRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_range_mean(s : DbstorekvRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_range_scale(s : DbstorekvRange, f : Double) -> DbstorekvRange {
   let result = db_store_kv_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_kv_range_fill(s : DbstorekvRange, v : Double) -> DbstorekvRange 
   result
 }
 
-pub fn db_store_kv_range_min(s : DbstorekvRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_range_min(s : DbstorekvRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_range_max(s : DbstorekvRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_range_max(s : DbstorekvRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_range_to_string(s : DbstorekvRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_kv_slice_set(s : DbstorekvSlice, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_kv_slice_sum(s : DbstorekvSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_kv_slice_sum(s : DbstorekvSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_kv_slice_mean(s : DbstorekvSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_kv_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_kv_slice_mean(s : DbstorekvSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_kv_slice_scale(s : DbstorekvSlice, f : Double) -> DbstorekvSlice {
   let result = db_store_kv_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_kv_slice_fill(s : DbstorekvSlice, v : Double) -> DbstorekvSlice 
   result
 }
 
-pub fn db_store_kv_slice_min(s : DbstorekvSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_slice_min(s : DbstorekvSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_kv_slice_max(s : DbstorekvSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_kv_slice_max(s : DbstorekvSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_kv_slice_to_string(s : DbstorekvSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

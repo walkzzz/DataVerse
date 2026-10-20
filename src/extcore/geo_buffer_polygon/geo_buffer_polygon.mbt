@@ -88,11 +88,7 @@ pub fn geo_buffer_polygon_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_buffer_polygon_series_len(s : GeobufferpolygonSeries) -> Int { s.vals.length() }
 
-pub fn geo_buffer_polygon_series_sum(s : GeobufferpolygonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_buffer_polygon_series_sum(s : GeobufferpolygonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_buffer_polygon_series_mean(s : GeobufferpolygonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_buffer_polygon_frame_set(s : GeobufferpolygonFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_polygon_frame_sum(s : GeobufferpolygonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_frame_sum(s : GeobufferpolygonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_frame_mean(s : GeobufferpolygonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_frame_mean(s : GeobufferpolygonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_frame_scale(s : GeobufferpolygonFrame, f : Double) -> GeobufferpolygonFrame {
   let result = geo_buffer_polygon_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_buffer_polygon_frame_fill(s : GeobufferpolygonFrame, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_polygon_frame_min(s : GeobufferpolygonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_frame_min(s : GeobufferpolygonFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_frame_max(s : GeobufferpolygonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_frame_max(s : GeobufferpolygonFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_frame_to_string(s : GeobufferpolygonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_buffer_polygon_table_set(s : GeobufferpolygonTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_polygon_table_sum(s : GeobufferpolygonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_table_sum(s : GeobufferpolygonTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_table_mean(s : GeobufferpolygonTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_table_mean(s : GeobufferpolygonTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_table_scale(s : GeobufferpolygonTable, f : Double) -> GeobufferpolygonTable {
   let result = geo_buffer_polygon_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_buffer_polygon_table_fill(s : GeobufferpolygonTable, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_polygon_table_min(s : GeobufferpolygonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_table_min(s : GeobufferpolygonTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_table_max(s : GeobufferpolygonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_table_max(s : GeobufferpolygonTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_table_to_string(s : GeobufferpolygonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_buffer_polygon_graphn_set(s : GeobufferpolygonGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_polygon_graphn_sum(s : GeobufferpolygonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_graphn_sum(s : GeobufferpolygonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_graphn_mean(s : GeobufferpolygonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_graphn_mean(s : GeobufferpolygonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_graphn_scale(s : GeobufferpolygonGraphN, f : Double) -> GeobufferpolygonGraphN {
   let result = geo_buffer_polygon_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_buffer_polygon_graphn_fill(s : GeobufferpolygonGraphN, v : Double) ->
   result
 }
 
-pub fn geo_buffer_polygon_graphn_min(s : GeobufferpolygonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_graphn_min(s : GeobufferpolygonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_graphn_max(s : GeobufferpolygonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_graphn_max(s : GeobufferpolygonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_graphn_to_string(s : GeobufferpolygonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_buffer_polygon_node_set(s : GeobufferpolygonNode, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_polygon_node_sum(s : GeobufferpolygonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_node_sum(s : GeobufferpolygonNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_node_mean(s : GeobufferpolygonNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_node_mean(s : GeobufferpolygonNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_node_scale(s : GeobufferpolygonNode, f : Double) -> GeobufferpolygonNode {
   let result = geo_buffer_polygon_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_buffer_polygon_node_fill(s : GeobufferpolygonNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_polygon_node_min(s : GeobufferpolygonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_node_min(s : GeobufferpolygonNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_node_max(s : GeobufferpolygonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_node_max(s : GeobufferpolygonNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_node_to_string(s : GeobufferpolygonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_buffer_polygon_edge_set(s : GeobufferpolygonEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_polygon_edge_sum(s : GeobufferpolygonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_edge_sum(s : GeobufferpolygonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_edge_mean(s : GeobufferpolygonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_edge_mean(s : GeobufferpolygonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_edge_scale(s : GeobufferpolygonEdge, f : Double) -> GeobufferpolygonEdge {
   let result = geo_buffer_polygon_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_buffer_polygon_edge_fill(s : GeobufferpolygonEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_polygon_edge_min(s : GeobufferpolygonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_edge_min(s : GeobufferpolygonEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_edge_max(s : GeobufferpolygonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_edge_max(s : GeobufferpolygonEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_edge_to_string(s : GeobufferpolygonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_buffer_polygon_path_set(s : GeobufferpolygonPath, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_polygon_path_sum(s : GeobufferpolygonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_path_sum(s : GeobufferpolygonPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_path_mean(s : GeobufferpolygonPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_path_mean(s : GeobufferpolygonPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_path_scale(s : GeobufferpolygonPath, f : Double) -> GeobufferpolygonPath {
   let result = geo_buffer_polygon_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_buffer_polygon_path_fill(s : GeobufferpolygonPath, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_polygon_path_min(s : GeobufferpolygonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_path_min(s : GeobufferpolygonPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_path_max(s : GeobufferpolygonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_path_max(s : GeobufferpolygonPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_path_to_string(s : GeobufferpolygonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_buffer_polygon_cluster_set(s : GeobufferpolygonCluster, i : Int, v : 
   result
 }
 
-pub fn geo_buffer_polygon_cluster_sum(s : GeobufferpolygonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_cluster_sum(s : GeobufferpolygonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_cluster_mean(s : GeobufferpolygonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_cluster_mean(s : GeobufferpolygonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_cluster_scale(s : GeobufferpolygonCluster, f : Double) -> GeobufferpolygonCluster {
   let result = geo_buffer_polygon_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_buffer_polygon_cluster_fill(s : GeobufferpolygonCluster, v : Double) 
   result
 }
 
-pub fn geo_buffer_polygon_cluster_min(s : GeobufferpolygonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_cluster_min(s : GeobufferpolygonCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_cluster_max(s : GeobufferpolygonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_cluster_max(s : GeobufferpolygonCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_cluster_to_string(s : GeobufferpolygonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_buffer_polygon_model_set(s : GeobufferpolygonModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_polygon_model_sum(s : GeobufferpolygonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_model_sum(s : GeobufferpolygonModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_model_mean(s : GeobufferpolygonModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_model_mean(s : GeobufferpolygonModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_model_scale(s : GeobufferpolygonModel, f : Double) -> GeobufferpolygonModel {
   let result = geo_buffer_polygon_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_buffer_polygon_model_fill(s : GeobufferpolygonModel, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_polygon_model_min(s : GeobufferpolygonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_model_min(s : GeobufferpolygonModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_model_max(s : GeobufferpolygonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_model_max(s : GeobufferpolygonModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_model_to_string(s : GeobufferpolygonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_buffer_polygon_layer_set(s : GeobufferpolygonLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_polygon_layer_sum(s : GeobufferpolygonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_layer_sum(s : GeobufferpolygonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_layer_mean(s : GeobufferpolygonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_layer_mean(s : GeobufferpolygonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_layer_scale(s : GeobufferpolygonLayer, f : Double) -> GeobufferpolygonLayer {
   let result = geo_buffer_polygon_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_buffer_polygon_layer_fill(s : GeobufferpolygonLayer, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_polygon_layer_min(s : GeobufferpolygonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_layer_min(s : GeobufferpolygonLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_layer_max(s : GeobufferpolygonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_layer_max(s : GeobufferpolygonLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_layer_to_string(s : GeobufferpolygonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_buffer_polygon_buffer_set(s : GeobufferpolygonBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_polygon_buffer_sum(s : GeobufferpolygonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_buffer_sum(s : GeobufferpolygonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_buffer_mean(s : GeobufferpolygonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_buffer_mean(s : GeobufferpolygonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_buffer_scale(s : GeobufferpolygonBuffer, f : Double) -> GeobufferpolygonBuffer {
   let result = geo_buffer_polygon_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_buffer_polygon_buffer_fill(s : GeobufferpolygonBuffer, v : Double) ->
   result
 }
 
-pub fn geo_buffer_polygon_buffer_min(s : GeobufferpolygonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_buffer_min(s : GeobufferpolygonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_buffer_max(s : GeobufferpolygonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_buffer_max(s : GeobufferpolygonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_buffer_to_string(s : GeobufferpolygonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_buffer_polygon_cursor_set(s : GeobufferpolygonCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_polygon_cursor_sum(s : GeobufferpolygonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_cursor_sum(s : GeobufferpolygonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_cursor_mean(s : GeobufferpolygonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_cursor_mean(s : GeobufferpolygonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_cursor_scale(s : GeobufferpolygonCursor, f : Double) -> GeobufferpolygonCursor {
   let result = geo_buffer_polygon_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_buffer_polygon_cursor_fill(s : GeobufferpolygonCursor, v : Double) ->
   result
 }
 
-pub fn geo_buffer_polygon_cursor_min(s : GeobufferpolygonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_cursor_min(s : GeobufferpolygonCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_cursor_max(s : GeobufferpolygonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_cursor_max(s : GeobufferpolygonCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_cursor_to_string(s : GeobufferpolygonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_buffer_polygon_view_set(s : GeobufferpolygonView, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_polygon_view_sum(s : GeobufferpolygonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_view_sum(s : GeobufferpolygonView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_view_mean(s : GeobufferpolygonView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_view_mean(s : GeobufferpolygonView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_view_scale(s : GeobufferpolygonView, f : Double) -> GeobufferpolygonView {
   let result = geo_buffer_polygon_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_buffer_polygon_view_fill(s : GeobufferpolygonView, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_polygon_view_min(s : GeobufferpolygonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_view_min(s : GeobufferpolygonView) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_view_max(s : GeobufferpolygonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_view_max(s : GeobufferpolygonView) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_view_to_string(s : GeobufferpolygonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_buffer_polygon_range_set(s : GeobufferpolygonRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_polygon_range_sum(s : GeobufferpolygonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_range_sum(s : GeobufferpolygonRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_range_mean(s : GeobufferpolygonRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_range_mean(s : GeobufferpolygonRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_range_scale(s : GeobufferpolygonRange, f : Double) -> GeobufferpolygonRange {
   let result = geo_buffer_polygon_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_buffer_polygon_range_fill(s : GeobufferpolygonRange, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_polygon_range_min(s : GeobufferpolygonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_range_min(s : GeobufferpolygonRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_range_max(s : GeobufferpolygonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_range_max(s : GeobufferpolygonRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_range_to_string(s : GeobufferpolygonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_buffer_polygon_slice_set(s : GeobufferpolygonSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_polygon_slice_sum(s : GeobufferpolygonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_polygon_slice_sum(s : GeobufferpolygonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_polygon_slice_mean(s : GeobufferpolygonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_polygon_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_polygon_slice_mean(s : GeobufferpolygonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_polygon_slice_scale(s : GeobufferpolygonSlice, f : Double) -> GeobufferpolygonSlice {
   let result = geo_buffer_polygon_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_buffer_polygon_slice_fill(s : GeobufferpolygonSlice, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_polygon_slice_min(s : GeobufferpolygonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_slice_min(s : GeobufferpolygonSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_polygon_slice_max(s : GeobufferpolygonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_polygon_slice_max(s : GeobufferpolygonSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_polygon_slice_to_string(s : GeobufferpolygonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

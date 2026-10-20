@@ -88,11 +88,7 @@ pub fn db_index_brin_make_series(vals : Array[Double], name : String) -> Dbindex
 
 pub fn db_index_brin_series_len(s : DbindexbrinSeries) -> Int { s.vals.length() }
 
-pub fn db_index_brin_series_sum(s : DbindexbrinSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_brin_series_sum(s : DbindexbrinSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_brin_series_mean(s : DbindexbrinSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_brin_frame_set(s : DbindexbrinFrame, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_brin_frame_sum(s : DbindexbrinFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_frame_sum(s : DbindexbrinFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_frame_mean(s : DbindexbrinFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_frame_mean(s : DbindexbrinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_frame_scale(s : DbindexbrinFrame, f : Double) -> DbindexbrinFrame {
   let result = db_index_brin_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_brin_frame_fill(s : DbindexbrinFrame, v : Double) -> Dbindexbrin
   result
 }
 
-pub fn db_index_brin_frame_min(s : DbindexbrinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_frame_min(s : DbindexbrinFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_frame_max(s : DbindexbrinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_frame_max(s : DbindexbrinFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_frame_to_string(s : DbindexbrinFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_brin_table_set(s : DbindexbrinTable, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_brin_table_sum(s : DbindexbrinTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_table_sum(s : DbindexbrinTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_table_mean(s : DbindexbrinTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_table_mean(s : DbindexbrinTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_table_scale(s : DbindexbrinTable, f : Double) -> DbindexbrinTable {
   let result = db_index_brin_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_brin_table_fill(s : DbindexbrinTable, v : Double) -> Dbindexbrin
   result
 }
 
-pub fn db_index_brin_table_min(s : DbindexbrinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_table_min(s : DbindexbrinTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_table_max(s : DbindexbrinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_table_max(s : DbindexbrinTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_table_to_string(s : DbindexbrinTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_brin_graphn_set(s : DbindexbrinGraphN, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_brin_graphn_sum(s : DbindexbrinGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_graphn_sum(s : DbindexbrinGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_graphn_mean(s : DbindexbrinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_graphn_mean(s : DbindexbrinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_graphn_scale(s : DbindexbrinGraphN, f : Double) -> DbindexbrinGraphN {
   let result = db_index_brin_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_brin_graphn_fill(s : DbindexbrinGraphN, v : Double) -> Dbindexbr
   result
 }
 
-pub fn db_index_brin_graphn_min(s : DbindexbrinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_graphn_min(s : DbindexbrinGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_graphn_max(s : DbindexbrinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_graphn_max(s : DbindexbrinGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_graphn_to_string(s : DbindexbrinGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_brin_node_set(s : DbindexbrinNode, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_brin_node_sum(s : DbindexbrinNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_node_sum(s : DbindexbrinNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_node_mean(s : DbindexbrinNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_node_mean(s : DbindexbrinNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_node_scale(s : DbindexbrinNode, f : Double) -> DbindexbrinNode {
   let result = db_index_brin_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_brin_node_fill(s : DbindexbrinNode, v : Double) -> DbindexbrinNo
   result
 }
 
-pub fn db_index_brin_node_min(s : DbindexbrinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_node_min(s : DbindexbrinNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_node_max(s : DbindexbrinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_node_max(s : DbindexbrinNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_node_to_string(s : DbindexbrinNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_brin_edge_set(s : DbindexbrinEdge, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_brin_edge_sum(s : DbindexbrinEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_edge_sum(s : DbindexbrinEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_edge_mean(s : DbindexbrinEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_edge_mean(s : DbindexbrinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_edge_scale(s : DbindexbrinEdge, f : Double) -> DbindexbrinEdge {
   let result = db_index_brin_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_brin_edge_fill(s : DbindexbrinEdge, v : Double) -> DbindexbrinEd
   result
 }
 
-pub fn db_index_brin_edge_min(s : DbindexbrinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_edge_min(s : DbindexbrinEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_edge_max(s : DbindexbrinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_edge_max(s : DbindexbrinEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_edge_to_string(s : DbindexbrinEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_brin_path_set(s : DbindexbrinPath, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_brin_path_sum(s : DbindexbrinPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_path_sum(s : DbindexbrinPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_path_mean(s : DbindexbrinPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_path_mean(s : DbindexbrinPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_path_scale(s : DbindexbrinPath, f : Double) -> DbindexbrinPath {
   let result = db_index_brin_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_brin_path_fill(s : DbindexbrinPath, v : Double) -> DbindexbrinPa
   result
 }
 
-pub fn db_index_brin_path_min(s : DbindexbrinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_path_min(s : DbindexbrinPath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_path_max(s : DbindexbrinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_path_max(s : DbindexbrinPath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_path_to_string(s : DbindexbrinPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_brin_cluster_set(s : DbindexbrinCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_brin_cluster_sum(s : DbindexbrinCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_cluster_sum(s : DbindexbrinCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_cluster_mean(s : DbindexbrinCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_cluster_mean(s : DbindexbrinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_cluster_scale(s : DbindexbrinCluster, f : Double) -> DbindexbrinCluster {
   let result = db_index_brin_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_brin_cluster_fill(s : DbindexbrinCluster, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_brin_cluster_min(s : DbindexbrinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_cluster_min(s : DbindexbrinCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_cluster_max(s : DbindexbrinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_cluster_max(s : DbindexbrinCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_cluster_to_string(s : DbindexbrinCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_brin_model_set(s : DbindexbrinModel, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_brin_model_sum(s : DbindexbrinModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_model_sum(s : DbindexbrinModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_model_mean(s : DbindexbrinModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_model_mean(s : DbindexbrinModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_model_scale(s : DbindexbrinModel, f : Double) -> DbindexbrinModel {
   let result = db_index_brin_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_brin_model_fill(s : DbindexbrinModel, v : Double) -> Dbindexbrin
   result
 }
 
-pub fn db_index_brin_model_min(s : DbindexbrinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_model_min(s : DbindexbrinModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_model_max(s : DbindexbrinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_model_max(s : DbindexbrinModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_model_to_string(s : DbindexbrinModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_brin_layer_set(s : DbindexbrinLayer, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_brin_layer_sum(s : DbindexbrinLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_layer_sum(s : DbindexbrinLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_layer_mean(s : DbindexbrinLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_layer_mean(s : DbindexbrinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_layer_scale(s : DbindexbrinLayer, f : Double) -> DbindexbrinLayer {
   let result = db_index_brin_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_brin_layer_fill(s : DbindexbrinLayer, v : Double) -> Dbindexbrin
   result
 }
 
-pub fn db_index_brin_layer_min(s : DbindexbrinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_layer_min(s : DbindexbrinLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_layer_max(s : DbindexbrinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_layer_max(s : DbindexbrinLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_layer_to_string(s : DbindexbrinLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_brin_buffer_set(s : DbindexbrinBuffer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_brin_buffer_sum(s : DbindexbrinBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_buffer_sum(s : DbindexbrinBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_buffer_mean(s : DbindexbrinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_buffer_mean(s : DbindexbrinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_buffer_scale(s : DbindexbrinBuffer, f : Double) -> DbindexbrinBuffer {
   let result = db_index_brin_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_brin_buffer_fill(s : DbindexbrinBuffer, v : Double) -> Dbindexbr
   result
 }
 
-pub fn db_index_brin_buffer_min(s : DbindexbrinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_buffer_min(s : DbindexbrinBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_buffer_max(s : DbindexbrinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_buffer_max(s : DbindexbrinBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_buffer_to_string(s : DbindexbrinBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_brin_cursor_set(s : DbindexbrinCursor, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_brin_cursor_sum(s : DbindexbrinCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_cursor_sum(s : DbindexbrinCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_cursor_mean(s : DbindexbrinCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_cursor_mean(s : DbindexbrinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_cursor_scale(s : DbindexbrinCursor, f : Double) -> DbindexbrinCursor {
   let result = db_index_brin_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_brin_cursor_fill(s : DbindexbrinCursor, v : Double) -> Dbindexbr
   result
 }
 
-pub fn db_index_brin_cursor_min(s : DbindexbrinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_cursor_min(s : DbindexbrinCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_cursor_max(s : DbindexbrinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_cursor_max(s : DbindexbrinCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_cursor_to_string(s : DbindexbrinCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_brin_view_set(s : DbindexbrinView, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_brin_view_sum(s : DbindexbrinView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_view_sum(s : DbindexbrinView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_view_mean(s : DbindexbrinView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_view_mean(s : DbindexbrinView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_view_scale(s : DbindexbrinView, f : Double) -> DbindexbrinView {
   let result = db_index_brin_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_brin_view_fill(s : DbindexbrinView, v : Double) -> DbindexbrinVi
   result
 }
 
-pub fn db_index_brin_view_min(s : DbindexbrinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_view_min(s : DbindexbrinView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_view_max(s : DbindexbrinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_view_max(s : DbindexbrinView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_view_to_string(s : DbindexbrinView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_brin_range_set(s : DbindexbrinRange, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_brin_range_sum(s : DbindexbrinRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_range_sum(s : DbindexbrinRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_range_mean(s : DbindexbrinRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_range_mean(s : DbindexbrinRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_range_scale(s : DbindexbrinRange, f : Double) -> DbindexbrinRange {
   let result = db_index_brin_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_brin_range_fill(s : DbindexbrinRange, v : Double) -> Dbindexbrin
   result
 }
 
-pub fn db_index_brin_range_min(s : DbindexbrinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_range_min(s : DbindexbrinRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_range_max(s : DbindexbrinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_range_max(s : DbindexbrinRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_range_to_string(s : DbindexbrinRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_brin_slice_set(s : DbindexbrinSlice, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_brin_slice_sum(s : DbindexbrinSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_brin_slice_sum(s : DbindexbrinSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_brin_slice_mean(s : DbindexbrinSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_brin_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_brin_slice_mean(s : DbindexbrinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_brin_slice_scale(s : DbindexbrinSlice, f : Double) -> DbindexbrinSlice {
   let result = db_index_brin_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_brin_slice_fill(s : DbindexbrinSlice, v : Double) -> Dbindexbrin
   result
 }
 
-pub fn db_index_brin_slice_min(s : DbindexbrinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_slice_min(s : DbindexbrinSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_brin_slice_max(s : DbindexbrinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_brin_slice_max(s : DbindexbrinSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_brin_slice_to_string(s : DbindexbrinSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn timeseries_decomp_stl_make_series(vals : Array[Double], name : String) ->
 
 pub fn timeseries_decomp_stl_series_len(s : TimeseriesdecompstlSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_decomp_stl_series_sum(s : TimeseriesdecompstlSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_decomp_stl_series_sum(s : TimeseriesdecompstlSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_decomp_stl_series_mean(s : TimeseriesdecompstlSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_decomp_stl_frame_set(s : TimeseriesdecompstlFrame, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_stl_frame_sum(s : TimeseriesdecompstlFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_frame_sum(s : TimeseriesdecompstlFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_frame_mean(s : TimeseriesdecompstlFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_frame_mean(s : TimeseriesdecompstlFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_frame_scale(s : TimeseriesdecompstlFrame, f : Double) -> TimeseriesdecompstlFrame {
   let result = timeseries_decomp_stl_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_decomp_stl_frame_fill(s : TimeseriesdecompstlFrame, v : Double
   result
 }
 
-pub fn timeseries_decomp_stl_frame_min(s : TimeseriesdecompstlFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_frame_min(s : TimeseriesdecompstlFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_frame_max(s : TimeseriesdecompstlFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_frame_max(s : TimeseriesdecompstlFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_frame_to_string(s : TimeseriesdecompstlFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_decomp_stl_table_set(s : TimeseriesdecompstlTable, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_stl_table_sum(s : TimeseriesdecompstlTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_table_sum(s : TimeseriesdecompstlTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_table_mean(s : TimeseriesdecompstlTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_table_mean(s : TimeseriesdecompstlTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_table_scale(s : TimeseriesdecompstlTable, f : Double) -> TimeseriesdecompstlTable {
   let result = timeseries_decomp_stl_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_decomp_stl_table_fill(s : TimeseriesdecompstlTable, v : Double
   result
 }
 
-pub fn timeseries_decomp_stl_table_min(s : TimeseriesdecompstlTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_table_min(s : TimeseriesdecompstlTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_table_max(s : TimeseriesdecompstlTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_table_max(s : TimeseriesdecompstlTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_table_to_string(s : TimeseriesdecompstlTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_decomp_stl_graphn_set(s : TimeseriesdecompstlGraphN, i : Int, 
   result
 }
 
-pub fn timeseries_decomp_stl_graphn_sum(s : TimeseriesdecompstlGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_graphn_sum(s : TimeseriesdecompstlGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_graphn_mean(s : TimeseriesdecompstlGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_graphn_mean(s : TimeseriesdecompstlGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_graphn_scale(s : TimeseriesdecompstlGraphN, f : Double) -> TimeseriesdecompstlGraphN {
   let result = timeseries_decomp_stl_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_decomp_stl_graphn_fill(s : TimeseriesdecompstlGraphN, v : Doub
   result
 }
 
-pub fn timeseries_decomp_stl_graphn_min(s : TimeseriesdecompstlGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_graphn_min(s : TimeseriesdecompstlGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_graphn_max(s : TimeseriesdecompstlGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_graphn_max(s : TimeseriesdecompstlGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_graphn_to_string(s : TimeseriesdecompstlGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_decomp_stl_node_set(s : TimeseriesdecompstlNode, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_stl_node_sum(s : TimeseriesdecompstlNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_node_sum(s : TimeseriesdecompstlNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_node_mean(s : TimeseriesdecompstlNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_node_mean(s : TimeseriesdecompstlNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_node_scale(s : TimeseriesdecompstlNode, f : Double) -> TimeseriesdecompstlNode {
   let result = timeseries_decomp_stl_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_decomp_stl_node_fill(s : TimeseriesdecompstlNode, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_stl_node_min(s : TimeseriesdecompstlNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_node_min(s : TimeseriesdecompstlNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_node_max(s : TimeseriesdecompstlNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_node_max(s : TimeseriesdecompstlNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_node_to_string(s : TimeseriesdecompstlNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_decomp_stl_edge_set(s : TimeseriesdecompstlEdge, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_stl_edge_sum(s : TimeseriesdecompstlEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_edge_sum(s : TimeseriesdecompstlEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_edge_mean(s : TimeseriesdecompstlEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_edge_mean(s : TimeseriesdecompstlEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_edge_scale(s : TimeseriesdecompstlEdge, f : Double) -> TimeseriesdecompstlEdge {
   let result = timeseries_decomp_stl_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_decomp_stl_edge_fill(s : TimeseriesdecompstlEdge, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_stl_edge_min(s : TimeseriesdecompstlEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_edge_min(s : TimeseriesdecompstlEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_edge_max(s : TimeseriesdecompstlEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_edge_max(s : TimeseriesdecompstlEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_edge_to_string(s : TimeseriesdecompstlEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_decomp_stl_path_set(s : TimeseriesdecompstlPath, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_stl_path_sum(s : TimeseriesdecompstlPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_path_sum(s : TimeseriesdecompstlPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_path_mean(s : TimeseriesdecompstlPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_path_mean(s : TimeseriesdecompstlPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_path_scale(s : TimeseriesdecompstlPath, f : Double) -> TimeseriesdecompstlPath {
   let result = timeseries_decomp_stl_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_decomp_stl_path_fill(s : TimeseriesdecompstlPath, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_stl_path_min(s : TimeseriesdecompstlPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_path_min(s : TimeseriesdecompstlPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_path_max(s : TimeseriesdecompstlPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_path_max(s : TimeseriesdecompstlPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_path_to_string(s : TimeseriesdecompstlPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_decomp_stl_cluster_set(s : TimeseriesdecompstlCluster, i : Int
   result
 }
 
-pub fn timeseries_decomp_stl_cluster_sum(s : TimeseriesdecompstlCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_cluster_sum(s : TimeseriesdecompstlCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_cluster_mean(s : TimeseriesdecompstlCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_cluster_mean(s : TimeseriesdecompstlCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_cluster_scale(s : TimeseriesdecompstlCluster, f : Double) -> TimeseriesdecompstlCluster {
   let result = timeseries_decomp_stl_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_decomp_stl_cluster_fill(s : TimeseriesdecompstlCluster, v : Do
   result
 }
 
-pub fn timeseries_decomp_stl_cluster_min(s : TimeseriesdecompstlCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_cluster_min(s : TimeseriesdecompstlCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_cluster_max(s : TimeseriesdecompstlCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_cluster_max(s : TimeseriesdecompstlCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_cluster_to_string(s : TimeseriesdecompstlCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_decomp_stl_model_set(s : TimeseriesdecompstlModel, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_stl_model_sum(s : TimeseriesdecompstlModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_model_sum(s : TimeseriesdecompstlModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_model_mean(s : TimeseriesdecompstlModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_model_mean(s : TimeseriesdecompstlModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_model_scale(s : TimeseriesdecompstlModel, f : Double) -> TimeseriesdecompstlModel {
   let result = timeseries_decomp_stl_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_decomp_stl_model_fill(s : TimeseriesdecompstlModel, v : Double
   result
 }
 
-pub fn timeseries_decomp_stl_model_min(s : TimeseriesdecompstlModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_model_min(s : TimeseriesdecompstlModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_model_max(s : TimeseriesdecompstlModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_model_max(s : TimeseriesdecompstlModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_model_to_string(s : TimeseriesdecompstlModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_decomp_stl_layer_set(s : TimeseriesdecompstlLayer, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_stl_layer_sum(s : TimeseriesdecompstlLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_layer_sum(s : TimeseriesdecompstlLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_layer_mean(s : TimeseriesdecompstlLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_layer_mean(s : TimeseriesdecompstlLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_layer_scale(s : TimeseriesdecompstlLayer, f : Double) -> TimeseriesdecompstlLayer {
   let result = timeseries_decomp_stl_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_decomp_stl_layer_fill(s : TimeseriesdecompstlLayer, v : Double
   result
 }
 
-pub fn timeseries_decomp_stl_layer_min(s : TimeseriesdecompstlLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_layer_min(s : TimeseriesdecompstlLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_layer_max(s : TimeseriesdecompstlLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_layer_max(s : TimeseriesdecompstlLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_layer_to_string(s : TimeseriesdecompstlLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_decomp_stl_buffer_set(s : TimeseriesdecompstlBuffer, i : Int, 
   result
 }
 
-pub fn timeseries_decomp_stl_buffer_sum(s : TimeseriesdecompstlBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_buffer_sum(s : TimeseriesdecompstlBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_buffer_mean(s : TimeseriesdecompstlBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_buffer_mean(s : TimeseriesdecompstlBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_buffer_scale(s : TimeseriesdecompstlBuffer, f : Double) -> TimeseriesdecompstlBuffer {
   let result = timeseries_decomp_stl_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_decomp_stl_buffer_fill(s : TimeseriesdecompstlBuffer, v : Doub
   result
 }
 
-pub fn timeseries_decomp_stl_buffer_min(s : TimeseriesdecompstlBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_buffer_min(s : TimeseriesdecompstlBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_buffer_max(s : TimeseriesdecompstlBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_buffer_max(s : TimeseriesdecompstlBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_buffer_to_string(s : TimeseriesdecompstlBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_decomp_stl_cursor_set(s : TimeseriesdecompstlCursor, i : Int, 
   result
 }
 
-pub fn timeseries_decomp_stl_cursor_sum(s : TimeseriesdecompstlCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_cursor_sum(s : TimeseriesdecompstlCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_cursor_mean(s : TimeseriesdecompstlCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_cursor_mean(s : TimeseriesdecompstlCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_cursor_scale(s : TimeseriesdecompstlCursor, f : Double) -> TimeseriesdecompstlCursor {
   let result = timeseries_decomp_stl_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_decomp_stl_cursor_fill(s : TimeseriesdecompstlCursor, v : Doub
   result
 }
 
-pub fn timeseries_decomp_stl_cursor_min(s : TimeseriesdecompstlCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_cursor_min(s : TimeseriesdecompstlCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_cursor_max(s : TimeseriesdecompstlCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_cursor_max(s : TimeseriesdecompstlCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_cursor_to_string(s : TimeseriesdecompstlCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_decomp_stl_view_set(s : TimeseriesdecompstlView, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_stl_view_sum(s : TimeseriesdecompstlView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_view_sum(s : TimeseriesdecompstlView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_view_mean(s : TimeseriesdecompstlView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_view_mean(s : TimeseriesdecompstlView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_view_scale(s : TimeseriesdecompstlView, f : Double) -> TimeseriesdecompstlView {
   let result = timeseries_decomp_stl_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_decomp_stl_view_fill(s : TimeseriesdecompstlView, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_stl_view_min(s : TimeseriesdecompstlView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_view_min(s : TimeseriesdecompstlView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_view_max(s : TimeseriesdecompstlView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_view_max(s : TimeseriesdecompstlView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_view_to_string(s : TimeseriesdecompstlView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_decomp_stl_range_set(s : TimeseriesdecompstlRange, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_stl_range_sum(s : TimeseriesdecompstlRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_range_sum(s : TimeseriesdecompstlRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_range_mean(s : TimeseriesdecompstlRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_range_mean(s : TimeseriesdecompstlRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_range_scale(s : TimeseriesdecompstlRange, f : Double) -> TimeseriesdecompstlRange {
   let result = timeseries_decomp_stl_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_decomp_stl_range_fill(s : TimeseriesdecompstlRange, v : Double
   result
 }
 
-pub fn timeseries_decomp_stl_range_min(s : TimeseriesdecompstlRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_range_min(s : TimeseriesdecompstlRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_range_max(s : TimeseriesdecompstlRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_range_max(s : TimeseriesdecompstlRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_range_to_string(s : TimeseriesdecompstlRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_decomp_stl_slice_set(s : TimeseriesdecompstlSlice, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_stl_slice_sum(s : TimeseriesdecompstlSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_stl_slice_sum(s : TimeseriesdecompstlSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_stl_slice_mean(s : TimeseriesdecompstlSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_stl_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_stl_slice_mean(s : TimeseriesdecompstlSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_stl_slice_scale(s : TimeseriesdecompstlSlice, f : Double) -> TimeseriesdecompstlSlice {
   let result = timeseries_decomp_stl_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_decomp_stl_slice_fill(s : TimeseriesdecompstlSlice, v : Double
   result
 }
 
-pub fn timeseries_decomp_stl_slice_min(s : TimeseriesdecompstlSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_slice_min(s : TimeseriesdecompstlSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_stl_slice_max(s : TimeseriesdecompstlSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_stl_slice_max(s : TimeseriesdecompstlSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_stl_slice_to_string(s : TimeseriesdecompstlSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

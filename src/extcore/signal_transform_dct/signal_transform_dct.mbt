@@ -88,11 +88,7 @@ pub fn signal_transform_dct_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_transform_dct_series_len(s : SignaltransformdctSeries) -> Int { s.vals.length() }
 
-pub fn signal_transform_dct_series_sum(s : SignaltransformdctSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_transform_dct_series_sum(s : SignaltransformdctSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_transform_dct_series_mean(s : SignaltransformdctSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_transform_dct_frame_set(s : SignaltransformdctFrame, i : Int, v : 
   result
 }
 
-pub fn signal_transform_dct_frame_sum(s : SignaltransformdctFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_frame_sum(s : SignaltransformdctFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_frame_mean(s : SignaltransformdctFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_frame_mean(s : SignaltransformdctFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_frame_scale(s : SignaltransformdctFrame, f : Double) -> SignaltransformdctFrame {
   let result = signal_transform_dct_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_transform_dct_frame_fill(s : SignaltransformdctFrame, v : Double) 
   result
 }
 
-pub fn signal_transform_dct_frame_min(s : SignaltransformdctFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_frame_min(s : SignaltransformdctFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_frame_max(s : SignaltransformdctFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_frame_max(s : SignaltransformdctFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_frame_to_string(s : SignaltransformdctFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_transform_dct_table_set(s : SignaltransformdctTable, i : Int, v : 
   result
 }
 
-pub fn signal_transform_dct_table_sum(s : SignaltransformdctTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_table_sum(s : SignaltransformdctTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_table_mean(s : SignaltransformdctTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_table_mean(s : SignaltransformdctTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_table_scale(s : SignaltransformdctTable, f : Double) -> SignaltransformdctTable {
   let result = signal_transform_dct_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_transform_dct_table_fill(s : SignaltransformdctTable, v : Double) 
   result
 }
 
-pub fn signal_transform_dct_table_min(s : SignaltransformdctTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_table_min(s : SignaltransformdctTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_table_max(s : SignaltransformdctTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_table_max(s : SignaltransformdctTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_table_to_string(s : SignaltransformdctTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_transform_dct_graphn_set(s : SignaltransformdctGraphN, i : Int, v 
   result
 }
 
-pub fn signal_transform_dct_graphn_sum(s : SignaltransformdctGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_graphn_sum(s : SignaltransformdctGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_graphn_mean(s : SignaltransformdctGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_graphn_mean(s : SignaltransformdctGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_graphn_scale(s : SignaltransformdctGraphN, f : Double) -> SignaltransformdctGraphN {
   let result = signal_transform_dct_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_transform_dct_graphn_fill(s : SignaltransformdctGraphN, v : Double
   result
 }
 
-pub fn signal_transform_dct_graphn_min(s : SignaltransformdctGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_graphn_min(s : SignaltransformdctGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_graphn_max(s : SignaltransformdctGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_graphn_max(s : SignaltransformdctGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_graphn_to_string(s : SignaltransformdctGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_transform_dct_node_set(s : SignaltransformdctNode, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_dct_node_sum(s : SignaltransformdctNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_node_sum(s : SignaltransformdctNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_node_mean(s : SignaltransformdctNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_node_mean(s : SignaltransformdctNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_node_scale(s : SignaltransformdctNode, f : Double) -> SignaltransformdctNode {
   let result = signal_transform_dct_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_transform_dct_node_fill(s : SignaltransformdctNode, v : Double) ->
   result
 }
 
-pub fn signal_transform_dct_node_min(s : SignaltransformdctNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_node_min(s : SignaltransformdctNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_node_max(s : SignaltransformdctNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_node_max(s : SignaltransformdctNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_node_to_string(s : SignaltransformdctNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_transform_dct_edge_set(s : SignaltransformdctEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_dct_edge_sum(s : SignaltransformdctEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_edge_sum(s : SignaltransformdctEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_edge_mean(s : SignaltransformdctEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_edge_mean(s : SignaltransformdctEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_edge_scale(s : SignaltransformdctEdge, f : Double) -> SignaltransformdctEdge {
   let result = signal_transform_dct_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_transform_dct_edge_fill(s : SignaltransformdctEdge, v : Double) ->
   result
 }
 
-pub fn signal_transform_dct_edge_min(s : SignaltransformdctEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_edge_min(s : SignaltransformdctEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_edge_max(s : SignaltransformdctEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_edge_max(s : SignaltransformdctEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_edge_to_string(s : SignaltransformdctEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_transform_dct_path_set(s : SignaltransformdctPath, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_dct_path_sum(s : SignaltransformdctPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_path_sum(s : SignaltransformdctPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_path_mean(s : SignaltransformdctPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_path_mean(s : SignaltransformdctPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_path_scale(s : SignaltransformdctPath, f : Double) -> SignaltransformdctPath {
   let result = signal_transform_dct_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_transform_dct_path_fill(s : SignaltransformdctPath, v : Double) ->
   result
 }
 
-pub fn signal_transform_dct_path_min(s : SignaltransformdctPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_path_min(s : SignaltransformdctPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_path_max(s : SignaltransformdctPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_path_max(s : SignaltransformdctPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_path_to_string(s : SignaltransformdctPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_transform_dct_cluster_set(s : SignaltransformdctCluster, i : Int, 
   result
 }
 
-pub fn signal_transform_dct_cluster_sum(s : SignaltransformdctCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_cluster_sum(s : SignaltransformdctCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_cluster_mean(s : SignaltransformdctCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_cluster_mean(s : SignaltransformdctCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_cluster_scale(s : SignaltransformdctCluster, f : Double) -> SignaltransformdctCluster {
   let result = signal_transform_dct_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_transform_dct_cluster_fill(s : SignaltransformdctCluster, v : Doub
   result
 }
 
-pub fn signal_transform_dct_cluster_min(s : SignaltransformdctCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_cluster_min(s : SignaltransformdctCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_cluster_max(s : SignaltransformdctCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_cluster_max(s : SignaltransformdctCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_cluster_to_string(s : SignaltransformdctCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_transform_dct_model_set(s : SignaltransformdctModel, i : Int, v : 
   result
 }
 
-pub fn signal_transform_dct_model_sum(s : SignaltransformdctModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_model_sum(s : SignaltransformdctModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_model_mean(s : SignaltransformdctModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_model_mean(s : SignaltransformdctModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_model_scale(s : SignaltransformdctModel, f : Double) -> SignaltransformdctModel {
   let result = signal_transform_dct_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_transform_dct_model_fill(s : SignaltransformdctModel, v : Double) 
   result
 }
 
-pub fn signal_transform_dct_model_min(s : SignaltransformdctModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_model_min(s : SignaltransformdctModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_model_max(s : SignaltransformdctModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_model_max(s : SignaltransformdctModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_model_to_string(s : SignaltransformdctModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_transform_dct_layer_set(s : SignaltransformdctLayer, i : Int, v : 
   result
 }
 
-pub fn signal_transform_dct_layer_sum(s : SignaltransformdctLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_layer_sum(s : SignaltransformdctLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_layer_mean(s : SignaltransformdctLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_layer_mean(s : SignaltransformdctLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_layer_scale(s : SignaltransformdctLayer, f : Double) -> SignaltransformdctLayer {
   let result = signal_transform_dct_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_transform_dct_layer_fill(s : SignaltransformdctLayer, v : Double) 
   result
 }
 
-pub fn signal_transform_dct_layer_min(s : SignaltransformdctLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_layer_min(s : SignaltransformdctLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_layer_max(s : SignaltransformdctLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_layer_max(s : SignaltransformdctLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_layer_to_string(s : SignaltransformdctLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_transform_dct_buffer_set(s : SignaltransformdctBuffer, i : Int, v 
   result
 }
 
-pub fn signal_transform_dct_buffer_sum(s : SignaltransformdctBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_buffer_sum(s : SignaltransformdctBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_buffer_mean(s : SignaltransformdctBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_buffer_mean(s : SignaltransformdctBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_buffer_scale(s : SignaltransformdctBuffer, f : Double) -> SignaltransformdctBuffer {
   let result = signal_transform_dct_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_transform_dct_buffer_fill(s : SignaltransformdctBuffer, v : Double
   result
 }
 
-pub fn signal_transform_dct_buffer_min(s : SignaltransformdctBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_buffer_min(s : SignaltransformdctBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_buffer_max(s : SignaltransformdctBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_buffer_max(s : SignaltransformdctBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_buffer_to_string(s : SignaltransformdctBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_transform_dct_cursor_set(s : SignaltransformdctCursor, i : Int, v 
   result
 }
 
-pub fn signal_transform_dct_cursor_sum(s : SignaltransformdctCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_cursor_sum(s : SignaltransformdctCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_cursor_mean(s : SignaltransformdctCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_cursor_mean(s : SignaltransformdctCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_cursor_scale(s : SignaltransformdctCursor, f : Double) -> SignaltransformdctCursor {
   let result = signal_transform_dct_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_transform_dct_cursor_fill(s : SignaltransformdctCursor, v : Double
   result
 }
 
-pub fn signal_transform_dct_cursor_min(s : SignaltransformdctCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_cursor_min(s : SignaltransformdctCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_cursor_max(s : SignaltransformdctCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_cursor_max(s : SignaltransformdctCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_cursor_to_string(s : SignaltransformdctCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_transform_dct_view_set(s : SignaltransformdctView, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_dct_view_sum(s : SignaltransformdctView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_view_sum(s : SignaltransformdctView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_view_mean(s : SignaltransformdctView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_view_mean(s : SignaltransformdctView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_view_scale(s : SignaltransformdctView, f : Double) -> SignaltransformdctView {
   let result = signal_transform_dct_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_transform_dct_view_fill(s : SignaltransformdctView, v : Double) ->
   result
 }
 
-pub fn signal_transform_dct_view_min(s : SignaltransformdctView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_view_min(s : SignaltransformdctView) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_view_max(s : SignaltransformdctView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_view_max(s : SignaltransformdctView) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_view_to_string(s : SignaltransformdctView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_transform_dct_range_set(s : SignaltransformdctRange, i : Int, v : 
   result
 }
 
-pub fn signal_transform_dct_range_sum(s : SignaltransformdctRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_range_sum(s : SignaltransformdctRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_range_mean(s : SignaltransformdctRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_range_mean(s : SignaltransformdctRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_range_scale(s : SignaltransformdctRange, f : Double) -> SignaltransformdctRange {
   let result = signal_transform_dct_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_transform_dct_range_fill(s : SignaltransformdctRange, v : Double) 
   result
 }
 
-pub fn signal_transform_dct_range_min(s : SignaltransformdctRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_range_min(s : SignaltransformdctRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_range_max(s : SignaltransformdctRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_range_max(s : SignaltransformdctRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_range_to_string(s : SignaltransformdctRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_transform_dct_slice_set(s : SignaltransformdctSlice, i : Int, v : 
   result
 }
 
-pub fn signal_transform_dct_slice_sum(s : SignaltransformdctSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_dct_slice_sum(s : SignaltransformdctSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_dct_slice_mean(s : SignaltransformdctSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_dct_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_dct_slice_mean(s : SignaltransformdctSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_dct_slice_scale(s : SignaltransformdctSlice, f : Double) -> SignaltransformdctSlice {
   let result = signal_transform_dct_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_transform_dct_slice_fill(s : SignaltransformdctSlice, v : Double) 
   result
 }
 
-pub fn signal_transform_dct_slice_min(s : SignaltransformdctSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_slice_min(s : SignaltransformdctSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_dct_slice_max(s : SignaltransformdctSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_dct_slice_max(s : SignaltransformdctSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_dct_slice_to_string(s : SignaltransformdctSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

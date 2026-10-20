@@ -88,11 +88,7 @@ pub fn timeseries_forecast_nbeats_make_series(vals : Array[Double], name : Strin
 
 pub fn timeseries_forecast_nbeats_series_len(s : TimeseriesforecastnbeatsSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_nbeats_series_sum(s : TimeseriesforecastnbeatsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_series_sum(s : TimeseriesforecastnbeatsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_nbeats_series_mean(s : TimeseriesforecastnbeatsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_nbeats_frame_set(s : TimeseriesforecastnbeatsFrame, i
   result
 }
 
-pub fn timeseries_forecast_nbeats_frame_sum(s : TimeseriesforecastnbeatsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_frame_sum(s : TimeseriesforecastnbeatsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_frame_mean(s : TimeseriesforecastnbeatsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_frame_mean(s : TimeseriesforecastnbeatsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_frame_scale(s : TimeseriesforecastnbeatsFrame, f : Double) -> TimeseriesforecastnbeatsFrame {
   let result = timeseries_forecast_nbeats_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_nbeats_frame_fill(s : TimeseriesforecastnbeatsFrame, 
   result
 }
 
-pub fn timeseries_forecast_nbeats_frame_min(s : TimeseriesforecastnbeatsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_frame_min(s : TimeseriesforecastnbeatsFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_frame_max(s : TimeseriesforecastnbeatsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_frame_max(s : TimeseriesforecastnbeatsFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_frame_to_string(s : TimeseriesforecastnbeatsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_nbeats_table_set(s : TimeseriesforecastnbeatsTable, i
   result
 }
 
-pub fn timeseries_forecast_nbeats_table_sum(s : TimeseriesforecastnbeatsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_table_sum(s : TimeseriesforecastnbeatsTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_table_mean(s : TimeseriesforecastnbeatsTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_table_mean(s : TimeseriesforecastnbeatsTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_table_scale(s : TimeseriesforecastnbeatsTable, f : Double) -> TimeseriesforecastnbeatsTable {
   let result = timeseries_forecast_nbeats_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_nbeats_table_fill(s : TimeseriesforecastnbeatsTable, 
   result
 }
 
-pub fn timeseries_forecast_nbeats_table_min(s : TimeseriesforecastnbeatsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_table_min(s : TimeseriesforecastnbeatsTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_table_max(s : TimeseriesforecastnbeatsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_table_max(s : TimeseriesforecastnbeatsTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_table_to_string(s : TimeseriesforecastnbeatsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_nbeats_graphn_set(s : TimeseriesforecastnbeatsGraphN,
   result
 }
 
-pub fn timeseries_forecast_nbeats_graphn_sum(s : TimeseriesforecastnbeatsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_graphn_sum(s : TimeseriesforecastnbeatsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_graphn_mean(s : TimeseriesforecastnbeatsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_graphn_mean(s : TimeseriesforecastnbeatsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_graphn_scale(s : TimeseriesforecastnbeatsGraphN, f : Double) -> TimeseriesforecastnbeatsGraphN {
   let result = timeseries_forecast_nbeats_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_nbeats_graphn_fill(s : TimeseriesforecastnbeatsGraphN
   result
 }
 
-pub fn timeseries_forecast_nbeats_graphn_min(s : TimeseriesforecastnbeatsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_graphn_min(s : TimeseriesforecastnbeatsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_graphn_max(s : TimeseriesforecastnbeatsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_graphn_max(s : TimeseriesforecastnbeatsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_graphn_to_string(s : TimeseriesforecastnbeatsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_nbeats_node_set(s : TimeseriesforecastnbeatsNode, i :
   result
 }
 
-pub fn timeseries_forecast_nbeats_node_sum(s : TimeseriesforecastnbeatsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_node_sum(s : TimeseriesforecastnbeatsNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_node_mean(s : TimeseriesforecastnbeatsNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_node_mean(s : TimeseriesforecastnbeatsNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_node_scale(s : TimeseriesforecastnbeatsNode, f : Double) -> TimeseriesforecastnbeatsNode {
   let result = timeseries_forecast_nbeats_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_nbeats_node_fill(s : TimeseriesforecastnbeatsNode, v 
   result
 }
 
-pub fn timeseries_forecast_nbeats_node_min(s : TimeseriesforecastnbeatsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_node_min(s : TimeseriesforecastnbeatsNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_node_max(s : TimeseriesforecastnbeatsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_node_max(s : TimeseriesforecastnbeatsNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_node_to_string(s : TimeseriesforecastnbeatsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_nbeats_edge_set(s : TimeseriesforecastnbeatsEdge, i :
   result
 }
 
-pub fn timeseries_forecast_nbeats_edge_sum(s : TimeseriesforecastnbeatsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_edge_sum(s : TimeseriesforecastnbeatsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_edge_mean(s : TimeseriesforecastnbeatsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_edge_mean(s : TimeseriesforecastnbeatsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_edge_scale(s : TimeseriesforecastnbeatsEdge, f : Double) -> TimeseriesforecastnbeatsEdge {
   let result = timeseries_forecast_nbeats_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_nbeats_edge_fill(s : TimeseriesforecastnbeatsEdge, v 
   result
 }
 
-pub fn timeseries_forecast_nbeats_edge_min(s : TimeseriesforecastnbeatsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_edge_min(s : TimeseriesforecastnbeatsEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_edge_max(s : TimeseriesforecastnbeatsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_edge_max(s : TimeseriesforecastnbeatsEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_edge_to_string(s : TimeseriesforecastnbeatsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_nbeats_path_set(s : TimeseriesforecastnbeatsPath, i :
   result
 }
 
-pub fn timeseries_forecast_nbeats_path_sum(s : TimeseriesforecastnbeatsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_path_sum(s : TimeseriesforecastnbeatsPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_path_mean(s : TimeseriesforecastnbeatsPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_path_mean(s : TimeseriesforecastnbeatsPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_path_scale(s : TimeseriesforecastnbeatsPath, f : Double) -> TimeseriesforecastnbeatsPath {
   let result = timeseries_forecast_nbeats_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_nbeats_path_fill(s : TimeseriesforecastnbeatsPath, v 
   result
 }
 
-pub fn timeseries_forecast_nbeats_path_min(s : TimeseriesforecastnbeatsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_path_min(s : TimeseriesforecastnbeatsPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_path_max(s : TimeseriesforecastnbeatsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_path_max(s : TimeseriesforecastnbeatsPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_path_to_string(s : TimeseriesforecastnbeatsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_nbeats_cluster_set(s : TimeseriesforecastnbeatsCluste
   result
 }
 
-pub fn timeseries_forecast_nbeats_cluster_sum(s : TimeseriesforecastnbeatsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_cluster_sum(s : TimeseriesforecastnbeatsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_cluster_mean(s : TimeseriesforecastnbeatsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_cluster_mean(s : TimeseriesforecastnbeatsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_cluster_scale(s : TimeseriesforecastnbeatsCluster, f : Double) -> TimeseriesforecastnbeatsCluster {
   let result = timeseries_forecast_nbeats_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_nbeats_cluster_fill(s : TimeseriesforecastnbeatsClust
   result
 }
 
-pub fn timeseries_forecast_nbeats_cluster_min(s : TimeseriesforecastnbeatsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_cluster_min(s : TimeseriesforecastnbeatsCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_cluster_max(s : TimeseriesforecastnbeatsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_cluster_max(s : TimeseriesforecastnbeatsCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_cluster_to_string(s : TimeseriesforecastnbeatsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_nbeats_model_set(s : TimeseriesforecastnbeatsModel, i
   result
 }
 
-pub fn timeseries_forecast_nbeats_model_sum(s : TimeseriesforecastnbeatsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_model_sum(s : TimeseriesforecastnbeatsModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_model_mean(s : TimeseriesforecastnbeatsModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_model_mean(s : TimeseriesforecastnbeatsModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_model_scale(s : TimeseriesforecastnbeatsModel, f : Double) -> TimeseriesforecastnbeatsModel {
   let result = timeseries_forecast_nbeats_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_nbeats_model_fill(s : TimeseriesforecastnbeatsModel, 
   result
 }
 
-pub fn timeseries_forecast_nbeats_model_min(s : TimeseriesforecastnbeatsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_model_min(s : TimeseriesforecastnbeatsModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_model_max(s : TimeseriesforecastnbeatsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_model_max(s : TimeseriesforecastnbeatsModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_model_to_string(s : TimeseriesforecastnbeatsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_nbeats_layer_set(s : TimeseriesforecastnbeatsLayer, i
   result
 }
 
-pub fn timeseries_forecast_nbeats_layer_sum(s : TimeseriesforecastnbeatsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_layer_sum(s : TimeseriesforecastnbeatsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_layer_mean(s : TimeseriesforecastnbeatsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_layer_mean(s : TimeseriesforecastnbeatsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_layer_scale(s : TimeseriesforecastnbeatsLayer, f : Double) -> TimeseriesforecastnbeatsLayer {
   let result = timeseries_forecast_nbeats_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_nbeats_layer_fill(s : TimeseriesforecastnbeatsLayer, 
   result
 }
 
-pub fn timeseries_forecast_nbeats_layer_min(s : TimeseriesforecastnbeatsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_layer_min(s : TimeseriesforecastnbeatsLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_layer_max(s : TimeseriesforecastnbeatsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_layer_max(s : TimeseriesforecastnbeatsLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_layer_to_string(s : TimeseriesforecastnbeatsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_nbeats_buffer_set(s : TimeseriesforecastnbeatsBuffer,
   result
 }
 
-pub fn timeseries_forecast_nbeats_buffer_sum(s : TimeseriesforecastnbeatsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_buffer_sum(s : TimeseriesforecastnbeatsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_buffer_mean(s : TimeseriesforecastnbeatsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_buffer_mean(s : TimeseriesforecastnbeatsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_buffer_scale(s : TimeseriesforecastnbeatsBuffer, f : Double) -> TimeseriesforecastnbeatsBuffer {
   let result = timeseries_forecast_nbeats_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_nbeats_buffer_fill(s : TimeseriesforecastnbeatsBuffer
   result
 }
 
-pub fn timeseries_forecast_nbeats_buffer_min(s : TimeseriesforecastnbeatsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_buffer_min(s : TimeseriesforecastnbeatsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_buffer_max(s : TimeseriesforecastnbeatsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_buffer_max(s : TimeseriesforecastnbeatsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_buffer_to_string(s : TimeseriesforecastnbeatsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_nbeats_cursor_set(s : TimeseriesforecastnbeatsCursor,
   result
 }
 
-pub fn timeseries_forecast_nbeats_cursor_sum(s : TimeseriesforecastnbeatsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_cursor_sum(s : TimeseriesforecastnbeatsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_cursor_mean(s : TimeseriesforecastnbeatsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_cursor_mean(s : TimeseriesforecastnbeatsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_cursor_scale(s : TimeseriesforecastnbeatsCursor, f : Double) -> TimeseriesforecastnbeatsCursor {
   let result = timeseries_forecast_nbeats_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_nbeats_cursor_fill(s : TimeseriesforecastnbeatsCursor
   result
 }
 
-pub fn timeseries_forecast_nbeats_cursor_min(s : TimeseriesforecastnbeatsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_cursor_min(s : TimeseriesforecastnbeatsCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_cursor_max(s : TimeseriesforecastnbeatsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_cursor_max(s : TimeseriesforecastnbeatsCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_cursor_to_string(s : TimeseriesforecastnbeatsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_nbeats_view_set(s : TimeseriesforecastnbeatsView, i :
   result
 }
 
-pub fn timeseries_forecast_nbeats_view_sum(s : TimeseriesforecastnbeatsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_view_sum(s : TimeseriesforecastnbeatsView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_view_mean(s : TimeseriesforecastnbeatsView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_view_mean(s : TimeseriesforecastnbeatsView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_view_scale(s : TimeseriesforecastnbeatsView, f : Double) -> TimeseriesforecastnbeatsView {
   let result = timeseries_forecast_nbeats_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_nbeats_view_fill(s : TimeseriesforecastnbeatsView, v 
   result
 }
 
-pub fn timeseries_forecast_nbeats_view_min(s : TimeseriesforecastnbeatsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_view_min(s : TimeseriesforecastnbeatsView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_view_max(s : TimeseriesforecastnbeatsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_view_max(s : TimeseriesforecastnbeatsView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_view_to_string(s : TimeseriesforecastnbeatsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_nbeats_range_set(s : TimeseriesforecastnbeatsRange, i
   result
 }
 
-pub fn timeseries_forecast_nbeats_range_sum(s : TimeseriesforecastnbeatsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_range_sum(s : TimeseriesforecastnbeatsRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_range_mean(s : TimeseriesforecastnbeatsRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_range_mean(s : TimeseriesforecastnbeatsRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_range_scale(s : TimeseriesforecastnbeatsRange, f : Double) -> TimeseriesforecastnbeatsRange {
   let result = timeseries_forecast_nbeats_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_nbeats_range_fill(s : TimeseriesforecastnbeatsRange, 
   result
 }
 
-pub fn timeseries_forecast_nbeats_range_min(s : TimeseriesforecastnbeatsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_range_min(s : TimeseriesforecastnbeatsRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_range_max(s : TimeseriesforecastnbeatsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_range_max(s : TimeseriesforecastnbeatsRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_range_to_string(s : TimeseriesforecastnbeatsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_nbeats_slice_set(s : TimeseriesforecastnbeatsSlice, i
   result
 }
 
-pub fn timeseries_forecast_nbeats_slice_sum(s : TimeseriesforecastnbeatsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_nbeats_slice_sum(s : TimeseriesforecastnbeatsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_nbeats_slice_mean(s : TimeseriesforecastnbeatsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_nbeats_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_nbeats_slice_mean(s : TimeseriesforecastnbeatsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_nbeats_slice_scale(s : TimeseriesforecastnbeatsSlice, f : Double) -> TimeseriesforecastnbeatsSlice {
   let result = timeseries_forecast_nbeats_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_nbeats_slice_fill(s : TimeseriesforecastnbeatsSlice, 
   result
 }
 
-pub fn timeseries_forecast_nbeats_slice_min(s : TimeseriesforecastnbeatsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_slice_min(s : TimeseriesforecastnbeatsSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_nbeats_slice_max(s : TimeseriesforecastnbeatsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_nbeats_slice_max(s : TimeseriesforecastnbeatsSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_nbeats_slice_to_string(s : TimeseriesforecastnbeatsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

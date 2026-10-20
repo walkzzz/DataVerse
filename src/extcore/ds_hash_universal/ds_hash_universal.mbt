@@ -88,11 +88,7 @@ pub fn ds_hash_universal_make_series(vals : Array[Double], name : String) -> Dsh
 
 pub fn ds_hash_universal_series_len(s : DshashuniversalSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_universal_series_sum(s : DshashuniversalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_universal_series_sum(s : DshashuniversalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_universal_series_mean(s : DshashuniversalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_universal_frame_set(s : DshashuniversalFrame, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_universal_frame_sum(s : DshashuniversalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_frame_sum(s : DshashuniversalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_frame_mean(s : DshashuniversalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_frame_mean(s : DshashuniversalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_frame_scale(s : DshashuniversalFrame, f : Double) -> DshashuniversalFrame {
   let result = ds_hash_universal_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_universal_frame_fill(s : DshashuniversalFrame, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_universal_frame_min(s : DshashuniversalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_frame_min(s : DshashuniversalFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_frame_max(s : DshashuniversalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_frame_max(s : DshashuniversalFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_frame_to_string(s : DshashuniversalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_universal_table_set(s : DshashuniversalTable, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_universal_table_sum(s : DshashuniversalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_table_sum(s : DshashuniversalTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_table_mean(s : DshashuniversalTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_table_mean(s : DshashuniversalTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_table_scale(s : DshashuniversalTable, f : Double) -> DshashuniversalTable {
   let result = ds_hash_universal_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_universal_table_fill(s : DshashuniversalTable, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_universal_table_min(s : DshashuniversalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_table_min(s : DshashuniversalTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_table_max(s : DshashuniversalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_table_max(s : DshashuniversalTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_table_to_string(s : DshashuniversalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_universal_graphn_set(s : DshashuniversalGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_universal_graphn_sum(s : DshashuniversalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_graphn_sum(s : DshashuniversalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_graphn_mean(s : DshashuniversalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_graphn_mean(s : DshashuniversalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_graphn_scale(s : DshashuniversalGraphN, f : Double) -> DshashuniversalGraphN {
   let result = ds_hash_universal_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_universal_graphn_fill(s : DshashuniversalGraphN, v : Double) -> D
   result
 }
 
-pub fn ds_hash_universal_graphn_min(s : DshashuniversalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_graphn_min(s : DshashuniversalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_graphn_max(s : DshashuniversalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_graphn_max(s : DshashuniversalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_graphn_to_string(s : DshashuniversalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_universal_node_set(s : DshashuniversalNode, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_universal_node_sum(s : DshashuniversalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_node_sum(s : DshashuniversalNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_node_mean(s : DshashuniversalNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_node_mean(s : DshashuniversalNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_node_scale(s : DshashuniversalNode, f : Double) -> DshashuniversalNode {
   let result = ds_hash_universal_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_universal_node_fill(s : DshashuniversalNode, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_universal_node_min(s : DshashuniversalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_node_min(s : DshashuniversalNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_node_max(s : DshashuniversalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_node_max(s : DshashuniversalNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_node_to_string(s : DshashuniversalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_universal_edge_set(s : DshashuniversalEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_universal_edge_sum(s : DshashuniversalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_edge_sum(s : DshashuniversalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_edge_mean(s : DshashuniversalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_edge_mean(s : DshashuniversalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_edge_scale(s : DshashuniversalEdge, f : Double) -> DshashuniversalEdge {
   let result = ds_hash_universal_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_universal_edge_fill(s : DshashuniversalEdge, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_universal_edge_min(s : DshashuniversalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_edge_min(s : DshashuniversalEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_edge_max(s : DshashuniversalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_edge_max(s : DshashuniversalEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_edge_to_string(s : DshashuniversalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_universal_path_set(s : DshashuniversalPath, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_universal_path_sum(s : DshashuniversalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_path_sum(s : DshashuniversalPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_path_mean(s : DshashuniversalPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_path_mean(s : DshashuniversalPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_path_scale(s : DshashuniversalPath, f : Double) -> DshashuniversalPath {
   let result = ds_hash_universal_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_universal_path_fill(s : DshashuniversalPath, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_universal_path_min(s : DshashuniversalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_path_min(s : DshashuniversalPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_path_max(s : DshashuniversalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_path_max(s : DshashuniversalPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_path_to_string(s : DshashuniversalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_universal_cluster_set(s : DshashuniversalCluster, i : Int, v : Do
   result
 }
 
-pub fn ds_hash_universal_cluster_sum(s : DshashuniversalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_cluster_sum(s : DshashuniversalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_cluster_mean(s : DshashuniversalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_cluster_mean(s : DshashuniversalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_cluster_scale(s : DshashuniversalCluster, f : Double) -> DshashuniversalCluster {
   let result = ds_hash_universal_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_universal_cluster_fill(s : DshashuniversalCluster, v : Double) ->
   result
 }
 
-pub fn ds_hash_universal_cluster_min(s : DshashuniversalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_cluster_min(s : DshashuniversalCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_cluster_max(s : DshashuniversalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_cluster_max(s : DshashuniversalCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_cluster_to_string(s : DshashuniversalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_universal_model_set(s : DshashuniversalModel, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_universal_model_sum(s : DshashuniversalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_model_sum(s : DshashuniversalModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_model_mean(s : DshashuniversalModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_model_mean(s : DshashuniversalModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_model_scale(s : DshashuniversalModel, f : Double) -> DshashuniversalModel {
   let result = ds_hash_universal_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_universal_model_fill(s : DshashuniversalModel, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_universal_model_min(s : DshashuniversalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_model_min(s : DshashuniversalModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_model_max(s : DshashuniversalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_model_max(s : DshashuniversalModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_model_to_string(s : DshashuniversalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_universal_layer_set(s : DshashuniversalLayer, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_universal_layer_sum(s : DshashuniversalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_layer_sum(s : DshashuniversalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_layer_mean(s : DshashuniversalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_layer_mean(s : DshashuniversalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_layer_scale(s : DshashuniversalLayer, f : Double) -> DshashuniversalLayer {
   let result = ds_hash_universal_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_universal_layer_fill(s : DshashuniversalLayer, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_universal_layer_min(s : DshashuniversalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_layer_min(s : DshashuniversalLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_layer_max(s : DshashuniversalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_layer_max(s : DshashuniversalLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_layer_to_string(s : DshashuniversalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_universal_buffer_set(s : DshashuniversalBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_universal_buffer_sum(s : DshashuniversalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_buffer_sum(s : DshashuniversalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_buffer_mean(s : DshashuniversalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_buffer_mean(s : DshashuniversalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_buffer_scale(s : DshashuniversalBuffer, f : Double) -> DshashuniversalBuffer {
   let result = ds_hash_universal_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_universal_buffer_fill(s : DshashuniversalBuffer, v : Double) -> D
   result
 }
 
-pub fn ds_hash_universal_buffer_min(s : DshashuniversalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_buffer_min(s : DshashuniversalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_buffer_max(s : DshashuniversalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_buffer_max(s : DshashuniversalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_buffer_to_string(s : DshashuniversalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_universal_cursor_set(s : DshashuniversalCursor, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_universal_cursor_sum(s : DshashuniversalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_cursor_sum(s : DshashuniversalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_cursor_mean(s : DshashuniversalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_cursor_mean(s : DshashuniversalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_cursor_scale(s : DshashuniversalCursor, f : Double) -> DshashuniversalCursor {
   let result = ds_hash_universal_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_universal_cursor_fill(s : DshashuniversalCursor, v : Double) -> D
   result
 }
 
-pub fn ds_hash_universal_cursor_min(s : DshashuniversalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_cursor_min(s : DshashuniversalCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_cursor_max(s : DshashuniversalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_cursor_max(s : DshashuniversalCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_cursor_to_string(s : DshashuniversalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_universal_view_set(s : DshashuniversalView, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_universal_view_sum(s : DshashuniversalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_view_sum(s : DshashuniversalView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_view_mean(s : DshashuniversalView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_view_mean(s : DshashuniversalView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_view_scale(s : DshashuniversalView, f : Double) -> DshashuniversalView {
   let result = ds_hash_universal_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_universal_view_fill(s : DshashuniversalView, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_universal_view_min(s : DshashuniversalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_view_min(s : DshashuniversalView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_view_max(s : DshashuniversalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_view_max(s : DshashuniversalView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_view_to_string(s : DshashuniversalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_universal_range_set(s : DshashuniversalRange, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_universal_range_sum(s : DshashuniversalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_range_sum(s : DshashuniversalRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_range_mean(s : DshashuniversalRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_range_mean(s : DshashuniversalRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_range_scale(s : DshashuniversalRange, f : Double) -> DshashuniversalRange {
   let result = ds_hash_universal_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_universal_range_fill(s : DshashuniversalRange, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_universal_range_min(s : DshashuniversalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_range_min(s : DshashuniversalRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_range_max(s : DshashuniversalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_range_max(s : DshashuniversalRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_range_to_string(s : DshashuniversalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_universal_slice_set(s : DshashuniversalSlice, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_universal_slice_sum(s : DshashuniversalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_universal_slice_sum(s : DshashuniversalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_universal_slice_mean(s : DshashuniversalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_universal_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_universal_slice_mean(s : DshashuniversalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_universal_slice_scale(s : DshashuniversalSlice, f : Double) -> DshashuniversalSlice {
   let result = ds_hash_universal_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_universal_slice_fill(s : DshashuniversalSlice, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_universal_slice_min(s : DshashuniversalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_slice_min(s : DshashuniversalSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_universal_slice_max(s : DshashuniversalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_universal_slice_max(s : DshashuniversalSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_universal_slice_to_string(s : DshashuniversalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

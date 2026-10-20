@@ -88,11 +88,7 @@ pub fn chem_mol_props_logp_make_series(vals : Array[Double], name : String) -> C
 
 pub fn chem_mol_props_logp_series_len(s : ChemmolpropslogpSeries) -> Int { s.vals.length() }
 
-pub fn chem_mol_props_logp_series_sum(s : ChemmolpropslogpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_mol_props_logp_series_sum(s : ChemmolpropslogpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_mol_props_logp_series_mean(s : ChemmolpropslogpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_mol_props_logp_frame_set(s : ChemmolpropslogpFrame, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_props_logp_frame_sum(s : ChemmolpropslogpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_frame_sum(s : ChemmolpropslogpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_frame_mean(s : ChemmolpropslogpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_frame_mean(s : ChemmolpropslogpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_frame_scale(s : ChemmolpropslogpFrame, f : Double) -> ChemmolpropslogpFrame {
   let result = chem_mol_props_logp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_mol_props_logp_frame_fill(s : ChemmolpropslogpFrame, v : Double) -> 
   result
 }
 
-pub fn chem_mol_props_logp_frame_min(s : ChemmolpropslogpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_frame_min(s : ChemmolpropslogpFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_frame_max(s : ChemmolpropslogpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_frame_max(s : ChemmolpropslogpFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_frame_to_string(s : ChemmolpropslogpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_mol_props_logp_table_set(s : ChemmolpropslogpTable, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_props_logp_table_sum(s : ChemmolpropslogpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_table_sum(s : ChemmolpropslogpTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_table_mean(s : ChemmolpropslogpTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_table_mean(s : ChemmolpropslogpTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_table_scale(s : ChemmolpropslogpTable, f : Double) -> ChemmolpropslogpTable {
   let result = chem_mol_props_logp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_mol_props_logp_table_fill(s : ChemmolpropslogpTable, v : Double) -> 
   result
 }
 
-pub fn chem_mol_props_logp_table_min(s : ChemmolpropslogpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_table_min(s : ChemmolpropslogpTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_table_max(s : ChemmolpropslogpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_table_max(s : ChemmolpropslogpTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_table_to_string(s : ChemmolpropslogpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_mol_props_logp_graphn_set(s : ChemmolpropslogpGraphN, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_logp_graphn_sum(s : ChemmolpropslogpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_graphn_sum(s : ChemmolpropslogpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_graphn_mean(s : ChemmolpropslogpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_graphn_mean(s : ChemmolpropslogpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_graphn_scale(s : ChemmolpropslogpGraphN, f : Double) -> ChemmolpropslogpGraphN {
   let result = chem_mol_props_logp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_mol_props_logp_graphn_fill(s : ChemmolpropslogpGraphN, v : Double) -
   result
 }
 
-pub fn chem_mol_props_logp_graphn_min(s : ChemmolpropslogpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_graphn_min(s : ChemmolpropslogpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_graphn_max(s : ChemmolpropslogpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_graphn_max(s : ChemmolpropslogpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_graphn_to_string(s : ChemmolpropslogpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_mol_props_logp_node_set(s : ChemmolpropslogpNode, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_props_logp_node_sum(s : ChemmolpropslogpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_node_sum(s : ChemmolpropslogpNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_node_mean(s : ChemmolpropslogpNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_node_mean(s : ChemmolpropslogpNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_node_scale(s : ChemmolpropslogpNode, f : Double) -> ChemmolpropslogpNode {
   let result = chem_mol_props_logp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_mol_props_logp_node_fill(s : ChemmolpropslogpNode, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_props_logp_node_min(s : ChemmolpropslogpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_node_min(s : ChemmolpropslogpNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_node_max(s : ChemmolpropslogpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_node_max(s : ChemmolpropslogpNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_node_to_string(s : ChemmolpropslogpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_mol_props_logp_edge_set(s : ChemmolpropslogpEdge, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_props_logp_edge_sum(s : ChemmolpropslogpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_edge_sum(s : ChemmolpropslogpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_edge_mean(s : ChemmolpropslogpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_edge_mean(s : ChemmolpropslogpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_edge_scale(s : ChemmolpropslogpEdge, f : Double) -> ChemmolpropslogpEdge {
   let result = chem_mol_props_logp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_mol_props_logp_edge_fill(s : ChemmolpropslogpEdge, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_props_logp_edge_min(s : ChemmolpropslogpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_edge_min(s : ChemmolpropslogpEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_edge_max(s : ChemmolpropslogpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_edge_max(s : ChemmolpropslogpEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_edge_to_string(s : ChemmolpropslogpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_mol_props_logp_path_set(s : ChemmolpropslogpPath, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_props_logp_path_sum(s : ChemmolpropslogpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_path_sum(s : ChemmolpropslogpPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_path_mean(s : ChemmolpropslogpPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_path_mean(s : ChemmolpropslogpPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_path_scale(s : ChemmolpropslogpPath, f : Double) -> ChemmolpropslogpPath {
   let result = chem_mol_props_logp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_mol_props_logp_path_fill(s : ChemmolpropslogpPath, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_props_logp_path_min(s : ChemmolpropslogpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_path_min(s : ChemmolpropslogpPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_path_max(s : ChemmolpropslogpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_path_max(s : ChemmolpropslogpPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_path_to_string(s : ChemmolpropslogpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_mol_props_logp_cluster_set(s : ChemmolpropslogpCluster, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_logp_cluster_sum(s : ChemmolpropslogpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_cluster_sum(s : ChemmolpropslogpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_cluster_mean(s : ChemmolpropslogpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_cluster_mean(s : ChemmolpropslogpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_cluster_scale(s : ChemmolpropslogpCluster, f : Double) -> ChemmolpropslogpCluster {
   let result = chem_mol_props_logp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_mol_props_logp_cluster_fill(s : ChemmolpropslogpCluster, v : Double)
   result
 }
 
-pub fn chem_mol_props_logp_cluster_min(s : ChemmolpropslogpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_cluster_min(s : ChemmolpropslogpCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_cluster_max(s : ChemmolpropslogpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_cluster_max(s : ChemmolpropslogpCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_cluster_to_string(s : ChemmolpropslogpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_mol_props_logp_model_set(s : ChemmolpropslogpModel, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_props_logp_model_sum(s : ChemmolpropslogpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_model_sum(s : ChemmolpropslogpModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_model_mean(s : ChemmolpropslogpModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_model_mean(s : ChemmolpropslogpModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_model_scale(s : ChemmolpropslogpModel, f : Double) -> ChemmolpropslogpModel {
   let result = chem_mol_props_logp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_mol_props_logp_model_fill(s : ChemmolpropslogpModel, v : Double) -> 
   result
 }
 
-pub fn chem_mol_props_logp_model_min(s : ChemmolpropslogpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_model_min(s : ChemmolpropslogpModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_model_max(s : ChemmolpropslogpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_model_max(s : ChemmolpropslogpModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_model_to_string(s : ChemmolpropslogpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_mol_props_logp_layer_set(s : ChemmolpropslogpLayer, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_props_logp_layer_sum(s : ChemmolpropslogpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_layer_sum(s : ChemmolpropslogpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_layer_mean(s : ChemmolpropslogpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_layer_mean(s : ChemmolpropslogpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_layer_scale(s : ChemmolpropslogpLayer, f : Double) -> ChemmolpropslogpLayer {
   let result = chem_mol_props_logp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_mol_props_logp_layer_fill(s : ChemmolpropslogpLayer, v : Double) -> 
   result
 }
 
-pub fn chem_mol_props_logp_layer_min(s : ChemmolpropslogpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_layer_min(s : ChemmolpropslogpLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_layer_max(s : ChemmolpropslogpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_layer_max(s : ChemmolpropslogpLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_layer_to_string(s : ChemmolpropslogpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_mol_props_logp_buffer_set(s : ChemmolpropslogpBuffer, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_logp_buffer_sum(s : ChemmolpropslogpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_buffer_sum(s : ChemmolpropslogpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_buffer_mean(s : ChemmolpropslogpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_buffer_mean(s : ChemmolpropslogpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_buffer_scale(s : ChemmolpropslogpBuffer, f : Double) -> ChemmolpropslogpBuffer {
   let result = chem_mol_props_logp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_mol_props_logp_buffer_fill(s : ChemmolpropslogpBuffer, v : Double) -
   result
 }
 
-pub fn chem_mol_props_logp_buffer_min(s : ChemmolpropslogpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_buffer_min(s : ChemmolpropslogpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_buffer_max(s : ChemmolpropslogpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_buffer_max(s : ChemmolpropslogpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_buffer_to_string(s : ChemmolpropslogpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_mol_props_logp_cursor_set(s : ChemmolpropslogpCursor, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_logp_cursor_sum(s : ChemmolpropslogpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_cursor_sum(s : ChemmolpropslogpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_cursor_mean(s : ChemmolpropslogpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_cursor_mean(s : ChemmolpropslogpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_cursor_scale(s : ChemmolpropslogpCursor, f : Double) -> ChemmolpropslogpCursor {
   let result = chem_mol_props_logp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_mol_props_logp_cursor_fill(s : ChemmolpropslogpCursor, v : Double) -
   result
 }
 
-pub fn chem_mol_props_logp_cursor_min(s : ChemmolpropslogpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_cursor_min(s : ChemmolpropslogpCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_cursor_max(s : ChemmolpropslogpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_cursor_max(s : ChemmolpropslogpCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_cursor_to_string(s : ChemmolpropslogpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_mol_props_logp_view_set(s : ChemmolpropslogpView, i : Int, v : Doubl
   result
 }
 
-pub fn chem_mol_props_logp_view_sum(s : ChemmolpropslogpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_view_sum(s : ChemmolpropslogpView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_view_mean(s : ChemmolpropslogpView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_view_mean(s : ChemmolpropslogpView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_view_scale(s : ChemmolpropslogpView, f : Double) -> ChemmolpropslogpView {
   let result = chem_mol_props_logp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_mol_props_logp_view_fill(s : ChemmolpropslogpView, v : Double) -> Ch
   result
 }
 
-pub fn chem_mol_props_logp_view_min(s : ChemmolpropslogpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_view_min(s : ChemmolpropslogpView) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_view_max(s : ChemmolpropslogpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_view_max(s : ChemmolpropslogpView) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_view_to_string(s : ChemmolpropslogpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_mol_props_logp_range_set(s : ChemmolpropslogpRange, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_props_logp_range_sum(s : ChemmolpropslogpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_range_sum(s : ChemmolpropslogpRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_range_mean(s : ChemmolpropslogpRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_range_mean(s : ChemmolpropslogpRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_range_scale(s : ChemmolpropslogpRange, f : Double) -> ChemmolpropslogpRange {
   let result = chem_mol_props_logp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_mol_props_logp_range_fill(s : ChemmolpropslogpRange, v : Double) -> 
   result
 }
 
-pub fn chem_mol_props_logp_range_min(s : ChemmolpropslogpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_range_min(s : ChemmolpropslogpRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_range_max(s : ChemmolpropslogpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_range_max(s : ChemmolpropslogpRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_range_to_string(s : ChemmolpropslogpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_mol_props_logp_slice_set(s : ChemmolpropslogpSlice, i : Int, v : Dou
   result
 }
 
-pub fn chem_mol_props_logp_slice_sum(s : ChemmolpropslogpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_logp_slice_sum(s : ChemmolpropslogpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_logp_slice_mean(s : ChemmolpropslogpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_logp_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_logp_slice_mean(s : ChemmolpropslogpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_logp_slice_scale(s : ChemmolpropslogpSlice, f : Double) -> ChemmolpropslogpSlice {
   let result = chem_mol_props_logp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_mol_props_logp_slice_fill(s : ChemmolpropslogpSlice, v : Double) -> 
   result
 }
 
-pub fn chem_mol_props_logp_slice_min(s : ChemmolpropslogpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_slice_min(s : ChemmolpropslogpSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_logp_slice_max(s : ChemmolpropslogpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_logp_slice_max(s : ChemmolpropslogpSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_logp_slice_to_string(s : ChemmolpropslogpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

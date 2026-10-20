@@ -88,11 +88,7 @@ pub fn ds_tree_redblack_make_series(vals : Array[Double], name : String) -> Dstr
 
 pub fn ds_tree_redblack_series_len(s : DstreeredblackSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_redblack_series_sum(s : DstreeredblackSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_redblack_series_sum(s : DstreeredblackSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_redblack_series_mean(s : DstreeredblackSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_redblack_frame_set(s : DstreeredblackFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_redblack_frame_sum(s : DstreeredblackFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_frame_sum(s : DstreeredblackFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_frame_mean(s : DstreeredblackFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_frame_mean(s : DstreeredblackFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_frame_scale(s : DstreeredblackFrame, f : Double) -> DstreeredblackFrame {
   let result = ds_tree_redblack_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_redblack_frame_fill(s : DstreeredblackFrame, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_redblack_frame_min(s : DstreeredblackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_frame_min(s : DstreeredblackFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_frame_max(s : DstreeredblackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_frame_max(s : DstreeredblackFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_frame_to_string(s : DstreeredblackFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_redblack_table_set(s : DstreeredblackTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_redblack_table_sum(s : DstreeredblackTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_table_sum(s : DstreeredblackTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_table_mean(s : DstreeredblackTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_table_mean(s : DstreeredblackTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_table_scale(s : DstreeredblackTable, f : Double) -> DstreeredblackTable {
   let result = ds_tree_redblack_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_redblack_table_fill(s : DstreeredblackTable, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_redblack_table_min(s : DstreeredblackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_table_min(s : DstreeredblackTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_table_max(s : DstreeredblackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_table_max(s : DstreeredblackTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_table_to_string(s : DstreeredblackTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_redblack_graphn_set(s : DstreeredblackGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_tree_redblack_graphn_sum(s : DstreeredblackGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_graphn_sum(s : DstreeredblackGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_graphn_mean(s : DstreeredblackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_graphn_mean(s : DstreeredblackGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_graphn_scale(s : DstreeredblackGraphN, f : Double) -> DstreeredblackGraphN {
   let result = ds_tree_redblack_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_redblack_graphn_fill(s : DstreeredblackGraphN, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_redblack_graphn_min(s : DstreeredblackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_graphn_min(s : DstreeredblackGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_graphn_max(s : DstreeredblackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_graphn_max(s : DstreeredblackGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_graphn_to_string(s : DstreeredblackGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_redblack_node_set(s : DstreeredblackNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_redblack_node_sum(s : DstreeredblackNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_node_sum(s : DstreeredblackNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_node_mean(s : DstreeredblackNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_node_mean(s : DstreeredblackNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_node_scale(s : DstreeredblackNode, f : Double) -> DstreeredblackNode {
   let result = ds_tree_redblack_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_redblack_node_fill(s : DstreeredblackNode, v : Double) -> Dstreer
   result
 }
 
-pub fn ds_tree_redblack_node_min(s : DstreeredblackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_node_min(s : DstreeredblackNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_node_max(s : DstreeredblackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_node_max(s : DstreeredblackNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_node_to_string(s : DstreeredblackNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_redblack_edge_set(s : DstreeredblackEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_redblack_edge_sum(s : DstreeredblackEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_edge_sum(s : DstreeredblackEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_edge_mean(s : DstreeredblackEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_edge_mean(s : DstreeredblackEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_edge_scale(s : DstreeredblackEdge, f : Double) -> DstreeredblackEdge {
   let result = ds_tree_redblack_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_redblack_edge_fill(s : DstreeredblackEdge, v : Double) -> Dstreer
   result
 }
 
-pub fn ds_tree_redblack_edge_min(s : DstreeredblackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_edge_min(s : DstreeredblackEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_edge_max(s : DstreeredblackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_edge_max(s : DstreeredblackEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_edge_to_string(s : DstreeredblackEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_redblack_path_set(s : DstreeredblackPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_redblack_path_sum(s : DstreeredblackPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_path_sum(s : DstreeredblackPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_path_mean(s : DstreeredblackPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_path_mean(s : DstreeredblackPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_path_scale(s : DstreeredblackPath, f : Double) -> DstreeredblackPath {
   let result = ds_tree_redblack_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_redblack_path_fill(s : DstreeredblackPath, v : Double) -> Dstreer
   result
 }
 
-pub fn ds_tree_redblack_path_min(s : DstreeredblackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_path_min(s : DstreeredblackPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_path_max(s : DstreeredblackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_path_max(s : DstreeredblackPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_path_to_string(s : DstreeredblackPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_redblack_cluster_set(s : DstreeredblackCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_tree_redblack_cluster_sum(s : DstreeredblackCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_cluster_sum(s : DstreeredblackCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_cluster_mean(s : DstreeredblackCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_cluster_mean(s : DstreeredblackCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_cluster_scale(s : DstreeredblackCluster, f : Double) -> DstreeredblackCluster {
   let result = ds_tree_redblack_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_redblack_cluster_fill(s : DstreeredblackCluster, v : Double) -> D
   result
 }
 
-pub fn ds_tree_redblack_cluster_min(s : DstreeredblackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_cluster_min(s : DstreeredblackCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_cluster_max(s : DstreeredblackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_cluster_max(s : DstreeredblackCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_cluster_to_string(s : DstreeredblackCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_redblack_model_set(s : DstreeredblackModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_redblack_model_sum(s : DstreeredblackModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_model_sum(s : DstreeredblackModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_model_mean(s : DstreeredblackModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_model_mean(s : DstreeredblackModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_model_scale(s : DstreeredblackModel, f : Double) -> DstreeredblackModel {
   let result = ds_tree_redblack_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_redblack_model_fill(s : DstreeredblackModel, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_redblack_model_min(s : DstreeredblackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_model_min(s : DstreeredblackModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_model_max(s : DstreeredblackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_model_max(s : DstreeredblackModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_model_to_string(s : DstreeredblackModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_redblack_layer_set(s : DstreeredblackLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_redblack_layer_sum(s : DstreeredblackLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_layer_sum(s : DstreeredblackLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_layer_mean(s : DstreeredblackLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_layer_mean(s : DstreeredblackLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_layer_scale(s : DstreeredblackLayer, f : Double) -> DstreeredblackLayer {
   let result = ds_tree_redblack_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_redblack_layer_fill(s : DstreeredblackLayer, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_redblack_layer_min(s : DstreeredblackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_layer_min(s : DstreeredblackLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_layer_max(s : DstreeredblackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_layer_max(s : DstreeredblackLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_layer_to_string(s : DstreeredblackLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_redblack_buffer_set(s : DstreeredblackBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_tree_redblack_buffer_sum(s : DstreeredblackBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_buffer_sum(s : DstreeredblackBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_buffer_mean(s : DstreeredblackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_buffer_mean(s : DstreeredblackBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_buffer_scale(s : DstreeredblackBuffer, f : Double) -> DstreeredblackBuffer {
   let result = ds_tree_redblack_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_redblack_buffer_fill(s : DstreeredblackBuffer, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_redblack_buffer_min(s : DstreeredblackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_buffer_min(s : DstreeredblackBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_buffer_max(s : DstreeredblackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_buffer_max(s : DstreeredblackBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_buffer_to_string(s : DstreeredblackBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_redblack_cursor_set(s : DstreeredblackCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_tree_redblack_cursor_sum(s : DstreeredblackCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_cursor_sum(s : DstreeredblackCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_cursor_mean(s : DstreeredblackCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_cursor_mean(s : DstreeredblackCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_cursor_scale(s : DstreeredblackCursor, f : Double) -> DstreeredblackCursor {
   let result = ds_tree_redblack_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_redblack_cursor_fill(s : DstreeredblackCursor, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_redblack_cursor_min(s : DstreeredblackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_cursor_min(s : DstreeredblackCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_cursor_max(s : DstreeredblackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_cursor_max(s : DstreeredblackCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_cursor_to_string(s : DstreeredblackCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_redblack_view_set(s : DstreeredblackView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_redblack_view_sum(s : DstreeredblackView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_view_sum(s : DstreeredblackView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_view_mean(s : DstreeredblackView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_view_mean(s : DstreeredblackView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_view_scale(s : DstreeredblackView, f : Double) -> DstreeredblackView {
   let result = ds_tree_redblack_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_redblack_view_fill(s : DstreeredblackView, v : Double) -> Dstreer
   result
 }
 
-pub fn ds_tree_redblack_view_min(s : DstreeredblackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_view_min(s : DstreeredblackView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_view_max(s : DstreeredblackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_view_max(s : DstreeredblackView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_view_to_string(s : DstreeredblackView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_redblack_range_set(s : DstreeredblackRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_redblack_range_sum(s : DstreeredblackRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_range_sum(s : DstreeredblackRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_range_mean(s : DstreeredblackRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_range_mean(s : DstreeredblackRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_range_scale(s : DstreeredblackRange, f : Double) -> DstreeredblackRange {
   let result = ds_tree_redblack_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_redblack_range_fill(s : DstreeredblackRange, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_redblack_range_min(s : DstreeredblackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_range_min(s : DstreeredblackRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_range_max(s : DstreeredblackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_range_max(s : DstreeredblackRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_range_to_string(s : DstreeredblackRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_redblack_slice_set(s : DstreeredblackSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_redblack_slice_sum(s : DstreeredblackSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_redblack_slice_sum(s : DstreeredblackSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_redblack_slice_mean(s : DstreeredblackSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_redblack_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_redblack_slice_mean(s : DstreeredblackSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_redblack_slice_scale(s : DstreeredblackSlice, f : Double) -> DstreeredblackSlice {
   let result = ds_tree_redblack_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_redblack_slice_fill(s : DstreeredblackSlice, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_redblack_slice_min(s : DstreeredblackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_slice_min(s : DstreeredblackSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_redblack_slice_max(s : DstreeredblackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_redblack_slice_max(s : DstreeredblackSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_redblack_slice_to_string(s : DstreeredblackSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

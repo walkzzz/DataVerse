@@ -88,11 +88,7 @@ pub fn bio_seq_align_consistency_make_series(vals : Array[Double], name : String
 
 pub fn bio_seq_align_consistency_series_len(s : BioseqalignconsistencySeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_align_consistency_series_sum(s : BioseqalignconsistencySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_align_consistency_series_sum(s : BioseqalignconsistencySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_align_consistency_series_mean(s : BioseqalignconsistencySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_align_consistency_frame_set(s : BioseqalignconsistencyFrame, i : 
   result
 }
 
-pub fn bio_seq_align_consistency_frame_sum(s : BioseqalignconsistencyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_frame_sum(s : BioseqalignconsistencyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_frame_mean(s : BioseqalignconsistencyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_frame_mean(s : BioseqalignconsistencyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_frame_scale(s : BioseqalignconsistencyFrame, f : Double) -> BioseqalignconsistencyFrame {
   let result = bio_seq_align_consistency_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_align_consistency_frame_fill(s : BioseqalignconsistencyFrame, v :
   result
 }
 
-pub fn bio_seq_align_consistency_frame_min(s : BioseqalignconsistencyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_frame_min(s : BioseqalignconsistencyFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_frame_max(s : BioseqalignconsistencyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_frame_max(s : BioseqalignconsistencyFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_frame_to_string(s : BioseqalignconsistencyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_align_consistency_table_set(s : BioseqalignconsistencyTable, i : 
   result
 }
 
-pub fn bio_seq_align_consistency_table_sum(s : BioseqalignconsistencyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_table_sum(s : BioseqalignconsistencyTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_table_mean(s : BioseqalignconsistencyTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_table_mean(s : BioseqalignconsistencyTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_table_scale(s : BioseqalignconsistencyTable, f : Double) -> BioseqalignconsistencyTable {
   let result = bio_seq_align_consistency_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_align_consistency_table_fill(s : BioseqalignconsistencyTable, v :
   result
 }
 
-pub fn bio_seq_align_consistency_table_min(s : BioseqalignconsistencyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_table_min(s : BioseqalignconsistencyTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_table_max(s : BioseqalignconsistencyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_table_max(s : BioseqalignconsistencyTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_table_to_string(s : BioseqalignconsistencyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_align_consistency_graphn_set(s : BioseqalignconsistencyGraphN, i 
   result
 }
 
-pub fn bio_seq_align_consistency_graphn_sum(s : BioseqalignconsistencyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_graphn_sum(s : BioseqalignconsistencyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_graphn_mean(s : BioseqalignconsistencyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_graphn_mean(s : BioseqalignconsistencyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_graphn_scale(s : BioseqalignconsistencyGraphN, f : Double) -> BioseqalignconsistencyGraphN {
   let result = bio_seq_align_consistency_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_align_consistency_graphn_fill(s : BioseqalignconsistencyGraphN, v
   result
 }
 
-pub fn bio_seq_align_consistency_graphn_min(s : BioseqalignconsistencyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_graphn_min(s : BioseqalignconsistencyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_graphn_max(s : BioseqalignconsistencyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_graphn_max(s : BioseqalignconsistencyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_graphn_to_string(s : BioseqalignconsistencyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_align_consistency_node_set(s : BioseqalignconsistencyNode, i : In
   result
 }
 
-pub fn bio_seq_align_consistency_node_sum(s : BioseqalignconsistencyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_node_sum(s : BioseqalignconsistencyNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_node_mean(s : BioseqalignconsistencyNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_node_mean(s : BioseqalignconsistencyNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_node_scale(s : BioseqalignconsistencyNode, f : Double) -> BioseqalignconsistencyNode {
   let result = bio_seq_align_consistency_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_align_consistency_node_fill(s : BioseqalignconsistencyNode, v : D
   result
 }
 
-pub fn bio_seq_align_consistency_node_min(s : BioseqalignconsistencyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_node_min(s : BioseqalignconsistencyNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_node_max(s : BioseqalignconsistencyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_node_max(s : BioseqalignconsistencyNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_node_to_string(s : BioseqalignconsistencyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_align_consistency_edge_set(s : BioseqalignconsistencyEdge, i : In
   result
 }
 
-pub fn bio_seq_align_consistency_edge_sum(s : BioseqalignconsistencyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_edge_sum(s : BioseqalignconsistencyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_edge_mean(s : BioseqalignconsistencyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_edge_mean(s : BioseqalignconsistencyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_edge_scale(s : BioseqalignconsistencyEdge, f : Double) -> BioseqalignconsistencyEdge {
   let result = bio_seq_align_consistency_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_align_consistency_edge_fill(s : BioseqalignconsistencyEdge, v : D
   result
 }
 
-pub fn bio_seq_align_consistency_edge_min(s : BioseqalignconsistencyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_edge_min(s : BioseqalignconsistencyEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_edge_max(s : BioseqalignconsistencyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_edge_max(s : BioseqalignconsistencyEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_edge_to_string(s : BioseqalignconsistencyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_align_consistency_path_set(s : BioseqalignconsistencyPath, i : In
   result
 }
 
-pub fn bio_seq_align_consistency_path_sum(s : BioseqalignconsistencyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_path_sum(s : BioseqalignconsistencyPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_path_mean(s : BioseqalignconsistencyPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_path_mean(s : BioseqalignconsistencyPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_path_scale(s : BioseqalignconsistencyPath, f : Double) -> BioseqalignconsistencyPath {
   let result = bio_seq_align_consistency_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_align_consistency_path_fill(s : BioseqalignconsistencyPath, v : D
   result
 }
 
-pub fn bio_seq_align_consistency_path_min(s : BioseqalignconsistencyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_path_min(s : BioseqalignconsistencyPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_path_max(s : BioseqalignconsistencyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_path_max(s : BioseqalignconsistencyPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_path_to_string(s : BioseqalignconsistencyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_align_consistency_cluster_set(s : BioseqalignconsistencyCluster, 
   result
 }
 
-pub fn bio_seq_align_consistency_cluster_sum(s : BioseqalignconsistencyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_cluster_sum(s : BioseqalignconsistencyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_cluster_mean(s : BioseqalignconsistencyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_cluster_mean(s : BioseqalignconsistencyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_cluster_scale(s : BioseqalignconsistencyCluster, f : Double) -> BioseqalignconsistencyCluster {
   let result = bio_seq_align_consistency_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_align_consistency_cluster_fill(s : BioseqalignconsistencyCluster,
   result
 }
 
-pub fn bio_seq_align_consistency_cluster_min(s : BioseqalignconsistencyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_cluster_min(s : BioseqalignconsistencyCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_cluster_max(s : BioseqalignconsistencyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_cluster_max(s : BioseqalignconsistencyCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_cluster_to_string(s : BioseqalignconsistencyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_align_consistency_model_set(s : BioseqalignconsistencyModel, i : 
   result
 }
 
-pub fn bio_seq_align_consistency_model_sum(s : BioseqalignconsistencyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_model_sum(s : BioseqalignconsistencyModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_model_mean(s : BioseqalignconsistencyModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_model_mean(s : BioseqalignconsistencyModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_model_scale(s : BioseqalignconsistencyModel, f : Double) -> BioseqalignconsistencyModel {
   let result = bio_seq_align_consistency_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_align_consistency_model_fill(s : BioseqalignconsistencyModel, v :
   result
 }
 
-pub fn bio_seq_align_consistency_model_min(s : BioseqalignconsistencyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_model_min(s : BioseqalignconsistencyModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_model_max(s : BioseqalignconsistencyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_model_max(s : BioseqalignconsistencyModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_model_to_string(s : BioseqalignconsistencyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_align_consistency_layer_set(s : BioseqalignconsistencyLayer, i : 
   result
 }
 
-pub fn bio_seq_align_consistency_layer_sum(s : BioseqalignconsistencyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_layer_sum(s : BioseqalignconsistencyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_layer_mean(s : BioseqalignconsistencyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_layer_mean(s : BioseqalignconsistencyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_layer_scale(s : BioseqalignconsistencyLayer, f : Double) -> BioseqalignconsistencyLayer {
   let result = bio_seq_align_consistency_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_align_consistency_layer_fill(s : BioseqalignconsistencyLayer, v :
   result
 }
 
-pub fn bio_seq_align_consistency_layer_min(s : BioseqalignconsistencyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_layer_min(s : BioseqalignconsistencyLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_layer_max(s : BioseqalignconsistencyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_layer_max(s : BioseqalignconsistencyLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_layer_to_string(s : BioseqalignconsistencyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_align_consistency_buffer_set(s : BioseqalignconsistencyBuffer, i 
   result
 }
 
-pub fn bio_seq_align_consistency_buffer_sum(s : BioseqalignconsistencyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_buffer_sum(s : BioseqalignconsistencyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_buffer_mean(s : BioseqalignconsistencyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_buffer_mean(s : BioseqalignconsistencyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_buffer_scale(s : BioseqalignconsistencyBuffer, f : Double) -> BioseqalignconsistencyBuffer {
   let result = bio_seq_align_consistency_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_align_consistency_buffer_fill(s : BioseqalignconsistencyBuffer, v
   result
 }
 
-pub fn bio_seq_align_consistency_buffer_min(s : BioseqalignconsistencyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_buffer_min(s : BioseqalignconsistencyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_buffer_max(s : BioseqalignconsistencyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_buffer_max(s : BioseqalignconsistencyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_buffer_to_string(s : BioseqalignconsistencyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_align_consistency_cursor_set(s : BioseqalignconsistencyCursor, i 
   result
 }
 
-pub fn bio_seq_align_consistency_cursor_sum(s : BioseqalignconsistencyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_cursor_sum(s : BioseqalignconsistencyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_cursor_mean(s : BioseqalignconsistencyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_cursor_mean(s : BioseqalignconsistencyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_cursor_scale(s : BioseqalignconsistencyCursor, f : Double) -> BioseqalignconsistencyCursor {
   let result = bio_seq_align_consistency_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_align_consistency_cursor_fill(s : BioseqalignconsistencyCursor, v
   result
 }
 
-pub fn bio_seq_align_consistency_cursor_min(s : BioseqalignconsistencyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_cursor_min(s : BioseqalignconsistencyCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_cursor_max(s : BioseqalignconsistencyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_cursor_max(s : BioseqalignconsistencyCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_cursor_to_string(s : BioseqalignconsistencyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_align_consistency_view_set(s : BioseqalignconsistencyView, i : In
   result
 }
 
-pub fn bio_seq_align_consistency_view_sum(s : BioseqalignconsistencyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_view_sum(s : BioseqalignconsistencyView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_view_mean(s : BioseqalignconsistencyView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_view_mean(s : BioseqalignconsistencyView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_view_scale(s : BioseqalignconsistencyView, f : Double) -> BioseqalignconsistencyView {
   let result = bio_seq_align_consistency_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_align_consistency_view_fill(s : BioseqalignconsistencyView, v : D
   result
 }
 
-pub fn bio_seq_align_consistency_view_min(s : BioseqalignconsistencyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_view_min(s : BioseqalignconsistencyView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_view_max(s : BioseqalignconsistencyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_view_max(s : BioseqalignconsistencyView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_view_to_string(s : BioseqalignconsistencyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_align_consistency_range_set(s : BioseqalignconsistencyRange, i : 
   result
 }
 
-pub fn bio_seq_align_consistency_range_sum(s : BioseqalignconsistencyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_range_sum(s : BioseqalignconsistencyRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_range_mean(s : BioseqalignconsistencyRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_range_mean(s : BioseqalignconsistencyRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_range_scale(s : BioseqalignconsistencyRange, f : Double) -> BioseqalignconsistencyRange {
   let result = bio_seq_align_consistency_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_align_consistency_range_fill(s : BioseqalignconsistencyRange, v :
   result
 }
 
-pub fn bio_seq_align_consistency_range_min(s : BioseqalignconsistencyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_range_min(s : BioseqalignconsistencyRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_range_max(s : BioseqalignconsistencyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_range_max(s : BioseqalignconsistencyRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_range_to_string(s : BioseqalignconsistencyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_align_consistency_slice_set(s : BioseqalignconsistencySlice, i : 
   result
 }
 
-pub fn bio_seq_align_consistency_slice_sum(s : BioseqalignconsistencySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_consistency_slice_sum(s : BioseqalignconsistencySlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_consistency_slice_mean(s : BioseqalignconsistencySlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_consistency_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_consistency_slice_mean(s : BioseqalignconsistencySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_consistency_slice_scale(s : BioseqalignconsistencySlice, f : Double) -> BioseqalignconsistencySlice {
   let result = bio_seq_align_consistency_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_align_consistency_slice_fill(s : BioseqalignconsistencySlice, v :
   result
 }
 
-pub fn bio_seq_align_consistency_slice_min(s : BioseqalignconsistencySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_slice_min(s : BioseqalignconsistencySlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_consistency_slice_max(s : BioseqalignconsistencySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_consistency_slice_max(s : BioseqalignconsistencySlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_consistency_slice_to_string(s : BioseqalignconsistencySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

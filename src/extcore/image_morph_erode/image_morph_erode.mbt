@@ -88,11 +88,7 @@ pub fn image_morph_erode_make_series(vals : Array[Double], name : String) -> Ima
 
 pub fn image_morph_erode_series_len(s : ImagemorpherodeSeries) -> Int { s.vals.length() }
 
-pub fn image_morph_erode_series_sum(s : ImagemorpherodeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_morph_erode_series_sum(s : ImagemorpherodeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_morph_erode_series_mean(s : ImagemorpherodeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_morph_erode_frame_set(s : ImagemorpherodeFrame, i : Int, v : Double
   result
 }
 
-pub fn image_morph_erode_frame_sum(s : ImagemorpherodeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_frame_sum(s : ImagemorpherodeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_frame_mean(s : ImagemorpherodeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_frame_mean(s : ImagemorpherodeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_frame_scale(s : ImagemorpherodeFrame, f : Double) -> ImagemorpherodeFrame {
   let result = image_morph_erode_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_morph_erode_frame_fill(s : ImagemorpherodeFrame, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_erode_frame_min(s : ImagemorpherodeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_frame_min(s : ImagemorpherodeFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_frame_max(s : ImagemorpherodeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_frame_max(s : ImagemorpherodeFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_frame_to_string(s : ImagemorpherodeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_morph_erode_table_set(s : ImagemorpherodeTable, i : Int, v : Double
   result
 }
 
-pub fn image_morph_erode_table_sum(s : ImagemorpherodeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_table_sum(s : ImagemorpherodeTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_table_mean(s : ImagemorpherodeTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_table_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_table_mean(s : ImagemorpherodeTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_table_scale(s : ImagemorpherodeTable, f : Double) -> ImagemorpherodeTable {
   let result = image_morph_erode_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_morph_erode_table_fill(s : ImagemorpherodeTable, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_erode_table_min(s : ImagemorpherodeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_table_min(s : ImagemorpherodeTable) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_table_max(s : ImagemorpherodeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_table_max(s : ImagemorpherodeTable) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_table_to_string(s : ImagemorpherodeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_morph_erode_graphn_set(s : ImagemorpherodeGraphN, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_erode_graphn_sum(s : ImagemorpherodeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_graphn_sum(s : ImagemorpherodeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_graphn_mean(s : ImagemorpherodeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_graphn_mean(s : ImagemorpherodeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_graphn_scale(s : ImagemorpherodeGraphN, f : Double) -> ImagemorpherodeGraphN {
   let result = image_morph_erode_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_morph_erode_graphn_fill(s : ImagemorpherodeGraphN, v : Double) -> I
   result
 }
 
-pub fn image_morph_erode_graphn_min(s : ImagemorpherodeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_graphn_min(s : ImagemorpherodeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_graphn_max(s : ImagemorpherodeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_graphn_max(s : ImagemorpherodeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_graphn_to_string(s : ImagemorpherodeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_morph_erode_node_set(s : ImagemorpherodeNode, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_erode_node_sum(s : ImagemorpherodeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_node_sum(s : ImagemorpherodeNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_node_mean(s : ImagemorpherodeNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_node_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_node_mean(s : ImagemorpherodeNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_node_scale(s : ImagemorpherodeNode, f : Double) -> ImagemorpherodeNode {
   let result = image_morph_erode_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_morph_erode_node_fill(s : ImagemorpherodeNode, v : Double) -> Image
   result
 }
 
-pub fn image_morph_erode_node_min(s : ImagemorpherodeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_node_min(s : ImagemorpherodeNode) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_node_max(s : ImagemorpherodeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_node_max(s : ImagemorpherodeNode) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_node_to_string(s : ImagemorpherodeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_morph_erode_edge_set(s : ImagemorpherodeEdge, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_erode_edge_sum(s : ImagemorpherodeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_edge_sum(s : ImagemorpherodeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_edge_mean(s : ImagemorpherodeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_edge_mean(s : ImagemorpherodeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_edge_scale(s : ImagemorpherodeEdge, f : Double) -> ImagemorpherodeEdge {
   let result = image_morph_erode_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_morph_erode_edge_fill(s : ImagemorpherodeEdge, v : Double) -> Image
   result
 }
 
-pub fn image_morph_erode_edge_min(s : ImagemorpherodeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_edge_min(s : ImagemorpherodeEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_edge_max(s : ImagemorpherodeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_edge_max(s : ImagemorpherodeEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_edge_to_string(s : ImagemorpherodeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_morph_erode_path_set(s : ImagemorpherodePath, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_erode_path_sum(s : ImagemorpherodePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_path_sum(s : ImagemorpherodePath) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_path_mean(s : ImagemorpherodePath) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_path_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_path_mean(s : ImagemorpherodePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_path_scale(s : ImagemorpherodePath, f : Double) -> ImagemorpherodePath {
   let result = image_morph_erode_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_morph_erode_path_fill(s : ImagemorpherodePath, v : Double) -> Image
   result
 }
 
-pub fn image_morph_erode_path_min(s : ImagemorpherodePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_path_min(s : ImagemorpherodePath) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_path_max(s : ImagemorpherodePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_path_max(s : ImagemorpherodePath) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_path_to_string(s : ImagemorpherodePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_morph_erode_cluster_set(s : ImagemorpherodeCluster, i : Int, v : Do
   result
 }
 
-pub fn image_morph_erode_cluster_sum(s : ImagemorpherodeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_cluster_sum(s : ImagemorpherodeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_cluster_mean(s : ImagemorpherodeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_cluster_mean(s : ImagemorpherodeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_cluster_scale(s : ImagemorpherodeCluster, f : Double) -> ImagemorpherodeCluster {
   let result = image_morph_erode_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_morph_erode_cluster_fill(s : ImagemorpherodeCluster, v : Double) ->
   result
 }
 
-pub fn image_morph_erode_cluster_min(s : ImagemorpherodeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_cluster_min(s : ImagemorpherodeCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_cluster_max(s : ImagemorpherodeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_cluster_max(s : ImagemorpherodeCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_cluster_to_string(s : ImagemorpherodeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_morph_erode_model_set(s : ImagemorpherodeModel, i : Int, v : Double
   result
 }
 
-pub fn image_morph_erode_model_sum(s : ImagemorpherodeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_model_sum(s : ImagemorpherodeModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_model_mean(s : ImagemorpherodeModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_model_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_model_mean(s : ImagemorpherodeModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_model_scale(s : ImagemorpherodeModel, f : Double) -> ImagemorpherodeModel {
   let result = image_morph_erode_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_morph_erode_model_fill(s : ImagemorpherodeModel, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_erode_model_min(s : ImagemorpherodeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_model_min(s : ImagemorpherodeModel) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_model_max(s : ImagemorpherodeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_model_max(s : ImagemorpherodeModel) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_model_to_string(s : ImagemorpherodeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_morph_erode_layer_set(s : ImagemorpherodeLayer, i : Int, v : Double
   result
 }
 
-pub fn image_morph_erode_layer_sum(s : ImagemorpherodeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_layer_sum(s : ImagemorpherodeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_layer_mean(s : ImagemorpherodeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_layer_mean(s : ImagemorpherodeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_layer_scale(s : ImagemorpherodeLayer, f : Double) -> ImagemorpherodeLayer {
   let result = image_morph_erode_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_morph_erode_layer_fill(s : ImagemorpherodeLayer, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_erode_layer_min(s : ImagemorpherodeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_layer_min(s : ImagemorpherodeLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_layer_max(s : ImagemorpherodeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_layer_max(s : ImagemorpherodeLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_layer_to_string(s : ImagemorpherodeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_morph_erode_buffer_set(s : ImagemorpherodeBuffer, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_erode_buffer_sum(s : ImagemorpherodeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_buffer_sum(s : ImagemorpherodeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_buffer_mean(s : ImagemorpherodeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_buffer_mean(s : ImagemorpherodeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_buffer_scale(s : ImagemorpherodeBuffer, f : Double) -> ImagemorpherodeBuffer {
   let result = image_morph_erode_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_morph_erode_buffer_fill(s : ImagemorpherodeBuffer, v : Double) -> I
   result
 }
 
-pub fn image_morph_erode_buffer_min(s : ImagemorpherodeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_buffer_min(s : ImagemorpherodeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_buffer_max(s : ImagemorpherodeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_buffer_max(s : ImagemorpherodeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_buffer_to_string(s : ImagemorpherodeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_morph_erode_cursor_set(s : ImagemorpherodeCursor, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_erode_cursor_sum(s : ImagemorpherodeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_cursor_sum(s : ImagemorpherodeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_cursor_mean(s : ImagemorpherodeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_cursor_mean(s : ImagemorpherodeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_cursor_scale(s : ImagemorpherodeCursor, f : Double) -> ImagemorpherodeCursor {
   let result = image_morph_erode_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_morph_erode_cursor_fill(s : ImagemorpherodeCursor, v : Double) -> I
   result
 }
 
-pub fn image_morph_erode_cursor_min(s : ImagemorpherodeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_cursor_min(s : ImagemorpherodeCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_cursor_max(s : ImagemorpherodeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_cursor_max(s : ImagemorpherodeCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_cursor_to_string(s : ImagemorpherodeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_morph_erode_view_set(s : ImagemorpherodeView, i : Int, v : Double) 
   result
 }
 
-pub fn image_morph_erode_view_sum(s : ImagemorpherodeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_view_sum(s : ImagemorpherodeView) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_view_mean(s : ImagemorpherodeView) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_view_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_view_mean(s : ImagemorpherodeView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_view_scale(s : ImagemorpherodeView, f : Double) -> ImagemorpherodeView {
   let result = image_morph_erode_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_morph_erode_view_fill(s : ImagemorpherodeView, v : Double) -> Image
   result
 }
 
-pub fn image_morph_erode_view_min(s : ImagemorpherodeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_view_min(s : ImagemorpherodeView) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_view_max(s : ImagemorpherodeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_view_max(s : ImagemorpherodeView) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_view_to_string(s : ImagemorpherodeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_morph_erode_range_set(s : ImagemorpherodeRange, i : Int, v : Double
   result
 }
 
-pub fn image_morph_erode_range_sum(s : ImagemorpherodeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_range_sum(s : ImagemorpherodeRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_range_mean(s : ImagemorpherodeRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_range_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_range_mean(s : ImagemorpherodeRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_range_scale(s : ImagemorpherodeRange, f : Double) -> ImagemorpherodeRange {
   let result = image_morph_erode_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_morph_erode_range_fill(s : ImagemorpherodeRange, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_erode_range_min(s : ImagemorpherodeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_range_min(s : ImagemorpherodeRange) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_range_max(s : ImagemorpherodeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_range_max(s : ImagemorpherodeRange) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_range_to_string(s : ImagemorpherodeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_morph_erode_slice_set(s : ImagemorpherodeSlice, i : Int, v : Double
   result
 }
 
-pub fn image_morph_erode_slice_sum(s : ImagemorpherodeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_erode_slice_sum(s : ImagemorpherodeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_erode_slice_mean(s : ImagemorpherodeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_erode_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_erode_slice_mean(s : ImagemorpherodeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_erode_slice_scale(s : ImagemorpherodeSlice, f : Double) -> ImagemorpherodeSlice {
   let result = image_morph_erode_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_morph_erode_slice_fill(s : ImagemorpherodeSlice, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_erode_slice_min(s : ImagemorpherodeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_slice_min(s : ImagemorpherodeSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_erode_slice_max(s : ImagemorpherodeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_erode_slice_max(s : ImagemorpherodeSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_erode_slice_to_string(s : ImagemorpherodeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

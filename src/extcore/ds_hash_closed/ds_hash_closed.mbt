@@ -88,11 +88,7 @@ pub fn ds_hash_closed_make_series(vals : Array[Double], name : String) -> Dshash
 
 pub fn ds_hash_closed_series_len(s : DshashclosedSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_closed_series_sum(s : DshashclosedSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_closed_series_sum(s : DshashclosedSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_closed_series_mean(s : DshashclosedSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_closed_frame_set(s : DshashclosedFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_closed_frame_sum(s : DshashclosedFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_frame_sum(s : DshashclosedFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_frame_mean(s : DshashclosedFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_frame_mean(s : DshashclosedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_frame_scale(s : DshashclosedFrame, f : Double) -> DshashclosedFrame {
   let result = ds_hash_closed_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_closed_frame_fill(s : DshashclosedFrame, v : Double) -> Dshashclo
   result
 }
 
-pub fn ds_hash_closed_frame_min(s : DshashclosedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_frame_min(s : DshashclosedFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_frame_max(s : DshashclosedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_frame_max(s : DshashclosedFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_frame_to_string(s : DshashclosedFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_closed_table_set(s : DshashclosedTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_closed_table_sum(s : DshashclosedTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_table_sum(s : DshashclosedTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_table_mean(s : DshashclosedTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_table_mean(s : DshashclosedTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_table_scale(s : DshashclosedTable, f : Double) -> DshashclosedTable {
   let result = ds_hash_closed_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_closed_table_fill(s : DshashclosedTable, v : Double) -> Dshashclo
   result
 }
 
-pub fn ds_hash_closed_table_min(s : DshashclosedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_table_min(s : DshashclosedTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_table_max(s : DshashclosedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_table_max(s : DshashclosedTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_table_to_string(s : DshashclosedTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_closed_graphn_set(s : DshashclosedGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_closed_graphn_sum(s : DshashclosedGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_graphn_sum(s : DshashclosedGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_graphn_mean(s : DshashclosedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_graphn_mean(s : DshashclosedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_graphn_scale(s : DshashclosedGraphN, f : Double) -> DshashclosedGraphN {
   let result = ds_hash_closed_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_closed_graphn_fill(s : DshashclosedGraphN, v : Double) -> Dshashc
   result
 }
 
-pub fn ds_hash_closed_graphn_min(s : DshashclosedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_graphn_min(s : DshashclosedGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_graphn_max(s : DshashclosedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_graphn_max(s : DshashclosedGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_graphn_to_string(s : DshashclosedGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_closed_node_set(s : DshashclosedNode, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_closed_node_sum(s : DshashclosedNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_node_sum(s : DshashclosedNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_node_mean(s : DshashclosedNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_node_mean(s : DshashclosedNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_node_scale(s : DshashclosedNode, f : Double) -> DshashclosedNode {
   let result = ds_hash_closed_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_closed_node_fill(s : DshashclosedNode, v : Double) -> Dshashclose
   result
 }
 
-pub fn ds_hash_closed_node_min(s : DshashclosedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_node_min(s : DshashclosedNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_node_max(s : DshashclosedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_node_max(s : DshashclosedNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_node_to_string(s : DshashclosedNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_closed_edge_set(s : DshashclosedEdge, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_closed_edge_sum(s : DshashclosedEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_edge_sum(s : DshashclosedEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_edge_mean(s : DshashclosedEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_edge_mean(s : DshashclosedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_edge_scale(s : DshashclosedEdge, f : Double) -> DshashclosedEdge {
   let result = ds_hash_closed_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_closed_edge_fill(s : DshashclosedEdge, v : Double) -> Dshashclose
   result
 }
 
-pub fn ds_hash_closed_edge_min(s : DshashclosedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_edge_min(s : DshashclosedEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_edge_max(s : DshashclosedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_edge_max(s : DshashclosedEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_edge_to_string(s : DshashclosedEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_closed_path_set(s : DshashclosedPath, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_closed_path_sum(s : DshashclosedPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_path_sum(s : DshashclosedPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_path_mean(s : DshashclosedPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_path_mean(s : DshashclosedPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_path_scale(s : DshashclosedPath, f : Double) -> DshashclosedPath {
   let result = ds_hash_closed_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_closed_path_fill(s : DshashclosedPath, v : Double) -> Dshashclose
   result
 }
 
-pub fn ds_hash_closed_path_min(s : DshashclosedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_path_min(s : DshashclosedPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_path_max(s : DshashclosedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_path_max(s : DshashclosedPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_path_to_string(s : DshashclosedPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_closed_cluster_set(s : DshashclosedCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_closed_cluster_sum(s : DshashclosedCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_cluster_sum(s : DshashclosedCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_cluster_mean(s : DshashclosedCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_cluster_mean(s : DshashclosedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_cluster_scale(s : DshashclosedCluster, f : Double) -> DshashclosedCluster {
   let result = ds_hash_closed_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_closed_cluster_fill(s : DshashclosedCluster, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_closed_cluster_min(s : DshashclosedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_cluster_min(s : DshashclosedCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_cluster_max(s : DshashclosedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_cluster_max(s : DshashclosedCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_cluster_to_string(s : DshashclosedCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_closed_model_set(s : DshashclosedModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_closed_model_sum(s : DshashclosedModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_model_sum(s : DshashclosedModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_model_mean(s : DshashclosedModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_model_mean(s : DshashclosedModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_model_scale(s : DshashclosedModel, f : Double) -> DshashclosedModel {
   let result = ds_hash_closed_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_closed_model_fill(s : DshashclosedModel, v : Double) -> Dshashclo
   result
 }
 
-pub fn ds_hash_closed_model_min(s : DshashclosedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_model_min(s : DshashclosedModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_model_max(s : DshashclosedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_model_max(s : DshashclosedModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_model_to_string(s : DshashclosedModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_closed_layer_set(s : DshashclosedLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_closed_layer_sum(s : DshashclosedLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_layer_sum(s : DshashclosedLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_layer_mean(s : DshashclosedLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_layer_mean(s : DshashclosedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_layer_scale(s : DshashclosedLayer, f : Double) -> DshashclosedLayer {
   let result = ds_hash_closed_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_closed_layer_fill(s : DshashclosedLayer, v : Double) -> Dshashclo
   result
 }
 
-pub fn ds_hash_closed_layer_min(s : DshashclosedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_layer_min(s : DshashclosedLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_layer_max(s : DshashclosedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_layer_max(s : DshashclosedLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_layer_to_string(s : DshashclosedLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_closed_buffer_set(s : DshashclosedBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_closed_buffer_sum(s : DshashclosedBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_buffer_sum(s : DshashclosedBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_buffer_mean(s : DshashclosedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_buffer_mean(s : DshashclosedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_buffer_scale(s : DshashclosedBuffer, f : Double) -> DshashclosedBuffer {
   let result = ds_hash_closed_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_closed_buffer_fill(s : DshashclosedBuffer, v : Double) -> Dshashc
   result
 }
 
-pub fn ds_hash_closed_buffer_min(s : DshashclosedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_buffer_min(s : DshashclosedBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_buffer_max(s : DshashclosedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_buffer_max(s : DshashclosedBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_buffer_to_string(s : DshashclosedBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_closed_cursor_set(s : DshashclosedCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_closed_cursor_sum(s : DshashclosedCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_cursor_sum(s : DshashclosedCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_cursor_mean(s : DshashclosedCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_cursor_mean(s : DshashclosedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_cursor_scale(s : DshashclosedCursor, f : Double) -> DshashclosedCursor {
   let result = ds_hash_closed_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_closed_cursor_fill(s : DshashclosedCursor, v : Double) -> Dshashc
   result
 }
 
-pub fn ds_hash_closed_cursor_min(s : DshashclosedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_cursor_min(s : DshashclosedCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_cursor_max(s : DshashclosedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_cursor_max(s : DshashclosedCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_cursor_to_string(s : DshashclosedCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_closed_view_set(s : DshashclosedView, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_closed_view_sum(s : DshashclosedView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_view_sum(s : DshashclosedView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_view_mean(s : DshashclosedView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_view_mean(s : DshashclosedView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_view_scale(s : DshashclosedView, f : Double) -> DshashclosedView {
   let result = ds_hash_closed_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_closed_view_fill(s : DshashclosedView, v : Double) -> Dshashclose
   result
 }
 
-pub fn ds_hash_closed_view_min(s : DshashclosedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_view_min(s : DshashclosedView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_view_max(s : DshashclosedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_view_max(s : DshashclosedView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_view_to_string(s : DshashclosedView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_closed_range_set(s : DshashclosedRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_closed_range_sum(s : DshashclosedRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_range_sum(s : DshashclosedRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_range_mean(s : DshashclosedRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_range_mean(s : DshashclosedRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_range_scale(s : DshashclosedRange, f : Double) -> DshashclosedRange {
   let result = ds_hash_closed_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_closed_range_fill(s : DshashclosedRange, v : Double) -> Dshashclo
   result
 }
 
-pub fn ds_hash_closed_range_min(s : DshashclosedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_range_min(s : DshashclosedRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_range_max(s : DshashclosedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_range_max(s : DshashclosedRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_range_to_string(s : DshashclosedRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_closed_slice_set(s : DshashclosedSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_closed_slice_sum(s : DshashclosedSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_closed_slice_sum(s : DshashclosedSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_closed_slice_mean(s : DshashclosedSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_closed_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_closed_slice_mean(s : DshashclosedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_closed_slice_scale(s : DshashclosedSlice, f : Double) -> DshashclosedSlice {
   let result = ds_hash_closed_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_closed_slice_fill(s : DshashclosedSlice, v : Double) -> Dshashclo
   result
 }
 
-pub fn ds_hash_closed_slice_min(s : DshashclosedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_slice_min(s : DshashclosedSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_closed_slice_max(s : DshashclosedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_closed_slice_max(s : DshashclosedSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_closed_slice_to_string(s : DshashclosedSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn db_tx_compensating_make_series(vals : Array[Double], name : String) -> Db
 
 pub fn db_tx_compensating_series_len(s : DbtxcompensatingSeries) -> Int { s.vals.length() }
 
-pub fn db_tx_compensating_series_sum(s : DbtxcompensatingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_tx_compensating_series_sum(s : DbtxcompensatingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_tx_compensating_series_mean(s : DbtxcompensatingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_tx_compensating_frame_set(s : DbtxcompensatingFrame, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_compensating_frame_sum(s : DbtxcompensatingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_frame_sum(s : DbtxcompensatingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_frame_mean(s : DbtxcompensatingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_frame_mean(s : DbtxcompensatingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_frame_scale(s : DbtxcompensatingFrame, f : Double) -> DbtxcompensatingFrame {
   let result = db_tx_compensating_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_tx_compensating_frame_fill(s : DbtxcompensatingFrame, v : Double) -> D
   result
 }
 
-pub fn db_tx_compensating_frame_min(s : DbtxcompensatingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_frame_min(s : DbtxcompensatingFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_frame_max(s : DbtxcompensatingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_frame_max(s : DbtxcompensatingFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_frame_to_string(s : DbtxcompensatingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_tx_compensating_table_set(s : DbtxcompensatingTable, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_compensating_table_sum(s : DbtxcompensatingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_table_sum(s : DbtxcompensatingTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_table_mean(s : DbtxcompensatingTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_table_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_table_mean(s : DbtxcompensatingTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_table_scale(s : DbtxcompensatingTable, f : Double) -> DbtxcompensatingTable {
   let result = db_tx_compensating_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_tx_compensating_table_fill(s : DbtxcompensatingTable, v : Double) -> D
   result
 }
 
-pub fn db_tx_compensating_table_min(s : DbtxcompensatingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_table_min(s : DbtxcompensatingTable) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_table_max(s : DbtxcompensatingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_table_max(s : DbtxcompensatingTable) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_table_to_string(s : DbtxcompensatingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_tx_compensating_graphn_set(s : DbtxcompensatingGraphN, i : Int, v : Do
   result
 }
 
-pub fn db_tx_compensating_graphn_sum(s : DbtxcompensatingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_graphn_sum(s : DbtxcompensatingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_graphn_mean(s : DbtxcompensatingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_graphn_mean(s : DbtxcompensatingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_graphn_scale(s : DbtxcompensatingGraphN, f : Double) -> DbtxcompensatingGraphN {
   let result = db_tx_compensating_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_tx_compensating_graphn_fill(s : DbtxcompensatingGraphN, v : Double) ->
   result
 }
 
-pub fn db_tx_compensating_graphn_min(s : DbtxcompensatingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_graphn_min(s : DbtxcompensatingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_graphn_max(s : DbtxcompensatingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_graphn_max(s : DbtxcompensatingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_graphn_to_string(s : DbtxcompensatingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_tx_compensating_node_set(s : DbtxcompensatingNode, i : Int, v : Double
   result
 }
 
-pub fn db_tx_compensating_node_sum(s : DbtxcompensatingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_node_sum(s : DbtxcompensatingNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_node_mean(s : DbtxcompensatingNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_node_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_node_mean(s : DbtxcompensatingNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_node_scale(s : DbtxcompensatingNode, f : Double) -> DbtxcompensatingNode {
   let result = db_tx_compensating_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_tx_compensating_node_fill(s : DbtxcompensatingNode, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_compensating_node_min(s : DbtxcompensatingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_node_min(s : DbtxcompensatingNode) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_node_max(s : DbtxcompensatingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_node_max(s : DbtxcompensatingNode) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_node_to_string(s : DbtxcompensatingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_tx_compensating_edge_set(s : DbtxcompensatingEdge, i : Int, v : Double
   result
 }
 
-pub fn db_tx_compensating_edge_sum(s : DbtxcompensatingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_edge_sum(s : DbtxcompensatingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_edge_mean(s : DbtxcompensatingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_edge_mean(s : DbtxcompensatingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_edge_scale(s : DbtxcompensatingEdge, f : Double) -> DbtxcompensatingEdge {
   let result = db_tx_compensating_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_tx_compensating_edge_fill(s : DbtxcompensatingEdge, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_compensating_edge_min(s : DbtxcompensatingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_edge_min(s : DbtxcompensatingEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_edge_max(s : DbtxcompensatingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_edge_max(s : DbtxcompensatingEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_edge_to_string(s : DbtxcompensatingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_tx_compensating_path_set(s : DbtxcompensatingPath, i : Int, v : Double
   result
 }
 
-pub fn db_tx_compensating_path_sum(s : DbtxcompensatingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_path_sum(s : DbtxcompensatingPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_path_mean(s : DbtxcompensatingPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_path_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_path_mean(s : DbtxcompensatingPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_path_scale(s : DbtxcompensatingPath, f : Double) -> DbtxcompensatingPath {
   let result = db_tx_compensating_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_tx_compensating_path_fill(s : DbtxcompensatingPath, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_compensating_path_min(s : DbtxcompensatingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_path_min(s : DbtxcompensatingPath) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_path_max(s : DbtxcompensatingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_path_max(s : DbtxcompensatingPath) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_path_to_string(s : DbtxcompensatingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_tx_compensating_cluster_set(s : DbtxcompensatingCluster, i : Int, v : 
   result
 }
 
-pub fn db_tx_compensating_cluster_sum(s : DbtxcompensatingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_cluster_sum(s : DbtxcompensatingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_cluster_mean(s : DbtxcompensatingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_cluster_mean(s : DbtxcompensatingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_cluster_scale(s : DbtxcompensatingCluster, f : Double) -> DbtxcompensatingCluster {
   let result = db_tx_compensating_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_tx_compensating_cluster_fill(s : DbtxcompensatingCluster, v : Double) 
   result
 }
 
-pub fn db_tx_compensating_cluster_min(s : DbtxcompensatingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_cluster_min(s : DbtxcompensatingCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_cluster_max(s : DbtxcompensatingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_cluster_max(s : DbtxcompensatingCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_cluster_to_string(s : DbtxcompensatingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_tx_compensating_model_set(s : DbtxcompensatingModel, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_compensating_model_sum(s : DbtxcompensatingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_model_sum(s : DbtxcompensatingModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_model_mean(s : DbtxcompensatingModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_model_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_model_mean(s : DbtxcompensatingModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_model_scale(s : DbtxcompensatingModel, f : Double) -> DbtxcompensatingModel {
   let result = db_tx_compensating_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_tx_compensating_model_fill(s : DbtxcompensatingModel, v : Double) -> D
   result
 }
 
-pub fn db_tx_compensating_model_min(s : DbtxcompensatingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_model_min(s : DbtxcompensatingModel) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_model_max(s : DbtxcompensatingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_model_max(s : DbtxcompensatingModel) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_model_to_string(s : DbtxcompensatingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_tx_compensating_layer_set(s : DbtxcompensatingLayer, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_compensating_layer_sum(s : DbtxcompensatingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_layer_sum(s : DbtxcompensatingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_layer_mean(s : DbtxcompensatingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_layer_mean(s : DbtxcompensatingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_layer_scale(s : DbtxcompensatingLayer, f : Double) -> DbtxcompensatingLayer {
   let result = db_tx_compensating_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_tx_compensating_layer_fill(s : DbtxcompensatingLayer, v : Double) -> D
   result
 }
 
-pub fn db_tx_compensating_layer_min(s : DbtxcompensatingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_layer_min(s : DbtxcompensatingLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_layer_max(s : DbtxcompensatingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_layer_max(s : DbtxcompensatingLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_layer_to_string(s : DbtxcompensatingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_tx_compensating_buffer_set(s : DbtxcompensatingBuffer, i : Int, v : Do
   result
 }
 
-pub fn db_tx_compensating_buffer_sum(s : DbtxcompensatingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_buffer_sum(s : DbtxcompensatingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_buffer_mean(s : DbtxcompensatingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_buffer_mean(s : DbtxcompensatingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_buffer_scale(s : DbtxcompensatingBuffer, f : Double) -> DbtxcompensatingBuffer {
   let result = db_tx_compensating_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_tx_compensating_buffer_fill(s : DbtxcompensatingBuffer, v : Double) ->
   result
 }
 
-pub fn db_tx_compensating_buffer_min(s : DbtxcompensatingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_buffer_min(s : DbtxcompensatingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_buffer_max(s : DbtxcompensatingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_buffer_max(s : DbtxcompensatingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_buffer_to_string(s : DbtxcompensatingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_tx_compensating_cursor_set(s : DbtxcompensatingCursor, i : Int, v : Do
   result
 }
 
-pub fn db_tx_compensating_cursor_sum(s : DbtxcompensatingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_cursor_sum(s : DbtxcompensatingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_cursor_mean(s : DbtxcompensatingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_cursor_mean(s : DbtxcompensatingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_cursor_scale(s : DbtxcompensatingCursor, f : Double) -> DbtxcompensatingCursor {
   let result = db_tx_compensating_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_tx_compensating_cursor_fill(s : DbtxcompensatingCursor, v : Double) ->
   result
 }
 
-pub fn db_tx_compensating_cursor_min(s : DbtxcompensatingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_cursor_min(s : DbtxcompensatingCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_cursor_max(s : DbtxcompensatingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_cursor_max(s : DbtxcompensatingCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_cursor_to_string(s : DbtxcompensatingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_tx_compensating_view_set(s : DbtxcompensatingView, i : Int, v : Double
   result
 }
 
-pub fn db_tx_compensating_view_sum(s : DbtxcompensatingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_view_sum(s : DbtxcompensatingView) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_view_mean(s : DbtxcompensatingView) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_view_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_view_mean(s : DbtxcompensatingView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_view_scale(s : DbtxcompensatingView, f : Double) -> DbtxcompensatingView {
   let result = db_tx_compensating_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_tx_compensating_view_fill(s : DbtxcompensatingView, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_compensating_view_min(s : DbtxcompensatingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_view_min(s : DbtxcompensatingView) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_view_max(s : DbtxcompensatingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_view_max(s : DbtxcompensatingView) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_view_to_string(s : DbtxcompensatingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_tx_compensating_range_set(s : DbtxcompensatingRange, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_compensating_range_sum(s : DbtxcompensatingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_range_sum(s : DbtxcompensatingRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_range_mean(s : DbtxcompensatingRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_range_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_range_mean(s : DbtxcompensatingRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_range_scale(s : DbtxcompensatingRange, f : Double) -> DbtxcompensatingRange {
   let result = db_tx_compensating_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_tx_compensating_range_fill(s : DbtxcompensatingRange, v : Double) -> D
   result
 }
 
-pub fn db_tx_compensating_range_min(s : DbtxcompensatingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_range_min(s : DbtxcompensatingRange) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_range_max(s : DbtxcompensatingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_range_max(s : DbtxcompensatingRange) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_range_to_string(s : DbtxcompensatingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_tx_compensating_slice_set(s : DbtxcompensatingSlice, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_compensating_slice_sum(s : DbtxcompensatingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_compensating_slice_sum(s : DbtxcompensatingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_compensating_slice_mean(s : DbtxcompensatingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_compensating_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_compensating_slice_mean(s : DbtxcompensatingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_compensating_slice_scale(s : DbtxcompensatingSlice, f : Double) -> DbtxcompensatingSlice {
   let result = db_tx_compensating_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_tx_compensating_slice_fill(s : DbtxcompensatingSlice, v : Double) -> D
   result
 }
 
-pub fn db_tx_compensating_slice_min(s : DbtxcompensatingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_slice_min(s : DbtxcompensatingSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_compensating_slice_max(s : DbtxcompensatingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_compensating_slice_max(s : DbtxcompensatingSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_compensating_slice_to_string(s : DbtxcompensatingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

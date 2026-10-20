@@ -88,11 +88,7 @@ pub fn sort_dist_parallel_make_series(vals : Array[Double], name : String) -> So
 
 pub fn sort_dist_parallel_series_len(s : SortdistparallelSeries) -> Int { s.vals.length() }
 
-pub fn sort_dist_parallel_series_sum(s : SortdistparallelSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_dist_parallel_series_sum(s : SortdistparallelSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_dist_parallel_series_mean(s : SortdistparallelSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_dist_parallel_frame_set(s : SortdistparallelFrame, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_parallel_frame_sum(s : SortdistparallelFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_frame_sum(s : SortdistparallelFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_frame_mean(s : SortdistparallelFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_frame_mean(s : SortdistparallelFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_frame_scale(s : SortdistparallelFrame, f : Double) -> SortdistparallelFrame {
   let result = sort_dist_parallel_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_dist_parallel_frame_fill(s : SortdistparallelFrame, v : Double) -> S
   result
 }
 
-pub fn sort_dist_parallel_frame_min(s : SortdistparallelFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_frame_min(s : SortdistparallelFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_frame_max(s : SortdistparallelFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_frame_max(s : SortdistparallelFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_frame_to_string(s : SortdistparallelFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_dist_parallel_table_set(s : SortdistparallelTable, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_parallel_table_sum(s : SortdistparallelTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_table_sum(s : SortdistparallelTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_table_mean(s : SortdistparallelTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_table_mean(s : SortdistparallelTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_table_scale(s : SortdistparallelTable, f : Double) -> SortdistparallelTable {
   let result = sort_dist_parallel_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_dist_parallel_table_fill(s : SortdistparallelTable, v : Double) -> S
   result
 }
 
-pub fn sort_dist_parallel_table_min(s : SortdistparallelTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_table_min(s : SortdistparallelTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_table_max(s : SortdistparallelTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_table_max(s : SortdistparallelTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_table_to_string(s : SortdistparallelTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_dist_parallel_graphn_set(s : SortdistparallelGraphN, i : Int, v : Do
   result
 }
 
-pub fn sort_dist_parallel_graphn_sum(s : SortdistparallelGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_graphn_sum(s : SortdistparallelGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_graphn_mean(s : SortdistparallelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_graphn_mean(s : SortdistparallelGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_graphn_scale(s : SortdistparallelGraphN, f : Double) -> SortdistparallelGraphN {
   let result = sort_dist_parallel_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_dist_parallel_graphn_fill(s : SortdistparallelGraphN, v : Double) ->
   result
 }
 
-pub fn sort_dist_parallel_graphn_min(s : SortdistparallelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_graphn_min(s : SortdistparallelGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_graphn_max(s : SortdistparallelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_graphn_max(s : SortdistparallelGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_graphn_to_string(s : SortdistparallelGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_dist_parallel_node_set(s : SortdistparallelNode, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_parallel_node_sum(s : SortdistparallelNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_node_sum(s : SortdistparallelNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_node_mean(s : SortdistparallelNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_node_mean(s : SortdistparallelNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_node_scale(s : SortdistparallelNode, f : Double) -> SortdistparallelNode {
   let result = sort_dist_parallel_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_dist_parallel_node_fill(s : SortdistparallelNode, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_parallel_node_min(s : SortdistparallelNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_node_min(s : SortdistparallelNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_node_max(s : SortdistparallelNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_node_max(s : SortdistparallelNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_node_to_string(s : SortdistparallelNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_dist_parallel_edge_set(s : SortdistparallelEdge, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_parallel_edge_sum(s : SortdistparallelEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_edge_sum(s : SortdistparallelEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_edge_mean(s : SortdistparallelEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_edge_mean(s : SortdistparallelEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_edge_scale(s : SortdistparallelEdge, f : Double) -> SortdistparallelEdge {
   let result = sort_dist_parallel_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_dist_parallel_edge_fill(s : SortdistparallelEdge, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_parallel_edge_min(s : SortdistparallelEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_edge_min(s : SortdistparallelEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_edge_max(s : SortdistparallelEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_edge_max(s : SortdistparallelEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_edge_to_string(s : SortdistparallelEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_dist_parallel_path_set(s : SortdistparallelPath, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_parallel_path_sum(s : SortdistparallelPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_path_sum(s : SortdistparallelPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_path_mean(s : SortdistparallelPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_path_mean(s : SortdistparallelPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_path_scale(s : SortdistparallelPath, f : Double) -> SortdistparallelPath {
   let result = sort_dist_parallel_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_dist_parallel_path_fill(s : SortdistparallelPath, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_parallel_path_min(s : SortdistparallelPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_path_min(s : SortdistparallelPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_path_max(s : SortdistparallelPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_path_max(s : SortdistparallelPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_path_to_string(s : SortdistparallelPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_dist_parallel_cluster_set(s : SortdistparallelCluster, i : Int, v : 
   result
 }
 
-pub fn sort_dist_parallel_cluster_sum(s : SortdistparallelCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_cluster_sum(s : SortdistparallelCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_cluster_mean(s : SortdistparallelCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_cluster_mean(s : SortdistparallelCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_cluster_scale(s : SortdistparallelCluster, f : Double) -> SortdistparallelCluster {
   let result = sort_dist_parallel_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_dist_parallel_cluster_fill(s : SortdistparallelCluster, v : Double) 
   result
 }
 
-pub fn sort_dist_parallel_cluster_min(s : SortdistparallelCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_cluster_min(s : SortdistparallelCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_cluster_max(s : SortdistparallelCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_cluster_max(s : SortdistparallelCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_cluster_to_string(s : SortdistparallelCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_dist_parallel_model_set(s : SortdistparallelModel, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_parallel_model_sum(s : SortdistparallelModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_model_sum(s : SortdistparallelModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_model_mean(s : SortdistparallelModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_model_mean(s : SortdistparallelModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_model_scale(s : SortdistparallelModel, f : Double) -> SortdistparallelModel {
   let result = sort_dist_parallel_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_dist_parallel_model_fill(s : SortdistparallelModel, v : Double) -> S
   result
 }
 
-pub fn sort_dist_parallel_model_min(s : SortdistparallelModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_model_min(s : SortdistparallelModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_model_max(s : SortdistparallelModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_model_max(s : SortdistparallelModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_model_to_string(s : SortdistparallelModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_dist_parallel_layer_set(s : SortdistparallelLayer, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_parallel_layer_sum(s : SortdistparallelLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_layer_sum(s : SortdistparallelLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_layer_mean(s : SortdistparallelLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_layer_mean(s : SortdistparallelLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_layer_scale(s : SortdistparallelLayer, f : Double) -> SortdistparallelLayer {
   let result = sort_dist_parallel_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_dist_parallel_layer_fill(s : SortdistparallelLayer, v : Double) -> S
   result
 }
 
-pub fn sort_dist_parallel_layer_min(s : SortdistparallelLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_layer_min(s : SortdistparallelLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_layer_max(s : SortdistparallelLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_layer_max(s : SortdistparallelLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_layer_to_string(s : SortdistparallelLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_dist_parallel_buffer_set(s : SortdistparallelBuffer, i : Int, v : Do
   result
 }
 
-pub fn sort_dist_parallel_buffer_sum(s : SortdistparallelBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_buffer_sum(s : SortdistparallelBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_buffer_mean(s : SortdistparallelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_buffer_mean(s : SortdistparallelBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_buffer_scale(s : SortdistparallelBuffer, f : Double) -> SortdistparallelBuffer {
   let result = sort_dist_parallel_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_dist_parallel_buffer_fill(s : SortdistparallelBuffer, v : Double) ->
   result
 }
 
-pub fn sort_dist_parallel_buffer_min(s : SortdistparallelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_buffer_min(s : SortdistparallelBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_buffer_max(s : SortdistparallelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_buffer_max(s : SortdistparallelBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_buffer_to_string(s : SortdistparallelBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_dist_parallel_cursor_set(s : SortdistparallelCursor, i : Int, v : Do
   result
 }
 
-pub fn sort_dist_parallel_cursor_sum(s : SortdistparallelCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_cursor_sum(s : SortdistparallelCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_cursor_mean(s : SortdistparallelCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_cursor_mean(s : SortdistparallelCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_cursor_scale(s : SortdistparallelCursor, f : Double) -> SortdistparallelCursor {
   let result = sort_dist_parallel_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_dist_parallel_cursor_fill(s : SortdistparallelCursor, v : Double) ->
   result
 }
 
-pub fn sort_dist_parallel_cursor_min(s : SortdistparallelCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_cursor_min(s : SortdistparallelCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_cursor_max(s : SortdistparallelCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_cursor_max(s : SortdistparallelCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_cursor_to_string(s : SortdistparallelCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_dist_parallel_view_set(s : SortdistparallelView, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_parallel_view_sum(s : SortdistparallelView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_view_sum(s : SortdistparallelView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_view_mean(s : SortdistparallelView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_view_mean(s : SortdistparallelView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_view_scale(s : SortdistparallelView, f : Double) -> SortdistparallelView {
   let result = sort_dist_parallel_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_dist_parallel_view_fill(s : SortdistparallelView, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_parallel_view_min(s : SortdistparallelView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_view_min(s : SortdistparallelView) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_view_max(s : SortdistparallelView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_view_max(s : SortdistparallelView) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_view_to_string(s : SortdistparallelView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_dist_parallel_range_set(s : SortdistparallelRange, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_parallel_range_sum(s : SortdistparallelRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_range_sum(s : SortdistparallelRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_range_mean(s : SortdistparallelRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_range_mean(s : SortdistparallelRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_range_scale(s : SortdistparallelRange, f : Double) -> SortdistparallelRange {
   let result = sort_dist_parallel_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_dist_parallel_range_fill(s : SortdistparallelRange, v : Double) -> S
   result
 }
 
-pub fn sort_dist_parallel_range_min(s : SortdistparallelRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_range_min(s : SortdistparallelRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_range_max(s : SortdistparallelRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_range_max(s : SortdistparallelRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_range_to_string(s : SortdistparallelRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_dist_parallel_slice_set(s : SortdistparallelSlice, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_parallel_slice_sum(s : SortdistparallelSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_parallel_slice_sum(s : SortdistparallelSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_parallel_slice_mean(s : SortdistparallelSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_parallel_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_parallel_slice_mean(s : SortdistparallelSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_parallel_slice_scale(s : SortdistparallelSlice, f : Double) -> SortdistparallelSlice {
   let result = sort_dist_parallel_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_dist_parallel_slice_fill(s : SortdistparallelSlice, v : Double) -> S
   result
 }
 
-pub fn sort_dist_parallel_slice_min(s : SortdistparallelSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_slice_min(s : SortdistparallelSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_parallel_slice_max(s : SortdistparallelSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_parallel_slice_max(s : SortdistparallelSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_parallel_slice_to_string(s : SortdistparallelSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

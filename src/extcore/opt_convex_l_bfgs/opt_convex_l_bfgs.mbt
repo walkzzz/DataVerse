@@ -88,11 +88,7 @@ pub fn opt_convex_l_bfgs_make_series(vals : Array[Double], name : String) -> Opt
 
 pub fn opt_convex_l_bfgs_series_len(s : OptconvexlbfgsSeries) -> Int { s.vals.length() }
 
-pub fn opt_convex_l_bfgs_series_sum(s : OptconvexlbfgsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_series_sum(s : OptconvexlbfgsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_convex_l_bfgs_series_mean(s : OptconvexlbfgsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_convex_l_bfgs_frame_set(s : OptconvexlbfgsFrame, i : Int, v : Double)
   result
 }
 
-pub fn opt_convex_l_bfgs_frame_sum(s : OptconvexlbfgsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_frame_sum(s : OptconvexlbfgsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_frame_mean(s : OptconvexlbfgsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_frame_mean(s : OptconvexlbfgsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_frame_scale(s : OptconvexlbfgsFrame, f : Double) -> OptconvexlbfgsFrame {
   let result = opt_convex_l_bfgs_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_convex_l_bfgs_frame_fill(s : OptconvexlbfgsFrame, v : Double) -> Optc
   result
 }
 
-pub fn opt_convex_l_bfgs_frame_min(s : OptconvexlbfgsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_frame_min(s : OptconvexlbfgsFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_frame_max(s : OptconvexlbfgsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_frame_max(s : OptconvexlbfgsFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_frame_to_string(s : OptconvexlbfgsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_convex_l_bfgs_table_set(s : OptconvexlbfgsTable, i : Int, v : Double)
   result
 }
 
-pub fn opt_convex_l_bfgs_table_sum(s : OptconvexlbfgsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_table_sum(s : OptconvexlbfgsTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_table_mean(s : OptconvexlbfgsTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_table_mean(s : OptconvexlbfgsTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_table_scale(s : OptconvexlbfgsTable, f : Double) -> OptconvexlbfgsTable {
   let result = opt_convex_l_bfgs_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_convex_l_bfgs_table_fill(s : OptconvexlbfgsTable, v : Double) -> Optc
   result
 }
 
-pub fn opt_convex_l_bfgs_table_min(s : OptconvexlbfgsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_table_min(s : OptconvexlbfgsTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_table_max(s : OptconvexlbfgsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_table_max(s : OptconvexlbfgsTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_table_to_string(s : OptconvexlbfgsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_convex_l_bfgs_graphn_set(s : OptconvexlbfgsGraphN, i : Int, v : Doubl
   result
 }
 
-pub fn opt_convex_l_bfgs_graphn_sum(s : OptconvexlbfgsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_graphn_sum(s : OptconvexlbfgsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_graphn_mean(s : OptconvexlbfgsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_graphn_mean(s : OptconvexlbfgsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_graphn_scale(s : OptconvexlbfgsGraphN, f : Double) -> OptconvexlbfgsGraphN {
   let result = opt_convex_l_bfgs_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_convex_l_bfgs_graphn_fill(s : OptconvexlbfgsGraphN, v : Double) -> Op
   result
 }
 
-pub fn opt_convex_l_bfgs_graphn_min(s : OptconvexlbfgsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_graphn_min(s : OptconvexlbfgsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_graphn_max(s : OptconvexlbfgsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_graphn_max(s : OptconvexlbfgsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_graphn_to_string(s : OptconvexlbfgsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_convex_l_bfgs_node_set(s : OptconvexlbfgsNode, i : Int, v : Double) -
   result
 }
 
-pub fn opt_convex_l_bfgs_node_sum(s : OptconvexlbfgsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_node_sum(s : OptconvexlbfgsNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_node_mean(s : OptconvexlbfgsNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_node_mean(s : OptconvexlbfgsNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_node_scale(s : OptconvexlbfgsNode, f : Double) -> OptconvexlbfgsNode {
   let result = opt_convex_l_bfgs_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_convex_l_bfgs_node_fill(s : OptconvexlbfgsNode, v : Double) -> Optcon
   result
 }
 
-pub fn opt_convex_l_bfgs_node_min(s : OptconvexlbfgsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_node_min(s : OptconvexlbfgsNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_node_max(s : OptconvexlbfgsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_node_max(s : OptconvexlbfgsNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_node_to_string(s : OptconvexlbfgsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_convex_l_bfgs_edge_set(s : OptconvexlbfgsEdge, i : Int, v : Double) -
   result
 }
 
-pub fn opt_convex_l_bfgs_edge_sum(s : OptconvexlbfgsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_edge_sum(s : OptconvexlbfgsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_edge_mean(s : OptconvexlbfgsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_edge_mean(s : OptconvexlbfgsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_edge_scale(s : OptconvexlbfgsEdge, f : Double) -> OptconvexlbfgsEdge {
   let result = opt_convex_l_bfgs_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_convex_l_bfgs_edge_fill(s : OptconvexlbfgsEdge, v : Double) -> Optcon
   result
 }
 
-pub fn opt_convex_l_bfgs_edge_min(s : OptconvexlbfgsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_edge_min(s : OptconvexlbfgsEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_edge_max(s : OptconvexlbfgsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_edge_max(s : OptconvexlbfgsEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_edge_to_string(s : OptconvexlbfgsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_convex_l_bfgs_path_set(s : OptconvexlbfgsPath, i : Int, v : Double) -
   result
 }
 
-pub fn opt_convex_l_bfgs_path_sum(s : OptconvexlbfgsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_path_sum(s : OptconvexlbfgsPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_path_mean(s : OptconvexlbfgsPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_path_mean(s : OptconvexlbfgsPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_path_scale(s : OptconvexlbfgsPath, f : Double) -> OptconvexlbfgsPath {
   let result = opt_convex_l_bfgs_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_convex_l_bfgs_path_fill(s : OptconvexlbfgsPath, v : Double) -> Optcon
   result
 }
 
-pub fn opt_convex_l_bfgs_path_min(s : OptconvexlbfgsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_path_min(s : OptconvexlbfgsPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_path_max(s : OptconvexlbfgsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_path_max(s : OptconvexlbfgsPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_path_to_string(s : OptconvexlbfgsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_convex_l_bfgs_cluster_set(s : OptconvexlbfgsCluster, i : Int, v : Dou
   result
 }
 
-pub fn opt_convex_l_bfgs_cluster_sum(s : OptconvexlbfgsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_cluster_sum(s : OptconvexlbfgsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_cluster_mean(s : OptconvexlbfgsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_cluster_mean(s : OptconvexlbfgsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_cluster_scale(s : OptconvexlbfgsCluster, f : Double) -> OptconvexlbfgsCluster {
   let result = opt_convex_l_bfgs_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_convex_l_bfgs_cluster_fill(s : OptconvexlbfgsCluster, v : Double) -> 
   result
 }
 
-pub fn opt_convex_l_bfgs_cluster_min(s : OptconvexlbfgsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_cluster_min(s : OptconvexlbfgsCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_cluster_max(s : OptconvexlbfgsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_cluster_max(s : OptconvexlbfgsCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_cluster_to_string(s : OptconvexlbfgsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_convex_l_bfgs_model_set(s : OptconvexlbfgsModel, i : Int, v : Double)
   result
 }
 
-pub fn opt_convex_l_bfgs_model_sum(s : OptconvexlbfgsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_model_sum(s : OptconvexlbfgsModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_model_mean(s : OptconvexlbfgsModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_model_mean(s : OptconvexlbfgsModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_model_scale(s : OptconvexlbfgsModel, f : Double) -> OptconvexlbfgsModel {
   let result = opt_convex_l_bfgs_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_convex_l_bfgs_model_fill(s : OptconvexlbfgsModel, v : Double) -> Optc
   result
 }
 
-pub fn opt_convex_l_bfgs_model_min(s : OptconvexlbfgsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_model_min(s : OptconvexlbfgsModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_model_max(s : OptconvexlbfgsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_model_max(s : OptconvexlbfgsModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_model_to_string(s : OptconvexlbfgsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_convex_l_bfgs_layer_set(s : OptconvexlbfgsLayer, i : Int, v : Double)
   result
 }
 
-pub fn opt_convex_l_bfgs_layer_sum(s : OptconvexlbfgsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_layer_sum(s : OptconvexlbfgsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_layer_mean(s : OptconvexlbfgsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_layer_mean(s : OptconvexlbfgsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_layer_scale(s : OptconvexlbfgsLayer, f : Double) -> OptconvexlbfgsLayer {
   let result = opt_convex_l_bfgs_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_convex_l_bfgs_layer_fill(s : OptconvexlbfgsLayer, v : Double) -> Optc
   result
 }
 
-pub fn opt_convex_l_bfgs_layer_min(s : OptconvexlbfgsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_layer_min(s : OptconvexlbfgsLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_layer_max(s : OptconvexlbfgsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_layer_max(s : OptconvexlbfgsLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_layer_to_string(s : OptconvexlbfgsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_convex_l_bfgs_buffer_set(s : OptconvexlbfgsBuffer, i : Int, v : Doubl
   result
 }
 
-pub fn opt_convex_l_bfgs_buffer_sum(s : OptconvexlbfgsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_buffer_sum(s : OptconvexlbfgsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_buffer_mean(s : OptconvexlbfgsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_buffer_mean(s : OptconvexlbfgsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_buffer_scale(s : OptconvexlbfgsBuffer, f : Double) -> OptconvexlbfgsBuffer {
   let result = opt_convex_l_bfgs_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_convex_l_bfgs_buffer_fill(s : OptconvexlbfgsBuffer, v : Double) -> Op
   result
 }
 
-pub fn opt_convex_l_bfgs_buffer_min(s : OptconvexlbfgsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_buffer_min(s : OptconvexlbfgsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_buffer_max(s : OptconvexlbfgsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_buffer_max(s : OptconvexlbfgsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_buffer_to_string(s : OptconvexlbfgsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_convex_l_bfgs_cursor_set(s : OptconvexlbfgsCursor, i : Int, v : Doubl
   result
 }
 
-pub fn opt_convex_l_bfgs_cursor_sum(s : OptconvexlbfgsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_cursor_sum(s : OptconvexlbfgsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_cursor_mean(s : OptconvexlbfgsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_cursor_mean(s : OptconvexlbfgsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_cursor_scale(s : OptconvexlbfgsCursor, f : Double) -> OptconvexlbfgsCursor {
   let result = opt_convex_l_bfgs_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_convex_l_bfgs_cursor_fill(s : OptconvexlbfgsCursor, v : Double) -> Op
   result
 }
 
-pub fn opt_convex_l_bfgs_cursor_min(s : OptconvexlbfgsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_cursor_min(s : OptconvexlbfgsCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_cursor_max(s : OptconvexlbfgsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_cursor_max(s : OptconvexlbfgsCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_cursor_to_string(s : OptconvexlbfgsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_convex_l_bfgs_view_set(s : OptconvexlbfgsView, i : Int, v : Double) -
   result
 }
 
-pub fn opt_convex_l_bfgs_view_sum(s : OptconvexlbfgsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_view_sum(s : OptconvexlbfgsView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_view_mean(s : OptconvexlbfgsView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_view_mean(s : OptconvexlbfgsView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_view_scale(s : OptconvexlbfgsView, f : Double) -> OptconvexlbfgsView {
   let result = opt_convex_l_bfgs_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_convex_l_bfgs_view_fill(s : OptconvexlbfgsView, v : Double) -> Optcon
   result
 }
 
-pub fn opt_convex_l_bfgs_view_min(s : OptconvexlbfgsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_view_min(s : OptconvexlbfgsView) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_view_max(s : OptconvexlbfgsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_view_max(s : OptconvexlbfgsView) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_view_to_string(s : OptconvexlbfgsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_convex_l_bfgs_range_set(s : OptconvexlbfgsRange, i : Int, v : Double)
   result
 }
 
-pub fn opt_convex_l_bfgs_range_sum(s : OptconvexlbfgsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_range_sum(s : OptconvexlbfgsRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_range_mean(s : OptconvexlbfgsRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_range_mean(s : OptconvexlbfgsRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_range_scale(s : OptconvexlbfgsRange, f : Double) -> OptconvexlbfgsRange {
   let result = opt_convex_l_bfgs_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_convex_l_bfgs_range_fill(s : OptconvexlbfgsRange, v : Double) -> Optc
   result
 }
 
-pub fn opt_convex_l_bfgs_range_min(s : OptconvexlbfgsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_range_min(s : OptconvexlbfgsRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_range_max(s : OptconvexlbfgsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_range_max(s : OptconvexlbfgsRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_range_to_string(s : OptconvexlbfgsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_convex_l_bfgs_slice_set(s : OptconvexlbfgsSlice, i : Int, v : Double)
   result
 }
 
-pub fn opt_convex_l_bfgs_slice_sum(s : OptconvexlbfgsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_l_bfgs_slice_sum(s : OptconvexlbfgsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_l_bfgs_slice_mean(s : OptconvexlbfgsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_l_bfgs_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_l_bfgs_slice_mean(s : OptconvexlbfgsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_l_bfgs_slice_scale(s : OptconvexlbfgsSlice, f : Double) -> OptconvexlbfgsSlice {
   let result = opt_convex_l_bfgs_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_convex_l_bfgs_slice_fill(s : OptconvexlbfgsSlice, v : Double) -> Optc
   result
 }
 
-pub fn opt_convex_l_bfgs_slice_min(s : OptconvexlbfgsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_slice_min(s : OptconvexlbfgsSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_l_bfgs_slice_max(s : OptconvexlbfgsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_l_bfgs_slice_max(s : OptconvexlbfgsSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_l_bfgs_slice_to_string(s : OptconvexlbfgsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn bio_phylo_distance_make_series(vals : Array[Double], name : String) -> Bi
 
 pub fn bio_phylo_distance_series_len(s : BiophylodistanceSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_distance_series_sum(s : BiophylodistanceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_distance_series_sum(s : BiophylodistanceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_distance_series_mean(s : BiophylodistanceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_distance_frame_set(s : BiophylodistanceFrame, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_distance_frame_sum(s : BiophylodistanceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_frame_sum(s : BiophylodistanceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_frame_mean(s : BiophylodistanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_frame_mean(s : BiophylodistanceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_frame_scale(s : BiophylodistanceFrame, f : Double) -> BiophylodistanceFrame {
   let result = bio_phylo_distance_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_distance_frame_fill(s : BiophylodistanceFrame, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_distance_frame_min(s : BiophylodistanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_frame_min(s : BiophylodistanceFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_frame_max(s : BiophylodistanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_frame_max(s : BiophylodistanceFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_frame_to_string(s : BiophylodistanceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_distance_table_set(s : BiophylodistanceTable, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_distance_table_sum(s : BiophylodistanceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_table_sum(s : BiophylodistanceTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_table_mean(s : BiophylodistanceTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_table_mean(s : BiophylodistanceTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_table_scale(s : BiophylodistanceTable, f : Double) -> BiophylodistanceTable {
   let result = bio_phylo_distance_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_distance_table_fill(s : BiophylodistanceTable, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_distance_table_min(s : BiophylodistanceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_table_min(s : BiophylodistanceTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_table_max(s : BiophylodistanceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_table_max(s : BiophylodistanceTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_table_to_string(s : BiophylodistanceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_distance_graphn_set(s : BiophylodistanceGraphN, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_distance_graphn_sum(s : BiophylodistanceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_graphn_sum(s : BiophylodistanceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_graphn_mean(s : BiophylodistanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_graphn_mean(s : BiophylodistanceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_graphn_scale(s : BiophylodistanceGraphN, f : Double) -> BiophylodistanceGraphN {
   let result = bio_phylo_distance_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_distance_graphn_fill(s : BiophylodistanceGraphN, v : Double) ->
   result
 }
 
-pub fn bio_phylo_distance_graphn_min(s : BiophylodistanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_graphn_min(s : BiophylodistanceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_graphn_max(s : BiophylodistanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_graphn_max(s : BiophylodistanceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_graphn_to_string(s : BiophylodistanceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_distance_node_set(s : BiophylodistanceNode, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_distance_node_sum(s : BiophylodistanceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_node_sum(s : BiophylodistanceNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_node_mean(s : BiophylodistanceNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_node_mean(s : BiophylodistanceNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_node_scale(s : BiophylodistanceNode, f : Double) -> BiophylodistanceNode {
   let result = bio_phylo_distance_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_distance_node_fill(s : BiophylodistanceNode, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_distance_node_min(s : BiophylodistanceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_node_min(s : BiophylodistanceNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_node_max(s : BiophylodistanceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_node_max(s : BiophylodistanceNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_node_to_string(s : BiophylodistanceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_distance_edge_set(s : BiophylodistanceEdge, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_distance_edge_sum(s : BiophylodistanceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_edge_sum(s : BiophylodistanceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_edge_mean(s : BiophylodistanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_edge_mean(s : BiophylodistanceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_edge_scale(s : BiophylodistanceEdge, f : Double) -> BiophylodistanceEdge {
   let result = bio_phylo_distance_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_distance_edge_fill(s : BiophylodistanceEdge, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_distance_edge_min(s : BiophylodistanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_edge_min(s : BiophylodistanceEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_edge_max(s : BiophylodistanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_edge_max(s : BiophylodistanceEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_edge_to_string(s : BiophylodistanceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_distance_path_set(s : BiophylodistancePath, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_distance_path_sum(s : BiophylodistancePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_path_sum(s : BiophylodistancePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_path_mean(s : BiophylodistancePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_path_mean(s : BiophylodistancePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_path_scale(s : BiophylodistancePath, f : Double) -> BiophylodistancePath {
   let result = bio_phylo_distance_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_distance_path_fill(s : BiophylodistancePath, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_distance_path_min(s : BiophylodistancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_path_min(s : BiophylodistancePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_path_max(s : BiophylodistancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_path_max(s : BiophylodistancePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_path_to_string(s : BiophylodistancePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_distance_cluster_set(s : BiophylodistanceCluster, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_distance_cluster_sum(s : BiophylodistanceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_cluster_sum(s : BiophylodistanceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_cluster_mean(s : BiophylodistanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_cluster_mean(s : BiophylodistanceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_cluster_scale(s : BiophylodistanceCluster, f : Double) -> BiophylodistanceCluster {
   let result = bio_phylo_distance_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_distance_cluster_fill(s : BiophylodistanceCluster, v : Double) 
   result
 }
 
-pub fn bio_phylo_distance_cluster_min(s : BiophylodistanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_cluster_min(s : BiophylodistanceCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_cluster_max(s : BiophylodistanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_cluster_max(s : BiophylodistanceCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_cluster_to_string(s : BiophylodistanceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_distance_model_set(s : BiophylodistanceModel, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_distance_model_sum(s : BiophylodistanceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_model_sum(s : BiophylodistanceModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_model_mean(s : BiophylodistanceModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_model_mean(s : BiophylodistanceModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_model_scale(s : BiophylodistanceModel, f : Double) -> BiophylodistanceModel {
   let result = bio_phylo_distance_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_distance_model_fill(s : BiophylodistanceModel, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_distance_model_min(s : BiophylodistanceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_model_min(s : BiophylodistanceModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_model_max(s : BiophylodistanceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_model_max(s : BiophylodistanceModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_model_to_string(s : BiophylodistanceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_distance_layer_set(s : BiophylodistanceLayer, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_distance_layer_sum(s : BiophylodistanceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_layer_sum(s : BiophylodistanceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_layer_mean(s : BiophylodistanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_layer_mean(s : BiophylodistanceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_layer_scale(s : BiophylodistanceLayer, f : Double) -> BiophylodistanceLayer {
   let result = bio_phylo_distance_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_distance_layer_fill(s : BiophylodistanceLayer, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_distance_layer_min(s : BiophylodistanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_layer_min(s : BiophylodistanceLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_layer_max(s : BiophylodistanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_layer_max(s : BiophylodistanceLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_layer_to_string(s : BiophylodistanceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_distance_buffer_set(s : BiophylodistanceBuffer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_distance_buffer_sum(s : BiophylodistanceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_buffer_sum(s : BiophylodistanceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_buffer_mean(s : BiophylodistanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_buffer_mean(s : BiophylodistanceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_buffer_scale(s : BiophylodistanceBuffer, f : Double) -> BiophylodistanceBuffer {
   let result = bio_phylo_distance_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_distance_buffer_fill(s : BiophylodistanceBuffer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_distance_buffer_min(s : BiophylodistanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_buffer_min(s : BiophylodistanceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_buffer_max(s : BiophylodistanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_buffer_max(s : BiophylodistanceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_buffer_to_string(s : BiophylodistanceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_distance_cursor_set(s : BiophylodistanceCursor, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_distance_cursor_sum(s : BiophylodistanceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_cursor_sum(s : BiophylodistanceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_cursor_mean(s : BiophylodistanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_cursor_mean(s : BiophylodistanceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_cursor_scale(s : BiophylodistanceCursor, f : Double) -> BiophylodistanceCursor {
   let result = bio_phylo_distance_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_distance_cursor_fill(s : BiophylodistanceCursor, v : Double) ->
   result
 }
 
-pub fn bio_phylo_distance_cursor_min(s : BiophylodistanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_cursor_min(s : BiophylodistanceCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_cursor_max(s : BiophylodistanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_cursor_max(s : BiophylodistanceCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_cursor_to_string(s : BiophylodistanceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_distance_view_set(s : BiophylodistanceView, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_distance_view_sum(s : BiophylodistanceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_view_sum(s : BiophylodistanceView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_view_mean(s : BiophylodistanceView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_view_mean(s : BiophylodistanceView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_view_scale(s : BiophylodistanceView, f : Double) -> BiophylodistanceView {
   let result = bio_phylo_distance_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_distance_view_fill(s : BiophylodistanceView, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_distance_view_min(s : BiophylodistanceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_view_min(s : BiophylodistanceView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_view_max(s : BiophylodistanceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_view_max(s : BiophylodistanceView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_view_to_string(s : BiophylodistanceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_distance_range_set(s : BiophylodistanceRange, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_distance_range_sum(s : BiophylodistanceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_range_sum(s : BiophylodistanceRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_range_mean(s : BiophylodistanceRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_range_mean(s : BiophylodistanceRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_range_scale(s : BiophylodistanceRange, f : Double) -> BiophylodistanceRange {
   let result = bio_phylo_distance_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_distance_range_fill(s : BiophylodistanceRange, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_distance_range_min(s : BiophylodistanceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_range_min(s : BiophylodistanceRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_range_max(s : BiophylodistanceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_range_max(s : BiophylodistanceRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_range_to_string(s : BiophylodistanceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_distance_slice_set(s : BiophylodistanceSlice, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_distance_slice_sum(s : BiophylodistanceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_distance_slice_sum(s : BiophylodistanceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_distance_slice_mean(s : BiophylodistanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_distance_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_distance_slice_mean(s : BiophylodistanceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_distance_slice_scale(s : BiophylodistanceSlice, f : Double) -> BiophylodistanceSlice {
   let result = bio_phylo_distance_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_distance_slice_fill(s : BiophylodistanceSlice, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_distance_slice_min(s : BiophylodistanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_slice_min(s : BiophylodistanceSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_distance_slice_max(s : BiophylodistanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_distance_slice_max(s : BiophylodistanceSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_distance_slice_to_string(s : BiophylodistanceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn stats_test_shapiro_make_series(vals : Array[Double], name : String) -> St
 
 pub fn stats_test_shapiro_series_len(s : StatstestshapiroSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_shapiro_series_sum(s : StatstestshapiroSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_shapiro_series_sum(s : StatstestshapiroSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_shapiro_series_mean(s : StatstestshapiroSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_shapiro_frame_set(s : StatstestshapiroFrame, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_shapiro_frame_sum(s : StatstestshapiroFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_frame_sum(s : StatstestshapiroFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_frame_mean(s : StatstestshapiroFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_frame_mean(s : StatstestshapiroFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_frame_scale(s : StatstestshapiroFrame, f : Double) -> StatstestshapiroFrame {
   let result = stats_test_shapiro_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_shapiro_frame_fill(s : StatstestshapiroFrame, v : Double) -> S
   result
 }
 
-pub fn stats_test_shapiro_frame_min(s : StatstestshapiroFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_frame_min(s : StatstestshapiroFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_frame_max(s : StatstestshapiroFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_frame_max(s : StatstestshapiroFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_frame_to_string(s : StatstestshapiroFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_shapiro_table_set(s : StatstestshapiroTable, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_shapiro_table_sum(s : StatstestshapiroTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_table_sum(s : StatstestshapiroTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_table_mean(s : StatstestshapiroTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_table_mean(s : StatstestshapiroTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_table_scale(s : StatstestshapiroTable, f : Double) -> StatstestshapiroTable {
   let result = stats_test_shapiro_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_shapiro_table_fill(s : StatstestshapiroTable, v : Double) -> S
   result
 }
 
-pub fn stats_test_shapiro_table_min(s : StatstestshapiroTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_table_min(s : StatstestshapiroTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_table_max(s : StatstestshapiroTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_table_max(s : StatstestshapiroTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_table_to_string(s : StatstestshapiroTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_shapiro_graphn_set(s : StatstestshapiroGraphN, i : Int, v : Do
   result
 }
 
-pub fn stats_test_shapiro_graphn_sum(s : StatstestshapiroGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_graphn_sum(s : StatstestshapiroGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_graphn_mean(s : StatstestshapiroGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_graphn_mean(s : StatstestshapiroGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_graphn_scale(s : StatstestshapiroGraphN, f : Double) -> StatstestshapiroGraphN {
   let result = stats_test_shapiro_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_shapiro_graphn_fill(s : StatstestshapiroGraphN, v : Double) ->
   result
 }
 
-pub fn stats_test_shapiro_graphn_min(s : StatstestshapiroGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_graphn_min(s : StatstestshapiroGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_graphn_max(s : StatstestshapiroGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_graphn_max(s : StatstestshapiroGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_graphn_to_string(s : StatstestshapiroGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_shapiro_node_set(s : StatstestshapiroNode, i : Int, v : Double
   result
 }
 
-pub fn stats_test_shapiro_node_sum(s : StatstestshapiroNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_node_sum(s : StatstestshapiroNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_node_mean(s : StatstestshapiroNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_node_mean(s : StatstestshapiroNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_node_scale(s : StatstestshapiroNode, f : Double) -> StatstestshapiroNode {
   let result = stats_test_shapiro_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_shapiro_node_fill(s : StatstestshapiroNode, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_shapiro_node_min(s : StatstestshapiroNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_node_min(s : StatstestshapiroNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_node_max(s : StatstestshapiroNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_node_max(s : StatstestshapiroNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_node_to_string(s : StatstestshapiroNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_shapiro_edge_set(s : StatstestshapiroEdge, i : Int, v : Double
   result
 }
 
-pub fn stats_test_shapiro_edge_sum(s : StatstestshapiroEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_edge_sum(s : StatstestshapiroEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_edge_mean(s : StatstestshapiroEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_edge_mean(s : StatstestshapiroEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_edge_scale(s : StatstestshapiroEdge, f : Double) -> StatstestshapiroEdge {
   let result = stats_test_shapiro_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_shapiro_edge_fill(s : StatstestshapiroEdge, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_shapiro_edge_min(s : StatstestshapiroEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_edge_min(s : StatstestshapiroEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_edge_max(s : StatstestshapiroEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_edge_max(s : StatstestshapiroEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_edge_to_string(s : StatstestshapiroEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_shapiro_path_set(s : StatstestshapiroPath, i : Int, v : Double
   result
 }
 
-pub fn stats_test_shapiro_path_sum(s : StatstestshapiroPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_path_sum(s : StatstestshapiroPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_path_mean(s : StatstestshapiroPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_path_mean(s : StatstestshapiroPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_path_scale(s : StatstestshapiroPath, f : Double) -> StatstestshapiroPath {
   let result = stats_test_shapiro_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_shapiro_path_fill(s : StatstestshapiroPath, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_shapiro_path_min(s : StatstestshapiroPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_path_min(s : StatstestshapiroPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_path_max(s : StatstestshapiroPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_path_max(s : StatstestshapiroPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_path_to_string(s : StatstestshapiroPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_shapiro_cluster_set(s : StatstestshapiroCluster, i : Int, v : 
   result
 }
 
-pub fn stats_test_shapiro_cluster_sum(s : StatstestshapiroCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_cluster_sum(s : StatstestshapiroCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_cluster_mean(s : StatstestshapiroCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_cluster_mean(s : StatstestshapiroCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_cluster_scale(s : StatstestshapiroCluster, f : Double) -> StatstestshapiroCluster {
   let result = stats_test_shapiro_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_shapiro_cluster_fill(s : StatstestshapiroCluster, v : Double) 
   result
 }
 
-pub fn stats_test_shapiro_cluster_min(s : StatstestshapiroCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_cluster_min(s : StatstestshapiroCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_cluster_max(s : StatstestshapiroCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_cluster_max(s : StatstestshapiroCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_cluster_to_string(s : StatstestshapiroCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_shapiro_model_set(s : StatstestshapiroModel, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_shapiro_model_sum(s : StatstestshapiroModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_model_sum(s : StatstestshapiroModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_model_mean(s : StatstestshapiroModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_model_mean(s : StatstestshapiroModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_model_scale(s : StatstestshapiroModel, f : Double) -> StatstestshapiroModel {
   let result = stats_test_shapiro_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_shapiro_model_fill(s : StatstestshapiroModel, v : Double) -> S
   result
 }
 
-pub fn stats_test_shapiro_model_min(s : StatstestshapiroModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_model_min(s : StatstestshapiroModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_model_max(s : StatstestshapiroModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_model_max(s : StatstestshapiroModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_model_to_string(s : StatstestshapiroModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_shapiro_layer_set(s : StatstestshapiroLayer, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_shapiro_layer_sum(s : StatstestshapiroLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_layer_sum(s : StatstestshapiroLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_layer_mean(s : StatstestshapiroLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_layer_mean(s : StatstestshapiroLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_layer_scale(s : StatstestshapiroLayer, f : Double) -> StatstestshapiroLayer {
   let result = stats_test_shapiro_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_shapiro_layer_fill(s : StatstestshapiroLayer, v : Double) -> S
   result
 }
 
-pub fn stats_test_shapiro_layer_min(s : StatstestshapiroLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_layer_min(s : StatstestshapiroLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_layer_max(s : StatstestshapiroLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_layer_max(s : StatstestshapiroLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_layer_to_string(s : StatstestshapiroLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_shapiro_buffer_set(s : StatstestshapiroBuffer, i : Int, v : Do
   result
 }
 
-pub fn stats_test_shapiro_buffer_sum(s : StatstestshapiroBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_buffer_sum(s : StatstestshapiroBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_buffer_mean(s : StatstestshapiroBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_buffer_mean(s : StatstestshapiroBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_buffer_scale(s : StatstestshapiroBuffer, f : Double) -> StatstestshapiroBuffer {
   let result = stats_test_shapiro_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_shapiro_buffer_fill(s : StatstestshapiroBuffer, v : Double) ->
   result
 }
 
-pub fn stats_test_shapiro_buffer_min(s : StatstestshapiroBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_buffer_min(s : StatstestshapiroBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_buffer_max(s : StatstestshapiroBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_buffer_max(s : StatstestshapiroBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_buffer_to_string(s : StatstestshapiroBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_shapiro_cursor_set(s : StatstestshapiroCursor, i : Int, v : Do
   result
 }
 
-pub fn stats_test_shapiro_cursor_sum(s : StatstestshapiroCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_cursor_sum(s : StatstestshapiroCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_cursor_mean(s : StatstestshapiroCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_cursor_mean(s : StatstestshapiroCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_cursor_scale(s : StatstestshapiroCursor, f : Double) -> StatstestshapiroCursor {
   let result = stats_test_shapiro_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_shapiro_cursor_fill(s : StatstestshapiroCursor, v : Double) ->
   result
 }
 
-pub fn stats_test_shapiro_cursor_min(s : StatstestshapiroCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_cursor_min(s : StatstestshapiroCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_cursor_max(s : StatstestshapiroCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_cursor_max(s : StatstestshapiroCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_cursor_to_string(s : StatstestshapiroCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_shapiro_view_set(s : StatstestshapiroView, i : Int, v : Double
   result
 }
 
-pub fn stats_test_shapiro_view_sum(s : StatstestshapiroView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_view_sum(s : StatstestshapiroView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_view_mean(s : StatstestshapiroView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_view_mean(s : StatstestshapiroView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_view_scale(s : StatstestshapiroView, f : Double) -> StatstestshapiroView {
   let result = stats_test_shapiro_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_shapiro_view_fill(s : StatstestshapiroView, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_shapiro_view_min(s : StatstestshapiroView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_view_min(s : StatstestshapiroView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_view_max(s : StatstestshapiroView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_view_max(s : StatstestshapiroView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_view_to_string(s : StatstestshapiroView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_shapiro_range_set(s : StatstestshapiroRange, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_shapiro_range_sum(s : StatstestshapiroRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_range_sum(s : StatstestshapiroRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_range_mean(s : StatstestshapiroRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_range_mean(s : StatstestshapiroRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_range_scale(s : StatstestshapiroRange, f : Double) -> StatstestshapiroRange {
   let result = stats_test_shapiro_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_shapiro_range_fill(s : StatstestshapiroRange, v : Double) -> S
   result
 }
 
-pub fn stats_test_shapiro_range_min(s : StatstestshapiroRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_range_min(s : StatstestshapiroRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_range_max(s : StatstestshapiroRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_range_max(s : StatstestshapiroRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_range_to_string(s : StatstestshapiroRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_shapiro_slice_set(s : StatstestshapiroSlice, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_shapiro_slice_sum(s : StatstestshapiroSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_shapiro_slice_sum(s : StatstestshapiroSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_shapiro_slice_mean(s : StatstestshapiroSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_shapiro_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_shapiro_slice_mean(s : StatstestshapiroSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_shapiro_slice_scale(s : StatstestshapiroSlice, f : Double) -> StatstestshapiroSlice {
   let result = stats_test_shapiro_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_shapiro_slice_fill(s : StatstestshapiroSlice, v : Double) -> S
   result
 }
 
-pub fn stats_test_shapiro_slice_min(s : StatstestshapiroSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_slice_min(s : StatstestshapiroSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_shapiro_slice_max(s : StatstestshapiroSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_shapiro_slice_max(s : StatstestshapiroSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_shapiro_slice_to_string(s : StatstestshapiroSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

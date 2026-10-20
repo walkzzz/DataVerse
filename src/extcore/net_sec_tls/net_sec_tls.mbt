@@ -88,11 +88,7 @@ pub fn net_sec_tls_make_series(vals : Array[Double], name : String) -> Netsectls
 
 pub fn net_sec_tls_series_len(s : NetsectlsSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_tls_series_sum(s : NetsectlsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_tls_series_sum(s : NetsectlsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_tls_series_mean(s : NetsectlsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_tls_frame_set(s : NetsectlsFrame, i : Int, v : Double) -> Netsect
   result
 }
 
-pub fn net_sec_tls_frame_sum(s : NetsectlsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_frame_sum(s : NetsectlsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_frame_mean(s : NetsectlsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_frame_mean(s : NetsectlsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_frame_scale(s : NetsectlsFrame, f : Double) -> NetsectlsFrame {
   let result = net_sec_tls_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_tls_frame_fill(s : NetsectlsFrame, v : Double) -> NetsectlsFrame 
   result
 }
 
-pub fn net_sec_tls_frame_min(s : NetsectlsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_frame_min(s : NetsectlsFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_frame_max(s : NetsectlsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_frame_max(s : NetsectlsFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_frame_to_string(s : NetsectlsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_tls_table_set(s : NetsectlsTable, i : Int, v : Double) -> Netsect
   result
 }
 
-pub fn net_sec_tls_table_sum(s : NetsectlsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_table_sum(s : NetsectlsTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_table_mean(s : NetsectlsTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_table_mean(s : NetsectlsTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_table_scale(s : NetsectlsTable, f : Double) -> NetsectlsTable {
   let result = net_sec_tls_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_tls_table_fill(s : NetsectlsTable, v : Double) -> NetsectlsTable 
   result
 }
 
-pub fn net_sec_tls_table_min(s : NetsectlsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_table_min(s : NetsectlsTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_table_max(s : NetsectlsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_table_max(s : NetsectlsTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_table_to_string(s : NetsectlsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_tls_graphn_set(s : NetsectlsGraphN, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_tls_graphn_sum(s : NetsectlsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_graphn_sum(s : NetsectlsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_graphn_mean(s : NetsectlsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_graphn_mean(s : NetsectlsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_graphn_scale(s : NetsectlsGraphN, f : Double) -> NetsectlsGraphN {
   let result = net_sec_tls_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_tls_graphn_fill(s : NetsectlsGraphN, v : Double) -> NetsectlsGrap
   result
 }
 
-pub fn net_sec_tls_graphn_min(s : NetsectlsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_graphn_min(s : NetsectlsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_graphn_max(s : NetsectlsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_graphn_max(s : NetsectlsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_graphn_to_string(s : NetsectlsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_tls_node_set(s : NetsectlsNode, i : Int, v : Double) -> Netsectls
   result
 }
 
-pub fn net_sec_tls_node_sum(s : NetsectlsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_node_sum(s : NetsectlsNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_node_mean(s : NetsectlsNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_node_mean(s : NetsectlsNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_node_scale(s : NetsectlsNode, f : Double) -> NetsectlsNode {
   let result = net_sec_tls_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_tls_node_fill(s : NetsectlsNode, v : Double) -> NetsectlsNode {
   result
 }
 
-pub fn net_sec_tls_node_min(s : NetsectlsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_node_min(s : NetsectlsNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_node_max(s : NetsectlsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_node_max(s : NetsectlsNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_node_to_string(s : NetsectlsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_tls_edge_set(s : NetsectlsEdge, i : Int, v : Double) -> Netsectls
   result
 }
 
-pub fn net_sec_tls_edge_sum(s : NetsectlsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_edge_sum(s : NetsectlsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_edge_mean(s : NetsectlsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_edge_mean(s : NetsectlsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_edge_scale(s : NetsectlsEdge, f : Double) -> NetsectlsEdge {
   let result = net_sec_tls_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_tls_edge_fill(s : NetsectlsEdge, v : Double) -> NetsectlsEdge {
   result
 }
 
-pub fn net_sec_tls_edge_min(s : NetsectlsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_edge_min(s : NetsectlsEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_edge_max(s : NetsectlsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_edge_max(s : NetsectlsEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_edge_to_string(s : NetsectlsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_tls_path_set(s : NetsectlsPath, i : Int, v : Double) -> Netsectls
   result
 }
 
-pub fn net_sec_tls_path_sum(s : NetsectlsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_path_sum(s : NetsectlsPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_path_mean(s : NetsectlsPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_path_mean(s : NetsectlsPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_path_scale(s : NetsectlsPath, f : Double) -> NetsectlsPath {
   let result = net_sec_tls_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_tls_path_fill(s : NetsectlsPath, v : Double) -> NetsectlsPath {
   result
 }
 
-pub fn net_sec_tls_path_min(s : NetsectlsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_path_min(s : NetsectlsPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_path_max(s : NetsectlsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_path_max(s : NetsectlsPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_path_to_string(s : NetsectlsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_tls_cluster_set(s : NetsectlsCluster, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_tls_cluster_sum(s : NetsectlsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_cluster_sum(s : NetsectlsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_cluster_mean(s : NetsectlsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_cluster_mean(s : NetsectlsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_cluster_scale(s : NetsectlsCluster, f : Double) -> NetsectlsCluster {
   let result = net_sec_tls_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_tls_cluster_fill(s : NetsectlsCluster, v : Double) -> NetsectlsCl
   result
 }
 
-pub fn net_sec_tls_cluster_min(s : NetsectlsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_cluster_min(s : NetsectlsCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_cluster_max(s : NetsectlsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_cluster_max(s : NetsectlsCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_cluster_to_string(s : NetsectlsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_tls_model_set(s : NetsectlsModel, i : Int, v : Double) -> Netsect
   result
 }
 
-pub fn net_sec_tls_model_sum(s : NetsectlsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_model_sum(s : NetsectlsModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_model_mean(s : NetsectlsModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_model_mean(s : NetsectlsModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_model_scale(s : NetsectlsModel, f : Double) -> NetsectlsModel {
   let result = net_sec_tls_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_tls_model_fill(s : NetsectlsModel, v : Double) -> NetsectlsModel 
   result
 }
 
-pub fn net_sec_tls_model_min(s : NetsectlsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_model_min(s : NetsectlsModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_model_max(s : NetsectlsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_model_max(s : NetsectlsModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_model_to_string(s : NetsectlsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_tls_layer_set(s : NetsectlsLayer, i : Int, v : Double) -> Netsect
   result
 }
 
-pub fn net_sec_tls_layer_sum(s : NetsectlsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_layer_sum(s : NetsectlsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_layer_mean(s : NetsectlsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_layer_mean(s : NetsectlsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_layer_scale(s : NetsectlsLayer, f : Double) -> NetsectlsLayer {
   let result = net_sec_tls_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_tls_layer_fill(s : NetsectlsLayer, v : Double) -> NetsectlsLayer 
   result
 }
 
-pub fn net_sec_tls_layer_min(s : NetsectlsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_layer_min(s : NetsectlsLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_layer_max(s : NetsectlsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_layer_max(s : NetsectlsLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_layer_to_string(s : NetsectlsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_tls_buffer_set(s : NetsectlsBuffer, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_tls_buffer_sum(s : NetsectlsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_buffer_sum(s : NetsectlsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_buffer_mean(s : NetsectlsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_buffer_mean(s : NetsectlsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_buffer_scale(s : NetsectlsBuffer, f : Double) -> NetsectlsBuffer {
   let result = net_sec_tls_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_tls_buffer_fill(s : NetsectlsBuffer, v : Double) -> NetsectlsBuff
   result
 }
 
-pub fn net_sec_tls_buffer_min(s : NetsectlsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_buffer_min(s : NetsectlsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_buffer_max(s : NetsectlsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_buffer_max(s : NetsectlsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_buffer_to_string(s : NetsectlsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_tls_cursor_set(s : NetsectlsCursor, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_tls_cursor_sum(s : NetsectlsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_cursor_sum(s : NetsectlsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_cursor_mean(s : NetsectlsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_cursor_mean(s : NetsectlsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_cursor_scale(s : NetsectlsCursor, f : Double) -> NetsectlsCursor {
   let result = net_sec_tls_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_tls_cursor_fill(s : NetsectlsCursor, v : Double) -> NetsectlsCurs
   result
 }
 
-pub fn net_sec_tls_cursor_min(s : NetsectlsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_cursor_min(s : NetsectlsCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_cursor_max(s : NetsectlsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_cursor_max(s : NetsectlsCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_cursor_to_string(s : NetsectlsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_tls_view_set(s : NetsectlsView, i : Int, v : Double) -> Netsectls
   result
 }
 
-pub fn net_sec_tls_view_sum(s : NetsectlsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_view_sum(s : NetsectlsView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_view_mean(s : NetsectlsView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_view_mean(s : NetsectlsView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_view_scale(s : NetsectlsView, f : Double) -> NetsectlsView {
   let result = net_sec_tls_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_tls_view_fill(s : NetsectlsView, v : Double) -> NetsectlsView {
   result
 }
 
-pub fn net_sec_tls_view_min(s : NetsectlsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_view_min(s : NetsectlsView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_view_max(s : NetsectlsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_view_max(s : NetsectlsView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_view_to_string(s : NetsectlsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_tls_range_set(s : NetsectlsRange, i : Int, v : Double) -> Netsect
   result
 }
 
-pub fn net_sec_tls_range_sum(s : NetsectlsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_range_sum(s : NetsectlsRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_range_mean(s : NetsectlsRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_range_mean(s : NetsectlsRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_range_scale(s : NetsectlsRange, f : Double) -> NetsectlsRange {
   let result = net_sec_tls_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_tls_range_fill(s : NetsectlsRange, v : Double) -> NetsectlsRange 
   result
 }
 
-pub fn net_sec_tls_range_min(s : NetsectlsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_range_min(s : NetsectlsRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_range_max(s : NetsectlsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_range_max(s : NetsectlsRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_range_to_string(s : NetsectlsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_tls_slice_set(s : NetsectlsSlice, i : Int, v : Double) -> Netsect
   result
 }
 
-pub fn net_sec_tls_slice_sum(s : NetsectlsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_tls_slice_sum(s : NetsectlsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_tls_slice_mean(s : NetsectlsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_tls_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_tls_slice_mean(s : NetsectlsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_tls_slice_scale(s : NetsectlsSlice, f : Double) -> NetsectlsSlice {
   let result = net_sec_tls_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_tls_slice_fill(s : NetsectlsSlice, v : Double) -> NetsectlsSlice 
   result
 }
 
-pub fn net_sec_tls_slice_min(s : NetsectlsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_slice_min(s : NetsectlsSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_tls_slice_max(s : NetsectlsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_tls_slice_max(s : NetsectlsSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_tls_slice_to_string(s : NetsectlsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

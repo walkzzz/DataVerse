@@ -88,11 +88,7 @@ pub fn signal_filter_elliptic_make_series(vals : Array[Double], name : String) -
 
 pub fn signal_filter_elliptic_series_len(s : SignalfilterellipticSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_elliptic_series_sum(s : SignalfilterellipticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_elliptic_series_sum(s : SignalfilterellipticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_elliptic_series_mean(s : SignalfilterellipticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_elliptic_frame_set(s : SignalfilterellipticFrame, i : Int, 
   result
 }
 
-pub fn signal_filter_elliptic_frame_sum(s : SignalfilterellipticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_frame_sum(s : SignalfilterellipticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_frame_mean(s : SignalfilterellipticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_frame_mean(s : SignalfilterellipticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_frame_scale(s : SignalfilterellipticFrame, f : Double) -> SignalfilterellipticFrame {
   let result = signal_filter_elliptic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_elliptic_frame_fill(s : SignalfilterellipticFrame, v : Doub
   result
 }
 
-pub fn signal_filter_elliptic_frame_min(s : SignalfilterellipticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_frame_min(s : SignalfilterellipticFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_frame_max(s : SignalfilterellipticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_frame_max(s : SignalfilterellipticFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_frame_to_string(s : SignalfilterellipticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_elliptic_table_set(s : SignalfilterellipticTable, i : Int, 
   result
 }
 
-pub fn signal_filter_elliptic_table_sum(s : SignalfilterellipticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_table_sum(s : SignalfilterellipticTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_table_mean(s : SignalfilterellipticTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_table_mean(s : SignalfilterellipticTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_table_scale(s : SignalfilterellipticTable, f : Double) -> SignalfilterellipticTable {
   let result = signal_filter_elliptic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_elliptic_table_fill(s : SignalfilterellipticTable, v : Doub
   result
 }
 
-pub fn signal_filter_elliptic_table_min(s : SignalfilterellipticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_table_min(s : SignalfilterellipticTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_table_max(s : SignalfilterellipticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_table_max(s : SignalfilterellipticTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_table_to_string(s : SignalfilterellipticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_elliptic_graphn_set(s : SignalfilterellipticGraphN, i : Int
   result
 }
 
-pub fn signal_filter_elliptic_graphn_sum(s : SignalfilterellipticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_graphn_sum(s : SignalfilterellipticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_graphn_mean(s : SignalfilterellipticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_graphn_mean(s : SignalfilterellipticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_graphn_scale(s : SignalfilterellipticGraphN, f : Double) -> SignalfilterellipticGraphN {
   let result = signal_filter_elliptic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_elliptic_graphn_fill(s : SignalfilterellipticGraphN, v : Do
   result
 }
 
-pub fn signal_filter_elliptic_graphn_min(s : SignalfilterellipticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_graphn_min(s : SignalfilterellipticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_graphn_max(s : SignalfilterellipticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_graphn_max(s : SignalfilterellipticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_graphn_to_string(s : SignalfilterellipticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_elliptic_node_set(s : SignalfilterellipticNode, i : Int, v 
   result
 }
 
-pub fn signal_filter_elliptic_node_sum(s : SignalfilterellipticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_node_sum(s : SignalfilterellipticNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_node_mean(s : SignalfilterellipticNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_node_mean(s : SignalfilterellipticNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_node_scale(s : SignalfilterellipticNode, f : Double) -> SignalfilterellipticNode {
   let result = signal_filter_elliptic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_elliptic_node_fill(s : SignalfilterellipticNode, v : Double
   result
 }
 
-pub fn signal_filter_elliptic_node_min(s : SignalfilterellipticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_node_min(s : SignalfilterellipticNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_node_max(s : SignalfilterellipticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_node_max(s : SignalfilterellipticNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_node_to_string(s : SignalfilterellipticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_elliptic_edge_set(s : SignalfilterellipticEdge, i : Int, v 
   result
 }
 
-pub fn signal_filter_elliptic_edge_sum(s : SignalfilterellipticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_edge_sum(s : SignalfilterellipticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_edge_mean(s : SignalfilterellipticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_edge_mean(s : SignalfilterellipticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_edge_scale(s : SignalfilterellipticEdge, f : Double) -> SignalfilterellipticEdge {
   let result = signal_filter_elliptic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_elliptic_edge_fill(s : SignalfilterellipticEdge, v : Double
   result
 }
 
-pub fn signal_filter_elliptic_edge_min(s : SignalfilterellipticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_edge_min(s : SignalfilterellipticEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_edge_max(s : SignalfilterellipticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_edge_max(s : SignalfilterellipticEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_edge_to_string(s : SignalfilterellipticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_elliptic_path_set(s : SignalfilterellipticPath, i : Int, v 
   result
 }
 
-pub fn signal_filter_elliptic_path_sum(s : SignalfilterellipticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_path_sum(s : SignalfilterellipticPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_path_mean(s : SignalfilterellipticPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_path_mean(s : SignalfilterellipticPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_path_scale(s : SignalfilterellipticPath, f : Double) -> SignalfilterellipticPath {
   let result = signal_filter_elliptic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_elliptic_path_fill(s : SignalfilterellipticPath, v : Double
   result
 }
 
-pub fn signal_filter_elliptic_path_min(s : SignalfilterellipticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_path_min(s : SignalfilterellipticPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_path_max(s : SignalfilterellipticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_path_max(s : SignalfilterellipticPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_path_to_string(s : SignalfilterellipticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_elliptic_cluster_set(s : SignalfilterellipticCluster, i : I
   result
 }
 
-pub fn signal_filter_elliptic_cluster_sum(s : SignalfilterellipticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_cluster_sum(s : SignalfilterellipticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_cluster_mean(s : SignalfilterellipticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_cluster_mean(s : SignalfilterellipticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_cluster_scale(s : SignalfilterellipticCluster, f : Double) -> SignalfilterellipticCluster {
   let result = signal_filter_elliptic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_elliptic_cluster_fill(s : SignalfilterellipticCluster, v : 
   result
 }
 
-pub fn signal_filter_elliptic_cluster_min(s : SignalfilterellipticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_cluster_min(s : SignalfilterellipticCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_cluster_max(s : SignalfilterellipticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_cluster_max(s : SignalfilterellipticCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_cluster_to_string(s : SignalfilterellipticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_elliptic_model_set(s : SignalfilterellipticModel, i : Int, 
   result
 }
 
-pub fn signal_filter_elliptic_model_sum(s : SignalfilterellipticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_model_sum(s : SignalfilterellipticModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_model_mean(s : SignalfilterellipticModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_model_mean(s : SignalfilterellipticModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_model_scale(s : SignalfilterellipticModel, f : Double) -> SignalfilterellipticModel {
   let result = signal_filter_elliptic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_elliptic_model_fill(s : SignalfilterellipticModel, v : Doub
   result
 }
 
-pub fn signal_filter_elliptic_model_min(s : SignalfilterellipticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_model_min(s : SignalfilterellipticModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_model_max(s : SignalfilterellipticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_model_max(s : SignalfilterellipticModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_model_to_string(s : SignalfilterellipticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_elliptic_layer_set(s : SignalfilterellipticLayer, i : Int, 
   result
 }
 
-pub fn signal_filter_elliptic_layer_sum(s : SignalfilterellipticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_layer_sum(s : SignalfilterellipticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_layer_mean(s : SignalfilterellipticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_layer_mean(s : SignalfilterellipticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_layer_scale(s : SignalfilterellipticLayer, f : Double) -> SignalfilterellipticLayer {
   let result = signal_filter_elliptic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_elliptic_layer_fill(s : SignalfilterellipticLayer, v : Doub
   result
 }
 
-pub fn signal_filter_elliptic_layer_min(s : SignalfilterellipticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_layer_min(s : SignalfilterellipticLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_layer_max(s : SignalfilterellipticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_layer_max(s : SignalfilterellipticLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_layer_to_string(s : SignalfilterellipticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_elliptic_buffer_set(s : SignalfilterellipticBuffer, i : Int
   result
 }
 
-pub fn signal_filter_elliptic_buffer_sum(s : SignalfilterellipticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_buffer_sum(s : SignalfilterellipticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_buffer_mean(s : SignalfilterellipticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_buffer_mean(s : SignalfilterellipticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_buffer_scale(s : SignalfilterellipticBuffer, f : Double) -> SignalfilterellipticBuffer {
   let result = signal_filter_elliptic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_elliptic_buffer_fill(s : SignalfilterellipticBuffer, v : Do
   result
 }
 
-pub fn signal_filter_elliptic_buffer_min(s : SignalfilterellipticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_buffer_min(s : SignalfilterellipticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_buffer_max(s : SignalfilterellipticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_buffer_max(s : SignalfilterellipticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_buffer_to_string(s : SignalfilterellipticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_elliptic_cursor_set(s : SignalfilterellipticCursor, i : Int
   result
 }
 
-pub fn signal_filter_elliptic_cursor_sum(s : SignalfilterellipticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_cursor_sum(s : SignalfilterellipticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_cursor_mean(s : SignalfilterellipticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_cursor_mean(s : SignalfilterellipticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_cursor_scale(s : SignalfilterellipticCursor, f : Double) -> SignalfilterellipticCursor {
   let result = signal_filter_elliptic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_elliptic_cursor_fill(s : SignalfilterellipticCursor, v : Do
   result
 }
 
-pub fn signal_filter_elliptic_cursor_min(s : SignalfilterellipticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_cursor_min(s : SignalfilterellipticCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_cursor_max(s : SignalfilterellipticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_cursor_max(s : SignalfilterellipticCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_cursor_to_string(s : SignalfilterellipticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_elliptic_view_set(s : SignalfilterellipticView, i : Int, v 
   result
 }
 
-pub fn signal_filter_elliptic_view_sum(s : SignalfilterellipticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_view_sum(s : SignalfilterellipticView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_view_mean(s : SignalfilterellipticView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_view_mean(s : SignalfilterellipticView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_view_scale(s : SignalfilterellipticView, f : Double) -> SignalfilterellipticView {
   let result = signal_filter_elliptic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_elliptic_view_fill(s : SignalfilterellipticView, v : Double
   result
 }
 
-pub fn signal_filter_elliptic_view_min(s : SignalfilterellipticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_view_min(s : SignalfilterellipticView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_view_max(s : SignalfilterellipticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_view_max(s : SignalfilterellipticView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_view_to_string(s : SignalfilterellipticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_elliptic_range_set(s : SignalfilterellipticRange, i : Int, 
   result
 }
 
-pub fn signal_filter_elliptic_range_sum(s : SignalfilterellipticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_range_sum(s : SignalfilterellipticRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_range_mean(s : SignalfilterellipticRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_range_mean(s : SignalfilterellipticRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_range_scale(s : SignalfilterellipticRange, f : Double) -> SignalfilterellipticRange {
   let result = signal_filter_elliptic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_elliptic_range_fill(s : SignalfilterellipticRange, v : Doub
   result
 }
 
-pub fn signal_filter_elliptic_range_min(s : SignalfilterellipticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_range_min(s : SignalfilterellipticRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_range_max(s : SignalfilterellipticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_range_max(s : SignalfilterellipticRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_range_to_string(s : SignalfilterellipticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_elliptic_slice_set(s : SignalfilterellipticSlice, i : Int, 
   result
 }
 
-pub fn signal_filter_elliptic_slice_sum(s : SignalfilterellipticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_elliptic_slice_sum(s : SignalfilterellipticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_elliptic_slice_mean(s : SignalfilterellipticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_elliptic_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_elliptic_slice_mean(s : SignalfilterellipticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_elliptic_slice_scale(s : SignalfilterellipticSlice, f : Double) -> SignalfilterellipticSlice {
   let result = signal_filter_elliptic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_elliptic_slice_fill(s : SignalfilterellipticSlice, v : Doub
   result
 }
 
-pub fn signal_filter_elliptic_slice_min(s : SignalfilterellipticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_slice_min(s : SignalfilterellipticSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_elliptic_slice_max(s : SignalfilterellipticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_elliptic_slice_max(s : SignalfilterellipticSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_elliptic_slice_to_string(s : SignalfilterellipticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

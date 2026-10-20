@@ -88,11 +88,7 @@ pub fn ml_classify_svm_make_series(vals : Array[Double], name : String) -> Mlcla
 
 pub fn ml_classify_svm_series_len(s : MlclassifysvmSeries) -> Int { s.vals.length() }
 
-pub fn ml_classify_svm_series_sum(s : MlclassifysvmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_classify_svm_series_sum(s : MlclassifysvmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_classify_svm_series_mean(s : MlclassifysvmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_classify_svm_frame_set(s : MlclassifysvmFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_svm_frame_sum(s : MlclassifysvmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_frame_sum(s : MlclassifysvmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_frame_mean(s : MlclassifysvmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_frame_mean(s : MlclassifysvmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_frame_scale(s : MlclassifysvmFrame, f : Double) -> MlclassifysvmFrame {
   let result = ml_classify_svm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_classify_svm_frame_fill(s : MlclassifysvmFrame, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_svm_frame_min(s : MlclassifysvmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_frame_min(s : MlclassifysvmFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_frame_max(s : MlclassifysvmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_frame_max(s : MlclassifysvmFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_frame_to_string(s : MlclassifysvmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_classify_svm_table_set(s : MlclassifysvmTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_svm_table_sum(s : MlclassifysvmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_table_sum(s : MlclassifysvmTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_table_mean(s : MlclassifysvmTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_table_mean(s : MlclassifysvmTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_table_scale(s : MlclassifysvmTable, f : Double) -> MlclassifysvmTable {
   let result = ml_classify_svm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_classify_svm_table_fill(s : MlclassifysvmTable, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_svm_table_min(s : MlclassifysvmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_table_min(s : MlclassifysvmTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_table_max(s : MlclassifysvmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_table_max(s : MlclassifysvmTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_table_to_string(s : MlclassifysvmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_classify_svm_graphn_set(s : MlclassifysvmGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_svm_graphn_sum(s : MlclassifysvmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_graphn_sum(s : MlclassifysvmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_graphn_mean(s : MlclassifysvmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_graphn_mean(s : MlclassifysvmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_graphn_scale(s : MlclassifysvmGraphN, f : Double) -> MlclassifysvmGraphN {
   let result = ml_classify_svm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_classify_svm_graphn_fill(s : MlclassifysvmGraphN, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_svm_graphn_min(s : MlclassifysvmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_graphn_min(s : MlclassifysvmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_graphn_max(s : MlclassifysvmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_graphn_max(s : MlclassifysvmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_graphn_to_string(s : MlclassifysvmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_classify_svm_node_set(s : MlclassifysvmNode, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_svm_node_sum(s : MlclassifysvmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_node_sum(s : MlclassifysvmNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_node_mean(s : MlclassifysvmNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_node_mean(s : MlclassifysvmNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_node_scale(s : MlclassifysvmNode, f : Double) -> MlclassifysvmNode {
   let result = ml_classify_svm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_classify_svm_node_fill(s : MlclassifysvmNode, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_svm_node_min(s : MlclassifysvmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_node_min(s : MlclassifysvmNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_node_max(s : MlclassifysvmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_node_max(s : MlclassifysvmNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_node_to_string(s : MlclassifysvmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_classify_svm_edge_set(s : MlclassifysvmEdge, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_svm_edge_sum(s : MlclassifysvmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_edge_sum(s : MlclassifysvmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_edge_mean(s : MlclassifysvmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_edge_mean(s : MlclassifysvmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_edge_scale(s : MlclassifysvmEdge, f : Double) -> MlclassifysvmEdge {
   let result = ml_classify_svm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_classify_svm_edge_fill(s : MlclassifysvmEdge, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_svm_edge_min(s : MlclassifysvmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_edge_min(s : MlclassifysvmEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_edge_max(s : MlclassifysvmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_edge_max(s : MlclassifysvmEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_edge_to_string(s : MlclassifysvmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_classify_svm_path_set(s : MlclassifysvmPath, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_svm_path_sum(s : MlclassifysvmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_path_sum(s : MlclassifysvmPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_path_mean(s : MlclassifysvmPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_path_mean(s : MlclassifysvmPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_path_scale(s : MlclassifysvmPath, f : Double) -> MlclassifysvmPath {
   let result = ml_classify_svm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_classify_svm_path_fill(s : MlclassifysvmPath, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_svm_path_min(s : MlclassifysvmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_path_min(s : MlclassifysvmPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_path_max(s : MlclassifysvmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_path_max(s : MlclassifysvmPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_path_to_string(s : MlclassifysvmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_classify_svm_cluster_set(s : MlclassifysvmCluster, i : Int, v : Double
   result
 }
 
-pub fn ml_classify_svm_cluster_sum(s : MlclassifysvmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_cluster_sum(s : MlclassifysvmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_cluster_mean(s : MlclassifysvmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_cluster_mean(s : MlclassifysvmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_cluster_scale(s : MlclassifysvmCluster, f : Double) -> MlclassifysvmCluster {
   let result = ml_classify_svm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_classify_svm_cluster_fill(s : MlclassifysvmCluster, v : Double) -> Mlc
   result
 }
 
-pub fn ml_classify_svm_cluster_min(s : MlclassifysvmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_cluster_min(s : MlclassifysvmCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_cluster_max(s : MlclassifysvmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_cluster_max(s : MlclassifysvmCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_cluster_to_string(s : MlclassifysvmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_classify_svm_model_set(s : MlclassifysvmModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_svm_model_sum(s : MlclassifysvmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_model_sum(s : MlclassifysvmModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_model_mean(s : MlclassifysvmModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_model_mean(s : MlclassifysvmModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_model_scale(s : MlclassifysvmModel, f : Double) -> MlclassifysvmModel {
   let result = ml_classify_svm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_classify_svm_model_fill(s : MlclassifysvmModel, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_svm_model_min(s : MlclassifysvmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_model_min(s : MlclassifysvmModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_model_max(s : MlclassifysvmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_model_max(s : MlclassifysvmModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_model_to_string(s : MlclassifysvmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_classify_svm_layer_set(s : MlclassifysvmLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_svm_layer_sum(s : MlclassifysvmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_layer_sum(s : MlclassifysvmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_layer_mean(s : MlclassifysvmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_layer_mean(s : MlclassifysvmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_layer_scale(s : MlclassifysvmLayer, f : Double) -> MlclassifysvmLayer {
   let result = ml_classify_svm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_classify_svm_layer_fill(s : MlclassifysvmLayer, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_svm_layer_min(s : MlclassifysvmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_layer_min(s : MlclassifysvmLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_layer_max(s : MlclassifysvmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_layer_max(s : MlclassifysvmLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_layer_to_string(s : MlclassifysvmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_classify_svm_buffer_set(s : MlclassifysvmBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_svm_buffer_sum(s : MlclassifysvmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_buffer_sum(s : MlclassifysvmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_buffer_mean(s : MlclassifysvmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_buffer_mean(s : MlclassifysvmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_buffer_scale(s : MlclassifysvmBuffer, f : Double) -> MlclassifysvmBuffer {
   let result = ml_classify_svm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_classify_svm_buffer_fill(s : MlclassifysvmBuffer, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_svm_buffer_min(s : MlclassifysvmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_buffer_min(s : MlclassifysvmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_buffer_max(s : MlclassifysvmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_buffer_max(s : MlclassifysvmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_buffer_to_string(s : MlclassifysvmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_classify_svm_cursor_set(s : MlclassifysvmCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_svm_cursor_sum(s : MlclassifysvmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_cursor_sum(s : MlclassifysvmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_cursor_mean(s : MlclassifysvmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_cursor_mean(s : MlclassifysvmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_cursor_scale(s : MlclassifysvmCursor, f : Double) -> MlclassifysvmCursor {
   let result = ml_classify_svm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_classify_svm_cursor_fill(s : MlclassifysvmCursor, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_svm_cursor_min(s : MlclassifysvmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_cursor_min(s : MlclassifysvmCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_cursor_max(s : MlclassifysvmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_cursor_max(s : MlclassifysvmCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_cursor_to_string(s : MlclassifysvmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_classify_svm_view_set(s : MlclassifysvmView, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_svm_view_sum(s : MlclassifysvmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_view_sum(s : MlclassifysvmView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_view_mean(s : MlclassifysvmView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_view_mean(s : MlclassifysvmView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_view_scale(s : MlclassifysvmView, f : Double) -> MlclassifysvmView {
   let result = ml_classify_svm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_classify_svm_view_fill(s : MlclassifysvmView, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_svm_view_min(s : MlclassifysvmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_view_min(s : MlclassifysvmView) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_view_max(s : MlclassifysvmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_view_max(s : MlclassifysvmView) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_view_to_string(s : MlclassifysvmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_classify_svm_range_set(s : MlclassifysvmRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_svm_range_sum(s : MlclassifysvmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_range_sum(s : MlclassifysvmRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_range_mean(s : MlclassifysvmRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_range_mean(s : MlclassifysvmRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_range_scale(s : MlclassifysvmRange, f : Double) -> MlclassifysvmRange {
   let result = ml_classify_svm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_classify_svm_range_fill(s : MlclassifysvmRange, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_svm_range_min(s : MlclassifysvmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_range_min(s : MlclassifysvmRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_range_max(s : MlclassifysvmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_range_max(s : MlclassifysvmRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_range_to_string(s : MlclassifysvmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_classify_svm_slice_set(s : MlclassifysvmSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_svm_slice_sum(s : MlclassifysvmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_svm_slice_sum(s : MlclassifysvmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_svm_slice_mean(s : MlclassifysvmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_svm_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_svm_slice_mean(s : MlclassifysvmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_svm_slice_scale(s : MlclassifysvmSlice, f : Double) -> MlclassifysvmSlice {
   let result = ml_classify_svm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_classify_svm_slice_fill(s : MlclassifysvmSlice, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_svm_slice_min(s : MlclassifysvmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_slice_min(s : MlclassifysvmSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_svm_slice_max(s : MlclassifysvmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_svm_slice_max(s : MlclassifysvmSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_svm_slice_to_string(s : MlclassifysvmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

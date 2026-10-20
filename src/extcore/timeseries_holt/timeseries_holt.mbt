@@ -88,11 +88,7 @@ pub fn timeseries_holt_make_series(vals : Array[Double], name : String) -> Times
 
 pub fn timeseries_holt_series_len(s : TimeseriesholtSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_holt_series_sum(s : TimeseriesholtSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_holt_series_sum(s : TimeseriesholtSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_holt_series_mean(s : TimeseriesholtSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_holt_frame_set(s : TimeseriesholtFrame, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_holt_frame_sum(s : TimeseriesholtFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_frame_sum(s : TimeseriesholtFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_frame_mean(s : TimeseriesholtFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_frame_mean(s : TimeseriesholtFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_frame_scale(s : TimeseriesholtFrame, f : Double) -> TimeseriesholtFrame {
   let result = timeseries_holt_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_holt_frame_fill(s : TimeseriesholtFrame, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_holt_frame_min(s : TimeseriesholtFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_frame_min(s : TimeseriesholtFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_frame_max(s : TimeseriesholtFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_frame_max(s : TimeseriesholtFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_frame_to_string(s : TimeseriesholtFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_holt_table_set(s : TimeseriesholtTable, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_holt_table_sum(s : TimeseriesholtTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_table_sum(s : TimeseriesholtTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_table_mean(s : TimeseriesholtTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_table_mean(s : TimeseriesholtTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_table_scale(s : TimeseriesholtTable, f : Double) -> TimeseriesholtTable {
   let result = timeseries_holt_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_holt_table_fill(s : TimeseriesholtTable, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_holt_table_min(s : TimeseriesholtTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_table_min(s : TimeseriesholtTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_table_max(s : TimeseriesholtTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_table_max(s : TimeseriesholtTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_table_to_string(s : TimeseriesholtTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_holt_graphn_set(s : TimeseriesholtGraphN, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_holt_graphn_sum(s : TimeseriesholtGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_graphn_sum(s : TimeseriesholtGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_graphn_mean(s : TimeseriesholtGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_graphn_mean(s : TimeseriesholtGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_graphn_scale(s : TimeseriesholtGraphN, f : Double) -> TimeseriesholtGraphN {
   let result = timeseries_holt_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_holt_graphn_fill(s : TimeseriesholtGraphN, v : Double) -> Time
   result
 }
 
-pub fn timeseries_holt_graphn_min(s : TimeseriesholtGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_graphn_min(s : TimeseriesholtGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_graphn_max(s : TimeseriesholtGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_graphn_max(s : TimeseriesholtGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_graphn_to_string(s : TimeseriesholtGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_holt_node_set(s : TimeseriesholtNode, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_holt_node_sum(s : TimeseriesholtNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_node_sum(s : TimeseriesholtNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_node_mean(s : TimeseriesholtNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_node_mean(s : TimeseriesholtNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_node_scale(s : TimeseriesholtNode, f : Double) -> TimeseriesholtNode {
   let result = timeseries_holt_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_holt_node_fill(s : TimeseriesholtNode, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_holt_node_min(s : TimeseriesholtNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_node_min(s : TimeseriesholtNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_node_max(s : TimeseriesholtNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_node_max(s : TimeseriesholtNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_node_to_string(s : TimeseriesholtNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_holt_edge_set(s : TimeseriesholtEdge, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_holt_edge_sum(s : TimeseriesholtEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_edge_sum(s : TimeseriesholtEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_edge_mean(s : TimeseriesholtEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_edge_mean(s : TimeseriesholtEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_edge_scale(s : TimeseriesholtEdge, f : Double) -> TimeseriesholtEdge {
   let result = timeseries_holt_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_holt_edge_fill(s : TimeseriesholtEdge, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_holt_edge_min(s : TimeseriesholtEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_edge_min(s : TimeseriesholtEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_edge_max(s : TimeseriesholtEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_edge_max(s : TimeseriesholtEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_edge_to_string(s : TimeseriesholtEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_holt_path_set(s : TimeseriesholtPath, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_holt_path_sum(s : TimeseriesholtPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_path_sum(s : TimeseriesholtPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_path_mean(s : TimeseriesholtPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_path_mean(s : TimeseriesholtPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_path_scale(s : TimeseriesholtPath, f : Double) -> TimeseriesholtPath {
   let result = timeseries_holt_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_holt_path_fill(s : TimeseriesholtPath, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_holt_path_min(s : TimeseriesholtPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_path_min(s : TimeseriesholtPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_path_max(s : TimeseriesholtPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_path_max(s : TimeseriesholtPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_path_to_string(s : TimeseriesholtPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_holt_cluster_set(s : TimeseriesholtCluster, i : Int, v : Doubl
   result
 }
 
-pub fn timeseries_holt_cluster_sum(s : TimeseriesholtCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_cluster_sum(s : TimeseriesholtCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_cluster_mean(s : TimeseriesholtCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_cluster_mean(s : TimeseriesholtCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_cluster_scale(s : TimeseriesholtCluster, f : Double) -> TimeseriesholtCluster {
   let result = timeseries_holt_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_holt_cluster_fill(s : TimeseriesholtCluster, v : Double) -> Ti
   result
 }
 
-pub fn timeseries_holt_cluster_min(s : TimeseriesholtCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_cluster_min(s : TimeseriesholtCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_cluster_max(s : TimeseriesholtCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_cluster_max(s : TimeseriesholtCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_cluster_to_string(s : TimeseriesholtCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_holt_model_set(s : TimeseriesholtModel, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_holt_model_sum(s : TimeseriesholtModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_model_sum(s : TimeseriesholtModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_model_mean(s : TimeseriesholtModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_model_mean(s : TimeseriesholtModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_model_scale(s : TimeseriesholtModel, f : Double) -> TimeseriesholtModel {
   let result = timeseries_holt_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_holt_model_fill(s : TimeseriesholtModel, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_holt_model_min(s : TimeseriesholtModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_model_min(s : TimeseriesholtModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_model_max(s : TimeseriesholtModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_model_max(s : TimeseriesholtModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_model_to_string(s : TimeseriesholtModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_holt_layer_set(s : TimeseriesholtLayer, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_holt_layer_sum(s : TimeseriesholtLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_layer_sum(s : TimeseriesholtLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_layer_mean(s : TimeseriesholtLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_layer_mean(s : TimeseriesholtLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_layer_scale(s : TimeseriesholtLayer, f : Double) -> TimeseriesholtLayer {
   let result = timeseries_holt_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_holt_layer_fill(s : TimeseriesholtLayer, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_holt_layer_min(s : TimeseriesholtLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_layer_min(s : TimeseriesholtLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_layer_max(s : TimeseriesholtLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_layer_max(s : TimeseriesholtLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_layer_to_string(s : TimeseriesholtLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_holt_buffer_set(s : TimeseriesholtBuffer, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_holt_buffer_sum(s : TimeseriesholtBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_buffer_sum(s : TimeseriesholtBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_buffer_mean(s : TimeseriesholtBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_buffer_mean(s : TimeseriesholtBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_buffer_scale(s : TimeseriesholtBuffer, f : Double) -> TimeseriesholtBuffer {
   let result = timeseries_holt_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_holt_buffer_fill(s : TimeseriesholtBuffer, v : Double) -> Time
   result
 }
 
-pub fn timeseries_holt_buffer_min(s : TimeseriesholtBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_buffer_min(s : TimeseriesholtBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_buffer_max(s : TimeseriesholtBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_buffer_max(s : TimeseriesholtBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_buffer_to_string(s : TimeseriesholtBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_holt_cursor_set(s : TimeseriesholtCursor, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_holt_cursor_sum(s : TimeseriesholtCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_cursor_sum(s : TimeseriesholtCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_cursor_mean(s : TimeseriesholtCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_cursor_mean(s : TimeseriesholtCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_cursor_scale(s : TimeseriesholtCursor, f : Double) -> TimeseriesholtCursor {
   let result = timeseries_holt_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_holt_cursor_fill(s : TimeseriesholtCursor, v : Double) -> Time
   result
 }
 
-pub fn timeseries_holt_cursor_min(s : TimeseriesholtCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_cursor_min(s : TimeseriesholtCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_cursor_max(s : TimeseriesholtCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_cursor_max(s : TimeseriesholtCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_cursor_to_string(s : TimeseriesholtCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_holt_view_set(s : TimeseriesholtView, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_holt_view_sum(s : TimeseriesholtView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_view_sum(s : TimeseriesholtView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_view_mean(s : TimeseriesholtView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_view_mean(s : TimeseriesholtView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_view_scale(s : TimeseriesholtView, f : Double) -> TimeseriesholtView {
   let result = timeseries_holt_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_holt_view_fill(s : TimeseriesholtView, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_holt_view_min(s : TimeseriesholtView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_view_min(s : TimeseriesholtView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_view_max(s : TimeseriesholtView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_view_max(s : TimeseriesholtView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_view_to_string(s : TimeseriesholtView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_holt_range_set(s : TimeseriesholtRange, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_holt_range_sum(s : TimeseriesholtRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_range_sum(s : TimeseriesholtRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_range_mean(s : TimeseriesholtRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_range_mean(s : TimeseriesholtRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_range_scale(s : TimeseriesholtRange, f : Double) -> TimeseriesholtRange {
   let result = timeseries_holt_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_holt_range_fill(s : TimeseriesholtRange, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_holt_range_min(s : TimeseriesholtRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_range_min(s : TimeseriesholtRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_range_max(s : TimeseriesholtRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_range_max(s : TimeseriesholtRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_range_to_string(s : TimeseriesholtRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_holt_slice_set(s : TimeseriesholtSlice, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_holt_slice_sum(s : TimeseriesholtSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_holt_slice_sum(s : TimeseriesholtSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_holt_slice_mean(s : TimeseriesholtSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_holt_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_holt_slice_mean(s : TimeseriesholtSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_holt_slice_scale(s : TimeseriesholtSlice, f : Double) -> TimeseriesholtSlice {
   let result = timeseries_holt_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_holt_slice_fill(s : TimeseriesholtSlice, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_holt_slice_min(s : TimeseriesholtSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_slice_min(s : TimeseriesholtSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_holt_slice_max(s : TimeseriesholtSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_holt_slice_max(s : TimeseriesholtSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_holt_slice_to_string(s : TimeseriesholtSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

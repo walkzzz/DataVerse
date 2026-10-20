@@ -88,11 +88,7 @@ pub fn geo_proj_orthographic_make_series(vals : Array[Double], name : String) ->
 
 pub fn geo_proj_orthographic_series_len(s : GeoprojorthographicSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_orthographic_series_sum(s : GeoprojorthographicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_orthographic_series_sum(s : GeoprojorthographicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_orthographic_series_mean(s : GeoprojorthographicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_orthographic_frame_set(s : GeoprojorthographicFrame, i : Int, v 
   result
 }
 
-pub fn geo_proj_orthographic_frame_sum(s : GeoprojorthographicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_frame_sum(s : GeoprojorthographicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_frame_mean(s : GeoprojorthographicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_frame_mean(s : GeoprojorthographicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_frame_scale(s : GeoprojorthographicFrame, f : Double) -> GeoprojorthographicFrame {
   let result = geo_proj_orthographic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_orthographic_frame_fill(s : GeoprojorthographicFrame, v : Double
   result
 }
 
-pub fn geo_proj_orthographic_frame_min(s : GeoprojorthographicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_frame_min(s : GeoprojorthographicFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_frame_max(s : GeoprojorthographicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_frame_max(s : GeoprojorthographicFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_frame_to_string(s : GeoprojorthographicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_orthographic_table_set(s : GeoprojorthographicTable, i : Int, v 
   result
 }
 
-pub fn geo_proj_orthographic_table_sum(s : GeoprojorthographicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_table_sum(s : GeoprojorthographicTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_table_mean(s : GeoprojorthographicTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_table_mean(s : GeoprojorthographicTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_table_scale(s : GeoprojorthographicTable, f : Double) -> GeoprojorthographicTable {
   let result = geo_proj_orthographic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_orthographic_table_fill(s : GeoprojorthographicTable, v : Double
   result
 }
 
-pub fn geo_proj_orthographic_table_min(s : GeoprojorthographicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_table_min(s : GeoprojorthographicTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_table_max(s : GeoprojorthographicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_table_max(s : GeoprojorthographicTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_table_to_string(s : GeoprojorthographicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_orthographic_graphn_set(s : GeoprojorthographicGraphN, i : Int, 
   result
 }
 
-pub fn geo_proj_orthographic_graphn_sum(s : GeoprojorthographicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_graphn_sum(s : GeoprojorthographicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_graphn_mean(s : GeoprojorthographicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_graphn_mean(s : GeoprojorthographicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_graphn_scale(s : GeoprojorthographicGraphN, f : Double) -> GeoprojorthographicGraphN {
   let result = geo_proj_orthographic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_orthographic_graphn_fill(s : GeoprojorthographicGraphN, v : Doub
   result
 }
 
-pub fn geo_proj_orthographic_graphn_min(s : GeoprojorthographicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_graphn_min(s : GeoprojorthographicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_graphn_max(s : GeoprojorthographicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_graphn_max(s : GeoprojorthographicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_graphn_to_string(s : GeoprojorthographicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_orthographic_node_set(s : GeoprojorthographicNode, i : Int, v : 
   result
 }
 
-pub fn geo_proj_orthographic_node_sum(s : GeoprojorthographicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_node_sum(s : GeoprojorthographicNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_node_mean(s : GeoprojorthographicNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_node_mean(s : GeoprojorthographicNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_node_scale(s : GeoprojorthographicNode, f : Double) -> GeoprojorthographicNode {
   let result = geo_proj_orthographic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_orthographic_node_fill(s : GeoprojorthographicNode, v : Double) 
   result
 }
 
-pub fn geo_proj_orthographic_node_min(s : GeoprojorthographicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_node_min(s : GeoprojorthographicNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_node_max(s : GeoprojorthographicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_node_max(s : GeoprojorthographicNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_node_to_string(s : GeoprojorthographicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_orthographic_edge_set(s : GeoprojorthographicEdge, i : Int, v : 
   result
 }
 
-pub fn geo_proj_orthographic_edge_sum(s : GeoprojorthographicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_edge_sum(s : GeoprojorthographicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_edge_mean(s : GeoprojorthographicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_edge_mean(s : GeoprojorthographicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_edge_scale(s : GeoprojorthographicEdge, f : Double) -> GeoprojorthographicEdge {
   let result = geo_proj_orthographic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_orthographic_edge_fill(s : GeoprojorthographicEdge, v : Double) 
   result
 }
 
-pub fn geo_proj_orthographic_edge_min(s : GeoprojorthographicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_edge_min(s : GeoprojorthographicEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_edge_max(s : GeoprojorthographicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_edge_max(s : GeoprojorthographicEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_edge_to_string(s : GeoprojorthographicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_orthographic_path_set(s : GeoprojorthographicPath, i : Int, v : 
   result
 }
 
-pub fn geo_proj_orthographic_path_sum(s : GeoprojorthographicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_path_sum(s : GeoprojorthographicPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_path_mean(s : GeoprojorthographicPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_path_mean(s : GeoprojorthographicPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_path_scale(s : GeoprojorthographicPath, f : Double) -> GeoprojorthographicPath {
   let result = geo_proj_orthographic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_orthographic_path_fill(s : GeoprojorthographicPath, v : Double) 
   result
 }
 
-pub fn geo_proj_orthographic_path_min(s : GeoprojorthographicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_path_min(s : GeoprojorthographicPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_path_max(s : GeoprojorthographicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_path_max(s : GeoprojorthographicPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_path_to_string(s : GeoprojorthographicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_orthographic_cluster_set(s : GeoprojorthographicCluster, i : Int
   result
 }
 
-pub fn geo_proj_orthographic_cluster_sum(s : GeoprojorthographicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_cluster_sum(s : GeoprojorthographicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_cluster_mean(s : GeoprojorthographicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_cluster_mean(s : GeoprojorthographicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_cluster_scale(s : GeoprojorthographicCluster, f : Double) -> GeoprojorthographicCluster {
   let result = geo_proj_orthographic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_orthographic_cluster_fill(s : GeoprojorthographicCluster, v : Do
   result
 }
 
-pub fn geo_proj_orthographic_cluster_min(s : GeoprojorthographicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_cluster_min(s : GeoprojorthographicCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_cluster_max(s : GeoprojorthographicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_cluster_max(s : GeoprojorthographicCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_cluster_to_string(s : GeoprojorthographicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_orthographic_model_set(s : GeoprojorthographicModel, i : Int, v 
   result
 }
 
-pub fn geo_proj_orthographic_model_sum(s : GeoprojorthographicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_model_sum(s : GeoprojorthographicModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_model_mean(s : GeoprojorthographicModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_model_mean(s : GeoprojorthographicModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_model_scale(s : GeoprojorthographicModel, f : Double) -> GeoprojorthographicModel {
   let result = geo_proj_orthographic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_orthographic_model_fill(s : GeoprojorthographicModel, v : Double
   result
 }
 
-pub fn geo_proj_orthographic_model_min(s : GeoprojorthographicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_model_min(s : GeoprojorthographicModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_model_max(s : GeoprojorthographicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_model_max(s : GeoprojorthographicModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_model_to_string(s : GeoprojorthographicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_orthographic_layer_set(s : GeoprojorthographicLayer, i : Int, v 
   result
 }
 
-pub fn geo_proj_orthographic_layer_sum(s : GeoprojorthographicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_layer_sum(s : GeoprojorthographicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_layer_mean(s : GeoprojorthographicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_layer_mean(s : GeoprojorthographicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_layer_scale(s : GeoprojorthographicLayer, f : Double) -> GeoprojorthographicLayer {
   let result = geo_proj_orthographic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_orthographic_layer_fill(s : GeoprojorthographicLayer, v : Double
   result
 }
 
-pub fn geo_proj_orthographic_layer_min(s : GeoprojorthographicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_layer_min(s : GeoprojorthographicLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_layer_max(s : GeoprojorthographicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_layer_max(s : GeoprojorthographicLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_layer_to_string(s : GeoprojorthographicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_orthographic_buffer_set(s : GeoprojorthographicBuffer, i : Int, 
   result
 }
 
-pub fn geo_proj_orthographic_buffer_sum(s : GeoprojorthographicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_buffer_sum(s : GeoprojorthographicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_buffer_mean(s : GeoprojorthographicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_buffer_mean(s : GeoprojorthographicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_buffer_scale(s : GeoprojorthographicBuffer, f : Double) -> GeoprojorthographicBuffer {
   let result = geo_proj_orthographic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_orthographic_buffer_fill(s : GeoprojorthographicBuffer, v : Doub
   result
 }
 
-pub fn geo_proj_orthographic_buffer_min(s : GeoprojorthographicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_buffer_min(s : GeoprojorthographicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_buffer_max(s : GeoprojorthographicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_buffer_max(s : GeoprojorthographicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_buffer_to_string(s : GeoprojorthographicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_orthographic_cursor_set(s : GeoprojorthographicCursor, i : Int, 
   result
 }
 
-pub fn geo_proj_orthographic_cursor_sum(s : GeoprojorthographicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_cursor_sum(s : GeoprojorthographicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_cursor_mean(s : GeoprojorthographicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_cursor_mean(s : GeoprojorthographicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_cursor_scale(s : GeoprojorthographicCursor, f : Double) -> GeoprojorthographicCursor {
   let result = geo_proj_orthographic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_orthographic_cursor_fill(s : GeoprojorthographicCursor, v : Doub
   result
 }
 
-pub fn geo_proj_orthographic_cursor_min(s : GeoprojorthographicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_cursor_min(s : GeoprojorthographicCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_cursor_max(s : GeoprojorthographicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_cursor_max(s : GeoprojorthographicCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_cursor_to_string(s : GeoprojorthographicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_orthographic_view_set(s : GeoprojorthographicView, i : Int, v : 
   result
 }
 
-pub fn geo_proj_orthographic_view_sum(s : GeoprojorthographicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_view_sum(s : GeoprojorthographicView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_view_mean(s : GeoprojorthographicView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_view_mean(s : GeoprojorthographicView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_view_scale(s : GeoprojorthographicView, f : Double) -> GeoprojorthographicView {
   let result = geo_proj_orthographic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_orthographic_view_fill(s : GeoprojorthographicView, v : Double) 
   result
 }
 
-pub fn geo_proj_orthographic_view_min(s : GeoprojorthographicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_view_min(s : GeoprojorthographicView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_view_max(s : GeoprojorthographicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_view_max(s : GeoprojorthographicView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_view_to_string(s : GeoprojorthographicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_orthographic_range_set(s : GeoprojorthographicRange, i : Int, v 
   result
 }
 
-pub fn geo_proj_orthographic_range_sum(s : GeoprojorthographicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_range_sum(s : GeoprojorthographicRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_range_mean(s : GeoprojorthographicRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_range_mean(s : GeoprojorthographicRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_range_scale(s : GeoprojorthographicRange, f : Double) -> GeoprojorthographicRange {
   let result = geo_proj_orthographic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_orthographic_range_fill(s : GeoprojorthographicRange, v : Double
   result
 }
 
-pub fn geo_proj_orthographic_range_min(s : GeoprojorthographicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_range_min(s : GeoprojorthographicRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_range_max(s : GeoprojorthographicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_range_max(s : GeoprojorthographicRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_range_to_string(s : GeoprojorthographicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_orthographic_slice_set(s : GeoprojorthographicSlice, i : Int, v 
   result
 }
 
-pub fn geo_proj_orthographic_slice_sum(s : GeoprojorthographicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_orthographic_slice_sum(s : GeoprojorthographicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_orthographic_slice_mean(s : GeoprojorthographicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_orthographic_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_orthographic_slice_mean(s : GeoprojorthographicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_orthographic_slice_scale(s : GeoprojorthographicSlice, f : Double) -> GeoprojorthographicSlice {
   let result = geo_proj_orthographic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_orthographic_slice_fill(s : GeoprojorthographicSlice, v : Double
   result
 }
 
-pub fn geo_proj_orthographic_slice_min(s : GeoprojorthographicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_slice_min(s : GeoprojorthographicSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_orthographic_slice_max(s : GeoprojorthographicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_orthographic_slice_max(s : GeoprojorthographicSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_orthographic_slice_to_string(s : GeoprojorthographicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_flow_scheduling_make_series(vals : Array[Double], name : String) -> N
 
 pub fn net_flow_scheduling_series_len(s : NetflowschedulingSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_scheduling_series_sum(s : NetflowschedulingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_scheduling_series_sum(s : NetflowschedulingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_scheduling_series_mean(s : NetflowschedulingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_scheduling_frame_set(s : NetflowschedulingFrame, i : Int, v : Do
   result
 }
 
-pub fn net_flow_scheduling_frame_sum(s : NetflowschedulingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_frame_sum(s : NetflowschedulingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_frame_mean(s : NetflowschedulingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_frame_mean(s : NetflowschedulingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_frame_scale(s : NetflowschedulingFrame, f : Double) -> NetflowschedulingFrame {
   let result = net_flow_scheduling_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_scheduling_frame_fill(s : NetflowschedulingFrame, v : Double) ->
   result
 }
 
-pub fn net_flow_scheduling_frame_min(s : NetflowschedulingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_frame_min(s : NetflowschedulingFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_frame_max(s : NetflowschedulingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_frame_max(s : NetflowschedulingFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_frame_to_string(s : NetflowschedulingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_scheduling_table_set(s : NetflowschedulingTable, i : Int, v : Do
   result
 }
 
-pub fn net_flow_scheduling_table_sum(s : NetflowschedulingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_table_sum(s : NetflowschedulingTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_table_mean(s : NetflowschedulingTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_table_mean(s : NetflowschedulingTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_table_scale(s : NetflowschedulingTable, f : Double) -> NetflowschedulingTable {
   let result = net_flow_scheduling_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_scheduling_table_fill(s : NetflowschedulingTable, v : Double) ->
   result
 }
 
-pub fn net_flow_scheduling_table_min(s : NetflowschedulingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_table_min(s : NetflowschedulingTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_table_max(s : NetflowschedulingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_table_max(s : NetflowschedulingTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_table_to_string(s : NetflowschedulingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_scheduling_graphn_set(s : NetflowschedulingGraphN, i : Int, v : 
   result
 }
 
-pub fn net_flow_scheduling_graphn_sum(s : NetflowschedulingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_graphn_sum(s : NetflowschedulingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_graphn_mean(s : NetflowschedulingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_graphn_mean(s : NetflowschedulingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_graphn_scale(s : NetflowschedulingGraphN, f : Double) -> NetflowschedulingGraphN {
   let result = net_flow_scheduling_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_scheduling_graphn_fill(s : NetflowschedulingGraphN, v : Double) 
   result
 }
 
-pub fn net_flow_scheduling_graphn_min(s : NetflowschedulingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_graphn_min(s : NetflowschedulingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_graphn_max(s : NetflowschedulingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_graphn_max(s : NetflowschedulingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_graphn_to_string(s : NetflowschedulingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_scheduling_node_set(s : NetflowschedulingNode, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_scheduling_node_sum(s : NetflowschedulingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_node_sum(s : NetflowschedulingNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_node_mean(s : NetflowschedulingNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_node_mean(s : NetflowschedulingNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_node_scale(s : NetflowschedulingNode, f : Double) -> NetflowschedulingNode {
   let result = net_flow_scheduling_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_scheduling_node_fill(s : NetflowschedulingNode, v : Double) -> N
   result
 }
 
-pub fn net_flow_scheduling_node_min(s : NetflowschedulingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_node_min(s : NetflowschedulingNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_node_max(s : NetflowschedulingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_node_max(s : NetflowschedulingNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_node_to_string(s : NetflowschedulingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_scheduling_edge_set(s : NetflowschedulingEdge, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_scheduling_edge_sum(s : NetflowschedulingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_edge_sum(s : NetflowschedulingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_edge_mean(s : NetflowschedulingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_edge_mean(s : NetflowschedulingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_edge_scale(s : NetflowschedulingEdge, f : Double) -> NetflowschedulingEdge {
   let result = net_flow_scheduling_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_scheduling_edge_fill(s : NetflowschedulingEdge, v : Double) -> N
   result
 }
 
-pub fn net_flow_scheduling_edge_min(s : NetflowschedulingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_edge_min(s : NetflowschedulingEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_edge_max(s : NetflowschedulingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_edge_max(s : NetflowschedulingEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_edge_to_string(s : NetflowschedulingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_scheduling_path_set(s : NetflowschedulingPath, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_scheduling_path_sum(s : NetflowschedulingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_path_sum(s : NetflowschedulingPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_path_mean(s : NetflowschedulingPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_path_mean(s : NetflowschedulingPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_path_scale(s : NetflowschedulingPath, f : Double) -> NetflowschedulingPath {
   let result = net_flow_scheduling_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_scheduling_path_fill(s : NetflowschedulingPath, v : Double) -> N
   result
 }
 
-pub fn net_flow_scheduling_path_min(s : NetflowschedulingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_path_min(s : NetflowschedulingPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_path_max(s : NetflowschedulingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_path_max(s : NetflowschedulingPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_path_to_string(s : NetflowschedulingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_scheduling_cluster_set(s : NetflowschedulingCluster, i : Int, v 
   result
 }
 
-pub fn net_flow_scheduling_cluster_sum(s : NetflowschedulingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_cluster_sum(s : NetflowschedulingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_cluster_mean(s : NetflowschedulingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_cluster_mean(s : NetflowschedulingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_cluster_scale(s : NetflowschedulingCluster, f : Double) -> NetflowschedulingCluster {
   let result = net_flow_scheduling_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_scheduling_cluster_fill(s : NetflowschedulingCluster, v : Double
   result
 }
 
-pub fn net_flow_scheduling_cluster_min(s : NetflowschedulingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_cluster_min(s : NetflowschedulingCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_cluster_max(s : NetflowschedulingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_cluster_max(s : NetflowschedulingCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_cluster_to_string(s : NetflowschedulingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_scheduling_model_set(s : NetflowschedulingModel, i : Int, v : Do
   result
 }
 
-pub fn net_flow_scheduling_model_sum(s : NetflowschedulingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_model_sum(s : NetflowschedulingModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_model_mean(s : NetflowschedulingModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_model_mean(s : NetflowschedulingModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_model_scale(s : NetflowschedulingModel, f : Double) -> NetflowschedulingModel {
   let result = net_flow_scheduling_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_scheduling_model_fill(s : NetflowschedulingModel, v : Double) ->
   result
 }
 
-pub fn net_flow_scheduling_model_min(s : NetflowschedulingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_model_min(s : NetflowschedulingModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_model_max(s : NetflowschedulingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_model_max(s : NetflowschedulingModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_model_to_string(s : NetflowschedulingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_scheduling_layer_set(s : NetflowschedulingLayer, i : Int, v : Do
   result
 }
 
-pub fn net_flow_scheduling_layer_sum(s : NetflowschedulingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_layer_sum(s : NetflowschedulingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_layer_mean(s : NetflowschedulingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_layer_mean(s : NetflowschedulingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_layer_scale(s : NetflowschedulingLayer, f : Double) -> NetflowschedulingLayer {
   let result = net_flow_scheduling_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_scheduling_layer_fill(s : NetflowschedulingLayer, v : Double) ->
   result
 }
 
-pub fn net_flow_scheduling_layer_min(s : NetflowschedulingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_layer_min(s : NetflowschedulingLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_layer_max(s : NetflowschedulingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_layer_max(s : NetflowschedulingLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_layer_to_string(s : NetflowschedulingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_scheduling_buffer_set(s : NetflowschedulingBuffer, i : Int, v : 
   result
 }
 
-pub fn net_flow_scheduling_buffer_sum(s : NetflowschedulingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_buffer_sum(s : NetflowschedulingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_buffer_mean(s : NetflowschedulingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_buffer_mean(s : NetflowschedulingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_buffer_scale(s : NetflowschedulingBuffer, f : Double) -> NetflowschedulingBuffer {
   let result = net_flow_scheduling_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_scheduling_buffer_fill(s : NetflowschedulingBuffer, v : Double) 
   result
 }
 
-pub fn net_flow_scheduling_buffer_min(s : NetflowschedulingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_buffer_min(s : NetflowschedulingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_buffer_max(s : NetflowschedulingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_buffer_max(s : NetflowschedulingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_buffer_to_string(s : NetflowschedulingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_scheduling_cursor_set(s : NetflowschedulingCursor, i : Int, v : 
   result
 }
 
-pub fn net_flow_scheduling_cursor_sum(s : NetflowschedulingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_cursor_sum(s : NetflowschedulingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_cursor_mean(s : NetflowschedulingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_cursor_mean(s : NetflowschedulingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_cursor_scale(s : NetflowschedulingCursor, f : Double) -> NetflowschedulingCursor {
   let result = net_flow_scheduling_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_scheduling_cursor_fill(s : NetflowschedulingCursor, v : Double) 
   result
 }
 
-pub fn net_flow_scheduling_cursor_min(s : NetflowschedulingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_cursor_min(s : NetflowschedulingCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_cursor_max(s : NetflowschedulingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_cursor_max(s : NetflowschedulingCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_cursor_to_string(s : NetflowschedulingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_scheduling_view_set(s : NetflowschedulingView, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_scheduling_view_sum(s : NetflowschedulingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_view_sum(s : NetflowschedulingView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_view_mean(s : NetflowschedulingView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_view_mean(s : NetflowschedulingView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_view_scale(s : NetflowschedulingView, f : Double) -> NetflowschedulingView {
   let result = net_flow_scheduling_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_scheduling_view_fill(s : NetflowschedulingView, v : Double) -> N
   result
 }
 
-pub fn net_flow_scheduling_view_min(s : NetflowschedulingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_view_min(s : NetflowschedulingView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_view_max(s : NetflowschedulingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_view_max(s : NetflowschedulingView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_view_to_string(s : NetflowschedulingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_scheduling_range_set(s : NetflowschedulingRange, i : Int, v : Do
   result
 }
 
-pub fn net_flow_scheduling_range_sum(s : NetflowschedulingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_range_sum(s : NetflowschedulingRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_range_mean(s : NetflowschedulingRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_range_mean(s : NetflowschedulingRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_range_scale(s : NetflowschedulingRange, f : Double) -> NetflowschedulingRange {
   let result = net_flow_scheduling_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_scheduling_range_fill(s : NetflowschedulingRange, v : Double) ->
   result
 }
 
-pub fn net_flow_scheduling_range_min(s : NetflowschedulingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_range_min(s : NetflowschedulingRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_range_max(s : NetflowschedulingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_range_max(s : NetflowschedulingRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_range_to_string(s : NetflowschedulingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_scheduling_slice_set(s : NetflowschedulingSlice, i : Int, v : Do
   result
 }
 
-pub fn net_flow_scheduling_slice_sum(s : NetflowschedulingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_scheduling_slice_sum(s : NetflowschedulingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_scheduling_slice_mean(s : NetflowschedulingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_scheduling_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_scheduling_slice_mean(s : NetflowschedulingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_scheduling_slice_scale(s : NetflowschedulingSlice, f : Double) -> NetflowschedulingSlice {
   let result = net_flow_scheduling_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_scheduling_slice_fill(s : NetflowschedulingSlice, v : Double) ->
   result
 }
 
-pub fn net_flow_scheduling_slice_min(s : NetflowschedulingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_slice_min(s : NetflowschedulingSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_scheduling_slice_max(s : NetflowschedulingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_scheduling_slice_max(s : NetflowschedulingSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_scheduling_slice_to_string(s : NetflowschedulingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_metric_confusion_make_series(vals : Array[Double], name : String) -> M
 
 pub fn ml_metric_confusion_series_len(s : MlmetricconfusionSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_confusion_series_sum(s : MlmetricconfusionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_confusion_series_sum(s : MlmetricconfusionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_confusion_series_mean(s : MlmetricconfusionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_confusion_frame_set(s : MlmetricconfusionFrame, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_confusion_frame_sum(s : MlmetricconfusionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_frame_sum(s : MlmetricconfusionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_frame_mean(s : MlmetricconfusionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_frame_mean(s : MlmetricconfusionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_frame_scale(s : MlmetricconfusionFrame, f : Double) -> MlmetricconfusionFrame {
   let result = ml_metric_confusion_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_confusion_frame_fill(s : MlmetricconfusionFrame, v : Double) ->
   result
 }
 
-pub fn ml_metric_confusion_frame_min(s : MlmetricconfusionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_frame_min(s : MlmetricconfusionFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_frame_max(s : MlmetricconfusionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_frame_max(s : MlmetricconfusionFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_frame_to_string(s : MlmetricconfusionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_confusion_table_set(s : MlmetricconfusionTable, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_confusion_table_sum(s : MlmetricconfusionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_table_sum(s : MlmetricconfusionTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_table_mean(s : MlmetricconfusionTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_table_mean(s : MlmetricconfusionTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_table_scale(s : MlmetricconfusionTable, f : Double) -> MlmetricconfusionTable {
   let result = ml_metric_confusion_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_confusion_table_fill(s : MlmetricconfusionTable, v : Double) ->
   result
 }
 
-pub fn ml_metric_confusion_table_min(s : MlmetricconfusionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_table_min(s : MlmetricconfusionTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_table_max(s : MlmetricconfusionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_table_max(s : MlmetricconfusionTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_table_to_string(s : MlmetricconfusionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_confusion_graphn_set(s : MlmetricconfusionGraphN, i : Int, v : 
   result
 }
 
-pub fn ml_metric_confusion_graphn_sum(s : MlmetricconfusionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_graphn_sum(s : MlmetricconfusionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_graphn_mean(s : MlmetricconfusionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_graphn_mean(s : MlmetricconfusionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_graphn_scale(s : MlmetricconfusionGraphN, f : Double) -> MlmetricconfusionGraphN {
   let result = ml_metric_confusion_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_confusion_graphn_fill(s : MlmetricconfusionGraphN, v : Double) 
   result
 }
 
-pub fn ml_metric_confusion_graphn_min(s : MlmetricconfusionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_graphn_min(s : MlmetricconfusionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_graphn_max(s : MlmetricconfusionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_graphn_max(s : MlmetricconfusionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_graphn_to_string(s : MlmetricconfusionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_confusion_node_set(s : MlmetricconfusionNode, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_confusion_node_sum(s : MlmetricconfusionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_node_sum(s : MlmetricconfusionNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_node_mean(s : MlmetricconfusionNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_node_mean(s : MlmetricconfusionNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_node_scale(s : MlmetricconfusionNode, f : Double) -> MlmetricconfusionNode {
   let result = ml_metric_confusion_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_confusion_node_fill(s : MlmetricconfusionNode, v : Double) -> M
   result
 }
 
-pub fn ml_metric_confusion_node_min(s : MlmetricconfusionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_node_min(s : MlmetricconfusionNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_node_max(s : MlmetricconfusionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_node_max(s : MlmetricconfusionNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_node_to_string(s : MlmetricconfusionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_confusion_edge_set(s : MlmetricconfusionEdge, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_confusion_edge_sum(s : MlmetricconfusionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_edge_sum(s : MlmetricconfusionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_edge_mean(s : MlmetricconfusionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_edge_mean(s : MlmetricconfusionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_edge_scale(s : MlmetricconfusionEdge, f : Double) -> MlmetricconfusionEdge {
   let result = ml_metric_confusion_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_confusion_edge_fill(s : MlmetricconfusionEdge, v : Double) -> M
   result
 }
 
-pub fn ml_metric_confusion_edge_min(s : MlmetricconfusionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_edge_min(s : MlmetricconfusionEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_edge_max(s : MlmetricconfusionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_edge_max(s : MlmetricconfusionEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_edge_to_string(s : MlmetricconfusionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_confusion_path_set(s : MlmetricconfusionPath, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_confusion_path_sum(s : MlmetricconfusionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_path_sum(s : MlmetricconfusionPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_path_mean(s : MlmetricconfusionPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_path_mean(s : MlmetricconfusionPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_path_scale(s : MlmetricconfusionPath, f : Double) -> MlmetricconfusionPath {
   let result = ml_metric_confusion_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_confusion_path_fill(s : MlmetricconfusionPath, v : Double) -> M
   result
 }
 
-pub fn ml_metric_confusion_path_min(s : MlmetricconfusionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_path_min(s : MlmetricconfusionPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_path_max(s : MlmetricconfusionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_path_max(s : MlmetricconfusionPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_path_to_string(s : MlmetricconfusionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_confusion_cluster_set(s : MlmetricconfusionCluster, i : Int, v 
   result
 }
 
-pub fn ml_metric_confusion_cluster_sum(s : MlmetricconfusionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_cluster_sum(s : MlmetricconfusionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_cluster_mean(s : MlmetricconfusionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_cluster_mean(s : MlmetricconfusionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_cluster_scale(s : MlmetricconfusionCluster, f : Double) -> MlmetricconfusionCluster {
   let result = ml_metric_confusion_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_confusion_cluster_fill(s : MlmetricconfusionCluster, v : Double
   result
 }
 
-pub fn ml_metric_confusion_cluster_min(s : MlmetricconfusionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_cluster_min(s : MlmetricconfusionCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_cluster_max(s : MlmetricconfusionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_cluster_max(s : MlmetricconfusionCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_cluster_to_string(s : MlmetricconfusionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_confusion_model_set(s : MlmetricconfusionModel, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_confusion_model_sum(s : MlmetricconfusionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_model_sum(s : MlmetricconfusionModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_model_mean(s : MlmetricconfusionModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_model_mean(s : MlmetricconfusionModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_model_scale(s : MlmetricconfusionModel, f : Double) -> MlmetricconfusionModel {
   let result = ml_metric_confusion_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_confusion_model_fill(s : MlmetricconfusionModel, v : Double) ->
   result
 }
 
-pub fn ml_metric_confusion_model_min(s : MlmetricconfusionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_model_min(s : MlmetricconfusionModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_model_max(s : MlmetricconfusionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_model_max(s : MlmetricconfusionModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_model_to_string(s : MlmetricconfusionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_confusion_layer_set(s : MlmetricconfusionLayer, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_confusion_layer_sum(s : MlmetricconfusionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_layer_sum(s : MlmetricconfusionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_layer_mean(s : MlmetricconfusionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_layer_mean(s : MlmetricconfusionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_layer_scale(s : MlmetricconfusionLayer, f : Double) -> MlmetricconfusionLayer {
   let result = ml_metric_confusion_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_confusion_layer_fill(s : MlmetricconfusionLayer, v : Double) ->
   result
 }
 
-pub fn ml_metric_confusion_layer_min(s : MlmetricconfusionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_layer_min(s : MlmetricconfusionLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_layer_max(s : MlmetricconfusionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_layer_max(s : MlmetricconfusionLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_layer_to_string(s : MlmetricconfusionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_confusion_buffer_set(s : MlmetricconfusionBuffer, i : Int, v : 
   result
 }
 
-pub fn ml_metric_confusion_buffer_sum(s : MlmetricconfusionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_buffer_sum(s : MlmetricconfusionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_buffer_mean(s : MlmetricconfusionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_buffer_mean(s : MlmetricconfusionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_buffer_scale(s : MlmetricconfusionBuffer, f : Double) -> MlmetricconfusionBuffer {
   let result = ml_metric_confusion_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_confusion_buffer_fill(s : MlmetricconfusionBuffer, v : Double) 
   result
 }
 
-pub fn ml_metric_confusion_buffer_min(s : MlmetricconfusionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_buffer_min(s : MlmetricconfusionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_buffer_max(s : MlmetricconfusionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_buffer_max(s : MlmetricconfusionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_buffer_to_string(s : MlmetricconfusionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_confusion_cursor_set(s : MlmetricconfusionCursor, i : Int, v : 
   result
 }
 
-pub fn ml_metric_confusion_cursor_sum(s : MlmetricconfusionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_cursor_sum(s : MlmetricconfusionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_cursor_mean(s : MlmetricconfusionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_cursor_mean(s : MlmetricconfusionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_cursor_scale(s : MlmetricconfusionCursor, f : Double) -> MlmetricconfusionCursor {
   let result = ml_metric_confusion_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_confusion_cursor_fill(s : MlmetricconfusionCursor, v : Double) 
   result
 }
 
-pub fn ml_metric_confusion_cursor_min(s : MlmetricconfusionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_cursor_min(s : MlmetricconfusionCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_cursor_max(s : MlmetricconfusionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_cursor_max(s : MlmetricconfusionCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_cursor_to_string(s : MlmetricconfusionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_confusion_view_set(s : MlmetricconfusionView, i : Int, v : Doub
   result
 }
 
-pub fn ml_metric_confusion_view_sum(s : MlmetricconfusionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_view_sum(s : MlmetricconfusionView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_view_mean(s : MlmetricconfusionView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_view_mean(s : MlmetricconfusionView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_view_scale(s : MlmetricconfusionView, f : Double) -> MlmetricconfusionView {
   let result = ml_metric_confusion_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_confusion_view_fill(s : MlmetricconfusionView, v : Double) -> M
   result
 }
 
-pub fn ml_metric_confusion_view_min(s : MlmetricconfusionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_view_min(s : MlmetricconfusionView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_view_max(s : MlmetricconfusionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_view_max(s : MlmetricconfusionView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_view_to_string(s : MlmetricconfusionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_confusion_range_set(s : MlmetricconfusionRange, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_confusion_range_sum(s : MlmetricconfusionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_range_sum(s : MlmetricconfusionRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_range_mean(s : MlmetricconfusionRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_range_mean(s : MlmetricconfusionRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_range_scale(s : MlmetricconfusionRange, f : Double) -> MlmetricconfusionRange {
   let result = ml_metric_confusion_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_confusion_range_fill(s : MlmetricconfusionRange, v : Double) ->
   result
 }
 
-pub fn ml_metric_confusion_range_min(s : MlmetricconfusionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_range_min(s : MlmetricconfusionRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_range_max(s : MlmetricconfusionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_range_max(s : MlmetricconfusionRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_range_to_string(s : MlmetricconfusionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_confusion_slice_set(s : MlmetricconfusionSlice, i : Int, v : Do
   result
 }
 
-pub fn ml_metric_confusion_slice_sum(s : MlmetricconfusionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_confusion_slice_sum(s : MlmetricconfusionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_confusion_slice_mean(s : MlmetricconfusionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_confusion_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_confusion_slice_mean(s : MlmetricconfusionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_confusion_slice_scale(s : MlmetricconfusionSlice, f : Double) -> MlmetricconfusionSlice {
   let result = ml_metric_confusion_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_confusion_slice_fill(s : MlmetricconfusionSlice, v : Double) ->
   result
 }
 
-pub fn ml_metric_confusion_slice_min(s : MlmetricconfusionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_slice_min(s : MlmetricconfusionSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_confusion_slice_max(s : MlmetricconfusionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_confusion_slice_max(s : MlmetricconfusionSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_confusion_slice_to_string(s : MlmetricconfusionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

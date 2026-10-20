@@ -88,11 +88,7 @@ pub fn finance_time_tgarch_make_series(vals : Array[Double], name : String) -> F
 
 pub fn finance_time_tgarch_series_len(s : FinancetimetgarchSeries) -> Int { s.vals.length() }
 
-pub fn finance_time_tgarch_series_sum(s : FinancetimetgarchSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_time_tgarch_series_sum(s : FinancetimetgarchSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_time_tgarch_series_mean(s : FinancetimetgarchSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_time_tgarch_frame_set(s : FinancetimetgarchFrame, i : Int, v : Do
   result
 }
 
-pub fn finance_time_tgarch_frame_sum(s : FinancetimetgarchFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_frame_sum(s : FinancetimetgarchFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_frame_mean(s : FinancetimetgarchFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_frame_mean(s : FinancetimetgarchFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_frame_scale(s : FinancetimetgarchFrame, f : Double) -> FinancetimetgarchFrame {
   let result = finance_time_tgarch_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_time_tgarch_frame_fill(s : FinancetimetgarchFrame, v : Double) ->
   result
 }
 
-pub fn finance_time_tgarch_frame_min(s : FinancetimetgarchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_frame_min(s : FinancetimetgarchFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_frame_max(s : FinancetimetgarchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_frame_max(s : FinancetimetgarchFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_frame_to_string(s : FinancetimetgarchFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_time_tgarch_table_set(s : FinancetimetgarchTable, i : Int, v : Do
   result
 }
 
-pub fn finance_time_tgarch_table_sum(s : FinancetimetgarchTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_table_sum(s : FinancetimetgarchTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_table_mean(s : FinancetimetgarchTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_table_mean(s : FinancetimetgarchTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_table_scale(s : FinancetimetgarchTable, f : Double) -> FinancetimetgarchTable {
   let result = finance_time_tgarch_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_time_tgarch_table_fill(s : FinancetimetgarchTable, v : Double) ->
   result
 }
 
-pub fn finance_time_tgarch_table_min(s : FinancetimetgarchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_table_min(s : FinancetimetgarchTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_table_max(s : FinancetimetgarchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_table_max(s : FinancetimetgarchTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_table_to_string(s : FinancetimetgarchTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_time_tgarch_graphn_set(s : FinancetimetgarchGraphN, i : Int, v : 
   result
 }
 
-pub fn finance_time_tgarch_graphn_sum(s : FinancetimetgarchGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_graphn_sum(s : FinancetimetgarchGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_graphn_mean(s : FinancetimetgarchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_graphn_mean(s : FinancetimetgarchGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_graphn_scale(s : FinancetimetgarchGraphN, f : Double) -> FinancetimetgarchGraphN {
   let result = finance_time_tgarch_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_time_tgarch_graphn_fill(s : FinancetimetgarchGraphN, v : Double) 
   result
 }
 
-pub fn finance_time_tgarch_graphn_min(s : FinancetimetgarchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_graphn_min(s : FinancetimetgarchGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_graphn_max(s : FinancetimetgarchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_graphn_max(s : FinancetimetgarchGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_graphn_to_string(s : FinancetimetgarchGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_time_tgarch_node_set(s : FinancetimetgarchNode, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_tgarch_node_sum(s : FinancetimetgarchNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_node_sum(s : FinancetimetgarchNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_node_mean(s : FinancetimetgarchNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_node_mean(s : FinancetimetgarchNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_node_scale(s : FinancetimetgarchNode, f : Double) -> FinancetimetgarchNode {
   let result = finance_time_tgarch_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_time_tgarch_node_fill(s : FinancetimetgarchNode, v : Double) -> F
   result
 }
 
-pub fn finance_time_tgarch_node_min(s : FinancetimetgarchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_node_min(s : FinancetimetgarchNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_node_max(s : FinancetimetgarchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_node_max(s : FinancetimetgarchNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_node_to_string(s : FinancetimetgarchNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_time_tgarch_edge_set(s : FinancetimetgarchEdge, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_tgarch_edge_sum(s : FinancetimetgarchEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_edge_sum(s : FinancetimetgarchEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_edge_mean(s : FinancetimetgarchEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_edge_mean(s : FinancetimetgarchEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_edge_scale(s : FinancetimetgarchEdge, f : Double) -> FinancetimetgarchEdge {
   let result = finance_time_tgarch_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_time_tgarch_edge_fill(s : FinancetimetgarchEdge, v : Double) -> F
   result
 }
 
-pub fn finance_time_tgarch_edge_min(s : FinancetimetgarchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_edge_min(s : FinancetimetgarchEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_edge_max(s : FinancetimetgarchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_edge_max(s : FinancetimetgarchEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_edge_to_string(s : FinancetimetgarchEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_time_tgarch_path_set(s : FinancetimetgarchPath, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_tgarch_path_sum(s : FinancetimetgarchPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_path_sum(s : FinancetimetgarchPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_path_mean(s : FinancetimetgarchPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_path_mean(s : FinancetimetgarchPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_path_scale(s : FinancetimetgarchPath, f : Double) -> FinancetimetgarchPath {
   let result = finance_time_tgarch_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_time_tgarch_path_fill(s : FinancetimetgarchPath, v : Double) -> F
   result
 }
 
-pub fn finance_time_tgarch_path_min(s : FinancetimetgarchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_path_min(s : FinancetimetgarchPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_path_max(s : FinancetimetgarchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_path_max(s : FinancetimetgarchPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_path_to_string(s : FinancetimetgarchPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_time_tgarch_cluster_set(s : FinancetimetgarchCluster, i : Int, v 
   result
 }
 
-pub fn finance_time_tgarch_cluster_sum(s : FinancetimetgarchCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_cluster_sum(s : FinancetimetgarchCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_cluster_mean(s : FinancetimetgarchCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_cluster_mean(s : FinancetimetgarchCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_cluster_scale(s : FinancetimetgarchCluster, f : Double) -> FinancetimetgarchCluster {
   let result = finance_time_tgarch_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_time_tgarch_cluster_fill(s : FinancetimetgarchCluster, v : Double
   result
 }
 
-pub fn finance_time_tgarch_cluster_min(s : FinancetimetgarchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_cluster_min(s : FinancetimetgarchCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_cluster_max(s : FinancetimetgarchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_cluster_max(s : FinancetimetgarchCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_cluster_to_string(s : FinancetimetgarchCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_time_tgarch_model_set(s : FinancetimetgarchModel, i : Int, v : Do
   result
 }
 
-pub fn finance_time_tgarch_model_sum(s : FinancetimetgarchModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_model_sum(s : FinancetimetgarchModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_model_mean(s : FinancetimetgarchModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_model_mean(s : FinancetimetgarchModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_model_scale(s : FinancetimetgarchModel, f : Double) -> FinancetimetgarchModel {
   let result = finance_time_tgarch_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_time_tgarch_model_fill(s : FinancetimetgarchModel, v : Double) ->
   result
 }
 
-pub fn finance_time_tgarch_model_min(s : FinancetimetgarchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_model_min(s : FinancetimetgarchModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_model_max(s : FinancetimetgarchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_model_max(s : FinancetimetgarchModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_model_to_string(s : FinancetimetgarchModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_time_tgarch_layer_set(s : FinancetimetgarchLayer, i : Int, v : Do
   result
 }
 
-pub fn finance_time_tgarch_layer_sum(s : FinancetimetgarchLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_layer_sum(s : FinancetimetgarchLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_layer_mean(s : FinancetimetgarchLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_layer_mean(s : FinancetimetgarchLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_layer_scale(s : FinancetimetgarchLayer, f : Double) -> FinancetimetgarchLayer {
   let result = finance_time_tgarch_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_time_tgarch_layer_fill(s : FinancetimetgarchLayer, v : Double) ->
   result
 }
 
-pub fn finance_time_tgarch_layer_min(s : FinancetimetgarchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_layer_min(s : FinancetimetgarchLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_layer_max(s : FinancetimetgarchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_layer_max(s : FinancetimetgarchLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_layer_to_string(s : FinancetimetgarchLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_time_tgarch_buffer_set(s : FinancetimetgarchBuffer, i : Int, v : 
   result
 }
 
-pub fn finance_time_tgarch_buffer_sum(s : FinancetimetgarchBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_buffer_sum(s : FinancetimetgarchBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_buffer_mean(s : FinancetimetgarchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_buffer_mean(s : FinancetimetgarchBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_buffer_scale(s : FinancetimetgarchBuffer, f : Double) -> FinancetimetgarchBuffer {
   let result = finance_time_tgarch_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_time_tgarch_buffer_fill(s : FinancetimetgarchBuffer, v : Double) 
   result
 }
 
-pub fn finance_time_tgarch_buffer_min(s : FinancetimetgarchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_buffer_min(s : FinancetimetgarchBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_buffer_max(s : FinancetimetgarchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_buffer_max(s : FinancetimetgarchBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_buffer_to_string(s : FinancetimetgarchBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_time_tgarch_cursor_set(s : FinancetimetgarchCursor, i : Int, v : 
   result
 }
 
-pub fn finance_time_tgarch_cursor_sum(s : FinancetimetgarchCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_cursor_sum(s : FinancetimetgarchCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_cursor_mean(s : FinancetimetgarchCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_cursor_mean(s : FinancetimetgarchCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_cursor_scale(s : FinancetimetgarchCursor, f : Double) -> FinancetimetgarchCursor {
   let result = finance_time_tgarch_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_time_tgarch_cursor_fill(s : FinancetimetgarchCursor, v : Double) 
   result
 }
 
-pub fn finance_time_tgarch_cursor_min(s : FinancetimetgarchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_cursor_min(s : FinancetimetgarchCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_cursor_max(s : FinancetimetgarchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_cursor_max(s : FinancetimetgarchCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_cursor_to_string(s : FinancetimetgarchCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_time_tgarch_view_set(s : FinancetimetgarchView, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_tgarch_view_sum(s : FinancetimetgarchView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_view_sum(s : FinancetimetgarchView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_view_mean(s : FinancetimetgarchView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_view_mean(s : FinancetimetgarchView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_view_scale(s : FinancetimetgarchView, f : Double) -> FinancetimetgarchView {
   let result = finance_time_tgarch_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_time_tgarch_view_fill(s : FinancetimetgarchView, v : Double) -> F
   result
 }
 
-pub fn finance_time_tgarch_view_min(s : FinancetimetgarchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_view_min(s : FinancetimetgarchView) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_view_max(s : FinancetimetgarchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_view_max(s : FinancetimetgarchView) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_view_to_string(s : FinancetimetgarchView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_time_tgarch_range_set(s : FinancetimetgarchRange, i : Int, v : Do
   result
 }
 
-pub fn finance_time_tgarch_range_sum(s : FinancetimetgarchRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_range_sum(s : FinancetimetgarchRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_range_mean(s : FinancetimetgarchRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_range_mean(s : FinancetimetgarchRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_range_scale(s : FinancetimetgarchRange, f : Double) -> FinancetimetgarchRange {
   let result = finance_time_tgarch_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_time_tgarch_range_fill(s : FinancetimetgarchRange, v : Double) ->
   result
 }
 
-pub fn finance_time_tgarch_range_min(s : FinancetimetgarchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_range_min(s : FinancetimetgarchRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_range_max(s : FinancetimetgarchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_range_max(s : FinancetimetgarchRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_range_to_string(s : FinancetimetgarchRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_time_tgarch_slice_set(s : FinancetimetgarchSlice, i : Int, v : Do
   result
 }
 
-pub fn finance_time_tgarch_slice_sum(s : FinancetimetgarchSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_tgarch_slice_sum(s : FinancetimetgarchSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_tgarch_slice_mean(s : FinancetimetgarchSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_tgarch_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_tgarch_slice_mean(s : FinancetimetgarchSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_tgarch_slice_scale(s : FinancetimetgarchSlice, f : Double) -> FinancetimetgarchSlice {
   let result = finance_time_tgarch_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_time_tgarch_slice_fill(s : FinancetimetgarchSlice, v : Double) ->
   result
 }
 
-pub fn finance_time_tgarch_slice_min(s : FinancetimetgarchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_slice_min(s : FinancetimetgarchSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_tgarch_slice_max(s : FinancetimetgarchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_tgarch_slice_max(s : FinancetimetgarchSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_tgarch_slice_to_string(s : FinancetimetgarchSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

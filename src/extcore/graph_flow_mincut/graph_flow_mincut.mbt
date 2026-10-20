@@ -88,11 +88,7 @@ pub fn graph_flow_mincut_make_series(vals : Array[Double], name : String) -> Gra
 
 pub fn graph_flow_mincut_series_len(s : GraphflowmincutSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_mincut_series_sum(s : GraphflowmincutSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_mincut_series_sum(s : GraphflowmincutSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_mincut_series_mean(s : GraphflowmincutSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_mincut_frame_set(s : GraphflowmincutFrame, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mincut_frame_sum(s : GraphflowmincutFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_frame_sum(s : GraphflowmincutFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_frame_mean(s : GraphflowmincutFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_frame_mean(s : GraphflowmincutFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_frame_scale(s : GraphflowmincutFrame, f : Double) -> GraphflowmincutFrame {
   let result = graph_flow_mincut_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_mincut_frame_fill(s : GraphflowmincutFrame, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mincut_frame_min(s : GraphflowmincutFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_frame_min(s : GraphflowmincutFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_frame_max(s : GraphflowmincutFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_frame_max(s : GraphflowmincutFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_frame_to_string(s : GraphflowmincutFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_mincut_table_set(s : GraphflowmincutTable, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mincut_table_sum(s : GraphflowmincutTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_table_sum(s : GraphflowmincutTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_table_mean(s : GraphflowmincutTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_table_mean(s : GraphflowmincutTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_table_scale(s : GraphflowmincutTable, f : Double) -> GraphflowmincutTable {
   let result = graph_flow_mincut_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_mincut_table_fill(s : GraphflowmincutTable, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mincut_table_min(s : GraphflowmincutTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_table_min(s : GraphflowmincutTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_table_max(s : GraphflowmincutTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_table_max(s : GraphflowmincutTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_table_to_string(s : GraphflowmincutTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_mincut_graphn_set(s : GraphflowmincutGraphN, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_mincut_graphn_sum(s : GraphflowmincutGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_graphn_sum(s : GraphflowmincutGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_graphn_mean(s : GraphflowmincutGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_graphn_mean(s : GraphflowmincutGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_graphn_scale(s : GraphflowmincutGraphN, f : Double) -> GraphflowmincutGraphN {
   let result = graph_flow_mincut_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_mincut_graphn_fill(s : GraphflowmincutGraphN, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mincut_graphn_min(s : GraphflowmincutGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_graphn_min(s : GraphflowmincutGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_graphn_max(s : GraphflowmincutGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_graphn_max(s : GraphflowmincutGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_graphn_to_string(s : GraphflowmincutGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_mincut_node_set(s : GraphflowmincutNode, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mincut_node_sum(s : GraphflowmincutNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_node_sum(s : GraphflowmincutNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_node_mean(s : GraphflowmincutNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_node_mean(s : GraphflowmincutNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_node_scale(s : GraphflowmincutNode, f : Double) -> GraphflowmincutNode {
   let result = graph_flow_mincut_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_mincut_node_fill(s : GraphflowmincutNode, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mincut_node_min(s : GraphflowmincutNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_node_min(s : GraphflowmincutNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_node_max(s : GraphflowmincutNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_node_max(s : GraphflowmincutNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_node_to_string(s : GraphflowmincutNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_mincut_edge_set(s : GraphflowmincutEdge, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mincut_edge_sum(s : GraphflowmincutEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_edge_sum(s : GraphflowmincutEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_edge_mean(s : GraphflowmincutEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_edge_mean(s : GraphflowmincutEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_edge_scale(s : GraphflowmincutEdge, f : Double) -> GraphflowmincutEdge {
   let result = graph_flow_mincut_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_mincut_edge_fill(s : GraphflowmincutEdge, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mincut_edge_min(s : GraphflowmincutEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_edge_min(s : GraphflowmincutEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_edge_max(s : GraphflowmincutEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_edge_max(s : GraphflowmincutEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_edge_to_string(s : GraphflowmincutEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_mincut_path_set(s : GraphflowmincutPath, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mincut_path_sum(s : GraphflowmincutPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_path_sum(s : GraphflowmincutPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_path_mean(s : GraphflowmincutPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_path_mean(s : GraphflowmincutPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_path_scale(s : GraphflowmincutPath, f : Double) -> GraphflowmincutPath {
   let result = graph_flow_mincut_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_mincut_path_fill(s : GraphflowmincutPath, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mincut_path_min(s : GraphflowmincutPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_path_min(s : GraphflowmincutPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_path_max(s : GraphflowmincutPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_path_max(s : GraphflowmincutPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_path_to_string(s : GraphflowmincutPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_mincut_cluster_set(s : GraphflowmincutCluster, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_mincut_cluster_sum(s : GraphflowmincutCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_cluster_sum(s : GraphflowmincutCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_cluster_mean(s : GraphflowmincutCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_cluster_mean(s : GraphflowmincutCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_cluster_scale(s : GraphflowmincutCluster, f : Double) -> GraphflowmincutCluster {
   let result = graph_flow_mincut_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_mincut_cluster_fill(s : GraphflowmincutCluster, v : Double) ->
   result
 }
 
-pub fn graph_flow_mincut_cluster_min(s : GraphflowmincutCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_cluster_min(s : GraphflowmincutCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_cluster_max(s : GraphflowmincutCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_cluster_max(s : GraphflowmincutCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_cluster_to_string(s : GraphflowmincutCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_mincut_model_set(s : GraphflowmincutModel, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mincut_model_sum(s : GraphflowmincutModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_model_sum(s : GraphflowmincutModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_model_mean(s : GraphflowmincutModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_model_mean(s : GraphflowmincutModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_model_scale(s : GraphflowmincutModel, f : Double) -> GraphflowmincutModel {
   let result = graph_flow_mincut_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_mincut_model_fill(s : GraphflowmincutModel, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mincut_model_min(s : GraphflowmincutModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_model_min(s : GraphflowmincutModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_model_max(s : GraphflowmincutModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_model_max(s : GraphflowmincutModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_model_to_string(s : GraphflowmincutModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_mincut_layer_set(s : GraphflowmincutLayer, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mincut_layer_sum(s : GraphflowmincutLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_layer_sum(s : GraphflowmincutLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_layer_mean(s : GraphflowmincutLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_layer_mean(s : GraphflowmincutLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_layer_scale(s : GraphflowmincutLayer, f : Double) -> GraphflowmincutLayer {
   let result = graph_flow_mincut_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_mincut_layer_fill(s : GraphflowmincutLayer, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mincut_layer_min(s : GraphflowmincutLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_layer_min(s : GraphflowmincutLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_layer_max(s : GraphflowmincutLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_layer_max(s : GraphflowmincutLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_layer_to_string(s : GraphflowmincutLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_mincut_buffer_set(s : GraphflowmincutBuffer, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_mincut_buffer_sum(s : GraphflowmincutBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_buffer_sum(s : GraphflowmincutBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_buffer_mean(s : GraphflowmincutBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_buffer_mean(s : GraphflowmincutBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_buffer_scale(s : GraphflowmincutBuffer, f : Double) -> GraphflowmincutBuffer {
   let result = graph_flow_mincut_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_mincut_buffer_fill(s : GraphflowmincutBuffer, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mincut_buffer_min(s : GraphflowmincutBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_buffer_min(s : GraphflowmincutBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_buffer_max(s : GraphflowmincutBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_buffer_max(s : GraphflowmincutBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_buffer_to_string(s : GraphflowmincutBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_mincut_cursor_set(s : GraphflowmincutCursor, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_mincut_cursor_sum(s : GraphflowmincutCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_cursor_sum(s : GraphflowmincutCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_cursor_mean(s : GraphflowmincutCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_cursor_mean(s : GraphflowmincutCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_cursor_scale(s : GraphflowmincutCursor, f : Double) -> GraphflowmincutCursor {
   let result = graph_flow_mincut_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_mincut_cursor_fill(s : GraphflowmincutCursor, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mincut_cursor_min(s : GraphflowmincutCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_cursor_min(s : GraphflowmincutCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_cursor_max(s : GraphflowmincutCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_cursor_max(s : GraphflowmincutCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_cursor_to_string(s : GraphflowmincutCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_mincut_view_set(s : GraphflowmincutView, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mincut_view_sum(s : GraphflowmincutView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_view_sum(s : GraphflowmincutView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_view_mean(s : GraphflowmincutView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_view_mean(s : GraphflowmincutView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_view_scale(s : GraphflowmincutView, f : Double) -> GraphflowmincutView {
   let result = graph_flow_mincut_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_mincut_view_fill(s : GraphflowmincutView, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mincut_view_min(s : GraphflowmincutView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_view_min(s : GraphflowmincutView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_view_max(s : GraphflowmincutView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_view_max(s : GraphflowmincutView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_view_to_string(s : GraphflowmincutView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_mincut_range_set(s : GraphflowmincutRange, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mincut_range_sum(s : GraphflowmincutRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_range_sum(s : GraphflowmincutRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_range_mean(s : GraphflowmincutRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_range_mean(s : GraphflowmincutRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_range_scale(s : GraphflowmincutRange, f : Double) -> GraphflowmincutRange {
   let result = graph_flow_mincut_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_mincut_range_fill(s : GraphflowmincutRange, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mincut_range_min(s : GraphflowmincutRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_range_min(s : GraphflowmincutRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_range_max(s : GraphflowmincutRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_range_max(s : GraphflowmincutRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_range_to_string(s : GraphflowmincutRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_mincut_slice_set(s : GraphflowmincutSlice, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mincut_slice_sum(s : GraphflowmincutSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mincut_slice_sum(s : GraphflowmincutSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mincut_slice_mean(s : GraphflowmincutSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mincut_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mincut_slice_mean(s : GraphflowmincutSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mincut_slice_scale(s : GraphflowmincutSlice, f : Double) -> GraphflowmincutSlice {
   let result = graph_flow_mincut_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_mincut_slice_fill(s : GraphflowmincutSlice, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mincut_slice_min(s : GraphflowmincutSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_slice_min(s : GraphflowmincutSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mincut_slice_max(s : GraphflowmincutSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mincut_slice_max(s : GraphflowmincutSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mincut_slice_to_string(s : GraphflowmincutSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

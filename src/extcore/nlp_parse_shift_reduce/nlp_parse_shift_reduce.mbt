@@ -88,11 +88,7 @@ pub fn nlp_parse_shift_reduce_make_series(vals : Array[Double], name : String) -
 
 pub fn nlp_parse_shift_reduce_series_len(s : NlpparseshiftreduceSeries) -> Int { s.vals.length() }
 
-pub fn nlp_parse_shift_reduce_series_sum(s : NlpparseshiftreduceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_series_sum(s : NlpparseshiftreduceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_parse_shift_reduce_series_mean(s : NlpparseshiftreduceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_parse_shift_reduce_frame_set(s : NlpparseshiftreduceFrame, i : Int, v
   result
 }
 
-pub fn nlp_parse_shift_reduce_frame_sum(s : NlpparseshiftreduceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_frame_sum(s : NlpparseshiftreduceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_frame_mean(s : NlpparseshiftreduceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_frame_mean(s : NlpparseshiftreduceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_frame_scale(s : NlpparseshiftreduceFrame, f : Double) -> NlpparseshiftreduceFrame {
   let result = nlp_parse_shift_reduce_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_parse_shift_reduce_frame_fill(s : NlpparseshiftreduceFrame, v : Doubl
   result
 }
 
-pub fn nlp_parse_shift_reduce_frame_min(s : NlpparseshiftreduceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_frame_min(s : NlpparseshiftreduceFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_frame_max(s : NlpparseshiftreduceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_frame_max(s : NlpparseshiftreduceFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_frame_to_string(s : NlpparseshiftreduceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_parse_shift_reduce_table_set(s : NlpparseshiftreduceTable, i : Int, v
   result
 }
 
-pub fn nlp_parse_shift_reduce_table_sum(s : NlpparseshiftreduceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_table_sum(s : NlpparseshiftreduceTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_table_mean(s : NlpparseshiftreduceTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_table_mean(s : NlpparseshiftreduceTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_table_scale(s : NlpparseshiftreduceTable, f : Double) -> NlpparseshiftreduceTable {
   let result = nlp_parse_shift_reduce_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_parse_shift_reduce_table_fill(s : NlpparseshiftreduceTable, v : Doubl
   result
 }
 
-pub fn nlp_parse_shift_reduce_table_min(s : NlpparseshiftreduceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_table_min(s : NlpparseshiftreduceTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_table_max(s : NlpparseshiftreduceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_table_max(s : NlpparseshiftreduceTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_table_to_string(s : NlpparseshiftreduceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_parse_shift_reduce_graphn_set(s : NlpparseshiftreduceGraphN, i : Int,
   result
 }
 
-pub fn nlp_parse_shift_reduce_graphn_sum(s : NlpparseshiftreduceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_graphn_sum(s : NlpparseshiftreduceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_graphn_mean(s : NlpparseshiftreduceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_graphn_mean(s : NlpparseshiftreduceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_graphn_scale(s : NlpparseshiftreduceGraphN, f : Double) -> NlpparseshiftreduceGraphN {
   let result = nlp_parse_shift_reduce_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_parse_shift_reduce_graphn_fill(s : NlpparseshiftreduceGraphN, v : Dou
   result
 }
 
-pub fn nlp_parse_shift_reduce_graphn_min(s : NlpparseshiftreduceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_graphn_min(s : NlpparseshiftreduceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_graphn_max(s : NlpparseshiftreduceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_graphn_max(s : NlpparseshiftreduceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_graphn_to_string(s : NlpparseshiftreduceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_parse_shift_reduce_node_set(s : NlpparseshiftreduceNode, i : Int, v :
   result
 }
 
-pub fn nlp_parse_shift_reduce_node_sum(s : NlpparseshiftreduceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_node_sum(s : NlpparseshiftreduceNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_node_mean(s : NlpparseshiftreduceNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_node_mean(s : NlpparseshiftreduceNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_node_scale(s : NlpparseshiftreduceNode, f : Double) -> NlpparseshiftreduceNode {
   let result = nlp_parse_shift_reduce_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_parse_shift_reduce_node_fill(s : NlpparseshiftreduceNode, v : Double)
   result
 }
 
-pub fn nlp_parse_shift_reduce_node_min(s : NlpparseshiftreduceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_node_min(s : NlpparseshiftreduceNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_node_max(s : NlpparseshiftreduceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_node_max(s : NlpparseshiftreduceNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_node_to_string(s : NlpparseshiftreduceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_parse_shift_reduce_edge_set(s : NlpparseshiftreduceEdge, i : Int, v :
   result
 }
 
-pub fn nlp_parse_shift_reduce_edge_sum(s : NlpparseshiftreduceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_edge_sum(s : NlpparseshiftreduceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_edge_mean(s : NlpparseshiftreduceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_edge_mean(s : NlpparseshiftreduceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_edge_scale(s : NlpparseshiftreduceEdge, f : Double) -> NlpparseshiftreduceEdge {
   let result = nlp_parse_shift_reduce_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_parse_shift_reduce_edge_fill(s : NlpparseshiftreduceEdge, v : Double)
   result
 }
 
-pub fn nlp_parse_shift_reduce_edge_min(s : NlpparseshiftreduceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_edge_min(s : NlpparseshiftreduceEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_edge_max(s : NlpparseshiftreduceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_edge_max(s : NlpparseshiftreduceEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_edge_to_string(s : NlpparseshiftreduceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_parse_shift_reduce_path_set(s : NlpparseshiftreducePath, i : Int, v :
   result
 }
 
-pub fn nlp_parse_shift_reduce_path_sum(s : NlpparseshiftreducePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_path_sum(s : NlpparseshiftreducePath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_path_mean(s : NlpparseshiftreducePath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_path_mean(s : NlpparseshiftreducePath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_path_scale(s : NlpparseshiftreducePath, f : Double) -> NlpparseshiftreducePath {
   let result = nlp_parse_shift_reduce_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_parse_shift_reduce_path_fill(s : NlpparseshiftreducePath, v : Double)
   result
 }
 
-pub fn nlp_parse_shift_reduce_path_min(s : NlpparseshiftreducePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_path_min(s : NlpparseshiftreducePath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_path_max(s : NlpparseshiftreducePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_path_max(s : NlpparseshiftreducePath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_path_to_string(s : NlpparseshiftreducePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_parse_shift_reduce_cluster_set(s : NlpparseshiftreduceCluster, i : In
   result
 }
 
-pub fn nlp_parse_shift_reduce_cluster_sum(s : NlpparseshiftreduceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_cluster_sum(s : NlpparseshiftreduceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_cluster_mean(s : NlpparseshiftreduceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_cluster_mean(s : NlpparseshiftreduceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_cluster_scale(s : NlpparseshiftreduceCluster, f : Double) -> NlpparseshiftreduceCluster {
   let result = nlp_parse_shift_reduce_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_parse_shift_reduce_cluster_fill(s : NlpparseshiftreduceCluster, v : D
   result
 }
 
-pub fn nlp_parse_shift_reduce_cluster_min(s : NlpparseshiftreduceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_cluster_min(s : NlpparseshiftreduceCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_cluster_max(s : NlpparseshiftreduceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_cluster_max(s : NlpparseshiftreduceCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_cluster_to_string(s : NlpparseshiftreduceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_parse_shift_reduce_model_set(s : NlpparseshiftreduceModel, i : Int, v
   result
 }
 
-pub fn nlp_parse_shift_reduce_model_sum(s : NlpparseshiftreduceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_model_sum(s : NlpparseshiftreduceModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_model_mean(s : NlpparseshiftreduceModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_model_mean(s : NlpparseshiftreduceModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_model_scale(s : NlpparseshiftreduceModel, f : Double) -> NlpparseshiftreduceModel {
   let result = nlp_parse_shift_reduce_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_parse_shift_reduce_model_fill(s : NlpparseshiftreduceModel, v : Doubl
   result
 }
 
-pub fn nlp_parse_shift_reduce_model_min(s : NlpparseshiftreduceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_model_min(s : NlpparseshiftreduceModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_model_max(s : NlpparseshiftreduceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_model_max(s : NlpparseshiftreduceModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_model_to_string(s : NlpparseshiftreduceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_parse_shift_reduce_layer_set(s : NlpparseshiftreduceLayer, i : Int, v
   result
 }
 
-pub fn nlp_parse_shift_reduce_layer_sum(s : NlpparseshiftreduceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_layer_sum(s : NlpparseshiftreduceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_layer_mean(s : NlpparseshiftreduceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_layer_mean(s : NlpparseshiftreduceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_layer_scale(s : NlpparseshiftreduceLayer, f : Double) -> NlpparseshiftreduceLayer {
   let result = nlp_parse_shift_reduce_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_parse_shift_reduce_layer_fill(s : NlpparseshiftreduceLayer, v : Doubl
   result
 }
 
-pub fn nlp_parse_shift_reduce_layer_min(s : NlpparseshiftreduceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_layer_min(s : NlpparseshiftreduceLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_layer_max(s : NlpparseshiftreduceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_layer_max(s : NlpparseshiftreduceLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_layer_to_string(s : NlpparseshiftreduceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_parse_shift_reduce_buffer_set(s : NlpparseshiftreduceBuffer, i : Int,
   result
 }
 
-pub fn nlp_parse_shift_reduce_buffer_sum(s : NlpparseshiftreduceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_buffer_sum(s : NlpparseshiftreduceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_buffer_mean(s : NlpparseshiftreduceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_buffer_mean(s : NlpparseshiftreduceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_buffer_scale(s : NlpparseshiftreduceBuffer, f : Double) -> NlpparseshiftreduceBuffer {
   let result = nlp_parse_shift_reduce_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_parse_shift_reduce_buffer_fill(s : NlpparseshiftreduceBuffer, v : Dou
   result
 }
 
-pub fn nlp_parse_shift_reduce_buffer_min(s : NlpparseshiftreduceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_buffer_min(s : NlpparseshiftreduceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_buffer_max(s : NlpparseshiftreduceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_buffer_max(s : NlpparseshiftreduceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_buffer_to_string(s : NlpparseshiftreduceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_parse_shift_reduce_cursor_set(s : NlpparseshiftreduceCursor, i : Int,
   result
 }
 
-pub fn nlp_parse_shift_reduce_cursor_sum(s : NlpparseshiftreduceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_cursor_sum(s : NlpparseshiftreduceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_cursor_mean(s : NlpparseshiftreduceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_cursor_mean(s : NlpparseshiftreduceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_cursor_scale(s : NlpparseshiftreduceCursor, f : Double) -> NlpparseshiftreduceCursor {
   let result = nlp_parse_shift_reduce_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_parse_shift_reduce_cursor_fill(s : NlpparseshiftreduceCursor, v : Dou
   result
 }
 
-pub fn nlp_parse_shift_reduce_cursor_min(s : NlpparseshiftreduceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_cursor_min(s : NlpparseshiftreduceCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_cursor_max(s : NlpparseshiftreduceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_cursor_max(s : NlpparseshiftreduceCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_cursor_to_string(s : NlpparseshiftreduceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_parse_shift_reduce_view_set(s : NlpparseshiftreduceView, i : Int, v :
   result
 }
 
-pub fn nlp_parse_shift_reduce_view_sum(s : NlpparseshiftreduceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_view_sum(s : NlpparseshiftreduceView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_view_mean(s : NlpparseshiftreduceView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_view_mean(s : NlpparseshiftreduceView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_view_scale(s : NlpparseshiftreduceView, f : Double) -> NlpparseshiftreduceView {
   let result = nlp_parse_shift_reduce_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_parse_shift_reduce_view_fill(s : NlpparseshiftreduceView, v : Double)
   result
 }
 
-pub fn nlp_parse_shift_reduce_view_min(s : NlpparseshiftreduceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_view_min(s : NlpparseshiftreduceView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_view_max(s : NlpparseshiftreduceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_view_max(s : NlpparseshiftreduceView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_view_to_string(s : NlpparseshiftreduceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_parse_shift_reduce_range_set(s : NlpparseshiftreduceRange, i : Int, v
   result
 }
 
-pub fn nlp_parse_shift_reduce_range_sum(s : NlpparseshiftreduceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_range_sum(s : NlpparseshiftreduceRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_range_mean(s : NlpparseshiftreduceRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_range_mean(s : NlpparseshiftreduceRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_range_scale(s : NlpparseshiftreduceRange, f : Double) -> NlpparseshiftreduceRange {
   let result = nlp_parse_shift_reduce_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_parse_shift_reduce_range_fill(s : NlpparseshiftreduceRange, v : Doubl
   result
 }
 
-pub fn nlp_parse_shift_reduce_range_min(s : NlpparseshiftreduceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_range_min(s : NlpparseshiftreduceRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_range_max(s : NlpparseshiftreduceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_range_max(s : NlpparseshiftreduceRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_range_to_string(s : NlpparseshiftreduceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_parse_shift_reduce_slice_set(s : NlpparseshiftreduceSlice, i : Int, v
   result
 }
 
-pub fn nlp_parse_shift_reduce_slice_sum(s : NlpparseshiftreduceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_shift_reduce_slice_sum(s : NlpparseshiftreduceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_shift_reduce_slice_mean(s : NlpparseshiftreduceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_shift_reduce_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_shift_reduce_slice_mean(s : NlpparseshiftreduceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_shift_reduce_slice_scale(s : NlpparseshiftreduceSlice, f : Double) -> NlpparseshiftreduceSlice {
   let result = nlp_parse_shift_reduce_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_parse_shift_reduce_slice_fill(s : NlpparseshiftreduceSlice, v : Doubl
   result
 }
 
-pub fn nlp_parse_shift_reduce_slice_min(s : NlpparseshiftreduceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_slice_min(s : NlpparseshiftreduceSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_shift_reduce_slice_max(s : NlpparseshiftreduceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_shift_reduce_slice_max(s : NlpparseshiftreduceSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_shift_reduce_slice_to_string(s : NlpparseshiftreduceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

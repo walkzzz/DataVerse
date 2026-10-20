@@ -88,11 +88,7 @@ pub fn ml_ensemble_voting_make_series(vals : Array[Double], name : String) -> Ml
 
 pub fn ml_ensemble_voting_series_len(s : MlensemblevotingSeries) -> Int { s.vals.length() }
 
-pub fn ml_ensemble_voting_series_sum(s : MlensemblevotingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_ensemble_voting_series_sum(s : MlensemblevotingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_ensemble_voting_series_mean(s : MlensemblevotingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_ensemble_voting_frame_set(s : MlensemblevotingFrame, i : Int, v : Doub
   result
 }
 
-pub fn ml_ensemble_voting_frame_sum(s : MlensemblevotingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_frame_sum(s : MlensemblevotingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_frame_mean(s : MlensemblevotingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_frame_mean(s : MlensemblevotingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_frame_scale(s : MlensemblevotingFrame, f : Double) -> MlensemblevotingFrame {
   let result = ml_ensemble_voting_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_ensemble_voting_frame_fill(s : MlensemblevotingFrame, v : Double) -> M
   result
 }
 
-pub fn ml_ensemble_voting_frame_min(s : MlensemblevotingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_frame_min(s : MlensemblevotingFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_frame_max(s : MlensemblevotingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_frame_max(s : MlensemblevotingFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_frame_to_string(s : MlensemblevotingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_ensemble_voting_table_set(s : MlensemblevotingTable, i : Int, v : Doub
   result
 }
 
-pub fn ml_ensemble_voting_table_sum(s : MlensemblevotingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_table_sum(s : MlensemblevotingTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_table_mean(s : MlensemblevotingTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_table_mean(s : MlensemblevotingTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_table_scale(s : MlensemblevotingTable, f : Double) -> MlensemblevotingTable {
   let result = ml_ensemble_voting_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_ensemble_voting_table_fill(s : MlensemblevotingTable, v : Double) -> M
   result
 }
 
-pub fn ml_ensemble_voting_table_min(s : MlensemblevotingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_table_min(s : MlensemblevotingTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_table_max(s : MlensemblevotingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_table_max(s : MlensemblevotingTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_table_to_string(s : MlensemblevotingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_ensemble_voting_graphn_set(s : MlensemblevotingGraphN, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_voting_graphn_sum(s : MlensemblevotingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_graphn_sum(s : MlensemblevotingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_graphn_mean(s : MlensemblevotingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_graphn_mean(s : MlensemblevotingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_graphn_scale(s : MlensemblevotingGraphN, f : Double) -> MlensemblevotingGraphN {
   let result = ml_ensemble_voting_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_ensemble_voting_graphn_fill(s : MlensemblevotingGraphN, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_voting_graphn_min(s : MlensemblevotingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_graphn_min(s : MlensemblevotingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_graphn_max(s : MlensemblevotingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_graphn_max(s : MlensemblevotingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_graphn_to_string(s : MlensemblevotingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_ensemble_voting_node_set(s : MlensemblevotingNode, i : Int, v : Double
   result
 }
 
-pub fn ml_ensemble_voting_node_sum(s : MlensemblevotingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_node_sum(s : MlensemblevotingNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_node_mean(s : MlensemblevotingNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_node_mean(s : MlensemblevotingNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_node_scale(s : MlensemblevotingNode, f : Double) -> MlensemblevotingNode {
   let result = ml_ensemble_voting_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_ensemble_voting_node_fill(s : MlensemblevotingNode, v : Double) -> Mle
   result
 }
 
-pub fn ml_ensemble_voting_node_min(s : MlensemblevotingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_node_min(s : MlensemblevotingNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_node_max(s : MlensemblevotingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_node_max(s : MlensemblevotingNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_node_to_string(s : MlensemblevotingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_ensemble_voting_edge_set(s : MlensemblevotingEdge, i : Int, v : Double
   result
 }
 
-pub fn ml_ensemble_voting_edge_sum(s : MlensemblevotingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_edge_sum(s : MlensemblevotingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_edge_mean(s : MlensemblevotingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_edge_mean(s : MlensemblevotingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_edge_scale(s : MlensemblevotingEdge, f : Double) -> MlensemblevotingEdge {
   let result = ml_ensemble_voting_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_ensemble_voting_edge_fill(s : MlensemblevotingEdge, v : Double) -> Mle
   result
 }
 
-pub fn ml_ensemble_voting_edge_min(s : MlensemblevotingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_edge_min(s : MlensemblevotingEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_edge_max(s : MlensemblevotingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_edge_max(s : MlensemblevotingEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_edge_to_string(s : MlensemblevotingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_ensemble_voting_path_set(s : MlensemblevotingPath, i : Int, v : Double
   result
 }
 
-pub fn ml_ensemble_voting_path_sum(s : MlensemblevotingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_path_sum(s : MlensemblevotingPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_path_mean(s : MlensemblevotingPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_path_mean(s : MlensemblevotingPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_path_scale(s : MlensemblevotingPath, f : Double) -> MlensemblevotingPath {
   let result = ml_ensemble_voting_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_ensemble_voting_path_fill(s : MlensemblevotingPath, v : Double) -> Mle
   result
 }
 
-pub fn ml_ensemble_voting_path_min(s : MlensemblevotingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_path_min(s : MlensemblevotingPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_path_max(s : MlensemblevotingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_path_max(s : MlensemblevotingPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_path_to_string(s : MlensemblevotingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_ensemble_voting_cluster_set(s : MlensemblevotingCluster, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_voting_cluster_sum(s : MlensemblevotingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_cluster_sum(s : MlensemblevotingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_cluster_mean(s : MlensemblevotingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_cluster_mean(s : MlensemblevotingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_cluster_scale(s : MlensemblevotingCluster, f : Double) -> MlensemblevotingCluster {
   let result = ml_ensemble_voting_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_ensemble_voting_cluster_fill(s : MlensemblevotingCluster, v : Double) 
   result
 }
 
-pub fn ml_ensemble_voting_cluster_min(s : MlensemblevotingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_cluster_min(s : MlensemblevotingCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_cluster_max(s : MlensemblevotingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_cluster_max(s : MlensemblevotingCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_cluster_to_string(s : MlensemblevotingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_ensemble_voting_model_set(s : MlensemblevotingModel, i : Int, v : Doub
   result
 }
 
-pub fn ml_ensemble_voting_model_sum(s : MlensemblevotingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_model_sum(s : MlensemblevotingModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_model_mean(s : MlensemblevotingModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_model_mean(s : MlensemblevotingModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_model_scale(s : MlensemblevotingModel, f : Double) -> MlensemblevotingModel {
   let result = ml_ensemble_voting_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_ensemble_voting_model_fill(s : MlensemblevotingModel, v : Double) -> M
   result
 }
 
-pub fn ml_ensemble_voting_model_min(s : MlensemblevotingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_model_min(s : MlensemblevotingModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_model_max(s : MlensemblevotingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_model_max(s : MlensemblevotingModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_model_to_string(s : MlensemblevotingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_ensemble_voting_layer_set(s : MlensemblevotingLayer, i : Int, v : Doub
   result
 }
 
-pub fn ml_ensemble_voting_layer_sum(s : MlensemblevotingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_layer_sum(s : MlensemblevotingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_layer_mean(s : MlensemblevotingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_layer_mean(s : MlensemblevotingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_layer_scale(s : MlensemblevotingLayer, f : Double) -> MlensemblevotingLayer {
   let result = ml_ensemble_voting_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_ensemble_voting_layer_fill(s : MlensemblevotingLayer, v : Double) -> M
   result
 }
 
-pub fn ml_ensemble_voting_layer_min(s : MlensemblevotingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_layer_min(s : MlensemblevotingLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_layer_max(s : MlensemblevotingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_layer_max(s : MlensemblevotingLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_layer_to_string(s : MlensemblevotingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_ensemble_voting_buffer_set(s : MlensemblevotingBuffer, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_voting_buffer_sum(s : MlensemblevotingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_buffer_sum(s : MlensemblevotingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_buffer_mean(s : MlensemblevotingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_buffer_mean(s : MlensemblevotingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_buffer_scale(s : MlensemblevotingBuffer, f : Double) -> MlensemblevotingBuffer {
   let result = ml_ensemble_voting_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_ensemble_voting_buffer_fill(s : MlensemblevotingBuffer, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_voting_buffer_min(s : MlensemblevotingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_buffer_min(s : MlensemblevotingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_buffer_max(s : MlensemblevotingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_buffer_max(s : MlensemblevotingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_buffer_to_string(s : MlensemblevotingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_ensemble_voting_cursor_set(s : MlensemblevotingCursor, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_voting_cursor_sum(s : MlensemblevotingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_cursor_sum(s : MlensemblevotingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_cursor_mean(s : MlensemblevotingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_cursor_mean(s : MlensemblevotingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_cursor_scale(s : MlensemblevotingCursor, f : Double) -> MlensemblevotingCursor {
   let result = ml_ensemble_voting_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_ensemble_voting_cursor_fill(s : MlensemblevotingCursor, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_voting_cursor_min(s : MlensemblevotingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_cursor_min(s : MlensemblevotingCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_cursor_max(s : MlensemblevotingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_cursor_max(s : MlensemblevotingCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_cursor_to_string(s : MlensemblevotingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_ensemble_voting_view_set(s : MlensemblevotingView, i : Int, v : Double
   result
 }
 
-pub fn ml_ensemble_voting_view_sum(s : MlensemblevotingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_view_sum(s : MlensemblevotingView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_view_mean(s : MlensemblevotingView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_view_mean(s : MlensemblevotingView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_view_scale(s : MlensemblevotingView, f : Double) -> MlensemblevotingView {
   let result = ml_ensemble_voting_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_ensemble_voting_view_fill(s : MlensemblevotingView, v : Double) -> Mle
   result
 }
 
-pub fn ml_ensemble_voting_view_min(s : MlensemblevotingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_view_min(s : MlensemblevotingView) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_view_max(s : MlensemblevotingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_view_max(s : MlensemblevotingView) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_view_to_string(s : MlensemblevotingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_ensemble_voting_range_set(s : MlensemblevotingRange, i : Int, v : Doub
   result
 }
 
-pub fn ml_ensemble_voting_range_sum(s : MlensemblevotingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_range_sum(s : MlensemblevotingRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_range_mean(s : MlensemblevotingRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_range_mean(s : MlensemblevotingRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_range_scale(s : MlensemblevotingRange, f : Double) -> MlensemblevotingRange {
   let result = ml_ensemble_voting_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_ensemble_voting_range_fill(s : MlensemblevotingRange, v : Double) -> M
   result
 }
 
-pub fn ml_ensemble_voting_range_min(s : MlensemblevotingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_range_min(s : MlensemblevotingRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_range_max(s : MlensemblevotingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_range_max(s : MlensemblevotingRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_range_to_string(s : MlensemblevotingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_ensemble_voting_slice_set(s : MlensemblevotingSlice, i : Int, v : Doub
   result
 }
 
-pub fn ml_ensemble_voting_slice_sum(s : MlensemblevotingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_voting_slice_sum(s : MlensemblevotingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_voting_slice_mean(s : MlensemblevotingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_voting_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_voting_slice_mean(s : MlensemblevotingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_voting_slice_scale(s : MlensemblevotingSlice, f : Double) -> MlensemblevotingSlice {
   let result = ml_ensemble_voting_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_ensemble_voting_slice_fill(s : MlensemblevotingSlice, v : Double) -> M
   result
 }
 
-pub fn ml_ensemble_voting_slice_min(s : MlensemblevotingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_slice_min(s : MlensemblevotingSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_voting_slice_max(s : MlensemblevotingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_voting_slice_max(s : MlensemblevotingSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_voting_slice_to_string(s : MlensemblevotingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

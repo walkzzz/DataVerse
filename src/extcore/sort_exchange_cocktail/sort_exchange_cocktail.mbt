@@ -88,11 +88,7 @@ pub fn sort_exchange_cocktail_make_series(vals : Array[Double], name : String) -
 
 pub fn sort_exchange_cocktail_series_len(s : SortexchangecocktailSeries) -> Int { s.vals.length() }
 
-pub fn sort_exchange_cocktail_series_sum(s : SortexchangecocktailSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_exchange_cocktail_series_sum(s : SortexchangecocktailSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_exchange_cocktail_series_mean(s : SortexchangecocktailSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_exchange_cocktail_frame_set(s : SortexchangecocktailFrame, i : Int, 
   result
 }
 
-pub fn sort_exchange_cocktail_frame_sum(s : SortexchangecocktailFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_frame_sum(s : SortexchangecocktailFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_frame_mean(s : SortexchangecocktailFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_frame_mean(s : SortexchangecocktailFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_frame_scale(s : SortexchangecocktailFrame, f : Double) -> SortexchangecocktailFrame {
   let result = sort_exchange_cocktail_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_exchange_cocktail_frame_fill(s : SortexchangecocktailFrame, v : Doub
   result
 }
 
-pub fn sort_exchange_cocktail_frame_min(s : SortexchangecocktailFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_frame_min(s : SortexchangecocktailFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_frame_max(s : SortexchangecocktailFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_frame_max(s : SortexchangecocktailFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_frame_to_string(s : SortexchangecocktailFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_exchange_cocktail_table_set(s : SortexchangecocktailTable, i : Int, 
   result
 }
 
-pub fn sort_exchange_cocktail_table_sum(s : SortexchangecocktailTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_table_sum(s : SortexchangecocktailTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_table_mean(s : SortexchangecocktailTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_table_mean(s : SortexchangecocktailTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_table_scale(s : SortexchangecocktailTable, f : Double) -> SortexchangecocktailTable {
   let result = sort_exchange_cocktail_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_exchange_cocktail_table_fill(s : SortexchangecocktailTable, v : Doub
   result
 }
 
-pub fn sort_exchange_cocktail_table_min(s : SortexchangecocktailTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_table_min(s : SortexchangecocktailTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_table_max(s : SortexchangecocktailTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_table_max(s : SortexchangecocktailTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_table_to_string(s : SortexchangecocktailTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_exchange_cocktail_graphn_set(s : SortexchangecocktailGraphN, i : Int
   result
 }
 
-pub fn sort_exchange_cocktail_graphn_sum(s : SortexchangecocktailGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_graphn_sum(s : SortexchangecocktailGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_graphn_mean(s : SortexchangecocktailGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_graphn_mean(s : SortexchangecocktailGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_graphn_scale(s : SortexchangecocktailGraphN, f : Double) -> SortexchangecocktailGraphN {
   let result = sort_exchange_cocktail_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_exchange_cocktail_graphn_fill(s : SortexchangecocktailGraphN, v : Do
   result
 }
 
-pub fn sort_exchange_cocktail_graphn_min(s : SortexchangecocktailGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_graphn_min(s : SortexchangecocktailGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_graphn_max(s : SortexchangecocktailGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_graphn_max(s : SortexchangecocktailGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_graphn_to_string(s : SortexchangecocktailGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_exchange_cocktail_node_set(s : SortexchangecocktailNode, i : Int, v 
   result
 }
 
-pub fn sort_exchange_cocktail_node_sum(s : SortexchangecocktailNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_node_sum(s : SortexchangecocktailNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_node_mean(s : SortexchangecocktailNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_node_mean(s : SortexchangecocktailNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_node_scale(s : SortexchangecocktailNode, f : Double) -> SortexchangecocktailNode {
   let result = sort_exchange_cocktail_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_exchange_cocktail_node_fill(s : SortexchangecocktailNode, v : Double
   result
 }
 
-pub fn sort_exchange_cocktail_node_min(s : SortexchangecocktailNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_node_min(s : SortexchangecocktailNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_node_max(s : SortexchangecocktailNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_node_max(s : SortexchangecocktailNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_node_to_string(s : SortexchangecocktailNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_exchange_cocktail_edge_set(s : SortexchangecocktailEdge, i : Int, v 
   result
 }
 
-pub fn sort_exchange_cocktail_edge_sum(s : SortexchangecocktailEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_edge_sum(s : SortexchangecocktailEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_edge_mean(s : SortexchangecocktailEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_edge_mean(s : SortexchangecocktailEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_edge_scale(s : SortexchangecocktailEdge, f : Double) -> SortexchangecocktailEdge {
   let result = sort_exchange_cocktail_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_exchange_cocktail_edge_fill(s : SortexchangecocktailEdge, v : Double
   result
 }
 
-pub fn sort_exchange_cocktail_edge_min(s : SortexchangecocktailEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_edge_min(s : SortexchangecocktailEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_edge_max(s : SortexchangecocktailEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_edge_max(s : SortexchangecocktailEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_edge_to_string(s : SortexchangecocktailEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_exchange_cocktail_path_set(s : SortexchangecocktailPath, i : Int, v 
   result
 }
 
-pub fn sort_exchange_cocktail_path_sum(s : SortexchangecocktailPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_path_sum(s : SortexchangecocktailPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_path_mean(s : SortexchangecocktailPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_path_mean(s : SortexchangecocktailPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_path_scale(s : SortexchangecocktailPath, f : Double) -> SortexchangecocktailPath {
   let result = sort_exchange_cocktail_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_exchange_cocktail_path_fill(s : SortexchangecocktailPath, v : Double
   result
 }
 
-pub fn sort_exchange_cocktail_path_min(s : SortexchangecocktailPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_path_min(s : SortexchangecocktailPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_path_max(s : SortexchangecocktailPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_path_max(s : SortexchangecocktailPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_path_to_string(s : SortexchangecocktailPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_exchange_cocktail_cluster_set(s : SortexchangecocktailCluster, i : I
   result
 }
 
-pub fn sort_exchange_cocktail_cluster_sum(s : SortexchangecocktailCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_cluster_sum(s : SortexchangecocktailCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_cluster_mean(s : SortexchangecocktailCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_cluster_mean(s : SortexchangecocktailCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_cluster_scale(s : SortexchangecocktailCluster, f : Double) -> SortexchangecocktailCluster {
   let result = sort_exchange_cocktail_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_exchange_cocktail_cluster_fill(s : SortexchangecocktailCluster, v : 
   result
 }
 
-pub fn sort_exchange_cocktail_cluster_min(s : SortexchangecocktailCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_cluster_min(s : SortexchangecocktailCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_cluster_max(s : SortexchangecocktailCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_cluster_max(s : SortexchangecocktailCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_cluster_to_string(s : SortexchangecocktailCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_exchange_cocktail_model_set(s : SortexchangecocktailModel, i : Int, 
   result
 }
 
-pub fn sort_exchange_cocktail_model_sum(s : SortexchangecocktailModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_model_sum(s : SortexchangecocktailModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_model_mean(s : SortexchangecocktailModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_model_mean(s : SortexchangecocktailModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_model_scale(s : SortexchangecocktailModel, f : Double) -> SortexchangecocktailModel {
   let result = sort_exchange_cocktail_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_exchange_cocktail_model_fill(s : SortexchangecocktailModel, v : Doub
   result
 }
 
-pub fn sort_exchange_cocktail_model_min(s : SortexchangecocktailModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_model_min(s : SortexchangecocktailModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_model_max(s : SortexchangecocktailModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_model_max(s : SortexchangecocktailModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_model_to_string(s : SortexchangecocktailModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_exchange_cocktail_layer_set(s : SortexchangecocktailLayer, i : Int, 
   result
 }
 
-pub fn sort_exchange_cocktail_layer_sum(s : SortexchangecocktailLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_layer_sum(s : SortexchangecocktailLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_layer_mean(s : SortexchangecocktailLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_layer_mean(s : SortexchangecocktailLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_layer_scale(s : SortexchangecocktailLayer, f : Double) -> SortexchangecocktailLayer {
   let result = sort_exchange_cocktail_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_exchange_cocktail_layer_fill(s : SortexchangecocktailLayer, v : Doub
   result
 }
 
-pub fn sort_exchange_cocktail_layer_min(s : SortexchangecocktailLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_layer_min(s : SortexchangecocktailLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_layer_max(s : SortexchangecocktailLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_layer_max(s : SortexchangecocktailLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_layer_to_string(s : SortexchangecocktailLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_exchange_cocktail_buffer_set(s : SortexchangecocktailBuffer, i : Int
   result
 }
 
-pub fn sort_exchange_cocktail_buffer_sum(s : SortexchangecocktailBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_buffer_sum(s : SortexchangecocktailBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_buffer_mean(s : SortexchangecocktailBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_buffer_mean(s : SortexchangecocktailBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_buffer_scale(s : SortexchangecocktailBuffer, f : Double) -> SortexchangecocktailBuffer {
   let result = sort_exchange_cocktail_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_exchange_cocktail_buffer_fill(s : SortexchangecocktailBuffer, v : Do
   result
 }
 
-pub fn sort_exchange_cocktail_buffer_min(s : SortexchangecocktailBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_buffer_min(s : SortexchangecocktailBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_buffer_max(s : SortexchangecocktailBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_buffer_max(s : SortexchangecocktailBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_buffer_to_string(s : SortexchangecocktailBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_exchange_cocktail_cursor_set(s : SortexchangecocktailCursor, i : Int
   result
 }
 
-pub fn sort_exchange_cocktail_cursor_sum(s : SortexchangecocktailCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_cursor_sum(s : SortexchangecocktailCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_cursor_mean(s : SortexchangecocktailCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_cursor_mean(s : SortexchangecocktailCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_cursor_scale(s : SortexchangecocktailCursor, f : Double) -> SortexchangecocktailCursor {
   let result = sort_exchange_cocktail_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_exchange_cocktail_cursor_fill(s : SortexchangecocktailCursor, v : Do
   result
 }
 
-pub fn sort_exchange_cocktail_cursor_min(s : SortexchangecocktailCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_cursor_min(s : SortexchangecocktailCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_cursor_max(s : SortexchangecocktailCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_cursor_max(s : SortexchangecocktailCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_cursor_to_string(s : SortexchangecocktailCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_exchange_cocktail_view_set(s : SortexchangecocktailView, i : Int, v 
   result
 }
 
-pub fn sort_exchange_cocktail_view_sum(s : SortexchangecocktailView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_view_sum(s : SortexchangecocktailView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_view_mean(s : SortexchangecocktailView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_view_mean(s : SortexchangecocktailView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_view_scale(s : SortexchangecocktailView, f : Double) -> SortexchangecocktailView {
   let result = sort_exchange_cocktail_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_exchange_cocktail_view_fill(s : SortexchangecocktailView, v : Double
   result
 }
 
-pub fn sort_exchange_cocktail_view_min(s : SortexchangecocktailView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_view_min(s : SortexchangecocktailView) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_view_max(s : SortexchangecocktailView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_view_max(s : SortexchangecocktailView) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_view_to_string(s : SortexchangecocktailView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_exchange_cocktail_range_set(s : SortexchangecocktailRange, i : Int, 
   result
 }
 
-pub fn sort_exchange_cocktail_range_sum(s : SortexchangecocktailRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_range_sum(s : SortexchangecocktailRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_range_mean(s : SortexchangecocktailRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_range_mean(s : SortexchangecocktailRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_range_scale(s : SortexchangecocktailRange, f : Double) -> SortexchangecocktailRange {
   let result = sort_exchange_cocktail_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_exchange_cocktail_range_fill(s : SortexchangecocktailRange, v : Doub
   result
 }
 
-pub fn sort_exchange_cocktail_range_min(s : SortexchangecocktailRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_range_min(s : SortexchangecocktailRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_range_max(s : SortexchangecocktailRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_range_max(s : SortexchangecocktailRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_range_to_string(s : SortexchangecocktailRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_exchange_cocktail_slice_set(s : SortexchangecocktailSlice, i : Int, 
   result
 }
 
-pub fn sort_exchange_cocktail_slice_sum(s : SortexchangecocktailSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_cocktail_slice_sum(s : SortexchangecocktailSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_cocktail_slice_mean(s : SortexchangecocktailSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_cocktail_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_cocktail_slice_mean(s : SortexchangecocktailSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_cocktail_slice_scale(s : SortexchangecocktailSlice, f : Double) -> SortexchangecocktailSlice {
   let result = sort_exchange_cocktail_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_exchange_cocktail_slice_fill(s : SortexchangecocktailSlice, v : Doub
   result
 }
 
-pub fn sort_exchange_cocktail_slice_min(s : SortexchangecocktailSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_slice_min(s : SortexchangecocktailSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_cocktail_slice_max(s : SortexchangecocktailSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_cocktail_slice_max(s : SortexchangecocktailSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_cocktail_slice_to_string(s : SortexchangecocktailSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

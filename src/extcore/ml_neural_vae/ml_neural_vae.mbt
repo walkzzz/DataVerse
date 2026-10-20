@@ -88,11 +88,7 @@ pub fn ml_neural_vae_make_series(vals : Array[Double], name : String) -> Mlneura
 
 pub fn ml_neural_vae_series_len(s : MlneuralvaeSeries) -> Int { s.vals.length() }
 
-pub fn ml_neural_vae_series_sum(s : MlneuralvaeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_neural_vae_series_sum(s : MlneuralvaeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_neural_vae_series_mean(s : MlneuralvaeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_neural_vae_frame_set(s : MlneuralvaeFrame, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_vae_frame_sum(s : MlneuralvaeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_frame_sum(s : MlneuralvaeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_frame_mean(s : MlneuralvaeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_frame_mean(s : MlneuralvaeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_frame_scale(s : MlneuralvaeFrame, f : Double) -> MlneuralvaeFrame {
   let result = ml_neural_vae_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_neural_vae_frame_fill(s : MlneuralvaeFrame, v : Double) -> Mlneuralvae
   result
 }
 
-pub fn ml_neural_vae_frame_min(s : MlneuralvaeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_frame_min(s : MlneuralvaeFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_frame_max(s : MlneuralvaeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_frame_max(s : MlneuralvaeFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_frame_to_string(s : MlneuralvaeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_neural_vae_table_set(s : MlneuralvaeTable, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_vae_table_sum(s : MlneuralvaeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_table_sum(s : MlneuralvaeTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_table_mean(s : MlneuralvaeTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_table_mean(s : MlneuralvaeTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_table_scale(s : MlneuralvaeTable, f : Double) -> MlneuralvaeTable {
   let result = ml_neural_vae_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_neural_vae_table_fill(s : MlneuralvaeTable, v : Double) -> Mlneuralvae
   result
 }
 
-pub fn ml_neural_vae_table_min(s : MlneuralvaeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_table_min(s : MlneuralvaeTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_table_max(s : MlneuralvaeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_table_max(s : MlneuralvaeTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_table_to_string(s : MlneuralvaeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_neural_vae_graphn_set(s : MlneuralvaeGraphN, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_neural_vae_graphn_sum(s : MlneuralvaeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_graphn_sum(s : MlneuralvaeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_graphn_mean(s : MlneuralvaeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_graphn_mean(s : MlneuralvaeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_graphn_scale(s : MlneuralvaeGraphN, f : Double) -> MlneuralvaeGraphN {
   let result = ml_neural_vae_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_neural_vae_graphn_fill(s : MlneuralvaeGraphN, v : Double) -> Mlneuralv
   result
 }
 
-pub fn ml_neural_vae_graphn_min(s : MlneuralvaeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_graphn_min(s : MlneuralvaeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_graphn_max(s : MlneuralvaeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_graphn_max(s : MlneuralvaeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_graphn_to_string(s : MlneuralvaeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_neural_vae_node_set(s : MlneuralvaeNode, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_vae_node_sum(s : MlneuralvaeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_node_sum(s : MlneuralvaeNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_node_mean(s : MlneuralvaeNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_node_mean(s : MlneuralvaeNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_node_scale(s : MlneuralvaeNode, f : Double) -> MlneuralvaeNode {
   let result = ml_neural_vae_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_neural_vae_node_fill(s : MlneuralvaeNode, v : Double) -> MlneuralvaeNo
   result
 }
 
-pub fn ml_neural_vae_node_min(s : MlneuralvaeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_node_min(s : MlneuralvaeNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_node_max(s : MlneuralvaeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_node_max(s : MlneuralvaeNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_node_to_string(s : MlneuralvaeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_neural_vae_edge_set(s : MlneuralvaeEdge, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_vae_edge_sum(s : MlneuralvaeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_edge_sum(s : MlneuralvaeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_edge_mean(s : MlneuralvaeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_edge_mean(s : MlneuralvaeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_edge_scale(s : MlneuralvaeEdge, f : Double) -> MlneuralvaeEdge {
   let result = ml_neural_vae_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_neural_vae_edge_fill(s : MlneuralvaeEdge, v : Double) -> MlneuralvaeEd
   result
 }
 
-pub fn ml_neural_vae_edge_min(s : MlneuralvaeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_edge_min(s : MlneuralvaeEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_edge_max(s : MlneuralvaeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_edge_max(s : MlneuralvaeEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_edge_to_string(s : MlneuralvaeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_neural_vae_path_set(s : MlneuralvaePath, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_vae_path_sum(s : MlneuralvaePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_path_sum(s : MlneuralvaePath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_path_mean(s : MlneuralvaePath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_path_mean(s : MlneuralvaePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_path_scale(s : MlneuralvaePath, f : Double) -> MlneuralvaePath {
   let result = ml_neural_vae_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_neural_vae_path_fill(s : MlneuralvaePath, v : Double) -> MlneuralvaePa
   result
 }
 
-pub fn ml_neural_vae_path_min(s : MlneuralvaePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_path_min(s : MlneuralvaePath) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_path_max(s : MlneuralvaePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_path_max(s : MlneuralvaePath) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_path_to_string(s : MlneuralvaePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_neural_vae_cluster_set(s : MlneuralvaeCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_neural_vae_cluster_sum(s : MlneuralvaeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_cluster_sum(s : MlneuralvaeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_cluster_mean(s : MlneuralvaeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_cluster_mean(s : MlneuralvaeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_cluster_scale(s : MlneuralvaeCluster, f : Double) -> MlneuralvaeCluster {
   let result = ml_neural_vae_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_neural_vae_cluster_fill(s : MlneuralvaeCluster, v : Double) -> Mlneura
   result
 }
 
-pub fn ml_neural_vae_cluster_min(s : MlneuralvaeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_cluster_min(s : MlneuralvaeCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_cluster_max(s : MlneuralvaeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_cluster_max(s : MlneuralvaeCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_cluster_to_string(s : MlneuralvaeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_neural_vae_model_set(s : MlneuralvaeModel, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_vae_model_sum(s : MlneuralvaeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_model_sum(s : MlneuralvaeModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_model_mean(s : MlneuralvaeModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_model_mean(s : MlneuralvaeModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_model_scale(s : MlneuralvaeModel, f : Double) -> MlneuralvaeModel {
   let result = ml_neural_vae_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_neural_vae_model_fill(s : MlneuralvaeModel, v : Double) -> Mlneuralvae
   result
 }
 
-pub fn ml_neural_vae_model_min(s : MlneuralvaeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_model_min(s : MlneuralvaeModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_model_max(s : MlneuralvaeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_model_max(s : MlneuralvaeModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_model_to_string(s : MlneuralvaeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_neural_vae_layer_set(s : MlneuralvaeLayer, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_vae_layer_sum(s : MlneuralvaeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_layer_sum(s : MlneuralvaeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_layer_mean(s : MlneuralvaeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_layer_mean(s : MlneuralvaeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_layer_scale(s : MlneuralvaeLayer, f : Double) -> MlneuralvaeLayer {
   let result = ml_neural_vae_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_neural_vae_layer_fill(s : MlneuralvaeLayer, v : Double) -> Mlneuralvae
   result
 }
 
-pub fn ml_neural_vae_layer_min(s : MlneuralvaeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_layer_min(s : MlneuralvaeLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_layer_max(s : MlneuralvaeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_layer_max(s : MlneuralvaeLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_layer_to_string(s : MlneuralvaeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_neural_vae_buffer_set(s : MlneuralvaeBuffer, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_neural_vae_buffer_sum(s : MlneuralvaeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_buffer_sum(s : MlneuralvaeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_buffer_mean(s : MlneuralvaeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_buffer_mean(s : MlneuralvaeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_buffer_scale(s : MlneuralvaeBuffer, f : Double) -> MlneuralvaeBuffer {
   let result = ml_neural_vae_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_neural_vae_buffer_fill(s : MlneuralvaeBuffer, v : Double) -> Mlneuralv
   result
 }
 
-pub fn ml_neural_vae_buffer_min(s : MlneuralvaeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_buffer_min(s : MlneuralvaeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_buffer_max(s : MlneuralvaeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_buffer_max(s : MlneuralvaeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_buffer_to_string(s : MlneuralvaeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_neural_vae_cursor_set(s : MlneuralvaeCursor, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_neural_vae_cursor_sum(s : MlneuralvaeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_cursor_sum(s : MlneuralvaeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_cursor_mean(s : MlneuralvaeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_cursor_mean(s : MlneuralvaeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_cursor_scale(s : MlneuralvaeCursor, f : Double) -> MlneuralvaeCursor {
   let result = ml_neural_vae_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_neural_vae_cursor_fill(s : MlneuralvaeCursor, v : Double) -> Mlneuralv
   result
 }
 
-pub fn ml_neural_vae_cursor_min(s : MlneuralvaeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_cursor_min(s : MlneuralvaeCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_cursor_max(s : MlneuralvaeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_cursor_max(s : MlneuralvaeCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_cursor_to_string(s : MlneuralvaeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_neural_vae_view_set(s : MlneuralvaeView, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_vae_view_sum(s : MlneuralvaeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_view_sum(s : MlneuralvaeView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_view_mean(s : MlneuralvaeView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_view_mean(s : MlneuralvaeView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_view_scale(s : MlneuralvaeView, f : Double) -> MlneuralvaeView {
   let result = ml_neural_vae_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_neural_vae_view_fill(s : MlneuralvaeView, v : Double) -> MlneuralvaeVi
   result
 }
 
-pub fn ml_neural_vae_view_min(s : MlneuralvaeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_view_min(s : MlneuralvaeView) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_view_max(s : MlneuralvaeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_view_max(s : MlneuralvaeView) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_view_to_string(s : MlneuralvaeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_neural_vae_range_set(s : MlneuralvaeRange, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_vae_range_sum(s : MlneuralvaeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_range_sum(s : MlneuralvaeRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_range_mean(s : MlneuralvaeRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_range_mean(s : MlneuralvaeRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_range_scale(s : MlneuralvaeRange, f : Double) -> MlneuralvaeRange {
   let result = ml_neural_vae_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_neural_vae_range_fill(s : MlneuralvaeRange, v : Double) -> Mlneuralvae
   result
 }
 
-pub fn ml_neural_vae_range_min(s : MlneuralvaeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_range_min(s : MlneuralvaeRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_range_max(s : MlneuralvaeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_range_max(s : MlneuralvaeRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_range_to_string(s : MlneuralvaeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_neural_vae_slice_set(s : MlneuralvaeSlice, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_vae_slice_sum(s : MlneuralvaeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_vae_slice_sum(s : MlneuralvaeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_vae_slice_mean(s : MlneuralvaeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_vae_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_vae_slice_mean(s : MlneuralvaeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_vae_slice_scale(s : MlneuralvaeSlice, f : Double) -> MlneuralvaeSlice {
   let result = ml_neural_vae_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_neural_vae_slice_fill(s : MlneuralvaeSlice, v : Double) -> Mlneuralvae
   result
 }
 
-pub fn ml_neural_vae_slice_min(s : MlneuralvaeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_slice_min(s : MlneuralvaeSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_vae_slice_max(s : MlneuralvaeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_vae_slice_max(s : MlneuralvaeSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_vae_slice_to_string(s : MlneuralvaeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

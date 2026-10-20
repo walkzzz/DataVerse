@@ -88,11 +88,7 @@ pub fn finance_portfolio_markowitz_make_series(vals : Array[Double], name : Stri
 
 pub fn finance_portfolio_markowitz_series_len(s : FinanceportfoliomarkowitzSeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_markowitz_series_sum(s : FinanceportfoliomarkowitzSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_series_sum(s : FinanceportfoliomarkowitzSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_markowitz_series_mean(s : FinanceportfoliomarkowitzSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_markowitz_frame_set(s : FinanceportfoliomarkowitzFrame,
   result
 }
 
-pub fn finance_portfolio_markowitz_frame_sum(s : FinanceportfoliomarkowitzFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_frame_sum(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_frame_mean(s : FinanceportfoliomarkowitzFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_frame_mean(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_frame_scale(s : FinanceportfoliomarkowitzFrame, f : Double) -> FinanceportfoliomarkowitzFrame {
   let result = finance_portfolio_markowitz_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_markowitz_frame_fill(s : FinanceportfoliomarkowitzFrame
   result
 }
 
-pub fn finance_portfolio_markowitz_frame_min(s : FinanceportfoliomarkowitzFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_frame_min(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_frame_max(s : FinanceportfoliomarkowitzFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_frame_max(s : FinanceportfoliomarkowitzFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_frame_to_string(s : FinanceportfoliomarkowitzFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_markowitz_table_set(s : FinanceportfoliomarkowitzTable,
   result
 }
 
-pub fn finance_portfolio_markowitz_table_sum(s : FinanceportfoliomarkowitzTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_table_sum(s : FinanceportfoliomarkowitzTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_table_mean(s : FinanceportfoliomarkowitzTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_table_mean(s : FinanceportfoliomarkowitzTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_table_scale(s : FinanceportfoliomarkowitzTable, f : Double) -> FinanceportfoliomarkowitzTable {
   let result = finance_portfolio_markowitz_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_markowitz_table_fill(s : FinanceportfoliomarkowitzTable
   result
 }
 
-pub fn finance_portfolio_markowitz_table_min(s : FinanceportfoliomarkowitzTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_table_min(s : FinanceportfoliomarkowitzTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_table_max(s : FinanceportfoliomarkowitzTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_table_max(s : FinanceportfoliomarkowitzTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_table_to_string(s : FinanceportfoliomarkowitzTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_markowitz_graphn_set(s : FinanceportfoliomarkowitzGraph
   result
 }
 
-pub fn finance_portfolio_markowitz_graphn_sum(s : FinanceportfoliomarkowitzGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_graphn_sum(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_graphn_mean(s : FinanceportfoliomarkowitzGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_graphn_mean(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_graphn_scale(s : FinanceportfoliomarkowitzGraphN, f : Double) -> FinanceportfoliomarkowitzGraphN {
   let result = finance_portfolio_markowitz_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_markowitz_graphn_fill(s : FinanceportfoliomarkowitzGrap
   result
 }
 
-pub fn finance_portfolio_markowitz_graphn_min(s : FinanceportfoliomarkowitzGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_graphn_min(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_graphn_max(s : FinanceportfoliomarkowitzGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_graphn_max(s : FinanceportfoliomarkowitzGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_graphn_to_string(s : FinanceportfoliomarkowitzGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_markowitz_node_set(s : FinanceportfoliomarkowitzNode, i
   result
 }
 
-pub fn finance_portfolio_markowitz_node_sum(s : FinanceportfoliomarkowitzNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_node_sum(s : FinanceportfoliomarkowitzNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_node_mean(s : FinanceportfoliomarkowitzNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_node_mean(s : FinanceportfoliomarkowitzNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_node_scale(s : FinanceportfoliomarkowitzNode, f : Double) -> FinanceportfoliomarkowitzNode {
   let result = finance_portfolio_markowitz_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_markowitz_node_fill(s : FinanceportfoliomarkowitzNode, 
   result
 }
 
-pub fn finance_portfolio_markowitz_node_min(s : FinanceportfoliomarkowitzNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_node_min(s : FinanceportfoliomarkowitzNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_node_max(s : FinanceportfoliomarkowitzNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_node_max(s : FinanceportfoliomarkowitzNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_node_to_string(s : FinanceportfoliomarkowitzNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_markowitz_edge_set(s : FinanceportfoliomarkowitzEdge, i
   result
 }
 
-pub fn finance_portfolio_markowitz_edge_sum(s : FinanceportfoliomarkowitzEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_edge_sum(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_edge_mean(s : FinanceportfoliomarkowitzEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_edge_mean(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_edge_scale(s : FinanceportfoliomarkowitzEdge, f : Double) -> FinanceportfoliomarkowitzEdge {
   let result = finance_portfolio_markowitz_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_markowitz_edge_fill(s : FinanceportfoliomarkowitzEdge, 
   result
 }
 
-pub fn finance_portfolio_markowitz_edge_min(s : FinanceportfoliomarkowitzEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_edge_min(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_edge_max(s : FinanceportfoliomarkowitzEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_edge_max(s : FinanceportfoliomarkowitzEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_edge_to_string(s : FinanceportfoliomarkowitzEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_markowitz_path_set(s : FinanceportfoliomarkowitzPath, i
   result
 }
 
-pub fn finance_portfolio_markowitz_path_sum(s : FinanceportfoliomarkowitzPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_path_sum(s : FinanceportfoliomarkowitzPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_path_mean(s : FinanceportfoliomarkowitzPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_path_mean(s : FinanceportfoliomarkowitzPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_path_scale(s : FinanceportfoliomarkowitzPath, f : Double) -> FinanceportfoliomarkowitzPath {
   let result = finance_portfolio_markowitz_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_markowitz_path_fill(s : FinanceportfoliomarkowitzPath, 
   result
 }
 
-pub fn finance_portfolio_markowitz_path_min(s : FinanceportfoliomarkowitzPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_path_min(s : FinanceportfoliomarkowitzPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_path_max(s : FinanceportfoliomarkowitzPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_path_max(s : FinanceportfoliomarkowitzPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_path_to_string(s : FinanceportfoliomarkowitzPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_markowitz_cluster_set(s : FinanceportfoliomarkowitzClus
   result
 }
 
-pub fn finance_portfolio_markowitz_cluster_sum(s : FinanceportfoliomarkowitzCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_cluster_sum(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_cluster_mean(s : FinanceportfoliomarkowitzCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_cluster_mean(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_cluster_scale(s : FinanceportfoliomarkowitzCluster, f : Double) -> FinanceportfoliomarkowitzCluster {
   let result = finance_portfolio_markowitz_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_markowitz_cluster_fill(s : FinanceportfoliomarkowitzClu
   result
 }
 
-pub fn finance_portfolio_markowitz_cluster_min(s : FinanceportfoliomarkowitzCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_cluster_min(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_cluster_max(s : FinanceportfoliomarkowitzCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_cluster_max(s : FinanceportfoliomarkowitzCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_cluster_to_string(s : FinanceportfoliomarkowitzCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_markowitz_model_set(s : FinanceportfoliomarkowitzModel,
   result
 }
 
-pub fn finance_portfolio_markowitz_model_sum(s : FinanceportfoliomarkowitzModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_model_sum(s : FinanceportfoliomarkowitzModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_model_mean(s : FinanceportfoliomarkowitzModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_model_mean(s : FinanceportfoliomarkowitzModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_model_scale(s : FinanceportfoliomarkowitzModel, f : Double) -> FinanceportfoliomarkowitzModel {
   let result = finance_portfolio_markowitz_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_markowitz_model_fill(s : FinanceportfoliomarkowitzModel
   result
 }
 
-pub fn finance_portfolio_markowitz_model_min(s : FinanceportfoliomarkowitzModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_model_min(s : FinanceportfoliomarkowitzModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_model_max(s : FinanceportfoliomarkowitzModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_model_max(s : FinanceportfoliomarkowitzModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_model_to_string(s : FinanceportfoliomarkowitzModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_markowitz_layer_set(s : FinanceportfoliomarkowitzLayer,
   result
 }
 
-pub fn finance_portfolio_markowitz_layer_sum(s : FinanceportfoliomarkowitzLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_layer_sum(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_layer_mean(s : FinanceportfoliomarkowitzLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_layer_mean(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_layer_scale(s : FinanceportfoliomarkowitzLayer, f : Double) -> FinanceportfoliomarkowitzLayer {
   let result = finance_portfolio_markowitz_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_markowitz_layer_fill(s : FinanceportfoliomarkowitzLayer
   result
 }
 
-pub fn finance_portfolio_markowitz_layer_min(s : FinanceportfoliomarkowitzLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_layer_min(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_layer_max(s : FinanceportfoliomarkowitzLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_layer_max(s : FinanceportfoliomarkowitzLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_layer_to_string(s : FinanceportfoliomarkowitzLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_markowitz_buffer_set(s : FinanceportfoliomarkowitzBuffe
   result
 }
 
-pub fn finance_portfolio_markowitz_buffer_sum(s : FinanceportfoliomarkowitzBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_buffer_sum(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_buffer_mean(s : FinanceportfoliomarkowitzBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_buffer_mean(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_buffer_scale(s : FinanceportfoliomarkowitzBuffer, f : Double) -> FinanceportfoliomarkowitzBuffer {
   let result = finance_portfolio_markowitz_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_markowitz_buffer_fill(s : FinanceportfoliomarkowitzBuff
   result
 }
 
-pub fn finance_portfolio_markowitz_buffer_min(s : FinanceportfoliomarkowitzBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_buffer_min(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_buffer_max(s : FinanceportfoliomarkowitzBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_buffer_max(s : FinanceportfoliomarkowitzBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_buffer_to_string(s : FinanceportfoliomarkowitzBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_markowitz_cursor_set(s : FinanceportfoliomarkowitzCurso
   result
 }
 
-pub fn finance_portfolio_markowitz_cursor_sum(s : FinanceportfoliomarkowitzCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_cursor_sum(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_cursor_mean(s : FinanceportfoliomarkowitzCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_cursor_mean(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_cursor_scale(s : FinanceportfoliomarkowitzCursor, f : Double) -> FinanceportfoliomarkowitzCursor {
   let result = finance_portfolio_markowitz_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_markowitz_cursor_fill(s : FinanceportfoliomarkowitzCurs
   result
 }
 
-pub fn finance_portfolio_markowitz_cursor_min(s : FinanceportfoliomarkowitzCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_cursor_min(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_cursor_max(s : FinanceportfoliomarkowitzCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_cursor_max(s : FinanceportfoliomarkowitzCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_cursor_to_string(s : FinanceportfoliomarkowitzCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_markowitz_view_set(s : FinanceportfoliomarkowitzView, i
   result
 }
 
-pub fn finance_portfolio_markowitz_view_sum(s : FinanceportfoliomarkowitzView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_view_sum(s : FinanceportfoliomarkowitzView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_view_mean(s : FinanceportfoliomarkowitzView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_view_mean(s : FinanceportfoliomarkowitzView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_view_scale(s : FinanceportfoliomarkowitzView, f : Double) -> FinanceportfoliomarkowitzView {
   let result = finance_portfolio_markowitz_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_markowitz_view_fill(s : FinanceportfoliomarkowitzView, 
   result
 }
 
-pub fn finance_portfolio_markowitz_view_min(s : FinanceportfoliomarkowitzView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_view_min(s : FinanceportfoliomarkowitzView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_view_max(s : FinanceportfoliomarkowitzView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_view_max(s : FinanceportfoliomarkowitzView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_view_to_string(s : FinanceportfoliomarkowitzView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_markowitz_range_set(s : FinanceportfoliomarkowitzRange,
   result
 }
 
-pub fn finance_portfolio_markowitz_range_sum(s : FinanceportfoliomarkowitzRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_range_sum(s : FinanceportfoliomarkowitzRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_range_mean(s : FinanceportfoliomarkowitzRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_range_mean(s : FinanceportfoliomarkowitzRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_range_scale(s : FinanceportfoliomarkowitzRange, f : Double) -> FinanceportfoliomarkowitzRange {
   let result = finance_portfolio_markowitz_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_markowitz_range_fill(s : FinanceportfoliomarkowitzRange
   result
 }
 
-pub fn finance_portfolio_markowitz_range_min(s : FinanceportfoliomarkowitzRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_range_min(s : FinanceportfoliomarkowitzRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_range_max(s : FinanceportfoliomarkowitzRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_range_max(s : FinanceportfoliomarkowitzRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_range_to_string(s : FinanceportfoliomarkowitzRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_markowitz_slice_set(s : FinanceportfoliomarkowitzSlice,
   result
 }
 
-pub fn finance_portfolio_markowitz_slice_sum(s : FinanceportfoliomarkowitzSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_markowitz_slice_sum(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_markowitz_slice_mean(s : FinanceportfoliomarkowitzSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_markowitz_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_markowitz_slice_mean(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_markowitz_slice_scale(s : FinanceportfoliomarkowitzSlice, f : Double) -> FinanceportfoliomarkowitzSlice {
   let result = finance_portfolio_markowitz_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_markowitz_slice_fill(s : FinanceportfoliomarkowitzSlice
   result
 }
 
-pub fn finance_portfolio_markowitz_slice_min(s : FinanceportfoliomarkowitzSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_slice_min(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_markowitz_slice_max(s : FinanceportfoliomarkowitzSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_markowitz_slice_max(s : FinanceportfoliomarkowitzSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_markowitz_slice_to_string(s : FinanceportfoliomarkowitzSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

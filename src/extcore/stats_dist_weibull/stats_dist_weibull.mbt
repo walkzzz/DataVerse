@@ -88,11 +88,7 @@ pub fn stats_dist_weibull_make_series(vals : Array[Double], name : String) -> St
 
 pub fn stats_dist_weibull_series_len(s : StatsdistweibullSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_weibull_series_sum(s : StatsdistweibullSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_weibull_series_sum(s : StatsdistweibullSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_weibull_series_mean(s : StatsdistweibullSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_weibull_frame_set(s : StatsdistweibullFrame, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_weibull_frame_sum(s : StatsdistweibullFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_frame_sum(s : StatsdistweibullFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_frame_mean(s : StatsdistweibullFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_frame_mean(s : StatsdistweibullFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_frame_scale(s : StatsdistweibullFrame, f : Double) -> StatsdistweibullFrame {
   let result = stats_dist_weibull_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_weibull_frame_fill(s : StatsdistweibullFrame, v : Double) -> S
   result
 }
 
-pub fn stats_dist_weibull_frame_min(s : StatsdistweibullFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_frame_min(s : StatsdistweibullFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_frame_max(s : StatsdistweibullFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_frame_max(s : StatsdistweibullFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_frame_to_string(s : StatsdistweibullFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_weibull_table_set(s : StatsdistweibullTable, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_weibull_table_sum(s : StatsdistweibullTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_table_sum(s : StatsdistweibullTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_table_mean(s : StatsdistweibullTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_table_mean(s : StatsdistweibullTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_table_scale(s : StatsdistweibullTable, f : Double) -> StatsdistweibullTable {
   let result = stats_dist_weibull_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_weibull_table_fill(s : StatsdistweibullTable, v : Double) -> S
   result
 }
 
-pub fn stats_dist_weibull_table_min(s : StatsdistweibullTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_table_min(s : StatsdistweibullTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_table_max(s : StatsdistweibullTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_table_max(s : StatsdistweibullTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_table_to_string(s : StatsdistweibullTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_weibull_graphn_set(s : StatsdistweibullGraphN, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_weibull_graphn_sum(s : StatsdistweibullGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_graphn_sum(s : StatsdistweibullGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_graphn_mean(s : StatsdistweibullGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_graphn_mean(s : StatsdistweibullGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_graphn_scale(s : StatsdistweibullGraphN, f : Double) -> StatsdistweibullGraphN {
   let result = stats_dist_weibull_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_weibull_graphn_fill(s : StatsdistweibullGraphN, v : Double) ->
   result
 }
 
-pub fn stats_dist_weibull_graphn_min(s : StatsdistweibullGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_graphn_min(s : StatsdistweibullGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_graphn_max(s : StatsdistweibullGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_graphn_max(s : StatsdistweibullGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_graphn_to_string(s : StatsdistweibullGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_weibull_node_set(s : StatsdistweibullNode, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_weibull_node_sum(s : StatsdistweibullNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_node_sum(s : StatsdistweibullNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_node_mean(s : StatsdistweibullNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_node_mean(s : StatsdistweibullNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_node_scale(s : StatsdistweibullNode, f : Double) -> StatsdistweibullNode {
   let result = stats_dist_weibull_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_weibull_node_fill(s : StatsdistweibullNode, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_weibull_node_min(s : StatsdistweibullNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_node_min(s : StatsdistweibullNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_node_max(s : StatsdistweibullNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_node_max(s : StatsdistweibullNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_node_to_string(s : StatsdistweibullNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_weibull_edge_set(s : StatsdistweibullEdge, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_weibull_edge_sum(s : StatsdistweibullEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_edge_sum(s : StatsdistweibullEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_edge_mean(s : StatsdistweibullEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_edge_mean(s : StatsdistweibullEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_edge_scale(s : StatsdistweibullEdge, f : Double) -> StatsdistweibullEdge {
   let result = stats_dist_weibull_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_weibull_edge_fill(s : StatsdistweibullEdge, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_weibull_edge_min(s : StatsdistweibullEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_edge_min(s : StatsdistweibullEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_edge_max(s : StatsdistweibullEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_edge_max(s : StatsdistweibullEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_edge_to_string(s : StatsdistweibullEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_weibull_path_set(s : StatsdistweibullPath, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_weibull_path_sum(s : StatsdistweibullPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_path_sum(s : StatsdistweibullPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_path_mean(s : StatsdistweibullPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_path_mean(s : StatsdistweibullPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_path_scale(s : StatsdistweibullPath, f : Double) -> StatsdistweibullPath {
   let result = stats_dist_weibull_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_weibull_path_fill(s : StatsdistweibullPath, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_weibull_path_min(s : StatsdistweibullPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_path_min(s : StatsdistweibullPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_path_max(s : StatsdistweibullPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_path_max(s : StatsdistweibullPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_path_to_string(s : StatsdistweibullPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_weibull_cluster_set(s : StatsdistweibullCluster, i : Int, v : 
   result
 }
 
-pub fn stats_dist_weibull_cluster_sum(s : StatsdistweibullCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_cluster_sum(s : StatsdistweibullCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_cluster_mean(s : StatsdistweibullCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_cluster_mean(s : StatsdistweibullCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_cluster_scale(s : StatsdistweibullCluster, f : Double) -> StatsdistweibullCluster {
   let result = stats_dist_weibull_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_weibull_cluster_fill(s : StatsdistweibullCluster, v : Double) 
   result
 }
 
-pub fn stats_dist_weibull_cluster_min(s : StatsdistweibullCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_cluster_min(s : StatsdistweibullCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_cluster_max(s : StatsdistweibullCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_cluster_max(s : StatsdistweibullCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_cluster_to_string(s : StatsdistweibullCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_weibull_model_set(s : StatsdistweibullModel, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_weibull_model_sum(s : StatsdistweibullModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_model_sum(s : StatsdistweibullModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_model_mean(s : StatsdistweibullModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_model_mean(s : StatsdistweibullModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_model_scale(s : StatsdistweibullModel, f : Double) -> StatsdistweibullModel {
   let result = stats_dist_weibull_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_weibull_model_fill(s : StatsdistweibullModel, v : Double) -> S
   result
 }
 
-pub fn stats_dist_weibull_model_min(s : StatsdistweibullModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_model_min(s : StatsdistweibullModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_model_max(s : StatsdistweibullModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_model_max(s : StatsdistweibullModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_model_to_string(s : StatsdistweibullModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_weibull_layer_set(s : StatsdistweibullLayer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_weibull_layer_sum(s : StatsdistweibullLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_layer_sum(s : StatsdistweibullLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_layer_mean(s : StatsdistweibullLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_layer_mean(s : StatsdistweibullLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_layer_scale(s : StatsdistweibullLayer, f : Double) -> StatsdistweibullLayer {
   let result = stats_dist_weibull_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_weibull_layer_fill(s : StatsdistweibullLayer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_weibull_layer_min(s : StatsdistweibullLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_layer_min(s : StatsdistweibullLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_layer_max(s : StatsdistweibullLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_layer_max(s : StatsdistweibullLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_layer_to_string(s : StatsdistweibullLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_weibull_buffer_set(s : StatsdistweibullBuffer, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_weibull_buffer_sum(s : StatsdistweibullBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_buffer_sum(s : StatsdistweibullBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_buffer_mean(s : StatsdistweibullBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_buffer_mean(s : StatsdistweibullBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_buffer_scale(s : StatsdistweibullBuffer, f : Double) -> StatsdistweibullBuffer {
   let result = stats_dist_weibull_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_weibull_buffer_fill(s : StatsdistweibullBuffer, v : Double) ->
   result
 }
 
-pub fn stats_dist_weibull_buffer_min(s : StatsdistweibullBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_buffer_min(s : StatsdistweibullBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_buffer_max(s : StatsdistweibullBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_buffer_max(s : StatsdistweibullBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_buffer_to_string(s : StatsdistweibullBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_weibull_cursor_set(s : StatsdistweibullCursor, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_weibull_cursor_sum(s : StatsdistweibullCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_cursor_sum(s : StatsdistweibullCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_cursor_mean(s : StatsdistweibullCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_cursor_mean(s : StatsdistweibullCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_cursor_scale(s : StatsdistweibullCursor, f : Double) -> StatsdistweibullCursor {
   let result = stats_dist_weibull_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_weibull_cursor_fill(s : StatsdistweibullCursor, v : Double) ->
   result
 }
 
-pub fn stats_dist_weibull_cursor_min(s : StatsdistweibullCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_cursor_min(s : StatsdistweibullCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_cursor_max(s : StatsdistweibullCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_cursor_max(s : StatsdistweibullCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_cursor_to_string(s : StatsdistweibullCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_weibull_view_set(s : StatsdistweibullView, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_weibull_view_sum(s : StatsdistweibullView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_view_sum(s : StatsdistweibullView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_view_mean(s : StatsdistweibullView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_view_mean(s : StatsdistweibullView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_view_scale(s : StatsdistweibullView, f : Double) -> StatsdistweibullView {
   let result = stats_dist_weibull_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_weibull_view_fill(s : StatsdistweibullView, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_weibull_view_min(s : StatsdistweibullView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_view_min(s : StatsdistweibullView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_view_max(s : StatsdistweibullView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_view_max(s : StatsdistweibullView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_view_to_string(s : StatsdistweibullView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_weibull_range_set(s : StatsdistweibullRange, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_weibull_range_sum(s : StatsdistweibullRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_range_sum(s : StatsdistweibullRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_range_mean(s : StatsdistweibullRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_range_mean(s : StatsdistweibullRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_range_scale(s : StatsdistweibullRange, f : Double) -> StatsdistweibullRange {
   let result = stats_dist_weibull_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_weibull_range_fill(s : StatsdistweibullRange, v : Double) -> S
   result
 }
 
-pub fn stats_dist_weibull_range_min(s : StatsdistweibullRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_range_min(s : StatsdistweibullRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_range_max(s : StatsdistweibullRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_range_max(s : StatsdistweibullRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_range_to_string(s : StatsdistweibullRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_weibull_slice_set(s : StatsdistweibullSlice, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_weibull_slice_sum(s : StatsdistweibullSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_weibull_slice_sum(s : StatsdistweibullSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_weibull_slice_mean(s : StatsdistweibullSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_weibull_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_weibull_slice_mean(s : StatsdistweibullSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_weibull_slice_scale(s : StatsdistweibullSlice, f : Double) -> StatsdistweibullSlice {
   let result = stats_dist_weibull_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_weibull_slice_fill(s : StatsdistweibullSlice, v : Double) -> S
   result
 }
 
-pub fn stats_dist_weibull_slice_min(s : StatsdistweibullSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_slice_min(s : StatsdistweibullSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_weibull_slice_max(s : StatsdistweibullSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_weibull_slice_max(s : StatsdistweibullSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_weibull_slice_to_string(s : StatsdistweibullSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

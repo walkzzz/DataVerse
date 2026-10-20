@@ -88,11 +88,7 @@ pub fn ml_feature_umap_make_series(vals : Array[Double], name : String) -> Mlfea
 
 pub fn ml_feature_umap_series_len(s : MlfeatureumapSeries) -> Int { s.vals.length() }
 
-pub fn ml_feature_umap_series_sum(s : MlfeatureumapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_feature_umap_series_sum(s : MlfeatureumapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_feature_umap_series_mean(s : MlfeatureumapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_feature_umap_frame_set(s : MlfeatureumapFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_umap_frame_sum(s : MlfeatureumapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_frame_sum(s : MlfeatureumapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_frame_mean(s : MlfeatureumapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_frame_mean(s : MlfeatureumapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_frame_scale(s : MlfeatureumapFrame, f : Double) -> MlfeatureumapFrame {
   let result = ml_feature_umap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_feature_umap_frame_fill(s : MlfeatureumapFrame, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_umap_frame_min(s : MlfeatureumapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_frame_min(s : MlfeatureumapFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_frame_max(s : MlfeatureumapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_frame_max(s : MlfeatureumapFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_frame_to_string(s : MlfeatureumapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_feature_umap_table_set(s : MlfeatureumapTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_umap_table_sum(s : MlfeatureumapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_table_sum(s : MlfeatureumapTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_table_mean(s : MlfeatureumapTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_table_mean(s : MlfeatureumapTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_table_scale(s : MlfeatureumapTable, f : Double) -> MlfeatureumapTable {
   let result = ml_feature_umap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_feature_umap_table_fill(s : MlfeatureumapTable, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_umap_table_min(s : MlfeatureumapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_table_min(s : MlfeatureumapTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_table_max(s : MlfeatureumapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_table_max(s : MlfeatureumapTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_table_to_string(s : MlfeatureumapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_feature_umap_graphn_set(s : MlfeatureumapGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_umap_graphn_sum(s : MlfeatureumapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_graphn_sum(s : MlfeatureumapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_graphn_mean(s : MlfeatureumapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_graphn_mean(s : MlfeatureumapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_graphn_scale(s : MlfeatureumapGraphN, f : Double) -> MlfeatureumapGraphN {
   let result = ml_feature_umap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_feature_umap_graphn_fill(s : MlfeatureumapGraphN, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_umap_graphn_min(s : MlfeatureumapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_graphn_min(s : MlfeatureumapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_graphn_max(s : MlfeatureumapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_graphn_max(s : MlfeatureumapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_graphn_to_string(s : MlfeatureumapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_feature_umap_node_set(s : MlfeatureumapNode, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_umap_node_sum(s : MlfeatureumapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_node_sum(s : MlfeatureumapNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_node_mean(s : MlfeatureumapNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_node_mean(s : MlfeatureumapNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_node_scale(s : MlfeatureumapNode, f : Double) -> MlfeatureumapNode {
   let result = ml_feature_umap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_feature_umap_node_fill(s : MlfeatureumapNode, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_umap_node_min(s : MlfeatureumapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_node_min(s : MlfeatureumapNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_node_max(s : MlfeatureumapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_node_max(s : MlfeatureumapNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_node_to_string(s : MlfeatureumapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_feature_umap_edge_set(s : MlfeatureumapEdge, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_umap_edge_sum(s : MlfeatureumapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_edge_sum(s : MlfeatureumapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_edge_mean(s : MlfeatureumapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_edge_mean(s : MlfeatureumapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_edge_scale(s : MlfeatureumapEdge, f : Double) -> MlfeatureumapEdge {
   let result = ml_feature_umap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_feature_umap_edge_fill(s : MlfeatureumapEdge, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_umap_edge_min(s : MlfeatureumapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_edge_min(s : MlfeatureumapEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_edge_max(s : MlfeatureumapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_edge_max(s : MlfeatureumapEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_edge_to_string(s : MlfeatureumapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_feature_umap_path_set(s : MlfeatureumapPath, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_umap_path_sum(s : MlfeatureumapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_path_sum(s : MlfeatureumapPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_path_mean(s : MlfeatureumapPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_path_mean(s : MlfeatureumapPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_path_scale(s : MlfeatureumapPath, f : Double) -> MlfeatureumapPath {
   let result = ml_feature_umap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_feature_umap_path_fill(s : MlfeatureumapPath, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_umap_path_min(s : MlfeatureumapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_path_min(s : MlfeatureumapPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_path_max(s : MlfeatureumapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_path_max(s : MlfeatureumapPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_path_to_string(s : MlfeatureumapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_feature_umap_cluster_set(s : MlfeatureumapCluster, i : Int, v : Double
   result
 }
 
-pub fn ml_feature_umap_cluster_sum(s : MlfeatureumapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_cluster_sum(s : MlfeatureumapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_cluster_mean(s : MlfeatureumapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_cluster_mean(s : MlfeatureumapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_cluster_scale(s : MlfeatureumapCluster, f : Double) -> MlfeatureumapCluster {
   let result = ml_feature_umap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_feature_umap_cluster_fill(s : MlfeatureumapCluster, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_umap_cluster_min(s : MlfeatureumapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_cluster_min(s : MlfeatureumapCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_cluster_max(s : MlfeatureumapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_cluster_max(s : MlfeatureumapCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_cluster_to_string(s : MlfeatureumapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_feature_umap_model_set(s : MlfeatureumapModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_umap_model_sum(s : MlfeatureumapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_model_sum(s : MlfeatureumapModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_model_mean(s : MlfeatureumapModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_model_mean(s : MlfeatureumapModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_model_scale(s : MlfeatureumapModel, f : Double) -> MlfeatureumapModel {
   let result = ml_feature_umap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_feature_umap_model_fill(s : MlfeatureumapModel, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_umap_model_min(s : MlfeatureumapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_model_min(s : MlfeatureumapModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_model_max(s : MlfeatureumapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_model_max(s : MlfeatureumapModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_model_to_string(s : MlfeatureumapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_feature_umap_layer_set(s : MlfeatureumapLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_umap_layer_sum(s : MlfeatureumapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_layer_sum(s : MlfeatureumapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_layer_mean(s : MlfeatureumapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_layer_mean(s : MlfeatureumapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_layer_scale(s : MlfeatureumapLayer, f : Double) -> MlfeatureumapLayer {
   let result = ml_feature_umap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_feature_umap_layer_fill(s : MlfeatureumapLayer, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_umap_layer_min(s : MlfeatureumapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_layer_min(s : MlfeatureumapLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_layer_max(s : MlfeatureumapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_layer_max(s : MlfeatureumapLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_layer_to_string(s : MlfeatureumapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_feature_umap_buffer_set(s : MlfeatureumapBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_umap_buffer_sum(s : MlfeatureumapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_buffer_sum(s : MlfeatureumapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_buffer_mean(s : MlfeatureumapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_buffer_mean(s : MlfeatureumapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_buffer_scale(s : MlfeatureumapBuffer, f : Double) -> MlfeatureumapBuffer {
   let result = ml_feature_umap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_feature_umap_buffer_fill(s : MlfeatureumapBuffer, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_umap_buffer_min(s : MlfeatureumapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_buffer_min(s : MlfeatureumapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_buffer_max(s : MlfeatureumapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_buffer_max(s : MlfeatureumapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_buffer_to_string(s : MlfeatureumapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_feature_umap_cursor_set(s : MlfeatureumapCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_umap_cursor_sum(s : MlfeatureumapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_cursor_sum(s : MlfeatureumapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_cursor_mean(s : MlfeatureumapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_cursor_mean(s : MlfeatureumapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_cursor_scale(s : MlfeatureumapCursor, f : Double) -> MlfeatureumapCursor {
   let result = ml_feature_umap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_feature_umap_cursor_fill(s : MlfeatureumapCursor, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_umap_cursor_min(s : MlfeatureumapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_cursor_min(s : MlfeatureumapCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_cursor_max(s : MlfeatureumapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_cursor_max(s : MlfeatureumapCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_cursor_to_string(s : MlfeatureumapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_feature_umap_view_set(s : MlfeatureumapView, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_umap_view_sum(s : MlfeatureumapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_view_sum(s : MlfeatureumapView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_view_mean(s : MlfeatureumapView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_view_mean(s : MlfeatureumapView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_view_scale(s : MlfeatureumapView, f : Double) -> MlfeatureumapView {
   let result = ml_feature_umap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_feature_umap_view_fill(s : MlfeatureumapView, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_umap_view_min(s : MlfeatureumapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_view_min(s : MlfeatureumapView) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_view_max(s : MlfeatureumapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_view_max(s : MlfeatureumapView) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_view_to_string(s : MlfeatureumapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_feature_umap_range_set(s : MlfeatureumapRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_umap_range_sum(s : MlfeatureumapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_range_sum(s : MlfeatureumapRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_range_mean(s : MlfeatureumapRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_range_mean(s : MlfeatureumapRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_range_scale(s : MlfeatureumapRange, f : Double) -> MlfeatureumapRange {
   let result = ml_feature_umap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_feature_umap_range_fill(s : MlfeatureumapRange, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_umap_range_min(s : MlfeatureumapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_range_min(s : MlfeatureumapRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_range_max(s : MlfeatureumapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_range_max(s : MlfeatureumapRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_range_to_string(s : MlfeatureumapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_feature_umap_slice_set(s : MlfeatureumapSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_umap_slice_sum(s : MlfeatureumapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_umap_slice_sum(s : MlfeatureumapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_umap_slice_mean(s : MlfeatureumapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_umap_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_umap_slice_mean(s : MlfeatureumapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_umap_slice_scale(s : MlfeatureumapSlice, f : Double) -> MlfeatureumapSlice {
   let result = ml_feature_umap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_feature_umap_slice_fill(s : MlfeatureumapSlice, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_umap_slice_min(s : MlfeatureumapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_slice_min(s : MlfeatureumapSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_umap_slice_max(s : MlfeatureumapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_umap_slice_max(s : MlfeatureumapSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_umap_slice_to_string(s : MlfeatureumapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

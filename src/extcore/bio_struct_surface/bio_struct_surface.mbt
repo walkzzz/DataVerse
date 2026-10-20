@@ -88,11 +88,7 @@ pub fn bio_struct_surface_make_series(vals : Array[Double], name : String) -> Bi
 
 pub fn bio_struct_surface_series_len(s : BiostructsurfaceSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_surface_series_sum(s : BiostructsurfaceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_surface_series_sum(s : BiostructsurfaceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_surface_series_mean(s : BiostructsurfaceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_surface_frame_set(s : BiostructsurfaceFrame, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_surface_frame_sum(s : BiostructsurfaceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_frame_sum(s : BiostructsurfaceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_frame_mean(s : BiostructsurfaceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_frame_mean(s : BiostructsurfaceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_frame_scale(s : BiostructsurfaceFrame, f : Double) -> BiostructsurfaceFrame {
   let result = bio_struct_surface_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_surface_frame_fill(s : BiostructsurfaceFrame, v : Double) -> B
   result
 }
 
-pub fn bio_struct_surface_frame_min(s : BiostructsurfaceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_frame_min(s : BiostructsurfaceFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_frame_max(s : BiostructsurfaceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_frame_max(s : BiostructsurfaceFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_frame_to_string(s : BiostructsurfaceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_surface_table_set(s : BiostructsurfaceTable, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_surface_table_sum(s : BiostructsurfaceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_table_sum(s : BiostructsurfaceTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_table_mean(s : BiostructsurfaceTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_table_mean(s : BiostructsurfaceTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_table_scale(s : BiostructsurfaceTable, f : Double) -> BiostructsurfaceTable {
   let result = bio_struct_surface_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_surface_table_fill(s : BiostructsurfaceTable, v : Double) -> B
   result
 }
 
-pub fn bio_struct_surface_table_min(s : BiostructsurfaceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_table_min(s : BiostructsurfaceTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_table_max(s : BiostructsurfaceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_table_max(s : BiostructsurfaceTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_table_to_string(s : BiostructsurfaceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_surface_graphn_set(s : BiostructsurfaceGraphN, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_surface_graphn_sum(s : BiostructsurfaceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_graphn_sum(s : BiostructsurfaceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_graphn_mean(s : BiostructsurfaceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_graphn_mean(s : BiostructsurfaceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_graphn_scale(s : BiostructsurfaceGraphN, f : Double) -> BiostructsurfaceGraphN {
   let result = bio_struct_surface_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_surface_graphn_fill(s : BiostructsurfaceGraphN, v : Double) ->
   result
 }
 
-pub fn bio_struct_surface_graphn_min(s : BiostructsurfaceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_graphn_min(s : BiostructsurfaceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_graphn_max(s : BiostructsurfaceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_graphn_max(s : BiostructsurfaceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_graphn_to_string(s : BiostructsurfaceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_surface_node_set(s : BiostructsurfaceNode, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_surface_node_sum(s : BiostructsurfaceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_node_sum(s : BiostructsurfaceNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_node_mean(s : BiostructsurfaceNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_node_mean(s : BiostructsurfaceNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_node_scale(s : BiostructsurfaceNode, f : Double) -> BiostructsurfaceNode {
   let result = bio_struct_surface_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_surface_node_fill(s : BiostructsurfaceNode, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_surface_node_min(s : BiostructsurfaceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_node_min(s : BiostructsurfaceNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_node_max(s : BiostructsurfaceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_node_max(s : BiostructsurfaceNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_node_to_string(s : BiostructsurfaceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_surface_edge_set(s : BiostructsurfaceEdge, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_surface_edge_sum(s : BiostructsurfaceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_edge_sum(s : BiostructsurfaceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_edge_mean(s : BiostructsurfaceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_edge_mean(s : BiostructsurfaceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_edge_scale(s : BiostructsurfaceEdge, f : Double) -> BiostructsurfaceEdge {
   let result = bio_struct_surface_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_surface_edge_fill(s : BiostructsurfaceEdge, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_surface_edge_min(s : BiostructsurfaceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_edge_min(s : BiostructsurfaceEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_edge_max(s : BiostructsurfaceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_edge_max(s : BiostructsurfaceEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_edge_to_string(s : BiostructsurfaceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_surface_path_set(s : BiostructsurfacePath, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_surface_path_sum(s : BiostructsurfacePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_path_sum(s : BiostructsurfacePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_path_mean(s : BiostructsurfacePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_path_mean(s : BiostructsurfacePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_path_scale(s : BiostructsurfacePath, f : Double) -> BiostructsurfacePath {
   let result = bio_struct_surface_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_surface_path_fill(s : BiostructsurfacePath, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_surface_path_min(s : BiostructsurfacePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_path_min(s : BiostructsurfacePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_path_max(s : BiostructsurfacePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_path_max(s : BiostructsurfacePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_path_to_string(s : BiostructsurfacePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_surface_cluster_set(s : BiostructsurfaceCluster, i : Int, v : 
   result
 }
 
-pub fn bio_struct_surface_cluster_sum(s : BiostructsurfaceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_cluster_sum(s : BiostructsurfaceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_cluster_mean(s : BiostructsurfaceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_cluster_mean(s : BiostructsurfaceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_cluster_scale(s : BiostructsurfaceCluster, f : Double) -> BiostructsurfaceCluster {
   let result = bio_struct_surface_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_surface_cluster_fill(s : BiostructsurfaceCluster, v : Double) 
   result
 }
 
-pub fn bio_struct_surface_cluster_min(s : BiostructsurfaceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_cluster_min(s : BiostructsurfaceCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_cluster_max(s : BiostructsurfaceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_cluster_max(s : BiostructsurfaceCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_cluster_to_string(s : BiostructsurfaceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_surface_model_set(s : BiostructsurfaceModel, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_surface_model_sum(s : BiostructsurfaceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_model_sum(s : BiostructsurfaceModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_model_mean(s : BiostructsurfaceModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_model_mean(s : BiostructsurfaceModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_model_scale(s : BiostructsurfaceModel, f : Double) -> BiostructsurfaceModel {
   let result = bio_struct_surface_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_surface_model_fill(s : BiostructsurfaceModel, v : Double) -> B
   result
 }
 
-pub fn bio_struct_surface_model_min(s : BiostructsurfaceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_model_min(s : BiostructsurfaceModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_model_max(s : BiostructsurfaceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_model_max(s : BiostructsurfaceModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_model_to_string(s : BiostructsurfaceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_surface_layer_set(s : BiostructsurfaceLayer, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_surface_layer_sum(s : BiostructsurfaceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_layer_sum(s : BiostructsurfaceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_layer_mean(s : BiostructsurfaceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_layer_mean(s : BiostructsurfaceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_layer_scale(s : BiostructsurfaceLayer, f : Double) -> BiostructsurfaceLayer {
   let result = bio_struct_surface_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_surface_layer_fill(s : BiostructsurfaceLayer, v : Double) -> B
   result
 }
 
-pub fn bio_struct_surface_layer_min(s : BiostructsurfaceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_layer_min(s : BiostructsurfaceLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_layer_max(s : BiostructsurfaceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_layer_max(s : BiostructsurfaceLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_layer_to_string(s : BiostructsurfaceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_surface_buffer_set(s : BiostructsurfaceBuffer, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_surface_buffer_sum(s : BiostructsurfaceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_buffer_sum(s : BiostructsurfaceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_buffer_mean(s : BiostructsurfaceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_buffer_mean(s : BiostructsurfaceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_buffer_scale(s : BiostructsurfaceBuffer, f : Double) -> BiostructsurfaceBuffer {
   let result = bio_struct_surface_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_surface_buffer_fill(s : BiostructsurfaceBuffer, v : Double) ->
   result
 }
 
-pub fn bio_struct_surface_buffer_min(s : BiostructsurfaceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_buffer_min(s : BiostructsurfaceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_buffer_max(s : BiostructsurfaceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_buffer_max(s : BiostructsurfaceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_buffer_to_string(s : BiostructsurfaceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_surface_cursor_set(s : BiostructsurfaceCursor, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_surface_cursor_sum(s : BiostructsurfaceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_cursor_sum(s : BiostructsurfaceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_cursor_mean(s : BiostructsurfaceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_cursor_mean(s : BiostructsurfaceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_cursor_scale(s : BiostructsurfaceCursor, f : Double) -> BiostructsurfaceCursor {
   let result = bio_struct_surface_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_surface_cursor_fill(s : BiostructsurfaceCursor, v : Double) ->
   result
 }
 
-pub fn bio_struct_surface_cursor_min(s : BiostructsurfaceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_cursor_min(s : BiostructsurfaceCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_cursor_max(s : BiostructsurfaceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_cursor_max(s : BiostructsurfaceCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_cursor_to_string(s : BiostructsurfaceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_surface_view_set(s : BiostructsurfaceView, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_surface_view_sum(s : BiostructsurfaceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_view_sum(s : BiostructsurfaceView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_view_mean(s : BiostructsurfaceView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_view_mean(s : BiostructsurfaceView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_view_scale(s : BiostructsurfaceView, f : Double) -> BiostructsurfaceView {
   let result = bio_struct_surface_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_surface_view_fill(s : BiostructsurfaceView, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_surface_view_min(s : BiostructsurfaceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_view_min(s : BiostructsurfaceView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_view_max(s : BiostructsurfaceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_view_max(s : BiostructsurfaceView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_view_to_string(s : BiostructsurfaceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_surface_range_set(s : BiostructsurfaceRange, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_surface_range_sum(s : BiostructsurfaceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_range_sum(s : BiostructsurfaceRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_range_mean(s : BiostructsurfaceRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_range_mean(s : BiostructsurfaceRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_range_scale(s : BiostructsurfaceRange, f : Double) -> BiostructsurfaceRange {
   let result = bio_struct_surface_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_surface_range_fill(s : BiostructsurfaceRange, v : Double) -> B
   result
 }
 
-pub fn bio_struct_surface_range_min(s : BiostructsurfaceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_range_min(s : BiostructsurfaceRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_range_max(s : BiostructsurfaceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_range_max(s : BiostructsurfaceRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_range_to_string(s : BiostructsurfaceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_surface_slice_set(s : BiostructsurfaceSlice, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_surface_slice_sum(s : BiostructsurfaceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_surface_slice_sum(s : BiostructsurfaceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_surface_slice_mean(s : BiostructsurfaceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_surface_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_surface_slice_mean(s : BiostructsurfaceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_surface_slice_scale(s : BiostructsurfaceSlice, f : Double) -> BiostructsurfaceSlice {
   let result = bio_struct_surface_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_surface_slice_fill(s : BiostructsurfaceSlice, v : Double) -> B
   result
 }
 
-pub fn bio_struct_surface_slice_min(s : BiostructsurfaceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_slice_min(s : BiostructsurfaceSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_surface_slice_max(s : BiostructsurfaceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_surface_slice_max(s : BiostructsurfaceSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_surface_slice_to_string(s : BiostructsurfaceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

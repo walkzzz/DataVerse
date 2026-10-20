@@ -88,11 +88,7 @@ pub fn physics_em_maxwell_make_series(vals : Array[Double], name : String) -> Ph
 
 pub fn physics_em_maxwell_series_len(s : PhysicsemmaxwellSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_maxwell_series_sum(s : PhysicsemmaxwellSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_maxwell_series_sum(s : PhysicsemmaxwellSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_maxwell_series_mean(s : PhysicsemmaxwellSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_maxwell_frame_set(s : PhysicsemmaxwellFrame, i : Int, v : Doub
   result
 }
 
-pub fn physics_em_maxwell_frame_sum(s : PhysicsemmaxwellFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_frame_sum(s : PhysicsemmaxwellFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_frame_mean(s : PhysicsemmaxwellFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_frame_mean(s : PhysicsemmaxwellFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_frame_scale(s : PhysicsemmaxwellFrame, f : Double) -> PhysicsemmaxwellFrame {
   let result = physics_em_maxwell_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_maxwell_frame_fill(s : PhysicsemmaxwellFrame, v : Double) -> P
   result
 }
 
-pub fn physics_em_maxwell_frame_min(s : PhysicsemmaxwellFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_frame_min(s : PhysicsemmaxwellFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_frame_max(s : PhysicsemmaxwellFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_frame_max(s : PhysicsemmaxwellFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_frame_to_string(s : PhysicsemmaxwellFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_maxwell_table_set(s : PhysicsemmaxwellTable, i : Int, v : Doub
   result
 }
 
-pub fn physics_em_maxwell_table_sum(s : PhysicsemmaxwellTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_table_sum(s : PhysicsemmaxwellTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_table_mean(s : PhysicsemmaxwellTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_table_mean(s : PhysicsemmaxwellTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_table_scale(s : PhysicsemmaxwellTable, f : Double) -> PhysicsemmaxwellTable {
   let result = physics_em_maxwell_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_maxwell_table_fill(s : PhysicsemmaxwellTable, v : Double) -> P
   result
 }
 
-pub fn physics_em_maxwell_table_min(s : PhysicsemmaxwellTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_table_min(s : PhysicsemmaxwellTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_table_max(s : PhysicsemmaxwellTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_table_max(s : PhysicsemmaxwellTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_table_to_string(s : PhysicsemmaxwellTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_maxwell_graphn_set(s : PhysicsemmaxwellGraphN, i : Int, v : Do
   result
 }
 
-pub fn physics_em_maxwell_graphn_sum(s : PhysicsemmaxwellGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_graphn_sum(s : PhysicsemmaxwellGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_graphn_mean(s : PhysicsemmaxwellGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_graphn_mean(s : PhysicsemmaxwellGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_graphn_scale(s : PhysicsemmaxwellGraphN, f : Double) -> PhysicsemmaxwellGraphN {
   let result = physics_em_maxwell_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_maxwell_graphn_fill(s : PhysicsemmaxwellGraphN, v : Double) ->
   result
 }
 
-pub fn physics_em_maxwell_graphn_min(s : PhysicsemmaxwellGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_graphn_min(s : PhysicsemmaxwellGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_graphn_max(s : PhysicsemmaxwellGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_graphn_max(s : PhysicsemmaxwellGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_graphn_to_string(s : PhysicsemmaxwellGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_maxwell_node_set(s : PhysicsemmaxwellNode, i : Int, v : Double
   result
 }
 
-pub fn physics_em_maxwell_node_sum(s : PhysicsemmaxwellNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_node_sum(s : PhysicsemmaxwellNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_node_mean(s : PhysicsemmaxwellNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_node_mean(s : PhysicsemmaxwellNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_node_scale(s : PhysicsemmaxwellNode, f : Double) -> PhysicsemmaxwellNode {
   let result = physics_em_maxwell_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_maxwell_node_fill(s : PhysicsemmaxwellNode, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_maxwell_node_min(s : PhysicsemmaxwellNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_node_min(s : PhysicsemmaxwellNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_node_max(s : PhysicsemmaxwellNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_node_max(s : PhysicsemmaxwellNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_node_to_string(s : PhysicsemmaxwellNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_maxwell_edge_set(s : PhysicsemmaxwellEdge, i : Int, v : Double
   result
 }
 
-pub fn physics_em_maxwell_edge_sum(s : PhysicsemmaxwellEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_edge_sum(s : PhysicsemmaxwellEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_edge_mean(s : PhysicsemmaxwellEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_edge_mean(s : PhysicsemmaxwellEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_edge_scale(s : PhysicsemmaxwellEdge, f : Double) -> PhysicsemmaxwellEdge {
   let result = physics_em_maxwell_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_maxwell_edge_fill(s : PhysicsemmaxwellEdge, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_maxwell_edge_min(s : PhysicsemmaxwellEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_edge_min(s : PhysicsemmaxwellEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_edge_max(s : PhysicsemmaxwellEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_edge_max(s : PhysicsemmaxwellEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_edge_to_string(s : PhysicsemmaxwellEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_maxwell_path_set(s : PhysicsemmaxwellPath, i : Int, v : Double
   result
 }
 
-pub fn physics_em_maxwell_path_sum(s : PhysicsemmaxwellPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_path_sum(s : PhysicsemmaxwellPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_path_mean(s : PhysicsemmaxwellPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_path_mean(s : PhysicsemmaxwellPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_path_scale(s : PhysicsemmaxwellPath, f : Double) -> PhysicsemmaxwellPath {
   let result = physics_em_maxwell_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_maxwell_path_fill(s : PhysicsemmaxwellPath, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_maxwell_path_min(s : PhysicsemmaxwellPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_path_min(s : PhysicsemmaxwellPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_path_max(s : PhysicsemmaxwellPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_path_max(s : PhysicsemmaxwellPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_path_to_string(s : PhysicsemmaxwellPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_maxwell_cluster_set(s : PhysicsemmaxwellCluster, i : Int, v : 
   result
 }
 
-pub fn physics_em_maxwell_cluster_sum(s : PhysicsemmaxwellCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_cluster_sum(s : PhysicsemmaxwellCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_cluster_mean(s : PhysicsemmaxwellCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_cluster_mean(s : PhysicsemmaxwellCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_cluster_scale(s : PhysicsemmaxwellCluster, f : Double) -> PhysicsemmaxwellCluster {
   let result = physics_em_maxwell_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_maxwell_cluster_fill(s : PhysicsemmaxwellCluster, v : Double) 
   result
 }
 
-pub fn physics_em_maxwell_cluster_min(s : PhysicsemmaxwellCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_cluster_min(s : PhysicsemmaxwellCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_cluster_max(s : PhysicsemmaxwellCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_cluster_max(s : PhysicsemmaxwellCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_cluster_to_string(s : PhysicsemmaxwellCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_maxwell_model_set(s : PhysicsemmaxwellModel, i : Int, v : Doub
   result
 }
 
-pub fn physics_em_maxwell_model_sum(s : PhysicsemmaxwellModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_model_sum(s : PhysicsemmaxwellModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_model_mean(s : PhysicsemmaxwellModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_model_mean(s : PhysicsemmaxwellModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_model_scale(s : PhysicsemmaxwellModel, f : Double) -> PhysicsemmaxwellModel {
   let result = physics_em_maxwell_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_maxwell_model_fill(s : PhysicsemmaxwellModel, v : Double) -> P
   result
 }
 
-pub fn physics_em_maxwell_model_min(s : PhysicsemmaxwellModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_model_min(s : PhysicsemmaxwellModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_model_max(s : PhysicsemmaxwellModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_model_max(s : PhysicsemmaxwellModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_model_to_string(s : PhysicsemmaxwellModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_maxwell_layer_set(s : PhysicsemmaxwellLayer, i : Int, v : Doub
   result
 }
 
-pub fn physics_em_maxwell_layer_sum(s : PhysicsemmaxwellLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_layer_sum(s : PhysicsemmaxwellLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_layer_mean(s : PhysicsemmaxwellLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_layer_mean(s : PhysicsemmaxwellLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_layer_scale(s : PhysicsemmaxwellLayer, f : Double) -> PhysicsemmaxwellLayer {
   let result = physics_em_maxwell_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_maxwell_layer_fill(s : PhysicsemmaxwellLayer, v : Double) -> P
   result
 }
 
-pub fn physics_em_maxwell_layer_min(s : PhysicsemmaxwellLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_layer_min(s : PhysicsemmaxwellLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_layer_max(s : PhysicsemmaxwellLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_layer_max(s : PhysicsemmaxwellLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_layer_to_string(s : PhysicsemmaxwellLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_maxwell_buffer_set(s : PhysicsemmaxwellBuffer, i : Int, v : Do
   result
 }
 
-pub fn physics_em_maxwell_buffer_sum(s : PhysicsemmaxwellBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_buffer_sum(s : PhysicsemmaxwellBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_buffer_mean(s : PhysicsemmaxwellBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_buffer_mean(s : PhysicsemmaxwellBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_buffer_scale(s : PhysicsemmaxwellBuffer, f : Double) -> PhysicsemmaxwellBuffer {
   let result = physics_em_maxwell_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_maxwell_buffer_fill(s : PhysicsemmaxwellBuffer, v : Double) ->
   result
 }
 
-pub fn physics_em_maxwell_buffer_min(s : PhysicsemmaxwellBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_buffer_min(s : PhysicsemmaxwellBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_buffer_max(s : PhysicsemmaxwellBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_buffer_max(s : PhysicsemmaxwellBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_buffer_to_string(s : PhysicsemmaxwellBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_maxwell_cursor_set(s : PhysicsemmaxwellCursor, i : Int, v : Do
   result
 }
 
-pub fn physics_em_maxwell_cursor_sum(s : PhysicsemmaxwellCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_cursor_sum(s : PhysicsemmaxwellCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_cursor_mean(s : PhysicsemmaxwellCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_cursor_mean(s : PhysicsemmaxwellCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_cursor_scale(s : PhysicsemmaxwellCursor, f : Double) -> PhysicsemmaxwellCursor {
   let result = physics_em_maxwell_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_maxwell_cursor_fill(s : PhysicsemmaxwellCursor, v : Double) ->
   result
 }
 
-pub fn physics_em_maxwell_cursor_min(s : PhysicsemmaxwellCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_cursor_min(s : PhysicsemmaxwellCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_cursor_max(s : PhysicsemmaxwellCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_cursor_max(s : PhysicsemmaxwellCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_cursor_to_string(s : PhysicsemmaxwellCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_maxwell_view_set(s : PhysicsemmaxwellView, i : Int, v : Double
   result
 }
 
-pub fn physics_em_maxwell_view_sum(s : PhysicsemmaxwellView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_view_sum(s : PhysicsemmaxwellView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_view_mean(s : PhysicsemmaxwellView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_view_mean(s : PhysicsemmaxwellView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_view_scale(s : PhysicsemmaxwellView, f : Double) -> PhysicsemmaxwellView {
   let result = physics_em_maxwell_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_maxwell_view_fill(s : PhysicsemmaxwellView, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_maxwell_view_min(s : PhysicsemmaxwellView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_view_min(s : PhysicsemmaxwellView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_view_max(s : PhysicsemmaxwellView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_view_max(s : PhysicsemmaxwellView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_view_to_string(s : PhysicsemmaxwellView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_maxwell_range_set(s : PhysicsemmaxwellRange, i : Int, v : Doub
   result
 }
 
-pub fn physics_em_maxwell_range_sum(s : PhysicsemmaxwellRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_range_sum(s : PhysicsemmaxwellRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_range_mean(s : PhysicsemmaxwellRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_range_mean(s : PhysicsemmaxwellRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_range_scale(s : PhysicsemmaxwellRange, f : Double) -> PhysicsemmaxwellRange {
   let result = physics_em_maxwell_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_maxwell_range_fill(s : PhysicsemmaxwellRange, v : Double) -> P
   result
 }
 
-pub fn physics_em_maxwell_range_min(s : PhysicsemmaxwellRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_range_min(s : PhysicsemmaxwellRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_range_max(s : PhysicsemmaxwellRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_range_max(s : PhysicsemmaxwellRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_range_to_string(s : PhysicsemmaxwellRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_maxwell_slice_set(s : PhysicsemmaxwellSlice, i : Int, v : Doub
   result
 }
 
-pub fn physics_em_maxwell_slice_sum(s : PhysicsemmaxwellSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_maxwell_slice_sum(s : PhysicsemmaxwellSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_maxwell_slice_mean(s : PhysicsemmaxwellSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_maxwell_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_maxwell_slice_mean(s : PhysicsemmaxwellSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_maxwell_slice_scale(s : PhysicsemmaxwellSlice, f : Double) -> PhysicsemmaxwellSlice {
   let result = physics_em_maxwell_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_maxwell_slice_fill(s : PhysicsemmaxwellSlice, v : Double) -> P
   result
 }
 
-pub fn physics_em_maxwell_slice_min(s : PhysicsemmaxwellSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_slice_min(s : PhysicsemmaxwellSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_maxwell_slice_max(s : PhysicsemmaxwellSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_maxwell_slice_max(s : PhysicsemmaxwellSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_maxwell_slice_to_string(s : PhysicsemmaxwellSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

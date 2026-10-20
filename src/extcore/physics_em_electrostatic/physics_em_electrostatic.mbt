@@ -88,11 +88,7 @@ pub fn physics_em_electrostatic_make_series(vals : Array[Double], name : String)
 
 pub fn physics_em_electrostatic_series_len(s : PhysicsemelectrostaticSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_electrostatic_series_sum(s : PhysicsemelectrostaticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_electrostatic_series_sum(s : PhysicsemelectrostaticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_electrostatic_series_mean(s : PhysicsemelectrostaticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_electrostatic_frame_set(s : PhysicsemelectrostaticFrame, i : I
   result
 }
 
-pub fn physics_em_electrostatic_frame_sum(s : PhysicsemelectrostaticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_frame_sum(s : PhysicsemelectrostaticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_frame_mean(s : PhysicsemelectrostaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_frame_mean(s : PhysicsemelectrostaticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_frame_scale(s : PhysicsemelectrostaticFrame, f : Double) -> PhysicsemelectrostaticFrame {
   let result = physics_em_electrostatic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_electrostatic_frame_fill(s : PhysicsemelectrostaticFrame, v : 
   result
 }
 
-pub fn physics_em_electrostatic_frame_min(s : PhysicsemelectrostaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_frame_min(s : PhysicsemelectrostaticFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_frame_max(s : PhysicsemelectrostaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_frame_max(s : PhysicsemelectrostaticFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_frame_to_string(s : PhysicsemelectrostaticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_electrostatic_table_set(s : PhysicsemelectrostaticTable, i : I
   result
 }
 
-pub fn physics_em_electrostatic_table_sum(s : PhysicsemelectrostaticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_table_sum(s : PhysicsemelectrostaticTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_table_mean(s : PhysicsemelectrostaticTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_table_mean(s : PhysicsemelectrostaticTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_table_scale(s : PhysicsemelectrostaticTable, f : Double) -> PhysicsemelectrostaticTable {
   let result = physics_em_electrostatic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_electrostatic_table_fill(s : PhysicsemelectrostaticTable, v : 
   result
 }
 
-pub fn physics_em_electrostatic_table_min(s : PhysicsemelectrostaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_table_min(s : PhysicsemelectrostaticTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_table_max(s : PhysicsemelectrostaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_table_max(s : PhysicsemelectrostaticTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_table_to_string(s : PhysicsemelectrostaticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_electrostatic_graphn_set(s : PhysicsemelectrostaticGraphN, i :
   result
 }
 
-pub fn physics_em_electrostatic_graphn_sum(s : PhysicsemelectrostaticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_graphn_sum(s : PhysicsemelectrostaticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_graphn_mean(s : PhysicsemelectrostaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_graphn_mean(s : PhysicsemelectrostaticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_graphn_scale(s : PhysicsemelectrostaticGraphN, f : Double) -> PhysicsemelectrostaticGraphN {
   let result = physics_em_electrostatic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_electrostatic_graphn_fill(s : PhysicsemelectrostaticGraphN, v 
   result
 }
 
-pub fn physics_em_electrostatic_graphn_min(s : PhysicsemelectrostaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_graphn_min(s : PhysicsemelectrostaticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_graphn_max(s : PhysicsemelectrostaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_graphn_max(s : PhysicsemelectrostaticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_graphn_to_string(s : PhysicsemelectrostaticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_electrostatic_node_set(s : PhysicsemelectrostaticNode, i : Int
   result
 }
 
-pub fn physics_em_electrostatic_node_sum(s : PhysicsemelectrostaticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_node_sum(s : PhysicsemelectrostaticNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_node_mean(s : PhysicsemelectrostaticNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_node_mean(s : PhysicsemelectrostaticNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_node_scale(s : PhysicsemelectrostaticNode, f : Double) -> PhysicsemelectrostaticNode {
   let result = physics_em_electrostatic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_electrostatic_node_fill(s : PhysicsemelectrostaticNode, v : Do
   result
 }
 
-pub fn physics_em_electrostatic_node_min(s : PhysicsemelectrostaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_node_min(s : PhysicsemelectrostaticNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_node_max(s : PhysicsemelectrostaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_node_max(s : PhysicsemelectrostaticNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_node_to_string(s : PhysicsemelectrostaticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_electrostatic_edge_set(s : PhysicsemelectrostaticEdge, i : Int
   result
 }
 
-pub fn physics_em_electrostatic_edge_sum(s : PhysicsemelectrostaticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_edge_sum(s : PhysicsemelectrostaticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_edge_mean(s : PhysicsemelectrostaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_edge_mean(s : PhysicsemelectrostaticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_edge_scale(s : PhysicsemelectrostaticEdge, f : Double) -> PhysicsemelectrostaticEdge {
   let result = physics_em_electrostatic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_electrostatic_edge_fill(s : PhysicsemelectrostaticEdge, v : Do
   result
 }
 
-pub fn physics_em_electrostatic_edge_min(s : PhysicsemelectrostaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_edge_min(s : PhysicsemelectrostaticEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_edge_max(s : PhysicsemelectrostaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_edge_max(s : PhysicsemelectrostaticEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_edge_to_string(s : PhysicsemelectrostaticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_electrostatic_path_set(s : PhysicsemelectrostaticPath, i : Int
   result
 }
 
-pub fn physics_em_electrostatic_path_sum(s : PhysicsemelectrostaticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_path_sum(s : PhysicsemelectrostaticPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_path_mean(s : PhysicsemelectrostaticPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_path_mean(s : PhysicsemelectrostaticPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_path_scale(s : PhysicsemelectrostaticPath, f : Double) -> PhysicsemelectrostaticPath {
   let result = physics_em_electrostatic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_electrostatic_path_fill(s : PhysicsemelectrostaticPath, v : Do
   result
 }
 
-pub fn physics_em_electrostatic_path_min(s : PhysicsemelectrostaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_path_min(s : PhysicsemelectrostaticPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_path_max(s : PhysicsemelectrostaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_path_max(s : PhysicsemelectrostaticPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_path_to_string(s : PhysicsemelectrostaticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_electrostatic_cluster_set(s : PhysicsemelectrostaticCluster, i
   result
 }
 
-pub fn physics_em_electrostatic_cluster_sum(s : PhysicsemelectrostaticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_cluster_sum(s : PhysicsemelectrostaticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_cluster_mean(s : PhysicsemelectrostaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_cluster_mean(s : PhysicsemelectrostaticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_cluster_scale(s : PhysicsemelectrostaticCluster, f : Double) -> PhysicsemelectrostaticCluster {
   let result = physics_em_electrostatic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_electrostatic_cluster_fill(s : PhysicsemelectrostaticCluster, 
   result
 }
 
-pub fn physics_em_electrostatic_cluster_min(s : PhysicsemelectrostaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_cluster_min(s : PhysicsemelectrostaticCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_cluster_max(s : PhysicsemelectrostaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_cluster_max(s : PhysicsemelectrostaticCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_cluster_to_string(s : PhysicsemelectrostaticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_electrostatic_model_set(s : PhysicsemelectrostaticModel, i : I
   result
 }
 
-pub fn physics_em_electrostatic_model_sum(s : PhysicsemelectrostaticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_model_sum(s : PhysicsemelectrostaticModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_model_mean(s : PhysicsemelectrostaticModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_model_mean(s : PhysicsemelectrostaticModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_model_scale(s : PhysicsemelectrostaticModel, f : Double) -> PhysicsemelectrostaticModel {
   let result = physics_em_electrostatic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_electrostatic_model_fill(s : PhysicsemelectrostaticModel, v : 
   result
 }
 
-pub fn physics_em_electrostatic_model_min(s : PhysicsemelectrostaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_model_min(s : PhysicsemelectrostaticModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_model_max(s : PhysicsemelectrostaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_model_max(s : PhysicsemelectrostaticModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_model_to_string(s : PhysicsemelectrostaticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_electrostatic_layer_set(s : PhysicsemelectrostaticLayer, i : I
   result
 }
 
-pub fn physics_em_electrostatic_layer_sum(s : PhysicsemelectrostaticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_layer_sum(s : PhysicsemelectrostaticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_layer_mean(s : PhysicsemelectrostaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_layer_mean(s : PhysicsemelectrostaticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_layer_scale(s : PhysicsemelectrostaticLayer, f : Double) -> PhysicsemelectrostaticLayer {
   let result = physics_em_electrostatic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_electrostatic_layer_fill(s : PhysicsemelectrostaticLayer, v : 
   result
 }
 
-pub fn physics_em_electrostatic_layer_min(s : PhysicsemelectrostaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_layer_min(s : PhysicsemelectrostaticLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_layer_max(s : PhysicsemelectrostaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_layer_max(s : PhysicsemelectrostaticLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_layer_to_string(s : PhysicsemelectrostaticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_electrostatic_buffer_set(s : PhysicsemelectrostaticBuffer, i :
   result
 }
 
-pub fn physics_em_electrostatic_buffer_sum(s : PhysicsemelectrostaticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_buffer_sum(s : PhysicsemelectrostaticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_buffer_mean(s : PhysicsemelectrostaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_buffer_mean(s : PhysicsemelectrostaticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_buffer_scale(s : PhysicsemelectrostaticBuffer, f : Double) -> PhysicsemelectrostaticBuffer {
   let result = physics_em_electrostatic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_electrostatic_buffer_fill(s : PhysicsemelectrostaticBuffer, v 
   result
 }
 
-pub fn physics_em_electrostatic_buffer_min(s : PhysicsemelectrostaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_buffer_min(s : PhysicsemelectrostaticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_buffer_max(s : PhysicsemelectrostaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_buffer_max(s : PhysicsemelectrostaticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_buffer_to_string(s : PhysicsemelectrostaticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_electrostatic_cursor_set(s : PhysicsemelectrostaticCursor, i :
   result
 }
 
-pub fn physics_em_electrostatic_cursor_sum(s : PhysicsemelectrostaticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_cursor_sum(s : PhysicsemelectrostaticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_cursor_mean(s : PhysicsemelectrostaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_cursor_mean(s : PhysicsemelectrostaticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_cursor_scale(s : PhysicsemelectrostaticCursor, f : Double) -> PhysicsemelectrostaticCursor {
   let result = physics_em_electrostatic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_electrostatic_cursor_fill(s : PhysicsemelectrostaticCursor, v 
   result
 }
 
-pub fn physics_em_electrostatic_cursor_min(s : PhysicsemelectrostaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_cursor_min(s : PhysicsemelectrostaticCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_cursor_max(s : PhysicsemelectrostaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_cursor_max(s : PhysicsemelectrostaticCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_cursor_to_string(s : PhysicsemelectrostaticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_electrostatic_view_set(s : PhysicsemelectrostaticView, i : Int
   result
 }
 
-pub fn physics_em_electrostatic_view_sum(s : PhysicsemelectrostaticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_view_sum(s : PhysicsemelectrostaticView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_view_mean(s : PhysicsemelectrostaticView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_view_mean(s : PhysicsemelectrostaticView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_view_scale(s : PhysicsemelectrostaticView, f : Double) -> PhysicsemelectrostaticView {
   let result = physics_em_electrostatic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_electrostatic_view_fill(s : PhysicsemelectrostaticView, v : Do
   result
 }
 
-pub fn physics_em_electrostatic_view_min(s : PhysicsemelectrostaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_view_min(s : PhysicsemelectrostaticView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_view_max(s : PhysicsemelectrostaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_view_max(s : PhysicsemelectrostaticView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_view_to_string(s : PhysicsemelectrostaticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_electrostatic_range_set(s : PhysicsemelectrostaticRange, i : I
   result
 }
 
-pub fn physics_em_electrostatic_range_sum(s : PhysicsemelectrostaticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_range_sum(s : PhysicsemelectrostaticRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_range_mean(s : PhysicsemelectrostaticRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_range_mean(s : PhysicsemelectrostaticRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_range_scale(s : PhysicsemelectrostaticRange, f : Double) -> PhysicsemelectrostaticRange {
   let result = physics_em_electrostatic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_electrostatic_range_fill(s : PhysicsemelectrostaticRange, v : 
   result
 }
 
-pub fn physics_em_electrostatic_range_min(s : PhysicsemelectrostaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_range_min(s : PhysicsemelectrostaticRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_range_max(s : PhysicsemelectrostaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_range_max(s : PhysicsemelectrostaticRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_range_to_string(s : PhysicsemelectrostaticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_electrostatic_slice_set(s : PhysicsemelectrostaticSlice, i : I
   result
 }
 
-pub fn physics_em_electrostatic_slice_sum(s : PhysicsemelectrostaticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_electrostatic_slice_sum(s : PhysicsemelectrostaticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_electrostatic_slice_mean(s : PhysicsemelectrostaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_electrostatic_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_electrostatic_slice_mean(s : PhysicsemelectrostaticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_electrostatic_slice_scale(s : PhysicsemelectrostaticSlice, f : Double) -> PhysicsemelectrostaticSlice {
   let result = physics_em_electrostatic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_electrostatic_slice_fill(s : PhysicsemelectrostaticSlice, v : 
   result
 }
 
-pub fn physics_em_electrostatic_slice_min(s : PhysicsemelectrostaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_slice_min(s : PhysicsemelectrostaticSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_electrostatic_slice_max(s : PhysicsemelectrostaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_electrostatic_slice_max(s : PhysicsemelectrostaticSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_electrostatic_slice_to_string(s : PhysicsemelectrostaticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

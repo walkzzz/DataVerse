@@ -88,11 +88,7 @@ pub fn signal_filter_fir_make_series(vals : Array[Double], name : String) -> Sig
 
 pub fn signal_filter_fir_series_len(s : SignalfilterfirSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_fir_series_sum(s : SignalfilterfirSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_fir_series_sum(s : SignalfilterfirSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_fir_series_mean(s : SignalfilterfirSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_fir_frame_set(s : SignalfilterfirFrame, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_fir_frame_sum(s : SignalfilterfirFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_frame_sum(s : SignalfilterfirFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_frame_mean(s : SignalfilterfirFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_frame_mean(s : SignalfilterfirFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_frame_scale(s : SignalfilterfirFrame, f : Double) -> SignalfilterfirFrame {
   let result = signal_filter_fir_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_fir_frame_fill(s : SignalfilterfirFrame, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_fir_frame_min(s : SignalfilterfirFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_frame_min(s : SignalfilterfirFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_frame_max(s : SignalfilterfirFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_frame_max(s : SignalfilterfirFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_frame_to_string(s : SignalfilterfirFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_fir_table_set(s : SignalfilterfirTable, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_fir_table_sum(s : SignalfilterfirTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_table_sum(s : SignalfilterfirTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_table_mean(s : SignalfilterfirTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_table_mean(s : SignalfilterfirTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_table_scale(s : SignalfilterfirTable, f : Double) -> SignalfilterfirTable {
   let result = signal_filter_fir_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_fir_table_fill(s : SignalfilterfirTable, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_fir_table_min(s : SignalfilterfirTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_table_min(s : SignalfilterfirTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_table_max(s : SignalfilterfirTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_table_max(s : SignalfilterfirTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_table_to_string(s : SignalfilterfirTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_fir_graphn_set(s : SignalfilterfirGraphN, i : Int, v : Doub
   result
 }
 
-pub fn signal_filter_fir_graphn_sum(s : SignalfilterfirGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_graphn_sum(s : SignalfilterfirGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_graphn_mean(s : SignalfilterfirGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_graphn_mean(s : SignalfilterfirGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_graphn_scale(s : SignalfilterfirGraphN, f : Double) -> SignalfilterfirGraphN {
   let result = signal_filter_fir_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_fir_graphn_fill(s : SignalfilterfirGraphN, v : Double) -> S
   result
 }
 
-pub fn signal_filter_fir_graphn_min(s : SignalfilterfirGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_graphn_min(s : SignalfilterfirGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_graphn_max(s : SignalfilterfirGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_graphn_max(s : SignalfilterfirGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_graphn_to_string(s : SignalfilterfirGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_fir_node_set(s : SignalfilterfirNode, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_fir_node_sum(s : SignalfilterfirNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_node_sum(s : SignalfilterfirNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_node_mean(s : SignalfilterfirNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_node_mean(s : SignalfilterfirNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_node_scale(s : SignalfilterfirNode, f : Double) -> SignalfilterfirNode {
   let result = signal_filter_fir_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_fir_node_fill(s : SignalfilterfirNode, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_fir_node_min(s : SignalfilterfirNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_node_min(s : SignalfilterfirNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_node_max(s : SignalfilterfirNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_node_max(s : SignalfilterfirNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_node_to_string(s : SignalfilterfirNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_fir_edge_set(s : SignalfilterfirEdge, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_fir_edge_sum(s : SignalfilterfirEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_edge_sum(s : SignalfilterfirEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_edge_mean(s : SignalfilterfirEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_edge_mean(s : SignalfilterfirEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_edge_scale(s : SignalfilterfirEdge, f : Double) -> SignalfilterfirEdge {
   let result = signal_filter_fir_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_fir_edge_fill(s : SignalfilterfirEdge, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_fir_edge_min(s : SignalfilterfirEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_edge_min(s : SignalfilterfirEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_edge_max(s : SignalfilterfirEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_edge_max(s : SignalfilterfirEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_edge_to_string(s : SignalfilterfirEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_fir_path_set(s : SignalfilterfirPath, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_fir_path_sum(s : SignalfilterfirPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_path_sum(s : SignalfilterfirPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_path_mean(s : SignalfilterfirPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_path_mean(s : SignalfilterfirPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_path_scale(s : SignalfilterfirPath, f : Double) -> SignalfilterfirPath {
   let result = signal_filter_fir_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_fir_path_fill(s : SignalfilterfirPath, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_fir_path_min(s : SignalfilterfirPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_path_min(s : SignalfilterfirPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_path_max(s : SignalfilterfirPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_path_max(s : SignalfilterfirPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_path_to_string(s : SignalfilterfirPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_fir_cluster_set(s : SignalfilterfirCluster, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_fir_cluster_sum(s : SignalfilterfirCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_cluster_sum(s : SignalfilterfirCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_cluster_mean(s : SignalfilterfirCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_cluster_mean(s : SignalfilterfirCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_cluster_scale(s : SignalfilterfirCluster, f : Double) -> SignalfilterfirCluster {
   let result = signal_filter_fir_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_fir_cluster_fill(s : SignalfilterfirCluster, v : Double) ->
   result
 }
 
-pub fn signal_filter_fir_cluster_min(s : SignalfilterfirCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_cluster_min(s : SignalfilterfirCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_cluster_max(s : SignalfilterfirCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_cluster_max(s : SignalfilterfirCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_cluster_to_string(s : SignalfilterfirCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_fir_model_set(s : SignalfilterfirModel, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_fir_model_sum(s : SignalfilterfirModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_model_sum(s : SignalfilterfirModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_model_mean(s : SignalfilterfirModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_model_mean(s : SignalfilterfirModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_model_scale(s : SignalfilterfirModel, f : Double) -> SignalfilterfirModel {
   let result = signal_filter_fir_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_fir_model_fill(s : SignalfilterfirModel, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_fir_model_min(s : SignalfilterfirModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_model_min(s : SignalfilterfirModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_model_max(s : SignalfilterfirModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_model_max(s : SignalfilterfirModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_model_to_string(s : SignalfilterfirModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_fir_layer_set(s : SignalfilterfirLayer, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_fir_layer_sum(s : SignalfilterfirLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_layer_sum(s : SignalfilterfirLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_layer_mean(s : SignalfilterfirLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_layer_mean(s : SignalfilterfirLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_layer_scale(s : SignalfilterfirLayer, f : Double) -> SignalfilterfirLayer {
   let result = signal_filter_fir_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_fir_layer_fill(s : SignalfilterfirLayer, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_fir_layer_min(s : SignalfilterfirLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_layer_min(s : SignalfilterfirLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_layer_max(s : SignalfilterfirLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_layer_max(s : SignalfilterfirLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_layer_to_string(s : SignalfilterfirLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_fir_buffer_set(s : SignalfilterfirBuffer, i : Int, v : Doub
   result
 }
 
-pub fn signal_filter_fir_buffer_sum(s : SignalfilterfirBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_buffer_sum(s : SignalfilterfirBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_buffer_mean(s : SignalfilterfirBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_buffer_mean(s : SignalfilterfirBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_buffer_scale(s : SignalfilterfirBuffer, f : Double) -> SignalfilterfirBuffer {
   let result = signal_filter_fir_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_fir_buffer_fill(s : SignalfilterfirBuffer, v : Double) -> S
   result
 }
 
-pub fn signal_filter_fir_buffer_min(s : SignalfilterfirBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_buffer_min(s : SignalfilterfirBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_buffer_max(s : SignalfilterfirBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_buffer_max(s : SignalfilterfirBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_buffer_to_string(s : SignalfilterfirBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_fir_cursor_set(s : SignalfilterfirCursor, i : Int, v : Doub
   result
 }
 
-pub fn signal_filter_fir_cursor_sum(s : SignalfilterfirCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_cursor_sum(s : SignalfilterfirCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_cursor_mean(s : SignalfilterfirCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_cursor_mean(s : SignalfilterfirCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_cursor_scale(s : SignalfilterfirCursor, f : Double) -> SignalfilterfirCursor {
   let result = signal_filter_fir_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_fir_cursor_fill(s : SignalfilterfirCursor, v : Double) -> S
   result
 }
 
-pub fn signal_filter_fir_cursor_min(s : SignalfilterfirCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_cursor_min(s : SignalfilterfirCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_cursor_max(s : SignalfilterfirCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_cursor_max(s : SignalfilterfirCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_cursor_to_string(s : SignalfilterfirCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_fir_view_set(s : SignalfilterfirView, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_fir_view_sum(s : SignalfilterfirView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_view_sum(s : SignalfilterfirView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_view_mean(s : SignalfilterfirView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_view_mean(s : SignalfilterfirView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_view_scale(s : SignalfilterfirView, f : Double) -> SignalfilterfirView {
   let result = signal_filter_fir_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_fir_view_fill(s : SignalfilterfirView, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_fir_view_min(s : SignalfilterfirView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_view_min(s : SignalfilterfirView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_view_max(s : SignalfilterfirView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_view_max(s : SignalfilterfirView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_view_to_string(s : SignalfilterfirView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_fir_range_set(s : SignalfilterfirRange, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_fir_range_sum(s : SignalfilterfirRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_range_sum(s : SignalfilterfirRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_range_mean(s : SignalfilterfirRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_range_mean(s : SignalfilterfirRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_range_scale(s : SignalfilterfirRange, f : Double) -> SignalfilterfirRange {
   let result = signal_filter_fir_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_fir_range_fill(s : SignalfilterfirRange, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_fir_range_min(s : SignalfilterfirRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_range_min(s : SignalfilterfirRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_range_max(s : SignalfilterfirRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_range_max(s : SignalfilterfirRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_range_to_string(s : SignalfilterfirRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_fir_slice_set(s : SignalfilterfirSlice, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_fir_slice_sum(s : SignalfilterfirSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_fir_slice_sum(s : SignalfilterfirSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_fir_slice_mean(s : SignalfilterfirSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_fir_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_fir_slice_mean(s : SignalfilterfirSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_fir_slice_scale(s : SignalfilterfirSlice, f : Double) -> SignalfilterfirSlice {
   let result = signal_filter_fir_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_fir_slice_fill(s : SignalfilterfirSlice, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_fir_slice_min(s : SignalfilterfirSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_slice_min(s : SignalfilterfirSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_fir_slice_max(s : SignalfilterfirSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_fir_slice_max(s : SignalfilterfirSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_fir_slice_to_string(s : SignalfilterfirSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

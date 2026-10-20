@@ -88,11 +88,7 @@ pub fn math_sparse_matrix_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_sparse_matrix_series_len(s : MathsparsematrixSeries) -> Int { s.vals.length() }
 
-pub fn math_sparse_matrix_series_sum(s : MathsparsematrixSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_sparse_matrix_series_sum(s : MathsparsematrixSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_sparse_matrix_series_mean(s : MathsparsematrixSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_sparse_matrix_frame_set(s : MathsparsematrixFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_sparse_matrix_frame_sum(s : MathsparsematrixFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_frame_sum(s : MathsparsematrixFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_frame_mean(s : MathsparsematrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_frame_mean(s : MathsparsematrixFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_frame_scale(s : MathsparsematrixFrame, f : Double) -> MathsparsematrixFrame {
   let result = math_sparse_matrix_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_sparse_matrix_frame_fill(s : MathsparsematrixFrame, v : Double) -> M
   result
 }
 
-pub fn math_sparse_matrix_frame_min(s : MathsparsematrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_frame_min(s : MathsparsematrixFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_frame_max(s : MathsparsematrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_frame_max(s : MathsparsematrixFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_frame_to_string(s : MathsparsematrixFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_sparse_matrix_table_set(s : MathsparsematrixTable, i : Int, v : Doub
   result
 }
 
-pub fn math_sparse_matrix_table_sum(s : MathsparsematrixTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_table_sum(s : MathsparsematrixTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_table_mean(s : MathsparsematrixTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_table_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_table_mean(s : MathsparsematrixTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_table_scale(s : MathsparsematrixTable, f : Double) -> MathsparsematrixTable {
   let result = math_sparse_matrix_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_sparse_matrix_table_fill(s : MathsparsematrixTable, v : Double) -> M
   result
 }
 
-pub fn math_sparse_matrix_table_min(s : MathsparsematrixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_table_min(s : MathsparsematrixTable) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_table_max(s : MathsparsematrixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_table_max(s : MathsparsematrixTable) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_table_to_string(s : MathsparsematrixTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_sparse_matrix_graphn_set(s : MathsparsematrixGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_sparse_matrix_graphn_sum(s : MathsparsematrixGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_graphn_sum(s : MathsparsematrixGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_graphn_mean(s : MathsparsematrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_graphn_mean(s : MathsparsematrixGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_graphn_scale(s : MathsparsematrixGraphN, f : Double) -> MathsparsematrixGraphN {
   let result = math_sparse_matrix_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_sparse_matrix_graphn_fill(s : MathsparsematrixGraphN, v : Double) ->
   result
 }
 
-pub fn math_sparse_matrix_graphn_min(s : MathsparsematrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_graphn_min(s : MathsparsematrixGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_graphn_max(s : MathsparsematrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_graphn_max(s : MathsparsematrixGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_graphn_to_string(s : MathsparsematrixGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_sparse_matrix_node_set(s : MathsparsematrixNode, i : Int, v : Double
   result
 }
 
-pub fn math_sparse_matrix_node_sum(s : MathsparsematrixNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_node_sum(s : MathsparsematrixNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_node_mean(s : MathsparsematrixNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_node_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_node_mean(s : MathsparsematrixNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_node_scale(s : MathsparsematrixNode, f : Double) -> MathsparsematrixNode {
   let result = math_sparse_matrix_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_sparse_matrix_node_fill(s : MathsparsematrixNode, v : Double) -> Mat
   result
 }
 
-pub fn math_sparse_matrix_node_min(s : MathsparsematrixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_node_min(s : MathsparsematrixNode) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_node_max(s : MathsparsematrixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_node_max(s : MathsparsematrixNode) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_node_to_string(s : MathsparsematrixNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_sparse_matrix_edge_set(s : MathsparsematrixEdge, i : Int, v : Double
   result
 }
 
-pub fn math_sparse_matrix_edge_sum(s : MathsparsematrixEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_edge_sum(s : MathsparsematrixEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_edge_mean(s : MathsparsematrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_edge_mean(s : MathsparsematrixEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_edge_scale(s : MathsparsematrixEdge, f : Double) -> MathsparsematrixEdge {
   let result = math_sparse_matrix_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_sparse_matrix_edge_fill(s : MathsparsematrixEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_sparse_matrix_edge_min(s : MathsparsematrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_edge_min(s : MathsparsematrixEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_edge_max(s : MathsparsematrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_edge_max(s : MathsparsematrixEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_edge_to_string(s : MathsparsematrixEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_sparse_matrix_path_set(s : MathsparsematrixPath, i : Int, v : Double
   result
 }
 
-pub fn math_sparse_matrix_path_sum(s : MathsparsematrixPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_path_sum(s : MathsparsematrixPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_path_mean(s : MathsparsematrixPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_path_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_path_mean(s : MathsparsematrixPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_path_scale(s : MathsparsematrixPath, f : Double) -> MathsparsematrixPath {
   let result = math_sparse_matrix_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_sparse_matrix_path_fill(s : MathsparsematrixPath, v : Double) -> Mat
   result
 }
 
-pub fn math_sparse_matrix_path_min(s : MathsparsematrixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_path_min(s : MathsparsematrixPath) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_path_max(s : MathsparsematrixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_path_max(s : MathsparsematrixPath) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_path_to_string(s : MathsparsematrixPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_sparse_matrix_cluster_set(s : MathsparsematrixCluster, i : Int, v : 
   result
 }
 
-pub fn math_sparse_matrix_cluster_sum(s : MathsparsematrixCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_cluster_sum(s : MathsparsematrixCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_cluster_mean(s : MathsparsematrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_cluster_mean(s : MathsparsematrixCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_cluster_scale(s : MathsparsematrixCluster, f : Double) -> MathsparsematrixCluster {
   let result = math_sparse_matrix_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_sparse_matrix_cluster_fill(s : MathsparsematrixCluster, v : Double) 
   result
 }
 
-pub fn math_sparse_matrix_cluster_min(s : MathsparsematrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_cluster_min(s : MathsparsematrixCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_cluster_max(s : MathsparsematrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_cluster_max(s : MathsparsematrixCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_cluster_to_string(s : MathsparsematrixCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_sparse_matrix_model_set(s : MathsparsematrixModel, i : Int, v : Doub
   result
 }
 
-pub fn math_sparse_matrix_model_sum(s : MathsparsematrixModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_model_sum(s : MathsparsematrixModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_model_mean(s : MathsparsematrixModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_model_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_model_mean(s : MathsparsematrixModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_model_scale(s : MathsparsematrixModel, f : Double) -> MathsparsematrixModel {
   let result = math_sparse_matrix_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_sparse_matrix_model_fill(s : MathsparsematrixModel, v : Double) -> M
   result
 }
 
-pub fn math_sparse_matrix_model_min(s : MathsparsematrixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_model_min(s : MathsparsematrixModel) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_model_max(s : MathsparsematrixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_model_max(s : MathsparsematrixModel) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_model_to_string(s : MathsparsematrixModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_sparse_matrix_layer_set(s : MathsparsematrixLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_sparse_matrix_layer_sum(s : MathsparsematrixLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_layer_sum(s : MathsparsematrixLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_layer_mean(s : MathsparsematrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_layer_mean(s : MathsparsematrixLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_layer_scale(s : MathsparsematrixLayer, f : Double) -> MathsparsematrixLayer {
   let result = math_sparse_matrix_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_sparse_matrix_layer_fill(s : MathsparsematrixLayer, v : Double) -> M
   result
 }
 
-pub fn math_sparse_matrix_layer_min(s : MathsparsematrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_layer_min(s : MathsparsematrixLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_layer_max(s : MathsparsematrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_layer_max(s : MathsparsematrixLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_layer_to_string(s : MathsparsematrixLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_sparse_matrix_buffer_set(s : MathsparsematrixBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_sparse_matrix_buffer_sum(s : MathsparsematrixBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_buffer_sum(s : MathsparsematrixBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_buffer_mean(s : MathsparsematrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_buffer_mean(s : MathsparsematrixBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_buffer_scale(s : MathsparsematrixBuffer, f : Double) -> MathsparsematrixBuffer {
   let result = math_sparse_matrix_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_sparse_matrix_buffer_fill(s : MathsparsematrixBuffer, v : Double) ->
   result
 }
 
-pub fn math_sparse_matrix_buffer_min(s : MathsparsematrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_buffer_min(s : MathsparsematrixBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_buffer_max(s : MathsparsematrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_buffer_max(s : MathsparsematrixBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_buffer_to_string(s : MathsparsematrixBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_sparse_matrix_cursor_set(s : MathsparsematrixCursor, i : Int, v : Do
   result
 }
 
-pub fn math_sparse_matrix_cursor_sum(s : MathsparsematrixCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_cursor_sum(s : MathsparsematrixCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_cursor_mean(s : MathsparsematrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_cursor_mean(s : MathsparsematrixCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_cursor_scale(s : MathsparsematrixCursor, f : Double) -> MathsparsematrixCursor {
   let result = math_sparse_matrix_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_sparse_matrix_cursor_fill(s : MathsparsematrixCursor, v : Double) ->
   result
 }
 
-pub fn math_sparse_matrix_cursor_min(s : MathsparsematrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_cursor_min(s : MathsparsematrixCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_cursor_max(s : MathsparsematrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_cursor_max(s : MathsparsematrixCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_cursor_to_string(s : MathsparsematrixCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_sparse_matrix_view_set(s : MathsparsematrixView, i : Int, v : Double
   result
 }
 
-pub fn math_sparse_matrix_view_sum(s : MathsparsematrixView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_view_sum(s : MathsparsematrixView) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_view_mean(s : MathsparsematrixView) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_view_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_view_mean(s : MathsparsematrixView) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_view_scale(s : MathsparsematrixView, f : Double) -> MathsparsematrixView {
   let result = math_sparse_matrix_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_sparse_matrix_view_fill(s : MathsparsematrixView, v : Double) -> Mat
   result
 }
 
-pub fn math_sparse_matrix_view_min(s : MathsparsematrixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_view_min(s : MathsparsematrixView) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_view_max(s : MathsparsematrixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_view_max(s : MathsparsematrixView) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_view_to_string(s : MathsparsematrixView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_sparse_matrix_range_set(s : MathsparsematrixRange, i : Int, v : Doub
   result
 }
 
-pub fn math_sparse_matrix_range_sum(s : MathsparsematrixRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_range_sum(s : MathsparsematrixRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_range_mean(s : MathsparsematrixRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_range_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_range_mean(s : MathsparsematrixRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_range_scale(s : MathsparsematrixRange, f : Double) -> MathsparsematrixRange {
   let result = math_sparse_matrix_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_sparse_matrix_range_fill(s : MathsparsematrixRange, v : Double) -> M
   result
 }
 
-pub fn math_sparse_matrix_range_min(s : MathsparsematrixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_range_min(s : MathsparsematrixRange) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_range_max(s : MathsparsematrixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_range_max(s : MathsparsematrixRange) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_range_to_string(s : MathsparsematrixRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_sparse_matrix_slice_set(s : MathsparsematrixSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_sparse_matrix_slice_sum(s : MathsparsematrixSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_sparse_matrix_slice_sum(s : MathsparsematrixSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_sparse_matrix_slice_mean(s : MathsparsematrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_sparse_matrix_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_sparse_matrix_slice_mean(s : MathsparsematrixSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_sparse_matrix_slice_scale(s : MathsparsematrixSlice, f : Double) -> MathsparsematrixSlice {
   let result = math_sparse_matrix_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_sparse_matrix_slice_fill(s : MathsparsematrixSlice, v : Double) -> M
   result
 }
 
-pub fn math_sparse_matrix_slice_min(s : MathsparsematrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_slice_min(s : MathsparsematrixSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_sparse_matrix_slice_max(s : MathsparsematrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_sparse_matrix_slice_max(s : MathsparsematrixSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_sparse_matrix_slice_to_string(s : MathsparsematrixSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

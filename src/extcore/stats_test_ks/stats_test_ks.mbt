@@ -88,11 +88,7 @@ pub fn stats_test_ks_make_series(vals : Array[Double], name : String) -> Statste
 
 pub fn stats_test_ks_series_len(s : StatstestksSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_ks_series_sum(s : StatstestksSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_ks_series_sum(s : StatstestksSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_ks_series_mean(s : StatstestksSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_ks_frame_set(s : StatstestksFrame, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_ks_frame_sum(s : StatstestksFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_frame_sum(s : StatstestksFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_frame_mean(s : StatstestksFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_frame_mean(s : StatstestksFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_frame_scale(s : StatstestksFrame, f : Double) -> StatstestksFrame {
   let result = stats_test_ks_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_ks_frame_fill(s : StatstestksFrame, v : Double) -> Statstestks
   result
 }
 
-pub fn stats_test_ks_frame_min(s : StatstestksFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_frame_min(s : StatstestksFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_frame_max(s : StatstestksFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_frame_max(s : StatstestksFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_frame_to_string(s : StatstestksFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_ks_table_set(s : StatstestksTable, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_ks_table_sum(s : StatstestksTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_table_sum(s : StatstestksTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_table_mean(s : StatstestksTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_table_mean(s : StatstestksTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_table_scale(s : StatstestksTable, f : Double) -> StatstestksTable {
   let result = stats_test_ks_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_ks_table_fill(s : StatstestksTable, v : Double) -> Statstestks
   result
 }
 
-pub fn stats_test_ks_table_min(s : StatstestksTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_table_min(s : StatstestksTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_table_max(s : StatstestksTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_table_max(s : StatstestksTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_table_to_string(s : StatstestksTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_ks_graphn_set(s : StatstestksGraphN, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_test_ks_graphn_sum(s : StatstestksGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_graphn_sum(s : StatstestksGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_graphn_mean(s : StatstestksGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_graphn_mean(s : StatstestksGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_graphn_scale(s : StatstestksGraphN, f : Double) -> StatstestksGraphN {
   let result = stats_test_ks_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_ks_graphn_fill(s : StatstestksGraphN, v : Double) -> Statstest
   result
 }
 
-pub fn stats_test_ks_graphn_min(s : StatstestksGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_graphn_min(s : StatstestksGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_graphn_max(s : StatstestksGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_graphn_max(s : StatstestksGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_graphn_to_string(s : StatstestksGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_ks_node_set(s : StatstestksNode, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_ks_node_sum(s : StatstestksNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_node_sum(s : StatstestksNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_node_mean(s : StatstestksNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_node_mean(s : StatstestksNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_node_scale(s : StatstestksNode, f : Double) -> StatstestksNode {
   let result = stats_test_ks_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_ks_node_fill(s : StatstestksNode, v : Double) -> StatstestksNo
   result
 }
 
-pub fn stats_test_ks_node_min(s : StatstestksNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_node_min(s : StatstestksNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_node_max(s : StatstestksNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_node_max(s : StatstestksNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_node_to_string(s : StatstestksNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_ks_edge_set(s : StatstestksEdge, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_ks_edge_sum(s : StatstestksEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_edge_sum(s : StatstestksEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_edge_mean(s : StatstestksEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_edge_mean(s : StatstestksEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_edge_scale(s : StatstestksEdge, f : Double) -> StatstestksEdge {
   let result = stats_test_ks_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_ks_edge_fill(s : StatstestksEdge, v : Double) -> StatstestksEd
   result
 }
 
-pub fn stats_test_ks_edge_min(s : StatstestksEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_edge_min(s : StatstestksEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_edge_max(s : StatstestksEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_edge_max(s : StatstestksEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_edge_to_string(s : StatstestksEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_ks_path_set(s : StatstestksPath, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_ks_path_sum(s : StatstestksPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_path_sum(s : StatstestksPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_path_mean(s : StatstestksPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_path_mean(s : StatstestksPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_path_scale(s : StatstestksPath, f : Double) -> StatstestksPath {
   let result = stats_test_ks_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_ks_path_fill(s : StatstestksPath, v : Double) -> StatstestksPa
   result
 }
 
-pub fn stats_test_ks_path_min(s : StatstestksPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_path_min(s : StatstestksPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_path_max(s : StatstestksPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_path_max(s : StatstestksPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_path_to_string(s : StatstestksPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_ks_cluster_set(s : StatstestksCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_test_ks_cluster_sum(s : StatstestksCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_cluster_sum(s : StatstestksCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_cluster_mean(s : StatstestksCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_cluster_mean(s : StatstestksCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_cluster_scale(s : StatstestksCluster, f : Double) -> StatstestksCluster {
   let result = stats_test_ks_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_ks_cluster_fill(s : StatstestksCluster, v : Double) -> Statste
   result
 }
 
-pub fn stats_test_ks_cluster_min(s : StatstestksCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_cluster_min(s : StatstestksCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_cluster_max(s : StatstestksCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_cluster_max(s : StatstestksCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_cluster_to_string(s : StatstestksCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_ks_model_set(s : StatstestksModel, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_ks_model_sum(s : StatstestksModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_model_sum(s : StatstestksModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_model_mean(s : StatstestksModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_model_mean(s : StatstestksModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_model_scale(s : StatstestksModel, f : Double) -> StatstestksModel {
   let result = stats_test_ks_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_ks_model_fill(s : StatstestksModel, v : Double) -> Statstestks
   result
 }
 
-pub fn stats_test_ks_model_min(s : StatstestksModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_model_min(s : StatstestksModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_model_max(s : StatstestksModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_model_max(s : StatstestksModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_model_to_string(s : StatstestksModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_ks_layer_set(s : StatstestksLayer, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_ks_layer_sum(s : StatstestksLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_layer_sum(s : StatstestksLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_layer_mean(s : StatstestksLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_layer_mean(s : StatstestksLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_layer_scale(s : StatstestksLayer, f : Double) -> StatstestksLayer {
   let result = stats_test_ks_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_ks_layer_fill(s : StatstestksLayer, v : Double) -> Statstestks
   result
 }
 
-pub fn stats_test_ks_layer_min(s : StatstestksLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_layer_min(s : StatstestksLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_layer_max(s : StatstestksLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_layer_max(s : StatstestksLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_layer_to_string(s : StatstestksLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_ks_buffer_set(s : StatstestksBuffer, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_test_ks_buffer_sum(s : StatstestksBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_buffer_sum(s : StatstestksBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_buffer_mean(s : StatstestksBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_buffer_mean(s : StatstestksBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_buffer_scale(s : StatstestksBuffer, f : Double) -> StatstestksBuffer {
   let result = stats_test_ks_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_ks_buffer_fill(s : StatstestksBuffer, v : Double) -> Statstest
   result
 }
 
-pub fn stats_test_ks_buffer_min(s : StatstestksBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_buffer_min(s : StatstestksBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_buffer_max(s : StatstestksBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_buffer_max(s : StatstestksBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_buffer_to_string(s : StatstestksBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_ks_cursor_set(s : StatstestksCursor, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_test_ks_cursor_sum(s : StatstestksCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_cursor_sum(s : StatstestksCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_cursor_mean(s : StatstestksCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_cursor_mean(s : StatstestksCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_cursor_scale(s : StatstestksCursor, f : Double) -> StatstestksCursor {
   let result = stats_test_ks_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_ks_cursor_fill(s : StatstestksCursor, v : Double) -> Statstest
   result
 }
 
-pub fn stats_test_ks_cursor_min(s : StatstestksCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_cursor_min(s : StatstestksCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_cursor_max(s : StatstestksCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_cursor_max(s : StatstestksCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_cursor_to_string(s : StatstestksCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_ks_view_set(s : StatstestksView, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_ks_view_sum(s : StatstestksView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_view_sum(s : StatstestksView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_view_mean(s : StatstestksView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_view_mean(s : StatstestksView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_view_scale(s : StatstestksView, f : Double) -> StatstestksView {
   let result = stats_test_ks_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_ks_view_fill(s : StatstestksView, v : Double) -> StatstestksVi
   result
 }
 
-pub fn stats_test_ks_view_min(s : StatstestksView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_view_min(s : StatstestksView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_view_max(s : StatstestksView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_view_max(s : StatstestksView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_view_to_string(s : StatstestksView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_ks_range_set(s : StatstestksRange, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_ks_range_sum(s : StatstestksRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_range_sum(s : StatstestksRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_range_mean(s : StatstestksRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_range_mean(s : StatstestksRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_range_scale(s : StatstestksRange, f : Double) -> StatstestksRange {
   let result = stats_test_ks_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_ks_range_fill(s : StatstestksRange, v : Double) -> Statstestks
   result
 }
 
-pub fn stats_test_ks_range_min(s : StatstestksRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_range_min(s : StatstestksRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_range_max(s : StatstestksRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_range_max(s : StatstestksRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_range_to_string(s : StatstestksRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_ks_slice_set(s : StatstestksSlice, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_ks_slice_sum(s : StatstestksSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_ks_slice_sum(s : StatstestksSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_ks_slice_mean(s : StatstestksSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_ks_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_ks_slice_mean(s : StatstestksSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_ks_slice_scale(s : StatstestksSlice, f : Double) -> StatstestksSlice {
   let result = stats_test_ks_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_ks_slice_fill(s : StatstestksSlice, v : Double) -> Statstestks
   result
 }
 
-pub fn stats_test_ks_slice_min(s : StatstestksSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_slice_min(s : StatstestksSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_ks_slice_max(s : StatstestksSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_ks_slice_max(s : StatstestksSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_ks_slice_to_string(s : StatstestksSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

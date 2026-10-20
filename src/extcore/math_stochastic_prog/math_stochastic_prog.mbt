@@ -88,11 +88,7 @@ pub fn math_stochastic_prog_make_series(vals : Array[Double], name : String) -> 
 
 pub fn math_stochastic_prog_series_len(s : MathstochasticprogSeries) -> Int { s.vals.length() }
 
-pub fn math_stochastic_prog_series_sum(s : MathstochasticprogSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_stochastic_prog_series_sum(s : MathstochasticprogSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_stochastic_prog_series_mean(s : MathstochasticprogSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_stochastic_prog_frame_set(s : MathstochasticprogFrame, i : Int, v : 
   result
 }
 
-pub fn math_stochastic_prog_frame_sum(s : MathstochasticprogFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_frame_sum(s : MathstochasticprogFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_frame_mean(s : MathstochasticprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_frame_mean(s : MathstochasticprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_frame_scale(s : MathstochasticprogFrame, f : Double) -> MathstochasticprogFrame {
   let result = math_stochastic_prog_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_stochastic_prog_frame_fill(s : MathstochasticprogFrame, v : Double) 
   result
 }
 
-pub fn math_stochastic_prog_frame_min(s : MathstochasticprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_frame_min(s : MathstochasticprogFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_frame_max(s : MathstochasticprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_frame_max(s : MathstochasticprogFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_frame_to_string(s : MathstochasticprogFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_stochastic_prog_table_set(s : MathstochasticprogTable, i : Int, v : 
   result
 }
 
-pub fn math_stochastic_prog_table_sum(s : MathstochasticprogTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_table_sum(s : MathstochasticprogTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_table_mean(s : MathstochasticprogTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_table_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_table_mean(s : MathstochasticprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_table_scale(s : MathstochasticprogTable, f : Double) -> MathstochasticprogTable {
   let result = math_stochastic_prog_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_stochastic_prog_table_fill(s : MathstochasticprogTable, v : Double) 
   result
 }
 
-pub fn math_stochastic_prog_table_min(s : MathstochasticprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_table_min(s : MathstochasticprogTable) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_table_max(s : MathstochasticprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_table_max(s : MathstochasticprogTable) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_table_to_string(s : MathstochasticprogTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_stochastic_prog_graphn_set(s : MathstochasticprogGraphN, i : Int, v 
   result
 }
 
-pub fn math_stochastic_prog_graphn_sum(s : MathstochasticprogGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_graphn_sum(s : MathstochasticprogGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_graphn_mean(s : MathstochasticprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_graphn_mean(s : MathstochasticprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_graphn_scale(s : MathstochasticprogGraphN, f : Double) -> MathstochasticprogGraphN {
   let result = math_stochastic_prog_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_stochastic_prog_graphn_fill(s : MathstochasticprogGraphN, v : Double
   result
 }
 
-pub fn math_stochastic_prog_graphn_min(s : MathstochasticprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_graphn_min(s : MathstochasticprogGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_graphn_max(s : MathstochasticprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_graphn_max(s : MathstochasticprogGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_graphn_to_string(s : MathstochasticprogGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_stochastic_prog_node_set(s : MathstochasticprogNode, i : Int, v : Do
   result
 }
 
-pub fn math_stochastic_prog_node_sum(s : MathstochasticprogNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_node_sum(s : MathstochasticprogNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_node_mean(s : MathstochasticprogNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_node_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_node_mean(s : MathstochasticprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_node_scale(s : MathstochasticprogNode, f : Double) -> MathstochasticprogNode {
   let result = math_stochastic_prog_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_stochastic_prog_node_fill(s : MathstochasticprogNode, v : Double) ->
   result
 }
 
-pub fn math_stochastic_prog_node_min(s : MathstochasticprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_node_min(s : MathstochasticprogNode) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_node_max(s : MathstochasticprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_node_max(s : MathstochasticprogNode) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_node_to_string(s : MathstochasticprogNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_stochastic_prog_edge_set(s : MathstochasticprogEdge, i : Int, v : Do
   result
 }
 
-pub fn math_stochastic_prog_edge_sum(s : MathstochasticprogEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_edge_sum(s : MathstochasticprogEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_edge_mean(s : MathstochasticprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_edge_mean(s : MathstochasticprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_edge_scale(s : MathstochasticprogEdge, f : Double) -> MathstochasticprogEdge {
   let result = math_stochastic_prog_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_stochastic_prog_edge_fill(s : MathstochasticprogEdge, v : Double) ->
   result
 }
 
-pub fn math_stochastic_prog_edge_min(s : MathstochasticprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_edge_min(s : MathstochasticprogEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_edge_max(s : MathstochasticprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_edge_max(s : MathstochasticprogEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_edge_to_string(s : MathstochasticprogEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_stochastic_prog_path_set(s : MathstochasticprogPath, i : Int, v : Do
   result
 }
 
-pub fn math_stochastic_prog_path_sum(s : MathstochasticprogPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_path_sum(s : MathstochasticprogPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_path_mean(s : MathstochasticprogPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_path_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_path_mean(s : MathstochasticprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_path_scale(s : MathstochasticprogPath, f : Double) -> MathstochasticprogPath {
   let result = math_stochastic_prog_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_stochastic_prog_path_fill(s : MathstochasticprogPath, v : Double) ->
   result
 }
 
-pub fn math_stochastic_prog_path_min(s : MathstochasticprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_path_min(s : MathstochasticprogPath) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_path_max(s : MathstochasticprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_path_max(s : MathstochasticprogPath) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_path_to_string(s : MathstochasticprogPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_stochastic_prog_cluster_set(s : MathstochasticprogCluster, i : Int, 
   result
 }
 
-pub fn math_stochastic_prog_cluster_sum(s : MathstochasticprogCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_cluster_sum(s : MathstochasticprogCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_cluster_mean(s : MathstochasticprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_cluster_mean(s : MathstochasticprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_cluster_scale(s : MathstochasticprogCluster, f : Double) -> MathstochasticprogCluster {
   let result = math_stochastic_prog_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_stochastic_prog_cluster_fill(s : MathstochasticprogCluster, v : Doub
   result
 }
 
-pub fn math_stochastic_prog_cluster_min(s : MathstochasticprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_cluster_min(s : MathstochasticprogCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_cluster_max(s : MathstochasticprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_cluster_max(s : MathstochasticprogCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_cluster_to_string(s : MathstochasticprogCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_stochastic_prog_model_set(s : MathstochasticprogModel, i : Int, v : 
   result
 }
 
-pub fn math_stochastic_prog_model_sum(s : MathstochasticprogModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_model_sum(s : MathstochasticprogModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_model_mean(s : MathstochasticprogModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_model_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_model_mean(s : MathstochasticprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_model_scale(s : MathstochasticprogModel, f : Double) -> MathstochasticprogModel {
   let result = math_stochastic_prog_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_stochastic_prog_model_fill(s : MathstochasticprogModel, v : Double) 
   result
 }
 
-pub fn math_stochastic_prog_model_min(s : MathstochasticprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_model_min(s : MathstochasticprogModel) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_model_max(s : MathstochasticprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_model_max(s : MathstochasticprogModel) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_model_to_string(s : MathstochasticprogModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_stochastic_prog_layer_set(s : MathstochasticprogLayer, i : Int, v : 
   result
 }
 
-pub fn math_stochastic_prog_layer_sum(s : MathstochasticprogLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_layer_sum(s : MathstochasticprogLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_layer_mean(s : MathstochasticprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_layer_mean(s : MathstochasticprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_layer_scale(s : MathstochasticprogLayer, f : Double) -> MathstochasticprogLayer {
   let result = math_stochastic_prog_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_stochastic_prog_layer_fill(s : MathstochasticprogLayer, v : Double) 
   result
 }
 
-pub fn math_stochastic_prog_layer_min(s : MathstochasticprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_layer_min(s : MathstochasticprogLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_layer_max(s : MathstochasticprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_layer_max(s : MathstochasticprogLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_layer_to_string(s : MathstochasticprogLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_stochastic_prog_buffer_set(s : MathstochasticprogBuffer, i : Int, v 
   result
 }
 
-pub fn math_stochastic_prog_buffer_sum(s : MathstochasticprogBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_buffer_sum(s : MathstochasticprogBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_buffer_mean(s : MathstochasticprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_buffer_mean(s : MathstochasticprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_buffer_scale(s : MathstochasticprogBuffer, f : Double) -> MathstochasticprogBuffer {
   let result = math_stochastic_prog_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_stochastic_prog_buffer_fill(s : MathstochasticprogBuffer, v : Double
   result
 }
 
-pub fn math_stochastic_prog_buffer_min(s : MathstochasticprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_buffer_min(s : MathstochasticprogBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_buffer_max(s : MathstochasticprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_buffer_max(s : MathstochasticprogBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_buffer_to_string(s : MathstochasticprogBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_stochastic_prog_cursor_set(s : MathstochasticprogCursor, i : Int, v 
   result
 }
 
-pub fn math_stochastic_prog_cursor_sum(s : MathstochasticprogCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_cursor_sum(s : MathstochasticprogCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_cursor_mean(s : MathstochasticprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_cursor_mean(s : MathstochasticprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_cursor_scale(s : MathstochasticprogCursor, f : Double) -> MathstochasticprogCursor {
   let result = math_stochastic_prog_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_stochastic_prog_cursor_fill(s : MathstochasticprogCursor, v : Double
   result
 }
 
-pub fn math_stochastic_prog_cursor_min(s : MathstochasticprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_cursor_min(s : MathstochasticprogCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_cursor_max(s : MathstochasticprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_cursor_max(s : MathstochasticprogCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_cursor_to_string(s : MathstochasticprogCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_stochastic_prog_view_set(s : MathstochasticprogView, i : Int, v : Do
   result
 }
 
-pub fn math_stochastic_prog_view_sum(s : MathstochasticprogView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_view_sum(s : MathstochasticprogView) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_view_mean(s : MathstochasticprogView) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_view_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_view_mean(s : MathstochasticprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_view_scale(s : MathstochasticprogView, f : Double) -> MathstochasticprogView {
   let result = math_stochastic_prog_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_stochastic_prog_view_fill(s : MathstochasticprogView, v : Double) ->
   result
 }
 
-pub fn math_stochastic_prog_view_min(s : MathstochasticprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_view_min(s : MathstochasticprogView) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_view_max(s : MathstochasticprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_view_max(s : MathstochasticprogView) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_view_to_string(s : MathstochasticprogView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_stochastic_prog_range_set(s : MathstochasticprogRange, i : Int, v : 
   result
 }
 
-pub fn math_stochastic_prog_range_sum(s : MathstochasticprogRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_range_sum(s : MathstochasticprogRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_range_mean(s : MathstochasticprogRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_range_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_range_mean(s : MathstochasticprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_range_scale(s : MathstochasticprogRange, f : Double) -> MathstochasticprogRange {
   let result = math_stochastic_prog_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_stochastic_prog_range_fill(s : MathstochasticprogRange, v : Double) 
   result
 }
 
-pub fn math_stochastic_prog_range_min(s : MathstochasticprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_range_min(s : MathstochasticprogRange) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_range_max(s : MathstochasticprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_range_max(s : MathstochasticprogRange) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_range_to_string(s : MathstochasticprogRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_stochastic_prog_slice_set(s : MathstochasticprogSlice, i : Int, v : 
   result
 }
 
-pub fn math_stochastic_prog_slice_sum(s : MathstochasticprogSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_stochastic_prog_slice_sum(s : MathstochasticprogSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_stochastic_prog_slice_mean(s : MathstochasticprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_stochastic_prog_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_stochastic_prog_slice_mean(s : MathstochasticprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_stochastic_prog_slice_scale(s : MathstochasticprogSlice, f : Double) -> MathstochasticprogSlice {
   let result = math_stochastic_prog_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_stochastic_prog_slice_fill(s : MathstochasticprogSlice, v : Double) 
   result
 }
 
-pub fn math_stochastic_prog_slice_min(s : MathstochasticprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_slice_min(s : MathstochasticprogSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_stochastic_prog_slice_max(s : MathstochasticprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_stochastic_prog_slice_max(s : MathstochasticprogSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_stochastic_prog_slice_to_string(s : MathstochasticprogSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn nlp_embed_glove_make_series(vals : Array[Double], name : String) -> Nlpem
 
 pub fn nlp_embed_glove_series_len(s : NlpembedgloveSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_glove_series_sum(s : NlpembedgloveSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_glove_series_sum(s : NlpembedgloveSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_glove_series_mean(s : NlpembedgloveSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_glove_frame_set(s : NlpembedgloveFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_glove_frame_sum(s : NlpembedgloveFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_frame_sum(s : NlpembedgloveFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_frame_mean(s : NlpembedgloveFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_frame_mean(s : NlpembedgloveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_frame_scale(s : NlpembedgloveFrame, f : Double) -> NlpembedgloveFrame {
   let result = nlp_embed_glove_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_glove_frame_fill(s : NlpembedgloveFrame, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_glove_frame_min(s : NlpembedgloveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_frame_min(s : NlpembedgloveFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_frame_max(s : NlpembedgloveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_frame_max(s : NlpembedgloveFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_frame_to_string(s : NlpembedgloveFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_glove_table_set(s : NlpembedgloveTable, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_glove_table_sum(s : NlpembedgloveTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_table_sum(s : NlpembedgloveTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_table_mean(s : NlpembedgloveTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_table_mean(s : NlpembedgloveTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_table_scale(s : NlpembedgloveTable, f : Double) -> NlpembedgloveTable {
   let result = nlp_embed_glove_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_glove_table_fill(s : NlpembedgloveTable, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_glove_table_min(s : NlpembedgloveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_table_min(s : NlpembedgloveTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_table_max(s : NlpembedgloveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_table_max(s : NlpembedgloveTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_table_to_string(s : NlpembedgloveTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_glove_graphn_set(s : NlpembedgloveGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_glove_graphn_sum(s : NlpembedgloveGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_graphn_sum(s : NlpembedgloveGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_graphn_mean(s : NlpembedgloveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_graphn_mean(s : NlpembedgloveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_graphn_scale(s : NlpembedgloveGraphN, f : Double) -> NlpembedgloveGraphN {
   let result = nlp_embed_glove_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_glove_graphn_fill(s : NlpembedgloveGraphN, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_glove_graphn_min(s : NlpembedgloveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_graphn_min(s : NlpembedgloveGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_graphn_max(s : NlpembedgloveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_graphn_max(s : NlpembedgloveGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_graphn_to_string(s : NlpembedgloveGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_glove_node_set(s : NlpembedgloveNode, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_glove_node_sum(s : NlpembedgloveNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_node_sum(s : NlpembedgloveNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_node_mean(s : NlpembedgloveNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_node_mean(s : NlpembedgloveNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_node_scale(s : NlpembedgloveNode, f : Double) -> NlpembedgloveNode {
   let result = nlp_embed_glove_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_glove_node_fill(s : NlpembedgloveNode, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_glove_node_min(s : NlpembedgloveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_node_min(s : NlpembedgloveNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_node_max(s : NlpembedgloveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_node_max(s : NlpembedgloveNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_node_to_string(s : NlpembedgloveNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_glove_edge_set(s : NlpembedgloveEdge, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_glove_edge_sum(s : NlpembedgloveEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_edge_sum(s : NlpembedgloveEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_edge_mean(s : NlpembedgloveEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_edge_mean(s : NlpembedgloveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_edge_scale(s : NlpembedgloveEdge, f : Double) -> NlpembedgloveEdge {
   let result = nlp_embed_glove_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_glove_edge_fill(s : NlpembedgloveEdge, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_glove_edge_min(s : NlpembedgloveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_edge_min(s : NlpembedgloveEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_edge_max(s : NlpembedgloveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_edge_max(s : NlpembedgloveEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_edge_to_string(s : NlpembedgloveEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_glove_path_set(s : NlpembedglovePath, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_glove_path_sum(s : NlpembedglovePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_path_sum(s : NlpembedglovePath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_path_mean(s : NlpembedglovePath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_path_mean(s : NlpembedglovePath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_path_scale(s : NlpembedglovePath, f : Double) -> NlpembedglovePath {
   let result = nlp_embed_glove_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_glove_path_fill(s : NlpembedglovePath, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_glove_path_min(s : NlpembedglovePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_path_min(s : NlpembedglovePath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_path_max(s : NlpembedglovePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_path_max(s : NlpembedglovePath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_path_to_string(s : NlpembedglovePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_glove_cluster_set(s : NlpembedgloveCluster, i : Int, v : Double
   result
 }
 
-pub fn nlp_embed_glove_cluster_sum(s : NlpembedgloveCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_cluster_sum(s : NlpembedgloveCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_cluster_mean(s : NlpembedgloveCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_cluster_mean(s : NlpembedgloveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_cluster_scale(s : NlpembedgloveCluster, f : Double) -> NlpembedgloveCluster {
   let result = nlp_embed_glove_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_glove_cluster_fill(s : NlpembedgloveCluster, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_glove_cluster_min(s : NlpembedgloveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_cluster_min(s : NlpembedgloveCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_cluster_max(s : NlpembedgloveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_cluster_max(s : NlpembedgloveCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_cluster_to_string(s : NlpembedgloveCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_glove_model_set(s : NlpembedgloveModel, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_glove_model_sum(s : NlpembedgloveModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_model_sum(s : NlpembedgloveModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_model_mean(s : NlpembedgloveModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_model_mean(s : NlpembedgloveModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_model_scale(s : NlpembedgloveModel, f : Double) -> NlpembedgloveModel {
   let result = nlp_embed_glove_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_glove_model_fill(s : NlpembedgloveModel, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_glove_model_min(s : NlpembedgloveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_model_min(s : NlpembedgloveModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_model_max(s : NlpembedgloveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_model_max(s : NlpembedgloveModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_model_to_string(s : NlpembedgloveModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_glove_layer_set(s : NlpembedgloveLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_glove_layer_sum(s : NlpembedgloveLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_layer_sum(s : NlpembedgloveLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_layer_mean(s : NlpembedgloveLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_layer_mean(s : NlpembedgloveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_layer_scale(s : NlpembedgloveLayer, f : Double) -> NlpembedgloveLayer {
   let result = nlp_embed_glove_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_glove_layer_fill(s : NlpembedgloveLayer, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_glove_layer_min(s : NlpembedgloveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_layer_min(s : NlpembedgloveLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_layer_max(s : NlpembedgloveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_layer_max(s : NlpembedgloveLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_layer_to_string(s : NlpembedgloveLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_glove_buffer_set(s : NlpembedgloveBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_glove_buffer_sum(s : NlpembedgloveBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_buffer_sum(s : NlpembedgloveBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_buffer_mean(s : NlpembedgloveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_buffer_mean(s : NlpembedgloveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_buffer_scale(s : NlpembedgloveBuffer, f : Double) -> NlpembedgloveBuffer {
   let result = nlp_embed_glove_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_glove_buffer_fill(s : NlpembedgloveBuffer, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_glove_buffer_min(s : NlpembedgloveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_buffer_min(s : NlpembedgloveBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_buffer_max(s : NlpembedgloveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_buffer_max(s : NlpembedgloveBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_buffer_to_string(s : NlpembedgloveBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_glove_cursor_set(s : NlpembedgloveCursor, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_glove_cursor_sum(s : NlpembedgloveCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_cursor_sum(s : NlpembedgloveCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_cursor_mean(s : NlpembedgloveCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_cursor_mean(s : NlpembedgloveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_cursor_scale(s : NlpembedgloveCursor, f : Double) -> NlpembedgloveCursor {
   let result = nlp_embed_glove_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_glove_cursor_fill(s : NlpembedgloveCursor, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_glove_cursor_min(s : NlpembedgloveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_cursor_min(s : NlpembedgloveCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_cursor_max(s : NlpembedgloveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_cursor_max(s : NlpembedgloveCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_cursor_to_string(s : NlpembedgloveCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_glove_view_set(s : NlpembedgloveView, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_glove_view_sum(s : NlpembedgloveView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_view_sum(s : NlpembedgloveView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_view_mean(s : NlpembedgloveView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_view_mean(s : NlpembedgloveView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_view_scale(s : NlpembedgloveView, f : Double) -> NlpembedgloveView {
   let result = nlp_embed_glove_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_glove_view_fill(s : NlpembedgloveView, v : Double) -> Nlpembedg
   result
 }
 
-pub fn nlp_embed_glove_view_min(s : NlpembedgloveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_view_min(s : NlpembedgloveView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_view_max(s : NlpembedgloveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_view_max(s : NlpembedgloveView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_view_to_string(s : NlpembedgloveView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_glove_range_set(s : NlpembedgloveRange, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_glove_range_sum(s : NlpembedgloveRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_range_sum(s : NlpembedgloveRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_range_mean(s : NlpembedgloveRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_range_mean(s : NlpembedgloveRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_range_scale(s : NlpembedgloveRange, f : Double) -> NlpembedgloveRange {
   let result = nlp_embed_glove_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_glove_range_fill(s : NlpembedgloveRange, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_glove_range_min(s : NlpembedgloveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_range_min(s : NlpembedgloveRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_range_max(s : NlpembedgloveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_range_max(s : NlpembedgloveRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_range_to_string(s : NlpembedgloveRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_glove_slice_set(s : NlpembedgloveSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_glove_slice_sum(s : NlpembedgloveSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_glove_slice_sum(s : NlpembedgloveSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_glove_slice_mean(s : NlpembedgloveSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_glove_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_glove_slice_mean(s : NlpembedgloveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_glove_slice_scale(s : NlpembedgloveSlice, f : Double) -> NlpembedgloveSlice {
   let result = nlp_embed_glove_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_glove_slice_fill(s : NlpembedgloveSlice, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_glove_slice_min(s : NlpembedgloveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_slice_min(s : NlpembedgloveSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_glove_slice_max(s : NlpembedgloveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_glove_slice_max(s : NlpembedgloveSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_glove_slice_to_string(s : NlpembedgloveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_sec_ssl_make_series(vals : Array[Double], name : String) -> Netsecssl
 
 pub fn net_sec_ssl_series_len(s : NetsecsslSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_ssl_series_sum(s : NetsecsslSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_ssl_series_sum(s : NetsecsslSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_ssl_series_mean(s : NetsecsslSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_ssl_frame_set(s : NetsecsslFrame, i : Int, v : Double) -> Netsecs
   result
 }
 
-pub fn net_sec_ssl_frame_sum(s : NetsecsslFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_frame_sum(s : NetsecsslFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_frame_mean(s : NetsecsslFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_frame_mean(s : NetsecsslFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_frame_scale(s : NetsecsslFrame, f : Double) -> NetsecsslFrame {
   let result = net_sec_ssl_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_ssl_frame_fill(s : NetsecsslFrame, v : Double) -> NetsecsslFrame 
   result
 }
 
-pub fn net_sec_ssl_frame_min(s : NetsecsslFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_frame_min(s : NetsecsslFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_frame_max(s : NetsecsslFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_frame_max(s : NetsecsslFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_frame_to_string(s : NetsecsslFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_ssl_table_set(s : NetsecsslTable, i : Int, v : Double) -> Netsecs
   result
 }
 
-pub fn net_sec_ssl_table_sum(s : NetsecsslTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_table_sum(s : NetsecsslTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_table_mean(s : NetsecsslTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_table_mean(s : NetsecsslTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_table_scale(s : NetsecsslTable, f : Double) -> NetsecsslTable {
   let result = net_sec_ssl_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_ssl_table_fill(s : NetsecsslTable, v : Double) -> NetsecsslTable 
   result
 }
 
-pub fn net_sec_ssl_table_min(s : NetsecsslTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_table_min(s : NetsecsslTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_table_max(s : NetsecsslTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_table_max(s : NetsecsslTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_table_to_string(s : NetsecsslTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_ssl_graphn_set(s : NetsecsslGraphN, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ssl_graphn_sum(s : NetsecsslGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_graphn_sum(s : NetsecsslGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_graphn_mean(s : NetsecsslGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_graphn_mean(s : NetsecsslGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_graphn_scale(s : NetsecsslGraphN, f : Double) -> NetsecsslGraphN {
   let result = net_sec_ssl_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_ssl_graphn_fill(s : NetsecsslGraphN, v : Double) -> NetsecsslGrap
   result
 }
 
-pub fn net_sec_ssl_graphn_min(s : NetsecsslGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_graphn_min(s : NetsecsslGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_graphn_max(s : NetsecsslGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_graphn_max(s : NetsecsslGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_graphn_to_string(s : NetsecsslGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_ssl_node_set(s : NetsecsslNode, i : Int, v : Double) -> Netsecssl
   result
 }
 
-pub fn net_sec_ssl_node_sum(s : NetsecsslNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_node_sum(s : NetsecsslNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_node_mean(s : NetsecsslNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_node_mean(s : NetsecsslNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_node_scale(s : NetsecsslNode, f : Double) -> NetsecsslNode {
   let result = net_sec_ssl_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_ssl_node_fill(s : NetsecsslNode, v : Double) -> NetsecsslNode {
   result
 }
 
-pub fn net_sec_ssl_node_min(s : NetsecsslNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_node_min(s : NetsecsslNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_node_max(s : NetsecsslNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_node_max(s : NetsecsslNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_node_to_string(s : NetsecsslNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_ssl_edge_set(s : NetsecsslEdge, i : Int, v : Double) -> Netsecssl
   result
 }
 
-pub fn net_sec_ssl_edge_sum(s : NetsecsslEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_edge_sum(s : NetsecsslEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_edge_mean(s : NetsecsslEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_edge_mean(s : NetsecsslEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_edge_scale(s : NetsecsslEdge, f : Double) -> NetsecsslEdge {
   let result = net_sec_ssl_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_ssl_edge_fill(s : NetsecsslEdge, v : Double) -> NetsecsslEdge {
   result
 }
 
-pub fn net_sec_ssl_edge_min(s : NetsecsslEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_edge_min(s : NetsecsslEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_edge_max(s : NetsecsslEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_edge_max(s : NetsecsslEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_edge_to_string(s : NetsecsslEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_ssl_path_set(s : NetsecsslPath, i : Int, v : Double) -> Netsecssl
   result
 }
 
-pub fn net_sec_ssl_path_sum(s : NetsecsslPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_path_sum(s : NetsecsslPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_path_mean(s : NetsecsslPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_path_mean(s : NetsecsslPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_path_scale(s : NetsecsslPath, f : Double) -> NetsecsslPath {
   let result = net_sec_ssl_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_ssl_path_fill(s : NetsecsslPath, v : Double) -> NetsecsslPath {
   result
 }
 
-pub fn net_sec_ssl_path_min(s : NetsecsslPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_path_min(s : NetsecsslPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_path_max(s : NetsecsslPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_path_max(s : NetsecsslPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_path_to_string(s : NetsecsslPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_ssl_cluster_set(s : NetsecsslCluster, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_ssl_cluster_sum(s : NetsecsslCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_cluster_sum(s : NetsecsslCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_cluster_mean(s : NetsecsslCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_cluster_mean(s : NetsecsslCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_cluster_scale(s : NetsecsslCluster, f : Double) -> NetsecsslCluster {
   let result = net_sec_ssl_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_ssl_cluster_fill(s : NetsecsslCluster, v : Double) -> NetsecsslCl
   result
 }
 
-pub fn net_sec_ssl_cluster_min(s : NetsecsslCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_cluster_min(s : NetsecsslCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_cluster_max(s : NetsecsslCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_cluster_max(s : NetsecsslCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_cluster_to_string(s : NetsecsslCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_ssl_model_set(s : NetsecsslModel, i : Int, v : Double) -> Netsecs
   result
 }
 
-pub fn net_sec_ssl_model_sum(s : NetsecsslModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_model_sum(s : NetsecsslModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_model_mean(s : NetsecsslModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_model_mean(s : NetsecsslModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_model_scale(s : NetsecsslModel, f : Double) -> NetsecsslModel {
   let result = net_sec_ssl_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_ssl_model_fill(s : NetsecsslModel, v : Double) -> NetsecsslModel 
   result
 }
 
-pub fn net_sec_ssl_model_min(s : NetsecsslModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_model_min(s : NetsecsslModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_model_max(s : NetsecsslModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_model_max(s : NetsecsslModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_model_to_string(s : NetsecsslModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_ssl_layer_set(s : NetsecsslLayer, i : Int, v : Double) -> Netsecs
   result
 }
 
-pub fn net_sec_ssl_layer_sum(s : NetsecsslLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_layer_sum(s : NetsecsslLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_layer_mean(s : NetsecsslLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_layer_mean(s : NetsecsslLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_layer_scale(s : NetsecsslLayer, f : Double) -> NetsecsslLayer {
   let result = net_sec_ssl_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_ssl_layer_fill(s : NetsecsslLayer, v : Double) -> NetsecsslLayer 
   result
 }
 
-pub fn net_sec_ssl_layer_min(s : NetsecsslLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_layer_min(s : NetsecsslLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_layer_max(s : NetsecsslLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_layer_max(s : NetsecsslLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_layer_to_string(s : NetsecsslLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_ssl_buffer_set(s : NetsecsslBuffer, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ssl_buffer_sum(s : NetsecsslBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_buffer_sum(s : NetsecsslBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_buffer_mean(s : NetsecsslBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_buffer_mean(s : NetsecsslBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_buffer_scale(s : NetsecsslBuffer, f : Double) -> NetsecsslBuffer {
   let result = net_sec_ssl_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_ssl_buffer_fill(s : NetsecsslBuffer, v : Double) -> NetsecsslBuff
   result
 }
 
-pub fn net_sec_ssl_buffer_min(s : NetsecsslBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_buffer_min(s : NetsecsslBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_buffer_max(s : NetsecsslBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_buffer_max(s : NetsecsslBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_buffer_to_string(s : NetsecsslBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_ssl_cursor_set(s : NetsecsslCursor, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ssl_cursor_sum(s : NetsecsslCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_cursor_sum(s : NetsecsslCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_cursor_mean(s : NetsecsslCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_cursor_mean(s : NetsecsslCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_cursor_scale(s : NetsecsslCursor, f : Double) -> NetsecsslCursor {
   let result = net_sec_ssl_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_ssl_cursor_fill(s : NetsecsslCursor, v : Double) -> NetsecsslCurs
   result
 }
 
-pub fn net_sec_ssl_cursor_min(s : NetsecsslCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_cursor_min(s : NetsecsslCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_cursor_max(s : NetsecsslCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_cursor_max(s : NetsecsslCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_cursor_to_string(s : NetsecsslCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_ssl_view_set(s : NetsecsslView, i : Int, v : Double) -> Netsecssl
   result
 }
 
-pub fn net_sec_ssl_view_sum(s : NetsecsslView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_view_sum(s : NetsecsslView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_view_mean(s : NetsecsslView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_view_mean(s : NetsecsslView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_view_scale(s : NetsecsslView, f : Double) -> NetsecsslView {
   let result = net_sec_ssl_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_ssl_view_fill(s : NetsecsslView, v : Double) -> NetsecsslView {
   result
 }
 
-pub fn net_sec_ssl_view_min(s : NetsecsslView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_view_min(s : NetsecsslView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_view_max(s : NetsecsslView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_view_max(s : NetsecsslView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_view_to_string(s : NetsecsslView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_ssl_range_set(s : NetsecsslRange, i : Int, v : Double) -> Netsecs
   result
 }
 
-pub fn net_sec_ssl_range_sum(s : NetsecsslRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_range_sum(s : NetsecsslRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_range_mean(s : NetsecsslRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_range_mean(s : NetsecsslRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_range_scale(s : NetsecsslRange, f : Double) -> NetsecsslRange {
   let result = net_sec_ssl_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_ssl_range_fill(s : NetsecsslRange, v : Double) -> NetsecsslRange 
   result
 }
 
-pub fn net_sec_ssl_range_min(s : NetsecsslRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_range_min(s : NetsecsslRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_range_max(s : NetsecsslRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_range_max(s : NetsecsslRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_range_to_string(s : NetsecsslRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_ssl_slice_set(s : NetsecsslSlice, i : Int, v : Double) -> Netsecs
   result
 }
 
-pub fn net_sec_ssl_slice_sum(s : NetsecsslSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ssl_slice_sum(s : NetsecsslSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ssl_slice_mean(s : NetsecsslSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ssl_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ssl_slice_mean(s : NetsecsslSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ssl_slice_scale(s : NetsecsslSlice, f : Double) -> NetsecsslSlice {
   let result = net_sec_ssl_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_ssl_slice_fill(s : NetsecsslSlice, v : Double) -> NetsecsslSlice 
   result
 }
 
-pub fn net_sec_ssl_slice_min(s : NetsecsslSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_slice_min(s : NetsecsslSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ssl_slice_max(s : NetsecsslSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ssl_slice_max(s : NetsecsslSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ssl_slice_to_string(s : NetsecsslSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

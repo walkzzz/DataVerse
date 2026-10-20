@@ -88,11 +88,7 @@ pub fn image_filter_box_make_series(vals : Array[Double], name : String) -> Imag
 
 pub fn image_filter_box_series_len(s : ImagefilterboxSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_box_series_sum(s : ImagefilterboxSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_box_series_sum(s : ImagefilterboxSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_box_series_mean(s : ImagefilterboxSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_box_frame_set(s : ImagefilterboxFrame, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_box_frame_sum(s : ImagefilterboxFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_frame_sum(s : ImagefilterboxFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_frame_mean(s : ImagefilterboxFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_frame_mean(s : ImagefilterboxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_frame_scale(s : ImagefilterboxFrame, f : Double) -> ImagefilterboxFrame {
   let result = image_filter_box_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_box_frame_fill(s : ImagefilterboxFrame, v : Double) -> Image
   result
 }
 
-pub fn image_filter_box_frame_min(s : ImagefilterboxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_frame_min(s : ImagefilterboxFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_frame_max(s : ImagefilterboxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_frame_max(s : ImagefilterboxFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_frame_to_string(s : ImagefilterboxFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_box_table_set(s : ImagefilterboxTable, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_box_table_sum(s : ImagefilterboxTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_table_sum(s : ImagefilterboxTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_table_mean(s : ImagefilterboxTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_table_mean(s : ImagefilterboxTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_table_scale(s : ImagefilterboxTable, f : Double) -> ImagefilterboxTable {
   let result = image_filter_box_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_box_table_fill(s : ImagefilterboxTable, v : Double) -> Image
   result
 }
 
-pub fn image_filter_box_table_min(s : ImagefilterboxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_table_min(s : ImagefilterboxTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_table_max(s : ImagefilterboxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_table_max(s : ImagefilterboxTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_table_to_string(s : ImagefilterboxTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_box_graphn_set(s : ImagefilterboxGraphN, i : Int, v : Double
   result
 }
 
-pub fn image_filter_box_graphn_sum(s : ImagefilterboxGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_graphn_sum(s : ImagefilterboxGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_graphn_mean(s : ImagefilterboxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_graphn_mean(s : ImagefilterboxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_graphn_scale(s : ImagefilterboxGraphN, f : Double) -> ImagefilterboxGraphN {
   let result = image_filter_box_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_box_graphn_fill(s : ImagefilterboxGraphN, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_box_graphn_min(s : ImagefilterboxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_graphn_min(s : ImagefilterboxGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_graphn_max(s : ImagefilterboxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_graphn_max(s : ImagefilterboxGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_graphn_to_string(s : ImagefilterboxGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_box_node_set(s : ImagefilterboxNode, i : Int, v : Double) ->
   result
 }
 
-pub fn image_filter_box_node_sum(s : ImagefilterboxNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_node_sum(s : ImagefilterboxNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_node_mean(s : ImagefilterboxNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_node_mean(s : ImagefilterboxNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_node_scale(s : ImagefilterboxNode, f : Double) -> ImagefilterboxNode {
   let result = image_filter_box_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_box_node_fill(s : ImagefilterboxNode, v : Double) -> Imagefi
   result
 }
 
-pub fn image_filter_box_node_min(s : ImagefilterboxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_node_min(s : ImagefilterboxNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_node_max(s : ImagefilterboxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_node_max(s : ImagefilterboxNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_node_to_string(s : ImagefilterboxNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_box_edge_set(s : ImagefilterboxEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn image_filter_box_edge_sum(s : ImagefilterboxEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_edge_sum(s : ImagefilterboxEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_edge_mean(s : ImagefilterboxEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_edge_mean(s : ImagefilterboxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_edge_scale(s : ImagefilterboxEdge, f : Double) -> ImagefilterboxEdge {
   let result = image_filter_box_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_box_edge_fill(s : ImagefilterboxEdge, v : Double) -> Imagefi
   result
 }
 
-pub fn image_filter_box_edge_min(s : ImagefilterboxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_edge_min(s : ImagefilterboxEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_edge_max(s : ImagefilterboxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_edge_max(s : ImagefilterboxEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_edge_to_string(s : ImagefilterboxEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_box_path_set(s : ImagefilterboxPath, i : Int, v : Double) ->
   result
 }
 
-pub fn image_filter_box_path_sum(s : ImagefilterboxPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_path_sum(s : ImagefilterboxPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_path_mean(s : ImagefilterboxPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_path_mean(s : ImagefilterboxPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_path_scale(s : ImagefilterboxPath, f : Double) -> ImagefilterboxPath {
   let result = image_filter_box_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_box_path_fill(s : ImagefilterboxPath, v : Double) -> Imagefi
   result
 }
 
-pub fn image_filter_box_path_min(s : ImagefilterboxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_path_min(s : ImagefilterboxPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_path_max(s : ImagefilterboxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_path_max(s : ImagefilterboxPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_path_to_string(s : ImagefilterboxPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_box_cluster_set(s : ImagefilterboxCluster, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_box_cluster_sum(s : ImagefilterboxCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_cluster_sum(s : ImagefilterboxCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_cluster_mean(s : ImagefilterboxCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_cluster_mean(s : ImagefilterboxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_cluster_scale(s : ImagefilterboxCluster, f : Double) -> ImagefilterboxCluster {
   let result = image_filter_box_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_box_cluster_fill(s : ImagefilterboxCluster, v : Double) -> I
   result
 }
 
-pub fn image_filter_box_cluster_min(s : ImagefilterboxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_cluster_min(s : ImagefilterboxCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_cluster_max(s : ImagefilterboxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_cluster_max(s : ImagefilterboxCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_cluster_to_string(s : ImagefilterboxCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_box_model_set(s : ImagefilterboxModel, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_box_model_sum(s : ImagefilterboxModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_model_sum(s : ImagefilterboxModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_model_mean(s : ImagefilterboxModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_model_mean(s : ImagefilterboxModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_model_scale(s : ImagefilterboxModel, f : Double) -> ImagefilterboxModel {
   let result = image_filter_box_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_box_model_fill(s : ImagefilterboxModel, v : Double) -> Image
   result
 }
 
-pub fn image_filter_box_model_min(s : ImagefilterboxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_model_min(s : ImagefilterboxModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_model_max(s : ImagefilterboxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_model_max(s : ImagefilterboxModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_model_to_string(s : ImagefilterboxModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_box_layer_set(s : ImagefilterboxLayer, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_box_layer_sum(s : ImagefilterboxLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_layer_sum(s : ImagefilterboxLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_layer_mean(s : ImagefilterboxLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_layer_mean(s : ImagefilterboxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_layer_scale(s : ImagefilterboxLayer, f : Double) -> ImagefilterboxLayer {
   let result = image_filter_box_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_box_layer_fill(s : ImagefilterboxLayer, v : Double) -> Image
   result
 }
 
-pub fn image_filter_box_layer_min(s : ImagefilterboxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_layer_min(s : ImagefilterboxLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_layer_max(s : ImagefilterboxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_layer_max(s : ImagefilterboxLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_layer_to_string(s : ImagefilterboxLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_box_buffer_set(s : ImagefilterboxBuffer, i : Int, v : Double
   result
 }
 
-pub fn image_filter_box_buffer_sum(s : ImagefilterboxBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_buffer_sum(s : ImagefilterboxBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_buffer_mean(s : ImagefilterboxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_buffer_mean(s : ImagefilterboxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_buffer_scale(s : ImagefilterboxBuffer, f : Double) -> ImagefilterboxBuffer {
   let result = image_filter_box_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_box_buffer_fill(s : ImagefilterboxBuffer, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_box_buffer_min(s : ImagefilterboxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_buffer_min(s : ImagefilterboxBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_buffer_max(s : ImagefilterboxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_buffer_max(s : ImagefilterboxBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_buffer_to_string(s : ImagefilterboxBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_box_cursor_set(s : ImagefilterboxCursor, i : Int, v : Double
   result
 }
 
-pub fn image_filter_box_cursor_sum(s : ImagefilterboxCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_cursor_sum(s : ImagefilterboxCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_cursor_mean(s : ImagefilterboxCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_cursor_mean(s : ImagefilterboxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_cursor_scale(s : ImagefilterboxCursor, f : Double) -> ImagefilterboxCursor {
   let result = image_filter_box_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_box_cursor_fill(s : ImagefilterboxCursor, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_box_cursor_min(s : ImagefilterboxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_cursor_min(s : ImagefilterboxCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_cursor_max(s : ImagefilterboxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_cursor_max(s : ImagefilterboxCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_cursor_to_string(s : ImagefilterboxCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_box_view_set(s : ImagefilterboxView, i : Int, v : Double) ->
   result
 }
 
-pub fn image_filter_box_view_sum(s : ImagefilterboxView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_view_sum(s : ImagefilterboxView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_view_mean(s : ImagefilterboxView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_view_mean(s : ImagefilterboxView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_view_scale(s : ImagefilterboxView, f : Double) -> ImagefilterboxView {
   let result = image_filter_box_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_box_view_fill(s : ImagefilterboxView, v : Double) -> Imagefi
   result
 }
 
-pub fn image_filter_box_view_min(s : ImagefilterboxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_view_min(s : ImagefilterboxView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_view_max(s : ImagefilterboxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_view_max(s : ImagefilterboxView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_view_to_string(s : ImagefilterboxView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_box_range_set(s : ImagefilterboxRange, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_box_range_sum(s : ImagefilterboxRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_range_sum(s : ImagefilterboxRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_range_mean(s : ImagefilterboxRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_range_mean(s : ImagefilterboxRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_range_scale(s : ImagefilterboxRange, f : Double) -> ImagefilterboxRange {
   let result = image_filter_box_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_box_range_fill(s : ImagefilterboxRange, v : Double) -> Image
   result
 }
 
-pub fn image_filter_box_range_min(s : ImagefilterboxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_range_min(s : ImagefilterboxRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_range_max(s : ImagefilterboxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_range_max(s : ImagefilterboxRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_range_to_string(s : ImagefilterboxRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_box_slice_set(s : ImagefilterboxSlice, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_box_slice_sum(s : ImagefilterboxSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_box_slice_sum(s : ImagefilterboxSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_box_slice_mean(s : ImagefilterboxSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_box_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_box_slice_mean(s : ImagefilterboxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_box_slice_scale(s : ImagefilterboxSlice, f : Double) -> ImagefilterboxSlice {
   let result = image_filter_box_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_box_slice_fill(s : ImagefilterboxSlice, v : Double) -> Image
   result
 }
 
-pub fn image_filter_box_slice_min(s : ImagefilterboxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_slice_min(s : ImagefilterboxSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_box_slice_max(s : ImagefilterboxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_box_slice_max(s : ImagefilterboxSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_box_slice_to_string(s : ImagefilterboxSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

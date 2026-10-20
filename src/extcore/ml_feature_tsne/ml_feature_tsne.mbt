@@ -88,11 +88,7 @@ pub fn ml_feature_tsne_make_series(vals : Array[Double], name : String) -> Mlfea
 
 pub fn ml_feature_tsne_series_len(s : MlfeaturetsneSeries) -> Int { s.vals.length() }
 
-pub fn ml_feature_tsne_series_sum(s : MlfeaturetsneSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_feature_tsne_series_sum(s : MlfeaturetsneSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_feature_tsne_series_mean(s : MlfeaturetsneSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_feature_tsne_frame_set(s : MlfeaturetsneFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_tsne_frame_sum(s : MlfeaturetsneFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_frame_sum(s : MlfeaturetsneFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_frame_mean(s : MlfeaturetsneFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_frame_mean(s : MlfeaturetsneFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_frame_scale(s : MlfeaturetsneFrame, f : Double) -> MlfeaturetsneFrame {
   let result = ml_feature_tsne_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_feature_tsne_frame_fill(s : MlfeaturetsneFrame, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_tsne_frame_min(s : MlfeaturetsneFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_frame_min(s : MlfeaturetsneFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_frame_max(s : MlfeaturetsneFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_frame_max(s : MlfeaturetsneFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_frame_to_string(s : MlfeaturetsneFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_feature_tsne_table_set(s : MlfeaturetsneTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_tsne_table_sum(s : MlfeaturetsneTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_table_sum(s : MlfeaturetsneTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_table_mean(s : MlfeaturetsneTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_table_mean(s : MlfeaturetsneTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_table_scale(s : MlfeaturetsneTable, f : Double) -> MlfeaturetsneTable {
   let result = ml_feature_tsne_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_feature_tsne_table_fill(s : MlfeaturetsneTable, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_tsne_table_min(s : MlfeaturetsneTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_table_min(s : MlfeaturetsneTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_table_max(s : MlfeaturetsneTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_table_max(s : MlfeaturetsneTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_table_to_string(s : MlfeaturetsneTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_feature_tsne_graphn_set(s : MlfeaturetsneGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_tsne_graphn_sum(s : MlfeaturetsneGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_graphn_sum(s : MlfeaturetsneGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_graphn_mean(s : MlfeaturetsneGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_graphn_mean(s : MlfeaturetsneGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_graphn_scale(s : MlfeaturetsneGraphN, f : Double) -> MlfeaturetsneGraphN {
   let result = ml_feature_tsne_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_feature_tsne_graphn_fill(s : MlfeaturetsneGraphN, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_tsne_graphn_min(s : MlfeaturetsneGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_graphn_min(s : MlfeaturetsneGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_graphn_max(s : MlfeaturetsneGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_graphn_max(s : MlfeaturetsneGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_graphn_to_string(s : MlfeaturetsneGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_feature_tsne_node_set(s : MlfeaturetsneNode, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_tsne_node_sum(s : MlfeaturetsneNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_node_sum(s : MlfeaturetsneNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_node_mean(s : MlfeaturetsneNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_node_mean(s : MlfeaturetsneNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_node_scale(s : MlfeaturetsneNode, f : Double) -> MlfeaturetsneNode {
   let result = ml_feature_tsne_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_feature_tsne_node_fill(s : MlfeaturetsneNode, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_tsne_node_min(s : MlfeaturetsneNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_node_min(s : MlfeaturetsneNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_node_max(s : MlfeaturetsneNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_node_max(s : MlfeaturetsneNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_node_to_string(s : MlfeaturetsneNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_feature_tsne_edge_set(s : MlfeaturetsneEdge, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_tsne_edge_sum(s : MlfeaturetsneEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_edge_sum(s : MlfeaturetsneEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_edge_mean(s : MlfeaturetsneEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_edge_mean(s : MlfeaturetsneEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_edge_scale(s : MlfeaturetsneEdge, f : Double) -> MlfeaturetsneEdge {
   let result = ml_feature_tsne_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_feature_tsne_edge_fill(s : MlfeaturetsneEdge, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_tsne_edge_min(s : MlfeaturetsneEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_edge_min(s : MlfeaturetsneEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_edge_max(s : MlfeaturetsneEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_edge_max(s : MlfeaturetsneEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_edge_to_string(s : MlfeaturetsneEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_feature_tsne_path_set(s : MlfeaturetsnePath, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_tsne_path_sum(s : MlfeaturetsnePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_path_sum(s : MlfeaturetsnePath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_path_mean(s : MlfeaturetsnePath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_path_mean(s : MlfeaturetsnePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_path_scale(s : MlfeaturetsnePath, f : Double) -> MlfeaturetsnePath {
   let result = ml_feature_tsne_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_feature_tsne_path_fill(s : MlfeaturetsnePath, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_tsne_path_min(s : MlfeaturetsnePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_path_min(s : MlfeaturetsnePath) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_path_max(s : MlfeaturetsnePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_path_max(s : MlfeaturetsnePath) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_path_to_string(s : MlfeaturetsnePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_feature_tsne_cluster_set(s : MlfeaturetsneCluster, i : Int, v : Double
   result
 }
 
-pub fn ml_feature_tsne_cluster_sum(s : MlfeaturetsneCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_cluster_sum(s : MlfeaturetsneCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_cluster_mean(s : MlfeaturetsneCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_cluster_mean(s : MlfeaturetsneCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_cluster_scale(s : MlfeaturetsneCluster, f : Double) -> MlfeaturetsneCluster {
   let result = ml_feature_tsne_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_feature_tsne_cluster_fill(s : MlfeaturetsneCluster, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_tsne_cluster_min(s : MlfeaturetsneCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_cluster_min(s : MlfeaturetsneCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_cluster_max(s : MlfeaturetsneCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_cluster_max(s : MlfeaturetsneCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_cluster_to_string(s : MlfeaturetsneCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_feature_tsne_model_set(s : MlfeaturetsneModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_tsne_model_sum(s : MlfeaturetsneModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_model_sum(s : MlfeaturetsneModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_model_mean(s : MlfeaturetsneModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_model_mean(s : MlfeaturetsneModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_model_scale(s : MlfeaturetsneModel, f : Double) -> MlfeaturetsneModel {
   let result = ml_feature_tsne_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_feature_tsne_model_fill(s : MlfeaturetsneModel, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_tsne_model_min(s : MlfeaturetsneModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_model_min(s : MlfeaturetsneModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_model_max(s : MlfeaturetsneModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_model_max(s : MlfeaturetsneModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_model_to_string(s : MlfeaturetsneModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_feature_tsne_layer_set(s : MlfeaturetsneLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_tsne_layer_sum(s : MlfeaturetsneLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_layer_sum(s : MlfeaturetsneLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_layer_mean(s : MlfeaturetsneLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_layer_mean(s : MlfeaturetsneLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_layer_scale(s : MlfeaturetsneLayer, f : Double) -> MlfeaturetsneLayer {
   let result = ml_feature_tsne_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_feature_tsne_layer_fill(s : MlfeaturetsneLayer, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_tsne_layer_min(s : MlfeaturetsneLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_layer_min(s : MlfeaturetsneLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_layer_max(s : MlfeaturetsneLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_layer_max(s : MlfeaturetsneLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_layer_to_string(s : MlfeaturetsneLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_feature_tsne_buffer_set(s : MlfeaturetsneBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_tsne_buffer_sum(s : MlfeaturetsneBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_buffer_sum(s : MlfeaturetsneBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_buffer_mean(s : MlfeaturetsneBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_buffer_mean(s : MlfeaturetsneBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_buffer_scale(s : MlfeaturetsneBuffer, f : Double) -> MlfeaturetsneBuffer {
   let result = ml_feature_tsne_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_feature_tsne_buffer_fill(s : MlfeaturetsneBuffer, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_tsne_buffer_min(s : MlfeaturetsneBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_buffer_min(s : MlfeaturetsneBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_buffer_max(s : MlfeaturetsneBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_buffer_max(s : MlfeaturetsneBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_buffer_to_string(s : MlfeaturetsneBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_feature_tsne_cursor_set(s : MlfeaturetsneCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_tsne_cursor_sum(s : MlfeaturetsneCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_cursor_sum(s : MlfeaturetsneCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_cursor_mean(s : MlfeaturetsneCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_cursor_mean(s : MlfeaturetsneCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_cursor_scale(s : MlfeaturetsneCursor, f : Double) -> MlfeaturetsneCursor {
   let result = ml_feature_tsne_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_feature_tsne_cursor_fill(s : MlfeaturetsneCursor, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_tsne_cursor_min(s : MlfeaturetsneCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_cursor_min(s : MlfeaturetsneCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_cursor_max(s : MlfeaturetsneCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_cursor_max(s : MlfeaturetsneCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_cursor_to_string(s : MlfeaturetsneCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_feature_tsne_view_set(s : MlfeaturetsneView, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_tsne_view_sum(s : MlfeaturetsneView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_view_sum(s : MlfeaturetsneView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_view_mean(s : MlfeaturetsneView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_view_mean(s : MlfeaturetsneView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_view_scale(s : MlfeaturetsneView, f : Double) -> MlfeaturetsneView {
   let result = ml_feature_tsne_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_feature_tsne_view_fill(s : MlfeaturetsneView, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_tsne_view_min(s : MlfeaturetsneView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_view_min(s : MlfeaturetsneView) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_view_max(s : MlfeaturetsneView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_view_max(s : MlfeaturetsneView) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_view_to_string(s : MlfeaturetsneView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_feature_tsne_range_set(s : MlfeaturetsneRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_tsne_range_sum(s : MlfeaturetsneRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_range_sum(s : MlfeaturetsneRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_range_mean(s : MlfeaturetsneRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_range_mean(s : MlfeaturetsneRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_range_scale(s : MlfeaturetsneRange, f : Double) -> MlfeaturetsneRange {
   let result = ml_feature_tsne_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_feature_tsne_range_fill(s : MlfeaturetsneRange, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_tsne_range_min(s : MlfeaturetsneRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_range_min(s : MlfeaturetsneRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_range_max(s : MlfeaturetsneRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_range_max(s : MlfeaturetsneRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_range_to_string(s : MlfeaturetsneRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_feature_tsne_slice_set(s : MlfeaturetsneSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_tsne_slice_sum(s : MlfeaturetsneSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_tsne_slice_sum(s : MlfeaturetsneSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_tsne_slice_mean(s : MlfeaturetsneSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_tsne_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_tsne_slice_mean(s : MlfeaturetsneSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_tsne_slice_scale(s : MlfeaturetsneSlice, f : Double) -> MlfeaturetsneSlice {
   let result = ml_feature_tsne_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_feature_tsne_slice_fill(s : MlfeaturetsneSlice, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_tsne_slice_min(s : MlfeaturetsneSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_slice_min(s : MlfeaturetsneSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_tsne_slice_max(s : MlfeaturetsneSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_tsne_slice_max(s : MlfeaturetsneSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_tsne_slice_to_string(s : MlfeaturetsneSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

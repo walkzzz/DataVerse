@@ -88,11 +88,7 @@ pub fn graph_flow_transport_make_series(vals : Array[Double], name : String) -> 
 
 pub fn graph_flow_transport_series_len(s : GraphflowtransportSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_transport_series_sum(s : GraphflowtransportSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_transport_series_sum(s : GraphflowtransportSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_transport_series_mean(s : GraphflowtransportSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_transport_frame_set(s : GraphflowtransportFrame, i : Int, v : 
   result
 }
 
-pub fn graph_flow_transport_frame_sum(s : GraphflowtransportFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_frame_sum(s : GraphflowtransportFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_frame_mean(s : GraphflowtransportFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_frame_mean(s : GraphflowtransportFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_frame_scale(s : GraphflowtransportFrame, f : Double) -> GraphflowtransportFrame {
   let result = graph_flow_transport_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_transport_frame_fill(s : GraphflowtransportFrame, v : Double) 
   result
 }
 
-pub fn graph_flow_transport_frame_min(s : GraphflowtransportFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_frame_min(s : GraphflowtransportFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_frame_max(s : GraphflowtransportFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_frame_max(s : GraphflowtransportFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_frame_to_string(s : GraphflowtransportFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_transport_table_set(s : GraphflowtransportTable, i : Int, v : 
   result
 }
 
-pub fn graph_flow_transport_table_sum(s : GraphflowtransportTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_table_sum(s : GraphflowtransportTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_table_mean(s : GraphflowtransportTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_table_mean(s : GraphflowtransportTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_table_scale(s : GraphflowtransportTable, f : Double) -> GraphflowtransportTable {
   let result = graph_flow_transport_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_transport_table_fill(s : GraphflowtransportTable, v : Double) 
   result
 }
 
-pub fn graph_flow_transport_table_min(s : GraphflowtransportTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_table_min(s : GraphflowtransportTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_table_max(s : GraphflowtransportTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_table_max(s : GraphflowtransportTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_table_to_string(s : GraphflowtransportTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_transport_graphn_set(s : GraphflowtransportGraphN, i : Int, v 
   result
 }
 
-pub fn graph_flow_transport_graphn_sum(s : GraphflowtransportGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_graphn_sum(s : GraphflowtransportGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_graphn_mean(s : GraphflowtransportGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_graphn_mean(s : GraphflowtransportGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_graphn_scale(s : GraphflowtransportGraphN, f : Double) -> GraphflowtransportGraphN {
   let result = graph_flow_transport_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_transport_graphn_fill(s : GraphflowtransportGraphN, v : Double
   result
 }
 
-pub fn graph_flow_transport_graphn_min(s : GraphflowtransportGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_graphn_min(s : GraphflowtransportGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_graphn_max(s : GraphflowtransportGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_graphn_max(s : GraphflowtransportGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_graphn_to_string(s : GraphflowtransportGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_transport_node_set(s : GraphflowtransportNode, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_transport_node_sum(s : GraphflowtransportNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_node_sum(s : GraphflowtransportNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_node_mean(s : GraphflowtransportNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_node_mean(s : GraphflowtransportNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_node_scale(s : GraphflowtransportNode, f : Double) -> GraphflowtransportNode {
   let result = graph_flow_transport_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_transport_node_fill(s : GraphflowtransportNode, v : Double) ->
   result
 }
 
-pub fn graph_flow_transport_node_min(s : GraphflowtransportNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_node_min(s : GraphflowtransportNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_node_max(s : GraphflowtransportNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_node_max(s : GraphflowtransportNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_node_to_string(s : GraphflowtransportNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_transport_edge_set(s : GraphflowtransportEdge, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_transport_edge_sum(s : GraphflowtransportEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_edge_sum(s : GraphflowtransportEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_edge_mean(s : GraphflowtransportEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_edge_mean(s : GraphflowtransportEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_edge_scale(s : GraphflowtransportEdge, f : Double) -> GraphflowtransportEdge {
   let result = graph_flow_transport_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_transport_edge_fill(s : GraphflowtransportEdge, v : Double) ->
   result
 }
 
-pub fn graph_flow_transport_edge_min(s : GraphflowtransportEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_edge_min(s : GraphflowtransportEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_edge_max(s : GraphflowtransportEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_edge_max(s : GraphflowtransportEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_edge_to_string(s : GraphflowtransportEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_transport_path_set(s : GraphflowtransportPath, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_transport_path_sum(s : GraphflowtransportPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_path_sum(s : GraphflowtransportPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_path_mean(s : GraphflowtransportPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_path_mean(s : GraphflowtransportPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_path_scale(s : GraphflowtransportPath, f : Double) -> GraphflowtransportPath {
   let result = graph_flow_transport_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_transport_path_fill(s : GraphflowtransportPath, v : Double) ->
   result
 }
 
-pub fn graph_flow_transport_path_min(s : GraphflowtransportPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_path_min(s : GraphflowtransportPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_path_max(s : GraphflowtransportPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_path_max(s : GraphflowtransportPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_path_to_string(s : GraphflowtransportPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_transport_cluster_set(s : GraphflowtransportCluster, i : Int, 
   result
 }
 
-pub fn graph_flow_transport_cluster_sum(s : GraphflowtransportCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_cluster_sum(s : GraphflowtransportCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_cluster_mean(s : GraphflowtransportCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_cluster_mean(s : GraphflowtransportCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_cluster_scale(s : GraphflowtransportCluster, f : Double) -> GraphflowtransportCluster {
   let result = graph_flow_transport_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_transport_cluster_fill(s : GraphflowtransportCluster, v : Doub
   result
 }
 
-pub fn graph_flow_transport_cluster_min(s : GraphflowtransportCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_cluster_min(s : GraphflowtransportCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_cluster_max(s : GraphflowtransportCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_cluster_max(s : GraphflowtransportCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_cluster_to_string(s : GraphflowtransportCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_transport_model_set(s : GraphflowtransportModel, i : Int, v : 
   result
 }
 
-pub fn graph_flow_transport_model_sum(s : GraphflowtransportModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_model_sum(s : GraphflowtransportModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_model_mean(s : GraphflowtransportModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_model_mean(s : GraphflowtransportModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_model_scale(s : GraphflowtransportModel, f : Double) -> GraphflowtransportModel {
   let result = graph_flow_transport_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_transport_model_fill(s : GraphflowtransportModel, v : Double) 
   result
 }
 
-pub fn graph_flow_transport_model_min(s : GraphflowtransportModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_model_min(s : GraphflowtransportModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_model_max(s : GraphflowtransportModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_model_max(s : GraphflowtransportModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_model_to_string(s : GraphflowtransportModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_transport_layer_set(s : GraphflowtransportLayer, i : Int, v : 
   result
 }
 
-pub fn graph_flow_transport_layer_sum(s : GraphflowtransportLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_layer_sum(s : GraphflowtransportLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_layer_mean(s : GraphflowtransportLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_layer_mean(s : GraphflowtransportLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_layer_scale(s : GraphflowtransportLayer, f : Double) -> GraphflowtransportLayer {
   let result = graph_flow_transport_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_transport_layer_fill(s : GraphflowtransportLayer, v : Double) 
   result
 }
 
-pub fn graph_flow_transport_layer_min(s : GraphflowtransportLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_layer_min(s : GraphflowtransportLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_layer_max(s : GraphflowtransportLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_layer_max(s : GraphflowtransportLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_layer_to_string(s : GraphflowtransportLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_transport_buffer_set(s : GraphflowtransportBuffer, i : Int, v 
   result
 }
 
-pub fn graph_flow_transport_buffer_sum(s : GraphflowtransportBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_buffer_sum(s : GraphflowtransportBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_buffer_mean(s : GraphflowtransportBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_buffer_mean(s : GraphflowtransportBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_buffer_scale(s : GraphflowtransportBuffer, f : Double) -> GraphflowtransportBuffer {
   let result = graph_flow_transport_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_transport_buffer_fill(s : GraphflowtransportBuffer, v : Double
   result
 }
 
-pub fn graph_flow_transport_buffer_min(s : GraphflowtransportBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_buffer_min(s : GraphflowtransportBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_buffer_max(s : GraphflowtransportBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_buffer_max(s : GraphflowtransportBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_buffer_to_string(s : GraphflowtransportBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_transport_cursor_set(s : GraphflowtransportCursor, i : Int, v 
   result
 }
 
-pub fn graph_flow_transport_cursor_sum(s : GraphflowtransportCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_cursor_sum(s : GraphflowtransportCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_cursor_mean(s : GraphflowtransportCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_cursor_mean(s : GraphflowtransportCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_cursor_scale(s : GraphflowtransportCursor, f : Double) -> GraphflowtransportCursor {
   let result = graph_flow_transport_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_transport_cursor_fill(s : GraphflowtransportCursor, v : Double
   result
 }
 
-pub fn graph_flow_transport_cursor_min(s : GraphflowtransportCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_cursor_min(s : GraphflowtransportCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_cursor_max(s : GraphflowtransportCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_cursor_max(s : GraphflowtransportCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_cursor_to_string(s : GraphflowtransportCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_transport_view_set(s : GraphflowtransportView, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_transport_view_sum(s : GraphflowtransportView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_view_sum(s : GraphflowtransportView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_view_mean(s : GraphflowtransportView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_view_mean(s : GraphflowtransportView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_view_scale(s : GraphflowtransportView, f : Double) -> GraphflowtransportView {
   let result = graph_flow_transport_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_transport_view_fill(s : GraphflowtransportView, v : Double) ->
   result
 }
 
-pub fn graph_flow_transport_view_min(s : GraphflowtransportView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_view_min(s : GraphflowtransportView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_view_max(s : GraphflowtransportView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_view_max(s : GraphflowtransportView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_view_to_string(s : GraphflowtransportView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_transport_range_set(s : GraphflowtransportRange, i : Int, v : 
   result
 }
 
-pub fn graph_flow_transport_range_sum(s : GraphflowtransportRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_range_sum(s : GraphflowtransportRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_range_mean(s : GraphflowtransportRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_range_mean(s : GraphflowtransportRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_range_scale(s : GraphflowtransportRange, f : Double) -> GraphflowtransportRange {
   let result = graph_flow_transport_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_transport_range_fill(s : GraphflowtransportRange, v : Double) 
   result
 }
 
-pub fn graph_flow_transport_range_min(s : GraphflowtransportRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_range_min(s : GraphflowtransportRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_range_max(s : GraphflowtransportRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_range_max(s : GraphflowtransportRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_range_to_string(s : GraphflowtransportRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_transport_slice_set(s : GraphflowtransportSlice, i : Int, v : 
   result
 }
 
-pub fn graph_flow_transport_slice_sum(s : GraphflowtransportSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_transport_slice_sum(s : GraphflowtransportSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_transport_slice_mean(s : GraphflowtransportSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_transport_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_transport_slice_mean(s : GraphflowtransportSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_transport_slice_scale(s : GraphflowtransportSlice, f : Double) -> GraphflowtransportSlice {
   let result = graph_flow_transport_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_transport_slice_fill(s : GraphflowtransportSlice, v : Double) 
   result
 }
 
-pub fn graph_flow_transport_slice_min(s : GraphflowtransportSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_slice_min(s : GraphflowtransportSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_transport_slice_max(s : GraphflowtransportSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_transport_slice_max(s : GraphflowtransportSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_transport_slice_to_string(s : GraphflowtransportSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

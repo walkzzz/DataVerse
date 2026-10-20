@@ -88,11 +88,7 @@ pub fn ml_cluster_dbscan_make_series(vals : Array[Double], name : String) -> Mlc
 
 pub fn ml_cluster_dbscan_series_len(s : MlclusterdbscanSeries) -> Int { s.vals.length() }
 
-pub fn ml_cluster_dbscan_series_sum(s : MlclusterdbscanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_cluster_dbscan_series_sum(s : MlclusterdbscanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_cluster_dbscan_series_mean(s : MlclusterdbscanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_cluster_dbscan_frame_set(s : MlclusterdbscanFrame, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_dbscan_frame_sum(s : MlclusterdbscanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_frame_sum(s : MlclusterdbscanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_frame_mean(s : MlclusterdbscanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_frame_mean(s : MlclusterdbscanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_frame_scale(s : MlclusterdbscanFrame, f : Double) -> MlclusterdbscanFrame {
   let result = ml_cluster_dbscan_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_cluster_dbscan_frame_fill(s : MlclusterdbscanFrame, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_dbscan_frame_min(s : MlclusterdbscanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_frame_min(s : MlclusterdbscanFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_frame_max(s : MlclusterdbscanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_frame_max(s : MlclusterdbscanFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_frame_to_string(s : MlclusterdbscanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_cluster_dbscan_table_set(s : MlclusterdbscanTable, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_dbscan_table_sum(s : MlclusterdbscanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_table_sum(s : MlclusterdbscanTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_table_mean(s : MlclusterdbscanTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_table_mean(s : MlclusterdbscanTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_table_scale(s : MlclusterdbscanTable, f : Double) -> MlclusterdbscanTable {
   let result = ml_cluster_dbscan_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_cluster_dbscan_table_fill(s : MlclusterdbscanTable, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_dbscan_table_min(s : MlclusterdbscanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_table_min(s : MlclusterdbscanTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_table_max(s : MlclusterdbscanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_table_max(s : MlclusterdbscanTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_table_to_string(s : MlclusterdbscanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_cluster_dbscan_graphn_set(s : MlclusterdbscanGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_dbscan_graphn_sum(s : MlclusterdbscanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_graphn_sum(s : MlclusterdbscanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_graphn_mean(s : MlclusterdbscanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_graphn_mean(s : MlclusterdbscanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_graphn_scale(s : MlclusterdbscanGraphN, f : Double) -> MlclusterdbscanGraphN {
   let result = ml_cluster_dbscan_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_cluster_dbscan_graphn_fill(s : MlclusterdbscanGraphN, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_dbscan_graphn_min(s : MlclusterdbscanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_graphn_min(s : MlclusterdbscanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_graphn_max(s : MlclusterdbscanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_graphn_max(s : MlclusterdbscanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_graphn_to_string(s : MlclusterdbscanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_cluster_dbscan_node_set(s : MlclusterdbscanNode, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_dbscan_node_sum(s : MlclusterdbscanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_node_sum(s : MlclusterdbscanNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_node_mean(s : MlclusterdbscanNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_node_mean(s : MlclusterdbscanNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_node_scale(s : MlclusterdbscanNode, f : Double) -> MlclusterdbscanNode {
   let result = ml_cluster_dbscan_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_cluster_dbscan_node_fill(s : MlclusterdbscanNode, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_dbscan_node_min(s : MlclusterdbscanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_node_min(s : MlclusterdbscanNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_node_max(s : MlclusterdbscanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_node_max(s : MlclusterdbscanNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_node_to_string(s : MlclusterdbscanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_cluster_dbscan_edge_set(s : MlclusterdbscanEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_dbscan_edge_sum(s : MlclusterdbscanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_edge_sum(s : MlclusterdbscanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_edge_mean(s : MlclusterdbscanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_edge_mean(s : MlclusterdbscanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_edge_scale(s : MlclusterdbscanEdge, f : Double) -> MlclusterdbscanEdge {
   let result = ml_cluster_dbscan_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_cluster_dbscan_edge_fill(s : MlclusterdbscanEdge, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_dbscan_edge_min(s : MlclusterdbscanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_edge_min(s : MlclusterdbscanEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_edge_max(s : MlclusterdbscanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_edge_max(s : MlclusterdbscanEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_edge_to_string(s : MlclusterdbscanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_cluster_dbscan_path_set(s : MlclusterdbscanPath, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_dbscan_path_sum(s : MlclusterdbscanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_path_sum(s : MlclusterdbscanPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_path_mean(s : MlclusterdbscanPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_path_mean(s : MlclusterdbscanPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_path_scale(s : MlclusterdbscanPath, f : Double) -> MlclusterdbscanPath {
   let result = ml_cluster_dbscan_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_cluster_dbscan_path_fill(s : MlclusterdbscanPath, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_dbscan_path_min(s : MlclusterdbscanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_path_min(s : MlclusterdbscanPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_path_max(s : MlclusterdbscanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_path_max(s : MlclusterdbscanPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_path_to_string(s : MlclusterdbscanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_cluster_dbscan_cluster_set(s : MlclusterdbscanCluster, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_dbscan_cluster_sum(s : MlclusterdbscanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_cluster_sum(s : MlclusterdbscanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_cluster_mean(s : MlclusterdbscanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_cluster_mean(s : MlclusterdbscanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_cluster_scale(s : MlclusterdbscanCluster, f : Double) -> MlclusterdbscanCluster {
   let result = ml_cluster_dbscan_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_cluster_dbscan_cluster_fill(s : MlclusterdbscanCluster, v : Double) ->
   result
 }
 
-pub fn ml_cluster_dbscan_cluster_min(s : MlclusterdbscanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_cluster_min(s : MlclusterdbscanCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_cluster_max(s : MlclusterdbscanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_cluster_max(s : MlclusterdbscanCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_cluster_to_string(s : MlclusterdbscanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_cluster_dbscan_model_set(s : MlclusterdbscanModel, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_dbscan_model_sum(s : MlclusterdbscanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_model_sum(s : MlclusterdbscanModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_model_mean(s : MlclusterdbscanModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_model_mean(s : MlclusterdbscanModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_model_scale(s : MlclusterdbscanModel, f : Double) -> MlclusterdbscanModel {
   let result = ml_cluster_dbscan_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_cluster_dbscan_model_fill(s : MlclusterdbscanModel, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_dbscan_model_min(s : MlclusterdbscanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_model_min(s : MlclusterdbscanModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_model_max(s : MlclusterdbscanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_model_max(s : MlclusterdbscanModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_model_to_string(s : MlclusterdbscanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_cluster_dbscan_layer_set(s : MlclusterdbscanLayer, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_dbscan_layer_sum(s : MlclusterdbscanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_layer_sum(s : MlclusterdbscanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_layer_mean(s : MlclusterdbscanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_layer_mean(s : MlclusterdbscanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_layer_scale(s : MlclusterdbscanLayer, f : Double) -> MlclusterdbscanLayer {
   let result = ml_cluster_dbscan_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_cluster_dbscan_layer_fill(s : MlclusterdbscanLayer, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_dbscan_layer_min(s : MlclusterdbscanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_layer_min(s : MlclusterdbscanLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_layer_max(s : MlclusterdbscanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_layer_max(s : MlclusterdbscanLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_layer_to_string(s : MlclusterdbscanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_cluster_dbscan_buffer_set(s : MlclusterdbscanBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_dbscan_buffer_sum(s : MlclusterdbscanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_buffer_sum(s : MlclusterdbscanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_buffer_mean(s : MlclusterdbscanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_buffer_mean(s : MlclusterdbscanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_buffer_scale(s : MlclusterdbscanBuffer, f : Double) -> MlclusterdbscanBuffer {
   let result = ml_cluster_dbscan_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_cluster_dbscan_buffer_fill(s : MlclusterdbscanBuffer, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_dbscan_buffer_min(s : MlclusterdbscanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_buffer_min(s : MlclusterdbscanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_buffer_max(s : MlclusterdbscanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_buffer_max(s : MlclusterdbscanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_buffer_to_string(s : MlclusterdbscanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_cluster_dbscan_cursor_set(s : MlclusterdbscanCursor, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_dbscan_cursor_sum(s : MlclusterdbscanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_cursor_sum(s : MlclusterdbscanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_cursor_mean(s : MlclusterdbscanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_cursor_mean(s : MlclusterdbscanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_cursor_scale(s : MlclusterdbscanCursor, f : Double) -> MlclusterdbscanCursor {
   let result = ml_cluster_dbscan_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_cluster_dbscan_cursor_fill(s : MlclusterdbscanCursor, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_dbscan_cursor_min(s : MlclusterdbscanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_cursor_min(s : MlclusterdbscanCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_cursor_max(s : MlclusterdbscanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_cursor_max(s : MlclusterdbscanCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_cursor_to_string(s : MlclusterdbscanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_cluster_dbscan_view_set(s : MlclusterdbscanView, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_dbscan_view_sum(s : MlclusterdbscanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_view_sum(s : MlclusterdbscanView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_view_mean(s : MlclusterdbscanView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_view_mean(s : MlclusterdbscanView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_view_scale(s : MlclusterdbscanView, f : Double) -> MlclusterdbscanView {
   let result = ml_cluster_dbscan_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_cluster_dbscan_view_fill(s : MlclusterdbscanView, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_dbscan_view_min(s : MlclusterdbscanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_view_min(s : MlclusterdbscanView) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_view_max(s : MlclusterdbscanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_view_max(s : MlclusterdbscanView) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_view_to_string(s : MlclusterdbscanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_cluster_dbscan_range_set(s : MlclusterdbscanRange, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_dbscan_range_sum(s : MlclusterdbscanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_range_sum(s : MlclusterdbscanRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_range_mean(s : MlclusterdbscanRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_range_mean(s : MlclusterdbscanRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_range_scale(s : MlclusterdbscanRange, f : Double) -> MlclusterdbscanRange {
   let result = ml_cluster_dbscan_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_cluster_dbscan_range_fill(s : MlclusterdbscanRange, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_dbscan_range_min(s : MlclusterdbscanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_range_min(s : MlclusterdbscanRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_range_max(s : MlclusterdbscanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_range_max(s : MlclusterdbscanRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_range_to_string(s : MlclusterdbscanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_cluster_dbscan_slice_set(s : MlclusterdbscanSlice, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_dbscan_slice_sum(s : MlclusterdbscanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_dbscan_slice_sum(s : MlclusterdbscanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_dbscan_slice_mean(s : MlclusterdbscanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_dbscan_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_dbscan_slice_mean(s : MlclusterdbscanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_dbscan_slice_scale(s : MlclusterdbscanSlice, f : Double) -> MlclusterdbscanSlice {
   let result = ml_cluster_dbscan_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_cluster_dbscan_slice_fill(s : MlclusterdbscanSlice, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_dbscan_slice_min(s : MlclusterdbscanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_slice_min(s : MlclusterdbscanSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_dbscan_slice_max(s : MlclusterdbscanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_dbscan_slice_max(s : MlclusterdbscanSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_dbscan_slice_to_string(s : MlclusterdbscanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

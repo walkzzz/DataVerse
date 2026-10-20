@@ -88,11 +88,7 @@ pub fn graph_connect_articulation_make_series(vals : Array[Double], name : Strin
 
 pub fn graph_connect_articulation_series_len(s : GraphconnectarticulationSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_articulation_series_sum(s : GraphconnectarticulationSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_articulation_series_sum(s : GraphconnectarticulationSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_articulation_series_mean(s : GraphconnectarticulationSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_articulation_frame_set(s : GraphconnectarticulationFrame, i
   result
 }
 
-pub fn graph_connect_articulation_frame_sum(s : GraphconnectarticulationFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_frame_sum(s : GraphconnectarticulationFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_frame_mean(s : GraphconnectarticulationFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_frame_mean(s : GraphconnectarticulationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_frame_scale(s : GraphconnectarticulationFrame, f : Double) -> GraphconnectarticulationFrame {
   let result = graph_connect_articulation_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_articulation_frame_fill(s : GraphconnectarticulationFrame, 
   result
 }
 
-pub fn graph_connect_articulation_frame_min(s : GraphconnectarticulationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_frame_min(s : GraphconnectarticulationFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_frame_max(s : GraphconnectarticulationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_frame_max(s : GraphconnectarticulationFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_frame_to_string(s : GraphconnectarticulationFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_articulation_table_set(s : GraphconnectarticulationTable, i
   result
 }
 
-pub fn graph_connect_articulation_table_sum(s : GraphconnectarticulationTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_table_sum(s : GraphconnectarticulationTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_table_mean(s : GraphconnectarticulationTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_table_mean(s : GraphconnectarticulationTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_table_scale(s : GraphconnectarticulationTable, f : Double) -> GraphconnectarticulationTable {
   let result = graph_connect_articulation_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_articulation_table_fill(s : GraphconnectarticulationTable, 
   result
 }
 
-pub fn graph_connect_articulation_table_min(s : GraphconnectarticulationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_table_min(s : GraphconnectarticulationTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_table_max(s : GraphconnectarticulationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_table_max(s : GraphconnectarticulationTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_table_to_string(s : GraphconnectarticulationTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_articulation_graphn_set(s : GraphconnectarticulationGraphN,
   result
 }
 
-pub fn graph_connect_articulation_graphn_sum(s : GraphconnectarticulationGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_graphn_sum(s : GraphconnectarticulationGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_graphn_mean(s : GraphconnectarticulationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_graphn_mean(s : GraphconnectarticulationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_graphn_scale(s : GraphconnectarticulationGraphN, f : Double) -> GraphconnectarticulationGraphN {
   let result = graph_connect_articulation_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_articulation_graphn_fill(s : GraphconnectarticulationGraphN
   result
 }
 
-pub fn graph_connect_articulation_graphn_min(s : GraphconnectarticulationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_graphn_min(s : GraphconnectarticulationGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_graphn_max(s : GraphconnectarticulationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_graphn_max(s : GraphconnectarticulationGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_graphn_to_string(s : GraphconnectarticulationGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_articulation_node_set(s : GraphconnectarticulationNode, i :
   result
 }
 
-pub fn graph_connect_articulation_node_sum(s : GraphconnectarticulationNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_node_sum(s : GraphconnectarticulationNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_node_mean(s : GraphconnectarticulationNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_node_mean(s : GraphconnectarticulationNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_node_scale(s : GraphconnectarticulationNode, f : Double) -> GraphconnectarticulationNode {
   let result = graph_connect_articulation_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_articulation_node_fill(s : GraphconnectarticulationNode, v 
   result
 }
 
-pub fn graph_connect_articulation_node_min(s : GraphconnectarticulationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_node_min(s : GraphconnectarticulationNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_node_max(s : GraphconnectarticulationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_node_max(s : GraphconnectarticulationNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_node_to_string(s : GraphconnectarticulationNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_articulation_edge_set(s : GraphconnectarticulationEdge, i :
   result
 }
 
-pub fn graph_connect_articulation_edge_sum(s : GraphconnectarticulationEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_edge_sum(s : GraphconnectarticulationEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_edge_mean(s : GraphconnectarticulationEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_edge_mean(s : GraphconnectarticulationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_edge_scale(s : GraphconnectarticulationEdge, f : Double) -> GraphconnectarticulationEdge {
   let result = graph_connect_articulation_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_articulation_edge_fill(s : GraphconnectarticulationEdge, v 
   result
 }
 
-pub fn graph_connect_articulation_edge_min(s : GraphconnectarticulationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_edge_min(s : GraphconnectarticulationEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_edge_max(s : GraphconnectarticulationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_edge_max(s : GraphconnectarticulationEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_edge_to_string(s : GraphconnectarticulationEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_articulation_path_set(s : GraphconnectarticulationPath, i :
   result
 }
 
-pub fn graph_connect_articulation_path_sum(s : GraphconnectarticulationPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_path_sum(s : GraphconnectarticulationPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_path_mean(s : GraphconnectarticulationPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_path_mean(s : GraphconnectarticulationPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_path_scale(s : GraphconnectarticulationPath, f : Double) -> GraphconnectarticulationPath {
   let result = graph_connect_articulation_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_articulation_path_fill(s : GraphconnectarticulationPath, v 
   result
 }
 
-pub fn graph_connect_articulation_path_min(s : GraphconnectarticulationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_path_min(s : GraphconnectarticulationPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_path_max(s : GraphconnectarticulationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_path_max(s : GraphconnectarticulationPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_path_to_string(s : GraphconnectarticulationPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_articulation_cluster_set(s : GraphconnectarticulationCluste
   result
 }
 
-pub fn graph_connect_articulation_cluster_sum(s : GraphconnectarticulationCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_cluster_sum(s : GraphconnectarticulationCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_cluster_mean(s : GraphconnectarticulationCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_cluster_mean(s : GraphconnectarticulationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_cluster_scale(s : GraphconnectarticulationCluster, f : Double) -> GraphconnectarticulationCluster {
   let result = graph_connect_articulation_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_articulation_cluster_fill(s : GraphconnectarticulationClust
   result
 }
 
-pub fn graph_connect_articulation_cluster_min(s : GraphconnectarticulationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_cluster_min(s : GraphconnectarticulationCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_cluster_max(s : GraphconnectarticulationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_cluster_max(s : GraphconnectarticulationCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_cluster_to_string(s : GraphconnectarticulationCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_articulation_model_set(s : GraphconnectarticulationModel, i
   result
 }
 
-pub fn graph_connect_articulation_model_sum(s : GraphconnectarticulationModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_model_sum(s : GraphconnectarticulationModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_model_mean(s : GraphconnectarticulationModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_model_mean(s : GraphconnectarticulationModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_model_scale(s : GraphconnectarticulationModel, f : Double) -> GraphconnectarticulationModel {
   let result = graph_connect_articulation_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_articulation_model_fill(s : GraphconnectarticulationModel, 
   result
 }
 
-pub fn graph_connect_articulation_model_min(s : GraphconnectarticulationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_model_min(s : GraphconnectarticulationModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_model_max(s : GraphconnectarticulationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_model_max(s : GraphconnectarticulationModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_model_to_string(s : GraphconnectarticulationModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_articulation_layer_set(s : GraphconnectarticulationLayer, i
   result
 }
 
-pub fn graph_connect_articulation_layer_sum(s : GraphconnectarticulationLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_layer_sum(s : GraphconnectarticulationLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_layer_mean(s : GraphconnectarticulationLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_layer_mean(s : GraphconnectarticulationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_layer_scale(s : GraphconnectarticulationLayer, f : Double) -> GraphconnectarticulationLayer {
   let result = graph_connect_articulation_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_articulation_layer_fill(s : GraphconnectarticulationLayer, 
   result
 }
 
-pub fn graph_connect_articulation_layer_min(s : GraphconnectarticulationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_layer_min(s : GraphconnectarticulationLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_layer_max(s : GraphconnectarticulationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_layer_max(s : GraphconnectarticulationLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_layer_to_string(s : GraphconnectarticulationLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_articulation_buffer_set(s : GraphconnectarticulationBuffer,
   result
 }
 
-pub fn graph_connect_articulation_buffer_sum(s : GraphconnectarticulationBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_buffer_sum(s : GraphconnectarticulationBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_buffer_mean(s : GraphconnectarticulationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_buffer_mean(s : GraphconnectarticulationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_buffer_scale(s : GraphconnectarticulationBuffer, f : Double) -> GraphconnectarticulationBuffer {
   let result = graph_connect_articulation_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_articulation_buffer_fill(s : GraphconnectarticulationBuffer
   result
 }
 
-pub fn graph_connect_articulation_buffer_min(s : GraphconnectarticulationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_buffer_min(s : GraphconnectarticulationBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_buffer_max(s : GraphconnectarticulationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_buffer_max(s : GraphconnectarticulationBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_buffer_to_string(s : GraphconnectarticulationBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_articulation_cursor_set(s : GraphconnectarticulationCursor,
   result
 }
 
-pub fn graph_connect_articulation_cursor_sum(s : GraphconnectarticulationCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_cursor_sum(s : GraphconnectarticulationCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_cursor_mean(s : GraphconnectarticulationCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_cursor_mean(s : GraphconnectarticulationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_cursor_scale(s : GraphconnectarticulationCursor, f : Double) -> GraphconnectarticulationCursor {
   let result = graph_connect_articulation_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_articulation_cursor_fill(s : GraphconnectarticulationCursor
   result
 }
 
-pub fn graph_connect_articulation_cursor_min(s : GraphconnectarticulationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_cursor_min(s : GraphconnectarticulationCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_cursor_max(s : GraphconnectarticulationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_cursor_max(s : GraphconnectarticulationCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_cursor_to_string(s : GraphconnectarticulationCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_articulation_view_set(s : GraphconnectarticulationView, i :
   result
 }
 
-pub fn graph_connect_articulation_view_sum(s : GraphconnectarticulationView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_view_sum(s : GraphconnectarticulationView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_view_mean(s : GraphconnectarticulationView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_view_mean(s : GraphconnectarticulationView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_view_scale(s : GraphconnectarticulationView, f : Double) -> GraphconnectarticulationView {
   let result = graph_connect_articulation_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_articulation_view_fill(s : GraphconnectarticulationView, v 
   result
 }
 
-pub fn graph_connect_articulation_view_min(s : GraphconnectarticulationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_view_min(s : GraphconnectarticulationView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_view_max(s : GraphconnectarticulationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_view_max(s : GraphconnectarticulationView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_view_to_string(s : GraphconnectarticulationView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_articulation_range_set(s : GraphconnectarticulationRange, i
   result
 }
 
-pub fn graph_connect_articulation_range_sum(s : GraphconnectarticulationRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_range_sum(s : GraphconnectarticulationRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_range_mean(s : GraphconnectarticulationRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_range_mean(s : GraphconnectarticulationRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_range_scale(s : GraphconnectarticulationRange, f : Double) -> GraphconnectarticulationRange {
   let result = graph_connect_articulation_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_articulation_range_fill(s : GraphconnectarticulationRange, 
   result
 }
 
-pub fn graph_connect_articulation_range_min(s : GraphconnectarticulationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_range_min(s : GraphconnectarticulationRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_range_max(s : GraphconnectarticulationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_range_max(s : GraphconnectarticulationRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_range_to_string(s : GraphconnectarticulationRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_articulation_slice_set(s : GraphconnectarticulationSlice, i
   result
 }
 
-pub fn graph_connect_articulation_slice_sum(s : GraphconnectarticulationSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_articulation_slice_sum(s : GraphconnectarticulationSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_articulation_slice_mean(s : GraphconnectarticulationSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_articulation_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_articulation_slice_mean(s : GraphconnectarticulationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_articulation_slice_scale(s : GraphconnectarticulationSlice, f : Double) -> GraphconnectarticulationSlice {
   let result = graph_connect_articulation_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_articulation_slice_fill(s : GraphconnectarticulationSlice, 
   result
 }
 
-pub fn graph_connect_articulation_slice_min(s : GraphconnectarticulationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_slice_min(s : GraphconnectarticulationSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_articulation_slice_max(s : GraphconnectarticulationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_articulation_slice_max(s : GraphconnectarticulationSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_articulation_slice_to_string(s : GraphconnectarticulationSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

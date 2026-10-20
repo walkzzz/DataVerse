@@ -88,11 +88,7 @@ pub fn math_special_hypergeo_make_series(vals : Array[Double], name : String) ->
 
 pub fn math_special_hypergeo_series_len(s : MathspecialhypergeoSeries) -> Int { s.vals.length() }
 
-pub fn math_special_hypergeo_series_sum(s : MathspecialhypergeoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_hypergeo_series_sum(s : MathspecialhypergeoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_hypergeo_series_mean(s : MathspecialhypergeoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_hypergeo_frame_set(s : MathspecialhypergeoFrame, i : Int, v 
   result
 }
 
-pub fn math_special_hypergeo_frame_sum(s : MathspecialhypergeoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_frame_sum(s : MathspecialhypergeoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_frame_mean(s : MathspecialhypergeoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_frame_mean(s : MathspecialhypergeoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_frame_scale(s : MathspecialhypergeoFrame, f : Double) -> MathspecialhypergeoFrame {
   let result = math_special_hypergeo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_hypergeo_frame_fill(s : MathspecialhypergeoFrame, v : Double
   result
 }
 
-pub fn math_special_hypergeo_frame_min(s : MathspecialhypergeoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_frame_min(s : MathspecialhypergeoFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_frame_max(s : MathspecialhypergeoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_frame_max(s : MathspecialhypergeoFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_frame_to_string(s : MathspecialhypergeoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_hypergeo_table_set(s : MathspecialhypergeoTable, i : Int, v 
   result
 }
 
-pub fn math_special_hypergeo_table_sum(s : MathspecialhypergeoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_table_sum(s : MathspecialhypergeoTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_table_mean(s : MathspecialhypergeoTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_table_mean(s : MathspecialhypergeoTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_table_scale(s : MathspecialhypergeoTable, f : Double) -> MathspecialhypergeoTable {
   let result = math_special_hypergeo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_hypergeo_table_fill(s : MathspecialhypergeoTable, v : Double
   result
 }
 
-pub fn math_special_hypergeo_table_min(s : MathspecialhypergeoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_table_min(s : MathspecialhypergeoTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_table_max(s : MathspecialhypergeoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_table_max(s : MathspecialhypergeoTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_table_to_string(s : MathspecialhypergeoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_hypergeo_graphn_set(s : MathspecialhypergeoGraphN, i : Int, 
   result
 }
 
-pub fn math_special_hypergeo_graphn_sum(s : MathspecialhypergeoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_graphn_sum(s : MathspecialhypergeoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_graphn_mean(s : MathspecialhypergeoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_graphn_mean(s : MathspecialhypergeoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_graphn_scale(s : MathspecialhypergeoGraphN, f : Double) -> MathspecialhypergeoGraphN {
   let result = math_special_hypergeo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_hypergeo_graphn_fill(s : MathspecialhypergeoGraphN, v : Doub
   result
 }
 
-pub fn math_special_hypergeo_graphn_min(s : MathspecialhypergeoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_graphn_min(s : MathspecialhypergeoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_graphn_max(s : MathspecialhypergeoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_graphn_max(s : MathspecialhypergeoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_graphn_to_string(s : MathspecialhypergeoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_hypergeo_node_set(s : MathspecialhypergeoNode, i : Int, v : 
   result
 }
 
-pub fn math_special_hypergeo_node_sum(s : MathspecialhypergeoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_node_sum(s : MathspecialhypergeoNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_node_mean(s : MathspecialhypergeoNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_node_mean(s : MathspecialhypergeoNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_node_scale(s : MathspecialhypergeoNode, f : Double) -> MathspecialhypergeoNode {
   let result = math_special_hypergeo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_hypergeo_node_fill(s : MathspecialhypergeoNode, v : Double) 
   result
 }
 
-pub fn math_special_hypergeo_node_min(s : MathspecialhypergeoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_node_min(s : MathspecialhypergeoNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_node_max(s : MathspecialhypergeoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_node_max(s : MathspecialhypergeoNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_node_to_string(s : MathspecialhypergeoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_hypergeo_edge_set(s : MathspecialhypergeoEdge, i : Int, v : 
   result
 }
 
-pub fn math_special_hypergeo_edge_sum(s : MathspecialhypergeoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_edge_sum(s : MathspecialhypergeoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_edge_mean(s : MathspecialhypergeoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_edge_mean(s : MathspecialhypergeoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_edge_scale(s : MathspecialhypergeoEdge, f : Double) -> MathspecialhypergeoEdge {
   let result = math_special_hypergeo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_hypergeo_edge_fill(s : MathspecialhypergeoEdge, v : Double) 
   result
 }
 
-pub fn math_special_hypergeo_edge_min(s : MathspecialhypergeoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_edge_min(s : MathspecialhypergeoEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_edge_max(s : MathspecialhypergeoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_edge_max(s : MathspecialhypergeoEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_edge_to_string(s : MathspecialhypergeoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_hypergeo_path_set(s : MathspecialhypergeoPath, i : Int, v : 
   result
 }
 
-pub fn math_special_hypergeo_path_sum(s : MathspecialhypergeoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_path_sum(s : MathspecialhypergeoPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_path_mean(s : MathspecialhypergeoPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_path_mean(s : MathspecialhypergeoPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_path_scale(s : MathspecialhypergeoPath, f : Double) -> MathspecialhypergeoPath {
   let result = math_special_hypergeo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_hypergeo_path_fill(s : MathspecialhypergeoPath, v : Double) 
   result
 }
 
-pub fn math_special_hypergeo_path_min(s : MathspecialhypergeoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_path_min(s : MathspecialhypergeoPath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_path_max(s : MathspecialhypergeoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_path_max(s : MathspecialhypergeoPath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_path_to_string(s : MathspecialhypergeoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_hypergeo_cluster_set(s : MathspecialhypergeoCluster, i : Int
   result
 }
 
-pub fn math_special_hypergeo_cluster_sum(s : MathspecialhypergeoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_cluster_sum(s : MathspecialhypergeoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_cluster_mean(s : MathspecialhypergeoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_cluster_mean(s : MathspecialhypergeoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_cluster_scale(s : MathspecialhypergeoCluster, f : Double) -> MathspecialhypergeoCluster {
   let result = math_special_hypergeo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_hypergeo_cluster_fill(s : MathspecialhypergeoCluster, v : Do
   result
 }
 
-pub fn math_special_hypergeo_cluster_min(s : MathspecialhypergeoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_cluster_min(s : MathspecialhypergeoCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_cluster_max(s : MathspecialhypergeoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_cluster_max(s : MathspecialhypergeoCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_cluster_to_string(s : MathspecialhypergeoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_hypergeo_model_set(s : MathspecialhypergeoModel, i : Int, v 
   result
 }
 
-pub fn math_special_hypergeo_model_sum(s : MathspecialhypergeoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_model_sum(s : MathspecialhypergeoModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_model_mean(s : MathspecialhypergeoModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_model_mean(s : MathspecialhypergeoModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_model_scale(s : MathspecialhypergeoModel, f : Double) -> MathspecialhypergeoModel {
   let result = math_special_hypergeo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_hypergeo_model_fill(s : MathspecialhypergeoModel, v : Double
   result
 }
 
-pub fn math_special_hypergeo_model_min(s : MathspecialhypergeoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_model_min(s : MathspecialhypergeoModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_model_max(s : MathspecialhypergeoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_model_max(s : MathspecialhypergeoModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_model_to_string(s : MathspecialhypergeoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_hypergeo_layer_set(s : MathspecialhypergeoLayer, i : Int, v 
   result
 }
 
-pub fn math_special_hypergeo_layer_sum(s : MathspecialhypergeoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_layer_sum(s : MathspecialhypergeoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_layer_mean(s : MathspecialhypergeoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_layer_mean(s : MathspecialhypergeoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_layer_scale(s : MathspecialhypergeoLayer, f : Double) -> MathspecialhypergeoLayer {
   let result = math_special_hypergeo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_hypergeo_layer_fill(s : MathspecialhypergeoLayer, v : Double
   result
 }
 
-pub fn math_special_hypergeo_layer_min(s : MathspecialhypergeoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_layer_min(s : MathspecialhypergeoLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_layer_max(s : MathspecialhypergeoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_layer_max(s : MathspecialhypergeoLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_layer_to_string(s : MathspecialhypergeoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_hypergeo_buffer_set(s : MathspecialhypergeoBuffer, i : Int, 
   result
 }
 
-pub fn math_special_hypergeo_buffer_sum(s : MathspecialhypergeoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_buffer_sum(s : MathspecialhypergeoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_buffer_mean(s : MathspecialhypergeoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_buffer_mean(s : MathspecialhypergeoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_buffer_scale(s : MathspecialhypergeoBuffer, f : Double) -> MathspecialhypergeoBuffer {
   let result = math_special_hypergeo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_hypergeo_buffer_fill(s : MathspecialhypergeoBuffer, v : Doub
   result
 }
 
-pub fn math_special_hypergeo_buffer_min(s : MathspecialhypergeoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_buffer_min(s : MathspecialhypergeoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_buffer_max(s : MathspecialhypergeoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_buffer_max(s : MathspecialhypergeoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_buffer_to_string(s : MathspecialhypergeoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_hypergeo_cursor_set(s : MathspecialhypergeoCursor, i : Int, 
   result
 }
 
-pub fn math_special_hypergeo_cursor_sum(s : MathspecialhypergeoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_cursor_sum(s : MathspecialhypergeoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_cursor_mean(s : MathspecialhypergeoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_cursor_mean(s : MathspecialhypergeoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_cursor_scale(s : MathspecialhypergeoCursor, f : Double) -> MathspecialhypergeoCursor {
   let result = math_special_hypergeo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_hypergeo_cursor_fill(s : MathspecialhypergeoCursor, v : Doub
   result
 }
 
-pub fn math_special_hypergeo_cursor_min(s : MathspecialhypergeoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_cursor_min(s : MathspecialhypergeoCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_cursor_max(s : MathspecialhypergeoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_cursor_max(s : MathspecialhypergeoCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_cursor_to_string(s : MathspecialhypergeoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_hypergeo_view_set(s : MathspecialhypergeoView, i : Int, v : 
   result
 }
 
-pub fn math_special_hypergeo_view_sum(s : MathspecialhypergeoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_view_sum(s : MathspecialhypergeoView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_view_mean(s : MathspecialhypergeoView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_view_mean(s : MathspecialhypergeoView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_view_scale(s : MathspecialhypergeoView, f : Double) -> MathspecialhypergeoView {
   let result = math_special_hypergeo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_hypergeo_view_fill(s : MathspecialhypergeoView, v : Double) 
   result
 }
 
-pub fn math_special_hypergeo_view_min(s : MathspecialhypergeoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_view_min(s : MathspecialhypergeoView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_view_max(s : MathspecialhypergeoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_view_max(s : MathspecialhypergeoView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_view_to_string(s : MathspecialhypergeoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_hypergeo_range_set(s : MathspecialhypergeoRange, i : Int, v 
   result
 }
 
-pub fn math_special_hypergeo_range_sum(s : MathspecialhypergeoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_range_sum(s : MathspecialhypergeoRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_range_mean(s : MathspecialhypergeoRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_range_mean(s : MathspecialhypergeoRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_range_scale(s : MathspecialhypergeoRange, f : Double) -> MathspecialhypergeoRange {
   let result = math_special_hypergeo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_hypergeo_range_fill(s : MathspecialhypergeoRange, v : Double
   result
 }
 
-pub fn math_special_hypergeo_range_min(s : MathspecialhypergeoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_range_min(s : MathspecialhypergeoRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_range_max(s : MathspecialhypergeoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_range_max(s : MathspecialhypergeoRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_range_to_string(s : MathspecialhypergeoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_hypergeo_slice_set(s : MathspecialhypergeoSlice, i : Int, v 
   result
 }
 
-pub fn math_special_hypergeo_slice_sum(s : MathspecialhypergeoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_hypergeo_slice_sum(s : MathspecialhypergeoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_hypergeo_slice_mean(s : MathspecialhypergeoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_hypergeo_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_hypergeo_slice_mean(s : MathspecialhypergeoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_hypergeo_slice_scale(s : MathspecialhypergeoSlice, f : Double) -> MathspecialhypergeoSlice {
   let result = math_special_hypergeo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_hypergeo_slice_fill(s : MathspecialhypergeoSlice, v : Double
   result
 }
 
-pub fn math_special_hypergeo_slice_min(s : MathspecialhypergeoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_slice_min(s : MathspecialhypergeoSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_hypergeo_slice_max(s : MathspecialhypergeoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_hypergeo_slice_max(s : MathspecialhypergeoSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_hypergeo_slice_to_string(s : MathspecialhypergeoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

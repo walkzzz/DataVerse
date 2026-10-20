@@ -88,11 +88,7 @@ pub fn ml_cluster_hierarchical_make_series(vals : Array[Double], name : String) 
 
 pub fn ml_cluster_hierarchical_series_len(s : MlclusterhierarchicalSeries) -> Int { s.vals.length() }
 
-pub fn ml_cluster_hierarchical_series_sum(s : MlclusterhierarchicalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_series_sum(s : MlclusterhierarchicalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_cluster_hierarchical_series_mean(s : MlclusterhierarchicalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_cluster_hierarchical_frame_set(s : MlclusterhierarchicalFrame, i : Int
   result
 }
 
-pub fn ml_cluster_hierarchical_frame_sum(s : MlclusterhierarchicalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_frame_sum(s : MlclusterhierarchicalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_frame_mean(s : MlclusterhierarchicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_frame_mean(s : MlclusterhierarchicalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_frame_scale(s : MlclusterhierarchicalFrame, f : Double) -> MlclusterhierarchicalFrame {
   let result = ml_cluster_hierarchical_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_cluster_hierarchical_frame_fill(s : MlclusterhierarchicalFrame, v : Do
   result
 }
 
-pub fn ml_cluster_hierarchical_frame_min(s : MlclusterhierarchicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_frame_min(s : MlclusterhierarchicalFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_frame_max(s : MlclusterhierarchicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_frame_max(s : MlclusterhierarchicalFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_frame_to_string(s : MlclusterhierarchicalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_cluster_hierarchical_table_set(s : MlclusterhierarchicalTable, i : Int
   result
 }
 
-pub fn ml_cluster_hierarchical_table_sum(s : MlclusterhierarchicalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_table_sum(s : MlclusterhierarchicalTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_table_mean(s : MlclusterhierarchicalTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_table_mean(s : MlclusterhierarchicalTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_table_scale(s : MlclusterhierarchicalTable, f : Double) -> MlclusterhierarchicalTable {
   let result = ml_cluster_hierarchical_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_cluster_hierarchical_table_fill(s : MlclusterhierarchicalTable, v : Do
   result
 }
 
-pub fn ml_cluster_hierarchical_table_min(s : MlclusterhierarchicalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_table_min(s : MlclusterhierarchicalTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_table_max(s : MlclusterhierarchicalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_table_max(s : MlclusterhierarchicalTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_table_to_string(s : MlclusterhierarchicalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_cluster_hierarchical_graphn_set(s : MlclusterhierarchicalGraphN, i : I
   result
 }
 
-pub fn ml_cluster_hierarchical_graphn_sum(s : MlclusterhierarchicalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_graphn_sum(s : MlclusterhierarchicalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_graphn_mean(s : MlclusterhierarchicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_graphn_mean(s : MlclusterhierarchicalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_graphn_scale(s : MlclusterhierarchicalGraphN, f : Double) -> MlclusterhierarchicalGraphN {
   let result = ml_cluster_hierarchical_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_cluster_hierarchical_graphn_fill(s : MlclusterhierarchicalGraphN, v : 
   result
 }
 
-pub fn ml_cluster_hierarchical_graphn_min(s : MlclusterhierarchicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_graphn_min(s : MlclusterhierarchicalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_graphn_max(s : MlclusterhierarchicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_graphn_max(s : MlclusterhierarchicalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_graphn_to_string(s : MlclusterhierarchicalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_cluster_hierarchical_node_set(s : MlclusterhierarchicalNode, i : Int, 
   result
 }
 
-pub fn ml_cluster_hierarchical_node_sum(s : MlclusterhierarchicalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_node_sum(s : MlclusterhierarchicalNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_node_mean(s : MlclusterhierarchicalNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_node_mean(s : MlclusterhierarchicalNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_node_scale(s : MlclusterhierarchicalNode, f : Double) -> MlclusterhierarchicalNode {
   let result = ml_cluster_hierarchical_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_cluster_hierarchical_node_fill(s : MlclusterhierarchicalNode, v : Doub
   result
 }
 
-pub fn ml_cluster_hierarchical_node_min(s : MlclusterhierarchicalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_node_min(s : MlclusterhierarchicalNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_node_max(s : MlclusterhierarchicalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_node_max(s : MlclusterhierarchicalNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_node_to_string(s : MlclusterhierarchicalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_cluster_hierarchical_edge_set(s : MlclusterhierarchicalEdge, i : Int, 
   result
 }
 
-pub fn ml_cluster_hierarchical_edge_sum(s : MlclusterhierarchicalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_edge_sum(s : MlclusterhierarchicalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_edge_mean(s : MlclusterhierarchicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_edge_mean(s : MlclusterhierarchicalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_edge_scale(s : MlclusterhierarchicalEdge, f : Double) -> MlclusterhierarchicalEdge {
   let result = ml_cluster_hierarchical_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_cluster_hierarchical_edge_fill(s : MlclusterhierarchicalEdge, v : Doub
   result
 }
 
-pub fn ml_cluster_hierarchical_edge_min(s : MlclusterhierarchicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_edge_min(s : MlclusterhierarchicalEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_edge_max(s : MlclusterhierarchicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_edge_max(s : MlclusterhierarchicalEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_edge_to_string(s : MlclusterhierarchicalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_cluster_hierarchical_path_set(s : MlclusterhierarchicalPath, i : Int, 
   result
 }
 
-pub fn ml_cluster_hierarchical_path_sum(s : MlclusterhierarchicalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_path_sum(s : MlclusterhierarchicalPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_path_mean(s : MlclusterhierarchicalPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_path_mean(s : MlclusterhierarchicalPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_path_scale(s : MlclusterhierarchicalPath, f : Double) -> MlclusterhierarchicalPath {
   let result = ml_cluster_hierarchical_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_cluster_hierarchical_path_fill(s : MlclusterhierarchicalPath, v : Doub
   result
 }
 
-pub fn ml_cluster_hierarchical_path_min(s : MlclusterhierarchicalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_path_min(s : MlclusterhierarchicalPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_path_max(s : MlclusterhierarchicalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_path_max(s : MlclusterhierarchicalPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_path_to_string(s : MlclusterhierarchicalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_cluster_hierarchical_cluster_set(s : MlclusterhierarchicalCluster, i :
   result
 }
 
-pub fn ml_cluster_hierarchical_cluster_sum(s : MlclusterhierarchicalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_cluster_sum(s : MlclusterhierarchicalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_cluster_mean(s : MlclusterhierarchicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_cluster_mean(s : MlclusterhierarchicalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_cluster_scale(s : MlclusterhierarchicalCluster, f : Double) -> MlclusterhierarchicalCluster {
   let result = ml_cluster_hierarchical_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_cluster_hierarchical_cluster_fill(s : MlclusterhierarchicalCluster, v 
   result
 }
 
-pub fn ml_cluster_hierarchical_cluster_min(s : MlclusterhierarchicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_cluster_min(s : MlclusterhierarchicalCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_cluster_max(s : MlclusterhierarchicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_cluster_max(s : MlclusterhierarchicalCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_cluster_to_string(s : MlclusterhierarchicalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_cluster_hierarchical_model_set(s : MlclusterhierarchicalModel, i : Int
   result
 }
 
-pub fn ml_cluster_hierarchical_model_sum(s : MlclusterhierarchicalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_model_sum(s : MlclusterhierarchicalModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_model_mean(s : MlclusterhierarchicalModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_model_mean(s : MlclusterhierarchicalModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_model_scale(s : MlclusterhierarchicalModel, f : Double) -> MlclusterhierarchicalModel {
   let result = ml_cluster_hierarchical_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_cluster_hierarchical_model_fill(s : MlclusterhierarchicalModel, v : Do
   result
 }
 
-pub fn ml_cluster_hierarchical_model_min(s : MlclusterhierarchicalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_model_min(s : MlclusterhierarchicalModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_model_max(s : MlclusterhierarchicalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_model_max(s : MlclusterhierarchicalModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_model_to_string(s : MlclusterhierarchicalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_cluster_hierarchical_layer_set(s : MlclusterhierarchicalLayer, i : Int
   result
 }
 
-pub fn ml_cluster_hierarchical_layer_sum(s : MlclusterhierarchicalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_layer_sum(s : MlclusterhierarchicalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_layer_mean(s : MlclusterhierarchicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_layer_mean(s : MlclusterhierarchicalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_layer_scale(s : MlclusterhierarchicalLayer, f : Double) -> MlclusterhierarchicalLayer {
   let result = ml_cluster_hierarchical_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_cluster_hierarchical_layer_fill(s : MlclusterhierarchicalLayer, v : Do
   result
 }
 
-pub fn ml_cluster_hierarchical_layer_min(s : MlclusterhierarchicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_layer_min(s : MlclusterhierarchicalLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_layer_max(s : MlclusterhierarchicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_layer_max(s : MlclusterhierarchicalLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_layer_to_string(s : MlclusterhierarchicalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_cluster_hierarchical_buffer_set(s : MlclusterhierarchicalBuffer, i : I
   result
 }
 
-pub fn ml_cluster_hierarchical_buffer_sum(s : MlclusterhierarchicalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_buffer_sum(s : MlclusterhierarchicalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_buffer_mean(s : MlclusterhierarchicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_buffer_mean(s : MlclusterhierarchicalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_buffer_scale(s : MlclusterhierarchicalBuffer, f : Double) -> MlclusterhierarchicalBuffer {
   let result = ml_cluster_hierarchical_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_cluster_hierarchical_buffer_fill(s : MlclusterhierarchicalBuffer, v : 
   result
 }
 
-pub fn ml_cluster_hierarchical_buffer_min(s : MlclusterhierarchicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_buffer_min(s : MlclusterhierarchicalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_buffer_max(s : MlclusterhierarchicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_buffer_max(s : MlclusterhierarchicalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_buffer_to_string(s : MlclusterhierarchicalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_cluster_hierarchical_cursor_set(s : MlclusterhierarchicalCursor, i : I
   result
 }
 
-pub fn ml_cluster_hierarchical_cursor_sum(s : MlclusterhierarchicalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_cursor_sum(s : MlclusterhierarchicalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_cursor_mean(s : MlclusterhierarchicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_cursor_mean(s : MlclusterhierarchicalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_cursor_scale(s : MlclusterhierarchicalCursor, f : Double) -> MlclusterhierarchicalCursor {
   let result = ml_cluster_hierarchical_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_cluster_hierarchical_cursor_fill(s : MlclusterhierarchicalCursor, v : 
   result
 }
 
-pub fn ml_cluster_hierarchical_cursor_min(s : MlclusterhierarchicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_cursor_min(s : MlclusterhierarchicalCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_cursor_max(s : MlclusterhierarchicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_cursor_max(s : MlclusterhierarchicalCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_cursor_to_string(s : MlclusterhierarchicalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_cluster_hierarchical_view_set(s : MlclusterhierarchicalView, i : Int, 
   result
 }
 
-pub fn ml_cluster_hierarchical_view_sum(s : MlclusterhierarchicalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_view_sum(s : MlclusterhierarchicalView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_view_mean(s : MlclusterhierarchicalView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_view_mean(s : MlclusterhierarchicalView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_view_scale(s : MlclusterhierarchicalView, f : Double) -> MlclusterhierarchicalView {
   let result = ml_cluster_hierarchical_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_cluster_hierarchical_view_fill(s : MlclusterhierarchicalView, v : Doub
   result
 }
 
-pub fn ml_cluster_hierarchical_view_min(s : MlclusterhierarchicalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_view_min(s : MlclusterhierarchicalView) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_view_max(s : MlclusterhierarchicalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_view_max(s : MlclusterhierarchicalView) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_view_to_string(s : MlclusterhierarchicalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_cluster_hierarchical_range_set(s : MlclusterhierarchicalRange, i : Int
   result
 }
 
-pub fn ml_cluster_hierarchical_range_sum(s : MlclusterhierarchicalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_range_sum(s : MlclusterhierarchicalRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_range_mean(s : MlclusterhierarchicalRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_range_mean(s : MlclusterhierarchicalRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_range_scale(s : MlclusterhierarchicalRange, f : Double) -> MlclusterhierarchicalRange {
   let result = ml_cluster_hierarchical_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_cluster_hierarchical_range_fill(s : MlclusterhierarchicalRange, v : Do
   result
 }
 
-pub fn ml_cluster_hierarchical_range_min(s : MlclusterhierarchicalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_range_min(s : MlclusterhierarchicalRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_range_max(s : MlclusterhierarchicalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_range_max(s : MlclusterhierarchicalRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_range_to_string(s : MlclusterhierarchicalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_cluster_hierarchical_slice_set(s : MlclusterhierarchicalSlice, i : Int
   result
 }
 
-pub fn ml_cluster_hierarchical_slice_sum(s : MlclusterhierarchicalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_hierarchical_slice_sum(s : MlclusterhierarchicalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_hierarchical_slice_mean(s : MlclusterhierarchicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_hierarchical_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_hierarchical_slice_mean(s : MlclusterhierarchicalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_hierarchical_slice_scale(s : MlclusterhierarchicalSlice, f : Double) -> MlclusterhierarchicalSlice {
   let result = ml_cluster_hierarchical_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_cluster_hierarchical_slice_fill(s : MlclusterhierarchicalSlice, v : Do
   result
 }
 
-pub fn ml_cluster_hierarchical_slice_min(s : MlclusterhierarchicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_slice_min(s : MlclusterhierarchicalSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_hierarchical_slice_max(s : MlclusterhierarchicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_hierarchical_slice_max(s : MlclusterhierarchicalSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_hierarchical_slice_to_string(s : MlclusterhierarchicalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

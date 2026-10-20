@@ -88,11 +88,7 @@ pub fn graph_search_dijkstra_make_series(vals : Array[Double], name : String) ->
 
 pub fn graph_search_dijkstra_series_len(s : GraphsearchdijkstraSeries) -> Int { s.vals.length() }
 
-pub fn graph_search_dijkstra_series_sum(s : GraphsearchdijkstraSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_search_dijkstra_series_sum(s : GraphsearchdijkstraSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_search_dijkstra_series_mean(s : GraphsearchdijkstraSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_search_dijkstra_frame_set(s : GraphsearchdijkstraFrame, i : Int, v 
   result
 }
 
-pub fn graph_search_dijkstra_frame_sum(s : GraphsearchdijkstraFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_frame_sum(s : GraphsearchdijkstraFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_frame_mean(s : GraphsearchdijkstraFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_frame_mean(s : GraphsearchdijkstraFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_frame_scale(s : GraphsearchdijkstraFrame, f : Double) -> GraphsearchdijkstraFrame {
   let result = graph_search_dijkstra_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_search_dijkstra_frame_fill(s : GraphsearchdijkstraFrame, v : Double
   result
 }
 
-pub fn graph_search_dijkstra_frame_min(s : GraphsearchdijkstraFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_frame_min(s : GraphsearchdijkstraFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_frame_max(s : GraphsearchdijkstraFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_frame_max(s : GraphsearchdijkstraFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_frame_to_string(s : GraphsearchdijkstraFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_search_dijkstra_table_set(s : GraphsearchdijkstraTable, i : Int, v 
   result
 }
 
-pub fn graph_search_dijkstra_table_sum(s : GraphsearchdijkstraTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_table_sum(s : GraphsearchdijkstraTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_table_mean(s : GraphsearchdijkstraTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_table_mean(s : GraphsearchdijkstraTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_table_scale(s : GraphsearchdijkstraTable, f : Double) -> GraphsearchdijkstraTable {
   let result = graph_search_dijkstra_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_search_dijkstra_table_fill(s : GraphsearchdijkstraTable, v : Double
   result
 }
 
-pub fn graph_search_dijkstra_table_min(s : GraphsearchdijkstraTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_table_min(s : GraphsearchdijkstraTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_table_max(s : GraphsearchdijkstraTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_table_max(s : GraphsearchdijkstraTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_table_to_string(s : GraphsearchdijkstraTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_search_dijkstra_graphn_set(s : GraphsearchdijkstraGraphN, i : Int, 
   result
 }
 
-pub fn graph_search_dijkstra_graphn_sum(s : GraphsearchdijkstraGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_graphn_sum(s : GraphsearchdijkstraGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_graphn_mean(s : GraphsearchdijkstraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_graphn_mean(s : GraphsearchdijkstraGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_graphn_scale(s : GraphsearchdijkstraGraphN, f : Double) -> GraphsearchdijkstraGraphN {
   let result = graph_search_dijkstra_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_search_dijkstra_graphn_fill(s : GraphsearchdijkstraGraphN, v : Doub
   result
 }
 
-pub fn graph_search_dijkstra_graphn_min(s : GraphsearchdijkstraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_graphn_min(s : GraphsearchdijkstraGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_graphn_max(s : GraphsearchdijkstraGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_graphn_max(s : GraphsearchdijkstraGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_graphn_to_string(s : GraphsearchdijkstraGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_search_dijkstra_node_set(s : GraphsearchdijkstraNode, i : Int, v : 
   result
 }
 
-pub fn graph_search_dijkstra_node_sum(s : GraphsearchdijkstraNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_node_sum(s : GraphsearchdijkstraNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_node_mean(s : GraphsearchdijkstraNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_node_mean(s : GraphsearchdijkstraNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_node_scale(s : GraphsearchdijkstraNode, f : Double) -> GraphsearchdijkstraNode {
   let result = graph_search_dijkstra_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_search_dijkstra_node_fill(s : GraphsearchdijkstraNode, v : Double) 
   result
 }
 
-pub fn graph_search_dijkstra_node_min(s : GraphsearchdijkstraNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_node_min(s : GraphsearchdijkstraNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_node_max(s : GraphsearchdijkstraNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_node_max(s : GraphsearchdijkstraNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_node_to_string(s : GraphsearchdijkstraNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_search_dijkstra_edge_set(s : GraphsearchdijkstraEdge, i : Int, v : 
   result
 }
 
-pub fn graph_search_dijkstra_edge_sum(s : GraphsearchdijkstraEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_edge_sum(s : GraphsearchdijkstraEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_edge_mean(s : GraphsearchdijkstraEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_edge_mean(s : GraphsearchdijkstraEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_edge_scale(s : GraphsearchdijkstraEdge, f : Double) -> GraphsearchdijkstraEdge {
   let result = graph_search_dijkstra_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_search_dijkstra_edge_fill(s : GraphsearchdijkstraEdge, v : Double) 
   result
 }
 
-pub fn graph_search_dijkstra_edge_min(s : GraphsearchdijkstraEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_edge_min(s : GraphsearchdijkstraEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_edge_max(s : GraphsearchdijkstraEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_edge_max(s : GraphsearchdijkstraEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_edge_to_string(s : GraphsearchdijkstraEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_search_dijkstra_path_set(s : GraphsearchdijkstraPath, i : Int, v : 
   result
 }
 
-pub fn graph_search_dijkstra_path_sum(s : GraphsearchdijkstraPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_path_sum(s : GraphsearchdijkstraPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_path_mean(s : GraphsearchdijkstraPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_path_mean(s : GraphsearchdijkstraPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_path_scale(s : GraphsearchdijkstraPath, f : Double) -> GraphsearchdijkstraPath {
   let result = graph_search_dijkstra_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_search_dijkstra_path_fill(s : GraphsearchdijkstraPath, v : Double) 
   result
 }
 
-pub fn graph_search_dijkstra_path_min(s : GraphsearchdijkstraPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_path_min(s : GraphsearchdijkstraPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_path_max(s : GraphsearchdijkstraPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_path_max(s : GraphsearchdijkstraPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_path_to_string(s : GraphsearchdijkstraPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_search_dijkstra_cluster_set(s : GraphsearchdijkstraCluster, i : Int
   result
 }
 
-pub fn graph_search_dijkstra_cluster_sum(s : GraphsearchdijkstraCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_cluster_sum(s : GraphsearchdijkstraCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_cluster_mean(s : GraphsearchdijkstraCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_cluster_mean(s : GraphsearchdijkstraCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_cluster_scale(s : GraphsearchdijkstraCluster, f : Double) -> GraphsearchdijkstraCluster {
   let result = graph_search_dijkstra_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_search_dijkstra_cluster_fill(s : GraphsearchdijkstraCluster, v : Do
   result
 }
 
-pub fn graph_search_dijkstra_cluster_min(s : GraphsearchdijkstraCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_cluster_min(s : GraphsearchdijkstraCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_cluster_max(s : GraphsearchdijkstraCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_cluster_max(s : GraphsearchdijkstraCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_cluster_to_string(s : GraphsearchdijkstraCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_search_dijkstra_model_set(s : GraphsearchdijkstraModel, i : Int, v 
   result
 }
 
-pub fn graph_search_dijkstra_model_sum(s : GraphsearchdijkstraModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_model_sum(s : GraphsearchdijkstraModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_model_mean(s : GraphsearchdijkstraModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_model_mean(s : GraphsearchdijkstraModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_model_scale(s : GraphsearchdijkstraModel, f : Double) -> GraphsearchdijkstraModel {
   let result = graph_search_dijkstra_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_search_dijkstra_model_fill(s : GraphsearchdijkstraModel, v : Double
   result
 }
 
-pub fn graph_search_dijkstra_model_min(s : GraphsearchdijkstraModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_model_min(s : GraphsearchdijkstraModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_model_max(s : GraphsearchdijkstraModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_model_max(s : GraphsearchdijkstraModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_model_to_string(s : GraphsearchdijkstraModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_search_dijkstra_layer_set(s : GraphsearchdijkstraLayer, i : Int, v 
   result
 }
 
-pub fn graph_search_dijkstra_layer_sum(s : GraphsearchdijkstraLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_layer_sum(s : GraphsearchdijkstraLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_layer_mean(s : GraphsearchdijkstraLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_layer_mean(s : GraphsearchdijkstraLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_layer_scale(s : GraphsearchdijkstraLayer, f : Double) -> GraphsearchdijkstraLayer {
   let result = graph_search_dijkstra_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_search_dijkstra_layer_fill(s : GraphsearchdijkstraLayer, v : Double
   result
 }
 
-pub fn graph_search_dijkstra_layer_min(s : GraphsearchdijkstraLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_layer_min(s : GraphsearchdijkstraLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_layer_max(s : GraphsearchdijkstraLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_layer_max(s : GraphsearchdijkstraLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_layer_to_string(s : GraphsearchdijkstraLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_search_dijkstra_buffer_set(s : GraphsearchdijkstraBuffer, i : Int, 
   result
 }
 
-pub fn graph_search_dijkstra_buffer_sum(s : GraphsearchdijkstraBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_buffer_sum(s : GraphsearchdijkstraBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_buffer_mean(s : GraphsearchdijkstraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_buffer_mean(s : GraphsearchdijkstraBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_buffer_scale(s : GraphsearchdijkstraBuffer, f : Double) -> GraphsearchdijkstraBuffer {
   let result = graph_search_dijkstra_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_search_dijkstra_buffer_fill(s : GraphsearchdijkstraBuffer, v : Doub
   result
 }
 
-pub fn graph_search_dijkstra_buffer_min(s : GraphsearchdijkstraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_buffer_min(s : GraphsearchdijkstraBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_buffer_max(s : GraphsearchdijkstraBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_buffer_max(s : GraphsearchdijkstraBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_buffer_to_string(s : GraphsearchdijkstraBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_search_dijkstra_cursor_set(s : GraphsearchdijkstraCursor, i : Int, 
   result
 }
 
-pub fn graph_search_dijkstra_cursor_sum(s : GraphsearchdijkstraCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_cursor_sum(s : GraphsearchdijkstraCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_cursor_mean(s : GraphsearchdijkstraCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_cursor_mean(s : GraphsearchdijkstraCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_cursor_scale(s : GraphsearchdijkstraCursor, f : Double) -> GraphsearchdijkstraCursor {
   let result = graph_search_dijkstra_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_search_dijkstra_cursor_fill(s : GraphsearchdijkstraCursor, v : Doub
   result
 }
 
-pub fn graph_search_dijkstra_cursor_min(s : GraphsearchdijkstraCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_cursor_min(s : GraphsearchdijkstraCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_cursor_max(s : GraphsearchdijkstraCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_cursor_max(s : GraphsearchdijkstraCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_cursor_to_string(s : GraphsearchdijkstraCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_search_dijkstra_view_set(s : GraphsearchdijkstraView, i : Int, v : 
   result
 }
 
-pub fn graph_search_dijkstra_view_sum(s : GraphsearchdijkstraView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_view_sum(s : GraphsearchdijkstraView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_view_mean(s : GraphsearchdijkstraView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_view_mean(s : GraphsearchdijkstraView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_view_scale(s : GraphsearchdijkstraView, f : Double) -> GraphsearchdijkstraView {
   let result = graph_search_dijkstra_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_search_dijkstra_view_fill(s : GraphsearchdijkstraView, v : Double) 
   result
 }
 
-pub fn graph_search_dijkstra_view_min(s : GraphsearchdijkstraView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_view_min(s : GraphsearchdijkstraView) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_view_max(s : GraphsearchdijkstraView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_view_max(s : GraphsearchdijkstraView) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_view_to_string(s : GraphsearchdijkstraView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_search_dijkstra_range_set(s : GraphsearchdijkstraRange, i : Int, v 
   result
 }
 
-pub fn graph_search_dijkstra_range_sum(s : GraphsearchdijkstraRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_range_sum(s : GraphsearchdijkstraRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_range_mean(s : GraphsearchdijkstraRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_range_mean(s : GraphsearchdijkstraRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_range_scale(s : GraphsearchdijkstraRange, f : Double) -> GraphsearchdijkstraRange {
   let result = graph_search_dijkstra_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_search_dijkstra_range_fill(s : GraphsearchdijkstraRange, v : Double
   result
 }
 
-pub fn graph_search_dijkstra_range_min(s : GraphsearchdijkstraRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_range_min(s : GraphsearchdijkstraRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_range_max(s : GraphsearchdijkstraRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_range_max(s : GraphsearchdijkstraRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_range_to_string(s : GraphsearchdijkstraRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_search_dijkstra_slice_set(s : GraphsearchdijkstraSlice, i : Int, v 
   result
 }
 
-pub fn graph_search_dijkstra_slice_sum(s : GraphsearchdijkstraSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_dijkstra_slice_sum(s : GraphsearchdijkstraSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_dijkstra_slice_mean(s : GraphsearchdijkstraSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_dijkstra_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_dijkstra_slice_mean(s : GraphsearchdijkstraSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_dijkstra_slice_scale(s : GraphsearchdijkstraSlice, f : Double) -> GraphsearchdijkstraSlice {
   let result = graph_search_dijkstra_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_search_dijkstra_slice_fill(s : GraphsearchdijkstraSlice, v : Double
   result
 }
 
-pub fn graph_search_dijkstra_slice_min(s : GraphsearchdijkstraSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_slice_min(s : GraphsearchdijkstraSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_dijkstra_slice_max(s : GraphsearchdijkstraSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_dijkstra_slice_max(s : GraphsearchdijkstraSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_dijkstra_slice_to_string(s : GraphsearchdijkstraSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

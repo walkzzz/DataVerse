@@ -88,11 +88,7 @@ pub fn net_route_eigrp_make_series(vals : Array[Double], name : String) -> Netro
 
 pub fn net_route_eigrp_series_len(s : NetrouteeigrpSeries) -> Int { s.vals.length() }
 
-pub fn net_route_eigrp_series_sum(s : NetrouteeigrpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_eigrp_series_sum(s : NetrouteeigrpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_eigrp_series_mean(s : NetrouteeigrpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_eigrp_frame_set(s : NetrouteeigrpFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_eigrp_frame_sum(s : NetrouteeigrpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_frame_sum(s : NetrouteeigrpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_frame_mean(s : NetrouteeigrpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_frame_mean(s : NetrouteeigrpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_frame_scale(s : NetrouteeigrpFrame, f : Double) -> NetrouteeigrpFrame {
   let result = net_route_eigrp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_eigrp_frame_fill(s : NetrouteeigrpFrame, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_eigrp_frame_min(s : NetrouteeigrpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_frame_min(s : NetrouteeigrpFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_frame_max(s : NetrouteeigrpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_frame_max(s : NetrouteeigrpFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_frame_to_string(s : NetrouteeigrpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_eigrp_table_set(s : NetrouteeigrpTable, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_eigrp_table_sum(s : NetrouteeigrpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_table_sum(s : NetrouteeigrpTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_table_mean(s : NetrouteeigrpTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_table_mean(s : NetrouteeigrpTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_table_scale(s : NetrouteeigrpTable, f : Double) -> NetrouteeigrpTable {
   let result = net_route_eigrp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_eigrp_table_fill(s : NetrouteeigrpTable, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_eigrp_table_min(s : NetrouteeigrpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_table_min(s : NetrouteeigrpTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_table_max(s : NetrouteeigrpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_table_max(s : NetrouteeigrpTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_table_to_string(s : NetrouteeigrpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_eigrp_graphn_set(s : NetrouteeigrpGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_eigrp_graphn_sum(s : NetrouteeigrpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_graphn_sum(s : NetrouteeigrpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_graphn_mean(s : NetrouteeigrpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_graphn_mean(s : NetrouteeigrpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_graphn_scale(s : NetrouteeigrpGraphN, f : Double) -> NetrouteeigrpGraphN {
   let result = net_route_eigrp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_eigrp_graphn_fill(s : NetrouteeigrpGraphN, v : Double) -> Netro
   result
 }
 
-pub fn net_route_eigrp_graphn_min(s : NetrouteeigrpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_graphn_min(s : NetrouteeigrpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_graphn_max(s : NetrouteeigrpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_graphn_max(s : NetrouteeigrpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_graphn_to_string(s : NetrouteeigrpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_eigrp_node_set(s : NetrouteeigrpNode, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_eigrp_node_sum(s : NetrouteeigrpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_node_sum(s : NetrouteeigrpNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_node_mean(s : NetrouteeigrpNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_node_mean(s : NetrouteeigrpNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_node_scale(s : NetrouteeigrpNode, f : Double) -> NetrouteeigrpNode {
   let result = net_route_eigrp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_eigrp_node_fill(s : NetrouteeigrpNode, v : Double) -> Netroutee
   result
 }
 
-pub fn net_route_eigrp_node_min(s : NetrouteeigrpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_node_min(s : NetrouteeigrpNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_node_max(s : NetrouteeigrpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_node_max(s : NetrouteeigrpNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_node_to_string(s : NetrouteeigrpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_eigrp_edge_set(s : NetrouteeigrpEdge, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_eigrp_edge_sum(s : NetrouteeigrpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_edge_sum(s : NetrouteeigrpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_edge_mean(s : NetrouteeigrpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_edge_mean(s : NetrouteeigrpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_edge_scale(s : NetrouteeigrpEdge, f : Double) -> NetrouteeigrpEdge {
   let result = net_route_eigrp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_eigrp_edge_fill(s : NetrouteeigrpEdge, v : Double) -> Netroutee
   result
 }
 
-pub fn net_route_eigrp_edge_min(s : NetrouteeigrpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_edge_min(s : NetrouteeigrpEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_edge_max(s : NetrouteeigrpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_edge_max(s : NetrouteeigrpEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_edge_to_string(s : NetrouteeigrpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_eigrp_path_set(s : NetrouteeigrpPath, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_eigrp_path_sum(s : NetrouteeigrpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_path_sum(s : NetrouteeigrpPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_path_mean(s : NetrouteeigrpPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_path_mean(s : NetrouteeigrpPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_path_scale(s : NetrouteeigrpPath, f : Double) -> NetrouteeigrpPath {
   let result = net_route_eigrp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_eigrp_path_fill(s : NetrouteeigrpPath, v : Double) -> Netroutee
   result
 }
 
-pub fn net_route_eigrp_path_min(s : NetrouteeigrpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_path_min(s : NetrouteeigrpPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_path_max(s : NetrouteeigrpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_path_max(s : NetrouteeigrpPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_path_to_string(s : NetrouteeigrpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_eigrp_cluster_set(s : NetrouteeigrpCluster, i : Int, v : Double
   result
 }
 
-pub fn net_route_eigrp_cluster_sum(s : NetrouteeigrpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_cluster_sum(s : NetrouteeigrpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_cluster_mean(s : NetrouteeigrpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_cluster_mean(s : NetrouteeigrpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_cluster_scale(s : NetrouteeigrpCluster, f : Double) -> NetrouteeigrpCluster {
   let result = net_route_eigrp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_eigrp_cluster_fill(s : NetrouteeigrpCluster, v : Double) -> Net
   result
 }
 
-pub fn net_route_eigrp_cluster_min(s : NetrouteeigrpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_cluster_min(s : NetrouteeigrpCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_cluster_max(s : NetrouteeigrpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_cluster_max(s : NetrouteeigrpCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_cluster_to_string(s : NetrouteeigrpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_eigrp_model_set(s : NetrouteeigrpModel, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_eigrp_model_sum(s : NetrouteeigrpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_model_sum(s : NetrouteeigrpModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_model_mean(s : NetrouteeigrpModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_model_mean(s : NetrouteeigrpModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_model_scale(s : NetrouteeigrpModel, f : Double) -> NetrouteeigrpModel {
   let result = net_route_eigrp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_eigrp_model_fill(s : NetrouteeigrpModel, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_eigrp_model_min(s : NetrouteeigrpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_model_min(s : NetrouteeigrpModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_model_max(s : NetrouteeigrpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_model_max(s : NetrouteeigrpModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_model_to_string(s : NetrouteeigrpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_eigrp_layer_set(s : NetrouteeigrpLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_eigrp_layer_sum(s : NetrouteeigrpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_layer_sum(s : NetrouteeigrpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_layer_mean(s : NetrouteeigrpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_layer_mean(s : NetrouteeigrpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_layer_scale(s : NetrouteeigrpLayer, f : Double) -> NetrouteeigrpLayer {
   let result = net_route_eigrp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_eigrp_layer_fill(s : NetrouteeigrpLayer, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_eigrp_layer_min(s : NetrouteeigrpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_layer_min(s : NetrouteeigrpLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_layer_max(s : NetrouteeigrpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_layer_max(s : NetrouteeigrpLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_layer_to_string(s : NetrouteeigrpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_eigrp_buffer_set(s : NetrouteeigrpBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_eigrp_buffer_sum(s : NetrouteeigrpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_buffer_sum(s : NetrouteeigrpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_buffer_mean(s : NetrouteeigrpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_buffer_mean(s : NetrouteeigrpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_buffer_scale(s : NetrouteeigrpBuffer, f : Double) -> NetrouteeigrpBuffer {
   let result = net_route_eigrp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_eigrp_buffer_fill(s : NetrouteeigrpBuffer, v : Double) -> Netro
   result
 }
 
-pub fn net_route_eigrp_buffer_min(s : NetrouteeigrpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_buffer_min(s : NetrouteeigrpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_buffer_max(s : NetrouteeigrpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_buffer_max(s : NetrouteeigrpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_buffer_to_string(s : NetrouteeigrpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_eigrp_cursor_set(s : NetrouteeigrpCursor, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_eigrp_cursor_sum(s : NetrouteeigrpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_cursor_sum(s : NetrouteeigrpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_cursor_mean(s : NetrouteeigrpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_cursor_mean(s : NetrouteeigrpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_cursor_scale(s : NetrouteeigrpCursor, f : Double) -> NetrouteeigrpCursor {
   let result = net_route_eigrp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_eigrp_cursor_fill(s : NetrouteeigrpCursor, v : Double) -> Netro
   result
 }
 
-pub fn net_route_eigrp_cursor_min(s : NetrouteeigrpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_cursor_min(s : NetrouteeigrpCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_cursor_max(s : NetrouteeigrpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_cursor_max(s : NetrouteeigrpCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_cursor_to_string(s : NetrouteeigrpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_eigrp_view_set(s : NetrouteeigrpView, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_eigrp_view_sum(s : NetrouteeigrpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_view_sum(s : NetrouteeigrpView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_view_mean(s : NetrouteeigrpView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_view_mean(s : NetrouteeigrpView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_view_scale(s : NetrouteeigrpView, f : Double) -> NetrouteeigrpView {
   let result = net_route_eigrp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_eigrp_view_fill(s : NetrouteeigrpView, v : Double) -> Netroutee
   result
 }
 
-pub fn net_route_eigrp_view_min(s : NetrouteeigrpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_view_min(s : NetrouteeigrpView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_view_max(s : NetrouteeigrpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_view_max(s : NetrouteeigrpView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_view_to_string(s : NetrouteeigrpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_eigrp_range_set(s : NetrouteeigrpRange, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_eigrp_range_sum(s : NetrouteeigrpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_range_sum(s : NetrouteeigrpRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_range_mean(s : NetrouteeigrpRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_range_mean(s : NetrouteeigrpRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_range_scale(s : NetrouteeigrpRange, f : Double) -> NetrouteeigrpRange {
   let result = net_route_eigrp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_eigrp_range_fill(s : NetrouteeigrpRange, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_eigrp_range_min(s : NetrouteeigrpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_range_min(s : NetrouteeigrpRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_range_max(s : NetrouteeigrpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_range_max(s : NetrouteeigrpRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_range_to_string(s : NetrouteeigrpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_eigrp_slice_set(s : NetrouteeigrpSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_eigrp_slice_sum(s : NetrouteeigrpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_eigrp_slice_sum(s : NetrouteeigrpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_eigrp_slice_mean(s : NetrouteeigrpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_eigrp_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_eigrp_slice_mean(s : NetrouteeigrpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_eigrp_slice_scale(s : NetrouteeigrpSlice, f : Double) -> NetrouteeigrpSlice {
   let result = net_route_eigrp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_eigrp_slice_fill(s : NetrouteeigrpSlice, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_eigrp_slice_min(s : NetrouteeigrpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_slice_min(s : NetrouteeigrpSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_eigrp_slice_max(s : NetrouteeigrpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_eigrp_slice_max(s : NetrouteeigrpSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_eigrp_slice_to_string(s : NetrouteeigrpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn bio_struct_distance_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_struct_distance_series_len(s : BiostructdistanceSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_distance_series_sum(s : BiostructdistanceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_distance_series_sum(s : BiostructdistanceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_distance_series_mean(s : BiostructdistanceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_distance_frame_set(s : BiostructdistanceFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_distance_frame_sum(s : BiostructdistanceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_frame_sum(s : BiostructdistanceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_frame_mean(s : BiostructdistanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_frame_mean(s : BiostructdistanceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_frame_scale(s : BiostructdistanceFrame, f : Double) -> BiostructdistanceFrame {
   let result = bio_struct_distance_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_distance_frame_fill(s : BiostructdistanceFrame, v : Double) ->
   result
 }
 
-pub fn bio_struct_distance_frame_min(s : BiostructdistanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_frame_min(s : BiostructdistanceFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_frame_max(s : BiostructdistanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_frame_max(s : BiostructdistanceFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_frame_to_string(s : BiostructdistanceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_distance_table_set(s : BiostructdistanceTable, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_distance_table_sum(s : BiostructdistanceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_table_sum(s : BiostructdistanceTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_table_mean(s : BiostructdistanceTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_table_mean(s : BiostructdistanceTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_table_scale(s : BiostructdistanceTable, f : Double) -> BiostructdistanceTable {
   let result = bio_struct_distance_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_distance_table_fill(s : BiostructdistanceTable, v : Double) ->
   result
 }
 
-pub fn bio_struct_distance_table_min(s : BiostructdistanceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_table_min(s : BiostructdistanceTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_table_max(s : BiostructdistanceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_table_max(s : BiostructdistanceTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_table_to_string(s : BiostructdistanceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_distance_graphn_set(s : BiostructdistanceGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_struct_distance_graphn_sum(s : BiostructdistanceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_graphn_sum(s : BiostructdistanceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_graphn_mean(s : BiostructdistanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_graphn_mean(s : BiostructdistanceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_graphn_scale(s : BiostructdistanceGraphN, f : Double) -> BiostructdistanceGraphN {
   let result = bio_struct_distance_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_distance_graphn_fill(s : BiostructdistanceGraphN, v : Double) 
   result
 }
 
-pub fn bio_struct_distance_graphn_min(s : BiostructdistanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_graphn_min(s : BiostructdistanceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_graphn_max(s : BiostructdistanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_graphn_max(s : BiostructdistanceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_graphn_to_string(s : BiostructdistanceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_distance_node_set(s : BiostructdistanceNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_distance_node_sum(s : BiostructdistanceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_node_sum(s : BiostructdistanceNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_node_mean(s : BiostructdistanceNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_node_mean(s : BiostructdistanceNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_node_scale(s : BiostructdistanceNode, f : Double) -> BiostructdistanceNode {
   let result = bio_struct_distance_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_distance_node_fill(s : BiostructdistanceNode, v : Double) -> B
   result
 }
 
-pub fn bio_struct_distance_node_min(s : BiostructdistanceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_node_min(s : BiostructdistanceNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_node_max(s : BiostructdistanceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_node_max(s : BiostructdistanceNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_node_to_string(s : BiostructdistanceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_distance_edge_set(s : BiostructdistanceEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_distance_edge_sum(s : BiostructdistanceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_edge_sum(s : BiostructdistanceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_edge_mean(s : BiostructdistanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_edge_mean(s : BiostructdistanceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_edge_scale(s : BiostructdistanceEdge, f : Double) -> BiostructdistanceEdge {
   let result = bio_struct_distance_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_distance_edge_fill(s : BiostructdistanceEdge, v : Double) -> B
   result
 }
 
-pub fn bio_struct_distance_edge_min(s : BiostructdistanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_edge_min(s : BiostructdistanceEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_edge_max(s : BiostructdistanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_edge_max(s : BiostructdistanceEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_edge_to_string(s : BiostructdistanceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_distance_path_set(s : BiostructdistancePath, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_distance_path_sum(s : BiostructdistancePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_path_sum(s : BiostructdistancePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_path_mean(s : BiostructdistancePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_path_mean(s : BiostructdistancePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_path_scale(s : BiostructdistancePath, f : Double) -> BiostructdistancePath {
   let result = bio_struct_distance_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_distance_path_fill(s : BiostructdistancePath, v : Double) -> B
   result
 }
 
-pub fn bio_struct_distance_path_min(s : BiostructdistancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_path_min(s : BiostructdistancePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_path_max(s : BiostructdistancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_path_max(s : BiostructdistancePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_path_to_string(s : BiostructdistancePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_distance_cluster_set(s : BiostructdistanceCluster, i : Int, v 
   result
 }
 
-pub fn bio_struct_distance_cluster_sum(s : BiostructdistanceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_cluster_sum(s : BiostructdistanceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_cluster_mean(s : BiostructdistanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_cluster_mean(s : BiostructdistanceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_cluster_scale(s : BiostructdistanceCluster, f : Double) -> BiostructdistanceCluster {
   let result = bio_struct_distance_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_distance_cluster_fill(s : BiostructdistanceCluster, v : Double
   result
 }
 
-pub fn bio_struct_distance_cluster_min(s : BiostructdistanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_cluster_min(s : BiostructdistanceCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_cluster_max(s : BiostructdistanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_cluster_max(s : BiostructdistanceCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_cluster_to_string(s : BiostructdistanceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_distance_model_set(s : BiostructdistanceModel, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_distance_model_sum(s : BiostructdistanceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_model_sum(s : BiostructdistanceModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_model_mean(s : BiostructdistanceModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_model_mean(s : BiostructdistanceModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_model_scale(s : BiostructdistanceModel, f : Double) -> BiostructdistanceModel {
   let result = bio_struct_distance_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_distance_model_fill(s : BiostructdistanceModel, v : Double) ->
   result
 }
 
-pub fn bio_struct_distance_model_min(s : BiostructdistanceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_model_min(s : BiostructdistanceModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_model_max(s : BiostructdistanceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_model_max(s : BiostructdistanceModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_model_to_string(s : BiostructdistanceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_distance_layer_set(s : BiostructdistanceLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_distance_layer_sum(s : BiostructdistanceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_layer_sum(s : BiostructdistanceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_layer_mean(s : BiostructdistanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_layer_mean(s : BiostructdistanceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_layer_scale(s : BiostructdistanceLayer, f : Double) -> BiostructdistanceLayer {
   let result = bio_struct_distance_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_distance_layer_fill(s : BiostructdistanceLayer, v : Double) ->
   result
 }
 
-pub fn bio_struct_distance_layer_min(s : BiostructdistanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_layer_min(s : BiostructdistanceLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_layer_max(s : BiostructdistanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_layer_max(s : BiostructdistanceLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_layer_to_string(s : BiostructdistanceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_distance_buffer_set(s : BiostructdistanceBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_struct_distance_buffer_sum(s : BiostructdistanceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_buffer_sum(s : BiostructdistanceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_buffer_mean(s : BiostructdistanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_buffer_mean(s : BiostructdistanceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_buffer_scale(s : BiostructdistanceBuffer, f : Double) -> BiostructdistanceBuffer {
   let result = bio_struct_distance_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_distance_buffer_fill(s : BiostructdistanceBuffer, v : Double) 
   result
 }
 
-pub fn bio_struct_distance_buffer_min(s : BiostructdistanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_buffer_min(s : BiostructdistanceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_buffer_max(s : BiostructdistanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_buffer_max(s : BiostructdistanceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_buffer_to_string(s : BiostructdistanceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_distance_cursor_set(s : BiostructdistanceCursor, i : Int, v : 
   result
 }
 
-pub fn bio_struct_distance_cursor_sum(s : BiostructdistanceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_cursor_sum(s : BiostructdistanceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_cursor_mean(s : BiostructdistanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_cursor_mean(s : BiostructdistanceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_cursor_scale(s : BiostructdistanceCursor, f : Double) -> BiostructdistanceCursor {
   let result = bio_struct_distance_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_distance_cursor_fill(s : BiostructdistanceCursor, v : Double) 
   result
 }
 
-pub fn bio_struct_distance_cursor_min(s : BiostructdistanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_cursor_min(s : BiostructdistanceCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_cursor_max(s : BiostructdistanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_cursor_max(s : BiostructdistanceCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_cursor_to_string(s : BiostructdistanceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_distance_view_set(s : BiostructdistanceView, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_distance_view_sum(s : BiostructdistanceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_view_sum(s : BiostructdistanceView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_view_mean(s : BiostructdistanceView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_view_mean(s : BiostructdistanceView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_view_scale(s : BiostructdistanceView, f : Double) -> BiostructdistanceView {
   let result = bio_struct_distance_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_distance_view_fill(s : BiostructdistanceView, v : Double) -> B
   result
 }
 
-pub fn bio_struct_distance_view_min(s : BiostructdistanceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_view_min(s : BiostructdistanceView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_view_max(s : BiostructdistanceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_view_max(s : BiostructdistanceView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_view_to_string(s : BiostructdistanceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_distance_range_set(s : BiostructdistanceRange, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_distance_range_sum(s : BiostructdistanceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_range_sum(s : BiostructdistanceRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_range_mean(s : BiostructdistanceRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_range_mean(s : BiostructdistanceRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_range_scale(s : BiostructdistanceRange, f : Double) -> BiostructdistanceRange {
   let result = bio_struct_distance_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_distance_range_fill(s : BiostructdistanceRange, v : Double) ->
   result
 }
 
-pub fn bio_struct_distance_range_min(s : BiostructdistanceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_range_min(s : BiostructdistanceRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_range_max(s : BiostructdistanceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_range_max(s : BiostructdistanceRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_range_to_string(s : BiostructdistanceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_distance_slice_set(s : BiostructdistanceSlice, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_distance_slice_sum(s : BiostructdistanceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_distance_slice_sum(s : BiostructdistanceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_distance_slice_mean(s : BiostructdistanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_distance_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_distance_slice_mean(s : BiostructdistanceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_distance_slice_scale(s : BiostructdistanceSlice, f : Double) -> BiostructdistanceSlice {
   let result = bio_struct_distance_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_distance_slice_fill(s : BiostructdistanceSlice, v : Double) ->
   result
 }
 
-pub fn bio_struct_distance_slice_min(s : BiostructdistanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_slice_min(s : BiostructdistanceSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_distance_slice_max(s : BiostructdistanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_distance_slice_max(s : BiostructdistanceSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_distance_slice_to_string(s : BiostructdistanceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

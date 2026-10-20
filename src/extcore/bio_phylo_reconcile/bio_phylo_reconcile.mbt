@@ -88,11 +88,7 @@ pub fn bio_phylo_reconcile_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_phylo_reconcile_series_len(s : BiophyloreconcileSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_reconcile_series_sum(s : BiophyloreconcileSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_reconcile_series_sum(s : BiophyloreconcileSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_reconcile_series_mean(s : BiophyloreconcileSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_reconcile_frame_set(s : BiophyloreconcileFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_reconcile_frame_sum(s : BiophyloreconcileFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_frame_sum(s : BiophyloreconcileFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_frame_mean(s : BiophyloreconcileFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_frame_mean(s : BiophyloreconcileFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_frame_scale(s : BiophyloreconcileFrame, f : Double) -> BiophyloreconcileFrame {
   let result = bio_phylo_reconcile_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_reconcile_frame_fill(s : BiophyloreconcileFrame, v : Double) ->
   result
 }
 
-pub fn bio_phylo_reconcile_frame_min(s : BiophyloreconcileFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_frame_min(s : BiophyloreconcileFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_frame_max(s : BiophyloreconcileFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_frame_max(s : BiophyloreconcileFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_frame_to_string(s : BiophyloreconcileFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_reconcile_table_set(s : BiophyloreconcileTable, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_reconcile_table_sum(s : BiophyloreconcileTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_table_sum(s : BiophyloreconcileTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_table_mean(s : BiophyloreconcileTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_table_mean(s : BiophyloreconcileTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_table_scale(s : BiophyloreconcileTable, f : Double) -> BiophyloreconcileTable {
   let result = bio_phylo_reconcile_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_reconcile_table_fill(s : BiophyloreconcileTable, v : Double) ->
   result
 }
 
-pub fn bio_phylo_reconcile_table_min(s : BiophyloreconcileTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_table_min(s : BiophyloreconcileTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_table_max(s : BiophyloreconcileTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_table_max(s : BiophyloreconcileTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_table_to_string(s : BiophyloreconcileTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_reconcile_graphn_set(s : BiophyloreconcileGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_reconcile_graphn_sum(s : BiophyloreconcileGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_graphn_sum(s : BiophyloreconcileGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_graphn_mean(s : BiophyloreconcileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_graphn_mean(s : BiophyloreconcileGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_graphn_scale(s : BiophyloreconcileGraphN, f : Double) -> BiophyloreconcileGraphN {
   let result = bio_phylo_reconcile_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_reconcile_graphn_fill(s : BiophyloreconcileGraphN, v : Double) 
   result
 }
 
-pub fn bio_phylo_reconcile_graphn_min(s : BiophyloreconcileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_graphn_min(s : BiophyloreconcileGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_graphn_max(s : BiophyloreconcileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_graphn_max(s : BiophyloreconcileGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_graphn_to_string(s : BiophyloreconcileGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_reconcile_node_set(s : BiophyloreconcileNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_reconcile_node_sum(s : BiophyloreconcileNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_node_sum(s : BiophyloreconcileNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_node_mean(s : BiophyloreconcileNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_node_mean(s : BiophyloreconcileNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_node_scale(s : BiophyloreconcileNode, f : Double) -> BiophyloreconcileNode {
   let result = bio_phylo_reconcile_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_reconcile_node_fill(s : BiophyloreconcileNode, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_reconcile_node_min(s : BiophyloreconcileNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_node_min(s : BiophyloreconcileNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_node_max(s : BiophyloreconcileNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_node_max(s : BiophyloreconcileNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_node_to_string(s : BiophyloreconcileNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_reconcile_edge_set(s : BiophyloreconcileEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_reconcile_edge_sum(s : BiophyloreconcileEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_edge_sum(s : BiophyloreconcileEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_edge_mean(s : BiophyloreconcileEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_edge_mean(s : BiophyloreconcileEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_edge_scale(s : BiophyloreconcileEdge, f : Double) -> BiophyloreconcileEdge {
   let result = bio_phylo_reconcile_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_reconcile_edge_fill(s : BiophyloreconcileEdge, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_reconcile_edge_min(s : BiophyloreconcileEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_edge_min(s : BiophyloreconcileEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_edge_max(s : BiophyloreconcileEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_edge_max(s : BiophyloreconcileEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_edge_to_string(s : BiophyloreconcileEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_reconcile_path_set(s : BiophyloreconcilePath, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_reconcile_path_sum(s : BiophyloreconcilePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_path_sum(s : BiophyloreconcilePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_path_mean(s : BiophyloreconcilePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_path_mean(s : BiophyloreconcilePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_path_scale(s : BiophyloreconcilePath, f : Double) -> BiophyloreconcilePath {
   let result = bio_phylo_reconcile_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_reconcile_path_fill(s : BiophyloreconcilePath, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_reconcile_path_min(s : BiophyloreconcilePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_path_min(s : BiophyloreconcilePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_path_max(s : BiophyloreconcilePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_path_max(s : BiophyloreconcilePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_path_to_string(s : BiophyloreconcilePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_reconcile_cluster_set(s : BiophyloreconcileCluster, i : Int, v 
   result
 }
 
-pub fn bio_phylo_reconcile_cluster_sum(s : BiophyloreconcileCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_cluster_sum(s : BiophyloreconcileCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_cluster_mean(s : BiophyloreconcileCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_cluster_mean(s : BiophyloreconcileCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_cluster_scale(s : BiophyloreconcileCluster, f : Double) -> BiophyloreconcileCluster {
   let result = bio_phylo_reconcile_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_reconcile_cluster_fill(s : BiophyloreconcileCluster, v : Double
   result
 }
 
-pub fn bio_phylo_reconcile_cluster_min(s : BiophyloreconcileCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_cluster_min(s : BiophyloreconcileCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_cluster_max(s : BiophyloreconcileCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_cluster_max(s : BiophyloreconcileCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_cluster_to_string(s : BiophyloreconcileCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_reconcile_model_set(s : BiophyloreconcileModel, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_reconcile_model_sum(s : BiophyloreconcileModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_model_sum(s : BiophyloreconcileModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_model_mean(s : BiophyloreconcileModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_model_mean(s : BiophyloreconcileModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_model_scale(s : BiophyloreconcileModel, f : Double) -> BiophyloreconcileModel {
   let result = bio_phylo_reconcile_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_reconcile_model_fill(s : BiophyloreconcileModel, v : Double) ->
   result
 }
 
-pub fn bio_phylo_reconcile_model_min(s : BiophyloreconcileModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_model_min(s : BiophyloreconcileModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_model_max(s : BiophyloreconcileModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_model_max(s : BiophyloreconcileModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_model_to_string(s : BiophyloreconcileModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_reconcile_layer_set(s : BiophyloreconcileLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_reconcile_layer_sum(s : BiophyloreconcileLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_layer_sum(s : BiophyloreconcileLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_layer_mean(s : BiophyloreconcileLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_layer_mean(s : BiophyloreconcileLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_layer_scale(s : BiophyloreconcileLayer, f : Double) -> BiophyloreconcileLayer {
   let result = bio_phylo_reconcile_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_reconcile_layer_fill(s : BiophyloreconcileLayer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_reconcile_layer_min(s : BiophyloreconcileLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_layer_min(s : BiophyloreconcileLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_layer_max(s : BiophyloreconcileLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_layer_max(s : BiophyloreconcileLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_layer_to_string(s : BiophyloreconcileLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_reconcile_buffer_set(s : BiophyloreconcileBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_reconcile_buffer_sum(s : BiophyloreconcileBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_buffer_sum(s : BiophyloreconcileBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_buffer_mean(s : BiophyloreconcileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_buffer_mean(s : BiophyloreconcileBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_buffer_scale(s : BiophyloreconcileBuffer, f : Double) -> BiophyloreconcileBuffer {
   let result = bio_phylo_reconcile_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_reconcile_buffer_fill(s : BiophyloreconcileBuffer, v : Double) 
   result
 }
 
-pub fn bio_phylo_reconcile_buffer_min(s : BiophyloreconcileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_buffer_min(s : BiophyloreconcileBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_buffer_max(s : BiophyloreconcileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_buffer_max(s : BiophyloreconcileBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_buffer_to_string(s : BiophyloreconcileBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_reconcile_cursor_set(s : BiophyloreconcileCursor, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_reconcile_cursor_sum(s : BiophyloreconcileCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_cursor_sum(s : BiophyloreconcileCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_cursor_mean(s : BiophyloreconcileCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_cursor_mean(s : BiophyloreconcileCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_cursor_scale(s : BiophyloreconcileCursor, f : Double) -> BiophyloreconcileCursor {
   let result = bio_phylo_reconcile_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_reconcile_cursor_fill(s : BiophyloreconcileCursor, v : Double) 
   result
 }
 
-pub fn bio_phylo_reconcile_cursor_min(s : BiophyloreconcileCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_cursor_min(s : BiophyloreconcileCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_cursor_max(s : BiophyloreconcileCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_cursor_max(s : BiophyloreconcileCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_cursor_to_string(s : BiophyloreconcileCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_reconcile_view_set(s : BiophyloreconcileView, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_reconcile_view_sum(s : BiophyloreconcileView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_view_sum(s : BiophyloreconcileView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_view_mean(s : BiophyloreconcileView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_view_mean(s : BiophyloreconcileView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_view_scale(s : BiophyloreconcileView, f : Double) -> BiophyloreconcileView {
   let result = bio_phylo_reconcile_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_reconcile_view_fill(s : BiophyloreconcileView, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_reconcile_view_min(s : BiophyloreconcileView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_view_min(s : BiophyloreconcileView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_view_max(s : BiophyloreconcileView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_view_max(s : BiophyloreconcileView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_view_to_string(s : BiophyloreconcileView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_reconcile_range_set(s : BiophyloreconcileRange, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_reconcile_range_sum(s : BiophyloreconcileRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_range_sum(s : BiophyloreconcileRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_range_mean(s : BiophyloreconcileRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_range_mean(s : BiophyloreconcileRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_range_scale(s : BiophyloreconcileRange, f : Double) -> BiophyloreconcileRange {
   let result = bio_phylo_reconcile_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_reconcile_range_fill(s : BiophyloreconcileRange, v : Double) ->
   result
 }
 
-pub fn bio_phylo_reconcile_range_min(s : BiophyloreconcileRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_range_min(s : BiophyloreconcileRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_range_max(s : BiophyloreconcileRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_range_max(s : BiophyloreconcileRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_range_to_string(s : BiophyloreconcileRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_reconcile_slice_set(s : BiophyloreconcileSlice, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_reconcile_slice_sum(s : BiophyloreconcileSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_reconcile_slice_sum(s : BiophyloreconcileSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_reconcile_slice_mean(s : BiophyloreconcileSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_reconcile_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_reconcile_slice_mean(s : BiophyloreconcileSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_reconcile_slice_scale(s : BiophyloreconcileSlice, f : Double) -> BiophyloreconcileSlice {
   let result = bio_phylo_reconcile_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_reconcile_slice_fill(s : BiophyloreconcileSlice, v : Double) ->
   result
 }
 
-pub fn bio_phylo_reconcile_slice_min(s : BiophyloreconcileSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_slice_min(s : BiophyloreconcileSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_reconcile_slice_max(s : BiophyloreconcileSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_reconcile_slice_max(s : BiophyloreconcileSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_reconcile_slice_to_string(s : BiophyloreconcileSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

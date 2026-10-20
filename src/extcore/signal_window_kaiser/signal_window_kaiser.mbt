@@ -88,11 +88,7 @@ pub fn signal_window_kaiser_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_window_kaiser_series_len(s : SignalwindowkaiserSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_kaiser_series_sum(s : SignalwindowkaiserSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_kaiser_series_sum(s : SignalwindowkaiserSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_kaiser_series_mean(s : SignalwindowkaiserSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_kaiser_frame_set(s : SignalwindowkaiserFrame, i : Int, v : 
   result
 }
 
-pub fn signal_window_kaiser_frame_sum(s : SignalwindowkaiserFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_frame_sum(s : SignalwindowkaiserFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_frame_mean(s : SignalwindowkaiserFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_frame_mean(s : SignalwindowkaiserFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_frame_scale(s : SignalwindowkaiserFrame, f : Double) -> SignalwindowkaiserFrame {
   let result = signal_window_kaiser_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_kaiser_frame_fill(s : SignalwindowkaiserFrame, v : Double) 
   result
 }
 
-pub fn signal_window_kaiser_frame_min(s : SignalwindowkaiserFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_frame_min(s : SignalwindowkaiserFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_frame_max(s : SignalwindowkaiserFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_frame_max(s : SignalwindowkaiserFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_frame_to_string(s : SignalwindowkaiserFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_kaiser_table_set(s : SignalwindowkaiserTable, i : Int, v : 
   result
 }
 
-pub fn signal_window_kaiser_table_sum(s : SignalwindowkaiserTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_table_sum(s : SignalwindowkaiserTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_table_mean(s : SignalwindowkaiserTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_table_mean(s : SignalwindowkaiserTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_table_scale(s : SignalwindowkaiserTable, f : Double) -> SignalwindowkaiserTable {
   let result = signal_window_kaiser_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_kaiser_table_fill(s : SignalwindowkaiserTable, v : Double) 
   result
 }
 
-pub fn signal_window_kaiser_table_min(s : SignalwindowkaiserTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_table_min(s : SignalwindowkaiserTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_table_max(s : SignalwindowkaiserTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_table_max(s : SignalwindowkaiserTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_table_to_string(s : SignalwindowkaiserTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_kaiser_graphn_set(s : SignalwindowkaiserGraphN, i : Int, v 
   result
 }
 
-pub fn signal_window_kaiser_graphn_sum(s : SignalwindowkaiserGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_graphn_sum(s : SignalwindowkaiserGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_graphn_mean(s : SignalwindowkaiserGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_graphn_mean(s : SignalwindowkaiserGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_graphn_scale(s : SignalwindowkaiserGraphN, f : Double) -> SignalwindowkaiserGraphN {
   let result = signal_window_kaiser_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_kaiser_graphn_fill(s : SignalwindowkaiserGraphN, v : Double
   result
 }
 
-pub fn signal_window_kaiser_graphn_min(s : SignalwindowkaiserGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_graphn_min(s : SignalwindowkaiserGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_graphn_max(s : SignalwindowkaiserGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_graphn_max(s : SignalwindowkaiserGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_graphn_to_string(s : SignalwindowkaiserGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_kaiser_node_set(s : SignalwindowkaiserNode, i : Int, v : Do
   result
 }
 
-pub fn signal_window_kaiser_node_sum(s : SignalwindowkaiserNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_node_sum(s : SignalwindowkaiserNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_node_mean(s : SignalwindowkaiserNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_node_mean(s : SignalwindowkaiserNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_node_scale(s : SignalwindowkaiserNode, f : Double) -> SignalwindowkaiserNode {
   let result = signal_window_kaiser_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_kaiser_node_fill(s : SignalwindowkaiserNode, v : Double) ->
   result
 }
 
-pub fn signal_window_kaiser_node_min(s : SignalwindowkaiserNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_node_min(s : SignalwindowkaiserNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_node_max(s : SignalwindowkaiserNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_node_max(s : SignalwindowkaiserNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_node_to_string(s : SignalwindowkaiserNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_kaiser_edge_set(s : SignalwindowkaiserEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_window_kaiser_edge_sum(s : SignalwindowkaiserEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_edge_sum(s : SignalwindowkaiserEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_edge_mean(s : SignalwindowkaiserEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_edge_mean(s : SignalwindowkaiserEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_edge_scale(s : SignalwindowkaiserEdge, f : Double) -> SignalwindowkaiserEdge {
   let result = signal_window_kaiser_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_kaiser_edge_fill(s : SignalwindowkaiserEdge, v : Double) ->
   result
 }
 
-pub fn signal_window_kaiser_edge_min(s : SignalwindowkaiserEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_edge_min(s : SignalwindowkaiserEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_edge_max(s : SignalwindowkaiserEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_edge_max(s : SignalwindowkaiserEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_edge_to_string(s : SignalwindowkaiserEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_kaiser_path_set(s : SignalwindowkaiserPath, i : Int, v : Do
   result
 }
 
-pub fn signal_window_kaiser_path_sum(s : SignalwindowkaiserPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_path_sum(s : SignalwindowkaiserPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_path_mean(s : SignalwindowkaiserPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_path_mean(s : SignalwindowkaiserPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_path_scale(s : SignalwindowkaiserPath, f : Double) -> SignalwindowkaiserPath {
   let result = signal_window_kaiser_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_kaiser_path_fill(s : SignalwindowkaiserPath, v : Double) ->
   result
 }
 
-pub fn signal_window_kaiser_path_min(s : SignalwindowkaiserPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_path_min(s : SignalwindowkaiserPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_path_max(s : SignalwindowkaiserPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_path_max(s : SignalwindowkaiserPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_path_to_string(s : SignalwindowkaiserPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_kaiser_cluster_set(s : SignalwindowkaiserCluster, i : Int, 
   result
 }
 
-pub fn signal_window_kaiser_cluster_sum(s : SignalwindowkaiserCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_cluster_sum(s : SignalwindowkaiserCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_cluster_mean(s : SignalwindowkaiserCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_cluster_mean(s : SignalwindowkaiserCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_cluster_scale(s : SignalwindowkaiserCluster, f : Double) -> SignalwindowkaiserCluster {
   let result = signal_window_kaiser_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_kaiser_cluster_fill(s : SignalwindowkaiserCluster, v : Doub
   result
 }
 
-pub fn signal_window_kaiser_cluster_min(s : SignalwindowkaiserCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_cluster_min(s : SignalwindowkaiserCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_cluster_max(s : SignalwindowkaiserCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_cluster_max(s : SignalwindowkaiserCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_cluster_to_string(s : SignalwindowkaiserCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_kaiser_model_set(s : SignalwindowkaiserModel, i : Int, v : 
   result
 }
 
-pub fn signal_window_kaiser_model_sum(s : SignalwindowkaiserModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_model_sum(s : SignalwindowkaiserModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_model_mean(s : SignalwindowkaiserModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_model_mean(s : SignalwindowkaiserModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_model_scale(s : SignalwindowkaiserModel, f : Double) -> SignalwindowkaiserModel {
   let result = signal_window_kaiser_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_kaiser_model_fill(s : SignalwindowkaiserModel, v : Double) 
   result
 }
 
-pub fn signal_window_kaiser_model_min(s : SignalwindowkaiserModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_model_min(s : SignalwindowkaiserModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_model_max(s : SignalwindowkaiserModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_model_max(s : SignalwindowkaiserModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_model_to_string(s : SignalwindowkaiserModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_kaiser_layer_set(s : SignalwindowkaiserLayer, i : Int, v : 
   result
 }
 
-pub fn signal_window_kaiser_layer_sum(s : SignalwindowkaiserLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_layer_sum(s : SignalwindowkaiserLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_layer_mean(s : SignalwindowkaiserLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_layer_mean(s : SignalwindowkaiserLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_layer_scale(s : SignalwindowkaiserLayer, f : Double) -> SignalwindowkaiserLayer {
   let result = signal_window_kaiser_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_kaiser_layer_fill(s : SignalwindowkaiserLayer, v : Double) 
   result
 }
 
-pub fn signal_window_kaiser_layer_min(s : SignalwindowkaiserLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_layer_min(s : SignalwindowkaiserLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_layer_max(s : SignalwindowkaiserLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_layer_max(s : SignalwindowkaiserLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_layer_to_string(s : SignalwindowkaiserLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_kaiser_buffer_set(s : SignalwindowkaiserBuffer, i : Int, v 
   result
 }
 
-pub fn signal_window_kaiser_buffer_sum(s : SignalwindowkaiserBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_buffer_sum(s : SignalwindowkaiserBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_buffer_mean(s : SignalwindowkaiserBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_buffer_mean(s : SignalwindowkaiserBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_buffer_scale(s : SignalwindowkaiserBuffer, f : Double) -> SignalwindowkaiserBuffer {
   let result = signal_window_kaiser_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_kaiser_buffer_fill(s : SignalwindowkaiserBuffer, v : Double
   result
 }
 
-pub fn signal_window_kaiser_buffer_min(s : SignalwindowkaiserBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_buffer_min(s : SignalwindowkaiserBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_buffer_max(s : SignalwindowkaiserBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_buffer_max(s : SignalwindowkaiserBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_buffer_to_string(s : SignalwindowkaiserBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_kaiser_cursor_set(s : SignalwindowkaiserCursor, i : Int, v 
   result
 }
 
-pub fn signal_window_kaiser_cursor_sum(s : SignalwindowkaiserCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_cursor_sum(s : SignalwindowkaiserCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_cursor_mean(s : SignalwindowkaiserCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_cursor_mean(s : SignalwindowkaiserCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_cursor_scale(s : SignalwindowkaiserCursor, f : Double) -> SignalwindowkaiserCursor {
   let result = signal_window_kaiser_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_kaiser_cursor_fill(s : SignalwindowkaiserCursor, v : Double
   result
 }
 
-pub fn signal_window_kaiser_cursor_min(s : SignalwindowkaiserCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_cursor_min(s : SignalwindowkaiserCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_cursor_max(s : SignalwindowkaiserCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_cursor_max(s : SignalwindowkaiserCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_cursor_to_string(s : SignalwindowkaiserCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_kaiser_view_set(s : SignalwindowkaiserView, i : Int, v : Do
   result
 }
 
-pub fn signal_window_kaiser_view_sum(s : SignalwindowkaiserView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_view_sum(s : SignalwindowkaiserView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_view_mean(s : SignalwindowkaiserView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_view_mean(s : SignalwindowkaiserView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_view_scale(s : SignalwindowkaiserView, f : Double) -> SignalwindowkaiserView {
   let result = signal_window_kaiser_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_kaiser_view_fill(s : SignalwindowkaiserView, v : Double) ->
   result
 }
 
-pub fn signal_window_kaiser_view_min(s : SignalwindowkaiserView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_view_min(s : SignalwindowkaiserView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_view_max(s : SignalwindowkaiserView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_view_max(s : SignalwindowkaiserView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_view_to_string(s : SignalwindowkaiserView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_kaiser_range_set(s : SignalwindowkaiserRange, i : Int, v : 
   result
 }
 
-pub fn signal_window_kaiser_range_sum(s : SignalwindowkaiserRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_range_sum(s : SignalwindowkaiserRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_range_mean(s : SignalwindowkaiserRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_range_mean(s : SignalwindowkaiserRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_range_scale(s : SignalwindowkaiserRange, f : Double) -> SignalwindowkaiserRange {
   let result = signal_window_kaiser_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_kaiser_range_fill(s : SignalwindowkaiserRange, v : Double) 
   result
 }
 
-pub fn signal_window_kaiser_range_min(s : SignalwindowkaiserRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_range_min(s : SignalwindowkaiserRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_range_max(s : SignalwindowkaiserRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_range_max(s : SignalwindowkaiserRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_range_to_string(s : SignalwindowkaiserRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_kaiser_slice_set(s : SignalwindowkaiserSlice, i : Int, v : 
   result
 }
 
-pub fn signal_window_kaiser_slice_sum(s : SignalwindowkaiserSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_kaiser_slice_sum(s : SignalwindowkaiserSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_kaiser_slice_mean(s : SignalwindowkaiserSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_kaiser_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_kaiser_slice_mean(s : SignalwindowkaiserSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_kaiser_slice_scale(s : SignalwindowkaiserSlice, f : Double) -> SignalwindowkaiserSlice {
   let result = signal_window_kaiser_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_kaiser_slice_fill(s : SignalwindowkaiserSlice, v : Double) 
   result
 }
 
-pub fn signal_window_kaiser_slice_min(s : SignalwindowkaiserSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_slice_min(s : SignalwindowkaiserSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_kaiser_slice_max(s : SignalwindowkaiserSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_kaiser_slice_max(s : SignalwindowkaiserSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_kaiser_slice_to_string(s : SignalwindowkaiserSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

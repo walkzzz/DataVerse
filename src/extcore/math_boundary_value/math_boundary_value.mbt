@@ -88,11 +88,7 @@ pub fn math_boundary_value_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_boundary_value_series_len(s : MathboundaryvalueSeries) -> Int { s.vals.length() }
 
-pub fn math_boundary_value_series_sum(s : MathboundaryvalueSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_boundary_value_series_sum(s : MathboundaryvalueSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_boundary_value_series_mean(s : MathboundaryvalueSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_boundary_value_frame_set(s : MathboundaryvalueFrame, i : Int, v : Do
   result
 }
 
-pub fn math_boundary_value_frame_sum(s : MathboundaryvalueFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_frame_sum(s : MathboundaryvalueFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_frame_mean(s : MathboundaryvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_frame_mean(s : MathboundaryvalueFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_frame_scale(s : MathboundaryvalueFrame, f : Double) -> MathboundaryvalueFrame {
   let result = math_boundary_value_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_boundary_value_frame_fill(s : MathboundaryvalueFrame, v : Double) ->
   result
 }
 
-pub fn math_boundary_value_frame_min(s : MathboundaryvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_frame_min(s : MathboundaryvalueFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_frame_max(s : MathboundaryvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_frame_max(s : MathboundaryvalueFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_frame_to_string(s : MathboundaryvalueFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_boundary_value_table_set(s : MathboundaryvalueTable, i : Int, v : Do
   result
 }
 
-pub fn math_boundary_value_table_sum(s : MathboundaryvalueTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_table_sum(s : MathboundaryvalueTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_table_mean(s : MathboundaryvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_table_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_table_mean(s : MathboundaryvalueTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_table_scale(s : MathboundaryvalueTable, f : Double) -> MathboundaryvalueTable {
   let result = math_boundary_value_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_boundary_value_table_fill(s : MathboundaryvalueTable, v : Double) ->
   result
 }
 
-pub fn math_boundary_value_table_min(s : MathboundaryvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_table_min(s : MathboundaryvalueTable) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_table_max(s : MathboundaryvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_table_max(s : MathboundaryvalueTable) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_table_to_string(s : MathboundaryvalueTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_boundary_value_graphn_set(s : MathboundaryvalueGraphN, i : Int, v : 
   result
 }
 
-pub fn math_boundary_value_graphn_sum(s : MathboundaryvalueGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_graphn_sum(s : MathboundaryvalueGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_graphn_mean(s : MathboundaryvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_graphn_mean(s : MathboundaryvalueGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_graphn_scale(s : MathboundaryvalueGraphN, f : Double) -> MathboundaryvalueGraphN {
   let result = math_boundary_value_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_boundary_value_graphn_fill(s : MathboundaryvalueGraphN, v : Double) 
   result
 }
 
-pub fn math_boundary_value_graphn_min(s : MathboundaryvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_graphn_min(s : MathboundaryvalueGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_graphn_max(s : MathboundaryvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_graphn_max(s : MathboundaryvalueGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_graphn_to_string(s : MathboundaryvalueGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_boundary_value_node_set(s : MathboundaryvalueNode, i : Int, v : Doub
   result
 }
 
-pub fn math_boundary_value_node_sum(s : MathboundaryvalueNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_node_sum(s : MathboundaryvalueNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_node_mean(s : MathboundaryvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_node_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_node_mean(s : MathboundaryvalueNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_node_scale(s : MathboundaryvalueNode, f : Double) -> MathboundaryvalueNode {
   let result = math_boundary_value_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_boundary_value_node_fill(s : MathboundaryvalueNode, v : Double) -> M
   result
 }
 
-pub fn math_boundary_value_node_min(s : MathboundaryvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_node_min(s : MathboundaryvalueNode) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_node_max(s : MathboundaryvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_node_max(s : MathboundaryvalueNode) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_node_to_string(s : MathboundaryvalueNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_boundary_value_edge_set(s : MathboundaryvalueEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_boundary_value_edge_sum(s : MathboundaryvalueEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_edge_sum(s : MathboundaryvalueEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_edge_mean(s : MathboundaryvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_edge_mean(s : MathboundaryvalueEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_edge_scale(s : MathboundaryvalueEdge, f : Double) -> MathboundaryvalueEdge {
   let result = math_boundary_value_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_boundary_value_edge_fill(s : MathboundaryvalueEdge, v : Double) -> M
   result
 }
 
-pub fn math_boundary_value_edge_min(s : MathboundaryvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_edge_min(s : MathboundaryvalueEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_edge_max(s : MathboundaryvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_edge_max(s : MathboundaryvalueEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_edge_to_string(s : MathboundaryvalueEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_boundary_value_path_set(s : MathboundaryvaluePath, i : Int, v : Doub
   result
 }
 
-pub fn math_boundary_value_path_sum(s : MathboundaryvaluePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_path_sum(s : MathboundaryvaluePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_path_mean(s : MathboundaryvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_path_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_path_mean(s : MathboundaryvaluePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_path_scale(s : MathboundaryvaluePath, f : Double) -> MathboundaryvaluePath {
   let result = math_boundary_value_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_boundary_value_path_fill(s : MathboundaryvaluePath, v : Double) -> M
   result
 }
 
-pub fn math_boundary_value_path_min(s : MathboundaryvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_path_min(s : MathboundaryvaluePath) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_path_max(s : MathboundaryvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_path_max(s : MathboundaryvaluePath) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_path_to_string(s : MathboundaryvaluePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_boundary_value_cluster_set(s : MathboundaryvalueCluster, i : Int, v 
   result
 }
 
-pub fn math_boundary_value_cluster_sum(s : MathboundaryvalueCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_cluster_sum(s : MathboundaryvalueCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_cluster_mean(s : MathboundaryvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_cluster_mean(s : MathboundaryvalueCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_cluster_scale(s : MathboundaryvalueCluster, f : Double) -> MathboundaryvalueCluster {
   let result = math_boundary_value_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_boundary_value_cluster_fill(s : MathboundaryvalueCluster, v : Double
   result
 }
 
-pub fn math_boundary_value_cluster_min(s : MathboundaryvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_cluster_min(s : MathboundaryvalueCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_cluster_max(s : MathboundaryvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_cluster_max(s : MathboundaryvalueCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_cluster_to_string(s : MathboundaryvalueCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_boundary_value_model_set(s : MathboundaryvalueModel, i : Int, v : Do
   result
 }
 
-pub fn math_boundary_value_model_sum(s : MathboundaryvalueModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_model_sum(s : MathboundaryvalueModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_model_mean(s : MathboundaryvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_model_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_model_mean(s : MathboundaryvalueModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_model_scale(s : MathboundaryvalueModel, f : Double) -> MathboundaryvalueModel {
   let result = math_boundary_value_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_boundary_value_model_fill(s : MathboundaryvalueModel, v : Double) ->
   result
 }
 
-pub fn math_boundary_value_model_min(s : MathboundaryvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_model_min(s : MathboundaryvalueModel) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_model_max(s : MathboundaryvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_model_max(s : MathboundaryvalueModel) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_model_to_string(s : MathboundaryvalueModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_boundary_value_layer_set(s : MathboundaryvalueLayer, i : Int, v : Do
   result
 }
 
-pub fn math_boundary_value_layer_sum(s : MathboundaryvalueLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_layer_sum(s : MathboundaryvalueLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_layer_mean(s : MathboundaryvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_layer_mean(s : MathboundaryvalueLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_layer_scale(s : MathboundaryvalueLayer, f : Double) -> MathboundaryvalueLayer {
   let result = math_boundary_value_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_boundary_value_layer_fill(s : MathboundaryvalueLayer, v : Double) ->
   result
 }
 
-pub fn math_boundary_value_layer_min(s : MathboundaryvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_layer_min(s : MathboundaryvalueLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_layer_max(s : MathboundaryvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_layer_max(s : MathboundaryvalueLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_layer_to_string(s : MathboundaryvalueLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_boundary_value_buffer_set(s : MathboundaryvalueBuffer, i : Int, v : 
   result
 }
 
-pub fn math_boundary_value_buffer_sum(s : MathboundaryvalueBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_buffer_sum(s : MathboundaryvalueBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_buffer_mean(s : MathboundaryvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_buffer_mean(s : MathboundaryvalueBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_buffer_scale(s : MathboundaryvalueBuffer, f : Double) -> MathboundaryvalueBuffer {
   let result = math_boundary_value_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_boundary_value_buffer_fill(s : MathboundaryvalueBuffer, v : Double) 
   result
 }
 
-pub fn math_boundary_value_buffer_min(s : MathboundaryvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_buffer_min(s : MathboundaryvalueBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_buffer_max(s : MathboundaryvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_buffer_max(s : MathboundaryvalueBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_buffer_to_string(s : MathboundaryvalueBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_boundary_value_cursor_set(s : MathboundaryvalueCursor, i : Int, v : 
   result
 }
 
-pub fn math_boundary_value_cursor_sum(s : MathboundaryvalueCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_cursor_sum(s : MathboundaryvalueCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_cursor_mean(s : MathboundaryvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_cursor_mean(s : MathboundaryvalueCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_cursor_scale(s : MathboundaryvalueCursor, f : Double) -> MathboundaryvalueCursor {
   let result = math_boundary_value_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_boundary_value_cursor_fill(s : MathboundaryvalueCursor, v : Double) 
   result
 }
 
-pub fn math_boundary_value_cursor_min(s : MathboundaryvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_cursor_min(s : MathboundaryvalueCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_cursor_max(s : MathboundaryvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_cursor_max(s : MathboundaryvalueCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_cursor_to_string(s : MathboundaryvalueCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_boundary_value_view_set(s : MathboundaryvalueView, i : Int, v : Doub
   result
 }
 
-pub fn math_boundary_value_view_sum(s : MathboundaryvalueView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_view_sum(s : MathboundaryvalueView) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_view_mean(s : MathboundaryvalueView) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_view_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_view_mean(s : MathboundaryvalueView) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_view_scale(s : MathboundaryvalueView, f : Double) -> MathboundaryvalueView {
   let result = math_boundary_value_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_boundary_value_view_fill(s : MathboundaryvalueView, v : Double) -> M
   result
 }
 
-pub fn math_boundary_value_view_min(s : MathboundaryvalueView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_view_min(s : MathboundaryvalueView) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_view_max(s : MathboundaryvalueView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_view_max(s : MathboundaryvalueView) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_view_to_string(s : MathboundaryvalueView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_boundary_value_range_set(s : MathboundaryvalueRange, i : Int, v : Do
   result
 }
 
-pub fn math_boundary_value_range_sum(s : MathboundaryvalueRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_range_sum(s : MathboundaryvalueRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_range_mean(s : MathboundaryvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_range_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_range_mean(s : MathboundaryvalueRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_range_scale(s : MathboundaryvalueRange, f : Double) -> MathboundaryvalueRange {
   let result = math_boundary_value_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_boundary_value_range_fill(s : MathboundaryvalueRange, v : Double) ->
   result
 }
 
-pub fn math_boundary_value_range_min(s : MathboundaryvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_range_min(s : MathboundaryvalueRange) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_range_max(s : MathboundaryvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_range_max(s : MathboundaryvalueRange) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_range_to_string(s : MathboundaryvalueRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_boundary_value_slice_set(s : MathboundaryvalueSlice, i : Int, v : Do
   result
 }
 
-pub fn math_boundary_value_slice_sum(s : MathboundaryvalueSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_boundary_value_slice_sum(s : MathboundaryvalueSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_boundary_value_slice_mean(s : MathboundaryvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_boundary_value_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_boundary_value_slice_mean(s : MathboundaryvalueSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_boundary_value_slice_scale(s : MathboundaryvalueSlice, f : Double) -> MathboundaryvalueSlice {
   let result = math_boundary_value_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_boundary_value_slice_fill(s : MathboundaryvalueSlice, v : Double) ->
   result
 }
 
-pub fn math_boundary_value_slice_min(s : MathboundaryvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_slice_min(s : MathboundaryvalueSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_boundary_value_slice_max(s : MathboundaryvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_boundary_value_slice_max(s : MathboundaryvalueSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_boundary_value_slice_to_string(s : MathboundaryvalueSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

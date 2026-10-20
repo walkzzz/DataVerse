@@ -88,11 +88,7 @@ pub fn nlp_pos_hmm_make_series(vals : Array[Double], name : String) -> Nlpposhmm
 
 pub fn nlp_pos_hmm_series_len(s : NlpposhmmSeries) -> Int { s.vals.length() }
 
-pub fn nlp_pos_hmm_series_sum(s : NlpposhmmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_pos_hmm_series_sum(s : NlpposhmmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_pos_hmm_series_mean(s : NlpposhmmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_pos_hmm_frame_set(s : NlpposhmmFrame, i : Int, v : Double) -> Nlpposh
   result
 }
 
-pub fn nlp_pos_hmm_frame_sum(s : NlpposhmmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_frame_sum(s : NlpposhmmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_frame_mean(s : NlpposhmmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_frame_mean(s : NlpposhmmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_frame_scale(s : NlpposhmmFrame, f : Double) -> NlpposhmmFrame {
   let result = nlp_pos_hmm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_pos_hmm_frame_fill(s : NlpposhmmFrame, v : Double) -> NlpposhmmFrame 
   result
 }
 
-pub fn nlp_pos_hmm_frame_min(s : NlpposhmmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_frame_min(s : NlpposhmmFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_frame_max(s : NlpposhmmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_frame_max(s : NlpposhmmFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_frame_to_string(s : NlpposhmmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_pos_hmm_table_set(s : NlpposhmmTable, i : Int, v : Double) -> Nlpposh
   result
 }
 
-pub fn nlp_pos_hmm_table_sum(s : NlpposhmmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_table_sum(s : NlpposhmmTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_table_mean(s : NlpposhmmTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_table_mean(s : NlpposhmmTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_table_scale(s : NlpposhmmTable, f : Double) -> NlpposhmmTable {
   let result = nlp_pos_hmm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_pos_hmm_table_fill(s : NlpposhmmTable, v : Double) -> NlpposhmmTable 
   result
 }
 
-pub fn nlp_pos_hmm_table_min(s : NlpposhmmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_table_min(s : NlpposhmmTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_table_max(s : NlpposhmmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_table_max(s : NlpposhmmTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_table_to_string(s : NlpposhmmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_pos_hmm_graphn_set(s : NlpposhmmGraphN, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_hmm_graphn_sum(s : NlpposhmmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_graphn_sum(s : NlpposhmmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_graphn_mean(s : NlpposhmmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_graphn_mean(s : NlpposhmmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_graphn_scale(s : NlpposhmmGraphN, f : Double) -> NlpposhmmGraphN {
   let result = nlp_pos_hmm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_pos_hmm_graphn_fill(s : NlpposhmmGraphN, v : Double) -> NlpposhmmGrap
   result
 }
 
-pub fn nlp_pos_hmm_graphn_min(s : NlpposhmmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_graphn_min(s : NlpposhmmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_graphn_max(s : NlpposhmmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_graphn_max(s : NlpposhmmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_graphn_to_string(s : NlpposhmmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_pos_hmm_node_set(s : NlpposhmmNode, i : Int, v : Double) -> Nlpposhmm
   result
 }
 
-pub fn nlp_pos_hmm_node_sum(s : NlpposhmmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_node_sum(s : NlpposhmmNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_node_mean(s : NlpposhmmNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_node_mean(s : NlpposhmmNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_node_scale(s : NlpposhmmNode, f : Double) -> NlpposhmmNode {
   let result = nlp_pos_hmm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_pos_hmm_node_fill(s : NlpposhmmNode, v : Double) -> NlpposhmmNode {
   result
 }
 
-pub fn nlp_pos_hmm_node_min(s : NlpposhmmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_node_min(s : NlpposhmmNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_node_max(s : NlpposhmmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_node_max(s : NlpposhmmNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_node_to_string(s : NlpposhmmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_pos_hmm_edge_set(s : NlpposhmmEdge, i : Int, v : Double) -> Nlpposhmm
   result
 }
 
-pub fn nlp_pos_hmm_edge_sum(s : NlpposhmmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_edge_sum(s : NlpposhmmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_edge_mean(s : NlpposhmmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_edge_mean(s : NlpposhmmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_edge_scale(s : NlpposhmmEdge, f : Double) -> NlpposhmmEdge {
   let result = nlp_pos_hmm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_pos_hmm_edge_fill(s : NlpposhmmEdge, v : Double) -> NlpposhmmEdge {
   result
 }
 
-pub fn nlp_pos_hmm_edge_min(s : NlpposhmmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_edge_min(s : NlpposhmmEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_edge_max(s : NlpposhmmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_edge_max(s : NlpposhmmEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_edge_to_string(s : NlpposhmmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_pos_hmm_path_set(s : NlpposhmmPath, i : Int, v : Double) -> Nlpposhmm
   result
 }
 
-pub fn nlp_pos_hmm_path_sum(s : NlpposhmmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_path_sum(s : NlpposhmmPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_path_mean(s : NlpposhmmPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_path_mean(s : NlpposhmmPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_path_scale(s : NlpposhmmPath, f : Double) -> NlpposhmmPath {
   let result = nlp_pos_hmm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_pos_hmm_path_fill(s : NlpposhmmPath, v : Double) -> NlpposhmmPath {
   result
 }
 
-pub fn nlp_pos_hmm_path_min(s : NlpposhmmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_path_min(s : NlpposhmmPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_path_max(s : NlpposhmmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_path_max(s : NlpposhmmPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_path_to_string(s : NlpposhmmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_pos_hmm_cluster_set(s : NlpposhmmCluster, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_hmm_cluster_sum(s : NlpposhmmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_cluster_sum(s : NlpposhmmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_cluster_mean(s : NlpposhmmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_cluster_mean(s : NlpposhmmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_cluster_scale(s : NlpposhmmCluster, f : Double) -> NlpposhmmCluster {
   let result = nlp_pos_hmm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_pos_hmm_cluster_fill(s : NlpposhmmCluster, v : Double) -> NlpposhmmCl
   result
 }
 
-pub fn nlp_pos_hmm_cluster_min(s : NlpposhmmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_cluster_min(s : NlpposhmmCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_cluster_max(s : NlpposhmmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_cluster_max(s : NlpposhmmCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_cluster_to_string(s : NlpposhmmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_pos_hmm_model_set(s : NlpposhmmModel, i : Int, v : Double) -> Nlpposh
   result
 }
 
-pub fn nlp_pos_hmm_model_sum(s : NlpposhmmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_model_sum(s : NlpposhmmModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_model_mean(s : NlpposhmmModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_model_mean(s : NlpposhmmModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_model_scale(s : NlpposhmmModel, f : Double) -> NlpposhmmModel {
   let result = nlp_pos_hmm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_pos_hmm_model_fill(s : NlpposhmmModel, v : Double) -> NlpposhmmModel 
   result
 }
 
-pub fn nlp_pos_hmm_model_min(s : NlpposhmmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_model_min(s : NlpposhmmModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_model_max(s : NlpposhmmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_model_max(s : NlpposhmmModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_model_to_string(s : NlpposhmmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_pos_hmm_layer_set(s : NlpposhmmLayer, i : Int, v : Double) -> Nlpposh
   result
 }
 
-pub fn nlp_pos_hmm_layer_sum(s : NlpposhmmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_layer_sum(s : NlpposhmmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_layer_mean(s : NlpposhmmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_layer_mean(s : NlpposhmmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_layer_scale(s : NlpposhmmLayer, f : Double) -> NlpposhmmLayer {
   let result = nlp_pos_hmm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_pos_hmm_layer_fill(s : NlpposhmmLayer, v : Double) -> NlpposhmmLayer 
   result
 }
 
-pub fn nlp_pos_hmm_layer_min(s : NlpposhmmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_layer_min(s : NlpposhmmLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_layer_max(s : NlpposhmmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_layer_max(s : NlpposhmmLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_layer_to_string(s : NlpposhmmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_pos_hmm_buffer_set(s : NlpposhmmBuffer, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_hmm_buffer_sum(s : NlpposhmmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_buffer_sum(s : NlpposhmmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_buffer_mean(s : NlpposhmmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_buffer_mean(s : NlpposhmmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_buffer_scale(s : NlpposhmmBuffer, f : Double) -> NlpposhmmBuffer {
   let result = nlp_pos_hmm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_pos_hmm_buffer_fill(s : NlpposhmmBuffer, v : Double) -> NlpposhmmBuff
   result
 }
 
-pub fn nlp_pos_hmm_buffer_min(s : NlpposhmmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_buffer_min(s : NlpposhmmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_buffer_max(s : NlpposhmmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_buffer_max(s : NlpposhmmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_buffer_to_string(s : NlpposhmmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_pos_hmm_cursor_set(s : NlpposhmmCursor, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_hmm_cursor_sum(s : NlpposhmmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_cursor_sum(s : NlpposhmmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_cursor_mean(s : NlpposhmmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_cursor_mean(s : NlpposhmmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_cursor_scale(s : NlpposhmmCursor, f : Double) -> NlpposhmmCursor {
   let result = nlp_pos_hmm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_pos_hmm_cursor_fill(s : NlpposhmmCursor, v : Double) -> NlpposhmmCurs
   result
 }
 
-pub fn nlp_pos_hmm_cursor_min(s : NlpposhmmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_cursor_min(s : NlpposhmmCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_cursor_max(s : NlpposhmmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_cursor_max(s : NlpposhmmCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_cursor_to_string(s : NlpposhmmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_pos_hmm_view_set(s : NlpposhmmView, i : Int, v : Double) -> Nlpposhmm
   result
 }
 
-pub fn nlp_pos_hmm_view_sum(s : NlpposhmmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_view_sum(s : NlpposhmmView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_view_mean(s : NlpposhmmView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_view_mean(s : NlpposhmmView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_view_scale(s : NlpposhmmView, f : Double) -> NlpposhmmView {
   let result = nlp_pos_hmm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_pos_hmm_view_fill(s : NlpposhmmView, v : Double) -> NlpposhmmView {
   result
 }
 
-pub fn nlp_pos_hmm_view_min(s : NlpposhmmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_view_min(s : NlpposhmmView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_view_max(s : NlpposhmmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_view_max(s : NlpposhmmView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_view_to_string(s : NlpposhmmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_pos_hmm_range_set(s : NlpposhmmRange, i : Int, v : Double) -> Nlpposh
   result
 }
 
-pub fn nlp_pos_hmm_range_sum(s : NlpposhmmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_range_sum(s : NlpposhmmRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_range_mean(s : NlpposhmmRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_range_mean(s : NlpposhmmRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_range_scale(s : NlpposhmmRange, f : Double) -> NlpposhmmRange {
   let result = nlp_pos_hmm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_pos_hmm_range_fill(s : NlpposhmmRange, v : Double) -> NlpposhmmRange 
   result
 }
 
-pub fn nlp_pos_hmm_range_min(s : NlpposhmmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_range_min(s : NlpposhmmRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_range_max(s : NlpposhmmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_range_max(s : NlpposhmmRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_range_to_string(s : NlpposhmmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_pos_hmm_slice_set(s : NlpposhmmSlice, i : Int, v : Double) -> Nlpposh
   result
 }
 
-pub fn nlp_pos_hmm_slice_sum(s : NlpposhmmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_hmm_slice_sum(s : NlpposhmmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_hmm_slice_mean(s : NlpposhmmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_hmm_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_hmm_slice_mean(s : NlpposhmmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_hmm_slice_scale(s : NlpposhmmSlice, f : Double) -> NlpposhmmSlice {
   let result = nlp_pos_hmm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_pos_hmm_slice_fill(s : NlpposhmmSlice, v : Double) -> NlpposhmmSlice 
   result
 }
 
-pub fn nlp_pos_hmm_slice_min(s : NlpposhmmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_slice_min(s : NlpposhmmSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_hmm_slice_max(s : NlpposhmmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_hmm_slice_max(s : NlpposhmmSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_hmm_slice_to_string(s : NlpposhmmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

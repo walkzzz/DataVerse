@@ -88,11 +88,7 @@ pub fn timeseries_arch_make_series(vals : Array[Double], name : String) -> Times
 
 pub fn timeseries_arch_series_len(s : TimeseriesarchSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_arch_series_sum(s : TimeseriesarchSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_arch_series_sum(s : TimeseriesarchSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_arch_series_mean(s : TimeseriesarchSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_arch_frame_set(s : TimeseriesarchFrame, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_arch_frame_sum(s : TimeseriesarchFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_frame_sum(s : TimeseriesarchFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_frame_mean(s : TimeseriesarchFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_frame_mean(s : TimeseriesarchFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_frame_scale(s : TimeseriesarchFrame, f : Double) -> TimeseriesarchFrame {
   let result = timeseries_arch_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_arch_frame_fill(s : TimeseriesarchFrame, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_arch_frame_min(s : TimeseriesarchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_frame_min(s : TimeseriesarchFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_frame_max(s : TimeseriesarchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_frame_max(s : TimeseriesarchFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_frame_to_string(s : TimeseriesarchFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_arch_table_set(s : TimeseriesarchTable, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_arch_table_sum(s : TimeseriesarchTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_table_sum(s : TimeseriesarchTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_table_mean(s : TimeseriesarchTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_table_mean(s : TimeseriesarchTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_table_scale(s : TimeseriesarchTable, f : Double) -> TimeseriesarchTable {
   let result = timeseries_arch_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_arch_table_fill(s : TimeseriesarchTable, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_arch_table_min(s : TimeseriesarchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_table_min(s : TimeseriesarchTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_table_max(s : TimeseriesarchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_table_max(s : TimeseriesarchTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_table_to_string(s : TimeseriesarchTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_arch_graphn_set(s : TimeseriesarchGraphN, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_arch_graphn_sum(s : TimeseriesarchGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_graphn_sum(s : TimeseriesarchGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_graphn_mean(s : TimeseriesarchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_graphn_mean(s : TimeseriesarchGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_graphn_scale(s : TimeseriesarchGraphN, f : Double) -> TimeseriesarchGraphN {
   let result = timeseries_arch_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_arch_graphn_fill(s : TimeseriesarchGraphN, v : Double) -> Time
   result
 }
 
-pub fn timeseries_arch_graphn_min(s : TimeseriesarchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_graphn_min(s : TimeseriesarchGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_graphn_max(s : TimeseriesarchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_graphn_max(s : TimeseriesarchGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_graphn_to_string(s : TimeseriesarchGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_arch_node_set(s : TimeseriesarchNode, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_arch_node_sum(s : TimeseriesarchNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_node_sum(s : TimeseriesarchNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_node_mean(s : TimeseriesarchNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_node_mean(s : TimeseriesarchNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_node_scale(s : TimeseriesarchNode, f : Double) -> TimeseriesarchNode {
   let result = timeseries_arch_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_arch_node_fill(s : TimeseriesarchNode, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_arch_node_min(s : TimeseriesarchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_node_min(s : TimeseriesarchNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_node_max(s : TimeseriesarchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_node_max(s : TimeseriesarchNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_node_to_string(s : TimeseriesarchNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_arch_edge_set(s : TimeseriesarchEdge, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_arch_edge_sum(s : TimeseriesarchEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_edge_sum(s : TimeseriesarchEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_edge_mean(s : TimeseriesarchEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_edge_mean(s : TimeseriesarchEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_edge_scale(s : TimeseriesarchEdge, f : Double) -> TimeseriesarchEdge {
   let result = timeseries_arch_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_arch_edge_fill(s : TimeseriesarchEdge, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_arch_edge_min(s : TimeseriesarchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_edge_min(s : TimeseriesarchEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_edge_max(s : TimeseriesarchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_edge_max(s : TimeseriesarchEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_edge_to_string(s : TimeseriesarchEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_arch_path_set(s : TimeseriesarchPath, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_arch_path_sum(s : TimeseriesarchPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_path_sum(s : TimeseriesarchPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_path_mean(s : TimeseriesarchPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_path_mean(s : TimeseriesarchPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_path_scale(s : TimeseriesarchPath, f : Double) -> TimeseriesarchPath {
   let result = timeseries_arch_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_arch_path_fill(s : TimeseriesarchPath, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_arch_path_min(s : TimeseriesarchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_path_min(s : TimeseriesarchPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_path_max(s : TimeseriesarchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_path_max(s : TimeseriesarchPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_path_to_string(s : TimeseriesarchPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_arch_cluster_set(s : TimeseriesarchCluster, i : Int, v : Doubl
   result
 }
 
-pub fn timeseries_arch_cluster_sum(s : TimeseriesarchCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_cluster_sum(s : TimeseriesarchCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_cluster_mean(s : TimeseriesarchCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_cluster_mean(s : TimeseriesarchCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_cluster_scale(s : TimeseriesarchCluster, f : Double) -> TimeseriesarchCluster {
   let result = timeseries_arch_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_arch_cluster_fill(s : TimeseriesarchCluster, v : Double) -> Ti
   result
 }
 
-pub fn timeseries_arch_cluster_min(s : TimeseriesarchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_cluster_min(s : TimeseriesarchCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_cluster_max(s : TimeseriesarchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_cluster_max(s : TimeseriesarchCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_cluster_to_string(s : TimeseriesarchCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_arch_model_set(s : TimeseriesarchModel, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_arch_model_sum(s : TimeseriesarchModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_model_sum(s : TimeseriesarchModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_model_mean(s : TimeseriesarchModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_model_mean(s : TimeseriesarchModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_model_scale(s : TimeseriesarchModel, f : Double) -> TimeseriesarchModel {
   let result = timeseries_arch_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_arch_model_fill(s : TimeseriesarchModel, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_arch_model_min(s : TimeseriesarchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_model_min(s : TimeseriesarchModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_model_max(s : TimeseriesarchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_model_max(s : TimeseriesarchModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_model_to_string(s : TimeseriesarchModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_arch_layer_set(s : TimeseriesarchLayer, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_arch_layer_sum(s : TimeseriesarchLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_layer_sum(s : TimeseriesarchLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_layer_mean(s : TimeseriesarchLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_layer_mean(s : TimeseriesarchLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_layer_scale(s : TimeseriesarchLayer, f : Double) -> TimeseriesarchLayer {
   let result = timeseries_arch_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_arch_layer_fill(s : TimeseriesarchLayer, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_arch_layer_min(s : TimeseriesarchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_layer_min(s : TimeseriesarchLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_layer_max(s : TimeseriesarchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_layer_max(s : TimeseriesarchLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_layer_to_string(s : TimeseriesarchLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_arch_buffer_set(s : TimeseriesarchBuffer, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_arch_buffer_sum(s : TimeseriesarchBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_buffer_sum(s : TimeseriesarchBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_buffer_mean(s : TimeseriesarchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_buffer_mean(s : TimeseriesarchBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_buffer_scale(s : TimeseriesarchBuffer, f : Double) -> TimeseriesarchBuffer {
   let result = timeseries_arch_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_arch_buffer_fill(s : TimeseriesarchBuffer, v : Double) -> Time
   result
 }
 
-pub fn timeseries_arch_buffer_min(s : TimeseriesarchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_buffer_min(s : TimeseriesarchBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_buffer_max(s : TimeseriesarchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_buffer_max(s : TimeseriesarchBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_buffer_to_string(s : TimeseriesarchBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_arch_cursor_set(s : TimeseriesarchCursor, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_arch_cursor_sum(s : TimeseriesarchCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_cursor_sum(s : TimeseriesarchCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_cursor_mean(s : TimeseriesarchCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_cursor_mean(s : TimeseriesarchCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_cursor_scale(s : TimeseriesarchCursor, f : Double) -> TimeseriesarchCursor {
   let result = timeseries_arch_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_arch_cursor_fill(s : TimeseriesarchCursor, v : Double) -> Time
   result
 }
 
-pub fn timeseries_arch_cursor_min(s : TimeseriesarchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_cursor_min(s : TimeseriesarchCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_cursor_max(s : TimeseriesarchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_cursor_max(s : TimeseriesarchCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_cursor_to_string(s : TimeseriesarchCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_arch_view_set(s : TimeseriesarchView, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_arch_view_sum(s : TimeseriesarchView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_view_sum(s : TimeseriesarchView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_view_mean(s : TimeseriesarchView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_view_mean(s : TimeseriesarchView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_view_scale(s : TimeseriesarchView, f : Double) -> TimeseriesarchView {
   let result = timeseries_arch_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_arch_view_fill(s : TimeseriesarchView, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_arch_view_min(s : TimeseriesarchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_view_min(s : TimeseriesarchView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_view_max(s : TimeseriesarchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_view_max(s : TimeseriesarchView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_view_to_string(s : TimeseriesarchView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_arch_range_set(s : TimeseriesarchRange, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_arch_range_sum(s : TimeseriesarchRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_range_sum(s : TimeseriesarchRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_range_mean(s : TimeseriesarchRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_range_mean(s : TimeseriesarchRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_range_scale(s : TimeseriesarchRange, f : Double) -> TimeseriesarchRange {
   let result = timeseries_arch_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_arch_range_fill(s : TimeseriesarchRange, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_arch_range_min(s : TimeseriesarchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_range_min(s : TimeseriesarchRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_range_max(s : TimeseriesarchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_range_max(s : TimeseriesarchRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_range_to_string(s : TimeseriesarchRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_arch_slice_set(s : TimeseriesarchSlice, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_arch_slice_sum(s : TimeseriesarchSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_arch_slice_sum(s : TimeseriesarchSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_arch_slice_mean(s : TimeseriesarchSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_arch_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_arch_slice_mean(s : TimeseriesarchSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_arch_slice_scale(s : TimeseriesarchSlice, f : Double) -> TimeseriesarchSlice {
   let result = timeseries_arch_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_arch_slice_fill(s : TimeseriesarchSlice, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_arch_slice_min(s : TimeseriesarchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_slice_min(s : TimeseriesarchSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_arch_slice_max(s : TimeseriesarchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_arch_slice_max(s : TimeseriesarchSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_arch_slice_to_string(s : TimeseriesarchSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

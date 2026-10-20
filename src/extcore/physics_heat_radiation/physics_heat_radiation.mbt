@@ -88,11 +88,7 @@ pub fn physics_heat_radiation_make_series(vals : Array[Double], name : String) -
 
 pub fn physics_heat_radiation_series_len(s : PhysicsheatradiationSeries) -> Int { s.vals.length() }
 
-pub fn physics_heat_radiation_series_sum(s : PhysicsheatradiationSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_heat_radiation_series_sum(s : PhysicsheatradiationSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_heat_radiation_series_mean(s : PhysicsheatradiationSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_heat_radiation_frame_set(s : PhysicsheatradiationFrame, i : Int, 
   result
 }
 
-pub fn physics_heat_radiation_frame_sum(s : PhysicsheatradiationFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_frame_sum(s : PhysicsheatradiationFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_frame_mean(s : PhysicsheatradiationFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_frame_mean(s : PhysicsheatradiationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_frame_scale(s : PhysicsheatradiationFrame, f : Double) -> PhysicsheatradiationFrame {
   let result = physics_heat_radiation_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_heat_radiation_frame_fill(s : PhysicsheatradiationFrame, v : Doub
   result
 }
 
-pub fn physics_heat_radiation_frame_min(s : PhysicsheatradiationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_frame_min(s : PhysicsheatradiationFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_frame_max(s : PhysicsheatradiationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_frame_max(s : PhysicsheatradiationFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_frame_to_string(s : PhysicsheatradiationFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_heat_radiation_table_set(s : PhysicsheatradiationTable, i : Int, 
   result
 }
 
-pub fn physics_heat_radiation_table_sum(s : PhysicsheatradiationTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_table_sum(s : PhysicsheatradiationTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_table_mean(s : PhysicsheatradiationTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_table_mean(s : PhysicsheatradiationTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_table_scale(s : PhysicsheatradiationTable, f : Double) -> PhysicsheatradiationTable {
   let result = physics_heat_radiation_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_heat_radiation_table_fill(s : PhysicsheatradiationTable, v : Doub
   result
 }
 
-pub fn physics_heat_radiation_table_min(s : PhysicsheatradiationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_table_min(s : PhysicsheatradiationTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_table_max(s : PhysicsheatradiationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_table_max(s : PhysicsheatradiationTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_table_to_string(s : PhysicsheatradiationTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_heat_radiation_graphn_set(s : PhysicsheatradiationGraphN, i : Int
   result
 }
 
-pub fn physics_heat_radiation_graphn_sum(s : PhysicsheatradiationGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_graphn_sum(s : PhysicsheatradiationGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_graphn_mean(s : PhysicsheatradiationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_graphn_mean(s : PhysicsheatradiationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_graphn_scale(s : PhysicsheatradiationGraphN, f : Double) -> PhysicsheatradiationGraphN {
   let result = physics_heat_radiation_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_heat_radiation_graphn_fill(s : PhysicsheatradiationGraphN, v : Do
   result
 }
 
-pub fn physics_heat_radiation_graphn_min(s : PhysicsheatradiationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_graphn_min(s : PhysicsheatradiationGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_graphn_max(s : PhysicsheatradiationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_graphn_max(s : PhysicsheatradiationGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_graphn_to_string(s : PhysicsheatradiationGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_heat_radiation_node_set(s : PhysicsheatradiationNode, i : Int, v 
   result
 }
 
-pub fn physics_heat_radiation_node_sum(s : PhysicsheatradiationNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_node_sum(s : PhysicsheatradiationNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_node_mean(s : PhysicsheatradiationNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_node_mean(s : PhysicsheatradiationNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_node_scale(s : PhysicsheatradiationNode, f : Double) -> PhysicsheatradiationNode {
   let result = physics_heat_radiation_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_heat_radiation_node_fill(s : PhysicsheatradiationNode, v : Double
   result
 }
 
-pub fn physics_heat_radiation_node_min(s : PhysicsheatradiationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_node_min(s : PhysicsheatradiationNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_node_max(s : PhysicsheatradiationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_node_max(s : PhysicsheatradiationNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_node_to_string(s : PhysicsheatradiationNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_heat_radiation_edge_set(s : PhysicsheatradiationEdge, i : Int, v 
   result
 }
 
-pub fn physics_heat_radiation_edge_sum(s : PhysicsheatradiationEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_edge_sum(s : PhysicsheatradiationEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_edge_mean(s : PhysicsheatradiationEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_edge_mean(s : PhysicsheatradiationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_edge_scale(s : PhysicsheatradiationEdge, f : Double) -> PhysicsheatradiationEdge {
   let result = physics_heat_radiation_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_heat_radiation_edge_fill(s : PhysicsheatradiationEdge, v : Double
   result
 }
 
-pub fn physics_heat_radiation_edge_min(s : PhysicsheatradiationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_edge_min(s : PhysicsheatradiationEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_edge_max(s : PhysicsheatradiationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_edge_max(s : PhysicsheatradiationEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_edge_to_string(s : PhysicsheatradiationEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_heat_radiation_path_set(s : PhysicsheatradiationPath, i : Int, v 
   result
 }
 
-pub fn physics_heat_radiation_path_sum(s : PhysicsheatradiationPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_path_sum(s : PhysicsheatradiationPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_path_mean(s : PhysicsheatradiationPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_path_mean(s : PhysicsheatradiationPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_path_scale(s : PhysicsheatradiationPath, f : Double) -> PhysicsheatradiationPath {
   let result = physics_heat_radiation_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_heat_radiation_path_fill(s : PhysicsheatradiationPath, v : Double
   result
 }
 
-pub fn physics_heat_radiation_path_min(s : PhysicsheatradiationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_path_min(s : PhysicsheatradiationPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_path_max(s : PhysicsheatradiationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_path_max(s : PhysicsheatradiationPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_path_to_string(s : PhysicsheatradiationPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_heat_radiation_cluster_set(s : PhysicsheatradiationCluster, i : I
   result
 }
 
-pub fn physics_heat_radiation_cluster_sum(s : PhysicsheatradiationCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_cluster_sum(s : PhysicsheatradiationCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_cluster_mean(s : PhysicsheatradiationCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_cluster_mean(s : PhysicsheatradiationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_cluster_scale(s : PhysicsheatradiationCluster, f : Double) -> PhysicsheatradiationCluster {
   let result = physics_heat_radiation_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_heat_radiation_cluster_fill(s : PhysicsheatradiationCluster, v : 
   result
 }
 
-pub fn physics_heat_radiation_cluster_min(s : PhysicsheatradiationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_cluster_min(s : PhysicsheatradiationCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_cluster_max(s : PhysicsheatradiationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_cluster_max(s : PhysicsheatradiationCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_cluster_to_string(s : PhysicsheatradiationCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_heat_radiation_model_set(s : PhysicsheatradiationModel, i : Int, 
   result
 }
 
-pub fn physics_heat_radiation_model_sum(s : PhysicsheatradiationModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_model_sum(s : PhysicsheatradiationModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_model_mean(s : PhysicsheatradiationModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_model_mean(s : PhysicsheatradiationModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_model_scale(s : PhysicsheatradiationModel, f : Double) -> PhysicsheatradiationModel {
   let result = physics_heat_radiation_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_heat_radiation_model_fill(s : PhysicsheatradiationModel, v : Doub
   result
 }
 
-pub fn physics_heat_radiation_model_min(s : PhysicsheatradiationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_model_min(s : PhysicsheatradiationModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_model_max(s : PhysicsheatradiationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_model_max(s : PhysicsheatradiationModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_model_to_string(s : PhysicsheatradiationModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_heat_radiation_layer_set(s : PhysicsheatradiationLayer, i : Int, 
   result
 }
 
-pub fn physics_heat_radiation_layer_sum(s : PhysicsheatradiationLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_layer_sum(s : PhysicsheatradiationLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_layer_mean(s : PhysicsheatradiationLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_layer_mean(s : PhysicsheatradiationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_layer_scale(s : PhysicsheatradiationLayer, f : Double) -> PhysicsheatradiationLayer {
   let result = physics_heat_radiation_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_heat_radiation_layer_fill(s : PhysicsheatradiationLayer, v : Doub
   result
 }
 
-pub fn physics_heat_radiation_layer_min(s : PhysicsheatradiationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_layer_min(s : PhysicsheatradiationLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_layer_max(s : PhysicsheatradiationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_layer_max(s : PhysicsheatradiationLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_layer_to_string(s : PhysicsheatradiationLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_heat_radiation_buffer_set(s : PhysicsheatradiationBuffer, i : Int
   result
 }
 
-pub fn physics_heat_radiation_buffer_sum(s : PhysicsheatradiationBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_buffer_sum(s : PhysicsheatradiationBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_buffer_mean(s : PhysicsheatradiationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_buffer_mean(s : PhysicsheatradiationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_buffer_scale(s : PhysicsheatradiationBuffer, f : Double) -> PhysicsheatradiationBuffer {
   let result = physics_heat_radiation_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_heat_radiation_buffer_fill(s : PhysicsheatradiationBuffer, v : Do
   result
 }
 
-pub fn physics_heat_radiation_buffer_min(s : PhysicsheatradiationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_buffer_min(s : PhysicsheatradiationBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_buffer_max(s : PhysicsheatradiationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_buffer_max(s : PhysicsheatradiationBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_buffer_to_string(s : PhysicsheatradiationBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_heat_radiation_cursor_set(s : PhysicsheatradiationCursor, i : Int
   result
 }
 
-pub fn physics_heat_radiation_cursor_sum(s : PhysicsheatradiationCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_cursor_sum(s : PhysicsheatradiationCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_cursor_mean(s : PhysicsheatradiationCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_cursor_mean(s : PhysicsheatradiationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_cursor_scale(s : PhysicsheatradiationCursor, f : Double) -> PhysicsheatradiationCursor {
   let result = physics_heat_radiation_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_heat_radiation_cursor_fill(s : PhysicsheatradiationCursor, v : Do
   result
 }
 
-pub fn physics_heat_radiation_cursor_min(s : PhysicsheatradiationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_cursor_min(s : PhysicsheatradiationCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_cursor_max(s : PhysicsheatradiationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_cursor_max(s : PhysicsheatradiationCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_cursor_to_string(s : PhysicsheatradiationCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_heat_radiation_view_set(s : PhysicsheatradiationView, i : Int, v 
   result
 }
 
-pub fn physics_heat_radiation_view_sum(s : PhysicsheatradiationView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_view_sum(s : PhysicsheatradiationView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_view_mean(s : PhysicsheatradiationView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_view_mean(s : PhysicsheatradiationView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_view_scale(s : PhysicsheatradiationView, f : Double) -> PhysicsheatradiationView {
   let result = physics_heat_radiation_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_heat_radiation_view_fill(s : PhysicsheatradiationView, v : Double
   result
 }
 
-pub fn physics_heat_radiation_view_min(s : PhysicsheatradiationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_view_min(s : PhysicsheatradiationView) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_view_max(s : PhysicsheatradiationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_view_max(s : PhysicsheatradiationView) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_view_to_string(s : PhysicsheatradiationView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_heat_radiation_range_set(s : PhysicsheatradiationRange, i : Int, 
   result
 }
 
-pub fn physics_heat_radiation_range_sum(s : PhysicsheatradiationRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_range_sum(s : PhysicsheatradiationRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_range_mean(s : PhysicsheatradiationRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_range_mean(s : PhysicsheatradiationRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_range_scale(s : PhysicsheatradiationRange, f : Double) -> PhysicsheatradiationRange {
   let result = physics_heat_radiation_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_heat_radiation_range_fill(s : PhysicsheatradiationRange, v : Doub
   result
 }
 
-pub fn physics_heat_radiation_range_min(s : PhysicsheatradiationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_range_min(s : PhysicsheatradiationRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_range_max(s : PhysicsheatradiationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_range_max(s : PhysicsheatradiationRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_range_to_string(s : PhysicsheatradiationRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_heat_radiation_slice_set(s : PhysicsheatradiationSlice, i : Int, 
   result
 }
 
-pub fn physics_heat_radiation_slice_sum(s : PhysicsheatradiationSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_radiation_slice_sum(s : PhysicsheatradiationSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_radiation_slice_mean(s : PhysicsheatradiationSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_radiation_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_radiation_slice_mean(s : PhysicsheatradiationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_radiation_slice_scale(s : PhysicsheatradiationSlice, f : Double) -> PhysicsheatradiationSlice {
   let result = physics_heat_radiation_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_heat_radiation_slice_fill(s : PhysicsheatradiationSlice, v : Doub
   result
 }
 
-pub fn physics_heat_radiation_slice_min(s : PhysicsheatradiationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_slice_min(s : PhysicsheatradiationSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_radiation_slice_max(s : PhysicsheatradiationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_radiation_slice_max(s : PhysicsheatradiationSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_radiation_slice_to_string(s : PhysicsheatradiationSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

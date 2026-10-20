@@ -88,11 +88,7 @@ pub fn graph_tree_isomorphism_make_series(vals : Array[Double], name : String) -
 
 pub fn graph_tree_isomorphism_series_len(s : GraphtreeisomorphismSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_isomorphism_series_sum(s : GraphtreeisomorphismSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_isomorphism_series_sum(s : GraphtreeisomorphismSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_isomorphism_series_mean(s : GraphtreeisomorphismSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_isomorphism_frame_set(s : GraphtreeisomorphismFrame, i : Int, 
   result
 }
 
-pub fn graph_tree_isomorphism_frame_sum(s : GraphtreeisomorphismFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_frame_sum(s : GraphtreeisomorphismFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_frame_mean(s : GraphtreeisomorphismFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_frame_mean(s : GraphtreeisomorphismFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_frame_scale(s : GraphtreeisomorphismFrame, f : Double) -> GraphtreeisomorphismFrame {
   let result = graph_tree_isomorphism_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_isomorphism_frame_fill(s : GraphtreeisomorphismFrame, v : Doub
   result
 }
 
-pub fn graph_tree_isomorphism_frame_min(s : GraphtreeisomorphismFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_frame_min(s : GraphtreeisomorphismFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_frame_max(s : GraphtreeisomorphismFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_frame_max(s : GraphtreeisomorphismFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_frame_to_string(s : GraphtreeisomorphismFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_isomorphism_table_set(s : GraphtreeisomorphismTable, i : Int, 
   result
 }
 
-pub fn graph_tree_isomorphism_table_sum(s : GraphtreeisomorphismTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_table_sum(s : GraphtreeisomorphismTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_table_mean(s : GraphtreeisomorphismTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_table_mean(s : GraphtreeisomorphismTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_table_scale(s : GraphtreeisomorphismTable, f : Double) -> GraphtreeisomorphismTable {
   let result = graph_tree_isomorphism_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_isomorphism_table_fill(s : GraphtreeisomorphismTable, v : Doub
   result
 }
 
-pub fn graph_tree_isomorphism_table_min(s : GraphtreeisomorphismTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_table_min(s : GraphtreeisomorphismTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_table_max(s : GraphtreeisomorphismTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_table_max(s : GraphtreeisomorphismTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_table_to_string(s : GraphtreeisomorphismTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_isomorphism_graphn_set(s : GraphtreeisomorphismGraphN, i : Int
   result
 }
 
-pub fn graph_tree_isomorphism_graphn_sum(s : GraphtreeisomorphismGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_graphn_sum(s : GraphtreeisomorphismGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_graphn_mean(s : GraphtreeisomorphismGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_graphn_mean(s : GraphtreeisomorphismGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_graphn_scale(s : GraphtreeisomorphismGraphN, f : Double) -> GraphtreeisomorphismGraphN {
   let result = graph_tree_isomorphism_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_isomorphism_graphn_fill(s : GraphtreeisomorphismGraphN, v : Do
   result
 }
 
-pub fn graph_tree_isomorphism_graphn_min(s : GraphtreeisomorphismGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_graphn_min(s : GraphtreeisomorphismGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_graphn_max(s : GraphtreeisomorphismGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_graphn_max(s : GraphtreeisomorphismGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_graphn_to_string(s : GraphtreeisomorphismGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_isomorphism_node_set(s : GraphtreeisomorphismNode, i : Int, v 
   result
 }
 
-pub fn graph_tree_isomorphism_node_sum(s : GraphtreeisomorphismNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_node_sum(s : GraphtreeisomorphismNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_node_mean(s : GraphtreeisomorphismNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_node_mean(s : GraphtreeisomorphismNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_node_scale(s : GraphtreeisomorphismNode, f : Double) -> GraphtreeisomorphismNode {
   let result = graph_tree_isomorphism_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_isomorphism_node_fill(s : GraphtreeisomorphismNode, v : Double
   result
 }
 
-pub fn graph_tree_isomorphism_node_min(s : GraphtreeisomorphismNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_node_min(s : GraphtreeisomorphismNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_node_max(s : GraphtreeisomorphismNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_node_max(s : GraphtreeisomorphismNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_node_to_string(s : GraphtreeisomorphismNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_isomorphism_edge_set(s : GraphtreeisomorphismEdge, i : Int, v 
   result
 }
 
-pub fn graph_tree_isomorphism_edge_sum(s : GraphtreeisomorphismEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_edge_sum(s : GraphtreeisomorphismEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_edge_mean(s : GraphtreeisomorphismEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_edge_mean(s : GraphtreeisomorphismEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_edge_scale(s : GraphtreeisomorphismEdge, f : Double) -> GraphtreeisomorphismEdge {
   let result = graph_tree_isomorphism_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_isomorphism_edge_fill(s : GraphtreeisomorphismEdge, v : Double
   result
 }
 
-pub fn graph_tree_isomorphism_edge_min(s : GraphtreeisomorphismEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_edge_min(s : GraphtreeisomorphismEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_edge_max(s : GraphtreeisomorphismEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_edge_max(s : GraphtreeisomorphismEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_edge_to_string(s : GraphtreeisomorphismEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_isomorphism_path_set(s : GraphtreeisomorphismPath, i : Int, v 
   result
 }
 
-pub fn graph_tree_isomorphism_path_sum(s : GraphtreeisomorphismPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_path_sum(s : GraphtreeisomorphismPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_path_mean(s : GraphtreeisomorphismPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_path_mean(s : GraphtreeisomorphismPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_path_scale(s : GraphtreeisomorphismPath, f : Double) -> GraphtreeisomorphismPath {
   let result = graph_tree_isomorphism_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_isomorphism_path_fill(s : GraphtreeisomorphismPath, v : Double
   result
 }
 
-pub fn graph_tree_isomorphism_path_min(s : GraphtreeisomorphismPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_path_min(s : GraphtreeisomorphismPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_path_max(s : GraphtreeisomorphismPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_path_max(s : GraphtreeisomorphismPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_path_to_string(s : GraphtreeisomorphismPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_isomorphism_cluster_set(s : GraphtreeisomorphismCluster, i : I
   result
 }
 
-pub fn graph_tree_isomorphism_cluster_sum(s : GraphtreeisomorphismCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_cluster_sum(s : GraphtreeisomorphismCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_cluster_mean(s : GraphtreeisomorphismCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_cluster_mean(s : GraphtreeisomorphismCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_cluster_scale(s : GraphtreeisomorphismCluster, f : Double) -> GraphtreeisomorphismCluster {
   let result = graph_tree_isomorphism_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_isomorphism_cluster_fill(s : GraphtreeisomorphismCluster, v : 
   result
 }
 
-pub fn graph_tree_isomorphism_cluster_min(s : GraphtreeisomorphismCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_cluster_min(s : GraphtreeisomorphismCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_cluster_max(s : GraphtreeisomorphismCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_cluster_max(s : GraphtreeisomorphismCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_cluster_to_string(s : GraphtreeisomorphismCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_isomorphism_model_set(s : GraphtreeisomorphismModel, i : Int, 
   result
 }
 
-pub fn graph_tree_isomorphism_model_sum(s : GraphtreeisomorphismModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_model_sum(s : GraphtreeisomorphismModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_model_mean(s : GraphtreeisomorphismModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_model_mean(s : GraphtreeisomorphismModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_model_scale(s : GraphtreeisomorphismModel, f : Double) -> GraphtreeisomorphismModel {
   let result = graph_tree_isomorphism_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_isomorphism_model_fill(s : GraphtreeisomorphismModel, v : Doub
   result
 }
 
-pub fn graph_tree_isomorphism_model_min(s : GraphtreeisomorphismModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_model_min(s : GraphtreeisomorphismModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_model_max(s : GraphtreeisomorphismModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_model_max(s : GraphtreeisomorphismModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_model_to_string(s : GraphtreeisomorphismModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_isomorphism_layer_set(s : GraphtreeisomorphismLayer, i : Int, 
   result
 }
 
-pub fn graph_tree_isomorphism_layer_sum(s : GraphtreeisomorphismLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_layer_sum(s : GraphtreeisomorphismLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_layer_mean(s : GraphtreeisomorphismLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_layer_mean(s : GraphtreeisomorphismLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_layer_scale(s : GraphtreeisomorphismLayer, f : Double) -> GraphtreeisomorphismLayer {
   let result = graph_tree_isomorphism_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_isomorphism_layer_fill(s : GraphtreeisomorphismLayer, v : Doub
   result
 }
 
-pub fn graph_tree_isomorphism_layer_min(s : GraphtreeisomorphismLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_layer_min(s : GraphtreeisomorphismLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_layer_max(s : GraphtreeisomorphismLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_layer_max(s : GraphtreeisomorphismLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_layer_to_string(s : GraphtreeisomorphismLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_isomorphism_buffer_set(s : GraphtreeisomorphismBuffer, i : Int
   result
 }
 
-pub fn graph_tree_isomorphism_buffer_sum(s : GraphtreeisomorphismBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_buffer_sum(s : GraphtreeisomorphismBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_buffer_mean(s : GraphtreeisomorphismBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_buffer_mean(s : GraphtreeisomorphismBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_buffer_scale(s : GraphtreeisomorphismBuffer, f : Double) -> GraphtreeisomorphismBuffer {
   let result = graph_tree_isomorphism_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_isomorphism_buffer_fill(s : GraphtreeisomorphismBuffer, v : Do
   result
 }
 
-pub fn graph_tree_isomorphism_buffer_min(s : GraphtreeisomorphismBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_buffer_min(s : GraphtreeisomorphismBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_buffer_max(s : GraphtreeisomorphismBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_buffer_max(s : GraphtreeisomorphismBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_buffer_to_string(s : GraphtreeisomorphismBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_isomorphism_cursor_set(s : GraphtreeisomorphismCursor, i : Int
   result
 }
 
-pub fn graph_tree_isomorphism_cursor_sum(s : GraphtreeisomorphismCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_cursor_sum(s : GraphtreeisomorphismCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_cursor_mean(s : GraphtreeisomorphismCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_cursor_mean(s : GraphtreeisomorphismCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_cursor_scale(s : GraphtreeisomorphismCursor, f : Double) -> GraphtreeisomorphismCursor {
   let result = graph_tree_isomorphism_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_isomorphism_cursor_fill(s : GraphtreeisomorphismCursor, v : Do
   result
 }
 
-pub fn graph_tree_isomorphism_cursor_min(s : GraphtreeisomorphismCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_cursor_min(s : GraphtreeisomorphismCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_cursor_max(s : GraphtreeisomorphismCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_cursor_max(s : GraphtreeisomorphismCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_cursor_to_string(s : GraphtreeisomorphismCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_isomorphism_view_set(s : GraphtreeisomorphismView, i : Int, v 
   result
 }
 
-pub fn graph_tree_isomorphism_view_sum(s : GraphtreeisomorphismView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_view_sum(s : GraphtreeisomorphismView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_view_mean(s : GraphtreeisomorphismView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_view_mean(s : GraphtreeisomorphismView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_view_scale(s : GraphtreeisomorphismView, f : Double) -> GraphtreeisomorphismView {
   let result = graph_tree_isomorphism_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_isomorphism_view_fill(s : GraphtreeisomorphismView, v : Double
   result
 }
 
-pub fn graph_tree_isomorphism_view_min(s : GraphtreeisomorphismView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_view_min(s : GraphtreeisomorphismView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_view_max(s : GraphtreeisomorphismView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_view_max(s : GraphtreeisomorphismView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_view_to_string(s : GraphtreeisomorphismView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_isomorphism_range_set(s : GraphtreeisomorphismRange, i : Int, 
   result
 }
 
-pub fn graph_tree_isomorphism_range_sum(s : GraphtreeisomorphismRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_range_sum(s : GraphtreeisomorphismRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_range_mean(s : GraphtreeisomorphismRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_range_mean(s : GraphtreeisomorphismRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_range_scale(s : GraphtreeisomorphismRange, f : Double) -> GraphtreeisomorphismRange {
   let result = graph_tree_isomorphism_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_isomorphism_range_fill(s : GraphtreeisomorphismRange, v : Doub
   result
 }
 
-pub fn graph_tree_isomorphism_range_min(s : GraphtreeisomorphismRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_range_min(s : GraphtreeisomorphismRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_range_max(s : GraphtreeisomorphismRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_range_max(s : GraphtreeisomorphismRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_range_to_string(s : GraphtreeisomorphismRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_isomorphism_slice_set(s : GraphtreeisomorphismSlice, i : Int, 
   result
 }
 
-pub fn graph_tree_isomorphism_slice_sum(s : GraphtreeisomorphismSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_isomorphism_slice_sum(s : GraphtreeisomorphismSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_isomorphism_slice_mean(s : GraphtreeisomorphismSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_isomorphism_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_isomorphism_slice_mean(s : GraphtreeisomorphismSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_isomorphism_slice_scale(s : GraphtreeisomorphismSlice, f : Double) -> GraphtreeisomorphismSlice {
   let result = graph_tree_isomorphism_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_isomorphism_slice_fill(s : GraphtreeisomorphismSlice, v : Doub
   result
 }
 
-pub fn graph_tree_isomorphism_slice_min(s : GraphtreeisomorphismSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_slice_min(s : GraphtreeisomorphismSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_isomorphism_slice_max(s : GraphtreeisomorphismSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_isomorphism_slice_max(s : GraphtreeisomorphismSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_isomorphism_slice_to_string(s : GraphtreeisomorphismSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

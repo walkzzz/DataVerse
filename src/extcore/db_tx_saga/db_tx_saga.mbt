@@ -88,11 +88,7 @@ pub fn db_tx_saga_make_series(vals : Array[Double], name : String) -> DbtxsagaSe
 
 pub fn db_tx_saga_series_len(s : DbtxsagaSeries) -> Int { s.vals.length() }
 
-pub fn db_tx_saga_series_sum(s : DbtxsagaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_tx_saga_series_sum(s : DbtxsagaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_tx_saga_series_mean(s : DbtxsagaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_tx_saga_frame_set(s : DbtxsagaFrame, i : Int, v : Double) -> DbtxsagaF
   result
 }
 
-pub fn db_tx_saga_frame_sum(s : DbtxsagaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_frame_sum(s : DbtxsagaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_frame_mean(s : DbtxsagaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_frame_mean(s : DbtxsagaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_frame_scale(s : DbtxsagaFrame, f : Double) -> DbtxsagaFrame {
   let result = db_tx_saga_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_tx_saga_frame_fill(s : DbtxsagaFrame, v : Double) -> DbtxsagaFrame {
   result
 }
 
-pub fn db_tx_saga_frame_min(s : DbtxsagaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_frame_min(s : DbtxsagaFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_frame_max(s : DbtxsagaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_frame_max(s : DbtxsagaFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_frame_to_string(s : DbtxsagaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_tx_saga_table_set(s : DbtxsagaTable, i : Int, v : Double) -> DbtxsagaT
   result
 }
 
-pub fn db_tx_saga_table_sum(s : DbtxsagaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_table_sum(s : DbtxsagaTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_table_mean(s : DbtxsagaTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_table_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_table_mean(s : DbtxsagaTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_table_scale(s : DbtxsagaTable, f : Double) -> DbtxsagaTable {
   let result = db_tx_saga_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_tx_saga_table_fill(s : DbtxsagaTable, v : Double) -> DbtxsagaTable {
   result
 }
 
-pub fn db_tx_saga_table_min(s : DbtxsagaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_table_min(s : DbtxsagaTable) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_table_max(s : DbtxsagaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_table_max(s : DbtxsagaTable) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_table_to_string(s : DbtxsagaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_tx_saga_graphn_set(s : DbtxsagaGraphN, i : Int, v : Double) -> Dbtxsag
   result
 }
 
-pub fn db_tx_saga_graphn_sum(s : DbtxsagaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_graphn_sum(s : DbtxsagaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_graphn_mean(s : DbtxsagaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_graphn_mean(s : DbtxsagaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_graphn_scale(s : DbtxsagaGraphN, f : Double) -> DbtxsagaGraphN {
   let result = db_tx_saga_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_tx_saga_graphn_fill(s : DbtxsagaGraphN, v : Double) -> DbtxsagaGraphN 
   result
 }
 
-pub fn db_tx_saga_graphn_min(s : DbtxsagaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_graphn_min(s : DbtxsagaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_graphn_max(s : DbtxsagaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_graphn_max(s : DbtxsagaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_graphn_to_string(s : DbtxsagaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_tx_saga_node_set(s : DbtxsagaNode, i : Int, v : Double) -> DbtxsagaNod
   result
 }
 
-pub fn db_tx_saga_node_sum(s : DbtxsagaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_node_sum(s : DbtxsagaNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_node_mean(s : DbtxsagaNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_node_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_node_mean(s : DbtxsagaNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_node_scale(s : DbtxsagaNode, f : Double) -> DbtxsagaNode {
   let result = db_tx_saga_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_tx_saga_node_fill(s : DbtxsagaNode, v : Double) -> DbtxsagaNode {
   result
 }
 
-pub fn db_tx_saga_node_min(s : DbtxsagaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_node_min(s : DbtxsagaNode) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_node_max(s : DbtxsagaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_node_max(s : DbtxsagaNode) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_node_to_string(s : DbtxsagaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_tx_saga_edge_set(s : DbtxsagaEdge, i : Int, v : Double) -> DbtxsagaEdg
   result
 }
 
-pub fn db_tx_saga_edge_sum(s : DbtxsagaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_edge_sum(s : DbtxsagaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_edge_mean(s : DbtxsagaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_edge_mean(s : DbtxsagaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_edge_scale(s : DbtxsagaEdge, f : Double) -> DbtxsagaEdge {
   let result = db_tx_saga_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_tx_saga_edge_fill(s : DbtxsagaEdge, v : Double) -> DbtxsagaEdge {
   result
 }
 
-pub fn db_tx_saga_edge_min(s : DbtxsagaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_edge_min(s : DbtxsagaEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_edge_max(s : DbtxsagaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_edge_max(s : DbtxsagaEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_edge_to_string(s : DbtxsagaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_tx_saga_path_set(s : DbtxsagaPath, i : Int, v : Double) -> DbtxsagaPat
   result
 }
 
-pub fn db_tx_saga_path_sum(s : DbtxsagaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_path_sum(s : DbtxsagaPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_path_mean(s : DbtxsagaPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_path_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_path_mean(s : DbtxsagaPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_path_scale(s : DbtxsagaPath, f : Double) -> DbtxsagaPath {
   let result = db_tx_saga_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_tx_saga_path_fill(s : DbtxsagaPath, v : Double) -> DbtxsagaPath {
   result
 }
 
-pub fn db_tx_saga_path_min(s : DbtxsagaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_path_min(s : DbtxsagaPath) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_path_max(s : DbtxsagaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_path_max(s : DbtxsagaPath) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_path_to_string(s : DbtxsagaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_tx_saga_cluster_set(s : DbtxsagaCluster, i : Int, v : Double) -> Dbtxs
   result
 }
 
-pub fn db_tx_saga_cluster_sum(s : DbtxsagaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_cluster_sum(s : DbtxsagaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_cluster_mean(s : DbtxsagaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_cluster_mean(s : DbtxsagaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_cluster_scale(s : DbtxsagaCluster, f : Double) -> DbtxsagaCluster {
   let result = db_tx_saga_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_tx_saga_cluster_fill(s : DbtxsagaCluster, v : Double) -> DbtxsagaClust
   result
 }
 
-pub fn db_tx_saga_cluster_min(s : DbtxsagaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_cluster_min(s : DbtxsagaCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_cluster_max(s : DbtxsagaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_cluster_max(s : DbtxsagaCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_cluster_to_string(s : DbtxsagaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_tx_saga_model_set(s : DbtxsagaModel, i : Int, v : Double) -> DbtxsagaM
   result
 }
 
-pub fn db_tx_saga_model_sum(s : DbtxsagaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_model_sum(s : DbtxsagaModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_model_mean(s : DbtxsagaModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_model_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_model_mean(s : DbtxsagaModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_model_scale(s : DbtxsagaModel, f : Double) -> DbtxsagaModel {
   let result = db_tx_saga_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_tx_saga_model_fill(s : DbtxsagaModel, v : Double) -> DbtxsagaModel {
   result
 }
 
-pub fn db_tx_saga_model_min(s : DbtxsagaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_model_min(s : DbtxsagaModel) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_model_max(s : DbtxsagaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_model_max(s : DbtxsagaModel) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_model_to_string(s : DbtxsagaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_tx_saga_layer_set(s : DbtxsagaLayer, i : Int, v : Double) -> DbtxsagaL
   result
 }
 
-pub fn db_tx_saga_layer_sum(s : DbtxsagaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_layer_sum(s : DbtxsagaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_layer_mean(s : DbtxsagaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_layer_mean(s : DbtxsagaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_layer_scale(s : DbtxsagaLayer, f : Double) -> DbtxsagaLayer {
   let result = db_tx_saga_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_tx_saga_layer_fill(s : DbtxsagaLayer, v : Double) -> DbtxsagaLayer {
   result
 }
 
-pub fn db_tx_saga_layer_min(s : DbtxsagaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_layer_min(s : DbtxsagaLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_layer_max(s : DbtxsagaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_layer_max(s : DbtxsagaLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_layer_to_string(s : DbtxsagaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_tx_saga_buffer_set(s : DbtxsagaBuffer, i : Int, v : Double) -> Dbtxsag
   result
 }
 
-pub fn db_tx_saga_buffer_sum(s : DbtxsagaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_buffer_sum(s : DbtxsagaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_buffer_mean(s : DbtxsagaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_buffer_mean(s : DbtxsagaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_buffer_scale(s : DbtxsagaBuffer, f : Double) -> DbtxsagaBuffer {
   let result = db_tx_saga_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_tx_saga_buffer_fill(s : DbtxsagaBuffer, v : Double) -> DbtxsagaBuffer 
   result
 }
 
-pub fn db_tx_saga_buffer_min(s : DbtxsagaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_buffer_min(s : DbtxsagaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_buffer_max(s : DbtxsagaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_buffer_max(s : DbtxsagaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_buffer_to_string(s : DbtxsagaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_tx_saga_cursor_set(s : DbtxsagaCursor, i : Int, v : Double) -> Dbtxsag
   result
 }
 
-pub fn db_tx_saga_cursor_sum(s : DbtxsagaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_cursor_sum(s : DbtxsagaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_cursor_mean(s : DbtxsagaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_cursor_mean(s : DbtxsagaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_cursor_scale(s : DbtxsagaCursor, f : Double) -> DbtxsagaCursor {
   let result = db_tx_saga_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_tx_saga_cursor_fill(s : DbtxsagaCursor, v : Double) -> DbtxsagaCursor 
   result
 }
 
-pub fn db_tx_saga_cursor_min(s : DbtxsagaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_cursor_min(s : DbtxsagaCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_cursor_max(s : DbtxsagaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_cursor_max(s : DbtxsagaCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_cursor_to_string(s : DbtxsagaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_tx_saga_view_set(s : DbtxsagaView, i : Int, v : Double) -> DbtxsagaVie
   result
 }
 
-pub fn db_tx_saga_view_sum(s : DbtxsagaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_view_sum(s : DbtxsagaView) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_view_mean(s : DbtxsagaView) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_view_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_view_mean(s : DbtxsagaView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_view_scale(s : DbtxsagaView, f : Double) -> DbtxsagaView {
   let result = db_tx_saga_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_tx_saga_view_fill(s : DbtxsagaView, v : Double) -> DbtxsagaView {
   result
 }
 
-pub fn db_tx_saga_view_min(s : DbtxsagaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_view_min(s : DbtxsagaView) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_view_max(s : DbtxsagaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_view_max(s : DbtxsagaView) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_view_to_string(s : DbtxsagaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_tx_saga_range_set(s : DbtxsagaRange, i : Int, v : Double) -> DbtxsagaR
   result
 }
 
-pub fn db_tx_saga_range_sum(s : DbtxsagaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_range_sum(s : DbtxsagaRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_range_mean(s : DbtxsagaRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_range_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_range_mean(s : DbtxsagaRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_range_scale(s : DbtxsagaRange, f : Double) -> DbtxsagaRange {
   let result = db_tx_saga_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_tx_saga_range_fill(s : DbtxsagaRange, v : Double) -> DbtxsagaRange {
   result
 }
 
-pub fn db_tx_saga_range_min(s : DbtxsagaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_range_min(s : DbtxsagaRange) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_range_max(s : DbtxsagaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_range_max(s : DbtxsagaRange) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_range_to_string(s : DbtxsagaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_tx_saga_slice_set(s : DbtxsagaSlice, i : Int, v : Double) -> DbtxsagaS
   result
 }
 
-pub fn db_tx_saga_slice_sum(s : DbtxsagaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_saga_slice_sum(s : DbtxsagaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_saga_slice_mean(s : DbtxsagaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_saga_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_saga_slice_mean(s : DbtxsagaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_saga_slice_scale(s : DbtxsagaSlice, f : Double) -> DbtxsagaSlice {
   let result = db_tx_saga_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_tx_saga_slice_fill(s : DbtxsagaSlice, v : Double) -> DbtxsagaSlice {
   result
 }
 
-pub fn db_tx_saga_slice_min(s : DbtxsagaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_slice_min(s : DbtxsagaSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_saga_slice_max(s : DbtxsagaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_saga_slice_max(s : DbtxsagaSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_saga_slice_to_string(s : DbtxsagaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_approx_minimax_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_approx_minimax_series_len(s : MathapproxminimaxSeries) -> Int { s.vals.length() }
 
-pub fn math_approx_minimax_series_sum(s : MathapproxminimaxSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_minimax_series_sum(s : MathapproxminimaxSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_minimax_series_mean(s : MathapproxminimaxSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_minimax_frame_set(s : MathapproxminimaxFrame, i : Int, v : Do
   result
 }
 
-pub fn math_approx_minimax_frame_sum(s : MathapproxminimaxFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_frame_sum(s : MathapproxminimaxFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_frame_mean(s : MathapproxminimaxFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_frame_mean(s : MathapproxminimaxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_frame_scale(s : MathapproxminimaxFrame, f : Double) -> MathapproxminimaxFrame {
   let result = math_approx_minimax_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_minimax_frame_fill(s : MathapproxminimaxFrame, v : Double) ->
   result
 }
 
-pub fn math_approx_minimax_frame_min(s : MathapproxminimaxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_frame_min(s : MathapproxminimaxFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_frame_max(s : MathapproxminimaxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_frame_max(s : MathapproxminimaxFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_frame_to_string(s : MathapproxminimaxFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_minimax_table_set(s : MathapproxminimaxTable, i : Int, v : Do
   result
 }
 
-pub fn math_approx_minimax_table_sum(s : MathapproxminimaxTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_table_sum(s : MathapproxminimaxTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_table_mean(s : MathapproxminimaxTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_table_mean(s : MathapproxminimaxTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_table_scale(s : MathapproxminimaxTable, f : Double) -> MathapproxminimaxTable {
   let result = math_approx_minimax_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_minimax_table_fill(s : MathapproxminimaxTable, v : Double) ->
   result
 }
 
-pub fn math_approx_minimax_table_min(s : MathapproxminimaxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_table_min(s : MathapproxminimaxTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_table_max(s : MathapproxminimaxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_table_max(s : MathapproxminimaxTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_table_to_string(s : MathapproxminimaxTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_minimax_graphn_set(s : MathapproxminimaxGraphN, i : Int, v : 
   result
 }
 
-pub fn math_approx_minimax_graphn_sum(s : MathapproxminimaxGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_graphn_sum(s : MathapproxminimaxGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_graphn_mean(s : MathapproxminimaxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_graphn_mean(s : MathapproxminimaxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_graphn_scale(s : MathapproxminimaxGraphN, f : Double) -> MathapproxminimaxGraphN {
   let result = math_approx_minimax_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_minimax_graphn_fill(s : MathapproxminimaxGraphN, v : Double) 
   result
 }
 
-pub fn math_approx_minimax_graphn_min(s : MathapproxminimaxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_graphn_min(s : MathapproxminimaxGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_graphn_max(s : MathapproxminimaxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_graphn_max(s : MathapproxminimaxGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_graphn_to_string(s : MathapproxminimaxGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_minimax_node_set(s : MathapproxminimaxNode, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_minimax_node_sum(s : MathapproxminimaxNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_node_sum(s : MathapproxminimaxNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_node_mean(s : MathapproxminimaxNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_node_mean(s : MathapproxminimaxNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_node_scale(s : MathapproxminimaxNode, f : Double) -> MathapproxminimaxNode {
   let result = math_approx_minimax_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_minimax_node_fill(s : MathapproxminimaxNode, v : Double) -> M
   result
 }
 
-pub fn math_approx_minimax_node_min(s : MathapproxminimaxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_node_min(s : MathapproxminimaxNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_node_max(s : MathapproxminimaxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_node_max(s : MathapproxminimaxNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_node_to_string(s : MathapproxminimaxNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_minimax_edge_set(s : MathapproxminimaxEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_minimax_edge_sum(s : MathapproxminimaxEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_edge_sum(s : MathapproxminimaxEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_edge_mean(s : MathapproxminimaxEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_edge_mean(s : MathapproxminimaxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_edge_scale(s : MathapproxminimaxEdge, f : Double) -> MathapproxminimaxEdge {
   let result = math_approx_minimax_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_minimax_edge_fill(s : MathapproxminimaxEdge, v : Double) -> M
   result
 }
 
-pub fn math_approx_minimax_edge_min(s : MathapproxminimaxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_edge_min(s : MathapproxminimaxEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_edge_max(s : MathapproxminimaxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_edge_max(s : MathapproxminimaxEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_edge_to_string(s : MathapproxminimaxEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_minimax_path_set(s : MathapproxminimaxPath, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_minimax_path_sum(s : MathapproxminimaxPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_path_sum(s : MathapproxminimaxPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_path_mean(s : MathapproxminimaxPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_path_mean(s : MathapproxminimaxPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_path_scale(s : MathapproxminimaxPath, f : Double) -> MathapproxminimaxPath {
   let result = math_approx_minimax_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_minimax_path_fill(s : MathapproxminimaxPath, v : Double) -> M
   result
 }
 
-pub fn math_approx_minimax_path_min(s : MathapproxminimaxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_path_min(s : MathapproxminimaxPath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_path_max(s : MathapproxminimaxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_path_max(s : MathapproxminimaxPath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_path_to_string(s : MathapproxminimaxPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_minimax_cluster_set(s : MathapproxminimaxCluster, i : Int, v 
   result
 }
 
-pub fn math_approx_minimax_cluster_sum(s : MathapproxminimaxCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_cluster_sum(s : MathapproxminimaxCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_cluster_mean(s : MathapproxminimaxCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_cluster_mean(s : MathapproxminimaxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_cluster_scale(s : MathapproxminimaxCluster, f : Double) -> MathapproxminimaxCluster {
   let result = math_approx_minimax_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_minimax_cluster_fill(s : MathapproxminimaxCluster, v : Double
   result
 }
 
-pub fn math_approx_minimax_cluster_min(s : MathapproxminimaxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_cluster_min(s : MathapproxminimaxCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_cluster_max(s : MathapproxminimaxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_cluster_max(s : MathapproxminimaxCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_cluster_to_string(s : MathapproxminimaxCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_minimax_model_set(s : MathapproxminimaxModel, i : Int, v : Do
   result
 }
 
-pub fn math_approx_minimax_model_sum(s : MathapproxminimaxModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_model_sum(s : MathapproxminimaxModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_model_mean(s : MathapproxminimaxModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_model_mean(s : MathapproxminimaxModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_model_scale(s : MathapproxminimaxModel, f : Double) -> MathapproxminimaxModel {
   let result = math_approx_minimax_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_minimax_model_fill(s : MathapproxminimaxModel, v : Double) ->
   result
 }
 
-pub fn math_approx_minimax_model_min(s : MathapproxminimaxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_model_min(s : MathapproxminimaxModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_model_max(s : MathapproxminimaxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_model_max(s : MathapproxminimaxModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_model_to_string(s : MathapproxminimaxModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_minimax_layer_set(s : MathapproxminimaxLayer, i : Int, v : Do
   result
 }
 
-pub fn math_approx_minimax_layer_sum(s : MathapproxminimaxLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_layer_sum(s : MathapproxminimaxLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_layer_mean(s : MathapproxminimaxLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_layer_mean(s : MathapproxminimaxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_layer_scale(s : MathapproxminimaxLayer, f : Double) -> MathapproxminimaxLayer {
   let result = math_approx_minimax_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_minimax_layer_fill(s : MathapproxminimaxLayer, v : Double) ->
   result
 }
 
-pub fn math_approx_minimax_layer_min(s : MathapproxminimaxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_layer_min(s : MathapproxminimaxLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_layer_max(s : MathapproxminimaxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_layer_max(s : MathapproxminimaxLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_layer_to_string(s : MathapproxminimaxLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_minimax_buffer_set(s : MathapproxminimaxBuffer, i : Int, v : 
   result
 }
 
-pub fn math_approx_minimax_buffer_sum(s : MathapproxminimaxBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_buffer_sum(s : MathapproxminimaxBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_buffer_mean(s : MathapproxminimaxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_buffer_mean(s : MathapproxminimaxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_buffer_scale(s : MathapproxminimaxBuffer, f : Double) -> MathapproxminimaxBuffer {
   let result = math_approx_minimax_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_minimax_buffer_fill(s : MathapproxminimaxBuffer, v : Double) 
   result
 }
 
-pub fn math_approx_minimax_buffer_min(s : MathapproxminimaxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_buffer_min(s : MathapproxminimaxBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_buffer_max(s : MathapproxminimaxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_buffer_max(s : MathapproxminimaxBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_buffer_to_string(s : MathapproxminimaxBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_minimax_cursor_set(s : MathapproxminimaxCursor, i : Int, v : 
   result
 }
 
-pub fn math_approx_minimax_cursor_sum(s : MathapproxminimaxCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_cursor_sum(s : MathapproxminimaxCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_cursor_mean(s : MathapproxminimaxCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_cursor_mean(s : MathapproxminimaxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_cursor_scale(s : MathapproxminimaxCursor, f : Double) -> MathapproxminimaxCursor {
   let result = math_approx_minimax_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_minimax_cursor_fill(s : MathapproxminimaxCursor, v : Double) 
   result
 }
 
-pub fn math_approx_minimax_cursor_min(s : MathapproxminimaxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_cursor_min(s : MathapproxminimaxCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_cursor_max(s : MathapproxminimaxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_cursor_max(s : MathapproxminimaxCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_cursor_to_string(s : MathapproxminimaxCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_minimax_view_set(s : MathapproxminimaxView, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_minimax_view_sum(s : MathapproxminimaxView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_view_sum(s : MathapproxminimaxView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_view_mean(s : MathapproxminimaxView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_view_mean(s : MathapproxminimaxView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_view_scale(s : MathapproxminimaxView, f : Double) -> MathapproxminimaxView {
   let result = math_approx_minimax_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_minimax_view_fill(s : MathapproxminimaxView, v : Double) -> M
   result
 }
 
-pub fn math_approx_minimax_view_min(s : MathapproxminimaxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_view_min(s : MathapproxminimaxView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_view_max(s : MathapproxminimaxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_view_max(s : MathapproxminimaxView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_view_to_string(s : MathapproxminimaxView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_minimax_range_set(s : MathapproxminimaxRange, i : Int, v : Do
   result
 }
 
-pub fn math_approx_minimax_range_sum(s : MathapproxminimaxRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_range_sum(s : MathapproxminimaxRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_range_mean(s : MathapproxminimaxRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_range_mean(s : MathapproxminimaxRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_range_scale(s : MathapproxminimaxRange, f : Double) -> MathapproxminimaxRange {
   let result = math_approx_minimax_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_minimax_range_fill(s : MathapproxminimaxRange, v : Double) ->
   result
 }
 
-pub fn math_approx_minimax_range_min(s : MathapproxminimaxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_range_min(s : MathapproxminimaxRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_range_max(s : MathapproxminimaxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_range_max(s : MathapproxminimaxRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_range_to_string(s : MathapproxminimaxRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_minimax_slice_set(s : MathapproxminimaxSlice, i : Int, v : Do
   result
 }
 
-pub fn math_approx_minimax_slice_sum(s : MathapproxminimaxSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_minimax_slice_sum(s : MathapproxminimaxSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_minimax_slice_mean(s : MathapproxminimaxSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_minimax_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_minimax_slice_mean(s : MathapproxminimaxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_minimax_slice_scale(s : MathapproxminimaxSlice, f : Double) -> MathapproxminimaxSlice {
   let result = math_approx_minimax_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_minimax_slice_fill(s : MathapproxminimaxSlice, v : Double) ->
   result
 }
 
-pub fn math_approx_minimax_slice_min(s : MathapproxminimaxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_slice_min(s : MathapproxminimaxSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_minimax_slice_max(s : MathapproxminimaxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_minimax_slice_max(s : MathapproxminimaxSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_minimax_slice_to_string(s : MathapproxminimaxSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

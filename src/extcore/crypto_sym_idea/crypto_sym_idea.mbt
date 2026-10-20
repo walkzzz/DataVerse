@@ -88,11 +88,7 @@ pub fn crypto_sym_idea_make_series(vals : Array[Double], name : String) -> Crypt
 
 pub fn crypto_sym_idea_series_len(s : CryptosymideaSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_idea_series_sum(s : CryptosymideaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_idea_series_sum(s : CryptosymideaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_idea_series_mean(s : CryptosymideaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_idea_frame_set(s : CryptosymideaFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_idea_frame_sum(s : CryptosymideaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_frame_sum(s : CryptosymideaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_frame_mean(s : CryptosymideaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_frame_mean(s : CryptosymideaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_frame_scale(s : CryptosymideaFrame, f : Double) -> CryptosymideaFrame {
   let result = crypto_sym_idea_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_idea_frame_fill(s : CryptosymideaFrame, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_idea_frame_min(s : CryptosymideaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_frame_min(s : CryptosymideaFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_frame_max(s : CryptosymideaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_frame_max(s : CryptosymideaFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_frame_to_string(s : CryptosymideaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_idea_table_set(s : CryptosymideaTable, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_idea_table_sum(s : CryptosymideaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_table_sum(s : CryptosymideaTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_table_mean(s : CryptosymideaTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_table_mean(s : CryptosymideaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_table_scale(s : CryptosymideaTable, f : Double) -> CryptosymideaTable {
   let result = crypto_sym_idea_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_idea_table_fill(s : CryptosymideaTable, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_idea_table_min(s : CryptosymideaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_table_min(s : CryptosymideaTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_table_max(s : CryptosymideaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_table_max(s : CryptosymideaTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_table_to_string(s : CryptosymideaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_idea_graphn_set(s : CryptosymideaGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_idea_graphn_sum(s : CryptosymideaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_graphn_sum(s : CryptosymideaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_graphn_mean(s : CryptosymideaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_graphn_mean(s : CryptosymideaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_graphn_scale(s : CryptosymideaGraphN, f : Double) -> CryptosymideaGraphN {
   let result = crypto_sym_idea_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_idea_graphn_fill(s : CryptosymideaGraphN, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_idea_graphn_min(s : CryptosymideaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_graphn_min(s : CryptosymideaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_graphn_max(s : CryptosymideaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_graphn_max(s : CryptosymideaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_graphn_to_string(s : CryptosymideaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_idea_node_set(s : CryptosymideaNode, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_idea_node_sum(s : CryptosymideaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_node_sum(s : CryptosymideaNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_node_mean(s : CryptosymideaNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_node_mean(s : CryptosymideaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_node_scale(s : CryptosymideaNode, f : Double) -> CryptosymideaNode {
   let result = crypto_sym_idea_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_idea_node_fill(s : CryptosymideaNode, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_idea_node_min(s : CryptosymideaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_node_min(s : CryptosymideaNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_node_max(s : CryptosymideaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_node_max(s : CryptosymideaNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_node_to_string(s : CryptosymideaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_idea_edge_set(s : CryptosymideaEdge, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_idea_edge_sum(s : CryptosymideaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_edge_sum(s : CryptosymideaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_edge_mean(s : CryptosymideaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_edge_mean(s : CryptosymideaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_edge_scale(s : CryptosymideaEdge, f : Double) -> CryptosymideaEdge {
   let result = crypto_sym_idea_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_idea_edge_fill(s : CryptosymideaEdge, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_idea_edge_min(s : CryptosymideaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_edge_min(s : CryptosymideaEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_edge_max(s : CryptosymideaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_edge_max(s : CryptosymideaEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_edge_to_string(s : CryptosymideaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_idea_path_set(s : CryptosymideaPath, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_idea_path_sum(s : CryptosymideaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_path_sum(s : CryptosymideaPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_path_mean(s : CryptosymideaPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_path_mean(s : CryptosymideaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_path_scale(s : CryptosymideaPath, f : Double) -> CryptosymideaPath {
   let result = crypto_sym_idea_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_idea_path_fill(s : CryptosymideaPath, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_idea_path_min(s : CryptosymideaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_path_min(s : CryptosymideaPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_path_max(s : CryptosymideaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_path_max(s : CryptosymideaPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_path_to_string(s : CryptosymideaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_idea_cluster_set(s : CryptosymideaCluster, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_idea_cluster_sum(s : CryptosymideaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_cluster_sum(s : CryptosymideaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_cluster_mean(s : CryptosymideaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_cluster_mean(s : CryptosymideaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_cluster_scale(s : CryptosymideaCluster, f : Double) -> CryptosymideaCluster {
   let result = crypto_sym_idea_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_idea_cluster_fill(s : CryptosymideaCluster, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_idea_cluster_min(s : CryptosymideaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_cluster_min(s : CryptosymideaCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_cluster_max(s : CryptosymideaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_cluster_max(s : CryptosymideaCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_cluster_to_string(s : CryptosymideaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_idea_model_set(s : CryptosymideaModel, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_idea_model_sum(s : CryptosymideaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_model_sum(s : CryptosymideaModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_model_mean(s : CryptosymideaModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_model_mean(s : CryptosymideaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_model_scale(s : CryptosymideaModel, f : Double) -> CryptosymideaModel {
   let result = crypto_sym_idea_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_idea_model_fill(s : CryptosymideaModel, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_idea_model_min(s : CryptosymideaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_model_min(s : CryptosymideaModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_model_max(s : CryptosymideaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_model_max(s : CryptosymideaModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_model_to_string(s : CryptosymideaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_idea_layer_set(s : CryptosymideaLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_idea_layer_sum(s : CryptosymideaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_layer_sum(s : CryptosymideaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_layer_mean(s : CryptosymideaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_layer_mean(s : CryptosymideaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_layer_scale(s : CryptosymideaLayer, f : Double) -> CryptosymideaLayer {
   let result = crypto_sym_idea_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_idea_layer_fill(s : CryptosymideaLayer, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_idea_layer_min(s : CryptosymideaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_layer_min(s : CryptosymideaLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_layer_max(s : CryptosymideaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_layer_max(s : CryptosymideaLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_layer_to_string(s : CryptosymideaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_idea_buffer_set(s : CryptosymideaBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_idea_buffer_sum(s : CryptosymideaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_buffer_sum(s : CryptosymideaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_buffer_mean(s : CryptosymideaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_buffer_mean(s : CryptosymideaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_buffer_scale(s : CryptosymideaBuffer, f : Double) -> CryptosymideaBuffer {
   let result = crypto_sym_idea_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_idea_buffer_fill(s : CryptosymideaBuffer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_idea_buffer_min(s : CryptosymideaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_buffer_min(s : CryptosymideaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_buffer_max(s : CryptosymideaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_buffer_max(s : CryptosymideaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_buffer_to_string(s : CryptosymideaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_idea_cursor_set(s : CryptosymideaCursor, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_idea_cursor_sum(s : CryptosymideaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_cursor_sum(s : CryptosymideaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_cursor_mean(s : CryptosymideaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_cursor_mean(s : CryptosymideaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_cursor_scale(s : CryptosymideaCursor, f : Double) -> CryptosymideaCursor {
   let result = crypto_sym_idea_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_idea_cursor_fill(s : CryptosymideaCursor, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_idea_cursor_min(s : CryptosymideaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_cursor_min(s : CryptosymideaCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_cursor_max(s : CryptosymideaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_cursor_max(s : CryptosymideaCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_cursor_to_string(s : CryptosymideaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_idea_view_set(s : CryptosymideaView, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_idea_view_sum(s : CryptosymideaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_view_sum(s : CryptosymideaView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_view_mean(s : CryptosymideaView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_view_mean(s : CryptosymideaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_view_scale(s : CryptosymideaView, f : Double) -> CryptosymideaView {
   let result = crypto_sym_idea_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_idea_view_fill(s : CryptosymideaView, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_idea_view_min(s : CryptosymideaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_view_min(s : CryptosymideaView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_view_max(s : CryptosymideaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_view_max(s : CryptosymideaView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_view_to_string(s : CryptosymideaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_idea_range_set(s : CryptosymideaRange, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_idea_range_sum(s : CryptosymideaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_range_sum(s : CryptosymideaRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_range_mean(s : CryptosymideaRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_range_mean(s : CryptosymideaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_range_scale(s : CryptosymideaRange, f : Double) -> CryptosymideaRange {
   let result = crypto_sym_idea_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_idea_range_fill(s : CryptosymideaRange, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_idea_range_min(s : CryptosymideaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_range_min(s : CryptosymideaRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_range_max(s : CryptosymideaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_range_max(s : CryptosymideaRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_range_to_string(s : CryptosymideaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_idea_slice_set(s : CryptosymideaSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_idea_slice_sum(s : CryptosymideaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_idea_slice_sum(s : CryptosymideaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_idea_slice_mean(s : CryptosymideaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_idea_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_idea_slice_mean(s : CryptosymideaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_idea_slice_scale(s : CryptosymideaSlice, f : Double) -> CryptosymideaSlice {
   let result = crypto_sym_idea_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_idea_slice_fill(s : CryptosymideaSlice, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_idea_slice_min(s : CryptosymideaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_slice_min(s : CryptosymideaSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_idea_slice_max(s : CryptosymideaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_idea_slice_max(s : CryptosymideaSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_idea_slice_to_string(s : CryptosymideaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

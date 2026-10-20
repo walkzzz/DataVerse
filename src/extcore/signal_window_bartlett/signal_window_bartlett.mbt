@@ -88,11 +88,7 @@ pub fn signal_window_bartlett_make_series(vals : Array[Double], name : String) -
 
 pub fn signal_window_bartlett_series_len(s : SignalwindowbartlettSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_bartlett_series_sum(s : SignalwindowbartlettSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_bartlett_series_sum(s : SignalwindowbartlettSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_bartlett_series_mean(s : SignalwindowbartlettSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_bartlett_frame_set(s : SignalwindowbartlettFrame, i : Int, 
   result
 }
 
-pub fn signal_window_bartlett_frame_sum(s : SignalwindowbartlettFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_frame_sum(s : SignalwindowbartlettFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_frame_mean(s : SignalwindowbartlettFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_frame_mean(s : SignalwindowbartlettFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_frame_scale(s : SignalwindowbartlettFrame, f : Double) -> SignalwindowbartlettFrame {
   let result = signal_window_bartlett_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_bartlett_frame_fill(s : SignalwindowbartlettFrame, v : Doub
   result
 }
 
-pub fn signal_window_bartlett_frame_min(s : SignalwindowbartlettFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_frame_min(s : SignalwindowbartlettFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_frame_max(s : SignalwindowbartlettFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_frame_max(s : SignalwindowbartlettFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_frame_to_string(s : SignalwindowbartlettFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_bartlett_table_set(s : SignalwindowbartlettTable, i : Int, 
   result
 }
 
-pub fn signal_window_bartlett_table_sum(s : SignalwindowbartlettTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_table_sum(s : SignalwindowbartlettTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_table_mean(s : SignalwindowbartlettTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_table_mean(s : SignalwindowbartlettTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_table_scale(s : SignalwindowbartlettTable, f : Double) -> SignalwindowbartlettTable {
   let result = signal_window_bartlett_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_bartlett_table_fill(s : SignalwindowbartlettTable, v : Doub
   result
 }
 
-pub fn signal_window_bartlett_table_min(s : SignalwindowbartlettTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_table_min(s : SignalwindowbartlettTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_table_max(s : SignalwindowbartlettTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_table_max(s : SignalwindowbartlettTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_table_to_string(s : SignalwindowbartlettTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_bartlett_graphn_set(s : SignalwindowbartlettGraphN, i : Int
   result
 }
 
-pub fn signal_window_bartlett_graphn_sum(s : SignalwindowbartlettGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_graphn_sum(s : SignalwindowbartlettGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_graphn_mean(s : SignalwindowbartlettGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_graphn_mean(s : SignalwindowbartlettGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_graphn_scale(s : SignalwindowbartlettGraphN, f : Double) -> SignalwindowbartlettGraphN {
   let result = signal_window_bartlett_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_bartlett_graphn_fill(s : SignalwindowbartlettGraphN, v : Do
   result
 }
 
-pub fn signal_window_bartlett_graphn_min(s : SignalwindowbartlettGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_graphn_min(s : SignalwindowbartlettGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_graphn_max(s : SignalwindowbartlettGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_graphn_max(s : SignalwindowbartlettGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_graphn_to_string(s : SignalwindowbartlettGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_bartlett_node_set(s : SignalwindowbartlettNode, i : Int, v 
   result
 }
 
-pub fn signal_window_bartlett_node_sum(s : SignalwindowbartlettNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_node_sum(s : SignalwindowbartlettNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_node_mean(s : SignalwindowbartlettNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_node_mean(s : SignalwindowbartlettNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_node_scale(s : SignalwindowbartlettNode, f : Double) -> SignalwindowbartlettNode {
   let result = signal_window_bartlett_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_bartlett_node_fill(s : SignalwindowbartlettNode, v : Double
   result
 }
 
-pub fn signal_window_bartlett_node_min(s : SignalwindowbartlettNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_node_min(s : SignalwindowbartlettNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_node_max(s : SignalwindowbartlettNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_node_max(s : SignalwindowbartlettNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_node_to_string(s : SignalwindowbartlettNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_bartlett_edge_set(s : SignalwindowbartlettEdge, i : Int, v 
   result
 }
 
-pub fn signal_window_bartlett_edge_sum(s : SignalwindowbartlettEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_edge_sum(s : SignalwindowbartlettEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_edge_mean(s : SignalwindowbartlettEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_edge_mean(s : SignalwindowbartlettEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_edge_scale(s : SignalwindowbartlettEdge, f : Double) -> SignalwindowbartlettEdge {
   let result = signal_window_bartlett_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_bartlett_edge_fill(s : SignalwindowbartlettEdge, v : Double
   result
 }
 
-pub fn signal_window_bartlett_edge_min(s : SignalwindowbartlettEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_edge_min(s : SignalwindowbartlettEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_edge_max(s : SignalwindowbartlettEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_edge_max(s : SignalwindowbartlettEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_edge_to_string(s : SignalwindowbartlettEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_bartlett_path_set(s : SignalwindowbartlettPath, i : Int, v 
   result
 }
 
-pub fn signal_window_bartlett_path_sum(s : SignalwindowbartlettPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_path_sum(s : SignalwindowbartlettPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_path_mean(s : SignalwindowbartlettPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_path_mean(s : SignalwindowbartlettPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_path_scale(s : SignalwindowbartlettPath, f : Double) -> SignalwindowbartlettPath {
   let result = signal_window_bartlett_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_bartlett_path_fill(s : SignalwindowbartlettPath, v : Double
   result
 }
 
-pub fn signal_window_bartlett_path_min(s : SignalwindowbartlettPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_path_min(s : SignalwindowbartlettPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_path_max(s : SignalwindowbartlettPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_path_max(s : SignalwindowbartlettPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_path_to_string(s : SignalwindowbartlettPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_bartlett_cluster_set(s : SignalwindowbartlettCluster, i : I
   result
 }
 
-pub fn signal_window_bartlett_cluster_sum(s : SignalwindowbartlettCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_cluster_sum(s : SignalwindowbartlettCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_cluster_mean(s : SignalwindowbartlettCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_cluster_mean(s : SignalwindowbartlettCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_cluster_scale(s : SignalwindowbartlettCluster, f : Double) -> SignalwindowbartlettCluster {
   let result = signal_window_bartlett_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_bartlett_cluster_fill(s : SignalwindowbartlettCluster, v : 
   result
 }
 
-pub fn signal_window_bartlett_cluster_min(s : SignalwindowbartlettCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_cluster_min(s : SignalwindowbartlettCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_cluster_max(s : SignalwindowbartlettCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_cluster_max(s : SignalwindowbartlettCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_cluster_to_string(s : SignalwindowbartlettCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_bartlett_model_set(s : SignalwindowbartlettModel, i : Int, 
   result
 }
 
-pub fn signal_window_bartlett_model_sum(s : SignalwindowbartlettModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_model_sum(s : SignalwindowbartlettModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_model_mean(s : SignalwindowbartlettModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_model_mean(s : SignalwindowbartlettModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_model_scale(s : SignalwindowbartlettModel, f : Double) -> SignalwindowbartlettModel {
   let result = signal_window_bartlett_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_bartlett_model_fill(s : SignalwindowbartlettModel, v : Doub
   result
 }
 
-pub fn signal_window_bartlett_model_min(s : SignalwindowbartlettModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_model_min(s : SignalwindowbartlettModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_model_max(s : SignalwindowbartlettModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_model_max(s : SignalwindowbartlettModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_model_to_string(s : SignalwindowbartlettModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_bartlett_layer_set(s : SignalwindowbartlettLayer, i : Int, 
   result
 }
 
-pub fn signal_window_bartlett_layer_sum(s : SignalwindowbartlettLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_layer_sum(s : SignalwindowbartlettLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_layer_mean(s : SignalwindowbartlettLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_layer_mean(s : SignalwindowbartlettLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_layer_scale(s : SignalwindowbartlettLayer, f : Double) -> SignalwindowbartlettLayer {
   let result = signal_window_bartlett_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_bartlett_layer_fill(s : SignalwindowbartlettLayer, v : Doub
   result
 }
 
-pub fn signal_window_bartlett_layer_min(s : SignalwindowbartlettLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_layer_min(s : SignalwindowbartlettLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_layer_max(s : SignalwindowbartlettLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_layer_max(s : SignalwindowbartlettLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_layer_to_string(s : SignalwindowbartlettLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_bartlett_buffer_set(s : SignalwindowbartlettBuffer, i : Int
   result
 }
 
-pub fn signal_window_bartlett_buffer_sum(s : SignalwindowbartlettBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_buffer_sum(s : SignalwindowbartlettBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_buffer_mean(s : SignalwindowbartlettBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_buffer_mean(s : SignalwindowbartlettBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_buffer_scale(s : SignalwindowbartlettBuffer, f : Double) -> SignalwindowbartlettBuffer {
   let result = signal_window_bartlett_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_bartlett_buffer_fill(s : SignalwindowbartlettBuffer, v : Do
   result
 }
 
-pub fn signal_window_bartlett_buffer_min(s : SignalwindowbartlettBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_buffer_min(s : SignalwindowbartlettBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_buffer_max(s : SignalwindowbartlettBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_buffer_max(s : SignalwindowbartlettBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_buffer_to_string(s : SignalwindowbartlettBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_bartlett_cursor_set(s : SignalwindowbartlettCursor, i : Int
   result
 }
 
-pub fn signal_window_bartlett_cursor_sum(s : SignalwindowbartlettCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_cursor_sum(s : SignalwindowbartlettCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_cursor_mean(s : SignalwindowbartlettCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_cursor_mean(s : SignalwindowbartlettCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_cursor_scale(s : SignalwindowbartlettCursor, f : Double) -> SignalwindowbartlettCursor {
   let result = signal_window_bartlett_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_bartlett_cursor_fill(s : SignalwindowbartlettCursor, v : Do
   result
 }
 
-pub fn signal_window_bartlett_cursor_min(s : SignalwindowbartlettCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_cursor_min(s : SignalwindowbartlettCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_cursor_max(s : SignalwindowbartlettCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_cursor_max(s : SignalwindowbartlettCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_cursor_to_string(s : SignalwindowbartlettCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_bartlett_view_set(s : SignalwindowbartlettView, i : Int, v 
   result
 }
 
-pub fn signal_window_bartlett_view_sum(s : SignalwindowbartlettView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_view_sum(s : SignalwindowbartlettView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_view_mean(s : SignalwindowbartlettView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_view_mean(s : SignalwindowbartlettView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_view_scale(s : SignalwindowbartlettView, f : Double) -> SignalwindowbartlettView {
   let result = signal_window_bartlett_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_bartlett_view_fill(s : SignalwindowbartlettView, v : Double
   result
 }
 
-pub fn signal_window_bartlett_view_min(s : SignalwindowbartlettView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_view_min(s : SignalwindowbartlettView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_view_max(s : SignalwindowbartlettView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_view_max(s : SignalwindowbartlettView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_view_to_string(s : SignalwindowbartlettView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_bartlett_range_set(s : SignalwindowbartlettRange, i : Int, 
   result
 }
 
-pub fn signal_window_bartlett_range_sum(s : SignalwindowbartlettRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_range_sum(s : SignalwindowbartlettRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_range_mean(s : SignalwindowbartlettRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_range_mean(s : SignalwindowbartlettRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_range_scale(s : SignalwindowbartlettRange, f : Double) -> SignalwindowbartlettRange {
   let result = signal_window_bartlett_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_bartlett_range_fill(s : SignalwindowbartlettRange, v : Doub
   result
 }
 
-pub fn signal_window_bartlett_range_min(s : SignalwindowbartlettRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_range_min(s : SignalwindowbartlettRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_range_max(s : SignalwindowbartlettRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_range_max(s : SignalwindowbartlettRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_range_to_string(s : SignalwindowbartlettRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_bartlett_slice_set(s : SignalwindowbartlettSlice, i : Int, 
   result
 }
 
-pub fn signal_window_bartlett_slice_sum(s : SignalwindowbartlettSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_bartlett_slice_sum(s : SignalwindowbartlettSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_bartlett_slice_mean(s : SignalwindowbartlettSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_bartlett_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_bartlett_slice_mean(s : SignalwindowbartlettSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_bartlett_slice_scale(s : SignalwindowbartlettSlice, f : Double) -> SignalwindowbartlettSlice {
   let result = signal_window_bartlett_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_bartlett_slice_fill(s : SignalwindowbartlettSlice, v : Doub
   result
 }
 
-pub fn signal_window_bartlett_slice_min(s : SignalwindowbartlettSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_slice_min(s : SignalwindowbartlettSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_bartlett_slice_max(s : SignalwindowbartlettSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_bartlett_slice_max(s : SignalwindowbartlettSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_bartlett_slice_to_string(s : SignalwindowbartlettSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

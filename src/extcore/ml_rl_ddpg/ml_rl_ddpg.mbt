@@ -88,11 +88,7 @@ pub fn ml_rl_ddpg_make_series(vals : Array[Double], name : String) -> MlrlddpgSe
 
 pub fn ml_rl_ddpg_series_len(s : MlrlddpgSeries) -> Int { s.vals.length() }
 
-pub fn ml_rl_ddpg_series_sum(s : MlrlddpgSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_rl_ddpg_series_sum(s : MlrlddpgSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_rl_ddpg_series_mean(s : MlrlddpgSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_rl_ddpg_frame_set(s : MlrlddpgFrame, i : Int, v : Double) -> MlrlddpgF
   result
 }
 
-pub fn ml_rl_ddpg_frame_sum(s : MlrlddpgFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_frame_sum(s : MlrlddpgFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_frame_mean(s : MlrlddpgFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_frame_mean(s : MlrlddpgFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_frame_scale(s : MlrlddpgFrame, f : Double) -> MlrlddpgFrame {
   let result = ml_rl_ddpg_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_rl_ddpg_frame_fill(s : MlrlddpgFrame, v : Double) -> MlrlddpgFrame {
   result
 }
 
-pub fn ml_rl_ddpg_frame_min(s : MlrlddpgFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_frame_min(s : MlrlddpgFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_frame_max(s : MlrlddpgFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_frame_max(s : MlrlddpgFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_frame_to_string(s : MlrlddpgFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_rl_ddpg_table_set(s : MlrlddpgTable, i : Int, v : Double) -> MlrlddpgT
   result
 }
 
-pub fn ml_rl_ddpg_table_sum(s : MlrlddpgTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_table_sum(s : MlrlddpgTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_table_mean(s : MlrlddpgTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_table_mean(s : MlrlddpgTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_table_scale(s : MlrlddpgTable, f : Double) -> MlrlddpgTable {
   let result = ml_rl_ddpg_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_rl_ddpg_table_fill(s : MlrlddpgTable, v : Double) -> MlrlddpgTable {
   result
 }
 
-pub fn ml_rl_ddpg_table_min(s : MlrlddpgTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_table_min(s : MlrlddpgTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_table_max(s : MlrlddpgTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_table_max(s : MlrlddpgTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_table_to_string(s : MlrlddpgTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_rl_ddpg_graphn_set(s : MlrlddpgGraphN, i : Int, v : Double) -> Mlrlddp
   result
 }
 
-pub fn ml_rl_ddpg_graphn_sum(s : MlrlddpgGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_graphn_sum(s : MlrlddpgGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_graphn_mean(s : MlrlddpgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_graphn_mean(s : MlrlddpgGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_graphn_scale(s : MlrlddpgGraphN, f : Double) -> MlrlddpgGraphN {
   let result = ml_rl_ddpg_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_rl_ddpg_graphn_fill(s : MlrlddpgGraphN, v : Double) -> MlrlddpgGraphN 
   result
 }
 
-pub fn ml_rl_ddpg_graphn_min(s : MlrlddpgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_graphn_min(s : MlrlddpgGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_graphn_max(s : MlrlddpgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_graphn_max(s : MlrlddpgGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_graphn_to_string(s : MlrlddpgGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_rl_ddpg_node_set(s : MlrlddpgNode, i : Int, v : Double) -> MlrlddpgNod
   result
 }
 
-pub fn ml_rl_ddpg_node_sum(s : MlrlddpgNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_node_sum(s : MlrlddpgNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_node_mean(s : MlrlddpgNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_node_mean(s : MlrlddpgNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_node_scale(s : MlrlddpgNode, f : Double) -> MlrlddpgNode {
   let result = ml_rl_ddpg_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_rl_ddpg_node_fill(s : MlrlddpgNode, v : Double) -> MlrlddpgNode {
   result
 }
 
-pub fn ml_rl_ddpg_node_min(s : MlrlddpgNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_node_min(s : MlrlddpgNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_node_max(s : MlrlddpgNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_node_max(s : MlrlddpgNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_node_to_string(s : MlrlddpgNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_rl_ddpg_edge_set(s : MlrlddpgEdge, i : Int, v : Double) -> MlrlddpgEdg
   result
 }
 
-pub fn ml_rl_ddpg_edge_sum(s : MlrlddpgEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_edge_sum(s : MlrlddpgEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_edge_mean(s : MlrlddpgEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_edge_mean(s : MlrlddpgEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_edge_scale(s : MlrlddpgEdge, f : Double) -> MlrlddpgEdge {
   let result = ml_rl_ddpg_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_rl_ddpg_edge_fill(s : MlrlddpgEdge, v : Double) -> MlrlddpgEdge {
   result
 }
 
-pub fn ml_rl_ddpg_edge_min(s : MlrlddpgEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_edge_min(s : MlrlddpgEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_edge_max(s : MlrlddpgEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_edge_max(s : MlrlddpgEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_edge_to_string(s : MlrlddpgEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_rl_ddpg_path_set(s : MlrlddpgPath, i : Int, v : Double) -> MlrlddpgPat
   result
 }
 
-pub fn ml_rl_ddpg_path_sum(s : MlrlddpgPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_path_sum(s : MlrlddpgPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_path_mean(s : MlrlddpgPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_path_mean(s : MlrlddpgPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_path_scale(s : MlrlddpgPath, f : Double) -> MlrlddpgPath {
   let result = ml_rl_ddpg_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_rl_ddpg_path_fill(s : MlrlddpgPath, v : Double) -> MlrlddpgPath {
   result
 }
 
-pub fn ml_rl_ddpg_path_min(s : MlrlddpgPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_path_min(s : MlrlddpgPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_path_max(s : MlrlddpgPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_path_max(s : MlrlddpgPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_path_to_string(s : MlrlddpgPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_rl_ddpg_cluster_set(s : MlrlddpgCluster, i : Int, v : Double) -> Mlrld
   result
 }
 
-pub fn ml_rl_ddpg_cluster_sum(s : MlrlddpgCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_cluster_sum(s : MlrlddpgCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_cluster_mean(s : MlrlddpgCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_cluster_mean(s : MlrlddpgCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_cluster_scale(s : MlrlddpgCluster, f : Double) -> MlrlddpgCluster {
   let result = ml_rl_ddpg_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_rl_ddpg_cluster_fill(s : MlrlddpgCluster, v : Double) -> MlrlddpgClust
   result
 }
 
-pub fn ml_rl_ddpg_cluster_min(s : MlrlddpgCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_cluster_min(s : MlrlddpgCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_cluster_max(s : MlrlddpgCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_cluster_max(s : MlrlddpgCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_cluster_to_string(s : MlrlddpgCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_rl_ddpg_model_set(s : MlrlddpgModel, i : Int, v : Double) -> MlrlddpgM
   result
 }
 
-pub fn ml_rl_ddpg_model_sum(s : MlrlddpgModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_model_sum(s : MlrlddpgModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_model_mean(s : MlrlddpgModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_model_mean(s : MlrlddpgModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_model_scale(s : MlrlddpgModel, f : Double) -> MlrlddpgModel {
   let result = ml_rl_ddpg_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_rl_ddpg_model_fill(s : MlrlddpgModel, v : Double) -> MlrlddpgModel {
   result
 }
 
-pub fn ml_rl_ddpg_model_min(s : MlrlddpgModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_model_min(s : MlrlddpgModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_model_max(s : MlrlddpgModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_model_max(s : MlrlddpgModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_model_to_string(s : MlrlddpgModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_rl_ddpg_layer_set(s : MlrlddpgLayer, i : Int, v : Double) -> MlrlddpgL
   result
 }
 
-pub fn ml_rl_ddpg_layer_sum(s : MlrlddpgLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_layer_sum(s : MlrlddpgLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_layer_mean(s : MlrlddpgLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_layer_mean(s : MlrlddpgLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_layer_scale(s : MlrlddpgLayer, f : Double) -> MlrlddpgLayer {
   let result = ml_rl_ddpg_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_rl_ddpg_layer_fill(s : MlrlddpgLayer, v : Double) -> MlrlddpgLayer {
   result
 }
 
-pub fn ml_rl_ddpg_layer_min(s : MlrlddpgLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_layer_min(s : MlrlddpgLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_layer_max(s : MlrlddpgLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_layer_max(s : MlrlddpgLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_layer_to_string(s : MlrlddpgLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_rl_ddpg_buffer_set(s : MlrlddpgBuffer, i : Int, v : Double) -> Mlrlddp
   result
 }
 
-pub fn ml_rl_ddpg_buffer_sum(s : MlrlddpgBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_buffer_sum(s : MlrlddpgBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_buffer_mean(s : MlrlddpgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_buffer_mean(s : MlrlddpgBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_buffer_scale(s : MlrlddpgBuffer, f : Double) -> MlrlddpgBuffer {
   let result = ml_rl_ddpg_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_rl_ddpg_buffer_fill(s : MlrlddpgBuffer, v : Double) -> MlrlddpgBuffer 
   result
 }
 
-pub fn ml_rl_ddpg_buffer_min(s : MlrlddpgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_buffer_min(s : MlrlddpgBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_buffer_max(s : MlrlddpgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_buffer_max(s : MlrlddpgBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_buffer_to_string(s : MlrlddpgBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_rl_ddpg_cursor_set(s : MlrlddpgCursor, i : Int, v : Double) -> Mlrlddp
   result
 }
 
-pub fn ml_rl_ddpg_cursor_sum(s : MlrlddpgCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_cursor_sum(s : MlrlddpgCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_cursor_mean(s : MlrlddpgCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_cursor_mean(s : MlrlddpgCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_cursor_scale(s : MlrlddpgCursor, f : Double) -> MlrlddpgCursor {
   let result = ml_rl_ddpg_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_rl_ddpg_cursor_fill(s : MlrlddpgCursor, v : Double) -> MlrlddpgCursor 
   result
 }
 
-pub fn ml_rl_ddpg_cursor_min(s : MlrlddpgCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_cursor_min(s : MlrlddpgCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_cursor_max(s : MlrlddpgCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_cursor_max(s : MlrlddpgCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_cursor_to_string(s : MlrlddpgCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_rl_ddpg_view_set(s : MlrlddpgView, i : Int, v : Double) -> MlrlddpgVie
   result
 }
 
-pub fn ml_rl_ddpg_view_sum(s : MlrlddpgView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_view_sum(s : MlrlddpgView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_view_mean(s : MlrlddpgView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_view_mean(s : MlrlddpgView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_view_scale(s : MlrlddpgView, f : Double) -> MlrlddpgView {
   let result = ml_rl_ddpg_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_rl_ddpg_view_fill(s : MlrlddpgView, v : Double) -> MlrlddpgView {
   result
 }
 
-pub fn ml_rl_ddpg_view_min(s : MlrlddpgView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_view_min(s : MlrlddpgView) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_view_max(s : MlrlddpgView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_view_max(s : MlrlddpgView) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_view_to_string(s : MlrlddpgView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_rl_ddpg_range_set(s : MlrlddpgRange, i : Int, v : Double) -> MlrlddpgR
   result
 }
 
-pub fn ml_rl_ddpg_range_sum(s : MlrlddpgRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_range_sum(s : MlrlddpgRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_range_mean(s : MlrlddpgRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_range_mean(s : MlrlddpgRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_range_scale(s : MlrlddpgRange, f : Double) -> MlrlddpgRange {
   let result = ml_rl_ddpg_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_rl_ddpg_range_fill(s : MlrlddpgRange, v : Double) -> MlrlddpgRange {
   result
 }
 
-pub fn ml_rl_ddpg_range_min(s : MlrlddpgRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_range_min(s : MlrlddpgRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_range_max(s : MlrlddpgRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_range_max(s : MlrlddpgRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_range_to_string(s : MlrlddpgRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_rl_ddpg_slice_set(s : MlrlddpgSlice, i : Int, v : Double) -> MlrlddpgS
   result
 }
 
-pub fn ml_rl_ddpg_slice_sum(s : MlrlddpgSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_ddpg_slice_sum(s : MlrlddpgSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_ddpg_slice_mean(s : MlrlddpgSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_ddpg_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_ddpg_slice_mean(s : MlrlddpgSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_ddpg_slice_scale(s : MlrlddpgSlice, f : Double) -> MlrlddpgSlice {
   let result = ml_rl_ddpg_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_rl_ddpg_slice_fill(s : MlrlddpgSlice, v : Double) -> MlrlddpgSlice {
   result
 }
 
-pub fn ml_rl_ddpg_slice_min(s : MlrlddpgSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_slice_min(s : MlrlddpgSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_ddpg_slice_max(s : MlrlddpgSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_ddpg_slice_max(s : MlrlddpgSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_ddpg_slice_to_string(s : MlrlddpgSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

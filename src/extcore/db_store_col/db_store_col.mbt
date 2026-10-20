@@ -88,11 +88,7 @@ pub fn db_store_col_make_series(vals : Array[Double], name : String) -> Dbstorec
 
 pub fn db_store_col_series_len(s : DbstorecolSeries) -> Int { s.vals.length() }
 
-pub fn db_store_col_series_sum(s : DbstorecolSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_col_series_sum(s : DbstorecolSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_col_series_mean(s : DbstorecolSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_col_frame_set(s : DbstorecolFrame, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_col_frame_sum(s : DbstorecolFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_frame_sum(s : DbstorecolFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_frame_mean(s : DbstorecolFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_frame_mean(s : DbstorecolFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_frame_scale(s : DbstorecolFrame, f : Double) -> DbstorecolFrame {
   let result = db_store_col_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_col_frame_fill(s : DbstorecolFrame, v : Double) -> DbstorecolFra
   result
 }
 
-pub fn db_store_col_frame_min(s : DbstorecolFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_frame_min(s : DbstorecolFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_frame_max(s : DbstorecolFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_frame_max(s : DbstorecolFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_frame_to_string(s : DbstorecolFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_col_table_set(s : DbstorecolTable, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_col_table_sum(s : DbstorecolTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_table_sum(s : DbstorecolTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_table_mean(s : DbstorecolTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_table_mean(s : DbstorecolTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_table_scale(s : DbstorecolTable, f : Double) -> DbstorecolTable {
   let result = db_store_col_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_col_table_fill(s : DbstorecolTable, v : Double) -> DbstorecolTab
   result
 }
 
-pub fn db_store_col_table_min(s : DbstorecolTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_table_min(s : DbstorecolTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_table_max(s : DbstorecolTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_table_max(s : DbstorecolTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_table_to_string(s : DbstorecolTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_col_graphn_set(s : DbstorecolGraphN, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_col_graphn_sum(s : DbstorecolGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_graphn_sum(s : DbstorecolGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_graphn_mean(s : DbstorecolGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_graphn_mean(s : DbstorecolGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_graphn_scale(s : DbstorecolGraphN, f : Double) -> DbstorecolGraphN {
   let result = db_store_col_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_col_graphn_fill(s : DbstorecolGraphN, v : Double) -> DbstorecolG
   result
 }
 
-pub fn db_store_col_graphn_min(s : DbstorecolGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_graphn_min(s : DbstorecolGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_graphn_max(s : DbstorecolGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_graphn_max(s : DbstorecolGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_graphn_to_string(s : DbstorecolGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_col_node_set(s : DbstorecolNode, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_col_node_sum(s : DbstorecolNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_node_sum(s : DbstorecolNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_node_mean(s : DbstorecolNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_node_mean(s : DbstorecolNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_node_scale(s : DbstorecolNode, f : Double) -> DbstorecolNode {
   let result = db_store_col_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_col_node_fill(s : DbstorecolNode, v : Double) -> DbstorecolNode 
   result
 }
 
-pub fn db_store_col_node_min(s : DbstorecolNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_node_min(s : DbstorecolNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_node_max(s : DbstorecolNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_node_max(s : DbstorecolNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_node_to_string(s : DbstorecolNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_col_edge_set(s : DbstorecolEdge, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_col_edge_sum(s : DbstorecolEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_edge_sum(s : DbstorecolEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_edge_mean(s : DbstorecolEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_edge_mean(s : DbstorecolEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_edge_scale(s : DbstorecolEdge, f : Double) -> DbstorecolEdge {
   let result = db_store_col_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_col_edge_fill(s : DbstorecolEdge, v : Double) -> DbstorecolEdge 
   result
 }
 
-pub fn db_store_col_edge_min(s : DbstorecolEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_edge_min(s : DbstorecolEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_edge_max(s : DbstorecolEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_edge_max(s : DbstorecolEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_edge_to_string(s : DbstorecolEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_col_path_set(s : DbstorecolPath, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_col_path_sum(s : DbstorecolPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_path_sum(s : DbstorecolPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_path_mean(s : DbstorecolPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_path_mean(s : DbstorecolPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_path_scale(s : DbstorecolPath, f : Double) -> DbstorecolPath {
   let result = db_store_col_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_col_path_fill(s : DbstorecolPath, v : Double) -> DbstorecolPath 
   result
 }
 
-pub fn db_store_col_path_min(s : DbstorecolPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_path_min(s : DbstorecolPath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_path_max(s : DbstorecolPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_path_max(s : DbstorecolPath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_path_to_string(s : DbstorecolPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_col_cluster_set(s : DbstorecolCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_col_cluster_sum(s : DbstorecolCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_cluster_sum(s : DbstorecolCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_cluster_mean(s : DbstorecolCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_cluster_mean(s : DbstorecolCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_cluster_scale(s : DbstorecolCluster, f : Double) -> DbstorecolCluster {
   let result = db_store_col_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_col_cluster_fill(s : DbstorecolCluster, v : Double) -> Dbstoreco
   result
 }
 
-pub fn db_store_col_cluster_min(s : DbstorecolCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_cluster_min(s : DbstorecolCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_cluster_max(s : DbstorecolCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_cluster_max(s : DbstorecolCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_cluster_to_string(s : DbstorecolCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_col_model_set(s : DbstorecolModel, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_col_model_sum(s : DbstorecolModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_model_sum(s : DbstorecolModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_model_mean(s : DbstorecolModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_model_mean(s : DbstorecolModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_model_scale(s : DbstorecolModel, f : Double) -> DbstorecolModel {
   let result = db_store_col_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_col_model_fill(s : DbstorecolModel, v : Double) -> DbstorecolMod
   result
 }
 
-pub fn db_store_col_model_min(s : DbstorecolModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_model_min(s : DbstorecolModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_model_max(s : DbstorecolModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_model_max(s : DbstorecolModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_model_to_string(s : DbstorecolModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_col_layer_set(s : DbstorecolLayer, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_col_layer_sum(s : DbstorecolLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_layer_sum(s : DbstorecolLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_layer_mean(s : DbstorecolLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_layer_mean(s : DbstorecolLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_layer_scale(s : DbstorecolLayer, f : Double) -> DbstorecolLayer {
   let result = db_store_col_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_col_layer_fill(s : DbstorecolLayer, v : Double) -> DbstorecolLay
   result
 }
 
-pub fn db_store_col_layer_min(s : DbstorecolLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_layer_min(s : DbstorecolLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_layer_max(s : DbstorecolLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_layer_max(s : DbstorecolLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_layer_to_string(s : DbstorecolLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_col_buffer_set(s : DbstorecolBuffer, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_col_buffer_sum(s : DbstorecolBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_buffer_sum(s : DbstorecolBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_buffer_mean(s : DbstorecolBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_buffer_mean(s : DbstorecolBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_buffer_scale(s : DbstorecolBuffer, f : Double) -> DbstorecolBuffer {
   let result = db_store_col_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_col_buffer_fill(s : DbstorecolBuffer, v : Double) -> DbstorecolB
   result
 }
 
-pub fn db_store_col_buffer_min(s : DbstorecolBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_buffer_min(s : DbstorecolBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_buffer_max(s : DbstorecolBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_buffer_max(s : DbstorecolBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_buffer_to_string(s : DbstorecolBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_col_cursor_set(s : DbstorecolCursor, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_col_cursor_sum(s : DbstorecolCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_cursor_sum(s : DbstorecolCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_cursor_mean(s : DbstorecolCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_cursor_mean(s : DbstorecolCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_cursor_scale(s : DbstorecolCursor, f : Double) -> DbstorecolCursor {
   let result = db_store_col_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_col_cursor_fill(s : DbstorecolCursor, v : Double) -> DbstorecolC
   result
 }
 
-pub fn db_store_col_cursor_min(s : DbstorecolCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_cursor_min(s : DbstorecolCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_cursor_max(s : DbstorecolCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_cursor_max(s : DbstorecolCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_cursor_to_string(s : DbstorecolCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_col_view_set(s : DbstorecolView, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_col_view_sum(s : DbstorecolView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_view_sum(s : DbstorecolView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_view_mean(s : DbstorecolView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_view_mean(s : DbstorecolView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_view_scale(s : DbstorecolView, f : Double) -> DbstorecolView {
   let result = db_store_col_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_col_view_fill(s : DbstorecolView, v : Double) -> DbstorecolView 
   result
 }
 
-pub fn db_store_col_view_min(s : DbstorecolView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_view_min(s : DbstorecolView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_view_max(s : DbstorecolView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_view_max(s : DbstorecolView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_view_to_string(s : DbstorecolView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_col_range_set(s : DbstorecolRange, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_col_range_sum(s : DbstorecolRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_range_sum(s : DbstorecolRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_range_mean(s : DbstorecolRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_range_mean(s : DbstorecolRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_range_scale(s : DbstorecolRange, f : Double) -> DbstorecolRange {
   let result = db_store_col_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_col_range_fill(s : DbstorecolRange, v : Double) -> DbstorecolRan
   result
 }
 
-pub fn db_store_col_range_min(s : DbstorecolRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_range_min(s : DbstorecolRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_range_max(s : DbstorecolRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_range_max(s : DbstorecolRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_range_to_string(s : DbstorecolRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_col_slice_set(s : DbstorecolSlice, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_col_slice_sum(s : DbstorecolSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_col_slice_sum(s : DbstorecolSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_col_slice_mean(s : DbstorecolSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_col_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_col_slice_mean(s : DbstorecolSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_col_slice_scale(s : DbstorecolSlice, f : Double) -> DbstorecolSlice {
   let result = db_store_col_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_col_slice_fill(s : DbstorecolSlice, v : Double) -> DbstorecolSli
   result
 }
 
-pub fn db_store_col_slice_min(s : DbstorecolSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_slice_min(s : DbstorecolSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_col_slice_max(s : DbstorecolSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_col_slice_max(s : DbstorecolSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_col_slice_to_string(s : DbstorecolSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

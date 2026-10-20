@@ -88,11 +88,7 @@ pub fn chem_mol_props_aromatic_make_series(vals : Array[Double], name : String) 
 
 pub fn chem_mol_props_aromatic_series_len(s : ChemmolpropsaromaticSeries) -> Int { s.vals.length() }
 
-pub fn chem_mol_props_aromatic_series_sum(s : ChemmolpropsaromaticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_series_sum(s : ChemmolpropsaromaticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_mol_props_aromatic_series_mean(s : ChemmolpropsaromaticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_mol_props_aromatic_frame_set(s : ChemmolpropsaromaticFrame, i : Int,
   result
 }
 
-pub fn chem_mol_props_aromatic_frame_sum(s : ChemmolpropsaromaticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_frame_sum(s : ChemmolpropsaromaticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_frame_mean(s : ChemmolpropsaromaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_frame_mean(s : ChemmolpropsaromaticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_frame_scale(s : ChemmolpropsaromaticFrame, f : Double) -> ChemmolpropsaromaticFrame {
   let result = chem_mol_props_aromatic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_mol_props_aromatic_frame_fill(s : ChemmolpropsaromaticFrame, v : Dou
   result
 }
 
-pub fn chem_mol_props_aromatic_frame_min(s : ChemmolpropsaromaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_frame_min(s : ChemmolpropsaromaticFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_frame_max(s : ChemmolpropsaromaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_frame_max(s : ChemmolpropsaromaticFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_frame_to_string(s : ChemmolpropsaromaticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_mol_props_aromatic_table_set(s : ChemmolpropsaromaticTable, i : Int,
   result
 }
 
-pub fn chem_mol_props_aromatic_table_sum(s : ChemmolpropsaromaticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_table_sum(s : ChemmolpropsaromaticTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_table_mean(s : ChemmolpropsaromaticTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_table_mean(s : ChemmolpropsaromaticTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_table_scale(s : ChemmolpropsaromaticTable, f : Double) -> ChemmolpropsaromaticTable {
   let result = chem_mol_props_aromatic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_mol_props_aromatic_table_fill(s : ChemmolpropsaromaticTable, v : Dou
   result
 }
 
-pub fn chem_mol_props_aromatic_table_min(s : ChemmolpropsaromaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_table_min(s : ChemmolpropsaromaticTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_table_max(s : ChemmolpropsaromaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_table_max(s : ChemmolpropsaromaticTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_table_to_string(s : ChemmolpropsaromaticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_mol_props_aromatic_graphn_set(s : ChemmolpropsaromaticGraphN, i : In
   result
 }
 
-pub fn chem_mol_props_aromatic_graphn_sum(s : ChemmolpropsaromaticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_graphn_sum(s : ChemmolpropsaromaticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_graphn_mean(s : ChemmolpropsaromaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_graphn_mean(s : ChemmolpropsaromaticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_graphn_scale(s : ChemmolpropsaromaticGraphN, f : Double) -> ChemmolpropsaromaticGraphN {
   let result = chem_mol_props_aromatic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_mol_props_aromatic_graphn_fill(s : ChemmolpropsaromaticGraphN, v : D
   result
 }
 
-pub fn chem_mol_props_aromatic_graphn_min(s : ChemmolpropsaromaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_graphn_min(s : ChemmolpropsaromaticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_graphn_max(s : ChemmolpropsaromaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_graphn_max(s : ChemmolpropsaromaticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_graphn_to_string(s : ChemmolpropsaromaticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_mol_props_aromatic_node_set(s : ChemmolpropsaromaticNode, i : Int, v
   result
 }
 
-pub fn chem_mol_props_aromatic_node_sum(s : ChemmolpropsaromaticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_node_sum(s : ChemmolpropsaromaticNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_node_mean(s : ChemmolpropsaromaticNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_node_mean(s : ChemmolpropsaromaticNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_node_scale(s : ChemmolpropsaromaticNode, f : Double) -> ChemmolpropsaromaticNode {
   let result = chem_mol_props_aromatic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_mol_props_aromatic_node_fill(s : ChemmolpropsaromaticNode, v : Doubl
   result
 }
 
-pub fn chem_mol_props_aromatic_node_min(s : ChemmolpropsaromaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_node_min(s : ChemmolpropsaromaticNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_node_max(s : ChemmolpropsaromaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_node_max(s : ChemmolpropsaromaticNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_node_to_string(s : ChemmolpropsaromaticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_mol_props_aromatic_edge_set(s : ChemmolpropsaromaticEdge, i : Int, v
   result
 }
 
-pub fn chem_mol_props_aromatic_edge_sum(s : ChemmolpropsaromaticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_edge_sum(s : ChemmolpropsaromaticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_edge_mean(s : ChemmolpropsaromaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_edge_mean(s : ChemmolpropsaromaticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_edge_scale(s : ChemmolpropsaromaticEdge, f : Double) -> ChemmolpropsaromaticEdge {
   let result = chem_mol_props_aromatic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_mol_props_aromatic_edge_fill(s : ChemmolpropsaromaticEdge, v : Doubl
   result
 }
 
-pub fn chem_mol_props_aromatic_edge_min(s : ChemmolpropsaromaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_edge_min(s : ChemmolpropsaromaticEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_edge_max(s : ChemmolpropsaromaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_edge_max(s : ChemmolpropsaromaticEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_edge_to_string(s : ChemmolpropsaromaticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_mol_props_aromatic_path_set(s : ChemmolpropsaromaticPath, i : Int, v
   result
 }
 
-pub fn chem_mol_props_aromatic_path_sum(s : ChemmolpropsaromaticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_path_sum(s : ChemmolpropsaromaticPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_path_mean(s : ChemmolpropsaromaticPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_path_mean(s : ChemmolpropsaromaticPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_path_scale(s : ChemmolpropsaromaticPath, f : Double) -> ChemmolpropsaromaticPath {
   let result = chem_mol_props_aromatic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_mol_props_aromatic_path_fill(s : ChemmolpropsaromaticPath, v : Doubl
   result
 }
 
-pub fn chem_mol_props_aromatic_path_min(s : ChemmolpropsaromaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_path_min(s : ChemmolpropsaromaticPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_path_max(s : ChemmolpropsaromaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_path_max(s : ChemmolpropsaromaticPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_path_to_string(s : ChemmolpropsaromaticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_mol_props_aromatic_cluster_set(s : ChemmolpropsaromaticCluster, i : 
   result
 }
 
-pub fn chem_mol_props_aromatic_cluster_sum(s : ChemmolpropsaromaticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_cluster_sum(s : ChemmolpropsaromaticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_cluster_mean(s : ChemmolpropsaromaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_cluster_mean(s : ChemmolpropsaromaticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_cluster_scale(s : ChemmolpropsaromaticCluster, f : Double) -> ChemmolpropsaromaticCluster {
   let result = chem_mol_props_aromatic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_mol_props_aromatic_cluster_fill(s : ChemmolpropsaromaticCluster, v :
   result
 }
 
-pub fn chem_mol_props_aromatic_cluster_min(s : ChemmolpropsaromaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_cluster_min(s : ChemmolpropsaromaticCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_cluster_max(s : ChemmolpropsaromaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_cluster_max(s : ChemmolpropsaromaticCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_cluster_to_string(s : ChemmolpropsaromaticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_mol_props_aromatic_model_set(s : ChemmolpropsaromaticModel, i : Int,
   result
 }
 
-pub fn chem_mol_props_aromatic_model_sum(s : ChemmolpropsaromaticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_model_sum(s : ChemmolpropsaromaticModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_model_mean(s : ChemmolpropsaromaticModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_model_mean(s : ChemmolpropsaromaticModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_model_scale(s : ChemmolpropsaromaticModel, f : Double) -> ChemmolpropsaromaticModel {
   let result = chem_mol_props_aromatic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_mol_props_aromatic_model_fill(s : ChemmolpropsaromaticModel, v : Dou
   result
 }
 
-pub fn chem_mol_props_aromatic_model_min(s : ChemmolpropsaromaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_model_min(s : ChemmolpropsaromaticModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_model_max(s : ChemmolpropsaromaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_model_max(s : ChemmolpropsaromaticModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_model_to_string(s : ChemmolpropsaromaticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_mol_props_aromatic_layer_set(s : ChemmolpropsaromaticLayer, i : Int,
   result
 }
 
-pub fn chem_mol_props_aromatic_layer_sum(s : ChemmolpropsaromaticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_layer_sum(s : ChemmolpropsaromaticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_layer_mean(s : ChemmolpropsaromaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_layer_mean(s : ChemmolpropsaromaticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_layer_scale(s : ChemmolpropsaromaticLayer, f : Double) -> ChemmolpropsaromaticLayer {
   let result = chem_mol_props_aromatic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_mol_props_aromatic_layer_fill(s : ChemmolpropsaromaticLayer, v : Dou
   result
 }
 
-pub fn chem_mol_props_aromatic_layer_min(s : ChemmolpropsaromaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_layer_min(s : ChemmolpropsaromaticLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_layer_max(s : ChemmolpropsaromaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_layer_max(s : ChemmolpropsaromaticLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_layer_to_string(s : ChemmolpropsaromaticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_mol_props_aromatic_buffer_set(s : ChemmolpropsaromaticBuffer, i : In
   result
 }
 
-pub fn chem_mol_props_aromatic_buffer_sum(s : ChemmolpropsaromaticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_buffer_sum(s : ChemmolpropsaromaticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_buffer_mean(s : ChemmolpropsaromaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_buffer_mean(s : ChemmolpropsaromaticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_buffer_scale(s : ChemmolpropsaromaticBuffer, f : Double) -> ChemmolpropsaromaticBuffer {
   let result = chem_mol_props_aromatic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_mol_props_aromatic_buffer_fill(s : ChemmolpropsaromaticBuffer, v : D
   result
 }
 
-pub fn chem_mol_props_aromatic_buffer_min(s : ChemmolpropsaromaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_buffer_min(s : ChemmolpropsaromaticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_buffer_max(s : ChemmolpropsaromaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_buffer_max(s : ChemmolpropsaromaticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_buffer_to_string(s : ChemmolpropsaromaticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_mol_props_aromatic_cursor_set(s : ChemmolpropsaromaticCursor, i : In
   result
 }
 
-pub fn chem_mol_props_aromatic_cursor_sum(s : ChemmolpropsaromaticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_cursor_sum(s : ChemmolpropsaromaticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_cursor_mean(s : ChemmolpropsaromaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_cursor_mean(s : ChemmolpropsaromaticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_cursor_scale(s : ChemmolpropsaromaticCursor, f : Double) -> ChemmolpropsaromaticCursor {
   let result = chem_mol_props_aromatic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_mol_props_aromatic_cursor_fill(s : ChemmolpropsaromaticCursor, v : D
   result
 }
 
-pub fn chem_mol_props_aromatic_cursor_min(s : ChemmolpropsaromaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_cursor_min(s : ChemmolpropsaromaticCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_cursor_max(s : ChemmolpropsaromaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_cursor_max(s : ChemmolpropsaromaticCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_cursor_to_string(s : ChemmolpropsaromaticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_mol_props_aromatic_view_set(s : ChemmolpropsaromaticView, i : Int, v
   result
 }
 
-pub fn chem_mol_props_aromatic_view_sum(s : ChemmolpropsaromaticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_view_sum(s : ChemmolpropsaromaticView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_view_mean(s : ChemmolpropsaromaticView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_view_mean(s : ChemmolpropsaromaticView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_view_scale(s : ChemmolpropsaromaticView, f : Double) -> ChemmolpropsaromaticView {
   let result = chem_mol_props_aromatic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_mol_props_aromatic_view_fill(s : ChemmolpropsaromaticView, v : Doubl
   result
 }
 
-pub fn chem_mol_props_aromatic_view_min(s : ChemmolpropsaromaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_view_min(s : ChemmolpropsaromaticView) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_view_max(s : ChemmolpropsaromaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_view_max(s : ChemmolpropsaromaticView) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_view_to_string(s : ChemmolpropsaromaticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_mol_props_aromatic_range_set(s : ChemmolpropsaromaticRange, i : Int,
   result
 }
 
-pub fn chem_mol_props_aromatic_range_sum(s : ChemmolpropsaromaticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_range_sum(s : ChemmolpropsaromaticRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_range_mean(s : ChemmolpropsaromaticRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_range_mean(s : ChemmolpropsaromaticRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_range_scale(s : ChemmolpropsaromaticRange, f : Double) -> ChemmolpropsaromaticRange {
   let result = chem_mol_props_aromatic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_mol_props_aromatic_range_fill(s : ChemmolpropsaromaticRange, v : Dou
   result
 }
 
-pub fn chem_mol_props_aromatic_range_min(s : ChemmolpropsaromaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_range_min(s : ChemmolpropsaromaticRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_range_max(s : ChemmolpropsaromaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_range_max(s : ChemmolpropsaromaticRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_range_to_string(s : ChemmolpropsaromaticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_mol_props_aromatic_slice_set(s : ChemmolpropsaromaticSlice, i : Int,
   result
 }
 
-pub fn chem_mol_props_aromatic_slice_sum(s : ChemmolpropsaromaticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_aromatic_slice_sum(s : ChemmolpropsaromaticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_aromatic_slice_mean(s : ChemmolpropsaromaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_aromatic_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_aromatic_slice_mean(s : ChemmolpropsaromaticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_aromatic_slice_scale(s : ChemmolpropsaromaticSlice, f : Double) -> ChemmolpropsaromaticSlice {
   let result = chem_mol_props_aromatic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_mol_props_aromatic_slice_fill(s : ChemmolpropsaromaticSlice, v : Dou
   result
 }
 
-pub fn chem_mol_props_aromatic_slice_min(s : ChemmolpropsaromaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_slice_min(s : ChemmolpropsaromaticSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_aromatic_slice_max(s : ChemmolpropsaromaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_aromatic_slice_max(s : ChemmolpropsaromaticSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_aromatic_slice_to_string(s : ChemmolpropsaromaticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_proto_ws_make_series(vals : Array[Double], name : String) -> Netproto
 
 pub fn net_proto_ws_series_len(s : NetprotowsSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_ws_series_sum(s : NetprotowsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_ws_series_sum(s : NetprotowsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_ws_series_mean(s : NetprotowsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_ws_frame_set(s : NetprotowsFrame, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_ws_frame_sum(s : NetprotowsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_frame_sum(s : NetprotowsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_frame_mean(s : NetprotowsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_frame_mean(s : NetprotowsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_frame_scale(s : NetprotowsFrame, f : Double) -> NetprotowsFrame {
   let result = net_proto_ws_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_ws_frame_fill(s : NetprotowsFrame, v : Double) -> NetprotowsFra
   result
 }
 
-pub fn net_proto_ws_frame_min(s : NetprotowsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_frame_min(s : NetprotowsFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_frame_max(s : NetprotowsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_frame_max(s : NetprotowsFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_frame_to_string(s : NetprotowsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_ws_table_set(s : NetprotowsTable, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_ws_table_sum(s : NetprotowsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_table_sum(s : NetprotowsTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_table_mean(s : NetprotowsTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_table_mean(s : NetprotowsTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_table_scale(s : NetprotowsTable, f : Double) -> NetprotowsTable {
   let result = net_proto_ws_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_ws_table_fill(s : NetprotowsTable, v : Double) -> NetprotowsTab
   result
 }
 
-pub fn net_proto_ws_table_min(s : NetprotowsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_table_min(s : NetprotowsTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_table_max(s : NetprotowsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_table_max(s : NetprotowsTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_table_to_string(s : NetprotowsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_ws_graphn_set(s : NetprotowsGraphN, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_ws_graphn_sum(s : NetprotowsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_graphn_sum(s : NetprotowsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_graphn_mean(s : NetprotowsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_graphn_mean(s : NetprotowsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_graphn_scale(s : NetprotowsGraphN, f : Double) -> NetprotowsGraphN {
   let result = net_proto_ws_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_ws_graphn_fill(s : NetprotowsGraphN, v : Double) -> NetprotowsG
   result
 }
 
-pub fn net_proto_ws_graphn_min(s : NetprotowsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_graphn_min(s : NetprotowsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_graphn_max(s : NetprotowsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_graphn_max(s : NetprotowsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_graphn_to_string(s : NetprotowsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_ws_node_set(s : NetprotowsNode, i : Int, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_ws_node_sum(s : NetprotowsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_node_sum(s : NetprotowsNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_node_mean(s : NetprotowsNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_node_mean(s : NetprotowsNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_node_scale(s : NetprotowsNode, f : Double) -> NetprotowsNode {
   let result = net_proto_ws_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_ws_node_fill(s : NetprotowsNode, v : Double) -> NetprotowsNode 
   result
 }
 
-pub fn net_proto_ws_node_min(s : NetprotowsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_node_min(s : NetprotowsNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_node_max(s : NetprotowsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_node_max(s : NetprotowsNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_node_to_string(s : NetprotowsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_ws_edge_set(s : NetprotowsEdge, i : Int, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_ws_edge_sum(s : NetprotowsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_edge_sum(s : NetprotowsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_edge_mean(s : NetprotowsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_edge_mean(s : NetprotowsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_edge_scale(s : NetprotowsEdge, f : Double) -> NetprotowsEdge {
   let result = net_proto_ws_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_ws_edge_fill(s : NetprotowsEdge, v : Double) -> NetprotowsEdge 
   result
 }
 
-pub fn net_proto_ws_edge_min(s : NetprotowsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_edge_min(s : NetprotowsEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_edge_max(s : NetprotowsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_edge_max(s : NetprotowsEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_edge_to_string(s : NetprotowsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_ws_path_set(s : NetprotowsPath, i : Int, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_ws_path_sum(s : NetprotowsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_path_sum(s : NetprotowsPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_path_mean(s : NetprotowsPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_path_mean(s : NetprotowsPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_path_scale(s : NetprotowsPath, f : Double) -> NetprotowsPath {
   let result = net_proto_ws_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_ws_path_fill(s : NetprotowsPath, v : Double) -> NetprotowsPath 
   result
 }
 
-pub fn net_proto_ws_path_min(s : NetprotowsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_path_min(s : NetprotowsPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_path_max(s : NetprotowsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_path_max(s : NetprotowsPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_path_to_string(s : NetprotowsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_ws_cluster_set(s : NetprotowsCluster, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_ws_cluster_sum(s : NetprotowsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_cluster_sum(s : NetprotowsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_cluster_mean(s : NetprotowsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_cluster_mean(s : NetprotowsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_cluster_scale(s : NetprotowsCluster, f : Double) -> NetprotowsCluster {
   let result = net_proto_ws_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_ws_cluster_fill(s : NetprotowsCluster, v : Double) -> Netprotow
   result
 }
 
-pub fn net_proto_ws_cluster_min(s : NetprotowsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_cluster_min(s : NetprotowsCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_cluster_max(s : NetprotowsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_cluster_max(s : NetprotowsCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_cluster_to_string(s : NetprotowsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_ws_model_set(s : NetprotowsModel, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_ws_model_sum(s : NetprotowsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_model_sum(s : NetprotowsModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_model_mean(s : NetprotowsModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_model_mean(s : NetprotowsModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_model_scale(s : NetprotowsModel, f : Double) -> NetprotowsModel {
   let result = net_proto_ws_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_ws_model_fill(s : NetprotowsModel, v : Double) -> NetprotowsMod
   result
 }
 
-pub fn net_proto_ws_model_min(s : NetprotowsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_model_min(s : NetprotowsModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_model_max(s : NetprotowsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_model_max(s : NetprotowsModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_model_to_string(s : NetprotowsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_ws_layer_set(s : NetprotowsLayer, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_ws_layer_sum(s : NetprotowsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_layer_sum(s : NetprotowsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_layer_mean(s : NetprotowsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_layer_mean(s : NetprotowsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_layer_scale(s : NetprotowsLayer, f : Double) -> NetprotowsLayer {
   let result = net_proto_ws_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_ws_layer_fill(s : NetprotowsLayer, v : Double) -> NetprotowsLay
   result
 }
 
-pub fn net_proto_ws_layer_min(s : NetprotowsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_layer_min(s : NetprotowsLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_layer_max(s : NetprotowsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_layer_max(s : NetprotowsLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_layer_to_string(s : NetprotowsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_ws_buffer_set(s : NetprotowsBuffer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_ws_buffer_sum(s : NetprotowsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_buffer_sum(s : NetprotowsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_buffer_mean(s : NetprotowsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_buffer_mean(s : NetprotowsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_buffer_scale(s : NetprotowsBuffer, f : Double) -> NetprotowsBuffer {
   let result = net_proto_ws_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_ws_buffer_fill(s : NetprotowsBuffer, v : Double) -> NetprotowsB
   result
 }
 
-pub fn net_proto_ws_buffer_min(s : NetprotowsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_buffer_min(s : NetprotowsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_buffer_max(s : NetprotowsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_buffer_max(s : NetprotowsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_buffer_to_string(s : NetprotowsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_ws_cursor_set(s : NetprotowsCursor, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_ws_cursor_sum(s : NetprotowsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_cursor_sum(s : NetprotowsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_cursor_mean(s : NetprotowsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_cursor_mean(s : NetprotowsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_cursor_scale(s : NetprotowsCursor, f : Double) -> NetprotowsCursor {
   let result = net_proto_ws_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_ws_cursor_fill(s : NetprotowsCursor, v : Double) -> NetprotowsC
   result
 }
 
-pub fn net_proto_ws_cursor_min(s : NetprotowsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_cursor_min(s : NetprotowsCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_cursor_max(s : NetprotowsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_cursor_max(s : NetprotowsCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_cursor_to_string(s : NetprotowsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_ws_view_set(s : NetprotowsView, i : Int, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_ws_view_sum(s : NetprotowsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_view_sum(s : NetprotowsView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_view_mean(s : NetprotowsView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_view_mean(s : NetprotowsView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_view_scale(s : NetprotowsView, f : Double) -> NetprotowsView {
   let result = net_proto_ws_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_ws_view_fill(s : NetprotowsView, v : Double) -> NetprotowsView 
   result
 }
 
-pub fn net_proto_ws_view_min(s : NetprotowsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_view_min(s : NetprotowsView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_view_max(s : NetprotowsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_view_max(s : NetprotowsView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_view_to_string(s : NetprotowsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_ws_range_set(s : NetprotowsRange, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_ws_range_sum(s : NetprotowsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_range_sum(s : NetprotowsRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_range_mean(s : NetprotowsRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_range_mean(s : NetprotowsRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_range_scale(s : NetprotowsRange, f : Double) -> NetprotowsRange {
   let result = net_proto_ws_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_ws_range_fill(s : NetprotowsRange, v : Double) -> NetprotowsRan
   result
 }
 
-pub fn net_proto_ws_range_min(s : NetprotowsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_range_min(s : NetprotowsRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_range_max(s : NetprotowsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_range_max(s : NetprotowsRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_range_to_string(s : NetprotowsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_ws_slice_set(s : NetprotowsSlice, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_ws_slice_sum(s : NetprotowsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_ws_slice_sum(s : NetprotowsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_ws_slice_mean(s : NetprotowsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_ws_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_ws_slice_mean(s : NetprotowsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_ws_slice_scale(s : NetprotowsSlice, f : Double) -> NetprotowsSlice {
   let result = net_proto_ws_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_ws_slice_fill(s : NetprotowsSlice, v : Double) -> NetprotowsSli
   result
 }
 
-pub fn net_proto_ws_slice_min(s : NetprotowsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_slice_min(s : NetprotowsSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_ws_slice_max(s : NetprotowsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_ws_slice_max(s : NetprotowsSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_ws_slice_to_string(s : NetprotowsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

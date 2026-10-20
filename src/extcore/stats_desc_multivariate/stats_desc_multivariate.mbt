@@ -88,11 +88,7 @@ pub fn stats_desc_multivariate_make_series(vals : Array[Double], name : String) 
 
 pub fn stats_desc_multivariate_series_len(s : StatsdescmultivariateSeries) -> Int { s.vals.length() }
 
-pub fn stats_desc_multivariate_series_sum(s : StatsdescmultivariateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_desc_multivariate_series_sum(s : StatsdescmultivariateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_desc_multivariate_series_mean(s : StatsdescmultivariateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_desc_multivariate_frame_set(s : StatsdescmultivariateFrame, i : Int
   result
 }
 
-pub fn stats_desc_multivariate_frame_sum(s : StatsdescmultivariateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_frame_sum(s : StatsdescmultivariateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_frame_mean(s : StatsdescmultivariateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_frame_mean(s : StatsdescmultivariateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_frame_scale(s : StatsdescmultivariateFrame, f : Double) -> StatsdescmultivariateFrame {
   let result = stats_desc_multivariate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_desc_multivariate_frame_fill(s : StatsdescmultivariateFrame, v : Do
   result
 }
 
-pub fn stats_desc_multivariate_frame_min(s : StatsdescmultivariateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_frame_min(s : StatsdescmultivariateFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_frame_max(s : StatsdescmultivariateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_frame_max(s : StatsdescmultivariateFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_frame_to_string(s : StatsdescmultivariateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_desc_multivariate_table_set(s : StatsdescmultivariateTable, i : Int
   result
 }
 
-pub fn stats_desc_multivariate_table_sum(s : StatsdescmultivariateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_table_sum(s : StatsdescmultivariateTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_table_mean(s : StatsdescmultivariateTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_table_mean(s : StatsdescmultivariateTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_table_scale(s : StatsdescmultivariateTable, f : Double) -> StatsdescmultivariateTable {
   let result = stats_desc_multivariate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_desc_multivariate_table_fill(s : StatsdescmultivariateTable, v : Do
   result
 }
 
-pub fn stats_desc_multivariate_table_min(s : StatsdescmultivariateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_table_min(s : StatsdescmultivariateTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_table_max(s : StatsdescmultivariateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_table_max(s : StatsdescmultivariateTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_table_to_string(s : StatsdescmultivariateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_desc_multivariate_graphn_set(s : StatsdescmultivariateGraphN, i : I
   result
 }
 
-pub fn stats_desc_multivariate_graphn_sum(s : StatsdescmultivariateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_graphn_sum(s : StatsdescmultivariateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_graphn_mean(s : StatsdescmultivariateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_graphn_mean(s : StatsdescmultivariateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_graphn_scale(s : StatsdescmultivariateGraphN, f : Double) -> StatsdescmultivariateGraphN {
   let result = stats_desc_multivariate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_desc_multivariate_graphn_fill(s : StatsdescmultivariateGraphN, v : 
   result
 }
 
-pub fn stats_desc_multivariate_graphn_min(s : StatsdescmultivariateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_graphn_min(s : StatsdescmultivariateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_graphn_max(s : StatsdescmultivariateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_graphn_max(s : StatsdescmultivariateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_graphn_to_string(s : StatsdescmultivariateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_desc_multivariate_node_set(s : StatsdescmultivariateNode, i : Int, 
   result
 }
 
-pub fn stats_desc_multivariate_node_sum(s : StatsdescmultivariateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_node_sum(s : StatsdescmultivariateNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_node_mean(s : StatsdescmultivariateNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_node_mean(s : StatsdescmultivariateNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_node_scale(s : StatsdescmultivariateNode, f : Double) -> StatsdescmultivariateNode {
   let result = stats_desc_multivariate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_desc_multivariate_node_fill(s : StatsdescmultivariateNode, v : Doub
   result
 }
 
-pub fn stats_desc_multivariate_node_min(s : StatsdescmultivariateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_node_min(s : StatsdescmultivariateNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_node_max(s : StatsdescmultivariateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_node_max(s : StatsdescmultivariateNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_node_to_string(s : StatsdescmultivariateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_desc_multivariate_edge_set(s : StatsdescmultivariateEdge, i : Int, 
   result
 }
 
-pub fn stats_desc_multivariate_edge_sum(s : StatsdescmultivariateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_edge_sum(s : StatsdescmultivariateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_edge_mean(s : StatsdescmultivariateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_edge_mean(s : StatsdescmultivariateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_edge_scale(s : StatsdescmultivariateEdge, f : Double) -> StatsdescmultivariateEdge {
   let result = stats_desc_multivariate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_desc_multivariate_edge_fill(s : StatsdescmultivariateEdge, v : Doub
   result
 }
 
-pub fn stats_desc_multivariate_edge_min(s : StatsdescmultivariateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_edge_min(s : StatsdescmultivariateEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_edge_max(s : StatsdescmultivariateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_edge_max(s : StatsdescmultivariateEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_edge_to_string(s : StatsdescmultivariateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_desc_multivariate_path_set(s : StatsdescmultivariatePath, i : Int, 
   result
 }
 
-pub fn stats_desc_multivariate_path_sum(s : StatsdescmultivariatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_path_sum(s : StatsdescmultivariatePath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_path_mean(s : StatsdescmultivariatePath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_path_mean(s : StatsdescmultivariatePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_path_scale(s : StatsdescmultivariatePath, f : Double) -> StatsdescmultivariatePath {
   let result = stats_desc_multivariate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_desc_multivariate_path_fill(s : StatsdescmultivariatePath, v : Doub
   result
 }
 
-pub fn stats_desc_multivariate_path_min(s : StatsdescmultivariatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_path_min(s : StatsdescmultivariatePath) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_path_max(s : StatsdescmultivariatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_path_max(s : StatsdescmultivariatePath) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_path_to_string(s : StatsdescmultivariatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_desc_multivariate_cluster_set(s : StatsdescmultivariateCluster, i :
   result
 }
 
-pub fn stats_desc_multivariate_cluster_sum(s : StatsdescmultivariateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_cluster_sum(s : StatsdescmultivariateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_cluster_mean(s : StatsdescmultivariateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_cluster_mean(s : StatsdescmultivariateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_cluster_scale(s : StatsdescmultivariateCluster, f : Double) -> StatsdescmultivariateCluster {
   let result = stats_desc_multivariate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_desc_multivariate_cluster_fill(s : StatsdescmultivariateCluster, v 
   result
 }
 
-pub fn stats_desc_multivariate_cluster_min(s : StatsdescmultivariateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_cluster_min(s : StatsdescmultivariateCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_cluster_max(s : StatsdescmultivariateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_cluster_max(s : StatsdescmultivariateCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_cluster_to_string(s : StatsdescmultivariateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_desc_multivariate_model_set(s : StatsdescmultivariateModel, i : Int
   result
 }
 
-pub fn stats_desc_multivariate_model_sum(s : StatsdescmultivariateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_model_sum(s : StatsdescmultivariateModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_model_mean(s : StatsdescmultivariateModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_model_mean(s : StatsdescmultivariateModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_model_scale(s : StatsdescmultivariateModel, f : Double) -> StatsdescmultivariateModel {
   let result = stats_desc_multivariate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_desc_multivariate_model_fill(s : StatsdescmultivariateModel, v : Do
   result
 }
 
-pub fn stats_desc_multivariate_model_min(s : StatsdescmultivariateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_model_min(s : StatsdescmultivariateModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_model_max(s : StatsdescmultivariateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_model_max(s : StatsdescmultivariateModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_model_to_string(s : StatsdescmultivariateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_desc_multivariate_layer_set(s : StatsdescmultivariateLayer, i : Int
   result
 }
 
-pub fn stats_desc_multivariate_layer_sum(s : StatsdescmultivariateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_layer_sum(s : StatsdescmultivariateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_layer_mean(s : StatsdescmultivariateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_layer_mean(s : StatsdescmultivariateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_layer_scale(s : StatsdescmultivariateLayer, f : Double) -> StatsdescmultivariateLayer {
   let result = stats_desc_multivariate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_desc_multivariate_layer_fill(s : StatsdescmultivariateLayer, v : Do
   result
 }
 
-pub fn stats_desc_multivariate_layer_min(s : StatsdescmultivariateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_layer_min(s : StatsdescmultivariateLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_layer_max(s : StatsdescmultivariateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_layer_max(s : StatsdescmultivariateLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_layer_to_string(s : StatsdescmultivariateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_desc_multivariate_buffer_set(s : StatsdescmultivariateBuffer, i : I
   result
 }
 
-pub fn stats_desc_multivariate_buffer_sum(s : StatsdescmultivariateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_buffer_sum(s : StatsdescmultivariateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_buffer_mean(s : StatsdescmultivariateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_buffer_mean(s : StatsdescmultivariateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_buffer_scale(s : StatsdescmultivariateBuffer, f : Double) -> StatsdescmultivariateBuffer {
   let result = stats_desc_multivariate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_desc_multivariate_buffer_fill(s : StatsdescmultivariateBuffer, v : 
   result
 }
 
-pub fn stats_desc_multivariate_buffer_min(s : StatsdescmultivariateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_buffer_min(s : StatsdescmultivariateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_buffer_max(s : StatsdescmultivariateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_buffer_max(s : StatsdescmultivariateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_buffer_to_string(s : StatsdescmultivariateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_desc_multivariate_cursor_set(s : StatsdescmultivariateCursor, i : I
   result
 }
 
-pub fn stats_desc_multivariate_cursor_sum(s : StatsdescmultivariateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_cursor_sum(s : StatsdescmultivariateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_cursor_mean(s : StatsdescmultivariateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_cursor_mean(s : StatsdescmultivariateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_cursor_scale(s : StatsdescmultivariateCursor, f : Double) -> StatsdescmultivariateCursor {
   let result = stats_desc_multivariate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_desc_multivariate_cursor_fill(s : StatsdescmultivariateCursor, v : 
   result
 }
 
-pub fn stats_desc_multivariate_cursor_min(s : StatsdescmultivariateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_cursor_min(s : StatsdescmultivariateCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_cursor_max(s : StatsdescmultivariateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_cursor_max(s : StatsdescmultivariateCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_cursor_to_string(s : StatsdescmultivariateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_desc_multivariate_view_set(s : StatsdescmultivariateView, i : Int, 
   result
 }
 
-pub fn stats_desc_multivariate_view_sum(s : StatsdescmultivariateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_view_sum(s : StatsdescmultivariateView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_view_mean(s : StatsdescmultivariateView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_view_mean(s : StatsdescmultivariateView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_view_scale(s : StatsdescmultivariateView, f : Double) -> StatsdescmultivariateView {
   let result = stats_desc_multivariate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_desc_multivariate_view_fill(s : StatsdescmultivariateView, v : Doub
   result
 }
 
-pub fn stats_desc_multivariate_view_min(s : StatsdescmultivariateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_view_min(s : StatsdescmultivariateView) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_view_max(s : StatsdescmultivariateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_view_max(s : StatsdescmultivariateView) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_view_to_string(s : StatsdescmultivariateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_desc_multivariate_range_set(s : StatsdescmultivariateRange, i : Int
   result
 }
 
-pub fn stats_desc_multivariate_range_sum(s : StatsdescmultivariateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_range_sum(s : StatsdescmultivariateRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_range_mean(s : StatsdescmultivariateRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_range_mean(s : StatsdescmultivariateRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_range_scale(s : StatsdescmultivariateRange, f : Double) -> StatsdescmultivariateRange {
   let result = stats_desc_multivariate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_desc_multivariate_range_fill(s : StatsdescmultivariateRange, v : Do
   result
 }
 
-pub fn stats_desc_multivariate_range_min(s : StatsdescmultivariateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_range_min(s : StatsdescmultivariateRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_range_max(s : StatsdescmultivariateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_range_max(s : StatsdescmultivariateRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_range_to_string(s : StatsdescmultivariateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_desc_multivariate_slice_set(s : StatsdescmultivariateSlice, i : Int
   result
 }
 
-pub fn stats_desc_multivariate_slice_sum(s : StatsdescmultivariateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_multivariate_slice_sum(s : StatsdescmultivariateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_multivariate_slice_mean(s : StatsdescmultivariateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_multivariate_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_multivariate_slice_mean(s : StatsdescmultivariateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_multivariate_slice_scale(s : StatsdescmultivariateSlice, f : Double) -> StatsdescmultivariateSlice {
   let result = stats_desc_multivariate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_desc_multivariate_slice_fill(s : StatsdescmultivariateSlice, v : Do
   result
 }
 
-pub fn stats_desc_multivariate_slice_min(s : StatsdescmultivariateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_slice_min(s : StatsdescmultivariateSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_multivariate_slice_max(s : StatsdescmultivariateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_multivariate_slice_max(s : StatsdescmultivariateSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_multivariate_slice_to_string(s : StatsdescmultivariateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

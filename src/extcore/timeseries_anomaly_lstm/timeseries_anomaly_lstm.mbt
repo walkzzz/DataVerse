@@ -88,11 +88,7 @@ pub fn timeseries_anomaly_lstm_make_series(vals : Array[Double], name : String) 
 
 pub fn timeseries_anomaly_lstm_series_len(s : TimeseriesanomalylstmSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_anomaly_lstm_series_sum(s : TimeseriesanomalylstmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_series_sum(s : TimeseriesanomalylstmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_anomaly_lstm_series_mean(s : TimeseriesanomalylstmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_anomaly_lstm_frame_set(s : TimeseriesanomalylstmFrame, i : Int
   result
 }
 
-pub fn timeseries_anomaly_lstm_frame_sum(s : TimeseriesanomalylstmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_frame_sum(s : TimeseriesanomalylstmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_frame_mean(s : TimeseriesanomalylstmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_frame_mean(s : TimeseriesanomalylstmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_frame_scale(s : TimeseriesanomalylstmFrame, f : Double) -> TimeseriesanomalylstmFrame {
   let result = timeseries_anomaly_lstm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_anomaly_lstm_frame_fill(s : TimeseriesanomalylstmFrame, v : Do
   result
 }
 
-pub fn timeseries_anomaly_lstm_frame_min(s : TimeseriesanomalylstmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_frame_min(s : TimeseriesanomalylstmFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_frame_max(s : TimeseriesanomalylstmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_frame_max(s : TimeseriesanomalylstmFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_frame_to_string(s : TimeseriesanomalylstmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_anomaly_lstm_table_set(s : TimeseriesanomalylstmTable, i : Int
   result
 }
 
-pub fn timeseries_anomaly_lstm_table_sum(s : TimeseriesanomalylstmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_table_sum(s : TimeseriesanomalylstmTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_table_mean(s : TimeseriesanomalylstmTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_table_mean(s : TimeseriesanomalylstmTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_table_scale(s : TimeseriesanomalylstmTable, f : Double) -> TimeseriesanomalylstmTable {
   let result = timeseries_anomaly_lstm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_anomaly_lstm_table_fill(s : TimeseriesanomalylstmTable, v : Do
   result
 }
 
-pub fn timeseries_anomaly_lstm_table_min(s : TimeseriesanomalylstmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_table_min(s : TimeseriesanomalylstmTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_table_max(s : TimeseriesanomalylstmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_table_max(s : TimeseriesanomalylstmTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_table_to_string(s : TimeseriesanomalylstmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_anomaly_lstm_graphn_set(s : TimeseriesanomalylstmGraphN, i : I
   result
 }
 
-pub fn timeseries_anomaly_lstm_graphn_sum(s : TimeseriesanomalylstmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_graphn_sum(s : TimeseriesanomalylstmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_graphn_mean(s : TimeseriesanomalylstmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_graphn_mean(s : TimeseriesanomalylstmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_graphn_scale(s : TimeseriesanomalylstmGraphN, f : Double) -> TimeseriesanomalylstmGraphN {
   let result = timeseries_anomaly_lstm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_anomaly_lstm_graphn_fill(s : TimeseriesanomalylstmGraphN, v : 
   result
 }
 
-pub fn timeseries_anomaly_lstm_graphn_min(s : TimeseriesanomalylstmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_graphn_min(s : TimeseriesanomalylstmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_graphn_max(s : TimeseriesanomalylstmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_graphn_max(s : TimeseriesanomalylstmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_graphn_to_string(s : TimeseriesanomalylstmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_anomaly_lstm_node_set(s : TimeseriesanomalylstmNode, i : Int, 
   result
 }
 
-pub fn timeseries_anomaly_lstm_node_sum(s : TimeseriesanomalylstmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_node_sum(s : TimeseriesanomalylstmNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_node_mean(s : TimeseriesanomalylstmNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_node_mean(s : TimeseriesanomalylstmNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_node_scale(s : TimeseriesanomalylstmNode, f : Double) -> TimeseriesanomalylstmNode {
   let result = timeseries_anomaly_lstm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_anomaly_lstm_node_fill(s : TimeseriesanomalylstmNode, v : Doub
   result
 }
 
-pub fn timeseries_anomaly_lstm_node_min(s : TimeseriesanomalylstmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_node_min(s : TimeseriesanomalylstmNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_node_max(s : TimeseriesanomalylstmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_node_max(s : TimeseriesanomalylstmNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_node_to_string(s : TimeseriesanomalylstmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_anomaly_lstm_edge_set(s : TimeseriesanomalylstmEdge, i : Int, 
   result
 }
 
-pub fn timeseries_anomaly_lstm_edge_sum(s : TimeseriesanomalylstmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_edge_sum(s : TimeseriesanomalylstmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_edge_mean(s : TimeseriesanomalylstmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_edge_mean(s : TimeseriesanomalylstmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_edge_scale(s : TimeseriesanomalylstmEdge, f : Double) -> TimeseriesanomalylstmEdge {
   let result = timeseries_anomaly_lstm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_anomaly_lstm_edge_fill(s : TimeseriesanomalylstmEdge, v : Doub
   result
 }
 
-pub fn timeseries_anomaly_lstm_edge_min(s : TimeseriesanomalylstmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_edge_min(s : TimeseriesanomalylstmEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_edge_max(s : TimeseriesanomalylstmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_edge_max(s : TimeseriesanomalylstmEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_edge_to_string(s : TimeseriesanomalylstmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_anomaly_lstm_path_set(s : TimeseriesanomalylstmPath, i : Int, 
   result
 }
 
-pub fn timeseries_anomaly_lstm_path_sum(s : TimeseriesanomalylstmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_path_sum(s : TimeseriesanomalylstmPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_path_mean(s : TimeseriesanomalylstmPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_path_mean(s : TimeseriesanomalylstmPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_path_scale(s : TimeseriesanomalylstmPath, f : Double) -> TimeseriesanomalylstmPath {
   let result = timeseries_anomaly_lstm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_anomaly_lstm_path_fill(s : TimeseriesanomalylstmPath, v : Doub
   result
 }
 
-pub fn timeseries_anomaly_lstm_path_min(s : TimeseriesanomalylstmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_path_min(s : TimeseriesanomalylstmPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_path_max(s : TimeseriesanomalylstmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_path_max(s : TimeseriesanomalylstmPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_path_to_string(s : TimeseriesanomalylstmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_anomaly_lstm_cluster_set(s : TimeseriesanomalylstmCluster, i :
   result
 }
 
-pub fn timeseries_anomaly_lstm_cluster_sum(s : TimeseriesanomalylstmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_cluster_sum(s : TimeseriesanomalylstmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_cluster_mean(s : TimeseriesanomalylstmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_cluster_mean(s : TimeseriesanomalylstmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_cluster_scale(s : TimeseriesanomalylstmCluster, f : Double) -> TimeseriesanomalylstmCluster {
   let result = timeseries_anomaly_lstm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_anomaly_lstm_cluster_fill(s : TimeseriesanomalylstmCluster, v 
   result
 }
 
-pub fn timeseries_anomaly_lstm_cluster_min(s : TimeseriesanomalylstmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_cluster_min(s : TimeseriesanomalylstmCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_cluster_max(s : TimeseriesanomalylstmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_cluster_max(s : TimeseriesanomalylstmCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_cluster_to_string(s : TimeseriesanomalylstmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_anomaly_lstm_model_set(s : TimeseriesanomalylstmModel, i : Int
   result
 }
 
-pub fn timeseries_anomaly_lstm_model_sum(s : TimeseriesanomalylstmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_model_sum(s : TimeseriesanomalylstmModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_model_mean(s : TimeseriesanomalylstmModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_model_mean(s : TimeseriesanomalylstmModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_model_scale(s : TimeseriesanomalylstmModel, f : Double) -> TimeseriesanomalylstmModel {
   let result = timeseries_anomaly_lstm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_anomaly_lstm_model_fill(s : TimeseriesanomalylstmModel, v : Do
   result
 }
 
-pub fn timeseries_anomaly_lstm_model_min(s : TimeseriesanomalylstmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_model_min(s : TimeseriesanomalylstmModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_model_max(s : TimeseriesanomalylstmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_model_max(s : TimeseriesanomalylstmModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_model_to_string(s : TimeseriesanomalylstmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_anomaly_lstm_layer_set(s : TimeseriesanomalylstmLayer, i : Int
   result
 }
 
-pub fn timeseries_anomaly_lstm_layer_sum(s : TimeseriesanomalylstmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_layer_sum(s : TimeseriesanomalylstmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_layer_mean(s : TimeseriesanomalylstmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_layer_mean(s : TimeseriesanomalylstmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_layer_scale(s : TimeseriesanomalylstmLayer, f : Double) -> TimeseriesanomalylstmLayer {
   let result = timeseries_anomaly_lstm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_anomaly_lstm_layer_fill(s : TimeseriesanomalylstmLayer, v : Do
   result
 }
 
-pub fn timeseries_anomaly_lstm_layer_min(s : TimeseriesanomalylstmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_layer_min(s : TimeseriesanomalylstmLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_layer_max(s : TimeseriesanomalylstmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_layer_max(s : TimeseriesanomalylstmLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_layer_to_string(s : TimeseriesanomalylstmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_anomaly_lstm_buffer_set(s : TimeseriesanomalylstmBuffer, i : I
   result
 }
 
-pub fn timeseries_anomaly_lstm_buffer_sum(s : TimeseriesanomalylstmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_buffer_sum(s : TimeseriesanomalylstmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_buffer_mean(s : TimeseriesanomalylstmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_buffer_mean(s : TimeseriesanomalylstmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_buffer_scale(s : TimeseriesanomalylstmBuffer, f : Double) -> TimeseriesanomalylstmBuffer {
   let result = timeseries_anomaly_lstm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_anomaly_lstm_buffer_fill(s : TimeseriesanomalylstmBuffer, v : 
   result
 }
 
-pub fn timeseries_anomaly_lstm_buffer_min(s : TimeseriesanomalylstmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_buffer_min(s : TimeseriesanomalylstmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_buffer_max(s : TimeseriesanomalylstmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_buffer_max(s : TimeseriesanomalylstmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_buffer_to_string(s : TimeseriesanomalylstmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_anomaly_lstm_cursor_set(s : TimeseriesanomalylstmCursor, i : I
   result
 }
 
-pub fn timeseries_anomaly_lstm_cursor_sum(s : TimeseriesanomalylstmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_cursor_sum(s : TimeseriesanomalylstmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_cursor_mean(s : TimeseriesanomalylstmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_cursor_mean(s : TimeseriesanomalylstmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_cursor_scale(s : TimeseriesanomalylstmCursor, f : Double) -> TimeseriesanomalylstmCursor {
   let result = timeseries_anomaly_lstm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_anomaly_lstm_cursor_fill(s : TimeseriesanomalylstmCursor, v : 
   result
 }
 
-pub fn timeseries_anomaly_lstm_cursor_min(s : TimeseriesanomalylstmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_cursor_min(s : TimeseriesanomalylstmCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_cursor_max(s : TimeseriesanomalylstmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_cursor_max(s : TimeseriesanomalylstmCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_cursor_to_string(s : TimeseriesanomalylstmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_anomaly_lstm_view_set(s : TimeseriesanomalylstmView, i : Int, 
   result
 }
 
-pub fn timeseries_anomaly_lstm_view_sum(s : TimeseriesanomalylstmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_view_sum(s : TimeseriesanomalylstmView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_view_mean(s : TimeseriesanomalylstmView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_view_mean(s : TimeseriesanomalylstmView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_view_scale(s : TimeseriesanomalylstmView, f : Double) -> TimeseriesanomalylstmView {
   let result = timeseries_anomaly_lstm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_anomaly_lstm_view_fill(s : TimeseriesanomalylstmView, v : Doub
   result
 }
 
-pub fn timeseries_anomaly_lstm_view_min(s : TimeseriesanomalylstmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_view_min(s : TimeseriesanomalylstmView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_view_max(s : TimeseriesanomalylstmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_view_max(s : TimeseriesanomalylstmView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_view_to_string(s : TimeseriesanomalylstmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_anomaly_lstm_range_set(s : TimeseriesanomalylstmRange, i : Int
   result
 }
 
-pub fn timeseries_anomaly_lstm_range_sum(s : TimeseriesanomalylstmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_range_sum(s : TimeseriesanomalylstmRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_range_mean(s : TimeseriesanomalylstmRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_range_mean(s : TimeseriesanomalylstmRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_range_scale(s : TimeseriesanomalylstmRange, f : Double) -> TimeseriesanomalylstmRange {
   let result = timeseries_anomaly_lstm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_anomaly_lstm_range_fill(s : TimeseriesanomalylstmRange, v : Do
   result
 }
 
-pub fn timeseries_anomaly_lstm_range_min(s : TimeseriesanomalylstmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_range_min(s : TimeseriesanomalylstmRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_range_max(s : TimeseriesanomalylstmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_range_max(s : TimeseriesanomalylstmRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_range_to_string(s : TimeseriesanomalylstmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_anomaly_lstm_slice_set(s : TimeseriesanomalylstmSlice, i : Int
   result
 }
 
-pub fn timeseries_anomaly_lstm_slice_sum(s : TimeseriesanomalylstmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_lstm_slice_sum(s : TimeseriesanomalylstmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_lstm_slice_mean(s : TimeseriesanomalylstmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_lstm_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_lstm_slice_mean(s : TimeseriesanomalylstmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_lstm_slice_scale(s : TimeseriesanomalylstmSlice, f : Double) -> TimeseriesanomalylstmSlice {
   let result = timeseries_anomaly_lstm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_anomaly_lstm_slice_fill(s : TimeseriesanomalylstmSlice, v : Do
   result
 }
 
-pub fn timeseries_anomaly_lstm_slice_min(s : TimeseriesanomalylstmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_slice_min(s : TimeseriesanomalylstmSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_lstm_slice_max(s : TimeseriesanomalylstmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_lstm_slice_max(s : TimeseriesanomalylstmSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_lstm_slice_to_string(s : TimeseriesanomalylstmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

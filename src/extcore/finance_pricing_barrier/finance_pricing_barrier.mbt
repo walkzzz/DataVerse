@@ -88,11 +88,7 @@ pub fn finance_pricing_barrier_make_series(vals : Array[Double], name : String) 
 
 pub fn finance_pricing_barrier_series_len(s : FinancepricingbarrierSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_barrier_series_sum(s : FinancepricingbarrierSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_barrier_series_sum(s : FinancepricingbarrierSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_barrier_series_mean(s : FinancepricingbarrierSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_barrier_frame_set(s : FinancepricingbarrierFrame, i : Int
   result
 }
 
-pub fn finance_pricing_barrier_frame_sum(s : FinancepricingbarrierFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_frame_sum(s : FinancepricingbarrierFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_frame_mean(s : FinancepricingbarrierFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_frame_mean(s : FinancepricingbarrierFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_frame_scale(s : FinancepricingbarrierFrame, f : Double) -> FinancepricingbarrierFrame {
   let result = finance_pricing_barrier_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_barrier_frame_fill(s : FinancepricingbarrierFrame, v : Do
   result
 }
 
-pub fn finance_pricing_barrier_frame_min(s : FinancepricingbarrierFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_frame_min(s : FinancepricingbarrierFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_frame_max(s : FinancepricingbarrierFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_frame_max(s : FinancepricingbarrierFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_frame_to_string(s : FinancepricingbarrierFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_barrier_table_set(s : FinancepricingbarrierTable, i : Int
   result
 }
 
-pub fn finance_pricing_barrier_table_sum(s : FinancepricingbarrierTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_table_sum(s : FinancepricingbarrierTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_table_mean(s : FinancepricingbarrierTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_table_mean(s : FinancepricingbarrierTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_table_scale(s : FinancepricingbarrierTable, f : Double) -> FinancepricingbarrierTable {
   let result = finance_pricing_barrier_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_barrier_table_fill(s : FinancepricingbarrierTable, v : Do
   result
 }
 
-pub fn finance_pricing_barrier_table_min(s : FinancepricingbarrierTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_table_min(s : FinancepricingbarrierTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_table_max(s : FinancepricingbarrierTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_table_max(s : FinancepricingbarrierTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_table_to_string(s : FinancepricingbarrierTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_barrier_graphn_set(s : FinancepricingbarrierGraphN, i : I
   result
 }
 
-pub fn finance_pricing_barrier_graphn_sum(s : FinancepricingbarrierGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_graphn_sum(s : FinancepricingbarrierGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_graphn_mean(s : FinancepricingbarrierGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_graphn_mean(s : FinancepricingbarrierGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_graphn_scale(s : FinancepricingbarrierGraphN, f : Double) -> FinancepricingbarrierGraphN {
   let result = finance_pricing_barrier_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_barrier_graphn_fill(s : FinancepricingbarrierGraphN, v : 
   result
 }
 
-pub fn finance_pricing_barrier_graphn_min(s : FinancepricingbarrierGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_graphn_min(s : FinancepricingbarrierGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_graphn_max(s : FinancepricingbarrierGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_graphn_max(s : FinancepricingbarrierGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_graphn_to_string(s : FinancepricingbarrierGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_barrier_node_set(s : FinancepricingbarrierNode, i : Int, 
   result
 }
 
-pub fn finance_pricing_barrier_node_sum(s : FinancepricingbarrierNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_node_sum(s : FinancepricingbarrierNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_node_mean(s : FinancepricingbarrierNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_node_mean(s : FinancepricingbarrierNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_node_scale(s : FinancepricingbarrierNode, f : Double) -> FinancepricingbarrierNode {
   let result = finance_pricing_barrier_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_barrier_node_fill(s : FinancepricingbarrierNode, v : Doub
   result
 }
 
-pub fn finance_pricing_barrier_node_min(s : FinancepricingbarrierNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_node_min(s : FinancepricingbarrierNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_node_max(s : FinancepricingbarrierNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_node_max(s : FinancepricingbarrierNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_node_to_string(s : FinancepricingbarrierNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_barrier_edge_set(s : FinancepricingbarrierEdge, i : Int, 
   result
 }
 
-pub fn finance_pricing_barrier_edge_sum(s : FinancepricingbarrierEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_edge_sum(s : FinancepricingbarrierEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_edge_mean(s : FinancepricingbarrierEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_edge_mean(s : FinancepricingbarrierEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_edge_scale(s : FinancepricingbarrierEdge, f : Double) -> FinancepricingbarrierEdge {
   let result = finance_pricing_barrier_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_barrier_edge_fill(s : FinancepricingbarrierEdge, v : Doub
   result
 }
 
-pub fn finance_pricing_barrier_edge_min(s : FinancepricingbarrierEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_edge_min(s : FinancepricingbarrierEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_edge_max(s : FinancepricingbarrierEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_edge_max(s : FinancepricingbarrierEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_edge_to_string(s : FinancepricingbarrierEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_barrier_path_set(s : FinancepricingbarrierPath, i : Int, 
   result
 }
 
-pub fn finance_pricing_barrier_path_sum(s : FinancepricingbarrierPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_path_sum(s : FinancepricingbarrierPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_path_mean(s : FinancepricingbarrierPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_path_mean(s : FinancepricingbarrierPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_path_scale(s : FinancepricingbarrierPath, f : Double) -> FinancepricingbarrierPath {
   let result = finance_pricing_barrier_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_barrier_path_fill(s : FinancepricingbarrierPath, v : Doub
   result
 }
 
-pub fn finance_pricing_barrier_path_min(s : FinancepricingbarrierPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_path_min(s : FinancepricingbarrierPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_path_max(s : FinancepricingbarrierPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_path_max(s : FinancepricingbarrierPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_path_to_string(s : FinancepricingbarrierPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_barrier_cluster_set(s : FinancepricingbarrierCluster, i :
   result
 }
 
-pub fn finance_pricing_barrier_cluster_sum(s : FinancepricingbarrierCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_cluster_sum(s : FinancepricingbarrierCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_cluster_mean(s : FinancepricingbarrierCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_cluster_mean(s : FinancepricingbarrierCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_cluster_scale(s : FinancepricingbarrierCluster, f : Double) -> FinancepricingbarrierCluster {
   let result = finance_pricing_barrier_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_barrier_cluster_fill(s : FinancepricingbarrierCluster, v 
   result
 }
 
-pub fn finance_pricing_barrier_cluster_min(s : FinancepricingbarrierCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_cluster_min(s : FinancepricingbarrierCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_cluster_max(s : FinancepricingbarrierCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_cluster_max(s : FinancepricingbarrierCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_cluster_to_string(s : FinancepricingbarrierCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_barrier_model_set(s : FinancepricingbarrierModel, i : Int
   result
 }
 
-pub fn finance_pricing_barrier_model_sum(s : FinancepricingbarrierModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_model_sum(s : FinancepricingbarrierModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_model_mean(s : FinancepricingbarrierModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_model_mean(s : FinancepricingbarrierModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_model_scale(s : FinancepricingbarrierModel, f : Double) -> FinancepricingbarrierModel {
   let result = finance_pricing_barrier_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_barrier_model_fill(s : FinancepricingbarrierModel, v : Do
   result
 }
 
-pub fn finance_pricing_barrier_model_min(s : FinancepricingbarrierModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_model_min(s : FinancepricingbarrierModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_model_max(s : FinancepricingbarrierModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_model_max(s : FinancepricingbarrierModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_model_to_string(s : FinancepricingbarrierModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_barrier_layer_set(s : FinancepricingbarrierLayer, i : Int
   result
 }
 
-pub fn finance_pricing_barrier_layer_sum(s : FinancepricingbarrierLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_layer_sum(s : FinancepricingbarrierLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_layer_mean(s : FinancepricingbarrierLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_layer_mean(s : FinancepricingbarrierLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_layer_scale(s : FinancepricingbarrierLayer, f : Double) -> FinancepricingbarrierLayer {
   let result = finance_pricing_barrier_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_barrier_layer_fill(s : FinancepricingbarrierLayer, v : Do
   result
 }
 
-pub fn finance_pricing_barrier_layer_min(s : FinancepricingbarrierLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_layer_min(s : FinancepricingbarrierLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_layer_max(s : FinancepricingbarrierLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_layer_max(s : FinancepricingbarrierLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_layer_to_string(s : FinancepricingbarrierLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_barrier_buffer_set(s : FinancepricingbarrierBuffer, i : I
   result
 }
 
-pub fn finance_pricing_barrier_buffer_sum(s : FinancepricingbarrierBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_buffer_sum(s : FinancepricingbarrierBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_buffer_mean(s : FinancepricingbarrierBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_buffer_mean(s : FinancepricingbarrierBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_buffer_scale(s : FinancepricingbarrierBuffer, f : Double) -> FinancepricingbarrierBuffer {
   let result = finance_pricing_barrier_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_barrier_buffer_fill(s : FinancepricingbarrierBuffer, v : 
   result
 }
 
-pub fn finance_pricing_barrier_buffer_min(s : FinancepricingbarrierBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_buffer_min(s : FinancepricingbarrierBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_buffer_max(s : FinancepricingbarrierBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_buffer_max(s : FinancepricingbarrierBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_buffer_to_string(s : FinancepricingbarrierBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_barrier_cursor_set(s : FinancepricingbarrierCursor, i : I
   result
 }
 
-pub fn finance_pricing_barrier_cursor_sum(s : FinancepricingbarrierCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_cursor_sum(s : FinancepricingbarrierCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_cursor_mean(s : FinancepricingbarrierCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_cursor_mean(s : FinancepricingbarrierCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_cursor_scale(s : FinancepricingbarrierCursor, f : Double) -> FinancepricingbarrierCursor {
   let result = finance_pricing_barrier_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_barrier_cursor_fill(s : FinancepricingbarrierCursor, v : 
   result
 }
 
-pub fn finance_pricing_barrier_cursor_min(s : FinancepricingbarrierCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_cursor_min(s : FinancepricingbarrierCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_cursor_max(s : FinancepricingbarrierCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_cursor_max(s : FinancepricingbarrierCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_cursor_to_string(s : FinancepricingbarrierCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_barrier_view_set(s : FinancepricingbarrierView, i : Int, 
   result
 }
 
-pub fn finance_pricing_barrier_view_sum(s : FinancepricingbarrierView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_view_sum(s : FinancepricingbarrierView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_view_mean(s : FinancepricingbarrierView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_view_mean(s : FinancepricingbarrierView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_view_scale(s : FinancepricingbarrierView, f : Double) -> FinancepricingbarrierView {
   let result = finance_pricing_barrier_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_barrier_view_fill(s : FinancepricingbarrierView, v : Doub
   result
 }
 
-pub fn finance_pricing_barrier_view_min(s : FinancepricingbarrierView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_view_min(s : FinancepricingbarrierView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_view_max(s : FinancepricingbarrierView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_view_max(s : FinancepricingbarrierView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_view_to_string(s : FinancepricingbarrierView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_barrier_range_set(s : FinancepricingbarrierRange, i : Int
   result
 }
 
-pub fn finance_pricing_barrier_range_sum(s : FinancepricingbarrierRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_range_sum(s : FinancepricingbarrierRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_range_mean(s : FinancepricingbarrierRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_range_mean(s : FinancepricingbarrierRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_range_scale(s : FinancepricingbarrierRange, f : Double) -> FinancepricingbarrierRange {
   let result = finance_pricing_barrier_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_barrier_range_fill(s : FinancepricingbarrierRange, v : Do
   result
 }
 
-pub fn finance_pricing_barrier_range_min(s : FinancepricingbarrierRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_range_min(s : FinancepricingbarrierRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_range_max(s : FinancepricingbarrierRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_range_max(s : FinancepricingbarrierRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_range_to_string(s : FinancepricingbarrierRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_barrier_slice_set(s : FinancepricingbarrierSlice, i : Int
   result
 }
 
-pub fn finance_pricing_barrier_slice_sum(s : FinancepricingbarrierSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_barrier_slice_sum(s : FinancepricingbarrierSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_barrier_slice_mean(s : FinancepricingbarrierSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_barrier_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_barrier_slice_mean(s : FinancepricingbarrierSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_barrier_slice_scale(s : FinancepricingbarrierSlice, f : Double) -> FinancepricingbarrierSlice {
   let result = finance_pricing_barrier_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_barrier_slice_fill(s : FinancepricingbarrierSlice, v : Do
   result
 }
 
-pub fn finance_pricing_barrier_slice_min(s : FinancepricingbarrierSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_slice_min(s : FinancepricingbarrierSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_barrier_slice_max(s : FinancepricingbarrierSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_barrier_slice_max(s : FinancepricingbarrierSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_barrier_slice_to_string(s : FinancepricingbarrierSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

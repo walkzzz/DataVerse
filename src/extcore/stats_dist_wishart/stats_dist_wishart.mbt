@@ -88,11 +88,7 @@ pub fn stats_dist_wishart_make_series(vals : Array[Double], name : String) -> St
 
 pub fn stats_dist_wishart_series_len(s : StatsdistwishartSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_wishart_series_sum(s : StatsdistwishartSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_wishart_series_sum(s : StatsdistwishartSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_wishart_series_mean(s : StatsdistwishartSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_wishart_frame_set(s : StatsdistwishartFrame, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_wishart_frame_sum(s : StatsdistwishartFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_frame_sum(s : StatsdistwishartFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_frame_mean(s : StatsdistwishartFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_frame_mean(s : StatsdistwishartFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_frame_scale(s : StatsdistwishartFrame, f : Double) -> StatsdistwishartFrame {
   let result = stats_dist_wishart_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_wishart_frame_fill(s : StatsdistwishartFrame, v : Double) -> S
   result
 }
 
-pub fn stats_dist_wishart_frame_min(s : StatsdistwishartFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_frame_min(s : StatsdistwishartFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_frame_max(s : StatsdistwishartFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_frame_max(s : StatsdistwishartFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_frame_to_string(s : StatsdistwishartFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_wishart_table_set(s : StatsdistwishartTable, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_wishart_table_sum(s : StatsdistwishartTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_table_sum(s : StatsdistwishartTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_table_mean(s : StatsdistwishartTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_table_mean(s : StatsdistwishartTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_table_scale(s : StatsdistwishartTable, f : Double) -> StatsdistwishartTable {
   let result = stats_dist_wishart_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_wishart_table_fill(s : StatsdistwishartTable, v : Double) -> S
   result
 }
 
-pub fn stats_dist_wishart_table_min(s : StatsdistwishartTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_table_min(s : StatsdistwishartTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_table_max(s : StatsdistwishartTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_table_max(s : StatsdistwishartTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_table_to_string(s : StatsdistwishartTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_wishart_graphn_set(s : StatsdistwishartGraphN, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_wishart_graphn_sum(s : StatsdistwishartGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_graphn_sum(s : StatsdistwishartGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_graphn_mean(s : StatsdistwishartGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_graphn_mean(s : StatsdistwishartGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_graphn_scale(s : StatsdistwishartGraphN, f : Double) -> StatsdistwishartGraphN {
   let result = stats_dist_wishart_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_wishart_graphn_fill(s : StatsdistwishartGraphN, v : Double) ->
   result
 }
 
-pub fn stats_dist_wishart_graphn_min(s : StatsdistwishartGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_graphn_min(s : StatsdistwishartGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_graphn_max(s : StatsdistwishartGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_graphn_max(s : StatsdistwishartGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_graphn_to_string(s : StatsdistwishartGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_wishart_node_set(s : StatsdistwishartNode, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_wishart_node_sum(s : StatsdistwishartNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_node_sum(s : StatsdistwishartNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_node_mean(s : StatsdistwishartNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_node_mean(s : StatsdistwishartNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_node_scale(s : StatsdistwishartNode, f : Double) -> StatsdistwishartNode {
   let result = stats_dist_wishart_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_wishart_node_fill(s : StatsdistwishartNode, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_wishart_node_min(s : StatsdistwishartNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_node_min(s : StatsdistwishartNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_node_max(s : StatsdistwishartNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_node_max(s : StatsdistwishartNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_node_to_string(s : StatsdistwishartNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_wishart_edge_set(s : StatsdistwishartEdge, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_wishart_edge_sum(s : StatsdistwishartEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_edge_sum(s : StatsdistwishartEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_edge_mean(s : StatsdistwishartEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_edge_mean(s : StatsdistwishartEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_edge_scale(s : StatsdistwishartEdge, f : Double) -> StatsdistwishartEdge {
   let result = stats_dist_wishart_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_wishart_edge_fill(s : StatsdistwishartEdge, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_wishart_edge_min(s : StatsdistwishartEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_edge_min(s : StatsdistwishartEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_edge_max(s : StatsdistwishartEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_edge_max(s : StatsdistwishartEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_edge_to_string(s : StatsdistwishartEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_wishart_path_set(s : StatsdistwishartPath, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_wishart_path_sum(s : StatsdistwishartPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_path_sum(s : StatsdistwishartPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_path_mean(s : StatsdistwishartPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_path_mean(s : StatsdistwishartPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_path_scale(s : StatsdistwishartPath, f : Double) -> StatsdistwishartPath {
   let result = stats_dist_wishart_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_wishart_path_fill(s : StatsdistwishartPath, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_wishart_path_min(s : StatsdistwishartPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_path_min(s : StatsdistwishartPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_path_max(s : StatsdistwishartPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_path_max(s : StatsdistwishartPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_path_to_string(s : StatsdistwishartPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_wishart_cluster_set(s : StatsdistwishartCluster, i : Int, v : 
   result
 }
 
-pub fn stats_dist_wishart_cluster_sum(s : StatsdistwishartCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_cluster_sum(s : StatsdistwishartCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_cluster_mean(s : StatsdistwishartCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_cluster_mean(s : StatsdistwishartCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_cluster_scale(s : StatsdistwishartCluster, f : Double) -> StatsdistwishartCluster {
   let result = stats_dist_wishart_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_wishart_cluster_fill(s : StatsdistwishartCluster, v : Double) 
   result
 }
 
-pub fn stats_dist_wishart_cluster_min(s : StatsdistwishartCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_cluster_min(s : StatsdistwishartCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_cluster_max(s : StatsdistwishartCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_cluster_max(s : StatsdistwishartCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_cluster_to_string(s : StatsdistwishartCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_wishart_model_set(s : StatsdistwishartModel, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_wishart_model_sum(s : StatsdistwishartModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_model_sum(s : StatsdistwishartModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_model_mean(s : StatsdistwishartModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_model_mean(s : StatsdistwishartModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_model_scale(s : StatsdistwishartModel, f : Double) -> StatsdistwishartModel {
   let result = stats_dist_wishart_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_wishart_model_fill(s : StatsdistwishartModel, v : Double) -> S
   result
 }
 
-pub fn stats_dist_wishart_model_min(s : StatsdistwishartModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_model_min(s : StatsdistwishartModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_model_max(s : StatsdistwishartModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_model_max(s : StatsdistwishartModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_model_to_string(s : StatsdistwishartModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_wishart_layer_set(s : StatsdistwishartLayer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_wishart_layer_sum(s : StatsdistwishartLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_layer_sum(s : StatsdistwishartLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_layer_mean(s : StatsdistwishartLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_layer_mean(s : StatsdistwishartLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_layer_scale(s : StatsdistwishartLayer, f : Double) -> StatsdistwishartLayer {
   let result = stats_dist_wishart_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_wishart_layer_fill(s : StatsdistwishartLayer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_wishart_layer_min(s : StatsdistwishartLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_layer_min(s : StatsdistwishartLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_layer_max(s : StatsdistwishartLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_layer_max(s : StatsdistwishartLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_layer_to_string(s : StatsdistwishartLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_wishart_buffer_set(s : StatsdistwishartBuffer, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_wishart_buffer_sum(s : StatsdistwishartBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_buffer_sum(s : StatsdistwishartBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_buffer_mean(s : StatsdistwishartBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_buffer_mean(s : StatsdistwishartBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_buffer_scale(s : StatsdistwishartBuffer, f : Double) -> StatsdistwishartBuffer {
   let result = stats_dist_wishart_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_wishart_buffer_fill(s : StatsdistwishartBuffer, v : Double) ->
   result
 }
 
-pub fn stats_dist_wishart_buffer_min(s : StatsdistwishartBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_buffer_min(s : StatsdistwishartBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_buffer_max(s : StatsdistwishartBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_buffer_max(s : StatsdistwishartBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_buffer_to_string(s : StatsdistwishartBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_wishart_cursor_set(s : StatsdistwishartCursor, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_wishart_cursor_sum(s : StatsdistwishartCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_cursor_sum(s : StatsdistwishartCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_cursor_mean(s : StatsdistwishartCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_cursor_mean(s : StatsdistwishartCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_cursor_scale(s : StatsdistwishartCursor, f : Double) -> StatsdistwishartCursor {
   let result = stats_dist_wishart_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_wishart_cursor_fill(s : StatsdistwishartCursor, v : Double) ->
   result
 }
 
-pub fn stats_dist_wishart_cursor_min(s : StatsdistwishartCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_cursor_min(s : StatsdistwishartCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_cursor_max(s : StatsdistwishartCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_cursor_max(s : StatsdistwishartCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_cursor_to_string(s : StatsdistwishartCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_wishart_view_set(s : StatsdistwishartView, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_wishart_view_sum(s : StatsdistwishartView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_view_sum(s : StatsdistwishartView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_view_mean(s : StatsdistwishartView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_view_mean(s : StatsdistwishartView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_view_scale(s : StatsdistwishartView, f : Double) -> StatsdistwishartView {
   let result = stats_dist_wishart_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_wishart_view_fill(s : StatsdistwishartView, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_wishart_view_min(s : StatsdistwishartView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_view_min(s : StatsdistwishartView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_view_max(s : StatsdistwishartView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_view_max(s : StatsdistwishartView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_view_to_string(s : StatsdistwishartView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_wishart_range_set(s : StatsdistwishartRange, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_wishart_range_sum(s : StatsdistwishartRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_range_sum(s : StatsdistwishartRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_range_mean(s : StatsdistwishartRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_range_mean(s : StatsdistwishartRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_range_scale(s : StatsdistwishartRange, f : Double) -> StatsdistwishartRange {
   let result = stats_dist_wishart_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_wishart_range_fill(s : StatsdistwishartRange, v : Double) -> S
   result
 }
 
-pub fn stats_dist_wishart_range_min(s : StatsdistwishartRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_range_min(s : StatsdistwishartRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_range_max(s : StatsdistwishartRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_range_max(s : StatsdistwishartRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_range_to_string(s : StatsdistwishartRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_wishart_slice_set(s : StatsdistwishartSlice, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_wishart_slice_sum(s : StatsdistwishartSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_wishart_slice_sum(s : StatsdistwishartSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_wishart_slice_mean(s : StatsdistwishartSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_wishart_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_wishart_slice_mean(s : StatsdistwishartSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_wishart_slice_scale(s : StatsdistwishartSlice, f : Double) -> StatsdistwishartSlice {
   let result = stats_dist_wishart_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_wishart_slice_fill(s : StatsdistwishartSlice, v : Double) -> S
   result
 }
 
-pub fn stats_dist_wishart_slice_min(s : StatsdistwishartSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_slice_min(s : StatsdistwishartSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_wishart_slice_max(s : StatsdistwishartSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_wishart_slice_max(s : StatsdistwishartSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_wishart_slice_to_string(s : StatsdistwishartSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

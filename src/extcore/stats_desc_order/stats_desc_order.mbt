@@ -88,11 +88,7 @@ pub fn stats_desc_order_make_series(vals : Array[Double], name : String) -> Stat
 
 pub fn stats_desc_order_series_len(s : StatsdescorderSeries) -> Int { s.vals.length() }
 
-pub fn stats_desc_order_series_sum(s : StatsdescorderSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_desc_order_series_sum(s : StatsdescorderSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_desc_order_series_mean(s : StatsdescorderSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_desc_order_frame_set(s : StatsdescorderFrame, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_order_frame_sum(s : StatsdescorderFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_frame_sum(s : StatsdescorderFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_frame_mean(s : StatsdescorderFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_frame_mean(s : StatsdescorderFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_frame_scale(s : StatsdescorderFrame, f : Double) -> StatsdescorderFrame {
   let result = stats_desc_order_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_desc_order_frame_fill(s : StatsdescorderFrame, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_order_frame_min(s : StatsdescorderFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_frame_min(s : StatsdescorderFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_frame_max(s : StatsdescorderFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_frame_max(s : StatsdescorderFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_frame_to_string(s : StatsdescorderFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_desc_order_table_set(s : StatsdescorderTable, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_order_table_sum(s : StatsdescorderTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_table_sum(s : StatsdescorderTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_table_mean(s : StatsdescorderTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_table_mean(s : StatsdescorderTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_table_scale(s : StatsdescorderTable, f : Double) -> StatsdescorderTable {
   let result = stats_desc_order_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_desc_order_table_fill(s : StatsdescorderTable, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_order_table_min(s : StatsdescorderTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_table_min(s : StatsdescorderTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_table_max(s : StatsdescorderTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_table_max(s : StatsdescorderTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_table_to_string(s : StatsdescorderTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_desc_order_graphn_set(s : StatsdescorderGraphN, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_order_graphn_sum(s : StatsdescorderGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_graphn_sum(s : StatsdescorderGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_graphn_mean(s : StatsdescorderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_graphn_mean(s : StatsdescorderGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_graphn_scale(s : StatsdescorderGraphN, f : Double) -> StatsdescorderGraphN {
   let result = stats_desc_order_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_desc_order_graphn_fill(s : StatsdescorderGraphN, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_order_graphn_min(s : StatsdescorderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_graphn_min(s : StatsdescorderGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_graphn_max(s : StatsdescorderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_graphn_max(s : StatsdescorderGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_graphn_to_string(s : StatsdescorderGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_desc_order_node_set(s : StatsdescorderNode, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_desc_order_node_sum(s : StatsdescorderNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_node_sum(s : StatsdescorderNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_node_mean(s : StatsdescorderNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_node_mean(s : StatsdescorderNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_node_scale(s : StatsdescorderNode, f : Double) -> StatsdescorderNode {
   let result = stats_desc_order_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_desc_order_node_fill(s : StatsdescorderNode, v : Double) -> Statsde
   result
 }
 
-pub fn stats_desc_order_node_min(s : StatsdescorderNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_node_min(s : StatsdescorderNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_node_max(s : StatsdescorderNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_node_max(s : StatsdescorderNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_node_to_string(s : StatsdescorderNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_desc_order_edge_set(s : StatsdescorderEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_desc_order_edge_sum(s : StatsdescorderEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_edge_sum(s : StatsdescorderEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_edge_mean(s : StatsdescorderEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_edge_mean(s : StatsdescorderEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_edge_scale(s : StatsdescorderEdge, f : Double) -> StatsdescorderEdge {
   let result = stats_desc_order_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_desc_order_edge_fill(s : StatsdescorderEdge, v : Double) -> Statsde
   result
 }
 
-pub fn stats_desc_order_edge_min(s : StatsdescorderEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_edge_min(s : StatsdescorderEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_edge_max(s : StatsdescorderEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_edge_max(s : StatsdescorderEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_edge_to_string(s : StatsdescorderEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_desc_order_path_set(s : StatsdescorderPath, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_desc_order_path_sum(s : StatsdescorderPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_path_sum(s : StatsdescorderPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_path_mean(s : StatsdescorderPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_path_mean(s : StatsdescorderPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_path_scale(s : StatsdescorderPath, f : Double) -> StatsdescorderPath {
   let result = stats_desc_order_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_desc_order_path_fill(s : StatsdescorderPath, v : Double) -> Statsde
   result
 }
 
-pub fn stats_desc_order_path_min(s : StatsdescorderPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_path_min(s : StatsdescorderPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_path_max(s : StatsdescorderPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_path_max(s : StatsdescorderPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_path_to_string(s : StatsdescorderPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_desc_order_cluster_set(s : StatsdescorderCluster, i : Int, v : Doub
   result
 }
 
-pub fn stats_desc_order_cluster_sum(s : StatsdescorderCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_cluster_sum(s : StatsdescorderCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_cluster_mean(s : StatsdescorderCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_cluster_mean(s : StatsdescorderCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_cluster_scale(s : StatsdescorderCluster, f : Double) -> StatsdescorderCluster {
   let result = stats_desc_order_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_desc_order_cluster_fill(s : StatsdescorderCluster, v : Double) -> S
   result
 }
 
-pub fn stats_desc_order_cluster_min(s : StatsdescorderCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_cluster_min(s : StatsdescorderCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_cluster_max(s : StatsdescorderCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_cluster_max(s : StatsdescorderCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_cluster_to_string(s : StatsdescorderCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_desc_order_model_set(s : StatsdescorderModel, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_order_model_sum(s : StatsdescorderModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_model_sum(s : StatsdescorderModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_model_mean(s : StatsdescorderModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_model_mean(s : StatsdescorderModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_model_scale(s : StatsdescorderModel, f : Double) -> StatsdescorderModel {
   let result = stats_desc_order_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_desc_order_model_fill(s : StatsdescorderModel, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_order_model_min(s : StatsdescorderModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_model_min(s : StatsdescorderModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_model_max(s : StatsdescorderModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_model_max(s : StatsdescorderModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_model_to_string(s : StatsdescorderModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_desc_order_layer_set(s : StatsdescorderLayer, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_order_layer_sum(s : StatsdescorderLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_layer_sum(s : StatsdescorderLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_layer_mean(s : StatsdescorderLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_layer_mean(s : StatsdescorderLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_layer_scale(s : StatsdescorderLayer, f : Double) -> StatsdescorderLayer {
   let result = stats_desc_order_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_desc_order_layer_fill(s : StatsdescorderLayer, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_order_layer_min(s : StatsdescorderLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_layer_min(s : StatsdescorderLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_layer_max(s : StatsdescorderLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_layer_max(s : StatsdescorderLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_layer_to_string(s : StatsdescorderLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_desc_order_buffer_set(s : StatsdescorderBuffer, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_order_buffer_sum(s : StatsdescorderBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_buffer_sum(s : StatsdescorderBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_buffer_mean(s : StatsdescorderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_buffer_mean(s : StatsdescorderBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_buffer_scale(s : StatsdescorderBuffer, f : Double) -> StatsdescorderBuffer {
   let result = stats_desc_order_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_desc_order_buffer_fill(s : StatsdescorderBuffer, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_order_buffer_min(s : StatsdescorderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_buffer_min(s : StatsdescorderBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_buffer_max(s : StatsdescorderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_buffer_max(s : StatsdescorderBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_buffer_to_string(s : StatsdescorderBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_desc_order_cursor_set(s : StatsdescorderCursor, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_order_cursor_sum(s : StatsdescorderCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_cursor_sum(s : StatsdescorderCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_cursor_mean(s : StatsdescorderCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_cursor_mean(s : StatsdescorderCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_cursor_scale(s : StatsdescorderCursor, f : Double) -> StatsdescorderCursor {
   let result = stats_desc_order_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_desc_order_cursor_fill(s : StatsdescorderCursor, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_order_cursor_min(s : StatsdescorderCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_cursor_min(s : StatsdescorderCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_cursor_max(s : StatsdescorderCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_cursor_max(s : StatsdescorderCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_cursor_to_string(s : StatsdescorderCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_desc_order_view_set(s : StatsdescorderView, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_desc_order_view_sum(s : StatsdescorderView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_view_sum(s : StatsdescorderView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_view_mean(s : StatsdescorderView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_view_mean(s : StatsdescorderView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_view_scale(s : StatsdescorderView, f : Double) -> StatsdescorderView {
   let result = stats_desc_order_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_desc_order_view_fill(s : StatsdescorderView, v : Double) -> Statsde
   result
 }
 
-pub fn stats_desc_order_view_min(s : StatsdescorderView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_view_min(s : StatsdescorderView) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_view_max(s : StatsdescorderView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_view_max(s : StatsdescorderView) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_view_to_string(s : StatsdescorderView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_desc_order_range_set(s : StatsdescorderRange, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_order_range_sum(s : StatsdescorderRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_range_sum(s : StatsdescorderRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_range_mean(s : StatsdescorderRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_range_mean(s : StatsdescorderRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_range_scale(s : StatsdescorderRange, f : Double) -> StatsdescorderRange {
   let result = stats_desc_order_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_desc_order_range_fill(s : StatsdescorderRange, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_order_range_min(s : StatsdescorderRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_range_min(s : StatsdescorderRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_range_max(s : StatsdescorderRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_range_max(s : StatsdescorderRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_range_to_string(s : StatsdescorderRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_desc_order_slice_set(s : StatsdescorderSlice, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_order_slice_sum(s : StatsdescorderSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_order_slice_sum(s : StatsdescorderSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_order_slice_mean(s : StatsdescorderSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_order_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_order_slice_mean(s : StatsdescorderSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_order_slice_scale(s : StatsdescorderSlice, f : Double) -> StatsdescorderSlice {
   let result = stats_desc_order_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_desc_order_slice_fill(s : StatsdescorderSlice, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_order_slice_min(s : StatsdescorderSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_slice_min(s : StatsdescorderSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_order_slice_max(s : StatsdescorderSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_order_slice_max(s : StatsdescorderSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_order_slice_to_string(s : StatsdescorderSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

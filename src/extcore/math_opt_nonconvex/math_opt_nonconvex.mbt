@@ -88,11 +88,7 @@ pub fn math_opt_nonconvex_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_opt_nonconvex_series_len(s : MathoptnonconvexSeries) -> Int { s.vals.length() }
 
-pub fn math_opt_nonconvex_series_sum(s : MathoptnonconvexSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_opt_nonconvex_series_sum(s : MathoptnonconvexSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_opt_nonconvex_series_mean(s : MathoptnonconvexSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_opt_nonconvex_frame_set(s : MathoptnonconvexFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_opt_nonconvex_frame_sum(s : MathoptnonconvexFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_frame_sum(s : MathoptnonconvexFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_frame_mean(s : MathoptnonconvexFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_frame_mean(s : MathoptnonconvexFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_frame_scale(s : MathoptnonconvexFrame, f : Double) -> MathoptnonconvexFrame {
   let result = math_opt_nonconvex_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_opt_nonconvex_frame_fill(s : MathoptnonconvexFrame, v : Double) -> M
   result
 }
 
-pub fn math_opt_nonconvex_frame_min(s : MathoptnonconvexFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_frame_min(s : MathoptnonconvexFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_frame_max(s : MathoptnonconvexFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_frame_max(s : MathoptnonconvexFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_frame_to_string(s : MathoptnonconvexFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_opt_nonconvex_table_set(s : MathoptnonconvexTable, i : Int, v : Doub
   result
 }
 
-pub fn math_opt_nonconvex_table_sum(s : MathoptnonconvexTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_table_sum(s : MathoptnonconvexTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_table_mean(s : MathoptnonconvexTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_table_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_table_mean(s : MathoptnonconvexTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_table_scale(s : MathoptnonconvexTable, f : Double) -> MathoptnonconvexTable {
   let result = math_opt_nonconvex_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_opt_nonconvex_table_fill(s : MathoptnonconvexTable, v : Double) -> M
   result
 }
 
-pub fn math_opt_nonconvex_table_min(s : MathoptnonconvexTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_table_min(s : MathoptnonconvexTable) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_table_max(s : MathoptnonconvexTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_table_max(s : MathoptnonconvexTable) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_table_to_string(s : MathoptnonconvexTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_opt_nonconvex_graphn_set(s : MathoptnonconvexGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_opt_nonconvex_graphn_sum(s : MathoptnonconvexGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_graphn_sum(s : MathoptnonconvexGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_graphn_mean(s : MathoptnonconvexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_graphn_mean(s : MathoptnonconvexGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_graphn_scale(s : MathoptnonconvexGraphN, f : Double) -> MathoptnonconvexGraphN {
   let result = math_opt_nonconvex_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_opt_nonconvex_graphn_fill(s : MathoptnonconvexGraphN, v : Double) ->
   result
 }
 
-pub fn math_opt_nonconvex_graphn_min(s : MathoptnonconvexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_graphn_min(s : MathoptnonconvexGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_graphn_max(s : MathoptnonconvexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_graphn_max(s : MathoptnonconvexGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_graphn_to_string(s : MathoptnonconvexGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_opt_nonconvex_node_set(s : MathoptnonconvexNode, i : Int, v : Double
   result
 }
 
-pub fn math_opt_nonconvex_node_sum(s : MathoptnonconvexNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_node_sum(s : MathoptnonconvexNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_node_mean(s : MathoptnonconvexNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_node_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_node_mean(s : MathoptnonconvexNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_node_scale(s : MathoptnonconvexNode, f : Double) -> MathoptnonconvexNode {
   let result = math_opt_nonconvex_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_opt_nonconvex_node_fill(s : MathoptnonconvexNode, v : Double) -> Mat
   result
 }
 
-pub fn math_opt_nonconvex_node_min(s : MathoptnonconvexNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_node_min(s : MathoptnonconvexNode) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_node_max(s : MathoptnonconvexNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_node_max(s : MathoptnonconvexNode) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_node_to_string(s : MathoptnonconvexNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_opt_nonconvex_edge_set(s : MathoptnonconvexEdge, i : Int, v : Double
   result
 }
 
-pub fn math_opt_nonconvex_edge_sum(s : MathoptnonconvexEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_edge_sum(s : MathoptnonconvexEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_edge_mean(s : MathoptnonconvexEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_edge_mean(s : MathoptnonconvexEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_edge_scale(s : MathoptnonconvexEdge, f : Double) -> MathoptnonconvexEdge {
   let result = math_opt_nonconvex_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_opt_nonconvex_edge_fill(s : MathoptnonconvexEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_opt_nonconvex_edge_min(s : MathoptnonconvexEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_edge_min(s : MathoptnonconvexEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_edge_max(s : MathoptnonconvexEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_edge_max(s : MathoptnonconvexEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_edge_to_string(s : MathoptnonconvexEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_opt_nonconvex_path_set(s : MathoptnonconvexPath, i : Int, v : Double
   result
 }
 
-pub fn math_opt_nonconvex_path_sum(s : MathoptnonconvexPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_path_sum(s : MathoptnonconvexPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_path_mean(s : MathoptnonconvexPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_path_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_path_mean(s : MathoptnonconvexPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_path_scale(s : MathoptnonconvexPath, f : Double) -> MathoptnonconvexPath {
   let result = math_opt_nonconvex_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_opt_nonconvex_path_fill(s : MathoptnonconvexPath, v : Double) -> Mat
   result
 }
 
-pub fn math_opt_nonconvex_path_min(s : MathoptnonconvexPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_path_min(s : MathoptnonconvexPath) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_path_max(s : MathoptnonconvexPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_path_max(s : MathoptnonconvexPath) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_path_to_string(s : MathoptnonconvexPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_opt_nonconvex_cluster_set(s : MathoptnonconvexCluster, i : Int, v : 
   result
 }
 
-pub fn math_opt_nonconvex_cluster_sum(s : MathoptnonconvexCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_cluster_sum(s : MathoptnonconvexCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_cluster_mean(s : MathoptnonconvexCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_cluster_mean(s : MathoptnonconvexCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_cluster_scale(s : MathoptnonconvexCluster, f : Double) -> MathoptnonconvexCluster {
   let result = math_opt_nonconvex_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_opt_nonconvex_cluster_fill(s : MathoptnonconvexCluster, v : Double) 
   result
 }
 
-pub fn math_opt_nonconvex_cluster_min(s : MathoptnonconvexCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_cluster_min(s : MathoptnonconvexCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_cluster_max(s : MathoptnonconvexCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_cluster_max(s : MathoptnonconvexCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_cluster_to_string(s : MathoptnonconvexCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_opt_nonconvex_model_set(s : MathoptnonconvexModel, i : Int, v : Doub
   result
 }
 
-pub fn math_opt_nonconvex_model_sum(s : MathoptnonconvexModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_model_sum(s : MathoptnonconvexModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_model_mean(s : MathoptnonconvexModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_model_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_model_mean(s : MathoptnonconvexModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_model_scale(s : MathoptnonconvexModel, f : Double) -> MathoptnonconvexModel {
   let result = math_opt_nonconvex_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_opt_nonconvex_model_fill(s : MathoptnonconvexModel, v : Double) -> M
   result
 }
 
-pub fn math_opt_nonconvex_model_min(s : MathoptnonconvexModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_model_min(s : MathoptnonconvexModel) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_model_max(s : MathoptnonconvexModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_model_max(s : MathoptnonconvexModel) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_model_to_string(s : MathoptnonconvexModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_opt_nonconvex_layer_set(s : MathoptnonconvexLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_opt_nonconvex_layer_sum(s : MathoptnonconvexLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_layer_sum(s : MathoptnonconvexLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_layer_mean(s : MathoptnonconvexLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_layer_mean(s : MathoptnonconvexLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_layer_scale(s : MathoptnonconvexLayer, f : Double) -> MathoptnonconvexLayer {
   let result = math_opt_nonconvex_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_opt_nonconvex_layer_fill(s : MathoptnonconvexLayer, v : Double) -> M
   result
 }
 
-pub fn math_opt_nonconvex_layer_min(s : MathoptnonconvexLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_layer_min(s : MathoptnonconvexLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_layer_max(s : MathoptnonconvexLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_layer_max(s : MathoptnonconvexLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_layer_to_string(s : MathoptnonconvexLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_opt_nonconvex_buffer_set(s : MathoptnonconvexBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_opt_nonconvex_buffer_sum(s : MathoptnonconvexBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_buffer_sum(s : MathoptnonconvexBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_buffer_mean(s : MathoptnonconvexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_buffer_mean(s : MathoptnonconvexBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_buffer_scale(s : MathoptnonconvexBuffer, f : Double) -> MathoptnonconvexBuffer {
   let result = math_opt_nonconvex_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_opt_nonconvex_buffer_fill(s : MathoptnonconvexBuffer, v : Double) ->
   result
 }
 
-pub fn math_opt_nonconvex_buffer_min(s : MathoptnonconvexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_buffer_min(s : MathoptnonconvexBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_buffer_max(s : MathoptnonconvexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_buffer_max(s : MathoptnonconvexBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_buffer_to_string(s : MathoptnonconvexBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_opt_nonconvex_cursor_set(s : MathoptnonconvexCursor, i : Int, v : Do
   result
 }
 
-pub fn math_opt_nonconvex_cursor_sum(s : MathoptnonconvexCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_cursor_sum(s : MathoptnonconvexCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_cursor_mean(s : MathoptnonconvexCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_cursor_mean(s : MathoptnonconvexCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_cursor_scale(s : MathoptnonconvexCursor, f : Double) -> MathoptnonconvexCursor {
   let result = math_opt_nonconvex_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_opt_nonconvex_cursor_fill(s : MathoptnonconvexCursor, v : Double) ->
   result
 }
 
-pub fn math_opt_nonconvex_cursor_min(s : MathoptnonconvexCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_cursor_min(s : MathoptnonconvexCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_cursor_max(s : MathoptnonconvexCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_cursor_max(s : MathoptnonconvexCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_cursor_to_string(s : MathoptnonconvexCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_opt_nonconvex_view_set(s : MathoptnonconvexView, i : Int, v : Double
   result
 }
 
-pub fn math_opt_nonconvex_view_sum(s : MathoptnonconvexView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_view_sum(s : MathoptnonconvexView) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_view_mean(s : MathoptnonconvexView) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_view_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_view_mean(s : MathoptnonconvexView) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_view_scale(s : MathoptnonconvexView, f : Double) -> MathoptnonconvexView {
   let result = math_opt_nonconvex_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_opt_nonconvex_view_fill(s : MathoptnonconvexView, v : Double) -> Mat
   result
 }
 
-pub fn math_opt_nonconvex_view_min(s : MathoptnonconvexView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_view_min(s : MathoptnonconvexView) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_view_max(s : MathoptnonconvexView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_view_max(s : MathoptnonconvexView) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_view_to_string(s : MathoptnonconvexView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_opt_nonconvex_range_set(s : MathoptnonconvexRange, i : Int, v : Doub
   result
 }
 
-pub fn math_opt_nonconvex_range_sum(s : MathoptnonconvexRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_range_sum(s : MathoptnonconvexRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_range_mean(s : MathoptnonconvexRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_range_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_range_mean(s : MathoptnonconvexRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_range_scale(s : MathoptnonconvexRange, f : Double) -> MathoptnonconvexRange {
   let result = math_opt_nonconvex_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_opt_nonconvex_range_fill(s : MathoptnonconvexRange, v : Double) -> M
   result
 }
 
-pub fn math_opt_nonconvex_range_min(s : MathoptnonconvexRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_range_min(s : MathoptnonconvexRange) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_range_max(s : MathoptnonconvexRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_range_max(s : MathoptnonconvexRange) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_range_to_string(s : MathoptnonconvexRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_opt_nonconvex_slice_set(s : MathoptnonconvexSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_opt_nonconvex_slice_sum(s : MathoptnonconvexSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_opt_nonconvex_slice_sum(s : MathoptnonconvexSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_opt_nonconvex_slice_mean(s : MathoptnonconvexSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_opt_nonconvex_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_opt_nonconvex_slice_mean(s : MathoptnonconvexSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_opt_nonconvex_slice_scale(s : MathoptnonconvexSlice, f : Double) -> MathoptnonconvexSlice {
   let result = math_opt_nonconvex_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_opt_nonconvex_slice_fill(s : MathoptnonconvexSlice, v : Double) -> M
   result
 }
 
-pub fn math_opt_nonconvex_slice_min(s : MathoptnonconvexSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_slice_min(s : MathoptnonconvexSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_opt_nonconvex_slice_max(s : MathoptnonconvexSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_opt_nonconvex_slice_max(s : MathoptnonconvexSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_opt_nonconvex_slice_to_string(s : MathoptnonconvexSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

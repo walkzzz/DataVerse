@@ -88,11 +88,7 @@ pub fn chem_desc_fingerprint_make_series(vals : Array[Double], name : String) ->
 
 pub fn chem_desc_fingerprint_series_len(s : ChemdescfingerprintSeries) -> Int { s.vals.length() }
 
-pub fn chem_desc_fingerprint_series_sum(s : ChemdescfingerprintSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_desc_fingerprint_series_sum(s : ChemdescfingerprintSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_desc_fingerprint_series_mean(s : ChemdescfingerprintSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_desc_fingerprint_frame_set(s : ChemdescfingerprintFrame, i : Int, v 
   result
 }
 
-pub fn chem_desc_fingerprint_frame_sum(s : ChemdescfingerprintFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_frame_sum(s : ChemdescfingerprintFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_frame_mean(s : ChemdescfingerprintFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_frame_mean(s : ChemdescfingerprintFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_frame_scale(s : ChemdescfingerprintFrame, f : Double) -> ChemdescfingerprintFrame {
   let result = chem_desc_fingerprint_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_desc_fingerprint_frame_fill(s : ChemdescfingerprintFrame, v : Double
   result
 }
 
-pub fn chem_desc_fingerprint_frame_min(s : ChemdescfingerprintFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_frame_min(s : ChemdescfingerprintFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_frame_max(s : ChemdescfingerprintFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_frame_max(s : ChemdescfingerprintFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_frame_to_string(s : ChemdescfingerprintFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_desc_fingerprint_table_set(s : ChemdescfingerprintTable, i : Int, v 
   result
 }
 
-pub fn chem_desc_fingerprint_table_sum(s : ChemdescfingerprintTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_table_sum(s : ChemdescfingerprintTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_table_mean(s : ChemdescfingerprintTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_table_mean(s : ChemdescfingerprintTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_table_scale(s : ChemdescfingerprintTable, f : Double) -> ChemdescfingerprintTable {
   let result = chem_desc_fingerprint_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_desc_fingerprint_table_fill(s : ChemdescfingerprintTable, v : Double
   result
 }
 
-pub fn chem_desc_fingerprint_table_min(s : ChemdescfingerprintTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_table_min(s : ChemdescfingerprintTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_table_max(s : ChemdescfingerprintTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_table_max(s : ChemdescfingerprintTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_table_to_string(s : ChemdescfingerprintTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_desc_fingerprint_graphn_set(s : ChemdescfingerprintGraphN, i : Int, 
   result
 }
 
-pub fn chem_desc_fingerprint_graphn_sum(s : ChemdescfingerprintGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_graphn_sum(s : ChemdescfingerprintGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_graphn_mean(s : ChemdescfingerprintGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_graphn_mean(s : ChemdescfingerprintGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_graphn_scale(s : ChemdescfingerprintGraphN, f : Double) -> ChemdescfingerprintGraphN {
   let result = chem_desc_fingerprint_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_desc_fingerprint_graphn_fill(s : ChemdescfingerprintGraphN, v : Doub
   result
 }
 
-pub fn chem_desc_fingerprint_graphn_min(s : ChemdescfingerprintGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_graphn_min(s : ChemdescfingerprintGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_graphn_max(s : ChemdescfingerprintGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_graphn_max(s : ChemdescfingerprintGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_graphn_to_string(s : ChemdescfingerprintGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_desc_fingerprint_node_set(s : ChemdescfingerprintNode, i : Int, v : 
   result
 }
 
-pub fn chem_desc_fingerprint_node_sum(s : ChemdescfingerprintNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_node_sum(s : ChemdescfingerprintNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_node_mean(s : ChemdescfingerprintNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_node_mean(s : ChemdescfingerprintNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_node_scale(s : ChemdescfingerprintNode, f : Double) -> ChemdescfingerprintNode {
   let result = chem_desc_fingerprint_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_desc_fingerprint_node_fill(s : ChemdescfingerprintNode, v : Double) 
   result
 }
 
-pub fn chem_desc_fingerprint_node_min(s : ChemdescfingerprintNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_node_min(s : ChemdescfingerprintNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_node_max(s : ChemdescfingerprintNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_node_max(s : ChemdescfingerprintNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_node_to_string(s : ChemdescfingerprintNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_desc_fingerprint_edge_set(s : ChemdescfingerprintEdge, i : Int, v : 
   result
 }
 
-pub fn chem_desc_fingerprint_edge_sum(s : ChemdescfingerprintEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_edge_sum(s : ChemdescfingerprintEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_edge_mean(s : ChemdescfingerprintEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_edge_mean(s : ChemdescfingerprintEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_edge_scale(s : ChemdescfingerprintEdge, f : Double) -> ChemdescfingerprintEdge {
   let result = chem_desc_fingerprint_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_desc_fingerprint_edge_fill(s : ChemdescfingerprintEdge, v : Double) 
   result
 }
 
-pub fn chem_desc_fingerprint_edge_min(s : ChemdescfingerprintEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_edge_min(s : ChemdescfingerprintEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_edge_max(s : ChemdescfingerprintEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_edge_max(s : ChemdescfingerprintEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_edge_to_string(s : ChemdescfingerprintEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_desc_fingerprint_path_set(s : ChemdescfingerprintPath, i : Int, v : 
   result
 }
 
-pub fn chem_desc_fingerprint_path_sum(s : ChemdescfingerprintPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_path_sum(s : ChemdescfingerprintPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_path_mean(s : ChemdescfingerprintPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_path_mean(s : ChemdescfingerprintPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_path_scale(s : ChemdescfingerprintPath, f : Double) -> ChemdescfingerprintPath {
   let result = chem_desc_fingerprint_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_desc_fingerprint_path_fill(s : ChemdescfingerprintPath, v : Double) 
   result
 }
 
-pub fn chem_desc_fingerprint_path_min(s : ChemdescfingerprintPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_path_min(s : ChemdescfingerprintPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_path_max(s : ChemdescfingerprintPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_path_max(s : ChemdescfingerprintPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_path_to_string(s : ChemdescfingerprintPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_desc_fingerprint_cluster_set(s : ChemdescfingerprintCluster, i : Int
   result
 }
 
-pub fn chem_desc_fingerprint_cluster_sum(s : ChemdescfingerprintCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_cluster_sum(s : ChemdescfingerprintCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_cluster_mean(s : ChemdescfingerprintCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_cluster_mean(s : ChemdescfingerprintCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_cluster_scale(s : ChemdescfingerprintCluster, f : Double) -> ChemdescfingerprintCluster {
   let result = chem_desc_fingerprint_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_desc_fingerprint_cluster_fill(s : ChemdescfingerprintCluster, v : Do
   result
 }
 
-pub fn chem_desc_fingerprint_cluster_min(s : ChemdescfingerprintCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_cluster_min(s : ChemdescfingerprintCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_cluster_max(s : ChemdescfingerprintCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_cluster_max(s : ChemdescfingerprintCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_cluster_to_string(s : ChemdescfingerprintCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_desc_fingerprint_model_set(s : ChemdescfingerprintModel, i : Int, v 
   result
 }
 
-pub fn chem_desc_fingerprint_model_sum(s : ChemdescfingerprintModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_model_sum(s : ChemdescfingerprintModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_model_mean(s : ChemdescfingerprintModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_model_mean(s : ChemdescfingerprintModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_model_scale(s : ChemdescfingerprintModel, f : Double) -> ChemdescfingerprintModel {
   let result = chem_desc_fingerprint_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_desc_fingerprint_model_fill(s : ChemdescfingerprintModel, v : Double
   result
 }
 
-pub fn chem_desc_fingerprint_model_min(s : ChemdescfingerprintModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_model_min(s : ChemdescfingerprintModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_model_max(s : ChemdescfingerprintModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_model_max(s : ChemdescfingerprintModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_model_to_string(s : ChemdescfingerprintModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_desc_fingerprint_layer_set(s : ChemdescfingerprintLayer, i : Int, v 
   result
 }
 
-pub fn chem_desc_fingerprint_layer_sum(s : ChemdescfingerprintLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_layer_sum(s : ChemdescfingerprintLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_layer_mean(s : ChemdescfingerprintLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_layer_mean(s : ChemdescfingerprintLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_layer_scale(s : ChemdescfingerprintLayer, f : Double) -> ChemdescfingerprintLayer {
   let result = chem_desc_fingerprint_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_desc_fingerprint_layer_fill(s : ChemdescfingerprintLayer, v : Double
   result
 }
 
-pub fn chem_desc_fingerprint_layer_min(s : ChemdescfingerprintLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_layer_min(s : ChemdescfingerprintLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_layer_max(s : ChemdescfingerprintLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_layer_max(s : ChemdescfingerprintLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_layer_to_string(s : ChemdescfingerprintLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_desc_fingerprint_buffer_set(s : ChemdescfingerprintBuffer, i : Int, 
   result
 }
 
-pub fn chem_desc_fingerprint_buffer_sum(s : ChemdescfingerprintBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_buffer_sum(s : ChemdescfingerprintBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_buffer_mean(s : ChemdescfingerprintBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_buffer_mean(s : ChemdescfingerprintBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_buffer_scale(s : ChemdescfingerprintBuffer, f : Double) -> ChemdescfingerprintBuffer {
   let result = chem_desc_fingerprint_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_desc_fingerprint_buffer_fill(s : ChemdescfingerprintBuffer, v : Doub
   result
 }
 
-pub fn chem_desc_fingerprint_buffer_min(s : ChemdescfingerprintBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_buffer_min(s : ChemdescfingerprintBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_buffer_max(s : ChemdescfingerprintBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_buffer_max(s : ChemdescfingerprintBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_buffer_to_string(s : ChemdescfingerprintBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_desc_fingerprint_cursor_set(s : ChemdescfingerprintCursor, i : Int, 
   result
 }
 
-pub fn chem_desc_fingerprint_cursor_sum(s : ChemdescfingerprintCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_cursor_sum(s : ChemdescfingerprintCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_cursor_mean(s : ChemdescfingerprintCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_cursor_mean(s : ChemdescfingerprintCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_cursor_scale(s : ChemdescfingerprintCursor, f : Double) -> ChemdescfingerprintCursor {
   let result = chem_desc_fingerprint_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_desc_fingerprint_cursor_fill(s : ChemdescfingerprintCursor, v : Doub
   result
 }
 
-pub fn chem_desc_fingerprint_cursor_min(s : ChemdescfingerprintCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_cursor_min(s : ChemdescfingerprintCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_cursor_max(s : ChemdescfingerprintCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_cursor_max(s : ChemdescfingerprintCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_cursor_to_string(s : ChemdescfingerprintCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_desc_fingerprint_view_set(s : ChemdescfingerprintView, i : Int, v : 
   result
 }
 
-pub fn chem_desc_fingerprint_view_sum(s : ChemdescfingerprintView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_view_sum(s : ChemdescfingerprintView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_view_mean(s : ChemdescfingerprintView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_view_mean(s : ChemdescfingerprintView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_view_scale(s : ChemdescfingerprintView, f : Double) -> ChemdescfingerprintView {
   let result = chem_desc_fingerprint_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_desc_fingerprint_view_fill(s : ChemdescfingerprintView, v : Double) 
   result
 }
 
-pub fn chem_desc_fingerprint_view_min(s : ChemdescfingerprintView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_view_min(s : ChemdescfingerprintView) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_view_max(s : ChemdescfingerprintView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_view_max(s : ChemdescfingerprintView) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_view_to_string(s : ChemdescfingerprintView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_desc_fingerprint_range_set(s : ChemdescfingerprintRange, i : Int, v 
   result
 }
 
-pub fn chem_desc_fingerprint_range_sum(s : ChemdescfingerprintRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_range_sum(s : ChemdescfingerprintRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_range_mean(s : ChemdescfingerprintRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_range_mean(s : ChemdescfingerprintRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_range_scale(s : ChemdescfingerprintRange, f : Double) -> ChemdescfingerprintRange {
   let result = chem_desc_fingerprint_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_desc_fingerprint_range_fill(s : ChemdescfingerprintRange, v : Double
   result
 }
 
-pub fn chem_desc_fingerprint_range_min(s : ChemdescfingerprintRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_range_min(s : ChemdescfingerprintRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_range_max(s : ChemdescfingerprintRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_range_max(s : ChemdescfingerprintRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_range_to_string(s : ChemdescfingerprintRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_desc_fingerprint_slice_set(s : ChemdescfingerprintSlice, i : Int, v 
   result
 }
 
-pub fn chem_desc_fingerprint_slice_sum(s : ChemdescfingerprintSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_fingerprint_slice_sum(s : ChemdescfingerprintSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_fingerprint_slice_mean(s : ChemdescfingerprintSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_fingerprint_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_fingerprint_slice_mean(s : ChemdescfingerprintSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_fingerprint_slice_scale(s : ChemdescfingerprintSlice, f : Double) -> ChemdescfingerprintSlice {
   let result = chem_desc_fingerprint_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_desc_fingerprint_slice_fill(s : ChemdescfingerprintSlice, v : Double
   result
 }
 
-pub fn chem_desc_fingerprint_slice_min(s : ChemdescfingerprintSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_slice_min(s : ChemdescfingerprintSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_fingerprint_slice_max(s : ChemdescfingerprintSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_fingerprint_slice_max(s : ChemdescfingerprintSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_fingerprint_slice_to_string(s : ChemdescfingerprintSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

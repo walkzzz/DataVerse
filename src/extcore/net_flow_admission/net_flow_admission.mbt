@@ -88,11 +88,7 @@ pub fn net_flow_admission_make_series(vals : Array[Double], name : String) -> Ne
 
 pub fn net_flow_admission_series_len(s : NetflowadmissionSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_admission_series_sum(s : NetflowadmissionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_admission_series_sum(s : NetflowadmissionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_admission_series_mean(s : NetflowadmissionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_admission_frame_set(s : NetflowadmissionFrame, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_admission_frame_sum(s : NetflowadmissionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_frame_sum(s : NetflowadmissionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_frame_mean(s : NetflowadmissionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_frame_mean(s : NetflowadmissionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_frame_scale(s : NetflowadmissionFrame, f : Double) -> NetflowadmissionFrame {
   let result = net_flow_admission_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_admission_frame_fill(s : NetflowadmissionFrame, v : Double) -> N
   result
 }
 
-pub fn net_flow_admission_frame_min(s : NetflowadmissionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_frame_min(s : NetflowadmissionFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_frame_max(s : NetflowadmissionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_frame_max(s : NetflowadmissionFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_frame_to_string(s : NetflowadmissionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_admission_table_set(s : NetflowadmissionTable, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_admission_table_sum(s : NetflowadmissionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_table_sum(s : NetflowadmissionTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_table_mean(s : NetflowadmissionTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_table_mean(s : NetflowadmissionTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_table_scale(s : NetflowadmissionTable, f : Double) -> NetflowadmissionTable {
   let result = net_flow_admission_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_admission_table_fill(s : NetflowadmissionTable, v : Double) -> N
   result
 }
 
-pub fn net_flow_admission_table_min(s : NetflowadmissionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_table_min(s : NetflowadmissionTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_table_max(s : NetflowadmissionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_table_max(s : NetflowadmissionTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_table_to_string(s : NetflowadmissionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_admission_graphn_set(s : NetflowadmissionGraphN, i : Int, v : Do
   result
 }
 
-pub fn net_flow_admission_graphn_sum(s : NetflowadmissionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_graphn_sum(s : NetflowadmissionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_graphn_mean(s : NetflowadmissionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_graphn_mean(s : NetflowadmissionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_graphn_scale(s : NetflowadmissionGraphN, f : Double) -> NetflowadmissionGraphN {
   let result = net_flow_admission_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_admission_graphn_fill(s : NetflowadmissionGraphN, v : Double) ->
   result
 }
 
-pub fn net_flow_admission_graphn_min(s : NetflowadmissionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_graphn_min(s : NetflowadmissionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_graphn_max(s : NetflowadmissionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_graphn_max(s : NetflowadmissionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_graphn_to_string(s : NetflowadmissionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_admission_node_set(s : NetflowadmissionNode, i : Int, v : Double
   result
 }
 
-pub fn net_flow_admission_node_sum(s : NetflowadmissionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_node_sum(s : NetflowadmissionNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_node_mean(s : NetflowadmissionNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_node_mean(s : NetflowadmissionNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_node_scale(s : NetflowadmissionNode, f : Double) -> NetflowadmissionNode {
   let result = net_flow_admission_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_admission_node_fill(s : NetflowadmissionNode, v : Double) -> Net
   result
 }
 
-pub fn net_flow_admission_node_min(s : NetflowadmissionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_node_min(s : NetflowadmissionNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_node_max(s : NetflowadmissionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_node_max(s : NetflowadmissionNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_node_to_string(s : NetflowadmissionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_admission_edge_set(s : NetflowadmissionEdge, i : Int, v : Double
   result
 }
 
-pub fn net_flow_admission_edge_sum(s : NetflowadmissionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_edge_sum(s : NetflowadmissionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_edge_mean(s : NetflowadmissionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_edge_mean(s : NetflowadmissionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_edge_scale(s : NetflowadmissionEdge, f : Double) -> NetflowadmissionEdge {
   let result = net_flow_admission_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_admission_edge_fill(s : NetflowadmissionEdge, v : Double) -> Net
   result
 }
 
-pub fn net_flow_admission_edge_min(s : NetflowadmissionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_edge_min(s : NetflowadmissionEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_edge_max(s : NetflowadmissionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_edge_max(s : NetflowadmissionEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_edge_to_string(s : NetflowadmissionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_admission_path_set(s : NetflowadmissionPath, i : Int, v : Double
   result
 }
 
-pub fn net_flow_admission_path_sum(s : NetflowadmissionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_path_sum(s : NetflowadmissionPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_path_mean(s : NetflowadmissionPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_path_mean(s : NetflowadmissionPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_path_scale(s : NetflowadmissionPath, f : Double) -> NetflowadmissionPath {
   let result = net_flow_admission_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_admission_path_fill(s : NetflowadmissionPath, v : Double) -> Net
   result
 }
 
-pub fn net_flow_admission_path_min(s : NetflowadmissionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_path_min(s : NetflowadmissionPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_path_max(s : NetflowadmissionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_path_max(s : NetflowadmissionPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_path_to_string(s : NetflowadmissionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_admission_cluster_set(s : NetflowadmissionCluster, i : Int, v : 
   result
 }
 
-pub fn net_flow_admission_cluster_sum(s : NetflowadmissionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_cluster_sum(s : NetflowadmissionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_cluster_mean(s : NetflowadmissionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_cluster_mean(s : NetflowadmissionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_cluster_scale(s : NetflowadmissionCluster, f : Double) -> NetflowadmissionCluster {
   let result = net_flow_admission_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_admission_cluster_fill(s : NetflowadmissionCluster, v : Double) 
   result
 }
 
-pub fn net_flow_admission_cluster_min(s : NetflowadmissionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_cluster_min(s : NetflowadmissionCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_cluster_max(s : NetflowadmissionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_cluster_max(s : NetflowadmissionCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_cluster_to_string(s : NetflowadmissionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_admission_model_set(s : NetflowadmissionModel, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_admission_model_sum(s : NetflowadmissionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_model_sum(s : NetflowadmissionModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_model_mean(s : NetflowadmissionModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_model_mean(s : NetflowadmissionModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_model_scale(s : NetflowadmissionModel, f : Double) -> NetflowadmissionModel {
   let result = net_flow_admission_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_admission_model_fill(s : NetflowadmissionModel, v : Double) -> N
   result
 }
 
-pub fn net_flow_admission_model_min(s : NetflowadmissionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_model_min(s : NetflowadmissionModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_model_max(s : NetflowadmissionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_model_max(s : NetflowadmissionModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_model_to_string(s : NetflowadmissionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_admission_layer_set(s : NetflowadmissionLayer, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_admission_layer_sum(s : NetflowadmissionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_layer_sum(s : NetflowadmissionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_layer_mean(s : NetflowadmissionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_layer_mean(s : NetflowadmissionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_layer_scale(s : NetflowadmissionLayer, f : Double) -> NetflowadmissionLayer {
   let result = net_flow_admission_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_admission_layer_fill(s : NetflowadmissionLayer, v : Double) -> N
   result
 }
 
-pub fn net_flow_admission_layer_min(s : NetflowadmissionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_layer_min(s : NetflowadmissionLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_layer_max(s : NetflowadmissionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_layer_max(s : NetflowadmissionLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_layer_to_string(s : NetflowadmissionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_admission_buffer_set(s : NetflowadmissionBuffer, i : Int, v : Do
   result
 }
 
-pub fn net_flow_admission_buffer_sum(s : NetflowadmissionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_buffer_sum(s : NetflowadmissionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_buffer_mean(s : NetflowadmissionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_buffer_mean(s : NetflowadmissionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_buffer_scale(s : NetflowadmissionBuffer, f : Double) -> NetflowadmissionBuffer {
   let result = net_flow_admission_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_admission_buffer_fill(s : NetflowadmissionBuffer, v : Double) ->
   result
 }
 
-pub fn net_flow_admission_buffer_min(s : NetflowadmissionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_buffer_min(s : NetflowadmissionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_buffer_max(s : NetflowadmissionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_buffer_max(s : NetflowadmissionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_buffer_to_string(s : NetflowadmissionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_admission_cursor_set(s : NetflowadmissionCursor, i : Int, v : Do
   result
 }
 
-pub fn net_flow_admission_cursor_sum(s : NetflowadmissionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_cursor_sum(s : NetflowadmissionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_cursor_mean(s : NetflowadmissionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_cursor_mean(s : NetflowadmissionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_cursor_scale(s : NetflowadmissionCursor, f : Double) -> NetflowadmissionCursor {
   let result = net_flow_admission_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_admission_cursor_fill(s : NetflowadmissionCursor, v : Double) ->
   result
 }
 
-pub fn net_flow_admission_cursor_min(s : NetflowadmissionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_cursor_min(s : NetflowadmissionCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_cursor_max(s : NetflowadmissionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_cursor_max(s : NetflowadmissionCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_cursor_to_string(s : NetflowadmissionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_admission_view_set(s : NetflowadmissionView, i : Int, v : Double
   result
 }
 
-pub fn net_flow_admission_view_sum(s : NetflowadmissionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_view_sum(s : NetflowadmissionView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_view_mean(s : NetflowadmissionView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_view_mean(s : NetflowadmissionView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_view_scale(s : NetflowadmissionView, f : Double) -> NetflowadmissionView {
   let result = net_flow_admission_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_admission_view_fill(s : NetflowadmissionView, v : Double) -> Net
   result
 }
 
-pub fn net_flow_admission_view_min(s : NetflowadmissionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_view_min(s : NetflowadmissionView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_view_max(s : NetflowadmissionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_view_max(s : NetflowadmissionView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_view_to_string(s : NetflowadmissionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_admission_range_set(s : NetflowadmissionRange, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_admission_range_sum(s : NetflowadmissionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_range_sum(s : NetflowadmissionRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_range_mean(s : NetflowadmissionRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_range_mean(s : NetflowadmissionRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_range_scale(s : NetflowadmissionRange, f : Double) -> NetflowadmissionRange {
   let result = net_flow_admission_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_admission_range_fill(s : NetflowadmissionRange, v : Double) -> N
   result
 }
 
-pub fn net_flow_admission_range_min(s : NetflowadmissionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_range_min(s : NetflowadmissionRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_range_max(s : NetflowadmissionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_range_max(s : NetflowadmissionRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_range_to_string(s : NetflowadmissionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_admission_slice_set(s : NetflowadmissionSlice, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_admission_slice_sum(s : NetflowadmissionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_admission_slice_sum(s : NetflowadmissionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_admission_slice_mean(s : NetflowadmissionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_admission_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_admission_slice_mean(s : NetflowadmissionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_admission_slice_scale(s : NetflowadmissionSlice, f : Double) -> NetflowadmissionSlice {
   let result = net_flow_admission_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_admission_slice_fill(s : NetflowadmissionSlice, v : Double) -> N
   result
 }
 
-pub fn net_flow_admission_slice_min(s : NetflowadmissionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_slice_min(s : NetflowadmissionSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_admission_slice_max(s : NetflowadmissionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_admission_slice_max(s : NetflowadmissionSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_admission_slice_to_string(s : NetflowadmissionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn physics_fluid_vortex_make_series(vals : Array[Double], name : String) -> 
 
 pub fn physics_fluid_vortex_series_len(s : PhysicsfluidvortexSeries) -> Int { s.vals.length() }
 
-pub fn physics_fluid_vortex_series_sum(s : PhysicsfluidvortexSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_fluid_vortex_series_sum(s : PhysicsfluidvortexSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_fluid_vortex_series_mean(s : PhysicsfluidvortexSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_fluid_vortex_frame_set(s : PhysicsfluidvortexFrame, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_vortex_frame_sum(s : PhysicsfluidvortexFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_frame_sum(s : PhysicsfluidvortexFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_frame_mean(s : PhysicsfluidvortexFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_frame_mean(s : PhysicsfluidvortexFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_frame_scale(s : PhysicsfluidvortexFrame, f : Double) -> PhysicsfluidvortexFrame {
   let result = physics_fluid_vortex_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_fluid_vortex_frame_fill(s : PhysicsfluidvortexFrame, v : Double) 
   result
 }
 
-pub fn physics_fluid_vortex_frame_min(s : PhysicsfluidvortexFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_frame_min(s : PhysicsfluidvortexFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_frame_max(s : PhysicsfluidvortexFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_frame_max(s : PhysicsfluidvortexFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_frame_to_string(s : PhysicsfluidvortexFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_fluid_vortex_table_set(s : PhysicsfluidvortexTable, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_vortex_table_sum(s : PhysicsfluidvortexTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_table_sum(s : PhysicsfluidvortexTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_table_mean(s : PhysicsfluidvortexTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_table_mean(s : PhysicsfluidvortexTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_table_scale(s : PhysicsfluidvortexTable, f : Double) -> PhysicsfluidvortexTable {
   let result = physics_fluid_vortex_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_fluid_vortex_table_fill(s : PhysicsfluidvortexTable, v : Double) 
   result
 }
 
-pub fn physics_fluid_vortex_table_min(s : PhysicsfluidvortexTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_table_min(s : PhysicsfluidvortexTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_table_max(s : PhysicsfluidvortexTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_table_max(s : PhysicsfluidvortexTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_table_to_string(s : PhysicsfluidvortexTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_fluid_vortex_graphn_set(s : PhysicsfluidvortexGraphN, i : Int, v 
   result
 }
 
-pub fn physics_fluid_vortex_graphn_sum(s : PhysicsfluidvortexGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_graphn_sum(s : PhysicsfluidvortexGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_graphn_mean(s : PhysicsfluidvortexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_graphn_mean(s : PhysicsfluidvortexGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_graphn_scale(s : PhysicsfluidvortexGraphN, f : Double) -> PhysicsfluidvortexGraphN {
   let result = physics_fluid_vortex_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_fluid_vortex_graphn_fill(s : PhysicsfluidvortexGraphN, v : Double
   result
 }
 
-pub fn physics_fluid_vortex_graphn_min(s : PhysicsfluidvortexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_graphn_min(s : PhysicsfluidvortexGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_graphn_max(s : PhysicsfluidvortexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_graphn_max(s : PhysicsfluidvortexGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_graphn_to_string(s : PhysicsfluidvortexGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_fluid_vortex_node_set(s : PhysicsfluidvortexNode, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_vortex_node_sum(s : PhysicsfluidvortexNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_node_sum(s : PhysicsfluidvortexNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_node_mean(s : PhysicsfluidvortexNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_node_mean(s : PhysicsfluidvortexNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_node_scale(s : PhysicsfluidvortexNode, f : Double) -> PhysicsfluidvortexNode {
   let result = physics_fluid_vortex_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_fluid_vortex_node_fill(s : PhysicsfluidvortexNode, v : Double) ->
   result
 }
 
-pub fn physics_fluid_vortex_node_min(s : PhysicsfluidvortexNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_node_min(s : PhysicsfluidvortexNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_node_max(s : PhysicsfluidvortexNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_node_max(s : PhysicsfluidvortexNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_node_to_string(s : PhysicsfluidvortexNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_fluid_vortex_edge_set(s : PhysicsfluidvortexEdge, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_vortex_edge_sum(s : PhysicsfluidvortexEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_edge_sum(s : PhysicsfluidvortexEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_edge_mean(s : PhysicsfluidvortexEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_edge_mean(s : PhysicsfluidvortexEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_edge_scale(s : PhysicsfluidvortexEdge, f : Double) -> PhysicsfluidvortexEdge {
   let result = physics_fluid_vortex_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_fluid_vortex_edge_fill(s : PhysicsfluidvortexEdge, v : Double) ->
   result
 }
 
-pub fn physics_fluid_vortex_edge_min(s : PhysicsfluidvortexEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_edge_min(s : PhysicsfluidvortexEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_edge_max(s : PhysicsfluidvortexEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_edge_max(s : PhysicsfluidvortexEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_edge_to_string(s : PhysicsfluidvortexEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_fluid_vortex_path_set(s : PhysicsfluidvortexPath, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_vortex_path_sum(s : PhysicsfluidvortexPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_path_sum(s : PhysicsfluidvortexPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_path_mean(s : PhysicsfluidvortexPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_path_mean(s : PhysicsfluidvortexPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_path_scale(s : PhysicsfluidvortexPath, f : Double) -> PhysicsfluidvortexPath {
   let result = physics_fluid_vortex_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_fluid_vortex_path_fill(s : PhysicsfluidvortexPath, v : Double) ->
   result
 }
 
-pub fn physics_fluid_vortex_path_min(s : PhysicsfluidvortexPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_path_min(s : PhysicsfluidvortexPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_path_max(s : PhysicsfluidvortexPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_path_max(s : PhysicsfluidvortexPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_path_to_string(s : PhysicsfluidvortexPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_fluid_vortex_cluster_set(s : PhysicsfluidvortexCluster, i : Int, 
   result
 }
 
-pub fn physics_fluid_vortex_cluster_sum(s : PhysicsfluidvortexCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_cluster_sum(s : PhysicsfluidvortexCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_cluster_mean(s : PhysicsfluidvortexCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_cluster_mean(s : PhysicsfluidvortexCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_cluster_scale(s : PhysicsfluidvortexCluster, f : Double) -> PhysicsfluidvortexCluster {
   let result = physics_fluid_vortex_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_fluid_vortex_cluster_fill(s : PhysicsfluidvortexCluster, v : Doub
   result
 }
 
-pub fn physics_fluid_vortex_cluster_min(s : PhysicsfluidvortexCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_cluster_min(s : PhysicsfluidvortexCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_cluster_max(s : PhysicsfluidvortexCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_cluster_max(s : PhysicsfluidvortexCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_cluster_to_string(s : PhysicsfluidvortexCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_fluid_vortex_model_set(s : PhysicsfluidvortexModel, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_vortex_model_sum(s : PhysicsfluidvortexModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_model_sum(s : PhysicsfluidvortexModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_model_mean(s : PhysicsfluidvortexModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_model_mean(s : PhysicsfluidvortexModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_model_scale(s : PhysicsfluidvortexModel, f : Double) -> PhysicsfluidvortexModel {
   let result = physics_fluid_vortex_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_fluid_vortex_model_fill(s : PhysicsfluidvortexModel, v : Double) 
   result
 }
 
-pub fn physics_fluid_vortex_model_min(s : PhysicsfluidvortexModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_model_min(s : PhysicsfluidvortexModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_model_max(s : PhysicsfluidvortexModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_model_max(s : PhysicsfluidvortexModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_model_to_string(s : PhysicsfluidvortexModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_fluid_vortex_layer_set(s : PhysicsfluidvortexLayer, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_vortex_layer_sum(s : PhysicsfluidvortexLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_layer_sum(s : PhysicsfluidvortexLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_layer_mean(s : PhysicsfluidvortexLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_layer_mean(s : PhysicsfluidvortexLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_layer_scale(s : PhysicsfluidvortexLayer, f : Double) -> PhysicsfluidvortexLayer {
   let result = physics_fluid_vortex_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_fluid_vortex_layer_fill(s : PhysicsfluidvortexLayer, v : Double) 
   result
 }
 
-pub fn physics_fluid_vortex_layer_min(s : PhysicsfluidvortexLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_layer_min(s : PhysicsfluidvortexLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_layer_max(s : PhysicsfluidvortexLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_layer_max(s : PhysicsfluidvortexLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_layer_to_string(s : PhysicsfluidvortexLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_fluid_vortex_buffer_set(s : PhysicsfluidvortexBuffer, i : Int, v 
   result
 }
 
-pub fn physics_fluid_vortex_buffer_sum(s : PhysicsfluidvortexBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_buffer_sum(s : PhysicsfluidvortexBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_buffer_mean(s : PhysicsfluidvortexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_buffer_mean(s : PhysicsfluidvortexBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_buffer_scale(s : PhysicsfluidvortexBuffer, f : Double) -> PhysicsfluidvortexBuffer {
   let result = physics_fluid_vortex_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_fluid_vortex_buffer_fill(s : PhysicsfluidvortexBuffer, v : Double
   result
 }
 
-pub fn physics_fluid_vortex_buffer_min(s : PhysicsfluidvortexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_buffer_min(s : PhysicsfluidvortexBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_buffer_max(s : PhysicsfluidvortexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_buffer_max(s : PhysicsfluidvortexBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_buffer_to_string(s : PhysicsfluidvortexBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_fluid_vortex_cursor_set(s : PhysicsfluidvortexCursor, i : Int, v 
   result
 }
 
-pub fn physics_fluid_vortex_cursor_sum(s : PhysicsfluidvortexCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_cursor_sum(s : PhysicsfluidvortexCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_cursor_mean(s : PhysicsfluidvortexCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_cursor_mean(s : PhysicsfluidvortexCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_cursor_scale(s : PhysicsfluidvortexCursor, f : Double) -> PhysicsfluidvortexCursor {
   let result = physics_fluid_vortex_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_fluid_vortex_cursor_fill(s : PhysicsfluidvortexCursor, v : Double
   result
 }
 
-pub fn physics_fluid_vortex_cursor_min(s : PhysicsfluidvortexCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_cursor_min(s : PhysicsfluidvortexCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_cursor_max(s : PhysicsfluidvortexCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_cursor_max(s : PhysicsfluidvortexCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_cursor_to_string(s : PhysicsfluidvortexCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_fluid_vortex_view_set(s : PhysicsfluidvortexView, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_vortex_view_sum(s : PhysicsfluidvortexView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_view_sum(s : PhysicsfluidvortexView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_view_mean(s : PhysicsfluidvortexView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_view_mean(s : PhysicsfluidvortexView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_view_scale(s : PhysicsfluidvortexView, f : Double) -> PhysicsfluidvortexView {
   let result = physics_fluid_vortex_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_fluid_vortex_view_fill(s : PhysicsfluidvortexView, v : Double) ->
   result
 }
 
-pub fn physics_fluid_vortex_view_min(s : PhysicsfluidvortexView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_view_min(s : PhysicsfluidvortexView) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_view_max(s : PhysicsfluidvortexView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_view_max(s : PhysicsfluidvortexView) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_view_to_string(s : PhysicsfluidvortexView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_fluid_vortex_range_set(s : PhysicsfluidvortexRange, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_vortex_range_sum(s : PhysicsfluidvortexRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_range_sum(s : PhysicsfluidvortexRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_range_mean(s : PhysicsfluidvortexRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_range_mean(s : PhysicsfluidvortexRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_range_scale(s : PhysicsfluidvortexRange, f : Double) -> PhysicsfluidvortexRange {
   let result = physics_fluid_vortex_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_fluid_vortex_range_fill(s : PhysicsfluidvortexRange, v : Double) 
   result
 }
 
-pub fn physics_fluid_vortex_range_min(s : PhysicsfluidvortexRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_range_min(s : PhysicsfluidvortexRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_range_max(s : PhysicsfluidvortexRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_range_max(s : PhysicsfluidvortexRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_range_to_string(s : PhysicsfluidvortexRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_fluid_vortex_slice_set(s : PhysicsfluidvortexSlice, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_vortex_slice_sum(s : PhysicsfluidvortexSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_vortex_slice_sum(s : PhysicsfluidvortexSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_vortex_slice_mean(s : PhysicsfluidvortexSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_vortex_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_vortex_slice_mean(s : PhysicsfluidvortexSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_vortex_slice_scale(s : PhysicsfluidvortexSlice, f : Double) -> PhysicsfluidvortexSlice {
   let result = physics_fluid_vortex_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_fluid_vortex_slice_fill(s : PhysicsfluidvortexSlice, v : Double) 
   result
 }
 
-pub fn physics_fluid_vortex_slice_min(s : PhysicsfluidvortexSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_slice_min(s : PhysicsfluidvortexSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_vortex_slice_max(s : PhysicsfluidvortexSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_vortex_slice_max(s : PhysicsfluidvortexSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_vortex_slice_to_string(s : PhysicsfluidvortexSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

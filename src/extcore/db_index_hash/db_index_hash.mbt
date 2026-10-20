@@ -88,11 +88,7 @@ pub fn db_index_hash_make_series(vals : Array[Double], name : String) -> Dbindex
 
 pub fn db_index_hash_series_len(s : DbindexhashSeries) -> Int { s.vals.length() }
 
-pub fn db_index_hash_series_sum(s : DbindexhashSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_hash_series_sum(s : DbindexhashSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_hash_series_mean(s : DbindexhashSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_hash_frame_set(s : DbindexhashFrame, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_hash_frame_sum(s : DbindexhashFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_frame_sum(s : DbindexhashFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_frame_mean(s : DbindexhashFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_frame_mean(s : DbindexhashFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_frame_scale(s : DbindexhashFrame, f : Double) -> DbindexhashFrame {
   let result = db_index_hash_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_hash_frame_fill(s : DbindexhashFrame, v : Double) -> Dbindexhash
   result
 }
 
-pub fn db_index_hash_frame_min(s : DbindexhashFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_frame_min(s : DbindexhashFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_frame_max(s : DbindexhashFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_frame_max(s : DbindexhashFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_frame_to_string(s : DbindexhashFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_hash_table_set(s : DbindexhashTable, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_hash_table_sum(s : DbindexhashTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_table_sum(s : DbindexhashTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_table_mean(s : DbindexhashTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_table_mean(s : DbindexhashTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_table_scale(s : DbindexhashTable, f : Double) -> DbindexhashTable {
   let result = db_index_hash_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_hash_table_fill(s : DbindexhashTable, v : Double) -> Dbindexhash
   result
 }
 
-pub fn db_index_hash_table_min(s : DbindexhashTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_table_min(s : DbindexhashTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_table_max(s : DbindexhashTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_table_max(s : DbindexhashTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_table_to_string(s : DbindexhashTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_hash_graphn_set(s : DbindexhashGraphN, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_hash_graphn_sum(s : DbindexhashGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_graphn_sum(s : DbindexhashGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_graphn_mean(s : DbindexhashGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_graphn_mean(s : DbindexhashGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_graphn_scale(s : DbindexhashGraphN, f : Double) -> DbindexhashGraphN {
   let result = db_index_hash_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_hash_graphn_fill(s : DbindexhashGraphN, v : Double) -> Dbindexha
   result
 }
 
-pub fn db_index_hash_graphn_min(s : DbindexhashGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_graphn_min(s : DbindexhashGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_graphn_max(s : DbindexhashGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_graphn_max(s : DbindexhashGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_graphn_to_string(s : DbindexhashGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_hash_node_set(s : DbindexhashNode, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_hash_node_sum(s : DbindexhashNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_node_sum(s : DbindexhashNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_node_mean(s : DbindexhashNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_node_mean(s : DbindexhashNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_node_scale(s : DbindexhashNode, f : Double) -> DbindexhashNode {
   let result = db_index_hash_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_hash_node_fill(s : DbindexhashNode, v : Double) -> DbindexhashNo
   result
 }
 
-pub fn db_index_hash_node_min(s : DbindexhashNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_node_min(s : DbindexhashNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_node_max(s : DbindexhashNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_node_max(s : DbindexhashNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_node_to_string(s : DbindexhashNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_hash_edge_set(s : DbindexhashEdge, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_hash_edge_sum(s : DbindexhashEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_edge_sum(s : DbindexhashEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_edge_mean(s : DbindexhashEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_edge_mean(s : DbindexhashEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_edge_scale(s : DbindexhashEdge, f : Double) -> DbindexhashEdge {
   let result = db_index_hash_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_hash_edge_fill(s : DbindexhashEdge, v : Double) -> DbindexhashEd
   result
 }
 
-pub fn db_index_hash_edge_min(s : DbindexhashEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_edge_min(s : DbindexhashEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_edge_max(s : DbindexhashEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_edge_max(s : DbindexhashEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_edge_to_string(s : DbindexhashEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_hash_path_set(s : DbindexhashPath, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_hash_path_sum(s : DbindexhashPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_path_sum(s : DbindexhashPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_path_mean(s : DbindexhashPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_path_mean(s : DbindexhashPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_path_scale(s : DbindexhashPath, f : Double) -> DbindexhashPath {
   let result = db_index_hash_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_hash_path_fill(s : DbindexhashPath, v : Double) -> DbindexhashPa
   result
 }
 
-pub fn db_index_hash_path_min(s : DbindexhashPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_path_min(s : DbindexhashPath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_path_max(s : DbindexhashPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_path_max(s : DbindexhashPath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_path_to_string(s : DbindexhashPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_hash_cluster_set(s : DbindexhashCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_hash_cluster_sum(s : DbindexhashCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_cluster_sum(s : DbindexhashCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_cluster_mean(s : DbindexhashCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_cluster_mean(s : DbindexhashCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_cluster_scale(s : DbindexhashCluster, f : Double) -> DbindexhashCluster {
   let result = db_index_hash_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_hash_cluster_fill(s : DbindexhashCluster, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_hash_cluster_min(s : DbindexhashCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_cluster_min(s : DbindexhashCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_cluster_max(s : DbindexhashCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_cluster_max(s : DbindexhashCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_cluster_to_string(s : DbindexhashCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_hash_model_set(s : DbindexhashModel, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_hash_model_sum(s : DbindexhashModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_model_sum(s : DbindexhashModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_model_mean(s : DbindexhashModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_model_mean(s : DbindexhashModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_model_scale(s : DbindexhashModel, f : Double) -> DbindexhashModel {
   let result = db_index_hash_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_hash_model_fill(s : DbindexhashModel, v : Double) -> Dbindexhash
   result
 }
 
-pub fn db_index_hash_model_min(s : DbindexhashModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_model_min(s : DbindexhashModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_model_max(s : DbindexhashModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_model_max(s : DbindexhashModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_model_to_string(s : DbindexhashModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_hash_layer_set(s : DbindexhashLayer, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_hash_layer_sum(s : DbindexhashLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_layer_sum(s : DbindexhashLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_layer_mean(s : DbindexhashLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_layer_mean(s : DbindexhashLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_layer_scale(s : DbindexhashLayer, f : Double) -> DbindexhashLayer {
   let result = db_index_hash_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_hash_layer_fill(s : DbindexhashLayer, v : Double) -> Dbindexhash
   result
 }
 
-pub fn db_index_hash_layer_min(s : DbindexhashLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_layer_min(s : DbindexhashLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_layer_max(s : DbindexhashLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_layer_max(s : DbindexhashLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_layer_to_string(s : DbindexhashLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_hash_buffer_set(s : DbindexhashBuffer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_hash_buffer_sum(s : DbindexhashBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_buffer_sum(s : DbindexhashBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_buffer_mean(s : DbindexhashBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_buffer_mean(s : DbindexhashBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_buffer_scale(s : DbindexhashBuffer, f : Double) -> DbindexhashBuffer {
   let result = db_index_hash_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_hash_buffer_fill(s : DbindexhashBuffer, v : Double) -> Dbindexha
   result
 }
 
-pub fn db_index_hash_buffer_min(s : DbindexhashBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_buffer_min(s : DbindexhashBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_buffer_max(s : DbindexhashBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_buffer_max(s : DbindexhashBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_buffer_to_string(s : DbindexhashBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_hash_cursor_set(s : DbindexhashCursor, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_hash_cursor_sum(s : DbindexhashCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_cursor_sum(s : DbindexhashCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_cursor_mean(s : DbindexhashCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_cursor_mean(s : DbindexhashCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_cursor_scale(s : DbindexhashCursor, f : Double) -> DbindexhashCursor {
   let result = db_index_hash_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_hash_cursor_fill(s : DbindexhashCursor, v : Double) -> Dbindexha
   result
 }
 
-pub fn db_index_hash_cursor_min(s : DbindexhashCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_cursor_min(s : DbindexhashCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_cursor_max(s : DbindexhashCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_cursor_max(s : DbindexhashCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_cursor_to_string(s : DbindexhashCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_hash_view_set(s : DbindexhashView, i : Int, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_hash_view_sum(s : DbindexhashView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_view_sum(s : DbindexhashView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_view_mean(s : DbindexhashView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_view_mean(s : DbindexhashView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_view_scale(s : DbindexhashView, f : Double) -> DbindexhashView {
   let result = db_index_hash_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_hash_view_fill(s : DbindexhashView, v : Double) -> DbindexhashVi
   result
 }
 
-pub fn db_index_hash_view_min(s : DbindexhashView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_view_min(s : DbindexhashView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_view_max(s : DbindexhashView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_view_max(s : DbindexhashView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_view_to_string(s : DbindexhashView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_hash_range_set(s : DbindexhashRange, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_hash_range_sum(s : DbindexhashRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_range_sum(s : DbindexhashRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_range_mean(s : DbindexhashRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_range_mean(s : DbindexhashRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_range_scale(s : DbindexhashRange, f : Double) -> DbindexhashRange {
   let result = db_index_hash_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_hash_range_fill(s : DbindexhashRange, v : Double) -> Dbindexhash
   result
 }
 
-pub fn db_index_hash_range_min(s : DbindexhashRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_range_min(s : DbindexhashRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_range_max(s : DbindexhashRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_range_max(s : DbindexhashRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_range_to_string(s : DbindexhashRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_hash_slice_set(s : DbindexhashSlice, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_hash_slice_sum(s : DbindexhashSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_hash_slice_sum(s : DbindexhashSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_hash_slice_mean(s : DbindexhashSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_hash_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_hash_slice_mean(s : DbindexhashSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_hash_slice_scale(s : DbindexhashSlice, f : Double) -> DbindexhashSlice {
   let result = db_index_hash_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_hash_slice_fill(s : DbindexhashSlice, v : Double) -> Dbindexhash
   result
 }
 
-pub fn db_index_hash_slice_min(s : DbindexhashSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_slice_min(s : DbindexhashSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_hash_slice_max(s : DbindexhashSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_hash_slice_max(s : DbindexhashSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_hash_slice_to_string(s : DbindexhashSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

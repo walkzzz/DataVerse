@@ -88,11 +88,7 @@ pub fn db_store_doc_make_series(vals : Array[Double], name : String) -> Dbstored
 
 pub fn db_store_doc_series_len(s : DbstoredocSeries) -> Int { s.vals.length() }
 
-pub fn db_store_doc_series_sum(s : DbstoredocSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_store_doc_series_sum(s : DbstoredocSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_store_doc_series_mean(s : DbstoredocSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_store_doc_frame_set(s : DbstoredocFrame, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_doc_frame_sum(s : DbstoredocFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_frame_sum(s : DbstoredocFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_frame_mean(s : DbstoredocFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_frame_mean(s : DbstoredocFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_frame_scale(s : DbstoredocFrame, f : Double) -> DbstoredocFrame {
   let result = db_store_doc_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_store_doc_frame_fill(s : DbstoredocFrame, v : Double) -> DbstoredocFra
   result
 }
 
-pub fn db_store_doc_frame_min(s : DbstoredocFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_frame_min(s : DbstoredocFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_frame_max(s : DbstoredocFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_frame_max(s : DbstoredocFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_frame_to_string(s : DbstoredocFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_store_doc_table_set(s : DbstoredocTable, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_doc_table_sum(s : DbstoredocTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_table_sum(s : DbstoredocTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_table_mean(s : DbstoredocTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_table_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_table_mean(s : DbstoredocTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_table_scale(s : DbstoredocTable, f : Double) -> DbstoredocTable {
   let result = db_store_doc_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_store_doc_table_fill(s : DbstoredocTable, v : Double) -> DbstoredocTab
   result
 }
 
-pub fn db_store_doc_table_min(s : DbstoredocTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_table_min(s : DbstoredocTable) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_table_max(s : DbstoredocTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_table_max(s : DbstoredocTable) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_table_to_string(s : DbstoredocTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_store_doc_graphn_set(s : DbstoredocGraphN, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_doc_graphn_sum(s : DbstoredocGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_graphn_sum(s : DbstoredocGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_graphn_mean(s : DbstoredocGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_graphn_mean(s : DbstoredocGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_graphn_scale(s : DbstoredocGraphN, f : Double) -> DbstoredocGraphN {
   let result = db_store_doc_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_store_doc_graphn_fill(s : DbstoredocGraphN, v : Double) -> DbstoredocG
   result
 }
 
-pub fn db_store_doc_graphn_min(s : DbstoredocGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_graphn_min(s : DbstoredocGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_graphn_max(s : DbstoredocGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_graphn_max(s : DbstoredocGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_graphn_to_string(s : DbstoredocGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_store_doc_node_set(s : DbstoredocNode, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_doc_node_sum(s : DbstoredocNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_node_sum(s : DbstoredocNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_node_mean(s : DbstoredocNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_node_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_node_mean(s : DbstoredocNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_node_scale(s : DbstoredocNode, f : Double) -> DbstoredocNode {
   let result = db_store_doc_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_store_doc_node_fill(s : DbstoredocNode, v : Double) -> DbstoredocNode 
   result
 }
 
-pub fn db_store_doc_node_min(s : DbstoredocNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_node_min(s : DbstoredocNode) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_node_max(s : DbstoredocNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_node_max(s : DbstoredocNode) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_node_to_string(s : DbstoredocNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_store_doc_edge_set(s : DbstoredocEdge, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_doc_edge_sum(s : DbstoredocEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_edge_sum(s : DbstoredocEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_edge_mean(s : DbstoredocEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_edge_mean(s : DbstoredocEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_edge_scale(s : DbstoredocEdge, f : Double) -> DbstoredocEdge {
   let result = db_store_doc_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_store_doc_edge_fill(s : DbstoredocEdge, v : Double) -> DbstoredocEdge 
   result
 }
 
-pub fn db_store_doc_edge_min(s : DbstoredocEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_edge_min(s : DbstoredocEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_edge_max(s : DbstoredocEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_edge_max(s : DbstoredocEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_edge_to_string(s : DbstoredocEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_store_doc_path_set(s : DbstoredocPath, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_doc_path_sum(s : DbstoredocPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_path_sum(s : DbstoredocPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_path_mean(s : DbstoredocPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_path_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_path_mean(s : DbstoredocPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_path_scale(s : DbstoredocPath, f : Double) -> DbstoredocPath {
   let result = db_store_doc_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_store_doc_path_fill(s : DbstoredocPath, v : Double) -> DbstoredocPath 
   result
 }
 
-pub fn db_store_doc_path_min(s : DbstoredocPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_path_min(s : DbstoredocPath) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_path_max(s : DbstoredocPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_path_max(s : DbstoredocPath) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_path_to_string(s : DbstoredocPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_store_doc_cluster_set(s : DbstoredocCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_store_doc_cluster_sum(s : DbstoredocCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_cluster_sum(s : DbstoredocCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_cluster_mean(s : DbstoredocCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_cluster_mean(s : DbstoredocCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_cluster_scale(s : DbstoredocCluster, f : Double) -> DbstoredocCluster {
   let result = db_store_doc_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_store_doc_cluster_fill(s : DbstoredocCluster, v : Double) -> Dbstoredo
   result
 }
 
-pub fn db_store_doc_cluster_min(s : DbstoredocCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_cluster_min(s : DbstoredocCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_cluster_max(s : DbstoredocCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_cluster_max(s : DbstoredocCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_cluster_to_string(s : DbstoredocCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_store_doc_model_set(s : DbstoredocModel, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_doc_model_sum(s : DbstoredocModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_model_sum(s : DbstoredocModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_model_mean(s : DbstoredocModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_model_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_model_mean(s : DbstoredocModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_model_scale(s : DbstoredocModel, f : Double) -> DbstoredocModel {
   let result = db_store_doc_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_store_doc_model_fill(s : DbstoredocModel, v : Double) -> DbstoredocMod
   result
 }
 
-pub fn db_store_doc_model_min(s : DbstoredocModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_model_min(s : DbstoredocModel) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_model_max(s : DbstoredocModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_model_max(s : DbstoredocModel) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_model_to_string(s : DbstoredocModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_store_doc_layer_set(s : DbstoredocLayer, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_doc_layer_sum(s : DbstoredocLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_layer_sum(s : DbstoredocLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_layer_mean(s : DbstoredocLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_layer_mean(s : DbstoredocLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_layer_scale(s : DbstoredocLayer, f : Double) -> DbstoredocLayer {
   let result = db_store_doc_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_store_doc_layer_fill(s : DbstoredocLayer, v : Double) -> DbstoredocLay
   result
 }
 
-pub fn db_store_doc_layer_min(s : DbstoredocLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_layer_min(s : DbstoredocLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_layer_max(s : DbstoredocLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_layer_max(s : DbstoredocLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_layer_to_string(s : DbstoredocLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_store_doc_buffer_set(s : DbstoredocBuffer, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_doc_buffer_sum(s : DbstoredocBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_buffer_sum(s : DbstoredocBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_buffer_mean(s : DbstoredocBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_buffer_mean(s : DbstoredocBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_buffer_scale(s : DbstoredocBuffer, f : Double) -> DbstoredocBuffer {
   let result = db_store_doc_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_store_doc_buffer_fill(s : DbstoredocBuffer, v : Double) -> DbstoredocB
   result
 }
 
-pub fn db_store_doc_buffer_min(s : DbstoredocBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_buffer_min(s : DbstoredocBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_buffer_max(s : DbstoredocBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_buffer_max(s : DbstoredocBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_buffer_to_string(s : DbstoredocBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_store_doc_cursor_set(s : DbstoredocCursor, i : Int, v : Double) -> Dbs
   result
 }
 
-pub fn db_store_doc_cursor_sum(s : DbstoredocCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_cursor_sum(s : DbstoredocCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_cursor_mean(s : DbstoredocCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_cursor_mean(s : DbstoredocCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_cursor_scale(s : DbstoredocCursor, f : Double) -> DbstoredocCursor {
   let result = db_store_doc_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_store_doc_cursor_fill(s : DbstoredocCursor, v : Double) -> DbstoredocC
   result
 }
 
-pub fn db_store_doc_cursor_min(s : DbstoredocCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_cursor_min(s : DbstoredocCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_cursor_max(s : DbstoredocCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_cursor_max(s : DbstoredocCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_cursor_to_string(s : DbstoredocCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_store_doc_view_set(s : DbstoredocView, i : Int, v : Double) -> Dbstore
   result
 }
 
-pub fn db_store_doc_view_sum(s : DbstoredocView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_view_sum(s : DbstoredocView) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_view_mean(s : DbstoredocView) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_view_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_view_mean(s : DbstoredocView) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_view_scale(s : DbstoredocView, f : Double) -> DbstoredocView {
   let result = db_store_doc_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_store_doc_view_fill(s : DbstoredocView, v : Double) -> DbstoredocView 
   result
 }
 
-pub fn db_store_doc_view_min(s : DbstoredocView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_view_min(s : DbstoredocView) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_view_max(s : DbstoredocView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_view_max(s : DbstoredocView) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_view_to_string(s : DbstoredocView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_store_doc_range_set(s : DbstoredocRange, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_doc_range_sum(s : DbstoredocRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_range_sum(s : DbstoredocRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_range_mean(s : DbstoredocRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_range_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_range_mean(s : DbstoredocRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_range_scale(s : DbstoredocRange, f : Double) -> DbstoredocRange {
   let result = db_store_doc_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_store_doc_range_fill(s : DbstoredocRange, v : Double) -> DbstoredocRan
   result
 }
 
-pub fn db_store_doc_range_min(s : DbstoredocRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_range_min(s : DbstoredocRange) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_range_max(s : DbstoredocRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_range_max(s : DbstoredocRange) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_range_to_string(s : DbstoredocRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_store_doc_slice_set(s : DbstoredocSlice, i : Int, v : Double) -> Dbsto
   result
 }
 
-pub fn db_store_doc_slice_sum(s : DbstoredocSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_store_doc_slice_sum(s : DbstoredocSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_store_doc_slice_mean(s : DbstoredocSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_store_doc_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_store_doc_slice_mean(s : DbstoredocSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_store_doc_slice_scale(s : DbstoredocSlice, f : Double) -> DbstoredocSlice {
   let result = db_store_doc_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_store_doc_slice_fill(s : DbstoredocSlice, v : Double) -> DbstoredocSli
   result
 }
 
-pub fn db_store_doc_slice_min(s : DbstoredocSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_slice_min(s : DbstoredocSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_store_doc_slice_max(s : DbstoredocSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_store_doc_slice_max(s : DbstoredocSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_store_doc_slice_to_string(s : DbstoredocSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

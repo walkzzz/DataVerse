@@ -88,11 +88,7 @@ pub fn math_finite_diff_make_series(vals : Array[Double], name : String) -> Math
 
 pub fn math_finite_diff_series_len(s : MathfinitediffSeries) -> Int { s.vals.length() }
 
-pub fn math_finite_diff_series_sum(s : MathfinitediffSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_finite_diff_series_sum(s : MathfinitediffSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_finite_diff_series_mean(s : MathfinitediffSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_finite_diff_frame_set(s : MathfinitediffFrame, i : Int, v : Double) 
   result
 }
 
-pub fn math_finite_diff_frame_sum(s : MathfinitediffFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_frame_sum(s : MathfinitediffFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_frame_mean(s : MathfinitediffFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_frame_mean(s : MathfinitediffFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_frame_scale(s : MathfinitediffFrame, f : Double) -> MathfinitediffFrame {
   let result = math_finite_diff_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_finite_diff_frame_fill(s : MathfinitediffFrame, v : Double) -> Mathf
   result
 }
 
-pub fn math_finite_diff_frame_min(s : MathfinitediffFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_frame_min(s : MathfinitediffFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_frame_max(s : MathfinitediffFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_frame_max(s : MathfinitediffFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_frame_to_string(s : MathfinitediffFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_finite_diff_table_set(s : MathfinitediffTable, i : Int, v : Double) 
   result
 }
 
-pub fn math_finite_diff_table_sum(s : MathfinitediffTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_table_sum(s : MathfinitediffTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_table_mean(s : MathfinitediffTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_table_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_table_mean(s : MathfinitediffTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_table_scale(s : MathfinitediffTable, f : Double) -> MathfinitediffTable {
   let result = math_finite_diff_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_finite_diff_table_fill(s : MathfinitediffTable, v : Double) -> Mathf
   result
 }
 
-pub fn math_finite_diff_table_min(s : MathfinitediffTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_table_min(s : MathfinitediffTable) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_table_max(s : MathfinitediffTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_table_max(s : MathfinitediffTable) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_table_to_string(s : MathfinitediffTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_finite_diff_graphn_set(s : MathfinitediffGraphN, i : Int, v : Double
   result
 }
 
-pub fn math_finite_diff_graphn_sum(s : MathfinitediffGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_graphn_sum(s : MathfinitediffGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_graphn_mean(s : MathfinitediffGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_graphn_mean(s : MathfinitediffGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_graphn_scale(s : MathfinitediffGraphN, f : Double) -> MathfinitediffGraphN {
   let result = math_finite_diff_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_finite_diff_graphn_fill(s : MathfinitediffGraphN, v : Double) -> Mat
   result
 }
 
-pub fn math_finite_diff_graphn_min(s : MathfinitediffGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_graphn_min(s : MathfinitediffGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_graphn_max(s : MathfinitediffGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_graphn_max(s : MathfinitediffGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_graphn_to_string(s : MathfinitediffGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_finite_diff_node_set(s : MathfinitediffNode, i : Int, v : Double) ->
   result
 }
 
-pub fn math_finite_diff_node_sum(s : MathfinitediffNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_node_sum(s : MathfinitediffNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_node_mean(s : MathfinitediffNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_node_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_node_mean(s : MathfinitediffNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_node_scale(s : MathfinitediffNode, f : Double) -> MathfinitediffNode {
   let result = math_finite_diff_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_finite_diff_node_fill(s : MathfinitediffNode, v : Double) -> Mathfin
   result
 }
 
-pub fn math_finite_diff_node_min(s : MathfinitediffNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_node_min(s : MathfinitediffNode) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_node_max(s : MathfinitediffNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_node_max(s : MathfinitediffNode) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_node_to_string(s : MathfinitediffNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_finite_diff_edge_set(s : MathfinitediffEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn math_finite_diff_edge_sum(s : MathfinitediffEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_edge_sum(s : MathfinitediffEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_edge_mean(s : MathfinitediffEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_edge_mean(s : MathfinitediffEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_edge_scale(s : MathfinitediffEdge, f : Double) -> MathfinitediffEdge {
   let result = math_finite_diff_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_finite_diff_edge_fill(s : MathfinitediffEdge, v : Double) -> Mathfin
   result
 }
 
-pub fn math_finite_diff_edge_min(s : MathfinitediffEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_edge_min(s : MathfinitediffEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_edge_max(s : MathfinitediffEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_edge_max(s : MathfinitediffEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_edge_to_string(s : MathfinitediffEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_finite_diff_path_set(s : MathfinitediffPath, i : Int, v : Double) ->
   result
 }
 
-pub fn math_finite_diff_path_sum(s : MathfinitediffPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_path_sum(s : MathfinitediffPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_path_mean(s : MathfinitediffPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_path_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_path_mean(s : MathfinitediffPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_path_scale(s : MathfinitediffPath, f : Double) -> MathfinitediffPath {
   let result = math_finite_diff_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_finite_diff_path_fill(s : MathfinitediffPath, v : Double) -> Mathfin
   result
 }
 
-pub fn math_finite_diff_path_min(s : MathfinitediffPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_path_min(s : MathfinitediffPath) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_path_max(s : MathfinitediffPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_path_max(s : MathfinitediffPath) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_path_to_string(s : MathfinitediffPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_finite_diff_cluster_set(s : MathfinitediffCluster, i : Int, v : Doub
   result
 }
 
-pub fn math_finite_diff_cluster_sum(s : MathfinitediffCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_cluster_sum(s : MathfinitediffCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_cluster_mean(s : MathfinitediffCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_cluster_mean(s : MathfinitediffCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_cluster_scale(s : MathfinitediffCluster, f : Double) -> MathfinitediffCluster {
   let result = math_finite_diff_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_finite_diff_cluster_fill(s : MathfinitediffCluster, v : Double) -> M
   result
 }
 
-pub fn math_finite_diff_cluster_min(s : MathfinitediffCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_cluster_min(s : MathfinitediffCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_cluster_max(s : MathfinitediffCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_cluster_max(s : MathfinitediffCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_cluster_to_string(s : MathfinitediffCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_finite_diff_model_set(s : MathfinitediffModel, i : Int, v : Double) 
   result
 }
 
-pub fn math_finite_diff_model_sum(s : MathfinitediffModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_model_sum(s : MathfinitediffModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_model_mean(s : MathfinitediffModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_model_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_model_mean(s : MathfinitediffModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_model_scale(s : MathfinitediffModel, f : Double) -> MathfinitediffModel {
   let result = math_finite_diff_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_finite_diff_model_fill(s : MathfinitediffModel, v : Double) -> Mathf
   result
 }
 
-pub fn math_finite_diff_model_min(s : MathfinitediffModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_model_min(s : MathfinitediffModel) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_model_max(s : MathfinitediffModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_model_max(s : MathfinitediffModel) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_model_to_string(s : MathfinitediffModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_finite_diff_layer_set(s : MathfinitediffLayer, i : Int, v : Double) 
   result
 }
 
-pub fn math_finite_diff_layer_sum(s : MathfinitediffLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_layer_sum(s : MathfinitediffLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_layer_mean(s : MathfinitediffLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_layer_mean(s : MathfinitediffLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_layer_scale(s : MathfinitediffLayer, f : Double) -> MathfinitediffLayer {
   let result = math_finite_diff_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_finite_diff_layer_fill(s : MathfinitediffLayer, v : Double) -> Mathf
   result
 }
 
-pub fn math_finite_diff_layer_min(s : MathfinitediffLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_layer_min(s : MathfinitediffLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_layer_max(s : MathfinitediffLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_layer_max(s : MathfinitediffLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_layer_to_string(s : MathfinitediffLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_finite_diff_buffer_set(s : MathfinitediffBuffer, i : Int, v : Double
   result
 }
 
-pub fn math_finite_diff_buffer_sum(s : MathfinitediffBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_buffer_sum(s : MathfinitediffBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_buffer_mean(s : MathfinitediffBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_buffer_mean(s : MathfinitediffBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_buffer_scale(s : MathfinitediffBuffer, f : Double) -> MathfinitediffBuffer {
   let result = math_finite_diff_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_finite_diff_buffer_fill(s : MathfinitediffBuffer, v : Double) -> Mat
   result
 }
 
-pub fn math_finite_diff_buffer_min(s : MathfinitediffBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_buffer_min(s : MathfinitediffBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_buffer_max(s : MathfinitediffBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_buffer_max(s : MathfinitediffBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_buffer_to_string(s : MathfinitediffBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_finite_diff_cursor_set(s : MathfinitediffCursor, i : Int, v : Double
   result
 }
 
-pub fn math_finite_diff_cursor_sum(s : MathfinitediffCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_cursor_sum(s : MathfinitediffCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_cursor_mean(s : MathfinitediffCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_cursor_mean(s : MathfinitediffCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_cursor_scale(s : MathfinitediffCursor, f : Double) -> MathfinitediffCursor {
   let result = math_finite_diff_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_finite_diff_cursor_fill(s : MathfinitediffCursor, v : Double) -> Mat
   result
 }
 
-pub fn math_finite_diff_cursor_min(s : MathfinitediffCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_cursor_min(s : MathfinitediffCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_cursor_max(s : MathfinitediffCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_cursor_max(s : MathfinitediffCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_cursor_to_string(s : MathfinitediffCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_finite_diff_view_set(s : MathfinitediffView, i : Int, v : Double) ->
   result
 }
 
-pub fn math_finite_diff_view_sum(s : MathfinitediffView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_view_sum(s : MathfinitediffView) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_view_mean(s : MathfinitediffView) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_view_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_view_mean(s : MathfinitediffView) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_view_scale(s : MathfinitediffView, f : Double) -> MathfinitediffView {
   let result = math_finite_diff_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_finite_diff_view_fill(s : MathfinitediffView, v : Double) -> Mathfin
   result
 }
 
-pub fn math_finite_diff_view_min(s : MathfinitediffView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_view_min(s : MathfinitediffView) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_view_max(s : MathfinitediffView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_view_max(s : MathfinitediffView) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_view_to_string(s : MathfinitediffView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_finite_diff_range_set(s : MathfinitediffRange, i : Int, v : Double) 
   result
 }
 
-pub fn math_finite_diff_range_sum(s : MathfinitediffRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_range_sum(s : MathfinitediffRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_range_mean(s : MathfinitediffRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_range_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_range_mean(s : MathfinitediffRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_range_scale(s : MathfinitediffRange, f : Double) -> MathfinitediffRange {
   let result = math_finite_diff_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_finite_diff_range_fill(s : MathfinitediffRange, v : Double) -> Mathf
   result
 }
 
-pub fn math_finite_diff_range_min(s : MathfinitediffRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_range_min(s : MathfinitediffRange) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_range_max(s : MathfinitediffRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_range_max(s : MathfinitediffRange) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_range_to_string(s : MathfinitediffRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_finite_diff_slice_set(s : MathfinitediffSlice, i : Int, v : Double) 
   result
 }
 
-pub fn math_finite_diff_slice_sum(s : MathfinitediffSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_diff_slice_sum(s : MathfinitediffSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_diff_slice_mean(s : MathfinitediffSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_diff_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_diff_slice_mean(s : MathfinitediffSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_diff_slice_scale(s : MathfinitediffSlice, f : Double) -> MathfinitediffSlice {
   let result = math_finite_diff_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_finite_diff_slice_fill(s : MathfinitediffSlice, v : Double) -> Mathf
   result
 }
 
-pub fn math_finite_diff_slice_min(s : MathfinitediffSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_slice_min(s : MathfinitediffSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_diff_slice_max(s : MathfinitediffSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_diff_slice_max(s : MathfinitediffSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_diff_slice_to_string(s : MathfinitediffSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

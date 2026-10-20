@@ -88,11 +88,7 @@ pub fn graph_search_bidirectional_make_series(vals : Array[Double], name : Strin
 
 pub fn graph_search_bidirectional_series_len(s : GraphsearchbidirectionalSeries) -> Int { s.vals.length() }
 
-pub fn graph_search_bidirectional_series_sum(s : GraphsearchbidirectionalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_search_bidirectional_series_sum(s : GraphsearchbidirectionalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_search_bidirectional_series_mean(s : GraphsearchbidirectionalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_search_bidirectional_frame_set(s : GraphsearchbidirectionalFrame, i
   result
 }
 
-pub fn graph_search_bidirectional_frame_sum(s : GraphsearchbidirectionalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_frame_sum(s : GraphsearchbidirectionalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_frame_mean(s : GraphsearchbidirectionalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_frame_mean(s : GraphsearchbidirectionalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_frame_scale(s : GraphsearchbidirectionalFrame, f : Double) -> GraphsearchbidirectionalFrame {
   let result = graph_search_bidirectional_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_search_bidirectional_frame_fill(s : GraphsearchbidirectionalFrame, 
   result
 }
 
-pub fn graph_search_bidirectional_frame_min(s : GraphsearchbidirectionalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_frame_min(s : GraphsearchbidirectionalFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_frame_max(s : GraphsearchbidirectionalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_frame_max(s : GraphsearchbidirectionalFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_frame_to_string(s : GraphsearchbidirectionalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_search_bidirectional_table_set(s : GraphsearchbidirectionalTable, i
   result
 }
 
-pub fn graph_search_bidirectional_table_sum(s : GraphsearchbidirectionalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_table_sum(s : GraphsearchbidirectionalTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_table_mean(s : GraphsearchbidirectionalTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_table_mean(s : GraphsearchbidirectionalTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_table_scale(s : GraphsearchbidirectionalTable, f : Double) -> GraphsearchbidirectionalTable {
   let result = graph_search_bidirectional_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_search_bidirectional_table_fill(s : GraphsearchbidirectionalTable, 
   result
 }
 
-pub fn graph_search_bidirectional_table_min(s : GraphsearchbidirectionalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_table_min(s : GraphsearchbidirectionalTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_table_max(s : GraphsearchbidirectionalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_table_max(s : GraphsearchbidirectionalTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_table_to_string(s : GraphsearchbidirectionalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_search_bidirectional_graphn_set(s : GraphsearchbidirectionalGraphN,
   result
 }
 
-pub fn graph_search_bidirectional_graphn_sum(s : GraphsearchbidirectionalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_graphn_sum(s : GraphsearchbidirectionalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_graphn_mean(s : GraphsearchbidirectionalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_graphn_mean(s : GraphsearchbidirectionalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_graphn_scale(s : GraphsearchbidirectionalGraphN, f : Double) -> GraphsearchbidirectionalGraphN {
   let result = graph_search_bidirectional_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_search_bidirectional_graphn_fill(s : GraphsearchbidirectionalGraphN
   result
 }
 
-pub fn graph_search_bidirectional_graphn_min(s : GraphsearchbidirectionalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_graphn_min(s : GraphsearchbidirectionalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_graphn_max(s : GraphsearchbidirectionalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_graphn_max(s : GraphsearchbidirectionalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_graphn_to_string(s : GraphsearchbidirectionalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_search_bidirectional_node_set(s : GraphsearchbidirectionalNode, i :
   result
 }
 
-pub fn graph_search_bidirectional_node_sum(s : GraphsearchbidirectionalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_node_sum(s : GraphsearchbidirectionalNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_node_mean(s : GraphsearchbidirectionalNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_node_mean(s : GraphsearchbidirectionalNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_node_scale(s : GraphsearchbidirectionalNode, f : Double) -> GraphsearchbidirectionalNode {
   let result = graph_search_bidirectional_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_search_bidirectional_node_fill(s : GraphsearchbidirectionalNode, v 
   result
 }
 
-pub fn graph_search_bidirectional_node_min(s : GraphsearchbidirectionalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_node_min(s : GraphsearchbidirectionalNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_node_max(s : GraphsearchbidirectionalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_node_max(s : GraphsearchbidirectionalNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_node_to_string(s : GraphsearchbidirectionalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_search_bidirectional_edge_set(s : GraphsearchbidirectionalEdge, i :
   result
 }
 
-pub fn graph_search_bidirectional_edge_sum(s : GraphsearchbidirectionalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_edge_sum(s : GraphsearchbidirectionalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_edge_mean(s : GraphsearchbidirectionalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_edge_mean(s : GraphsearchbidirectionalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_edge_scale(s : GraphsearchbidirectionalEdge, f : Double) -> GraphsearchbidirectionalEdge {
   let result = graph_search_bidirectional_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_search_bidirectional_edge_fill(s : GraphsearchbidirectionalEdge, v 
   result
 }
 
-pub fn graph_search_bidirectional_edge_min(s : GraphsearchbidirectionalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_edge_min(s : GraphsearchbidirectionalEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_edge_max(s : GraphsearchbidirectionalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_edge_max(s : GraphsearchbidirectionalEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_edge_to_string(s : GraphsearchbidirectionalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_search_bidirectional_path_set(s : GraphsearchbidirectionalPath, i :
   result
 }
 
-pub fn graph_search_bidirectional_path_sum(s : GraphsearchbidirectionalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_path_sum(s : GraphsearchbidirectionalPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_path_mean(s : GraphsearchbidirectionalPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_path_mean(s : GraphsearchbidirectionalPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_path_scale(s : GraphsearchbidirectionalPath, f : Double) -> GraphsearchbidirectionalPath {
   let result = graph_search_bidirectional_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_search_bidirectional_path_fill(s : GraphsearchbidirectionalPath, v 
   result
 }
 
-pub fn graph_search_bidirectional_path_min(s : GraphsearchbidirectionalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_path_min(s : GraphsearchbidirectionalPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_path_max(s : GraphsearchbidirectionalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_path_max(s : GraphsearchbidirectionalPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_path_to_string(s : GraphsearchbidirectionalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_search_bidirectional_cluster_set(s : GraphsearchbidirectionalCluste
   result
 }
 
-pub fn graph_search_bidirectional_cluster_sum(s : GraphsearchbidirectionalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_cluster_sum(s : GraphsearchbidirectionalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_cluster_mean(s : GraphsearchbidirectionalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_cluster_mean(s : GraphsearchbidirectionalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_cluster_scale(s : GraphsearchbidirectionalCluster, f : Double) -> GraphsearchbidirectionalCluster {
   let result = graph_search_bidirectional_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_search_bidirectional_cluster_fill(s : GraphsearchbidirectionalClust
   result
 }
 
-pub fn graph_search_bidirectional_cluster_min(s : GraphsearchbidirectionalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_cluster_min(s : GraphsearchbidirectionalCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_cluster_max(s : GraphsearchbidirectionalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_cluster_max(s : GraphsearchbidirectionalCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_cluster_to_string(s : GraphsearchbidirectionalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_search_bidirectional_model_set(s : GraphsearchbidirectionalModel, i
   result
 }
 
-pub fn graph_search_bidirectional_model_sum(s : GraphsearchbidirectionalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_model_sum(s : GraphsearchbidirectionalModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_model_mean(s : GraphsearchbidirectionalModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_model_mean(s : GraphsearchbidirectionalModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_model_scale(s : GraphsearchbidirectionalModel, f : Double) -> GraphsearchbidirectionalModel {
   let result = graph_search_bidirectional_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_search_bidirectional_model_fill(s : GraphsearchbidirectionalModel, 
   result
 }
 
-pub fn graph_search_bidirectional_model_min(s : GraphsearchbidirectionalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_model_min(s : GraphsearchbidirectionalModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_model_max(s : GraphsearchbidirectionalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_model_max(s : GraphsearchbidirectionalModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_model_to_string(s : GraphsearchbidirectionalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_search_bidirectional_layer_set(s : GraphsearchbidirectionalLayer, i
   result
 }
 
-pub fn graph_search_bidirectional_layer_sum(s : GraphsearchbidirectionalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_layer_sum(s : GraphsearchbidirectionalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_layer_mean(s : GraphsearchbidirectionalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_layer_mean(s : GraphsearchbidirectionalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_layer_scale(s : GraphsearchbidirectionalLayer, f : Double) -> GraphsearchbidirectionalLayer {
   let result = graph_search_bidirectional_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_search_bidirectional_layer_fill(s : GraphsearchbidirectionalLayer, 
   result
 }
 
-pub fn graph_search_bidirectional_layer_min(s : GraphsearchbidirectionalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_layer_min(s : GraphsearchbidirectionalLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_layer_max(s : GraphsearchbidirectionalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_layer_max(s : GraphsearchbidirectionalLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_layer_to_string(s : GraphsearchbidirectionalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_search_bidirectional_buffer_set(s : GraphsearchbidirectionalBuffer,
   result
 }
 
-pub fn graph_search_bidirectional_buffer_sum(s : GraphsearchbidirectionalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_buffer_sum(s : GraphsearchbidirectionalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_buffer_mean(s : GraphsearchbidirectionalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_buffer_mean(s : GraphsearchbidirectionalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_buffer_scale(s : GraphsearchbidirectionalBuffer, f : Double) -> GraphsearchbidirectionalBuffer {
   let result = graph_search_bidirectional_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_search_bidirectional_buffer_fill(s : GraphsearchbidirectionalBuffer
   result
 }
 
-pub fn graph_search_bidirectional_buffer_min(s : GraphsearchbidirectionalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_buffer_min(s : GraphsearchbidirectionalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_buffer_max(s : GraphsearchbidirectionalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_buffer_max(s : GraphsearchbidirectionalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_buffer_to_string(s : GraphsearchbidirectionalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_search_bidirectional_cursor_set(s : GraphsearchbidirectionalCursor,
   result
 }
 
-pub fn graph_search_bidirectional_cursor_sum(s : GraphsearchbidirectionalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_cursor_sum(s : GraphsearchbidirectionalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_cursor_mean(s : GraphsearchbidirectionalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_cursor_mean(s : GraphsearchbidirectionalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_cursor_scale(s : GraphsearchbidirectionalCursor, f : Double) -> GraphsearchbidirectionalCursor {
   let result = graph_search_bidirectional_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_search_bidirectional_cursor_fill(s : GraphsearchbidirectionalCursor
   result
 }
 
-pub fn graph_search_bidirectional_cursor_min(s : GraphsearchbidirectionalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_cursor_min(s : GraphsearchbidirectionalCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_cursor_max(s : GraphsearchbidirectionalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_cursor_max(s : GraphsearchbidirectionalCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_cursor_to_string(s : GraphsearchbidirectionalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_search_bidirectional_view_set(s : GraphsearchbidirectionalView, i :
   result
 }
 
-pub fn graph_search_bidirectional_view_sum(s : GraphsearchbidirectionalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_view_sum(s : GraphsearchbidirectionalView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_view_mean(s : GraphsearchbidirectionalView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_view_mean(s : GraphsearchbidirectionalView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_view_scale(s : GraphsearchbidirectionalView, f : Double) -> GraphsearchbidirectionalView {
   let result = graph_search_bidirectional_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_search_bidirectional_view_fill(s : GraphsearchbidirectionalView, v 
   result
 }
 
-pub fn graph_search_bidirectional_view_min(s : GraphsearchbidirectionalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_view_min(s : GraphsearchbidirectionalView) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_view_max(s : GraphsearchbidirectionalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_view_max(s : GraphsearchbidirectionalView) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_view_to_string(s : GraphsearchbidirectionalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_search_bidirectional_range_set(s : GraphsearchbidirectionalRange, i
   result
 }
 
-pub fn graph_search_bidirectional_range_sum(s : GraphsearchbidirectionalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_range_sum(s : GraphsearchbidirectionalRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_range_mean(s : GraphsearchbidirectionalRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_range_mean(s : GraphsearchbidirectionalRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_range_scale(s : GraphsearchbidirectionalRange, f : Double) -> GraphsearchbidirectionalRange {
   let result = graph_search_bidirectional_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_search_bidirectional_range_fill(s : GraphsearchbidirectionalRange, 
   result
 }
 
-pub fn graph_search_bidirectional_range_min(s : GraphsearchbidirectionalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_range_min(s : GraphsearchbidirectionalRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_range_max(s : GraphsearchbidirectionalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_range_max(s : GraphsearchbidirectionalRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_range_to_string(s : GraphsearchbidirectionalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_search_bidirectional_slice_set(s : GraphsearchbidirectionalSlice, i
   result
 }
 
-pub fn graph_search_bidirectional_slice_sum(s : GraphsearchbidirectionalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bidirectional_slice_sum(s : GraphsearchbidirectionalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bidirectional_slice_mean(s : GraphsearchbidirectionalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bidirectional_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bidirectional_slice_mean(s : GraphsearchbidirectionalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bidirectional_slice_scale(s : GraphsearchbidirectionalSlice, f : Double) -> GraphsearchbidirectionalSlice {
   let result = graph_search_bidirectional_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_search_bidirectional_slice_fill(s : GraphsearchbidirectionalSlice, 
   result
 }
 
-pub fn graph_search_bidirectional_slice_min(s : GraphsearchbidirectionalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_slice_min(s : GraphsearchbidirectionalSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bidirectional_slice_max(s : GraphsearchbidirectionalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bidirectional_slice_max(s : GraphsearchbidirectionalSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bidirectional_slice_to_string(s : GraphsearchbidirectionalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

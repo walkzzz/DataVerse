@@ -88,11 +88,7 @@ pub fn net_sec_waf_make_series(vals : Array[Double], name : String) -> Netsecwaf
 
 pub fn net_sec_waf_series_len(s : NetsecwafSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_waf_series_sum(s : NetsecwafSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_waf_series_sum(s : NetsecwafSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_waf_series_mean(s : NetsecwafSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_waf_frame_set(s : NetsecwafFrame, i : Int, v : Double) -> Netsecw
   result
 }
 
-pub fn net_sec_waf_frame_sum(s : NetsecwafFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_frame_sum(s : NetsecwafFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_frame_mean(s : NetsecwafFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_frame_mean(s : NetsecwafFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_frame_scale(s : NetsecwafFrame, f : Double) -> NetsecwafFrame {
   let result = net_sec_waf_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_waf_frame_fill(s : NetsecwafFrame, v : Double) -> NetsecwafFrame 
   result
 }
 
-pub fn net_sec_waf_frame_min(s : NetsecwafFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_frame_min(s : NetsecwafFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_frame_max(s : NetsecwafFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_frame_max(s : NetsecwafFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_frame_to_string(s : NetsecwafFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_waf_table_set(s : NetsecwafTable, i : Int, v : Double) -> Netsecw
   result
 }
 
-pub fn net_sec_waf_table_sum(s : NetsecwafTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_table_sum(s : NetsecwafTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_table_mean(s : NetsecwafTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_table_mean(s : NetsecwafTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_table_scale(s : NetsecwafTable, f : Double) -> NetsecwafTable {
   let result = net_sec_waf_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_waf_table_fill(s : NetsecwafTable, v : Double) -> NetsecwafTable 
   result
 }
 
-pub fn net_sec_waf_table_min(s : NetsecwafTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_table_min(s : NetsecwafTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_table_max(s : NetsecwafTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_table_max(s : NetsecwafTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_table_to_string(s : NetsecwafTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_waf_graphn_set(s : NetsecwafGraphN, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_waf_graphn_sum(s : NetsecwafGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_graphn_sum(s : NetsecwafGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_graphn_mean(s : NetsecwafGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_graphn_mean(s : NetsecwafGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_graphn_scale(s : NetsecwafGraphN, f : Double) -> NetsecwafGraphN {
   let result = net_sec_waf_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_waf_graphn_fill(s : NetsecwafGraphN, v : Double) -> NetsecwafGrap
   result
 }
 
-pub fn net_sec_waf_graphn_min(s : NetsecwafGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_graphn_min(s : NetsecwafGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_graphn_max(s : NetsecwafGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_graphn_max(s : NetsecwafGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_graphn_to_string(s : NetsecwafGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_waf_node_set(s : NetsecwafNode, i : Int, v : Double) -> Netsecwaf
   result
 }
 
-pub fn net_sec_waf_node_sum(s : NetsecwafNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_node_sum(s : NetsecwafNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_node_mean(s : NetsecwafNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_node_mean(s : NetsecwafNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_node_scale(s : NetsecwafNode, f : Double) -> NetsecwafNode {
   let result = net_sec_waf_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_waf_node_fill(s : NetsecwafNode, v : Double) -> NetsecwafNode {
   result
 }
 
-pub fn net_sec_waf_node_min(s : NetsecwafNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_node_min(s : NetsecwafNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_node_max(s : NetsecwafNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_node_max(s : NetsecwafNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_node_to_string(s : NetsecwafNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_waf_edge_set(s : NetsecwafEdge, i : Int, v : Double) -> Netsecwaf
   result
 }
 
-pub fn net_sec_waf_edge_sum(s : NetsecwafEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_edge_sum(s : NetsecwafEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_edge_mean(s : NetsecwafEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_edge_mean(s : NetsecwafEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_edge_scale(s : NetsecwafEdge, f : Double) -> NetsecwafEdge {
   let result = net_sec_waf_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_waf_edge_fill(s : NetsecwafEdge, v : Double) -> NetsecwafEdge {
   result
 }
 
-pub fn net_sec_waf_edge_min(s : NetsecwafEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_edge_min(s : NetsecwafEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_edge_max(s : NetsecwafEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_edge_max(s : NetsecwafEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_edge_to_string(s : NetsecwafEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_waf_path_set(s : NetsecwafPath, i : Int, v : Double) -> Netsecwaf
   result
 }
 
-pub fn net_sec_waf_path_sum(s : NetsecwafPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_path_sum(s : NetsecwafPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_path_mean(s : NetsecwafPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_path_mean(s : NetsecwafPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_path_scale(s : NetsecwafPath, f : Double) -> NetsecwafPath {
   let result = net_sec_waf_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_waf_path_fill(s : NetsecwafPath, v : Double) -> NetsecwafPath {
   result
 }
 
-pub fn net_sec_waf_path_min(s : NetsecwafPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_path_min(s : NetsecwafPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_path_max(s : NetsecwafPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_path_max(s : NetsecwafPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_path_to_string(s : NetsecwafPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_waf_cluster_set(s : NetsecwafCluster, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_waf_cluster_sum(s : NetsecwafCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_cluster_sum(s : NetsecwafCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_cluster_mean(s : NetsecwafCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_cluster_mean(s : NetsecwafCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_cluster_scale(s : NetsecwafCluster, f : Double) -> NetsecwafCluster {
   let result = net_sec_waf_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_waf_cluster_fill(s : NetsecwafCluster, v : Double) -> NetsecwafCl
   result
 }
 
-pub fn net_sec_waf_cluster_min(s : NetsecwafCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_cluster_min(s : NetsecwafCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_cluster_max(s : NetsecwafCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_cluster_max(s : NetsecwafCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_cluster_to_string(s : NetsecwafCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_waf_model_set(s : NetsecwafModel, i : Int, v : Double) -> Netsecw
   result
 }
 
-pub fn net_sec_waf_model_sum(s : NetsecwafModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_model_sum(s : NetsecwafModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_model_mean(s : NetsecwafModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_model_mean(s : NetsecwafModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_model_scale(s : NetsecwafModel, f : Double) -> NetsecwafModel {
   let result = net_sec_waf_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_waf_model_fill(s : NetsecwafModel, v : Double) -> NetsecwafModel 
   result
 }
 
-pub fn net_sec_waf_model_min(s : NetsecwafModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_model_min(s : NetsecwafModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_model_max(s : NetsecwafModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_model_max(s : NetsecwafModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_model_to_string(s : NetsecwafModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_waf_layer_set(s : NetsecwafLayer, i : Int, v : Double) -> Netsecw
   result
 }
 
-pub fn net_sec_waf_layer_sum(s : NetsecwafLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_layer_sum(s : NetsecwafLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_layer_mean(s : NetsecwafLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_layer_mean(s : NetsecwafLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_layer_scale(s : NetsecwafLayer, f : Double) -> NetsecwafLayer {
   let result = net_sec_waf_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_waf_layer_fill(s : NetsecwafLayer, v : Double) -> NetsecwafLayer 
   result
 }
 
-pub fn net_sec_waf_layer_min(s : NetsecwafLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_layer_min(s : NetsecwafLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_layer_max(s : NetsecwafLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_layer_max(s : NetsecwafLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_layer_to_string(s : NetsecwafLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_waf_buffer_set(s : NetsecwafBuffer, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_waf_buffer_sum(s : NetsecwafBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_buffer_sum(s : NetsecwafBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_buffer_mean(s : NetsecwafBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_buffer_mean(s : NetsecwafBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_buffer_scale(s : NetsecwafBuffer, f : Double) -> NetsecwafBuffer {
   let result = net_sec_waf_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_waf_buffer_fill(s : NetsecwafBuffer, v : Double) -> NetsecwafBuff
   result
 }
 
-pub fn net_sec_waf_buffer_min(s : NetsecwafBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_buffer_min(s : NetsecwafBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_buffer_max(s : NetsecwafBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_buffer_max(s : NetsecwafBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_buffer_to_string(s : NetsecwafBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_waf_cursor_set(s : NetsecwafCursor, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_waf_cursor_sum(s : NetsecwafCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_cursor_sum(s : NetsecwafCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_cursor_mean(s : NetsecwafCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_cursor_mean(s : NetsecwafCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_cursor_scale(s : NetsecwafCursor, f : Double) -> NetsecwafCursor {
   let result = net_sec_waf_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_waf_cursor_fill(s : NetsecwafCursor, v : Double) -> NetsecwafCurs
   result
 }
 
-pub fn net_sec_waf_cursor_min(s : NetsecwafCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_cursor_min(s : NetsecwafCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_cursor_max(s : NetsecwafCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_cursor_max(s : NetsecwafCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_cursor_to_string(s : NetsecwafCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_waf_view_set(s : NetsecwafView, i : Int, v : Double) -> Netsecwaf
   result
 }
 
-pub fn net_sec_waf_view_sum(s : NetsecwafView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_view_sum(s : NetsecwafView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_view_mean(s : NetsecwafView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_view_mean(s : NetsecwafView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_view_scale(s : NetsecwafView, f : Double) -> NetsecwafView {
   let result = net_sec_waf_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_waf_view_fill(s : NetsecwafView, v : Double) -> NetsecwafView {
   result
 }
 
-pub fn net_sec_waf_view_min(s : NetsecwafView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_view_min(s : NetsecwafView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_view_max(s : NetsecwafView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_view_max(s : NetsecwafView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_view_to_string(s : NetsecwafView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_waf_range_set(s : NetsecwafRange, i : Int, v : Double) -> Netsecw
   result
 }
 
-pub fn net_sec_waf_range_sum(s : NetsecwafRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_range_sum(s : NetsecwafRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_range_mean(s : NetsecwafRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_range_mean(s : NetsecwafRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_range_scale(s : NetsecwafRange, f : Double) -> NetsecwafRange {
   let result = net_sec_waf_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_waf_range_fill(s : NetsecwafRange, v : Double) -> NetsecwafRange 
   result
 }
 
-pub fn net_sec_waf_range_min(s : NetsecwafRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_range_min(s : NetsecwafRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_range_max(s : NetsecwafRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_range_max(s : NetsecwafRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_range_to_string(s : NetsecwafRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_waf_slice_set(s : NetsecwafSlice, i : Int, v : Double) -> Netsecw
   result
 }
 
-pub fn net_sec_waf_slice_sum(s : NetsecwafSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_waf_slice_sum(s : NetsecwafSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_waf_slice_mean(s : NetsecwafSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_waf_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_waf_slice_mean(s : NetsecwafSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_waf_slice_scale(s : NetsecwafSlice, f : Double) -> NetsecwafSlice {
   let result = net_sec_waf_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_waf_slice_fill(s : NetsecwafSlice, v : Double) -> NetsecwafSlice 
   result
 }
 
-pub fn net_sec_waf_slice_min(s : NetsecwafSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_slice_min(s : NetsecwafSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_waf_slice_max(s : NetsecwafSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_waf_slice_max(s : NetsecwafSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_waf_slice_to_string(s : NetsecwafSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

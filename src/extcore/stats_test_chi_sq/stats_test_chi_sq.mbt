@@ -88,11 +88,7 @@ pub fn stats_test_chi_sq_make_series(vals : Array[Double], name : String) -> Sta
 
 pub fn stats_test_chi_sq_series_len(s : StatstestchisqSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_chi_sq_series_sum(s : StatstestchisqSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_chi_sq_series_sum(s : StatstestchisqSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_chi_sq_series_mean(s : StatstestchisqSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_chi_sq_frame_set(s : StatstestchisqFrame, i : Int, v : Double)
   result
 }
 
-pub fn stats_test_chi_sq_frame_sum(s : StatstestchisqFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_frame_sum(s : StatstestchisqFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_frame_mean(s : StatstestchisqFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_frame_mean(s : StatstestchisqFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_frame_scale(s : StatstestchisqFrame, f : Double) -> StatstestchisqFrame {
   let result = stats_test_chi_sq_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_chi_sq_frame_fill(s : StatstestchisqFrame, v : Double) -> Stat
   result
 }
 
-pub fn stats_test_chi_sq_frame_min(s : StatstestchisqFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_frame_min(s : StatstestchisqFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_frame_max(s : StatstestchisqFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_frame_max(s : StatstestchisqFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_frame_to_string(s : StatstestchisqFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_chi_sq_table_set(s : StatstestchisqTable, i : Int, v : Double)
   result
 }
 
-pub fn stats_test_chi_sq_table_sum(s : StatstestchisqTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_table_sum(s : StatstestchisqTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_table_mean(s : StatstestchisqTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_table_mean(s : StatstestchisqTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_table_scale(s : StatstestchisqTable, f : Double) -> StatstestchisqTable {
   let result = stats_test_chi_sq_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_chi_sq_table_fill(s : StatstestchisqTable, v : Double) -> Stat
   result
 }
 
-pub fn stats_test_chi_sq_table_min(s : StatstestchisqTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_table_min(s : StatstestchisqTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_table_max(s : StatstestchisqTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_table_max(s : StatstestchisqTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_table_to_string(s : StatstestchisqTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_chi_sq_graphn_set(s : StatstestchisqGraphN, i : Int, v : Doubl
   result
 }
 
-pub fn stats_test_chi_sq_graphn_sum(s : StatstestchisqGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_graphn_sum(s : StatstestchisqGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_graphn_mean(s : StatstestchisqGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_graphn_mean(s : StatstestchisqGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_graphn_scale(s : StatstestchisqGraphN, f : Double) -> StatstestchisqGraphN {
   let result = stats_test_chi_sq_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_chi_sq_graphn_fill(s : StatstestchisqGraphN, v : Double) -> St
   result
 }
 
-pub fn stats_test_chi_sq_graphn_min(s : StatstestchisqGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_graphn_min(s : StatstestchisqGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_graphn_max(s : StatstestchisqGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_graphn_max(s : StatstestchisqGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_graphn_to_string(s : StatstestchisqGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_chi_sq_node_set(s : StatstestchisqNode, i : Int, v : Double) -
   result
 }
 
-pub fn stats_test_chi_sq_node_sum(s : StatstestchisqNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_node_sum(s : StatstestchisqNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_node_mean(s : StatstestchisqNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_node_mean(s : StatstestchisqNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_node_scale(s : StatstestchisqNode, f : Double) -> StatstestchisqNode {
   let result = stats_test_chi_sq_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_chi_sq_node_fill(s : StatstestchisqNode, v : Double) -> Statst
   result
 }
 
-pub fn stats_test_chi_sq_node_min(s : StatstestchisqNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_node_min(s : StatstestchisqNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_node_max(s : StatstestchisqNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_node_max(s : StatstestchisqNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_node_to_string(s : StatstestchisqNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_chi_sq_edge_set(s : StatstestchisqEdge, i : Int, v : Double) -
   result
 }
 
-pub fn stats_test_chi_sq_edge_sum(s : StatstestchisqEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_edge_sum(s : StatstestchisqEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_edge_mean(s : StatstestchisqEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_edge_mean(s : StatstestchisqEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_edge_scale(s : StatstestchisqEdge, f : Double) -> StatstestchisqEdge {
   let result = stats_test_chi_sq_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_chi_sq_edge_fill(s : StatstestchisqEdge, v : Double) -> Statst
   result
 }
 
-pub fn stats_test_chi_sq_edge_min(s : StatstestchisqEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_edge_min(s : StatstestchisqEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_edge_max(s : StatstestchisqEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_edge_max(s : StatstestchisqEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_edge_to_string(s : StatstestchisqEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_chi_sq_path_set(s : StatstestchisqPath, i : Int, v : Double) -
   result
 }
 
-pub fn stats_test_chi_sq_path_sum(s : StatstestchisqPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_path_sum(s : StatstestchisqPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_path_mean(s : StatstestchisqPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_path_mean(s : StatstestchisqPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_path_scale(s : StatstestchisqPath, f : Double) -> StatstestchisqPath {
   let result = stats_test_chi_sq_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_chi_sq_path_fill(s : StatstestchisqPath, v : Double) -> Statst
   result
 }
 
-pub fn stats_test_chi_sq_path_min(s : StatstestchisqPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_path_min(s : StatstestchisqPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_path_max(s : StatstestchisqPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_path_max(s : StatstestchisqPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_path_to_string(s : StatstestchisqPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_chi_sq_cluster_set(s : StatstestchisqCluster, i : Int, v : Dou
   result
 }
 
-pub fn stats_test_chi_sq_cluster_sum(s : StatstestchisqCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_cluster_sum(s : StatstestchisqCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_cluster_mean(s : StatstestchisqCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_cluster_mean(s : StatstestchisqCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_cluster_scale(s : StatstestchisqCluster, f : Double) -> StatstestchisqCluster {
   let result = stats_test_chi_sq_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_chi_sq_cluster_fill(s : StatstestchisqCluster, v : Double) -> 
   result
 }
 
-pub fn stats_test_chi_sq_cluster_min(s : StatstestchisqCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_cluster_min(s : StatstestchisqCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_cluster_max(s : StatstestchisqCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_cluster_max(s : StatstestchisqCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_cluster_to_string(s : StatstestchisqCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_chi_sq_model_set(s : StatstestchisqModel, i : Int, v : Double)
   result
 }
 
-pub fn stats_test_chi_sq_model_sum(s : StatstestchisqModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_model_sum(s : StatstestchisqModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_model_mean(s : StatstestchisqModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_model_mean(s : StatstestchisqModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_model_scale(s : StatstestchisqModel, f : Double) -> StatstestchisqModel {
   let result = stats_test_chi_sq_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_chi_sq_model_fill(s : StatstestchisqModel, v : Double) -> Stat
   result
 }
 
-pub fn stats_test_chi_sq_model_min(s : StatstestchisqModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_model_min(s : StatstestchisqModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_model_max(s : StatstestchisqModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_model_max(s : StatstestchisqModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_model_to_string(s : StatstestchisqModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_chi_sq_layer_set(s : StatstestchisqLayer, i : Int, v : Double)
   result
 }
 
-pub fn stats_test_chi_sq_layer_sum(s : StatstestchisqLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_layer_sum(s : StatstestchisqLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_layer_mean(s : StatstestchisqLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_layer_mean(s : StatstestchisqLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_layer_scale(s : StatstestchisqLayer, f : Double) -> StatstestchisqLayer {
   let result = stats_test_chi_sq_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_chi_sq_layer_fill(s : StatstestchisqLayer, v : Double) -> Stat
   result
 }
 
-pub fn stats_test_chi_sq_layer_min(s : StatstestchisqLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_layer_min(s : StatstestchisqLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_layer_max(s : StatstestchisqLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_layer_max(s : StatstestchisqLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_layer_to_string(s : StatstestchisqLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_chi_sq_buffer_set(s : StatstestchisqBuffer, i : Int, v : Doubl
   result
 }
 
-pub fn stats_test_chi_sq_buffer_sum(s : StatstestchisqBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_buffer_sum(s : StatstestchisqBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_buffer_mean(s : StatstestchisqBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_buffer_mean(s : StatstestchisqBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_buffer_scale(s : StatstestchisqBuffer, f : Double) -> StatstestchisqBuffer {
   let result = stats_test_chi_sq_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_chi_sq_buffer_fill(s : StatstestchisqBuffer, v : Double) -> St
   result
 }
 
-pub fn stats_test_chi_sq_buffer_min(s : StatstestchisqBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_buffer_min(s : StatstestchisqBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_buffer_max(s : StatstestchisqBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_buffer_max(s : StatstestchisqBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_buffer_to_string(s : StatstestchisqBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_chi_sq_cursor_set(s : StatstestchisqCursor, i : Int, v : Doubl
   result
 }
 
-pub fn stats_test_chi_sq_cursor_sum(s : StatstestchisqCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_cursor_sum(s : StatstestchisqCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_cursor_mean(s : StatstestchisqCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_cursor_mean(s : StatstestchisqCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_cursor_scale(s : StatstestchisqCursor, f : Double) -> StatstestchisqCursor {
   let result = stats_test_chi_sq_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_chi_sq_cursor_fill(s : StatstestchisqCursor, v : Double) -> St
   result
 }
 
-pub fn stats_test_chi_sq_cursor_min(s : StatstestchisqCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_cursor_min(s : StatstestchisqCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_cursor_max(s : StatstestchisqCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_cursor_max(s : StatstestchisqCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_cursor_to_string(s : StatstestchisqCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_chi_sq_view_set(s : StatstestchisqView, i : Int, v : Double) -
   result
 }
 
-pub fn stats_test_chi_sq_view_sum(s : StatstestchisqView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_view_sum(s : StatstestchisqView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_view_mean(s : StatstestchisqView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_view_mean(s : StatstestchisqView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_view_scale(s : StatstestchisqView, f : Double) -> StatstestchisqView {
   let result = stats_test_chi_sq_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_chi_sq_view_fill(s : StatstestchisqView, v : Double) -> Statst
   result
 }
 
-pub fn stats_test_chi_sq_view_min(s : StatstestchisqView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_view_min(s : StatstestchisqView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_view_max(s : StatstestchisqView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_view_max(s : StatstestchisqView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_view_to_string(s : StatstestchisqView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_chi_sq_range_set(s : StatstestchisqRange, i : Int, v : Double)
   result
 }
 
-pub fn stats_test_chi_sq_range_sum(s : StatstestchisqRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_range_sum(s : StatstestchisqRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_range_mean(s : StatstestchisqRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_range_mean(s : StatstestchisqRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_range_scale(s : StatstestchisqRange, f : Double) -> StatstestchisqRange {
   let result = stats_test_chi_sq_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_chi_sq_range_fill(s : StatstestchisqRange, v : Double) -> Stat
   result
 }
 
-pub fn stats_test_chi_sq_range_min(s : StatstestchisqRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_range_min(s : StatstestchisqRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_range_max(s : StatstestchisqRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_range_max(s : StatstestchisqRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_range_to_string(s : StatstestchisqRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_chi_sq_slice_set(s : StatstestchisqSlice, i : Int, v : Double)
   result
 }
 
-pub fn stats_test_chi_sq_slice_sum(s : StatstestchisqSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_chi_sq_slice_sum(s : StatstestchisqSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_chi_sq_slice_mean(s : StatstestchisqSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_chi_sq_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_chi_sq_slice_mean(s : StatstestchisqSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_chi_sq_slice_scale(s : StatstestchisqSlice, f : Double) -> StatstestchisqSlice {
   let result = stats_test_chi_sq_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_chi_sq_slice_fill(s : StatstestchisqSlice, v : Double) -> Stat
   result
 }
 
-pub fn stats_test_chi_sq_slice_min(s : StatstestchisqSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_slice_min(s : StatstestchisqSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_chi_sq_slice_max(s : StatstestchisqSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_chi_sq_slice_max(s : StatstestchisqSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_chi_sq_slice_to_string(s : StatstestchisqSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

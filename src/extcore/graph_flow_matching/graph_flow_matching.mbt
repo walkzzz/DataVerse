@@ -88,11 +88,7 @@ pub fn graph_flow_matching_make_series(vals : Array[Double], name : String) -> G
 
 pub fn graph_flow_matching_series_len(s : GraphflowmatchingSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_matching_series_sum(s : GraphflowmatchingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_matching_series_sum(s : GraphflowmatchingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_matching_series_mean(s : GraphflowmatchingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_matching_frame_set(s : GraphflowmatchingFrame, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_matching_frame_sum(s : GraphflowmatchingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_frame_sum(s : GraphflowmatchingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_frame_mean(s : GraphflowmatchingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_frame_mean(s : GraphflowmatchingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_frame_scale(s : GraphflowmatchingFrame, f : Double) -> GraphflowmatchingFrame {
   let result = graph_flow_matching_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_matching_frame_fill(s : GraphflowmatchingFrame, v : Double) ->
   result
 }
 
-pub fn graph_flow_matching_frame_min(s : GraphflowmatchingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_frame_min(s : GraphflowmatchingFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_frame_max(s : GraphflowmatchingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_frame_max(s : GraphflowmatchingFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_frame_to_string(s : GraphflowmatchingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_matching_table_set(s : GraphflowmatchingTable, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_matching_table_sum(s : GraphflowmatchingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_table_sum(s : GraphflowmatchingTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_table_mean(s : GraphflowmatchingTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_table_mean(s : GraphflowmatchingTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_table_scale(s : GraphflowmatchingTable, f : Double) -> GraphflowmatchingTable {
   let result = graph_flow_matching_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_matching_table_fill(s : GraphflowmatchingTable, v : Double) ->
   result
 }
 
-pub fn graph_flow_matching_table_min(s : GraphflowmatchingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_table_min(s : GraphflowmatchingTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_table_max(s : GraphflowmatchingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_table_max(s : GraphflowmatchingTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_table_to_string(s : GraphflowmatchingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_matching_graphn_set(s : GraphflowmatchingGraphN, i : Int, v : 
   result
 }
 
-pub fn graph_flow_matching_graphn_sum(s : GraphflowmatchingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_graphn_sum(s : GraphflowmatchingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_graphn_mean(s : GraphflowmatchingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_graphn_mean(s : GraphflowmatchingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_graphn_scale(s : GraphflowmatchingGraphN, f : Double) -> GraphflowmatchingGraphN {
   let result = graph_flow_matching_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_matching_graphn_fill(s : GraphflowmatchingGraphN, v : Double) 
   result
 }
 
-pub fn graph_flow_matching_graphn_min(s : GraphflowmatchingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_graphn_min(s : GraphflowmatchingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_graphn_max(s : GraphflowmatchingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_graphn_max(s : GraphflowmatchingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_graphn_to_string(s : GraphflowmatchingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_matching_node_set(s : GraphflowmatchingNode, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_matching_node_sum(s : GraphflowmatchingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_node_sum(s : GraphflowmatchingNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_node_mean(s : GraphflowmatchingNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_node_mean(s : GraphflowmatchingNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_node_scale(s : GraphflowmatchingNode, f : Double) -> GraphflowmatchingNode {
   let result = graph_flow_matching_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_matching_node_fill(s : GraphflowmatchingNode, v : Double) -> G
   result
 }
 
-pub fn graph_flow_matching_node_min(s : GraphflowmatchingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_node_min(s : GraphflowmatchingNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_node_max(s : GraphflowmatchingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_node_max(s : GraphflowmatchingNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_node_to_string(s : GraphflowmatchingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_matching_edge_set(s : GraphflowmatchingEdge, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_matching_edge_sum(s : GraphflowmatchingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_edge_sum(s : GraphflowmatchingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_edge_mean(s : GraphflowmatchingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_edge_mean(s : GraphflowmatchingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_edge_scale(s : GraphflowmatchingEdge, f : Double) -> GraphflowmatchingEdge {
   let result = graph_flow_matching_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_matching_edge_fill(s : GraphflowmatchingEdge, v : Double) -> G
   result
 }
 
-pub fn graph_flow_matching_edge_min(s : GraphflowmatchingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_edge_min(s : GraphflowmatchingEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_edge_max(s : GraphflowmatchingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_edge_max(s : GraphflowmatchingEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_edge_to_string(s : GraphflowmatchingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_matching_path_set(s : GraphflowmatchingPath, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_matching_path_sum(s : GraphflowmatchingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_path_sum(s : GraphflowmatchingPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_path_mean(s : GraphflowmatchingPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_path_mean(s : GraphflowmatchingPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_path_scale(s : GraphflowmatchingPath, f : Double) -> GraphflowmatchingPath {
   let result = graph_flow_matching_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_matching_path_fill(s : GraphflowmatchingPath, v : Double) -> G
   result
 }
 
-pub fn graph_flow_matching_path_min(s : GraphflowmatchingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_path_min(s : GraphflowmatchingPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_path_max(s : GraphflowmatchingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_path_max(s : GraphflowmatchingPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_path_to_string(s : GraphflowmatchingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_matching_cluster_set(s : GraphflowmatchingCluster, i : Int, v 
   result
 }
 
-pub fn graph_flow_matching_cluster_sum(s : GraphflowmatchingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_cluster_sum(s : GraphflowmatchingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_cluster_mean(s : GraphflowmatchingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_cluster_mean(s : GraphflowmatchingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_cluster_scale(s : GraphflowmatchingCluster, f : Double) -> GraphflowmatchingCluster {
   let result = graph_flow_matching_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_matching_cluster_fill(s : GraphflowmatchingCluster, v : Double
   result
 }
 
-pub fn graph_flow_matching_cluster_min(s : GraphflowmatchingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_cluster_min(s : GraphflowmatchingCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_cluster_max(s : GraphflowmatchingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_cluster_max(s : GraphflowmatchingCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_cluster_to_string(s : GraphflowmatchingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_matching_model_set(s : GraphflowmatchingModel, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_matching_model_sum(s : GraphflowmatchingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_model_sum(s : GraphflowmatchingModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_model_mean(s : GraphflowmatchingModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_model_mean(s : GraphflowmatchingModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_model_scale(s : GraphflowmatchingModel, f : Double) -> GraphflowmatchingModel {
   let result = graph_flow_matching_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_matching_model_fill(s : GraphflowmatchingModel, v : Double) ->
   result
 }
 
-pub fn graph_flow_matching_model_min(s : GraphflowmatchingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_model_min(s : GraphflowmatchingModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_model_max(s : GraphflowmatchingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_model_max(s : GraphflowmatchingModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_model_to_string(s : GraphflowmatchingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_matching_layer_set(s : GraphflowmatchingLayer, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_matching_layer_sum(s : GraphflowmatchingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_layer_sum(s : GraphflowmatchingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_layer_mean(s : GraphflowmatchingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_layer_mean(s : GraphflowmatchingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_layer_scale(s : GraphflowmatchingLayer, f : Double) -> GraphflowmatchingLayer {
   let result = graph_flow_matching_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_matching_layer_fill(s : GraphflowmatchingLayer, v : Double) ->
   result
 }
 
-pub fn graph_flow_matching_layer_min(s : GraphflowmatchingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_layer_min(s : GraphflowmatchingLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_layer_max(s : GraphflowmatchingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_layer_max(s : GraphflowmatchingLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_layer_to_string(s : GraphflowmatchingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_matching_buffer_set(s : GraphflowmatchingBuffer, i : Int, v : 
   result
 }
 
-pub fn graph_flow_matching_buffer_sum(s : GraphflowmatchingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_buffer_sum(s : GraphflowmatchingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_buffer_mean(s : GraphflowmatchingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_buffer_mean(s : GraphflowmatchingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_buffer_scale(s : GraphflowmatchingBuffer, f : Double) -> GraphflowmatchingBuffer {
   let result = graph_flow_matching_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_matching_buffer_fill(s : GraphflowmatchingBuffer, v : Double) 
   result
 }
 
-pub fn graph_flow_matching_buffer_min(s : GraphflowmatchingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_buffer_min(s : GraphflowmatchingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_buffer_max(s : GraphflowmatchingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_buffer_max(s : GraphflowmatchingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_buffer_to_string(s : GraphflowmatchingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_matching_cursor_set(s : GraphflowmatchingCursor, i : Int, v : 
   result
 }
 
-pub fn graph_flow_matching_cursor_sum(s : GraphflowmatchingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_cursor_sum(s : GraphflowmatchingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_cursor_mean(s : GraphflowmatchingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_cursor_mean(s : GraphflowmatchingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_cursor_scale(s : GraphflowmatchingCursor, f : Double) -> GraphflowmatchingCursor {
   let result = graph_flow_matching_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_matching_cursor_fill(s : GraphflowmatchingCursor, v : Double) 
   result
 }
 
-pub fn graph_flow_matching_cursor_min(s : GraphflowmatchingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_cursor_min(s : GraphflowmatchingCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_cursor_max(s : GraphflowmatchingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_cursor_max(s : GraphflowmatchingCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_cursor_to_string(s : GraphflowmatchingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_matching_view_set(s : GraphflowmatchingView, i : Int, v : Doub
   result
 }
 
-pub fn graph_flow_matching_view_sum(s : GraphflowmatchingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_view_sum(s : GraphflowmatchingView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_view_mean(s : GraphflowmatchingView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_view_mean(s : GraphflowmatchingView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_view_scale(s : GraphflowmatchingView, f : Double) -> GraphflowmatchingView {
   let result = graph_flow_matching_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_matching_view_fill(s : GraphflowmatchingView, v : Double) -> G
   result
 }
 
-pub fn graph_flow_matching_view_min(s : GraphflowmatchingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_view_min(s : GraphflowmatchingView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_view_max(s : GraphflowmatchingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_view_max(s : GraphflowmatchingView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_view_to_string(s : GraphflowmatchingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_matching_range_set(s : GraphflowmatchingRange, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_matching_range_sum(s : GraphflowmatchingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_range_sum(s : GraphflowmatchingRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_range_mean(s : GraphflowmatchingRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_range_mean(s : GraphflowmatchingRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_range_scale(s : GraphflowmatchingRange, f : Double) -> GraphflowmatchingRange {
   let result = graph_flow_matching_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_matching_range_fill(s : GraphflowmatchingRange, v : Double) ->
   result
 }
 
-pub fn graph_flow_matching_range_min(s : GraphflowmatchingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_range_min(s : GraphflowmatchingRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_range_max(s : GraphflowmatchingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_range_max(s : GraphflowmatchingRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_range_to_string(s : GraphflowmatchingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_matching_slice_set(s : GraphflowmatchingSlice, i : Int, v : Do
   result
 }
 
-pub fn graph_flow_matching_slice_sum(s : GraphflowmatchingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_matching_slice_sum(s : GraphflowmatchingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_matching_slice_mean(s : GraphflowmatchingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_matching_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_matching_slice_mean(s : GraphflowmatchingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_matching_slice_scale(s : GraphflowmatchingSlice, f : Double) -> GraphflowmatchingSlice {
   let result = graph_flow_matching_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_matching_slice_fill(s : GraphflowmatchingSlice, v : Double) ->
   result
 }
 
-pub fn graph_flow_matching_slice_min(s : GraphflowmatchingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_slice_min(s : GraphflowmatchingSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_matching_slice_max(s : GraphflowmatchingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_matching_slice_max(s : GraphflowmatchingSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_matching_slice_to_string(s : GraphflowmatchingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

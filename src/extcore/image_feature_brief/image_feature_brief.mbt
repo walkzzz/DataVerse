@@ -88,11 +88,7 @@ pub fn image_feature_brief_make_series(vals : Array[Double], name : String) -> I
 
 pub fn image_feature_brief_series_len(s : ImagefeaturebriefSeries) -> Int { s.vals.length() }
 
-pub fn image_feature_brief_series_sum(s : ImagefeaturebriefSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_feature_brief_series_sum(s : ImagefeaturebriefSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_feature_brief_series_mean(s : ImagefeaturebriefSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_feature_brief_frame_set(s : ImagefeaturebriefFrame, i : Int, v : Do
   result
 }
 
-pub fn image_feature_brief_frame_sum(s : ImagefeaturebriefFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_frame_sum(s : ImagefeaturebriefFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_frame_mean(s : ImagefeaturebriefFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_frame_mean(s : ImagefeaturebriefFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_frame_scale(s : ImagefeaturebriefFrame, f : Double) -> ImagefeaturebriefFrame {
   let result = image_feature_brief_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_feature_brief_frame_fill(s : ImagefeaturebriefFrame, v : Double) ->
   result
 }
 
-pub fn image_feature_brief_frame_min(s : ImagefeaturebriefFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_frame_min(s : ImagefeaturebriefFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_frame_max(s : ImagefeaturebriefFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_frame_max(s : ImagefeaturebriefFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_frame_to_string(s : ImagefeaturebriefFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_feature_brief_table_set(s : ImagefeaturebriefTable, i : Int, v : Do
   result
 }
 
-pub fn image_feature_brief_table_sum(s : ImagefeaturebriefTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_table_sum(s : ImagefeaturebriefTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_table_mean(s : ImagefeaturebriefTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_table_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_table_mean(s : ImagefeaturebriefTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_table_scale(s : ImagefeaturebriefTable, f : Double) -> ImagefeaturebriefTable {
   let result = image_feature_brief_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_feature_brief_table_fill(s : ImagefeaturebriefTable, v : Double) ->
   result
 }
 
-pub fn image_feature_brief_table_min(s : ImagefeaturebriefTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_table_min(s : ImagefeaturebriefTable) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_table_max(s : ImagefeaturebriefTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_table_max(s : ImagefeaturebriefTable) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_table_to_string(s : ImagefeaturebriefTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_feature_brief_graphn_set(s : ImagefeaturebriefGraphN, i : Int, v : 
   result
 }
 
-pub fn image_feature_brief_graphn_sum(s : ImagefeaturebriefGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_graphn_sum(s : ImagefeaturebriefGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_graphn_mean(s : ImagefeaturebriefGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_graphn_mean(s : ImagefeaturebriefGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_graphn_scale(s : ImagefeaturebriefGraphN, f : Double) -> ImagefeaturebriefGraphN {
   let result = image_feature_brief_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_feature_brief_graphn_fill(s : ImagefeaturebriefGraphN, v : Double) 
   result
 }
 
-pub fn image_feature_brief_graphn_min(s : ImagefeaturebriefGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_graphn_min(s : ImagefeaturebriefGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_graphn_max(s : ImagefeaturebriefGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_graphn_max(s : ImagefeaturebriefGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_graphn_to_string(s : ImagefeaturebriefGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_feature_brief_node_set(s : ImagefeaturebriefNode, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_brief_node_sum(s : ImagefeaturebriefNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_node_sum(s : ImagefeaturebriefNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_node_mean(s : ImagefeaturebriefNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_node_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_node_mean(s : ImagefeaturebriefNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_node_scale(s : ImagefeaturebriefNode, f : Double) -> ImagefeaturebriefNode {
   let result = image_feature_brief_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_feature_brief_node_fill(s : ImagefeaturebriefNode, v : Double) -> I
   result
 }
 
-pub fn image_feature_brief_node_min(s : ImagefeaturebriefNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_node_min(s : ImagefeaturebriefNode) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_node_max(s : ImagefeaturebriefNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_node_max(s : ImagefeaturebriefNode) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_node_to_string(s : ImagefeaturebriefNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_feature_brief_edge_set(s : ImagefeaturebriefEdge, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_brief_edge_sum(s : ImagefeaturebriefEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_edge_sum(s : ImagefeaturebriefEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_edge_mean(s : ImagefeaturebriefEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_edge_mean(s : ImagefeaturebriefEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_edge_scale(s : ImagefeaturebriefEdge, f : Double) -> ImagefeaturebriefEdge {
   let result = image_feature_brief_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_feature_brief_edge_fill(s : ImagefeaturebriefEdge, v : Double) -> I
   result
 }
 
-pub fn image_feature_brief_edge_min(s : ImagefeaturebriefEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_edge_min(s : ImagefeaturebriefEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_edge_max(s : ImagefeaturebriefEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_edge_max(s : ImagefeaturebriefEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_edge_to_string(s : ImagefeaturebriefEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_feature_brief_path_set(s : ImagefeaturebriefPath, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_brief_path_sum(s : ImagefeaturebriefPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_path_sum(s : ImagefeaturebriefPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_path_mean(s : ImagefeaturebriefPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_path_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_path_mean(s : ImagefeaturebriefPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_path_scale(s : ImagefeaturebriefPath, f : Double) -> ImagefeaturebriefPath {
   let result = image_feature_brief_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_feature_brief_path_fill(s : ImagefeaturebriefPath, v : Double) -> I
   result
 }
 
-pub fn image_feature_brief_path_min(s : ImagefeaturebriefPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_path_min(s : ImagefeaturebriefPath) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_path_max(s : ImagefeaturebriefPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_path_max(s : ImagefeaturebriefPath) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_path_to_string(s : ImagefeaturebriefPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_feature_brief_cluster_set(s : ImagefeaturebriefCluster, i : Int, v 
   result
 }
 
-pub fn image_feature_brief_cluster_sum(s : ImagefeaturebriefCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_cluster_sum(s : ImagefeaturebriefCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_cluster_mean(s : ImagefeaturebriefCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_cluster_mean(s : ImagefeaturebriefCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_cluster_scale(s : ImagefeaturebriefCluster, f : Double) -> ImagefeaturebriefCluster {
   let result = image_feature_brief_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_feature_brief_cluster_fill(s : ImagefeaturebriefCluster, v : Double
   result
 }
 
-pub fn image_feature_brief_cluster_min(s : ImagefeaturebriefCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_cluster_min(s : ImagefeaturebriefCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_cluster_max(s : ImagefeaturebriefCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_cluster_max(s : ImagefeaturebriefCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_cluster_to_string(s : ImagefeaturebriefCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_feature_brief_model_set(s : ImagefeaturebriefModel, i : Int, v : Do
   result
 }
 
-pub fn image_feature_brief_model_sum(s : ImagefeaturebriefModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_model_sum(s : ImagefeaturebriefModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_model_mean(s : ImagefeaturebriefModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_model_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_model_mean(s : ImagefeaturebriefModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_model_scale(s : ImagefeaturebriefModel, f : Double) -> ImagefeaturebriefModel {
   let result = image_feature_brief_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_feature_brief_model_fill(s : ImagefeaturebriefModel, v : Double) ->
   result
 }
 
-pub fn image_feature_brief_model_min(s : ImagefeaturebriefModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_model_min(s : ImagefeaturebriefModel) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_model_max(s : ImagefeaturebriefModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_model_max(s : ImagefeaturebriefModel) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_model_to_string(s : ImagefeaturebriefModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_feature_brief_layer_set(s : ImagefeaturebriefLayer, i : Int, v : Do
   result
 }
 
-pub fn image_feature_brief_layer_sum(s : ImagefeaturebriefLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_layer_sum(s : ImagefeaturebriefLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_layer_mean(s : ImagefeaturebriefLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_layer_mean(s : ImagefeaturebriefLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_layer_scale(s : ImagefeaturebriefLayer, f : Double) -> ImagefeaturebriefLayer {
   let result = image_feature_brief_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_feature_brief_layer_fill(s : ImagefeaturebriefLayer, v : Double) ->
   result
 }
 
-pub fn image_feature_brief_layer_min(s : ImagefeaturebriefLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_layer_min(s : ImagefeaturebriefLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_layer_max(s : ImagefeaturebriefLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_layer_max(s : ImagefeaturebriefLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_layer_to_string(s : ImagefeaturebriefLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_feature_brief_buffer_set(s : ImagefeaturebriefBuffer, i : Int, v : 
   result
 }
 
-pub fn image_feature_brief_buffer_sum(s : ImagefeaturebriefBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_buffer_sum(s : ImagefeaturebriefBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_buffer_mean(s : ImagefeaturebriefBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_buffer_mean(s : ImagefeaturebriefBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_buffer_scale(s : ImagefeaturebriefBuffer, f : Double) -> ImagefeaturebriefBuffer {
   let result = image_feature_brief_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_feature_brief_buffer_fill(s : ImagefeaturebriefBuffer, v : Double) 
   result
 }
 
-pub fn image_feature_brief_buffer_min(s : ImagefeaturebriefBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_buffer_min(s : ImagefeaturebriefBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_buffer_max(s : ImagefeaturebriefBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_buffer_max(s : ImagefeaturebriefBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_buffer_to_string(s : ImagefeaturebriefBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_feature_brief_cursor_set(s : ImagefeaturebriefCursor, i : Int, v : 
   result
 }
 
-pub fn image_feature_brief_cursor_sum(s : ImagefeaturebriefCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_cursor_sum(s : ImagefeaturebriefCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_cursor_mean(s : ImagefeaturebriefCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_cursor_mean(s : ImagefeaturebriefCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_cursor_scale(s : ImagefeaturebriefCursor, f : Double) -> ImagefeaturebriefCursor {
   let result = image_feature_brief_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_feature_brief_cursor_fill(s : ImagefeaturebriefCursor, v : Double) 
   result
 }
 
-pub fn image_feature_brief_cursor_min(s : ImagefeaturebriefCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_cursor_min(s : ImagefeaturebriefCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_cursor_max(s : ImagefeaturebriefCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_cursor_max(s : ImagefeaturebriefCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_cursor_to_string(s : ImagefeaturebriefCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_feature_brief_view_set(s : ImagefeaturebriefView, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_brief_view_sum(s : ImagefeaturebriefView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_view_sum(s : ImagefeaturebriefView) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_view_mean(s : ImagefeaturebriefView) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_view_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_view_mean(s : ImagefeaturebriefView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_view_scale(s : ImagefeaturebriefView, f : Double) -> ImagefeaturebriefView {
   let result = image_feature_brief_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_feature_brief_view_fill(s : ImagefeaturebriefView, v : Double) -> I
   result
 }
 
-pub fn image_feature_brief_view_min(s : ImagefeaturebriefView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_view_min(s : ImagefeaturebriefView) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_view_max(s : ImagefeaturebriefView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_view_max(s : ImagefeaturebriefView) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_view_to_string(s : ImagefeaturebriefView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_feature_brief_range_set(s : ImagefeaturebriefRange, i : Int, v : Do
   result
 }
 
-pub fn image_feature_brief_range_sum(s : ImagefeaturebriefRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_range_sum(s : ImagefeaturebriefRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_range_mean(s : ImagefeaturebriefRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_range_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_range_mean(s : ImagefeaturebriefRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_range_scale(s : ImagefeaturebriefRange, f : Double) -> ImagefeaturebriefRange {
   let result = image_feature_brief_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_feature_brief_range_fill(s : ImagefeaturebriefRange, v : Double) ->
   result
 }
 
-pub fn image_feature_brief_range_min(s : ImagefeaturebriefRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_range_min(s : ImagefeaturebriefRange) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_range_max(s : ImagefeaturebriefRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_range_max(s : ImagefeaturebriefRange) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_range_to_string(s : ImagefeaturebriefRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_feature_brief_slice_set(s : ImagefeaturebriefSlice, i : Int, v : Do
   result
 }
 
-pub fn image_feature_brief_slice_sum(s : ImagefeaturebriefSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_brief_slice_sum(s : ImagefeaturebriefSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_brief_slice_mean(s : ImagefeaturebriefSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_brief_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_brief_slice_mean(s : ImagefeaturebriefSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_brief_slice_scale(s : ImagefeaturebriefSlice, f : Double) -> ImagefeaturebriefSlice {
   let result = image_feature_brief_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_feature_brief_slice_fill(s : ImagefeaturebriefSlice, v : Double) ->
   result
 }
 
-pub fn image_feature_brief_slice_min(s : ImagefeaturebriefSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_slice_min(s : ImagefeaturebriefSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_brief_slice_max(s : ImagefeaturebriefSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_brief_slice_max(s : ImagefeaturebriefSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_brief_slice_to_string(s : ImagefeaturebriefSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

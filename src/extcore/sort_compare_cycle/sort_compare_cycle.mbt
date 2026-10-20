@@ -88,11 +88,7 @@ pub fn sort_compare_cycle_make_series(vals : Array[Double], name : String) -> So
 
 pub fn sort_compare_cycle_series_len(s : SortcomparecycleSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_cycle_series_sum(s : SortcomparecycleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_cycle_series_sum(s : SortcomparecycleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_cycle_series_mean(s : SortcomparecycleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_cycle_frame_set(s : SortcomparecycleFrame, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_cycle_frame_sum(s : SortcomparecycleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_frame_sum(s : SortcomparecycleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_frame_mean(s : SortcomparecycleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_frame_mean(s : SortcomparecycleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_frame_scale(s : SortcomparecycleFrame, f : Double) -> SortcomparecycleFrame {
   let result = sort_compare_cycle_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_cycle_frame_fill(s : SortcomparecycleFrame, v : Double) -> S
   result
 }
 
-pub fn sort_compare_cycle_frame_min(s : SortcomparecycleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_frame_min(s : SortcomparecycleFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_frame_max(s : SortcomparecycleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_frame_max(s : SortcomparecycleFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_frame_to_string(s : SortcomparecycleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_cycle_table_set(s : SortcomparecycleTable, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_cycle_table_sum(s : SortcomparecycleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_table_sum(s : SortcomparecycleTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_table_mean(s : SortcomparecycleTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_table_mean(s : SortcomparecycleTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_table_scale(s : SortcomparecycleTable, f : Double) -> SortcomparecycleTable {
   let result = sort_compare_cycle_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_cycle_table_fill(s : SortcomparecycleTable, v : Double) -> S
   result
 }
 
-pub fn sort_compare_cycle_table_min(s : SortcomparecycleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_table_min(s : SortcomparecycleTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_table_max(s : SortcomparecycleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_table_max(s : SortcomparecycleTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_table_to_string(s : SortcomparecycleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_cycle_graphn_set(s : SortcomparecycleGraphN, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_cycle_graphn_sum(s : SortcomparecycleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_graphn_sum(s : SortcomparecycleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_graphn_mean(s : SortcomparecycleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_graphn_mean(s : SortcomparecycleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_graphn_scale(s : SortcomparecycleGraphN, f : Double) -> SortcomparecycleGraphN {
   let result = sort_compare_cycle_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_cycle_graphn_fill(s : SortcomparecycleGraphN, v : Double) ->
   result
 }
 
-pub fn sort_compare_cycle_graphn_min(s : SortcomparecycleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_graphn_min(s : SortcomparecycleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_graphn_max(s : SortcomparecycleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_graphn_max(s : SortcomparecycleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_graphn_to_string(s : SortcomparecycleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_cycle_node_set(s : SortcomparecycleNode, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_cycle_node_sum(s : SortcomparecycleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_node_sum(s : SortcomparecycleNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_node_mean(s : SortcomparecycleNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_node_mean(s : SortcomparecycleNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_node_scale(s : SortcomparecycleNode, f : Double) -> SortcomparecycleNode {
   let result = sort_compare_cycle_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_cycle_node_fill(s : SortcomparecycleNode, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_cycle_node_min(s : SortcomparecycleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_node_min(s : SortcomparecycleNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_node_max(s : SortcomparecycleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_node_max(s : SortcomparecycleNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_node_to_string(s : SortcomparecycleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_cycle_edge_set(s : SortcomparecycleEdge, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_cycle_edge_sum(s : SortcomparecycleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_edge_sum(s : SortcomparecycleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_edge_mean(s : SortcomparecycleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_edge_mean(s : SortcomparecycleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_edge_scale(s : SortcomparecycleEdge, f : Double) -> SortcomparecycleEdge {
   let result = sort_compare_cycle_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_cycle_edge_fill(s : SortcomparecycleEdge, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_cycle_edge_min(s : SortcomparecycleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_edge_min(s : SortcomparecycleEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_edge_max(s : SortcomparecycleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_edge_max(s : SortcomparecycleEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_edge_to_string(s : SortcomparecycleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_cycle_path_set(s : SortcomparecyclePath, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_cycle_path_sum(s : SortcomparecyclePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_path_sum(s : SortcomparecyclePath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_path_mean(s : SortcomparecyclePath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_path_mean(s : SortcomparecyclePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_path_scale(s : SortcomparecyclePath, f : Double) -> SortcomparecyclePath {
   let result = sort_compare_cycle_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_cycle_path_fill(s : SortcomparecyclePath, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_cycle_path_min(s : SortcomparecyclePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_path_min(s : SortcomparecyclePath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_path_max(s : SortcomparecyclePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_path_max(s : SortcomparecyclePath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_path_to_string(s : SortcomparecyclePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_cycle_cluster_set(s : SortcomparecycleCluster, i : Int, v : 
   result
 }
 
-pub fn sort_compare_cycle_cluster_sum(s : SortcomparecycleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_cluster_sum(s : SortcomparecycleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_cluster_mean(s : SortcomparecycleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_cluster_mean(s : SortcomparecycleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_cluster_scale(s : SortcomparecycleCluster, f : Double) -> SortcomparecycleCluster {
   let result = sort_compare_cycle_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_cycle_cluster_fill(s : SortcomparecycleCluster, v : Double) 
   result
 }
 
-pub fn sort_compare_cycle_cluster_min(s : SortcomparecycleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_cluster_min(s : SortcomparecycleCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_cluster_max(s : SortcomparecycleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_cluster_max(s : SortcomparecycleCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_cluster_to_string(s : SortcomparecycleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_cycle_model_set(s : SortcomparecycleModel, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_cycle_model_sum(s : SortcomparecycleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_model_sum(s : SortcomparecycleModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_model_mean(s : SortcomparecycleModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_model_mean(s : SortcomparecycleModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_model_scale(s : SortcomparecycleModel, f : Double) -> SortcomparecycleModel {
   let result = sort_compare_cycle_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_cycle_model_fill(s : SortcomparecycleModel, v : Double) -> S
   result
 }
 
-pub fn sort_compare_cycle_model_min(s : SortcomparecycleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_model_min(s : SortcomparecycleModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_model_max(s : SortcomparecycleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_model_max(s : SortcomparecycleModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_model_to_string(s : SortcomparecycleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_cycle_layer_set(s : SortcomparecycleLayer, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_cycle_layer_sum(s : SortcomparecycleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_layer_sum(s : SortcomparecycleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_layer_mean(s : SortcomparecycleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_layer_mean(s : SortcomparecycleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_layer_scale(s : SortcomparecycleLayer, f : Double) -> SortcomparecycleLayer {
   let result = sort_compare_cycle_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_cycle_layer_fill(s : SortcomparecycleLayer, v : Double) -> S
   result
 }
 
-pub fn sort_compare_cycle_layer_min(s : SortcomparecycleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_layer_min(s : SortcomparecycleLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_layer_max(s : SortcomparecycleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_layer_max(s : SortcomparecycleLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_layer_to_string(s : SortcomparecycleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_cycle_buffer_set(s : SortcomparecycleBuffer, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_cycle_buffer_sum(s : SortcomparecycleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_buffer_sum(s : SortcomparecycleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_buffer_mean(s : SortcomparecycleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_buffer_mean(s : SortcomparecycleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_buffer_scale(s : SortcomparecycleBuffer, f : Double) -> SortcomparecycleBuffer {
   let result = sort_compare_cycle_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_cycle_buffer_fill(s : SortcomparecycleBuffer, v : Double) ->
   result
 }
 
-pub fn sort_compare_cycle_buffer_min(s : SortcomparecycleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_buffer_min(s : SortcomparecycleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_buffer_max(s : SortcomparecycleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_buffer_max(s : SortcomparecycleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_buffer_to_string(s : SortcomparecycleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_cycle_cursor_set(s : SortcomparecycleCursor, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_cycle_cursor_sum(s : SortcomparecycleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_cursor_sum(s : SortcomparecycleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_cursor_mean(s : SortcomparecycleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_cursor_mean(s : SortcomparecycleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_cursor_scale(s : SortcomparecycleCursor, f : Double) -> SortcomparecycleCursor {
   let result = sort_compare_cycle_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_cycle_cursor_fill(s : SortcomparecycleCursor, v : Double) ->
   result
 }
 
-pub fn sort_compare_cycle_cursor_min(s : SortcomparecycleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_cursor_min(s : SortcomparecycleCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_cursor_max(s : SortcomparecycleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_cursor_max(s : SortcomparecycleCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_cursor_to_string(s : SortcomparecycleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_cycle_view_set(s : SortcomparecycleView, i : Int, v : Double
   result
 }
 
-pub fn sort_compare_cycle_view_sum(s : SortcomparecycleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_view_sum(s : SortcomparecycleView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_view_mean(s : SortcomparecycleView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_view_mean(s : SortcomparecycleView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_view_scale(s : SortcomparecycleView, f : Double) -> SortcomparecycleView {
   let result = sort_compare_cycle_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_cycle_view_fill(s : SortcomparecycleView, v : Double) -> Sor
   result
 }
 
-pub fn sort_compare_cycle_view_min(s : SortcomparecycleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_view_min(s : SortcomparecycleView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_view_max(s : SortcomparecycleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_view_max(s : SortcomparecycleView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_view_to_string(s : SortcomparecycleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_cycle_range_set(s : SortcomparecycleRange, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_cycle_range_sum(s : SortcomparecycleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_range_sum(s : SortcomparecycleRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_range_mean(s : SortcomparecycleRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_range_mean(s : SortcomparecycleRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_range_scale(s : SortcomparecycleRange, f : Double) -> SortcomparecycleRange {
   let result = sort_compare_cycle_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_cycle_range_fill(s : SortcomparecycleRange, v : Double) -> S
   result
 }
 
-pub fn sort_compare_cycle_range_min(s : SortcomparecycleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_range_min(s : SortcomparecycleRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_range_max(s : SortcomparecycleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_range_max(s : SortcomparecycleRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_range_to_string(s : SortcomparecycleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_cycle_slice_set(s : SortcomparecycleSlice, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_cycle_slice_sum(s : SortcomparecycleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_cycle_slice_sum(s : SortcomparecycleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_cycle_slice_mean(s : SortcomparecycleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_cycle_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_cycle_slice_mean(s : SortcomparecycleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_cycle_slice_scale(s : SortcomparecycleSlice, f : Double) -> SortcomparecycleSlice {
   let result = sort_compare_cycle_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_cycle_slice_fill(s : SortcomparecycleSlice, v : Double) -> S
   result
 }
 
-pub fn sort_compare_cycle_slice_min(s : SortcomparecycleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_slice_min(s : SortcomparecycleSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_cycle_slice_max(s : SortcomparecycleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_cycle_slice_max(s : SortcomparecycleSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_cycle_slice_to_string(s : SortcomparecycleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_classify_knn_make_series(vals : Array[Double], name : String) -> Mlcla
 
 pub fn ml_classify_knn_series_len(s : MlclassifyknnSeries) -> Int { s.vals.length() }
 
-pub fn ml_classify_knn_series_sum(s : MlclassifyknnSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_classify_knn_series_sum(s : MlclassifyknnSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_classify_knn_series_mean(s : MlclassifyknnSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_classify_knn_frame_set(s : MlclassifyknnFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_knn_frame_sum(s : MlclassifyknnFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_frame_sum(s : MlclassifyknnFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_frame_mean(s : MlclassifyknnFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_frame_mean(s : MlclassifyknnFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_frame_scale(s : MlclassifyknnFrame, f : Double) -> MlclassifyknnFrame {
   let result = ml_classify_knn_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_classify_knn_frame_fill(s : MlclassifyknnFrame, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_knn_frame_min(s : MlclassifyknnFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_frame_min(s : MlclassifyknnFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_frame_max(s : MlclassifyknnFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_frame_max(s : MlclassifyknnFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_frame_to_string(s : MlclassifyknnFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_classify_knn_table_set(s : MlclassifyknnTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_knn_table_sum(s : MlclassifyknnTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_table_sum(s : MlclassifyknnTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_table_mean(s : MlclassifyknnTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_table_mean(s : MlclassifyknnTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_table_scale(s : MlclassifyknnTable, f : Double) -> MlclassifyknnTable {
   let result = ml_classify_knn_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_classify_knn_table_fill(s : MlclassifyknnTable, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_knn_table_min(s : MlclassifyknnTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_table_min(s : MlclassifyknnTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_table_max(s : MlclassifyknnTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_table_max(s : MlclassifyknnTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_table_to_string(s : MlclassifyknnTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_classify_knn_graphn_set(s : MlclassifyknnGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_knn_graphn_sum(s : MlclassifyknnGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_graphn_sum(s : MlclassifyknnGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_graphn_mean(s : MlclassifyknnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_graphn_mean(s : MlclassifyknnGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_graphn_scale(s : MlclassifyknnGraphN, f : Double) -> MlclassifyknnGraphN {
   let result = ml_classify_knn_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_classify_knn_graphn_fill(s : MlclassifyknnGraphN, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_knn_graphn_min(s : MlclassifyknnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_graphn_min(s : MlclassifyknnGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_graphn_max(s : MlclassifyknnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_graphn_max(s : MlclassifyknnGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_graphn_to_string(s : MlclassifyknnGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_classify_knn_node_set(s : MlclassifyknnNode, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_knn_node_sum(s : MlclassifyknnNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_node_sum(s : MlclassifyknnNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_node_mean(s : MlclassifyknnNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_node_mean(s : MlclassifyknnNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_node_scale(s : MlclassifyknnNode, f : Double) -> MlclassifyknnNode {
   let result = ml_classify_knn_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_classify_knn_node_fill(s : MlclassifyknnNode, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_knn_node_min(s : MlclassifyknnNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_node_min(s : MlclassifyknnNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_node_max(s : MlclassifyknnNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_node_max(s : MlclassifyknnNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_node_to_string(s : MlclassifyknnNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_classify_knn_edge_set(s : MlclassifyknnEdge, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_knn_edge_sum(s : MlclassifyknnEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_edge_sum(s : MlclassifyknnEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_edge_mean(s : MlclassifyknnEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_edge_mean(s : MlclassifyknnEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_edge_scale(s : MlclassifyknnEdge, f : Double) -> MlclassifyknnEdge {
   let result = ml_classify_knn_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_classify_knn_edge_fill(s : MlclassifyknnEdge, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_knn_edge_min(s : MlclassifyknnEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_edge_min(s : MlclassifyknnEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_edge_max(s : MlclassifyknnEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_edge_max(s : MlclassifyknnEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_edge_to_string(s : MlclassifyknnEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_classify_knn_path_set(s : MlclassifyknnPath, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_knn_path_sum(s : MlclassifyknnPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_path_sum(s : MlclassifyknnPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_path_mean(s : MlclassifyknnPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_path_mean(s : MlclassifyknnPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_path_scale(s : MlclassifyknnPath, f : Double) -> MlclassifyknnPath {
   let result = ml_classify_knn_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_classify_knn_path_fill(s : MlclassifyknnPath, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_knn_path_min(s : MlclassifyknnPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_path_min(s : MlclassifyknnPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_path_max(s : MlclassifyknnPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_path_max(s : MlclassifyknnPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_path_to_string(s : MlclassifyknnPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_classify_knn_cluster_set(s : MlclassifyknnCluster, i : Int, v : Double
   result
 }
 
-pub fn ml_classify_knn_cluster_sum(s : MlclassifyknnCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_cluster_sum(s : MlclassifyknnCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_cluster_mean(s : MlclassifyknnCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_cluster_mean(s : MlclassifyknnCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_cluster_scale(s : MlclassifyknnCluster, f : Double) -> MlclassifyknnCluster {
   let result = ml_classify_knn_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_classify_knn_cluster_fill(s : MlclassifyknnCluster, v : Double) -> Mlc
   result
 }
 
-pub fn ml_classify_knn_cluster_min(s : MlclassifyknnCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_cluster_min(s : MlclassifyknnCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_cluster_max(s : MlclassifyknnCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_cluster_max(s : MlclassifyknnCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_cluster_to_string(s : MlclassifyknnCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_classify_knn_model_set(s : MlclassifyknnModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_knn_model_sum(s : MlclassifyknnModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_model_sum(s : MlclassifyknnModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_model_mean(s : MlclassifyknnModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_model_mean(s : MlclassifyknnModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_model_scale(s : MlclassifyknnModel, f : Double) -> MlclassifyknnModel {
   let result = ml_classify_knn_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_classify_knn_model_fill(s : MlclassifyknnModel, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_knn_model_min(s : MlclassifyknnModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_model_min(s : MlclassifyknnModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_model_max(s : MlclassifyknnModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_model_max(s : MlclassifyknnModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_model_to_string(s : MlclassifyknnModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_classify_knn_layer_set(s : MlclassifyknnLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_knn_layer_sum(s : MlclassifyknnLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_layer_sum(s : MlclassifyknnLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_layer_mean(s : MlclassifyknnLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_layer_mean(s : MlclassifyknnLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_layer_scale(s : MlclassifyknnLayer, f : Double) -> MlclassifyknnLayer {
   let result = ml_classify_knn_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_classify_knn_layer_fill(s : MlclassifyknnLayer, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_knn_layer_min(s : MlclassifyknnLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_layer_min(s : MlclassifyknnLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_layer_max(s : MlclassifyknnLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_layer_max(s : MlclassifyknnLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_layer_to_string(s : MlclassifyknnLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_classify_knn_buffer_set(s : MlclassifyknnBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_knn_buffer_sum(s : MlclassifyknnBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_buffer_sum(s : MlclassifyknnBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_buffer_mean(s : MlclassifyknnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_buffer_mean(s : MlclassifyknnBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_buffer_scale(s : MlclassifyknnBuffer, f : Double) -> MlclassifyknnBuffer {
   let result = ml_classify_knn_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_classify_knn_buffer_fill(s : MlclassifyknnBuffer, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_knn_buffer_min(s : MlclassifyknnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_buffer_min(s : MlclassifyknnBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_buffer_max(s : MlclassifyknnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_buffer_max(s : MlclassifyknnBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_buffer_to_string(s : MlclassifyknnBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_classify_knn_cursor_set(s : MlclassifyknnCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_knn_cursor_sum(s : MlclassifyknnCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_cursor_sum(s : MlclassifyknnCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_cursor_mean(s : MlclassifyknnCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_cursor_mean(s : MlclassifyknnCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_cursor_scale(s : MlclassifyknnCursor, f : Double) -> MlclassifyknnCursor {
   let result = ml_classify_knn_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_classify_knn_cursor_fill(s : MlclassifyknnCursor, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_knn_cursor_min(s : MlclassifyknnCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_cursor_min(s : MlclassifyknnCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_cursor_max(s : MlclassifyknnCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_cursor_max(s : MlclassifyknnCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_cursor_to_string(s : MlclassifyknnCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_classify_knn_view_set(s : MlclassifyknnView, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_classify_knn_view_sum(s : MlclassifyknnView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_view_sum(s : MlclassifyknnView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_view_mean(s : MlclassifyknnView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_view_mean(s : MlclassifyknnView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_view_scale(s : MlclassifyknnView, f : Double) -> MlclassifyknnView {
   let result = ml_classify_knn_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_classify_knn_view_fill(s : MlclassifyknnView, v : Double) -> Mlclassif
   result
 }
 
-pub fn ml_classify_knn_view_min(s : MlclassifyknnView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_view_min(s : MlclassifyknnView) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_view_max(s : MlclassifyknnView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_view_max(s : MlclassifyknnView) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_view_to_string(s : MlclassifyknnView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_classify_knn_range_set(s : MlclassifyknnRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_knn_range_sum(s : MlclassifyknnRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_range_sum(s : MlclassifyknnRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_range_mean(s : MlclassifyknnRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_range_mean(s : MlclassifyknnRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_range_scale(s : MlclassifyknnRange, f : Double) -> MlclassifyknnRange {
   let result = ml_classify_knn_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_classify_knn_range_fill(s : MlclassifyknnRange, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_knn_range_min(s : MlclassifyknnRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_range_min(s : MlclassifyknnRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_range_max(s : MlclassifyknnRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_range_max(s : MlclassifyknnRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_range_to_string(s : MlclassifyknnRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_classify_knn_slice_set(s : MlclassifyknnSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_knn_slice_sum(s : MlclassifyknnSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_knn_slice_sum(s : MlclassifyknnSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_knn_slice_mean(s : MlclassifyknnSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_knn_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_knn_slice_mean(s : MlclassifyknnSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_knn_slice_scale(s : MlclassifyknnSlice, f : Double) -> MlclassifyknnSlice {
   let result = ml_classify_knn_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_classify_knn_slice_fill(s : MlclassifyknnSlice, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_knn_slice_min(s : MlclassifyknnSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_slice_min(s : MlclassifyknnSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_knn_slice_max(s : MlclassifyknnSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_knn_slice_max(s : MlclassifyknnSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_knn_slice_to_string(s : MlclassifyknnSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

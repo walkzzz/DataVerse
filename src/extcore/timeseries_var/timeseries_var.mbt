@@ -88,11 +88,7 @@ pub fn timeseries_var_make_series(vals : Array[Double], name : String) -> Timese
 
 pub fn timeseries_var_series_len(s : TimeseriesvarSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_var_series_sum(s : TimeseriesvarSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_var_series_sum(s : TimeseriesvarSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_var_series_mean(s : TimeseriesvarSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_var_frame_set(s : TimeseriesvarFrame, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_var_frame_sum(s : TimeseriesvarFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_frame_sum(s : TimeseriesvarFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_frame_mean(s : TimeseriesvarFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_frame_mean(s : TimeseriesvarFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_frame_scale(s : TimeseriesvarFrame, f : Double) -> TimeseriesvarFrame {
   let result = timeseries_var_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_var_frame_fill(s : TimeseriesvarFrame, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_var_frame_min(s : TimeseriesvarFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_frame_min(s : TimeseriesvarFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_frame_max(s : TimeseriesvarFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_frame_max(s : TimeseriesvarFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_frame_to_string(s : TimeseriesvarFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_var_table_set(s : TimeseriesvarTable, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_var_table_sum(s : TimeseriesvarTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_table_sum(s : TimeseriesvarTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_table_mean(s : TimeseriesvarTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_table_mean(s : TimeseriesvarTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_table_scale(s : TimeseriesvarTable, f : Double) -> TimeseriesvarTable {
   let result = timeseries_var_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_var_table_fill(s : TimeseriesvarTable, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_var_table_min(s : TimeseriesvarTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_table_min(s : TimeseriesvarTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_table_max(s : TimeseriesvarTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_table_max(s : TimeseriesvarTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_table_to_string(s : TimeseriesvarTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_var_graphn_set(s : TimeseriesvarGraphN, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_var_graphn_sum(s : TimeseriesvarGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_graphn_sum(s : TimeseriesvarGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_graphn_mean(s : TimeseriesvarGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_graphn_mean(s : TimeseriesvarGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_graphn_scale(s : TimeseriesvarGraphN, f : Double) -> TimeseriesvarGraphN {
   let result = timeseries_var_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_var_graphn_fill(s : TimeseriesvarGraphN, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_var_graphn_min(s : TimeseriesvarGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_graphn_min(s : TimeseriesvarGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_graphn_max(s : TimeseriesvarGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_graphn_max(s : TimeseriesvarGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_graphn_to_string(s : TimeseriesvarGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_var_node_set(s : TimeseriesvarNode, i : Int, v : Double) -> Ti
   result
 }
 
-pub fn timeseries_var_node_sum(s : TimeseriesvarNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_node_sum(s : TimeseriesvarNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_node_mean(s : TimeseriesvarNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_node_mean(s : TimeseriesvarNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_node_scale(s : TimeseriesvarNode, f : Double) -> TimeseriesvarNode {
   let result = timeseries_var_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_var_node_fill(s : TimeseriesvarNode, v : Double) -> Timeseries
   result
 }
 
-pub fn timeseries_var_node_min(s : TimeseriesvarNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_node_min(s : TimeseriesvarNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_node_max(s : TimeseriesvarNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_node_max(s : TimeseriesvarNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_node_to_string(s : TimeseriesvarNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_var_edge_set(s : TimeseriesvarEdge, i : Int, v : Double) -> Ti
   result
 }
 
-pub fn timeseries_var_edge_sum(s : TimeseriesvarEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_edge_sum(s : TimeseriesvarEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_edge_mean(s : TimeseriesvarEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_edge_mean(s : TimeseriesvarEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_edge_scale(s : TimeseriesvarEdge, f : Double) -> TimeseriesvarEdge {
   let result = timeseries_var_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_var_edge_fill(s : TimeseriesvarEdge, v : Double) -> Timeseries
   result
 }
 
-pub fn timeseries_var_edge_min(s : TimeseriesvarEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_edge_min(s : TimeseriesvarEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_edge_max(s : TimeseriesvarEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_edge_max(s : TimeseriesvarEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_edge_to_string(s : TimeseriesvarEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_var_path_set(s : TimeseriesvarPath, i : Int, v : Double) -> Ti
   result
 }
 
-pub fn timeseries_var_path_sum(s : TimeseriesvarPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_path_sum(s : TimeseriesvarPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_path_mean(s : TimeseriesvarPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_path_mean(s : TimeseriesvarPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_path_scale(s : TimeseriesvarPath, f : Double) -> TimeseriesvarPath {
   let result = timeseries_var_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_var_path_fill(s : TimeseriesvarPath, v : Double) -> Timeseries
   result
 }
 
-pub fn timeseries_var_path_min(s : TimeseriesvarPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_path_min(s : TimeseriesvarPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_path_max(s : TimeseriesvarPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_path_max(s : TimeseriesvarPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_path_to_string(s : TimeseriesvarPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_var_cluster_set(s : TimeseriesvarCluster, i : Int, v : Double)
   result
 }
 
-pub fn timeseries_var_cluster_sum(s : TimeseriesvarCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_cluster_sum(s : TimeseriesvarCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_cluster_mean(s : TimeseriesvarCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_cluster_mean(s : TimeseriesvarCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_cluster_scale(s : TimeseriesvarCluster, f : Double) -> TimeseriesvarCluster {
   let result = timeseries_var_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_var_cluster_fill(s : TimeseriesvarCluster, v : Double) -> Time
   result
 }
 
-pub fn timeseries_var_cluster_min(s : TimeseriesvarCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_cluster_min(s : TimeseriesvarCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_cluster_max(s : TimeseriesvarCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_cluster_max(s : TimeseriesvarCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_cluster_to_string(s : TimeseriesvarCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_var_model_set(s : TimeseriesvarModel, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_var_model_sum(s : TimeseriesvarModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_model_sum(s : TimeseriesvarModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_model_mean(s : TimeseriesvarModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_model_mean(s : TimeseriesvarModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_model_scale(s : TimeseriesvarModel, f : Double) -> TimeseriesvarModel {
   let result = timeseries_var_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_var_model_fill(s : TimeseriesvarModel, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_var_model_min(s : TimeseriesvarModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_model_min(s : TimeseriesvarModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_model_max(s : TimeseriesvarModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_model_max(s : TimeseriesvarModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_model_to_string(s : TimeseriesvarModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_var_layer_set(s : TimeseriesvarLayer, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_var_layer_sum(s : TimeseriesvarLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_layer_sum(s : TimeseriesvarLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_layer_mean(s : TimeseriesvarLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_layer_mean(s : TimeseriesvarLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_layer_scale(s : TimeseriesvarLayer, f : Double) -> TimeseriesvarLayer {
   let result = timeseries_var_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_var_layer_fill(s : TimeseriesvarLayer, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_var_layer_min(s : TimeseriesvarLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_layer_min(s : TimeseriesvarLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_layer_max(s : TimeseriesvarLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_layer_max(s : TimeseriesvarLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_layer_to_string(s : TimeseriesvarLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_var_buffer_set(s : TimeseriesvarBuffer, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_var_buffer_sum(s : TimeseriesvarBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_buffer_sum(s : TimeseriesvarBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_buffer_mean(s : TimeseriesvarBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_buffer_mean(s : TimeseriesvarBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_buffer_scale(s : TimeseriesvarBuffer, f : Double) -> TimeseriesvarBuffer {
   let result = timeseries_var_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_var_buffer_fill(s : TimeseriesvarBuffer, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_var_buffer_min(s : TimeseriesvarBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_buffer_min(s : TimeseriesvarBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_buffer_max(s : TimeseriesvarBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_buffer_max(s : TimeseriesvarBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_buffer_to_string(s : TimeseriesvarBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_var_cursor_set(s : TimeseriesvarCursor, i : Int, v : Double) -
   result
 }
 
-pub fn timeseries_var_cursor_sum(s : TimeseriesvarCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_cursor_sum(s : TimeseriesvarCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_cursor_mean(s : TimeseriesvarCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_cursor_mean(s : TimeseriesvarCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_cursor_scale(s : TimeseriesvarCursor, f : Double) -> TimeseriesvarCursor {
   let result = timeseries_var_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_var_cursor_fill(s : TimeseriesvarCursor, v : Double) -> Timese
   result
 }
 
-pub fn timeseries_var_cursor_min(s : TimeseriesvarCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_cursor_min(s : TimeseriesvarCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_cursor_max(s : TimeseriesvarCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_cursor_max(s : TimeseriesvarCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_cursor_to_string(s : TimeseriesvarCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_var_view_set(s : TimeseriesvarView, i : Int, v : Double) -> Ti
   result
 }
 
-pub fn timeseries_var_view_sum(s : TimeseriesvarView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_view_sum(s : TimeseriesvarView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_view_mean(s : TimeseriesvarView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_view_mean(s : TimeseriesvarView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_view_scale(s : TimeseriesvarView, f : Double) -> TimeseriesvarView {
   let result = timeseries_var_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_var_view_fill(s : TimeseriesvarView, v : Double) -> Timeseries
   result
 }
 
-pub fn timeseries_var_view_min(s : TimeseriesvarView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_view_min(s : TimeseriesvarView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_view_max(s : TimeseriesvarView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_view_max(s : TimeseriesvarView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_view_to_string(s : TimeseriesvarView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_var_range_set(s : TimeseriesvarRange, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_var_range_sum(s : TimeseriesvarRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_range_sum(s : TimeseriesvarRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_range_mean(s : TimeseriesvarRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_range_mean(s : TimeseriesvarRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_range_scale(s : TimeseriesvarRange, f : Double) -> TimeseriesvarRange {
   let result = timeseries_var_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_var_range_fill(s : TimeseriesvarRange, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_var_range_min(s : TimeseriesvarRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_range_min(s : TimeseriesvarRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_range_max(s : TimeseriesvarRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_range_max(s : TimeseriesvarRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_range_to_string(s : TimeseriesvarRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_var_slice_set(s : TimeseriesvarSlice, i : Int, v : Double) -> 
   result
 }
 
-pub fn timeseries_var_slice_sum(s : TimeseriesvarSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_var_slice_sum(s : TimeseriesvarSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_var_slice_mean(s : TimeseriesvarSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_var_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_var_slice_mean(s : TimeseriesvarSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_var_slice_scale(s : TimeseriesvarSlice, f : Double) -> TimeseriesvarSlice {
   let result = timeseries_var_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_var_slice_fill(s : TimeseriesvarSlice, v : Double) -> Timeseri
   result
 }
 
-pub fn timeseries_var_slice_min(s : TimeseriesvarSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_slice_min(s : TimeseriesvarSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_var_slice_max(s : TimeseriesvarSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_var_slice_max(s : TimeseriesvarSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_var_slice_to_string(s : TimeseriesvarSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

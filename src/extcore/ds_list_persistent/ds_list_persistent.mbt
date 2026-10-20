@@ -88,11 +88,7 @@ pub fn ds_list_persistent_make_series(vals : Array[Double], name : String) -> Ds
 
 pub fn ds_list_persistent_series_len(s : DslistpersistentSeries) -> Int { s.vals.length() }
 
-pub fn ds_list_persistent_series_sum(s : DslistpersistentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_list_persistent_series_sum(s : DslistpersistentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_list_persistent_series_mean(s : DslistpersistentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_list_persistent_frame_set(s : DslistpersistentFrame, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_persistent_frame_sum(s : DslistpersistentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_frame_sum(s : DslistpersistentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_frame_mean(s : DslistpersistentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_frame_mean(s : DslistpersistentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_frame_scale(s : DslistpersistentFrame, f : Double) -> DslistpersistentFrame {
   let result = ds_list_persistent_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_list_persistent_frame_fill(s : DslistpersistentFrame, v : Double) -> D
   result
 }
 
-pub fn ds_list_persistent_frame_min(s : DslistpersistentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_frame_min(s : DslistpersistentFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_frame_max(s : DslistpersistentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_frame_max(s : DslistpersistentFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_frame_to_string(s : DslistpersistentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_list_persistent_table_set(s : DslistpersistentTable, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_persistent_table_sum(s : DslistpersistentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_table_sum(s : DslistpersistentTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_table_mean(s : DslistpersistentTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_table_mean(s : DslistpersistentTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_table_scale(s : DslistpersistentTable, f : Double) -> DslistpersistentTable {
   let result = ds_list_persistent_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_list_persistent_table_fill(s : DslistpersistentTable, v : Double) -> D
   result
 }
 
-pub fn ds_list_persistent_table_min(s : DslistpersistentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_table_min(s : DslistpersistentTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_table_max(s : DslistpersistentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_table_max(s : DslistpersistentTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_table_to_string(s : DslistpersistentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_list_persistent_graphn_set(s : DslistpersistentGraphN, i : Int, v : Do
   result
 }
 
-pub fn ds_list_persistent_graphn_sum(s : DslistpersistentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_graphn_sum(s : DslistpersistentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_graphn_mean(s : DslistpersistentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_graphn_mean(s : DslistpersistentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_graphn_scale(s : DslistpersistentGraphN, f : Double) -> DslistpersistentGraphN {
   let result = ds_list_persistent_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_list_persistent_graphn_fill(s : DslistpersistentGraphN, v : Double) ->
   result
 }
 
-pub fn ds_list_persistent_graphn_min(s : DslistpersistentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_graphn_min(s : DslistpersistentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_graphn_max(s : DslistpersistentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_graphn_max(s : DslistpersistentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_graphn_to_string(s : DslistpersistentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_list_persistent_node_set(s : DslistpersistentNode, i : Int, v : Double
   result
 }
 
-pub fn ds_list_persistent_node_sum(s : DslistpersistentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_node_sum(s : DslistpersistentNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_node_mean(s : DslistpersistentNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_node_mean(s : DslistpersistentNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_node_scale(s : DslistpersistentNode, f : Double) -> DslistpersistentNode {
   let result = ds_list_persistent_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_list_persistent_node_fill(s : DslistpersistentNode, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_persistent_node_min(s : DslistpersistentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_node_min(s : DslistpersistentNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_node_max(s : DslistpersistentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_node_max(s : DslistpersistentNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_node_to_string(s : DslistpersistentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_list_persistent_edge_set(s : DslistpersistentEdge, i : Int, v : Double
   result
 }
 
-pub fn ds_list_persistent_edge_sum(s : DslistpersistentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_edge_sum(s : DslistpersistentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_edge_mean(s : DslistpersistentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_edge_mean(s : DslistpersistentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_edge_scale(s : DslistpersistentEdge, f : Double) -> DslistpersistentEdge {
   let result = ds_list_persistent_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_list_persistent_edge_fill(s : DslistpersistentEdge, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_persistent_edge_min(s : DslistpersistentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_edge_min(s : DslistpersistentEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_edge_max(s : DslistpersistentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_edge_max(s : DslistpersistentEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_edge_to_string(s : DslistpersistentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_list_persistent_path_set(s : DslistpersistentPath, i : Int, v : Double
   result
 }
 
-pub fn ds_list_persistent_path_sum(s : DslistpersistentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_path_sum(s : DslistpersistentPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_path_mean(s : DslistpersistentPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_path_mean(s : DslistpersistentPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_path_scale(s : DslistpersistentPath, f : Double) -> DslistpersistentPath {
   let result = ds_list_persistent_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_list_persistent_path_fill(s : DslistpersistentPath, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_persistent_path_min(s : DslistpersistentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_path_min(s : DslistpersistentPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_path_max(s : DslistpersistentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_path_max(s : DslistpersistentPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_path_to_string(s : DslistpersistentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_list_persistent_cluster_set(s : DslistpersistentCluster, i : Int, v : 
   result
 }
 
-pub fn ds_list_persistent_cluster_sum(s : DslistpersistentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_cluster_sum(s : DslistpersistentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_cluster_mean(s : DslistpersistentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_cluster_mean(s : DslistpersistentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_cluster_scale(s : DslistpersistentCluster, f : Double) -> DslistpersistentCluster {
   let result = ds_list_persistent_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_list_persistent_cluster_fill(s : DslistpersistentCluster, v : Double) 
   result
 }
 
-pub fn ds_list_persistent_cluster_min(s : DslistpersistentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_cluster_min(s : DslistpersistentCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_cluster_max(s : DslistpersistentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_cluster_max(s : DslistpersistentCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_cluster_to_string(s : DslistpersistentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_list_persistent_model_set(s : DslistpersistentModel, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_persistent_model_sum(s : DslistpersistentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_model_sum(s : DslistpersistentModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_model_mean(s : DslistpersistentModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_model_mean(s : DslistpersistentModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_model_scale(s : DslistpersistentModel, f : Double) -> DslistpersistentModel {
   let result = ds_list_persistent_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_list_persistent_model_fill(s : DslistpersistentModel, v : Double) -> D
   result
 }
 
-pub fn ds_list_persistent_model_min(s : DslistpersistentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_model_min(s : DslistpersistentModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_model_max(s : DslistpersistentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_model_max(s : DslistpersistentModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_model_to_string(s : DslistpersistentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_list_persistent_layer_set(s : DslistpersistentLayer, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_persistent_layer_sum(s : DslistpersistentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_layer_sum(s : DslistpersistentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_layer_mean(s : DslistpersistentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_layer_mean(s : DslistpersistentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_layer_scale(s : DslistpersistentLayer, f : Double) -> DslistpersistentLayer {
   let result = ds_list_persistent_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_list_persistent_layer_fill(s : DslistpersistentLayer, v : Double) -> D
   result
 }
 
-pub fn ds_list_persistent_layer_min(s : DslistpersistentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_layer_min(s : DslistpersistentLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_layer_max(s : DslistpersistentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_layer_max(s : DslistpersistentLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_layer_to_string(s : DslistpersistentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_list_persistent_buffer_set(s : DslistpersistentBuffer, i : Int, v : Do
   result
 }
 
-pub fn ds_list_persistent_buffer_sum(s : DslistpersistentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_buffer_sum(s : DslistpersistentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_buffer_mean(s : DslistpersistentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_buffer_mean(s : DslistpersistentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_buffer_scale(s : DslistpersistentBuffer, f : Double) -> DslistpersistentBuffer {
   let result = ds_list_persistent_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_list_persistent_buffer_fill(s : DslistpersistentBuffer, v : Double) ->
   result
 }
 
-pub fn ds_list_persistent_buffer_min(s : DslistpersistentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_buffer_min(s : DslistpersistentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_buffer_max(s : DslistpersistentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_buffer_max(s : DslistpersistentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_buffer_to_string(s : DslistpersistentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_list_persistent_cursor_set(s : DslistpersistentCursor, i : Int, v : Do
   result
 }
 
-pub fn ds_list_persistent_cursor_sum(s : DslistpersistentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_cursor_sum(s : DslistpersistentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_cursor_mean(s : DslistpersistentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_cursor_mean(s : DslistpersistentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_cursor_scale(s : DslistpersistentCursor, f : Double) -> DslistpersistentCursor {
   let result = ds_list_persistent_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_list_persistent_cursor_fill(s : DslistpersistentCursor, v : Double) ->
   result
 }
 
-pub fn ds_list_persistent_cursor_min(s : DslistpersistentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_cursor_min(s : DslistpersistentCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_cursor_max(s : DslistpersistentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_cursor_max(s : DslistpersistentCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_cursor_to_string(s : DslistpersistentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_list_persistent_view_set(s : DslistpersistentView, i : Int, v : Double
   result
 }
 
-pub fn ds_list_persistent_view_sum(s : DslistpersistentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_view_sum(s : DslistpersistentView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_view_mean(s : DslistpersistentView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_view_mean(s : DslistpersistentView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_view_scale(s : DslistpersistentView, f : Double) -> DslistpersistentView {
   let result = ds_list_persistent_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_list_persistent_view_fill(s : DslistpersistentView, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_persistent_view_min(s : DslistpersistentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_view_min(s : DslistpersistentView) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_view_max(s : DslistpersistentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_view_max(s : DslistpersistentView) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_view_to_string(s : DslistpersistentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_list_persistent_range_set(s : DslistpersistentRange, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_persistent_range_sum(s : DslistpersistentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_range_sum(s : DslistpersistentRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_range_mean(s : DslistpersistentRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_range_mean(s : DslistpersistentRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_range_scale(s : DslistpersistentRange, f : Double) -> DslistpersistentRange {
   let result = ds_list_persistent_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_list_persistent_range_fill(s : DslistpersistentRange, v : Double) -> D
   result
 }
 
-pub fn ds_list_persistent_range_min(s : DslistpersistentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_range_min(s : DslistpersistentRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_range_max(s : DslistpersistentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_range_max(s : DslistpersistentRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_range_to_string(s : DslistpersistentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_list_persistent_slice_set(s : DslistpersistentSlice, i : Int, v : Doub
   result
 }
 
-pub fn ds_list_persistent_slice_sum(s : DslistpersistentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_persistent_slice_sum(s : DslistpersistentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_persistent_slice_mean(s : DslistpersistentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_persistent_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_persistent_slice_mean(s : DslistpersistentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_persistent_slice_scale(s : DslistpersistentSlice, f : Double) -> DslistpersistentSlice {
   let result = ds_list_persistent_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_list_persistent_slice_fill(s : DslistpersistentSlice, v : Double) -> D
   result
 }
 
-pub fn ds_list_persistent_slice_min(s : DslistpersistentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_slice_min(s : DslistpersistentSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_persistent_slice_max(s : DslistpersistentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_persistent_slice_max(s : DslistpersistentSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_persistent_slice_to_string(s : DslistpersistentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_feature_pls_make_series(vals : Array[Double], name : String) -> Mlfeat
 
 pub fn ml_feature_pls_series_len(s : MlfeatureplsSeries) -> Int { s.vals.length() }
 
-pub fn ml_feature_pls_series_sum(s : MlfeatureplsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_feature_pls_series_sum(s : MlfeatureplsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_feature_pls_series_mean(s : MlfeatureplsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_feature_pls_frame_set(s : MlfeatureplsFrame, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pls_frame_sum(s : MlfeatureplsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_frame_sum(s : MlfeatureplsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_frame_mean(s : MlfeatureplsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_frame_mean(s : MlfeatureplsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_frame_scale(s : MlfeatureplsFrame, f : Double) -> MlfeatureplsFrame {
   let result = ml_feature_pls_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_feature_pls_frame_fill(s : MlfeatureplsFrame, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pls_frame_min(s : MlfeatureplsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_frame_min(s : MlfeatureplsFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_frame_max(s : MlfeatureplsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_frame_max(s : MlfeatureplsFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_frame_to_string(s : MlfeatureplsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_feature_pls_table_set(s : MlfeatureplsTable, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pls_table_sum(s : MlfeatureplsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_table_sum(s : MlfeatureplsTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_table_mean(s : MlfeatureplsTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_table_mean(s : MlfeatureplsTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_table_scale(s : MlfeatureplsTable, f : Double) -> MlfeatureplsTable {
   let result = ml_feature_pls_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_feature_pls_table_fill(s : MlfeatureplsTable, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pls_table_min(s : MlfeatureplsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_table_min(s : MlfeatureplsTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_table_max(s : MlfeatureplsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_table_max(s : MlfeatureplsTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_table_to_string(s : MlfeatureplsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_feature_pls_graphn_set(s : MlfeatureplsGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_pls_graphn_sum(s : MlfeatureplsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_graphn_sum(s : MlfeatureplsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_graphn_mean(s : MlfeatureplsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_graphn_mean(s : MlfeatureplsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_graphn_scale(s : MlfeatureplsGraphN, f : Double) -> MlfeatureplsGraphN {
   let result = ml_feature_pls_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_feature_pls_graphn_fill(s : MlfeatureplsGraphN, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_pls_graphn_min(s : MlfeatureplsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_graphn_min(s : MlfeatureplsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_graphn_max(s : MlfeatureplsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_graphn_max(s : MlfeatureplsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_graphn_to_string(s : MlfeatureplsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_feature_pls_node_set(s : MlfeatureplsNode, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pls_node_sum(s : MlfeatureplsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_node_sum(s : MlfeatureplsNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_node_mean(s : MlfeatureplsNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_node_mean(s : MlfeatureplsNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_node_scale(s : MlfeatureplsNode, f : Double) -> MlfeatureplsNode {
   let result = ml_feature_pls_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_feature_pls_node_fill(s : MlfeatureplsNode, v : Double) -> Mlfeaturepl
   result
 }
 
-pub fn ml_feature_pls_node_min(s : MlfeatureplsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_node_min(s : MlfeatureplsNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_node_max(s : MlfeatureplsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_node_max(s : MlfeatureplsNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_node_to_string(s : MlfeatureplsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_feature_pls_edge_set(s : MlfeatureplsEdge, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pls_edge_sum(s : MlfeatureplsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_edge_sum(s : MlfeatureplsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_edge_mean(s : MlfeatureplsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_edge_mean(s : MlfeatureplsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_edge_scale(s : MlfeatureplsEdge, f : Double) -> MlfeatureplsEdge {
   let result = ml_feature_pls_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_feature_pls_edge_fill(s : MlfeatureplsEdge, v : Double) -> Mlfeaturepl
   result
 }
 
-pub fn ml_feature_pls_edge_min(s : MlfeatureplsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_edge_min(s : MlfeatureplsEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_edge_max(s : MlfeatureplsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_edge_max(s : MlfeatureplsEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_edge_to_string(s : MlfeatureplsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_feature_pls_path_set(s : MlfeatureplsPath, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pls_path_sum(s : MlfeatureplsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_path_sum(s : MlfeatureplsPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_path_mean(s : MlfeatureplsPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_path_mean(s : MlfeatureplsPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_path_scale(s : MlfeatureplsPath, f : Double) -> MlfeatureplsPath {
   let result = ml_feature_pls_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_feature_pls_path_fill(s : MlfeatureplsPath, v : Double) -> Mlfeaturepl
   result
 }
 
-pub fn ml_feature_pls_path_min(s : MlfeatureplsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_path_min(s : MlfeatureplsPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_path_max(s : MlfeatureplsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_path_max(s : MlfeatureplsPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_path_to_string(s : MlfeatureplsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_feature_pls_cluster_set(s : MlfeatureplsCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ml_feature_pls_cluster_sum(s : MlfeatureplsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_cluster_sum(s : MlfeatureplsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_cluster_mean(s : MlfeatureplsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_cluster_mean(s : MlfeatureplsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_cluster_scale(s : MlfeatureplsCluster, f : Double) -> MlfeatureplsCluster {
   let result = ml_feature_pls_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_feature_pls_cluster_fill(s : MlfeatureplsCluster, v : Double) -> Mlfea
   result
 }
 
-pub fn ml_feature_pls_cluster_min(s : MlfeatureplsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_cluster_min(s : MlfeatureplsCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_cluster_max(s : MlfeatureplsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_cluster_max(s : MlfeatureplsCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_cluster_to_string(s : MlfeatureplsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_feature_pls_model_set(s : MlfeatureplsModel, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pls_model_sum(s : MlfeatureplsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_model_sum(s : MlfeatureplsModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_model_mean(s : MlfeatureplsModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_model_mean(s : MlfeatureplsModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_model_scale(s : MlfeatureplsModel, f : Double) -> MlfeatureplsModel {
   let result = ml_feature_pls_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_feature_pls_model_fill(s : MlfeatureplsModel, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pls_model_min(s : MlfeatureplsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_model_min(s : MlfeatureplsModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_model_max(s : MlfeatureplsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_model_max(s : MlfeatureplsModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_model_to_string(s : MlfeatureplsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_feature_pls_layer_set(s : MlfeatureplsLayer, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pls_layer_sum(s : MlfeatureplsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_layer_sum(s : MlfeatureplsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_layer_mean(s : MlfeatureplsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_layer_mean(s : MlfeatureplsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_layer_scale(s : MlfeatureplsLayer, f : Double) -> MlfeatureplsLayer {
   let result = ml_feature_pls_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_feature_pls_layer_fill(s : MlfeatureplsLayer, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pls_layer_min(s : MlfeatureplsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_layer_min(s : MlfeatureplsLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_layer_max(s : MlfeatureplsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_layer_max(s : MlfeatureplsLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_layer_to_string(s : MlfeatureplsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_feature_pls_buffer_set(s : MlfeatureplsBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_pls_buffer_sum(s : MlfeatureplsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_buffer_sum(s : MlfeatureplsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_buffer_mean(s : MlfeatureplsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_buffer_mean(s : MlfeatureplsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_buffer_scale(s : MlfeatureplsBuffer, f : Double) -> MlfeatureplsBuffer {
   let result = ml_feature_pls_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_feature_pls_buffer_fill(s : MlfeatureplsBuffer, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_pls_buffer_min(s : MlfeatureplsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_buffer_min(s : MlfeatureplsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_buffer_max(s : MlfeatureplsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_buffer_max(s : MlfeatureplsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_buffer_to_string(s : MlfeatureplsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_feature_pls_cursor_set(s : MlfeatureplsCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_feature_pls_cursor_sum(s : MlfeatureplsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_cursor_sum(s : MlfeatureplsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_cursor_mean(s : MlfeatureplsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_cursor_mean(s : MlfeatureplsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_cursor_scale(s : MlfeatureplsCursor, f : Double) -> MlfeatureplsCursor {
   let result = ml_feature_pls_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_feature_pls_cursor_fill(s : MlfeatureplsCursor, v : Double) -> Mlfeatu
   result
 }
 
-pub fn ml_feature_pls_cursor_min(s : MlfeatureplsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_cursor_min(s : MlfeatureplsCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_cursor_max(s : MlfeatureplsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_cursor_max(s : MlfeatureplsCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_cursor_to_string(s : MlfeatureplsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_feature_pls_view_set(s : MlfeatureplsView, i : Int, v : Double) -> Mlf
   result
 }
 
-pub fn ml_feature_pls_view_sum(s : MlfeatureplsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_view_sum(s : MlfeatureplsView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_view_mean(s : MlfeatureplsView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_view_mean(s : MlfeatureplsView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_view_scale(s : MlfeatureplsView, f : Double) -> MlfeatureplsView {
   let result = ml_feature_pls_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_feature_pls_view_fill(s : MlfeatureplsView, v : Double) -> Mlfeaturepl
   result
 }
 
-pub fn ml_feature_pls_view_min(s : MlfeatureplsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_view_min(s : MlfeatureplsView) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_view_max(s : MlfeatureplsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_view_max(s : MlfeatureplsView) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_view_to_string(s : MlfeatureplsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_feature_pls_range_set(s : MlfeatureplsRange, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pls_range_sum(s : MlfeatureplsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_range_sum(s : MlfeatureplsRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_range_mean(s : MlfeatureplsRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_range_mean(s : MlfeatureplsRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_range_scale(s : MlfeatureplsRange, f : Double) -> MlfeatureplsRange {
   let result = ml_feature_pls_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_feature_pls_range_fill(s : MlfeatureplsRange, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pls_range_min(s : MlfeatureplsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_range_min(s : MlfeatureplsRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_range_max(s : MlfeatureplsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_range_max(s : MlfeatureplsRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_range_to_string(s : MlfeatureplsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_feature_pls_slice_set(s : MlfeatureplsSlice, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_feature_pls_slice_sum(s : MlfeatureplsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_pls_slice_sum(s : MlfeatureplsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_pls_slice_mean(s : MlfeatureplsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_pls_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_pls_slice_mean(s : MlfeatureplsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_pls_slice_scale(s : MlfeatureplsSlice, f : Double) -> MlfeatureplsSlice {
   let result = ml_feature_pls_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_feature_pls_slice_fill(s : MlfeatureplsSlice, v : Double) -> Mlfeature
   result
 }
 
-pub fn ml_feature_pls_slice_min(s : MlfeatureplsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_slice_min(s : MlfeatureplsSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_pls_slice_max(s : MlfeatureplsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_pls_slice_max(s : MlfeatureplsSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_pls_slice_to_string(s : MlfeatureplsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

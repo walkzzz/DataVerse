@@ -88,11 +88,7 @@ pub fn bio_seq_align_local_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_seq_align_local_series_len(s : BioseqalignlocalSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_align_local_series_sum(s : BioseqalignlocalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_align_local_series_sum(s : BioseqalignlocalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_align_local_series_mean(s : BioseqalignlocalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_align_local_frame_set(s : BioseqalignlocalFrame, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_local_frame_sum(s : BioseqalignlocalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_frame_sum(s : BioseqalignlocalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_frame_mean(s : BioseqalignlocalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_frame_mean(s : BioseqalignlocalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_frame_scale(s : BioseqalignlocalFrame, f : Double) -> BioseqalignlocalFrame {
   let result = bio_seq_align_local_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_align_local_frame_fill(s : BioseqalignlocalFrame, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_local_frame_min(s : BioseqalignlocalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_frame_min(s : BioseqalignlocalFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_frame_max(s : BioseqalignlocalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_frame_max(s : BioseqalignlocalFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_frame_to_string(s : BioseqalignlocalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_align_local_table_set(s : BioseqalignlocalTable, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_local_table_sum(s : BioseqalignlocalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_table_sum(s : BioseqalignlocalTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_table_mean(s : BioseqalignlocalTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_table_mean(s : BioseqalignlocalTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_table_scale(s : BioseqalignlocalTable, f : Double) -> BioseqalignlocalTable {
   let result = bio_seq_align_local_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_align_local_table_fill(s : BioseqalignlocalTable, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_local_table_min(s : BioseqalignlocalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_table_min(s : BioseqalignlocalTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_table_max(s : BioseqalignlocalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_table_max(s : BioseqalignlocalTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_table_to_string(s : BioseqalignlocalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_align_local_graphn_set(s : BioseqalignlocalGraphN, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_local_graphn_sum(s : BioseqalignlocalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_graphn_sum(s : BioseqalignlocalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_graphn_mean(s : BioseqalignlocalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_graphn_mean(s : BioseqalignlocalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_graphn_scale(s : BioseqalignlocalGraphN, f : Double) -> BioseqalignlocalGraphN {
   let result = bio_seq_align_local_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_align_local_graphn_fill(s : BioseqalignlocalGraphN, v : Double) -
   result
 }
 
-pub fn bio_seq_align_local_graphn_min(s : BioseqalignlocalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_graphn_min(s : BioseqalignlocalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_graphn_max(s : BioseqalignlocalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_graphn_max(s : BioseqalignlocalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_graphn_to_string(s : BioseqalignlocalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_align_local_node_set(s : BioseqalignlocalNode, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_local_node_sum(s : BioseqalignlocalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_node_sum(s : BioseqalignlocalNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_node_mean(s : BioseqalignlocalNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_node_mean(s : BioseqalignlocalNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_node_scale(s : BioseqalignlocalNode, f : Double) -> BioseqalignlocalNode {
   let result = bio_seq_align_local_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_align_local_node_fill(s : BioseqalignlocalNode, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_local_node_min(s : BioseqalignlocalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_node_min(s : BioseqalignlocalNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_node_max(s : BioseqalignlocalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_node_max(s : BioseqalignlocalNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_node_to_string(s : BioseqalignlocalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_align_local_edge_set(s : BioseqalignlocalEdge, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_local_edge_sum(s : BioseqalignlocalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_edge_sum(s : BioseqalignlocalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_edge_mean(s : BioseqalignlocalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_edge_mean(s : BioseqalignlocalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_edge_scale(s : BioseqalignlocalEdge, f : Double) -> BioseqalignlocalEdge {
   let result = bio_seq_align_local_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_align_local_edge_fill(s : BioseqalignlocalEdge, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_local_edge_min(s : BioseqalignlocalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_edge_min(s : BioseqalignlocalEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_edge_max(s : BioseqalignlocalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_edge_max(s : BioseqalignlocalEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_edge_to_string(s : BioseqalignlocalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_align_local_path_set(s : BioseqalignlocalPath, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_local_path_sum(s : BioseqalignlocalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_path_sum(s : BioseqalignlocalPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_path_mean(s : BioseqalignlocalPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_path_mean(s : BioseqalignlocalPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_path_scale(s : BioseqalignlocalPath, f : Double) -> BioseqalignlocalPath {
   let result = bio_seq_align_local_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_align_local_path_fill(s : BioseqalignlocalPath, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_local_path_min(s : BioseqalignlocalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_path_min(s : BioseqalignlocalPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_path_max(s : BioseqalignlocalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_path_max(s : BioseqalignlocalPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_path_to_string(s : BioseqalignlocalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_align_local_cluster_set(s : BioseqalignlocalCluster, i : Int, v :
   result
 }
 
-pub fn bio_seq_align_local_cluster_sum(s : BioseqalignlocalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_cluster_sum(s : BioseqalignlocalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_cluster_mean(s : BioseqalignlocalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_cluster_mean(s : BioseqalignlocalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_cluster_scale(s : BioseqalignlocalCluster, f : Double) -> BioseqalignlocalCluster {
   let result = bio_seq_align_local_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_align_local_cluster_fill(s : BioseqalignlocalCluster, v : Double)
   result
 }
 
-pub fn bio_seq_align_local_cluster_min(s : BioseqalignlocalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_cluster_min(s : BioseqalignlocalCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_cluster_max(s : BioseqalignlocalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_cluster_max(s : BioseqalignlocalCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_cluster_to_string(s : BioseqalignlocalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_align_local_model_set(s : BioseqalignlocalModel, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_local_model_sum(s : BioseqalignlocalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_model_sum(s : BioseqalignlocalModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_model_mean(s : BioseqalignlocalModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_model_mean(s : BioseqalignlocalModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_model_scale(s : BioseqalignlocalModel, f : Double) -> BioseqalignlocalModel {
   let result = bio_seq_align_local_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_align_local_model_fill(s : BioseqalignlocalModel, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_local_model_min(s : BioseqalignlocalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_model_min(s : BioseqalignlocalModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_model_max(s : BioseqalignlocalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_model_max(s : BioseqalignlocalModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_model_to_string(s : BioseqalignlocalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_align_local_layer_set(s : BioseqalignlocalLayer, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_local_layer_sum(s : BioseqalignlocalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_layer_sum(s : BioseqalignlocalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_layer_mean(s : BioseqalignlocalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_layer_mean(s : BioseqalignlocalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_layer_scale(s : BioseqalignlocalLayer, f : Double) -> BioseqalignlocalLayer {
   let result = bio_seq_align_local_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_align_local_layer_fill(s : BioseqalignlocalLayer, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_local_layer_min(s : BioseqalignlocalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_layer_min(s : BioseqalignlocalLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_layer_max(s : BioseqalignlocalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_layer_max(s : BioseqalignlocalLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_layer_to_string(s : BioseqalignlocalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_align_local_buffer_set(s : BioseqalignlocalBuffer, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_local_buffer_sum(s : BioseqalignlocalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_buffer_sum(s : BioseqalignlocalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_buffer_mean(s : BioseqalignlocalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_buffer_mean(s : BioseqalignlocalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_buffer_scale(s : BioseqalignlocalBuffer, f : Double) -> BioseqalignlocalBuffer {
   let result = bio_seq_align_local_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_align_local_buffer_fill(s : BioseqalignlocalBuffer, v : Double) -
   result
 }
 
-pub fn bio_seq_align_local_buffer_min(s : BioseqalignlocalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_buffer_min(s : BioseqalignlocalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_buffer_max(s : BioseqalignlocalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_buffer_max(s : BioseqalignlocalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_buffer_to_string(s : BioseqalignlocalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_align_local_cursor_set(s : BioseqalignlocalCursor, i : Int, v : D
   result
 }
 
-pub fn bio_seq_align_local_cursor_sum(s : BioseqalignlocalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_cursor_sum(s : BioseqalignlocalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_cursor_mean(s : BioseqalignlocalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_cursor_mean(s : BioseqalignlocalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_cursor_scale(s : BioseqalignlocalCursor, f : Double) -> BioseqalignlocalCursor {
   let result = bio_seq_align_local_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_align_local_cursor_fill(s : BioseqalignlocalCursor, v : Double) -
   result
 }
 
-pub fn bio_seq_align_local_cursor_min(s : BioseqalignlocalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_cursor_min(s : BioseqalignlocalCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_cursor_max(s : BioseqalignlocalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_cursor_max(s : BioseqalignlocalCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_cursor_to_string(s : BioseqalignlocalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_align_local_view_set(s : BioseqalignlocalView, i : Int, v : Doubl
   result
 }
 
-pub fn bio_seq_align_local_view_sum(s : BioseqalignlocalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_view_sum(s : BioseqalignlocalView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_view_mean(s : BioseqalignlocalView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_view_mean(s : BioseqalignlocalView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_view_scale(s : BioseqalignlocalView, f : Double) -> BioseqalignlocalView {
   let result = bio_seq_align_local_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_align_local_view_fill(s : BioseqalignlocalView, v : Double) -> Bi
   result
 }
 
-pub fn bio_seq_align_local_view_min(s : BioseqalignlocalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_view_min(s : BioseqalignlocalView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_view_max(s : BioseqalignlocalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_view_max(s : BioseqalignlocalView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_view_to_string(s : BioseqalignlocalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_align_local_range_set(s : BioseqalignlocalRange, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_local_range_sum(s : BioseqalignlocalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_range_sum(s : BioseqalignlocalRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_range_mean(s : BioseqalignlocalRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_range_mean(s : BioseqalignlocalRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_range_scale(s : BioseqalignlocalRange, f : Double) -> BioseqalignlocalRange {
   let result = bio_seq_align_local_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_align_local_range_fill(s : BioseqalignlocalRange, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_local_range_min(s : BioseqalignlocalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_range_min(s : BioseqalignlocalRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_range_max(s : BioseqalignlocalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_range_max(s : BioseqalignlocalRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_range_to_string(s : BioseqalignlocalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_align_local_slice_set(s : BioseqalignlocalSlice, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_align_local_slice_sum(s : BioseqalignlocalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_local_slice_sum(s : BioseqalignlocalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_local_slice_mean(s : BioseqalignlocalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_local_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_local_slice_mean(s : BioseqalignlocalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_local_slice_scale(s : BioseqalignlocalSlice, f : Double) -> BioseqalignlocalSlice {
   let result = bio_seq_align_local_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_align_local_slice_fill(s : BioseqalignlocalSlice, v : Double) -> 
   result
 }
 
-pub fn bio_seq_align_local_slice_min(s : BioseqalignlocalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_slice_min(s : BioseqalignlocalSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_local_slice_max(s : BioseqalignlocalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_local_slice_max(s : BioseqalignlocalSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_local_slice_to_string(s : BioseqalignlocalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

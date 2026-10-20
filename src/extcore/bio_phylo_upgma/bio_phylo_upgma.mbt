@@ -88,11 +88,7 @@ pub fn bio_phylo_upgma_make_series(vals : Array[Double], name : String) -> Bioph
 
 pub fn bio_phylo_upgma_series_len(s : BiophyloupgmaSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_upgma_series_sum(s : BiophyloupgmaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_upgma_series_sum(s : BiophyloupgmaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_upgma_series_mean(s : BiophyloupgmaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_upgma_frame_set(s : BiophyloupgmaFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_phylo_upgma_frame_sum(s : BiophyloupgmaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_frame_sum(s : BiophyloupgmaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_frame_mean(s : BiophyloupgmaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_frame_mean(s : BiophyloupgmaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_frame_scale(s : BiophyloupgmaFrame, f : Double) -> BiophyloupgmaFrame {
   let result = bio_phylo_upgma_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_upgma_frame_fill(s : BiophyloupgmaFrame, v : Double) -> Biophyl
   result
 }
 
-pub fn bio_phylo_upgma_frame_min(s : BiophyloupgmaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_frame_min(s : BiophyloupgmaFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_frame_max(s : BiophyloupgmaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_frame_max(s : BiophyloupgmaFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_frame_to_string(s : BiophyloupgmaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_upgma_table_set(s : BiophyloupgmaTable, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_phylo_upgma_table_sum(s : BiophyloupgmaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_table_sum(s : BiophyloupgmaTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_table_mean(s : BiophyloupgmaTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_table_mean(s : BiophyloupgmaTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_table_scale(s : BiophyloupgmaTable, f : Double) -> BiophyloupgmaTable {
   let result = bio_phylo_upgma_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_upgma_table_fill(s : BiophyloupgmaTable, v : Double) -> Biophyl
   result
 }
 
-pub fn bio_phylo_upgma_table_min(s : BiophyloupgmaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_table_min(s : BiophyloupgmaTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_table_max(s : BiophyloupgmaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_table_max(s : BiophyloupgmaTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_table_to_string(s : BiophyloupgmaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_upgma_graphn_set(s : BiophyloupgmaGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_upgma_graphn_sum(s : BiophyloupgmaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_graphn_sum(s : BiophyloupgmaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_graphn_mean(s : BiophyloupgmaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_graphn_mean(s : BiophyloupgmaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_graphn_scale(s : BiophyloupgmaGraphN, f : Double) -> BiophyloupgmaGraphN {
   let result = bio_phylo_upgma_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_upgma_graphn_fill(s : BiophyloupgmaGraphN, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_upgma_graphn_min(s : BiophyloupgmaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_graphn_min(s : BiophyloupgmaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_graphn_max(s : BiophyloupgmaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_graphn_max(s : BiophyloupgmaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_graphn_to_string(s : BiophyloupgmaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_upgma_node_set(s : BiophyloupgmaNode, i : Int, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_upgma_node_sum(s : BiophyloupgmaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_node_sum(s : BiophyloupgmaNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_node_mean(s : BiophyloupgmaNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_node_mean(s : BiophyloupgmaNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_node_scale(s : BiophyloupgmaNode, f : Double) -> BiophyloupgmaNode {
   let result = bio_phylo_upgma_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_upgma_node_fill(s : BiophyloupgmaNode, v : Double) -> Biophylou
   result
 }
 
-pub fn bio_phylo_upgma_node_min(s : BiophyloupgmaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_node_min(s : BiophyloupgmaNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_node_max(s : BiophyloupgmaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_node_max(s : BiophyloupgmaNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_node_to_string(s : BiophyloupgmaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_upgma_edge_set(s : BiophyloupgmaEdge, i : Int, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_upgma_edge_sum(s : BiophyloupgmaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_edge_sum(s : BiophyloupgmaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_edge_mean(s : BiophyloupgmaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_edge_mean(s : BiophyloupgmaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_edge_scale(s : BiophyloupgmaEdge, f : Double) -> BiophyloupgmaEdge {
   let result = bio_phylo_upgma_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_upgma_edge_fill(s : BiophyloupgmaEdge, v : Double) -> Biophylou
   result
 }
 
-pub fn bio_phylo_upgma_edge_min(s : BiophyloupgmaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_edge_min(s : BiophyloupgmaEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_edge_max(s : BiophyloupgmaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_edge_max(s : BiophyloupgmaEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_edge_to_string(s : BiophyloupgmaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_upgma_path_set(s : BiophyloupgmaPath, i : Int, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_upgma_path_sum(s : BiophyloupgmaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_path_sum(s : BiophyloupgmaPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_path_mean(s : BiophyloupgmaPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_path_mean(s : BiophyloupgmaPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_path_scale(s : BiophyloupgmaPath, f : Double) -> BiophyloupgmaPath {
   let result = bio_phylo_upgma_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_upgma_path_fill(s : BiophyloupgmaPath, v : Double) -> Biophylou
   result
 }
 
-pub fn bio_phylo_upgma_path_min(s : BiophyloupgmaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_path_min(s : BiophyloupgmaPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_path_max(s : BiophyloupgmaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_path_max(s : BiophyloupgmaPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_path_to_string(s : BiophyloupgmaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_upgma_cluster_set(s : BiophyloupgmaCluster, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_upgma_cluster_sum(s : BiophyloupgmaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_cluster_sum(s : BiophyloupgmaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_cluster_mean(s : BiophyloupgmaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_cluster_mean(s : BiophyloupgmaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_cluster_scale(s : BiophyloupgmaCluster, f : Double) -> BiophyloupgmaCluster {
   let result = bio_phylo_upgma_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_upgma_cluster_fill(s : BiophyloupgmaCluster, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_upgma_cluster_min(s : BiophyloupgmaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_cluster_min(s : BiophyloupgmaCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_cluster_max(s : BiophyloupgmaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_cluster_max(s : BiophyloupgmaCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_cluster_to_string(s : BiophyloupgmaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_upgma_model_set(s : BiophyloupgmaModel, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_phylo_upgma_model_sum(s : BiophyloupgmaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_model_sum(s : BiophyloupgmaModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_model_mean(s : BiophyloupgmaModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_model_mean(s : BiophyloupgmaModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_model_scale(s : BiophyloupgmaModel, f : Double) -> BiophyloupgmaModel {
   let result = bio_phylo_upgma_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_upgma_model_fill(s : BiophyloupgmaModel, v : Double) -> Biophyl
   result
 }
 
-pub fn bio_phylo_upgma_model_min(s : BiophyloupgmaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_model_min(s : BiophyloupgmaModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_model_max(s : BiophyloupgmaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_model_max(s : BiophyloupgmaModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_model_to_string(s : BiophyloupgmaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_upgma_layer_set(s : BiophyloupgmaLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_phylo_upgma_layer_sum(s : BiophyloupgmaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_layer_sum(s : BiophyloupgmaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_layer_mean(s : BiophyloupgmaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_layer_mean(s : BiophyloupgmaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_layer_scale(s : BiophyloupgmaLayer, f : Double) -> BiophyloupgmaLayer {
   let result = bio_phylo_upgma_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_upgma_layer_fill(s : BiophyloupgmaLayer, v : Double) -> Biophyl
   result
 }
 
-pub fn bio_phylo_upgma_layer_min(s : BiophyloupgmaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_layer_min(s : BiophyloupgmaLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_layer_max(s : BiophyloupgmaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_layer_max(s : BiophyloupgmaLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_layer_to_string(s : BiophyloupgmaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_upgma_buffer_set(s : BiophyloupgmaBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_upgma_buffer_sum(s : BiophyloupgmaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_buffer_sum(s : BiophyloupgmaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_buffer_mean(s : BiophyloupgmaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_buffer_mean(s : BiophyloupgmaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_buffer_scale(s : BiophyloupgmaBuffer, f : Double) -> BiophyloupgmaBuffer {
   let result = bio_phylo_upgma_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_upgma_buffer_fill(s : BiophyloupgmaBuffer, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_upgma_buffer_min(s : BiophyloupgmaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_buffer_min(s : BiophyloupgmaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_buffer_max(s : BiophyloupgmaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_buffer_max(s : BiophyloupgmaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_buffer_to_string(s : BiophyloupgmaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_upgma_cursor_set(s : BiophyloupgmaCursor, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_upgma_cursor_sum(s : BiophyloupgmaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_cursor_sum(s : BiophyloupgmaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_cursor_mean(s : BiophyloupgmaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_cursor_mean(s : BiophyloupgmaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_cursor_scale(s : BiophyloupgmaCursor, f : Double) -> BiophyloupgmaCursor {
   let result = bio_phylo_upgma_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_upgma_cursor_fill(s : BiophyloupgmaCursor, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_upgma_cursor_min(s : BiophyloupgmaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_cursor_min(s : BiophyloupgmaCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_cursor_max(s : BiophyloupgmaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_cursor_max(s : BiophyloupgmaCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_cursor_to_string(s : BiophyloupgmaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_upgma_view_set(s : BiophyloupgmaView, i : Int, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_upgma_view_sum(s : BiophyloupgmaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_view_sum(s : BiophyloupgmaView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_view_mean(s : BiophyloupgmaView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_view_mean(s : BiophyloupgmaView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_view_scale(s : BiophyloupgmaView, f : Double) -> BiophyloupgmaView {
   let result = bio_phylo_upgma_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_upgma_view_fill(s : BiophyloupgmaView, v : Double) -> Biophylou
   result
 }
 
-pub fn bio_phylo_upgma_view_min(s : BiophyloupgmaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_view_min(s : BiophyloupgmaView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_view_max(s : BiophyloupgmaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_view_max(s : BiophyloupgmaView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_view_to_string(s : BiophyloupgmaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_upgma_range_set(s : BiophyloupgmaRange, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_phylo_upgma_range_sum(s : BiophyloupgmaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_range_sum(s : BiophyloupgmaRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_range_mean(s : BiophyloupgmaRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_range_mean(s : BiophyloupgmaRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_range_scale(s : BiophyloupgmaRange, f : Double) -> BiophyloupgmaRange {
   let result = bio_phylo_upgma_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_upgma_range_fill(s : BiophyloupgmaRange, v : Double) -> Biophyl
   result
 }
 
-pub fn bio_phylo_upgma_range_min(s : BiophyloupgmaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_range_min(s : BiophyloupgmaRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_range_max(s : BiophyloupgmaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_range_max(s : BiophyloupgmaRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_range_to_string(s : BiophyloupgmaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_upgma_slice_set(s : BiophyloupgmaSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_phylo_upgma_slice_sum(s : BiophyloupgmaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_upgma_slice_sum(s : BiophyloupgmaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_upgma_slice_mean(s : BiophyloupgmaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_upgma_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_upgma_slice_mean(s : BiophyloupgmaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_upgma_slice_scale(s : BiophyloupgmaSlice, f : Double) -> BiophyloupgmaSlice {
   let result = bio_phylo_upgma_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_upgma_slice_fill(s : BiophyloupgmaSlice, v : Double) -> Biophyl
   result
 }
 
-pub fn bio_phylo_upgma_slice_min(s : BiophyloupgmaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_slice_min(s : BiophyloupgmaSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_upgma_slice_max(s : BiophyloupgmaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_upgma_slice_max(s : BiophyloupgmaSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_upgma_slice_to_string(s : BiophyloupgmaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

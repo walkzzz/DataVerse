@@ -88,11 +88,7 @@ pub fn graph_connect_euler_make_series(vals : Array[Double], name : String) -> G
 
 pub fn graph_connect_euler_series_len(s : GraphconnecteulerSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_euler_series_sum(s : GraphconnecteulerSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_euler_series_sum(s : GraphconnecteulerSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_euler_series_mean(s : GraphconnecteulerSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_euler_frame_set(s : GraphconnecteulerFrame, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_euler_frame_sum(s : GraphconnecteulerFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_frame_sum(s : GraphconnecteulerFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_frame_mean(s : GraphconnecteulerFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_frame_mean(s : GraphconnecteulerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_frame_scale(s : GraphconnecteulerFrame, f : Double) -> GraphconnecteulerFrame {
   let result = graph_connect_euler_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_euler_frame_fill(s : GraphconnecteulerFrame, v : Double) ->
   result
 }
 
-pub fn graph_connect_euler_frame_min(s : GraphconnecteulerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_frame_min(s : GraphconnecteulerFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_frame_max(s : GraphconnecteulerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_frame_max(s : GraphconnecteulerFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_frame_to_string(s : GraphconnecteulerFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_euler_table_set(s : GraphconnecteulerTable, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_euler_table_sum(s : GraphconnecteulerTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_table_sum(s : GraphconnecteulerTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_table_mean(s : GraphconnecteulerTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_table_mean(s : GraphconnecteulerTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_table_scale(s : GraphconnecteulerTable, f : Double) -> GraphconnecteulerTable {
   let result = graph_connect_euler_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_euler_table_fill(s : GraphconnecteulerTable, v : Double) ->
   result
 }
 
-pub fn graph_connect_euler_table_min(s : GraphconnecteulerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_table_min(s : GraphconnecteulerTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_table_max(s : GraphconnecteulerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_table_max(s : GraphconnecteulerTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_table_to_string(s : GraphconnecteulerTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_euler_graphn_set(s : GraphconnecteulerGraphN, i : Int, v : 
   result
 }
 
-pub fn graph_connect_euler_graphn_sum(s : GraphconnecteulerGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_graphn_sum(s : GraphconnecteulerGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_graphn_mean(s : GraphconnecteulerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_graphn_mean(s : GraphconnecteulerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_graphn_scale(s : GraphconnecteulerGraphN, f : Double) -> GraphconnecteulerGraphN {
   let result = graph_connect_euler_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_euler_graphn_fill(s : GraphconnecteulerGraphN, v : Double) 
   result
 }
 
-pub fn graph_connect_euler_graphn_min(s : GraphconnecteulerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_graphn_min(s : GraphconnecteulerGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_graphn_max(s : GraphconnecteulerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_graphn_max(s : GraphconnecteulerGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_graphn_to_string(s : GraphconnecteulerGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_euler_node_set(s : GraphconnecteulerNode, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_euler_node_sum(s : GraphconnecteulerNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_node_sum(s : GraphconnecteulerNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_node_mean(s : GraphconnecteulerNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_node_mean(s : GraphconnecteulerNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_node_scale(s : GraphconnecteulerNode, f : Double) -> GraphconnecteulerNode {
   let result = graph_connect_euler_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_euler_node_fill(s : GraphconnecteulerNode, v : Double) -> G
   result
 }
 
-pub fn graph_connect_euler_node_min(s : GraphconnecteulerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_node_min(s : GraphconnecteulerNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_node_max(s : GraphconnecteulerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_node_max(s : GraphconnecteulerNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_node_to_string(s : GraphconnecteulerNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_euler_edge_set(s : GraphconnecteulerEdge, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_euler_edge_sum(s : GraphconnecteulerEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_edge_sum(s : GraphconnecteulerEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_edge_mean(s : GraphconnecteulerEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_edge_mean(s : GraphconnecteulerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_edge_scale(s : GraphconnecteulerEdge, f : Double) -> GraphconnecteulerEdge {
   let result = graph_connect_euler_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_euler_edge_fill(s : GraphconnecteulerEdge, v : Double) -> G
   result
 }
 
-pub fn graph_connect_euler_edge_min(s : GraphconnecteulerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_edge_min(s : GraphconnecteulerEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_edge_max(s : GraphconnecteulerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_edge_max(s : GraphconnecteulerEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_edge_to_string(s : GraphconnecteulerEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_euler_path_set(s : GraphconnecteulerPath, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_euler_path_sum(s : GraphconnecteulerPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_path_sum(s : GraphconnecteulerPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_path_mean(s : GraphconnecteulerPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_path_mean(s : GraphconnecteulerPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_path_scale(s : GraphconnecteulerPath, f : Double) -> GraphconnecteulerPath {
   let result = graph_connect_euler_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_euler_path_fill(s : GraphconnecteulerPath, v : Double) -> G
   result
 }
 
-pub fn graph_connect_euler_path_min(s : GraphconnecteulerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_path_min(s : GraphconnecteulerPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_path_max(s : GraphconnecteulerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_path_max(s : GraphconnecteulerPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_path_to_string(s : GraphconnecteulerPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_euler_cluster_set(s : GraphconnecteulerCluster, i : Int, v 
   result
 }
 
-pub fn graph_connect_euler_cluster_sum(s : GraphconnecteulerCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_cluster_sum(s : GraphconnecteulerCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_cluster_mean(s : GraphconnecteulerCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_cluster_mean(s : GraphconnecteulerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_cluster_scale(s : GraphconnecteulerCluster, f : Double) -> GraphconnecteulerCluster {
   let result = graph_connect_euler_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_euler_cluster_fill(s : GraphconnecteulerCluster, v : Double
   result
 }
 
-pub fn graph_connect_euler_cluster_min(s : GraphconnecteulerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_cluster_min(s : GraphconnecteulerCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_cluster_max(s : GraphconnecteulerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_cluster_max(s : GraphconnecteulerCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_cluster_to_string(s : GraphconnecteulerCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_euler_model_set(s : GraphconnecteulerModel, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_euler_model_sum(s : GraphconnecteulerModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_model_sum(s : GraphconnecteulerModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_model_mean(s : GraphconnecteulerModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_model_mean(s : GraphconnecteulerModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_model_scale(s : GraphconnecteulerModel, f : Double) -> GraphconnecteulerModel {
   let result = graph_connect_euler_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_euler_model_fill(s : GraphconnecteulerModel, v : Double) ->
   result
 }
 
-pub fn graph_connect_euler_model_min(s : GraphconnecteulerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_model_min(s : GraphconnecteulerModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_model_max(s : GraphconnecteulerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_model_max(s : GraphconnecteulerModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_model_to_string(s : GraphconnecteulerModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_euler_layer_set(s : GraphconnecteulerLayer, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_euler_layer_sum(s : GraphconnecteulerLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_layer_sum(s : GraphconnecteulerLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_layer_mean(s : GraphconnecteulerLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_layer_mean(s : GraphconnecteulerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_layer_scale(s : GraphconnecteulerLayer, f : Double) -> GraphconnecteulerLayer {
   let result = graph_connect_euler_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_euler_layer_fill(s : GraphconnecteulerLayer, v : Double) ->
   result
 }
 
-pub fn graph_connect_euler_layer_min(s : GraphconnecteulerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_layer_min(s : GraphconnecteulerLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_layer_max(s : GraphconnecteulerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_layer_max(s : GraphconnecteulerLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_layer_to_string(s : GraphconnecteulerLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_euler_buffer_set(s : GraphconnecteulerBuffer, i : Int, v : 
   result
 }
 
-pub fn graph_connect_euler_buffer_sum(s : GraphconnecteulerBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_buffer_sum(s : GraphconnecteulerBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_buffer_mean(s : GraphconnecteulerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_buffer_mean(s : GraphconnecteulerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_buffer_scale(s : GraphconnecteulerBuffer, f : Double) -> GraphconnecteulerBuffer {
   let result = graph_connect_euler_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_euler_buffer_fill(s : GraphconnecteulerBuffer, v : Double) 
   result
 }
 
-pub fn graph_connect_euler_buffer_min(s : GraphconnecteulerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_buffer_min(s : GraphconnecteulerBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_buffer_max(s : GraphconnecteulerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_buffer_max(s : GraphconnecteulerBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_buffer_to_string(s : GraphconnecteulerBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_euler_cursor_set(s : GraphconnecteulerCursor, i : Int, v : 
   result
 }
 
-pub fn graph_connect_euler_cursor_sum(s : GraphconnecteulerCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_cursor_sum(s : GraphconnecteulerCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_cursor_mean(s : GraphconnecteulerCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_cursor_mean(s : GraphconnecteulerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_cursor_scale(s : GraphconnecteulerCursor, f : Double) -> GraphconnecteulerCursor {
   let result = graph_connect_euler_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_euler_cursor_fill(s : GraphconnecteulerCursor, v : Double) 
   result
 }
 
-pub fn graph_connect_euler_cursor_min(s : GraphconnecteulerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_cursor_min(s : GraphconnecteulerCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_cursor_max(s : GraphconnecteulerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_cursor_max(s : GraphconnecteulerCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_cursor_to_string(s : GraphconnecteulerCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_euler_view_set(s : GraphconnecteulerView, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_euler_view_sum(s : GraphconnecteulerView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_view_sum(s : GraphconnecteulerView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_view_mean(s : GraphconnecteulerView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_view_mean(s : GraphconnecteulerView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_view_scale(s : GraphconnecteulerView, f : Double) -> GraphconnecteulerView {
   let result = graph_connect_euler_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_euler_view_fill(s : GraphconnecteulerView, v : Double) -> G
   result
 }
 
-pub fn graph_connect_euler_view_min(s : GraphconnecteulerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_view_min(s : GraphconnecteulerView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_view_max(s : GraphconnecteulerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_view_max(s : GraphconnecteulerView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_view_to_string(s : GraphconnecteulerView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_euler_range_set(s : GraphconnecteulerRange, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_euler_range_sum(s : GraphconnecteulerRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_range_sum(s : GraphconnecteulerRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_range_mean(s : GraphconnecteulerRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_range_mean(s : GraphconnecteulerRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_range_scale(s : GraphconnecteulerRange, f : Double) -> GraphconnecteulerRange {
   let result = graph_connect_euler_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_euler_range_fill(s : GraphconnecteulerRange, v : Double) ->
   result
 }
 
-pub fn graph_connect_euler_range_min(s : GraphconnecteulerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_range_min(s : GraphconnecteulerRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_range_max(s : GraphconnecteulerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_range_max(s : GraphconnecteulerRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_range_to_string(s : GraphconnecteulerRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_euler_slice_set(s : GraphconnecteulerSlice, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_euler_slice_sum(s : GraphconnecteulerSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_euler_slice_sum(s : GraphconnecteulerSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_euler_slice_mean(s : GraphconnecteulerSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_euler_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_euler_slice_mean(s : GraphconnecteulerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_euler_slice_scale(s : GraphconnecteulerSlice, f : Double) -> GraphconnecteulerSlice {
   let result = graph_connect_euler_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_euler_slice_fill(s : GraphconnecteulerSlice, v : Double) ->
   result
 }
 
-pub fn graph_connect_euler_slice_min(s : GraphconnecteulerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_slice_min(s : GraphconnecteulerSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_euler_slice_max(s : GraphconnecteulerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_euler_slice_max(s : GraphconnecteulerSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_euler_slice_to_string(s : GraphconnecteulerSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

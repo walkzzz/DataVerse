@@ -88,11 +88,7 @@ pub fn signal_window_rect_make_series(vals : Array[Double], name : String) -> Si
 
 pub fn signal_window_rect_series_len(s : SignalwindowrectSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_rect_series_sum(s : SignalwindowrectSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_rect_series_sum(s : SignalwindowrectSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_rect_series_mean(s : SignalwindowrectSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_rect_frame_set(s : SignalwindowrectFrame, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_rect_frame_sum(s : SignalwindowrectFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_frame_sum(s : SignalwindowrectFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_frame_mean(s : SignalwindowrectFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_frame_mean(s : SignalwindowrectFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_frame_scale(s : SignalwindowrectFrame, f : Double) -> SignalwindowrectFrame {
   let result = signal_window_rect_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_rect_frame_fill(s : SignalwindowrectFrame, v : Double) -> S
   result
 }
 
-pub fn signal_window_rect_frame_min(s : SignalwindowrectFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_frame_min(s : SignalwindowrectFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_frame_max(s : SignalwindowrectFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_frame_max(s : SignalwindowrectFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_frame_to_string(s : SignalwindowrectFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_rect_table_set(s : SignalwindowrectTable, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_rect_table_sum(s : SignalwindowrectTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_table_sum(s : SignalwindowrectTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_table_mean(s : SignalwindowrectTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_table_mean(s : SignalwindowrectTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_table_scale(s : SignalwindowrectTable, f : Double) -> SignalwindowrectTable {
   let result = signal_window_rect_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_rect_table_fill(s : SignalwindowrectTable, v : Double) -> S
   result
 }
 
-pub fn signal_window_rect_table_min(s : SignalwindowrectTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_table_min(s : SignalwindowrectTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_table_max(s : SignalwindowrectTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_table_max(s : SignalwindowrectTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_table_to_string(s : SignalwindowrectTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_rect_graphn_set(s : SignalwindowrectGraphN, i : Int, v : Do
   result
 }
 
-pub fn signal_window_rect_graphn_sum(s : SignalwindowrectGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_graphn_sum(s : SignalwindowrectGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_graphn_mean(s : SignalwindowrectGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_graphn_mean(s : SignalwindowrectGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_graphn_scale(s : SignalwindowrectGraphN, f : Double) -> SignalwindowrectGraphN {
   let result = signal_window_rect_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_rect_graphn_fill(s : SignalwindowrectGraphN, v : Double) ->
   result
 }
 
-pub fn signal_window_rect_graphn_min(s : SignalwindowrectGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_graphn_min(s : SignalwindowrectGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_graphn_max(s : SignalwindowrectGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_graphn_max(s : SignalwindowrectGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_graphn_to_string(s : SignalwindowrectGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_rect_node_set(s : SignalwindowrectNode, i : Int, v : Double
   result
 }
 
-pub fn signal_window_rect_node_sum(s : SignalwindowrectNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_node_sum(s : SignalwindowrectNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_node_mean(s : SignalwindowrectNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_node_mean(s : SignalwindowrectNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_node_scale(s : SignalwindowrectNode, f : Double) -> SignalwindowrectNode {
   let result = signal_window_rect_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_rect_node_fill(s : SignalwindowrectNode, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_rect_node_min(s : SignalwindowrectNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_node_min(s : SignalwindowrectNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_node_max(s : SignalwindowrectNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_node_max(s : SignalwindowrectNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_node_to_string(s : SignalwindowrectNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_rect_edge_set(s : SignalwindowrectEdge, i : Int, v : Double
   result
 }
 
-pub fn signal_window_rect_edge_sum(s : SignalwindowrectEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_edge_sum(s : SignalwindowrectEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_edge_mean(s : SignalwindowrectEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_edge_mean(s : SignalwindowrectEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_edge_scale(s : SignalwindowrectEdge, f : Double) -> SignalwindowrectEdge {
   let result = signal_window_rect_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_rect_edge_fill(s : SignalwindowrectEdge, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_rect_edge_min(s : SignalwindowrectEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_edge_min(s : SignalwindowrectEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_edge_max(s : SignalwindowrectEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_edge_max(s : SignalwindowrectEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_edge_to_string(s : SignalwindowrectEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_rect_path_set(s : SignalwindowrectPath, i : Int, v : Double
   result
 }
 
-pub fn signal_window_rect_path_sum(s : SignalwindowrectPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_path_sum(s : SignalwindowrectPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_path_mean(s : SignalwindowrectPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_path_mean(s : SignalwindowrectPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_path_scale(s : SignalwindowrectPath, f : Double) -> SignalwindowrectPath {
   let result = signal_window_rect_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_rect_path_fill(s : SignalwindowrectPath, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_rect_path_min(s : SignalwindowrectPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_path_min(s : SignalwindowrectPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_path_max(s : SignalwindowrectPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_path_max(s : SignalwindowrectPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_path_to_string(s : SignalwindowrectPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_rect_cluster_set(s : SignalwindowrectCluster, i : Int, v : 
   result
 }
 
-pub fn signal_window_rect_cluster_sum(s : SignalwindowrectCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_cluster_sum(s : SignalwindowrectCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_cluster_mean(s : SignalwindowrectCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_cluster_mean(s : SignalwindowrectCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_cluster_scale(s : SignalwindowrectCluster, f : Double) -> SignalwindowrectCluster {
   let result = signal_window_rect_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_rect_cluster_fill(s : SignalwindowrectCluster, v : Double) 
   result
 }
 
-pub fn signal_window_rect_cluster_min(s : SignalwindowrectCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_cluster_min(s : SignalwindowrectCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_cluster_max(s : SignalwindowrectCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_cluster_max(s : SignalwindowrectCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_cluster_to_string(s : SignalwindowrectCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_rect_model_set(s : SignalwindowrectModel, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_rect_model_sum(s : SignalwindowrectModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_model_sum(s : SignalwindowrectModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_model_mean(s : SignalwindowrectModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_model_mean(s : SignalwindowrectModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_model_scale(s : SignalwindowrectModel, f : Double) -> SignalwindowrectModel {
   let result = signal_window_rect_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_rect_model_fill(s : SignalwindowrectModel, v : Double) -> S
   result
 }
 
-pub fn signal_window_rect_model_min(s : SignalwindowrectModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_model_min(s : SignalwindowrectModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_model_max(s : SignalwindowrectModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_model_max(s : SignalwindowrectModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_model_to_string(s : SignalwindowrectModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_rect_layer_set(s : SignalwindowrectLayer, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_rect_layer_sum(s : SignalwindowrectLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_layer_sum(s : SignalwindowrectLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_layer_mean(s : SignalwindowrectLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_layer_mean(s : SignalwindowrectLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_layer_scale(s : SignalwindowrectLayer, f : Double) -> SignalwindowrectLayer {
   let result = signal_window_rect_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_rect_layer_fill(s : SignalwindowrectLayer, v : Double) -> S
   result
 }
 
-pub fn signal_window_rect_layer_min(s : SignalwindowrectLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_layer_min(s : SignalwindowrectLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_layer_max(s : SignalwindowrectLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_layer_max(s : SignalwindowrectLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_layer_to_string(s : SignalwindowrectLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_rect_buffer_set(s : SignalwindowrectBuffer, i : Int, v : Do
   result
 }
 
-pub fn signal_window_rect_buffer_sum(s : SignalwindowrectBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_buffer_sum(s : SignalwindowrectBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_buffer_mean(s : SignalwindowrectBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_buffer_mean(s : SignalwindowrectBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_buffer_scale(s : SignalwindowrectBuffer, f : Double) -> SignalwindowrectBuffer {
   let result = signal_window_rect_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_rect_buffer_fill(s : SignalwindowrectBuffer, v : Double) ->
   result
 }
 
-pub fn signal_window_rect_buffer_min(s : SignalwindowrectBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_buffer_min(s : SignalwindowrectBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_buffer_max(s : SignalwindowrectBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_buffer_max(s : SignalwindowrectBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_buffer_to_string(s : SignalwindowrectBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_rect_cursor_set(s : SignalwindowrectCursor, i : Int, v : Do
   result
 }
 
-pub fn signal_window_rect_cursor_sum(s : SignalwindowrectCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_cursor_sum(s : SignalwindowrectCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_cursor_mean(s : SignalwindowrectCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_cursor_mean(s : SignalwindowrectCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_cursor_scale(s : SignalwindowrectCursor, f : Double) -> SignalwindowrectCursor {
   let result = signal_window_rect_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_rect_cursor_fill(s : SignalwindowrectCursor, v : Double) ->
   result
 }
 
-pub fn signal_window_rect_cursor_min(s : SignalwindowrectCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_cursor_min(s : SignalwindowrectCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_cursor_max(s : SignalwindowrectCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_cursor_max(s : SignalwindowrectCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_cursor_to_string(s : SignalwindowrectCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_rect_view_set(s : SignalwindowrectView, i : Int, v : Double
   result
 }
 
-pub fn signal_window_rect_view_sum(s : SignalwindowrectView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_view_sum(s : SignalwindowrectView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_view_mean(s : SignalwindowrectView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_view_mean(s : SignalwindowrectView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_view_scale(s : SignalwindowrectView, f : Double) -> SignalwindowrectView {
   let result = signal_window_rect_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_rect_view_fill(s : SignalwindowrectView, v : Double) -> Sig
   result
 }
 
-pub fn signal_window_rect_view_min(s : SignalwindowrectView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_view_min(s : SignalwindowrectView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_view_max(s : SignalwindowrectView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_view_max(s : SignalwindowrectView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_view_to_string(s : SignalwindowrectView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_rect_range_set(s : SignalwindowrectRange, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_rect_range_sum(s : SignalwindowrectRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_range_sum(s : SignalwindowrectRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_range_mean(s : SignalwindowrectRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_range_mean(s : SignalwindowrectRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_range_scale(s : SignalwindowrectRange, f : Double) -> SignalwindowrectRange {
   let result = signal_window_rect_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_rect_range_fill(s : SignalwindowrectRange, v : Double) -> S
   result
 }
 
-pub fn signal_window_rect_range_min(s : SignalwindowrectRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_range_min(s : SignalwindowrectRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_range_max(s : SignalwindowrectRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_range_max(s : SignalwindowrectRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_range_to_string(s : SignalwindowrectRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_rect_slice_set(s : SignalwindowrectSlice, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_rect_slice_sum(s : SignalwindowrectSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_rect_slice_sum(s : SignalwindowrectSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_rect_slice_mean(s : SignalwindowrectSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_rect_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_rect_slice_mean(s : SignalwindowrectSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_rect_slice_scale(s : SignalwindowrectSlice, f : Double) -> SignalwindowrectSlice {
   let result = signal_window_rect_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_rect_slice_fill(s : SignalwindowrectSlice, v : Double) -> S
   result
 }
 
-pub fn signal_window_rect_slice_min(s : SignalwindowrectSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_slice_min(s : SignalwindowrectSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_rect_slice_max(s : SignalwindowrectSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_rect_slice_max(s : SignalwindowrectSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_rect_slice_to_string(s : SignalwindowrectSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

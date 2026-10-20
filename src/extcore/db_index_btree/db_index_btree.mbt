@@ -88,11 +88,7 @@ pub fn db_index_btree_make_series(vals : Array[Double], name : String) -> Dbinde
 
 pub fn db_index_btree_series_len(s : DbindexbtreeSeries) -> Int { s.vals.length() }
 
-pub fn db_index_btree_series_sum(s : DbindexbtreeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_btree_series_sum(s : DbindexbtreeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_btree_series_mean(s : DbindexbtreeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_btree_frame_set(s : DbindexbtreeFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_btree_frame_sum(s : DbindexbtreeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_frame_sum(s : DbindexbtreeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_frame_mean(s : DbindexbtreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_frame_mean(s : DbindexbtreeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_frame_scale(s : DbindexbtreeFrame, f : Double) -> DbindexbtreeFrame {
   let result = db_index_btree_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_btree_frame_fill(s : DbindexbtreeFrame, v : Double) -> Dbindexbt
   result
 }
 
-pub fn db_index_btree_frame_min(s : DbindexbtreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_frame_min(s : DbindexbtreeFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_frame_max(s : DbindexbtreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_frame_max(s : DbindexbtreeFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_frame_to_string(s : DbindexbtreeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_btree_table_set(s : DbindexbtreeTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_btree_table_sum(s : DbindexbtreeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_table_sum(s : DbindexbtreeTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_table_mean(s : DbindexbtreeTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_table_mean(s : DbindexbtreeTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_table_scale(s : DbindexbtreeTable, f : Double) -> DbindexbtreeTable {
   let result = db_index_btree_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_btree_table_fill(s : DbindexbtreeTable, v : Double) -> Dbindexbt
   result
 }
 
-pub fn db_index_btree_table_min(s : DbindexbtreeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_table_min(s : DbindexbtreeTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_table_max(s : DbindexbtreeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_table_max(s : DbindexbtreeTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_table_to_string(s : DbindexbtreeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_btree_graphn_set(s : DbindexbtreeGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_btree_graphn_sum(s : DbindexbtreeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_graphn_sum(s : DbindexbtreeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_graphn_mean(s : DbindexbtreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_graphn_mean(s : DbindexbtreeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_graphn_scale(s : DbindexbtreeGraphN, f : Double) -> DbindexbtreeGraphN {
   let result = db_index_btree_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_btree_graphn_fill(s : DbindexbtreeGraphN, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_btree_graphn_min(s : DbindexbtreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_graphn_min(s : DbindexbtreeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_graphn_max(s : DbindexbtreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_graphn_max(s : DbindexbtreeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_graphn_to_string(s : DbindexbtreeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_btree_node_set(s : DbindexbtreeNode, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_btree_node_sum(s : DbindexbtreeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_node_sum(s : DbindexbtreeNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_node_mean(s : DbindexbtreeNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_node_mean(s : DbindexbtreeNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_node_scale(s : DbindexbtreeNode, f : Double) -> DbindexbtreeNode {
   let result = db_index_btree_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_btree_node_fill(s : DbindexbtreeNode, v : Double) -> Dbindexbtre
   result
 }
 
-pub fn db_index_btree_node_min(s : DbindexbtreeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_node_min(s : DbindexbtreeNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_node_max(s : DbindexbtreeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_node_max(s : DbindexbtreeNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_node_to_string(s : DbindexbtreeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_btree_edge_set(s : DbindexbtreeEdge, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_btree_edge_sum(s : DbindexbtreeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_edge_sum(s : DbindexbtreeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_edge_mean(s : DbindexbtreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_edge_mean(s : DbindexbtreeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_edge_scale(s : DbindexbtreeEdge, f : Double) -> DbindexbtreeEdge {
   let result = db_index_btree_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_btree_edge_fill(s : DbindexbtreeEdge, v : Double) -> Dbindexbtre
   result
 }
 
-pub fn db_index_btree_edge_min(s : DbindexbtreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_edge_min(s : DbindexbtreeEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_edge_max(s : DbindexbtreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_edge_max(s : DbindexbtreeEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_edge_to_string(s : DbindexbtreeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_btree_path_set(s : DbindexbtreePath, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_btree_path_sum(s : DbindexbtreePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_path_sum(s : DbindexbtreePath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_path_mean(s : DbindexbtreePath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_path_mean(s : DbindexbtreePath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_path_scale(s : DbindexbtreePath, f : Double) -> DbindexbtreePath {
   let result = db_index_btree_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_btree_path_fill(s : DbindexbtreePath, v : Double) -> Dbindexbtre
   result
 }
 
-pub fn db_index_btree_path_min(s : DbindexbtreePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_path_min(s : DbindexbtreePath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_path_max(s : DbindexbtreePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_path_max(s : DbindexbtreePath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_path_to_string(s : DbindexbtreePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_btree_cluster_set(s : DbindexbtreeCluster, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_btree_cluster_sum(s : DbindexbtreeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_cluster_sum(s : DbindexbtreeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_cluster_mean(s : DbindexbtreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_cluster_mean(s : DbindexbtreeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_cluster_scale(s : DbindexbtreeCluster, f : Double) -> DbindexbtreeCluster {
   let result = db_index_btree_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_btree_cluster_fill(s : DbindexbtreeCluster, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_btree_cluster_min(s : DbindexbtreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_cluster_min(s : DbindexbtreeCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_cluster_max(s : DbindexbtreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_cluster_max(s : DbindexbtreeCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_cluster_to_string(s : DbindexbtreeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_btree_model_set(s : DbindexbtreeModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_btree_model_sum(s : DbindexbtreeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_model_sum(s : DbindexbtreeModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_model_mean(s : DbindexbtreeModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_model_mean(s : DbindexbtreeModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_model_scale(s : DbindexbtreeModel, f : Double) -> DbindexbtreeModel {
   let result = db_index_btree_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_btree_model_fill(s : DbindexbtreeModel, v : Double) -> Dbindexbt
   result
 }
 
-pub fn db_index_btree_model_min(s : DbindexbtreeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_model_min(s : DbindexbtreeModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_model_max(s : DbindexbtreeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_model_max(s : DbindexbtreeModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_model_to_string(s : DbindexbtreeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_btree_layer_set(s : DbindexbtreeLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_btree_layer_sum(s : DbindexbtreeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_layer_sum(s : DbindexbtreeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_layer_mean(s : DbindexbtreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_layer_mean(s : DbindexbtreeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_layer_scale(s : DbindexbtreeLayer, f : Double) -> DbindexbtreeLayer {
   let result = db_index_btree_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_btree_layer_fill(s : DbindexbtreeLayer, v : Double) -> Dbindexbt
   result
 }
 
-pub fn db_index_btree_layer_min(s : DbindexbtreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_layer_min(s : DbindexbtreeLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_layer_max(s : DbindexbtreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_layer_max(s : DbindexbtreeLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_layer_to_string(s : DbindexbtreeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_btree_buffer_set(s : DbindexbtreeBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_btree_buffer_sum(s : DbindexbtreeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_buffer_sum(s : DbindexbtreeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_buffer_mean(s : DbindexbtreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_buffer_mean(s : DbindexbtreeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_buffer_scale(s : DbindexbtreeBuffer, f : Double) -> DbindexbtreeBuffer {
   let result = db_index_btree_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_btree_buffer_fill(s : DbindexbtreeBuffer, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_btree_buffer_min(s : DbindexbtreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_buffer_min(s : DbindexbtreeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_buffer_max(s : DbindexbtreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_buffer_max(s : DbindexbtreeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_buffer_to_string(s : DbindexbtreeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_btree_cursor_set(s : DbindexbtreeCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_btree_cursor_sum(s : DbindexbtreeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_cursor_sum(s : DbindexbtreeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_cursor_mean(s : DbindexbtreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_cursor_mean(s : DbindexbtreeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_cursor_scale(s : DbindexbtreeCursor, f : Double) -> DbindexbtreeCursor {
   let result = db_index_btree_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_btree_cursor_fill(s : DbindexbtreeCursor, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_btree_cursor_min(s : DbindexbtreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_cursor_min(s : DbindexbtreeCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_cursor_max(s : DbindexbtreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_cursor_max(s : DbindexbtreeCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_cursor_to_string(s : DbindexbtreeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_btree_view_set(s : DbindexbtreeView, i : Int, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_btree_view_sum(s : DbindexbtreeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_view_sum(s : DbindexbtreeView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_view_mean(s : DbindexbtreeView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_view_mean(s : DbindexbtreeView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_view_scale(s : DbindexbtreeView, f : Double) -> DbindexbtreeView {
   let result = db_index_btree_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_btree_view_fill(s : DbindexbtreeView, v : Double) -> Dbindexbtre
   result
 }
 
-pub fn db_index_btree_view_min(s : DbindexbtreeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_view_min(s : DbindexbtreeView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_view_max(s : DbindexbtreeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_view_max(s : DbindexbtreeView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_view_to_string(s : DbindexbtreeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_btree_range_set(s : DbindexbtreeRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_btree_range_sum(s : DbindexbtreeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_range_sum(s : DbindexbtreeRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_range_mean(s : DbindexbtreeRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_range_mean(s : DbindexbtreeRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_range_scale(s : DbindexbtreeRange, f : Double) -> DbindexbtreeRange {
   let result = db_index_btree_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_btree_range_fill(s : DbindexbtreeRange, v : Double) -> Dbindexbt
   result
 }
 
-pub fn db_index_btree_range_min(s : DbindexbtreeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_range_min(s : DbindexbtreeRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_range_max(s : DbindexbtreeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_range_max(s : DbindexbtreeRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_range_to_string(s : DbindexbtreeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_btree_slice_set(s : DbindexbtreeSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_btree_slice_sum(s : DbindexbtreeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_btree_slice_sum(s : DbindexbtreeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_btree_slice_mean(s : DbindexbtreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_btree_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_btree_slice_mean(s : DbindexbtreeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_btree_slice_scale(s : DbindexbtreeSlice, f : Double) -> DbindexbtreeSlice {
   let result = db_index_btree_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_btree_slice_fill(s : DbindexbtreeSlice, v : Double) -> Dbindexbt
   result
 }
 
-pub fn db_index_btree_slice_min(s : DbindexbtreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_slice_min(s : DbindexbtreeSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_btree_slice_max(s : DbindexbtreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_btree_slice_max(s : DbindexbtreeSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_btree_slice_to_string(s : DbindexbtreeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_regress_poisson_make_series(vals : Array[Double], name : String) -> Ml
 
 pub fn ml_regress_poisson_series_len(s : MlregresspoissonSeries) -> Int { s.vals.length() }
 
-pub fn ml_regress_poisson_series_sum(s : MlregresspoissonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_regress_poisson_series_sum(s : MlregresspoissonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_regress_poisson_series_mean(s : MlregresspoissonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_regress_poisson_frame_set(s : MlregresspoissonFrame, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_poisson_frame_sum(s : MlregresspoissonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_frame_sum(s : MlregresspoissonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_frame_mean(s : MlregresspoissonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_frame_mean(s : MlregresspoissonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_frame_scale(s : MlregresspoissonFrame, f : Double) -> MlregresspoissonFrame {
   let result = ml_regress_poisson_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_regress_poisson_frame_fill(s : MlregresspoissonFrame, v : Double) -> M
   result
 }
 
-pub fn ml_regress_poisson_frame_min(s : MlregresspoissonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_frame_min(s : MlregresspoissonFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_frame_max(s : MlregresspoissonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_frame_max(s : MlregresspoissonFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_frame_to_string(s : MlregresspoissonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_regress_poisson_table_set(s : MlregresspoissonTable, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_poisson_table_sum(s : MlregresspoissonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_table_sum(s : MlregresspoissonTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_table_mean(s : MlregresspoissonTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_table_mean(s : MlregresspoissonTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_table_scale(s : MlregresspoissonTable, f : Double) -> MlregresspoissonTable {
   let result = ml_regress_poisson_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_regress_poisson_table_fill(s : MlregresspoissonTable, v : Double) -> M
   result
 }
 
-pub fn ml_regress_poisson_table_min(s : MlregresspoissonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_table_min(s : MlregresspoissonTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_table_max(s : MlregresspoissonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_table_max(s : MlregresspoissonTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_table_to_string(s : MlregresspoissonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_regress_poisson_graphn_set(s : MlregresspoissonGraphN, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_poisson_graphn_sum(s : MlregresspoissonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_graphn_sum(s : MlregresspoissonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_graphn_mean(s : MlregresspoissonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_graphn_mean(s : MlregresspoissonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_graphn_scale(s : MlregresspoissonGraphN, f : Double) -> MlregresspoissonGraphN {
   let result = ml_regress_poisson_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_regress_poisson_graphn_fill(s : MlregresspoissonGraphN, v : Double) ->
   result
 }
 
-pub fn ml_regress_poisson_graphn_min(s : MlregresspoissonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_graphn_min(s : MlregresspoissonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_graphn_max(s : MlregresspoissonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_graphn_max(s : MlregresspoissonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_graphn_to_string(s : MlregresspoissonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_regress_poisson_node_set(s : MlregresspoissonNode, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_poisson_node_sum(s : MlregresspoissonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_node_sum(s : MlregresspoissonNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_node_mean(s : MlregresspoissonNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_node_mean(s : MlregresspoissonNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_node_scale(s : MlregresspoissonNode, f : Double) -> MlregresspoissonNode {
   let result = ml_regress_poisson_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_regress_poisson_node_fill(s : MlregresspoissonNode, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_poisson_node_min(s : MlregresspoissonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_node_min(s : MlregresspoissonNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_node_max(s : MlregresspoissonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_node_max(s : MlregresspoissonNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_node_to_string(s : MlregresspoissonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_regress_poisson_edge_set(s : MlregresspoissonEdge, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_poisson_edge_sum(s : MlregresspoissonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_edge_sum(s : MlregresspoissonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_edge_mean(s : MlregresspoissonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_edge_mean(s : MlregresspoissonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_edge_scale(s : MlregresspoissonEdge, f : Double) -> MlregresspoissonEdge {
   let result = ml_regress_poisson_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_regress_poisson_edge_fill(s : MlregresspoissonEdge, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_poisson_edge_min(s : MlregresspoissonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_edge_min(s : MlregresspoissonEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_edge_max(s : MlregresspoissonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_edge_max(s : MlregresspoissonEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_edge_to_string(s : MlregresspoissonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_regress_poisson_path_set(s : MlregresspoissonPath, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_poisson_path_sum(s : MlregresspoissonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_path_sum(s : MlregresspoissonPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_path_mean(s : MlregresspoissonPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_path_mean(s : MlregresspoissonPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_path_scale(s : MlregresspoissonPath, f : Double) -> MlregresspoissonPath {
   let result = ml_regress_poisson_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_regress_poisson_path_fill(s : MlregresspoissonPath, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_poisson_path_min(s : MlregresspoissonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_path_min(s : MlregresspoissonPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_path_max(s : MlregresspoissonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_path_max(s : MlregresspoissonPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_path_to_string(s : MlregresspoissonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_regress_poisson_cluster_set(s : MlregresspoissonCluster, i : Int, v : 
   result
 }
 
-pub fn ml_regress_poisson_cluster_sum(s : MlregresspoissonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_cluster_sum(s : MlregresspoissonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_cluster_mean(s : MlregresspoissonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_cluster_mean(s : MlregresspoissonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_cluster_scale(s : MlregresspoissonCluster, f : Double) -> MlregresspoissonCluster {
   let result = ml_regress_poisson_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_regress_poisson_cluster_fill(s : MlregresspoissonCluster, v : Double) 
   result
 }
 
-pub fn ml_regress_poisson_cluster_min(s : MlregresspoissonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_cluster_min(s : MlregresspoissonCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_cluster_max(s : MlregresspoissonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_cluster_max(s : MlregresspoissonCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_cluster_to_string(s : MlregresspoissonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_regress_poisson_model_set(s : MlregresspoissonModel, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_poisson_model_sum(s : MlregresspoissonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_model_sum(s : MlregresspoissonModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_model_mean(s : MlregresspoissonModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_model_mean(s : MlregresspoissonModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_model_scale(s : MlregresspoissonModel, f : Double) -> MlregresspoissonModel {
   let result = ml_regress_poisson_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_regress_poisson_model_fill(s : MlregresspoissonModel, v : Double) -> M
   result
 }
 
-pub fn ml_regress_poisson_model_min(s : MlregresspoissonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_model_min(s : MlregresspoissonModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_model_max(s : MlregresspoissonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_model_max(s : MlregresspoissonModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_model_to_string(s : MlregresspoissonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_regress_poisson_layer_set(s : MlregresspoissonLayer, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_poisson_layer_sum(s : MlregresspoissonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_layer_sum(s : MlregresspoissonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_layer_mean(s : MlregresspoissonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_layer_mean(s : MlregresspoissonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_layer_scale(s : MlregresspoissonLayer, f : Double) -> MlregresspoissonLayer {
   let result = ml_regress_poisson_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_regress_poisson_layer_fill(s : MlregresspoissonLayer, v : Double) -> M
   result
 }
 
-pub fn ml_regress_poisson_layer_min(s : MlregresspoissonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_layer_min(s : MlregresspoissonLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_layer_max(s : MlregresspoissonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_layer_max(s : MlregresspoissonLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_layer_to_string(s : MlregresspoissonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_regress_poisson_buffer_set(s : MlregresspoissonBuffer, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_poisson_buffer_sum(s : MlregresspoissonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_buffer_sum(s : MlregresspoissonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_buffer_mean(s : MlregresspoissonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_buffer_mean(s : MlregresspoissonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_buffer_scale(s : MlregresspoissonBuffer, f : Double) -> MlregresspoissonBuffer {
   let result = ml_regress_poisson_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_regress_poisson_buffer_fill(s : MlregresspoissonBuffer, v : Double) ->
   result
 }
 
-pub fn ml_regress_poisson_buffer_min(s : MlregresspoissonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_buffer_min(s : MlregresspoissonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_buffer_max(s : MlregresspoissonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_buffer_max(s : MlregresspoissonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_buffer_to_string(s : MlregresspoissonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_regress_poisson_cursor_set(s : MlregresspoissonCursor, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_poisson_cursor_sum(s : MlregresspoissonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_cursor_sum(s : MlregresspoissonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_cursor_mean(s : MlregresspoissonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_cursor_mean(s : MlregresspoissonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_cursor_scale(s : MlregresspoissonCursor, f : Double) -> MlregresspoissonCursor {
   let result = ml_regress_poisson_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_regress_poisson_cursor_fill(s : MlregresspoissonCursor, v : Double) ->
   result
 }
 
-pub fn ml_regress_poisson_cursor_min(s : MlregresspoissonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_cursor_min(s : MlregresspoissonCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_cursor_max(s : MlregresspoissonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_cursor_max(s : MlregresspoissonCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_cursor_to_string(s : MlregresspoissonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_regress_poisson_view_set(s : MlregresspoissonView, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_poisson_view_sum(s : MlregresspoissonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_view_sum(s : MlregresspoissonView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_view_mean(s : MlregresspoissonView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_view_mean(s : MlregresspoissonView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_view_scale(s : MlregresspoissonView, f : Double) -> MlregresspoissonView {
   let result = ml_regress_poisson_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_regress_poisson_view_fill(s : MlregresspoissonView, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_poisson_view_min(s : MlregresspoissonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_view_min(s : MlregresspoissonView) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_view_max(s : MlregresspoissonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_view_max(s : MlregresspoissonView) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_view_to_string(s : MlregresspoissonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_regress_poisson_range_set(s : MlregresspoissonRange, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_poisson_range_sum(s : MlregresspoissonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_range_sum(s : MlregresspoissonRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_range_mean(s : MlregresspoissonRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_range_mean(s : MlregresspoissonRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_range_scale(s : MlregresspoissonRange, f : Double) -> MlregresspoissonRange {
   let result = ml_regress_poisson_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_regress_poisson_range_fill(s : MlregresspoissonRange, v : Double) -> M
   result
 }
 
-pub fn ml_regress_poisson_range_min(s : MlregresspoissonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_range_min(s : MlregresspoissonRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_range_max(s : MlregresspoissonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_range_max(s : MlregresspoissonRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_range_to_string(s : MlregresspoissonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_regress_poisson_slice_set(s : MlregresspoissonSlice, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_poisson_slice_sum(s : MlregresspoissonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_poisson_slice_sum(s : MlregresspoissonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_poisson_slice_mean(s : MlregresspoissonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_poisson_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_poisson_slice_mean(s : MlregresspoissonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_poisson_slice_scale(s : MlregresspoissonSlice, f : Double) -> MlregresspoissonSlice {
   let result = ml_regress_poisson_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_regress_poisson_slice_fill(s : MlregresspoissonSlice, v : Double) -> M
   result
 }
 
-pub fn ml_regress_poisson_slice_min(s : MlregresspoissonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_slice_min(s : MlregresspoissonSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_poisson_slice_max(s : MlregresspoissonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_poisson_slice_max(s : MlregresspoissonSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_poisson_slice_to_string(s : MlregresspoissonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn physics_fluid_navier_make_series(vals : Array[Double], name : String) -> 
 
 pub fn physics_fluid_navier_series_len(s : PhysicsfluidnavierSeries) -> Int { s.vals.length() }
 
-pub fn physics_fluid_navier_series_sum(s : PhysicsfluidnavierSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_fluid_navier_series_sum(s : PhysicsfluidnavierSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_fluid_navier_series_mean(s : PhysicsfluidnavierSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_fluid_navier_frame_set(s : PhysicsfluidnavierFrame, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_navier_frame_sum(s : PhysicsfluidnavierFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_frame_sum(s : PhysicsfluidnavierFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_frame_mean(s : PhysicsfluidnavierFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_frame_mean(s : PhysicsfluidnavierFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_frame_scale(s : PhysicsfluidnavierFrame, f : Double) -> PhysicsfluidnavierFrame {
   let result = physics_fluid_navier_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_fluid_navier_frame_fill(s : PhysicsfluidnavierFrame, v : Double) 
   result
 }
 
-pub fn physics_fluid_navier_frame_min(s : PhysicsfluidnavierFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_frame_min(s : PhysicsfluidnavierFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_frame_max(s : PhysicsfluidnavierFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_frame_max(s : PhysicsfluidnavierFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_frame_to_string(s : PhysicsfluidnavierFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_fluid_navier_table_set(s : PhysicsfluidnavierTable, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_navier_table_sum(s : PhysicsfluidnavierTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_table_sum(s : PhysicsfluidnavierTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_table_mean(s : PhysicsfluidnavierTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_table_mean(s : PhysicsfluidnavierTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_table_scale(s : PhysicsfluidnavierTable, f : Double) -> PhysicsfluidnavierTable {
   let result = physics_fluid_navier_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_fluid_navier_table_fill(s : PhysicsfluidnavierTable, v : Double) 
   result
 }
 
-pub fn physics_fluid_navier_table_min(s : PhysicsfluidnavierTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_table_min(s : PhysicsfluidnavierTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_table_max(s : PhysicsfluidnavierTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_table_max(s : PhysicsfluidnavierTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_table_to_string(s : PhysicsfluidnavierTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_fluid_navier_graphn_set(s : PhysicsfluidnavierGraphN, i : Int, v 
   result
 }
 
-pub fn physics_fluid_navier_graphn_sum(s : PhysicsfluidnavierGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_graphn_sum(s : PhysicsfluidnavierGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_graphn_mean(s : PhysicsfluidnavierGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_graphn_mean(s : PhysicsfluidnavierGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_graphn_scale(s : PhysicsfluidnavierGraphN, f : Double) -> PhysicsfluidnavierGraphN {
   let result = physics_fluid_navier_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_fluid_navier_graphn_fill(s : PhysicsfluidnavierGraphN, v : Double
   result
 }
 
-pub fn physics_fluid_navier_graphn_min(s : PhysicsfluidnavierGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_graphn_min(s : PhysicsfluidnavierGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_graphn_max(s : PhysicsfluidnavierGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_graphn_max(s : PhysicsfluidnavierGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_graphn_to_string(s : PhysicsfluidnavierGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_fluid_navier_node_set(s : PhysicsfluidnavierNode, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_navier_node_sum(s : PhysicsfluidnavierNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_node_sum(s : PhysicsfluidnavierNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_node_mean(s : PhysicsfluidnavierNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_node_mean(s : PhysicsfluidnavierNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_node_scale(s : PhysicsfluidnavierNode, f : Double) -> PhysicsfluidnavierNode {
   let result = physics_fluid_navier_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_fluid_navier_node_fill(s : PhysicsfluidnavierNode, v : Double) ->
   result
 }
 
-pub fn physics_fluid_navier_node_min(s : PhysicsfluidnavierNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_node_min(s : PhysicsfluidnavierNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_node_max(s : PhysicsfluidnavierNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_node_max(s : PhysicsfluidnavierNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_node_to_string(s : PhysicsfluidnavierNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_fluid_navier_edge_set(s : PhysicsfluidnavierEdge, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_navier_edge_sum(s : PhysicsfluidnavierEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_edge_sum(s : PhysicsfluidnavierEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_edge_mean(s : PhysicsfluidnavierEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_edge_mean(s : PhysicsfluidnavierEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_edge_scale(s : PhysicsfluidnavierEdge, f : Double) -> PhysicsfluidnavierEdge {
   let result = physics_fluid_navier_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_fluid_navier_edge_fill(s : PhysicsfluidnavierEdge, v : Double) ->
   result
 }
 
-pub fn physics_fluid_navier_edge_min(s : PhysicsfluidnavierEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_edge_min(s : PhysicsfluidnavierEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_edge_max(s : PhysicsfluidnavierEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_edge_max(s : PhysicsfluidnavierEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_edge_to_string(s : PhysicsfluidnavierEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_fluid_navier_path_set(s : PhysicsfluidnavierPath, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_navier_path_sum(s : PhysicsfluidnavierPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_path_sum(s : PhysicsfluidnavierPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_path_mean(s : PhysicsfluidnavierPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_path_mean(s : PhysicsfluidnavierPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_path_scale(s : PhysicsfluidnavierPath, f : Double) -> PhysicsfluidnavierPath {
   let result = physics_fluid_navier_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_fluid_navier_path_fill(s : PhysicsfluidnavierPath, v : Double) ->
   result
 }
 
-pub fn physics_fluid_navier_path_min(s : PhysicsfluidnavierPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_path_min(s : PhysicsfluidnavierPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_path_max(s : PhysicsfluidnavierPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_path_max(s : PhysicsfluidnavierPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_path_to_string(s : PhysicsfluidnavierPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_fluid_navier_cluster_set(s : PhysicsfluidnavierCluster, i : Int, 
   result
 }
 
-pub fn physics_fluid_navier_cluster_sum(s : PhysicsfluidnavierCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_cluster_sum(s : PhysicsfluidnavierCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_cluster_mean(s : PhysicsfluidnavierCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_cluster_mean(s : PhysicsfluidnavierCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_cluster_scale(s : PhysicsfluidnavierCluster, f : Double) -> PhysicsfluidnavierCluster {
   let result = physics_fluid_navier_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_fluid_navier_cluster_fill(s : PhysicsfluidnavierCluster, v : Doub
   result
 }
 
-pub fn physics_fluid_navier_cluster_min(s : PhysicsfluidnavierCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_cluster_min(s : PhysicsfluidnavierCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_cluster_max(s : PhysicsfluidnavierCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_cluster_max(s : PhysicsfluidnavierCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_cluster_to_string(s : PhysicsfluidnavierCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_fluid_navier_model_set(s : PhysicsfluidnavierModel, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_navier_model_sum(s : PhysicsfluidnavierModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_model_sum(s : PhysicsfluidnavierModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_model_mean(s : PhysicsfluidnavierModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_model_mean(s : PhysicsfluidnavierModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_model_scale(s : PhysicsfluidnavierModel, f : Double) -> PhysicsfluidnavierModel {
   let result = physics_fluid_navier_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_fluid_navier_model_fill(s : PhysicsfluidnavierModel, v : Double) 
   result
 }
 
-pub fn physics_fluid_navier_model_min(s : PhysicsfluidnavierModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_model_min(s : PhysicsfluidnavierModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_model_max(s : PhysicsfluidnavierModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_model_max(s : PhysicsfluidnavierModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_model_to_string(s : PhysicsfluidnavierModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_fluid_navier_layer_set(s : PhysicsfluidnavierLayer, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_navier_layer_sum(s : PhysicsfluidnavierLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_layer_sum(s : PhysicsfluidnavierLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_layer_mean(s : PhysicsfluidnavierLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_layer_mean(s : PhysicsfluidnavierLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_layer_scale(s : PhysicsfluidnavierLayer, f : Double) -> PhysicsfluidnavierLayer {
   let result = physics_fluid_navier_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_fluid_navier_layer_fill(s : PhysicsfluidnavierLayer, v : Double) 
   result
 }
 
-pub fn physics_fluid_navier_layer_min(s : PhysicsfluidnavierLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_layer_min(s : PhysicsfluidnavierLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_layer_max(s : PhysicsfluidnavierLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_layer_max(s : PhysicsfluidnavierLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_layer_to_string(s : PhysicsfluidnavierLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_fluid_navier_buffer_set(s : PhysicsfluidnavierBuffer, i : Int, v 
   result
 }
 
-pub fn physics_fluid_navier_buffer_sum(s : PhysicsfluidnavierBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_buffer_sum(s : PhysicsfluidnavierBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_buffer_mean(s : PhysicsfluidnavierBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_buffer_mean(s : PhysicsfluidnavierBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_buffer_scale(s : PhysicsfluidnavierBuffer, f : Double) -> PhysicsfluidnavierBuffer {
   let result = physics_fluid_navier_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_fluid_navier_buffer_fill(s : PhysicsfluidnavierBuffer, v : Double
   result
 }
 
-pub fn physics_fluid_navier_buffer_min(s : PhysicsfluidnavierBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_buffer_min(s : PhysicsfluidnavierBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_buffer_max(s : PhysicsfluidnavierBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_buffer_max(s : PhysicsfluidnavierBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_buffer_to_string(s : PhysicsfluidnavierBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_fluid_navier_cursor_set(s : PhysicsfluidnavierCursor, i : Int, v 
   result
 }
 
-pub fn physics_fluid_navier_cursor_sum(s : PhysicsfluidnavierCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_cursor_sum(s : PhysicsfluidnavierCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_cursor_mean(s : PhysicsfluidnavierCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_cursor_mean(s : PhysicsfluidnavierCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_cursor_scale(s : PhysicsfluidnavierCursor, f : Double) -> PhysicsfluidnavierCursor {
   let result = physics_fluid_navier_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_fluid_navier_cursor_fill(s : PhysicsfluidnavierCursor, v : Double
   result
 }
 
-pub fn physics_fluid_navier_cursor_min(s : PhysicsfluidnavierCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_cursor_min(s : PhysicsfluidnavierCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_cursor_max(s : PhysicsfluidnavierCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_cursor_max(s : PhysicsfluidnavierCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_cursor_to_string(s : PhysicsfluidnavierCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_fluid_navier_view_set(s : PhysicsfluidnavierView, i : Int, v : Do
   result
 }
 
-pub fn physics_fluid_navier_view_sum(s : PhysicsfluidnavierView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_view_sum(s : PhysicsfluidnavierView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_view_mean(s : PhysicsfluidnavierView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_view_mean(s : PhysicsfluidnavierView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_view_scale(s : PhysicsfluidnavierView, f : Double) -> PhysicsfluidnavierView {
   let result = physics_fluid_navier_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_fluid_navier_view_fill(s : PhysicsfluidnavierView, v : Double) ->
   result
 }
 
-pub fn physics_fluid_navier_view_min(s : PhysicsfluidnavierView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_view_min(s : PhysicsfluidnavierView) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_view_max(s : PhysicsfluidnavierView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_view_max(s : PhysicsfluidnavierView) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_view_to_string(s : PhysicsfluidnavierView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_fluid_navier_range_set(s : PhysicsfluidnavierRange, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_navier_range_sum(s : PhysicsfluidnavierRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_range_sum(s : PhysicsfluidnavierRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_range_mean(s : PhysicsfluidnavierRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_range_mean(s : PhysicsfluidnavierRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_range_scale(s : PhysicsfluidnavierRange, f : Double) -> PhysicsfluidnavierRange {
   let result = physics_fluid_navier_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_fluid_navier_range_fill(s : PhysicsfluidnavierRange, v : Double) 
   result
 }
 
-pub fn physics_fluid_navier_range_min(s : PhysicsfluidnavierRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_range_min(s : PhysicsfluidnavierRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_range_max(s : PhysicsfluidnavierRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_range_max(s : PhysicsfluidnavierRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_range_to_string(s : PhysicsfluidnavierRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_fluid_navier_slice_set(s : PhysicsfluidnavierSlice, i : Int, v : 
   result
 }
 
-pub fn physics_fluid_navier_slice_sum(s : PhysicsfluidnavierSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_navier_slice_sum(s : PhysicsfluidnavierSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_navier_slice_mean(s : PhysicsfluidnavierSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_navier_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_navier_slice_mean(s : PhysicsfluidnavierSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_navier_slice_scale(s : PhysicsfluidnavierSlice, f : Double) -> PhysicsfluidnavierSlice {
   let result = physics_fluid_navier_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_fluid_navier_slice_fill(s : PhysicsfluidnavierSlice, v : Double) 
   result
 }
 
-pub fn physics_fluid_navier_slice_min(s : PhysicsfluidnavierSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_slice_min(s : PhysicsfluidnavierSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_navier_slice_max(s : PhysicsfluidnavierSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_navier_slice_max(s : PhysicsfluidnavierSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_navier_slice_to_string(s : PhysicsfluidnavierSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

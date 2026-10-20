@@ -88,11 +88,7 @@ pub fn bio_seq_assembly_overlap_make_series(vals : Array[Double], name : String)
 
 pub fn bio_seq_assembly_overlap_series_len(s : BioseqassemblyoverlapSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_assembly_overlap_series_sum(s : BioseqassemblyoverlapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_series_sum(s : BioseqassemblyoverlapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_assembly_overlap_series_mean(s : BioseqassemblyoverlapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_assembly_overlap_frame_set(s : BioseqassemblyoverlapFrame, i : In
   result
 }
 
-pub fn bio_seq_assembly_overlap_frame_sum(s : BioseqassemblyoverlapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_frame_sum(s : BioseqassemblyoverlapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_frame_mean(s : BioseqassemblyoverlapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_frame_mean(s : BioseqassemblyoverlapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_frame_scale(s : BioseqassemblyoverlapFrame, f : Double) -> BioseqassemblyoverlapFrame {
   let result = bio_seq_assembly_overlap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_assembly_overlap_frame_fill(s : BioseqassemblyoverlapFrame, v : D
   result
 }
 
-pub fn bio_seq_assembly_overlap_frame_min(s : BioseqassemblyoverlapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_frame_min(s : BioseqassemblyoverlapFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_frame_max(s : BioseqassemblyoverlapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_frame_max(s : BioseqassemblyoverlapFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_frame_to_string(s : BioseqassemblyoverlapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_assembly_overlap_table_set(s : BioseqassemblyoverlapTable, i : In
   result
 }
 
-pub fn bio_seq_assembly_overlap_table_sum(s : BioseqassemblyoverlapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_table_sum(s : BioseqassemblyoverlapTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_table_mean(s : BioseqassemblyoverlapTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_table_mean(s : BioseqassemblyoverlapTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_table_scale(s : BioseqassemblyoverlapTable, f : Double) -> BioseqassemblyoverlapTable {
   let result = bio_seq_assembly_overlap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_assembly_overlap_table_fill(s : BioseqassemblyoverlapTable, v : D
   result
 }
 
-pub fn bio_seq_assembly_overlap_table_min(s : BioseqassemblyoverlapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_table_min(s : BioseqassemblyoverlapTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_table_max(s : BioseqassemblyoverlapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_table_max(s : BioseqassemblyoverlapTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_table_to_string(s : BioseqassemblyoverlapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_assembly_overlap_graphn_set(s : BioseqassemblyoverlapGraphN, i : 
   result
 }
 
-pub fn bio_seq_assembly_overlap_graphn_sum(s : BioseqassemblyoverlapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_graphn_sum(s : BioseqassemblyoverlapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_graphn_mean(s : BioseqassemblyoverlapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_graphn_mean(s : BioseqassemblyoverlapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_graphn_scale(s : BioseqassemblyoverlapGraphN, f : Double) -> BioseqassemblyoverlapGraphN {
   let result = bio_seq_assembly_overlap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_assembly_overlap_graphn_fill(s : BioseqassemblyoverlapGraphN, v :
   result
 }
 
-pub fn bio_seq_assembly_overlap_graphn_min(s : BioseqassemblyoverlapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_graphn_min(s : BioseqassemblyoverlapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_graphn_max(s : BioseqassemblyoverlapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_graphn_max(s : BioseqassemblyoverlapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_graphn_to_string(s : BioseqassemblyoverlapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_assembly_overlap_node_set(s : BioseqassemblyoverlapNode, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_overlap_node_sum(s : BioseqassemblyoverlapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_node_sum(s : BioseqassemblyoverlapNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_node_mean(s : BioseqassemblyoverlapNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_node_mean(s : BioseqassemblyoverlapNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_node_scale(s : BioseqassemblyoverlapNode, f : Double) -> BioseqassemblyoverlapNode {
   let result = bio_seq_assembly_overlap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_assembly_overlap_node_fill(s : BioseqassemblyoverlapNode, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_overlap_node_min(s : BioseqassemblyoverlapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_node_min(s : BioseqassemblyoverlapNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_node_max(s : BioseqassemblyoverlapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_node_max(s : BioseqassemblyoverlapNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_node_to_string(s : BioseqassemblyoverlapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_assembly_overlap_edge_set(s : BioseqassemblyoverlapEdge, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_overlap_edge_sum(s : BioseqassemblyoverlapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_edge_sum(s : BioseqassemblyoverlapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_edge_mean(s : BioseqassemblyoverlapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_edge_mean(s : BioseqassemblyoverlapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_edge_scale(s : BioseqassemblyoverlapEdge, f : Double) -> BioseqassemblyoverlapEdge {
   let result = bio_seq_assembly_overlap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_assembly_overlap_edge_fill(s : BioseqassemblyoverlapEdge, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_overlap_edge_min(s : BioseqassemblyoverlapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_edge_min(s : BioseqassemblyoverlapEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_edge_max(s : BioseqassemblyoverlapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_edge_max(s : BioseqassemblyoverlapEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_edge_to_string(s : BioseqassemblyoverlapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_assembly_overlap_path_set(s : BioseqassemblyoverlapPath, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_overlap_path_sum(s : BioseqassemblyoverlapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_path_sum(s : BioseqassemblyoverlapPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_path_mean(s : BioseqassemblyoverlapPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_path_mean(s : BioseqassemblyoverlapPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_path_scale(s : BioseqassemblyoverlapPath, f : Double) -> BioseqassemblyoverlapPath {
   let result = bio_seq_assembly_overlap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_assembly_overlap_path_fill(s : BioseqassemblyoverlapPath, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_overlap_path_min(s : BioseqassemblyoverlapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_path_min(s : BioseqassemblyoverlapPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_path_max(s : BioseqassemblyoverlapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_path_max(s : BioseqassemblyoverlapPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_path_to_string(s : BioseqassemblyoverlapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_assembly_overlap_cluster_set(s : BioseqassemblyoverlapCluster, i 
   result
 }
 
-pub fn bio_seq_assembly_overlap_cluster_sum(s : BioseqassemblyoverlapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_cluster_sum(s : BioseqassemblyoverlapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_cluster_mean(s : BioseqassemblyoverlapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_cluster_mean(s : BioseqassemblyoverlapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_cluster_scale(s : BioseqassemblyoverlapCluster, f : Double) -> BioseqassemblyoverlapCluster {
   let result = bio_seq_assembly_overlap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_assembly_overlap_cluster_fill(s : BioseqassemblyoverlapCluster, v
   result
 }
 
-pub fn bio_seq_assembly_overlap_cluster_min(s : BioseqassemblyoverlapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_cluster_min(s : BioseqassemblyoverlapCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_cluster_max(s : BioseqassemblyoverlapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_cluster_max(s : BioseqassemblyoverlapCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_cluster_to_string(s : BioseqassemblyoverlapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_assembly_overlap_model_set(s : BioseqassemblyoverlapModel, i : In
   result
 }
 
-pub fn bio_seq_assembly_overlap_model_sum(s : BioseqassemblyoverlapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_model_sum(s : BioseqassemblyoverlapModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_model_mean(s : BioseqassemblyoverlapModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_model_mean(s : BioseqassemblyoverlapModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_model_scale(s : BioseqassemblyoverlapModel, f : Double) -> BioseqassemblyoverlapModel {
   let result = bio_seq_assembly_overlap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_assembly_overlap_model_fill(s : BioseqassemblyoverlapModel, v : D
   result
 }
 
-pub fn bio_seq_assembly_overlap_model_min(s : BioseqassemblyoverlapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_model_min(s : BioseqassemblyoverlapModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_model_max(s : BioseqassemblyoverlapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_model_max(s : BioseqassemblyoverlapModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_model_to_string(s : BioseqassemblyoverlapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_assembly_overlap_layer_set(s : BioseqassemblyoverlapLayer, i : In
   result
 }
 
-pub fn bio_seq_assembly_overlap_layer_sum(s : BioseqassemblyoverlapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_layer_sum(s : BioseqassemblyoverlapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_layer_mean(s : BioseqassemblyoverlapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_layer_mean(s : BioseqassemblyoverlapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_layer_scale(s : BioseqassemblyoverlapLayer, f : Double) -> BioseqassemblyoverlapLayer {
   let result = bio_seq_assembly_overlap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_assembly_overlap_layer_fill(s : BioseqassemblyoverlapLayer, v : D
   result
 }
 
-pub fn bio_seq_assembly_overlap_layer_min(s : BioseqassemblyoverlapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_layer_min(s : BioseqassemblyoverlapLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_layer_max(s : BioseqassemblyoverlapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_layer_max(s : BioseqassemblyoverlapLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_layer_to_string(s : BioseqassemblyoverlapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_assembly_overlap_buffer_set(s : BioseqassemblyoverlapBuffer, i : 
   result
 }
 
-pub fn bio_seq_assembly_overlap_buffer_sum(s : BioseqassemblyoverlapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_buffer_sum(s : BioseqassemblyoverlapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_buffer_mean(s : BioseqassemblyoverlapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_buffer_mean(s : BioseqassemblyoverlapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_buffer_scale(s : BioseqassemblyoverlapBuffer, f : Double) -> BioseqassemblyoverlapBuffer {
   let result = bio_seq_assembly_overlap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_assembly_overlap_buffer_fill(s : BioseqassemblyoverlapBuffer, v :
   result
 }
 
-pub fn bio_seq_assembly_overlap_buffer_min(s : BioseqassemblyoverlapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_buffer_min(s : BioseqassemblyoverlapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_buffer_max(s : BioseqassemblyoverlapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_buffer_max(s : BioseqassemblyoverlapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_buffer_to_string(s : BioseqassemblyoverlapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_assembly_overlap_cursor_set(s : BioseqassemblyoverlapCursor, i : 
   result
 }
 
-pub fn bio_seq_assembly_overlap_cursor_sum(s : BioseqassemblyoverlapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_cursor_sum(s : BioseqassemblyoverlapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_cursor_mean(s : BioseqassemblyoverlapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_cursor_mean(s : BioseqassemblyoverlapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_cursor_scale(s : BioseqassemblyoverlapCursor, f : Double) -> BioseqassemblyoverlapCursor {
   let result = bio_seq_assembly_overlap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_assembly_overlap_cursor_fill(s : BioseqassemblyoverlapCursor, v :
   result
 }
 
-pub fn bio_seq_assembly_overlap_cursor_min(s : BioseqassemblyoverlapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_cursor_min(s : BioseqassemblyoverlapCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_cursor_max(s : BioseqassemblyoverlapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_cursor_max(s : BioseqassemblyoverlapCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_cursor_to_string(s : BioseqassemblyoverlapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_assembly_overlap_view_set(s : BioseqassemblyoverlapView, i : Int,
   result
 }
 
-pub fn bio_seq_assembly_overlap_view_sum(s : BioseqassemblyoverlapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_view_sum(s : BioseqassemblyoverlapView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_view_mean(s : BioseqassemblyoverlapView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_view_mean(s : BioseqassemblyoverlapView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_view_scale(s : BioseqassemblyoverlapView, f : Double) -> BioseqassemblyoverlapView {
   let result = bio_seq_assembly_overlap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_assembly_overlap_view_fill(s : BioseqassemblyoverlapView, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_overlap_view_min(s : BioseqassemblyoverlapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_view_min(s : BioseqassemblyoverlapView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_view_max(s : BioseqassemblyoverlapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_view_max(s : BioseqassemblyoverlapView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_view_to_string(s : BioseqassemblyoverlapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_assembly_overlap_range_set(s : BioseqassemblyoverlapRange, i : In
   result
 }
 
-pub fn bio_seq_assembly_overlap_range_sum(s : BioseqassemblyoverlapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_range_sum(s : BioseqassemblyoverlapRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_range_mean(s : BioseqassemblyoverlapRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_range_mean(s : BioseqassemblyoverlapRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_range_scale(s : BioseqassemblyoverlapRange, f : Double) -> BioseqassemblyoverlapRange {
   let result = bio_seq_assembly_overlap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_assembly_overlap_range_fill(s : BioseqassemblyoverlapRange, v : D
   result
 }
 
-pub fn bio_seq_assembly_overlap_range_min(s : BioseqassemblyoverlapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_range_min(s : BioseqassemblyoverlapRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_range_max(s : BioseqassemblyoverlapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_range_max(s : BioseqassemblyoverlapRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_range_to_string(s : BioseqassemblyoverlapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_assembly_overlap_slice_set(s : BioseqassemblyoverlapSlice, i : In
   result
 }
 
-pub fn bio_seq_assembly_overlap_slice_sum(s : BioseqassemblyoverlapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_overlap_slice_sum(s : BioseqassemblyoverlapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_overlap_slice_mean(s : BioseqassemblyoverlapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_overlap_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_overlap_slice_mean(s : BioseqassemblyoverlapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_overlap_slice_scale(s : BioseqassemblyoverlapSlice, f : Double) -> BioseqassemblyoverlapSlice {
   let result = bio_seq_assembly_overlap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_assembly_overlap_slice_fill(s : BioseqassemblyoverlapSlice, v : D
   result
 }
 
-pub fn bio_seq_assembly_overlap_slice_min(s : BioseqassemblyoverlapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_slice_min(s : BioseqassemblyoverlapSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_overlap_slice_max(s : BioseqassemblyoverlapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_overlap_slice_max(s : BioseqassemblyoverlapSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_overlap_slice_to_string(s : BioseqassemblyoverlapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

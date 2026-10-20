@@ -88,11 +88,7 @@ pub fn crypto_hash_ripemd_make_series(vals : Array[Double], name : String) -> Cr
 
 pub fn crypto_hash_ripemd_series_len(s : CryptohashripemdSeries) -> Int { s.vals.length() }
 
-pub fn crypto_hash_ripemd_series_sum(s : CryptohashripemdSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_hash_ripemd_series_sum(s : CryptohashripemdSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_hash_ripemd_series_mean(s : CryptohashripemdSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_hash_ripemd_frame_set(s : CryptohashripemdFrame, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_ripemd_frame_sum(s : CryptohashripemdFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_frame_sum(s : CryptohashripemdFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_frame_mean(s : CryptohashripemdFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_frame_mean(s : CryptohashripemdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_frame_scale(s : CryptohashripemdFrame, f : Double) -> CryptohashripemdFrame {
   let result = crypto_hash_ripemd_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_hash_ripemd_frame_fill(s : CryptohashripemdFrame, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_ripemd_frame_min(s : CryptohashripemdFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_frame_min(s : CryptohashripemdFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_frame_max(s : CryptohashripemdFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_frame_max(s : CryptohashripemdFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_frame_to_string(s : CryptohashripemdFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_hash_ripemd_table_set(s : CryptohashripemdTable, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_ripemd_table_sum(s : CryptohashripemdTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_table_sum(s : CryptohashripemdTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_table_mean(s : CryptohashripemdTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_table_mean(s : CryptohashripemdTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_table_scale(s : CryptohashripemdTable, f : Double) -> CryptohashripemdTable {
   let result = crypto_hash_ripemd_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_hash_ripemd_table_fill(s : CryptohashripemdTable, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_ripemd_table_min(s : CryptohashripemdTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_table_min(s : CryptohashripemdTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_table_max(s : CryptohashripemdTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_table_max(s : CryptohashripemdTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_table_to_string(s : CryptohashripemdTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_hash_ripemd_graphn_set(s : CryptohashripemdGraphN, i : Int, v : Do
   result
 }
 
-pub fn crypto_hash_ripemd_graphn_sum(s : CryptohashripemdGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_graphn_sum(s : CryptohashripemdGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_graphn_mean(s : CryptohashripemdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_graphn_mean(s : CryptohashripemdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_graphn_scale(s : CryptohashripemdGraphN, f : Double) -> CryptohashripemdGraphN {
   let result = crypto_hash_ripemd_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_hash_ripemd_graphn_fill(s : CryptohashripemdGraphN, v : Double) ->
   result
 }
 
-pub fn crypto_hash_ripemd_graphn_min(s : CryptohashripemdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_graphn_min(s : CryptohashripemdGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_graphn_max(s : CryptohashripemdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_graphn_max(s : CryptohashripemdGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_graphn_to_string(s : CryptohashripemdGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_hash_ripemd_node_set(s : CryptohashripemdNode, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_ripemd_node_sum(s : CryptohashripemdNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_node_sum(s : CryptohashripemdNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_node_mean(s : CryptohashripemdNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_node_mean(s : CryptohashripemdNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_node_scale(s : CryptohashripemdNode, f : Double) -> CryptohashripemdNode {
   let result = crypto_hash_ripemd_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_hash_ripemd_node_fill(s : CryptohashripemdNode, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_ripemd_node_min(s : CryptohashripemdNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_node_min(s : CryptohashripemdNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_node_max(s : CryptohashripemdNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_node_max(s : CryptohashripemdNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_node_to_string(s : CryptohashripemdNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_hash_ripemd_edge_set(s : CryptohashripemdEdge, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_ripemd_edge_sum(s : CryptohashripemdEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_edge_sum(s : CryptohashripemdEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_edge_mean(s : CryptohashripemdEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_edge_mean(s : CryptohashripemdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_edge_scale(s : CryptohashripemdEdge, f : Double) -> CryptohashripemdEdge {
   let result = crypto_hash_ripemd_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_hash_ripemd_edge_fill(s : CryptohashripemdEdge, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_ripemd_edge_min(s : CryptohashripemdEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_edge_min(s : CryptohashripemdEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_edge_max(s : CryptohashripemdEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_edge_max(s : CryptohashripemdEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_edge_to_string(s : CryptohashripemdEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_hash_ripemd_path_set(s : CryptohashripemdPath, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_ripemd_path_sum(s : CryptohashripemdPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_path_sum(s : CryptohashripemdPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_path_mean(s : CryptohashripemdPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_path_mean(s : CryptohashripemdPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_path_scale(s : CryptohashripemdPath, f : Double) -> CryptohashripemdPath {
   let result = crypto_hash_ripemd_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_hash_ripemd_path_fill(s : CryptohashripemdPath, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_ripemd_path_min(s : CryptohashripemdPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_path_min(s : CryptohashripemdPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_path_max(s : CryptohashripemdPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_path_max(s : CryptohashripemdPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_path_to_string(s : CryptohashripemdPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_hash_ripemd_cluster_set(s : CryptohashripemdCluster, i : Int, v : 
   result
 }
 
-pub fn crypto_hash_ripemd_cluster_sum(s : CryptohashripemdCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_cluster_sum(s : CryptohashripemdCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_cluster_mean(s : CryptohashripemdCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_cluster_mean(s : CryptohashripemdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_cluster_scale(s : CryptohashripemdCluster, f : Double) -> CryptohashripemdCluster {
   let result = crypto_hash_ripemd_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_hash_ripemd_cluster_fill(s : CryptohashripemdCluster, v : Double) 
   result
 }
 
-pub fn crypto_hash_ripemd_cluster_min(s : CryptohashripemdCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_cluster_min(s : CryptohashripemdCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_cluster_max(s : CryptohashripemdCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_cluster_max(s : CryptohashripemdCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_cluster_to_string(s : CryptohashripemdCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_hash_ripemd_model_set(s : CryptohashripemdModel, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_ripemd_model_sum(s : CryptohashripemdModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_model_sum(s : CryptohashripemdModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_model_mean(s : CryptohashripemdModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_model_mean(s : CryptohashripemdModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_model_scale(s : CryptohashripemdModel, f : Double) -> CryptohashripemdModel {
   let result = crypto_hash_ripemd_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_hash_ripemd_model_fill(s : CryptohashripemdModel, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_ripemd_model_min(s : CryptohashripemdModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_model_min(s : CryptohashripemdModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_model_max(s : CryptohashripemdModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_model_max(s : CryptohashripemdModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_model_to_string(s : CryptohashripemdModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_hash_ripemd_layer_set(s : CryptohashripemdLayer, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_ripemd_layer_sum(s : CryptohashripemdLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_layer_sum(s : CryptohashripemdLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_layer_mean(s : CryptohashripemdLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_layer_mean(s : CryptohashripemdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_layer_scale(s : CryptohashripemdLayer, f : Double) -> CryptohashripemdLayer {
   let result = crypto_hash_ripemd_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_hash_ripemd_layer_fill(s : CryptohashripemdLayer, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_ripemd_layer_min(s : CryptohashripemdLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_layer_min(s : CryptohashripemdLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_layer_max(s : CryptohashripemdLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_layer_max(s : CryptohashripemdLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_layer_to_string(s : CryptohashripemdLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_hash_ripemd_buffer_set(s : CryptohashripemdBuffer, i : Int, v : Do
   result
 }
 
-pub fn crypto_hash_ripemd_buffer_sum(s : CryptohashripemdBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_buffer_sum(s : CryptohashripemdBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_buffer_mean(s : CryptohashripemdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_buffer_mean(s : CryptohashripemdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_buffer_scale(s : CryptohashripemdBuffer, f : Double) -> CryptohashripemdBuffer {
   let result = crypto_hash_ripemd_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_hash_ripemd_buffer_fill(s : CryptohashripemdBuffer, v : Double) ->
   result
 }
 
-pub fn crypto_hash_ripemd_buffer_min(s : CryptohashripemdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_buffer_min(s : CryptohashripemdBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_buffer_max(s : CryptohashripemdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_buffer_max(s : CryptohashripemdBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_buffer_to_string(s : CryptohashripemdBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_hash_ripemd_cursor_set(s : CryptohashripemdCursor, i : Int, v : Do
   result
 }
 
-pub fn crypto_hash_ripemd_cursor_sum(s : CryptohashripemdCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_cursor_sum(s : CryptohashripemdCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_cursor_mean(s : CryptohashripemdCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_cursor_mean(s : CryptohashripemdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_cursor_scale(s : CryptohashripemdCursor, f : Double) -> CryptohashripemdCursor {
   let result = crypto_hash_ripemd_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_hash_ripemd_cursor_fill(s : CryptohashripemdCursor, v : Double) ->
   result
 }
 
-pub fn crypto_hash_ripemd_cursor_min(s : CryptohashripemdCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_cursor_min(s : CryptohashripemdCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_cursor_max(s : CryptohashripemdCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_cursor_max(s : CryptohashripemdCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_cursor_to_string(s : CryptohashripemdCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_hash_ripemd_view_set(s : CryptohashripemdView, i : Int, v : Double
   result
 }
 
-pub fn crypto_hash_ripemd_view_sum(s : CryptohashripemdView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_view_sum(s : CryptohashripemdView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_view_mean(s : CryptohashripemdView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_view_mean(s : CryptohashripemdView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_view_scale(s : CryptohashripemdView, f : Double) -> CryptohashripemdView {
   let result = crypto_hash_ripemd_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_hash_ripemd_view_fill(s : CryptohashripemdView, v : Double) -> Cry
   result
 }
 
-pub fn crypto_hash_ripemd_view_min(s : CryptohashripemdView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_view_min(s : CryptohashripemdView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_view_max(s : CryptohashripemdView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_view_max(s : CryptohashripemdView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_view_to_string(s : CryptohashripemdView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_hash_ripemd_range_set(s : CryptohashripemdRange, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_ripemd_range_sum(s : CryptohashripemdRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_range_sum(s : CryptohashripemdRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_range_mean(s : CryptohashripemdRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_range_mean(s : CryptohashripemdRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_range_scale(s : CryptohashripemdRange, f : Double) -> CryptohashripemdRange {
   let result = crypto_hash_ripemd_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_hash_ripemd_range_fill(s : CryptohashripemdRange, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_ripemd_range_min(s : CryptohashripemdRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_range_min(s : CryptohashripemdRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_range_max(s : CryptohashripemdRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_range_max(s : CryptohashripemdRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_range_to_string(s : CryptohashripemdRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_hash_ripemd_slice_set(s : CryptohashripemdSlice, i : Int, v : Doub
   result
 }
 
-pub fn crypto_hash_ripemd_slice_sum(s : CryptohashripemdSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_hash_ripemd_slice_sum(s : CryptohashripemdSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_hash_ripemd_slice_mean(s : CryptohashripemdSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_hash_ripemd_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_hash_ripemd_slice_mean(s : CryptohashripemdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_hash_ripemd_slice_scale(s : CryptohashripemdSlice, f : Double) -> CryptohashripemdSlice {
   let result = crypto_hash_ripemd_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_hash_ripemd_slice_fill(s : CryptohashripemdSlice, v : Double) -> C
   result
 }
 
-pub fn crypto_hash_ripemd_slice_min(s : CryptohashripemdSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_slice_min(s : CryptohashripemdSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_hash_ripemd_slice_max(s : CryptohashripemdSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_hash_ripemd_slice_max(s : CryptohashripemdSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_hash_ripemd_slice_to_string(s : CryptohashripemdSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

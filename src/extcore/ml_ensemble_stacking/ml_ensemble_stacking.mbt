@@ -88,11 +88,7 @@ pub fn ml_ensemble_stacking_make_series(vals : Array[Double], name : String) -> 
 
 pub fn ml_ensemble_stacking_series_len(s : MlensemblestackingSeries) -> Int { s.vals.length() }
 
-pub fn ml_ensemble_stacking_series_sum(s : MlensemblestackingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_ensemble_stacking_series_sum(s : MlensemblestackingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_ensemble_stacking_series_mean(s : MlensemblestackingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_ensemble_stacking_frame_set(s : MlensemblestackingFrame, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_stacking_frame_sum(s : MlensemblestackingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_frame_sum(s : MlensemblestackingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_frame_mean(s : MlensemblestackingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_frame_mean(s : MlensemblestackingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_frame_scale(s : MlensemblestackingFrame, f : Double) -> MlensemblestackingFrame {
   let result = ml_ensemble_stacking_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_ensemble_stacking_frame_fill(s : MlensemblestackingFrame, v : Double) 
   result
 }
 
-pub fn ml_ensemble_stacking_frame_min(s : MlensemblestackingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_frame_min(s : MlensemblestackingFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_frame_max(s : MlensemblestackingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_frame_max(s : MlensemblestackingFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_frame_to_string(s : MlensemblestackingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_ensemble_stacking_table_set(s : MlensemblestackingTable, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_stacking_table_sum(s : MlensemblestackingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_table_sum(s : MlensemblestackingTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_table_mean(s : MlensemblestackingTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_table_mean(s : MlensemblestackingTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_table_scale(s : MlensemblestackingTable, f : Double) -> MlensemblestackingTable {
   let result = ml_ensemble_stacking_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_ensemble_stacking_table_fill(s : MlensemblestackingTable, v : Double) 
   result
 }
 
-pub fn ml_ensemble_stacking_table_min(s : MlensemblestackingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_table_min(s : MlensemblestackingTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_table_max(s : MlensemblestackingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_table_max(s : MlensemblestackingTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_table_to_string(s : MlensemblestackingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_ensemble_stacking_graphn_set(s : MlensemblestackingGraphN, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_stacking_graphn_sum(s : MlensemblestackingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_graphn_sum(s : MlensemblestackingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_graphn_mean(s : MlensemblestackingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_graphn_mean(s : MlensemblestackingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_graphn_scale(s : MlensemblestackingGraphN, f : Double) -> MlensemblestackingGraphN {
   let result = ml_ensemble_stacking_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_ensemble_stacking_graphn_fill(s : MlensemblestackingGraphN, v : Double
   result
 }
 
-pub fn ml_ensemble_stacking_graphn_min(s : MlensemblestackingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_graphn_min(s : MlensemblestackingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_graphn_max(s : MlensemblestackingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_graphn_max(s : MlensemblestackingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_graphn_to_string(s : MlensemblestackingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_ensemble_stacking_node_set(s : MlensemblestackingNode, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_stacking_node_sum(s : MlensemblestackingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_node_sum(s : MlensemblestackingNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_node_mean(s : MlensemblestackingNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_node_mean(s : MlensemblestackingNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_node_scale(s : MlensemblestackingNode, f : Double) -> MlensemblestackingNode {
   let result = ml_ensemble_stacking_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_ensemble_stacking_node_fill(s : MlensemblestackingNode, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_stacking_node_min(s : MlensemblestackingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_node_min(s : MlensemblestackingNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_node_max(s : MlensemblestackingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_node_max(s : MlensemblestackingNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_node_to_string(s : MlensemblestackingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_ensemble_stacking_edge_set(s : MlensemblestackingEdge, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_stacking_edge_sum(s : MlensemblestackingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_edge_sum(s : MlensemblestackingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_edge_mean(s : MlensemblestackingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_edge_mean(s : MlensemblestackingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_edge_scale(s : MlensemblestackingEdge, f : Double) -> MlensemblestackingEdge {
   let result = ml_ensemble_stacking_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_ensemble_stacking_edge_fill(s : MlensemblestackingEdge, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_stacking_edge_min(s : MlensemblestackingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_edge_min(s : MlensemblestackingEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_edge_max(s : MlensemblestackingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_edge_max(s : MlensemblestackingEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_edge_to_string(s : MlensemblestackingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_ensemble_stacking_path_set(s : MlensemblestackingPath, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_stacking_path_sum(s : MlensemblestackingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_path_sum(s : MlensemblestackingPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_path_mean(s : MlensemblestackingPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_path_mean(s : MlensemblestackingPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_path_scale(s : MlensemblestackingPath, f : Double) -> MlensemblestackingPath {
   let result = ml_ensemble_stacking_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_ensemble_stacking_path_fill(s : MlensemblestackingPath, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_stacking_path_min(s : MlensemblestackingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_path_min(s : MlensemblestackingPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_path_max(s : MlensemblestackingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_path_max(s : MlensemblestackingPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_path_to_string(s : MlensemblestackingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_ensemble_stacking_cluster_set(s : MlensemblestackingCluster, i : Int, 
   result
 }
 
-pub fn ml_ensemble_stacking_cluster_sum(s : MlensemblestackingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_cluster_sum(s : MlensemblestackingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_cluster_mean(s : MlensemblestackingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_cluster_mean(s : MlensemblestackingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_cluster_scale(s : MlensemblestackingCluster, f : Double) -> MlensemblestackingCluster {
   let result = ml_ensemble_stacking_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_ensemble_stacking_cluster_fill(s : MlensemblestackingCluster, v : Doub
   result
 }
 
-pub fn ml_ensemble_stacking_cluster_min(s : MlensemblestackingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_cluster_min(s : MlensemblestackingCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_cluster_max(s : MlensemblestackingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_cluster_max(s : MlensemblestackingCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_cluster_to_string(s : MlensemblestackingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_ensemble_stacking_model_set(s : MlensemblestackingModel, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_stacking_model_sum(s : MlensemblestackingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_model_sum(s : MlensemblestackingModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_model_mean(s : MlensemblestackingModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_model_mean(s : MlensemblestackingModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_model_scale(s : MlensemblestackingModel, f : Double) -> MlensemblestackingModel {
   let result = ml_ensemble_stacking_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_ensemble_stacking_model_fill(s : MlensemblestackingModel, v : Double) 
   result
 }
 
-pub fn ml_ensemble_stacking_model_min(s : MlensemblestackingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_model_min(s : MlensemblestackingModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_model_max(s : MlensemblestackingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_model_max(s : MlensemblestackingModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_model_to_string(s : MlensemblestackingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_ensemble_stacking_layer_set(s : MlensemblestackingLayer, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_stacking_layer_sum(s : MlensemblestackingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_layer_sum(s : MlensemblestackingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_layer_mean(s : MlensemblestackingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_layer_mean(s : MlensemblestackingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_layer_scale(s : MlensemblestackingLayer, f : Double) -> MlensemblestackingLayer {
   let result = ml_ensemble_stacking_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_ensemble_stacking_layer_fill(s : MlensemblestackingLayer, v : Double) 
   result
 }
 
-pub fn ml_ensemble_stacking_layer_min(s : MlensemblestackingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_layer_min(s : MlensemblestackingLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_layer_max(s : MlensemblestackingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_layer_max(s : MlensemblestackingLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_layer_to_string(s : MlensemblestackingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_ensemble_stacking_buffer_set(s : MlensemblestackingBuffer, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_stacking_buffer_sum(s : MlensemblestackingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_buffer_sum(s : MlensemblestackingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_buffer_mean(s : MlensemblestackingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_buffer_mean(s : MlensemblestackingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_buffer_scale(s : MlensemblestackingBuffer, f : Double) -> MlensemblestackingBuffer {
   let result = ml_ensemble_stacking_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_ensemble_stacking_buffer_fill(s : MlensemblestackingBuffer, v : Double
   result
 }
 
-pub fn ml_ensemble_stacking_buffer_min(s : MlensemblestackingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_buffer_min(s : MlensemblestackingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_buffer_max(s : MlensemblestackingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_buffer_max(s : MlensemblestackingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_buffer_to_string(s : MlensemblestackingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_ensemble_stacking_cursor_set(s : MlensemblestackingCursor, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_stacking_cursor_sum(s : MlensemblestackingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_cursor_sum(s : MlensemblestackingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_cursor_mean(s : MlensemblestackingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_cursor_mean(s : MlensemblestackingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_cursor_scale(s : MlensemblestackingCursor, f : Double) -> MlensemblestackingCursor {
   let result = ml_ensemble_stacking_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_ensemble_stacking_cursor_fill(s : MlensemblestackingCursor, v : Double
   result
 }
 
-pub fn ml_ensemble_stacking_cursor_min(s : MlensemblestackingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_cursor_min(s : MlensemblestackingCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_cursor_max(s : MlensemblestackingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_cursor_max(s : MlensemblestackingCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_cursor_to_string(s : MlensemblestackingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_ensemble_stacking_view_set(s : MlensemblestackingView, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_stacking_view_sum(s : MlensemblestackingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_view_sum(s : MlensemblestackingView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_view_mean(s : MlensemblestackingView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_view_mean(s : MlensemblestackingView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_view_scale(s : MlensemblestackingView, f : Double) -> MlensemblestackingView {
   let result = ml_ensemble_stacking_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_ensemble_stacking_view_fill(s : MlensemblestackingView, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_stacking_view_min(s : MlensemblestackingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_view_min(s : MlensemblestackingView) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_view_max(s : MlensemblestackingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_view_max(s : MlensemblestackingView) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_view_to_string(s : MlensemblestackingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_ensemble_stacking_range_set(s : MlensemblestackingRange, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_stacking_range_sum(s : MlensemblestackingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_range_sum(s : MlensemblestackingRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_range_mean(s : MlensemblestackingRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_range_mean(s : MlensemblestackingRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_range_scale(s : MlensemblestackingRange, f : Double) -> MlensemblestackingRange {
   let result = ml_ensemble_stacking_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_ensemble_stacking_range_fill(s : MlensemblestackingRange, v : Double) 
   result
 }
 
-pub fn ml_ensemble_stacking_range_min(s : MlensemblestackingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_range_min(s : MlensemblestackingRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_range_max(s : MlensemblestackingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_range_max(s : MlensemblestackingRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_range_to_string(s : MlensemblestackingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_ensemble_stacking_slice_set(s : MlensemblestackingSlice, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_stacking_slice_sum(s : MlensemblestackingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_stacking_slice_sum(s : MlensemblestackingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_stacking_slice_mean(s : MlensemblestackingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_stacking_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_stacking_slice_mean(s : MlensemblestackingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_stacking_slice_scale(s : MlensemblestackingSlice, f : Double) -> MlensemblestackingSlice {
   let result = ml_ensemble_stacking_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_ensemble_stacking_slice_fill(s : MlensemblestackingSlice, v : Double) 
   result
 }
 
-pub fn ml_ensemble_stacking_slice_min(s : MlensemblestackingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_slice_min(s : MlensemblestackingSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_stacking_slice_max(s : MlensemblestackingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_stacking_slice_max(s : MlensemblestackingSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_stacking_slice_to_string(s : MlensemblestackingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

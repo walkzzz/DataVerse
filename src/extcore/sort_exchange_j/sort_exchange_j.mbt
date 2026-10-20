@@ -88,11 +88,7 @@ pub fn sort_exchange_j_make_series(vals : Array[Double], name : String) -> Sorte
 
 pub fn sort_exchange_j_series_len(s : SortexchangejSeries) -> Int { s.vals.length() }
 
-pub fn sort_exchange_j_series_sum(s : SortexchangejSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_exchange_j_series_sum(s : SortexchangejSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_exchange_j_series_mean(s : SortexchangejSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_exchange_j_frame_set(s : SortexchangejFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_exchange_j_frame_sum(s : SortexchangejFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_frame_sum(s : SortexchangejFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_frame_mean(s : SortexchangejFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_frame_mean(s : SortexchangejFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_frame_scale(s : SortexchangejFrame, f : Double) -> SortexchangejFrame {
   let result = sort_exchange_j_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_exchange_j_frame_fill(s : SortexchangejFrame, v : Double) -> Sortexc
   result
 }
 
-pub fn sort_exchange_j_frame_min(s : SortexchangejFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_frame_min(s : SortexchangejFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_frame_max(s : SortexchangejFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_frame_max(s : SortexchangejFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_frame_to_string(s : SortexchangejFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_exchange_j_table_set(s : SortexchangejTable, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_exchange_j_table_sum(s : SortexchangejTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_table_sum(s : SortexchangejTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_table_mean(s : SortexchangejTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_table_mean(s : SortexchangejTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_table_scale(s : SortexchangejTable, f : Double) -> SortexchangejTable {
   let result = sort_exchange_j_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_exchange_j_table_fill(s : SortexchangejTable, v : Double) -> Sortexc
   result
 }
 
-pub fn sort_exchange_j_table_min(s : SortexchangejTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_table_min(s : SortexchangejTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_table_max(s : SortexchangejTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_table_max(s : SortexchangejTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_table_to_string(s : SortexchangejTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_exchange_j_graphn_set(s : SortexchangejGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn sort_exchange_j_graphn_sum(s : SortexchangejGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_graphn_sum(s : SortexchangejGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_graphn_mean(s : SortexchangejGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_graphn_mean(s : SortexchangejGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_graphn_scale(s : SortexchangejGraphN, f : Double) -> SortexchangejGraphN {
   let result = sort_exchange_j_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_exchange_j_graphn_fill(s : SortexchangejGraphN, v : Double) -> Sorte
   result
 }
 
-pub fn sort_exchange_j_graphn_min(s : SortexchangejGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_graphn_min(s : SortexchangejGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_graphn_max(s : SortexchangejGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_graphn_max(s : SortexchangejGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_graphn_to_string(s : SortexchangejGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_exchange_j_node_set(s : SortexchangejNode, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_j_node_sum(s : SortexchangejNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_node_sum(s : SortexchangejNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_node_mean(s : SortexchangejNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_node_mean(s : SortexchangejNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_node_scale(s : SortexchangejNode, f : Double) -> SortexchangejNode {
   let result = sort_exchange_j_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_exchange_j_node_fill(s : SortexchangejNode, v : Double) -> Sortexcha
   result
 }
 
-pub fn sort_exchange_j_node_min(s : SortexchangejNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_node_min(s : SortexchangejNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_node_max(s : SortexchangejNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_node_max(s : SortexchangejNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_node_to_string(s : SortexchangejNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_exchange_j_edge_set(s : SortexchangejEdge, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_j_edge_sum(s : SortexchangejEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_edge_sum(s : SortexchangejEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_edge_mean(s : SortexchangejEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_edge_mean(s : SortexchangejEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_edge_scale(s : SortexchangejEdge, f : Double) -> SortexchangejEdge {
   let result = sort_exchange_j_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_exchange_j_edge_fill(s : SortexchangejEdge, v : Double) -> Sortexcha
   result
 }
 
-pub fn sort_exchange_j_edge_min(s : SortexchangejEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_edge_min(s : SortexchangejEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_edge_max(s : SortexchangejEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_edge_max(s : SortexchangejEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_edge_to_string(s : SortexchangejEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_exchange_j_path_set(s : SortexchangejPath, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_j_path_sum(s : SortexchangejPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_path_sum(s : SortexchangejPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_path_mean(s : SortexchangejPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_path_mean(s : SortexchangejPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_path_scale(s : SortexchangejPath, f : Double) -> SortexchangejPath {
   let result = sort_exchange_j_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_exchange_j_path_fill(s : SortexchangejPath, v : Double) -> Sortexcha
   result
 }
 
-pub fn sort_exchange_j_path_min(s : SortexchangejPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_path_min(s : SortexchangejPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_path_max(s : SortexchangejPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_path_max(s : SortexchangejPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_path_to_string(s : SortexchangejPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_exchange_j_cluster_set(s : SortexchangejCluster, i : Int, v : Double
   result
 }
 
-pub fn sort_exchange_j_cluster_sum(s : SortexchangejCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_cluster_sum(s : SortexchangejCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_cluster_mean(s : SortexchangejCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_cluster_mean(s : SortexchangejCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_cluster_scale(s : SortexchangejCluster, f : Double) -> SortexchangejCluster {
   let result = sort_exchange_j_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_exchange_j_cluster_fill(s : SortexchangejCluster, v : Double) -> Sor
   result
 }
 
-pub fn sort_exchange_j_cluster_min(s : SortexchangejCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_cluster_min(s : SortexchangejCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_cluster_max(s : SortexchangejCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_cluster_max(s : SortexchangejCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_cluster_to_string(s : SortexchangejCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_exchange_j_model_set(s : SortexchangejModel, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_exchange_j_model_sum(s : SortexchangejModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_model_sum(s : SortexchangejModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_model_mean(s : SortexchangejModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_model_mean(s : SortexchangejModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_model_scale(s : SortexchangejModel, f : Double) -> SortexchangejModel {
   let result = sort_exchange_j_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_exchange_j_model_fill(s : SortexchangejModel, v : Double) -> Sortexc
   result
 }
 
-pub fn sort_exchange_j_model_min(s : SortexchangejModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_model_min(s : SortexchangejModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_model_max(s : SortexchangejModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_model_max(s : SortexchangejModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_model_to_string(s : SortexchangejModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_exchange_j_layer_set(s : SortexchangejLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_exchange_j_layer_sum(s : SortexchangejLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_layer_sum(s : SortexchangejLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_layer_mean(s : SortexchangejLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_layer_mean(s : SortexchangejLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_layer_scale(s : SortexchangejLayer, f : Double) -> SortexchangejLayer {
   let result = sort_exchange_j_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_exchange_j_layer_fill(s : SortexchangejLayer, v : Double) -> Sortexc
   result
 }
 
-pub fn sort_exchange_j_layer_min(s : SortexchangejLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_layer_min(s : SortexchangejLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_layer_max(s : SortexchangejLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_layer_max(s : SortexchangejLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_layer_to_string(s : SortexchangejLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_exchange_j_buffer_set(s : SortexchangejBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn sort_exchange_j_buffer_sum(s : SortexchangejBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_buffer_sum(s : SortexchangejBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_buffer_mean(s : SortexchangejBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_buffer_mean(s : SortexchangejBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_buffer_scale(s : SortexchangejBuffer, f : Double) -> SortexchangejBuffer {
   let result = sort_exchange_j_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_exchange_j_buffer_fill(s : SortexchangejBuffer, v : Double) -> Sorte
   result
 }
 
-pub fn sort_exchange_j_buffer_min(s : SortexchangejBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_buffer_min(s : SortexchangejBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_buffer_max(s : SortexchangejBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_buffer_max(s : SortexchangejBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_buffer_to_string(s : SortexchangejBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_exchange_j_cursor_set(s : SortexchangejCursor, i : Int, v : Double) 
   result
 }
 
-pub fn sort_exchange_j_cursor_sum(s : SortexchangejCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_cursor_sum(s : SortexchangejCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_cursor_mean(s : SortexchangejCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_cursor_mean(s : SortexchangejCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_cursor_scale(s : SortexchangejCursor, f : Double) -> SortexchangejCursor {
   let result = sort_exchange_j_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_exchange_j_cursor_fill(s : SortexchangejCursor, v : Double) -> Sorte
   result
 }
 
-pub fn sort_exchange_j_cursor_min(s : SortexchangejCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_cursor_min(s : SortexchangejCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_cursor_max(s : SortexchangejCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_cursor_max(s : SortexchangejCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_cursor_to_string(s : SortexchangejCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_exchange_j_view_set(s : SortexchangejView, i : Int, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_j_view_sum(s : SortexchangejView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_view_sum(s : SortexchangejView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_view_mean(s : SortexchangejView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_view_mean(s : SortexchangejView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_view_scale(s : SortexchangejView, f : Double) -> SortexchangejView {
   let result = sort_exchange_j_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_exchange_j_view_fill(s : SortexchangejView, v : Double) -> Sortexcha
   result
 }
 
-pub fn sort_exchange_j_view_min(s : SortexchangejView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_view_min(s : SortexchangejView) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_view_max(s : SortexchangejView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_view_max(s : SortexchangejView) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_view_to_string(s : SortexchangejView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_exchange_j_range_set(s : SortexchangejRange, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_exchange_j_range_sum(s : SortexchangejRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_range_sum(s : SortexchangejRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_range_mean(s : SortexchangejRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_range_mean(s : SortexchangejRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_range_scale(s : SortexchangejRange, f : Double) -> SortexchangejRange {
   let result = sort_exchange_j_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_exchange_j_range_fill(s : SortexchangejRange, v : Double) -> Sortexc
   result
 }
 
-pub fn sort_exchange_j_range_min(s : SortexchangejRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_range_min(s : SortexchangejRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_range_max(s : SortexchangejRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_range_max(s : SortexchangejRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_range_to_string(s : SortexchangejRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_exchange_j_slice_set(s : SortexchangejSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn sort_exchange_j_slice_sum(s : SortexchangejSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_j_slice_sum(s : SortexchangejSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_j_slice_mean(s : SortexchangejSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_j_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_j_slice_mean(s : SortexchangejSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_j_slice_scale(s : SortexchangejSlice, f : Double) -> SortexchangejSlice {
   let result = sort_exchange_j_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_exchange_j_slice_fill(s : SortexchangejSlice, v : Double) -> Sortexc
   result
 }
 
-pub fn sort_exchange_j_slice_min(s : SortexchangejSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_slice_min(s : SortexchangejSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_j_slice_max(s : SortexchangejSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_j_slice_max(s : SortexchangejSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_j_slice_to_string(s : SortexchangejSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

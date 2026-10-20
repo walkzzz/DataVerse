@@ -88,11 +88,7 @@ pub fn stats_dist_normal_make_series(vals : Array[Double], name : String) -> Sta
 
 pub fn stats_dist_normal_series_len(s : StatsdistnormalSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_normal_series_sum(s : StatsdistnormalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_normal_series_sum(s : StatsdistnormalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_normal_series_mean(s : StatsdistnormalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_normal_frame_set(s : StatsdistnormalFrame, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_normal_frame_sum(s : StatsdistnormalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_frame_sum(s : StatsdistnormalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_frame_mean(s : StatsdistnormalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_frame_mean(s : StatsdistnormalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_frame_scale(s : StatsdistnormalFrame, f : Double) -> StatsdistnormalFrame {
   let result = stats_dist_normal_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_normal_frame_fill(s : StatsdistnormalFrame, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_normal_frame_min(s : StatsdistnormalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_frame_min(s : StatsdistnormalFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_frame_max(s : StatsdistnormalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_frame_max(s : StatsdistnormalFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_frame_to_string(s : StatsdistnormalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_normal_table_set(s : StatsdistnormalTable, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_normal_table_sum(s : StatsdistnormalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_table_sum(s : StatsdistnormalTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_table_mean(s : StatsdistnormalTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_table_mean(s : StatsdistnormalTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_table_scale(s : StatsdistnormalTable, f : Double) -> StatsdistnormalTable {
   let result = stats_dist_normal_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_normal_table_fill(s : StatsdistnormalTable, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_normal_table_min(s : StatsdistnormalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_table_min(s : StatsdistnormalTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_table_max(s : StatsdistnormalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_table_max(s : StatsdistnormalTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_table_to_string(s : StatsdistnormalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_normal_graphn_set(s : StatsdistnormalGraphN, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_normal_graphn_sum(s : StatsdistnormalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_graphn_sum(s : StatsdistnormalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_graphn_mean(s : StatsdistnormalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_graphn_mean(s : StatsdistnormalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_graphn_scale(s : StatsdistnormalGraphN, f : Double) -> StatsdistnormalGraphN {
   let result = stats_dist_normal_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_normal_graphn_fill(s : StatsdistnormalGraphN, v : Double) -> S
   result
 }
 
-pub fn stats_dist_normal_graphn_min(s : StatsdistnormalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_graphn_min(s : StatsdistnormalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_graphn_max(s : StatsdistnormalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_graphn_max(s : StatsdistnormalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_graphn_to_string(s : StatsdistnormalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_normal_node_set(s : StatsdistnormalNode, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_normal_node_sum(s : StatsdistnormalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_node_sum(s : StatsdistnormalNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_node_mean(s : StatsdistnormalNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_node_mean(s : StatsdistnormalNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_node_scale(s : StatsdistnormalNode, f : Double) -> StatsdistnormalNode {
   let result = stats_dist_normal_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_normal_node_fill(s : StatsdistnormalNode, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_normal_node_min(s : StatsdistnormalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_node_min(s : StatsdistnormalNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_node_max(s : StatsdistnormalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_node_max(s : StatsdistnormalNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_node_to_string(s : StatsdistnormalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_normal_edge_set(s : StatsdistnormalEdge, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_normal_edge_sum(s : StatsdistnormalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_edge_sum(s : StatsdistnormalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_edge_mean(s : StatsdistnormalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_edge_mean(s : StatsdistnormalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_edge_scale(s : StatsdistnormalEdge, f : Double) -> StatsdistnormalEdge {
   let result = stats_dist_normal_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_normal_edge_fill(s : StatsdistnormalEdge, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_normal_edge_min(s : StatsdistnormalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_edge_min(s : StatsdistnormalEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_edge_max(s : StatsdistnormalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_edge_max(s : StatsdistnormalEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_edge_to_string(s : StatsdistnormalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_normal_path_set(s : StatsdistnormalPath, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_normal_path_sum(s : StatsdistnormalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_path_sum(s : StatsdistnormalPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_path_mean(s : StatsdistnormalPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_path_mean(s : StatsdistnormalPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_path_scale(s : StatsdistnormalPath, f : Double) -> StatsdistnormalPath {
   let result = stats_dist_normal_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_normal_path_fill(s : StatsdistnormalPath, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_normal_path_min(s : StatsdistnormalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_path_min(s : StatsdistnormalPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_path_max(s : StatsdistnormalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_path_max(s : StatsdistnormalPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_path_to_string(s : StatsdistnormalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_normal_cluster_set(s : StatsdistnormalCluster, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_normal_cluster_sum(s : StatsdistnormalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_cluster_sum(s : StatsdistnormalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_cluster_mean(s : StatsdistnormalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_cluster_mean(s : StatsdistnormalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_cluster_scale(s : StatsdistnormalCluster, f : Double) -> StatsdistnormalCluster {
   let result = stats_dist_normal_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_normal_cluster_fill(s : StatsdistnormalCluster, v : Double) ->
   result
 }
 
-pub fn stats_dist_normal_cluster_min(s : StatsdistnormalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_cluster_min(s : StatsdistnormalCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_cluster_max(s : StatsdistnormalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_cluster_max(s : StatsdistnormalCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_cluster_to_string(s : StatsdistnormalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_normal_model_set(s : StatsdistnormalModel, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_normal_model_sum(s : StatsdistnormalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_model_sum(s : StatsdistnormalModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_model_mean(s : StatsdistnormalModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_model_mean(s : StatsdistnormalModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_model_scale(s : StatsdistnormalModel, f : Double) -> StatsdistnormalModel {
   let result = stats_dist_normal_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_normal_model_fill(s : StatsdistnormalModel, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_normal_model_min(s : StatsdistnormalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_model_min(s : StatsdistnormalModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_model_max(s : StatsdistnormalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_model_max(s : StatsdistnormalModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_model_to_string(s : StatsdistnormalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_normal_layer_set(s : StatsdistnormalLayer, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_normal_layer_sum(s : StatsdistnormalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_layer_sum(s : StatsdistnormalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_layer_mean(s : StatsdistnormalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_layer_mean(s : StatsdistnormalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_layer_scale(s : StatsdistnormalLayer, f : Double) -> StatsdistnormalLayer {
   let result = stats_dist_normal_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_normal_layer_fill(s : StatsdistnormalLayer, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_normal_layer_min(s : StatsdistnormalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_layer_min(s : StatsdistnormalLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_layer_max(s : StatsdistnormalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_layer_max(s : StatsdistnormalLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_layer_to_string(s : StatsdistnormalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_normal_buffer_set(s : StatsdistnormalBuffer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_normal_buffer_sum(s : StatsdistnormalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_buffer_sum(s : StatsdistnormalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_buffer_mean(s : StatsdistnormalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_buffer_mean(s : StatsdistnormalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_buffer_scale(s : StatsdistnormalBuffer, f : Double) -> StatsdistnormalBuffer {
   let result = stats_dist_normal_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_normal_buffer_fill(s : StatsdistnormalBuffer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_normal_buffer_min(s : StatsdistnormalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_buffer_min(s : StatsdistnormalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_buffer_max(s : StatsdistnormalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_buffer_max(s : StatsdistnormalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_buffer_to_string(s : StatsdistnormalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_normal_cursor_set(s : StatsdistnormalCursor, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_normal_cursor_sum(s : StatsdistnormalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_cursor_sum(s : StatsdistnormalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_cursor_mean(s : StatsdistnormalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_cursor_mean(s : StatsdistnormalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_cursor_scale(s : StatsdistnormalCursor, f : Double) -> StatsdistnormalCursor {
   let result = stats_dist_normal_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_normal_cursor_fill(s : StatsdistnormalCursor, v : Double) -> S
   result
 }
 
-pub fn stats_dist_normal_cursor_min(s : StatsdistnormalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_cursor_min(s : StatsdistnormalCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_cursor_max(s : StatsdistnormalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_cursor_max(s : StatsdistnormalCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_cursor_to_string(s : StatsdistnormalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_normal_view_set(s : StatsdistnormalView, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_normal_view_sum(s : StatsdistnormalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_view_sum(s : StatsdistnormalView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_view_mean(s : StatsdistnormalView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_view_mean(s : StatsdistnormalView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_view_scale(s : StatsdistnormalView, f : Double) -> StatsdistnormalView {
   let result = stats_dist_normal_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_normal_view_fill(s : StatsdistnormalView, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_normal_view_min(s : StatsdistnormalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_view_min(s : StatsdistnormalView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_view_max(s : StatsdistnormalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_view_max(s : StatsdistnormalView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_view_to_string(s : StatsdistnormalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_normal_range_set(s : StatsdistnormalRange, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_normal_range_sum(s : StatsdistnormalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_range_sum(s : StatsdistnormalRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_range_mean(s : StatsdistnormalRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_range_mean(s : StatsdistnormalRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_range_scale(s : StatsdistnormalRange, f : Double) -> StatsdistnormalRange {
   let result = stats_dist_normal_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_normal_range_fill(s : StatsdistnormalRange, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_normal_range_min(s : StatsdistnormalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_range_min(s : StatsdistnormalRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_range_max(s : StatsdistnormalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_range_max(s : StatsdistnormalRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_range_to_string(s : StatsdistnormalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_normal_slice_set(s : StatsdistnormalSlice, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_normal_slice_sum(s : StatsdistnormalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_normal_slice_sum(s : StatsdistnormalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_normal_slice_mean(s : StatsdistnormalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_normal_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_normal_slice_mean(s : StatsdistnormalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_normal_slice_scale(s : StatsdistnormalSlice, f : Double) -> StatsdistnormalSlice {
   let result = stats_dist_normal_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_normal_slice_fill(s : StatsdistnormalSlice, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_normal_slice_min(s : StatsdistnormalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_slice_min(s : StatsdistnormalSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_normal_slice_max(s : StatsdistnormalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_normal_slice_max(s : StatsdistnormalSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_normal_slice_to_string(s : StatsdistnormalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

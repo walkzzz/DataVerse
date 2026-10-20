@@ -88,11 +88,7 @@ pub fn stats_dist_hypergeo_make_series(vals : Array[Double], name : String) -> S
 
 pub fn stats_dist_hypergeo_series_len(s : StatsdisthypergeoSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_hypergeo_series_sum(s : StatsdisthypergeoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_hypergeo_series_sum(s : StatsdisthypergeoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_hypergeo_series_mean(s : StatsdisthypergeoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_hypergeo_frame_set(s : StatsdisthypergeoFrame, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_hypergeo_frame_sum(s : StatsdisthypergeoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_frame_sum(s : StatsdisthypergeoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_frame_mean(s : StatsdisthypergeoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_frame_mean(s : StatsdisthypergeoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_frame_scale(s : StatsdisthypergeoFrame, f : Double) -> StatsdisthypergeoFrame {
   let result = stats_dist_hypergeo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_hypergeo_frame_fill(s : StatsdisthypergeoFrame, v : Double) ->
   result
 }
 
-pub fn stats_dist_hypergeo_frame_min(s : StatsdisthypergeoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_frame_min(s : StatsdisthypergeoFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_frame_max(s : StatsdisthypergeoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_frame_max(s : StatsdisthypergeoFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_frame_to_string(s : StatsdisthypergeoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_hypergeo_table_set(s : StatsdisthypergeoTable, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_hypergeo_table_sum(s : StatsdisthypergeoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_table_sum(s : StatsdisthypergeoTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_table_mean(s : StatsdisthypergeoTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_table_mean(s : StatsdisthypergeoTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_table_scale(s : StatsdisthypergeoTable, f : Double) -> StatsdisthypergeoTable {
   let result = stats_dist_hypergeo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_hypergeo_table_fill(s : StatsdisthypergeoTable, v : Double) ->
   result
 }
 
-pub fn stats_dist_hypergeo_table_min(s : StatsdisthypergeoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_table_min(s : StatsdisthypergeoTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_table_max(s : StatsdisthypergeoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_table_max(s : StatsdisthypergeoTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_table_to_string(s : StatsdisthypergeoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_hypergeo_graphn_set(s : StatsdisthypergeoGraphN, i : Int, v : 
   result
 }
 
-pub fn stats_dist_hypergeo_graphn_sum(s : StatsdisthypergeoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_graphn_sum(s : StatsdisthypergeoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_graphn_mean(s : StatsdisthypergeoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_graphn_mean(s : StatsdisthypergeoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_graphn_scale(s : StatsdisthypergeoGraphN, f : Double) -> StatsdisthypergeoGraphN {
   let result = stats_dist_hypergeo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_hypergeo_graphn_fill(s : StatsdisthypergeoGraphN, v : Double) 
   result
 }
 
-pub fn stats_dist_hypergeo_graphn_min(s : StatsdisthypergeoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_graphn_min(s : StatsdisthypergeoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_graphn_max(s : StatsdisthypergeoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_graphn_max(s : StatsdisthypergeoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_graphn_to_string(s : StatsdisthypergeoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_hypergeo_node_set(s : StatsdisthypergeoNode, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_hypergeo_node_sum(s : StatsdisthypergeoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_node_sum(s : StatsdisthypergeoNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_node_mean(s : StatsdisthypergeoNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_node_mean(s : StatsdisthypergeoNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_node_scale(s : StatsdisthypergeoNode, f : Double) -> StatsdisthypergeoNode {
   let result = stats_dist_hypergeo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_hypergeo_node_fill(s : StatsdisthypergeoNode, v : Double) -> S
   result
 }
 
-pub fn stats_dist_hypergeo_node_min(s : StatsdisthypergeoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_node_min(s : StatsdisthypergeoNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_node_max(s : StatsdisthypergeoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_node_max(s : StatsdisthypergeoNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_node_to_string(s : StatsdisthypergeoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_hypergeo_edge_set(s : StatsdisthypergeoEdge, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_hypergeo_edge_sum(s : StatsdisthypergeoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_edge_sum(s : StatsdisthypergeoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_edge_mean(s : StatsdisthypergeoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_edge_mean(s : StatsdisthypergeoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_edge_scale(s : StatsdisthypergeoEdge, f : Double) -> StatsdisthypergeoEdge {
   let result = stats_dist_hypergeo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_hypergeo_edge_fill(s : StatsdisthypergeoEdge, v : Double) -> S
   result
 }
 
-pub fn stats_dist_hypergeo_edge_min(s : StatsdisthypergeoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_edge_min(s : StatsdisthypergeoEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_edge_max(s : StatsdisthypergeoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_edge_max(s : StatsdisthypergeoEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_edge_to_string(s : StatsdisthypergeoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_hypergeo_path_set(s : StatsdisthypergeoPath, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_hypergeo_path_sum(s : StatsdisthypergeoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_path_sum(s : StatsdisthypergeoPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_path_mean(s : StatsdisthypergeoPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_path_mean(s : StatsdisthypergeoPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_path_scale(s : StatsdisthypergeoPath, f : Double) -> StatsdisthypergeoPath {
   let result = stats_dist_hypergeo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_hypergeo_path_fill(s : StatsdisthypergeoPath, v : Double) -> S
   result
 }
 
-pub fn stats_dist_hypergeo_path_min(s : StatsdisthypergeoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_path_min(s : StatsdisthypergeoPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_path_max(s : StatsdisthypergeoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_path_max(s : StatsdisthypergeoPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_path_to_string(s : StatsdisthypergeoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_hypergeo_cluster_set(s : StatsdisthypergeoCluster, i : Int, v 
   result
 }
 
-pub fn stats_dist_hypergeo_cluster_sum(s : StatsdisthypergeoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_cluster_sum(s : StatsdisthypergeoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_cluster_mean(s : StatsdisthypergeoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_cluster_mean(s : StatsdisthypergeoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_cluster_scale(s : StatsdisthypergeoCluster, f : Double) -> StatsdisthypergeoCluster {
   let result = stats_dist_hypergeo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_hypergeo_cluster_fill(s : StatsdisthypergeoCluster, v : Double
   result
 }
 
-pub fn stats_dist_hypergeo_cluster_min(s : StatsdisthypergeoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_cluster_min(s : StatsdisthypergeoCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_cluster_max(s : StatsdisthypergeoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_cluster_max(s : StatsdisthypergeoCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_cluster_to_string(s : StatsdisthypergeoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_hypergeo_model_set(s : StatsdisthypergeoModel, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_hypergeo_model_sum(s : StatsdisthypergeoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_model_sum(s : StatsdisthypergeoModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_model_mean(s : StatsdisthypergeoModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_model_mean(s : StatsdisthypergeoModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_model_scale(s : StatsdisthypergeoModel, f : Double) -> StatsdisthypergeoModel {
   let result = stats_dist_hypergeo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_hypergeo_model_fill(s : StatsdisthypergeoModel, v : Double) ->
   result
 }
 
-pub fn stats_dist_hypergeo_model_min(s : StatsdisthypergeoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_model_min(s : StatsdisthypergeoModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_model_max(s : StatsdisthypergeoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_model_max(s : StatsdisthypergeoModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_model_to_string(s : StatsdisthypergeoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_hypergeo_layer_set(s : StatsdisthypergeoLayer, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_hypergeo_layer_sum(s : StatsdisthypergeoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_layer_sum(s : StatsdisthypergeoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_layer_mean(s : StatsdisthypergeoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_layer_mean(s : StatsdisthypergeoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_layer_scale(s : StatsdisthypergeoLayer, f : Double) -> StatsdisthypergeoLayer {
   let result = stats_dist_hypergeo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_hypergeo_layer_fill(s : StatsdisthypergeoLayer, v : Double) ->
   result
 }
 
-pub fn stats_dist_hypergeo_layer_min(s : StatsdisthypergeoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_layer_min(s : StatsdisthypergeoLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_layer_max(s : StatsdisthypergeoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_layer_max(s : StatsdisthypergeoLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_layer_to_string(s : StatsdisthypergeoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_hypergeo_buffer_set(s : StatsdisthypergeoBuffer, i : Int, v : 
   result
 }
 
-pub fn stats_dist_hypergeo_buffer_sum(s : StatsdisthypergeoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_buffer_sum(s : StatsdisthypergeoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_buffer_mean(s : StatsdisthypergeoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_buffer_mean(s : StatsdisthypergeoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_buffer_scale(s : StatsdisthypergeoBuffer, f : Double) -> StatsdisthypergeoBuffer {
   let result = stats_dist_hypergeo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_hypergeo_buffer_fill(s : StatsdisthypergeoBuffer, v : Double) 
   result
 }
 
-pub fn stats_dist_hypergeo_buffer_min(s : StatsdisthypergeoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_buffer_min(s : StatsdisthypergeoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_buffer_max(s : StatsdisthypergeoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_buffer_max(s : StatsdisthypergeoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_buffer_to_string(s : StatsdisthypergeoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_hypergeo_cursor_set(s : StatsdisthypergeoCursor, i : Int, v : 
   result
 }
 
-pub fn stats_dist_hypergeo_cursor_sum(s : StatsdisthypergeoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_cursor_sum(s : StatsdisthypergeoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_cursor_mean(s : StatsdisthypergeoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_cursor_mean(s : StatsdisthypergeoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_cursor_scale(s : StatsdisthypergeoCursor, f : Double) -> StatsdisthypergeoCursor {
   let result = stats_dist_hypergeo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_hypergeo_cursor_fill(s : StatsdisthypergeoCursor, v : Double) 
   result
 }
 
-pub fn stats_dist_hypergeo_cursor_min(s : StatsdisthypergeoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_cursor_min(s : StatsdisthypergeoCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_cursor_max(s : StatsdisthypergeoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_cursor_max(s : StatsdisthypergeoCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_cursor_to_string(s : StatsdisthypergeoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_hypergeo_view_set(s : StatsdisthypergeoView, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_hypergeo_view_sum(s : StatsdisthypergeoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_view_sum(s : StatsdisthypergeoView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_view_mean(s : StatsdisthypergeoView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_view_mean(s : StatsdisthypergeoView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_view_scale(s : StatsdisthypergeoView, f : Double) -> StatsdisthypergeoView {
   let result = stats_dist_hypergeo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_hypergeo_view_fill(s : StatsdisthypergeoView, v : Double) -> S
   result
 }
 
-pub fn stats_dist_hypergeo_view_min(s : StatsdisthypergeoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_view_min(s : StatsdisthypergeoView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_view_max(s : StatsdisthypergeoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_view_max(s : StatsdisthypergeoView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_view_to_string(s : StatsdisthypergeoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_hypergeo_range_set(s : StatsdisthypergeoRange, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_hypergeo_range_sum(s : StatsdisthypergeoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_range_sum(s : StatsdisthypergeoRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_range_mean(s : StatsdisthypergeoRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_range_mean(s : StatsdisthypergeoRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_range_scale(s : StatsdisthypergeoRange, f : Double) -> StatsdisthypergeoRange {
   let result = stats_dist_hypergeo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_hypergeo_range_fill(s : StatsdisthypergeoRange, v : Double) ->
   result
 }
 
-pub fn stats_dist_hypergeo_range_min(s : StatsdisthypergeoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_range_min(s : StatsdisthypergeoRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_range_max(s : StatsdisthypergeoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_range_max(s : StatsdisthypergeoRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_range_to_string(s : StatsdisthypergeoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_hypergeo_slice_set(s : StatsdisthypergeoSlice, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_hypergeo_slice_sum(s : StatsdisthypergeoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_hypergeo_slice_sum(s : StatsdisthypergeoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_hypergeo_slice_mean(s : StatsdisthypergeoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_hypergeo_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_hypergeo_slice_mean(s : StatsdisthypergeoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_hypergeo_slice_scale(s : StatsdisthypergeoSlice, f : Double) -> StatsdisthypergeoSlice {
   let result = stats_dist_hypergeo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_hypergeo_slice_fill(s : StatsdisthypergeoSlice, v : Double) ->
   result
 }
 
-pub fn stats_dist_hypergeo_slice_min(s : StatsdisthypergeoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_slice_min(s : StatsdisthypergeoSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_hypergeo_slice_max(s : StatsdisthypergeoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_hypergeo_slice_max(s : StatsdisthypergeoSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_hypergeo_slice_to_string(s : StatsdisthypergeoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

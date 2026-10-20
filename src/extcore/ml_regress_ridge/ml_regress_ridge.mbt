@@ -88,11 +88,7 @@ pub fn ml_regress_ridge_make_series(vals : Array[Double], name : String) -> Mlre
 
 pub fn ml_regress_ridge_series_len(s : MlregressridgeSeries) -> Int { s.vals.length() }
 
-pub fn ml_regress_ridge_series_sum(s : MlregressridgeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_regress_ridge_series_sum(s : MlregressridgeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_regress_ridge_series_mean(s : MlregressridgeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_regress_ridge_frame_set(s : MlregressridgeFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_ridge_frame_sum(s : MlregressridgeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_frame_sum(s : MlregressridgeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_frame_mean(s : MlregressridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_frame_mean(s : MlregressridgeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_frame_scale(s : MlregressridgeFrame, f : Double) -> MlregressridgeFrame {
   let result = ml_regress_ridge_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_regress_ridge_frame_fill(s : MlregressridgeFrame, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_ridge_frame_min(s : MlregressridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_frame_min(s : MlregressridgeFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_frame_max(s : MlregressridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_frame_max(s : MlregressridgeFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_frame_to_string(s : MlregressridgeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_regress_ridge_table_set(s : MlregressridgeTable, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_ridge_table_sum(s : MlregressridgeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_table_sum(s : MlregressridgeTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_table_mean(s : MlregressridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_table_mean(s : MlregressridgeTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_table_scale(s : MlregressridgeTable, f : Double) -> MlregressridgeTable {
   let result = ml_regress_ridge_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_regress_ridge_table_fill(s : MlregressridgeTable, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_ridge_table_min(s : MlregressridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_table_min(s : MlregressridgeTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_table_max(s : MlregressridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_table_max(s : MlregressridgeTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_table_to_string(s : MlregressridgeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_regress_ridge_graphn_set(s : MlregressridgeGraphN, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_ridge_graphn_sum(s : MlregressridgeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_graphn_sum(s : MlregressridgeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_graphn_mean(s : MlregressridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_graphn_mean(s : MlregressridgeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_graphn_scale(s : MlregressridgeGraphN, f : Double) -> MlregressridgeGraphN {
   let result = ml_regress_ridge_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_regress_ridge_graphn_fill(s : MlregressridgeGraphN, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_ridge_graphn_min(s : MlregressridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_graphn_min(s : MlregressridgeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_graphn_max(s : MlregressridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_graphn_max(s : MlregressridgeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_graphn_to_string(s : MlregressridgeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_regress_ridge_node_set(s : MlregressridgeNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_regress_ridge_node_sum(s : MlregressridgeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_node_sum(s : MlregressridgeNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_node_mean(s : MlregressridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_node_mean(s : MlregressridgeNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_node_scale(s : MlregressridgeNode, f : Double) -> MlregressridgeNode {
   let result = ml_regress_ridge_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_regress_ridge_node_fill(s : MlregressridgeNode, v : Double) -> Mlregre
   result
 }
 
-pub fn ml_regress_ridge_node_min(s : MlregressridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_node_min(s : MlregressridgeNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_node_max(s : MlregressridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_node_max(s : MlregressridgeNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_node_to_string(s : MlregressridgeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_regress_ridge_edge_set(s : MlregressridgeEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_regress_ridge_edge_sum(s : MlregressridgeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_edge_sum(s : MlregressridgeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_edge_mean(s : MlregressridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_edge_mean(s : MlregressridgeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_edge_scale(s : MlregressridgeEdge, f : Double) -> MlregressridgeEdge {
   let result = ml_regress_ridge_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_regress_ridge_edge_fill(s : MlregressridgeEdge, v : Double) -> Mlregre
   result
 }
 
-pub fn ml_regress_ridge_edge_min(s : MlregressridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_edge_min(s : MlregressridgeEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_edge_max(s : MlregressridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_edge_max(s : MlregressridgeEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_edge_to_string(s : MlregressridgeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_regress_ridge_path_set(s : MlregressridgePath, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_regress_ridge_path_sum(s : MlregressridgePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_path_sum(s : MlregressridgePath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_path_mean(s : MlregressridgePath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_path_mean(s : MlregressridgePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_path_scale(s : MlregressridgePath, f : Double) -> MlregressridgePath {
   let result = ml_regress_ridge_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_regress_ridge_path_fill(s : MlregressridgePath, v : Double) -> Mlregre
   result
 }
 
-pub fn ml_regress_ridge_path_min(s : MlregressridgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_path_min(s : MlregressridgePath) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_path_max(s : MlregressridgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_path_max(s : MlregressridgePath) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_path_to_string(s : MlregressridgePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_regress_ridge_cluster_set(s : MlregressridgeCluster, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_ridge_cluster_sum(s : MlregressridgeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_cluster_sum(s : MlregressridgeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_cluster_mean(s : MlregressridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_cluster_mean(s : MlregressridgeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_cluster_scale(s : MlregressridgeCluster, f : Double) -> MlregressridgeCluster {
   let result = ml_regress_ridge_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_regress_ridge_cluster_fill(s : MlregressridgeCluster, v : Double) -> M
   result
 }
 
-pub fn ml_regress_ridge_cluster_min(s : MlregressridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_cluster_min(s : MlregressridgeCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_cluster_max(s : MlregressridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_cluster_max(s : MlregressridgeCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_cluster_to_string(s : MlregressridgeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_regress_ridge_model_set(s : MlregressridgeModel, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_ridge_model_sum(s : MlregressridgeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_model_sum(s : MlregressridgeModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_model_mean(s : MlregressridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_model_mean(s : MlregressridgeModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_model_scale(s : MlregressridgeModel, f : Double) -> MlregressridgeModel {
   let result = ml_regress_ridge_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_regress_ridge_model_fill(s : MlregressridgeModel, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_ridge_model_min(s : MlregressridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_model_min(s : MlregressridgeModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_model_max(s : MlregressridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_model_max(s : MlregressridgeModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_model_to_string(s : MlregressridgeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_regress_ridge_layer_set(s : MlregressridgeLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_ridge_layer_sum(s : MlregressridgeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_layer_sum(s : MlregressridgeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_layer_mean(s : MlregressridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_layer_mean(s : MlregressridgeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_layer_scale(s : MlregressridgeLayer, f : Double) -> MlregressridgeLayer {
   let result = ml_regress_ridge_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_regress_ridge_layer_fill(s : MlregressridgeLayer, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_ridge_layer_min(s : MlregressridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_layer_min(s : MlregressridgeLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_layer_max(s : MlregressridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_layer_max(s : MlregressridgeLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_layer_to_string(s : MlregressridgeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_regress_ridge_buffer_set(s : MlregressridgeBuffer, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_ridge_buffer_sum(s : MlregressridgeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_buffer_sum(s : MlregressridgeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_buffer_mean(s : MlregressridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_buffer_mean(s : MlregressridgeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_buffer_scale(s : MlregressridgeBuffer, f : Double) -> MlregressridgeBuffer {
   let result = ml_regress_ridge_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_regress_ridge_buffer_fill(s : MlregressridgeBuffer, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_ridge_buffer_min(s : MlregressridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_buffer_min(s : MlregressridgeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_buffer_max(s : MlregressridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_buffer_max(s : MlregressridgeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_buffer_to_string(s : MlregressridgeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_regress_ridge_cursor_set(s : MlregressridgeCursor, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_ridge_cursor_sum(s : MlregressridgeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_cursor_sum(s : MlregressridgeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_cursor_mean(s : MlregressridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_cursor_mean(s : MlregressridgeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_cursor_scale(s : MlregressridgeCursor, f : Double) -> MlregressridgeCursor {
   let result = ml_regress_ridge_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_regress_ridge_cursor_fill(s : MlregressridgeCursor, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_ridge_cursor_min(s : MlregressridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_cursor_min(s : MlregressridgeCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_cursor_max(s : MlregressridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_cursor_max(s : MlregressridgeCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_cursor_to_string(s : MlregressridgeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_regress_ridge_view_set(s : MlregressridgeView, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_regress_ridge_view_sum(s : MlregressridgeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_view_sum(s : MlregressridgeView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_view_mean(s : MlregressridgeView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_view_mean(s : MlregressridgeView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_view_scale(s : MlregressridgeView, f : Double) -> MlregressridgeView {
   let result = ml_regress_ridge_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_regress_ridge_view_fill(s : MlregressridgeView, v : Double) -> Mlregre
   result
 }
 
-pub fn ml_regress_ridge_view_min(s : MlregressridgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_view_min(s : MlregressridgeView) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_view_max(s : MlregressridgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_view_max(s : MlregressridgeView) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_view_to_string(s : MlregressridgeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_regress_ridge_range_set(s : MlregressridgeRange, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_ridge_range_sum(s : MlregressridgeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_range_sum(s : MlregressridgeRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_range_mean(s : MlregressridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_range_mean(s : MlregressridgeRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_range_scale(s : MlregressridgeRange, f : Double) -> MlregressridgeRange {
   let result = ml_regress_ridge_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_regress_ridge_range_fill(s : MlregressridgeRange, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_ridge_range_min(s : MlregressridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_range_min(s : MlregressridgeRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_range_max(s : MlregressridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_range_max(s : MlregressridgeRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_range_to_string(s : MlregressridgeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_regress_ridge_slice_set(s : MlregressridgeSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_ridge_slice_sum(s : MlregressridgeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_ridge_slice_sum(s : MlregressridgeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_ridge_slice_mean(s : MlregressridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_ridge_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_ridge_slice_mean(s : MlregressridgeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_ridge_slice_scale(s : MlregressridgeSlice, f : Double) -> MlregressridgeSlice {
   let result = ml_regress_ridge_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_regress_ridge_slice_fill(s : MlregressridgeSlice, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_ridge_slice_min(s : MlregressridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_slice_min(s : MlregressridgeSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_ridge_slice_max(s : MlregressridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_ridge_slice_max(s : MlregressridgeSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_ridge_slice_to_string(s : MlregressridgeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

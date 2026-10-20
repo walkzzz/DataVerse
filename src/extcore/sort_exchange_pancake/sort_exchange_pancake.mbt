@@ -88,11 +88,7 @@ pub fn sort_exchange_pancake_make_series(vals : Array[Double], name : String) ->
 
 pub fn sort_exchange_pancake_series_len(s : SortexchangepancakeSeries) -> Int { s.vals.length() }
 
-pub fn sort_exchange_pancake_series_sum(s : SortexchangepancakeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_exchange_pancake_series_sum(s : SortexchangepancakeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_exchange_pancake_series_mean(s : SortexchangepancakeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_exchange_pancake_frame_set(s : SortexchangepancakeFrame, i : Int, v 
   result
 }
 
-pub fn sort_exchange_pancake_frame_sum(s : SortexchangepancakeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_frame_sum(s : SortexchangepancakeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_frame_mean(s : SortexchangepancakeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_frame_mean(s : SortexchangepancakeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_frame_scale(s : SortexchangepancakeFrame, f : Double) -> SortexchangepancakeFrame {
   let result = sort_exchange_pancake_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_exchange_pancake_frame_fill(s : SortexchangepancakeFrame, v : Double
   result
 }
 
-pub fn sort_exchange_pancake_frame_min(s : SortexchangepancakeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_frame_min(s : SortexchangepancakeFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_frame_max(s : SortexchangepancakeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_frame_max(s : SortexchangepancakeFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_frame_to_string(s : SortexchangepancakeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_exchange_pancake_table_set(s : SortexchangepancakeTable, i : Int, v 
   result
 }
 
-pub fn sort_exchange_pancake_table_sum(s : SortexchangepancakeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_table_sum(s : SortexchangepancakeTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_table_mean(s : SortexchangepancakeTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_table_mean(s : SortexchangepancakeTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_table_scale(s : SortexchangepancakeTable, f : Double) -> SortexchangepancakeTable {
   let result = sort_exchange_pancake_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_exchange_pancake_table_fill(s : SortexchangepancakeTable, v : Double
   result
 }
 
-pub fn sort_exchange_pancake_table_min(s : SortexchangepancakeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_table_min(s : SortexchangepancakeTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_table_max(s : SortexchangepancakeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_table_max(s : SortexchangepancakeTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_table_to_string(s : SortexchangepancakeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_exchange_pancake_graphn_set(s : SortexchangepancakeGraphN, i : Int, 
   result
 }
 
-pub fn sort_exchange_pancake_graphn_sum(s : SortexchangepancakeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_graphn_sum(s : SortexchangepancakeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_graphn_mean(s : SortexchangepancakeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_graphn_mean(s : SortexchangepancakeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_graphn_scale(s : SortexchangepancakeGraphN, f : Double) -> SortexchangepancakeGraphN {
   let result = sort_exchange_pancake_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_exchange_pancake_graphn_fill(s : SortexchangepancakeGraphN, v : Doub
   result
 }
 
-pub fn sort_exchange_pancake_graphn_min(s : SortexchangepancakeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_graphn_min(s : SortexchangepancakeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_graphn_max(s : SortexchangepancakeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_graphn_max(s : SortexchangepancakeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_graphn_to_string(s : SortexchangepancakeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_exchange_pancake_node_set(s : SortexchangepancakeNode, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_pancake_node_sum(s : SortexchangepancakeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_node_sum(s : SortexchangepancakeNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_node_mean(s : SortexchangepancakeNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_node_mean(s : SortexchangepancakeNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_node_scale(s : SortexchangepancakeNode, f : Double) -> SortexchangepancakeNode {
   let result = sort_exchange_pancake_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_exchange_pancake_node_fill(s : SortexchangepancakeNode, v : Double) 
   result
 }
 
-pub fn sort_exchange_pancake_node_min(s : SortexchangepancakeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_node_min(s : SortexchangepancakeNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_node_max(s : SortexchangepancakeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_node_max(s : SortexchangepancakeNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_node_to_string(s : SortexchangepancakeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_exchange_pancake_edge_set(s : SortexchangepancakeEdge, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_pancake_edge_sum(s : SortexchangepancakeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_edge_sum(s : SortexchangepancakeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_edge_mean(s : SortexchangepancakeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_edge_mean(s : SortexchangepancakeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_edge_scale(s : SortexchangepancakeEdge, f : Double) -> SortexchangepancakeEdge {
   let result = sort_exchange_pancake_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_exchange_pancake_edge_fill(s : SortexchangepancakeEdge, v : Double) 
   result
 }
 
-pub fn sort_exchange_pancake_edge_min(s : SortexchangepancakeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_edge_min(s : SortexchangepancakeEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_edge_max(s : SortexchangepancakeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_edge_max(s : SortexchangepancakeEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_edge_to_string(s : SortexchangepancakeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_exchange_pancake_path_set(s : SortexchangepancakePath, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_pancake_path_sum(s : SortexchangepancakePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_path_sum(s : SortexchangepancakePath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_path_mean(s : SortexchangepancakePath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_path_mean(s : SortexchangepancakePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_path_scale(s : SortexchangepancakePath, f : Double) -> SortexchangepancakePath {
   let result = sort_exchange_pancake_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_exchange_pancake_path_fill(s : SortexchangepancakePath, v : Double) 
   result
 }
 
-pub fn sort_exchange_pancake_path_min(s : SortexchangepancakePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_path_min(s : SortexchangepancakePath) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_path_max(s : SortexchangepancakePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_path_max(s : SortexchangepancakePath) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_path_to_string(s : SortexchangepancakePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_exchange_pancake_cluster_set(s : SortexchangepancakeCluster, i : Int
   result
 }
 
-pub fn sort_exchange_pancake_cluster_sum(s : SortexchangepancakeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_cluster_sum(s : SortexchangepancakeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_cluster_mean(s : SortexchangepancakeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_cluster_mean(s : SortexchangepancakeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_cluster_scale(s : SortexchangepancakeCluster, f : Double) -> SortexchangepancakeCluster {
   let result = sort_exchange_pancake_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_exchange_pancake_cluster_fill(s : SortexchangepancakeCluster, v : Do
   result
 }
 
-pub fn sort_exchange_pancake_cluster_min(s : SortexchangepancakeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_cluster_min(s : SortexchangepancakeCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_cluster_max(s : SortexchangepancakeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_cluster_max(s : SortexchangepancakeCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_cluster_to_string(s : SortexchangepancakeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_exchange_pancake_model_set(s : SortexchangepancakeModel, i : Int, v 
   result
 }
 
-pub fn sort_exchange_pancake_model_sum(s : SortexchangepancakeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_model_sum(s : SortexchangepancakeModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_model_mean(s : SortexchangepancakeModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_model_mean(s : SortexchangepancakeModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_model_scale(s : SortexchangepancakeModel, f : Double) -> SortexchangepancakeModel {
   let result = sort_exchange_pancake_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_exchange_pancake_model_fill(s : SortexchangepancakeModel, v : Double
   result
 }
 
-pub fn sort_exchange_pancake_model_min(s : SortexchangepancakeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_model_min(s : SortexchangepancakeModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_model_max(s : SortexchangepancakeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_model_max(s : SortexchangepancakeModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_model_to_string(s : SortexchangepancakeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_exchange_pancake_layer_set(s : SortexchangepancakeLayer, i : Int, v 
   result
 }
 
-pub fn sort_exchange_pancake_layer_sum(s : SortexchangepancakeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_layer_sum(s : SortexchangepancakeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_layer_mean(s : SortexchangepancakeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_layer_mean(s : SortexchangepancakeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_layer_scale(s : SortexchangepancakeLayer, f : Double) -> SortexchangepancakeLayer {
   let result = sort_exchange_pancake_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_exchange_pancake_layer_fill(s : SortexchangepancakeLayer, v : Double
   result
 }
 
-pub fn sort_exchange_pancake_layer_min(s : SortexchangepancakeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_layer_min(s : SortexchangepancakeLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_layer_max(s : SortexchangepancakeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_layer_max(s : SortexchangepancakeLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_layer_to_string(s : SortexchangepancakeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_exchange_pancake_buffer_set(s : SortexchangepancakeBuffer, i : Int, 
   result
 }
 
-pub fn sort_exchange_pancake_buffer_sum(s : SortexchangepancakeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_buffer_sum(s : SortexchangepancakeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_buffer_mean(s : SortexchangepancakeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_buffer_mean(s : SortexchangepancakeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_buffer_scale(s : SortexchangepancakeBuffer, f : Double) -> SortexchangepancakeBuffer {
   let result = sort_exchange_pancake_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_exchange_pancake_buffer_fill(s : SortexchangepancakeBuffer, v : Doub
   result
 }
 
-pub fn sort_exchange_pancake_buffer_min(s : SortexchangepancakeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_buffer_min(s : SortexchangepancakeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_buffer_max(s : SortexchangepancakeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_buffer_max(s : SortexchangepancakeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_buffer_to_string(s : SortexchangepancakeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_exchange_pancake_cursor_set(s : SortexchangepancakeCursor, i : Int, 
   result
 }
 
-pub fn sort_exchange_pancake_cursor_sum(s : SortexchangepancakeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_cursor_sum(s : SortexchangepancakeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_cursor_mean(s : SortexchangepancakeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_cursor_mean(s : SortexchangepancakeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_cursor_scale(s : SortexchangepancakeCursor, f : Double) -> SortexchangepancakeCursor {
   let result = sort_exchange_pancake_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_exchange_pancake_cursor_fill(s : SortexchangepancakeCursor, v : Doub
   result
 }
 
-pub fn sort_exchange_pancake_cursor_min(s : SortexchangepancakeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_cursor_min(s : SortexchangepancakeCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_cursor_max(s : SortexchangepancakeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_cursor_max(s : SortexchangepancakeCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_cursor_to_string(s : SortexchangepancakeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_exchange_pancake_view_set(s : SortexchangepancakeView, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_pancake_view_sum(s : SortexchangepancakeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_view_sum(s : SortexchangepancakeView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_view_mean(s : SortexchangepancakeView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_view_mean(s : SortexchangepancakeView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_view_scale(s : SortexchangepancakeView, f : Double) -> SortexchangepancakeView {
   let result = sort_exchange_pancake_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_exchange_pancake_view_fill(s : SortexchangepancakeView, v : Double) 
   result
 }
 
-pub fn sort_exchange_pancake_view_min(s : SortexchangepancakeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_view_min(s : SortexchangepancakeView) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_view_max(s : SortexchangepancakeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_view_max(s : SortexchangepancakeView) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_view_to_string(s : SortexchangepancakeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_exchange_pancake_range_set(s : SortexchangepancakeRange, i : Int, v 
   result
 }
 
-pub fn sort_exchange_pancake_range_sum(s : SortexchangepancakeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_range_sum(s : SortexchangepancakeRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_range_mean(s : SortexchangepancakeRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_range_mean(s : SortexchangepancakeRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_range_scale(s : SortexchangepancakeRange, f : Double) -> SortexchangepancakeRange {
   let result = sort_exchange_pancake_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_exchange_pancake_range_fill(s : SortexchangepancakeRange, v : Double
   result
 }
 
-pub fn sort_exchange_pancake_range_min(s : SortexchangepancakeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_range_min(s : SortexchangepancakeRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_range_max(s : SortexchangepancakeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_range_max(s : SortexchangepancakeRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_range_to_string(s : SortexchangepancakeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_exchange_pancake_slice_set(s : SortexchangepancakeSlice, i : Int, v 
   result
 }
 
-pub fn sort_exchange_pancake_slice_sum(s : SortexchangepancakeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_pancake_slice_sum(s : SortexchangepancakeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_pancake_slice_mean(s : SortexchangepancakeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_pancake_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_pancake_slice_mean(s : SortexchangepancakeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_pancake_slice_scale(s : SortexchangepancakeSlice, f : Double) -> SortexchangepancakeSlice {
   let result = sort_exchange_pancake_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_exchange_pancake_slice_fill(s : SortexchangepancakeSlice, v : Double
   result
 }
 
-pub fn sort_exchange_pancake_slice_min(s : SortexchangepancakeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_slice_min(s : SortexchangepancakeSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_pancake_slice_max(s : SortexchangepancakeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_pancake_slice_max(s : SortexchangepancakeSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_pancake_slice_to_string(s : SortexchangepancakeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

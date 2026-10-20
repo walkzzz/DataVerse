@@ -88,11 +88,7 @@ pub fn physics_mechanics_collision_make_series(vals : Array[Double], name : Stri
 
 pub fn physics_mechanics_collision_series_len(s : PhysicsmechanicscollisionSeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_collision_series_sum(s : PhysicsmechanicscollisionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_collision_series_sum(s : PhysicsmechanicscollisionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_collision_series_mean(s : PhysicsmechanicscollisionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_collision_frame_set(s : PhysicsmechanicscollisionFrame,
   result
 }
 
-pub fn physics_mechanics_collision_frame_sum(s : PhysicsmechanicscollisionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_frame_sum(s : PhysicsmechanicscollisionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_frame_mean(s : PhysicsmechanicscollisionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_frame_mean(s : PhysicsmechanicscollisionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_frame_scale(s : PhysicsmechanicscollisionFrame, f : Double) -> PhysicsmechanicscollisionFrame {
   let result = physics_mechanics_collision_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_collision_frame_fill(s : PhysicsmechanicscollisionFrame
   result
 }
 
-pub fn physics_mechanics_collision_frame_min(s : PhysicsmechanicscollisionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_frame_min(s : PhysicsmechanicscollisionFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_frame_max(s : PhysicsmechanicscollisionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_frame_max(s : PhysicsmechanicscollisionFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_frame_to_string(s : PhysicsmechanicscollisionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_collision_table_set(s : PhysicsmechanicscollisionTable,
   result
 }
 
-pub fn physics_mechanics_collision_table_sum(s : PhysicsmechanicscollisionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_table_sum(s : PhysicsmechanicscollisionTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_table_mean(s : PhysicsmechanicscollisionTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_table_mean(s : PhysicsmechanicscollisionTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_table_scale(s : PhysicsmechanicscollisionTable, f : Double) -> PhysicsmechanicscollisionTable {
   let result = physics_mechanics_collision_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_collision_table_fill(s : PhysicsmechanicscollisionTable
   result
 }
 
-pub fn physics_mechanics_collision_table_min(s : PhysicsmechanicscollisionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_table_min(s : PhysicsmechanicscollisionTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_table_max(s : PhysicsmechanicscollisionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_table_max(s : PhysicsmechanicscollisionTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_table_to_string(s : PhysicsmechanicscollisionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_collision_graphn_set(s : PhysicsmechanicscollisionGraph
   result
 }
 
-pub fn physics_mechanics_collision_graphn_sum(s : PhysicsmechanicscollisionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_graphn_sum(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_graphn_mean(s : PhysicsmechanicscollisionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_graphn_mean(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_graphn_scale(s : PhysicsmechanicscollisionGraphN, f : Double) -> PhysicsmechanicscollisionGraphN {
   let result = physics_mechanics_collision_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_collision_graphn_fill(s : PhysicsmechanicscollisionGrap
   result
 }
 
-pub fn physics_mechanics_collision_graphn_min(s : PhysicsmechanicscollisionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_graphn_min(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_graphn_max(s : PhysicsmechanicscollisionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_graphn_max(s : PhysicsmechanicscollisionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_graphn_to_string(s : PhysicsmechanicscollisionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_collision_node_set(s : PhysicsmechanicscollisionNode, i
   result
 }
 
-pub fn physics_mechanics_collision_node_sum(s : PhysicsmechanicscollisionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_node_sum(s : PhysicsmechanicscollisionNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_node_mean(s : PhysicsmechanicscollisionNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_node_mean(s : PhysicsmechanicscollisionNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_node_scale(s : PhysicsmechanicscollisionNode, f : Double) -> PhysicsmechanicscollisionNode {
   let result = physics_mechanics_collision_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_collision_node_fill(s : PhysicsmechanicscollisionNode, 
   result
 }
 
-pub fn physics_mechanics_collision_node_min(s : PhysicsmechanicscollisionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_node_min(s : PhysicsmechanicscollisionNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_node_max(s : PhysicsmechanicscollisionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_node_max(s : PhysicsmechanicscollisionNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_node_to_string(s : PhysicsmechanicscollisionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_collision_edge_set(s : PhysicsmechanicscollisionEdge, i
   result
 }
 
-pub fn physics_mechanics_collision_edge_sum(s : PhysicsmechanicscollisionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_edge_sum(s : PhysicsmechanicscollisionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_edge_mean(s : PhysicsmechanicscollisionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_edge_mean(s : PhysicsmechanicscollisionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_edge_scale(s : PhysicsmechanicscollisionEdge, f : Double) -> PhysicsmechanicscollisionEdge {
   let result = physics_mechanics_collision_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_collision_edge_fill(s : PhysicsmechanicscollisionEdge, 
   result
 }
 
-pub fn physics_mechanics_collision_edge_min(s : PhysicsmechanicscollisionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_edge_min(s : PhysicsmechanicscollisionEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_edge_max(s : PhysicsmechanicscollisionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_edge_max(s : PhysicsmechanicscollisionEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_edge_to_string(s : PhysicsmechanicscollisionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_collision_path_set(s : PhysicsmechanicscollisionPath, i
   result
 }
 
-pub fn physics_mechanics_collision_path_sum(s : PhysicsmechanicscollisionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_path_sum(s : PhysicsmechanicscollisionPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_path_mean(s : PhysicsmechanicscollisionPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_path_mean(s : PhysicsmechanicscollisionPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_path_scale(s : PhysicsmechanicscollisionPath, f : Double) -> PhysicsmechanicscollisionPath {
   let result = physics_mechanics_collision_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_collision_path_fill(s : PhysicsmechanicscollisionPath, 
   result
 }
 
-pub fn physics_mechanics_collision_path_min(s : PhysicsmechanicscollisionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_path_min(s : PhysicsmechanicscollisionPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_path_max(s : PhysicsmechanicscollisionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_path_max(s : PhysicsmechanicscollisionPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_path_to_string(s : PhysicsmechanicscollisionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_collision_cluster_set(s : PhysicsmechanicscollisionClus
   result
 }
 
-pub fn physics_mechanics_collision_cluster_sum(s : PhysicsmechanicscollisionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_cluster_sum(s : PhysicsmechanicscollisionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_cluster_mean(s : PhysicsmechanicscollisionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_cluster_mean(s : PhysicsmechanicscollisionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_cluster_scale(s : PhysicsmechanicscollisionCluster, f : Double) -> PhysicsmechanicscollisionCluster {
   let result = physics_mechanics_collision_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_collision_cluster_fill(s : PhysicsmechanicscollisionClu
   result
 }
 
-pub fn physics_mechanics_collision_cluster_min(s : PhysicsmechanicscollisionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_cluster_min(s : PhysicsmechanicscollisionCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_cluster_max(s : PhysicsmechanicscollisionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_cluster_max(s : PhysicsmechanicscollisionCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_cluster_to_string(s : PhysicsmechanicscollisionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_collision_model_set(s : PhysicsmechanicscollisionModel,
   result
 }
 
-pub fn physics_mechanics_collision_model_sum(s : PhysicsmechanicscollisionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_model_sum(s : PhysicsmechanicscollisionModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_model_mean(s : PhysicsmechanicscollisionModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_model_mean(s : PhysicsmechanicscollisionModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_model_scale(s : PhysicsmechanicscollisionModel, f : Double) -> PhysicsmechanicscollisionModel {
   let result = physics_mechanics_collision_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_collision_model_fill(s : PhysicsmechanicscollisionModel
   result
 }
 
-pub fn physics_mechanics_collision_model_min(s : PhysicsmechanicscollisionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_model_min(s : PhysicsmechanicscollisionModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_model_max(s : PhysicsmechanicscollisionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_model_max(s : PhysicsmechanicscollisionModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_model_to_string(s : PhysicsmechanicscollisionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_collision_layer_set(s : PhysicsmechanicscollisionLayer,
   result
 }
 
-pub fn physics_mechanics_collision_layer_sum(s : PhysicsmechanicscollisionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_layer_sum(s : PhysicsmechanicscollisionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_layer_mean(s : PhysicsmechanicscollisionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_layer_mean(s : PhysicsmechanicscollisionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_layer_scale(s : PhysicsmechanicscollisionLayer, f : Double) -> PhysicsmechanicscollisionLayer {
   let result = physics_mechanics_collision_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_collision_layer_fill(s : PhysicsmechanicscollisionLayer
   result
 }
 
-pub fn physics_mechanics_collision_layer_min(s : PhysicsmechanicscollisionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_layer_min(s : PhysicsmechanicscollisionLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_layer_max(s : PhysicsmechanicscollisionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_layer_max(s : PhysicsmechanicscollisionLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_layer_to_string(s : PhysicsmechanicscollisionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_collision_buffer_set(s : PhysicsmechanicscollisionBuffe
   result
 }
 
-pub fn physics_mechanics_collision_buffer_sum(s : PhysicsmechanicscollisionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_buffer_sum(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_buffer_mean(s : PhysicsmechanicscollisionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_buffer_mean(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_buffer_scale(s : PhysicsmechanicscollisionBuffer, f : Double) -> PhysicsmechanicscollisionBuffer {
   let result = physics_mechanics_collision_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_collision_buffer_fill(s : PhysicsmechanicscollisionBuff
   result
 }
 
-pub fn physics_mechanics_collision_buffer_min(s : PhysicsmechanicscollisionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_buffer_min(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_buffer_max(s : PhysicsmechanicscollisionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_buffer_max(s : PhysicsmechanicscollisionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_buffer_to_string(s : PhysicsmechanicscollisionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_collision_cursor_set(s : PhysicsmechanicscollisionCurso
   result
 }
 
-pub fn physics_mechanics_collision_cursor_sum(s : PhysicsmechanicscollisionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_cursor_sum(s : PhysicsmechanicscollisionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_cursor_mean(s : PhysicsmechanicscollisionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_cursor_mean(s : PhysicsmechanicscollisionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_cursor_scale(s : PhysicsmechanicscollisionCursor, f : Double) -> PhysicsmechanicscollisionCursor {
   let result = physics_mechanics_collision_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_collision_cursor_fill(s : PhysicsmechanicscollisionCurs
   result
 }
 
-pub fn physics_mechanics_collision_cursor_min(s : PhysicsmechanicscollisionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_cursor_min(s : PhysicsmechanicscollisionCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_cursor_max(s : PhysicsmechanicscollisionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_cursor_max(s : PhysicsmechanicscollisionCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_cursor_to_string(s : PhysicsmechanicscollisionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_collision_view_set(s : PhysicsmechanicscollisionView, i
   result
 }
 
-pub fn physics_mechanics_collision_view_sum(s : PhysicsmechanicscollisionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_view_sum(s : PhysicsmechanicscollisionView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_view_mean(s : PhysicsmechanicscollisionView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_view_mean(s : PhysicsmechanicscollisionView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_view_scale(s : PhysicsmechanicscollisionView, f : Double) -> PhysicsmechanicscollisionView {
   let result = physics_mechanics_collision_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_collision_view_fill(s : PhysicsmechanicscollisionView, 
   result
 }
 
-pub fn physics_mechanics_collision_view_min(s : PhysicsmechanicscollisionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_view_min(s : PhysicsmechanicscollisionView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_view_max(s : PhysicsmechanicscollisionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_view_max(s : PhysicsmechanicscollisionView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_view_to_string(s : PhysicsmechanicscollisionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_collision_range_set(s : PhysicsmechanicscollisionRange,
   result
 }
 
-pub fn physics_mechanics_collision_range_sum(s : PhysicsmechanicscollisionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_range_sum(s : PhysicsmechanicscollisionRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_range_mean(s : PhysicsmechanicscollisionRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_range_mean(s : PhysicsmechanicscollisionRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_range_scale(s : PhysicsmechanicscollisionRange, f : Double) -> PhysicsmechanicscollisionRange {
   let result = physics_mechanics_collision_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_collision_range_fill(s : PhysicsmechanicscollisionRange
   result
 }
 
-pub fn physics_mechanics_collision_range_min(s : PhysicsmechanicscollisionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_range_min(s : PhysicsmechanicscollisionRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_range_max(s : PhysicsmechanicscollisionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_range_max(s : PhysicsmechanicscollisionRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_range_to_string(s : PhysicsmechanicscollisionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_collision_slice_set(s : PhysicsmechanicscollisionSlice,
   result
 }
 
-pub fn physics_mechanics_collision_slice_sum(s : PhysicsmechanicscollisionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_collision_slice_sum(s : PhysicsmechanicscollisionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_collision_slice_mean(s : PhysicsmechanicscollisionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_collision_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_collision_slice_mean(s : PhysicsmechanicscollisionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_collision_slice_scale(s : PhysicsmechanicscollisionSlice, f : Double) -> PhysicsmechanicscollisionSlice {
   let result = physics_mechanics_collision_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_collision_slice_fill(s : PhysicsmechanicscollisionSlice
   result
 }
 
-pub fn physics_mechanics_collision_slice_min(s : PhysicsmechanicscollisionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_slice_min(s : PhysicsmechanicscollisionSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_collision_slice_max(s : PhysicsmechanicscollisionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_collision_slice_max(s : PhysicsmechanicscollisionSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_collision_slice_to_string(s : PhysicsmechanicscollisionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

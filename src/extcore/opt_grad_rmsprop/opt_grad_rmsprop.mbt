@@ -88,11 +88,7 @@ pub fn opt_grad_rmsprop_make_series(vals : Array[Double], name : String) -> Optg
 
 pub fn opt_grad_rmsprop_series_len(s : OptgradrmspropSeries) -> Int { s.vals.length() }
 
-pub fn opt_grad_rmsprop_series_sum(s : OptgradrmspropSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_grad_rmsprop_series_sum(s : OptgradrmspropSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_grad_rmsprop_series_mean(s : OptgradrmspropSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_grad_rmsprop_frame_set(s : OptgradrmspropFrame, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_rmsprop_frame_sum(s : OptgradrmspropFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_frame_sum(s : OptgradrmspropFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_frame_mean(s : OptgradrmspropFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_frame_mean(s : OptgradrmspropFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_frame_scale(s : OptgradrmspropFrame, f : Double) -> OptgradrmspropFrame {
   let result = opt_grad_rmsprop_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_grad_rmsprop_frame_fill(s : OptgradrmspropFrame, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_rmsprop_frame_min(s : OptgradrmspropFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_frame_min(s : OptgradrmspropFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_frame_max(s : OptgradrmspropFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_frame_max(s : OptgradrmspropFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_frame_to_string(s : OptgradrmspropFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_grad_rmsprop_table_set(s : OptgradrmspropTable, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_rmsprop_table_sum(s : OptgradrmspropTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_table_sum(s : OptgradrmspropTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_table_mean(s : OptgradrmspropTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_table_mean(s : OptgradrmspropTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_table_scale(s : OptgradrmspropTable, f : Double) -> OptgradrmspropTable {
   let result = opt_grad_rmsprop_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_grad_rmsprop_table_fill(s : OptgradrmspropTable, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_rmsprop_table_min(s : OptgradrmspropTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_table_min(s : OptgradrmspropTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_table_max(s : OptgradrmspropTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_table_max(s : OptgradrmspropTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_table_to_string(s : OptgradrmspropTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_grad_rmsprop_graphn_set(s : OptgradrmspropGraphN, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_rmsprop_graphn_sum(s : OptgradrmspropGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_graphn_sum(s : OptgradrmspropGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_graphn_mean(s : OptgradrmspropGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_graphn_mean(s : OptgradrmspropGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_graphn_scale(s : OptgradrmspropGraphN, f : Double) -> OptgradrmspropGraphN {
   let result = opt_grad_rmsprop_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_grad_rmsprop_graphn_fill(s : OptgradrmspropGraphN, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_rmsprop_graphn_min(s : OptgradrmspropGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_graphn_min(s : OptgradrmspropGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_graphn_max(s : OptgradrmspropGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_graphn_max(s : OptgradrmspropGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_graphn_to_string(s : OptgradrmspropGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_grad_rmsprop_node_set(s : OptgradrmspropNode, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_rmsprop_node_sum(s : OptgradrmspropNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_node_sum(s : OptgradrmspropNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_node_mean(s : OptgradrmspropNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_node_mean(s : OptgradrmspropNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_node_scale(s : OptgradrmspropNode, f : Double) -> OptgradrmspropNode {
   let result = opt_grad_rmsprop_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_grad_rmsprop_node_fill(s : OptgradrmspropNode, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_rmsprop_node_min(s : OptgradrmspropNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_node_min(s : OptgradrmspropNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_node_max(s : OptgradrmspropNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_node_max(s : OptgradrmspropNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_node_to_string(s : OptgradrmspropNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_grad_rmsprop_edge_set(s : OptgradrmspropEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_rmsprop_edge_sum(s : OptgradrmspropEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_edge_sum(s : OptgradrmspropEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_edge_mean(s : OptgradrmspropEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_edge_mean(s : OptgradrmspropEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_edge_scale(s : OptgradrmspropEdge, f : Double) -> OptgradrmspropEdge {
   let result = opt_grad_rmsprop_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_grad_rmsprop_edge_fill(s : OptgradrmspropEdge, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_rmsprop_edge_min(s : OptgradrmspropEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_edge_min(s : OptgradrmspropEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_edge_max(s : OptgradrmspropEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_edge_max(s : OptgradrmspropEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_edge_to_string(s : OptgradrmspropEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_grad_rmsprop_path_set(s : OptgradrmspropPath, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_rmsprop_path_sum(s : OptgradrmspropPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_path_sum(s : OptgradrmspropPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_path_mean(s : OptgradrmspropPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_path_mean(s : OptgradrmspropPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_path_scale(s : OptgradrmspropPath, f : Double) -> OptgradrmspropPath {
   let result = opt_grad_rmsprop_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_grad_rmsprop_path_fill(s : OptgradrmspropPath, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_rmsprop_path_min(s : OptgradrmspropPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_path_min(s : OptgradrmspropPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_path_max(s : OptgradrmspropPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_path_max(s : OptgradrmspropPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_path_to_string(s : OptgradrmspropPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_grad_rmsprop_cluster_set(s : OptgradrmspropCluster, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_rmsprop_cluster_sum(s : OptgradrmspropCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_cluster_sum(s : OptgradrmspropCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_cluster_mean(s : OptgradrmspropCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_cluster_mean(s : OptgradrmspropCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_cluster_scale(s : OptgradrmspropCluster, f : Double) -> OptgradrmspropCluster {
   let result = opt_grad_rmsprop_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_grad_rmsprop_cluster_fill(s : OptgradrmspropCluster, v : Double) -> O
   result
 }
 
-pub fn opt_grad_rmsprop_cluster_min(s : OptgradrmspropCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_cluster_min(s : OptgradrmspropCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_cluster_max(s : OptgradrmspropCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_cluster_max(s : OptgradrmspropCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_cluster_to_string(s : OptgradrmspropCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_grad_rmsprop_model_set(s : OptgradrmspropModel, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_rmsprop_model_sum(s : OptgradrmspropModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_model_sum(s : OptgradrmspropModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_model_mean(s : OptgradrmspropModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_model_mean(s : OptgradrmspropModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_model_scale(s : OptgradrmspropModel, f : Double) -> OptgradrmspropModel {
   let result = opt_grad_rmsprop_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_grad_rmsprop_model_fill(s : OptgradrmspropModel, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_rmsprop_model_min(s : OptgradrmspropModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_model_min(s : OptgradrmspropModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_model_max(s : OptgradrmspropModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_model_max(s : OptgradrmspropModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_model_to_string(s : OptgradrmspropModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_grad_rmsprop_layer_set(s : OptgradrmspropLayer, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_rmsprop_layer_sum(s : OptgradrmspropLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_layer_sum(s : OptgradrmspropLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_layer_mean(s : OptgradrmspropLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_layer_mean(s : OptgradrmspropLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_layer_scale(s : OptgradrmspropLayer, f : Double) -> OptgradrmspropLayer {
   let result = opt_grad_rmsprop_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_grad_rmsprop_layer_fill(s : OptgradrmspropLayer, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_rmsprop_layer_min(s : OptgradrmspropLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_layer_min(s : OptgradrmspropLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_layer_max(s : OptgradrmspropLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_layer_max(s : OptgradrmspropLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_layer_to_string(s : OptgradrmspropLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_grad_rmsprop_buffer_set(s : OptgradrmspropBuffer, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_rmsprop_buffer_sum(s : OptgradrmspropBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_buffer_sum(s : OptgradrmspropBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_buffer_mean(s : OptgradrmspropBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_buffer_mean(s : OptgradrmspropBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_buffer_scale(s : OptgradrmspropBuffer, f : Double) -> OptgradrmspropBuffer {
   let result = opt_grad_rmsprop_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_grad_rmsprop_buffer_fill(s : OptgradrmspropBuffer, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_rmsprop_buffer_min(s : OptgradrmspropBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_buffer_min(s : OptgradrmspropBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_buffer_max(s : OptgradrmspropBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_buffer_max(s : OptgradrmspropBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_buffer_to_string(s : OptgradrmspropBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_grad_rmsprop_cursor_set(s : OptgradrmspropCursor, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_rmsprop_cursor_sum(s : OptgradrmspropCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_cursor_sum(s : OptgradrmspropCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_cursor_mean(s : OptgradrmspropCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_cursor_mean(s : OptgradrmspropCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_cursor_scale(s : OptgradrmspropCursor, f : Double) -> OptgradrmspropCursor {
   let result = opt_grad_rmsprop_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_grad_rmsprop_cursor_fill(s : OptgradrmspropCursor, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_rmsprop_cursor_min(s : OptgradrmspropCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_cursor_min(s : OptgradrmspropCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_cursor_max(s : OptgradrmspropCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_cursor_max(s : OptgradrmspropCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_cursor_to_string(s : OptgradrmspropCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_grad_rmsprop_view_set(s : OptgradrmspropView, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_grad_rmsprop_view_sum(s : OptgradrmspropView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_view_sum(s : OptgradrmspropView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_view_mean(s : OptgradrmspropView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_view_mean(s : OptgradrmspropView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_view_scale(s : OptgradrmspropView, f : Double) -> OptgradrmspropView {
   let result = opt_grad_rmsprop_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_grad_rmsprop_view_fill(s : OptgradrmspropView, v : Double) -> Optgrad
   result
 }
 
-pub fn opt_grad_rmsprop_view_min(s : OptgradrmspropView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_view_min(s : OptgradrmspropView) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_view_max(s : OptgradrmspropView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_view_max(s : OptgradrmspropView) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_view_to_string(s : OptgradrmspropView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_grad_rmsprop_range_set(s : OptgradrmspropRange, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_rmsprop_range_sum(s : OptgradrmspropRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_range_sum(s : OptgradrmspropRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_range_mean(s : OptgradrmspropRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_range_mean(s : OptgradrmspropRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_range_scale(s : OptgradrmspropRange, f : Double) -> OptgradrmspropRange {
   let result = opt_grad_rmsprop_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_grad_rmsprop_range_fill(s : OptgradrmspropRange, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_rmsprop_range_min(s : OptgradrmspropRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_range_min(s : OptgradrmspropRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_range_max(s : OptgradrmspropRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_range_max(s : OptgradrmspropRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_range_to_string(s : OptgradrmspropRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_grad_rmsprop_slice_set(s : OptgradrmspropSlice, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_rmsprop_slice_sum(s : OptgradrmspropSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_rmsprop_slice_sum(s : OptgradrmspropSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_rmsprop_slice_mean(s : OptgradrmspropSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_rmsprop_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_rmsprop_slice_mean(s : OptgradrmspropSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_rmsprop_slice_scale(s : OptgradrmspropSlice, f : Double) -> OptgradrmspropSlice {
   let result = opt_grad_rmsprop_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_grad_rmsprop_slice_fill(s : OptgradrmspropSlice, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_rmsprop_slice_min(s : OptgradrmspropSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_slice_min(s : OptgradrmspropSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_rmsprop_slice_max(s : OptgradrmspropSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_rmsprop_slice_max(s : OptgradrmspropSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_rmsprop_slice_to_string(s : OptgradrmspropSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

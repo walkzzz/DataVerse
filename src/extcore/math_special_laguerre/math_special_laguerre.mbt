@@ -88,11 +88,7 @@ pub fn math_special_laguerre_make_series(vals : Array[Double], name : String) ->
 
 pub fn math_special_laguerre_series_len(s : MathspeciallaguerreSeries) -> Int { s.vals.length() }
 
-pub fn math_special_laguerre_series_sum(s : MathspeciallaguerreSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_laguerre_series_sum(s : MathspeciallaguerreSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_laguerre_series_mean(s : MathspeciallaguerreSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_laguerre_frame_set(s : MathspeciallaguerreFrame, i : Int, v 
   result
 }
 
-pub fn math_special_laguerre_frame_sum(s : MathspeciallaguerreFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_frame_sum(s : MathspeciallaguerreFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_frame_mean(s : MathspeciallaguerreFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_frame_mean(s : MathspeciallaguerreFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_frame_scale(s : MathspeciallaguerreFrame, f : Double) -> MathspeciallaguerreFrame {
   let result = math_special_laguerre_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_laguerre_frame_fill(s : MathspeciallaguerreFrame, v : Double
   result
 }
 
-pub fn math_special_laguerre_frame_min(s : MathspeciallaguerreFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_frame_min(s : MathspeciallaguerreFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_frame_max(s : MathspeciallaguerreFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_frame_max(s : MathspeciallaguerreFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_frame_to_string(s : MathspeciallaguerreFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_laguerre_table_set(s : MathspeciallaguerreTable, i : Int, v 
   result
 }
 
-pub fn math_special_laguerre_table_sum(s : MathspeciallaguerreTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_table_sum(s : MathspeciallaguerreTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_table_mean(s : MathspeciallaguerreTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_table_mean(s : MathspeciallaguerreTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_table_scale(s : MathspeciallaguerreTable, f : Double) -> MathspeciallaguerreTable {
   let result = math_special_laguerre_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_laguerre_table_fill(s : MathspeciallaguerreTable, v : Double
   result
 }
 
-pub fn math_special_laguerre_table_min(s : MathspeciallaguerreTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_table_min(s : MathspeciallaguerreTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_table_max(s : MathspeciallaguerreTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_table_max(s : MathspeciallaguerreTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_table_to_string(s : MathspeciallaguerreTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_laguerre_graphn_set(s : MathspeciallaguerreGraphN, i : Int, 
   result
 }
 
-pub fn math_special_laguerre_graphn_sum(s : MathspeciallaguerreGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_graphn_sum(s : MathspeciallaguerreGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_graphn_mean(s : MathspeciallaguerreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_graphn_mean(s : MathspeciallaguerreGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_graphn_scale(s : MathspeciallaguerreGraphN, f : Double) -> MathspeciallaguerreGraphN {
   let result = math_special_laguerre_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_laguerre_graphn_fill(s : MathspeciallaguerreGraphN, v : Doub
   result
 }
 
-pub fn math_special_laguerre_graphn_min(s : MathspeciallaguerreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_graphn_min(s : MathspeciallaguerreGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_graphn_max(s : MathspeciallaguerreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_graphn_max(s : MathspeciallaguerreGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_graphn_to_string(s : MathspeciallaguerreGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_laguerre_node_set(s : MathspeciallaguerreNode, i : Int, v : 
   result
 }
 
-pub fn math_special_laguerre_node_sum(s : MathspeciallaguerreNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_node_sum(s : MathspeciallaguerreNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_node_mean(s : MathspeciallaguerreNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_node_mean(s : MathspeciallaguerreNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_node_scale(s : MathspeciallaguerreNode, f : Double) -> MathspeciallaguerreNode {
   let result = math_special_laguerre_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_laguerre_node_fill(s : MathspeciallaguerreNode, v : Double) 
   result
 }
 
-pub fn math_special_laguerre_node_min(s : MathspeciallaguerreNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_node_min(s : MathspeciallaguerreNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_node_max(s : MathspeciallaguerreNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_node_max(s : MathspeciallaguerreNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_node_to_string(s : MathspeciallaguerreNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_laguerre_edge_set(s : MathspeciallaguerreEdge, i : Int, v : 
   result
 }
 
-pub fn math_special_laguerre_edge_sum(s : MathspeciallaguerreEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_edge_sum(s : MathspeciallaguerreEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_edge_mean(s : MathspeciallaguerreEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_edge_mean(s : MathspeciallaguerreEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_edge_scale(s : MathspeciallaguerreEdge, f : Double) -> MathspeciallaguerreEdge {
   let result = math_special_laguerre_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_laguerre_edge_fill(s : MathspeciallaguerreEdge, v : Double) 
   result
 }
 
-pub fn math_special_laguerre_edge_min(s : MathspeciallaguerreEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_edge_min(s : MathspeciallaguerreEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_edge_max(s : MathspeciallaguerreEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_edge_max(s : MathspeciallaguerreEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_edge_to_string(s : MathspeciallaguerreEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_laguerre_path_set(s : MathspeciallaguerrePath, i : Int, v : 
   result
 }
 
-pub fn math_special_laguerre_path_sum(s : MathspeciallaguerrePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_path_sum(s : MathspeciallaguerrePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_path_mean(s : MathspeciallaguerrePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_path_mean(s : MathspeciallaguerrePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_path_scale(s : MathspeciallaguerrePath, f : Double) -> MathspeciallaguerrePath {
   let result = math_special_laguerre_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_laguerre_path_fill(s : MathspeciallaguerrePath, v : Double) 
   result
 }
 
-pub fn math_special_laguerre_path_min(s : MathspeciallaguerrePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_path_min(s : MathspeciallaguerrePath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_path_max(s : MathspeciallaguerrePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_path_max(s : MathspeciallaguerrePath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_path_to_string(s : MathspeciallaguerrePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_laguerre_cluster_set(s : MathspeciallaguerreCluster, i : Int
   result
 }
 
-pub fn math_special_laguerre_cluster_sum(s : MathspeciallaguerreCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_cluster_sum(s : MathspeciallaguerreCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_cluster_mean(s : MathspeciallaguerreCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_cluster_mean(s : MathspeciallaguerreCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_cluster_scale(s : MathspeciallaguerreCluster, f : Double) -> MathspeciallaguerreCluster {
   let result = math_special_laguerre_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_laguerre_cluster_fill(s : MathspeciallaguerreCluster, v : Do
   result
 }
 
-pub fn math_special_laguerre_cluster_min(s : MathspeciallaguerreCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_cluster_min(s : MathspeciallaguerreCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_cluster_max(s : MathspeciallaguerreCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_cluster_max(s : MathspeciallaguerreCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_cluster_to_string(s : MathspeciallaguerreCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_laguerre_model_set(s : MathspeciallaguerreModel, i : Int, v 
   result
 }
 
-pub fn math_special_laguerre_model_sum(s : MathspeciallaguerreModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_model_sum(s : MathspeciallaguerreModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_model_mean(s : MathspeciallaguerreModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_model_mean(s : MathspeciallaguerreModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_model_scale(s : MathspeciallaguerreModel, f : Double) -> MathspeciallaguerreModel {
   let result = math_special_laguerre_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_laguerre_model_fill(s : MathspeciallaguerreModel, v : Double
   result
 }
 
-pub fn math_special_laguerre_model_min(s : MathspeciallaguerreModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_model_min(s : MathspeciallaguerreModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_model_max(s : MathspeciallaguerreModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_model_max(s : MathspeciallaguerreModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_model_to_string(s : MathspeciallaguerreModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_laguerre_layer_set(s : MathspeciallaguerreLayer, i : Int, v 
   result
 }
 
-pub fn math_special_laguerre_layer_sum(s : MathspeciallaguerreLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_layer_sum(s : MathspeciallaguerreLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_layer_mean(s : MathspeciallaguerreLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_layer_mean(s : MathspeciallaguerreLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_layer_scale(s : MathspeciallaguerreLayer, f : Double) -> MathspeciallaguerreLayer {
   let result = math_special_laguerre_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_laguerre_layer_fill(s : MathspeciallaguerreLayer, v : Double
   result
 }
 
-pub fn math_special_laguerre_layer_min(s : MathspeciallaguerreLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_layer_min(s : MathspeciallaguerreLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_layer_max(s : MathspeciallaguerreLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_layer_max(s : MathspeciallaguerreLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_layer_to_string(s : MathspeciallaguerreLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_laguerre_buffer_set(s : MathspeciallaguerreBuffer, i : Int, 
   result
 }
 
-pub fn math_special_laguerre_buffer_sum(s : MathspeciallaguerreBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_buffer_sum(s : MathspeciallaguerreBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_buffer_mean(s : MathspeciallaguerreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_buffer_mean(s : MathspeciallaguerreBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_buffer_scale(s : MathspeciallaguerreBuffer, f : Double) -> MathspeciallaguerreBuffer {
   let result = math_special_laguerre_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_laguerre_buffer_fill(s : MathspeciallaguerreBuffer, v : Doub
   result
 }
 
-pub fn math_special_laguerre_buffer_min(s : MathspeciallaguerreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_buffer_min(s : MathspeciallaguerreBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_buffer_max(s : MathspeciallaguerreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_buffer_max(s : MathspeciallaguerreBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_buffer_to_string(s : MathspeciallaguerreBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_laguerre_cursor_set(s : MathspeciallaguerreCursor, i : Int, 
   result
 }
 
-pub fn math_special_laguerre_cursor_sum(s : MathspeciallaguerreCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_cursor_sum(s : MathspeciallaguerreCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_cursor_mean(s : MathspeciallaguerreCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_cursor_mean(s : MathspeciallaguerreCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_cursor_scale(s : MathspeciallaguerreCursor, f : Double) -> MathspeciallaguerreCursor {
   let result = math_special_laguerre_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_laguerre_cursor_fill(s : MathspeciallaguerreCursor, v : Doub
   result
 }
 
-pub fn math_special_laguerre_cursor_min(s : MathspeciallaguerreCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_cursor_min(s : MathspeciallaguerreCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_cursor_max(s : MathspeciallaguerreCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_cursor_max(s : MathspeciallaguerreCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_cursor_to_string(s : MathspeciallaguerreCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_laguerre_view_set(s : MathspeciallaguerreView, i : Int, v : 
   result
 }
 
-pub fn math_special_laguerre_view_sum(s : MathspeciallaguerreView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_view_sum(s : MathspeciallaguerreView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_view_mean(s : MathspeciallaguerreView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_view_mean(s : MathspeciallaguerreView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_view_scale(s : MathspeciallaguerreView, f : Double) -> MathspeciallaguerreView {
   let result = math_special_laguerre_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_laguerre_view_fill(s : MathspeciallaguerreView, v : Double) 
   result
 }
 
-pub fn math_special_laguerre_view_min(s : MathspeciallaguerreView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_view_min(s : MathspeciallaguerreView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_view_max(s : MathspeciallaguerreView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_view_max(s : MathspeciallaguerreView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_view_to_string(s : MathspeciallaguerreView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_laguerre_range_set(s : MathspeciallaguerreRange, i : Int, v 
   result
 }
 
-pub fn math_special_laguerre_range_sum(s : MathspeciallaguerreRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_range_sum(s : MathspeciallaguerreRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_range_mean(s : MathspeciallaguerreRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_range_mean(s : MathspeciallaguerreRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_range_scale(s : MathspeciallaguerreRange, f : Double) -> MathspeciallaguerreRange {
   let result = math_special_laguerre_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_laguerre_range_fill(s : MathspeciallaguerreRange, v : Double
   result
 }
 
-pub fn math_special_laguerre_range_min(s : MathspeciallaguerreRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_range_min(s : MathspeciallaguerreRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_range_max(s : MathspeciallaguerreRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_range_max(s : MathspeciallaguerreRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_range_to_string(s : MathspeciallaguerreRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_laguerre_slice_set(s : MathspeciallaguerreSlice, i : Int, v 
   result
 }
 
-pub fn math_special_laguerre_slice_sum(s : MathspeciallaguerreSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_laguerre_slice_sum(s : MathspeciallaguerreSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_laguerre_slice_mean(s : MathspeciallaguerreSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_laguerre_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_laguerre_slice_mean(s : MathspeciallaguerreSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_laguerre_slice_scale(s : MathspeciallaguerreSlice, f : Double) -> MathspeciallaguerreSlice {
   let result = math_special_laguerre_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_laguerre_slice_fill(s : MathspeciallaguerreSlice, v : Double
   result
 }
 
-pub fn math_special_laguerre_slice_min(s : MathspeciallaguerreSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_slice_min(s : MathspeciallaguerreSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_laguerre_slice_max(s : MathspeciallaguerreSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_laguerre_slice_max(s : MathspeciallaguerreSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_laguerre_slice_to_string(s : MathspeciallaguerreSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

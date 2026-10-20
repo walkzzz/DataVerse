@@ -88,11 +88,7 @@ pub fn finance_pricing_monte_carlo_make_series(vals : Array[Double], name : Stri
 
 pub fn finance_pricing_monte_carlo_series_len(s : FinancepricingmontecarloSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_monte_carlo_series_sum(s : FinancepricingmontecarloSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_series_sum(s : FinancepricingmontecarloSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_monte_carlo_series_mean(s : FinancepricingmontecarloSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_monte_carlo_frame_set(s : FinancepricingmontecarloFrame, 
   result
 }
 
-pub fn finance_pricing_monte_carlo_frame_sum(s : FinancepricingmontecarloFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_frame_sum(s : FinancepricingmontecarloFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_frame_mean(s : FinancepricingmontecarloFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_frame_mean(s : FinancepricingmontecarloFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_frame_scale(s : FinancepricingmontecarloFrame, f : Double) -> FinancepricingmontecarloFrame {
   let result = finance_pricing_monte_carlo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_monte_carlo_frame_fill(s : FinancepricingmontecarloFrame,
   result
 }
 
-pub fn finance_pricing_monte_carlo_frame_min(s : FinancepricingmontecarloFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_frame_min(s : FinancepricingmontecarloFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_frame_max(s : FinancepricingmontecarloFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_frame_max(s : FinancepricingmontecarloFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_frame_to_string(s : FinancepricingmontecarloFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_monte_carlo_table_set(s : FinancepricingmontecarloTable, 
   result
 }
 
-pub fn finance_pricing_monte_carlo_table_sum(s : FinancepricingmontecarloTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_table_sum(s : FinancepricingmontecarloTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_table_mean(s : FinancepricingmontecarloTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_table_mean(s : FinancepricingmontecarloTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_table_scale(s : FinancepricingmontecarloTable, f : Double) -> FinancepricingmontecarloTable {
   let result = finance_pricing_monte_carlo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_monte_carlo_table_fill(s : FinancepricingmontecarloTable,
   result
 }
 
-pub fn finance_pricing_monte_carlo_table_min(s : FinancepricingmontecarloTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_table_min(s : FinancepricingmontecarloTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_table_max(s : FinancepricingmontecarloTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_table_max(s : FinancepricingmontecarloTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_table_to_string(s : FinancepricingmontecarloTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_monte_carlo_graphn_set(s : FinancepricingmontecarloGraphN
   result
 }
 
-pub fn finance_pricing_monte_carlo_graphn_sum(s : FinancepricingmontecarloGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_graphn_sum(s : FinancepricingmontecarloGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_graphn_mean(s : FinancepricingmontecarloGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_graphn_mean(s : FinancepricingmontecarloGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_graphn_scale(s : FinancepricingmontecarloGraphN, f : Double) -> FinancepricingmontecarloGraphN {
   let result = finance_pricing_monte_carlo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_monte_carlo_graphn_fill(s : FinancepricingmontecarloGraph
   result
 }
 
-pub fn finance_pricing_monte_carlo_graphn_min(s : FinancepricingmontecarloGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_graphn_min(s : FinancepricingmontecarloGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_graphn_max(s : FinancepricingmontecarloGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_graphn_max(s : FinancepricingmontecarloGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_graphn_to_string(s : FinancepricingmontecarloGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_monte_carlo_node_set(s : FinancepricingmontecarloNode, i 
   result
 }
 
-pub fn finance_pricing_monte_carlo_node_sum(s : FinancepricingmontecarloNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_node_sum(s : FinancepricingmontecarloNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_node_mean(s : FinancepricingmontecarloNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_node_mean(s : FinancepricingmontecarloNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_node_scale(s : FinancepricingmontecarloNode, f : Double) -> FinancepricingmontecarloNode {
   let result = finance_pricing_monte_carlo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_monte_carlo_node_fill(s : FinancepricingmontecarloNode, v
   result
 }
 
-pub fn finance_pricing_monte_carlo_node_min(s : FinancepricingmontecarloNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_node_min(s : FinancepricingmontecarloNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_node_max(s : FinancepricingmontecarloNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_node_max(s : FinancepricingmontecarloNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_node_to_string(s : FinancepricingmontecarloNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_monte_carlo_edge_set(s : FinancepricingmontecarloEdge, i 
   result
 }
 
-pub fn finance_pricing_monte_carlo_edge_sum(s : FinancepricingmontecarloEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_edge_sum(s : FinancepricingmontecarloEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_edge_mean(s : FinancepricingmontecarloEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_edge_mean(s : FinancepricingmontecarloEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_edge_scale(s : FinancepricingmontecarloEdge, f : Double) -> FinancepricingmontecarloEdge {
   let result = finance_pricing_monte_carlo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_monte_carlo_edge_fill(s : FinancepricingmontecarloEdge, v
   result
 }
 
-pub fn finance_pricing_monte_carlo_edge_min(s : FinancepricingmontecarloEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_edge_min(s : FinancepricingmontecarloEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_edge_max(s : FinancepricingmontecarloEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_edge_max(s : FinancepricingmontecarloEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_edge_to_string(s : FinancepricingmontecarloEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_monte_carlo_path_set(s : FinancepricingmontecarloPath, i 
   result
 }
 
-pub fn finance_pricing_monte_carlo_path_sum(s : FinancepricingmontecarloPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_path_sum(s : FinancepricingmontecarloPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_path_mean(s : FinancepricingmontecarloPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_path_mean(s : FinancepricingmontecarloPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_path_scale(s : FinancepricingmontecarloPath, f : Double) -> FinancepricingmontecarloPath {
   let result = finance_pricing_monte_carlo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_monte_carlo_path_fill(s : FinancepricingmontecarloPath, v
   result
 }
 
-pub fn finance_pricing_monte_carlo_path_min(s : FinancepricingmontecarloPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_path_min(s : FinancepricingmontecarloPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_path_max(s : FinancepricingmontecarloPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_path_max(s : FinancepricingmontecarloPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_path_to_string(s : FinancepricingmontecarloPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_monte_carlo_cluster_set(s : FinancepricingmontecarloClust
   result
 }
 
-pub fn finance_pricing_monte_carlo_cluster_sum(s : FinancepricingmontecarloCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_cluster_sum(s : FinancepricingmontecarloCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_cluster_mean(s : FinancepricingmontecarloCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_cluster_mean(s : FinancepricingmontecarloCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_cluster_scale(s : FinancepricingmontecarloCluster, f : Double) -> FinancepricingmontecarloCluster {
   let result = finance_pricing_monte_carlo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_monte_carlo_cluster_fill(s : FinancepricingmontecarloClus
   result
 }
 
-pub fn finance_pricing_monte_carlo_cluster_min(s : FinancepricingmontecarloCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_cluster_min(s : FinancepricingmontecarloCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_cluster_max(s : FinancepricingmontecarloCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_cluster_max(s : FinancepricingmontecarloCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_cluster_to_string(s : FinancepricingmontecarloCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_monte_carlo_model_set(s : FinancepricingmontecarloModel, 
   result
 }
 
-pub fn finance_pricing_monte_carlo_model_sum(s : FinancepricingmontecarloModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_model_sum(s : FinancepricingmontecarloModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_model_mean(s : FinancepricingmontecarloModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_model_mean(s : FinancepricingmontecarloModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_model_scale(s : FinancepricingmontecarloModel, f : Double) -> FinancepricingmontecarloModel {
   let result = finance_pricing_monte_carlo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_monte_carlo_model_fill(s : FinancepricingmontecarloModel,
   result
 }
 
-pub fn finance_pricing_monte_carlo_model_min(s : FinancepricingmontecarloModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_model_min(s : FinancepricingmontecarloModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_model_max(s : FinancepricingmontecarloModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_model_max(s : FinancepricingmontecarloModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_model_to_string(s : FinancepricingmontecarloModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_monte_carlo_layer_set(s : FinancepricingmontecarloLayer, 
   result
 }
 
-pub fn finance_pricing_monte_carlo_layer_sum(s : FinancepricingmontecarloLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_layer_sum(s : FinancepricingmontecarloLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_layer_mean(s : FinancepricingmontecarloLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_layer_mean(s : FinancepricingmontecarloLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_layer_scale(s : FinancepricingmontecarloLayer, f : Double) -> FinancepricingmontecarloLayer {
   let result = finance_pricing_monte_carlo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_monte_carlo_layer_fill(s : FinancepricingmontecarloLayer,
   result
 }
 
-pub fn finance_pricing_monte_carlo_layer_min(s : FinancepricingmontecarloLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_layer_min(s : FinancepricingmontecarloLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_layer_max(s : FinancepricingmontecarloLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_layer_max(s : FinancepricingmontecarloLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_layer_to_string(s : FinancepricingmontecarloLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_monte_carlo_buffer_set(s : FinancepricingmontecarloBuffer
   result
 }
 
-pub fn finance_pricing_monte_carlo_buffer_sum(s : FinancepricingmontecarloBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_buffer_sum(s : FinancepricingmontecarloBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_buffer_mean(s : FinancepricingmontecarloBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_buffer_mean(s : FinancepricingmontecarloBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_buffer_scale(s : FinancepricingmontecarloBuffer, f : Double) -> FinancepricingmontecarloBuffer {
   let result = finance_pricing_monte_carlo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_monte_carlo_buffer_fill(s : FinancepricingmontecarloBuffe
   result
 }
 
-pub fn finance_pricing_monte_carlo_buffer_min(s : FinancepricingmontecarloBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_buffer_min(s : FinancepricingmontecarloBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_buffer_max(s : FinancepricingmontecarloBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_buffer_max(s : FinancepricingmontecarloBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_buffer_to_string(s : FinancepricingmontecarloBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_monte_carlo_cursor_set(s : FinancepricingmontecarloCursor
   result
 }
 
-pub fn finance_pricing_monte_carlo_cursor_sum(s : FinancepricingmontecarloCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_cursor_sum(s : FinancepricingmontecarloCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_cursor_mean(s : FinancepricingmontecarloCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_cursor_mean(s : FinancepricingmontecarloCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_cursor_scale(s : FinancepricingmontecarloCursor, f : Double) -> FinancepricingmontecarloCursor {
   let result = finance_pricing_monte_carlo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_monte_carlo_cursor_fill(s : FinancepricingmontecarloCurso
   result
 }
 
-pub fn finance_pricing_monte_carlo_cursor_min(s : FinancepricingmontecarloCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_cursor_min(s : FinancepricingmontecarloCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_cursor_max(s : FinancepricingmontecarloCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_cursor_max(s : FinancepricingmontecarloCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_cursor_to_string(s : FinancepricingmontecarloCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_monte_carlo_view_set(s : FinancepricingmontecarloView, i 
   result
 }
 
-pub fn finance_pricing_monte_carlo_view_sum(s : FinancepricingmontecarloView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_view_sum(s : FinancepricingmontecarloView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_view_mean(s : FinancepricingmontecarloView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_view_mean(s : FinancepricingmontecarloView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_view_scale(s : FinancepricingmontecarloView, f : Double) -> FinancepricingmontecarloView {
   let result = finance_pricing_monte_carlo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_monte_carlo_view_fill(s : FinancepricingmontecarloView, v
   result
 }
 
-pub fn finance_pricing_monte_carlo_view_min(s : FinancepricingmontecarloView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_view_min(s : FinancepricingmontecarloView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_view_max(s : FinancepricingmontecarloView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_view_max(s : FinancepricingmontecarloView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_view_to_string(s : FinancepricingmontecarloView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_monte_carlo_range_set(s : FinancepricingmontecarloRange, 
   result
 }
 
-pub fn finance_pricing_monte_carlo_range_sum(s : FinancepricingmontecarloRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_range_sum(s : FinancepricingmontecarloRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_range_mean(s : FinancepricingmontecarloRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_range_mean(s : FinancepricingmontecarloRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_range_scale(s : FinancepricingmontecarloRange, f : Double) -> FinancepricingmontecarloRange {
   let result = finance_pricing_monte_carlo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_monte_carlo_range_fill(s : FinancepricingmontecarloRange,
   result
 }
 
-pub fn finance_pricing_monte_carlo_range_min(s : FinancepricingmontecarloRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_range_min(s : FinancepricingmontecarloRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_range_max(s : FinancepricingmontecarloRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_range_max(s : FinancepricingmontecarloRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_range_to_string(s : FinancepricingmontecarloRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_monte_carlo_slice_set(s : FinancepricingmontecarloSlice, 
   result
 }
 
-pub fn finance_pricing_monte_carlo_slice_sum(s : FinancepricingmontecarloSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_monte_carlo_slice_sum(s : FinancepricingmontecarloSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_monte_carlo_slice_mean(s : FinancepricingmontecarloSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_monte_carlo_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_monte_carlo_slice_mean(s : FinancepricingmontecarloSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_monte_carlo_slice_scale(s : FinancepricingmontecarloSlice, f : Double) -> FinancepricingmontecarloSlice {
   let result = finance_pricing_monte_carlo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_monte_carlo_slice_fill(s : FinancepricingmontecarloSlice,
   result
 }
 
-pub fn finance_pricing_monte_carlo_slice_min(s : FinancepricingmontecarloSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_slice_min(s : FinancepricingmontecarloSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_monte_carlo_slice_max(s : FinancepricingmontecarloSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_monte_carlo_slice_max(s : FinancepricingmontecarloSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_monte_carlo_slice_to_string(s : FinancepricingmontecarloSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

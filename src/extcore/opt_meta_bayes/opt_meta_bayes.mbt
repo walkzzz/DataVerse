@@ -88,11 +88,7 @@ pub fn opt_meta_bayes_make_series(vals : Array[Double], name : String) -> Optmet
 
 pub fn opt_meta_bayes_series_len(s : OptmetabayesSeries) -> Int { s.vals.length() }
 
-pub fn opt_meta_bayes_series_sum(s : OptmetabayesSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_meta_bayes_series_sum(s : OptmetabayesSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_meta_bayes_series_mean(s : OptmetabayesSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_meta_bayes_frame_set(s : OptmetabayesFrame, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_bayes_frame_sum(s : OptmetabayesFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_frame_sum(s : OptmetabayesFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_frame_mean(s : OptmetabayesFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_frame_mean(s : OptmetabayesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_frame_scale(s : OptmetabayesFrame, f : Double) -> OptmetabayesFrame {
   let result = opt_meta_bayes_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_meta_bayes_frame_fill(s : OptmetabayesFrame, v : Double) -> Optmetaba
   result
 }
 
-pub fn opt_meta_bayes_frame_min(s : OptmetabayesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_frame_min(s : OptmetabayesFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_frame_max(s : OptmetabayesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_frame_max(s : OptmetabayesFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_frame_to_string(s : OptmetabayesFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_meta_bayes_table_set(s : OptmetabayesTable, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_bayes_table_sum(s : OptmetabayesTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_table_sum(s : OptmetabayesTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_table_mean(s : OptmetabayesTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_table_mean(s : OptmetabayesTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_table_scale(s : OptmetabayesTable, f : Double) -> OptmetabayesTable {
   let result = opt_meta_bayes_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_meta_bayes_table_fill(s : OptmetabayesTable, v : Double) -> Optmetaba
   result
 }
 
-pub fn opt_meta_bayes_table_min(s : OptmetabayesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_table_min(s : OptmetabayesTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_table_max(s : OptmetabayesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_table_max(s : OptmetabayesTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_table_to_string(s : OptmetabayesTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_meta_bayes_graphn_set(s : OptmetabayesGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_bayes_graphn_sum(s : OptmetabayesGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_graphn_sum(s : OptmetabayesGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_graphn_mean(s : OptmetabayesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_graphn_mean(s : OptmetabayesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_graphn_scale(s : OptmetabayesGraphN, f : Double) -> OptmetabayesGraphN {
   let result = opt_meta_bayes_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_meta_bayes_graphn_fill(s : OptmetabayesGraphN, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_bayes_graphn_min(s : OptmetabayesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_graphn_min(s : OptmetabayesGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_graphn_max(s : OptmetabayesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_graphn_max(s : OptmetabayesGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_graphn_to_string(s : OptmetabayesGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_meta_bayes_node_set(s : OptmetabayesNode, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_bayes_node_sum(s : OptmetabayesNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_node_sum(s : OptmetabayesNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_node_mean(s : OptmetabayesNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_node_mean(s : OptmetabayesNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_node_scale(s : OptmetabayesNode, f : Double) -> OptmetabayesNode {
   let result = opt_meta_bayes_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_meta_bayes_node_fill(s : OptmetabayesNode, v : Double) -> Optmetabaye
   result
 }
 
-pub fn opt_meta_bayes_node_min(s : OptmetabayesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_node_min(s : OptmetabayesNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_node_max(s : OptmetabayesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_node_max(s : OptmetabayesNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_node_to_string(s : OptmetabayesNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_meta_bayes_edge_set(s : OptmetabayesEdge, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_bayes_edge_sum(s : OptmetabayesEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_edge_sum(s : OptmetabayesEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_edge_mean(s : OptmetabayesEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_edge_mean(s : OptmetabayesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_edge_scale(s : OptmetabayesEdge, f : Double) -> OptmetabayesEdge {
   let result = opt_meta_bayes_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_meta_bayes_edge_fill(s : OptmetabayesEdge, v : Double) -> Optmetabaye
   result
 }
 
-pub fn opt_meta_bayes_edge_min(s : OptmetabayesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_edge_min(s : OptmetabayesEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_edge_max(s : OptmetabayesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_edge_max(s : OptmetabayesEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_edge_to_string(s : OptmetabayesEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_meta_bayes_path_set(s : OptmetabayesPath, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_bayes_path_sum(s : OptmetabayesPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_path_sum(s : OptmetabayesPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_path_mean(s : OptmetabayesPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_path_mean(s : OptmetabayesPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_path_scale(s : OptmetabayesPath, f : Double) -> OptmetabayesPath {
   let result = opt_meta_bayes_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_meta_bayes_path_fill(s : OptmetabayesPath, v : Double) -> Optmetabaye
   result
 }
 
-pub fn opt_meta_bayes_path_min(s : OptmetabayesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_path_min(s : OptmetabayesPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_path_max(s : OptmetabayesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_path_max(s : OptmetabayesPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_path_to_string(s : OptmetabayesPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_meta_bayes_cluster_set(s : OptmetabayesCluster, i : Int, v : Double) 
   result
 }
 
-pub fn opt_meta_bayes_cluster_sum(s : OptmetabayesCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_cluster_sum(s : OptmetabayesCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_cluster_mean(s : OptmetabayesCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_cluster_mean(s : OptmetabayesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_cluster_scale(s : OptmetabayesCluster, f : Double) -> OptmetabayesCluster {
   let result = opt_meta_bayes_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_meta_bayes_cluster_fill(s : OptmetabayesCluster, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_bayes_cluster_min(s : OptmetabayesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_cluster_min(s : OptmetabayesCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_cluster_max(s : OptmetabayesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_cluster_max(s : OptmetabayesCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_cluster_to_string(s : OptmetabayesCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_meta_bayes_model_set(s : OptmetabayesModel, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_bayes_model_sum(s : OptmetabayesModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_model_sum(s : OptmetabayesModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_model_mean(s : OptmetabayesModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_model_mean(s : OptmetabayesModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_model_scale(s : OptmetabayesModel, f : Double) -> OptmetabayesModel {
   let result = opt_meta_bayes_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_meta_bayes_model_fill(s : OptmetabayesModel, v : Double) -> Optmetaba
   result
 }
 
-pub fn opt_meta_bayes_model_min(s : OptmetabayesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_model_min(s : OptmetabayesModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_model_max(s : OptmetabayesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_model_max(s : OptmetabayesModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_model_to_string(s : OptmetabayesModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_meta_bayes_layer_set(s : OptmetabayesLayer, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_bayes_layer_sum(s : OptmetabayesLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_layer_sum(s : OptmetabayesLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_layer_mean(s : OptmetabayesLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_layer_mean(s : OptmetabayesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_layer_scale(s : OptmetabayesLayer, f : Double) -> OptmetabayesLayer {
   let result = opt_meta_bayes_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_meta_bayes_layer_fill(s : OptmetabayesLayer, v : Double) -> Optmetaba
   result
 }
 
-pub fn opt_meta_bayes_layer_min(s : OptmetabayesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_layer_min(s : OptmetabayesLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_layer_max(s : OptmetabayesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_layer_max(s : OptmetabayesLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_layer_to_string(s : OptmetabayesLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_meta_bayes_buffer_set(s : OptmetabayesBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_bayes_buffer_sum(s : OptmetabayesBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_buffer_sum(s : OptmetabayesBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_buffer_mean(s : OptmetabayesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_buffer_mean(s : OptmetabayesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_buffer_scale(s : OptmetabayesBuffer, f : Double) -> OptmetabayesBuffer {
   let result = opt_meta_bayes_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_meta_bayes_buffer_fill(s : OptmetabayesBuffer, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_bayes_buffer_min(s : OptmetabayesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_buffer_min(s : OptmetabayesBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_buffer_max(s : OptmetabayesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_buffer_max(s : OptmetabayesBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_buffer_to_string(s : OptmetabayesBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_meta_bayes_cursor_set(s : OptmetabayesCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_bayes_cursor_sum(s : OptmetabayesCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_cursor_sum(s : OptmetabayesCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_cursor_mean(s : OptmetabayesCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_cursor_mean(s : OptmetabayesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_cursor_scale(s : OptmetabayesCursor, f : Double) -> OptmetabayesCursor {
   let result = opt_meta_bayes_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_meta_bayes_cursor_fill(s : OptmetabayesCursor, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_bayes_cursor_min(s : OptmetabayesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_cursor_min(s : OptmetabayesCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_cursor_max(s : OptmetabayesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_cursor_max(s : OptmetabayesCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_cursor_to_string(s : OptmetabayesCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_meta_bayes_view_set(s : OptmetabayesView, i : Int, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_bayes_view_sum(s : OptmetabayesView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_view_sum(s : OptmetabayesView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_view_mean(s : OptmetabayesView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_view_mean(s : OptmetabayesView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_view_scale(s : OptmetabayesView, f : Double) -> OptmetabayesView {
   let result = opt_meta_bayes_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_meta_bayes_view_fill(s : OptmetabayesView, v : Double) -> Optmetabaye
   result
 }
 
-pub fn opt_meta_bayes_view_min(s : OptmetabayesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_view_min(s : OptmetabayesView) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_view_max(s : OptmetabayesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_view_max(s : OptmetabayesView) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_view_to_string(s : OptmetabayesView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_meta_bayes_range_set(s : OptmetabayesRange, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_bayes_range_sum(s : OptmetabayesRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_range_sum(s : OptmetabayesRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_range_mean(s : OptmetabayesRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_range_mean(s : OptmetabayesRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_range_scale(s : OptmetabayesRange, f : Double) -> OptmetabayesRange {
   let result = opt_meta_bayes_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_meta_bayes_range_fill(s : OptmetabayesRange, v : Double) -> Optmetaba
   result
 }
 
-pub fn opt_meta_bayes_range_min(s : OptmetabayesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_range_min(s : OptmetabayesRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_range_max(s : OptmetabayesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_range_max(s : OptmetabayesRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_range_to_string(s : OptmetabayesRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_meta_bayes_slice_set(s : OptmetabayesSlice, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_bayes_slice_sum(s : OptmetabayesSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_bayes_slice_sum(s : OptmetabayesSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_bayes_slice_mean(s : OptmetabayesSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_bayes_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_bayes_slice_mean(s : OptmetabayesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_bayes_slice_scale(s : OptmetabayesSlice, f : Double) -> OptmetabayesSlice {
   let result = opt_meta_bayes_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_meta_bayes_slice_fill(s : OptmetabayesSlice, v : Double) -> Optmetaba
   result
 }
 
-pub fn opt_meta_bayes_slice_min(s : OptmetabayesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_slice_min(s : OptmetabayesSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_bayes_slice_max(s : OptmetabayesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_bayes_slice_max(s : OptmetabayesSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_bayes_slice_to_string(s : OptmetabayesSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

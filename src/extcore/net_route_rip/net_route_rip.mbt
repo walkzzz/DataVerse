@@ -88,11 +88,7 @@ pub fn net_route_rip_make_series(vals : Array[Double], name : String) -> Netrout
 
 pub fn net_route_rip_series_len(s : NetrouteripSeries) -> Int { s.vals.length() }
 
-pub fn net_route_rip_series_sum(s : NetrouteripSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_rip_series_sum(s : NetrouteripSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_rip_series_mean(s : NetrouteripSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_rip_frame_set(s : NetrouteripFrame, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_rip_frame_sum(s : NetrouteripFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_frame_sum(s : NetrouteripFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_frame_mean(s : NetrouteripFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_frame_mean(s : NetrouteripFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_frame_scale(s : NetrouteripFrame, f : Double) -> NetrouteripFrame {
   let result = net_route_rip_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_rip_frame_fill(s : NetrouteripFrame, v : Double) -> Netrouterip
   result
 }
 
-pub fn net_route_rip_frame_min(s : NetrouteripFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_frame_min(s : NetrouteripFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_frame_max(s : NetrouteripFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_frame_max(s : NetrouteripFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_frame_to_string(s : NetrouteripFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_rip_table_set(s : NetrouteripTable, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_rip_table_sum(s : NetrouteripTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_table_sum(s : NetrouteripTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_table_mean(s : NetrouteripTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_table_mean(s : NetrouteripTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_table_scale(s : NetrouteripTable, f : Double) -> NetrouteripTable {
   let result = net_route_rip_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_rip_table_fill(s : NetrouteripTable, v : Double) -> Netrouterip
   result
 }
 
-pub fn net_route_rip_table_min(s : NetrouteripTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_table_min(s : NetrouteripTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_table_max(s : NetrouteripTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_table_max(s : NetrouteripTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_table_to_string(s : NetrouteripTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_rip_graphn_set(s : NetrouteripGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_rip_graphn_sum(s : NetrouteripGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_graphn_sum(s : NetrouteripGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_graphn_mean(s : NetrouteripGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_graphn_mean(s : NetrouteripGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_graphn_scale(s : NetrouteripGraphN, f : Double) -> NetrouteripGraphN {
   let result = net_route_rip_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_rip_graphn_fill(s : NetrouteripGraphN, v : Double) -> Netrouter
   result
 }
 
-pub fn net_route_rip_graphn_min(s : NetrouteripGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_graphn_min(s : NetrouteripGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_graphn_max(s : NetrouteripGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_graphn_max(s : NetrouteripGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_graphn_to_string(s : NetrouteripGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_rip_node_set(s : NetrouteripNode, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_rip_node_sum(s : NetrouteripNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_node_sum(s : NetrouteripNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_node_mean(s : NetrouteripNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_node_mean(s : NetrouteripNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_node_scale(s : NetrouteripNode, f : Double) -> NetrouteripNode {
   let result = net_route_rip_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_rip_node_fill(s : NetrouteripNode, v : Double) -> NetrouteripNo
   result
 }
 
-pub fn net_route_rip_node_min(s : NetrouteripNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_node_min(s : NetrouteripNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_node_max(s : NetrouteripNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_node_max(s : NetrouteripNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_node_to_string(s : NetrouteripNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_rip_edge_set(s : NetrouteripEdge, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_rip_edge_sum(s : NetrouteripEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_edge_sum(s : NetrouteripEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_edge_mean(s : NetrouteripEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_edge_mean(s : NetrouteripEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_edge_scale(s : NetrouteripEdge, f : Double) -> NetrouteripEdge {
   let result = net_route_rip_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_rip_edge_fill(s : NetrouteripEdge, v : Double) -> NetrouteripEd
   result
 }
 
-pub fn net_route_rip_edge_min(s : NetrouteripEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_edge_min(s : NetrouteripEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_edge_max(s : NetrouteripEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_edge_max(s : NetrouteripEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_edge_to_string(s : NetrouteripEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_rip_path_set(s : NetrouteripPath, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_rip_path_sum(s : NetrouteripPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_path_sum(s : NetrouteripPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_path_mean(s : NetrouteripPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_path_mean(s : NetrouteripPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_path_scale(s : NetrouteripPath, f : Double) -> NetrouteripPath {
   let result = net_route_rip_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_rip_path_fill(s : NetrouteripPath, v : Double) -> NetrouteripPa
   result
 }
 
-pub fn net_route_rip_path_min(s : NetrouteripPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_path_min(s : NetrouteripPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_path_max(s : NetrouteripPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_path_max(s : NetrouteripPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_path_to_string(s : NetrouteripPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_rip_cluster_set(s : NetrouteripCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_rip_cluster_sum(s : NetrouteripCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_cluster_sum(s : NetrouteripCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_cluster_mean(s : NetrouteripCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_cluster_mean(s : NetrouteripCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_cluster_scale(s : NetrouteripCluster, f : Double) -> NetrouteripCluster {
   let result = net_route_rip_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_rip_cluster_fill(s : NetrouteripCluster, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_rip_cluster_min(s : NetrouteripCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_cluster_min(s : NetrouteripCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_cluster_max(s : NetrouteripCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_cluster_max(s : NetrouteripCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_cluster_to_string(s : NetrouteripCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_rip_model_set(s : NetrouteripModel, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_rip_model_sum(s : NetrouteripModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_model_sum(s : NetrouteripModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_model_mean(s : NetrouteripModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_model_mean(s : NetrouteripModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_model_scale(s : NetrouteripModel, f : Double) -> NetrouteripModel {
   let result = net_route_rip_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_rip_model_fill(s : NetrouteripModel, v : Double) -> Netrouterip
   result
 }
 
-pub fn net_route_rip_model_min(s : NetrouteripModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_model_min(s : NetrouteripModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_model_max(s : NetrouteripModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_model_max(s : NetrouteripModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_model_to_string(s : NetrouteripModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_rip_layer_set(s : NetrouteripLayer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_rip_layer_sum(s : NetrouteripLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_layer_sum(s : NetrouteripLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_layer_mean(s : NetrouteripLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_layer_mean(s : NetrouteripLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_layer_scale(s : NetrouteripLayer, f : Double) -> NetrouteripLayer {
   let result = net_route_rip_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_rip_layer_fill(s : NetrouteripLayer, v : Double) -> Netrouterip
   result
 }
 
-pub fn net_route_rip_layer_min(s : NetrouteripLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_layer_min(s : NetrouteripLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_layer_max(s : NetrouteripLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_layer_max(s : NetrouteripLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_layer_to_string(s : NetrouteripLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_rip_buffer_set(s : NetrouteripBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_rip_buffer_sum(s : NetrouteripBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_buffer_sum(s : NetrouteripBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_buffer_mean(s : NetrouteripBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_buffer_mean(s : NetrouteripBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_buffer_scale(s : NetrouteripBuffer, f : Double) -> NetrouteripBuffer {
   let result = net_route_rip_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_rip_buffer_fill(s : NetrouteripBuffer, v : Double) -> Netrouter
   result
 }
 
-pub fn net_route_rip_buffer_min(s : NetrouteripBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_buffer_min(s : NetrouteripBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_buffer_max(s : NetrouteripBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_buffer_max(s : NetrouteripBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_buffer_to_string(s : NetrouteripBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_rip_cursor_set(s : NetrouteripCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_route_rip_cursor_sum(s : NetrouteripCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_cursor_sum(s : NetrouteripCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_cursor_mean(s : NetrouteripCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_cursor_mean(s : NetrouteripCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_cursor_scale(s : NetrouteripCursor, f : Double) -> NetrouteripCursor {
   let result = net_route_rip_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_rip_cursor_fill(s : NetrouteripCursor, v : Double) -> Netrouter
   result
 }
 
-pub fn net_route_rip_cursor_min(s : NetrouteripCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_cursor_min(s : NetrouteripCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_cursor_max(s : NetrouteripCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_cursor_max(s : NetrouteripCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_cursor_to_string(s : NetrouteripCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_rip_view_set(s : NetrouteripView, i : Int, v : Double) -> Netro
   result
 }
 
-pub fn net_route_rip_view_sum(s : NetrouteripView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_view_sum(s : NetrouteripView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_view_mean(s : NetrouteripView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_view_mean(s : NetrouteripView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_view_scale(s : NetrouteripView, f : Double) -> NetrouteripView {
   let result = net_route_rip_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_rip_view_fill(s : NetrouteripView, v : Double) -> NetrouteripVi
   result
 }
 
-pub fn net_route_rip_view_min(s : NetrouteripView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_view_min(s : NetrouteripView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_view_max(s : NetrouteripView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_view_max(s : NetrouteripView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_view_to_string(s : NetrouteripView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_rip_range_set(s : NetrouteripRange, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_rip_range_sum(s : NetrouteripRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_range_sum(s : NetrouteripRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_range_mean(s : NetrouteripRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_range_mean(s : NetrouteripRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_range_scale(s : NetrouteripRange, f : Double) -> NetrouteripRange {
   let result = net_route_rip_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_rip_range_fill(s : NetrouteripRange, v : Double) -> Netrouterip
   result
 }
 
-pub fn net_route_rip_range_min(s : NetrouteripRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_range_min(s : NetrouteripRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_range_max(s : NetrouteripRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_range_max(s : NetrouteripRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_range_to_string(s : NetrouteripRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_rip_slice_set(s : NetrouteripSlice, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_route_rip_slice_sum(s : NetrouteripSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_rip_slice_sum(s : NetrouteripSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_rip_slice_mean(s : NetrouteripSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_rip_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_rip_slice_mean(s : NetrouteripSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_rip_slice_scale(s : NetrouteripSlice, f : Double) -> NetrouteripSlice {
   let result = net_route_rip_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_rip_slice_fill(s : NetrouteripSlice, v : Double) -> Netrouterip
   result
 }
 
-pub fn net_route_rip_slice_min(s : NetrouteripSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_slice_min(s : NetrouteripSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_rip_slice_max(s : NetrouteripSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_rip_slice_max(s : NetrouteripSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_rip_slice_to_string(s : NetrouteripSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

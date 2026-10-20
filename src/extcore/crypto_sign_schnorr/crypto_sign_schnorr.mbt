@@ -88,11 +88,7 @@ pub fn crypto_sign_schnorr_make_series(vals : Array[Double], name : String) -> C
 
 pub fn crypto_sign_schnorr_series_len(s : CryptosignschnorrSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sign_schnorr_series_sum(s : CryptosignschnorrSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sign_schnorr_series_sum(s : CryptosignschnorrSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sign_schnorr_series_mean(s : CryptosignschnorrSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sign_schnorr_frame_set(s : CryptosignschnorrFrame, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_schnorr_frame_sum(s : CryptosignschnorrFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_frame_sum(s : CryptosignschnorrFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_frame_mean(s : CryptosignschnorrFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_frame_mean(s : CryptosignschnorrFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_frame_scale(s : CryptosignschnorrFrame, f : Double) -> CryptosignschnorrFrame {
   let result = crypto_sign_schnorr_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sign_schnorr_frame_fill(s : CryptosignschnorrFrame, v : Double) ->
   result
 }
 
-pub fn crypto_sign_schnorr_frame_min(s : CryptosignschnorrFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_frame_min(s : CryptosignschnorrFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_frame_max(s : CryptosignschnorrFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_frame_max(s : CryptosignschnorrFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_frame_to_string(s : CryptosignschnorrFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sign_schnorr_table_set(s : CryptosignschnorrTable, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_schnorr_table_sum(s : CryptosignschnorrTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_table_sum(s : CryptosignschnorrTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_table_mean(s : CryptosignschnorrTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_table_mean(s : CryptosignschnorrTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_table_scale(s : CryptosignschnorrTable, f : Double) -> CryptosignschnorrTable {
   let result = crypto_sign_schnorr_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sign_schnorr_table_fill(s : CryptosignschnorrTable, v : Double) ->
   result
 }
 
-pub fn crypto_sign_schnorr_table_min(s : CryptosignschnorrTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_table_min(s : CryptosignschnorrTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_table_max(s : CryptosignschnorrTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_table_max(s : CryptosignschnorrTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_table_to_string(s : CryptosignschnorrTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sign_schnorr_graphn_set(s : CryptosignschnorrGraphN, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_schnorr_graphn_sum(s : CryptosignschnorrGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_graphn_sum(s : CryptosignschnorrGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_graphn_mean(s : CryptosignschnorrGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_graphn_mean(s : CryptosignschnorrGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_graphn_scale(s : CryptosignschnorrGraphN, f : Double) -> CryptosignschnorrGraphN {
   let result = crypto_sign_schnorr_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sign_schnorr_graphn_fill(s : CryptosignschnorrGraphN, v : Double) 
   result
 }
 
-pub fn crypto_sign_schnorr_graphn_min(s : CryptosignschnorrGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_graphn_min(s : CryptosignschnorrGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_graphn_max(s : CryptosignschnorrGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_graphn_max(s : CryptosignschnorrGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_graphn_to_string(s : CryptosignschnorrGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sign_schnorr_node_set(s : CryptosignschnorrNode, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_schnorr_node_sum(s : CryptosignschnorrNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_node_sum(s : CryptosignschnorrNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_node_mean(s : CryptosignschnorrNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_node_mean(s : CryptosignschnorrNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_node_scale(s : CryptosignschnorrNode, f : Double) -> CryptosignschnorrNode {
   let result = crypto_sign_schnorr_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sign_schnorr_node_fill(s : CryptosignschnorrNode, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_schnorr_node_min(s : CryptosignschnorrNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_node_min(s : CryptosignschnorrNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_node_max(s : CryptosignschnorrNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_node_max(s : CryptosignschnorrNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_node_to_string(s : CryptosignschnorrNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sign_schnorr_edge_set(s : CryptosignschnorrEdge, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_schnorr_edge_sum(s : CryptosignschnorrEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_edge_sum(s : CryptosignschnorrEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_edge_mean(s : CryptosignschnorrEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_edge_mean(s : CryptosignschnorrEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_edge_scale(s : CryptosignschnorrEdge, f : Double) -> CryptosignschnorrEdge {
   let result = crypto_sign_schnorr_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sign_schnorr_edge_fill(s : CryptosignschnorrEdge, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_schnorr_edge_min(s : CryptosignschnorrEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_edge_min(s : CryptosignschnorrEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_edge_max(s : CryptosignschnorrEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_edge_max(s : CryptosignschnorrEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_edge_to_string(s : CryptosignschnorrEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sign_schnorr_path_set(s : CryptosignschnorrPath, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_schnorr_path_sum(s : CryptosignschnorrPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_path_sum(s : CryptosignschnorrPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_path_mean(s : CryptosignschnorrPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_path_mean(s : CryptosignschnorrPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_path_scale(s : CryptosignschnorrPath, f : Double) -> CryptosignschnorrPath {
   let result = crypto_sign_schnorr_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sign_schnorr_path_fill(s : CryptosignschnorrPath, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_schnorr_path_min(s : CryptosignschnorrPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_path_min(s : CryptosignschnorrPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_path_max(s : CryptosignschnorrPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_path_max(s : CryptosignschnorrPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_path_to_string(s : CryptosignschnorrPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sign_schnorr_cluster_set(s : CryptosignschnorrCluster, i : Int, v 
   result
 }
 
-pub fn crypto_sign_schnorr_cluster_sum(s : CryptosignschnorrCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_cluster_sum(s : CryptosignschnorrCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_cluster_mean(s : CryptosignschnorrCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_cluster_mean(s : CryptosignschnorrCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_cluster_scale(s : CryptosignschnorrCluster, f : Double) -> CryptosignschnorrCluster {
   let result = crypto_sign_schnorr_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sign_schnorr_cluster_fill(s : CryptosignschnorrCluster, v : Double
   result
 }
 
-pub fn crypto_sign_schnorr_cluster_min(s : CryptosignschnorrCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_cluster_min(s : CryptosignschnorrCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_cluster_max(s : CryptosignschnorrCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_cluster_max(s : CryptosignschnorrCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_cluster_to_string(s : CryptosignschnorrCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sign_schnorr_model_set(s : CryptosignschnorrModel, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_schnorr_model_sum(s : CryptosignschnorrModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_model_sum(s : CryptosignschnorrModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_model_mean(s : CryptosignschnorrModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_model_mean(s : CryptosignschnorrModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_model_scale(s : CryptosignschnorrModel, f : Double) -> CryptosignschnorrModel {
   let result = crypto_sign_schnorr_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sign_schnorr_model_fill(s : CryptosignschnorrModel, v : Double) ->
   result
 }
 
-pub fn crypto_sign_schnorr_model_min(s : CryptosignschnorrModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_model_min(s : CryptosignschnorrModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_model_max(s : CryptosignschnorrModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_model_max(s : CryptosignschnorrModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_model_to_string(s : CryptosignschnorrModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sign_schnorr_layer_set(s : CryptosignschnorrLayer, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_schnorr_layer_sum(s : CryptosignschnorrLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_layer_sum(s : CryptosignschnorrLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_layer_mean(s : CryptosignschnorrLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_layer_mean(s : CryptosignschnorrLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_layer_scale(s : CryptosignschnorrLayer, f : Double) -> CryptosignschnorrLayer {
   let result = crypto_sign_schnorr_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sign_schnorr_layer_fill(s : CryptosignschnorrLayer, v : Double) ->
   result
 }
 
-pub fn crypto_sign_schnorr_layer_min(s : CryptosignschnorrLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_layer_min(s : CryptosignschnorrLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_layer_max(s : CryptosignschnorrLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_layer_max(s : CryptosignschnorrLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_layer_to_string(s : CryptosignschnorrLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sign_schnorr_buffer_set(s : CryptosignschnorrBuffer, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_schnorr_buffer_sum(s : CryptosignschnorrBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_buffer_sum(s : CryptosignschnorrBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_buffer_mean(s : CryptosignschnorrBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_buffer_mean(s : CryptosignschnorrBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_buffer_scale(s : CryptosignschnorrBuffer, f : Double) -> CryptosignschnorrBuffer {
   let result = crypto_sign_schnorr_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sign_schnorr_buffer_fill(s : CryptosignschnorrBuffer, v : Double) 
   result
 }
 
-pub fn crypto_sign_schnorr_buffer_min(s : CryptosignschnorrBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_buffer_min(s : CryptosignschnorrBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_buffer_max(s : CryptosignschnorrBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_buffer_max(s : CryptosignschnorrBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_buffer_to_string(s : CryptosignschnorrBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sign_schnorr_cursor_set(s : CryptosignschnorrCursor, i : Int, v : 
   result
 }
 
-pub fn crypto_sign_schnorr_cursor_sum(s : CryptosignschnorrCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_cursor_sum(s : CryptosignschnorrCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_cursor_mean(s : CryptosignschnorrCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_cursor_mean(s : CryptosignschnorrCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_cursor_scale(s : CryptosignschnorrCursor, f : Double) -> CryptosignschnorrCursor {
   let result = crypto_sign_schnorr_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sign_schnorr_cursor_fill(s : CryptosignschnorrCursor, v : Double) 
   result
 }
 
-pub fn crypto_sign_schnorr_cursor_min(s : CryptosignschnorrCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_cursor_min(s : CryptosignschnorrCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_cursor_max(s : CryptosignschnorrCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_cursor_max(s : CryptosignschnorrCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_cursor_to_string(s : CryptosignschnorrCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sign_schnorr_view_set(s : CryptosignschnorrView, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sign_schnorr_view_sum(s : CryptosignschnorrView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_view_sum(s : CryptosignschnorrView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_view_mean(s : CryptosignschnorrView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_view_mean(s : CryptosignschnorrView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_view_scale(s : CryptosignschnorrView, f : Double) -> CryptosignschnorrView {
   let result = crypto_sign_schnorr_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sign_schnorr_view_fill(s : CryptosignschnorrView, v : Double) -> C
   result
 }
 
-pub fn crypto_sign_schnorr_view_min(s : CryptosignschnorrView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_view_min(s : CryptosignschnorrView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_view_max(s : CryptosignschnorrView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_view_max(s : CryptosignschnorrView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_view_to_string(s : CryptosignschnorrView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sign_schnorr_range_set(s : CryptosignschnorrRange, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_schnorr_range_sum(s : CryptosignschnorrRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_range_sum(s : CryptosignschnorrRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_range_mean(s : CryptosignschnorrRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_range_mean(s : CryptosignschnorrRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_range_scale(s : CryptosignschnorrRange, f : Double) -> CryptosignschnorrRange {
   let result = crypto_sign_schnorr_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sign_schnorr_range_fill(s : CryptosignschnorrRange, v : Double) ->
   result
 }
 
-pub fn crypto_sign_schnorr_range_min(s : CryptosignschnorrRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_range_min(s : CryptosignschnorrRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_range_max(s : CryptosignschnorrRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_range_max(s : CryptosignschnorrRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_range_to_string(s : CryptosignschnorrRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sign_schnorr_slice_set(s : CryptosignschnorrSlice, i : Int, v : Do
   result
 }
 
-pub fn crypto_sign_schnorr_slice_sum(s : CryptosignschnorrSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sign_schnorr_slice_sum(s : CryptosignschnorrSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sign_schnorr_slice_mean(s : CryptosignschnorrSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sign_schnorr_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sign_schnorr_slice_mean(s : CryptosignschnorrSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sign_schnorr_slice_scale(s : CryptosignschnorrSlice, f : Double) -> CryptosignschnorrSlice {
   let result = crypto_sign_schnorr_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sign_schnorr_slice_fill(s : CryptosignschnorrSlice, v : Double) ->
   result
 }
 
-pub fn crypto_sign_schnorr_slice_min(s : CryptosignschnorrSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_slice_min(s : CryptosignschnorrSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sign_schnorr_slice_max(s : CryptosignschnorrSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sign_schnorr_slice_max(s : CryptosignschnorrSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sign_schnorr_slice_to_string(s : CryptosignschnorrSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

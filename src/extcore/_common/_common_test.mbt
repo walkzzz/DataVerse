@@ -32,6 +32,13 @@ test "common_mean" {
   assert_true(@_common.mean([10.0]) > 9.99 && @_common.mean([10.0]) < 10.01)
 }
 
+test "common_sum" {
+  let s = @_common.sum([1.0, 2.0, 3.0, 4.0, 5.0])
+  assert_true(s > 14.99 && s < 15.01)
+  assert_true(@_common.sum([]) < 0.001)
+  assert_true(@_common.sum([10.0]) > 9.99 && @_common.sum([10.0]) < 10.01)
+}
+
 test "common_variance_std" {
   let v = @_common.variance([1.0, 2.0, 3.0, 4.0, 5.0])
   assert_true(v > 1.99 && v < 2.01)

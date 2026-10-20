@@ -88,11 +88,7 @@ pub fn net_proto_https_make_series(vals : Array[Double], name : String) -> Netpr
 
 pub fn net_proto_https_series_len(s : NetprotohttpsSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_https_series_sum(s : NetprotohttpsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_https_series_sum(s : NetprotohttpsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_https_series_mean(s : NetprotohttpsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_https_frame_set(s : NetprotohttpsFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_https_frame_sum(s : NetprotohttpsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_frame_sum(s : NetprotohttpsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_frame_mean(s : NetprotohttpsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_frame_mean(s : NetprotohttpsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_frame_scale(s : NetprotohttpsFrame, f : Double) -> NetprotohttpsFrame {
   let result = net_proto_https_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_https_frame_fill(s : NetprotohttpsFrame, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_https_frame_min(s : NetprotohttpsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_frame_min(s : NetprotohttpsFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_frame_max(s : NetprotohttpsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_frame_max(s : NetprotohttpsFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_frame_to_string(s : NetprotohttpsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_https_table_set(s : NetprotohttpsTable, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_https_table_sum(s : NetprotohttpsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_table_sum(s : NetprotohttpsTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_table_mean(s : NetprotohttpsTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_table_mean(s : NetprotohttpsTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_table_scale(s : NetprotohttpsTable, f : Double) -> NetprotohttpsTable {
   let result = net_proto_https_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_https_table_fill(s : NetprotohttpsTable, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_https_table_min(s : NetprotohttpsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_table_min(s : NetprotohttpsTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_table_max(s : NetprotohttpsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_table_max(s : NetprotohttpsTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_table_to_string(s : NetprotohttpsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_https_graphn_set(s : NetprotohttpsGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_https_graphn_sum(s : NetprotohttpsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_graphn_sum(s : NetprotohttpsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_graphn_mean(s : NetprotohttpsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_graphn_mean(s : NetprotohttpsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_graphn_scale(s : NetprotohttpsGraphN, f : Double) -> NetprotohttpsGraphN {
   let result = net_proto_https_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_https_graphn_fill(s : NetprotohttpsGraphN, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_https_graphn_min(s : NetprotohttpsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_graphn_min(s : NetprotohttpsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_graphn_max(s : NetprotohttpsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_graphn_max(s : NetprotohttpsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_graphn_to_string(s : NetprotohttpsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_https_node_set(s : NetprotohttpsNode, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_https_node_sum(s : NetprotohttpsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_node_sum(s : NetprotohttpsNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_node_mean(s : NetprotohttpsNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_node_mean(s : NetprotohttpsNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_node_scale(s : NetprotohttpsNode, f : Double) -> NetprotohttpsNode {
   let result = net_proto_https_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_https_node_fill(s : NetprotohttpsNode, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_https_node_min(s : NetprotohttpsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_node_min(s : NetprotohttpsNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_node_max(s : NetprotohttpsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_node_max(s : NetprotohttpsNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_node_to_string(s : NetprotohttpsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_https_edge_set(s : NetprotohttpsEdge, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_https_edge_sum(s : NetprotohttpsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_edge_sum(s : NetprotohttpsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_edge_mean(s : NetprotohttpsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_edge_mean(s : NetprotohttpsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_edge_scale(s : NetprotohttpsEdge, f : Double) -> NetprotohttpsEdge {
   let result = net_proto_https_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_https_edge_fill(s : NetprotohttpsEdge, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_https_edge_min(s : NetprotohttpsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_edge_min(s : NetprotohttpsEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_edge_max(s : NetprotohttpsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_edge_max(s : NetprotohttpsEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_edge_to_string(s : NetprotohttpsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_https_path_set(s : NetprotohttpsPath, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_https_path_sum(s : NetprotohttpsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_path_sum(s : NetprotohttpsPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_path_mean(s : NetprotohttpsPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_path_mean(s : NetprotohttpsPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_path_scale(s : NetprotohttpsPath, f : Double) -> NetprotohttpsPath {
   let result = net_proto_https_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_https_path_fill(s : NetprotohttpsPath, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_https_path_min(s : NetprotohttpsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_path_min(s : NetprotohttpsPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_path_max(s : NetprotohttpsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_path_max(s : NetprotohttpsPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_path_to_string(s : NetprotohttpsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_https_cluster_set(s : NetprotohttpsCluster, i : Int, v : Double
   result
 }
 
-pub fn net_proto_https_cluster_sum(s : NetprotohttpsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_cluster_sum(s : NetprotohttpsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_cluster_mean(s : NetprotohttpsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_cluster_mean(s : NetprotohttpsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_cluster_scale(s : NetprotohttpsCluster, f : Double) -> NetprotohttpsCluster {
   let result = net_proto_https_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_https_cluster_fill(s : NetprotohttpsCluster, v : Double) -> Net
   result
 }
 
-pub fn net_proto_https_cluster_min(s : NetprotohttpsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_cluster_min(s : NetprotohttpsCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_cluster_max(s : NetprotohttpsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_cluster_max(s : NetprotohttpsCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_cluster_to_string(s : NetprotohttpsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_https_model_set(s : NetprotohttpsModel, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_https_model_sum(s : NetprotohttpsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_model_sum(s : NetprotohttpsModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_model_mean(s : NetprotohttpsModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_model_mean(s : NetprotohttpsModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_model_scale(s : NetprotohttpsModel, f : Double) -> NetprotohttpsModel {
   let result = net_proto_https_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_https_model_fill(s : NetprotohttpsModel, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_https_model_min(s : NetprotohttpsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_model_min(s : NetprotohttpsModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_model_max(s : NetprotohttpsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_model_max(s : NetprotohttpsModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_model_to_string(s : NetprotohttpsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_https_layer_set(s : NetprotohttpsLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_https_layer_sum(s : NetprotohttpsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_layer_sum(s : NetprotohttpsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_layer_mean(s : NetprotohttpsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_layer_mean(s : NetprotohttpsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_layer_scale(s : NetprotohttpsLayer, f : Double) -> NetprotohttpsLayer {
   let result = net_proto_https_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_https_layer_fill(s : NetprotohttpsLayer, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_https_layer_min(s : NetprotohttpsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_layer_min(s : NetprotohttpsLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_layer_max(s : NetprotohttpsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_layer_max(s : NetprotohttpsLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_layer_to_string(s : NetprotohttpsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_https_buffer_set(s : NetprotohttpsBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_https_buffer_sum(s : NetprotohttpsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_buffer_sum(s : NetprotohttpsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_buffer_mean(s : NetprotohttpsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_buffer_mean(s : NetprotohttpsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_buffer_scale(s : NetprotohttpsBuffer, f : Double) -> NetprotohttpsBuffer {
   let result = net_proto_https_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_https_buffer_fill(s : NetprotohttpsBuffer, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_https_buffer_min(s : NetprotohttpsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_buffer_min(s : NetprotohttpsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_buffer_max(s : NetprotohttpsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_buffer_max(s : NetprotohttpsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_buffer_to_string(s : NetprotohttpsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_https_cursor_set(s : NetprotohttpsCursor, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_https_cursor_sum(s : NetprotohttpsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_cursor_sum(s : NetprotohttpsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_cursor_mean(s : NetprotohttpsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_cursor_mean(s : NetprotohttpsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_cursor_scale(s : NetprotohttpsCursor, f : Double) -> NetprotohttpsCursor {
   let result = net_proto_https_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_https_cursor_fill(s : NetprotohttpsCursor, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_https_cursor_min(s : NetprotohttpsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_cursor_min(s : NetprotohttpsCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_cursor_max(s : NetprotohttpsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_cursor_max(s : NetprotohttpsCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_cursor_to_string(s : NetprotohttpsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_https_view_set(s : NetprotohttpsView, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_https_view_sum(s : NetprotohttpsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_view_sum(s : NetprotohttpsView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_view_mean(s : NetprotohttpsView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_view_mean(s : NetprotohttpsView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_view_scale(s : NetprotohttpsView, f : Double) -> NetprotohttpsView {
   let result = net_proto_https_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_https_view_fill(s : NetprotohttpsView, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_https_view_min(s : NetprotohttpsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_view_min(s : NetprotohttpsView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_view_max(s : NetprotohttpsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_view_max(s : NetprotohttpsView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_view_to_string(s : NetprotohttpsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_https_range_set(s : NetprotohttpsRange, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_https_range_sum(s : NetprotohttpsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_range_sum(s : NetprotohttpsRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_range_mean(s : NetprotohttpsRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_range_mean(s : NetprotohttpsRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_range_scale(s : NetprotohttpsRange, f : Double) -> NetprotohttpsRange {
   let result = net_proto_https_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_https_range_fill(s : NetprotohttpsRange, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_https_range_min(s : NetprotohttpsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_range_min(s : NetprotohttpsRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_range_max(s : NetprotohttpsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_range_max(s : NetprotohttpsRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_range_to_string(s : NetprotohttpsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_https_slice_set(s : NetprotohttpsSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_https_slice_sum(s : NetprotohttpsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_https_slice_sum(s : NetprotohttpsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_https_slice_mean(s : NetprotohttpsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_https_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_https_slice_mean(s : NetprotohttpsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_https_slice_scale(s : NetprotohttpsSlice, f : Double) -> NetprotohttpsSlice {
   let result = net_proto_https_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_https_slice_fill(s : NetprotohttpsSlice, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_https_slice_min(s : NetprotohttpsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_slice_min(s : NetprotohttpsSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_https_slice_max(s : NetprotohttpsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_https_slice_max(s : NetprotohttpsSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_https_slice_to_string(s : NetprotohttpsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_rl_qlearning_make_series(vals : Array[Double], name : String) -> Mlrlq
 
 pub fn ml_rl_qlearning_series_len(s : MlrlqlearningSeries) -> Int { s.vals.length() }
 
-pub fn ml_rl_qlearning_series_sum(s : MlrlqlearningSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_rl_qlearning_series_sum(s : MlrlqlearningSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_rl_qlearning_series_mean(s : MlrlqlearningSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_rl_qlearning_frame_set(s : MlrlqlearningFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_rl_qlearning_frame_sum(s : MlrlqlearningFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_frame_sum(s : MlrlqlearningFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_frame_mean(s : MlrlqlearningFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_frame_mean(s : MlrlqlearningFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_frame_scale(s : MlrlqlearningFrame, f : Double) -> MlrlqlearningFrame {
   let result = ml_rl_qlearning_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_rl_qlearning_frame_fill(s : MlrlqlearningFrame, v : Double) -> Mlrlqle
   result
 }
 
-pub fn ml_rl_qlearning_frame_min(s : MlrlqlearningFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_frame_min(s : MlrlqlearningFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_frame_max(s : MlrlqlearningFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_frame_max(s : MlrlqlearningFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_frame_to_string(s : MlrlqlearningFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_rl_qlearning_table_set(s : MlrlqlearningTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_rl_qlearning_table_sum(s : MlrlqlearningTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_table_sum(s : MlrlqlearningTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_table_mean(s : MlrlqlearningTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_table_mean(s : MlrlqlearningTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_table_scale(s : MlrlqlearningTable, f : Double) -> MlrlqlearningTable {
   let result = ml_rl_qlearning_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_rl_qlearning_table_fill(s : MlrlqlearningTable, v : Double) -> Mlrlqle
   result
 }
 
-pub fn ml_rl_qlearning_table_min(s : MlrlqlearningTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_table_min(s : MlrlqlearningTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_table_max(s : MlrlqlearningTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_table_max(s : MlrlqlearningTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_table_to_string(s : MlrlqlearningTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_rl_qlearning_graphn_set(s : MlrlqlearningGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ml_rl_qlearning_graphn_sum(s : MlrlqlearningGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_graphn_sum(s : MlrlqlearningGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_graphn_mean(s : MlrlqlearningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_graphn_mean(s : MlrlqlearningGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_graphn_scale(s : MlrlqlearningGraphN, f : Double) -> MlrlqlearningGraphN {
   let result = ml_rl_qlearning_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_rl_qlearning_graphn_fill(s : MlrlqlearningGraphN, v : Double) -> Mlrlq
   result
 }
 
-pub fn ml_rl_qlearning_graphn_min(s : MlrlqlearningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_graphn_min(s : MlrlqlearningGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_graphn_max(s : MlrlqlearningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_graphn_max(s : MlrlqlearningGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_graphn_to_string(s : MlrlqlearningGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_rl_qlearning_node_set(s : MlrlqlearningNode, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_rl_qlearning_node_sum(s : MlrlqlearningNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_node_sum(s : MlrlqlearningNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_node_mean(s : MlrlqlearningNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_node_mean(s : MlrlqlearningNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_node_scale(s : MlrlqlearningNode, f : Double) -> MlrlqlearningNode {
   let result = ml_rl_qlearning_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_rl_qlearning_node_fill(s : MlrlqlearningNode, v : Double) -> Mlrlqlear
   result
 }
 
-pub fn ml_rl_qlearning_node_min(s : MlrlqlearningNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_node_min(s : MlrlqlearningNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_node_max(s : MlrlqlearningNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_node_max(s : MlrlqlearningNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_node_to_string(s : MlrlqlearningNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_rl_qlearning_edge_set(s : MlrlqlearningEdge, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_rl_qlearning_edge_sum(s : MlrlqlearningEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_edge_sum(s : MlrlqlearningEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_edge_mean(s : MlrlqlearningEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_edge_mean(s : MlrlqlearningEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_edge_scale(s : MlrlqlearningEdge, f : Double) -> MlrlqlearningEdge {
   let result = ml_rl_qlearning_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_rl_qlearning_edge_fill(s : MlrlqlearningEdge, v : Double) -> Mlrlqlear
   result
 }
 
-pub fn ml_rl_qlearning_edge_min(s : MlrlqlearningEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_edge_min(s : MlrlqlearningEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_edge_max(s : MlrlqlearningEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_edge_max(s : MlrlqlearningEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_edge_to_string(s : MlrlqlearningEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_rl_qlearning_path_set(s : MlrlqlearningPath, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_rl_qlearning_path_sum(s : MlrlqlearningPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_path_sum(s : MlrlqlearningPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_path_mean(s : MlrlqlearningPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_path_mean(s : MlrlqlearningPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_path_scale(s : MlrlqlearningPath, f : Double) -> MlrlqlearningPath {
   let result = ml_rl_qlearning_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_rl_qlearning_path_fill(s : MlrlqlearningPath, v : Double) -> Mlrlqlear
   result
 }
 
-pub fn ml_rl_qlearning_path_min(s : MlrlqlearningPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_path_min(s : MlrlqlearningPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_path_max(s : MlrlqlearningPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_path_max(s : MlrlqlearningPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_path_to_string(s : MlrlqlearningPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_rl_qlearning_cluster_set(s : MlrlqlearningCluster, i : Int, v : Double
   result
 }
 
-pub fn ml_rl_qlearning_cluster_sum(s : MlrlqlearningCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_cluster_sum(s : MlrlqlearningCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_cluster_mean(s : MlrlqlearningCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_cluster_mean(s : MlrlqlearningCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_cluster_scale(s : MlrlqlearningCluster, f : Double) -> MlrlqlearningCluster {
   let result = ml_rl_qlearning_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_rl_qlearning_cluster_fill(s : MlrlqlearningCluster, v : Double) -> Mlr
   result
 }
 
-pub fn ml_rl_qlearning_cluster_min(s : MlrlqlearningCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_cluster_min(s : MlrlqlearningCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_cluster_max(s : MlrlqlearningCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_cluster_max(s : MlrlqlearningCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_cluster_to_string(s : MlrlqlearningCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_rl_qlearning_model_set(s : MlrlqlearningModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_rl_qlearning_model_sum(s : MlrlqlearningModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_model_sum(s : MlrlqlearningModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_model_mean(s : MlrlqlearningModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_model_mean(s : MlrlqlearningModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_model_scale(s : MlrlqlearningModel, f : Double) -> MlrlqlearningModel {
   let result = ml_rl_qlearning_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_rl_qlearning_model_fill(s : MlrlqlearningModel, v : Double) -> Mlrlqle
   result
 }
 
-pub fn ml_rl_qlearning_model_min(s : MlrlqlearningModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_model_min(s : MlrlqlearningModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_model_max(s : MlrlqlearningModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_model_max(s : MlrlqlearningModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_model_to_string(s : MlrlqlearningModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_rl_qlearning_layer_set(s : MlrlqlearningLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_rl_qlearning_layer_sum(s : MlrlqlearningLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_layer_sum(s : MlrlqlearningLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_layer_mean(s : MlrlqlearningLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_layer_mean(s : MlrlqlearningLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_layer_scale(s : MlrlqlearningLayer, f : Double) -> MlrlqlearningLayer {
   let result = ml_rl_qlearning_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_rl_qlearning_layer_fill(s : MlrlqlearningLayer, v : Double) -> Mlrlqle
   result
 }
 
-pub fn ml_rl_qlearning_layer_min(s : MlrlqlearningLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_layer_min(s : MlrlqlearningLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_layer_max(s : MlrlqlearningLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_layer_max(s : MlrlqlearningLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_layer_to_string(s : MlrlqlearningLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_rl_qlearning_buffer_set(s : MlrlqlearningBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_rl_qlearning_buffer_sum(s : MlrlqlearningBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_buffer_sum(s : MlrlqlearningBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_buffer_mean(s : MlrlqlearningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_buffer_mean(s : MlrlqlearningBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_buffer_scale(s : MlrlqlearningBuffer, f : Double) -> MlrlqlearningBuffer {
   let result = ml_rl_qlearning_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_rl_qlearning_buffer_fill(s : MlrlqlearningBuffer, v : Double) -> Mlrlq
   result
 }
 
-pub fn ml_rl_qlearning_buffer_min(s : MlrlqlearningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_buffer_min(s : MlrlqlearningBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_buffer_max(s : MlrlqlearningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_buffer_max(s : MlrlqlearningBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_buffer_to_string(s : MlrlqlearningBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_rl_qlearning_cursor_set(s : MlrlqlearningCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ml_rl_qlearning_cursor_sum(s : MlrlqlearningCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_cursor_sum(s : MlrlqlearningCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_cursor_mean(s : MlrlqlearningCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_cursor_mean(s : MlrlqlearningCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_cursor_scale(s : MlrlqlearningCursor, f : Double) -> MlrlqlearningCursor {
   let result = ml_rl_qlearning_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_rl_qlearning_cursor_fill(s : MlrlqlearningCursor, v : Double) -> Mlrlq
   result
 }
 
-pub fn ml_rl_qlearning_cursor_min(s : MlrlqlearningCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_cursor_min(s : MlrlqlearningCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_cursor_max(s : MlrlqlearningCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_cursor_max(s : MlrlqlearningCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_cursor_to_string(s : MlrlqlearningCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_rl_qlearning_view_set(s : MlrlqlearningView, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_rl_qlearning_view_sum(s : MlrlqlearningView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_view_sum(s : MlrlqlearningView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_view_mean(s : MlrlqlearningView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_view_mean(s : MlrlqlearningView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_view_scale(s : MlrlqlearningView, f : Double) -> MlrlqlearningView {
   let result = ml_rl_qlearning_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_rl_qlearning_view_fill(s : MlrlqlearningView, v : Double) -> Mlrlqlear
   result
 }
 
-pub fn ml_rl_qlearning_view_min(s : MlrlqlearningView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_view_min(s : MlrlqlearningView) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_view_max(s : MlrlqlearningView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_view_max(s : MlrlqlearningView) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_view_to_string(s : MlrlqlearningView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_rl_qlearning_range_set(s : MlrlqlearningRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_rl_qlearning_range_sum(s : MlrlqlearningRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_range_sum(s : MlrlqlearningRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_range_mean(s : MlrlqlearningRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_range_mean(s : MlrlqlearningRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_range_scale(s : MlrlqlearningRange, f : Double) -> MlrlqlearningRange {
   let result = ml_rl_qlearning_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_rl_qlearning_range_fill(s : MlrlqlearningRange, v : Double) -> Mlrlqle
   result
 }
 
-pub fn ml_rl_qlearning_range_min(s : MlrlqlearningRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_range_min(s : MlrlqlearningRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_range_max(s : MlrlqlearningRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_range_max(s : MlrlqlearningRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_range_to_string(s : MlrlqlearningRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_rl_qlearning_slice_set(s : MlrlqlearningSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_rl_qlearning_slice_sum(s : MlrlqlearningSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_qlearning_slice_sum(s : MlrlqlearningSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_qlearning_slice_mean(s : MlrlqlearningSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_qlearning_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_qlearning_slice_mean(s : MlrlqlearningSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_qlearning_slice_scale(s : MlrlqlearningSlice, f : Double) -> MlrlqlearningSlice {
   let result = ml_rl_qlearning_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_rl_qlearning_slice_fill(s : MlrlqlearningSlice, v : Double) -> Mlrlqle
   result
 }
 
-pub fn ml_rl_qlearning_slice_min(s : MlrlqlearningSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_slice_min(s : MlrlqlearningSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_qlearning_slice_max(s : MlrlqlearningSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_qlearning_slice_max(s : MlrlqlearningSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_qlearning_slice_to_string(s : MlrlqlearningSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

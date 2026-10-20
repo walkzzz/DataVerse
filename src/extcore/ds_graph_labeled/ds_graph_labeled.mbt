@@ -88,11 +88,7 @@ pub fn ds_graph_labeled_make_series(vals : Array[Double], name : String) -> Dsgr
 
 pub fn ds_graph_labeled_series_len(s : DsgraphlabeledSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_labeled_series_sum(s : DsgraphlabeledSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_labeled_series_sum(s : DsgraphlabeledSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_labeled_series_mean(s : DsgraphlabeledSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_labeled_frame_set(s : DsgraphlabeledFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_labeled_frame_sum(s : DsgraphlabeledFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_frame_sum(s : DsgraphlabeledFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_frame_mean(s : DsgraphlabeledFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_frame_mean(s : DsgraphlabeledFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_frame_scale(s : DsgraphlabeledFrame, f : Double) -> DsgraphlabeledFrame {
   let result = ds_graph_labeled_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_labeled_frame_fill(s : DsgraphlabeledFrame, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_labeled_frame_min(s : DsgraphlabeledFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_frame_min(s : DsgraphlabeledFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_frame_max(s : DsgraphlabeledFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_frame_max(s : DsgraphlabeledFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_frame_to_string(s : DsgraphlabeledFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_labeled_table_set(s : DsgraphlabeledTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_labeled_table_sum(s : DsgraphlabeledTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_table_sum(s : DsgraphlabeledTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_table_mean(s : DsgraphlabeledTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_table_mean(s : DsgraphlabeledTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_table_scale(s : DsgraphlabeledTable, f : Double) -> DsgraphlabeledTable {
   let result = ds_graph_labeled_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_labeled_table_fill(s : DsgraphlabeledTable, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_labeled_table_min(s : DsgraphlabeledTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_table_min(s : DsgraphlabeledTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_table_max(s : DsgraphlabeledTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_table_max(s : DsgraphlabeledTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_table_to_string(s : DsgraphlabeledTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_labeled_graphn_set(s : DsgraphlabeledGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_labeled_graphn_sum(s : DsgraphlabeledGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_graphn_sum(s : DsgraphlabeledGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_graphn_mean(s : DsgraphlabeledGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_graphn_mean(s : DsgraphlabeledGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_graphn_scale(s : DsgraphlabeledGraphN, f : Double) -> DsgraphlabeledGraphN {
   let result = ds_graph_labeled_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_labeled_graphn_fill(s : DsgraphlabeledGraphN, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_labeled_graphn_min(s : DsgraphlabeledGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_graphn_min(s : DsgraphlabeledGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_graphn_max(s : DsgraphlabeledGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_graphn_max(s : DsgraphlabeledGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_graphn_to_string(s : DsgraphlabeledGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_labeled_node_set(s : DsgraphlabeledNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_labeled_node_sum(s : DsgraphlabeledNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_node_sum(s : DsgraphlabeledNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_node_mean(s : DsgraphlabeledNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_node_mean(s : DsgraphlabeledNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_node_scale(s : DsgraphlabeledNode, f : Double) -> DsgraphlabeledNode {
   let result = ds_graph_labeled_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_labeled_node_fill(s : DsgraphlabeledNode, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_labeled_node_min(s : DsgraphlabeledNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_node_min(s : DsgraphlabeledNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_node_max(s : DsgraphlabeledNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_node_max(s : DsgraphlabeledNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_node_to_string(s : DsgraphlabeledNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_labeled_edge_set(s : DsgraphlabeledEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_labeled_edge_sum(s : DsgraphlabeledEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_edge_sum(s : DsgraphlabeledEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_edge_mean(s : DsgraphlabeledEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_edge_mean(s : DsgraphlabeledEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_edge_scale(s : DsgraphlabeledEdge, f : Double) -> DsgraphlabeledEdge {
   let result = ds_graph_labeled_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_labeled_edge_fill(s : DsgraphlabeledEdge, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_labeled_edge_min(s : DsgraphlabeledEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_edge_min(s : DsgraphlabeledEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_edge_max(s : DsgraphlabeledEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_edge_max(s : DsgraphlabeledEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_edge_to_string(s : DsgraphlabeledEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_labeled_path_set(s : DsgraphlabeledPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_labeled_path_sum(s : DsgraphlabeledPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_path_sum(s : DsgraphlabeledPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_path_mean(s : DsgraphlabeledPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_path_mean(s : DsgraphlabeledPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_path_scale(s : DsgraphlabeledPath, f : Double) -> DsgraphlabeledPath {
   let result = ds_graph_labeled_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_labeled_path_fill(s : DsgraphlabeledPath, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_labeled_path_min(s : DsgraphlabeledPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_path_min(s : DsgraphlabeledPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_path_max(s : DsgraphlabeledPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_path_max(s : DsgraphlabeledPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_path_to_string(s : DsgraphlabeledPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_labeled_cluster_set(s : DsgraphlabeledCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_labeled_cluster_sum(s : DsgraphlabeledCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_cluster_sum(s : DsgraphlabeledCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_cluster_mean(s : DsgraphlabeledCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_cluster_mean(s : DsgraphlabeledCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_cluster_scale(s : DsgraphlabeledCluster, f : Double) -> DsgraphlabeledCluster {
   let result = ds_graph_labeled_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_labeled_cluster_fill(s : DsgraphlabeledCluster, v : Double) -> D
   result
 }
 
-pub fn ds_graph_labeled_cluster_min(s : DsgraphlabeledCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_cluster_min(s : DsgraphlabeledCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_cluster_max(s : DsgraphlabeledCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_cluster_max(s : DsgraphlabeledCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_cluster_to_string(s : DsgraphlabeledCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_labeled_model_set(s : DsgraphlabeledModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_labeled_model_sum(s : DsgraphlabeledModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_model_sum(s : DsgraphlabeledModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_model_mean(s : DsgraphlabeledModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_model_mean(s : DsgraphlabeledModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_model_scale(s : DsgraphlabeledModel, f : Double) -> DsgraphlabeledModel {
   let result = ds_graph_labeled_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_labeled_model_fill(s : DsgraphlabeledModel, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_labeled_model_min(s : DsgraphlabeledModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_model_min(s : DsgraphlabeledModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_model_max(s : DsgraphlabeledModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_model_max(s : DsgraphlabeledModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_model_to_string(s : DsgraphlabeledModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_labeled_layer_set(s : DsgraphlabeledLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_labeled_layer_sum(s : DsgraphlabeledLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_layer_sum(s : DsgraphlabeledLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_layer_mean(s : DsgraphlabeledLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_layer_mean(s : DsgraphlabeledLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_layer_scale(s : DsgraphlabeledLayer, f : Double) -> DsgraphlabeledLayer {
   let result = ds_graph_labeled_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_labeled_layer_fill(s : DsgraphlabeledLayer, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_labeled_layer_min(s : DsgraphlabeledLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_layer_min(s : DsgraphlabeledLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_layer_max(s : DsgraphlabeledLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_layer_max(s : DsgraphlabeledLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_layer_to_string(s : DsgraphlabeledLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_labeled_buffer_set(s : DsgraphlabeledBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_labeled_buffer_sum(s : DsgraphlabeledBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_buffer_sum(s : DsgraphlabeledBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_buffer_mean(s : DsgraphlabeledBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_buffer_mean(s : DsgraphlabeledBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_buffer_scale(s : DsgraphlabeledBuffer, f : Double) -> DsgraphlabeledBuffer {
   let result = ds_graph_labeled_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_labeled_buffer_fill(s : DsgraphlabeledBuffer, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_labeled_buffer_min(s : DsgraphlabeledBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_buffer_min(s : DsgraphlabeledBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_buffer_max(s : DsgraphlabeledBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_buffer_max(s : DsgraphlabeledBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_buffer_to_string(s : DsgraphlabeledBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_labeled_cursor_set(s : DsgraphlabeledCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_labeled_cursor_sum(s : DsgraphlabeledCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_cursor_sum(s : DsgraphlabeledCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_cursor_mean(s : DsgraphlabeledCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_cursor_mean(s : DsgraphlabeledCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_cursor_scale(s : DsgraphlabeledCursor, f : Double) -> DsgraphlabeledCursor {
   let result = ds_graph_labeled_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_labeled_cursor_fill(s : DsgraphlabeledCursor, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_labeled_cursor_min(s : DsgraphlabeledCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_cursor_min(s : DsgraphlabeledCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_cursor_max(s : DsgraphlabeledCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_cursor_max(s : DsgraphlabeledCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_cursor_to_string(s : DsgraphlabeledCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_labeled_view_set(s : DsgraphlabeledView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_labeled_view_sum(s : DsgraphlabeledView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_view_sum(s : DsgraphlabeledView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_view_mean(s : DsgraphlabeledView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_view_mean(s : DsgraphlabeledView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_view_scale(s : DsgraphlabeledView, f : Double) -> DsgraphlabeledView {
   let result = ds_graph_labeled_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_labeled_view_fill(s : DsgraphlabeledView, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_labeled_view_min(s : DsgraphlabeledView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_view_min(s : DsgraphlabeledView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_view_max(s : DsgraphlabeledView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_view_max(s : DsgraphlabeledView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_view_to_string(s : DsgraphlabeledView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_labeled_range_set(s : DsgraphlabeledRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_labeled_range_sum(s : DsgraphlabeledRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_range_sum(s : DsgraphlabeledRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_range_mean(s : DsgraphlabeledRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_range_mean(s : DsgraphlabeledRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_range_scale(s : DsgraphlabeledRange, f : Double) -> DsgraphlabeledRange {
   let result = ds_graph_labeled_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_labeled_range_fill(s : DsgraphlabeledRange, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_labeled_range_min(s : DsgraphlabeledRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_range_min(s : DsgraphlabeledRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_range_max(s : DsgraphlabeledRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_range_max(s : DsgraphlabeledRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_range_to_string(s : DsgraphlabeledRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_labeled_slice_set(s : DsgraphlabeledSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_labeled_slice_sum(s : DsgraphlabeledSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_labeled_slice_sum(s : DsgraphlabeledSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_labeled_slice_mean(s : DsgraphlabeledSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_labeled_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_labeled_slice_mean(s : DsgraphlabeledSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_labeled_slice_scale(s : DsgraphlabeledSlice, f : Double) -> DsgraphlabeledSlice {
   let result = ds_graph_labeled_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_labeled_slice_fill(s : DsgraphlabeledSlice, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_labeled_slice_min(s : DsgraphlabeledSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_slice_min(s : DsgraphlabeledSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_labeled_slice_max(s : DsgraphlabeledSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_labeled_slice_max(s : DsgraphlabeledSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_labeled_slice_to_string(s : DsgraphlabeledSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn physics_mechanics_kinematic_make_series(vals : Array[Double], name : Stri
 
 pub fn physics_mechanics_kinematic_series_len(s : PhysicsmechanicskinematicSeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_kinematic_series_sum(s : PhysicsmechanicskinematicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_series_sum(s : PhysicsmechanicskinematicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_kinematic_series_mean(s : PhysicsmechanicskinematicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_kinematic_frame_set(s : PhysicsmechanicskinematicFrame,
   result
 }
 
-pub fn physics_mechanics_kinematic_frame_sum(s : PhysicsmechanicskinematicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_frame_sum(s : PhysicsmechanicskinematicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_frame_mean(s : PhysicsmechanicskinematicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_frame_mean(s : PhysicsmechanicskinematicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_frame_scale(s : PhysicsmechanicskinematicFrame, f : Double) -> PhysicsmechanicskinematicFrame {
   let result = physics_mechanics_kinematic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_kinematic_frame_fill(s : PhysicsmechanicskinematicFrame
   result
 }
 
-pub fn physics_mechanics_kinematic_frame_min(s : PhysicsmechanicskinematicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_frame_min(s : PhysicsmechanicskinematicFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_frame_max(s : PhysicsmechanicskinematicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_frame_max(s : PhysicsmechanicskinematicFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_frame_to_string(s : PhysicsmechanicskinematicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_kinematic_table_set(s : PhysicsmechanicskinematicTable,
   result
 }
 
-pub fn physics_mechanics_kinematic_table_sum(s : PhysicsmechanicskinematicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_table_sum(s : PhysicsmechanicskinematicTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_table_mean(s : PhysicsmechanicskinematicTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_table_mean(s : PhysicsmechanicskinematicTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_table_scale(s : PhysicsmechanicskinematicTable, f : Double) -> PhysicsmechanicskinematicTable {
   let result = physics_mechanics_kinematic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_kinematic_table_fill(s : PhysicsmechanicskinematicTable
   result
 }
 
-pub fn physics_mechanics_kinematic_table_min(s : PhysicsmechanicskinematicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_table_min(s : PhysicsmechanicskinematicTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_table_max(s : PhysicsmechanicskinematicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_table_max(s : PhysicsmechanicskinematicTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_table_to_string(s : PhysicsmechanicskinematicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_kinematic_graphn_set(s : PhysicsmechanicskinematicGraph
   result
 }
 
-pub fn physics_mechanics_kinematic_graphn_sum(s : PhysicsmechanicskinematicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_graphn_sum(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_graphn_mean(s : PhysicsmechanicskinematicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_graphn_mean(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_graphn_scale(s : PhysicsmechanicskinematicGraphN, f : Double) -> PhysicsmechanicskinematicGraphN {
   let result = physics_mechanics_kinematic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_kinematic_graphn_fill(s : PhysicsmechanicskinematicGrap
   result
 }
 
-pub fn physics_mechanics_kinematic_graphn_min(s : PhysicsmechanicskinematicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_graphn_min(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_graphn_max(s : PhysicsmechanicskinematicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_graphn_max(s : PhysicsmechanicskinematicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_graphn_to_string(s : PhysicsmechanicskinematicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_kinematic_node_set(s : PhysicsmechanicskinematicNode, i
   result
 }
 
-pub fn physics_mechanics_kinematic_node_sum(s : PhysicsmechanicskinematicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_node_sum(s : PhysicsmechanicskinematicNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_node_mean(s : PhysicsmechanicskinematicNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_node_mean(s : PhysicsmechanicskinematicNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_node_scale(s : PhysicsmechanicskinematicNode, f : Double) -> PhysicsmechanicskinematicNode {
   let result = physics_mechanics_kinematic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_kinematic_node_fill(s : PhysicsmechanicskinematicNode, 
   result
 }
 
-pub fn physics_mechanics_kinematic_node_min(s : PhysicsmechanicskinematicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_node_min(s : PhysicsmechanicskinematicNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_node_max(s : PhysicsmechanicskinematicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_node_max(s : PhysicsmechanicskinematicNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_node_to_string(s : PhysicsmechanicskinematicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_kinematic_edge_set(s : PhysicsmechanicskinematicEdge, i
   result
 }
 
-pub fn physics_mechanics_kinematic_edge_sum(s : PhysicsmechanicskinematicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_edge_sum(s : PhysicsmechanicskinematicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_edge_mean(s : PhysicsmechanicskinematicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_edge_mean(s : PhysicsmechanicskinematicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_edge_scale(s : PhysicsmechanicskinematicEdge, f : Double) -> PhysicsmechanicskinematicEdge {
   let result = physics_mechanics_kinematic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_kinematic_edge_fill(s : PhysicsmechanicskinematicEdge, 
   result
 }
 
-pub fn physics_mechanics_kinematic_edge_min(s : PhysicsmechanicskinematicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_edge_min(s : PhysicsmechanicskinematicEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_edge_max(s : PhysicsmechanicskinematicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_edge_max(s : PhysicsmechanicskinematicEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_edge_to_string(s : PhysicsmechanicskinematicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_kinematic_path_set(s : PhysicsmechanicskinematicPath, i
   result
 }
 
-pub fn physics_mechanics_kinematic_path_sum(s : PhysicsmechanicskinematicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_path_sum(s : PhysicsmechanicskinematicPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_path_mean(s : PhysicsmechanicskinematicPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_path_mean(s : PhysicsmechanicskinematicPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_path_scale(s : PhysicsmechanicskinematicPath, f : Double) -> PhysicsmechanicskinematicPath {
   let result = physics_mechanics_kinematic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_kinematic_path_fill(s : PhysicsmechanicskinematicPath, 
   result
 }
 
-pub fn physics_mechanics_kinematic_path_min(s : PhysicsmechanicskinematicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_path_min(s : PhysicsmechanicskinematicPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_path_max(s : PhysicsmechanicskinematicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_path_max(s : PhysicsmechanicskinematicPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_path_to_string(s : PhysicsmechanicskinematicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_kinematic_cluster_set(s : PhysicsmechanicskinematicClus
   result
 }
 
-pub fn physics_mechanics_kinematic_cluster_sum(s : PhysicsmechanicskinematicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_cluster_sum(s : PhysicsmechanicskinematicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_cluster_mean(s : PhysicsmechanicskinematicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_cluster_mean(s : PhysicsmechanicskinematicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_cluster_scale(s : PhysicsmechanicskinematicCluster, f : Double) -> PhysicsmechanicskinematicCluster {
   let result = physics_mechanics_kinematic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_kinematic_cluster_fill(s : PhysicsmechanicskinematicClu
   result
 }
 
-pub fn physics_mechanics_kinematic_cluster_min(s : PhysicsmechanicskinematicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_cluster_min(s : PhysicsmechanicskinematicCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_cluster_max(s : PhysicsmechanicskinematicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_cluster_max(s : PhysicsmechanicskinematicCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_cluster_to_string(s : PhysicsmechanicskinematicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_kinematic_model_set(s : PhysicsmechanicskinematicModel,
   result
 }
 
-pub fn physics_mechanics_kinematic_model_sum(s : PhysicsmechanicskinematicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_model_sum(s : PhysicsmechanicskinematicModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_model_mean(s : PhysicsmechanicskinematicModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_model_mean(s : PhysicsmechanicskinematicModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_model_scale(s : PhysicsmechanicskinematicModel, f : Double) -> PhysicsmechanicskinematicModel {
   let result = physics_mechanics_kinematic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_kinematic_model_fill(s : PhysicsmechanicskinematicModel
   result
 }
 
-pub fn physics_mechanics_kinematic_model_min(s : PhysicsmechanicskinematicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_model_min(s : PhysicsmechanicskinematicModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_model_max(s : PhysicsmechanicskinematicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_model_max(s : PhysicsmechanicskinematicModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_model_to_string(s : PhysicsmechanicskinematicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_kinematic_layer_set(s : PhysicsmechanicskinematicLayer,
   result
 }
 
-pub fn physics_mechanics_kinematic_layer_sum(s : PhysicsmechanicskinematicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_layer_sum(s : PhysicsmechanicskinematicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_layer_mean(s : PhysicsmechanicskinematicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_layer_mean(s : PhysicsmechanicskinematicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_layer_scale(s : PhysicsmechanicskinematicLayer, f : Double) -> PhysicsmechanicskinematicLayer {
   let result = physics_mechanics_kinematic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_kinematic_layer_fill(s : PhysicsmechanicskinematicLayer
   result
 }
 
-pub fn physics_mechanics_kinematic_layer_min(s : PhysicsmechanicskinematicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_layer_min(s : PhysicsmechanicskinematicLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_layer_max(s : PhysicsmechanicskinematicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_layer_max(s : PhysicsmechanicskinematicLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_layer_to_string(s : PhysicsmechanicskinematicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_kinematic_buffer_set(s : PhysicsmechanicskinematicBuffe
   result
 }
 
-pub fn physics_mechanics_kinematic_buffer_sum(s : PhysicsmechanicskinematicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_buffer_sum(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_buffer_mean(s : PhysicsmechanicskinematicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_buffer_mean(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_buffer_scale(s : PhysicsmechanicskinematicBuffer, f : Double) -> PhysicsmechanicskinematicBuffer {
   let result = physics_mechanics_kinematic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_kinematic_buffer_fill(s : PhysicsmechanicskinematicBuff
   result
 }
 
-pub fn physics_mechanics_kinematic_buffer_min(s : PhysicsmechanicskinematicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_buffer_min(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_buffer_max(s : PhysicsmechanicskinematicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_buffer_max(s : PhysicsmechanicskinematicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_buffer_to_string(s : PhysicsmechanicskinematicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_kinematic_cursor_set(s : PhysicsmechanicskinematicCurso
   result
 }
 
-pub fn physics_mechanics_kinematic_cursor_sum(s : PhysicsmechanicskinematicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_cursor_sum(s : PhysicsmechanicskinematicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_cursor_mean(s : PhysicsmechanicskinematicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_cursor_mean(s : PhysicsmechanicskinematicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_cursor_scale(s : PhysicsmechanicskinematicCursor, f : Double) -> PhysicsmechanicskinematicCursor {
   let result = physics_mechanics_kinematic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_kinematic_cursor_fill(s : PhysicsmechanicskinematicCurs
   result
 }
 
-pub fn physics_mechanics_kinematic_cursor_min(s : PhysicsmechanicskinematicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_cursor_min(s : PhysicsmechanicskinematicCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_cursor_max(s : PhysicsmechanicskinematicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_cursor_max(s : PhysicsmechanicskinematicCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_cursor_to_string(s : PhysicsmechanicskinematicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_kinematic_view_set(s : PhysicsmechanicskinematicView, i
   result
 }
 
-pub fn physics_mechanics_kinematic_view_sum(s : PhysicsmechanicskinematicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_view_sum(s : PhysicsmechanicskinematicView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_view_mean(s : PhysicsmechanicskinematicView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_view_mean(s : PhysicsmechanicskinematicView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_view_scale(s : PhysicsmechanicskinematicView, f : Double) -> PhysicsmechanicskinematicView {
   let result = physics_mechanics_kinematic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_kinematic_view_fill(s : PhysicsmechanicskinematicView, 
   result
 }
 
-pub fn physics_mechanics_kinematic_view_min(s : PhysicsmechanicskinematicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_view_min(s : PhysicsmechanicskinematicView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_view_max(s : PhysicsmechanicskinematicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_view_max(s : PhysicsmechanicskinematicView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_view_to_string(s : PhysicsmechanicskinematicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_kinematic_range_set(s : PhysicsmechanicskinematicRange,
   result
 }
 
-pub fn physics_mechanics_kinematic_range_sum(s : PhysicsmechanicskinematicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_range_sum(s : PhysicsmechanicskinematicRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_range_mean(s : PhysicsmechanicskinematicRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_range_mean(s : PhysicsmechanicskinematicRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_range_scale(s : PhysicsmechanicskinematicRange, f : Double) -> PhysicsmechanicskinematicRange {
   let result = physics_mechanics_kinematic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_kinematic_range_fill(s : PhysicsmechanicskinematicRange
   result
 }
 
-pub fn physics_mechanics_kinematic_range_min(s : PhysicsmechanicskinematicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_range_min(s : PhysicsmechanicskinematicRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_range_max(s : PhysicsmechanicskinematicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_range_max(s : PhysicsmechanicskinematicRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_range_to_string(s : PhysicsmechanicskinematicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_kinematic_slice_set(s : PhysicsmechanicskinematicSlice,
   result
 }
 
-pub fn physics_mechanics_kinematic_slice_sum(s : PhysicsmechanicskinematicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_kinematic_slice_sum(s : PhysicsmechanicskinematicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_kinematic_slice_mean(s : PhysicsmechanicskinematicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_kinematic_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_kinematic_slice_mean(s : PhysicsmechanicskinematicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_kinematic_slice_scale(s : PhysicsmechanicskinematicSlice, f : Double) -> PhysicsmechanicskinematicSlice {
   let result = physics_mechanics_kinematic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_kinematic_slice_fill(s : PhysicsmechanicskinematicSlice
   result
 }
 
-pub fn physics_mechanics_kinematic_slice_min(s : PhysicsmechanicskinematicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_slice_min(s : PhysicsmechanicskinematicSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_kinematic_slice_max(s : PhysicsmechanicskinematicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_kinematic_slice_max(s : PhysicsmechanicskinematicSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_kinematic_slice_to_string(s : PhysicsmechanicskinematicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

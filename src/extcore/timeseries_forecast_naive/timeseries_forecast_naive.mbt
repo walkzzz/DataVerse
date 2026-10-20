@@ -88,11 +88,7 @@ pub fn timeseries_forecast_naive_make_series(vals : Array[Double], name : String
 
 pub fn timeseries_forecast_naive_series_len(s : TimeseriesforecastnaiveSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_naive_series_sum(s : TimeseriesforecastnaiveSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_naive_series_sum(s : TimeseriesforecastnaiveSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_naive_series_mean(s : TimeseriesforecastnaiveSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_naive_frame_set(s : TimeseriesforecastnaiveFrame, i :
   result
 }
 
-pub fn timeseries_forecast_naive_frame_sum(s : TimeseriesforecastnaiveFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_frame_sum(s : TimeseriesforecastnaiveFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_frame_mean(s : TimeseriesforecastnaiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_frame_mean(s : TimeseriesforecastnaiveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_frame_scale(s : TimeseriesforecastnaiveFrame, f : Double) -> TimeseriesforecastnaiveFrame {
   let result = timeseries_forecast_naive_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_naive_frame_fill(s : TimeseriesforecastnaiveFrame, v 
   result
 }
 
-pub fn timeseries_forecast_naive_frame_min(s : TimeseriesforecastnaiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_frame_min(s : TimeseriesforecastnaiveFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_frame_max(s : TimeseriesforecastnaiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_frame_max(s : TimeseriesforecastnaiveFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_frame_to_string(s : TimeseriesforecastnaiveFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_naive_table_set(s : TimeseriesforecastnaiveTable, i :
   result
 }
 
-pub fn timeseries_forecast_naive_table_sum(s : TimeseriesforecastnaiveTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_table_sum(s : TimeseriesforecastnaiveTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_table_mean(s : TimeseriesforecastnaiveTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_table_mean(s : TimeseriesforecastnaiveTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_table_scale(s : TimeseriesforecastnaiveTable, f : Double) -> TimeseriesforecastnaiveTable {
   let result = timeseries_forecast_naive_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_naive_table_fill(s : TimeseriesforecastnaiveTable, v 
   result
 }
 
-pub fn timeseries_forecast_naive_table_min(s : TimeseriesforecastnaiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_table_min(s : TimeseriesforecastnaiveTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_table_max(s : TimeseriesforecastnaiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_table_max(s : TimeseriesforecastnaiveTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_table_to_string(s : TimeseriesforecastnaiveTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_naive_graphn_set(s : TimeseriesforecastnaiveGraphN, i
   result
 }
 
-pub fn timeseries_forecast_naive_graphn_sum(s : TimeseriesforecastnaiveGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_graphn_sum(s : TimeseriesforecastnaiveGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_graphn_mean(s : TimeseriesforecastnaiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_graphn_mean(s : TimeseriesforecastnaiveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_graphn_scale(s : TimeseriesforecastnaiveGraphN, f : Double) -> TimeseriesforecastnaiveGraphN {
   let result = timeseries_forecast_naive_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_naive_graphn_fill(s : TimeseriesforecastnaiveGraphN, 
   result
 }
 
-pub fn timeseries_forecast_naive_graphn_min(s : TimeseriesforecastnaiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_graphn_min(s : TimeseriesforecastnaiveGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_graphn_max(s : TimeseriesforecastnaiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_graphn_max(s : TimeseriesforecastnaiveGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_graphn_to_string(s : TimeseriesforecastnaiveGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_naive_node_set(s : TimeseriesforecastnaiveNode, i : I
   result
 }
 
-pub fn timeseries_forecast_naive_node_sum(s : TimeseriesforecastnaiveNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_node_sum(s : TimeseriesforecastnaiveNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_node_mean(s : TimeseriesforecastnaiveNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_node_mean(s : TimeseriesforecastnaiveNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_node_scale(s : TimeseriesforecastnaiveNode, f : Double) -> TimeseriesforecastnaiveNode {
   let result = timeseries_forecast_naive_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_naive_node_fill(s : TimeseriesforecastnaiveNode, v : 
   result
 }
 
-pub fn timeseries_forecast_naive_node_min(s : TimeseriesforecastnaiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_node_min(s : TimeseriesforecastnaiveNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_node_max(s : TimeseriesforecastnaiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_node_max(s : TimeseriesforecastnaiveNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_node_to_string(s : TimeseriesforecastnaiveNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_naive_edge_set(s : TimeseriesforecastnaiveEdge, i : I
   result
 }
 
-pub fn timeseries_forecast_naive_edge_sum(s : TimeseriesforecastnaiveEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_edge_sum(s : TimeseriesforecastnaiveEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_edge_mean(s : TimeseriesforecastnaiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_edge_mean(s : TimeseriesforecastnaiveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_edge_scale(s : TimeseriesforecastnaiveEdge, f : Double) -> TimeseriesforecastnaiveEdge {
   let result = timeseries_forecast_naive_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_naive_edge_fill(s : TimeseriesforecastnaiveEdge, v : 
   result
 }
 
-pub fn timeseries_forecast_naive_edge_min(s : TimeseriesforecastnaiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_edge_min(s : TimeseriesforecastnaiveEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_edge_max(s : TimeseriesforecastnaiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_edge_max(s : TimeseriesforecastnaiveEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_edge_to_string(s : TimeseriesforecastnaiveEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_naive_path_set(s : TimeseriesforecastnaivePath, i : I
   result
 }
 
-pub fn timeseries_forecast_naive_path_sum(s : TimeseriesforecastnaivePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_path_sum(s : TimeseriesforecastnaivePath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_path_mean(s : TimeseriesforecastnaivePath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_path_mean(s : TimeseriesforecastnaivePath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_path_scale(s : TimeseriesforecastnaivePath, f : Double) -> TimeseriesforecastnaivePath {
   let result = timeseries_forecast_naive_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_naive_path_fill(s : TimeseriesforecastnaivePath, v : 
   result
 }
 
-pub fn timeseries_forecast_naive_path_min(s : TimeseriesforecastnaivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_path_min(s : TimeseriesforecastnaivePath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_path_max(s : TimeseriesforecastnaivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_path_max(s : TimeseriesforecastnaivePath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_path_to_string(s : TimeseriesforecastnaivePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_naive_cluster_set(s : TimeseriesforecastnaiveCluster,
   result
 }
 
-pub fn timeseries_forecast_naive_cluster_sum(s : TimeseriesforecastnaiveCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_cluster_sum(s : TimeseriesforecastnaiveCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_cluster_mean(s : TimeseriesforecastnaiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_cluster_mean(s : TimeseriesforecastnaiveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_cluster_scale(s : TimeseriesforecastnaiveCluster, f : Double) -> TimeseriesforecastnaiveCluster {
   let result = timeseries_forecast_naive_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_naive_cluster_fill(s : TimeseriesforecastnaiveCluster
   result
 }
 
-pub fn timeseries_forecast_naive_cluster_min(s : TimeseriesforecastnaiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_cluster_min(s : TimeseriesforecastnaiveCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_cluster_max(s : TimeseriesforecastnaiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_cluster_max(s : TimeseriesforecastnaiveCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_cluster_to_string(s : TimeseriesforecastnaiveCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_naive_model_set(s : TimeseriesforecastnaiveModel, i :
   result
 }
 
-pub fn timeseries_forecast_naive_model_sum(s : TimeseriesforecastnaiveModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_model_sum(s : TimeseriesforecastnaiveModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_model_mean(s : TimeseriesforecastnaiveModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_model_mean(s : TimeseriesforecastnaiveModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_model_scale(s : TimeseriesforecastnaiveModel, f : Double) -> TimeseriesforecastnaiveModel {
   let result = timeseries_forecast_naive_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_naive_model_fill(s : TimeseriesforecastnaiveModel, v 
   result
 }
 
-pub fn timeseries_forecast_naive_model_min(s : TimeseriesforecastnaiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_model_min(s : TimeseriesforecastnaiveModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_model_max(s : TimeseriesforecastnaiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_model_max(s : TimeseriesforecastnaiveModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_model_to_string(s : TimeseriesforecastnaiveModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_naive_layer_set(s : TimeseriesforecastnaiveLayer, i :
   result
 }
 
-pub fn timeseries_forecast_naive_layer_sum(s : TimeseriesforecastnaiveLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_layer_sum(s : TimeseriesforecastnaiveLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_layer_mean(s : TimeseriesforecastnaiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_layer_mean(s : TimeseriesforecastnaiveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_layer_scale(s : TimeseriesforecastnaiveLayer, f : Double) -> TimeseriesforecastnaiveLayer {
   let result = timeseries_forecast_naive_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_naive_layer_fill(s : TimeseriesforecastnaiveLayer, v 
   result
 }
 
-pub fn timeseries_forecast_naive_layer_min(s : TimeseriesforecastnaiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_layer_min(s : TimeseriesforecastnaiveLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_layer_max(s : TimeseriesforecastnaiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_layer_max(s : TimeseriesforecastnaiveLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_layer_to_string(s : TimeseriesforecastnaiveLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_naive_buffer_set(s : TimeseriesforecastnaiveBuffer, i
   result
 }
 
-pub fn timeseries_forecast_naive_buffer_sum(s : TimeseriesforecastnaiveBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_buffer_sum(s : TimeseriesforecastnaiveBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_buffer_mean(s : TimeseriesforecastnaiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_buffer_mean(s : TimeseriesforecastnaiveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_buffer_scale(s : TimeseriesforecastnaiveBuffer, f : Double) -> TimeseriesforecastnaiveBuffer {
   let result = timeseries_forecast_naive_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_naive_buffer_fill(s : TimeseriesforecastnaiveBuffer, 
   result
 }
 
-pub fn timeseries_forecast_naive_buffer_min(s : TimeseriesforecastnaiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_buffer_min(s : TimeseriesforecastnaiveBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_buffer_max(s : TimeseriesforecastnaiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_buffer_max(s : TimeseriesforecastnaiveBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_buffer_to_string(s : TimeseriesforecastnaiveBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_naive_cursor_set(s : TimeseriesforecastnaiveCursor, i
   result
 }
 
-pub fn timeseries_forecast_naive_cursor_sum(s : TimeseriesforecastnaiveCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_cursor_sum(s : TimeseriesforecastnaiveCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_cursor_mean(s : TimeseriesforecastnaiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_cursor_mean(s : TimeseriesforecastnaiveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_cursor_scale(s : TimeseriesforecastnaiveCursor, f : Double) -> TimeseriesforecastnaiveCursor {
   let result = timeseries_forecast_naive_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_naive_cursor_fill(s : TimeseriesforecastnaiveCursor, 
   result
 }
 
-pub fn timeseries_forecast_naive_cursor_min(s : TimeseriesforecastnaiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_cursor_min(s : TimeseriesforecastnaiveCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_cursor_max(s : TimeseriesforecastnaiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_cursor_max(s : TimeseriesforecastnaiveCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_cursor_to_string(s : TimeseriesforecastnaiveCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_naive_view_set(s : TimeseriesforecastnaiveView, i : I
   result
 }
 
-pub fn timeseries_forecast_naive_view_sum(s : TimeseriesforecastnaiveView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_view_sum(s : TimeseriesforecastnaiveView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_view_mean(s : TimeseriesforecastnaiveView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_view_mean(s : TimeseriesforecastnaiveView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_view_scale(s : TimeseriesforecastnaiveView, f : Double) -> TimeseriesforecastnaiveView {
   let result = timeseries_forecast_naive_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_naive_view_fill(s : TimeseriesforecastnaiveView, v : 
   result
 }
 
-pub fn timeseries_forecast_naive_view_min(s : TimeseriesforecastnaiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_view_min(s : TimeseriesforecastnaiveView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_view_max(s : TimeseriesforecastnaiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_view_max(s : TimeseriesforecastnaiveView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_view_to_string(s : TimeseriesforecastnaiveView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_naive_range_set(s : TimeseriesforecastnaiveRange, i :
   result
 }
 
-pub fn timeseries_forecast_naive_range_sum(s : TimeseriesforecastnaiveRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_range_sum(s : TimeseriesforecastnaiveRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_range_mean(s : TimeseriesforecastnaiveRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_range_mean(s : TimeseriesforecastnaiveRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_range_scale(s : TimeseriesforecastnaiveRange, f : Double) -> TimeseriesforecastnaiveRange {
   let result = timeseries_forecast_naive_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_naive_range_fill(s : TimeseriesforecastnaiveRange, v 
   result
 }
 
-pub fn timeseries_forecast_naive_range_min(s : TimeseriesforecastnaiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_range_min(s : TimeseriesforecastnaiveRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_range_max(s : TimeseriesforecastnaiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_range_max(s : TimeseriesforecastnaiveRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_range_to_string(s : TimeseriesforecastnaiveRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_naive_slice_set(s : TimeseriesforecastnaiveSlice, i :
   result
 }
 
-pub fn timeseries_forecast_naive_slice_sum(s : TimeseriesforecastnaiveSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_naive_slice_sum(s : TimeseriesforecastnaiveSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_naive_slice_mean(s : TimeseriesforecastnaiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_naive_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_naive_slice_mean(s : TimeseriesforecastnaiveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_naive_slice_scale(s : TimeseriesforecastnaiveSlice, f : Double) -> TimeseriesforecastnaiveSlice {
   let result = timeseries_forecast_naive_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_naive_slice_fill(s : TimeseriesforecastnaiveSlice, v 
   result
 }
 
-pub fn timeseries_forecast_naive_slice_min(s : TimeseriesforecastnaiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_slice_min(s : TimeseriesforecastnaiveSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_naive_slice_max(s : TimeseriesforecastnaiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_naive_slice_max(s : TimeseriesforecastnaiveSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_naive_slice_to_string(s : TimeseriesforecastnaiveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

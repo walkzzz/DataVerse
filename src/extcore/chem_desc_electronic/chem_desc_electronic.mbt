@@ -88,11 +88,7 @@ pub fn chem_desc_electronic_make_series(vals : Array[Double], name : String) -> 
 
 pub fn chem_desc_electronic_series_len(s : ChemdescelectronicSeries) -> Int { s.vals.length() }
 
-pub fn chem_desc_electronic_series_sum(s : ChemdescelectronicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_desc_electronic_series_sum(s : ChemdescelectronicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_desc_electronic_series_mean(s : ChemdescelectronicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_desc_electronic_frame_set(s : ChemdescelectronicFrame, i : Int, v : 
   result
 }
 
-pub fn chem_desc_electronic_frame_sum(s : ChemdescelectronicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_frame_sum(s : ChemdescelectronicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_frame_mean(s : ChemdescelectronicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_frame_mean(s : ChemdescelectronicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_frame_scale(s : ChemdescelectronicFrame, f : Double) -> ChemdescelectronicFrame {
   let result = chem_desc_electronic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_desc_electronic_frame_fill(s : ChemdescelectronicFrame, v : Double) 
   result
 }
 
-pub fn chem_desc_electronic_frame_min(s : ChemdescelectronicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_frame_min(s : ChemdescelectronicFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_frame_max(s : ChemdescelectronicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_frame_max(s : ChemdescelectronicFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_frame_to_string(s : ChemdescelectronicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_desc_electronic_table_set(s : ChemdescelectronicTable, i : Int, v : 
   result
 }
 
-pub fn chem_desc_electronic_table_sum(s : ChemdescelectronicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_table_sum(s : ChemdescelectronicTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_table_mean(s : ChemdescelectronicTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_table_mean(s : ChemdescelectronicTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_table_scale(s : ChemdescelectronicTable, f : Double) -> ChemdescelectronicTable {
   let result = chem_desc_electronic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_desc_electronic_table_fill(s : ChemdescelectronicTable, v : Double) 
   result
 }
 
-pub fn chem_desc_electronic_table_min(s : ChemdescelectronicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_table_min(s : ChemdescelectronicTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_table_max(s : ChemdescelectronicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_table_max(s : ChemdescelectronicTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_table_to_string(s : ChemdescelectronicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_desc_electronic_graphn_set(s : ChemdescelectronicGraphN, i : Int, v 
   result
 }
 
-pub fn chem_desc_electronic_graphn_sum(s : ChemdescelectronicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_graphn_sum(s : ChemdescelectronicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_graphn_mean(s : ChemdescelectronicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_graphn_mean(s : ChemdescelectronicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_graphn_scale(s : ChemdescelectronicGraphN, f : Double) -> ChemdescelectronicGraphN {
   let result = chem_desc_electronic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_desc_electronic_graphn_fill(s : ChemdescelectronicGraphN, v : Double
   result
 }
 
-pub fn chem_desc_electronic_graphn_min(s : ChemdescelectronicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_graphn_min(s : ChemdescelectronicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_graphn_max(s : ChemdescelectronicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_graphn_max(s : ChemdescelectronicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_graphn_to_string(s : ChemdescelectronicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_desc_electronic_node_set(s : ChemdescelectronicNode, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_electronic_node_sum(s : ChemdescelectronicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_node_sum(s : ChemdescelectronicNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_node_mean(s : ChemdescelectronicNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_node_mean(s : ChemdescelectronicNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_node_scale(s : ChemdescelectronicNode, f : Double) -> ChemdescelectronicNode {
   let result = chem_desc_electronic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_desc_electronic_node_fill(s : ChemdescelectronicNode, v : Double) ->
   result
 }
 
-pub fn chem_desc_electronic_node_min(s : ChemdescelectronicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_node_min(s : ChemdescelectronicNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_node_max(s : ChemdescelectronicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_node_max(s : ChemdescelectronicNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_node_to_string(s : ChemdescelectronicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_desc_electronic_edge_set(s : ChemdescelectronicEdge, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_electronic_edge_sum(s : ChemdescelectronicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_edge_sum(s : ChemdescelectronicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_edge_mean(s : ChemdescelectronicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_edge_mean(s : ChemdescelectronicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_edge_scale(s : ChemdescelectronicEdge, f : Double) -> ChemdescelectronicEdge {
   let result = chem_desc_electronic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_desc_electronic_edge_fill(s : ChemdescelectronicEdge, v : Double) ->
   result
 }
 
-pub fn chem_desc_electronic_edge_min(s : ChemdescelectronicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_edge_min(s : ChemdescelectronicEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_edge_max(s : ChemdescelectronicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_edge_max(s : ChemdescelectronicEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_edge_to_string(s : ChemdescelectronicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_desc_electronic_path_set(s : ChemdescelectronicPath, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_electronic_path_sum(s : ChemdescelectronicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_path_sum(s : ChemdescelectronicPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_path_mean(s : ChemdescelectronicPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_path_mean(s : ChemdescelectronicPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_path_scale(s : ChemdescelectronicPath, f : Double) -> ChemdescelectronicPath {
   let result = chem_desc_electronic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_desc_electronic_path_fill(s : ChemdescelectronicPath, v : Double) ->
   result
 }
 
-pub fn chem_desc_electronic_path_min(s : ChemdescelectronicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_path_min(s : ChemdescelectronicPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_path_max(s : ChemdescelectronicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_path_max(s : ChemdescelectronicPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_path_to_string(s : ChemdescelectronicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_desc_electronic_cluster_set(s : ChemdescelectronicCluster, i : Int, 
   result
 }
 
-pub fn chem_desc_electronic_cluster_sum(s : ChemdescelectronicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_cluster_sum(s : ChemdescelectronicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_cluster_mean(s : ChemdescelectronicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_cluster_mean(s : ChemdescelectronicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_cluster_scale(s : ChemdescelectronicCluster, f : Double) -> ChemdescelectronicCluster {
   let result = chem_desc_electronic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_desc_electronic_cluster_fill(s : ChemdescelectronicCluster, v : Doub
   result
 }
 
-pub fn chem_desc_electronic_cluster_min(s : ChemdescelectronicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_cluster_min(s : ChemdescelectronicCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_cluster_max(s : ChemdescelectronicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_cluster_max(s : ChemdescelectronicCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_cluster_to_string(s : ChemdescelectronicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_desc_electronic_model_set(s : ChemdescelectronicModel, i : Int, v : 
   result
 }
 
-pub fn chem_desc_electronic_model_sum(s : ChemdescelectronicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_model_sum(s : ChemdescelectronicModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_model_mean(s : ChemdescelectronicModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_model_mean(s : ChemdescelectronicModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_model_scale(s : ChemdescelectronicModel, f : Double) -> ChemdescelectronicModel {
   let result = chem_desc_electronic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_desc_electronic_model_fill(s : ChemdescelectronicModel, v : Double) 
   result
 }
 
-pub fn chem_desc_electronic_model_min(s : ChemdescelectronicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_model_min(s : ChemdescelectronicModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_model_max(s : ChemdescelectronicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_model_max(s : ChemdescelectronicModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_model_to_string(s : ChemdescelectronicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_desc_electronic_layer_set(s : ChemdescelectronicLayer, i : Int, v : 
   result
 }
 
-pub fn chem_desc_electronic_layer_sum(s : ChemdescelectronicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_layer_sum(s : ChemdescelectronicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_layer_mean(s : ChemdescelectronicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_layer_mean(s : ChemdescelectronicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_layer_scale(s : ChemdescelectronicLayer, f : Double) -> ChemdescelectronicLayer {
   let result = chem_desc_electronic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_desc_electronic_layer_fill(s : ChemdescelectronicLayer, v : Double) 
   result
 }
 
-pub fn chem_desc_electronic_layer_min(s : ChemdescelectronicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_layer_min(s : ChemdescelectronicLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_layer_max(s : ChemdescelectronicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_layer_max(s : ChemdescelectronicLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_layer_to_string(s : ChemdescelectronicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_desc_electronic_buffer_set(s : ChemdescelectronicBuffer, i : Int, v 
   result
 }
 
-pub fn chem_desc_electronic_buffer_sum(s : ChemdescelectronicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_buffer_sum(s : ChemdescelectronicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_buffer_mean(s : ChemdescelectronicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_buffer_mean(s : ChemdescelectronicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_buffer_scale(s : ChemdescelectronicBuffer, f : Double) -> ChemdescelectronicBuffer {
   let result = chem_desc_electronic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_desc_electronic_buffer_fill(s : ChemdescelectronicBuffer, v : Double
   result
 }
 
-pub fn chem_desc_electronic_buffer_min(s : ChemdescelectronicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_buffer_min(s : ChemdescelectronicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_buffer_max(s : ChemdescelectronicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_buffer_max(s : ChemdescelectronicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_buffer_to_string(s : ChemdescelectronicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_desc_electronic_cursor_set(s : ChemdescelectronicCursor, i : Int, v 
   result
 }
 
-pub fn chem_desc_electronic_cursor_sum(s : ChemdescelectronicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_cursor_sum(s : ChemdescelectronicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_cursor_mean(s : ChemdescelectronicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_cursor_mean(s : ChemdescelectronicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_cursor_scale(s : ChemdescelectronicCursor, f : Double) -> ChemdescelectronicCursor {
   let result = chem_desc_electronic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_desc_electronic_cursor_fill(s : ChemdescelectronicCursor, v : Double
   result
 }
 
-pub fn chem_desc_electronic_cursor_min(s : ChemdescelectronicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_cursor_min(s : ChemdescelectronicCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_cursor_max(s : ChemdescelectronicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_cursor_max(s : ChemdescelectronicCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_cursor_to_string(s : ChemdescelectronicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_desc_electronic_view_set(s : ChemdescelectronicView, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_electronic_view_sum(s : ChemdescelectronicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_view_sum(s : ChemdescelectronicView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_view_mean(s : ChemdescelectronicView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_view_mean(s : ChemdescelectronicView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_view_scale(s : ChemdescelectronicView, f : Double) -> ChemdescelectronicView {
   let result = chem_desc_electronic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_desc_electronic_view_fill(s : ChemdescelectronicView, v : Double) ->
   result
 }
 
-pub fn chem_desc_electronic_view_min(s : ChemdescelectronicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_view_min(s : ChemdescelectronicView) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_view_max(s : ChemdescelectronicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_view_max(s : ChemdescelectronicView) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_view_to_string(s : ChemdescelectronicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_desc_electronic_range_set(s : ChemdescelectronicRange, i : Int, v : 
   result
 }
 
-pub fn chem_desc_electronic_range_sum(s : ChemdescelectronicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_range_sum(s : ChemdescelectronicRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_range_mean(s : ChemdescelectronicRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_range_mean(s : ChemdescelectronicRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_range_scale(s : ChemdescelectronicRange, f : Double) -> ChemdescelectronicRange {
   let result = chem_desc_electronic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_desc_electronic_range_fill(s : ChemdescelectronicRange, v : Double) 
   result
 }
 
-pub fn chem_desc_electronic_range_min(s : ChemdescelectronicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_range_min(s : ChemdescelectronicRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_range_max(s : ChemdescelectronicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_range_max(s : ChemdescelectronicRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_range_to_string(s : ChemdescelectronicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_desc_electronic_slice_set(s : ChemdescelectronicSlice, i : Int, v : 
   result
 }
 
-pub fn chem_desc_electronic_slice_sum(s : ChemdescelectronicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_electronic_slice_sum(s : ChemdescelectronicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_electronic_slice_mean(s : ChemdescelectronicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_electronic_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_electronic_slice_mean(s : ChemdescelectronicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_electronic_slice_scale(s : ChemdescelectronicSlice, f : Double) -> ChemdescelectronicSlice {
   let result = chem_desc_electronic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_desc_electronic_slice_fill(s : ChemdescelectronicSlice, v : Double) 
   result
 }
 
-pub fn chem_desc_electronic_slice_min(s : ChemdescelectronicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_slice_min(s : ChemdescelectronicSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_electronic_slice_max(s : ChemdescelectronicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_electronic_slice_max(s : ChemdescelectronicSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_electronic_slice_to_string(s : ChemdescelectronicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn stats_dist_exponential_make_series(vals : Array[Double], name : String) -
 
 pub fn stats_dist_exponential_series_len(s : StatsdistexponentialSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_exponential_series_sum(s : StatsdistexponentialSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_exponential_series_sum(s : StatsdistexponentialSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_exponential_series_mean(s : StatsdistexponentialSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_exponential_frame_set(s : StatsdistexponentialFrame, i : Int, 
   result
 }
 
-pub fn stats_dist_exponential_frame_sum(s : StatsdistexponentialFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_frame_sum(s : StatsdistexponentialFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_frame_mean(s : StatsdistexponentialFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_frame_mean(s : StatsdistexponentialFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_frame_scale(s : StatsdistexponentialFrame, f : Double) -> StatsdistexponentialFrame {
   let result = stats_dist_exponential_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_exponential_frame_fill(s : StatsdistexponentialFrame, v : Doub
   result
 }
 
-pub fn stats_dist_exponential_frame_min(s : StatsdistexponentialFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_frame_min(s : StatsdistexponentialFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_frame_max(s : StatsdistexponentialFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_frame_max(s : StatsdistexponentialFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_frame_to_string(s : StatsdistexponentialFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_exponential_table_set(s : StatsdistexponentialTable, i : Int, 
   result
 }
 
-pub fn stats_dist_exponential_table_sum(s : StatsdistexponentialTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_table_sum(s : StatsdistexponentialTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_table_mean(s : StatsdistexponentialTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_table_mean(s : StatsdistexponentialTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_table_scale(s : StatsdistexponentialTable, f : Double) -> StatsdistexponentialTable {
   let result = stats_dist_exponential_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_exponential_table_fill(s : StatsdistexponentialTable, v : Doub
   result
 }
 
-pub fn stats_dist_exponential_table_min(s : StatsdistexponentialTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_table_min(s : StatsdistexponentialTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_table_max(s : StatsdistexponentialTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_table_max(s : StatsdistexponentialTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_table_to_string(s : StatsdistexponentialTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_exponential_graphn_set(s : StatsdistexponentialGraphN, i : Int
   result
 }
 
-pub fn stats_dist_exponential_graphn_sum(s : StatsdistexponentialGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_graphn_sum(s : StatsdistexponentialGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_graphn_mean(s : StatsdistexponentialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_graphn_mean(s : StatsdistexponentialGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_graphn_scale(s : StatsdistexponentialGraphN, f : Double) -> StatsdistexponentialGraphN {
   let result = stats_dist_exponential_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_exponential_graphn_fill(s : StatsdistexponentialGraphN, v : Do
   result
 }
 
-pub fn stats_dist_exponential_graphn_min(s : StatsdistexponentialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_graphn_min(s : StatsdistexponentialGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_graphn_max(s : StatsdistexponentialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_graphn_max(s : StatsdistexponentialGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_graphn_to_string(s : StatsdistexponentialGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_exponential_node_set(s : StatsdistexponentialNode, i : Int, v 
   result
 }
 
-pub fn stats_dist_exponential_node_sum(s : StatsdistexponentialNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_node_sum(s : StatsdistexponentialNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_node_mean(s : StatsdistexponentialNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_node_mean(s : StatsdistexponentialNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_node_scale(s : StatsdistexponentialNode, f : Double) -> StatsdistexponentialNode {
   let result = stats_dist_exponential_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_exponential_node_fill(s : StatsdistexponentialNode, v : Double
   result
 }
 
-pub fn stats_dist_exponential_node_min(s : StatsdistexponentialNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_node_min(s : StatsdistexponentialNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_node_max(s : StatsdistexponentialNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_node_max(s : StatsdistexponentialNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_node_to_string(s : StatsdistexponentialNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_exponential_edge_set(s : StatsdistexponentialEdge, i : Int, v 
   result
 }
 
-pub fn stats_dist_exponential_edge_sum(s : StatsdistexponentialEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_edge_sum(s : StatsdistexponentialEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_edge_mean(s : StatsdistexponentialEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_edge_mean(s : StatsdistexponentialEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_edge_scale(s : StatsdistexponentialEdge, f : Double) -> StatsdistexponentialEdge {
   let result = stats_dist_exponential_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_exponential_edge_fill(s : StatsdistexponentialEdge, v : Double
   result
 }
 
-pub fn stats_dist_exponential_edge_min(s : StatsdistexponentialEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_edge_min(s : StatsdistexponentialEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_edge_max(s : StatsdistexponentialEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_edge_max(s : StatsdistexponentialEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_edge_to_string(s : StatsdistexponentialEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_exponential_path_set(s : StatsdistexponentialPath, i : Int, v 
   result
 }
 
-pub fn stats_dist_exponential_path_sum(s : StatsdistexponentialPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_path_sum(s : StatsdistexponentialPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_path_mean(s : StatsdistexponentialPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_path_mean(s : StatsdistexponentialPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_path_scale(s : StatsdistexponentialPath, f : Double) -> StatsdistexponentialPath {
   let result = stats_dist_exponential_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_exponential_path_fill(s : StatsdistexponentialPath, v : Double
   result
 }
 
-pub fn stats_dist_exponential_path_min(s : StatsdistexponentialPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_path_min(s : StatsdistexponentialPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_path_max(s : StatsdistexponentialPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_path_max(s : StatsdistexponentialPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_path_to_string(s : StatsdistexponentialPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_exponential_cluster_set(s : StatsdistexponentialCluster, i : I
   result
 }
 
-pub fn stats_dist_exponential_cluster_sum(s : StatsdistexponentialCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_cluster_sum(s : StatsdistexponentialCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_cluster_mean(s : StatsdistexponentialCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_cluster_mean(s : StatsdistexponentialCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_cluster_scale(s : StatsdistexponentialCluster, f : Double) -> StatsdistexponentialCluster {
   let result = stats_dist_exponential_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_exponential_cluster_fill(s : StatsdistexponentialCluster, v : 
   result
 }
 
-pub fn stats_dist_exponential_cluster_min(s : StatsdistexponentialCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_cluster_min(s : StatsdistexponentialCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_cluster_max(s : StatsdistexponentialCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_cluster_max(s : StatsdistexponentialCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_cluster_to_string(s : StatsdistexponentialCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_exponential_model_set(s : StatsdistexponentialModel, i : Int, 
   result
 }
 
-pub fn stats_dist_exponential_model_sum(s : StatsdistexponentialModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_model_sum(s : StatsdistexponentialModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_model_mean(s : StatsdistexponentialModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_model_mean(s : StatsdistexponentialModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_model_scale(s : StatsdistexponentialModel, f : Double) -> StatsdistexponentialModel {
   let result = stats_dist_exponential_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_exponential_model_fill(s : StatsdistexponentialModel, v : Doub
   result
 }
 
-pub fn stats_dist_exponential_model_min(s : StatsdistexponentialModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_model_min(s : StatsdistexponentialModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_model_max(s : StatsdistexponentialModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_model_max(s : StatsdistexponentialModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_model_to_string(s : StatsdistexponentialModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_exponential_layer_set(s : StatsdistexponentialLayer, i : Int, 
   result
 }
 
-pub fn stats_dist_exponential_layer_sum(s : StatsdistexponentialLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_layer_sum(s : StatsdistexponentialLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_layer_mean(s : StatsdistexponentialLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_layer_mean(s : StatsdistexponentialLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_layer_scale(s : StatsdistexponentialLayer, f : Double) -> StatsdistexponentialLayer {
   let result = stats_dist_exponential_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_exponential_layer_fill(s : StatsdistexponentialLayer, v : Doub
   result
 }
 
-pub fn stats_dist_exponential_layer_min(s : StatsdistexponentialLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_layer_min(s : StatsdistexponentialLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_layer_max(s : StatsdistexponentialLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_layer_max(s : StatsdistexponentialLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_layer_to_string(s : StatsdistexponentialLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_exponential_buffer_set(s : StatsdistexponentialBuffer, i : Int
   result
 }
 
-pub fn stats_dist_exponential_buffer_sum(s : StatsdistexponentialBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_buffer_sum(s : StatsdistexponentialBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_buffer_mean(s : StatsdistexponentialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_buffer_mean(s : StatsdistexponentialBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_buffer_scale(s : StatsdistexponentialBuffer, f : Double) -> StatsdistexponentialBuffer {
   let result = stats_dist_exponential_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_exponential_buffer_fill(s : StatsdistexponentialBuffer, v : Do
   result
 }
 
-pub fn stats_dist_exponential_buffer_min(s : StatsdistexponentialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_buffer_min(s : StatsdistexponentialBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_buffer_max(s : StatsdistexponentialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_buffer_max(s : StatsdistexponentialBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_buffer_to_string(s : StatsdistexponentialBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_exponential_cursor_set(s : StatsdistexponentialCursor, i : Int
   result
 }
 
-pub fn stats_dist_exponential_cursor_sum(s : StatsdistexponentialCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_cursor_sum(s : StatsdistexponentialCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_cursor_mean(s : StatsdistexponentialCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_cursor_mean(s : StatsdistexponentialCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_cursor_scale(s : StatsdistexponentialCursor, f : Double) -> StatsdistexponentialCursor {
   let result = stats_dist_exponential_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_exponential_cursor_fill(s : StatsdistexponentialCursor, v : Do
   result
 }
 
-pub fn stats_dist_exponential_cursor_min(s : StatsdistexponentialCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_cursor_min(s : StatsdistexponentialCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_cursor_max(s : StatsdistexponentialCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_cursor_max(s : StatsdistexponentialCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_cursor_to_string(s : StatsdistexponentialCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_exponential_view_set(s : StatsdistexponentialView, i : Int, v 
   result
 }
 
-pub fn stats_dist_exponential_view_sum(s : StatsdistexponentialView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_view_sum(s : StatsdistexponentialView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_view_mean(s : StatsdistexponentialView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_view_mean(s : StatsdistexponentialView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_view_scale(s : StatsdistexponentialView, f : Double) -> StatsdistexponentialView {
   let result = stats_dist_exponential_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_exponential_view_fill(s : StatsdistexponentialView, v : Double
   result
 }
 
-pub fn stats_dist_exponential_view_min(s : StatsdistexponentialView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_view_min(s : StatsdistexponentialView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_view_max(s : StatsdistexponentialView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_view_max(s : StatsdistexponentialView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_view_to_string(s : StatsdistexponentialView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_exponential_range_set(s : StatsdistexponentialRange, i : Int, 
   result
 }
 
-pub fn stats_dist_exponential_range_sum(s : StatsdistexponentialRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_range_sum(s : StatsdistexponentialRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_range_mean(s : StatsdistexponentialRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_range_mean(s : StatsdistexponentialRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_range_scale(s : StatsdistexponentialRange, f : Double) -> StatsdistexponentialRange {
   let result = stats_dist_exponential_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_exponential_range_fill(s : StatsdistexponentialRange, v : Doub
   result
 }
 
-pub fn stats_dist_exponential_range_min(s : StatsdistexponentialRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_range_min(s : StatsdistexponentialRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_range_max(s : StatsdistexponentialRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_range_max(s : StatsdistexponentialRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_range_to_string(s : StatsdistexponentialRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_exponential_slice_set(s : StatsdistexponentialSlice, i : Int, 
   result
 }
 
-pub fn stats_dist_exponential_slice_sum(s : StatsdistexponentialSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_exponential_slice_sum(s : StatsdistexponentialSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_exponential_slice_mean(s : StatsdistexponentialSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_exponential_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_exponential_slice_mean(s : StatsdistexponentialSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_exponential_slice_scale(s : StatsdistexponentialSlice, f : Double) -> StatsdistexponentialSlice {
   let result = stats_dist_exponential_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_exponential_slice_fill(s : StatsdistexponentialSlice, v : Doub
   result
 }
 
-pub fn stats_dist_exponential_slice_min(s : StatsdistexponentialSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_slice_min(s : StatsdistexponentialSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_exponential_slice_max(s : StatsdistexponentialSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_exponential_slice_max(s : StatsdistexponentialSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_exponential_slice_to_string(s : StatsdistexponentialSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn signal_filter_iir_make_series(vals : Array[Double], name : String) -> Sig
 
 pub fn signal_filter_iir_series_len(s : SignalfilteriirSeries) -> Int { s.vals.length() }
 
-pub fn signal_filter_iir_series_sum(s : SignalfilteriirSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_iir_series_sum(s : SignalfilteriirSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_iir_series_mean(s : SignalfilteriirSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_iir_frame_set(s : SignalfilteriirFrame, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_iir_frame_sum(s : SignalfilteriirFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_frame_sum(s : SignalfilteriirFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_frame_mean(s : SignalfilteriirFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_frame_mean(s : SignalfilteriirFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_frame_scale(s : SignalfilteriirFrame, f : Double) -> SignalfilteriirFrame {
   let result = signal_filter_iir_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_iir_frame_fill(s : SignalfilteriirFrame, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_iir_frame_min(s : SignalfilteriirFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_frame_min(s : SignalfilteriirFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_frame_max(s : SignalfilteriirFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_frame_max(s : SignalfilteriirFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_frame_to_string(s : SignalfilteriirFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_iir_table_set(s : SignalfilteriirTable, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_iir_table_sum(s : SignalfilteriirTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_table_sum(s : SignalfilteriirTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_table_mean(s : SignalfilteriirTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_table_mean(s : SignalfilteriirTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_table_scale(s : SignalfilteriirTable, f : Double) -> SignalfilteriirTable {
   let result = signal_filter_iir_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_iir_table_fill(s : SignalfilteriirTable, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_iir_table_min(s : SignalfilteriirTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_table_min(s : SignalfilteriirTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_table_max(s : SignalfilteriirTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_table_max(s : SignalfilteriirTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_table_to_string(s : SignalfilteriirTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_iir_graphn_set(s : SignalfilteriirGraphN, i : Int, v : Doub
   result
 }
 
-pub fn signal_filter_iir_graphn_sum(s : SignalfilteriirGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_graphn_sum(s : SignalfilteriirGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_graphn_mean(s : SignalfilteriirGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_graphn_mean(s : SignalfilteriirGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_graphn_scale(s : SignalfilteriirGraphN, f : Double) -> SignalfilteriirGraphN {
   let result = signal_filter_iir_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_iir_graphn_fill(s : SignalfilteriirGraphN, v : Double) -> S
   result
 }
 
-pub fn signal_filter_iir_graphn_min(s : SignalfilteriirGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_graphn_min(s : SignalfilteriirGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_graphn_max(s : SignalfilteriirGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_graphn_max(s : SignalfilteriirGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_graphn_to_string(s : SignalfilteriirGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_iir_node_set(s : SignalfilteriirNode, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_iir_node_sum(s : SignalfilteriirNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_node_sum(s : SignalfilteriirNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_node_mean(s : SignalfilteriirNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_node_mean(s : SignalfilteriirNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_node_scale(s : SignalfilteriirNode, f : Double) -> SignalfilteriirNode {
   let result = signal_filter_iir_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_iir_node_fill(s : SignalfilteriirNode, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_iir_node_min(s : SignalfilteriirNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_node_min(s : SignalfilteriirNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_node_max(s : SignalfilteriirNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_node_max(s : SignalfilteriirNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_node_to_string(s : SignalfilteriirNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_iir_edge_set(s : SignalfilteriirEdge, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_iir_edge_sum(s : SignalfilteriirEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_edge_sum(s : SignalfilteriirEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_edge_mean(s : SignalfilteriirEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_edge_mean(s : SignalfilteriirEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_edge_scale(s : SignalfilteriirEdge, f : Double) -> SignalfilteriirEdge {
   let result = signal_filter_iir_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_iir_edge_fill(s : SignalfilteriirEdge, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_iir_edge_min(s : SignalfilteriirEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_edge_min(s : SignalfilteriirEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_edge_max(s : SignalfilteriirEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_edge_max(s : SignalfilteriirEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_edge_to_string(s : SignalfilteriirEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_iir_path_set(s : SignalfilteriirPath, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_iir_path_sum(s : SignalfilteriirPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_path_sum(s : SignalfilteriirPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_path_mean(s : SignalfilteriirPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_path_mean(s : SignalfilteriirPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_path_scale(s : SignalfilteriirPath, f : Double) -> SignalfilteriirPath {
   let result = signal_filter_iir_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_iir_path_fill(s : SignalfilteriirPath, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_iir_path_min(s : SignalfilteriirPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_path_min(s : SignalfilteriirPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_path_max(s : SignalfilteriirPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_path_max(s : SignalfilteriirPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_path_to_string(s : SignalfilteriirPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_iir_cluster_set(s : SignalfilteriirCluster, i : Int, v : Do
   result
 }
 
-pub fn signal_filter_iir_cluster_sum(s : SignalfilteriirCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_cluster_sum(s : SignalfilteriirCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_cluster_mean(s : SignalfilteriirCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_cluster_mean(s : SignalfilteriirCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_cluster_scale(s : SignalfilteriirCluster, f : Double) -> SignalfilteriirCluster {
   let result = signal_filter_iir_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_iir_cluster_fill(s : SignalfilteriirCluster, v : Double) ->
   result
 }
 
-pub fn signal_filter_iir_cluster_min(s : SignalfilteriirCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_cluster_min(s : SignalfilteriirCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_cluster_max(s : SignalfilteriirCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_cluster_max(s : SignalfilteriirCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_cluster_to_string(s : SignalfilteriirCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_iir_model_set(s : SignalfilteriirModel, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_iir_model_sum(s : SignalfilteriirModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_model_sum(s : SignalfilteriirModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_model_mean(s : SignalfilteriirModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_model_mean(s : SignalfilteriirModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_model_scale(s : SignalfilteriirModel, f : Double) -> SignalfilteriirModel {
   let result = signal_filter_iir_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_iir_model_fill(s : SignalfilteriirModel, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_iir_model_min(s : SignalfilteriirModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_model_min(s : SignalfilteriirModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_model_max(s : SignalfilteriirModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_model_max(s : SignalfilteriirModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_model_to_string(s : SignalfilteriirModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_iir_layer_set(s : SignalfilteriirLayer, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_iir_layer_sum(s : SignalfilteriirLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_layer_sum(s : SignalfilteriirLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_layer_mean(s : SignalfilteriirLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_layer_mean(s : SignalfilteriirLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_layer_scale(s : SignalfilteriirLayer, f : Double) -> SignalfilteriirLayer {
   let result = signal_filter_iir_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_iir_layer_fill(s : SignalfilteriirLayer, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_iir_layer_min(s : SignalfilteriirLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_layer_min(s : SignalfilteriirLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_layer_max(s : SignalfilteriirLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_layer_max(s : SignalfilteriirLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_layer_to_string(s : SignalfilteriirLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_iir_buffer_set(s : SignalfilteriirBuffer, i : Int, v : Doub
   result
 }
 
-pub fn signal_filter_iir_buffer_sum(s : SignalfilteriirBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_buffer_sum(s : SignalfilteriirBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_buffer_mean(s : SignalfilteriirBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_buffer_mean(s : SignalfilteriirBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_buffer_scale(s : SignalfilteriirBuffer, f : Double) -> SignalfilteriirBuffer {
   let result = signal_filter_iir_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_iir_buffer_fill(s : SignalfilteriirBuffer, v : Double) -> S
   result
 }
 
-pub fn signal_filter_iir_buffer_min(s : SignalfilteriirBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_buffer_min(s : SignalfilteriirBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_buffer_max(s : SignalfilteriirBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_buffer_max(s : SignalfilteriirBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_buffer_to_string(s : SignalfilteriirBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_iir_cursor_set(s : SignalfilteriirCursor, i : Int, v : Doub
   result
 }
 
-pub fn signal_filter_iir_cursor_sum(s : SignalfilteriirCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_cursor_sum(s : SignalfilteriirCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_cursor_mean(s : SignalfilteriirCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_cursor_mean(s : SignalfilteriirCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_cursor_scale(s : SignalfilteriirCursor, f : Double) -> SignalfilteriirCursor {
   let result = signal_filter_iir_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_iir_cursor_fill(s : SignalfilteriirCursor, v : Double) -> S
   result
 }
 
-pub fn signal_filter_iir_cursor_min(s : SignalfilteriirCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_cursor_min(s : SignalfilteriirCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_cursor_max(s : SignalfilteriirCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_cursor_max(s : SignalfilteriirCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_cursor_to_string(s : SignalfilteriirCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_iir_view_set(s : SignalfilteriirView, i : Int, v : Double) 
   result
 }
 
-pub fn signal_filter_iir_view_sum(s : SignalfilteriirView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_view_sum(s : SignalfilteriirView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_view_mean(s : SignalfilteriirView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_view_mean(s : SignalfilteriirView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_view_scale(s : SignalfilteriirView, f : Double) -> SignalfilteriirView {
   let result = signal_filter_iir_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_iir_view_fill(s : SignalfilteriirView, v : Double) -> Signa
   result
 }
 
-pub fn signal_filter_iir_view_min(s : SignalfilteriirView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_view_min(s : SignalfilteriirView) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_view_max(s : SignalfilteriirView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_view_max(s : SignalfilteriirView) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_view_to_string(s : SignalfilteriirView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_iir_range_set(s : SignalfilteriirRange, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_iir_range_sum(s : SignalfilteriirRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_range_sum(s : SignalfilteriirRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_range_mean(s : SignalfilteriirRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_range_mean(s : SignalfilteriirRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_range_scale(s : SignalfilteriirRange, f : Double) -> SignalfilteriirRange {
   let result = signal_filter_iir_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_iir_range_fill(s : SignalfilteriirRange, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_iir_range_min(s : SignalfilteriirRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_range_min(s : SignalfilteriirRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_range_max(s : SignalfilteriirRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_range_max(s : SignalfilteriirRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_range_to_string(s : SignalfilteriirRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_iir_slice_set(s : SignalfilteriirSlice, i : Int, v : Double
   result
 }
 
-pub fn signal_filter_iir_slice_sum(s : SignalfilteriirSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_iir_slice_sum(s : SignalfilteriirSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_iir_slice_mean(s : SignalfilteriirSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_iir_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_iir_slice_mean(s : SignalfilteriirSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_iir_slice_scale(s : SignalfilteriirSlice, f : Double) -> SignalfilteriirSlice {
   let result = signal_filter_iir_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_iir_slice_fill(s : SignalfilteriirSlice, v : Double) -> Sig
   result
 }
 
-pub fn signal_filter_iir_slice_min(s : SignalfilteriirSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_slice_min(s : SignalfilteriirSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_iir_slice_max(s : SignalfilteriirSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_iir_slice_max(s : SignalfilteriirSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_iir_slice_to_string(s : SignalfilteriirSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

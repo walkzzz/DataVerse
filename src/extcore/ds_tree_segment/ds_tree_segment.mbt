@@ -88,11 +88,7 @@ pub fn ds_tree_segment_make_series(vals : Array[Double], name : String) -> Dstre
 
 pub fn ds_tree_segment_series_len(s : DstreesegmentSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_segment_series_sum(s : DstreesegmentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_segment_series_sum(s : DstreesegmentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_segment_series_mean(s : DstreesegmentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_segment_frame_set(s : DstreesegmentFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_segment_frame_sum(s : DstreesegmentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_frame_sum(s : DstreesegmentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_frame_mean(s : DstreesegmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_frame_mean(s : DstreesegmentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_frame_scale(s : DstreesegmentFrame, f : Double) -> DstreesegmentFrame {
   let result = ds_tree_segment_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_segment_frame_fill(s : DstreesegmentFrame, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_segment_frame_min(s : DstreesegmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_frame_min(s : DstreesegmentFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_frame_max(s : DstreesegmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_frame_max(s : DstreesegmentFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_frame_to_string(s : DstreesegmentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_segment_table_set(s : DstreesegmentTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_segment_table_sum(s : DstreesegmentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_table_sum(s : DstreesegmentTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_table_mean(s : DstreesegmentTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_table_mean(s : DstreesegmentTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_table_scale(s : DstreesegmentTable, f : Double) -> DstreesegmentTable {
   let result = ds_tree_segment_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_segment_table_fill(s : DstreesegmentTable, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_segment_table_min(s : DstreesegmentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_table_min(s : DstreesegmentTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_table_max(s : DstreesegmentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_table_max(s : DstreesegmentTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_table_to_string(s : DstreesegmentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_segment_graphn_set(s : DstreesegmentGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_segment_graphn_sum(s : DstreesegmentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_graphn_sum(s : DstreesegmentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_graphn_mean(s : DstreesegmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_graphn_mean(s : DstreesegmentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_graphn_scale(s : DstreesegmentGraphN, f : Double) -> DstreesegmentGraphN {
   let result = ds_tree_segment_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_segment_graphn_fill(s : DstreesegmentGraphN, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_segment_graphn_min(s : DstreesegmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_graphn_min(s : DstreesegmentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_graphn_max(s : DstreesegmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_graphn_max(s : DstreesegmentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_graphn_to_string(s : DstreesegmentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_segment_node_set(s : DstreesegmentNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_segment_node_sum(s : DstreesegmentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_node_sum(s : DstreesegmentNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_node_mean(s : DstreesegmentNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_node_mean(s : DstreesegmentNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_node_scale(s : DstreesegmentNode, f : Double) -> DstreesegmentNode {
   let result = ds_tree_segment_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_segment_node_fill(s : DstreesegmentNode, v : Double) -> Dstreeseg
   result
 }
 
-pub fn ds_tree_segment_node_min(s : DstreesegmentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_node_min(s : DstreesegmentNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_node_max(s : DstreesegmentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_node_max(s : DstreesegmentNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_node_to_string(s : DstreesegmentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_segment_edge_set(s : DstreesegmentEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_segment_edge_sum(s : DstreesegmentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_edge_sum(s : DstreesegmentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_edge_mean(s : DstreesegmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_edge_mean(s : DstreesegmentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_edge_scale(s : DstreesegmentEdge, f : Double) -> DstreesegmentEdge {
   let result = ds_tree_segment_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_segment_edge_fill(s : DstreesegmentEdge, v : Double) -> Dstreeseg
   result
 }
 
-pub fn ds_tree_segment_edge_min(s : DstreesegmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_edge_min(s : DstreesegmentEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_edge_max(s : DstreesegmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_edge_max(s : DstreesegmentEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_edge_to_string(s : DstreesegmentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_segment_path_set(s : DstreesegmentPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_segment_path_sum(s : DstreesegmentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_path_sum(s : DstreesegmentPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_path_mean(s : DstreesegmentPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_path_mean(s : DstreesegmentPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_path_scale(s : DstreesegmentPath, f : Double) -> DstreesegmentPath {
   let result = ds_tree_segment_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_segment_path_fill(s : DstreesegmentPath, v : Double) -> Dstreeseg
   result
 }
 
-pub fn ds_tree_segment_path_min(s : DstreesegmentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_path_min(s : DstreesegmentPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_path_max(s : DstreesegmentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_path_max(s : DstreesegmentPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_path_to_string(s : DstreesegmentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_segment_cluster_set(s : DstreesegmentCluster, i : Int, v : Double
   result
 }
 
-pub fn ds_tree_segment_cluster_sum(s : DstreesegmentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_cluster_sum(s : DstreesegmentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_cluster_mean(s : DstreesegmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_cluster_mean(s : DstreesegmentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_cluster_scale(s : DstreesegmentCluster, f : Double) -> DstreesegmentCluster {
   let result = ds_tree_segment_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_segment_cluster_fill(s : DstreesegmentCluster, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_segment_cluster_min(s : DstreesegmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_cluster_min(s : DstreesegmentCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_cluster_max(s : DstreesegmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_cluster_max(s : DstreesegmentCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_cluster_to_string(s : DstreesegmentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_segment_model_set(s : DstreesegmentModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_segment_model_sum(s : DstreesegmentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_model_sum(s : DstreesegmentModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_model_mean(s : DstreesegmentModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_model_mean(s : DstreesegmentModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_model_scale(s : DstreesegmentModel, f : Double) -> DstreesegmentModel {
   let result = ds_tree_segment_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_segment_model_fill(s : DstreesegmentModel, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_segment_model_min(s : DstreesegmentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_model_min(s : DstreesegmentModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_model_max(s : DstreesegmentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_model_max(s : DstreesegmentModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_model_to_string(s : DstreesegmentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_segment_layer_set(s : DstreesegmentLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_segment_layer_sum(s : DstreesegmentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_layer_sum(s : DstreesegmentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_layer_mean(s : DstreesegmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_layer_mean(s : DstreesegmentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_layer_scale(s : DstreesegmentLayer, f : Double) -> DstreesegmentLayer {
   let result = ds_tree_segment_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_segment_layer_fill(s : DstreesegmentLayer, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_segment_layer_min(s : DstreesegmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_layer_min(s : DstreesegmentLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_layer_max(s : DstreesegmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_layer_max(s : DstreesegmentLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_layer_to_string(s : DstreesegmentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_segment_buffer_set(s : DstreesegmentBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_segment_buffer_sum(s : DstreesegmentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_buffer_sum(s : DstreesegmentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_buffer_mean(s : DstreesegmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_buffer_mean(s : DstreesegmentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_buffer_scale(s : DstreesegmentBuffer, f : Double) -> DstreesegmentBuffer {
   let result = ds_tree_segment_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_segment_buffer_fill(s : DstreesegmentBuffer, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_segment_buffer_min(s : DstreesegmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_buffer_min(s : DstreesegmentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_buffer_max(s : DstreesegmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_buffer_max(s : DstreesegmentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_buffer_to_string(s : DstreesegmentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_segment_cursor_set(s : DstreesegmentCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_segment_cursor_sum(s : DstreesegmentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_cursor_sum(s : DstreesegmentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_cursor_mean(s : DstreesegmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_cursor_mean(s : DstreesegmentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_cursor_scale(s : DstreesegmentCursor, f : Double) -> DstreesegmentCursor {
   let result = ds_tree_segment_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_segment_cursor_fill(s : DstreesegmentCursor, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_segment_cursor_min(s : DstreesegmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_cursor_min(s : DstreesegmentCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_cursor_max(s : DstreesegmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_cursor_max(s : DstreesegmentCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_cursor_to_string(s : DstreesegmentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_segment_view_set(s : DstreesegmentView, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_segment_view_sum(s : DstreesegmentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_view_sum(s : DstreesegmentView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_view_mean(s : DstreesegmentView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_view_mean(s : DstreesegmentView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_view_scale(s : DstreesegmentView, f : Double) -> DstreesegmentView {
   let result = ds_tree_segment_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_segment_view_fill(s : DstreesegmentView, v : Double) -> Dstreeseg
   result
 }
 
-pub fn ds_tree_segment_view_min(s : DstreesegmentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_view_min(s : DstreesegmentView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_view_max(s : DstreesegmentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_view_max(s : DstreesegmentView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_view_to_string(s : DstreesegmentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_segment_range_set(s : DstreesegmentRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_segment_range_sum(s : DstreesegmentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_range_sum(s : DstreesegmentRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_range_mean(s : DstreesegmentRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_range_mean(s : DstreesegmentRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_range_scale(s : DstreesegmentRange, f : Double) -> DstreesegmentRange {
   let result = ds_tree_segment_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_segment_range_fill(s : DstreesegmentRange, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_segment_range_min(s : DstreesegmentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_range_min(s : DstreesegmentRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_range_max(s : DstreesegmentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_range_max(s : DstreesegmentRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_range_to_string(s : DstreesegmentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_segment_slice_set(s : DstreesegmentSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_segment_slice_sum(s : DstreesegmentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_segment_slice_sum(s : DstreesegmentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_segment_slice_mean(s : DstreesegmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_segment_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_segment_slice_mean(s : DstreesegmentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_segment_slice_scale(s : DstreesegmentSlice, f : Double) -> DstreesegmentSlice {
   let result = ds_tree_segment_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_segment_slice_fill(s : DstreesegmentSlice, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_segment_slice_min(s : DstreesegmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_slice_min(s : DstreesegmentSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_segment_slice_max(s : DstreesegmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_segment_slice_max(s : DstreesegmentSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_segment_slice_to_string(s : DstreesegmentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn db_tx_pessimistic_make_series(vals : Array[Double], name : String) -> Dbt
 
 pub fn db_tx_pessimistic_series_len(s : DbtxpessimisticSeries) -> Int { s.vals.length() }
 
-pub fn db_tx_pessimistic_series_sum(s : DbtxpessimisticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_tx_pessimistic_series_sum(s : DbtxpessimisticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_tx_pessimistic_series_mean(s : DbtxpessimisticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_tx_pessimistic_frame_set(s : DbtxpessimisticFrame, i : Int, v : Double
   result
 }
 
-pub fn db_tx_pessimistic_frame_sum(s : DbtxpessimisticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_frame_sum(s : DbtxpessimisticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_frame_mean(s : DbtxpessimisticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_frame_mean(s : DbtxpessimisticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_frame_scale(s : DbtxpessimisticFrame, f : Double) -> DbtxpessimisticFrame {
   let result = db_tx_pessimistic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_tx_pessimistic_frame_fill(s : DbtxpessimisticFrame, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_pessimistic_frame_min(s : DbtxpessimisticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_frame_min(s : DbtxpessimisticFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_frame_max(s : DbtxpessimisticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_frame_max(s : DbtxpessimisticFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_frame_to_string(s : DbtxpessimisticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_tx_pessimistic_table_set(s : DbtxpessimisticTable, i : Int, v : Double
   result
 }
 
-pub fn db_tx_pessimistic_table_sum(s : DbtxpessimisticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_table_sum(s : DbtxpessimisticTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_table_mean(s : DbtxpessimisticTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_table_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_table_mean(s : DbtxpessimisticTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_table_scale(s : DbtxpessimisticTable, f : Double) -> DbtxpessimisticTable {
   let result = db_tx_pessimistic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_tx_pessimistic_table_fill(s : DbtxpessimisticTable, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_pessimistic_table_min(s : DbtxpessimisticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_table_min(s : DbtxpessimisticTable) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_table_max(s : DbtxpessimisticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_table_max(s : DbtxpessimisticTable) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_table_to_string(s : DbtxpessimisticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_tx_pessimistic_graphn_set(s : DbtxpessimisticGraphN, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_pessimistic_graphn_sum(s : DbtxpessimisticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_graphn_sum(s : DbtxpessimisticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_graphn_mean(s : DbtxpessimisticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_graphn_mean(s : DbtxpessimisticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_graphn_scale(s : DbtxpessimisticGraphN, f : Double) -> DbtxpessimisticGraphN {
   let result = db_tx_pessimistic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_tx_pessimistic_graphn_fill(s : DbtxpessimisticGraphN, v : Double) -> D
   result
 }
 
-pub fn db_tx_pessimistic_graphn_min(s : DbtxpessimisticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_graphn_min(s : DbtxpessimisticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_graphn_max(s : DbtxpessimisticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_graphn_max(s : DbtxpessimisticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_graphn_to_string(s : DbtxpessimisticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_tx_pessimistic_node_set(s : DbtxpessimisticNode, i : Int, v : Double) 
   result
 }
 
-pub fn db_tx_pessimistic_node_sum(s : DbtxpessimisticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_node_sum(s : DbtxpessimisticNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_node_mean(s : DbtxpessimisticNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_node_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_node_mean(s : DbtxpessimisticNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_node_scale(s : DbtxpessimisticNode, f : Double) -> DbtxpessimisticNode {
   let result = db_tx_pessimistic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_tx_pessimistic_node_fill(s : DbtxpessimisticNode, v : Double) -> Dbtxp
   result
 }
 
-pub fn db_tx_pessimistic_node_min(s : DbtxpessimisticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_node_min(s : DbtxpessimisticNode) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_node_max(s : DbtxpessimisticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_node_max(s : DbtxpessimisticNode) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_node_to_string(s : DbtxpessimisticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_tx_pessimistic_edge_set(s : DbtxpessimisticEdge, i : Int, v : Double) 
   result
 }
 
-pub fn db_tx_pessimistic_edge_sum(s : DbtxpessimisticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_edge_sum(s : DbtxpessimisticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_edge_mean(s : DbtxpessimisticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_edge_mean(s : DbtxpessimisticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_edge_scale(s : DbtxpessimisticEdge, f : Double) -> DbtxpessimisticEdge {
   let result = db_tx_pessimistic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_tx_pessimistic_edge_fill(s : DbtxpessimisticEdge, v : Double) -> Dbtxp
   result
 }
 
-pub fn db_tx_pessimistic_edge_min(s : DbtxpessimisticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_edge_min(s : DbtxpessimisticEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_edge_max(s : DbtxpessimisticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_edge_max(s : DbtxpessimisticEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_edge_to_string(s : DbtxpessimisticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_tx_pessimistic_path_set(s : DbtxpessimisticPath, i : Int, v : Double) 
   result
 }
 
-pub fn db_tx_pessimistic_path_sum(s : DbtxpessimisticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_path_sum(s : DbtxpessimisticPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_path_mean(s : DbtxpessimisticPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_path_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_path_mean(s : DbtxpessimisticPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_path_scale(s : DbtxpessimisticPath, f : Double) -> DbtxpessimisticPath {
   let result = db_tx_pessimistic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_tx_pessimistic_path_fill(s : DbtxpessimisticPath, v : Double) -> Dbtxp
   result
 }
 
-pub fn db_tx_pessimistic_path_min(s : DbtxpessimisticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_path_min(s : DbtxpessimisticPath) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_path_max(s : DbtxpessimisticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_path_max(s : DbtxpessimisticPath) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_path_to_string(s : DbtxpessimisticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_tx_pessimistic_cluster_set(s : DbtxpessimisticCluster, i : Int, v : Do
   result
 }
 
-pub fn db_tx_pessimistic_cluster_sum(s : DbtxpessimisticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_cluster_sum(s : DbtxpessimisticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_cluster_mean(s : DbtxpessimisticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_cluster_mean(s : DbtxpessimisticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_cluster_scale(s : DbtxpessimisticCluster, f : Double) -> DbtxpessimisticCluster {
   let result = db_tx_pessimistic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_tx_pessimistic_cluster_fill(s : DbtxpessimisticCluster, v : Double) ->
   result
 }
 
-pub fn db_tx_pessimistic_cluster_min(s : DbtxpessimisticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_cluster_min(s : DbtxpessimisticCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_cluster_max(s : DbtxpessimisticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_cluster_max(s : DbtxpessimisticCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_cluster_to_string(s : DbtxpessimisticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_tx_pessimistic_model_set(s : DbtxpessimisticModel, i : Int, v : Double
   result
 }
 
-pub fn db_tx_pessimistic_model_sum(s : DbtxpessimisticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_model_sum(s : DbtxpessimisticModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_model_mean(s : DbtxpessimisticModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_model_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_model_mean(s : DbtxpessimisticModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_model_scale(s : DbtxpessimisticModel, f : Double) -> DbtxpessimisticModel {
   let result = db_tx_pessimistic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_tx_pessimistic_model_fill(s : DbtxpessimisticModel, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_pessimistic_model_min(s : DbtxpessimisticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_model_min(s : DbtxpessimisticModel) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_model_max(s : DbtxpessimisticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_model_max(s : DbtxpessimisticModel) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_model_to_string(s : DbtxpessimisticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_tx_pessimistic_layer_set(s : DbtxpessimisticLayer, i : Int, v : Double
   result
 }
 
-pub fn db_tx_pessimistic_layer_sum(s : DbtxpessimisticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_layer_sum(s : DbtxpessimisticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_layer_mean(s : DbtxpessimisticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_layer_mean(s : DbtxpessimisticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_layer_scale(s : DbtxpessimisticLayer, f : Double) -> DbtxpessimisticLayer {
   let result = db_tx_pessimistic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_tx_pessimistic_layer_fill(s : DbtxpessimisticLayer, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_pessimistic_layer_min(s : DbtxpessimisticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_layer_min(s : DbtxpessimisticLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_layer_max(s : DbtxpessimisticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_layer_max(s : DbtxpessimisticLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_layer_to_string(s : DbtxpessimisticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_tx_pessimistic_buffer_set(s : DbtxpessimisticBuffer, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_pessimistic_buffer_sum(s : DbtxpessimisticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_buffer_sum(s : DbtxpessimisticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_buffer_mean(s : DbtxpessimisticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_buffer_mean(s : DbtxpessimisticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_buffer_scale(s : DbtxpessimisticBuffer, f : Double) -> DbtxpessimisticBuffer {
   let result = db_tx_pessimistic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_tx_pessimistic_buffer_fill(s : DbtxpessimisticBuffer, v : Double) -> D
   result
 }
 
-pub fn db_tx_pessimistic_buffer_min(s : DbtxpessimisticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_buffer_min(s : DbtxpessimisticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_buffer_max(s : DbtxpessimisticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_buffer_max(s : DbtxpessimisticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_buffer_to_string(s : DbtxpessimisticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_tx_pessimistic_cursor_set(s : DbtxpessimisticCursor, i : Int, v : Doub
   result
 }
 
-pub fn db_tx_pessimistic_cursor_sum(s : DbtxpessimisticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_cursor_sum(s : DbtxpessimisticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_cursor_mean(s : DbtxpessimisticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_cursor_mean(s : DbtxpessimisticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_cursor_scale(s : DbtxpessimisticCursor, f : Double) -> DbtxpessimisticCursor {
   let result = db_tx_pessimistic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_tx_pessimistic_cursor_fill(s : DbtxpessimisticCursor, v : Double) -> D
   result
 }
 
-pub fn db_tx_pessimistic_cursor_min(s : DbtxpessimisticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_cursor_min(s : DbtxpessimisticCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_cursor_max(s : DbtxpessimisticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_cursor_max(s : DbtxpessimisticCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_cursor_to_string(s : DbtxpessimisticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_tx_pessimistic_view_set(s : DbtxpessimisticView, i : Int, v : Double) 
   result
 }
 
-pub fn db_tx_pessimistic_view_sum(s : DbtxpessimisticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_view_sum(s : DbtxpessimisticView) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_view_mean(s : DbtxpessimisticView) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_view_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_view_mean(s : DbtxpessimisticView) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_view_scale(s : DbtxpessimisticView, f : Double) -> DbtxpessimisticView {
   let result = db_tx_pessimistic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_tx_pessimistic_view_fill(s : DbtxpessimisticView, v : Double) -> Dbtxp
   result
 }
 
-pub fn db_tx_pessimistic_view_min(s : DbtxpessimisticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_view_min(s : DbtxpessimisticView) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_view_max(s : DbtxpessimisticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_view_max(s : DbtxpessimisticView) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_view_to_string(s : DbtxpessimisticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_tx_pessimistic_range_set(s : DbtxpessimisticRange, i : Int, v : Double
   result
 }
 
-pub fn db_tx_pessimistic_range_sum(s : DbtxpessimisticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_range_sum(s : DbtxpessimisticRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_range_mean(s : DbtxpessimisticRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_range_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_range_mean(s : DbtxpessimisticRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_range_scale(s : DbtxpessimisticRange, f : Double) -> DbtxpessimisticRange {
   let result = db_tx_pessimistic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_tx_pessimistic_range_fill(s : DbtxpessimisticRange, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_pessimistic_range_min(s : DbtxpessimisticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_range_min(s : DbtxpessimisticRange) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_range_max(s : DbtxpessimisticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_range_max(s : DbtxpessimisticRange) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_range_to_string(s : DbtxpessimisticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_tx_pessimistic_slice_set(s : DbtxpessimisticSlice, i : Int, v : Double
   result
 }
 
-pub fn db_tx_pessimistic_slice_sum(s : DbtxpessimisticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_tx_pessimistic_slice_sum(s : DbtxpessimisticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_tx_pessimistic_slice_mean(s : DbtxpessimisticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_tx_pessimistic_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_tx_pessimistic_slice_mean(s : DbtxpessimisticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_tx_pessimistic_slice_scale(s : DbtxpessimisticSlice, f : Double) -> DbtxpessimisticSlice {
   let result = db_tx_pessimistic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_tx_pessimistic_slice_fill(s : DbtxpessimisticSlice, v : Double) -> Dbt
   result
 }
 
-pub fn db_tx_pessimistic_slice_min(s : DbtxpessimisticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_slice_min(s : DbtxpessimisticSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_tx_pessimistic_slice_max(s : DbtxpessimisticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_tx_pessimistic_slice_max(s : DbtxpessimisticSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_tx_pessimistic_slice_to_string(s : DbtxpessimisticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

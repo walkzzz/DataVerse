@@ -88,11 +88,7 @@ pub fn timeseries_anomaly_zscore_make_series(vals : Array[Double], name : String
 
 pub fn timeseries_anomaly_zscore_series_len(s : TimeseriesanomalyzscoreSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_anomaly_zscore_series_sum(s : TimeseriesanomalyzscoreSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_series_sum(s : TimeseriesanomalyzscoreSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_anomaly_zscore_series_mean(s : TimeseriesanomalyzscoreSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_anomaly_zscore_frame_set(s : TimeseriesanomalyzscoreFrame, i :
   result
 }
 
-pub fn timeseries_anomaly_zscore_frame_sum(s : TimeseriesanomalyzscoreFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_frame_sum(s : TimeseriesanomalyzscoreFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_frame_mean(s : TimeseriesanomalyzscoreFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_frame_mean(s : TimeseriesanomalyzscoreFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_frame_scale(s : TimeseriesanomalyzscoreFrame, f : Double) -> TimeseriesanomalyzscoreFrame {
   let result = timeseries_anomaly_zscore_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_anomaly_zscore_frame_fill(s : TimeseriesanomalyzscoreFrame, v 
   result
 }
 
-pub fn timeseries_anomaly_zscore_frame_min(s : TimeseriesanomalyzscoreFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_frame_min(s : TimeseriesanomalyzscoreFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_frame_max(s : TimeseriesanomalyzscoreFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_frame_max(s : TimeseriesanomalyzscoreFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_frame_to_string(s : TimeseriesanomalyzscoreFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_anomaly_zscore_table_set(s : TimeseriesanomalyzscoreTable, i :
   result
 }
 
-pub fn timeseries_anomaly_zscore_table_sum(s : TimeseriesanomalyzscoreTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_table_sum(s : TimeseriesanomalyzscoreTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_table_mean(s : TimeseriesanomalyzscoreTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_table_mean(s : TimeseriesanomalyzscoreTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_table_scale(s : TimeseriesanomalyzscoreTable, f : Double) -> TimeseriesanomalyzscoreTable {
   let result = timeseries_anomaly_zscore_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_anomaly_zscore_table_fill(s : TimeseriesanomalyzscoreTable, v 
   result
 }
 
-pub fn timeseries_anomaly_zscore_table_min(s : TimeseriesanomalyzscoreTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_table_min(s : TimeseriesanomalyzscoreTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_table_max(s : TimeseriesanomalyzscoreTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_table_max(s : TimeseriesanomalyzscoreTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_table_to_string(s : TimeseriesanomalyzscoreTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_anomaly_zscore_graphn_set(s : TimeseriesanomalyzscoreGraphN, i
   result
 }
 
-pub fn timeseries_anomaly_zscore_graphn_sum(s : TimeseriesanomalyzscoreGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_graphn_sum(s : TimeseriesanomalyzscoreGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_graphn_mean(s : TimeseriesanomalyzscoreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_graphn_mean(s : TimeseriesanomalyzscoreGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_graphn_scale(s : TimeseriesanomalyzscoreGraphN, f : Double) -> TimeseriesanomalyzscoreGraphN {
   let result = timeseries_anomaly_zscore_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_anomaly_zscore_graphn_fill(s : TimeseriesanomalyzscoreGraphN, 
   result
 }
 
-pub fn timeseries_anomaly_zscore_graphn_min(s : TimeseriesanomalyzscoreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_graphn_min(s : TimeseriesanomalyzscoreGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_graphn_max(s : TimeseriesanomalyzscoreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_graphn_max(s : TimeseriesanomalyzscoreGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_graphn_to_string(s : TimeseriesanomalyzscoreGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_anomaly_zscore_node_set(s : TimeseriesanomalyzscoreNode, i : I
   result
 }
 
-pub fn timeseries_anomaly_zscore_node_sum(s : TimeseriesanomalyzscoreNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_node_sum(s : TimeseriesanomalyzscoreNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_node_mean(s : TimeseriesanomalyzscoreNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_node_mean(s : TimeseriesanomalyzscoreNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_node_scale(s : TimeseriesanomalyzscoreNode, f : Double) -> TimeseriesanomalyzscoreNode {
   let result = timeseries_anomaly_zscore_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_anomaly_zscore_node_fill(s : TimeseriesanomalyzscoreNode, v : 
   result
 }
 
-pub fn timeseries_anomaly_zscore_node_min(s : TimeseriesanomalyzscoreNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_node_min(s : TimeseriesanomalyzscoreNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_node_max(s : TimeseriesanomalyzscoreNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_node_max(s : TimeseriesanomalyzscoreNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_node_to_string(s : TimeseriesanomalyzscoreNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_anomaly_zscore_edge_set(s : TimeseriesanomalyzscoreEdge, i : I
   result
 }
 
-pub fn timeseries_anomaly_zscore_edge_sum(s : TimeseriesanomalyzscoreEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_edge_sum(s : TimeseriesanomalyzscoreEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_edge_mean(s : TimeseriesanomalyzscoreEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_edge_mean(s : TimeseriesanomalyzscoreEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_edge_scale(s : TimeseriesanomalyzscoreEdge, f : Double) -> TimeseriesanomalyzscoreEdge {
   let result = timeseries_anomaly_zscore_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_anomaly_zscore_edge_fill(s : TimeseriesanomalyzscoreEdge, v : 
   result
 }
 
-pub fn timeseries_anomaly_zscore_edge_min(s : TimeseriesanomalyzscoreEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_edge_min(s : TimeseriesanomalyzscoreEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_edge_max(s : TimeseriesanomalyzscoreEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_edge_max(s : TimeseriesanomalyzscoreEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_edge_to_string(s : TimeseriesanomalyzscoreEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_anomaly_zscore_path_set(s : TimeseriesanomalyzscorePath, i : I
   result
 }
 
-pub fn timeseries_anomaly_zscore_path_sum(s : TimeseriesanomalyzscorePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_path_sum(s : TimeseriesanomalyzscorePath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_path_mean(s : TimeseriesanomalyzscorePath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_path_mean(s : TimeseriesanomalyzscorePath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_path_scale(s : TimeseriesanomalyzscorePath, f : Double) -> TimeseriesanomalyzscorePath {
   let result = timeseries_anomaly_zscore_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_anomaly_zscore_path_fill(s : TimeseriesanomalyzscorePath, v : 
   result
 }
 
-pub fn timeseries_anomaly_zscore_path_min(s : TimeseriesanomalyzscorePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_path_min(s : TimeseriesanomalyzscorePath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_path_max(s : TimeseriesanomalyzscorePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_path_max(s : TimeseriesanomalyzscorePath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_path_to_string(s : TimeseriesanomalyzscorePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_anomaly_zscore_cluster_set(s : TimeseriesanomalyzscoreCluster,
   result
 }
 
-pub fn timeseries_anomaly_zscore_cluster_sum(s : TimeseriesanomalyzscoreCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_cluster_sum(s : TimeseriesanomalyzscoreCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_cluster_mean(s : TimeseriesanomalyzscoreCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_cluster_mean(s : TimeseriesanomalyzscoreCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_cluster_scale(s : TimeseriesanomalyzscoreCluster, f : Double) -> TimeseriesanomalyzscoreCluster {
   let result = timeseries_anomaly_zscore_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_anomaly_zscore_cluster_fill(s : TimeseriesanomalyzscoreCluster
   result
 }
 
-pub fn timeseries_anomaly_zscore_cluster_min(s : TimeseriesanomalyzscoreCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_cluster_min(s : TimeseriesanomalyzscoreCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_cluster_max(s : TimeseriesanomalyzscoreCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_cluster_max(s : TimeseriesanomalyzscoreCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_cluster_to_string(s : TimeseriesanomalyzscoreCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_anomaly_zscore_model_set(s : TimeseriesanomalyzscoreModel, i :
   result
 }
 
-pub fn timeseries_anomaly_zscore_model_sum(s : TimeseriesanomalyzscoreModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_model_sum(s : TimeseriesanomalyzscoreModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_model_mean(s : TimeseriesanomalyzscoreModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_model_mean(s : TimeseriesanomalyzscoreModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_model_scale(s : TimeseriesanomalyzscoreModel, f : Double) -> TimeseriesanomalyzscoreModel {
   let result = timeseries_anomaly_zscore_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_anomaly_zscore_model_fill(s : TimeseriesanomalyzscoreModel, v 
   result
 }
 
-pub fn timeseries_anomaly_zscore_model_min(s : TimeseriesanomalyzscoreModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_model_min(s : TimeseriesanomalyzscoreModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_model_max(s : TimeseriesanomalyzscoreModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_model_max(s : TimeseriesanomalyzscoreModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_model_to_string(s : TimeseriesanomalyzscoreModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_anomaly_zscore_layer_set(s : TimeseriesanomalyzscoreLayer, i :
   result
 }
 
-pub fn timeseries_anomaly_zscore_layer_sum(s : TimeseriesanomalyzscoreLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_layer_sum(s : TimeseriesanomalyzscoreLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_layer_mean(s : TimeseriesanomalyzscoreLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_layer_mean(s : TimeseriesanomalyzscoreLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_layer_scale(s : TimeseriesanomalyzscoreLayer, f : Double) -> TimeseriesanomalyzscoreLayer {
   let result = timeseries_anomaly_zscore_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_anomaly_zscore_layer_fill(s : TimeseriesanomalyzscoreLayer, v 
   result
 }
 
-pub fn timeseries_anomaly_zscore_layer_min(s : TimeseriesanomalyzscoreLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_layer_min(s : TimeseriesanomalyzscoreLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_layer_max(s : TimeseriesanomalyzscoreLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_layer_max(s : TimeseriesanomalyzscoreLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_layer_to_string(s : TimeseriesanomalyzscoreLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_anomaly_zscore_buffer_set(s : TimeseriesanomalyzscoreBuffer, i
   result
 }
 
-pub fn timeseries_anomaly_zscore_buffer_sum(s : TimeseriesanomalyzscoreBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_buffer_sum(s : TimeseriesanomalyzscoreBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_buffer_mean(s : TimeseriesanomalyzscoreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_buffer_mean(s : TimeseriesanomalyzscoreBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_buffer_scale(s : TimeseriesanomalyzscoreBuffer, f : Double) -> TimeseriesanomalyzscoreBuffer {
   let result = timeseries_anomaly_zscore_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_anomaly_zscore_buffer_fill(s : TimeseriesanomalyzscoreBuffer, 
   result
 }
 
-pub fn timeseries_anomaly_zscore_buffer_min(s : TimeseriesanomalyzscoreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_buffer_min(s : TimeseriesanomalyzscoreBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_buffer_max(s : TimeseriesanomalyzscoreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_buffer_max(s : TimeseriesanomalyzscoreBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_buffer_to_string(s : TimeseriesanomalyzscoreBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_anomaly_zscore_cursor_set(s : TimeseriesanomalyzscoreCursor, i
   result
 }
 
-pub fn timeseries_anomaly_zscore_cursor_sum(s : TimeseriesanomalyzscoreCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_cursor_sum(s : TimeseriesanomalyzscoreCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_cursor_mean(s : TimeseriesanomalyzscoreCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_cursor_mean(s : TimeseriesanomalyzscoreCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_cursor_scale(s : TimeseriesanomalyzscoreCursor, f : Double) -> TimeseriesanomalyzscoreCursor {
   let result = timeseries_anomaly_zscore_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_anomaly_zscore_cursor_fill(s : TimeseriesanomalyzscoreCursor, 
   result
 }
 
-pub fn timeseries_anomaly_zscore_cursor_min(s : TimeseriesanomalyzscoreCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_cursor_min(s : TimeseriesanomalyzscoreCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_cursor_max(s : TimeseriesanomalyzscoreCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_cursor_max(s : TimeseriesanomalyzscoreCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_cursor_to_string(s : TimeseriesanomalyzscoreCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_anomaly_zscore_view_set(s : TimeseriesanomalyzscoreView, i : I
   result
 }
 
-pub fn timeseries_anomaly_zscore_view_sum(s : TimeseriesanomalyzscoreView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_view_sum(s : TimeseriesanomalyzscoreView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_view_mean(s : TimeseriesanomalyzscoreView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_view_mean(s : TimeseriesanomalyzscoreView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_view_scale(s : TimeseriesanomalyzscoreView, f : Double) -> TimeseriesanomalyzscoreView {
   let result = timeseries_anomaly_zscore_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_anomaly_zscore_view_fill(s : TimeseriesanomalyzscoreView, v : 
   result
 }
 
-pub fn timeseries_anomaly_zscore_view_min(s : TimeseriesanomalyzscoreView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_view_min(s : TimeseriesanomalyzscoreView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_view_max(s : TimeseriesanomalyzscoreView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_view_max(s : TimeseriesanomalyzscoreView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_view_to_string(s : TimeseriesanomalyzscoreView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_anomaly_zscore_range_set(s : TimeseriesanomalyzscoreRange, i :
   result
 }
 
-pub fn timeseries_anomaly_zscore_range_sum(s : TimeseriesanomalyzscoreRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_range_sum(s : TimeseriesanomalyzscoreRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_range_mean(s : TimeseriesanomalyzscoreRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_range_mean(s : TimeseriesanomalyzscoreRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_range_scale(s : TimeseriesanomalyzscoreRange, f : Double) -> TimeseriesanomalyzscoreRange {
   let result = timeseries_anomaly_zscore_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_anomaly_zscore_range_fill(s : TimeseriesanomalyzscoreRange, v 
   result
 }
 
-pub fn timeseries_anomaly_zscore_range_min(s : TimeseriesanomalyzscoreRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_range_min(s : TimeseriesanomalyzscoreRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_range_max(s : TimeseriesanomalyzscoreRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_range_max(s : TimeseriesanomalyzscoreRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_range_to_string(s : TimeseriesanomalyzscoreRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_anomaly_zscore_slice_set(s : TimeseriesanomalyzscoreSlice, i :
   result
 }
 
-pub fn timeseries_anomaly_zscore_slice_sum(s : TimeseriesanomalyzscoreSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_zscore_slice_sum(s : TimeseriesanomalyzscoreSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_zscore_slice_mean(s : TimeseriesanomalyzscoreSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_zscore_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_zscore_slice_mean(s : TimeseriesanomalyzscoreSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_zscore_slice_scale(s : TimeseriesanomalyzscoreSlice, f : Double) -> TimeseriesanomalyzscoreSlice {
   let result = timeseries_anomaly_zscore_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_anomaly_zscore_slice_fill(s : TimeseriesanomalyzscoreSlice, v 
   result
 }
 
-pub fn timeseries_anomaly_zscore_slice_min(s : TimeseriesanomalyzscoreSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_slice_min(s : TimeseriesanomalyzscoreSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_zscore_slice_max(s : TimeseriesanomalyzscoreSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_zscore_slice_max(s : TimeseriesanomalyzscoreSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_zscore_slice_to_string(s : TimeseriesanomalyzscoreSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn timeseries_decomp_wavelet_make_series(vals : Array[Double], name : String
 
 pub fn timeseries_decomp_wavelet_series_len(s : TimeseriesdecompwaveletSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_decomp_wavelet_series_sum(s : TimeseriesdecompwaveletSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_series_sum(s : TimeseriesdecompwaveletSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_decomp_wavelet_series_mean(s : TimeseriesdecompwaveletSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_decomp_wavelet_frame_set(s : TimeseriesdecompwaveletFrame, i :
   result
 }
 
-pub fn timeseries_decomp_wavelet_frame_sum(s : TimeseriesdecompwaveletFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_frame_sum(s : TimeseriesdecompwaveletFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_frame_mean(s : TimeseriesdecompwaveletFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_frame_mean(s : TimeseriesdecompwaveletFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_frame_scale(s : TimeseriesdecompwaveletFrame, f : Double) -> TimeseriesdecompwaveletFrame {
   let result = timeseries_decomp_wavelet_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_decomp_wavelet_frame_fill(s : TimeseriesdecompwaveletFrame, v 
   result
 }
 
-pub fn timeseries_decomp_wavelet_frame_min(s : TimeseriesdecompwaveletFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_frame_min(s : TimeseriesdecompwaveletFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_frame_max(s : TimeseriesdecompwaveletFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_frame_max(s : TimeseriesdecompwaveletFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_frame_to_string(s : TimeseriesdecompwaveletFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_decomp_wavelet_table_set(s : TimeseriesdecompwaveletTable, i :
   result
 }
 
-pub fn timeseries_decomp_wavelet_table_sum(s : TimeseriesdecompwaveletTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_table_sum(s : TimeseriesdecompwaveletTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_table_mean(s : TimeseriesdecompwaveletTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_table_mean(s : TimeseriesdecompwaveletTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_table_scale(s : TimeseriesdecompwaveletTable, f : Double) -> TimeseriesdecompwaveletTable {
   let result = timeseries_decomp_wavelet_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_decomp_wavelet_table_fill(s : TimeseriesdecompwaveletTable, v 
   result
 }
 
-pub fn timeseries_decomp_wavelet_table_min(s : TimeseriesdecompwaveletTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_table_min(s : TimeseriesdecompwaveletTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_table_max(s : TimeseriesdecompwaveletTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_table_max(s : TimeseriesdecompwaveletTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_table_to_string(s : TimeseriesdecompwaveletTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_decomp_wavelet_graphn_set(s : TimeseriesdecompwaveletGraphN, i
   result
 }
 
-pub fn timeseries_decomp_wavelet_graphn_sum(s : TimeseriesdecompwaveletGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_graphn_sum(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_graphn_mean(s : TimeseriesdecompwaveletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_graphn_mean(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_graphn_scale(s : TimeseriesdecompwaveletGraphN, f : Double) -> TimeseriesdecompwaveletGraphN {
   let result = timeseries_decomp_wavelet_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_decomp_wavelet_graphn_fill(s : TimeseriesdecompwaveletGraphN, 
   result
 }
 
-pub fn timeseries_decomp_wavelet_graphn_min(s : TimeseriesdecompwaveletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_graphn_min(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_graphn_max(s : TimeseriesdecompwaveletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_graphn_max(s : TimeseriesdecompwaveletGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_graphn_to_string(s : TimeseriesdecompwaveletGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_decomp_wavelet_node_set(s : TimeseriesdecompwaveletNode, i : I
   result
 }
 
-pub fn timeseries_decomp_wavelet_node_sum(s : TimeseriesdecompwaveletNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_node_sum(s : TimeseriesdecompwaveletNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_node_mean(s : TimeseriesdecompwaveletNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_node_mean(s : TimeseriesdecompwaveletNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_node_scale(s : TimeseriesdecompwaveletNode, f : Double) -> TimeseriesdecompwaveletNode {
   let result = timeseries_decomp_wavelet_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_decomp_wavelet_node_fill(s : TimeseriesdecompwaveletNode, v : 
   result
 }
 
-pub fn timeseries_decomp_wavelet_node_min(s : TimeseriesdecompwaveletNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_node_min(s : TimeseriesdecompwaveletNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_node_max(s : TimeseriesdecompwaveletNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_node_max(s : TimeseriesdecompwaveletNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_node_to_string(s : TimeseriesdecompwaveletNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_decomp_wavelet_edge_set(s : TimeseriesdecompwaveletEdge, i : I
   result
 }
 
-pub fn timeseries_decomp_wavelet_edge_sum(s : TimeseriesdecompwaveletEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_edge_sum(s : TimeseriesdecompwaveletEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_edge_mean(s : TimeseriesdecompwaveletEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_edge_mean(s : TimeseriesdecompwaveletEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_edge_scale(s : TimeseriesdecompwaveletEdge, f : Double) -> TimeseriesdecompwaveletEdge {
   let result = timeseries_decomp_wavelet_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_decomp_wavelet_edge_fill(s : TimeseriesdecompwaveletEdge, v : 
   result
 }
 
-pub fn timeseries_decomp_wavelet_edge_min(s : TimeseriesdecompwaveletEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_edge_min(s : TimeseriesdecompwaveletEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_edge_max(s : TimeseriesdecompwaveletEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_edge_max(s : TimeseriesdecompwaveletEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_edge_to_string(s : TimeseriesdecompwaveletEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_decomp_wavelet_path_set(s : TimeseriesdecompwaveletPath, i : I
   result
 }
 
-pub fn timeseries_decomp_wavelet_path_sum(s : TimeseriesdecompwaveletPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_path_sum(s : TimeseriesdecompwaveletPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_path_mean(s : TimeseriesdecompwaveletPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_path_mean(s : TimeseriesdecompwaveletPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_path_scale(s : TimeseriesdecompwaveletPath, f : Double) -> TimeseriesdecompwaveletPath {
   let result = timeseries_decomp_wavelet_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_decomp_wavelet_path_fill(s : TimeseriesdecompwaveletPath, v : 
   result
 }
 
-pub fn timeseries_decomp_wavelet_path_min(s : TimeseriesdecompwaveletPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_path_min(s : TimeseriesdecompwaveletPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_path_max(s : TimeseriesdecompwaveletPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_path_max(s : TimeseriesdecompwaveletPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_path_to_string(s : TimeseriesdecompwaveletPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_decomp_wavelet_cluster_set(s : TimeseriesdecompwaveletCluster,
   result
 }
 
-pub fn timeseries_decomp_wavelet_cluster_sum(s : TimeseriesdecompwaveletCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_cluster_sum(s : TimeseriesdecompwaveletCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_cluster_mean(s : TimeseriesdecompwaveletCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_cluster_mean(s : TimeseriesdecompwaveletCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_cluster_scale(s : TimeseriesdecompwaveletCluster, f : Double) -> TimeseriesdecompwaveletCluster {
   let result = timeseries_decomp_wavelet_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_decomp_wavelet_cluster_fill(s : TimeseriesdecompwaveletCluster
   result
 }
 
-pub fn timeseries_decomp_wavelet_cluster_min(s : TimeseriesdecompwaveletCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_cluster_min(s : TimeseriesdecompwaveletCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_cluster_max(s : TimeseriesdecompwaveletCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_cluster_max(s : TimeseriesdecompwaveletCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_cluster_to_string(s : TimeseriesdecompwaveletCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_decomp_wavelet_model_set(s : TimeseriesdecompwaveletModel, i :
   result
 }
 
-pub fn timeseries_decomp_wavelet_model_sum(s : TimeseriesdecompwaveletModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_model_sum(s : TimeseriesdecompwaveletModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_model_mean(s : TimeseriesdecompwaveletModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_model_mean(s : TimeseriesdecompwaveletModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_model_scale(s : TimeseriesdecompwaveletModel, f : Double) -> TimeseriesdecompwaveletModel {
   let result = timeseries_decomp_wavelet_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_decomp_wavelet_model_fill(s : TimeseriesdecompwaveletModel, v 
   result
 }
 
-pub fn timeseries_decomp_wavelet_model_min(s : TimeseriesdecompwaveletModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_model_min(s : TimeseriesdecompwaveletModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_model_max(s : TimeseriesdecompwaveletModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_model_max(s : TimeseriesdecompwaveletModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_model_to_string(s : TimeseriesdecompwaveletModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_decomp_wavelet_layer_set(s : TimeseriesdecompwaveletLayer, i :
   result
 }
 
-pub fn timeseries_decomp_wavelet_layer_sum(s : TimeseriesdecompwaveletLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_layer_sum(s : TimeseriesdecompwaveletLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_layer_mean(s : TimeseriesdecompwaveletLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_layer_mean(s : TimeseriesdecompwaveletLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_layer_scale(s : TimeseriesdecompwaveletLayer, f : Double) -> TimeseriesdecompwaveletLayer {
   let result = timeseries_decomp_wavelet_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_decomp_wavelet_layer_fill(s : TimeseriesdecompwaveletLayer, v 
   result
 }
 
-pub fn timeseries_decomp_wavelet_layer_min(s : TimeseriesdecompwaveletLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_layer_min(s : TimeseriesdecompwaveletLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_layer_max(s : TimeseriesdecompwaveletLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_layer_max(s : TimeseriesdecompwaveletLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_layer_to_string(s : TimeseriesdecompwaveletLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_decomp_wavelet_buffer_set(s : TimeseriesdecompwaveletBuffer, i
   result
 }
 
-pub fn timeseries_decomp_wavelet_buffer_sum(s : TimeseriesdecompwaveletBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_buffer_sum(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_buffer_mean(s : TimeseriesdecompwaveletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_buffer_mean(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_buffer_scale(s : TimeseriesdecompwaveletBuffer, f : Double) -> TimeseriesdecompwaveletBuffer {
   let result = timeseries_decomp_wavelet_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_decomp_wavelet_buffer_fill(s : TimeseriesdecompwaveletBuffer, 
   result
 }
 
-pub fn timeseries_decomp_wavelet_buffer_min(s : TimeseriesdecompwaveletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_buffer_min(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_buffer_max(s : TimeseriesdecompwaveletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_buffer_max(s : TimeseriesdecompwaveletBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_buffer_to_string(s : TimeseriesdecompwaveletBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_decomp_wavelet_cursor_set(s : TimeseriesdecompwaveletCursor, i
   result
 }
 
-pub fn timeseries_decomp_wavelet_cursor_sum(s : TimeseriesdecompwaveletCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_cursor_sum(s : TimeseriesdecompwaveletCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_cursor_mean(s : TimeseriesdecompwaveletCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_cursor_mean(s : TimeseriesdecompwaveletCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_cursor_scale(s : TimeseriesdecompwaveletCursor, f : Double) -> TimeseriesdecompwaveletCursor {
   let result = timeseries_decomp_wavelet_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_decomp_wavelet_cursor_fill(s : TimeseriesdecompwaveletCursor, 
   result
 }
 
-pub fn timeseries_decomp_wavelet_cursor_min(s : TimeseriesdecompwaveletCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_cursor_min(s : TimeseriesdecompwaveletCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_cursor_max(s : TimeseriesdecompwaveletCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_cursor_max(s : TimeseriesdecompwaveletCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_cursor_to_string(s : TimeseriesdecompwaveletCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_decomp_wavelet_view_set(s : TimeseriesdecompwaveletView, i : I
   result
 }
 
-pub fn timeseries_decomp_wavelet_view_sum(s : TimeseriesdecompwaveletView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_view_sum(s : TimeseriesdecompwaveletView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_view_mean(s : TimeseriesdecompwaveletView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_view_mean(s : TimeseriesdecompwaveletView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_view_scale(s : TimeseriesdecompwaveletView, f : Double) -> TimeseriesdecompwaveletView {
   let result = timeseries_decomp_wavelet_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_decomp_wavelet_view_fill(s : TimeseriesdecompwaveletView, v : 
   result
 }
 
-pub fn timeseries_decomp_wavelet_view_min(s : TimeseriesdecompwaveletView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_view_min(s : TimeseriesdecompwaveletView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_view_max(s : TimeseriesdecompwaveletView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_view_max(s : TimeseriesdecompwaveletView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_view_to_string(s : TimeseriesdecompwaveletView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_decomp_wavelet_range_set(s : TimeseriesdecompwaveletRange, i :
   result
 }
 
-pub fn timeseries_decomp_wavelet_range_sum(s : TimeseriesdecompwaveletRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_range_sum(s : TimeseriesdecompwaveletRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_range_mean(s : TimeseriesdecompwaveletRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_range_mean(s : TimeseriesdecompwaveletRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_range_scale(s : TimeseriesdecompwaveletRange, f : Double) -> TimeseriesdecompwaveletRange {
   let result = timeseries_decomp_wavelet_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_decomp_wavelet_range_fill(s : TimeseriesdecompwaveletRange, v 
   result
 }
 
-pub fn timeseries_decomp_wavelet_range_min(s : TimeseriesdecompwaveletRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_range_min(s : TimeseriesdecompwaveletRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_range_max(s : TimeseriesdecompwaveletRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_range_max(s : TimeseriesdecompwaveletRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_range_to_string(s : TimeseriesdecompwaveletRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_decomp_wavelet_slice_set(s : TimeseriesdecompwaveletSlice, i :
   result
 }
 
-pub fn timeseries_decomp_wavelet_slice_sum(s : TimeseriesdecompwaveletSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_wavelet_slice_sum(s : TimeseriesdecompwaveletSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_wavelet_slice_mean(s : TimeseriesdecompwaveletSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_wavelet_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_wavelet_slice_mean(s : TimeseriesdecompwaveletSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_wavelet_slice_scale(s : TimeseriesdecompwaveletSlice, f : Double) -> TimeseriesdecompwaveletSlice {
   let result = timeseries_decomp_wavelet_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_decomp_wavelet_slice_fill(s : TimeseriesdecompwaveletSlice, v 
   result
 }
 
-pub fn timeseries_decomp_wavelet_slice_min(s : TimeseriesdecompwaveletSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_slice_min(s : TimeseriesdecompwaveletSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_wavelet_slice_max(s : TimeseriesdecompwaveletSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_wavelet_slice_max(s : TimeseriesdecompwaveletSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_wavelet_slice_to_string(s : TimeseriesdecompwaveletSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

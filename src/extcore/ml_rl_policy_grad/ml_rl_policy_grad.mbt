@@ -88,11 +88,7 @@ pub fn ml_rl_policy_grad_make_series(vals : Array[Double], name : String) -> Mlr
 
 pub fn ml_rl_policy_grad_series_len(s : MlrlpolicygradSeries) -> Int { s.vals.length() }
 
-pub fn ml_rl_policy_grad_series_sum(s : MlrlpolicygradSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_rl_policy_grad_series_sum(s : MlrlpolicygradSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_rl_policy_grad_series_mean(s : MlrlpolicygradSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_rl_policy_grad_frame_set(s : MlrlpolicygradFrame, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_policy_grad_frame_sum(s : MlrlpolicygradFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_frame_sum(s : MlrlpolicygradFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_frame_mean(s : MlrlpolicygradFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_frame_mean(s : MlrlpolicygradFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_frame_scale(s : MlrlpolicygradFrame, f : Double) -> MlrlpolicygradFrame {
   let result = ml_rl_policy_grad_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_rl_policy_grad_frame_fill(s : MlrlpolicygradFrame, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_policy_grad_frame_min(s : MlrlpolicygradFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_frame_min(s : MlrlpolicygradFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_frame_max(s : MlrlpolicygradFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_frame_max(s : MlrlpolicygradFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_frame_to_string(s : MlrlpolicygradFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_rl_policy_grad_table_set(s : MlrlpolicygradTable, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_policy_grad_table_sum(s : MlrlpolicygradTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_table_sum(s : MlrlpolicygradTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_table_mean(s : MlrlpolicygradTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_table_mean(s : MlrlpolicygradTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_table_scale(s : MlrlpolicygradTable, f : Double) -> MlrlpolicygradTable {
   let result = ml_rl_policy_grad_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_rl_policy_grad_table_fill(s : MlrlpolicygradTable, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_policy_grad_table_min(s : MlrlpolicygradTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_table_min(s : MlrlpolicygradTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_table_max(s : MlrlpolicygradTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_table_max(s : MlrlpolicygradTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_table_to_string(s : MlrlpolicygradTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_rl_policy_grad_graphn_set(s : MlrlpolicygradGraphN, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_policy_grad_graphn_sum(s : MlrlpolicygradGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_graphn_sum(s : MlrlpolicygradGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_graphn_mean(s : MlrlpolicygradGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_graphn_mean(s : MlrlpolicygradGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_graphn_scale(s : MlrlpolicygradGraphN, f : Double) -> MlrlpolicygradGraphN {
   let result = ml_rl_policy_grad_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_rl_policy_grad_graphn_fill(s : MlrlpolicygradGraphN, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_policy_grad_graphn_min(s : MlrlpolicygradGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_graphn_min(s : MlrlpolicygradGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_graphn_max(s : MlrlpolicygradGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_graphn_max(s : MlrlpolicygradGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_graphn_to_string(s : MlrlpolicygradGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_rl_policy_grad_node_set(s : MlrlpolicygradNode, i : Int, v : Double) -
   result
 }
 
-pub fn ml_rl_policy_grad_node_sum(s : MlrlpolicygradNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_node_sum(s : MlrlpolicygradNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_node_mean(s : MlrlpolicygradNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_node_mean(s : MlrlpolicygradNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_node_scale(s : MlrlpolicygradNode, f : Double) -> MlrlpolicygradNode {
   let result = ml_rl_policy_grad_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_rl_policy_grad_node_fill(s : MlrlpolicygradNode, v : Double) -> Mlrlpo
   result
 }
 
-pub fn ml_rl_policy_grad_node_min(s : MlrlpolicygradNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_node_min(s : MlrlpolicygradNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_node_max(s : MlrlpolicygradNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_node_max(s : MlrlpolicygradNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_node_to_string(s : MlrlpolicygradNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_rl_policy_grad_edge_set(s : MlrlpolicygradEdge, i : Int, v : Double) -
   result
 }
 
-pub fn ml_rl_policy_grad_edge_sum(s : MlrlpolicygradEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_edge_sum(s : MlrlpolicygradEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_edge_mean(s : MlrlpolicygradEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_edge_mean(s : MlrlpolicygradEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_edge_scale(s : MlrlpolicygradEdge, f : Double) -> MlrlpolicygradEdge {
   let result = ml_rl_policy_grad_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_rl_policy_grad_edge_fill(s : MlrlpolicygradEdge, v : Double) -> Mlrlpo
   result
 }
 
-pub fn ml_rl_policy_grad_edge_min(s : MlrlpolicygradEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_edge_min(s : MlrlpolicygradEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_edge_max(s : MlrlpolicygradEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_edge_max(s : MlrlpolicygradEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_edge_to_string(s : MlrlpolicygradEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_rl_policy_grad_path_set(s : MlrlpolicygradPath, i : Int, v : Double) -
   result
 }
 
-pub fn ml_rl_policy_grad_path_sum(s : MlrlpolicygradPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_path_sum(s : MlrlpolicygradPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_path_mean(s : MlrlpolicygradPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_path_mean(s : MlrlpolicygradPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_path_scale(s : MlrlpolicygradPath, f : Double) -> MlrlpolicygradPath {
   let result = ml_rl_policy_grad_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_rl_policy_grad_path_fill(s : MlrlpolicygradPath, v : Double) -> Mlrlpo
   result
 }
 
-pub fn ml_rl_policy_grad_path_min(s : MlrlpolicygradPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_path_min(s : MlrlpolicygradPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_path_max(s : MlrlpolicygradPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_path_max(s : MlrlpolicygradPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_path_to_string(s : MlrlpolicygradPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_rl_policy_grad_cluster_set(s : MlrlpolicygradCluster, i : Int, v : Dou
   result
 }
 
-pub fn ml_rl_policy_grad_cluster_sum(s : MlrlpolicygradCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_cluster_sum(s : MlrlpolicygradCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_cluster_mean(s : MlrlpolicygradCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_cluster_mean(s : MlrlpolicygradCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_cluster_scale(s : MlrlpolicygradCluster, f : Double) -> MlrlpolicygradCluster {
   let result = ml_rl_policy_grad_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_rl_policy_grad_cluster_fill(s : MlrlpolicygradCluster, v : Double) -> 
   result
 }
 
-pub fn ml_rl_policy_grad_cluster_min(s : MlrlpolicygradCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_cluster_min(s : MlrlpolicygradCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_cluster_max(s : MlrlpolicygradCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_cluster_max(s : MlrlpolicygradCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_cluster_to_string(s : MlrlpolicygradCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_rl_policy_grad_model_set(s : MlrlpolicygradModel, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_policy_grad_model_sum(s : MlrlpolicygradModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_model_sum(s : MlrlpolicygradModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_model_mean(s : MlrlpolicygradModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_model_mean(s : MlrlpolicygradModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_model_scale(s : MlrlpolicygradModel, f : Double) -> MlrlpolicygradModel {
   let result = ml_rl_policy_grad_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_rl_policy_grad_model_fill(s : MlrlpolicygradModel, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_policy_grad_model_min(s : MlrlpolicygradModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_model_min(s : MlrlpolicygradModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_model_max(s : MlrlpolicygradModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_model_max(s : MlrlpolicygradModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_model_to_string(s : MlrlpolicygradModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_rl_policy_grad_layer_set(s : MlrlpolicygradLayer, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_policy_grad_layer_sum(s : MlrlpolicygradLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_layer_sum(s : MlrlpolicygradLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_layer_mean(s : MlrlpolicygradLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_layer_mean(s : MlrlpolicygradLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_layer_scale(s : MlrlpolicygradLayer, f : Double) -> MlrlpolicygradLayer {
   let result = ml_rl_policy_grad_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_rl_policy_grad_layer_fill(s : MlrlpolicygradLayer, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_policy_grad_layer_min(s : MlrlpolicygradLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_layer_min(s : MlrlpolicygradLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_layer_max(s : MlrlpolicygradLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_layer_max(s : MlrlpolicygradLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_layer_to_string(s : MlrlpolicygradLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_rl_policy_grad_buffer_set(s : MlrlpolicygradBuffer, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_policy_grad_buffer_sum(s : MlrlpolicygradBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_buffer_sum(s : MlrlpolicygradBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_buffer_mean(s : MlrlpolicygradBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_buffer_mean(s : MlrlpolicygradBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_buffer_scale(s : MlrlpolicygradBuffer, f : Double) -> MlrlpolicygradBuffer {
   let result = ml_rl_policy_grad_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_rl_policy_grad_buffer_fill(s : MlrlpolicygradBuffer, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_policy_grad_buffer_min(s : MlrlpolicygradBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_buffer_min(s : MlrlpolicygradBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_buffer_max(s : MlrlpolicygradBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_buffer_max(s : MlrlpolicygradBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_buffer_to_string(s : MlrlpolicygradBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_rl_policy_grad_cursor_set(s : MlrlpolicygradCursor, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_policy_grad_cursor_sum(s : MlrlpolicygradCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_cursor_sum(s : MlrlpolicygradCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_cursor_mean(s : MlrlpolicygradCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_cursor_mean(s : MlrlpolicygradCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_cursor_scale(s : MlrlpolicygradCursor, f : Double) -> MlrlpolicygradCursor {
   let result = ml_rl_policy_grad_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_rl_policy_grad_cursor_fill(s : MlrlpolicygradCursor, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_policy_grad_cursor_min(s : MlrlpolicygradCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_cursor_min(s : MlrlpolicygradCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_cursor_max(s : MlrlpolicygradCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_cursor_max(s : MlrlpolicygradCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_cursor_to_string(s : MlrlpolicygradCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_rl_policy_grad_view_set(s : MlrlpolicygradView, i : Int, v : Double) -
   result
 }
 
-pub fn ml_rl_policy_grad_view_sum(s : MlrlpolicygradView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_view_sum(s : MlrlpolicygradView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_view_mean(s : MlrlpolicygradView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_view_mean(s : MlrlpolicygradView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_view_scale(s : MlrlpolicygradView, f : Double) -> MlrlpolicygradView {
   let result = ml_rl_policy_grad_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_rl_policy_grad_view_fill(s : MlrlpolicygradView, v : Double) -> Mlrlpo
   result
 }
 
-pub fn ml_rl_policy_grad_view_min(s : MlrlpolicygradView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_view_min(s : MlrlpolicygradView) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_view_max(s : MlrlpolicygradView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_view_max(s : MlrlpolicygradView) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_view_to_string(s : MlrlpolicygradView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_rl_policy_grad_range_set(s : MlrlpolicygradRange, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_policy_grad_range_sum(s : MlrlpolicygradRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_range_sum(s : MlrlpolicygradRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_range_mean(s : MlrlpolicygradRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_range_mean(s : MlrlpolicygradRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_range_scale(s : MlrlpolicygradRange, f : Double) -> MlrlpolicygradRange {
   let result = ml_rl_policy_grad_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_rl_policy_grad_range_fill(s : MlrlpolicygradRange, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_policy_grad_range_min(s : MlrlpolicygradRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_range_min(s : MlrlpolicygradRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_range_max(s : MlrlpolicygradRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_range_max(s : MlrlpolicygradRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_range_to_string(s : MlrlpolicygradRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_rl_policy_grad_slice_set(s : MlrlpolicygradSlice, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_policy_grad_slice_sum(s : MlrlpolicygradSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_policy_grad_slice_sum(s : MlrlpolicygradSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_policy_grad_slice_mean(s : MlrlpolicygradSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_policy_grad_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_policy_grad_slice_mean(s : MlrlpolicygradSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_policy_grad_slice_scale(s : MlrlpolicygradSlice, f : Double) -> MlrlpolicygradSlice {
   let result = ml_rl_policy_grad_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_rl_policy_grad_slice_fill(s : MlrlpolicygradSlice, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_policy_grad_slice_min(s : MlrlpolicygradSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_slice_min(s : MlrlpolicygradSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_policy_grad_slice_max(s : MlrlpolicygradSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_policy_grad_slice_max(s : MlrlpolicygradSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_policy_grad_slice_to_string(s : MlrlpolicygradSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn signal_spec_covariance_make_series(vals : Array[Double], name : String) -
 
 pub fn signal_spec_covariance_series_len(s : SignalspeccovarianceSeries) -> Int { s.vals.length() }
 
-pub fn signal_spec_covariance_series_sum(s : SignalspeccovarianceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_spec_covariance_series_sum(s : SignalspeccovarianceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_spec_covariance_series_mean(s : SignalspeccovarianceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_spec_covariance_frame_set(s : SignalspeccovarianceFrame, i : Int, 
   result
 }
 
-pub fn signal_spec_covariance_frame_sum(s : SignalspeccovarianceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_frame_sum(s : SignalspeccovarianceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_frame_mean(s : SignalspeccovarianceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_frame_mean(s : SignalspeccovarianceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_frame_scale(s : SignalspeccovarianceFrame, f : Double) -> SignalspeccovarianceFrame {
   let result = signal_spec_covariance_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_spec_covariance_frame_fill(s : SignalspeccovarianceFrame, v : Doub
   result
 }
 
-pub fn signal_spec_covariance_frame_min(s : SignalspeccovarianceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_frame_min(s : SignalspeccovarianceFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_frame_max(s : SignalspeccovarianceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_frame_max(s : SignalspeccovarianceFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_frame_to_string(s : SignalspeccovarianceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_spec_covariance_table_set(s : SignalspeccovarianceTable, i : Int, 
   result
 }
 
-pub fn signal_spec_covariance_table_sum(s : SignalspeccovarianceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_table_sum(s : SignalspeccovarianceTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_table_mean(s : SignalspeccovarianceTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_table_mean(s : SignalspeccovarianceTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_table_scale(s : SignalspeccovarianceTable, f : Double) -> SignalspeccovarianceTable {
   let result = signal_spec_covariance_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_spec_covariance_table_fill(s : SignalspeccovarianceTable, v : Doub
   result
 }
 
-pub fn signal_spec_covariance_table_min(s : SignalspeccovarianceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_table_min(s : SignalspeccovarianceTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_table_max(s : SignalspeccovarianceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_table_max(s : SignalspeccovarianceTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_table_to_string(s : SignalspeccovarianceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_spec_covariance_graphn_set(s : SignalspeccovarianceGraphN, i : Int
   result
 }
 
-pub fn signal_spec_covariance_graphn_sum(s : SignalspeccovarianceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_graphn_sum(s : SignalspeccovarianceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_graphn_mean(s : SignalspeccovarianceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_graphn_mean(s : SignalspeccovarianceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_graphn_scale(s : SignalspeccovarianceGraphN, f : Double) -> SignalspeccovarianceGraphN {
   let result = signal_spec_covariance_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_spec_covariance_graphn_fill(s : SignalspeccovarianceGraphN, v : Do
   result
 }
 
-pub fn signal_spec_covariance_graphn_min(s : SignalspeccovarianceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_graphn_min(s : SignalspeccovarianceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_graphn_max(s : SignalspeccovarianceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_graphn_max(s : SignalspeccovarianceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_graphn_to_string(s : SignalspeccovarianceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_spec_covariance_node_set(s : SignalspeccovarianceNode, i : Int, v 
   result
 }
 
-pub fn signal_spec_covariance_node_sum(s : SignalspeccovarianceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_node_sum(s : SignalspeccovarianceNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_node_mean(s : SignalspeccovarianceNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_node_mean(s : SignalspeccovarianceNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_node_scale(s : SignalspeccovarianceNode, f : Double) -> SignalspeccovarianceNode {
   let result = signal_spec_covariance_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_spec_covariance_node_fill(s : SignalspeccovarianceNode, v : Double
   result
 }
 
-pub fn signal_spec_covariance_node_min(s : SignalspeccovarianceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_node_min(s : SignalspeccovarianceNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_node_max(s : SignalspeccovarianceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_node_max(s : SignalspeccovarianceNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_node_to_string(s : SignalspeccovarianceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_spec_covariance_edge_set(s : SignalspeccovarianceEdge, i : Int, v 
   result
 }
 
-pub fn signal_spec_covariance_edge_sum(s : SignalspeccovarianceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_edge_sum(s : SignalspeccovarianceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_edge_mean(s : SignalspeccovarianceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_edge_mean(s : SignalspeccovarianceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_edge_scale(s : SignalspeccovarianceEdge, f : Double) -> SignalspeccovarianceEdge {
   let result = signal_spec_covariance_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_spec_covariance_edge_fill(s : SignalspeccovarianceEdge, v : Double
   result
 }
 
-pub fn signal_spec_covariance_edge_min(s : SignalspeccovarianceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_edge_min(s : SignalspeccovarianceEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_edge_max(s : SignalspeccovarianceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_edge_max(s : SignalspeccovarianceEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_edge_to_string(s : SignalspeccovarianceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_spec_covariance_path_set(s : SignalspeccovariancePath, i : Int, v 
   result
 }
 
-pub fn signal_spec_covariance_path_sum(s : SignalspeccovariancePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_path_sum(s : SignalspeccovariancePath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_path_mean(s : SignalspeccovariancePath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_path_mean(s : SignalspeccovariancePath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_path_scale(s : SignalspeccovariancePath, f : Double) -> SignalspeccovariancePath {
   let result = signal_spec_covariance_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_spec_covariance_path_fill(s : SignalspeccovariancePath, v : Double
   result
 }
 
-pub fn signal_spec_covariance_path_min(s : SignalspeccovariancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_path_min(s : SignalspeccovariancePath) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_path_max(s : SignalspeccovariancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_path_max(s : SignalspeccovariancePath) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_path_to_string(s : SignalspeccovariancePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_spec_covariance_cluster_set(s : SignalspeccovarianceCluster, i : I
   result
 }
 
-pub fn signal_spec_covariance_cluster_sum(s : SignalspeccovarianceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_cluster_sum(s : SignalspeccovarianceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_cluster_mean(s : SignalspeccovarianceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_cluster_mean(s : SignalspeccovarianceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_cluster_scale(s : SignalspeccovarianceCluster, f : Double) -> SignalspeccovarianceCluster {
   let result = signal_spec_covariance_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_spec_covariance_cluster_fill(s : SignalspeccovarianceCluster, v : 
   result
 }
 
-pub fn signal_spec_covariance_cluster_min(s : SignalspeccovarianceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_cluster_min(s : SignalspeccovarianceCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_cluster_max(s : SignalspeccovarianceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_cluster_max(s : SignalspeccovarianceCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_cluster_to_string(s : SignalspeccovarianceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_spec_covariance_model_set(s : SignalspeccovarianceModel, i : Int, 
   result
 }
 
-pub fn signal_spec_covariance_model_sum(s : SignalspeccovarianceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_model_sum(s : SignalspeccovarianceModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_model_mean(s : SignalspeccovarianceModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_model_mean(s : SignalspeccovarianceModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_model_scale(s : SignalspeccovarianceModel, f : Double) -> SignalspeccovarianceModel {
   let result = signal_spec_covariance_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_spec_covariance_model_fill(s : SignalspeccovarianceModel, v : Doub
   result
 }
 
-pub fn signal_spec_covariance_model_min(s : SignalspeccovarianceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_model_min(s : SignalspeccovarianceModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_model_max(s : SignalspeccovarianceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_model_max(s : SignalspeccovarianceModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_model_to_string(s : SignalspeccovarianceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_spec_covariance_layer_set(s : SignalspeccovarianceLayer, i : Int, 
   result
 }
 
-pub fn signal_spec_covariance_layer_sum(s : SignalspeccovarianceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_layer_sum(s : SignalspeccovarianceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_layer_mean(s : SignalspeccovarianceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_layer_mean(s : SignalspeccovarianceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_layer_scale(s : SignalspeccovarianceLayer, f : Double) -> SignalspeccovarianceLayer {
   let result = signal_spec_covariance_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_spec_covariance_layer_fill(s : SignalspeccovarianceLayer, v : Doub
   result
 }
 
-pub fn signal_spec_covariance_layer_min(s : SignalspeccovarianceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_layer_min(s : SignalspeccovarianceLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_layer_max(s : SignalspeccovarianceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_layer_max(s : SignalspeccovarianceLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_layer_to_string(s : SignalspeccovarianceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_spec_covariance_buffer_set(s : SignalspeccovarianceBuffer, i : Int
   result
 }
 
-pub fn signal_spec_covariance_buffer_sum(s : SignalspeccovarianceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_buffer_sum(s : SignalspeccovarianceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_buffer_mean(s : SignalspeccovarianceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_buffer_mean(s : SignalspeccovarianceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_buffer_scale(s : SignalspeccovarianceBuffer, f : Double) -> SignalspeccovarianceBuffer {
   let result = signal_spec_covariance_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_spec_covariance_buffer_fill(s : SignalspeccovarianceBuffer, v : Do
   result
 }
 
-pub fn signal_spec_covariance_buffer_min(s : SignalspeccovarianceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_buffer_min(s : SignalspeccovarianceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_buffer_max(s : SignalspeccovarianceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_buffer_max(s : SignalspeccovarianceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_buffer_to_string(s : SignalspeccovarianceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_spec_covariance_cursor_set(s : SignalspeccovarianceCursor, i : Int
   result
 }
 
-pub fn signal_spec_covariance_cursor_sum(s : SignalspeccovarianceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_cursor_sum(s : SignalspeccovarianceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_cursor_mean(s : SignalspeccovarianceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_cursor_mean(s : SignalspeccovarianceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_cursor_scale(s : SignalspeccovarianceCursor, f : Double) -> SignalspeccovarianceCursor {
   let result = signal_spec_covariance_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_spec_covariance_cursor_fill(s : SignalspeccovarianceCursor, v : Do
   result
 }
 
-pub fn signal_spec_covariance_cursor_min(s : SignalspeccovarianceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_cursor_min(s : SignalspeccovarianceCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_cursor_max(s : SignalspeccovarianceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_cursor_max(s : SignalspeccovarianceCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_cursor_to_string(s : SignalspeccovarianceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_spec_covariance_view_set(s : SignalspeccovarianceView, i : Int, v 
   result
 }
 
-pub fn signal_spec_covariance_view_sum(s : SignalspeccovarianceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_view_sum(s : SignalspeccovarianceView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_view_mean(s : SignalspeccovarianceView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_view_mean(s : SignalspeccovarianceView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_view_scale(s : SignalspeccovarianceView, f : Double) -> SignalspeccovarianceView {
   let result = signal_spec_covariance_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_spec_covariance_view_fill(s : SignalspeccovarianceView, v : Double
   result
 }
 
-pub fn signal_spec_covariance_view_min(s : SignalspeccovarianceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_view_min(s : SignalspeccovarianceView) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_view_max(s : SignalspeccovarianceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_view_max(s : SignalspeccovarianceView) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_view_to_string(s : SignalspeccovarianceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_spec_covariance_range_set(s : SignalspeccovarianceRange, i : Int, 
   result
 }
 
-pub fn signal_spec_covariance_range_sum(s : SignalspeccovarianceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_range_sum(s : SignalspeccovarianceRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_range_mean(s : SignalspeccovarianceRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_range_mean(s : SignalspeccovarianceRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_range_scale(s : SignalspeccovarianceRange, f : Double) -> SignalspeccovarianceRange {
   let result = signal_spec_covariance_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_spec_covariance_range_fill(s : SignalspeccovarianceRange, v : Doub
   result
 }
 
-pub fn signal_spec_covariance_range_min(s : SignalspeccovarianceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_range_min(s : SignalspeccovarianceRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_range_max(s : SignalspeccovarianceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_range_max(s : SignalspeccovarianceRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_range_to_string(s : SignalspeccovarianceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_spec_covariance_slice_set(s : SignalspeccovarianceSlice, i : Int, 
   result
 }
 
-pub fn signal_spec_covariance_slice_sum(s : SignalspeccovarianceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_covariance_slice_sum(s : SignalspeccovarianceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_covariance_slice_mean(s : SignalspeccovarianceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_covariance_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_covariance_slice_mean(s : SignalspeccovarianceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_covariance_slice_scale(s : SignalspeccovarianceSlice, f : Double) -> SignalspeccovarianceSlice {
   let result = signal_spec_covariance_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_spec_covariance_slice_fill(s : SignalspeccovarianceSlice, v : Doub
   result
 }
 
-pub fn signal_spec_covariance_slice_min(s : SignalspeccovarianceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_slice_min(s : SignalspeccovarianceSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_covariance_slice_max(s : SignalspeccovarianceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_covariance_slice_max(s : SignalspeccovarianceSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_covariance_slice_to_string(s : SignalspeccovarianceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

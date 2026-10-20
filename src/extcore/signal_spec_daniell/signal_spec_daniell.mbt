@@ -88,11 +88,7 @@ pub fn signal_spec_daniell_make_series(vals : Array[Double], name : String) -> S
 
 pub fn signal_spec_daniell_series_len(s : SignalspecdaniellSeries) -> Int { s.vals.length() }
 
-pub fn signal_spec_daniell_series_sum(s : SignalspecdaniellSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_spec_daniell_series_sum(s : SignalspecdaniellSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_spec_daniell_series_mean(s : SignalspecdaniellSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_spec_daniell_frame_set(s : SignalspecdaniellFrame, i : Int, v : Do
   result
 }
 
-pub fn signal_spec_daniell_frame_sum(s : SignalspecdaniellFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_frame_sum(s : SignalspecdaniellFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_frame_mean(s : SignalspecdaniellFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_frame_mean(s : SignalspecdaniellFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_frame_scale(s : SignalspecdaniellFrame, f : Double) -> SignalspecdaniellFrame {
   let result = signal_spec_daniell_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_spec_daniell_frame_fill(s : SignalspecdaniellFrame, v : Double) ->
   result
 }
 
-pub fn signal_spec_daniell_frame_min(s : SignalspecdaniellFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_frame_min(s : SignalspecdaniellFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_frame_max(s : SignalspecdaniellFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_frame_max(s : SignalspecdaniellFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_frame_to_string(s : SignalspecdaniellFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_spec_daniell_table_set(s : SignalspecdaniellTable, i : Int, v : Do
   result
 }
 
-pub fn signal_spec_daniell_table_sum(s : SignalspecdaniellTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_table_sum(s : SignalspecdaniellTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_table_mean(s : SignalspecdaniellTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_table_mean(s : SignalspecdaniellTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_table_scale(s : SignalspecdaniellTable, f : Double) -> SignalspecdaniellTable {
   let result = signal_spec_daniell_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_spec_daniell_table_fill(s : SignalspecdaniellTable, v : Double) ->
   result
 }
 
-pub fn signal_spec_daniell_table_min(s : SignalspecdaniellTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_table_min(s : SignalspecdaniellTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_table_max(s : SignalspecdaniellTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_table_max(s : SignalspecdaniellTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_table_to_string(s : SignalspecdaniellTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_spec_daniell_graphn_set(s : SignalspecdaniellGraphN, i : Int, v : 
   result
 }
 
-pub fn signal_spec_daniell_graphn_sum(s : SignalspecdaniellGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_graphn_sum(s : SignalspecdaniellGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_graphn_mean(s : SignalspecdaniellGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_graphn_mean(s : SignalspecdaniellGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_graphn_scale(s : SignalspecdaniellGraphN, f : Double) -> SignalspecdaniellGraphN {
   let result = signal_spec_daniell_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_spec_daniell_graphn_fill(s : SignalspecdaniellGraphN, v : Double) 
   result
 }
 
-pub fn signal_spec_daniell_graphn_min(s : SignalspecdaniellGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_graphn_min(s : SignalspecdaniellGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_graphn_max(s : SignalspecdaniellGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_graphn_max(s : SignalspecdaniellGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_graphn_to_string(s : SignalspecdaniellGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_spec_daniell_node_set(s : SignalspecdaniellNode, i : Int, v : Doub
   result
 }
 
-pub fn signal_spec_daniell_node_sum(s : SignalspecdaniellNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_node_sum(s : SignalspecdaniellNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_node_mean(s : SignalspecdaniellNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_node_mean(s : SignalspecdaniellNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_node_scale(s : SignalspecdaniellNode, f : Double) -> SignalspecdaniellNode {
   let result = signal_spec_daniell_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_spec_daniell_node_fill(s : SignalspecdaniellNode, v : Double) -> S
   result
 }
 
-pub fn signal_spec_daniell_node_min(s : SignalspecdaniellNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_node_min(s : SignalspecdaniellNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_node_max(s : SignalspecdaniellNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_node_max(s : SignalspecdaniellNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_node_to_string(s : SignalspecdaniellNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_spec_daniell_edge_set(s : SignalspecdaniellEdge, i : Int, v : Doub
   result
 }
 
-pub fn signal_spec_daniell_edge_sum(s : SignalspecdaniellEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_edge_sum(s : SignalspecdaniellEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_edge_mean(s : SignalspecdaniellEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_edge_mean(s : SignalspecdaniellEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_edge_scale(s : SignalspecdaniellEdge, f : Double) -> SignalspecdaniellEdge {
   let result = signal_spec_daniell_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_spec_daniell_edge_fill(s : SignalspecdaniellEdge, v : Double) -> S
   result
 }
 
-pub fn signal_spec_daniell_edge_min(s : SignalspecdaniellEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_edge_min(s : SignalspecdaniellEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_edge_max(s : SignalspecdaniellEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_edge_max(s : SignalspecdaniellEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_edge_to_string(s : SignalspecdaniellEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_spec_daniell_path_set(s : SignalspecdaniellPath, i : Int, v : Doub
   result
 }
 
-pub fn signal_spec_daniell_path_sum(s : SignalspecdaniellPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_path_sum(s : SignalspecdaniellPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_path_mean(s : SignalspecdaniellPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_path_mean(s : SignalspecdaniellPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_path_scale(s : SignalspecdaniellPath, f : Double) -> SignalspecdaniellPath {
   let result = signal_spec_daniell_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_spec_daniell_path_fill(s : SignalspecdaniellPath, v : Double) -> S
   result
 }
 
-pub fn signal_spec_daniell_path_min(s : SignalspecdaniellPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_path_min(s : SignalspecdaniellPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_path_max(s : SignalspecdaniellPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_path_max(s : SignalspecdaniellPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_path_to_string(s : SignalspecdaniellPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_spec_daniell_cluster_set(s : SignalspecdaniellCluster, i : Int, v 
   result
 }
 
-pub fn signal_spec_daniell_cluster_sum(s : SignalspecdaniellCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_cluster_sum(s : SignalspecdaniellCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_cluster_mean(s : SignalspecdaniellCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_cluster_mean(s : SignalspecdaniellCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_cluster_scale(s : SignalspecdaniellCluster, f : Double) -> SignalspecdaniellCluster {
   let result = signal_spec_daniell_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_spec_daniell_cluster_fill(s : SignalspecdaniellCluster, v : Double
   result
 }
 
-pub fn signal_spec_daniell_cluster_min(s : SignalspecdaniellCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_cluster_min(s : SignalspecdaniellCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_cluster_max(s : SignalspecdaniellCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_cluster_max(s : SignalspecdaniellCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_cluster_to_string(s : SignalspecdaniellCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_spec_daniell_model_set(s : SignalspecdaniellModel, i : Int, v : Do
   result
 }
 
-pub fn signal_spec_daniell_model_sum(s : SignalspecdaniellModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_model_sum(s : SignalspecdaniellModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_model_mean(s : SignalspecdaniellModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_model_mean(s : SignalspecdaniellModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_model_scale(s : SignalspecdaniellModel, f : Double) -> SignalspecdaniellModel {
   let result = signal_spec_daniell_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_spec_daniell_model_fill(s : SignalspecdaniellModel, v : Double) ->
   result
 }
 
-pub fn signal_spec_daniell_model_min(s : SignalspecdaniellModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_model_min(s : SignalspecdaniellModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_model_max(s : SignalspecdaniellModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_model_max(s : SignalspecdaniellModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_model_to_string(s : SignalspecdaniellModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_spec_daniell_layer_set(s : SignalspecdaniellLayer, i : Int, v : Do
   result
 }
 
-pub fn signal_spec_daniell_layer_sum(s : SignalspecdaniellLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_layer_sum(s : SignalspecdaniellLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_layer_mean(s : SignalspecdaniellLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_layer_mean(s : SignalspecdaniellLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_layer_scale(s : SignalspecdaniellLayer, f : Double) -> SignalspecdaniellLayer {
   let result = signal_spec_daniell_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_spec_daniell_layer_fill(s : SignalspecdaniellLayer, v : Double) ->
   result
 }
 
-pub fn signal_spec_daniell_layer_min(s : SignalspecdaniellLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_layer_min(s : SignalspecdaniellLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_layer_max(s : SignalspecdaniellLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_layer_max(s : SignalspecdaniellLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_layer_to_string(s : SignalspecdaniellLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_spec_daniell_buffer_set(s : SignalspecdaniellBuffer, i : Int, v : 
   result
 }
 
-pub fn signal_spec_daniell_buffer_sum(s : SignalspecdaniellBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_buffer_sum(s : SignalspecdaniellBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_buffer_mean(s : SignalspecdaniellBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_buffer_mean(s : SignalspecdaniellBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_buffer_scale(s : SignalspecdaniellBuffer, f : Double) -> SignalspecdaniellBuffer {
   let result = signal_spec_daniell_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_spec_daniell_buffer_fill(s : SignalspecdaniellBuffer, v : Double) 
   result
 }
 
-pub fn signal_spec_daniell_buffer_min(s : SignalspecdaniellBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_buffer_min(s : SignalspecdaniellBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_buffer_max(s : SignalspecdaniellBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_buffer_max(s : SignalspecdaniellBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_buffer_to_string(s : SignalspecdaniellBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_spec_daniell_cursor_set(s : SignalspecdaniellCursor, i : Int, v : 
   result
 }
 
-pub fn signal_spec_daniell_cursor_sum(s : SignalspecdaniellCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_cursor_sum(s : SignalspecdaniellCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_cursor_mean(s : SignalspecdaniellCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_cursor_mean(s : SignalspecdaniellCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_cursor_scale(s : SignalspecdaniellCursor, f : Double) -> SignalspecdaniellCursor {
   let result = signal_spec_daniell_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_spec_daniell_cursor_fill(s : SignalspecdaniellCursor, v : Double) 
   result
 }
 
-pub fn signal_spec_daniell_cursor_min(s : SignalspecdaniellCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_cursor_min(s : SignalspecdaniellCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_cursor_max(s : SignalspecdaniellCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_cursor_max(s : SignalspecdaniellCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_cursor_to_string(s : SignalspecdaniellCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_spec_daniell_view_set(s : SignalspecdaniellView, i : Int, v : Doub
   result
 }
 
-pub fn signal_spec_daniell_view_sum(s : SignalspecdaniellView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_view_sum(s : SignalspecdaniellView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_view_mean(s : SignalspecdaniellView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_view_mean(s : SignalspecdaniellView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_view_scale(s : SignalspecdaniellView, f : Double) -> SignalspecdaniellView {
   let result = signal_spec_daniell_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_spec_daniell_view_fill(s : SignalspecdaniellView, v : Double) -> S
   result
 }
 
-pub fn signal_spec_daniell_view_min(s : SignalspecdaniellView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_view_min(s : SignalspecdaniellView) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_view_max(s : SignalspecdaniellView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_view_max(s : SignalspecdaniellView) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_view_to_string(s : SignalspecdaniellView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_spec_daniell_range_set(s : SignalspecdaniellRange, i : Int, v : Do
   result
 }
 
-pub fn signal_spec_daniell_range_sum(s : SignalspecdaniellRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_range_sum(s : SignalspecdaniellRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_range_mean(s : SignalspecdaniellRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_range_mean(s : SignalspecdaniellRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_range_scale(s : SignalspecdaniellRange, f : Double) -> SignalspecdaniellRange {
   let result = signal_spec_daniell_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_spec_daniell_range_fill(s : SignalspecdaniellRange, v : Double) ->
   result
 }
 
-pub fn signal_spec_daniell_range_min(s : SignalspecdaniellRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_range_min(s : SignalspecdaniellRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_range_max(s : SignalspecdaniellRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_range_max(s : SignalspecdaniellRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_range_to_string(s : SignalspecdaniellRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_spec_daniell_slice_set(s : SignalspecdaniellSlice, i : Int, v : Do
   result
 }
 
-pub fn signal_spec_daniell_slice_sum(s : SignalspecdaniellSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_daniell_slice_sum(s : SignalspecdaniellSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_daniell_slice_mean(s : SignalspecdaniellSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_daniell_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_daniell_slice_mean(s : SignalspecdaniellSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_daniell_slice_scale(s : SignalspecdaniellSlice, f : Double) -> SignalspecdaniellSlice {
   let result = signal_spec_daniell_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_spec_daniell_slice_fill(s : SignalspecdaniellSlice, v : Double) ->
   result
 }
 
-pub fn signal_spec_daniell_slice_min(s : SignalspecdaniellSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_slice_min(s : SignalspecdaniellSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_daniell_slice_max(s : SignalspecdaniellSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_daniell_slice_max(s : SignalspecdaniellSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_daniell_slice_to_string(s : SignalspecdaniellSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

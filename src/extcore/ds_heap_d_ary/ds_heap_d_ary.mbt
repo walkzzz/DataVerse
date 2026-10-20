@@ -88,11 +88,7 @@ pub fn ds_heap_d_ary_make_series(vals : Array[Double], name : String) -> Dsheapd
 
 pub fn ds_heap_d_ary_series_len(s : DsheapdarySeries) -> Int { s.vals.length() }
 
-pub fn ds_heap_d_ary_series_sum(s : DsheapdarySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_heap_d_ary_series_sum(s : DsheapdarySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_heap_d_ary_series_mean(s : DsheapdarySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_heap_d_ary_frame_set(s : DsheapdaryFrame, i : Int, v : Double) -> Dshe
   result
 }
 
-pub fn ds_heap_d_ary_frame_sum(s : DsheapdaryFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_frame_sum(s : DsheapdaryFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_frame_mean(s : DsheapdaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_frame_mean(s : DsheapdaryFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_frame_scale(s : DsheapdaryFrame, f : Double) -> DsheapdaryFrame {
   let result = ds_heap_d_ary_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_heap_d_ary_frame_fill(s : DsheapdaryFrame, v : Double) -> DsheapdaryFr
   result
 }
 
-pub fn ds_heap_d_ary_frame_min(s : DsheapdaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_frame_min(s : DsheapdaryFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_frame_max(s : DsheapdaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_frame_max(s : DsheapdaryFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_frame_to_string(s : DsheapdaryFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_heap_d_ary_table_set(s : DsheapdaryTable, i : Int, v : Double) -> Dshe
   result
 }
 
-pub fn ds_heap_d_ary_table_sum(s : DsheapdaryTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_table_sum(s : DsheapdaryTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_table_mean(s : DsheapdaryTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_table_mean(s : DsheapdaryTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_table_scale(s : DsheapdaryTable, f : Double) -> DsheapdaryTable {
   let result = ds_heap_d_ary_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_heap_d_ary_table_fill(s : DsheapdaryTable, v : Double) -> DsheapdaryTa
   result
 }
 
-pub fn ds_heap_d_ary_table_min(s : DsheapdaryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_table_min(s : DsheapdaryTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_table_max(s : DsheapdaryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_table_max(s : DsheapdaryTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_table_to_string(s : DsheapdaryTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_heap_d_ary_graphn_set(s : DsheapdaryGraphN, i : Int, v : Double) -> Ds
   result
 }
 
-pub fn ds_heap_d_ary_graphn_sum(s : DsheapdaryGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_graphn_sum(s : DsheapdaryGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_graphn_mean(s : DsheapdaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_graphn_mean(s : DsheapdaryGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_graphn_scale(s : DsheapdaryGraphN, f : Double) -> DsheapdaryGraphN {
   let result = ds_heap_d_ary_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_heap_d_ary_graphn_fill(s : DsheapdaryGraphN, v : Double) -> Dsheapdary
   result
 }
 
-pub fn ds_heap_d_ary_graphn_min(s : DsheapdaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_graphn_min(s : DsheapdaryGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_graphn_max(s : DsheapdaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_graphn_max(s : DsheapdaryGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_graphn_to_string(s : DsheapdaryGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_heap_d_ary_node_set(s : DsheapdaryNode, i : Int, v : Double) -> Dsheap
   result
 }
 
-pub fn ds_heap_d_ary_node_sum(s : DsheapdaryNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_node_sum(s : DsheapdaryNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_node_mean(s : DsheapdaryNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_node_mean(s : DsheapdaryNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_node_scale(s : DsheapdaryNode, f : Double) -> DsheapdaryNode {
   let result = ds_heap_d_ary_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_heap_d_ary_node_fill(s : DsheapdaryNode, v : Double) -> DsheapdaryNode
   result
 }
 
-pub fn ds_heap_d_ary_node_min(s : DsheapdaryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_node_min(s : DsheapdaryNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_node_max(s : DsheapdaryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_node_max(s : DsheapdaryNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_node_to_string(s : DsheapdaryNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_heap_d_ary_edge_set(s : DsheapdaryEdge, i : Int, v : Double) -> Dsheap
   result
 }
 
-pub fn ds_heap_d_ary_edge_sum(s : DsheapdaryEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_edge_sum(s : DsheapdaryEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_edge_mean(s : DsheapdaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_edge_mean(s : DsheapdaryEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_edge_scale(s : DsheapdaryEdge, f : Double) -> DsheapdaryEdge {
   let result = ds_heap_d_ary_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_heap_d_ary_edge_fill(s : DsheapdaryEdge, v : Double) -> DsheapdaryEdge
   result
 }
 
-pub fn ds_heap_d_ary_edge_min(s : DsheapdaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_edge_min(s : DsheapdaryEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_edge_max(s : DsheapdaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_edge_max(s : DsheapdaryEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_edge_to_string(s : DsheapdaryEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_heap_d_ary_path_set(s : DsheapdaryPath, i : Int, v : Double) -> Dsheap
   result
 }
 
-pub fn ds_heap_d_ary_path_sum(s : DsheapdaryPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_path_sum(s : DsheapdaryPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_path_mean(s : DsheapdaryPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_path_mean(s : DsheapdaryPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_path_scale(s : DsheapdaryPath, f : Double) -> DsheapdaryPath {
   let result = ds_heap_d_ary_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_heap_d_ary_path_fill(s : DsheapdaryPath, v : Double) -> DsheapdaryPath
   result
 }
 
-pub fn ds_heap_d_ary_path_min(s : DsheapdaryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_path_min(s : DsheapdaryPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_path_max(s : DsheapdaryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_path_max(s : DsheapdaryPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_path_to_string(s : DsheapdaryPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_heap_d_ary_cluster_set(s : DsheapdaryCluster, i : Int, v : Double) -> 
   result
 }
 
-pub fn ds_heap_d_ary_cluster_sum(s : DsheapdaryCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_cluster_sum(s : DsheapdaryCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_cluster_mean(s : DsheapdaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_cluster_mean(s : DsheapdaryCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_cluster_scale(s : DsheapdaryCluster, f : Double) -> DsheapdaryCluster {
   let result = ds_heap_d_ary_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_heap_d_ary_cluster_fill(s : DsheapdaryCluster, v : Double) -> Dsheapda
   result
 }
 
-pub fn ds_heap_d_ary_cluster_min(s : DsheapdaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_cluster_min(s : DsheapdaryCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_cluster_max(s : DsheapdaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_cluster_max(s : DsheapdaryCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_cluster_to_string(s : DsheapdaryCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_heap_d_ary_model_set(s : DsheapdaryModel, i : Int, v : Double) -> Dshe
   result
 }
 
-pub fn ds_heap_d_ary_model_sum(s : DsheapdaryModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_model_sum(s : DsheapdaryModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_model_mean(s : DsheapdaryModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_model_mean(s : DsheapdaryModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_model_scale(s : DsheapdaryModel, f : Double) -> DsheapdaryModel {
   let result = ds_heap_d_ary_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_heap_d_ary_model_fill(s : DsheapdaryModel, v : Double) -> DsheapdaryMo
   result
 }
 
-pub fn ds_heap_d_ary_model_min(s : DsheapdaryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_model_min(s : DsheapdaryModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_model_max(s : DsheapdaryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_model_max(s : DsheapdaryModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_model_to_string(s : DsheapdaryModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_heap_d_ary_layer_set(s : DsheapdaryLayer, i : Int, v : Double) -> Dshe
   result
 }
 
-pub fn ds_heap_d_ary_layer_sum(s : DsheapdaryLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_layer_sum(s : DsheapdaryLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_layer_mean(s : DsheapdaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_layer_mean(s : DsheapdaryLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_layer_scale(s : DsheapdaryLayer, f : Double) -> DsheapdaryLayer {
   let result = ds_heap_d_ary_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_heap_d_ary_layer_fill(s : DsheapdaryLayer, v : Double) -> DsheapdaryLa
   result
 }
 
-pub fn ds_heap_d_ary_layer_min(s : DsheapdaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_layer_min(s : DsheapdaryLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_layer_max(s : DsheapdaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_layer_max(s : DsheapdaryLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_layer_to_string(s : DsheapdaryLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_heap_d_ary_buffer_set(s : DsheapdaryBuffer, i : Int, v : Double) -> Ds
   result
 }
 
-pub fn ds_heap_d_ary_buffer_sum(s : DsheapdaryBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_buffer_sum(s : DsheapdaryBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_buffer_mean(s : DsheapdaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_buffer_mean(s : DsheapdaryBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_buffer_scale(s : DsheapdaryBuffer, f : Double) -> DsheapdaryBuffer {
   let result = ds_heap_d_ary_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_heap_d_ary_buffer_fill(s : DsheapdaryBuffer, v : Double) -> Dsheapdary
   result
 }
 
-pub fn ds_heap_d_ary_buffer_min(s : DsheapdaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_buffer_min(s : DsheapdaryBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_buffer_max(s : DsheapdaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_buffer_max(s : DsheapdaryBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_buffer_to_string(s : DsheapdaryBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_heap_d_ary_cursor_set(s : DsheapdaryCursor, i : Int, v : Double) -> Ds
   result
 }
 
-pub fn ds_heap_d_ary_cursor_sum(s : DsheapdaryCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_cursor_sum(s : DsheapdaryCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_cursor_mean(s : DsheapdaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_cursor_mean(s : DsheapdaryCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_cursor_scale(s : DsheapdaryCursor, f : Double) -> DsheapdaryCursor {
   let result = ds_heap_d_ary_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_heap_d_ary_cursor_fill(s : DsheapdaryCursor, v : Double) -> Dsheapdary
   result
 }
 
-pub fn ds_heap_d_ary_cursor_min(s : DsheapdaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_cursor_min(s : DsheapdaryCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_cursor_max(s : DsheapdaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_cursor_max(s : DsheapdaryCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_cursor_to_string(s : DsheapdaryCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_heap_d_ary_view_set(s : DsheapdaryView, i : Int, v : Double) -> Dsheap
   result
 }
 
-pub fn ds_heap_d_ary_view_sum(s : DsheapdaryView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_view_sum(s : DsheapdaryView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_view_mean(s : DsheapdaryView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_view_mean(s : DsheapdaryView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_view_scale(s : DsheapdaryView, f : Double) -> DsheapdaryView {
   let result = ds_heap_d_ary_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_heap_d_ary_view_fill(s : DsheapdaryView, v : Double) -> DsheapdaryView
   result
 }
 
-pub fn ds_heap_d_ary_view_min(s : DsheapdaryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_view_min(s : DsheapdaryView) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_view_max(s : DsheapdaryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_view_max(s : DsheapdaryView) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_view_to_string(s : DsheapdaryView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_heap_d_ary_range_set(s : DsheapdaryRange, i : Int, v : Double) -> Dshe
   result
 }
 
-pub fn ds_heap_d_ary_range_sum(s : DsheapdaryRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_range_sum(s : DsheapdaryRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_range_mean(s : DsheapdaryRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_range_mean(s : DsheapdaryRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_range_scale(s : DsheapdaryRange, f : Double) -> DsheapdaryRange {
   let result = ds_heap_d_ary_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_heap_d_ary_range_fill(s : DsheapdaryRange, v : Double) -> DsheapdaryRa
   result
 }
 
-pub fn ds_heap_d_ary_range_min(s : DsheapdaryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_range_min(s : DsheapdaryRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_range_max(s : DsheapdaryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_range_max(s : DsheapdaryRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_range_to_string(s : DsheapdaryRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_heap_d_ary_slice_set(s : DsheapdarySlice, i : Int, v : Double) -> Dshe
   result
 }
 
-pub fn ds_heap_d_ary_slice_sum(s : DsheapdarySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_d_ary_slice_sum(s : DsheapdarySlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_d_ary_slice_mean(s : DsheapdarySlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_d_ary_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_d_ary_slice_mean(s : DsheapdarySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_d_ary_slice_scale(s : DsheapdarySlice, f : Double) -> DsheapdarySlice {
   let result = ds_heap_d_ary_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_heap_d_ary_slice_fill(s : DsheapdarySlice, v : Double) -> DsheapdarySl
   result
 }
 
-pub fn ds_heap_d_ary_slice_min(s : DsheapdarySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_slice_min(s : DsheapdarySlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_d_ary_slice_max(s : DsheapdarySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_d_ary_slice_max(s : DsheapdarySlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_d_ary_slice_to_string(s : DsheapdarySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_cholesky_make_series(vals : Array[Double], name : String) -> Mathcho
 
 pub fn math_cholesky_series_len(s : MathcholeskySeries) -> Int { s.vals.length() }
 
-pub fn math_cholesky_series_sum(s : MathcholeskySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_cholesky_series_sum(s : MathcholeskySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_cholesky_series_mean(s : MathcholeskySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_cholesky_frame_set(s : MathcholeskyFrame, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_cholesky_frame_sum(s : MathcholeskyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_frame_sum(s : MathcholeskyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_frame_mean(s : MathcholeskyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_frame_mean(s : MathcholeskyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_frame_scale(s : MathcholeskyFrame, f : Double) -> MathcholeskyFrame {
   let result = math_cholesky_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_cholesky_frame_fill(s : MathcholeskyFrame, v : Double) -> Mathcholes
   result
 }
 
-pub fn math_cholesky_frame_min(s : MathcholeskyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_frame_min(s : MathcholeskyFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_frame_max(s : MathcholeskyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_frame_max(s : MathcholeskyFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_frame_to_string(s : MathcholeskyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_cholesky_table_set(s : MathcholeskyTable, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_cholesky_table_sum(s : MathcholeskyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_table_sum(s : MathcholeskyTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_table_mean(s : MathcholeskyTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_table_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_table_mean(s : MathcholeskyTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_table_scale(s : MathcholeskyTable, f : Double) -> MathcholeskyTable {
   let result = math_cholesky_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_cholesky_table_fill(s : MathcholeskyTable, v : Double) -> Mathcholes
   result
 }
 
-pub fn math_cholesky_table_min(s : MathcholeskyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_table_min(s : MathcholeskyTable) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_table_max(s : MathcholeskyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_table_max(s : MathcholeskyTable) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_table_to_string(s : MathcholeskyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_cholesky_graphn_set(s : MathcholeskyGraphN, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_cholesky_graphn_sum(s : MathcholeskyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_graphn_sum(s : MathcholeskyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_graphn_mean(s : MathcholeskyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_graphn_mean(s : MathcholeskyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_graphn_scale(s : MathcholeskyGraphN, f : Double) -> MathcholeskyGraphN {
   let result = math_cholesky_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_cholesky_graphn_fill(s : MathcholeskyGraphN, v : Double) -> Mathchol
   result
 }
 
-pub fn math_cholesky_graphn_min(s : MathcholeskyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_graphn_min(s : MathcholeskyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_graphn_max(s : MathcholeskyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_graphn_max(s : MathcholeskyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_graphn_to_string(s : MathcholeskyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_cholesky_node_set(s : MathcholeskyNode, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_cholesky_node_sum(s : MathcholeskyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_node_sum(s : MathcholeskyNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_node_mean(s : MathcholeskyNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_node_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_node_mean(s : MathcholeskyNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_node_scale(s : MathcholeskyNode, f : Double) -> MathcholeskyNode {
   let result = math_cholesky_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_cholesky_node_fill(s : MathcholeskyNode, v : Double) -> Mathcholesky
   result
 }
 
-pub fn math_cholesky_node_min(s : MathcholeskyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_node_min(s : MathcholeskyNode) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_node_max(s : MathcholeskyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_node_max(s : MathcholeskyNode) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_node_to_string(s : MathcholeskyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_cholesky_edge_set(s : MathcholeskyEdge, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_cholesky_edge_sum(s : MathcholeskyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_edge_sum(s : MathcholeskyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_edge_mean(s : MathcholeskyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_edge_mean(s : MathcholeskyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_edge_scale(s : MathcholeskyEdge, f : Double) -> MathcholeskyEdge {
   let result = math_cholesky_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_cholesky_edge_fill(s : MathcholeskyEdge, v : Double) -> Mathcholesky
   result
 }
 
-pub fn math_cholesky_edge_min(s : MathcholeskyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_edge_min(s : MathcholeskyEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_edge_max(s : MathcholeskyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_edge_max(s : MathcholeskyEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_edge_to_string(s : MathcholeskyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_cholesky_path_set(s : MathcholeskyPath, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_cholesky_path_sum(s : MathcholeskyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_path_sum(s : MathcholeskyPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_path_mean(s : MathcholeskyPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_path_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_path_mean(s : MathcholeskyPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_path_scale(s : MathcholeskyPath, f : Double) -> MathcholeskyPath {
   let result = math_cholesky_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_cholesky_path_fill(s : MathcholeskyPath, v : Double) -> Mathcholesky
   result
 }
 
-pub fn math_cholesky_path_min(s : MathcholeskyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_path_min(s : MathcholeskyPath) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_path_max(s : MathcholeskyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_path_max(s : MathcholeskyPath) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_path_to_string(s : MathcholeskyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_cholesky_cluster_set(s : MathcholeskyCluster, i : Int, v : Double) -
   result
 }
 
-pub fn math_cholesky_cluster_sum(s : MathcholeskyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_cluster_sum(s : MathcholeskyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_cluster_mean(s : MathcholeskyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_cluster_mean(s : MathcholeskyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_cluster_scale(s : MathcholeskyCluster, f : Double) -> MathcholeskyCluster {
   let result = math_cholesky_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_cholesky_cluster_fill(s : MathcholeskyCluster, v : Double) -> Mathch
   result
 }
 
-pub fn math_cholesky_cluster_min(s : MathcholeskyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_cluster_min(s : MathcholeskyCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_cluster_max(s : MathcholeskyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_cluster_max(s : MathcholeskyCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_cluster_to_string(s : MathcholeskyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_cholesky_model_set(s : MathcholeskyModel, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_cholesky_model_sum(s : MathcholeskyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_model_sum(s : MathcholeskyModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_model_mean(s : MathcholeskyModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_model_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_model_mean(s : MathcholeskyModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_model_scale(s : MathcholeskyModel, f : Double) -> MathcholeskyModel {
   let result = math_cholesky_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_cholesky_model_fill(s : MathcholeskyModel, v : Double) -> Mathcholes
   result
 }
 
-pub fn math_cholesky_model_min(s : MathcholeskyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_model_min(s : MathcholeskyModel) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_model_max(s : MathcholeskyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_model_max(s : MathcholeskyModel) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_model_to_string(s : MathcholeskyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_cholesky_layer_set(s : MathcholeskyLayer, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_cholesky_layer_sum(s : MathcholeskyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_layer_sum(s : MathcholeskyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_layer_mean(s : MathcholeskyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_layer_mean(s : MathcholeskyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_layer_scale(s : MathcholeskyLayer, f : Double) -> MathcholeskyLayer {
   let result = math_cholesky_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_cholesky_layer_fill(s : MathcholeskyLayer, v : Double) -> Mathcholes
   result
 }
 
-pub fn math_cholesky_layer_min(s : MathcholeskyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_layer_min(s : MathcholeskyLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_layer_max(s : MathcholeskyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_layer_max(s : MathcholeskyLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_layer_to_string(s : MathcholeskyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_cholesky_buffer_set(s : MathcholeskyBuffer, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_cholesky_buffer_sum(s : MathcholeskyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_buffer_sum(s : MathcholeskyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_buffer_mean(s : MathcholeskyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_buffer_mean(s : MathcholeskyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_buffer_scale(s : MathcholeskyBuffer, f : Double) -> MathcholeskyBuffer {
   let result = math_cholesky_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_cholesky_buffer_fill(s : MathcholeskyBuffer, v : Double) -> Mathchol
   result
 }
 
-pub fn math_cholesky_buffer_min(s : MathcholeskyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_buffer_min(s : MathcholeskyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_buffer_max(s : MathcholeskyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_buffer_max(s : MathcholeskyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_buffer_to_string(s : MathcholeskyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_cholesky_cursor_set(s : MathcholeskyCursor, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_cholesky_cursor_sum(s : MathcholeskyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_cursor_sum(s : MathcholeskyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_cursor_mean(s : MathcholeskyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_cursor_mean(s : MathcholeskyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_cursor_scale(s : MathcholeskyCursor, f : Double) -> MathcholeskyCursor {
   let result = math_cholesky_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_cholesky_cursor_fill(s : MathcholeskyCursor, v : Double) -> Mathchol
   result
 }
 
-pub fn math_cholesky_cursor_min(s : MathcholeskyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_cursor_min(s : MathcholeskyCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_cursor_max(s : MathcholeskyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_cursor_max(s : MathcholeskyCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_cursor_to_string(s : MathcholeskyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_cholesky_view_set(s : MathcholeskyView, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_cholesky_view_sum(s : MathcholeskyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_view_sum(s : MathcholeskyView) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_view_mean(s : MathcholeskyView) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_view_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_view_mean(s : MathcholeskyView) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_view_scale(s : MathcholeskyView, f : Double) -> MathcholeskyView {
   let result = math_cholesky_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_cholesky_view_fill(s : MathcholeskyView, v : Double) -> Mathcholesky
   result
 }
 
-pub fn math_cholesky_view_min(s : MathcholeskyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_view_min(s : MathcholeskyView) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_view_max(s : MathcholeskyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_view_max(s : MathcholeskyView) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_view_to_string(s : MathcholeskyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_cholesky_range_set(s : MathcholeskyRange, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_cholesky_range_sum(s : MathcholeskyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_range_sum(s : MathcholeskyRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_range_mean(s : MathcholeskyRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_range_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_range_mean(s : MathcholeskyRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_range_scale(s : MathcholeskyRange, f : Double) -> MathcholeskyRange {
   let result = math_cholesky_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_cholesky_range_fill(s : MathcholeskyRange, v : Double) -> Mathcholes
   result
 }
 
-pub fn math_cholesky_range_min(s : MathcholeskyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_range_min(s : MathcholeskyRange) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_range_max(s : MathcholeskyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_range_max(s : MathcholeskyRange) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_range_to_string(s : MathcholeskyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_cholesky_slice_set(s : MathcholeskySlice, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_cholesky_slice_sum(s : MathcholeskySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_cholesky_slice_sum(s : MathcholeskySlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_cholesky_slice_mean(s : MathcholeskySlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_cholesky_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_cholesky_slice_mean(s : MathcholeskySlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_cholesky_slice_scale(s : MathcholeskySlice, f : Double) -> MathcholeskySlice {
   let result = math_cholesky_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_cholesky_slice_fill(s : MathcholeskySlice, v : Double) -> Mathcholes
   result
 }
 
-pub fn math_cholesky_slice_min(s : MathcholeskySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_slice_min(s : MathcholeskySlice) -> Double { @_common.min(s.data) }
 
-pub fn math_cholesky_slice_max(s : MathcholeskySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_cholesky_slice_max(s : MathcholeskySlice) -> Double { @_common.max(s.data) }
 
 pub fn math_cholesky_slice_to_string(s : MathcholeskySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

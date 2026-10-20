@@ -88,11 +88,7 @@ pub fn nlp_tokenize_char_make_series(vals : Array[Double], name : String) -> Nlp
 
 pub fn nlp_tokenize_char_series_len(s : NlptokenizecharSeries) -> Int { s.vals.length() }
 
-pub fn nlp_tokenize_char_series_sum(s : NlptokenizecharSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_tokenize_char_series_sum(s : NlptokenizecharSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_tokenize_char_series_mean(s : NlptokenizecharSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_tokenize_char_frame_set(s : NlptokenizecharFrame, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_char_frame_sum(s : NlptokenizecharFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_frame_sum(s : NlptokenizecharFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_frame_mean(s : NlptokenizecharFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_frame_mean(s : NlptokenizecharFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_frame_scale(s : NlptokenizecharFrame, f : Double) -> NlptokenizecharFrame {
   let result = nlp_tokenize_char_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_tokenize_char_frame_fill(s : NlptokenizecharFrame, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_char_frame_min(s : NlptokenizecharFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_frame_min(s : NlptokenizecharFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_frame_max(s : NlptokenizecharFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_frame_max(s : NlptokenizecharFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_frame_to_string(s : NlptokenizecharFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_tokenize_char_table_set(s : NlptokenizecharTable, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_char_table_sum(s : NlptokenizecharTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_table_sum(s : NlptokenizecharTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_table_mean(s : NlptokenizecharTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_table_mean(s : NlptokenizecharTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_table_scale(s : NlptokenizecharTable, f : Double) -> NlptokenizecharTable {
   let result = nlp_tokenize_char_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_tokenize_char_table_fill(s : NlptokenizecharTable, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_char_table_min(s : NlptokenizecharTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_table_min(s : NlptokenizecharTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_table_max(s : NlptokenizecharTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_table_max(s : NlptokenizecharTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_table_to_string(s : NlptokenizecharTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_tokenize_char_graphn_set(s : NlptokenizecharGraphN, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_char_graphn_sum(s : NlptokenizecharGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_graphn_sum(s : NlptokenizecharGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_graphn_mean(s : NlptokenizecharGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_graphn_mean(s : NlptokenizecharGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_graphn_scale(s : NlptokenizecharGraphN, f : Double) -> NlptokenizecharGraphN {
   let result = nlp_tokenize_char_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_tokenize_char_graphn_fill(s : NlptokenizecharGraphN, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_char_graphn_min(s : NlptokenizecharGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_graphn_min(s : NlptokenizecharGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_graphn_max(s : NlptokenizecharGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_graphn_max(s : NlptokenizecharGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_graphn_to_string(s : NlptokenizecharGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_tokenize_char_node_set(s : NlptokenizecharNode, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_char_node_sum(s : NlptokenizecharNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_node_sum(s : NlptokenizecharNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_node_mean(s : NlptokenizecharNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_node_mean(s : NlptokenizecharNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_node_scale(s : NlptokenizecharNode, f : Double) -> NlptokenizecharNode {
   let result = nlp_tokenize_char_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_tokenize_char_node_fill(s : NlptokenizecharNode, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_char_node_min(s : NlptokenizecharNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_node_min(s : NlptokenizecharNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_node_max(s : NlptokenizecharNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_node_max(s : NlptokenizecharNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_node_to_string(s : NlptokenizecharNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_tokenize_char_edge_set(s : NlptokenizecharEdge, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_char_edge_sum(s : NlptokenizecharEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_edge_sum(s : NlptokenizecharEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_edge_mean(s : NlptokenizecharEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_edge_mean(s : NlptokenizecharEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_edge_scale(s : NlptokenizecharEdge, f : Double) -> NlptokenizecharEdge {
   let result = nlp_tokenize_char_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_tokenize_char_edge_fill(s : NlptokenizecharEdge, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_char_edge_min(s : NlptokenizecharEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_edge_min(s : NlptokenizecharEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_edge_max(s : NlptokenizecharEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_edge_max(s : NlptokenizecharEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_edge_to_string(s : NlptokenizecharEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_tokenize_char_path_set(s : NlptokenizecharPath, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_char_path_sum(s : NlptokenizecharPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_path_sum(s : NlptokenizecharPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_path_mean(s : NlptokenizecharPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_path_mean(s : NlptokenizecharPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_path_scale(s : NlptokenizecharPath, f : Double) -> NlptokenizecharPath {
   let result = nlp_tokenize_char_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_tokenize_char_path_fill(s : NlptokenizecharPath, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_char_path_min(s : NlptokenizecharPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_path_min(s : NlptokenizecharPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_path_max(s : NlptokenizecharPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_path_max(s : NlptokenizecharPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_path_to_string(s : NlptokenizecharPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_tokenize_char_cluster_set(s : NlptokenizecharCluster, i : Int, v : Do
   result
 }
 
-pub fn nlp_tokenize_char_cluster_sum(s : NlptokenizecharCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_cluster_sum(s : NlptokenizecharCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_cluster_mean(s : NlptokenizecharCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_cluster_mean(s : NlptokenizecharCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_cluster_scale(s : NlptokenizecharCluster, f : Double) -> NlptokenizecharCluster {
   let result = nlp_tokenize_char_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_tokenize_char_cluster_fill(s : NlptokenizecharCluster, v : Double) ->
   result
 }
 
-pub fn nlp_tokenize_char_cluster_min(s : NlptokenizecharCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_cluster_min(s : NlptokenizecharCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_cluster_max(s : NlptokenizecharCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_cluster_max(s : NlptokenizecharCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_cluster_to_string(s : NlptokenizecharCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_tokenize_char_model_set(s : NlptokenizecharModel, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_char_model_sum(s : NlptokenizecharModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_model_sum(s : NlptokenizecharModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_model_mean(s : NlptokenizecharModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_model_mean(s : NlptokenizecharModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_model_scale(s : NlptokenizecharModel, f : Double) -> NlptokenizecharModel {
   let result = nlp_tokenize_char_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_tokenize_char_model_fill(s : NlptokenizecharModel, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_char_model_min(s : NlptokenizecharModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_model_min(s : NlptokenizecharModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_model_max(s : NlptokenizecharModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_model_max(s : NlptokenizecharModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_model_to_string(s : NlptokenizecharModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_tokenize_char_layer_set(s : NlptokenizecharLayer, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_char_layer_sum(s : NlptokenizecharLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_layer_sum(s : NlptokenizecharLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_layer_mean(s : NlptokenizecharLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_layer_mean(s : NlptokenizecharLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_layer_scale(s : NlptokenizecharLayer, f : Double) -> NlptokenizecharLayer {
   let result = nlp_tokenize_char_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_tokenize_char_layer_fill(s : NlptokenizecharLayer, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_char_layer_min(s : NlptokenizecharLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_layer_min(s : NlptokenizecharLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_layer_max(s : NlptokenizecharLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_layer_max(s : NlptokenizecharLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_layer_to_string(s : NlptokenizecharLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_tokenize_char_buffer_set(s : NlptokenizecharBuffer, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_char_buffer_sum(s : NlptokenizecharBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_buffer_sum(s : NlptokenizecharBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_buffer_mean(s : NlptokenizecharBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_buffer_mean(s : NlptokenizecharBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_buffer_scale(s : NlptokenizecharBuffer, f : Double) -> NlptokenizecharBuffer {
   let result = nlp_tokenize_char_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_tokenize_char_buffer_fill(s : NlptokenizecharBuffer, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_char_buffer_min(s : NlptokenizecharBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_buffer_min(s : NlptokenizecharBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_buffer_max(s : NlptokenizecharBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_buffer_max(s : NlptokenizecharBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_buffer_to_string(s : NlptokenizecharBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_tokenize_char_cursor_set(s : NlptokenizecharCursor, i : Int, v : Doub
   result
 }
 
-pub fn nlp_tokenize_char_cursor_sum(s : NlptokenizecharCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_cursor_sum(s : NlptokenizecharCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_cursor_mean(s : NlptokenizecharCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_cursor_mean(s : NlptokenizecharCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_cursor_scale(s : NlptokenizecharCursor, f : Double) -> NlptokenizecharCursor {
   let result = nlp_tokenize_char_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_tokenize_char_cursor_fill(s : NlptokenizecharCursor, v : Double) -> N
   result
 }
 
-pub fn nlp_tokenize_char_cursor_min(s : NlptokenizecharCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_cursor_min(s : NlptokenizecharCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_cursor_max(s : NlptokenizecharCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_cursor_max(s : NlptokenizecharCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_cursor_to_string(s : NlptokenizecharCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_tokenize_char_view_set(s : NlptokenizecharView, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_tokenize_char_view_sum(s : NlptokenizecharView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_view_sum(s : NlptokenizecharView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_view_mean(s : NlptokenizecharView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_view_mean(s : NlptokenizecharView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_view_scale(s : NlptokenizecharView, f : Double) -> NlptokenizecharView {
   let result = nlp_tokenize_char_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_tokenize_char_view_fill(s : NlptokenizecharView, v : Double) -> Nlpto
   result
 }
 
-pub fn nlp_tokenize_char_view_min(s : NlptokenizecharView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_view_min(s : NlptokenizecharView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_view_max(s : NlptokenizecharView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_view_max(s : NlptokenizecharView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_view_to_string(s : NlptokenizecharView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_tokenize_char_range_set(s : NlptokenizecharRange, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_char_range_sum(s : NlptokenizecharRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_range_sum(s : NlptokenizecharRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_range_mean(s : NlptokenizecharRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_range_mean(s : NlptokenizecharRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_range_scale(s : NlptokenizecharRange, f : Double) -> NlptokenizecharRange {
   let result = nlp_tokenize_char_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_tokenize_char_range_fill(s : NlptokenizecharRange, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_char_range_min(s : NlptokenizecharRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_range_min(s : NlptokenizecharRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_range_max(s : NlptokenizecharRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_range_max(s : NlptokenizecharRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_range_to_string(s : NlptokenizecharRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_tokenize_char_slice_set(s : NlptokenizecharSlice, i : Int, v : Double
   result
 }
 
-pub fn nlp_tokenize_char_slice_sum(s : NlptokenizecharSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_tokenize_char_slice_sum(s : NlptokenizecharSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_tokenize_char_slice_mean(s : NlptokenizecharSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_tokenize_char_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_tokenize_char_slice_mean(s : NlptokenizecharSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_tokenize_char_slice_scale(s : NlptokenizecharSlice, f : Double) -> NlptokenizecharSlice {
   let result = nlp_tokenize_char_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_tokenize_char_slice_fill(s : NlptokenizecharSlice, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_tokenize_char_slice_min(s : NlptokenizecharSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_slice_min(s : NlptokenizecharSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_tokenize_char_slice_max(s : NlptokenizecharSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_tokenize_char_slice_max(s : NlptokenizecharSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_tokenize_char_slice_to_string(s : NlptokenizecharSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn image_morph_thickening_make_series(vals : Array[Double], name : String) -
 
 pub fn image_morph_thickening_series_len(s : ImagemorphthickeningSeries) -> Int { s.vals.length() }
 
-pub fn image_morph_thickening_series_sum(s : ImagemorphthickeningSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_morph_thickening_series_sum(s : ImagemorphthickeningSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_morph_thickening_series_mean(s : ImagemorphthickeningSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_morph_thickening_frame_set(s : ImagemorphthickeningFrame, i : Int, 
   result
 }
 
-pub fn image_morph_thickening_frame_sum(s : ImagemorphthickeningFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_frame_sum(s : ImagemorphthickeningFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_frame_mean(s : ImagemorphthickeningFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_frame_mean(s : ImagemorphthickeningFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_frame_scale(s : ImagemorphthickeningFrame, f : Double) -> ImagemorphthickeningFrame {
   let result = image_morph_thickening_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_morph_thickening_frame_fill(s : ImagemorphthickeningFrame, v : Doub
   result
 }
 
-pub fn image_morph_thickening_frame_min(s : ImagemorphthickeningFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_frame_min(s : ImagemorphthickeningFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_frame_max(s : ImagemorphthickeningFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_frame_max(s : ImagemorphthickeningFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_frame_to_string(s : ImagemorphthickeningFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_morph_thickening_table_set(s : ImagemorphthickeningTable, i : Int, 
   result
 }
 
-pub fn image_morph_thickening_table_sum(s : ImagemorphthickeningTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_table_sum(s : ImagemorphthickeningTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_table_mean(s : ImagemorphthickeningTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_table_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_table_mean(s : ImagemorphthickeningTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_table_scale(s : ImagemorphthickeningTable, f : Double) -> ImagemorphthickeningTable {
   let result = image_morph_thickening_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_morph_thickening_table_fill(s : ImagemorphthickeningTable, v : Doub
   result
 }
 
-pub fn image_morph_thickening_table_min(s : ImagemorphthickeningTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_table_min(s : ImagemorphthickeningTable) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_table_max(s : ImagemorphthickeningTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_table_max(s : ImagemorphthickeningTable) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_table_to_string(s : ImagemorphthickeningTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_morph_thickening_graphn_set(s : ImagemorphthickeningGraphN, i : Int
   result
 }
 
-pub fn image_morph_thickening_graphn_sum(s : ImagemorphthickeningGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_graphn_sum(s : ImagemorphthickeningGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_graphn_mean(s : ImagemorphthickeningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_graphn_mean(s : ImagemorphthickeningGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_graphn_scale(s : ImagemorphthickeningGraphN, f : Double) -> ImagemorphthickeningGraphN {
   let result = image_morph_thickening_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_morph_thickening_graphn_fill(s : ImagemorphthickeningGraphN, v : Do
   result
 }
 
-pub fn image_morph_thickening_graphn_min(s : ImagemorphthickeningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_graphn_min(s : ImagemorphthickeningGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_graphn_max(s : ImagemorphthickeningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_graphn_max(s : ImagemorphthickeningGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_graphn_to_string(s : ImagemorphthickeningGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_morph_thickening_node_set(s : ImagemorphthickeningNode, i : Int, v 
   result
 }
 
-pub fn image_morph_thickening_node_sum(s : ImagemorphthickeningNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_node_sum(s : ImagemorphthickeningNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_node_mean(s : ImagemorphthickeningNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_node_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_node_mean(s : ImagemorphthickeningNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_node_scale(s : ImagemorphthickeningNode, f : Double) -> ImagemorphthickeningNode {
   let result = image_morph_thickening_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_morph_thickening_node_fill(s : ImagemorphthickeningNode, v : Double
   result
 }
 
-pub fn image_morph_thickening_node_min(s : ImagemorphthickeningNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_node_min(s : ImagemorphthickeningNode) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_node_max(s : ImagemorphthickeningNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_node_max(s : ImagemorphthickeningNode) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_node_to_string(s : ImagemorphthickeningNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_morph_thickening_edge_set(s : ImagemorphthickeningEdge, i : Int, v 
   result
 }
 
-pub fn image_morph_thickening_edge_sum(s : ImagemorphthickeningEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_edge_sum(s : ImagemorphthickeningEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_edge_mean(s : ImagemorphthickeningEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_edge_mean(s : ImagemorphthickeningEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_edge_scale(s : ImagemorphthickeningEdge, f : Double) -> ImagemorphthickeningEdge {
   let result = image_morph_thickening_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_morph_thickening_edge_fill(s : ImagemorphthickeningEdge, v : Double
   result
 }
 
-pub fn image_morph_thickening_edge_min(s : ImagemorphthickeningEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_edge_min(s : ImagemorphthickeningEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_edge_max(s : ImagemorphthickeningEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_edge_max(s : ImagemorphthickeningEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_edge_to_string(s : ImagemorphthickeningEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_morph_thickening_path_set(s : ImagemorphthickeningPath, i : Int, v 
   result
 }
 
-pub fn image_morph_thickening_path_sum(s : ImagemorphthickeningPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_path_sum(s : ImagemorphthickeningPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_path_mean(s : ImagemorphthickeningPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_path_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_path_mean(s : ImagemorphthickeningPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_path_scale(s : ImagemorphthickeningPath, f : Double) -> ImagemorphthickeningPath {
   let result = image_morph_thickening_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_morph_thickening_path_fill(s : ImagemorphthickeningPath, v : Double
   result
 }
 
-pub fn image_morph_thickening_path_min(s : ImagemorphthickeningPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_path_min(s : ImagemorphthickeningPath) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_path_max(s : ImagemorphthickeningPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_path_max(s : ImagemorphthickeningPath) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_path_to_string(s : ImagemorphthickeningPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_morph_thickening_cluster_set(s : ImagemorphthickeningCluster, i : I
   result
 }
 
-pub fn image_morph_thickening_cluster_sum(s : ImagemorphthickeningCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_cluster_sum(s : ImagemorphthickeningCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_cluster_mean(s : ImagemorphthickeningCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_cluster_mean(s : ImagemorphthickeningCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_cluster_scale(s : ImagemorphthickeningCluster, f : Double) -> ImagemorphthickeningCluster {
   let result = image_morph_thickening_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_morph_thickening_cluster_fill(s : ImagemorphthickeningCluster, v : 
   result
 }
 
-pub fn image_morph_thickening_cluster_min(s : ImagemorphthickeningCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_cluster_min(s : ImagemorphthickeningCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_cluster_max(s : ImagemorphthickeningCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_cluster_max(s : ImagemorphthickeningCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_cluster_to_string(s : ImagemorphthickeningCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_morph_thickening_model_set(s : ImagemorphthickeningModel, i : Int, 
   result
 }
 
-pub fn image_morph_thickening_model_sum(s : ImagemorphthickeningModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_model_sum(s : ImagemorphthickeningModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_model_mean(s : ImagemorphthickeningModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_model_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_model_mean(s : ImagemorphthickeningModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_model_scale(s : ImagemorphthickeningModel, f : Double) -> ImagemorphthickeningModel {
   let result = image_morph_thickening_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_morph_thickening_model_fill(s : ImagemorphthickeningModel, v : Doub
   result
 }
 
-pub fn image_morph_thickening_model_min(s : ImagemorphthickeningModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_model_min(s : ImagemorphthickeningModel) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_model_max(s : ImagemorphthickeningModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_model_max(s : ImagemorphthickeningModel) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_model_to_string(s : ImagemorphthickeningModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_morph_thickening_layer_set(s : ImagemorphthickeningLayer, i : Int, 
   result
 }
 
-pub fn image_morph_thickening_layer_sum(s : ImagemorphthickeningLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_layer_sum(s : ImagemorphthickeningLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_layer_mean(s : ImagemorphthickeningLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_layer_mean(s : ImagemorphthickeningLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_layer_scale(s : ImagemorphthickeningLayer, f : Double) -> ImagemorphthickeningLayer {
   let result = image_morph_thickening_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_morph_thickening_layer_fill(s : ImagemorphthickeningLayer, v : Doub
   result
 }
 
-pub fn image_morph_thickening_layer_min(s : ImagemorphthickeningLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_layer_min(s : ImagemorphthickeningLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_layer_max(s : ImagemorphthickeningLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_layer_max(s : ImagemorphthickeningLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_layer_to_string(s : ImagemorphthickeningLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_morph_thickening_buffer_set(s : ImagemorphthickeningBuffer, i : Int
   result
 }
 
-pub fn image_morph_thickening_buffer_sum(s : ImagemorphthickeningBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_buffer_sum(s : ImagemorphthickeningBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_buffer_mean(s : ImagemorphthickeningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_buffer_mean(s : ImagemorphthickeningBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_buffer_scale(s : ImagemorphthickeningBuffer, f : Double) -> ImagemorphthickeningBuffer {
   let result = image_morph_thickening_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_morph_thickening_buffer_fill(s : ImagemorphthickeningBuffer, v : Do
   result
 }
 
-pub fn image_morph_thickening_buffer_min(s : ImagemorphthickeningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_buffer_min(s : ImagemorphthickeningBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_buffer_max(s : ImagemorphthickeningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_buffer_max(s : ImagemorphthickeningBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_buffer_to_string(s : ImagemorphthickeningBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_morph_thickening_cursor_set(s : ImagemorphthickeningCursor, i : Int
   result
 }
 
-pub fn image_morph_thickening_cursor_sum(s : ImagemorphthickeningCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_cursor_sum(s : ImagemorphthickeningCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_cursor_mean(s : ImagemorphthickeningCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_cursor_mean(s : ImagemorphthickeningCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_cursor_scale(s : ImagemorphthickeningCursor, f : Double) -> ImagemorphthickeningCursor {
   let result = image_morph_thickening_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_morph_thickening_cursor_fill(s : ImagemorphthickeningCursor, v : Do
   result
 }
 
-pub fn image_morph_thickening_cursor_min(s : ImagemorphthickeningCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_cursor_min(s : ImagemorphthickeningCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_cursor_max(s : ImagemorphthickeningCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_cursor_max(s : ImagemorphthickeningCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_cursor_to_string(s : ImagemorphthickeningCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_morph_thickening_view_set(s : ImagemorphthickeningView, i : Int, v 
   result
 }
 
-pub fn image_morph_thickening_view_sum(s : ImagemorphthickeningView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_view_sum(s : ImagemorphthickeningView) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_view_mean(s : ImagemorphthickeningView) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_view_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_view_mean(s : ImagemorphthickeningView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_view_scale(s : ImagemorphthickeningView, f : Double) -> ImagemorphthickeningView {
   let result = image_morph_thickening_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_morph_thickening_view_fill(s : ImagemorphthickeningView, v : Double
   result
 }
 
-pub fn image_morph_thickening_view_min(s : ImagemorphthickeningView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_view_min(s : ImagemorphthickeningView) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_view_max(s : ImagemorphthickeningView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_view_max(s : ImagemorphthickeningView) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_view_to_string(s : ImagemorphthickeningView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_morph_thickening_range_set(s : ImagemorphthickeningRange, i : Int, 
   result
 }
 
-pub fn image_morph_thickening_range_sum(s : ImagemorphthickeningRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_range_sum(s : ImagemorphthickeningRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_range_mean(s : ImagemorphthickeningRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_range_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_range_mean(s : ImagemorphthickeningRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_range_scale(s : ImagemorphthickeningRange, f : Double) -> ImagemorphthickeningRange {
   let result = image_morph_thickening_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_morph_thickening_range_fill(s : ImagemorphthickeningRange, v : Doub
   result
 }
 
-pub fn image_morph_thickening_range_min(s : ImagemorphthickeningRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_range_min(s : ImagemorphthickeningRange) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_range_max(s : ImagemorphthickeningRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_range_max(s : ImagemorphthickeningRange) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_range_to_string(s : ImagemorphthickeningRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_morph_thickening_slice_set(s : ImagemorphthickeningSlice, i : Int, 
   result
 }
 
-pub fn image_morph_thickening_slice_sum(s : ImagemorphthickeningSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_thickening_slice_sum(s : ImagemorphthickeningSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_thickening_slice_mean(s : ImagemorphthickeningSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_thickening_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_thickening_slice_mean(s : ImagemorphthickeningSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_thickening_slice_scale(s : ImagemorphthickeningSlice, f : Double) -> ImagemorphthickeningSlice {
   let result = image_morph_thickening_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_morph_thickening_slice_fill(s : ImagemorphthickeningSlice, v : Doub
   result
 }
 
-pub fn image_morph_thickening_slice_min(s : ImagemorphthickeningSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_slice_min(s : ImagemorphthickeningSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_thickening_slice_max(s : ImagemorphthickeningSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_thickening_slice_max(s : ImagemorphthickeningSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_thickening_slice_to_string(s : ImagemorphthickeningSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

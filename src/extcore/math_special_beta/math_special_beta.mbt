@@ -88,11 +88,7 @@ pub fn math_special_beta_make_series(vals : Array[Double], name : String) -> Mat
 
 pub fn math_special_beta_series_len(s : MathspecialbetaSeries) -> Int { s.vals.length() }
 
-pub fn math_special_beta_series_sum(s : MathspecialbetaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_beta_series_sum(s : MathspecialbetaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_beta_series_mean(s : MathspecialbetaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_beta_frame_set(s : MathspecialbetaFrame, i : Int, v : Double
   result
 }
 
-pub fn math_special_beta_frame_sum(s : MathspecialbetaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_frame_sum(s : MathspecialbetaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_frame_mean(s : MathspecialbetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_frame_mean(s : MathspecialbetaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_frame_scale(s : MathspecialbetaFrame, f : Double) -> MathspecialbetaFrame {
   let result = math_special_beta_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_beta_frame_fill(s : MathspecialbetaFrame, v : Double) -> Mat
   result
 }
 
-pub fn math_special_beta_frame_min(s : MathspecialbetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_frame_min(s : MathspecialbetaFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_frame_max(s : MathspecialbetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_frame_max(s : MathspecialbetaFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_frame_to_string(s : MathspecialbetaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_beta_table_set(s : MathspecialbetaTable, i : Int, v : Double
   result
 }
 
-pub fn math_special_beta_table_sum(s : MathspecialbetaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_table_sum(s : MathspecialbetaTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_table_mean(s : MathspecialbetaTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_table_mean(s : MathspecialbetaTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_table_scale(s : MathspecialbetaTable, f : Double) -> MathspecialbetaTable {
   let result = math_special_beta_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_beta_table_fill(s : MathspecialbetaTable, v : Double) -> Mat
   result
 }
 
-pub fn math_special_beta_table_min(s : MathspecialbetaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_table_min(s : MathspecialbetaTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_table_max(s : MathspecialbetaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_table_max(s : MathspecialbetaTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_table_to_string(s : MathspecialbetaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_beta_graphn_set(s : MathspecialbetaGraphN, i : Int, v : Doub
   result
 }
 
-pub fn math_special_beta_graphn_sum(s : MathspecialbetaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_graphn_sum(s : MathspecialbetaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_graphn_mean(s : MathspecialbetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_graphn_mean(s : MathspecialbetaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_graphn_scale(s : MathspecialbetaGraphN, f : Double) -> MathspecialbetaGraphN {
   let result = math_special_beta_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_beta_graphn_fill(s : MathspecialbetaGraphN, v : Double) -> M
   result
 }
 
-pub fn math_special_beta_graphn_min(s : MathspecialbetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_graphn_min(s : MathspecialbetaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_graphn_max(s : MathspecialbetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_graphn_max(s : MathspecialbetaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_graphn_to_string(s : MathspecialbetaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_beta_node_set(s : MathspecialbetaNode, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_beta_node_sum(s : MathspecialbetaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_node_sum(s : MathspecialbetaNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_node_mean(s : MathspecialbetaNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_node_mean(s : MathspecialbetaNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_node_scale(s : MathspecialbetaNode, f : Double) -> MathspecialbetaNode {
   let result = math_special_beta_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_beta_node_fill(s : MathspecialbetaNode, v : Double) -> Maths
   result
 }
 
-pub fn math_special_beta_node_min(s : MathspecialbetaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_node_min(s : MathspecialbetaNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_node_max(s : MathspecialbetaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_node_max(s : MathspecialbetaNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_node_to_string(s : MathspecialbetaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_beta_edge_set(s : MathspecialbetaEdge, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_beta_edge_sum(s : MathspecialbetaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_edge_sum(s : MathspecialbetaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_edge_mean(s : MathspecialbetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_edge_mean(s : MathspecialbetaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_edge_scale(s : MathspecialbetaEdge, f : Double) -> MathspecialbetaEdge {
   let result = math_special_beta_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_beta_edge_fill(s : MathspecialbetaEdge, v : Double) -> Maths
   result
 }
 
-pub fn math_special_beta_edge_min(s : MathspecialbetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_edge_min(s : MathspecialbetaEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_edge_max(s : MathspecialbetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_edge_max(s : MathspecialbetaEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_edge_to_string(s : MathspecialbetaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_beta_path_set(s : MathspecialbetaPath, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_beta_path_sum(s : MathspecialbetaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_path_sum(s : MathspecialbetaPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_path_mean(s : MathspecialbetaPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_path_mean(s : MathspecialbetaPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_path_scale(s : MathspecialbetaPath, f : Double) -> MathspecialbetaPath {
   let result = math_special_beta_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_beta_path_fill(s : MathspecialbetaPath, v : Double) -> Maths
   result
 }
 
-pub fn math_special_beta_path_min(s : MathspecialbetaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_path_min(s : MathspecialbetaPath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_path_max(s : MathspecialbetaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_path_max(s : MathspecialbetaPath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_path_to_string(s : MathspecialbetaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_beta_cluster_set(s : MathspecialbetaCluster, i : Int, v : Do
   result
 }
 
-pub fn math_special_beta_cluster_sum(s : MathspecialbetaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_cluster_sum(s : MathspecialbetaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_cluster_mean(s : MathspecialbetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_cluster_mean(s : MathspecialbetaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_cluster_scale(s : MathspecialbetaCluster, f : Double) -> MathspecialbetaCluster {
   let result = math_special_beta_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_beta_cluster_fill(s : MathspecialbetaCluster, v : Double) ->
   result
 }
 
-pub fn math_special_beta_cluster_min(s : MathspecialbetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_cluster_min(s : MathspecialbetaCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_cluster_max(s : MathspecialbetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_cluster_max(s : MathspecialbetaCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_cluster_to_string(s : MathspecialbetaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_beta_model_set(s : MathspecialbetaModel, i : Int, v : Double
   result
 }
 
-pub fn math_special_beta_model_sum(s : MathspecialbetaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_model_sum(s : MathspecialbetaModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_model_mean(s : MathspecialbetaModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_model_mean(s : MathspecialbetaModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_model_scale(s : MathspecialbetaModel, f : Double) -> MathspecialbetaModel {
   let result = math_special_beta_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_beta_model_fill(s : MathspecialbetaModel, v : Double) -> Mat
   result
 }
 
-pub fn math_special_beta_model_min(s : MathspecialbetaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_model_min(s : MathspecialbetaModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_model_max(s : MathspecialbetaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_model_max(s : MathspecialbetaModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_model_to_string(s : MathspecialbetaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_beta_layer_set(s : MathspecialbetaLayer, i : Int, v : Double
   result
 }
 
-pub fn math_special_beta_layer_sum(s : MathspecialbetaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_layer_sum(s : MathspecialbetaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_layer_mean(s : MathspecialbetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_layer_mean(s : MathspecialbetaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_layer_scale(s : MathspecialbetaLayer, f : Double) -> MathspecialbetaLayer {
   let result = math_special_beta_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_beta_layer_fill(s : MathspecialbetaLayer, v : Double) -> Mat
   result
 }
 
-pub fn math_special_beta_layer_min(s : MathspecialbetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_layer_min(s : MathspecialbetaLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_layer_max(s : MathspecialbetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_layer_max(s : MathspecialbetaLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_layer_to_string(s : MathspecialbetaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_beta_buffer_set(s : MathspecialbetaBuffer, i : Int, v : Doub
   result
 }
 
-pub fn math_special_beta_buffer_sum(s : MathspecialbetaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_buffer_sum(s : MathspecialbetaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_buffer_mean(s : MathspecialbetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_buffer_mean(s : MathspecialbetaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_buffer_scale(s : MathspecialbetaBuffer, f : Double) -> MathspecialbetaBuffer {
   let result = math_special_beta_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_beta_buffer_fill(s : MathspecialbetaBuffer, v : Double) -> M
   result
 }
 
-pub fn math_special_beta_buffer_min(s : MathspecialbetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_buffer_min(s : MathspecialbetaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_buffer_max(s : MathspecialbetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_buffer_max(s : MathspecialbetaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_buffer_to_string(s : MathspecialbetaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_beta_cursor_set(s : MathspecialbetaCursor, i : Int, v : Doub
   result
 }
 
-pub fn math_special_beta_cursor_sum(s : MathspecialbetaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_cursor_sum(s : MathspecialbetaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_cursor_mean(s : MathspecialbetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_cursor_mean(s : MathspecialbetaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_cursor_scale(s : MathspecialbetaCursor, f : Double) -> MathspecialbetaCursor {
   let result = math_special_beta_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_beta_cursor_fill(s : MathspecialbetaCursor, v : Double) -> M
   result
 }
 
-pub fn math_special_beta_cursor_min(s : MathspecialbetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_cursor_min(s : MathspecialbetaCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_cursor_max(s : MathspecialbetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_cursor_max(s : MathspecialbetaCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_cursor_to_string(s : MathspecialbetaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_beta_view_set(s : MathspecialbetaView, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_beta_view_sum(s : MathspecialbetaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_view_sum(s : MathspecialbetaView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_view_mean(s : MathspecialbetaView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_view_mean(s : MathspecialbetaView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_view_scale(s : MathspecialbetaView, f : Double) -> MathspecialbetaView {
   let result = math_special_beta_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_beta_view_fill(s : MathspecialbetaView, v : Double) -> Maths
   result
 }
 
-pub fn math_special_beta_view_min(s : MathspecialbetaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_view_min(s : MathspecialbetaView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_view_max(s : MathspecialbetaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_view_max(s : MathspecialbetaView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_view_to_string(s : MathspecialbetaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_beta_range_set(s : MathspecialbetaRange, i : Int, v : Double
   result
 }
 
-pub fn math_special_beta_range_sum(s : MathspecialbetaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_range_sum(s : MathspecialbetaRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_range_mean(s : MathspecialbetaRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_range_mean(s : MathspecialbetaRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_range_scale(s : MathspecialbetaRange, f : Double) -> MathspecialbetaRange {
   let result = math_special_beta_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_beta_range_fill(s : MathspecialbetaRange, v : Double) -> Mat
   result
 }
 
-pub fn math_special_beta_range_min(s : MathspecialbetaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_range_min(s : MathspecialbetaRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_range_max(s : MathspecialbetaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_range_max(s : MathspecialbetaRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_range_to_string(s : MathspecialbetaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_beta_slice_set(s : MathspecialbetaSlice, i : Int, v : Double
   result
 }
 
-pub fn math_special_beta_slice_sum(s : MathspecialbetaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_beta_slice_sum(s : MathspecialbetaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_beta_slice_mean(s : MathspecialbetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_beta_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_beta_slice_mean(s : MathspecialbetaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_beta_slice_scale(s : MathspecialbetaSlice, f : Double) -> MathspecialbetaSlice {
   let result = math_special_beta_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_beta_slice_fill(s : MathspecialbetaSlice, v : Double) -> Mat
   result
 }
 
-pub fn math_special_beta_slice_min(s : MathspecialbetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_slice_min(s : MathspecialbetaSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_beta_slice_max(s : MathspecialbetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_beta_slice_max(s : MathspecialbetaSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_beta_slice_to_string(s : MathspecialbetaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

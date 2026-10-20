@@ -88,11 +88,7 @@ pub fn signal_filter_chebyshev1_make_series(vals : Array[Double], name : String)
 
 pub fn signal_filter_chebyshev1_series_len(s : Signalfilterchebyshev1Series) -> Int { s.vals.length() }
 
-pub fn signal_filter_chebyshev1_series_sum(s : Signalfilterchebyshev1Series) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_series_sum(s : Signalfilterchebyshev1Series) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_filter_chebyshev1_series_mean(s : Signalfilterchebyshev1Series) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_filter_chebyshev1_frame_set(s : Signalfilterchebyshev1Frame, i : I
   result
 }
 
-pub fn signal_filter_chebyshev1_frame_sum(s : Signalfilterchebyshev1Frame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_frame_sum(s : Signalfilterchebyshev1Frame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_frame_mean(s : Signalfilterchebyshev1Frame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_frame_mean(s : Signalfilterchebyshev1Frame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_frame_scale(s : Signalfilterchebyshev1Frame, f : Double) -> Signalfilterchebyshev1Frame {
   let result = signal_filter_chebyshev1_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_filter_chebyshev1_frame_fill(s : Signalfilterchebyshev1Frame, v : 
   result
 }
 
-pub fn signal_filter_chebyshev1_frame_min(s : Signalfilterchebyshev1Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_frame_min(s : Signalfilterchebyshev1Frame) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_frame_max(s : Signalfilterchebyshev1Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_frame_max(s : Signalfilterchebyshev1Frame) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_frame_to_string(s : Signalfilterchebyshev1Frame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_filter_chebyshev1_table_set(s : Signalfilterchebyshev1Table, i : I
   result
 }
 
-pub fn signal_filter_chebyshev1_table_sum(s : Signalfilterchebyshev1Table) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_table_sum(s : Signalfilterchebyshev1Table) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_table_mean(s : Signalfilterchebyshev1Table) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_table_mean(s : Signalfilterchebyshev1Table) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_table_scale(s : Signalfilterchebyshev1Table, f : Double) -> Signalfilterchebyshev1Table {
   let result = signal_filter_chebyshev1_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_filter_chebyshev1_table_fill(s : Signalfilterchebyshev1Table, v : 
   result
 }
 
-pub fn signal_filter_chebyshev1_table_min(s : Signalfilterchebyshev1Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_table_min(s : Signalfilterchebyshev1Table) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_table_max(s : Signalfilterchebyshev1Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_table_max(s : Signalfilterchebyshev1Table) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_table_to_string(s : Signalfilterchebyshev1Table) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_filter_chebyshev1_graphn_set(s : Signalfilterchebyshev1GraphN, i :
   result
 }
 
-pub fn signal_filter_chebyshev1_graphn_sum(s : Signalfilterchebyshev1GraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_graphn_sum(s : Signalfilterchebyshev1GraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_graphn_mean(s : Signalfilterchebyshev1GraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_graphn_mean(s : Signalfilterchebyshev1GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_graphn_scale(s : Signalfilterchebyshev1GraphN, f : Double) -> Signalfilterchebyshev1GraphN {
   let result = signal_filter_chebyshev1_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_filter_chebyshev1_graphn_fill(s : Signalfilterchebyshev1GraphN, v 
   result
 }
 
-pub fn signal_filter_chebyshev1_graphn_min(s : Signalfilterchebyshev1GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_graphn_min(s : Signalfilterchebyshev1GraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_graphn_max(s : Signalfilterchebyshev1GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_graphn_max(s : Signalfilterchebyshev1GraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_graphn_to_string(s : Signalfilterchebyshev1GraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_filter_chebyshev1_node_set(s : Signalfilterchebyshev1Node, i : Int
   result
 }
 
-pub fn signal_filter_chebyshev1_node_sum(s : Signalfilterchebyshev1Node) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_node_sum(s : Signalfilterchebyshev1Node) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_node_mean(s : Signalfilterchebyshev1Node) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_node_mean(s : Signalfilterchebyshev1Node) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_node_scale(s : Signalfilterchebyshev1Node, f : Double) -> Signalfilterchebyshev1Node {
   let result = signal_filter_chebyshev1_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_filter_chebyshev1_node_fill(s : Signalfilterchebyshev1Node, v : Do
   result
 }
 
-pub fn signal_filter_chebyshev1_node_min(s : Signalfilterchebyshev1Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_node_min(s : Signalfilterchebyshev1Node) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_node_max(s : Signalfilterchebyshev1Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_node_max(s : Signalfilterchebyshev1Node) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_node_to_string(s : Signalfilterchebyshev1Node) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_filter_chebyshev1_edge_set(s : Signalfilterchebyshev1Edge, i : Int
   result
 }
 
-pub fn signal_filter_chebyshev1_edge_sum(s : Signalfilterchebyshev1Edge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_edge_sum(s : Signalfilterchebyshev1Edge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_edge_mean(s : Signalfilterchebyshev1Edge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_edge_mean(s : Signalfilterchebyshev1Edge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_edge_scale(s : Signalfilterchebyshev1Edge, f : Double) -> Signalfilterchebyshev1Edge {
   let result = signal_filter_chebyshev1_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_filter_chebyshev1_edge_fill(s : Signalfilterchebyshev1Edge, v : Do
   result
 }
 
-pub fn signal_filter_chebyshev1_edge_min(s : Signalfilterchebyshev1Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_edge_min(s : Signalfilterchebyshev1Edge) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_edge_max(s : Signalfilterchebyshev1Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_edge_max(s : Signalfilterchebyshev1Edge) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_edge_to_string(s : Signalfilterchebyshev1Edge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_filter_chebyshev1_path_set(s : Signalfilterchebyshev1Path, i : Int
   result
 }
 
-pub fn signal_filter_chebyshev1_path_sum(s : Signalfilterchebyshev1Path) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_path_sum(s : Signalfilterchebyshev1Path) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_path_mean(s : Signalfilterchebyshev1Path) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_path_mean(s : Signalfilterchebyshev1Path) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_path_scale(s : Signalfilterchebyshev1Path, f : Double) -> Signalfilterchebyshev1Path {
   let result = signal_filter_chebyshev1_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_filter_chebyshev1_path_fill(s : Signalfilterchebyshev1Path, v : Do
   result
 }
 
-pub fn signal_filter_chebyshev1_path_min(s : Signalfilterchebyshev1Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_path_min(s : Signalfilterchebyshev1Path) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_path_max(s : Signalfilterchebyshev1Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_path_max(s : Signalfilterchebyshev1Path) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_path_to_string(s : Signalfilterchebyshev1Path) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_filter_chebyshev1_cluster_set(s : Signalfilterchebyshev1Cluster, i
   result
 }
 
-pub fn signal_filter_chebyshev1_cluster_sum(s : Signalfilterchebyshev1Cluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_cluster_sum(s : Signalfilterchebyshev1Cluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_cluster_mean(s : Signalfilterchebyshev1Cluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_cluster_mean(s : Signalfilterchebyshev1Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_cluster_scale(s : Signalfilterchebyshev1Cluster, f : Double) -> Signalfilterchebyshev1Cluster {
   let result = signal_filter_chebyshev1_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_filter_chebyshev1_cluster_fill(s : Signalfilterchebyshev1Cluster, 
   result
 }
 
-pub fn signal_filter_chebyshev1_cluster_min(s : Signalfilterchebyshev1Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_cluster_min(s : Signalfilterchebyshev1Cluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_cluster_max(s : Signalfilterchebyshev1Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_cluster_max(s : Signalfilterchebyshev1Cluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_cluster_to_string(s : Signalfilterchebyshev1Cluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_filter_chebyshev1_model_set(s : Signalfilterchebyshev1Model, i : I
   result
 }
 
-pub fn signal_filter_chebyshev1_model_sum(s : Signalfilterchebyshev1Model) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_model_sum(s : Signalfilterchebyshev1Model) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_model_mean(s : Signalfilterchebyshev1Model) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_model_mean(s : Signalfilterchebyshev1Model) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_model_scale(s : Signalfilterchebyshev1Model, f : Double) -> Signalfilterchebyshev1Model {
   let result = signal_filter_chebyshev1_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_filter_chebyshev1_model_fill(s : Signalfilterchebyshev1Model, v : 
   result
 }
 
-pub fn signal_filter_chebyshev1_model_min(s : Signalfilterchebyshev1Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_model_min(s : Signalfilterchebyshev1Model) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_model_max(s : Signalfilterchebyshev1Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_model_max(s : Signalfilterchebyshev1Model) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_model_to_string(s : Signalfilterchebyshev1Model) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_filter_chebyshev1_layer_set(s : Signalfilterchebyshev1Layer, i : I
   result
 }
 
-pub fn signal_filter_chebyshev1_layer_sum(s : Signalfilterchebyshev1Layer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_layer_sum(s : Signalfilterchebyshev1Layer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_layer_mean(s : Signalfilterchebyshev1Layer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_layer_mean(s : Signalfilterchebyshev1Layer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_layer_scale(s : Signalfilterchebyshev1Layer, f : Double) -> Signalfilterchebyshev1Layer {
   let result = signal_filter_chebyshev1_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_filter_chebyshev1_layer_fill(s : Signalfilterchebyshev1Layer, v : 
   result
 }
 
-pub fn signal_filter_chebyshev1_layer_min(s : Signalfilterchebyshev1Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_layer_min(s : Signalfilterchebyshev1Layer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_layer_max(s : Signalfilterchebyshev1Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_layer_max(s : Signalfilterchebyshev1Layer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_layer_to_string(s : Signalfilterchebyshev1Layer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_filter_chebyshev1_buffer_set(s : Signalfilterchebyshev1Buffer, i :
   result
 }
 
-pub fn signal_filter_chebyshev1_buffer_sum(s : Signalfilterchebyshev1Buffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_buffer_sum(s : Signalfilterchebyshev1Buffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_buffer_mean(s : Signalfilterchebyshev1Buffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_buffer_mean(s : Signalfilterchebyshev1Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_buffer_scale(s : Signalfilterchebyshev1Buffer, f : Double) -> Signalfilterchebyshev1Buffer {
   let result = signal_filter_chebyshev1_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_filter_chebyshev1_buffer_fill(s : Signalfilterchebyshev1Buffer, v 
   result
 }
 
-pub fn signal_filter_chebyshev1_buffer_min(s : Signalfilterchebyshev1Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_buffer_min(s : Signalfilterchebyshev1Buffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_buffer_max(s : Signalfilterchebyshev1Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_buffer_max(s : Signalfilterchebyshev1Buffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_buffer_to_string(s : Signalfilterchebyshev1Buffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_filter_chebyshev1_cursor_set(s : Signalfilterchebyshev1Cursor, i :
   result
 }
 
-pub fn signal_filter_chebyshev1_cursor_sum(s : Signalfilterchebyshev1Cursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_cursor_sum(s : Signalfilterchebyshev1Cursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_cursor_mean(s : Signalfilterchebyshev1Cursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_cursor_mean(s : Signalfilterchebyshev1Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_cursor_scale(s : Signalfilterchebyshev1Cursor, f : Double) -> Signalfilterchebyshev1Cursor {
   let result = signal_filter_chebyshev1_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_filter_chebyshev1_cursor_fill(s : Signalfilterchebyshev1Cursor, v 
   result
 }
 
-pub fn signal_filter_chebyshev1_cursor_min(s : Signalfilterchebyshev1Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_cursor_min(s : Signalfilterchebyshev1Cursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_cursor_max(s : Signalfilterchebyshev1Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_cursor_max(s : Signalfilterchebyshev1Cursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_cursor_to_string(s : Signalfilterchebyshev1Cursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_filter_chebyshev1_view_set(s : Signalfilterchebyshev1View, i : Int
   result
 }
 
-pub fn signal_filter_chebyshev1_view_sum(s : Signalfilterchebyshev1View) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_view_sum(s : Signalfilterchebyshev1View) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_view_mean(s : Signalfilterchebyshev1View) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_view_mean(s : Signalfilterchebyshev1View) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_view_scale(s : Signalfilterchebyshev1View, f : Double) -> Signalfilterchebyshev1View {
   let result = signal_filter_chebyshev1_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_filter_chebyshev1_view_fill(s : Signalfilterchebyshev1View, v : Do
   result
 }
 
-pub fn signal_filter_chebyshev1_view_min(s : Signalfilterchebyshev1View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_view_min(s : Signalfilterchebyshev1View) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_view_max(s : Signalfilterchebyshev1View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_view_max(s : Signalfilterchebyshev1View) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_view_to_string(s : Signalfilterchebyshev1View) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_filter_chebyshev1_range_set(s : Signalfilterchebyshev1Range, i : I
   result
 }
 
-pub fn signal_filter_chebyshev1_range_sum(s : Signalfilterchebyshev1Range) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_range_sum(s : Signalfilterchebyshev1Range) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_range_mean(s : Signalfilterchebyshev1Range) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_range_mean(s : Signalfilterchebyshev1Range) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_range_scale(s : Signalfilterchebyshev1Range, f : Double) -> Signalfilterchebyshev1Range {
   let result = signal_filter_chebyshev1_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_filter_chebyshev1_range_fill(s : Signalfilterchebyshev1Range, v : 
   result
 }
 
-pub fn signal_filter_chebyshev1_range_min(s : Signalfilterchebyshev1Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_range_min(s : Signalfilterchebyshev1Range) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_range_max(s : Signalfilterchebyshev1Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_range_max(s : Signalfilterchebyshev1Range) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_range_to_string(s : Signalfilterchebyshev1Range) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_filter_chebyshev1_slice_set(s : Signalfilterchebyshev1Slice, i : I
   result
 }
 
-pub fn signal_filter_chebyshev1_slice_sum(s : Signalfilterchebyshev1Slice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_filter_chebyshev1_slice_sum(s : Signalfilterchebyshev1Slice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_filter_chebyshev1_slice_mean(s : Signalfilterchebyshev1Slice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_filter_chebyshev1_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_filter_chebyshev1_slice_mean(s : Signalfilterchebyshev1Slice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_filter_chebyshev1_slice_scale(s : Signalfilterchebyshev1Slice, f : Double) -> Signalfilterchebyshev1Slice {
   let result = signal_filter_chebyshev1_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_filter_chebyshev1_slice_fill(s : Signalfilterchebyshev1Slice, v : 
   result
 }
 
-pub fn signal_filter_chebyshev1_slice_min(s : Signalfilterchebyshev1Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_slice_min(s : Signalfilterchebyshev1Slice) -> Double { @_common.min(s.data) }
 
-pub fn signal_filter_chebyshev1_slice_max(s : Signalfilterchebyshev1Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_filter_chebyshev1_slice_max(s : Signalfilterchebyshev1Slice) -> Double { @_common.max(s.data) }
 
 pub fn signal_filter_chebyshev1_slice_to_string(s : Signalfilterchebyshev1Slice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

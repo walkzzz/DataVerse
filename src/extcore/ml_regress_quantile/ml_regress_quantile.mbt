@@ -88,11 +88,7 @@ pub fn ml_regress_quantile_make_series(vals : Array[Double], name : String) -> M
 
 pub fn ml_regress_quantile_series_len(s : MlregressquantileSeries) -> Int { s.vals.length() }
 
-pub fn ml_regress_quantile_series_sum(s : MlregressquantileSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_regress_quantile_series_sum(s : MlregressquantileSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_regress_quantile_series_mean(s : MlregressquantileSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_regress_quantile_frame_set(s : MlregressquantileFrame, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_quantile_frame_sum(s : MlregressquantileFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_frame_sum(s : MlregressquantileFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_frame_mean(s : MlregressquantileFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_frame_mean(s : MlregressquantileFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_frame_scale(s : MlregressquantileFrame, f : Double) -> MlregressquantileFrame {
   let result = ml_regress_quantile_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_regress_quantile_frame_fill(s : MlregressquantileFrame, v : Double) ->
   result
 }
 
-pub fn ml_regress_quantile_frame_min(s : MlregressquantileFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_frame_min(s : MlregressquantileFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_frame_max(s : MlregressquantileFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_frame_max(s : MlregressquantileFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_frame_to_string(s : MlregressquantileFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_regress_quantile_table_set(s : MlregressquantileTable, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_quantile_table_sum(s : MlregressquantileTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_table_sum(s : MlregressquantileTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_table_mean(s : MlregressquantileTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_table_mean(s : MlregressquantileTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_table_scale(s : MlregressquantileTable, f : Double) -> MlregressquantileTable {
   let result = ml_regress_quantile_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_regress_quantile_table_fill(s : MlregressquantileTable, v : Double) ->
   result
 }
 
-pub fn ml_regress_quantile_table_min(s : MlregressquantileTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_table_min(s : MlregressquantileTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_table_max(s : MlregressquantileTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_table_max(s : MlregressquantileTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_table_to_string(s : MlregressquantileTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_regress_quantile_graphn_set(s : MlregressquantileGraphN, i : Int, v : 
   result
 }
 
-pub fn ml_regress_quantile_graphn_sum(s : MlregressquantileGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_graphn_sum(s : MlregressquantileGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_graphn_mean(s : MlregressquantileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_graphn_mean(s : MlregressquantileGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_graphn_scale(s : MlregressquantileGraphN, f : Double) -> MlregressquantileGraphN {
   let result = ml_regress_quantile_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_regress_quantile_graphn_fill(s : MlregressquantileGraphN, v : Double) 
   result
 }
 
-pub fn ml_regress_quantile_graphn_min(s : MlregressquantileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_graphn_min(s : MlregressquantileGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_graphn_max(s : MlregressquantileGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_graphn_max(s : MlregressquantileGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_graphn_to_string(s : MlregressquantileGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_regress_quantile_node_set(s : MlregressquantileNode, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_quantile_node_sum(s : MlregressquantileNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_node_sum(s : MlregressquantileNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_node_mean(s : MlregressquantileNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_node_mean(s : MlregressquantileNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_node_scale(s : MlregressquantileNode, f : Double) -> MlregressquantileNode {
   let result = ml_regress_quantile_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_regress_quantile_node_fill(s : MlregressquantileNode, v : Double) -> M
   result
 }
 
-pub fn ml_regress_quantile_node_min(s : MlregressquantileNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_node_min(s : MlregressquantileNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_node_max(s : MlregressquantileNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_node_max(s : MlregressquantileNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_node_to_string(s : MlregressquantileNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_regress_quantile_edge_set(s : MlregressquantileEdge, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_quantile_edge_sum(s : MlregressquantileEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_edge_sum(s : MlregressquantileEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_edge_mean(s : MlregressquantileEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_edge_mean(s : MlregressquantileEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_edge_scale(s : MlregressquantileEdge, f : Double) -> MlregressquantileEdge {
   let result = ml_regress_quantile_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_regress_quantile_edge_fill(s : MlregressquantileEdge, v : Double) -> M
   result
 }
 
-pub fn ml_regress_quantile_edge_min(s : MlregressquantileEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_edge_min(s : MlregressquantileEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_edge_max(s : MlregressquantileEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_edge_max(s : MlregressquantileEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_edge_to_string(s : MlregressquantileEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_regress_quantile_path_set(s : MlregressquantilePath, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_quantile_path_sum(s : MlregressquantilePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_path_sum(s : MlregressquantilePath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_path_mean(s : MlregressquantilePath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_path_mean(s : MlregressquantilePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_path_scale(s : MlregressquantilePath, f : Double) -> MlregressquantilePath {
   let result = ml_regress_quantile_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_regress_quantile_path_fill(s : MlregressquantilePath, v : Double) -> M
   result
 }
 
-pub fn ml_regress_quantile_path_min(s : MlregressquantilePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_path_min(s : MlregressquantilePath) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_path_max(s : MlregressquantilePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_path_max(s : MlregressquantilePath) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_path_to_string(s : MlregressquantilePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_regress_quantile_cluster_set(s : MlregressquantileCluster, i : Int, v 
   result
 }
 
-pub fn ml_regress_quantile_cluster_sum(s : MlregressquantileCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_cluster_sum(s : MlregressquantileCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_cluster_mean(s : MlregressquantileCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_cluster_mean(s : MlregressquantileCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_cluster_scale(s : MlregressquantileCluster, f : Double) -> MlregressquantileCluster {
   let result = ml_regress_quantile_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_regress_quantile_cluster_fill(s : MlregressquantileCluster, v : Double
   result
 }
 
-pub fn ml_regress_quantile_cluster_min(s : MlregressquantileCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_cluster_min(s : MlregressquantileCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_cluster_max(s : MlregressquantileCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_cluster_max(s : MlregressquantileCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_cluster_to_string(s : MlregressquantileCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_regress_quantile_model_set(s : MlregressquantileModel, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_quantile_model_sum(s : MlregressquantileModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_model_sum(s : MlregressquantileModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_model_mean(s : MlregressquantileModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_model_mean(s : MlregressquantileModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_model_scale(s : MlregressquantileModel, f : Double) -> MlregressquantileModel {
   let result = ml_regress_quantile_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_regress_quantile_model_fill(s : MlregressquantileModel, v : Double) ->
   result
 }
 
-pub fn ml_regress_quantile_model_min(s : MlregressquantileModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_model_min(s : MlregressquantileModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_model_max(s : MlregressquantileModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_model_max(s : MlregressquantileModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_model_to_string(s : MlregressquantileModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_regress_quantile_layer_set(s : MlregressquantileLayer, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_quantile_layer_sum(s : MlregressquantileLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_layer_sum(s : MlregressquantileLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_layer_mean(s : MlregressquantileLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_layer_mean(s : MlregressquantileLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_layer_scale(s : MlregressquantileLayer, f : Double) -> MlregressquantileLayer {
   let result = ml_regress_quantile_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_regress_quantile_layer_fill(s : MlregressquantileLayer, v : Double) ->
   result
 }
 
-pub fn ml_regress_quantile_layer_min(s : MlregressquantileLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_layer_min(s : MlregressquantileLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_layer_max(s : MlregressquantileLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_layer_max(s : MlregressquantileLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_layer_to_string(s : MlregressquantileLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_regress_quantile_buffer_set(s : MlregressquantileBuffer, i : Int, v : 
   result
 }
 
-pub fn ml_regress_quantile_buffer_sum(s : MlregressquantileBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_buffer_sum(s : MlregressquantileBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_buffer_mean(s : MlregressquantileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_buffer_mean(s : MlregressquantileBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_buffer_scale(s : MlregressquantileBuffer, f : Double) -> MlregressquantileBuffer {
   let result = ml_regress_quantile_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_regress_quantile_buffer_fill(s : MlregressquantileBuffer, v : Double) 
   result
 }
 
-pub fn ml_regress_quantile_buffer_min(s : MlregressquantileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_buffer_min(s : MlregressquantileBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_buffer_max(s : MlregressquantileBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_buffer_max(s : MlregressquantileBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_buffer_to_string(s : MlregressquantileBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_regress_quantile_cursor_set(s : MlregressquantileCursor, i : Int, v : 
   result
 }
 
-pub fn ml_regress_quantile_cursor_sum(s : MlregressquantileCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_cursor_sum(s : MlregressquantileCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_cursor_mean(s : MlregressquantileCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_cursor_mean(s : MlregressquantileCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_cursor_scale(s : MlregressquantileCursor, f : Double) -> MlregressquantileCursor {
   let result = ml_regress_quantile_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_regress_quantile_cursor_fill(s : MlregressquantileCursor, v : Double) 
   result
 }
 
-pub fn ml_regress_quantile_cursor_min(s : MlregressquantileCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_cursor_min(s : MlregressquantileCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_cursor_max(s : MlregressquantileCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_cursor_max(s : MlregressquantileCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_cursor_to_string(s : MlregressquantileCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_regress_quantile_view_set(s : MlregressquantileView, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_quantile_view_sum(s : MlregressquantileView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_view_sum(s : MlregressquantileView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_view_mean(s : MlregressquantileView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_view_mean(s : MlregressquantileView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_view_scale(s : MlregressquantileView, f : Double) -> MlregressquantileView {
   let result = ml_regress_quantile_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_regress_quantile_view_fill(s : MlregressquantileView, v : Double) -> M
   result
 }
 
-pub fn ml_regress_quantile_view_min(s : MlregressquantileView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_view_min(s : MlregressquantileView) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_view_max(s : MlregressquantileView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_view_max(s : MlregressquantileView) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_view_to_string(s : MlregressquantileView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_regress_quantile_range_set(s : MlregressquantileRange, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_quantile_range_sum(s : MlregressquantileRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_range_sum(s : MlregressquantileRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_range_mean(s : MlregressquantileRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_range_mean(s : MlregressquantileRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_range_scale(s : MlregressquantileRange, f : Double) -> MlregressquantileRange {
   let result = ml_regress_quantile_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_regress_quantile_range_fill(s : MlregressquantileRange, v : Double) ->
   result
 }
 
-pub fn ml_regress_quantile_range_min(s : MlregressquantileRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_range_min(s : MlregressquantileRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_range_max(s : MlregressquantileRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_range_max(s : MlregressquantileRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_range_to_string(s : MlregressquantileRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_regress_quantile_slice_set(s : MlregressquantileSlice, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_quantile_slice_sum(s : MlregressquantileSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_quantile_slice_sum(s : MlregressquantileSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_quantile_slice_mean(s : MlregressquantileSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_quantile_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_quantile_slice_mean(s : MlregressquantileSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_quantile_slice_scale(s : MlregressquantileSlice, f : Double) -> MlregressquantileSlice {
   let result = ml_regress_quantile_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_regress_quantile_slice_fill(s : MlregressquantileSlice, v : Double) ->
   result
 }
 
-pub fn ml_regress_quantile_slice_min(s : MlregressquantileSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_slice_min(s : MlregressquantileSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_quantile_slice_max(s : MlregressquantileSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_quantile_slice_max(s : MlregressquantileSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_quantile_slice_to_string(s : MlregressquantileSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn image_transform_remap_make_series(vals : Array[Double], name : String) ->
 
 pub fn image_transform_remap_series_len(s : ImagetransformremapSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_remap_series_sum(s : ImagetransformremapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_remap_series_sum(s : ImagetransformremapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_remap_series_mean(s : ImagetransformremapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_remap_frame_set(s : ImagetransformremapFrame, i : Int, v 
   result
 }
 
-pub fn image_transform_remap_frame_sum(s : ImagetransformremapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_frame_sum(s : ImagetransformremapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_frame_mean(s : ImagetransformremapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_frame_mean(s : ImagetransformremapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_frame_scale(s : ImagetransformremapFrame, f : Double) -> ImagetransformremapFrame {
   let result = image_transform_remap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_remap_frame_fill(s : ImagetransformremapFrame, v : Double
   result
 }
 
-pub fn image_transform_remap_frame_min(s : ImagetransformremapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_frame_min(s : ImagetransformremapFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_frame_max(s : ImagetransformremapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_frame_max(s : ImagetransformremapFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_frame_to_string(s : ImagetransformremapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_remap_table_set(s : ImagetransformremapTable, i : Int, v 
   result
 }
 
-pub fn image_transform_remap_table_sum(s : ImagetransformremapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_table_sum(s : ImagetransformremapTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_table_mean(s : ImagetransformremapTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_table_mean(s : ImagetransformremapTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_table_scale(s : ImagetransformremapTable, f : Double) -> ImagetransformremapTable {
   let result = image_transform_remap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_remap_table_fill(s : ImagetransformremapTable, v : Double
   result
 }
 
-pub fn image_transform_remap_table_min(s : ImagetransformremapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_table_min(s : ImagetransformremapTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_table_max(s : ImagetransformremapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_table_max(s : ImagetransformremapTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_table_to_string(s : ImagetransformremapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_remap_graphn_set(s : ImagetransformremapGraphN, i : Int, 
   result
 }
 
-pub fn image_transform_remap_graphn_sum(s : ImagetransformremapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_graphn_sum(s : ImagetransformremapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_graphn_mean(s : ImagetransformremapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_graphn_mean(s : ImagetransformremapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_graphn_scale(s : ImagetransformremapGraphN, f : Double) -> ImagetransformremapGraphN {
   let result = image_transform_remap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_remap_graphn_fill(s : ImagetransformremapGraphN, v : Doub
   result
 }
 
-pub fn image_transform_remap_graphn_min(s : ImagetransformremapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_graphn_min(s : ImagetransformremapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_graphn_max(s : ImagetransformremapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_graphn_max(s : ImagetransformremapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_graphn_to_string(s : ImagetransformremapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_remap_node_set(s : ImagetransformremapNode, i : Int, v : 
   result
 }
 
-pub fn image_transform_remap_node_sum(s : ImagetransformremapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_node_sum(s : ImagetransformremapNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_node_mean(s : ImagetransformremapNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_node_mean(s : ImagetransformremapNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_node_scale(s : ImagetransformremapNode, f : Double) -> ImagetransformremapNode {
   let result = image_transform_remap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_remap_node_fill(s : ImagetransformremapNode, v : Double) 
   result
 }
 
-pub fn image_transform_remap_node_min(s : ImagetransformremapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_node_min(s : ImagetransformremapNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_node_max(s : ImagetransformremapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_node_max(s : ImagetransformremapNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_node_to_string(s : ImagetransformremapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_remap_edge_set(s : ImagetransformremapEdge, i : Int, v : 
   result
 }
 
-pub fn image_transform_remap_edge_sum(s : ImagetransformremapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_edge_sum(s : ImagetransformremapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_edge_mean(s : ImagetransformremapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_edge_mean(s : ImagetransformremapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_edge_scale(s : ImagetransformremapEdge, f : Double) -> ImagetransformremapEdge {
   let result = image_transform_remap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_remap_edge_fill(s : ImagetransformremapEdge, v : Double) 
   result
 }
 
-pub fn image_transform_remap_edge_min(s : ImagetransformremapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_edge_min(s : ImagetransformremapEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_edge_max(s : ImagetransformremapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_edge_max(s : ImagetransformremapEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_edge_to_string(s : ImagetransformremapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_remap_path_set(s : ImagetransformremapPath, i : Int, v : 
   result
 }
 
-pub fn image_transform_remap_path_sum(s : ImagetransformremapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_path_sum(s : ImagetransformremapPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_path_mean(s : ImagetransformremapPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_path_mean(s : ImagetransformremapPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_path_scale(s : ImagetransformremapPath, f : Double) -> ImagetransformremapPath {
   let result = image_transform_remap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_remap_path_fill(s : ImagetransformremapPath, v : Double) 
   result
 }
 
-pub fn image_transform_remap_path_min(s : ImagetransformremapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_path_min(s : ImagetransformremapPath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_path_max(s : ImagetransformremapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_path_max(s : ImagetransformremapPath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_path_to_string(s : ImagetransformremapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_remap_cluster_set(s : ImagetransformremapCluster, i : Int
   result
 }
 
-pub fn image_transform_remap_cluster_sum(s : ImagetransformremapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_cluster_sum(s : ImagetransformremapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_cluster_mean(s : ImagetransformremapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_cluster_mean(s : ImagetransformremapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_cluster_scale(s : ImagetransformremapCluster, f : Double) -> ImagetransformremapCluster {
   let result = image_transform_remap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_remap_cluster_fill(s : ImagetransformremapCluster, v : Do
   result
 }
 
-pub fn image_transform_remap_cluster_min(s : ImagetransformremapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_cluster_min(s : ImagetransformremapCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_cluster_max(s : ImagetransformremapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_cluster_max(s : ImagetransformremapCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_cluster_to_string(s : ImagetransformremapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_remap_model_set(s : ImagetransformremapModel, i : Int, v 
   result
 }
 
-pub fn image_transform_remap_model_sum(s : ImagetransformremapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_model_sum(s : ImagetransformremapModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_model_mean(s : ImagetransformremapModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_model_mean(s : ImagetransformremapModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_model_scale(s : ImagetransformremapModel, f : Double) -> ImagetransformremapModel {
   let result = image_transform_remap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_remap_model_fill(s : ImagetransformremapModel, v : Double
   result
 }
 
-pub fn image_transform_remap_model_min(s : ImagetransformremapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_model_min(s : ImagetransformremapModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_model_max(s : ImagetransformremapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_model_max(s : ImagetransformremapModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_model_to_string(s : ImagetransformremapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_remap_layer_set(s : ImagetransformremapLayer, i : Int, v 
   result
 }
 
-pub fn image_transform_remap_layer_sum(s : ImagetransformremapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_layer_sum(s : ImagetransformremapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_layer_mean(s : ImagetransformremapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_layer_mean(s : ImagetransformremapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_layer_scale(s : ImagetransformremapLayer, f : Double) -> ImagetransformremapLayer {
   let result = image_transform_remap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_remap_layer_fill(s : ImagetransformremapLayer, v : Double
   result
 }
 
-pub fn image_transform_remap_layer_min(s : ImagetransformremapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_layer_min(s : ImagetransformremapLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_layer_max(s : ImagetransformremapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_layer_max(s : ImagetransformremapLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_layer_to_string(s : ImagetransformremapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_remap_buffer_set(s : ImagetransformremapBuffer, i : Int, 
   result
 }
 
-pub fn image_transform_remap_buffer_sum(s : ImagetransformremapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_buffer_sum(s : ImagetransformremapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_buffer_mean(s : ImagetransformremapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_buffer_mean(s : ImagetransformremapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_buffer_scale(s : ImagetransformremapBuffer, f : Double) -> ImagetransformremapBuffer {
   let result = image_transform_remap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_remap_buffer_fill(s : ImagetransformremapBuffer, v : Doub
   result
 }
 
-pub fn image_transform_remap_buffer_min(s : ImagetransformremapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_buffer_min(s : ImagetransformremapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_buffer_max(s : ImagetransformremapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_buffer_max(s : ImagetransformremapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_buffer_to_string(s : ImagetransformremapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_remap_cursor_set(s : ImagetransformremapCursor, i : Int, 
   result
 }
 
-pub fn image_transform_remap_cursor_sum(s : ImagetransformremapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_cursor_sum(s : ImagetransformremapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_cursor_mean(s : ImagetransformremapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_cursor_mean(s : ImagetransformremapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_cursor_scale(s : ImagetransformremapCursor, f : Double) -> ImagetransformremapCursor {
   let result = image_transform_remap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_remap_cursor_fill(s : ImagetransformremapCursor, v : Doub
   result
 }
 
-pub fn image_transform_remap_cursor_min(s : ImagetransformremapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_cursor_min(s : ImagetransformremapCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_cursor_max(s : ImagetransformremapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_cursor_max(s : ImagetransformremapCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_cursor_to_string(s : ImagetransformremapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_remap_view_set(s : ImagetransformremapView, i : Int, v : 
   result
 }
 
-pub fn image_transform_remap_view_sum(s : ImagetransformremapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_view_sum(s : ImagetransformremapView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_view_mean(s : ImagetransformremapView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_view_mean(s : ImagetransformremapView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_view_scale(s : ImagetransformremapView, f : Double) -> ImagetransformremapView {
   let result = image_transform_remap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_remap_view_fill(s : ImagetransformremapView, v : Double) 
   result
 }
 
-pub fn image_transform_remap_view_min(s : ImagetransformremapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_view_min(s : ImagetransformremapView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_view_max(s : ImagetransformremapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_view_max(s : ImagetransformremapView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_view_to_string(s : ImagetransformremapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_remap_range_set(s : ImagetransformremapRange, i : Int, v 
   result
 }
 
-pub fn image_transform_remap_range_sum(s : ImagetransformremapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_range_sum(s : ImagetransformremapRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_range_mean(s : ImagetransformremapRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_range_mean(s : ImagetransformremapRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_range_scale(s : ImagetransformremapRange, f : Double) -> ImagetransformremapRange {
   let result = image_transform_remap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_remap_range_fill(s : ImagetransformremapRange, v : Double
   result
 }
 
-pub fn image_transform_remap_range_min(s : ImagetransformremapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_range_min(s : ImagetransformremapRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_range_max(s : ImagetransformremapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_range_max(s : ImagetransformremapRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_range_to_string(s : ImagetransformremapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_remap_slice_set(s : ImagetransformremapSlice, i : Int, v 
   result
 }
 
-pub fn image_transform_remap_slice_sum(s : ImagetransformremapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_remap_slice_sum(s : ImagetransformremapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_remap_slice_mean(s : ImagetransformremapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_remap_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_remap_slice_mean(s : ImagetransformremapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_remap_slice_scale(s : ImagetransformremapSlice, f : Double) -> ImagetransformremapSlice {
   let result = image_transform_remap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_remap_slice_fill(s : ImagetransformremapSlice, v : Double
   result
 }
 
-pub fn image_transform_remap_slice_min(s : ImagetransformremapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_slice_min(s : ImagetransformremapSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_remap_slice_max(s : ImagetransformremapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_remap_slice_max(s : ImagetransformremapSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_remap_slice_to_string(s : ImagetransformremapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

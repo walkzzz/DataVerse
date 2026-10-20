@@ -88,11 +88,7 @@ pub fn image_feature_orb_make_series(vals : Array[Double], name : String) -> Ima
 
 pub fn image_feature_orb_series_len(s : ImagefeatureorbSeries) -> Int { s.vals.length() }
 
-pub fn image_feature_orb_series_sum(s : ImagefeatureorbSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_feature_orb_series_sum(s : ImagefeatureorbSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_feature_orb_series_mean(s : ImagefeatureorbSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_feature_orb_frame_set(s : ImagefeatureorbFrame, i : Int, v : Double
   result
 }
 
-pub fn image_feature_orb_frame_sum(s : ImagefeatureorbFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_frame_sum(s : ImagefeatureorbFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_frame_mean(s : ImagefeatureorbFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_frame_mean(s : ImagefeatureorbFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_frame_scale(s : ImagefeatureorbFrame, f : Double) -> ImagefeatureorbFrame {
   let result = image_feature_orb_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_feature_orb_frame_fill(s : ImagefeatureorbFrame, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_orb_frame_min(s : ImagefeatureorbFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_frame_min(s : ImagefeatureorbFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_frame_max(s : ImagefeatureorbFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_frame_max(s : ImagefeatureorbFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_frame_to_string(s : ImagefeatureorbFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_feature_orb_table_set(s : ImagefeatureorbTable, i : Int, v : Double
   result
 }
 
-pub fn image_feature_orb_table_sum(s : ImagefeatureorbTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_table_sum(s : ImagefeatureorbTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_table_mean(s : ImagefeatureorbTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_table_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_table_mean(s : ImagefeatureorbTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_table_scale(s : ImagefeatureorbTable, f : Double) -> ImagefeatureorbTable {
   let result = image_feature_orb_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_feature_orb_table_fill(s : ImagefeatureorbTable, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_orb_table_min(s : ImagefeatureorbTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_table_min(s : ImagefeatureorbTable) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_table_max(s : ImagefeatureorbTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_table_max(s : ImagefeatureorbTable) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_table_to_string(s : ImagefeatureorbTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_feature_orb_graphn_set(s : ImagefeatureorbGraphN, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_orb_graphn_sum(s : ImagefeatureorbGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_graphn_sum(s : ImagefeatureorbGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_graphn_mean(s : ImagefeatureorbGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_graphn_mean(s : ImagefeatureorbGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_graphn_scale(s : ImagefeatureorbGraphN, f : Double) -> ImagefeatureorbGraphN {
   let result = image_feature_orb_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_feature_orb_graphn_fill(s : ImagefeatureorbGraphN, v : Double) -> I
   result
 }
 
-pub fn image_feature_orb_graphn_min(s : ImagefeatureorbGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_graphn_min(s : ImagefeatureorbGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_graphn_max(s : ImagefeatureorbGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_graphn_max(s : ImagefeatureorbGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_graphn_to_string(s : ImagefeatureorbGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_feature_orb_node_set(s : ImagefeatureorbNode, i : Int, v : Double) 
   result
 }
 
-pub fn image_feature_orb_node_sum(s : ImagefeatureorbNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_node_sum(s : ImagefeatureorbNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_node_mean(s : ImagefeatureorbNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_node_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_node_mean(s : ImagefeatureorbNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_node_scale(s : ImagefeatureorbNode, f : Double) -> ImagefeatureorbNode {
   let result = image_feature_orb_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_feature_orb_node_fill(s : ImagefeatureorbNode, v : Double) -> Image
   result
 }
 
-pub fn image_feature_orb_node_min(s : ImagefeatureorbNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_node_min(s : ImagefeatureorbNode) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_node_max(s : ImagefeatureorbNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_node_max(s : ImagefeatureorbNode) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_node_to_string(s : ImagefeatureorbNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_feature_orb_edge_set(s : ImagefeatureorbEdge, i : Int, v : Double) 
   result
 }
 
-pub fn image_feature_orb_edge_sum(s : ImagefeatureorbEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_edge_sum(s : ImagefeatureorbEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_edge_mean(s : ImagefeatureorbEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_edge_mean(s : ImagefeatureorbEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_edge_scale(s : ImagefeatureorbEdge, f : Double) -> ImagefeatureorbEdge {
   let result = image_feature_orb_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_feature_orb_edge_fill(s : ImagefeatureorbEdge, v : Double) -> Image
   result
 }
 
-pub fn image_feature_orb_edge_min(s : ImagefeatureorbEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_edge_min(s : ImagefeatureorbEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_edge_max(s : ImagefeatureorbEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_edge_max(s : ImagefeatureorbEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_edge_to_string(s : ImagefeatureorbEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_feature_orb_path_set(s : ImagefeatureorbPath, i : Int, v : Double) 
   result
 }
 
-pub fn image_feature_orb_path_sum(s : ImagefeatureorbPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_path_sum(s : ImagefeatureorbPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_path_mean(s : ImagefeatureorbPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_path_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_path_mean(s : ImagefeatureorbPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_path_scale(s : ImagefeatureorbPath, f : Double) -> ImagefeatureorbPath {
   let result = image_feature_orb_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_feature_orb_path_fill(s : ImagefeatureorbPath, v : Double) -> Image
   result
 }
 
-pub fn image_feature_orb_path_min(s : ImagefeatureorbPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_path_min(s : ImagefeatureorbPath) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_path_max(s : ImagefeatureorbPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_path_max(s : ImagefeatureorbPath) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_path_to_string(s : ImagefeatureorbPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_feature_orb_cluster_set(s : ImagefeatureorbCluster, i : Int, v : Do
   result
 }
 
-pub fn image_feature_orb_cluster_sum(s : ImagefeatureorbCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_cluster_sum(s : ImagefeatureorbCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_cluster_mean(s : ImagefeatureorbCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_cluster_mean(s : ImagefeatureorbCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_cluster_scale(s : ImagefeatureorbCluster, f : Double) -> ImagefeatureorbCluster {
   let result = image_feature_orb_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_feature_orb_cluster_fill(s : ImagefeatureorbCluster, v : Double) ->
   result
 }
 
-pub fn image_feature_orb_cluster_min(s : ImagefeatureorbCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_cluster_min(s : ImagefeatureorbCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_cluster_max(s : ImagefeatureorbCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_cluster_max(s : ImagefeatureorbCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_cluster_to_string(s : ImagefeatureorbCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_feature_orb_model_set(s : ImagefeatureorbModel, i : Int, v : Double
   result
 }
 
-pub fn image_feature_orb_model_sum(s : ImagefeatureorbModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_model_sum(s : ImagefeatureorbModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_model_mean(s : ImagefeatureorbModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_model_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_model_mean(s : ImagefeatureorbModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_model_scale(s : ImagefeatureorbModel, f : Double) -> ImagefeatureorbModel {
   let result = image_feature_orb_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_feature_orb_model_fill(s : ImagefeatureorbModel, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_orb_model_min(s : ImagefeatureorbModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_model_min(s : ImagefeatureorbModel) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_model_max(s : ImagefeatureorbModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_model_max(s : ImagefeatureorbModel) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_model_to_string(s : ImagefeatureorbModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_feature_orb_layer_set(s : ImagefeatureorbLayer, i : Int, v : Double
   result
 }
 
-pub fn image_feature_orb_layer_sum(s : ImagefeatureorbLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_layer_sum(s : ImagefeatureorbLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_layer_mean(s : ImagefeatureorbLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_layer_mean(s : ImagefeatureorbLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_layer_scale(s : ImagefeatureorbLayer, f : Double) -> ImagefeatureorbLayer {
   let result = image_feature_orb_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_feature_orb_layer_fill(s : ImagefeatureorbLayer, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_orb_layer_min(s : ImagefeatureorbLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_layer_min(s : ImagefeatureorbLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_layer_max(s : ImagefeatureorbLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_layer_max(s : ImagefeatureorbLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_layer_to_string(s : ImagefeatureorbLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_feature_orb_buffer_set(s : ImagefeatureorbBuffer, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_orb_buffer_sum(s : ImagefeatureorbBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_buffer_sum(s : ImagefeatureorbBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_buffer_mean(s : ImagefeatureorbBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_buffer_mean(s : ImagefeatureorbBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_buffer_scale(s : ImagefeatureorbBuffer, f : Double) -> ImagefeatureorbBuffer {
   let result = image_feature_orb_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_feature_orb_buffer_fill(s : ImagefeatureorbBuffer, v : Double) -> I
   result
 }
 
-pub fn image_feature_orb_buffer_min(s : ImagefeatureorbBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_buffer_min(s : ImagefeatureorbBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_buffer_max(s : ImagefeatureorbBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_buffer_max(s : ImagefeatureorbBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_buffer_to_string(s : ImagefeatureorbBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_feature_orb_cursor_set(s : ImagefeatureorbCursor, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_orb_cursor_sum(s : ImagefeatureorbCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_cursor_sum(s : ImagefeatureorbCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_cursor_mean(s : ImagefeatureorbCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_cursor_mean(s : ImagefeatureorbCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_cursor_scale(s : ImagefeatureorbCursor, f : Double) -> ImagefeatureorbCursor {
   let result = image_feature_orb_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_feature_orb_cursor_fill(s : ImagefeatureorbCursor, v : Double) -> I
   result
 }
 
-pub fn image_feature_orb_cursor_min(s : ImagefeatureorbCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_cursor_min(s : ImagefeatureorbCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_cursor_max(s : ImagefeatureorbCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_cursor_max(s : ImagefeatureorbCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_cursor_to_string(s : ImagefeatureorbCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_feature_orb_view_set(s : ImagefeatureorbView, i : Int, v : Double) 
   result
 }
 
-pub fn image_feature_orb_view_sum(s : ImagefeatureorbView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_view_sum(s : ImagefeatureorbView) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_view_mean(s : ImagefeatureorbView) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_view_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_view_mean(s : ImagefeatureorbView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_view_scale(s : ImagefeatureorbView, f : Double) -> ImagefeatureorbView {
   let result = image_feature_orb_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_feature_orb_view_fill(s : ImagefeatureorbView, v : Double) -> Image
   result
 }
 
-pub fn image_feature_orb_view_min(s : ImagefeatureorbView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_view_min(s : ImagefeatureorbView) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_view_max(s : ImagefeatureorbView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_view_max(s : ImagefeatureorbView) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_view_to_string(s : ImagefeatureorbView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_feature_orb_range_set(s : ImagefeatureorbRange, i : Int, v : Double
   result
 }
 
-pub fn image_feature_orb_range_sum(s : ImagefeatureorbRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_range_sum(s : ImagefeatureorbRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_range_mean(s : ImagefeatureorbRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_range_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_range_mean(s : ImagefeatureorbRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_range_scale(s : ImagefeatureorbRange, f : Double) -> ImagefeatureorbRange {
   let result = image_feature_orb_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_feature_orb_range_fill(s : ImagefeatureorbRange, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_orb_range_min(s : ImagefeatureorbRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_range_min(s : ImagefeatureorbRange) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_range_max(s : ImagefeatureorbRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_range_max(s : ImagefeatureorbRange) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_range_to_string(s : ImagefeatureorbRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_feature_orb_slice_set(s : ImagefeatureorbSlice, i : Int, v : Double
   result
 }
 
-pub fn image_feature_orb_slice_sum(s : ImagefeatureorbSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_orb_slice_sum(s : ImagefeatureorbSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_orb_slice_mean(s : ImagefeatureorbSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_orb_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_orb_slice_mean(s : ImagefeatureorbSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_orb_slice_scale(s : ImagefeatureorbSlice, f : Double) -> ImagefeatureorbSlice {
   let result = image_feature_orb_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_feature_orb_slice_fill(s : ImagefeatureorbSlice, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_orb_slice_min(s : ImagefeatureorbSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_slice_min(s : ImagefeatureorbSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_orb_slice_max(s : ImagefeatureorbSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_orb_slice_max(s : ImagefeatureorbSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_orb_slice_to_string(s : ImagefeatureorbSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

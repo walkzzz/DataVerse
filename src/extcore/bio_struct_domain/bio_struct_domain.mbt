@@ -88,11 +88,7 @@ pub fn bio_struct_domain_make_series(vals : Array[Double], name : String) -> Bio
 
 pub fn bio_struct_domain_series_len(s : BiostructdomainSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_domain_series_sum(s : BiostructdomainSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_domain_series_sum(s : BiostructdomainSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_domain_series_mean(s : BiostructdomainSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_domain_frame_set(s : BiostructdomainFrame, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_domain_frame_sum(s : BiostructdomainFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_frame_sum(s : BiostructdomainFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_frame_mean(s : BiostructdomainFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_frame_mean(s : BiostructdomainFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_frame_scale(s : BiostructdomainFrame, f : Double) -> BiostructdomainFrame {
   let result = bio_struct_domain_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_domain_frame_fill(s : BiostructdomainFrame, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_domain_frame_min(s : BiostructdomainFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_frame_min(s : BiostructdomainFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_frame_max(s : BiostructdomainFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_frame_max(s : BiostructdomainFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_frame_to_string(s : BiostructdomainFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_domain_table_set(s : BiostructdomainTable, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_domain_table_sum(s : BiostructdomainTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_table_sum(s : BiostructdomainTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_table_mean(s : BiostructdomainTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_table_mean(s : BiostructdomainTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_table_scale(s : BiostructdomainTable, f : Double) -> BiostructdomainTable {
   let result = bio_struct_domain_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_domain_table_fill(s : BiostructdomainTable, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_domain_table_min(s : BiostructdomainTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_table_min(s : BiostructdomainTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_table_max(s : BiostructdomainTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_table_max(s : BiostructdomainTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_table_to_string(s : BiostructdomainTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_domain_graphn_set(s : BiostructdomainGraphN, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_domain_graphn_sum(s : BiostructdomainGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_graphn_sum(s : BiostructdomainGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_graphn_mean(s : BiostructdomainGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_graphn_mean(s : BiostructdomainGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_graphn_scale(s : BiostructdomainGraphN, f : Double) -> BiostructdomainGraphN {
   let result = bio_struct_domain_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_domain_graphn_fill(s : BiostructdomainGraphN, v : Double) -> B
   result
 }
 
-pub fn bio_struct_domain_graphn_min(s : BiostructdomainGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_graphn_min(s : BiostructdomainGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_graphn_max(s : BiostructdomainGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_graphn_max(s : BiostructdomainGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_graphn_to_string(s : BiostructdomainGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_domain_node_set(s : BiostructdomainNode, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_domain_node_sum(s : BiostructdomainNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_node_sum(s : BiostructdomainNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_node_mean(s : BiostructdomainNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_node_mean(s : BiostructdomainNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_node_scale(s : BiostructdomainNode, f : Double) -> BiostructdomainNode {
   let result = bio_struct_domain_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_domain_node_fill(s : BiostructdomainNode, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_domain_node_min(s : BiostructdomainNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_node_min(s : BiostructdomainNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_node_max(s : BiostructdomainNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_node_max(s : BiostructdomainNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_node_to_string(s : BiostructdomainNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_domain_edge_set(s : BiostructdomainEdge, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_domain_edge_sum(s : BiostructdomainEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_edge_sum(s : BiostructdomainEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_edge_mean(s : BiostructdomainEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_edge_mean(s : BiostructdomainEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_edge_scale(s : BiostructdomainEdge, f : Double) -> BiostructdomainEdge {
   let result = bio_struct_domain_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_domain_edge_fill(s : BiostructdomainEdge, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_domain_edge_min(s : BiostructdomainEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_edge_min(s : BiostructdomainEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_edge_max(s : BiostructdomainEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_edge_max(s : BiostructdomainEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_edge_to_string(s : BiostructdomainEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_domain_path_set(s : BiostructdomainPath, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_domain_path_sum(s : BiostructdomainPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_path_sum(s : BiostructdomainPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_path_mean(s : BiostructdomainPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_path_mean(s : BiostructdomainPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_path_scale(s : BiostructdomainPath, f : Double) -> BiostructdomainPath {
   let result = bio_struct_domain_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_domain_path_fill(s : BiostructdomainPath, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_domain_path_min(s : BiostructdomainPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_path_min(s : BiostructdomainPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_path_max(s : BiostructdomainPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_path_max(s : BiostructdomainPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_path_to_string(s : BiostructdomainPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_domain_cluster_set(s : BiostructdomainCluster, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_domain_cluster_sum(s : BiostructdomainCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_cluster_sum(s : BiostructdomainCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_cluster_mean(s : BiostructdomainCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_cluster_mean(s : BiostructdomainCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_cluster_scale(s : BiostructdomainCluster, f : Double) -> BiostructdomainCluster {
   let result = bio_struct_domain_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_domain_cluster_fill(s : BiostructdomainCluster, v : Double) ->
   result
 }
 
-pub fn bio_struct_domain_cluster_min(s : BiostructdomainCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_cluster_min(s : BiostructdomainCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_cluster_max(s : BiostructdomainCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_cluster_max(s : BiostructdomainCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_cluster_to_string(s : BiostructdomainCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_domain_model_set(s : BiostructdomainModel, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_domain_model_sum(s : BiostructdomainModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_model_sum(s : BiostructdomainModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_model_mean(s : BiostructdomainModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_model_mean(s : BiostructdomainModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_model_scale(s : BiostructdomainModel, f : Double) -> BiostructdomainModel {
   let result = bio_struct_domain_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_domain_model_fill(s : BiostructdomainModel, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_domain_model_min(s : BiostructdomainModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_model_min(s : BiostructdomainModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_model_max(s : BiostructdomainModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_model_max(s : BiostructdomainModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_model_to_string(s : BiostructdomainModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_domain_layer_set(s : BiostructdomainLayer, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_domain_layer_sum(s : BiostructdomainLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_layer_sum(s : BiostructdomainLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_layer_mean(s : BiostructdomainLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_layer_mean(s : BiostructdomainLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_layer_scale(s : BiostructdomainLayer, f : Double) -> BiostructdomainLayer {
   let result = bio_struct_domain_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_domain_layer_fill(s : BiostructdomainLayer, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_domain_layer_min(s : BiostructdomainLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_layer_min(s : BiostructdomainLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_layer_max(s : BiostructdomainLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_layer_max(s : BiostructdomainLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_layer_to_string(s : BiostructdomainLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_domain_buffer_set(s : BiostructdomainBuffer, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_domain_buffer_sum(s : BiostructdomainBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_buffer_sum(s : BiostructdomainBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_buffer_mean(s : BiostructdomainBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_buffer_mean(s : BiostructdomainBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_buffer_scale(s : BiostructdomainBuffer, f : Double) -> BiostructdomainBuffer {
   let result = bio_struct_domain_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_domain_buffer_fill(s : BiostructdomainBuffer, v : Double) -> B
   result
 }
 
-pub fn bio_struct_domain_buffer_min(s : BiostructdomainBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_buffer_min(s : BiostructdomainBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_buffer_max(s : BiostructdomainBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_buffer_max(s : BiostructdomainBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_buffer_to_string(s : BiostructdomainBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_domain_cursor_set(s : BiostructdomainCursor, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_domain_cursor_sum(s : BiostructdomainCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_cursor_sum(s : BiostructdomainCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_cursor_mean(s : BiostructdomainCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_cursor_mean(s : BiostructdomainCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_cursor_scale(s : BiostructdomainCursor, f : Double) -> BiostructdomainCursor {
   let result = bio_struct_domain_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_domain_cursor_fill(s : BiostructdomainCursor, v : Double) -> B
   result
 }
 
-pub fn bio_struct_domain_cursor_min(s : BiostructdomainCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_cursor_min(s : BiostructdomainCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_cursor_max(s : BiostructdomainCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_cursor_max(s : BiostructdomainCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_cursor_to_string(s : BiostructdomainCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_domain_view_set(s : BiostructdomainView, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_domain_view_sum(s : BiostructdomainView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_view_sum(s : BiostructdomainView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_view_mean(s : BiostructdomainView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_view_mean(s : BiostructdomainView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_view_scale(s : BiostructdomainView, f : Double) -> BiostructdomainView {
   let result = bio_struct_domain_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_domain_view_fill(s : BiostructdomainView, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_domain_view_min(s : BiostructdomainView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_view_min(s : BiostructdomainView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_view_max(s : BiostructdomainView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_view_max(s : BiostructdomainView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_view_to_string(s : BiostructdomainView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_domain_range_set(s : BiostructdomainRange, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_domain_range_sum(s : BiostructdomainRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_range_sum(s : BiostructdomainRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_range_mean(s : BiostructdomainRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_range_mean(s : BiostructdomainRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_range_scale(s : BiostructdomainRange, f : Double) -> BiostructdomainRange {
   let result = bio_struct_domain_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_domain_range_fill(s : BiostructdomainRange, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_domain_range_min(s : BiostructdomainRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_range_min(s : BiostructdomainRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_range_max(s : BiostructdomainRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_range_max(s : BiostructdomainRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_range_to_string(s : BiostructdomainRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_domain_slice_set(s : BiostructdomainSlice, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_domain_slice_sum(s : BiostructdomainSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_domain_slice_sum(s : BiostructdomainSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_domain_slice_mean(s : BiostructdomainSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_domain_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_domain_slice_mean(s : BiostructdomainSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_domain_slice_scale(s : BiostructdomainSlice, f : Double) -> BiostructdomainSlice {
   let result = bio_struct_domain_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_domain_slice_fill(s : BiostructdomainSlice, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_domain_slice_min(s : BiostructdomainSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_slice_min(s : BiostructdomainSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_domain_slice_max(s : BiostructdomainSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_domain_slice_max(s : BiostructdomainSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_domain_slice_to_string(s : BiostructdomainSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

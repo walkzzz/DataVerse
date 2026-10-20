@@ -88,11 +88,7 @@ pub fn graph_connect_bridge_make_series(vals : Array[Double], name : String) -> 
 
 pub fn graph_connect_bridge_series_len(s : GraphconnectbridgeSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_bridge_series_sum(s : GraphconnectbridgeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_bridge_series_sum(s : GraphconnectbridgeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_bridge_series_mean(s : GraphconnectbridgeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_bridge_frame_set(s : GraphconnectbridgeFrame, i : Int, v : 
   result
 }
 
-pub fn graph_connect_bridge_frame_sum(s : GraphconnectbridgeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_frame_sum(s : GraphconnectbridgeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_frame_mean(s : GraphconnectbridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_frame_mean(s : GraphconnectbridgeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_frame_scale(s : GraphconnectbridgeFrame, f : Double) -> GraphconnectbridgeFrame {
   let result = graph_connect_bridge_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_bridge_frame_fill(s : GraphconnectbridgeFrame, v : Double) 
   result
 }
 
-pub fn graph_connect_bridge_frame_min(s : GraphconnectbridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_frame_min(s : GraphconnectbridgeFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_frame_max(s : GraphconnectbridgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_frame_max(s : GraphconnectbridgeFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_frame_to_string(s : GraphconnectbridgeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_bridge_table_set(s : GraphconnectbridgeTable, i : Int, v : 
   result
 }
 
-pub fn graph_connect_bridge_table_sum(s : GraphconnectbridgeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_table_sum(s : GraphconnectbridgeTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_table_mean(s : GraphconnectbridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_table_mean(s : GraphconnectbridgeTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_table_scale(s : GraphconnectbridgeTable, f : Double) -> GraphconnectbridgeTable {
   let result = graph_connect_bridge_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_bridge_table_fill(s : GraphconnectbridgeTable, v : Double) 
   result
 }
 
-pub fn graph_connect_bridge_table_min(s : GraphconnectbridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_table_min(s : GraphconnectbridgeTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_table_max(s : GraphconnectbridgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_table_max(s : GraphconnectbridgeTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_table_to_string(s : GraphconnectbridgeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_bridge_graphn_set(s : GraphconnectbridgeGraphN, i : Int, v 
   result
 }
 
-pub fn graph_connect_bridge_graphn_sum(s : GraphconnectbridgeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_graphn_sum(s : GraphconnectbridgeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_graphn_mean(s : GraphconnectbridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_graphn_mean(s : GraphconnectbridgeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_graphn_scale(s : GraphconnectbridgeGraphN, f : Double) -> GraphconnectbridgeGraphN {
   let result = graph_connect_bridge_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_bridge_graphn_fill(s : GraphconnectbridgeGraphN, v : Double
   result
 }
 
-pub fn graph_connect_bridge_graphn_min(s : GraphconnectbridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_graphn_min(s : GraphconnectbridgeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_graphn_max(s : GraphconnectbridgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_graphn_max(s : GraphconnectbridgeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_graphn_to_string(s : GraphconnectbridgeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_bridge_node_set(s : GraphconnectbridgeNode, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_bridge_node_sum(s : GraphconnectbridgeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_node_sum(s : GraphconnectbridgeNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_node_mean(s : GraphconnectbridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_node_mean(s : GraphconnectbridgeNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_node_scale(s : GraphconnectbridgeNode, f : Double) -> GraphconnectbridgeNode {
   let result = graph_connect_bridge_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_bridge_node_fill(s : GraphconnectbridgeNode, v : Double) ->
   result
 }
 
-pub fn graph_connect_bridge_node_min(s : GraphconnectbridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_node_min(s : GraphconnectbridgeNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_node_max(s : GraphconnectbridgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_node_max(s : GraphconnectbridgeNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_node_to_string(s : GraphconnectbridgeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_bridge_edge_set(s : GraphconnectbridgeEdge, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_bridge_edge_sum(s : GraphconnectbridgeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_edge_sum(s : GraphconnectbridgeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_edge_mean(s : GraphconnectbridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_edge_mean(s : GraphconnectbridgeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_edge_scale(s : GraphconnectbridgeEdge, f : Double) -> GraphconnectbridgeEdge {
   let result = graph_connect_bridge_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_bridge_edge_fill(s : GraphconnectbridgeEdge, v : Double) ->
   result
 }
 
-pub fn graph_connect_bridge_edge_min(s : GraphconnectbridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_edge_min(s : GraphconnectbridgeEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_edge_max(s : GraphconnectbridgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_edge_max(s : GraphconnectbridgeEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_edge_to_string(s : GraphconnectbridgeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_bridge_path_set(s : GraphconnectbridgePath, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_bridge_path_sum(s : GraphconnectbridgePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_path_sum(s : GraphconnectbridgePath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_path_mean(s : GraphconnectbridgePath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_path_mean(s : GraphconnectbridgePath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_path_scale(s : GraphconnectbridgePath, f : Double) -> GraphconnectbridgePath {
   let result = graph_connect_bridge_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_bridge_path_fill(s : GraphconnectbridgePath, v : Double) ->
   result
 }
 
-pub fn graph_connect_bridge_path_min(s : GraphconnectbridgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_path_min(s : GraphconnectbridgePath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_path_max(s : GraphconnectbridgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_path_max(s : GraphconnectbridgePath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_path_to_string(s : GraphconnectbridgePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_bridge_cluster_set(s : GraphconnectbridgeCluster, i : Int, 
   result
 }
 
-pub fn graph_connect_bridge_cluster_sum(s : GraphconnectbridgeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_cluster_sum(s : GraphconnectbridgeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_cluster_mean(s : GraphconnectbridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_cluster_mean(s : GraphconnectbridgeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_cluster_scale(s : GraphconnectbridgeCluster, f : Double) -> GraphconnectbridgeCluster {
   let result = graph_connect_bridge_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_bridge_cluster_fill(s : GraphconnectbridgeCluster, v : Doub
   result
 }
 
-pub fn graph_connect_bridge_cluster_min(s : GraphconnectbridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_cluster_min(s : GraphconnectbridgeCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_cluster_max(s : GraphconnectbridgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_cluster_max(s : GraphconnectbridgeCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_cluster_to_string(s : GraphconnectbridgeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_bridge_model_set(s : GraphconnectbridgeModel, i : Int, v : 
   result
 }
 
-pub fn graph_connect_bridge_model_sum(s : GraphconnectbridgeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_model_sum(s : GraphconnectbridgeModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_model_mean(s : GraphconnectbridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_model_mean(s : GraphconnectbridgeModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_model_scale(s : GraphconnectbridgeModel, f : Double) -> GraphconnectbridgeModel {
   let result = graph_connect_bridge_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_bridge_model_fill(s : GraphconnectbridgeModel, v : Double) 
   result
 }
 
-pub fn graph_connect_bridge_model_min(s : GraphconnectbridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_model_min(s : GraphconnectbridgeModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_model_max(s : GraphconnectbridgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_model_max(s : GraphconnectbridgeModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_model_to_string(s : GraphconnectbridgeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_bridge_layer_set(s : GraphconnectbridgeLayer, i : Int, v : 
   result
 }
 
-pub fn graph_connect_bridge_layer_sum(s : GraphconnectbridgeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_layer_sum(s : GraphconnectbridgeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_layer_mean(s : GraphconnectbridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_layer_mean(s : GraphconnectbridgeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_layer_scale(s : GraphconnectbridgeLayer, f : Double) -> GraphconnectbridgeLayer {
   let result = graph_connect_bridge_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_bridge_layer_fill(s : GraphconnectbridgeLayer, v : Double) 
   result
 }
 
-pub fn graph_connect_bridge_layer_min(s : GraphconnectbridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_layer_min(s : GraphconnectbridgeLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_layer_max(s : GraphconnectbridgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_layer_max(s : GraphconnectbridgeLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_layer_to_string(s : GraphconnectbridgeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_bridge_buffer_set(s : GraphconnectbridgeBuffer, i : Int, v 
   result
 }
 
-pub fn graph_connect_bridge_buffer_sum(s : GraphconnectbridgeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_buffer_sum(s : GraphconnectbridgeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_buffer_mean(s : GraphconnectbridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_buffer_mean(s : GraphconnectbridgeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_buffer_scale(s : GraphconnectbridgeBuffer, f : Double) -> GraphconnectbridgeBuffer {
   let result = graph_connect_bridge_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_bridge_buffer_fill(s : GraphconnectbridgeBuffer, v : Double
   result
 }
 
-pub fn graph_connect_bridge_buffer_min(s : GraphconnectbridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_buffer_min(s : GraphconnectbridgeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_buffer_max(s : GraphconnectbridgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_buffer_max(s : GraphconnectbridgeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_buffer_to_string(s : GraphconnectbridgeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_bridge_cursor_set(s : GraphconnectbridgeCursor, i : Int, v 
   result
 }
 
-pub fn graph_connect_bridge_cursor_sum(s : GraphconnectbridgeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_cursor_sum(s : GraphconnectbridgeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_cursor_mean(s : GraphconnectbridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_cursor_mean(s : GraphconnectbridgeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_cursor_scale(s : GraphconnectbridgeCursor, f : Double) -> GraphconnectbridgeCursor {
   let result = graph_connect_bridge_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_bridge_cursor_fill(s : GraphconnectbridgeCursor, v : Double
   result
 }
 
-pub fn graph_connect_bridge_cursor_min(s : GraphconnectbridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_cursor_min(s : GraphconnectbridgeCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_cursor_max(s : GraphconnectbridgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_cursor_max(s : GraphconnectbridgeCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_cursor_to_string(s : GraphconnectbridgeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_bridge_view_set(s : GraphconnectbridgeView, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_bridge_view_sum(s : GraphconnectbridgeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_view_sum(s : GraphconnectbridgeView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_view_mean(s : GraphconnectbridgeView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_view_mean(s : GraphconnectbridgeView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_view_scale(s : GraphconnectbridgeView, f : Double) -> GraphconnectbridgeView {
   let result = graph_connect_bridge_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_bridge_view_fill(s : GraphconnectbridgeView, v : Double) ->
   result
 }
 
-pub fn graph_connect_bridge_view_min(s : GraphconnectbridgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_view_min(s : GraphconnectbridgeView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_view_max(s : GraphconnectbridgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_view_max(s : GraphconnectbridgeView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_view_to_string(s : GraphconnectbridgeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_bridge_range_set(s : GraphconnectbridgeRange, i : Int, v : 
   result
 }
 
-pub fn graph_connect_bridge_range_sum(s : GraphconnectbridgeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_range_sum(s : GraphconnectbridgeRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_range_mean(s : GraphconnectbridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_range_mean(s : GraphconnectbridgeRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_range_scale(s : GraphconnectbridgeRange, f : Double) -> GraphconnectbridgeRange {
   let result = graph_connect_bridge_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_bridge_range_fill(s : GraphconnectbridgeRange, v : Double) 
   result
 }
 
-pub fn graph_connect_bridge_range_min(s : GraphconnectbridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_range_min(s : GraphconnectbridgeRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_range_max(s : GraphconnectbridgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_range_max(s : GraphconnectbridgeRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_range_to_string(s : GraphconnectbridgeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_bridge_slice_set(s : GraphconnectbridgeSlice, i : Int, v : 
   result
 }
 
-pub fn graph_connect_bridge_slice_sum(s : GraphconnectbridgeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_bridge_slice_sum(s : GraphconnectbridgeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_bridge_slice_mean(s : GraphconnectbridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_bridge_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_bridge_slice_mean(s : GraphconnectbridgeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_bridge_slice_scale(s : GraphconnectbridgeSlice, f : Double) -> GraphconnectbridgeSlice {
   let result = graph_connect_bridge_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_bridge_slice_fill(s : GraphconnectbridgeSlice, v : Double) 
   result
 }
 
-pub fn graph_connect_bridge_slice_min(s : GraphconnectbridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_slice_min(s : GraphconnectbridgeSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_bridge_slice_max(s : GraphconnectbridgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_bridge_slice_max(s : GraphconnectbridgeSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_bridge_slice_to_string(s : GraphconnectbridgeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

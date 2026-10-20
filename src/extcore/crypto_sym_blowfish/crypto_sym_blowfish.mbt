@@ -88,11 +88,7 @@ pub fn crypto_sym_blowfish_make_series(vals : Array[Double], name : String) -> C
 
 pub fn crypto_sym_blowfish_series_len(s : CryptosymblowfishSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_blowfish_series_sum(s : CryptosymblowfishSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_blowfish_series_sum(s : CryptosymblowfishSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_blowfish_series_mean(s : CryptosymblowfishSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_blowfish_frame_set(s : CryptosymblowfishFrame, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_blowfish_frame_sum(s : CryptosymblowfishFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_frame_sum(s : CryptosymblowfishFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_frame_mean(s : CryptosymblowfishFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_frame_mean(s : CryptosymblowfishFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_frame_scale(s : CryptosymblowfishFrame, f : Double) -> CryptosymblowfishFrame {
   let result = crypto_sym_blowfish_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_blowfish_frame_fill(s : CryptosymblowfishFrame, v : Double) ->
   result
 }
 
-pub fn crypto_sym_blowfish_frame_min(s : CryptosymblowfishFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_frame_min(s : CryptosymblowfishFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_frame_max(s : CryptosymblowfishFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_frame_max(s : CryptosymblowfishFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_frame_to_string(s : CryptosymblowfishFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_blowfish_table_set(s : CryptosymblowfishTable, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_blowfish_table_sum(s : CryptosymblowfishTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_table_sum(s : CryptosymblowfishTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_table_mean(s : CryptosymblowfishTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_table_mean(s : CryptosymblowfishTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_table_scale(s : CryptosymblowfishTable, f : Double) -> CryptosymblowfishTable {
   let result = crypto_sym_blowfish_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_blowfish_table_fill(s : CryptosymblowfishTable, v : Double) ->
   result
 }
 
-pub fn crypto_sym_blowfish_table_min(s : CryptosymblowfishTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_table_min(s : CryptosymblowfishTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_table_max(s : CryptosymblowfishTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_table_max(s : CryptosymblowfishTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_table_to_string(s : CryptosymblowfishTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_blowfish_graphn_set(s : CryptosymblowfishGraphN, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_blowfish_graphn_sum(s : CryptosymblowfishGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_graphn_sum(s : CryptosymblowfishGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_graphn_mean(s : CryptosymblowfishGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_graphn_mean(s : CryptosymblowfishGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_graphn_scale(s : CryptosymblowfishGraphN, f : Double) -> CryptosymblowfishGraphN {
   let result = crypto_sym_blowfish_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_blowfish_graphn_fill(s : CryptosymblowfishGraphN, v : Double) 
   result
 }
 
-pub fn crypto_sym_blowfish_graphn_min(s : CryptosymblowfishGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_graphn_min(s : CryptosymblowfishGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_graphn_max(s : CryptosymblowfishGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_graphn_max(s : CryptosymblowfishGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_graphn_to_string(s : CryptosymblowfishGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_blowfish_node_set(s : CryptosymblowfishNode, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_blowfish_node_sum(s : CryptosymblowfishNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_node_sum(s : CryptosymblowfishNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_node_mean(s : CryptosymblowfishNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_node_mean(s : CryptosymblowfishNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_node_scale(s : CryptosymblowfishNode, f : Double) -> CryptosymblowfishNode {
   let result = crypto_sym_blowfish_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_blowfish_node_fill(s : CryptosymblowfishNode, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_blowfish_node_min(s : CryptosymblowfishNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_node_min(s : CryptosymblowfishNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_node_max(s : CryptosymblowfishNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_node_max(s : CryptosymblowfishNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_node_to_string(s : CryptosymblowfishNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_blowfish_edge_set(s : CryptosymblowfishEdge, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_blowfish_edge_sum(s : CryptosymblowfishEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_edge_sum(s : CryptosymblowfishEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_edge_mean(s : CryptosymblowfishEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_edge_mean(s : CryptosymblowfishEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_edge_scale(s : CryptosymblowfishEdge, f : Double) -> CryptosymblowfishEdge {
   let result = crypto_sym_blowfish_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_blowfish_edge_fill(s : CryptosymblowfishEdge, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_blowfish_edge_min(s : CryptosymblowfishEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_edge_min(s : CryptosymblowfishEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_edge_max(s : CryptosymblowfishEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_edge_max(s : CryptosymblowfishEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_edge_to_string(s : CryptosymblowfishEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_blowfish_path_set(s : CryptosymblowfishPath, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_blowfish_path_sum(s : CryptosymblowfishPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_path_sum(s : CryptosymblowfishPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_path_mean(s : CryptosymblowfishPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_path_mean(s : CryptosymblowfishPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_path_scale(s : CryptosymblowfishPath, f : Double) -> CryptosymblowfishPath {
   let result = crypto_sym_blowfish_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_blowfish_path_fill(s : CryptosymblowfishPath, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_blowfish_path_min(s : CryptosymblowfishPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_path_min(s : CryptosymblowfishPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_path_max(s : CryptosymblowfishPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_path_max(s : CryptosymblowfishPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_path_to_string(s : CryptosymblowfishPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_blowfish_cluster_set(s : CryptosymblowfishCluster, i : Int, v 
   result
 }
 
-pub fn crypto_sym_blowfish_cluster_sum(s : CryptosymblowfishCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_cluster_sum(s : CryptosymblowfishCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_cluster_mean(s : CryptosymblowfishCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_cluster_mean(s : CryptosymblowfishCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_cluster_scale(s : CryptosymblowfishCluster, f : Double) -> CryptosymblowfishCluster {
   let result = crypto_sym_blowfish_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_blowfish_cluster_fill(s : CryptosymblowfishCluster, v : Double
   result
 }
 
-pub fn crypto_sym_blowfish_cluster_min(s : CryptosymblowfishCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_cluster_min(s : CryptosymblowfishCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_cluster_max(s : CryptosymblowfishCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_cluster_max(s : CryptosymblowfishCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_cluster_to_string(s : CryptosymblowfishCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_blowfish_model_set(s : CryptosymblowfishModel, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_blowfish_model_sum(s : CryptosymblowfishModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_model_sum(s : CryptosymblowfishModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_model_mean(s : CryptosymblowfishModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_model_mean(s : CryptosymblowfishModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_model_scale(s : CryptosymblowfishModel, f : Double) -> CryptosymblowfishModel {
   let result = crypto_sym_blowfish_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_blowfish_model_fill(s : CryptosymblowfishModel, v : Double) ->
   result
 }
 
-pub fn crypto_sym_blowfish_model_min(s : CryptosymblowfishModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_model_min(s : CryptosymblowfishModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_model_max(s : CryptosymblowfishModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_model_max(s : CryptosymblowfishModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_model_to_string(s : CryptosymblowfishModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_blowfish_layer_set(s : CryptosymblowfishLayer, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_blowfish_layer_sum(s : CryptosymblowfishLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_layer_sum(s : CryptosymblowfishLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_layer_mean(s : CryptosymblowfishLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_layer_mean(s : CryptosymblowfishLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_layer_scale(s : CryptosymblowfishLayer, f : Double) -> CryptosymblowfishLayer {
   let result = crypto_sym_blowfish_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_blowfish_layer_fill(s : CryptosymblowfishLayer, v : Double) ->
   result
 }
 
-pub fn crypto_sym_blowfish_layer_min(s : CryptosymblowfishLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_layer_min(s : CryptosymblowfishLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_layer_max(s : CryptosymblowfishLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_layer_max(s : CryptosymblowfishLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_layer_to_string(s : CryptosymblowfishLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_blowfish_buffer_set(s : CryptosymblowfishBuffer, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_blowfish_buffer_sum(s : CryptosymblowfishBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_buffer_sum(s : CryptosymblowfishBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_buffer_mean(s : CryptosymblowfishBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_buffer_mean(s : CryptosymblowfishBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_buffer_scale(s : CryptosymblowfishBuffer, f : Double) -> CryptosymblowfishBuffer {
   let result = crypto_sym_blowfish_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_blowfish_buffer_fill(s : CryptosymblowfishBuffer, v : Double) 
   result
 }
 
-pub fn crypto_sym_blowfish_buffer_min(s : CryptosymblowfishBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_buffer_min(s : CryptosymblowfishBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_buffer_max(s : CryptosymblowfishBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_buffer_max(s : CryptosymblowfishBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_buffer_to_string(s : CryptosymblowfishBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_blowfish_cursor_set(s : CryptosymblowfishCursor, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_blowfish_cursor_sum(s : CryptosymblowfishCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_cursor_sum(s : CryptosymblowfishCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_cursor_mean(s : CryptosymblowfishCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_cursor_mean(s : CryptosymblowfishCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_cursor_scale(s : CryptosymblowfishCursor, f : Double) -> CryptosymblowfishCursor {
   let result = crypto_sym_blowfish_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_blowfish_cursor_fill(s : CryptosymblowfishCursor, v : Double) 
   result
 }
 
-pub fn crypto_sym_blowfish_cursor_min(s : CryptosymblowfishCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_cursor_min(s : CryptosymblowfishCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_cursor_max(s : CryptosymblowfishCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_cursor_max(s : CryptosymblowfishCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_cursor_to_string(s : CryptosymblowfishCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_blowfish_view_set(s : CryptosymblowfishView, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_blowfish_view_sum(s : CryptosymblowfishView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_view_sum(s : CryptosymblowfishView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_view_mean(s : CryptosymblowfishView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_view_mean(s : CryptosymblowfishView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_view_scale(s : CryptosymblowfishView, f : Double) -> CryptosymblowfishView {
   let result = crypto_sym_blowfish_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_blowfish_view_fill(s : CryptosymblowfishView, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_blowfish_view_min(s : CryptosymblowfishView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_view_min(s : CryptosymblowfishView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_view_max(s : CryptosymblowfishView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_view_max(s : CryptosymblowfishView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_view_to_string(s : CryptosymblowfishView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_blowfish_range_set(s : CryptosymblowfishRange, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_blowfish_range_sum(s : CryptosymblowfishRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_range_sum(s : CryptosymblowfishRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_range_mean(s : CryptosymblowfishRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_range_mean(s : CryptosymblowfishRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_range_scale(s : CryptosymblowfishRange, f : Double) -> CryptosymblowfishRange {
   let result = crypto_sym_blowfish_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_blowfish_range_fill(s : CryptosymblowfishRange, v : Double) ->
   result
 }
 
-pub fn crypto_sym_blowfish_range_min(s : CryptosymblowfishRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_range_min(s : CryptosymblowfishRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_range_max(s : CryptosymblowfishRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_range_max(s : CryptosymblowfishRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_range_to_string(s : CryptosymblowfishRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_blowfish_slice_set(s : CryptosymblowfishSlice, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_blowfish_slice_sum(s : CryptosymblowfishSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_blowfish_slice_sum(s : CryptosymblowfishSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_blowfish_slice_mean(s : CryptosymblowfishSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_blowfish_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_blowfish_slice_mean(s : CryptosymblowfishSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_blowfish_slice_scale(s : CryptosymblowfishSlice, f : Double) -> CryptosymblowfishSlice {
   let result = crypto_sym_blowfish_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_blowfish_slice_fill(s : CryptosymblowfishSlice, v : Double) ->
   result
 }
 
-pub fn crypto_sym_blowfish_slice_min(s : CryptosymblowfishSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_slice_min(s : CryptosymblowfishSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_blowfish_slice_max(s : CryptosymblowfishSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_blowfish_slice_max(s : CryptosymblowfishSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_blowfish_slice_to_string(s : CryptosymblowfishSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

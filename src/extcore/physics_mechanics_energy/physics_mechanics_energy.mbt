@@ -88,11 +88,7 @@ pub fn physics_mechanics_energy_make_series(vals : Array[Double], name : String)
 
 pub fn physics_mechanics_energy_series_len(s : PhysicsmechanicsenergySeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_energy_series_sum(s : PhysicsmechanicsenergySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_energy_series_sum(s : PhysicsmechanicsenergySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_energy_series_mean(s : PhysicsmechanicsenergySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_energy_frame_set(s : PhysicsmechanicsenergyFrame, i : I
   result
 }
 
-pub fn physics_mechanics_energy_frame_sum(s : PhysicsmechanicsenergyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_frame_sum(s : PhysicsmechanicsenergyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_frame_mean(s : PhysicsmechanicsenergyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_frame_mean(s : PhysicsmechanicsenergyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_frame_scale(s : PhysicsmechanicsenergyFrame, f : Double) -> PhysicsmechanicsenergyFrame {
   let result = physics_mechanics_energy_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_energy_frame_fill(s : PhysicsmechanicsenergyFrame, v : 
   result
 }
 
-pub fn physics_mechanics_energy_frame_min(s : PhysicsmechanicsenergyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_frame_min(s : PhysicsmechanicsenergyFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_frame_max(s : PhysicsmechanicsenergyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_frame_max(s : PhysicsmechanicsenergyFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_frame_to_string(s : PhysicsmechanicsenergyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_energy_table_set(s : PhysicsmechanicsenergyTable, i : I
   result
 }
 
-pub fn physics_mechanics_energy_table_sum(s : PhysicsmechanicsenergyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_table_sum(s : PhysicsmechanicsenergyTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_table_mean(s : PhysicsmechanicsenergyTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_table_mean(s : PhysicsmechanicsenergyTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_table_scale(s : PhysicsmechanicsenergyTable, f : Double) -> PhysicsmechanicsenergyTable {
   let result = physics_mechanics_energy_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_energy_table_fill(s : PhysicsmechanicsenergyTable, v : 
   result
 }
 
-pub fn physics_mechanics_energy_table_min(s : PhysicsmechanicsenergyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_table_min(s : PhysicsmechanicsenergyTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_table_max(s : PhysicsmechanicsenergyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_table_max(s : PhysicsmechanicsenergyTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_table_to_string(s : PhysicsmechanicsenergyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_energy_graphn_set(s : PhysicsmechanicsenergyGraphN, i :
   result
 }
 
-pub fn physics_mechanics_energy_graphn_sum(s : PhysicsmechanicsenergyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_graphn_sum(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_graphn_mean(s : PhysicsmechanicsenergyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_graphn_mean(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_graphn_scale(s : PhysicsmechanicsenergyGraphN, f : Double) -> PhysicsmechanicsenergyGraphN {
   let result = physics_mechanics_energy_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_energy_graphn_fill(s : PhysicsmechanicsenergyGraphN, v 
   result
 }
 
-pub fn physics_mechanics_energy_graphn_min(s : PhysicsmechanicsenergyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_graphn_min(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_graphn_max(s : PhysicsmechanicsenergyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_graphn_max(s : PhysicsmechanicsenergyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_graphn_to_string(s : PhysicsmechanicsenergyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_energy_node_set(s : PhysicsmechanicsenergyNode, i : Int
   result
 }
 
-pub fn physics_mechanics_energy_node_sum(s : PhysicsmechanicsenergyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_node_sum(s : PhysicsmechanicsenergyNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_node_mean(s : PhysicsmechanicsenergyNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_node_mean(s : PhysicsmechanicsenergyNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_node_scale(s : PhysicsmechanicsenergyNode, f : Double) -> PhysicsmechanicsenergyNode {
   let result = physics_mechanics_energy_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_energy_node_fill(s : PhysicsmechanicsenergyNode, v : Do
   result
 }
 
-pub fn physics_mechanics_energy_node_min(s : PhysicsmechanicsenergyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_node_min(s : PhysicsmechanicsenergyNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_node_max(s : PhysicsmechanicsenergyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_node_max(s : PhysicsmechanicsenergyNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_node_to_string(s : PhysicsmechanicsenergyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_energy_edge_set(s : PhysicsmechanicsenergyEdge, i : Int
   result
 }
 
-pub fn physics_mechanics_energy_edge_sum(s : PhysicsmechanicsenergyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_edge_sum(s : PhysicsmechanicsenergyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_edge_mean(s : PhysicsmechanicsenergyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_edge_mean(s : PhysicsmechanicsenergyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_edge_scale(s : PhysicsmechanicsenergyEdge, f : Double) -> PhysicsmechanicsenergyEdge {
   let result = physics_mechanics_energy_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_energy_edge_fill(s : PhysicsmechanicsenergyEdge, v : Do
   result
 }
 
-pub fn physics_mechanics_energy_edge_min(s : PhysicsmechanicsenergyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_edge_min(s : PhysicsmechanicsenergyEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_edge_max(s : PhysicsmechanicsenergyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_edge_max(s : PhysicsmechanicsenergyEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_edge_to_string(s : PhysicsmechanicsenergyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_energy_path_set(s : PhysicsmechanicsenergyPath, i : Int
   result
 }
 
-pub fn physics_mechanics_energy_path_sum(s : PhysicsmechanicsenergyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_path_sum(s : PhysicsmechanicsenergyPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_path_mean(s : PhysicsmechanicsenergyPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_path_mean(s : PhysicsmechanicsenergyPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_path_scale(s : PhysicsmechanicsenergyPath, f : Double) -> PhysicsmechanicsenergyPath {
   let result = physics_mechanics_energy_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_energy_path_fill(s : PhysicsmechanicsenergyPath, v : Do
   result
 }
 
-pub fn physics_mechanics_energy_path_min(s : PhysicsmechanicsenergyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_path_min(s : PhysicsmechanicsenergyPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_path_max(s : PhysicsmechanicsenergyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_path_max(s : PhysicsmechanicsenergyPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_path_to_string(s : PhysicsmechanicsenergyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_energy_cluster_set(s : PhysicsmechanicsenergyCluster, i
   result
 }
 
-pub fn physics_mechanics_energy_cluster_sum(s : PhysicsmechanicsenergyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_cluster_sum(s : PhysicsmechanicsenergyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_cluster_mean(s : PhysicsmechanicsenergyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_cluster_mean(s : PhysicsmechanicsenergyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_cluster_scale(s : PhysicsmechanicsenergyCluster, f : Double) -> PhysicsmechanicsenergyCluster {
   let result = physics_mechanics_energy_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_energy_cluster_fill(s : PhysicsmechanicsenergyCluster, 
   result
 }
 
-pub fn physics_mechanics_energy_cluster_min(s : PhysicsmechanicsenergyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_cluster_min(s : PhysicsmechanicsenergyCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_cluster_max(s : PhysicsmechanicsenergyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_cluster_max(s : PhysicsmechanicsenergyCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_cluster_to_string(s : PhysicsmechanicsenergyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_energy_model_set(s : PhysicsmechanicsenergyModel, i : I
   result
 }
 
-pub fn physics_mechanics_energy_model_sum(s : PhysicsmechanicsenergyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_model_sum(s : PhysicsmechanicsenergyModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_model_mean(s : PhysicsmechanicsenergyModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_model_mean(s : PhysicsmechanicsenergyModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_model_scale(s : PhysicsmechanicsenergyModel, f : Double) -> PhysicsmechanicsenergyModel {
   let result = physics_mechanics_energy_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_energy_model_fill(s : PhysicsmechanicsenergyModel, v : 
   result
 }
 
-pub fn physics_mechanics_energy_model_min(s : PhysicsmechanicsenergyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_model_min(s : PhysicsmechanicsenergyModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_model_max(s : PhysicsmechanicsenergyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_model_max(s : PhysicsmechanicsenergyModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_model_to_string(s : PhysicsmechanicsenergyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_energy_layer_set(s : PhysicsmechanicsenergyLayer, i : I
   result
 }
 
-pub fn physics_mechanics_energy_layer_sum(s : PhysicsmechanicsenergyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_layer_sum(s : PhysicsmechanicsenergyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_layer_mean(s : PhysicsmechanicsenergyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_layer_mean(s : PhysicsmechanicsenergyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_layer_scale(s : PhysicsmechanicsenergyLayer, f : Double) -> PhysicsmechanicsenergyLayer {
   let result = physics_mechanics_energy_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_energy_layer_fill(s : PhysicsmechanicsenergyLayer, v : 
   result
 }
 
-pub fn physics_mechanics_energy_layer_min(s : PhysicsmechanicsenergyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_layer_min(s : PhysicsmechanicsenergyLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_layer_max(s : PhysicsmechanicsenergyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_layer_max(s : PhysicsmechanicsenergyLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_layer_to_string(s : PhysicsmechanicsenergyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_energy_buffer_set(s : PhysicsmechanicsenergyBuffer, i :
   result
 }
 
-pub fn physics_mechanics_energy_buffer_sum(s : PhysicsmechanicsenergyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_buffer_sum(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_buffer_mean(s : PhysicsmechanicsenergyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_buffer_mean(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_buffer_scale(s : PhysicsmechanicsenergyBuffer, f : Double) -> PhysicsmechanicsenergyBuffer {
   let result = physics_mechanics_energy_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_energy_buffer_fill(s : PhysicsmechanicsenergyBuffer, v 
   result
 }
 
-pub fn physics_mechanics_energy_buffer_min(s : PhysicsmechanicsenergyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_buffer_min(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_buffer_max(s : PhysicsmechanicsenergyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_buffer_max(s : PhysicsmechanicsenergyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_buffer_to_string(s : PhysicsmechanicsenergyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_energy_cursor_set(s : PhysicsmechanicsenergyCursor, i :
   result
 }
 
-pub fn physics_mechanics_energy_cursor_sum(s : PhysicsmechanicsenergyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_cursor_sum(s : PhysicsmechanicsenergyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_cursor_mean(s : PhysicsmechanicsenergyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_cursor_mean(s : PhysicsmechanicsenergyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_cursor_scale(s : PhysicsmechanicsenergyCursor, f : Double) -> PhysicsmechanicsenergyCursor {
   let result = physics_mechanics_energy_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_energy_cursor_fill(s : PhysicsmechanicsenergyCursor, v 
   result
 }
 
-pub fn physics_mechanics_energy_cursor_min(s : PhysicsmechanicsenergyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_cursor_min(s : PhysicsmechanicsenergyCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_cursor_max(s : PhysicsmechanicsenergyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_cursor_max(s : PhysicsmechanicsenergyCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_cursor_to_string(s : PhysicsmechanicsenergyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_energy_view_set(s : PhysicsmechanicsenergyView, i : Int
   result
 }
 
-pub fn physics_mechanics_energy_view_sum(s : PhysicsmechanicsenergyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_view_sum(s : PhysicsmechanicsenergyView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_view_mean(s : PhysicsmechanicsenergyView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_view_mean(s : PhysicsmechanicsenergyView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_view_scale(s : PhysicsmechanicsenergyView, f : Double) -> PhysicsmechanicsenergyView {
   let result = physics_mechanics_energy_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_energy_view_fill(s : PhysicsmechanicsenergyView, v : Do
   result
 }
 
-pub fn physics_mechanics_energy_view_min(s : PhysicsmechanicsenergyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_view_min(s : PhysicsmechanicsenergyView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_view_max(s : PhysicsmechanicsenergyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_view_max(s : PhysicsmechanicsenergyView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_view_to_string(s : PhysicsmechanicsenergyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_energy_range_set(s : PhysicsmechanicsenergyRange, i : I
   result
 }
 
-pub fn physics_mechanics_energy_range_sum(s : PhysicsmechanicsenergyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_range_sum(s : PhysicsmechanicsenergyRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_range_mean(s : PhysicsmechanicsenergyRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_range_mean(s : PhysicsmechanicsenergyRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_range_scale(s : PhysicsmechanicsenergyRange, f : Double) -> PhysicsmechanicsenergyRange {
   let result = physics_mechanics_energy_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_energy_range_fill(s : PhysicsmechanicsenergyRange, v : 
   result
 }
 
-pub fn physics_mechanics_energy_range_min(s : PhysicsmechanicsenergyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_range_min(s : PhysicsmechanicsenergyRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_range_max(s : PhysicsmechanicsenergyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_range_max(s : PhysicsmechanicsenergyRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_range_to_string(s : PhysicsmechanicsenergyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_energy_slice_set(s : PhysicsmechanicsenergySlice, i : I
   result
 }
 
-pub fn physics_mechanics_energy_slice_sum(s : PhysicsmechanicsenergySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_energy_slice_sum(s : PhysicsmechanicsenergySlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_energy_slice_mean(s : PhysicsmechanicsenergySlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_energy_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_energy_slice_mean(s : PhysicsmechanicsenergySlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_energy_slice_scale(s : PhysicsmechanicsenergySlice, f : Double) -> PhysicsmechanicsenergySlice {
   let result = physics_mechanics_energy_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_energy_slice_fill(s : PhysicsmechanicsenergySlice, v : 
   result
 }
 
-pub fn physics_mechanics_energy_slice_min(s : PhysicsmechanicsenergySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_slice_min(s : PhysicsmechanicsenergySlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_energy_slice_max(s : PhysicsmechanicsenergySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_energy_slice_max(s : PhysicsmechanicsenergySlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_energy_slice_to_string(s : PhysicsmechanicsenergySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn physics_mechanics_constraint_make_series(vals : Array[Double], name : Str
 
 pub fn physics_mechanics_constraint_series_len(s : PhysicsmechanicsconstraintSeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_constraint_series_sum(s : PhysicsmechanicsconstraintSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_constraint_series_sum(s : PhysicsmechanicsconstraintSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_constraint_series_mean(s : PhysicsmechanicsconstraintSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_constraint_frame_set(s : PhysicsmechanicsconstraintFram
   result
 }
 
-pub fn physics_mechanics_constraint_frame_sum(s : PhysicsmechanicsconstraintFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_frame_sum(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_frame_mean(s : PhysicsmechanicsconstraintFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_frame_mean(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_frame_scale(s : PhysicsmechanicsconstraintFrame, f : Double) -> PhysicsmechanicsconstraintFrame {
   let result = physics_mechanics_constraint_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_constraint_frame_fill(s : PhysicsmechanicsconstraintFra
   result
 }
 
-pub fn physics_mechanics_constraint_frame_min(s : PhysicsmechanicsconstraintFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_frame_min(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_frame_max(s : PhysicsmechanicsconstraintFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_frame_max(s : PhysicsmechanicsconstraintFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_frame_to_string(s : PhysicsmechanicsconstraintFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_constraint_table_set(s : PhysicsmechanicsconstraintTabl
   result
 }
 
-pub fn physics_mechanics_constraint_table_sum(s : PhysicsmechanicsconstraintTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_table_sum(s : PhysicsmechanicsconstraintTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_table_mean(s : PhysicsmechanicsconstraintTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_table_mean(s : PhysicsmechanicsconstraintTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_table_scale(s : PhysicsmechanicsconstraintTable, f : Double) -> PhysicsmechanicsconstraintTable {
   let result = physics_mechanics_constraint_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_constraint_table_fill(s : PhysicsmechanicsconstraintTab
   result
 }
 
-pub fn physics_mechanics_constraint_table_min(s : PhysicsmechanicsconstraintTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_table_min(s : PhysicsmechanicsconstraintTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_table_max(s : PhysicsmechanicsconstraintTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_table_max(s : PhysicsmechanicsconstraintTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_table_to_string(s : PhysicsmechanicsconstraintTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_constraint_graphn_set(s : PhysicsmechanicsconstraintGra
   result
 }
 
-pub fn physics_mechanics_constraint_graphn_sum(s : PhysicsmechanicsconstraintGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_graphn_sum(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_graphn_mean(s : PhysicsmechanicsconstraintGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_graphn_mean(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_graphn_scale(s : PhysicsmechanicsconstraintGraphN, f : Double) -> PhysicsmechanicsconstraintGraphN {
   let result = physics_mechanics_constraint_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_constraint_graphn_fill(s : PhysicsmechanicsconstraintGr
   result
 }
 
-pub fn physics_mechanics_constraint_graphn_min(s : PhysicsmechanicsconstraintGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_graphn_min(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_graphn_max(s : PhysicsmechanicsconstraintGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_graphn_max(s : PhysicsmechanicsconstraintGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_graphn_to_string(s : PhysicsmechanicsconstraintGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_constraint_node_set(s : PhysicsmechanicsconstraintNode,
   result
 }
 
-pub fn physics_mechanics_constraint_node_sum(s : PhysicsmechanicsconstraintNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_node_sum(s : PhysicsmechanicsconstraintNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_node_mean(s : PhysicsmechanicsconstraintNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_node_mean(s : PhysicsmechanicsconstraintNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_node_scale(s : PhysicsmechanicsconstraintNode, f : Double) -> PhysicsmechanicsconstraintNode {
   let result = physics_mechanics_constraint_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_constraint_node_fill(s : PhysicsmechanicsconstraintNode
   result
 }
 
-pub fn physics_mechanics_constraint_node_min(s : PhysicsmechanicsconstraintNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_node_min(s : PhysicsmechanicsconstraintNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_node_max(s : PhysicsmechanicsconstraintNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_node_max(s : PhysicsmechanicsconstraintNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_node_to_string(s : PhysicsmechanicsconstraintNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_constraint_edge_set(s : PhysicsmechanicsconstraintEdge,
   result
 }
 
-pub fn physics_mechanics_constraint_edge_sum(s : PhysicsmechanicsconstraintEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_edge_sum(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_edge_mean(s : PhysicsmechanicsconstraintEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_edge_mean(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_edge_scale(s : PhysicsmechanicsconstraintEdge, f : Double) -> PhysicsmechanicsconstraintEdge {
   let result = physics_mechanics_constraint_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_constraint_edge_fill(s : PhysicsmechanicsconstraintEdge
   result
 }
 
-pub fn physics_mechanics_constraint_edge_min(s : PhysicsmechanicsconstraintEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_edge_min(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_edge_max(s : PhysicsmechanicsconstraintEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_edge_max(s : PhysicsmechanicsconstraintEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_edge_to_string(s : PhysicsmechanicsconstraintEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_constraint_path_set(s : PhysicsmechanicsconstraintPath,
   result
 }
 
-pub fn physics_mechanics_constraint_path_sum(s : PhysicsmechanicsconstraintPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_path_sum(s : PhysicsmechanicsconstraintPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_path_mean(s : PhysicsmechanicsconstraintPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_path_mean(s : PhysicsmechanicsconstraintPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_path_scale(s : PhysicsmechanicsconstraintPath, f : Double) -> PhysicsmechanicsconstraintPath {
   let result = physics_mechanics_constraint_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_constraint_path_fill(s : PhysicsmechanicsconstraintPath
   result
 }
 
-pub fn physics_mechanics_constraint_path_min(s : PhysicsmechanicsconstraintPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_path_min(s : PhysicsmechanicsconstraintPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_path_max(s : PhysicsmechanicsconstraintPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_path_max(s : PhysicsmechanicsconstraintPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_path_to_string(s : PhysicsmechanicsconstraintPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_constraint_cluster_set(s : PhysicsmechanicsconstraintCl
   result
 }
 
-pub fn physics_mechanics_constraint_cluster_sum(s : PhysicsmechanicsconstraintCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_cluster_sum(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_cluster_mean(s : PhysicsmechanicsconstraintCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_cluster_mean(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_cluster_scale(s : PhysicsmechanicsconstraintCluster, f : Double) -> PhysicsmechanicsconstraintCluster {
   let result = physics_mechanics_constraint_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_constraint_cluster_fill(s : PhysicsmechanicsconstraintC
   result
 }
 
-pub fn physics_mechanics_constraint_cluster_min(s : PhysicsmechanicsconstraintCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_cluster_min(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_cluster_max(s : PhysicsmechanicsconstraintCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_cluster_max(s : PhysicsmechanicsconstraintCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_cluster_to_string(s : PhysicsmechanicsconstraintCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_constraint_model_set(s : PhysicsmechanicsconstraintMode
   result
 }
 
-pub fn physics_mechanics_constraint_model_sum(s : PhysicsmechanicsconstraintModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_model_sum(s : PhysicsmechanicsconstraintModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_model_mean(s : PhysicsmechanicsconstraintModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_model_mean(s : PhysicsmechanicsconstraintModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_model_scale(s : PhysicsmechanicsconstraintModel, f : Double) -> PhysicsmechanicsconstraintModel {
   let result = physics_mechanics_constraint_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_constraint_model_fill(s : PhysicsmechanicsconstraintMod
   result
 }
 
-pub fn physics_mechanics_constraint_model_min(s : PhysicsmechanicsconstraintModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_model_min(s : PhysicsmechanicsconstraintModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_model_max(s : PhysicsmechanicsconstraintModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_model_max(s : PhysicsmechanicsconstraintModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_model_to_string(s : PhysicsmechanicsconstraintModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_constraint_layer_set(s : PhysicsmechanicsconstraintLaye
   result
 }
 
-pub fn physics_mechanics_constraint_layer_sum(s : PhysicsmechanicsconstraintLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_layer_sum(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_layer_mean(s : PhysicsmechanicsconstraintLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_layer_mean(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_layer_scale(s : PhysicsmechanicsconstraintLayer, f : Double) -> PhysicsmechanicsconstraintLayer {
   let result = physics_mechanics_constraint_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_constraint_layer_fill(s : PhysicsmechanicsconstraintLay
   result
 }
 
-pub fn physics_mechanics_constraint_layer_min(s : PhysicsmechanicsconstraintLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_layer_min(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_layer_max(s : PhysicsmechanicsconstraintLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_layer_max(s : PhysicsmechanicsconstraintLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_layer_to_string(s : PhysicsmechanicsconstraintLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_constraint_buffer_set(s : PhysicsmechanicsconstraintBuf
   result
 }
 
-pub fn physics_mechanics_constraint_buffer_sum(s : PhysicsmechanicsconstraintBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_buffer_sum(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_buffer_mean(s : PhysicsmechanicsconstraintBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_buffer_mean(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_buffer_scale(s : PhysicsmechanicsconstraintBuffer, f : Double) -> PhysicsmechanicsconstraintBuffer {
   let result = physics_mechanics_constraint_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_constraint_buffer_fill(s : PhysicsmechanicsconstraintBu
   result
 }
 
-pub fn physics_mechanics_constraint_buffer_min(s : PhysicsmechanicsconstraintBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_buffer_min(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_buffer_max(s : PhysicsmechanicsconstraintBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_buffer_max(s : PhysicsmechanicsconstraintBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_buffer_to_string(s : PhysicsmechanicsconstraintBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_constraint_cursor_set(s : PhysicsmechanicsconstraintCur
   result
 }
 
-pub fn physics_mechanics_constraint_cursor_sum(s : PhysicsmechanicsconstraintCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_cursor_sum(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_cursor_mean(s : PhysicsmechanicsconstraintCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_cursor_mean(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_cursor_scale(s : PhysicsmechanicsconstraintCursor, f : Double) -> PhysicsmechanicsconstraintCursor {
   let result = physics_mechanics_constraint_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_constraint_cursor_fill(s : PhysicsmechanicsconstraintCu
   result
 }
 
-pub fn physics_mechanics_constraint_cursor_min(s : PhysicsmechanicsconstraintCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_cursor_min(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_cursor_max(s : PhysicsmechanicsconstraintCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_cursor_max(s : PhysicsmechanicsconstraintCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_cursor_to_string(s : PhysicsmechanicsconstraintCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_constraint_view_set(s : PhysicsmechanicsconstraintView,
   result
 }
 
-pub fn physics_mechanics_constraint_view_sum(s : PhysicsmechanicsconstraintView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_view_sum(s : PhysicsmechanicsconstraintView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_view_mean(s : PhysicsmechanicsconstraintView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_view_mean(s : PhysicsmechanicsconstraintView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_view_scale(s : PhysicsmechanicsconstraintView, f : Double) -> PhysicsmechanicsconstraintView {
   let result = physics_mechanics_constraint_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_constraint_view_fill(s : PhysicsmechanicsconstraintView
   result
 }
 
-pub fn physics_mechanics_constraint_view_min(s : PhysicsmechanicsconstraintView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_view_min(s : PhysicsmechanicsconstraintView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_view_max(s : PhysicsmechanicsconstraintView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_view_max(s : PhysicsmechanicsconstraintView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_view_to_string(s : PhysicsmechanicsconstraintView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_constraint_range_set(s : PhysicsmechanicsconstraintRang
   result
 }
 
-pub fn physics_mechanics_constraint_range_sum(s : PhysicsmechanicsconstraintRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_range_sum(s : PhysicsmechanicsconstraintRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_range_mean(s : PhysicsmechanicsconstraintRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_range_mean(s : PhysicsmechanicsconstraintRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_range_scale(s : PhysicsmechanicsconstraintRange, f : Double) -> PhysicsmechanicsconstraintRange {
   let result = physics_mechanics_constraint_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_constraint_range_fill(s : PhysicsmechanicsconstraintRan
   result
 }
 
-pub fn physics_mechanics_constraint_range_min(s : PhysicsmechanicsconstraintRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_range_min(s : PhysicsmechanicsconstraintRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_range_max(s : PhysicsmechanicsconstraintRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_range_max(s : PhysicsmechanicsconstraintRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_range_to_string(s : PhysicsmechanicsconstraintRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_constraint_slice_set(s : PhysicsmechanicsconstraintSlic
   result
 }
 
-pub fn physics_mechanics_constraint_slice_sum(s : PhysicsmechanicsconstraintSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_constraint_slice_sum(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_constraint_slice_mean(s : PhysicsmechanicsconstraintSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_constraint_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_constraint_slice_mean(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_constraint_slice_scale(s : PhysicsmechanicsconstraintSlice, f : Double) -> PhysicsmechanicsconstraintSlice {
   let result = physics_mechanics_constraint_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_constraint_slice_fill(s : PhysicsmechanicsconstraintSli
   result
 }
 
-pub fn physics_mechanics_constraint_slice_min(s : PhysicsmechanicsconstraintSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_slice_min(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_constraint_slice_max(s : PhysicsmechanicsconstraintSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_constraint_slice_max(s : PhysicsmechanicsconstraintSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_constraint_slice_to_string(s : PhysicsmechanicsconstraintSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

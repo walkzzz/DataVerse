@@ -88,11 +88,7 @@ pub fn db_query_parallel_make_series(vals : Array[Double], name : String) -> Dbq
 
 pub fn db_query_parallel_series_len(s : DbqueryparallelSeries) -> Int { s.vals.length() }
 
-pub fn db_query_parallel_series_sum(s : DbqueryparallelSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_parallel_series_sum(s : DbqueryparallelSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_parallel_series_mean(s : DbqueryparallelSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_parallel_frame_set(s : DbqueryparallelFrame, i : Int, v : Double
   result
 }
 
-pub fn db_query_parallel_frame_sum(s : DbqueryparallelFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_frame_sum(s : DbqueryparallelFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_frame_mean(s : DbqueryparallelFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_frame_mean(s : DbqueryparallelFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_frame_scale(s : DbqueryparallelFrame, f : Double) -> DbqueryparallelFrame {
   let result = db_query_parallel_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_parallel_frame_fill(s : DbqueryparallelFrame, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_parallel_frame_min(s : DbqueryparallelFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_frame_min(s : DbqueryparallelFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_frame_max(s : DbqueryparallelFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_frame_max(s : DbqueryparallelFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_frame_to_string(s : DbqueryparallelFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_parallel_table_set(s : DbqueryparallelTable, i : Int, v : Double
   result
 }
 
-pub fn db_query_parallel_table_sum(s : DbqueryparallelTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_table_sum(s : DbqueryparallelTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_table_mean(s : DbqueryparallelTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_table_mean(s : DbqueryparallelTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_table_scale(s : DbqueryparallelTable, f : Double) -> DbqueryparallelTable {
   let result = db_query_parallel_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_parallel_table_fill(s : DbqueryparallelTable, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_parallel_table_min(s : DbqueryparallelTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_table_min(s : DbqueryparallelTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_table_max(s : DbqueryparallelTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_table_max(s : DbqueryparallelTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_table_to_string(s : DbqueryparallelTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_parallel_graphn_set(s : DbqueryparallelGraphN, i : Int, v : Doub
   result
 }
 
-pub fn db_query_parallel_graphn_sum(s : DbqueryparallelGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_graphn_sum(s : DbqueryparallelGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_graphn_mean(s : DbqueryparallelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_graphn_mean(s : DbqueryparallelGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_graphn_scale(s : DbqueryparallelGraphN, f : Double) -> DbqueryparallelGraphN {
   let result = db_query_parallel_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_parallel_graphn_fill(s : DbqueryparallelGraphN, v : Double) -> D
   result
 }
 
-pub fn db_query_parallel_graphn_min(s : DbqueryparallelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_graphn_min(s : DbqueryparallelGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_graphn_max(s : DbqueryparallelGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_graphn_max(s : DbqueryparallelGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_graphn_to_string(s : DbqueryparallelGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_parallel_node_set(s : DbqueryparallelNode, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_parallel_node_sum(s : DbqueryparallelNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_node_sum(s : DbqueryparallelNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_node_mean(s : DbqueryparallelNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_node_mean(s : DbqueryparallelNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_node_scale(s : DbqueryparallelNode, f : Double) -> DbqueryparallelNode {
   let result = db_query_parallel_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_parallel_node_fill(s : DbqueryparallelNode, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_parallel_node_min(s : DbqueryparallelNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_node_min(s : DbqueryparallelNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_node_max(s : DbqueryparallelNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_node_max(s : DbqueryparallelNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_node_to_string(s : DbqueryparallelNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_parallel_edge_set(s : DbqueryparallelEdge, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_parallel_edge_sum(s : DbqueryparallelEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_edge_sum(s : DbqueryparallelEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_edge_mean(s : DbqueryparallelEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_edge_mean(s : DbqueryparallelEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_edge_scale(s : DbqueryparallelEdge, f : Double) -> DbqueryparallelEdge {
   let result = db_query_parallel_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_parallel_edge_fill(s : DbqueryparallelEdge, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_parallel_edge_min(s : DbqueryparallelEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_edge_min(s : DbqueryparallelEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_edge_max(s : DbqueryparallelEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_edge_max(s : DbqueryparallelEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_edge_to_string(s : DbqueryparallelEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_parallel_path_set(s : DbqueryparallelPath, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_parallel_path_sum(s : DbqueryparallelPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_path_sum(s : DbqueryparallelPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_path_mean(s : DbqueryparallelPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_path_mean(s : DbqueryparallelPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_path_scale(s : DbqueryparallelPath, f : Double) -> DbqueryparallelPath {
   let result = db_query_parallel_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_parallel_path_fill(s : DbqueryparallelPath, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_parallel_path_min(s : DbqueryparallelPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_path_min(s : DbqueryparallelPath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_path_max(s : DbqueryparallelPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_path_max(s : DbqueryparallelPath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_path_to_string(s : DbqueryparallelPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_parallel_cluster_set(s : DbqueryparallelCluster, i : Int, v : Do
   result
 }
 
-pub fn db_query_parallel_cluster_sum(s : DbqueryparallelCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_cluster_sum(s : DbqueryparallelCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_cluster_mean(s : DbqueryparallelCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_cluster_mean(s : DbqueryparallelCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_cluster_scale(s : DbqueryparallelCluster, f : Double) -> DbqueryparallelCluster {
   let result = db_query_parallel_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_parallel_cluster_fill(s : DbqueryparallelCluster, v : Double) ->
   result
 }
 
-pub fn db_query_parallel_cluster_min(s : DbqueryparallelCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_cluster_min(s : DbqueryparallelCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_cluster_max(s : DbqueryparallelCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_cluster_max(s : DbqueryparallelCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_cluster_to_string(s : DbqueryparallelCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_parallel_model_set(s : DbqueryparallelModel, i : Int, v : Double
   result
 }
 
-pub fn db_query_parallel_model_sum(s : DbqueryparallelModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_model_sum(s : DbqueryparallelModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_model_mean(s : DbqueryparallelModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_model_mean(s : DbqueryparallelModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_model_scale(s : DbqueryparallelModel, f : Double) -> DbqueryparallelModel {
   let result = db_query_parallel_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_parallel_model_fill(s : DbqueryparallelModel, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_parallel_model_min(s : DbqueryparallelModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_model_min(s : DbqueryparallelModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_model_max(s : DbqueryparallelModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_model_max(s : DbqueryparallelModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_model_to_string(s : DbqueryparallelModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_parallel_layer_set(s : DbqueryparallelLayer, i : Int, v : Double
   result
 }
 
-pub fn db_query_parallel_layer_sum(s : DbqueryparallelLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_layer_sum(s : DbqueryparallelLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_layer_mean(s : DbqueryparallelLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_layer_mean(s : DbqueryparallelLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_layer_scale(s : DbqueryparallelLayer, f : Double) -> DbqueryparallelLayer {
   let result = db_query_parallel_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_parallel_layer_fill(s : DbqueryparallelLayer, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_parallel_layer_min(s : DbqueryparallelLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_layer_min(s : DbqueryparallelLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_layer_max(s : DbqueryparallelLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_layer_max(s : DbqueryparallelLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_layer_to_string(s : DbqueryparallelLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_parallel_buffer_set(s : DbqueryparallelBuffer, i : Int, v : Doub
   result
 }
 
-pub fn db_query_parallel_buffer_sum(s : DbqueryparallelBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_buffer_sum(s : DbqueryparallelBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_buffer_mean(s : DbqueryparallelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_buffer_mean(s : DbqueryparallelBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_buffer_scale(s : DbqueryparallelBuffer, f : Double) -> DbqueryparallelBuffer {
   let result = db_query_parallel_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_parallel_buffer_fill(s : DbqueryparallelBuffer, v : Double) -> D
   result
 }
 
-pub fn db_query_parallel_buffer_min(s : DbqueryparallelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_buffer_min(s : DbqueryparallelBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_buffer_max(s : DbqueryparallelBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_buffer_max(s : DbqueryparallelBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_buffer_to_string(s : DbqueryparallelBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_parallel_cursor_set(s : DbqueryparallelCursor, i : Int, v : Doub
   result
 }
 
-pub fn db_query_parallel_cursor_sum(s : DbqueryparallelCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_cursor_sum(s : DbqueryparallelCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_cursor_mean(s : DbqueryparallelCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_cursor_mean(s : DbqueryparallelCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_cursor_scale(s : DbqueryparallelCursor, f : Double) -> DbqueryparallelCursor {
   let result = db_query_parallel_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_parallel_cursor_fill(s : DbqueryparallelCursor, v : Double) -> D
   result
 }
 
-pub fn db_query_parallel_cursor_min(s : DbqueryparallelCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_cursor_min(s : DbqueryparallelCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_cursor_max(s : DbqueryparallelCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_cursor_max(s : DbqueryparallelCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_cursor_to_string(s : DbqueryparallelCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_parallel_view_set(s : DbqueryparallelView, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_parallel_view_sum(s : DbqueryparallelView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_view_sum(s : DbqueryparallelView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_view_mean(s : DbqueryparallelView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_view_mean(s : DbqueryparallelView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_view_scale(s : DbqueryparallelView, f : Double) -> DbqueryparallelView {
   let result = db_query_parallel_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_parallel_view_fill(s : DbqueryparallelView, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_parallel_view_min(s : DbqueryparallelView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_view_min(s : DbqueryparallelView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_view_max(s : DbqueryparallelView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_view_max(s : DbqueryparallelView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_view_to_string(s : DbqueryparallelView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_parallel_range_set(s : DbqueryparallelRange, i : Int, v : Double
   result
 }
 
-pub fn db_query_parallel_range_sum(s : DbqueryparallelRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_range_sum(s : DbqueryparallelRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_range_mean(s : DbqueryparallelRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_range_mean(s : DbqueryparallelRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_range_scale(s : DbqueryparallelRange, f : Double) -> DbqueryparallelRange {
   let result = db_query_parallel_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_parallel_range_fill(s : DbqueryparallelRange, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_parallel_range_min(s : DbqueryparallelRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_range_min(s : DbqueryparallelRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_range_max(s : DbqueryparallelRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_range_max(s : DbqueryparallelRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_range_to_string(s : DbqueryparallelRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_parallel_slice_set(s : DbqueryparallelSlice, i : Int, v : Double
   result
 }
 
-pub fn db_query_parallel_slice_sum(s : DbqueryparallelSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_parallel_slice_sum(s : DbqueryparallelSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_parallel_slice_mean(s : DbqueryparallelSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_parallel_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_parallel_slice_mean(s : DbqueryparallelSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_parallel_slice_scale(s : DbqueryparallelSlice, f : Double) -> DbqueryparallelSlice {
   let result = db_query_parallel_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_parallel_slice_fill(s : DbqueryparallelSlice, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_parallel_slice_min(s : DbqueryparallelSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_slice_min(s : DbqueryparallelSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_parallel_slice_max(s : DbqueryparallelSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_parallel_slice_max(s : DbqueryparallelSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_parallel_slice_to_string(s : DbqueryparallelSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

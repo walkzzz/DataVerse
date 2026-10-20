@@ -88,11 +88,7 @@ pub fn image_transform_shear_make_series(vals : Array[Double], name : String) ->
 
 pub fn image_transform_shear_series_len(s : ImagetransformshearSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_shear_series_sum(s : ImagetransformshearSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_shear_series_sum(s : ImagetransformshearSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_shear_series_mean(s : ImagetransformshearSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_shear_frame_set(s : ImagetransformshearFrame, i : Int, v 
   result
 }
 
-pub fn image_transform_shear_frame_sum(s : ImagetransformshearFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_frame_sum(s : ImagetransformshearFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_frame_mean(s : ImagetransformshearFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_frame_mean(s : ImagetransformshearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_frame_scale(s : ImagetransformshearFrame, f : Double) -> ImagetransformshearFrame {
   let result = image_transform_shear_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_shear_frame_fill(s : ImagetransformshearFrame, v : Double
   result
 }
 
-pub fn image_transform_shear_frame_min(s : ImagetransformshearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_frame_min(s : ImagetransformshearFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_frame_max(s : ImagetransformshearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_frame_max(s : ImagetransformshearFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_frame_to_string(s : ImagetransformshearFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_shear_table_set(s : ImagetransformshearTable, i : Int, v 
   result
 }
 
-pub fn image_transform_shear_table_sum(s : ImagetransformshearTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_table_sum(s : ImagetransformshearTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_table_mean(s : ImagetransformshearTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_table_mean(s : ImagetransformshearTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_table_scale(s : ImagetransformshearTable, f : Double) -> ImagetransformshearTable {
   let result = image_transform_shear_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_shear_table_fill(s : ImagetransformshearTable, v : Double
   result
 }
 
-pub fn image_transform_shear_table_min(s : ImagetransformshearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_table_min(s : ImagetransformshearTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_table_max(s : ImagetransformshearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_table_max(s : ImagetransformshearTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_table_to_string(s : ImagetransformshearTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_shear_graphn_set(s : ImagetransformshearGraphN, i : Int, 
   result
 }
 
-pub fn image_transform_shear_graphn_sum(s : ImagetransformshearGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_graphn_sum(s : ImagetransformshearGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_graphn_mean(s : ImagetransformshearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_graphn_mean(s : ImagetransformshearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_graphn_scale(s : ImagetransformshearGraphN, f : Double) -> ImagetransformshearGraphN {
   let result = image_transform_shear_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_shear_graphn_fill(s : ImagetransformshearGraphN, v : Doub
   result
 }
 
-pub fn image_transform_shear_graphn_min(s : ImagetransformshearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_graphn_min(s : ImagetransformshearGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_graphn_max(s : ImagetransformshearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_graphn_max(s : ImagetransformshearGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_graphn_to_string(s : ImagetransformshearGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_shear_node_set(s : ImagetransformshearNode, i : Int, v : 
   result
 }
 
-pub fn image_transform_shear_node_sum(s : ImagetransformshearNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_node_sum(s : ImagetransformshearNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_node_mean(s : ImagetransformshearNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_node_mean(s : ImagetransformshearNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_node_scale(s : ImagetransformshearNode, f : Double) -> ImagetransformshearNode {
   let result = image_transform_shear_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_shear_node_fill(s : ImagetransformshearNode, v : Double) 
   result
 }
 
-pub fn image_transform_shear_node_min(s : ImagetransformshearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_node_min(s : ImagetransformshearNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_node_max(s : ImagetransformshearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_node_max(s : ImagetransformshearNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_node_to_string(s : ImagetransformshearNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_shear_edge_set(s : ImagetransformshearEdge, i : Int, v : 
   result
 }
 
-pub fn image_transform_shear_edge_sum(s : ImagetransformshearEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_edge_sum(s : ImagetransformshearEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_edge_mean(s : ImagetransformshearEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_edge_mean(s : ImagetransformshearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_edge_scale(s : ImagetransformshearEdge, f : Double) -> ImagetransformshearEdge {
   let result = image_transform_shear_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_shear_edge_fill(s : ImagetransformshearEdge, v : Double) 
   result
 }
 
-pub fn image_transform_shear_edge_min(s : ImagetransformshearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_edge_min(s : ImagetransformshearEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_edge_max(s : ImagetransformshearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_edge_max(s : ImagetransformshearEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_edge_to_string(s : ImagetransformshearEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_shear_path_set(s : ImagetransformshearPath, i : Int, v : 
   result
 }
 
-pub fn image_transform_shear_path_sum(s : ImagetransformshearPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_path_sum(s : ImagetransformshearPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_path_mean(s : ImagetransformshearPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_path_mean(s : ImagetransformshearPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_path_scale(s : ImagetransformshearPath, f : Double) -> ImagetransformshearPath {
   let result = image_transform_shear_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_shear_path_fill(s : ImagetransformshearPath, v : Double) 
   result
 }
 
-pub fn image_transform_shear_path_min(s : ImagetransformshearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_path_min(s : ImagetransformshearPath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_path_max(s : ImagetransformshearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_path_max(s : ImagetransformshearPath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_path_to_string(s : ImagetransformshearPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_shear_cluster_set(s : ImagetransformshearCluster, i : Int
   result
 }
 
-pub fn image_transform_shear_cluster_sum(s : ImagetransformshearCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_cluster_sum(s : ImagetransformshearCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_cluster_mean(s : ImagetransformshearCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_cluster_mean(s : ImagetransformshearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_cluster_scale(s : ImagetransformshearCluster, f : Double) -> ImagetransformshearCluster {
   let result = image_transform_shear_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_shear_cluster_fill(s : ImagetransformshearCluster, v : Do
   result
 }
 
-pub fn image_transform_shear_cluster_min(s : ImagetransformshearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_cluster_min(s : ImagetransformshearCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_cluster_max(s : ImagetransformshearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_cluster_max(s : ImagetransformshearCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_cluster_to_string(s : ImagetransformshearCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_shear_model_set(s : ImagetransformshearModel, i : Int, v 
   result
 }
 
-pub fn image_transform_shear_model_sum(s : ImagetransformshearModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_model_sum(s : ImagetransformshearModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_model_mean(s : ImagetransformshearModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_model_mean(s : ImagetransformshearModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_model_scale(s : ImagetransformshearModel, f : Double) -> ImagetransformshearModel {
   let result = image_transform_shear_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_shear_model_fill(s : ImagetransformshearModel, v : Double
   result
 }
 
-pub fn image_transform_shear_model_min(s : ImagetransformshearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_model_min(s : ImagetransformshearModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_model_max(s : ImagetransformshearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_model_max(s : ImagetransformshearModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_model_to_string(s : ImagetransformshearModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_shear_layer_set(s : ImagetransformshearLayer, i : Int, v 
   result
 }
 
-pub fn image_transform_shear_layer_sum(s : ImagetransformshearLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_layer_sum(s : ImagetransformshearLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_layer_mean(s : ImagetransformshearLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_layer_mean(s : ImagetransformshearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_layer_scale(s : ImagetransformshearLayer, f : Double) -> ImagetransformshearLayer {
   let result = image_transform_shear_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_shear_layer_fill(s : ImagetransformshearLayer, v : Double
   result
 }
 
-pub fn image_transform_shear_layer_min(s : ImagetransformshearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_layer_min(s : ImagetransformshearLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_layer_max(s : ImagetransformshearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_layer_max(s : ImagetransformshearLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_layer_to_string(s : ImagetransformshearLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_shear_buffer_set(s : ImagetransformshearBuffer, i : Int, 
   result
 }
 
-pub fn image_transform_shear_buffer_sum(s : ImagetransformshearBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_buffer_sum(s : ImagetransformshearBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_buffer_mean(s : ImagetransformshearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_buffer_mean(s : ImagetransformshearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_buffer_scale(s : ImagetransformshearBuffer, f : Double) -> ImagetransformshearBuffer {
   let result = image_transform_shear_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_shear_buffer_fill(s : ImagetransformshearBuffer, v : Doub
   result
 }
 
-pub fn image_transform_shear_buffer_min(s : ImagetransformshearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_buffer_min(s : ImagetransformshearBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_buffer_max(s : ImagetransformshearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_buffer_max(s : ImagetransformshearBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_buffer_to_string(s : ImagetransformshearBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_shear_cursor_set(s : ImagetransformshearCursor, i : Int, 
   result
 }
 
-pub fn image_transform_shear_cursor_sum(s : ImagetransformshearCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_cursor_sum(s : ImagetransformshearCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_cursor_mean(s : ImagetransformshearCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_cursor_mean(s : ImagetransformshearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_cursor_scale(s : ImagetransformshearCursor, f : Double) -> ImagetransformshearCursor {
   let result = image_transform_shear_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_shear_cursor_fill(s : ImagetransformshearCursor, v : Doub
   result
 }
 
-pub fn image_transform_shear_cursor_min(s : ImagetransformshearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_cursor_min(s : ImagetransformshearCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_cursor_max(s : ImagetransformshearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_cursor_max(s : ImagetransformshearCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_cursor_to_string(s : ImagetransformshearCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_shear_view_set(s : ImagetransformshearView, i : Int, v : 
   result
 }
 
-pub fn image_transform_shear_view_sum(s : ImagetransformshearView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_view_sum(s : ImagetransformshearView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_view_mean(s : ImagetransformshearView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_view_mean(s : ImagetransformshearView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_view_scale(s : ImagetransformshearView, f : Double) -> ImagetransformshearView {
   let result = image_transform_shear_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_shear_view_fill(s : ImagetransformshearView, v : Double) 
   result
 }
 
-pub fn image_transform_shear_view_min(s : ImagetransformshearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_view_min(s : ImagetransformshearView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_view_max(s : ImagetransformshearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_view_max(s : ImagetransformshearView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_view_to_string(s : ImagetransformshearView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_shear_range_set(s : ImagetransformshearRange, i : Int, v 
   result
 }
 
-pub fn image_transform_shear_range_sum(s : ImagetransformshearRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_range_sum(s : ImagetransformshearRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_range_mean(s : ImagetransformshearRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_range_mean(s : ImagetransformshearRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_range_scale(s : ImagetransformshearRange, f : Double) -> ImagetransformshearRange {
   let result = image_transform_shear_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_shear_range_fill(s : ImagetransformshearRange, v : Double
   result
 }
 
-pub fn image_transform_shear_range_min(s : ImagetransformshearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_range_min(s : ImagetransformshearRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_range_max(s : ImagetransformshearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_range_max(s : ImagetransformshearRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_range_to_string(s : ImagetransformshearRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_shear_slice_set(s : ImagetransformshearSlice, i : Int, v 
   result
 }
 
-pub fn image_transform_shear_slice_sum(s : ImagetransformshearSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_shear_slice_sum(s : ImagetransformshearSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_shear_slice_mean(s : ImagetransformshearSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_shear_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_shear_slice_mean(s : ImagetransformshearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_shear_slice_scale(s : ImagetransformshearSlice, f : Double) -> ImagetransformshearSlice {
   let result = image_transform_shear_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_shear_slice_fill(s : ImagetransformshearSlice, v : Double
   result
 }
 
-pub fn image_transform_shear_slice_min(s : ImagetransformshearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_slice_min(s : ImagetransformshearSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_shear_slice_max(s : ImagetransformshearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_shear_slice_max(s : ImagetransformshearSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_shear_slice_to_string(s : ImagetransformshearSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

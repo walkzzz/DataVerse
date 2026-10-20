@@ -88,11 +88,7 @@ pub fn finance_pricing_binomial_make_series(vals : Array[Double], name : String)
 
 pub fn finance_pricing_binomial_series_len(s : FinancepricingbinomialSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_binomial_series_sum(s : FinancepricingbinomialSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_binomial_series_sum(s : FinancepricingbinomialSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_binomial_series_mean(s : FinancepricingbinomialSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_binomial_frame_set(s : FinancepricingbinomialFrame, i : I
   result
 }
 
-pub fn finance_pricing_binomial_frame_sum(s : FinancepricingbinomialFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_frame_sum(s : FinancepricingbinomialFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_frame_mean(s : FinancepricingbinomialFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_frame_mean(s : FinancepricingbinomialFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_frame_scale(s : FinancepricingbinomialFrame, f : Double) -> FinancepricingbinomialFrame {
   let result = finance_pricing_binomial_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_binomial_frame_fill(s : FinancepricingbinomialFrame, v : 
   result
 }
 
-pub fn finance_pricing_binomial_frame_min(s : FinancepricingbinomialFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_frame_min(s : FinancepricingbinomialFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_frame_max(s : FinancepricingbinomialFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_frame_max(s : FinancepricingbinomialFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_frame_to_string(s : FinancepricingbinomialFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_binomial_table_set(s : FinancepricingbinomialTable, i : I
   result
 }
 
-pub fn finance_pricing_binomial_table_sum(s : FinancepricingbinomialTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_table_sum(s : FinancepricingbinomialTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_table_mean(s : FinancepricingbinomialTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_table_mean(s : FinancepricingbinomialTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_table_scale(s : FinancepricingbinomialTable, f : Double) -> FinancepricingbinomialTable {
   let result = finance_pricing_binomial_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_binomial_table_fill(s : FinancepricingbinomialTable, v : 
   result
 }
 
-pub fn finance_pricing_binomial_table_min(s : FinancepricingbinomialTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_table_min(s : FinancepricingbinomialTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_table_max(s : FinancepricingbinomialTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_table_max(s : FinancepricingbinomialTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_table_to_string(s : FinancepricingbinomialTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_binomial_graphn_set(s : FinancepricingbinomialGraphN, i :
   result
 }
 
-pub fn finance_pricing_binomial_graphn_sum(s : FinancepricingbinomialGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_graphn_sum(s : FinancepricingbinomialGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_graphn_mean(s : FinancepricingbinomialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_graphn_mean(s : FinancepricingbinomialGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_graphn_scale(s : FinancepricingbinomialGraphN, f : Double) -> FinancepricingbinomialGraphN {
   let result = finance_pricing_binomial_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_binomial_graphn_fill(s : FinancepricingbinomialGraphN, v 
   result
 }
 
-pub fn finance_pricing_binomial_graphn_min(s : FinancepricingbinomialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_graphn_min(s : FinancepricingbinomialGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_graphn_max(s : FinancepricingbinomialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_graphn_max(s : FinancepricingbinomialGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_graphn_to_string(s : FinancepricingbinomialGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_binomial_node_set(s : FinancepricingbinomialNode, i : Int
   result
 }
 
-pub fn finance_pricing_binomial_node_sum(s : FinancepricingbinomialNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_node_sum(s : FinancepricingbinomialNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_node_mean(s : FinancepricingbinomialNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_node_mean(s : FinancepricingbinomialNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_node_scale(s : FinancepricingbinomialNode, f : Double) -> FinancepricingbinomialNode {
   let result = finance_pricing_binomial_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_binomial_node_fill(s : FinancepricingbinomialNode, v : Do
   result
 }
 
-pub fn finance_pricing_binomial_node_min(s : FinancepricingbinomialNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_node_min(s : FinancepricingbinomialNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_node_max(s : FinancepricingbinomialNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_node_max(s : FinancepricingbinomialNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_node_to_string(s : FinancepricingbinomialNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_binomial_edge_set(s : FinancepricingbinomialEdge, i : Int
   result
 }
 
-pub fn finance_pricing_binomial_edge_sum(s : FinancepricingbinomialEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_edge_sum(s : FinancepricingbinomialEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_edge_mean(s : FinancepricingbinomialEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_edge_mean(s : FinancepricingbinomialEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_edge_scale(s : FinancepricingbinomialEdge, f : Double) -> FinancepricingbinomialEdge {
   let result = finance_pricing_binomial_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_binomial_edge_fill(s : FinancepricingbinomialEdge, v : Do
   result
 }
 
-pub fn finance_pricing_binomial_edge_min(s : FinancepricingbinomialEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_edge_min(s : FinancepricingbinomialEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_edge_max(s : FinancepricingbinomialEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_edge_max(s : FinancepricingbinomialEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_edge_to_string(s : FinancepricingbinomialEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_binomial_path_set(s : FinancepricingbinomialPath, i : Int
   result
 }
 
-pub fn finance_pricing_binomial_path_sum(s : FinancepricingbinomialPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_path_sum(s : FinancepricingbinomialPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_path_mean(s : FinancepricingbinomialPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_path_mean(s : FinancepricingbinomialPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_path_scale(s : FinancepricingbinomialPath, f : Double) -> FinancepricingbinomialPath {
   let result = finance_pricing_binomial_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_binomial_path_fill(s : FinancepricingbinomialPath, v : Do
   result
 }
 
-pub fn finance_pricing_binomial_path_min(s : FinancepricingbinomialPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_path_min(s : FinancepricingbinomialPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_path_max(s : FinancepricingbinomialPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_path_max(s : FinancepricingbinomialPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_path_to_string(s : FinancepricingbinomialPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_binomial_cluster_set(s : FinancepricingbinomialCluster, i
   result
 }
 
-pub fn finance_pricing_binomial_cluster_sum(s : FinancepricingbinomialCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_cluster_sum(s : FinancepricingbinomialCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_cluster_mean(s : FinancepricingbinomialCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_cluster_mean(s : FinancepricingbinomialCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_cluster_scale(s : FinancepricingbinomialCluster, f : Double) -> FinancepricingbinomialCluster {
   let result = finance_pricing_binomial_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_binomial_cluster_fill(s : FinancepricingbinomialCluster, 
   result
 }
 
-pub fn finance_pricing_binomial_cluster_min(s : FinancepricingbinomialCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_cluster_min(s : FinancepricingbinomialCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_cluster_max(s : FinancepricingbinomialCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_cluster_max(s : FinancepricingbinomialCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_cluster_to_string(s : FinancepricingbinomialCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_binomial_model_set(s : FinancepricingbinomialModel, i : I
   result
 }
 
-pub fn finance_pricing_binomial_model_sum(s : FinancepricingbinomialModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_model_sum(s : FinancepricingbinomialModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_model_mean(s : FinancepricingbinomialModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_model_mean(s : FinancepricingbinomialModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_model_scale(s : FinancepricingbinomialModel, f : Double) -> FinancepricingbinomialModel {
   let result = finance_pricing_binomial_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_binomial_model_fill(s : FinancepricingbinomialModel, v : 
   result
 }
 
-pub fn finance_pricing_binomial_model_min(s : FinancepricingbinomialModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_model_min(s : FinancepricingbinomialModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_model_max(s : FinancepricingbinomialModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_model_max(s : FinancepricingbinomialModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_model_to_string(s : FinancepricingbinomialModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_binomial_layer_set(s : FinancepricingbinomialLayer, i : I
   result
 }
 
-pub fn finance_pricing_binomial_layer_sum(s : FinancepricingbinomialLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_layer_sum(s : FinancepricingbinomialLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_layer_mean(s : FinancepricingbinomialLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_layer_mean(s : FinancepricingbinomialLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_layer_scale(s : FinancepricingbinomialLayer, f : Double) -> FinancepricingbinomialLayer {
   let result = finance_pricing_binomial_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_binomial_layer_fill(s : FinancepricingbinomialLayer, v : 
   result
 }
 
-pub fn finance_pricing_binomial_layer_min(s : FinancepricingbinomialLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_layer_min(s : FinancepricingbinomialLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_layer_max(s : FinancepricingbinomialLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_layer_max(s : FinancepricingbinomialLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_layer_to_string(s : FinancepricingbinomialLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_binomial_buffer_set(s : FinancepricingbinomialBuffer, i :
   result
 }
 
-pub fn finance_pricing_binomial_buffer_sum(s : FinancepricingbinomialBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_buffer_sum(s : FinancepricingbinomialBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_buffer_mean(s : FinancepricingbinomialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_buffer_mean(s : FinancepricingbinomialBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_buffer_scale(s : FinancepricingbinomialBuffer, f : Double) -> FinancepricingbinomialBuffer {
   let result = finance_pricing_binomial_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_binomial_buffer_fill(s : FinancepricingbinomialBuffer, v 
   result
 }
 
-pub fn finance_pricing_binomial_buffer_min(s : FinancepricingbinomialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_buffer_min(s : FinancepricingbinomialBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_buffer_max(s : FinancepricingbinomialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_buffer_max(s : FinancepricingbinomialBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_buffer_to_string(s : FinancepricingbinomialBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_binomial_cursor_set(s : FinancepricingbinomialCursor, i :
   result
 }
 
-pub fn finance_pricing_binomial_cursor_sum(s : FinancepricingbinomialCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_cursor_sum(s : FinancepricingbinomialCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_cursor_mean(s : FinancepricingbinomialCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_cursor_mean(s : FinancepricingbinomialCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_cursor_scale(s : FinancepricingbinomialCursor, f : Double) -> FinancepricingbinomialCursor {
   let result = finance_pricing_binomial_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_binomial_cursor_fill(s : FinancepricingbinomialCursor, v 
   result
 }
 
-pub fn finance_pricing_binomial_cursor_min(s : FinancepricingbinomialCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_cursor_min(s : FinancepricingbinomialCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_cursor_max(s : FinancepricingbinomialCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_cursor_max(s : FinancepricingbinomialCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_cursor_to_string(s : FinancepricingbinomialCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_binomial_view_set(s : FinancepricingbinomialView, i : Int
   result
 }
 
-pub fn finance_pricing_binomial_view_sum(s : FinancepricingbinomialView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_view_sum(s : FinancepricingbinomialView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_view_mean(s : FinancepricingbinomialView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_view_mean(s : FinancepricingbinomialView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_view_scale(s : FinancepricingbinomialView, f : Double) -> FinancepricingbinomialView {
   let result = finance_pricing_binomial_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_binomial_view_fill(s : FinancepricingbinomialView, v : Do
   result
 }
 
-pub fn finance_pricing_binomial_view_min(s : FinancepricingbinomialView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_view_min(s : FinancepricingbinomialView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_view_max(s : FinancepricingbinomialView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_view_max(s : FinancepricingbinomialView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_view_to_string(s : FinancepricingbinomialView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_binomial_range_set(s : FinancepricingbinomialRange, i : I
   result
 }
 
-pub fn finance_pricing_binomial_range_sum(s : FinancepricingbinomialRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_range_sum(s : FinancepricingbinomialRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_range_mean(s : FinancepricingbinomialRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_range_mean(s : FinancepricingbinomialRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_range_scale(s : FinancepricingbinomialRange, f : Double) -> FinancepricingbinomialRange {
   let result = finance_pricing_binomial_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_binomial_range_fill(s : FinancepricingbinomialRange, v : 
   result
 }
 
-pub fn finance_pricing_binomial_range_min(s : FinancepricingbinomialRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_range_min(s : FinancepricingbinomialRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_range_max(s : FinancepricingbinomialRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_range_max(s : FinancepricingbinomialRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_range_to_string(s : FinancepricingbinomialRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_binomial_slice_set(s : FinancepricingbinomialSlice, i : I
   result
 }
 
-pub fn finance_pricing_binomial_slice_sum(s : FinancepricingbinomialSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_binomial_slice_sum(s : FinancepricingbinomialSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_binomial_slice_mean(s : FinancepricingbinomialSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_binomial_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_binomial_slice_mean(s : FinancepricingbinomialSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_binomial_slice_scale(s : FinancepricingbinomialSlice, f : Double) -> FinancepricingbinomialSlice {
   let result = finance_pricing_binomial_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_binomial_slice_fill(s : FinancepricingbinomialSlice, v : 
   result
 }
 
-pub fn finance_pricing_binomial_slice_min(s : FinancepricingbinomialSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_slice_min(s : FinancepricingbinomialSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_binomial_slice_max(s : FinancepricingbinomialSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_binomial_slice_max(s : FinancepricingbinomialSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_binomial_slice_to_string(s : FinancepricingbinomialSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

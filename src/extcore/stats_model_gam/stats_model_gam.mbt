@@ -88,11 +88,7 @@ pub fn stats_model_gam_make_series(vals : Array[Double], name : String) -> Stats
 
 pub fn stats_model_gam_series_len(s : StatsmodelgamSeries) -> Int { s.vals.length() }
 
-pub fn stats_model_gam_series_sum(s : StatsmodelgamSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_model_gam_series_sum(s : StatsmodelgamSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_model_gam_series_mean(s : StatsmodelgamSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_model_gam_frame_set(s : StatsmodelgamFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_model_gam_frame_sum(s : StatsmodelgamFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_frame_sum(s : StatsmodelgamFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_frame_mean(s : StatsmodelgamFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_frame_mean(s : StatsmodelgamFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_frame_scale(s : StatsmodelgamFrame, f : Double) -> StatsmodelgamFrame {
   let result = stats_model_gam_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_model_gam_frame_fill(s : StatsmodelgamFrame, v : Double) -> Statsmo
   result
 }
 
-pub fn stats_model_gam_frame_min(s : StatsmodelgamFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_frame_min(s : StatsmodelgamFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_frame_max(s : StatsmodelgamFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_frame_max(s : StatsmodelgamFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_frame_to_string(s : StatsmodelgamFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_model_gam_table_set(s : StatsmodelgamTable, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_model_gam_table_sum(s : StatsmodelgamTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_table_sum(s : StatsmodelgamTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_table_mean(s : StatsmodelgamTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_table_mean(s : StatsmodelgamTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_table_scale(s : StatsmodelgamTable, f : Double) -> StatsmodelgamTable {
   let result = stats_model_gam_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_model_gam_table_fill(s : StatsmodelgamTable, v : Double) -> Statsmo
   result
 }
 
-pub fn stats_model_gam_table_min(s : StatsmodelgamTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_table_min(s : StatsmodelgamTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_table_max(s : StatsmodelgamTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_table_max(s : StatsmodelgamTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_table_to_string(s : StatsmodelgamTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_model_gam_graphn_set(s : StatsmodelgamGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_gam_graphn_sum(s : StatsmodelgamGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_graphn_sum(s : StatsmodelgamGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_graphn_mean(s : StatsmodelgamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_graphn_mean(s : StatsmodelgamGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_graphn_scale(s : StatsmodelgamGraphN, f : Double) -> StatsmodelgamGraphN {
   let result = stats_model_gam_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_model_gam_graphn_fill(s : StatsmodelgamGraphN, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_gam_graphn_min(s : StatsmodelgamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_graphn_min(s : StatsmodelgamGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_graphn_max(s : StatsmodelgamGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_graphn_max(s : StatsmodelgamGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_graphn_to_string(s : StatsmodelgamGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_model_gam_node_set(s : StatsmodelgamNode, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_model_gam_node_sum(s : StatsmodelgamNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_node_sum(s : StatsmodelgamNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_node_mean(s : StatsmodelgamNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_node_mean(s : StatsmodelgamNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_node_scale(s : StatsmodelgamNode, f : Double) -> StatsmodelgamNode {
   let result = stats_model_gam_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_model_gam_node_fill(s : StatsmodelgamNode, v : Double) -> Statsmode
   result
 }
 
-pub fn stats_model_gam_node_min(s : StatsmodelgamNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_node_min(s : StatsmodelgamNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_node_max(s : StatsmodelgamNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_node_max(s : StatsmodelgamNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_node_to_string(s : StatsmodelgamNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_model_gam_edge_set(s : StatsmodelgamEdge, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_model_gam_edge_sum(s : StatsmodelgamEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_edge_sum(s : StatsmodelgamEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_edge_mean(s : StatsmodelgamEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_edge_mean(s : StatsmodelgamEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_edge_scale(s : StatsmodelgamEdge, f : Double) -> StatsmodelgamEdge {
   let result = stats_model_gam_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_model_gam_edge_fill(s : StatsmodelgamEdge, v : Double) -> Statsmode
   result
 }
 
-pub fn stats_model_gam_edge_min(s : StatsmodelgamEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_edge_min(s : StatsmodelgamEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_edge_max(s : StatsmodelgamEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_edge_max(s : StatsmodelgamEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_edge_to_string(s : StatsmodelgamEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_model_gam_path_set(s : StatsmodelgamPath, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_model_gam_path_sum(s : StatsmodelgamPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_path_sum(s : StatsmodelgamPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_path_mean(s : StatsmodelgamPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_path_mean(s : StatsmodelgamPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_path_scale(s : StatsmodelgamPath, f : Double) -> StatsmodelgamPath {
   let result = stats_model_gam_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_model_gam_path_fill(s : StatsmodelgamPath, v : Double) -> Statsmode
   result
 }
 
-pub fn stats_model_gam_path_min(s : StatsmodelgamPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_path_min(s : StatsmodelgamPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_path_max(s : StatsmodelgamPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_path_max(s : StatsmodelgamPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_path_to_string(s : StatsmodelgamPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_model_gam_cluster_set(s : StatsmodelgamCluster, i : Int, v : Double
   result
 }
 
-pub fn stats_model_gam_cluster_sum(s : StatsmodelgamCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_cluster_sum(s : StatsmodelgamCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_cluster_mean(s : StatsmodelgamCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_cluster_mean(s : StatsmodelgamCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_cluster_scale(s : StatsmodelgamCluster, f : Double) -> StatsmodelgamCluster {
   let result = stats_model_gam_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_model_gam_cluster_fill(s : StatsmodelgamCluster, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_gam_cluster_min(s : StatsmodelgamCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_cluster_min(s : StatsmodelgamCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_cluster_max(s : StatsmodelgamCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_cluster_max(s : StatsmodelgamCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_cluster_to_string(s : StatsmodelgamCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_model_gam_model_set(s : StatsmodelgamModel, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_model_gam_model_sum(s : StatsmodelgamModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_model_sum(s : StatsmodelgamModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_model_mean(s : StatsmodelgamModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_model_mean(s : StatsmodelgamModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_model_scale(s : StatsmodelgamModel, f : Double) -> StatsmodelgamModel {
   let result = stats_model_gam_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_model_gam_model_fill(s : StatsmodelgamModel, v : Double) -> Statsmo
   result
 }
 
-pub fn stats_model_gam_model_min(s : StatsmodelgamModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_model_min(s : StatsmodelgamModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_model_max(s : StatsmodelgamModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_model_max(s : StatsmodelgamModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_model_to_string(s : StatsmodelgamModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_model_gam_layer_set(s : StatsmodelgamLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_model_gam_layer_sum(s : StatsmodelgamLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_layer_sum(s : StatsmodelgamLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_layer_mean(s : StatsmodelgamLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_layer_mean(s : StatsmodelgamLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_layer_scale(s : StatsmodelgamLayer, f : Double) -> StatsmodelgamLayer {
   let result = stats_model_gam_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_model_gam_layer_fill(s : StatsmodelgamLayer, v : Double) -> Statsmo
   result
 }
 
-pub fn stats_model_gam_layer_min(s : StatsmodelgamLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_layer_min(s : StatsmodelgamLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_layer_max(s : StatsmodelgamLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_layer_max(s : StatsmodelgamLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_layer_to_string(s : StatsmodelgamLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_model_gam_buffer_set(s : StatsmodelgamBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_gam_buffer_sum(s : StatsmodelgamBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_buffer_sum(s : StatsmodelgamBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_buffer_mean(s : StatsmodelgamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_buffer_mean(s : StatsmodelgamBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_buffer_scale(s : StatsmodelgamBuffer, f : Double) -> StatsmodelgamBuffer {
   let result = stats_model_gam_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_model_gam_buffer_fill(s : StatsmodelgamBuffer, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_gam_buffer_min(s : StatsmodelgamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_buffer_min(s : StatsmodelgamBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_buffer_max(s : StatsmodelgamBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_buffer_max(s : StatsmodelgamBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_buffer_to_string(s : StatsmodelgamBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_model_gam_cursor_set(s : StatsmodelgamCursor, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_gam_cursor_sum(s : StatsmodelgamCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_cursor_sum(s : StatsmodelgamCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_cursor_mean(s : StatsmodelgamCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_cursor_mean(s : StatsmodelgamCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_cursor_scale(s : StatsmodelgamCursor, f : Double) -> StatsmodelgamCursor {
   let result = stats_model_gam_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_model_gam_cursor_fill(s : StatsmodelgamCursor, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_gam_cursor_min(s : StatsmodelgamCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_cursor_min(s : StatsmodelgamCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_cursor_max(s : StatsmodelgamCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_cursor_max(s : StatsmodelgamCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_cursor_to_string(s : StatsmodelgamCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_model_gam_view_set(s : StatsmodelgamView, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_model_gam_view_sum(s : StatsmodelgamView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_view_sum(s : StatsmodelgamView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_view_mean(s : StatsmodelgamView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_view_mean(s : StatsmodelgamView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_view_scale(s : StatsmodelgamView, f : Double) -> StatsmodelgamView {
   let result = stats_model_gam_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_model_gam_view_fill(s : StatsmodelgamView, v : Double) -> Statsmode
   result
 }
 
-pub fn stats_model_gam_view_min(s : StatsmodelgamView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_view_min(s : StatsmodelgamView) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_view_max(s : StatsmodelgamView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_view_max(s : StatsmodelgamView) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_view_to_string(s : StatsmodelgamView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_model_gam_range_set(s : StatsmodelgamRange, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_model_gam_range_sum(s : StatsmodelgamRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_range_sum(s : StatsmodelgamRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_range_mean(s : StatsmodelgamRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_range_mean(s : StatsmodelgamRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_range_scale(s : StatsmodelgamRange, f : Double) -> StatsmodelgamRange {
   let result = stats_model_gam_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_model_gam_range_fill(s : StatsmodelgamRange, v : Double) -> Statsmo
   result
 }
 
-pub fn stats_model_gam_range_min(s : StatsmodelgamRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_range_min(s : StatsmodelgamRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_range_max(s : StatsmodelgamRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_range_max(s : StatsmodelgamRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_range_to_string(s : StatsmodelgamRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_model_gam_slice_set(s : StatsmodelgamSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_model_gam_slice_sum(s : StatsmodelgamSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_gam_slice_sum(s : StatsmodelgamSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_gam_slice_mean(s : StatsmodelgamSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_gam_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_gam_slice_mean(s : StatsmodelgamSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_gam_slice_scale(s : StatsmodelgamSlice, f : Double) -> StatsmodelgamSlice {
   let result = stats_model_gam_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_model_gam_slice_fill(s : StatsmodelgamSlice, v : Double) -> Statsmo
   result
 }
 
-pub fn stats_model_gam_slice_min(s : StatsmodelgamSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_slice_min(s : StatsmodelgamSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_gam_slice_max(s : StatsmodelgamSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_gam_slice_max(s : StatsmodelgamSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_gam_slice_to_string(s : StatsmodelgamSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_initial_value_make_series(vals : Array[Double], name : String) -> Ma
 
 pub fn math_initial_value_series_len(s : MathinitialvalueSeries) -> Int { s.vals.length() }
 
-pub fn math_initial_value_series_sum(s : MathinitialvalueSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_initial_value_series_sum(s : MathinitialvalueSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_initial_value_series_mean(s : MathinitialvalueSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_initial_value_frame_set(s : MathinitialvalueFrame, i : Int, v : Doub
   result
 }
 
-pub fn math_initial_value_frame_sum(s : MathinitialvalueFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_frame_sum(s : MathinitialvalueFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_frame_mean(s : MathinitialvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_frame_mean(s : MathinitialvalueFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_frame_scale(s : MathinitialvalueFrame, f : Double) -> MathinitialvalueFrame {
   let result = math_initial_value_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_initial_value_frame_fill(s : MathinitialvalueFrame, v : Double) -> M
   result
 }
 
-pub fn math_initial_value_frame_min(s : MathinitialvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_frame_min(s : MathinitialvalueFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_frame_max(s : MathinitialvalueFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_frame_max(s : MathinitialvalueFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_frame_to_string(s : MathinitialvalueFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_initial_value_table_set(s : MathinitialvalueTable, i : Int, v : Doub
   result
 }
 
-pub fn math_initial_value_table_sum(s : MathinitialvalueTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_table_sum(s : MathinitialvalueTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_table_mean(s : MathinitialvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_table_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_table_mean(s : MathinitialvalueTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_table_scale(s : MathinitialvalueTable, f : Double) -> MathinitialvalueTable {
   let result = math_initial_value_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_initial_value_table_fill(s : MathinitialvalueTable, v : Double) -> M
   result
 }
 
-pub fn math_initial_value_table_min(s : MathinitialvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_table_min(s : MathinitialvalueTable) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_table_max(s : MathinitialvalueTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_table_max(s : MathinitialvalueTable) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_table_to_string(s : MathinitialvalueTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_initial_value_graphn_set(s : MathinitialvalueGraphN, i : Int, v : Do
   result
 }
 
-pub fn math_initial_value_graphn_sum(s : MathinitialvalueGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_graphn_sum(s : MathinitialvalueGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_graphn_mean(s : MathinitialvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_graphn_mean(s : MathinitialvalueGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_graphn_scale(s : MathinitialvalueGraphN, f : Double) -> MathinitialvalueGraphN {
   let result = math_initial_value_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_initial_value_graphn_fill(s : MathinitialvalueGraphN, v : Double) ->
   result
 }
 
-pub fn math_initial_value_graphn_min(s : MathinitialvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_graphn_min(s : MathinitialvalueGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_graphn_max(s : MathinitialvalueGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_graphn_max(s : MathinitialvalueGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_graphn_to_string(s : MathinitialvalueGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_initial_value_node_set(s : MathinitialvalueNode, i : Int, v : Double
   result
 }
 
-pub fn math_initial_value_node_sum(s : MathinitialvalueNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_node_sum(s : MathinitialvalueNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_node_mean(s : MathinitialvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_node_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_node_mean(s : MathinitialvalueNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_node_scale(s : MathinitialvalueNode, f : Double) -> MathinitialvalueNode {
   let result = math_initial_value_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_initial_value_node_fill(s : MathinitialvalueNode, v : Double) -> Mat
   result
 }
 
-pub fn math_initial_value_node_min(s : MathinitialvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_node_min(s : MathinitialvalueNode) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_node_max(s : MathinitialvalueNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_node_max(s : MathinitialvalueNode) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_node_to_string(s : MathinitialvalueNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_initial_value_edge_set(s : MathinitialvalueEdge, i : Int, v : Double
   result
 }
 
-pub fn math_initial_value_edge_sum(s : MathinitialvalueEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_edge_sum(s : MathinitialvalueEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_edge_mean(s : MathinitialvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_edge_mean(s : MathinitialvalueEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_edge_scale(s : MathinitialvalueEdge, f : Double) -> MathinitialvalueEdge {
   let result = math_initial_value_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_initial_value_edge_fill(s : MathinitialvalueEdge, v : Double) -> Mat
   result
 }
 
-pub fn math_initial_value_edge_min(s : MathinitialvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_edge_min(s : MathinitialvalueEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_edge_max(s : MathinitialvalueEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_edge_max(s : MathinitialvalueEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_edge_to_string(s : MathinitialvalueEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_initial_value_path_set(s : MathinitialvaluePath, i : Int, v : Double
   result
 }
 
-pub fn math_initial_value_path_sum(s : MathinitialvaluePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_path_sum(s : MathinitialvaluePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_path_mean(s : MathinitialvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_path_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_path_mean(s : MathinitialvaluePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_path_scale(s : MathinitialvaluePath, f : Double) -> MathinitialvaluePath {
   let result = math_initial_value_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_initial_value_path_fill(s : MathinitialvaluePath, v : Double) -> Mat
   result
 }
 
-pub fn math_initial_value_path_min(s : MathinitialvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_path_min(s : MathinitialvaluePath) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_path_max(s : MathinitialvaluePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_path_max(s : MathinitialvaluePath) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_path_to_string(s : MathinitialvaluePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_initial_value_cluster_set(s : MathinitialvalueCluster, i : Int, v : 
   result
 }
 
-pub fn math_initial_value_cluster_sum(s : MathinitialvalueCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_cluster_sum(s : MathinitialvalueCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_cluster_mean(s : MathinitialvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_cluster_mean(s : MathinitialvalueCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_cluster_scale(s : MathinitialvalueCluster, f : Double) -> MathinitialvalueCluster {
   let result = math_initial_value_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_initial_value_cluster_fill(s : MathinitialvalueCluster, v : Double) 
   result
 }
 
-pub fn math_initial_value_cluster_min(s : MathinitialvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_cluster_min(s : MathinitialvalueCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_cluster_max(s : MathinitialvalueCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_cluster_max(s : MathinitialvalueCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_cluster_to_string(s : MathinitialvalueCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_initial_value_model_set(s : MathinitialvalueModel, i : Int, v : Doub
   result
 }
 
-pub fn math_initial_value_model_sum(s : MathinitialvalueModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_model_sum(s : MathinitialvalueModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_model_mean(s : MathinitialvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_model_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_model_mean(s : MathinitialvalueModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_model_scale(s : MathinitialvalueModel, f : Double) -> MathinitialvalueModel {
   let result = math_initial_value_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_initial_value_model_fill(s : MathinitialvalueModel, v : Double) -> M
   result
 }
 
-pub fn math_initial_value_model_min(s : MathinitialvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_model_min(s : MathinitialvalueModel) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_model_max(s : MathinitialvalueModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_model_max(s : MathinitialvalueModel) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_model_to_string(s : MathinitialvalueModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_initial_value_layer_set(s : MathinitialvalueLayer, i : Int, v : Doub
   result
 }
 
-pub fn math_initial_value_layer_sum(s : MathinitialvalueLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_layer_sum(s : MathinitialvalueLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_layer_mean(s : MathinitialvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_layer_mean(s : MathinitialvalueLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_layer_scale(s : MathinitialvalueLayer, f : Double) -> MathinitialvalueLayer {
   let result = math_initial_value_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_initial_value_layer_fill(s : MathinitialvalueLayer, v : Double) -> M
   result
 }
 
-pub fn math_initial_value_layer_min(s : MathinitialvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_layer_min(s : MathinitialvalueLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_layer_max(s : MathinitialvalueLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_layer_max(s : MathinitialvalueLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_layer_to_string(s : MathinitialvalueLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_initial_value_buffer_set(s : MathinitialvalueBuffer, i : Int, v : Do
   result
 }
 
-pub fn math_initial_value_buffer_sum(s : MathinitialvalueBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_buffer_sum(s : MathinitialvalueBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_buffer_mean(s : MathinitialvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_buffer_mean(s : MathinitialvalueBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_buffer_scale(s : MathinitialvalueBuffer, f : Double) -> MathinitialvalueBuffer {
   let result = math_initial_value_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_initial_value_buffer_fill(s : MathinitialvalueBuffer, v : Double) ->
   result
 }
 
-pub fn math_initial_value_buffer_min(s : MathinitialvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_buffer_min(s : MathinitialvalueBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_buffer_max(s : MathinitialvalueBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_buffer_max(s : MathinitialvalueBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_buffer_to_string(s : MathinitialvalueBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_initial_value_cursor_set(s : MathinitialvalueCursor, i : Int, v : Do
   result
 }
 
-pub fn math_initial_value_cursor_sum(s : MathinitialvalueCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_cursor_sum(s : MathinitialvalueCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_cursor_mean(s : MathinitialvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_cursor_mean(s : MathinitialvalueCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_cursor_scale(s : MathinitialvalueCursor, f : Double) -> MathinitialvalueCursor {
   let result = math_initial_value_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_initial_value_cursor_fill(s : MathinitialvalueCursor, v : Double) ->
   result
 }
 
-pub fn math_initial_value_cursor_min(s : MathinitialvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_cursor_min(s : MathinitialvalueCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_cursor_max(s : MathinitialvalueCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_cursor_max(s : MathinitialvalueCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_cursor_to_string(s : MathinitialvalueCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_initial_value_view_set(s : MathinitialvalueView, i : Int, v : Double
   result
 }
 
-pub fn math_initial_value_view_sum(s : MathinitialvalueView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_view_sum(s : MathinitialvalueView) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_view_mean(s : MathinitialvalueView) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_view_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_view_mean(s : MathinitialvalueView) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_view_scale(s : MathinitialvalueView, f : Double) -> MathinitialvalueView {
   let result = math_initial_value_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_initial_value_view_fill(s : MathinitialvalueView, v : Double) -> Mat
   result
 }
 
-pub fn math_initial_value_view_min(s : MathinitialvalueView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_view_min(s : MathinitialvalueView) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_view_max(s : MathinitialvalueView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_view_max(s : MathinitialvalueView) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_view_to_string(s : MathinitialvalueView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_initial_value_range_set(s : MathinitialvalueRange, i : Int, v : Doub
   result
 }
 
-pub fn math_initial_value_range_sum(s : MathinitialvalueRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_range_sum(s : MathinitialvalueRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_range_mean(s : MathinitialvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_range_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_range_mean(s : MathinitialvalueRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_range_scale(s : MathinitialvalueRange, f : Double) -> MathinitialvalueRange {
   let result = math_initial_value_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_initial_value_range_fill(s : MathinitialvalueRange, v : Double) -> M
   result
 }
 
-pub fn math_initial_value_range_min(s : MathinitialvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_range_min(s : MathinitialvalueRange) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_range_max(s : MathinitialvalueRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_range_max(s : MathinitialvalueRange) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_range_to_string(s : MathinitialvalueRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_initial_value_slice_set(s : MathinitialvalueSlice, i : Int, v : Doub
   result
 }
 
-pub fn math_initial_value_slice_sum(s : MathinitialvalueSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_initial_value_slice_sum(s : MathinitialvalueSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_initial_value_slice_mean(s : MathinitialvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_initial_value_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_initial_value_slice_mean(s : MathinitialvalueSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_initial_value_slice_scale(s : MathinitialvalueSlice, f : Double) -> MathinitialvalueSlice {
   let result = math_initial_value_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_initial_value_slice_fill(s : MathinitialvalueSlice, v : Double) -> M
   result
 }
 
-pub fn math_initial_value_slice_min(s : MathinitialvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_slice_min(s : MathinitialvalueSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_initial_value_slice_max(s : MathinitialvalueSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_initial_value_slice_max(s : MathinitialvalueSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_initial_value_slice_to_string(s : MathinitialvalueSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

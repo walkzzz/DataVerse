@@ -88,11 +88,7 @@ pub fn db_query_group_make_series(vals : Array[Double], name : String) -> Dbquer
 
 pub fn db_query_group_series_len(s : DbquerygroupSeries) -> Int { s.vals.length() }
 
-pub fn db_query_group_series_sum(s : DbquerygroupSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_group_series_sum(s : DbquerygroupSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_group_series_mean(s : DbquerygroupSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_group_frame_set(s : DbquerygroupFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_group_frame_sum(s : DbquerygroupFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_frame_sum(s : DbquerygroupFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_frame_mean(s : DbquerygroupFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_frame_mean(s : DbquerygroupFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_frame_scale(s : DbquerygroupFrame, f : Double) -> DbquerygroupFrame {
   let result = db_query_group_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_group_frame_fill(s : DbquerygroupFrame, v : Double) -> Dbquerygr
   result
 }
 
-pub fn db_query_group_frame_min(s : DbquerygroupFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_frame_min(s : DbquerygroupFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_frame_max(s : DbquerygroupFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_frame_max(s : DbquerygroupFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_frame_to_string(s : DbquerygroupFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_group_table_set(s : DbquerygroupTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_group_table_sum(s : DbquerygroupTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_table_sum(s : DbquerygroupTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_table_mean(s : DbquerygroupTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_table_mean(s : DbquerygroupTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_table_scale(s : DbquerygroupTable, f : Double) -> DbquerygroupTable {
   let result = db_query_group_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_group_table_fill(s : DbquerygroupTable, v : Double) -> Dbquerygr
   result
 }
 
-pub fn db_query_group_table_min(s : DbquerygroupTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_table_min(s : DbquerygroupTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_table_max(s : DbquerygroupTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_table_max(s : DbquerygroupTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_table_to_string(s : DbquerygroupTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_group_graphn_set(s : DbquerygroupGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_group_graphn_sum(s : DbquerygroupGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_graphn_sum(s : DbquerygroupGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_graphn_mean(s : DbquerygroupGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_graphn_mean(s : DbquerygroupGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_graphn_scale(s : DbquerygroupGraphN, f : Double) -> DbquerygroupGraphN {
   let result = db_query_group_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_group_graphn_fill(s : DbquerygroupGraphN, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_group_graphn_min(s : DbquerygroupGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_graphn_min(s : DbquerygroupGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_graphn_max(s : DbquerygroupGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_graphn_max(s : DbquerygroupGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_graphn_to_string(s : DbquerygroupGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_group_node_set(s : DbquerygroupNode, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_group_node_sum(s : DbquerygroupNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_node_sum(s : DbquerygroupNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_node_mean(s : DbquerygroupNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_node_mean(s : DbquerygroupNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_node_scale(s : DbquerygroupNode, f : Double) -> DbquerygroupNode {
   let result = db_query_group_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_group_node_fill(s : DbquerygroupNode, v : Double) -> Dbquerygrou
   result
 }
 
-pub fn db_query_group_node_min(s : DbquerygroupNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_node_min(s : DbquerygroupNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_node_max(s : DbquerygroupNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_node_max(s : DbquerygroupNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_node_to_string(s : DbquerygroupNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_group_edge_set(s : DbquerygroupEdge, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_group_edge_sum(s : DbquerygroupEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_edge_sum(s : DbquerygroupEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_edge_mean(s : DbquerygroupEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_edge_mean(s : DbquerygroupEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_edge_scale(s : DbquerygroupEdge, f : Double) -> DbquerygroupEdge {
   let result = db_query_group_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_group_edge_fill(s : DbquerygroupEdge, v : Double) -> Dbquerygrou
   result
 }
 
-pub fn db_query_group_edge_min(s : DbquerygroupEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_edge_min(s : DbquerygroupEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_edge_max(s : DbquerygroupEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_edge_max(s : DbquerygroupEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_edge_to_string(s : DbquerygroupEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_group_path_set(s : DbquerygroupPath, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_group_path_sum(s : DbquerygroupPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_path_sum(s : DbquerygroupPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_path_mean(s : DbquerygroupPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_path_mean(s : DbquerygroupPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_path_scale(s : DbquerygroupPath, f : Double) -> DbquerygroupPath {
   let result = db_query_group_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_group_path_fill(s : DbquerygroupPath, v : Double) -> Dbquerygrou
   result
 }
 
-pub fn db_query_group_path_min(s : DbquerygroupPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_path_min(s : DbquerygroupPath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_path_max(s : DbquerygroupPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_path_max(s : DbquerygroupPath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_path_to_string(s : DbquerygroupPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_group_cluster_set(s : DbquerygroupCluster, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_group_cluster_sum(s : DbquerygroupCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_cluster_sum(s : DbquerygroupCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_cluster_mean(s : DbquerygroupCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_cluster_mean(s : DbquerygroupCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_cluster_scale(s : DbquerygroupCluster, f : Double) -> DbquerygroupCluster {
   let result = db_query_group_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_group_cluster_fill(s : DbquerygroupCluster, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_group_cluster_min(s : DbquerygroupCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_cluster_min(s : DbquerygroupCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_cluster_max(s : DbquerygroupCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_cluster_max(s : DbquerygroupCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_cluster_to_string(s : DbquerygroupCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_group_model_set(s : DbquerygroupModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_group_model_sum(s : DbquerygroupModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_model_sum(s : DbquerygroupModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_model_mean(s : DbquerygroupModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_model_mean(s : DbquerygroupModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_model_scale(s : DbquerygroupModel, f : Double) -> DbquerygroupModel {
   let result = db_query_group_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_group_model_fill(s : DbquerygroupModel, v : Double) -> Dbquerygr
   result
 }
 
-pub fn db_query_group_model_min(s : DbquerygroupModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_model_min(s : DbquerygroupModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_model_max(s : DbquerygroupModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_model_max(s : DbquerygroupModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_model_to_string(s : DbquerygroupModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_group_layer_set(s : DbquerygroupLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_group_layer_sum(s : DbquerygroupLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_layer_sum(s : DbquerygroupLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_layer_mean(s : DbquerygroupLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_layer_mean(s : DbquerygroupLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_layer_scale(s : DbquerygroupLayer, f : Double) -> DbquerygroupLayer {
   let result = db_query_group_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_group_layer_fill(s : DbquerygroupLayer, v : Double) -> Dbquerygr
   result
 }
 
-pub fn db_query_group_layer_min(s : DbquerygroupLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_layer_min(s : DbquerygroupLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_layer_max(s : DbquerygroupLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_layer_max(s : DbquerygroupLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_layer_to_string(s : DbquerygroupLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_group_buffer_set(s : DbquerygroupBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_group_buffer_sum(s : DbquerygroupBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_buffer_sum(s : DbquerygroupBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_buffer_mean(s : DbquerygroupBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_buffer_mean(s : DbquerygroupBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_buffer_scale(s : DbquerygroupBuffer, f : Double) -> DbquerygroupBuffer {
   let result = db_query_group_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_group_buffer_fill(s : DbquerygroupBuffer, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_group_buffer_min(s : DbquerygroupBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_buffer_min(s : DbquerygroupBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_buffer_max(s : DbquerygroupBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_buffer_max(s : DbquerygroupBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_buffer_to_string(s : DbquerygroupBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_group_cursor_set(s : DbquerygroupCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_group_cursor_sum(s : DbquerygroupCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_cursor_sum(s : DbquerygroupCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_cursor_mean(s : DbquerygroupCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_cursor_mean(s : DbquerygroupCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_cursor_scale(s : DbquerygroupCursor, f : Double) -> DbquerygroupCursor {
   let result = db_query_group_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_group_cursor_fill(s : DbquerygroupCursor, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_group_cursor_min(s : DbquerygroupCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_cursor_min(s : DbquerygroupCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_cursor_max(s : DbquerygroupCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_cursor_max(s : DbquerygroupCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_cursor_to_string(s : DbquerygroupCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_group_view_set(s : DbquerygroupView, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_group_view_sum(s : DbquerygroupView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_view_sum(s : DbquerygroupView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_view_mean(s : DbquerygroupView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_view_mean(s : DbquerygroupView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_view_scale(s : DbquerygroupView, f : Double) -> DbquerygroupView {
   let result = db_query_group_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_group_view_fill(s : DbquerygroupView, v : Double) -> Dbquerygrou
   result
 }
 
-pub fn db_query_group_view_min(s : DbquerygroupView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_view_min(s : DbquerygroupView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_view_max(s : DbquerygroupView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_view_max(s : DbquerygroupView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_view_to_string(s : DbquerygroupView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_group_range_set(s : DbquerygroupRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_group_range_sum(s : DbquerygroupRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_range_sum(s : DbquerygroupRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_range_mean(s : DbquerygroupRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_range_mean(s : DbquerygroupRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_range_scale(s : DbquerygroupRange, f : Double) -> DbquerygroupRange {
   let result = db_query_group_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_group_range_fill(s : DbquerygroupRange, v : Double) -> Dbquerygr
   result
 }
 
-pub fn db_query_group_range_min(s : DbquerygroupRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_range_min(s : DbquerygroupRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_range_max(s : DbquerygroupRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_range_max(s : DbquerygroupRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_range_to_string(s : DbquerygroupRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_group_slice_set(s : DbquerygroupSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_group_slice_sum(s : DbquerygroupSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_group_slice_sum(s : DbquerygroupSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_group_slice_mean(s : DbquerygroupSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_group_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_group_slice_mean(s : DbquerygroupSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_group_slice_scale(s : DbquerygroupSlice, f : Double) -> DbquerygroupSlice {
   let result = db_query_group_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_group_slice_fill(s : DbquerygroupSlice, v : Double) -> Dbquerygr
   result
 }
 
-pub fn db_query_group_slice_min(s : DbquerygroupSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_slice_min(s : DbquerygroupSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_group_slice_max(s : DbquerygroupSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_group_slice_max(s : DbquerygroupSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_group_slice_to_string(s : DbquerygroupSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

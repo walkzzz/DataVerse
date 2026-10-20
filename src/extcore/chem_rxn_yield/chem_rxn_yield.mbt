@@ -88,11 +88,7 @@ pub fn chem_rxn_yield_make_series(vals : Array[Double], name : String) -> Chemrx
 
 pub fn chem_rxn_yield_series_len(s : ChemrxnyieldSeries) -> Int { s.vals.length() }
 
-pub fn chem_rxn_yield_series_sum(s : ChemrxnyieldSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_rxn_yield_series_sum(s : ChemrxnyieldSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_rxn_yield_series_mean(s : ChemrxnyieldSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_rxn_yield_frame_set(s : ChemrxnyieldFrame, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_yield_frame_sum(s : ChemrxnyieldFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_frame_sum(s : ChemrxnyieldFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_frame_mean(s : ChemrxnyieldFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_frame_mean(s : ChemrxnyieldFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_frame_scale(s : ChemrxnyieldFrame, f : Double) -> ChemrxnyieldFrame {
   let result = chem_rxn_yield_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_rxn_yield_frame_fill(s : ChemrxnyieldFrame, v : Double) -> Chemrxnyi
   result
 }
 
-pub fn chem_rxn_yield_frame_min(s : ChemrxnyieldFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_frame_min(s : ChemrxnyieldFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_frame_max(s : ChemrxnyieldFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_frame_max(s : ChemrxnyieldFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_frame_to_string(s : ChemrxnyieldFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_rxn_yield_table_set(s : ChemrxnyieldTable, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_yield_table_sum(s : ChemrxnyieldTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_table_sum(s : ChemrxnyieldTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_table_mean(s : ChemrxnyieldTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_table_mean(s : ChemrxnyieldTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_table_scale(s : ChemrxnyieldTable, f : Double) -> ChemrxnyieldTable {
   let result = chem_rxn_yield_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_rxn_yield_table_fill(s : ChemrxnyieldTable, v : Double) -> Chemrxnyi
   result
 }
 
-pub fn chem_rxn_yield_table_min(s : ChemrxnyieldTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_table_min(s : ChemrxnyieldTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_table_max(s : ChemrxnyieldTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_table_max(s : ChemrxnyieldTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_table_to_string(s : ChemrxnyieldTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_rxn_yield_graphn_set(s : ChemrxnyieldGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_yield_graphn_sum(s : ChemrxnyieldGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_graphn_sum(s : ChemrxnyieldGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_graphn_mean(s : ChemrxnyieldGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_graphn_mean(s : ChemrxnyieldGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_graphn_scale(s : ChemrxnyieldGraphN, f : Double) -> ChemrxnyieldGraphN {
   let result = chem_rxn_yield_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_rxn_yield_graphn_fill(s : ChemrxnyieldGraphN, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_yield_graphn_min(s : ChemrxnyieldGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_graphn_min(s : ChemrxnyieldGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_graphn_max(s : ChemrxnyieldGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_graphn_max(s : ChemrxnyieldGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_graphn_to_string(s : ChemrxnyieldGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_rxn_yield_node_set(s : ChemrxnyieldNode, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_yield_node_sum(s : ChemrxnyieldNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_node_sum(s : ChemrxnyieldNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_node_mean(s : ChemrxnyieldNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_node_mean(s : ChemrxnyieldNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_node_scale(s : ChemrxnyieldNode, f : Double) -> ChemrxnyieldNode {
   let result = chem_rxn_yield_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_rxn_yield_node_fill(s : ChemrxnyieldNode, v : Double) -> Chemrxnyiel
   result
 }
 
-pub fn chem_rxn_yield_node_min(s : ChemrxnyieldNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_node_min(s : ChemrxnyieldNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_node_max(s : ChemrxnyieldNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_node_max(s : ChemrxnyieldNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_node_to_string(s : ChemrxnyieldNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_rxn_yield_edge_set(s : ChemrxnyieldEdge, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_yield_edge_sum(s : ChemrxnyieldEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_edge_sum(s : ChemrxnyieldEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_edge_mean(s : ChemrxnyieldEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_edge_mean(s : ChemrxnyieldEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_edge_scale(s : ChemrxnyieldEdge, f : Double) -> ChemrxnyieldEdge {
   let result = chem_rxn_yield_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_rxn_yield_edge_fill(s : ChemrxnyieldEdge, v : Double) -> Chemrxnyiel
   result
 }
 
-pub fn chem_rxn_yield_edge_min(s : ChemrxnyieldEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_edge_min(s : ChemrxnyieldEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_edge_max(s : ChemrxnyieldEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_edge_max(s : ChemrxnyieldEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_edge_to_string(s : ChemrxnyieldEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_rxn_yield_path_set(s : ChemrxnyieldPath, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_yield_path_sum(s : ChemrxnyieldPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_path_sum(s : ChemrxnyieldPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_path_mean(s : ChemrxnyieldPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_path_mean(s : ChemrxnyieldPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_path_scale(s : ChemrxnyieldPath, f : Double) -> ChemrxnyieldPath {
   let result = chem_rxn_yield_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_rxn_yield_path_fill(s : ChemrxnyieldPath, v : Double) -> Chemrxnyiel
   result
 }
 
-pub fn chem_rxn_yield_path_min(s : ChemrxnyieldPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_path_min(s : ChemrxnyieldPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_path_max(s : ChemrxnyieldPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_path_max(s : ChemrxnyieldPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_path_to_string(s : ChemrxnyieldPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_rxn_yield_cluster_set(s : ChemrxnyieldCluster, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_yield_cluster_sum(s : ChemrxnyieldCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_cluster_sum(s : ChemrxnyieldCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_cluster_mean(s : ChemrxnyieldCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_cluster_mean(s : ChemrxnyieldCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_cluster_scale(s : ChemrxnyieldCluster, f : Double) -> ChemrxnyieldCluster {
   let result = chem_rxn_yield_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_rxn_yield_cluster_fill(s : ChemrxnyieldCluster, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_yield_cluster_min(s : ChemrxnyieldCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_cluster_min(s : ChemrxnyieldCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_cluster_max(s : ChemrxnyieldCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_cluster_max(s : ChemrxnyieldCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_cluster_to_string(s : ChemrxnyieldCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_rxn_yield_model_set(s : ChemrxnyieldModel, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_yield_model_sum(s : ChemrxnyieldModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_model_sum(s : ChemrxnyieldModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_model_mean(s : ChemrxnyieldModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_model_mean(s : ChemrxnyieldModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_model_scale(s : ChemrxnyieldModel, f : Double) -> ChemrxnyieldModel {
   let result = chem_rxn_yield_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_rxn_yield_model_fill(s : ChemrxnyieldModel, v : Double) -> Chemrxnyi
   result
 }
 
-pub fn chem_rxn_yield_model_min(s : ChemrxnyieldModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_model_min(s : ChemrxnyieldModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_model_max(s : ChemrxnyieldModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_model_max(s : ChemrxnyieldModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_model_to_string(s : ChemrxnyieldModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_rxn_yield_layer_set(s : ChemrxnyieldLayer, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_yield_layer_sum(s : ChemrxnyieldLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_layer_sum(s : ChemrxnyieldLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_layer_mean(s : ChemrxnyieldLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_layer_mean(s : ChemrxnyieldLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_layer_scale(s : ChemrxnyieldLayer, f : Double) -> ChemrxnyieldLayer {
   let result = chem_rxn_yield_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_rxn_yield_layer_fill(s : ChemrxnyieldLayer, v : Double) -> Chemrxnyi
   result
 }
 
-pub fn chem_rxn_yield_layer_min(s : ChemrxnyieldLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_layer_min(s : ChemrxnyieldLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_layer_max(s : ChemrxnyieldLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_layer_max(s : ChemrxnyieldLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_layer_to_string(s : ChemrxnyieldLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_rxn_yield_buffer_set(s : ChemrxnyieldBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_yield_buffer_sum(s : ChemrxnyieldBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_buffer_sum(s : ChemrxnyieldBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_buffer_mean(s : ChemrxnyieldBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_buffer_mean(s : ChemrxnyieldBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_buffer_scale(s : ChemrxnyieldBuffer, f : Double) -> ChemrxnyieldBuffer {
   let result = chem_rxn_yield_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_rxn_yield_buffer_fill(s : ChemrxnyieldBuffer, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_yield_buffer_min(s : ChemrxnyieldBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_buffer_min(s : ChemrxnyieldBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_buffer_max(s : ChemrxnyieldBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_buffer_max(s : ChemrxnyieldBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_buffer_to_string(s : ChemrxnyieldBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_rxn_yield_cursor_set(s : ChemrxnyieldCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_yield_cursor_sum(s : ChemrxnyieldCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_cursor_sum(s : ChemrxnyieldCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_cursor_mean(s : ChemrxnyieldCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_cursor_mean(s : ChemrxnyieldCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_cursor_scale(s : ChemrxnyieldCursor, f : Double) -> ChemrxnyieldCursor {
   let result = chem_rxn_yield_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_rxn_yield_cursor_fill(s : ChemrxnyieldCursor, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_yield_cursor_min(s : ChemrxnyieldCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_cursor_min(s : ChemrxnyieldCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_cursor_max(s : ChemrxnyieldCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_cursor_max(s : ChemrxnyieldCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_cursor_to_string(s : ChemrxnyieldCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_rxn_yield_view_set(s : ChemrxnyieldView, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_yield_view_sum(s : ChemrxnyieldView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_view_sum(s : ChemrxnyieldView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_view_mean(s : ChemrxnyieldView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_view_mean(s : ChemrxnyieldView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_view_scale(s : ChemrxnyieldView, f : Double) -> ChemrxnyieldView {
   let result = chem_rxn_yield_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_rxn_yield_view_fill(s : ChemrxnyieldView, v : Double) -> Chemrxnyiel
   result
 }
 
-pub fn chem_rxn_yield_view_min(s : ChemrxnyieldView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_view_min(s : ChemrxnyieldView) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_view_max(s : ChemrxnyieldView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_view_max(s : ChemrxnyieldView) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_view_to_string(s : ChemrxnyieldView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_rxn_yield_range_set(s : ChemrxnyieldRange, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_yield_range_sum(s : ChemrxnyieldRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_range_sum(s : ChemrxnyieldRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_range_mean(s : ChemrxnyieldRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_range_mean(s : ChemrxnyieldRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_range_scale(s : ChemrxnyieldRange, f : Double) -> ChemrxnyieldRange {
   let result = chem_rxn_yield_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_rxn_yield_range_fill(s : ChemrxnyieldRange, v : Double) -> Chemrxnyi
   result
 }
 
-pub fn chem_rxn_yield_range_min(s : ChemrxnyieldRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_range_min(s : ChemrxnyieldRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_range_max(s : ChemrxnyieldRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_range_max(s : ChemrxnyieldRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_range_to_string(s : ChemrxnyieldRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_rxn_yield_slice_set(s : ChemrxnyieldSlice, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_yield_slice_sum(s : ChemrxnyieldSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_yield_slice_sum(s : ChemrxnyieldSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_yield_slice_mean(s : ChemrxnyieldSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_yield_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_yield_slice_mean(s : ChemrxnyieldSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_yield_slice_scale(s : ChemrxnyieldSlice, f : Double) -> ChemrxnyieldSlice {
   let result = chem_rxn_yield_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_rxn_yield_slice_fill(s : ChemrxnyieldSlice, v : Double) -> Chemrxnyi
   result
 }
 
-pub fn chem_rxn_yield_slice_min(s : ChemrxnyieldSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_slice_min(s : ChemrxnyieldSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_yield_slice_max(s : ChemrxnyieldSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_yield_slice_max(s : ChemrxnyieldSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_yield_slice_to_string(s : ChemrxnyieldSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

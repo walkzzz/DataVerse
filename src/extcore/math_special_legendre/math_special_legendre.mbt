@@ -88,11 +88,7 @@ pub fn math_special_legendre_make_series(vals : Array[Double], name : String) ->
 
 pub fn math_special_legendre_series_len(s : MathspeciallegendreSeries) -> Int { s.vals.length() }
 
-pub fn math_special_legendre_series_sum(s : MathspeciallegendreSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_legendre_series_sum(s : MathspeciallegendreSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_legendre_series_mean(s : MathspeciallegendreSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_legendre_frame_set(s : MathspeciallegendreFrame, i : Int, v 
   result
 }
 
-pub fn math_special_legendre_frame_sum(s : MathspeciallegendreFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_frame_sum(s : MathspeciallegendreFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_frame_mean(s : MathspeciallegendreFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_frame_mean(s : MathspeciallegendreFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_frame_scale(s : MathspeciallegendreFrame, f : Double) -> MathspeciallegendreFrame {
   let result = math_special_legendre_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_legendre_frame_fill(s : MathspeciallegendreFrame, v : Double
   result
 }
 
-pub fn math_special_legendre_frame_min(s : MathspeciallegendreFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_frame_min(s : MathspeciallegendreFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_frame_max(s : MathspeciallegendreFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_frame_max(s : MathspeciallegendreFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_frame_to_string(s : MathspeciallegendreFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_legendre_table_set(s : MathspeciallegendreTable, i : Int, v 
   result
 }
 
-pub fn math_special_legendre_table_sum(s : MathspeciallegendreTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_table_sum(s : MathspeciallegendreTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_table_mean(s : MathspeciallegendreTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_table_mean(s : MathspeciallegendreTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_table_scale(s : MathspeciallegendreTable, f : Double) -> MathspeciallegendreTable {
   let result = math_special_legendre_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_legendre_table_fill(s : MathspeciallegendreTable, v : Double
   result
 }
 
-pub fn math_special_legendre_table_min(s : MathspeciallegendreTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_table_min(s : MathspeciallegendreTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_table_max(s : MathspeciallegendreTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_table_max(s : MathspeciallegendreTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_table_to_string(s : MathspeciallegendreTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_legendre_graphn_set(s : MathspeciallegendreGraphN, i : Int, 
   result
 }
 
-pub fn math_special_legendre_graphn_sum(s : MathspeciallegendreGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_graphn_sum(s : MathspeciallegendreGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_graphn_mean(s : MathspeciallegendreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_graphn_mean(s : MathspeciallegendreGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_graphn_scale(s : MathspeciallegendreGraphN, f : Double) -> MathspeciallegendreGraphN {
   let result = math_special_legendre_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_legendre_graphn_fill(s : MathspeciallegendreGraphN, v : Doub
   result
 }
 
-pub fn math_special_legendre_graphn_min(s : MathspeciallegendreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_graphn_min(s : MathspeciallegendreGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_graphn_max(s : MathspeciallegendreGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_graphn_max(s : MathspeciallegendreGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_graphn_to_string(s : MathspeciallegendreGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_legendre_node_set(s : MathspeciallegendreNode, i : Int, v : 
   result
 }
 
-pub fn math_special_legendre_node_sum(s : MathspeciallegendreNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_node_sum(s : MathspeciallegendreNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_node_mean(s : MathspeciallegendreNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_node_mean(s : MathspeciallegendreNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_node_scale(s : MathspeciallegendreNode, f : Double) -> MathspeciallegendreNode {
   let result = math_special_legendre_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_legendre_node_fill(s : MathspeciallegendreNode, v : Double) 
   result
 }
 
-pub fn math_special_legendre_node_min(s : MathspeciallegendreNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_node_min(s : MathspeciallegendreNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_node_max(s : MathspeciallegendreNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_node_max(s : MathspeciallegendreNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_node_to_string(s : MathspeciallegendreNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_legendre_edge_set(s : MathspeciallegendreEdge, i : Int, v : 
   result
 }
 
-pub fn math_special_legendre_edge_sum(s : MathspeciallegendreEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_edge_sum(s : MathspeciallegendreEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_edge_mean(s : MathspeciallegendreEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_edge_mean(s : MathspeciallegendreEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_edge_scale(s : MathspeciallegendreEdge, f : Double) -> MathspeciallegendreEdge {
   let result = math_special_legendre_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_legendre_edge_fill(s : MathspeciallegendreEdge, v : Double) 
   result
 }
 
-pub fn math_special_legendre_edge_min(s : MathspeciallegendreEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_edge_min(s : MathspeciallegendreEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_edge_max(s : MathspeciallegendreEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_edge_max(s : MathspeciallegendreEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_edge_to_string(s : MathspeciallegendreEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_legendre_path_set(s : MathspeciallegendrePath, i : Int, v : 
   result
 }
 
-pub fn math_special_legendre_path_sum(s : MathspeciallegendrePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_path_sum(s : MathspeciallegendrePath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_path_mean(s : MathspeciallegendrePath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_path_mean(s : MathspeciallegendrePath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_path_scale(s : MathspeciallegendrePath, f : Double) -> MathspeciallegendrePath {
   let result = math_special_legendre_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_legendre_path_fill(s : MathspeciallegendrePath, v : Double) 
   result
 }
 
-pub fn math_special_legendre_path_min(s : MathspeciallegendrePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_path_min(s : MathspeciallegendrePath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_path_max(s : MathspeciallegendrePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_path_max(s : MathspeciallegendrePath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_path_to_string(s : MathspeciallegendrePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_legendre_cluster_set(s : MathspeciallegendreCluster, i : Int
   result
 }
 
-pub fn math_special_legendre_cluster_sum(s : MathspeciallegendreCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_cluster_sum(s : MathspeciallegendreCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_cluster_mean(s : MathspeciallegendreCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_cluster_mean(s : MathspeciallegendreCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_cluster_scale(s : MathspeciallegendreCluster, f : Double) -> MathspeciallegendreCluster {
   let result = math_special_legendre_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_legendre_cluster_fill(s : MathspeciallegendreCluster, v : Do
   result
 }
 
-pub fn math_special_legendre_cluster_min(s : MathspeciallegendreCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_cluster_min(s : MathspeciallegendreCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_cluster_max(s : MathspeciallegendreCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_cluster_max(s : MathspeciallegendreCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_cluster_to_string(s : MathspeciallegendreCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_legendre_model_set(s : MathspeciallegendreModel, i : Int, v 
   result
 }
 
-pub fn math_special_legendre_model_sum(s : MathspeciallegendreModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_model_sum(s : MathspeciallegendreModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_model_mean(s : MathspeciallegendreModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_model_mean(s : MathspeciallegendreModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_model_scale(s : MathspeciallegendreModel, f : Double) -> MathspeciallegendreModel {
   let result = math_special_legendre_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_legendre_model_fill(s : MathspeciallegendreModel, v : Double
   result
 }
 
-pub fn math_special_legendre_model_min(s : MathspeciallegendreModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_model_min(s : MathspeciallegendreModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_model_max(s : MathspeciallegendreModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_model_max(s : MathspeciallegendreModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_model_to_string(s : MathspeciallegendreModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_legendre_layer_set(s : MathspeciallegendreLayer, i : Int, v 
   result
 }
 
-pub fn math_special_legendre_layer_sum(s : MathspeciallegendreLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_layer_sum(s : MathspeciallegendreLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_layer_mean(s : MathspeciallegendreLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_layer_mean(s : MathspeciallegendreLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_layer_scale(s : MathspeciallegendreLayer, f : Double) -> MathspeciallegendreLayer {
   let result = math_special_legendre_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_legendre_layer_fill(s : MathspeciallegendreLayer, v : Double
   result
 }
 
-pub fn math_special_legendre_layer_min(s : MathspeciallegendreLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_layer_min(s : MathspeciallegendreLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_layer_max(s : MathspeciallegendreLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_layer_max(s : MathspeciallegendreLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_layer_to_string(s : MathspeciallegendreLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_legendre_buffer_set(s : MathspeciallegendreBuffer, i : Int, 
   result
 }
 
-pub fn math_special_legendre_buffer_sum(s : MathspeciallegendreBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_buffer_sum(s : MathspeciallegendreBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_buffer_mean(s : MathspeciallegendreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_buffer_mean(s : MathspeciallegendreBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_buffer_scale(s : MathspeciallegendreBuffer, f : Double) -> MathspeciallegendreBuffer {
   let result = math_special_legendre_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_legendre_buffer_fill(s : MathspeciallegendreBuffer, v : Doub
   result
 }
 
-pub fn math_special_legendre_buffer_min(s : MathspeciallegendreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_buffer_min(s : MathspeciallegendreBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_buffer_max(s : MathspeciallegendreBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_buffer_max(s : MathspeciallegendreBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_buffer_to_string(s : MathspeciallegendreBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_legendre_cursor_set(s : MathspeciallegendreCursor, i : Int, 
   result
 }
 
-pub fn math_special_legendre_cursor_sum(s : MathspeciallegendreCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_cursor_sum(s : MathspeciallegendreCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_cursor_mean(s : MathspeciallegendreCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_cursor_mean(s : MathspeciallegendreCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_cursor_scale(s : MathspeciallegendreCursor, f : Double) -> MathspeciallegendreCursor {
   let result = math_special_legendre_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_legendre_cursor_fill(s : MathspeciallegendreCursor, v : Doub
   result
 }
 
-pub fn math_special_legendre_cursor_min(s : MathspeciallegendreCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_cursor_min(s : MathspeciallegendreCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_cursor_max(s : MathspeciallegendreCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_cursor_max(s : MathspeciallegendreCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_cursor_to_string(s : MathspeciallegendreCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_legendre_view_set(s : MathspeciallegendreView, i : Int, v : 
   result
 }
 
-pub fn math_special_legendre_view_sum(s : MathspeciallegendreView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_view_sum(s : MathspeciallegendreView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_view_mean(s : MathspeciallegendreView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_view_mean(s : MathspeciallegendreView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_view_scale(s : MathspeciallegendreView, f : Double) -> MathspeciallegendreView {
   let result = math_special_legendre_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_legendre_view_fill(s : MathspeciallegendreView, v : Double) 
   result
 }
 
-pub fn math_special_legendre_view_min(s : MathspeciallegendreView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_view_min(s : MathspeciallegendreView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_view_max(s : MathspeciallegendreView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_view_max(s : MathspeciallegendreView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_view_to_string(s : MathspeciallegendreView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_legendre_range_set(s : MathspeciallegendreRange, i : Int, v 
   result
 }
 
-pub fn math_special_legendre_range_sum(s : MathspeciallegendreRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_range_sum(s : MathspeciallegendreRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_range_mean(s : MathspeciallegendreRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_range_mean(s : MathspeciallegendreRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_range_scale(s : MathspeciallegendreRange, f : Double) -> MathspeciallegendreRange {
   let result = math_special_legendre_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_legendre_range_fill(s : MathspeciallegendreRange, v : Double
   result
 }
 
-pub fn math_special_legendre_range_min(s : MathspeciallegendreRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_range_min(s : MathspeciallegendreRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_range_max(s : MathspeciallegendreRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_range_max(s : MathspeciallegendreRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_range_to_string(s : MathspeciallegendreRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_legendre_slice_set(s : MathspeciallegendreSlice, i : Int, v 
   result
 }
 
-pub fn math_special_legendre_slice_sum(s : MathspeciallegendreSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_legendre_slice_sum(s : MathspeciallegendreSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_legendre_slice_mean(s : MathspeciallegendreSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_legendre_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_legendre_slice_mean(s : MathspeciallegendreSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_legendre_slice_scale(s : MathspeciallegendreSlice, f : Double) -> MathspeciallegendreSlice {
   let result = math_special_legendre_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_legendre_slice_fill(s : MathspeciallegendreSlice, v : Double
   result
 }
 
-pub fn math_special_legendre_slice_min(s : MathspeciallegendreSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_slice_min(s : MathspeciallegendreSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_legendre_slice_max(s : MathspeciallegendreSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_legendre_slice_max(s : MathspeciallegendreSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_legendre_slice_to_string(s : MathspeciallegendreSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

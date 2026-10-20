@@ -88,11 +88,7 @@ pub fn bio_struct_contact_make_series(vals : Array[Double], name : String) -> Bi
 
 pub fn bio_struct_contact_series_len(s : BiostructcontactSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_contact_series_sum(s : BiostructcontactSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_contact_series_sum(s : BiostructcontactSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_contact_series_mean(s : BiostructcontactSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_contact_frame_set(s : BiostructcontactFrame, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_contact_frame_sum(s : BiostructcontactFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_frame_sum(s : BiostructcontactFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_frame_mean(s : BiostructcontactFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_frame_mean(s : BiostructcontactFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_frame_scale(s : BiostructcontactFrame, f : Double) -> BiostructcontactFrame {
   let result = bio_struct_contact_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_contact_frame_fill(s : BiostructcontactFrame, v : Double) -> B
   result
 }
 
-pub fn bio_struct_contact_frame_min(s : BiostructcontactFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_frame_min(s : BiostructcontactFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_frame_max(s : BiostructcontactFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_frame_max(s : BiostructcontactFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_frame_to_string(s : BiostructcontactFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_contact_table_set(s : BiostructcontactTable, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_contact_table_sum(s : BiostructcontactTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_table_sum(s : BiostructcontactTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_table_mean(s : BiostructcontactTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_table_mean(s : BiostructcontactTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_table_scale(s : BiostructcontactTable, f : Double) -> BiostructcontactTable {
   let result = bio_struct_contact_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_contact_table_fill(s : BiostructcontactTable, v : Double) -> B
   result
 }
 
-pub fn bio_struct_contact_table_min(s : BiostructcontactTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_table_min(s : BiostructcontactTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_table_max(s : BiostructcontactTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_table_max(s : BiostructcontactTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_table_to_string(s : BiostructcontactTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_contact_graphn_set(s : BiostructcontactGraphN, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_contact_graphn_sum(s : BiostructcontactGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_graphn_sum(s : BiostructcontactGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_graphn_mean(s : BiostructcontactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_graphn_mean(s : BiostructcontactGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_graphn_scale(s : BiostructcontactGraphN, f : Double) -> BiostructcontactGraphN {
   let result = bio_struct_contact_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_contact_graphn_fill(s : BiostructcontactGraphN, v : Double) ->
   result
 }
 
-pub fn bio_struct_contact_graphn_min(s : BiostructcontactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_graphn_min(s : BiostructcontactGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_graphn_max(s : BiostructcontactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_graphn_max(s : BiostructcontactGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_graphn_to_string(s : BiostructcontactGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_contact_node_set(s : BiostructcontactNode, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_contact_node_sum(s : BiostructcontactNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_node_sum(s : BiostructcontactNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_node_mean(s : BiostructcontactNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_node_mean(s : BiostructcontactNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_node_scale(s : BiostructcontactNode, f : Double) -> BiostructcontactNode {
   let result = bio_struct_contact_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_contact_node_fill(s : BiostructcontactNode, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_contact_node_min(s : BiostructcontactNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_node_min(s : BiostructcontactNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_node_max(s : BiostructcontactNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_node_max(s : BiostructcontactNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_node_to_string(s : BiostructcontactNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_contact_edge_set(s : BiostructcontactEdge, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_contact_edge_sum(s : BiostructcontactEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_edge_sum(s : BiostructcontactEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_edge_mean(s : BiostructcontactEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_edge_mean(s : BiostructcontactEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_edge_scale(s : BiostructcontactEdge, f : Double) -> BiostructcontactEdge {
   let result = bio_struct_contact_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_contact_edge_fill(s : BiostructcontactEdge, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_contact_edge_min(s : BiostructcontactEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_edge_min(s : BiostructcontactEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_edge_max(s : BiostructcontactEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_edge_max(s : BiostructcontactEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_edge_to_string(s : BiostructcontactEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_contact_path_set(s : BiostructcontactPath, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_contact_path_sum(s : BiostructcontactPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_path_sum(s : BiostructcontactPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_path_mean(s : BiostructcontactPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_path_mean(s : BiostructcontactPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_path_scale(s : BiostructcontactPath, f : Double) -> BiostructcontactPath {
   let result = bio_struct_contact_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_contact_path_fill(s : BiostructcontactPath, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_contact_path_min(s : BiostructcontactPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_path_min(s : BiostructcontactPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_path_max(s : BiostructcontactPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_path_max(s : BiostructcontactPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_path_to_string(s : BiostructcontactPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_contact_cluster_set(s : BiostructcontactCluster, i : Int, v : 
   result
 }
 
-pub fn bio_struct_contact_cluster_sum(s : BiostructcontactCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_cluster_sum(s : BiostructcontactCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_cluster_mean(s : BiostructcontactCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_cluster_mean(s : BiostructcontactCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_cluster_scale(s : BiostructcontactCluster, f : Double) -> BiostructcontactCluster {
   let result = bio_struct_contact_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_contact_cluster_fill(s : BiostructcontactCluster, v : Double) 
   result
 }
 
-pub fn bio_struct_contact_cluster_min(s : BiostructcontactCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_cluster_min(s : BiostructcontactCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_cluster_max(s : BiostructcontactCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_cluster_max(s : BiostructcontactCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_cluster_to_string(s : BiostructcontactCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_contact_model_set(s : BiostructcontactModel, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_contact_model_sum(s : BiostructcontactModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_model_sum(s : BiostructcontactModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_model_mean(s : BiostructcontactModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_model_mean(s : BiostructcontactModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_model_scale(s : BiostructcontactModel, f : Double) -> BiostructcontactModel {
   let result = bio_struct_contact_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_contact_model_fill(s : BiostructcontactModel, v : Double) -> B
   result
 }
 
-pub fn bio_struct_contact_model_min(s : BiostructcontactModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_model_min(s : BiostructcontactModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_model_max(s : BiostructcontactModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_model_max(s : BiostructcontactModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_model_to_string(s : BiostructcontactModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_contact_layer_set(s : BiostructcontactLayer, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_contact_layer_sum(s : BiostructcontactLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_layer_sum(s : BiostructcontactLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_layer_mean(s : BiostructcontactLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_layer_mean(s : BiostructcontactLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_layer_scale(s : BiostructcontactLayer, f : Double) -> BiostructcontactLayer {
   let result = bio_struct_contact_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_contact_layer_fill(s : BiostructcontactLayer, v : Double) -> B
   result
 }
 
-pub fn bio_struct_contact_layer_min(s : BiostructcontactLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_layer_min(s : BiostructcontactLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_layer_max(s : BiostructcontactLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_layer_max(s : BiostructcontactLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_layer_to_string(s : BiostructcontactLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_contact_buffer_set(s : BiostructcontactBuffer, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_contact_buffer_sum(s : BiostructcontactBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_buffer_sum(s : BiostructcontactBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_buffer_mean(s : BiostructcontactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_buffer_mean(s : BiostructcontactBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_buffer_scale(s : BiostructcontactBuffer, f : Double) -> BiostructcontactBuffer {
   let result = bio_struct_contact_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_contact_buffer_fill(s : BiostructcontactBuffer, v : Double) ->
   result
 }
 
-pub fn bio_struct_contact_buffer_min(s : BiostructcontactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_buffer_min(s : BiostructcontactBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_buffer_max(s : BiostructcontactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_buffer_max(s : BiostructcontactBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_buffer_to_string(s : BiostructcontactBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_contact_cursor_set(s : BiostructcontactCursor, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_contact_cursor_sum(s : BiostructcontactCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_cursor_sum(s : BiostructcontactCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_cursor_mean(s : BiostructcontactCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_cursor_mean(s : BiostructcontactCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_cursor_scale(s : BiostructcontactCursor, f : Double) -> BiostructcontactCursor {
   let result = bio_struct_contact_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_contact_cursor_fill(s : BiostructcontactCursor, v : Double) ->
   result
 }
 
-pub fn bio_struct_contact_cursor_min(s : BiostructcontactCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_cursor_min(s : BiostructcontactCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_cursor_max(s : BiostructcontactCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_cursor_max(s : BiostructcontactCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_cursor_to_string(s : BiostructcontactCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_contact_view_set(s : BiostructcontactView, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_contact_view_sum(s : BiostructcontactView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_view_sum(s : BiostructcontactView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_view_mean(s : BiostructcontactView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_view_mean(s : BiostructcontactView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_view_scale(s : BiostructcontactView, f : Double) -> BiostructcontactView {
   let result = bio_struct_contact_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_contact_view_fill(s : BiostructcontactView, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_contact_view_min(s : BiostructcontactView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_view_min(s : BiostructcontactView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_view_max(s : BiostructcontactView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_view_max(s : BiostructcontactView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_view_to_string(s : BiostructcontactView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_contact_range_set(s : BiostructcontactRange, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_contact_range_sum(s : BiostructcontactRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_range_sum(s : BiostructcontactRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_range_mean(s : BiostructcontactRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_range_mean(s : BiostructcontactRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_range_scale(s : BiostructcontactRange, f : Double) -> BiostructcontactRange {
   let result = bio_struct_contact_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_contact_range_fill(s : BiostructcontactRange, v : Double) -> B
   result
 }
 
-pub fn bio_struct_contact_range_min(s : BiostructcontactRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_range_min(s : BiostructcontactRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_range_max(s : BiostructcontactRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_range_max(s : BiostructcontactRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_range_to_string(s : BiostructcontactRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_contact_slice_set(s : BiostructcontactSlice, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_contact_slice_sum(s : BiostructcontactSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_contact_slice_sum(s : BiostructcontactSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_contact_slice_mean(s : BiostructcontactSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_contact_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_contact_slice_mean(s : BiostructcontactSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_contact_slice_scale(s : BiostructcontactSlice, f : Double) -> BiostructcontactSlice {
   let result = bio_struct_contact_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_contact_slice_fill(s : BiostructcontactSlice, v : Double) -> B
   result
 }
 
-pub fn bio_struct_contact_slice_min(s : BiostructcontactSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_slice_min(s : BiostructcontactSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_contact_slice_max(s : BiostructcontactSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_contact_slice_max(s : BiostructcontactSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_contact_slice_to_string(s : BiostructcontactSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

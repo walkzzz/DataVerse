@@ -88,11 +88,7 @@ pub fn ml_metric_pr_make_series(vals : Array[Double], name : String) -> Mlmetric
 
 pub fn ml_metric_pr_series_len(s : MlmetricprSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_pr_series_sum(s : MlmetricprSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_pr_series_sum(s : MlmetricprSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_pr_series_mean(s : MlmetricprSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_pr_frame_set(s : MlmetricprFrame, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_pr_frame_sum(s : MlmetricprFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_frame_sum(s : MlmetricprFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_frame_mean(s : MlmetricprFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_frame_mean(s : MlmetricprFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_frame_scale(s : MlmetricprFrame, f : Double) -> MlmetricprFrame {
   let result = ml_metric_pr_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_pr_frame_fill(s : MlmetricprFrame, v : Double) -> MlmetricprFra
   result
 }
 
-pub fn ml_metric_pr_frame_min(s : MlmetricprFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_frame_min(s : MlmetricprFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_frame_max(s : MlmetricprFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_frame_max(s : MlmetricprFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_frame_to_string(s : MlmetricprFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_pr_table_set(s : MlmetricprTable, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_pr_table_sum(s : MlmetricprTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_table_sum(s : MlmetricprTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_table_mean(s : MlmetricprTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_table_mean(s : MlmetricprTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_table_scale(s : MlmetricprTable, f : Double) -> MlmetricprTable {
   let result = ml_metric_pr_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_pr_table_fill(s : MlmetricprTable, v : Double) -> MlmetricprTab
   result
 }
 
-pub fn ml_metric_pr_table_min(s : MlmetricprTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_table_min(s : MlmetricprTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_table_max(s : MlmetricprTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_table_max(s : MlmetricprTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_table_to_string(s : MlmetricprTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_pr_graphn_set(s : MlmetricprGraphN, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_pr_graphn_sum(s : MlmetricprGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_graphn_sum(s : MlmetricprGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_graphn_mean(s : MlmetricprGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_graphn_mean(s : MlmetricprGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_graphn_scale(s : MlmetricprGraphN, f : Double) -> MlmetricprGraphN {
   let result = ml_metric_pr_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_pr_graphn_fill(s : MlmetricprGraphN, v : Double) -> MlmetricprG
   result
 }
 
-pub fn ml_metric_pr_graphn_min(s : MlmetricprGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_graphn_min(s : MlmetricprGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_graphn_max(s : MlmetricprGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_graphn_max(s : MlmetricprGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_graphn_to_string(s : MlmetricprGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_pr_node_set(s : MlmetricprNode, i : Int, v : Double) -> Mlmetri
   result
 }
 
-pub fn ml_metric_pr_node_sum(s : MlmetricprNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_node_sum(s : MlmetricprNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_node_mean(s : MlmetricprNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_node_mean(s : MlmetricprNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_node_scale(s : MlmetricprNode, f : Double) -> MlmetricprNode {
   let result = ml_metric_pr_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_pr_node_fill(s : MlmetricprNode, v : Double) -> MlmetricprNode 
   result
 }
 
-pub fn ml_metric_pr_node_min(s : MlmetricprNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_node_min(s : MlmetricprNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_node_max(s : MlmetricprNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_node_max(s : MlmetricprNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_node_to_string(s : MlmetricprNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_pr_edge_set(s : MlmetricprEdge, i : Int, v : Double) -> Mlmetri
   result
 }
 
-pub fn ml_metric_pr_edge_sum(s : MlmetricprEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_edge_sum(s : MlmetricprEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_edge_mean(s : MlmetricprEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_edge_mean(s : MlmetricprEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_edge_scale(s : MlmetricprEdge, f : Double) -> MlmetricprEdge {
   let result = ml_metric_pr_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_pr_edge_fill(s : MlmetricprEdge, v : Double) -> MlmetricprEdge 
   result
 }
 
-pub fn ml_metric_pr_edge_min(s : MlmetricprEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_edge_min(s : MlmetricprEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_edge_max(s : MlmetricprEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_edge_max(s : MlmetricprEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_edge_to_string(s : MlmetricprEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_pr_path_set(s : MlmetricprPath, i : Int, v : Double) -> Mlmetri
   result
 }
 
-pub fn ml_metric_pr_path_sum(s : MlmetricprPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_path_sum(s : MlmetricprPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_path_mean(s : MlmetricprPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_path_mean(s : MlmetricprPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_path_scale(s : MlmetricprPath, f : Double) -> MlmetricprPath {
   let result = ml_metric_pr_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_pr_path_fill(s : MlmetricprPath, v : Double) -> MlmetricprPath 
   result
 }
 
-pub fn ml_metric_pr_path_min(s : MlmetricprPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_path_min(s : MlmetricprPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_path_max(s : MlmetricprPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_path_max(s : MlmetricprPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_path_to_string(s : MlmetricprPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_pr_cluster_set(s : MlmetricprCluster, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_metric_pr_cluster_sum(s : MlmetricprCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_cluster_sum(s : MlmetricprCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_cluster_mean(s : MlmetricprCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_cluster_mean(s : MlmetricprCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_cluster_scale(s : MlmetricprCluster, f : Double) -> MlmetricprCluster {
   let result = ml_metric_pr_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_pr_cluster_fill(s : MlmetricprCluster, v : Double) -> Mlmetricp
   result
 }
 
-pub fn ml_metric_pr_cluster_min(s : MlmetricprCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_cluster_min(s : MlmetricprCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_cluster_max(s : MlmetricprCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_cluster_max(s : MlmetricprCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_cluster_to_string(s : MlmetricprCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_pr_model_set(s : MlmetricprModel, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_pr_model_sum(s : MlmetricprModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_model_sum(s : MlmetricprModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_model_mean(s : MlmetricprModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_model_mean(s : MlmetricprModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_model_scale(s : MlmetricprModel, f : Double) -> MlmetricprModel {
   let result = ml_metric_pr_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_pr_model_fill(s : MlmetricprModel, v : Double) -> MlmetricprMod
   result
 }
 
-pub fn ml_metric_pr_model_min(s : MlmetricprModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_model_min(s : MlmetricprModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_model_max(s : MlmetricprModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_model_max(s : MlmetricprModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_model_to_string(s : MlmetricprModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_pr_layer_set(s : MlmetricprLayer, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_pr_layer_sum(s : MlmetricprLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_layer_sum(s : MlmetricprLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_layer_mean(s : MlmetricprLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_layer_mean(s : MlmetricprLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_layer_scale(s : MlmetricprLayer, f : Double) -> MlmetricprLayer {
   let result = ml_metric_pr_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_pr_layer_fill(s : MlmetricprLayer, v : Double) -> MlmetricprLay
   result
 }
 
-pub fn ml_metric_pr_layer_min(s : MlmetricprLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_layer_min(s : MlmetricprLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_layer_max(s : MlmetricprLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_layer_max(s : MlmetricprLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_layer_to_string(s : MlmetricprLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_pr_buffer_set(s : MlmetricprBuffer, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_pr_buffer_sum(s : MlmetricprBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_buffer_sum(s : MlmetricprBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_buffer_mean(s : MlmetricprBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_buffer_mean(s : MlmetricprBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_buffer_scale(s : MlmetricprBuffer, f : Double) -> MlmetricprBuffer {
   let result = ml_metric_pr_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_pr_buffer_fill(s : MlmetricprBuffer, v : Double) -> MlmetricprB
   result
 }
 
-pub fn ml_metric_pr_buffer_min(s : MlmetricprBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_buffer_min(s : MlmetricprBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_buffer_max(s : MlmetricprBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_buffer_max(s : MlmetricprBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_buffer_to_string(s : MlmetricprBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_pr_cursor_set(s : MlmetricprCursor, i : Int, v : Double) -> Mlm
   result
 }
 
-pub fn ml_metric_pr_cursor_sum(s : MlmetricprCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_cursor_sum(s : MlmetricprCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_cursor_mean(s : MlmetricprCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_cursor_mean(s : MlmetricprCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_cursor_scale(s : MlmetricprCursor, f : Double) -> MlmetricprCursor {
   let result = ml_metric_pr_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_pr_cursor_fill(s : MlmetricprCursor, v : Double) -> MlmetricprC
   result
 }
 
-pub fn ml_metric_pr_cursor_min(s : MlmetricprCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_cursor_min(s : MlmetricprCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_cursor_max(s : MlmetricprCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_cursor_max(s : MlmetricprCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_cursor_to_string(s : MlmetricprCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_pr_view_set(s : MlmetricprView, i : Int, v : Double) -> Mlmetri
   result
 }
 
-pub fn ml_metric_pr_view_sum(s : MlmetricprView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_view_sum(s : MlmetricprView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_view_mean(s : MlmetricprView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_view_mean(s : MlmetricprView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_view_scale(s : MlmetricprView, f : Double) -> MlmetricprView {
   let result = ml_metric_pr_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_pr_view_fill(s : MlmetricprView, v : Double) -> MlmetricprView 
   result
 }
 
-pub fn ml_metric_pr_view_min(s : MlmetricprView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_view_min(s : MlmetricprView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_view_max(s : MlmetricprView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_view_max(s : MlmetricprView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_view_to_string(s : MlmetricprView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_pr_range_set(s : MlmetricprRange, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_pr_range_sum(s : MlmetricprRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_range_sum(s : MlmetricprRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_range_mean(s : MlmetricprRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_range_mean(s : MlmetricprRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_range_scale(s : MlmetricprRange, f : Double) -> MlmetricprRange {
   let result = ml_metric_pr_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_pr_range_fill(s : MlmetricprRange, v : Double) -> MlmetricprRan
   result
 }
 
-pub fn ml_metric_pr_range_min(s : MlmetricprRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_range_min(s : MlmetricprRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_range_max(s : MlmetricprRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_range_max(s : MlmetricprRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_range_to_string(s : MlmetricprRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_pr_slice_set(s : MlmetricprSlice, i : Int, v : Double) -> Mlmet
   result
 }
 
-pub fn ml_metric_pr_slice_sum(s : MlmetricprSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_pr_slice_sum(s : MlmetricprSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_pr_slice_mean(s : MlmetricprSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_pr_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_pr_slice_mean(s : MlmetricprSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_pr_slice_scale(s : MlmetricprSlice, f : Double) -> MlmetricprSlice {
   let result = ml_metric_pr_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_pr_slice_fill(s : MlmetricprSlice, v : Double) -> MlmetricprSli
   result
 }
 
-pub fn ml_metric_pr_slice_min(s : MlmetricprSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_slice_min(s : MlmetricprSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_pr_slice_max(s : MlmetricprSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_pr_slice_max(s : MlmetricprSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_pr_slice_to_string(s : MlmetricprSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

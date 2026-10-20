@@ -88,11 +88,7 @@ pub fn net_proto_quic_make_series(vals : Array[Double], name : String) -> Netpro
 
 pub fn net_proto_quic_series_len(s : NetprotoquicSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_quic_series_sum(s : NetprotoquicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_quic_series_sum(s : NetprotoquicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_quic_series_mean(s : NetprotoquicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_quic_frame_set(s : NetprotoquicFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_quic_frame_sum(s : NetprotoquicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_frame_sum(s : NetprotoquicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_frame_mean(s : NetprotoquicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_frame_mean(s : NetprotoquicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_frame_scale(s : NetprotoquicFrame, f : Double) -> NetprotoquicFrame {
   let result = net_proto_quic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_quic_frame_fill(s : NetprotoquicFrame, v : Double) -> Netprotoq
   result
 }
 
-pub fn net_proto_quic_frame_min(s : NetprotoquicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_frame_min(s : NetprotoquicFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_frame_max(s : NetprotoquicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_frame_max(s : NetprotoquicFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_frame_to_string(s : NetprotoquicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_quic_table_set(s : NetprotoquicTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_quic_table_sum(s : NetprotoquicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_table_sum(s : NetprotoquicTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_table_mean(s : NetprotoquicTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_table_mean(s : NetprotoquicTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_table_scale(s : NetprotoquicTable, f : Double) -> NetprotoquicTable {
   let result = net_proto_quic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_quic_table_fill(s : NetprotoquicTable, v : Double) -> Netprotoq
   result
 }
 
-pub fn net_proto_quic_table_min(s : NetprotoquicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_table_min(s : NetprotoquicTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_table_max(s : NetprotoquicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_table_max(s : NetprotoquicTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_table_to_string(s : NetprotoquicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_quic_graphn_set(s : NetprotoquicGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_quic_graphn_sum(s : NetprotoquicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_graphn_sum(s : NetprotoquicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_graphn_mean(s : NetprotoquicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_graphn_mean(s : NetprotoquicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_graphn_scale(s : NetprotoquicGraphN, f : Double) -> NetprotoquicGraphN {
   let result = net_proto_quic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_quic_graphn_fill(s : NetprotoquicGraphN, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_quic_graphn_min(s : NetprotoquicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_graphn_min(s : NetprotoquicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_graphn_max(s : NetprotoquicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_graphn_max(s : NetprotoquicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_graphn_to_string(s : NetprotoquicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_quic_node_set(s : NetprotoquicNode, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_quic_node_sum(s : NetprotoquicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_node_sum(s : NetprotoquicNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_node_mean(s : NetprotoquicNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_node_mean(s : NetprotoquicNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_node_scale(s : NetprotoquicNode, f : Double) -> NetprotoquicNode {
   let result = net_proto_quic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_quic_node_fill(s : NetprotoquicNode, v : Double) -> Netprotoqui
   result
 }
 
-pub fn net_proto_quic_node_min(s : NetprotoquicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_node_min(s : NetprotoquicNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_node_max(s : NetprotoquicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_node_max(s : NetprotoquicNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_node_to_string(s : NetprotoquicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_quic_edge_set(s : NetprotoquicEdge, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_quic_edge_sum(s : NetprotoquicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_edge_sum(s : NetprotoquicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_edge_mean(s : NetprotoquicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_edge_mean(s : NetprotoquicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_edge_scale(s : NetprotoquicEdge, f : Double) -> NetprotoquicEdge {
   let result = net_proto_quic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_quic_edge_fill(s : NetprotoquicEdge, v : Double) -> Netprotoqui
   result
 }
 
-pub fn net_proto_quic_edge_min(s : NetprotoquicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_edge_min(s : NetprotoquicEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_edge_max(s : NetprotoquicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_edge_max(s : NetprotoquicEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_edge_to_string(s : NetprotoquicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_quic_path_set(s : NetprotoquicPath, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_quic_path_sum(s : NetprotoquicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_path_sum(s : NetprotoquicPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_path_mean(s : NetprotoquicPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_path_mean(s : NetprotoquicPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_path_scale(s : NetprotoquicPath, f : Double) -> NetprotoquicPath {
   let result = net_proto_quic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_quic_path_fill(s : NetprotoquicPath, v : Double) -> Netprotoqui
   result
 }
 
-pub fn net_proto_quic_path_min(s : NetprotoquicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_path_min(s : NetprotoquicPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_path_max(s : NetprotoquicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_path_max(s : NetprotoquicPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_path_to_string(s : NetprotoquicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_quic_cluster_set(s : NetprotoquicCluster, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_quic_cluster_sum(s : NetprotoquicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_cluster_sum(s : NetprotoquicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_cluster_mean(s : NetprotoquicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_cluster_mean(s : NetprotoquicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_cluster_scale(s : NetprotoquicCluster, f : Double) -> NetprotoquicCluster {
   let result = net_proto_quic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_quic_cluster_fill(s : NetprotoquicCluster, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_quic_cluster_min(s : NetprotoquicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_cluster_min(s : NetprotoquicCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_cluster_max(s : NetprotoquicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_cluster_max(s : NetprotoquicCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_cluster_to_string(s : NetprotoquicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_quic_model_set(s : NetprotoquicModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_quic_model_sum(s : NetprotoquicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_model_sum(s : NetprotoquicModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_model_mean(s : NetprotoquicModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_model_mean(s : NetprotoquicModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_model_scale(s : NetprotoquicModel, f : Double) -> NetprotoquicModel {
   let result = net_proto_quic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_quic_model_fill(s : NetprotoquicModel, v : Double) -> Netprotoq
   result
 }
 
-pub fn net_proto_quic_model_min(s : NetprotoquicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_model_min(s : NetprotoquicModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_model_max(s : NetprotoquicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_model_max(s : NetprotoquicModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_model_to_string(s : NetprotoquicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_quic_layer_set(s : NetprotoquicLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_quic_layer_sum(s : NetprotoquicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_layer_sum(s : NetprotoquicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_layer_mean(s : NetprotoquicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_layer_mean(s : NetprotoquicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_layer_scale(s : NetprotoquicLayer, f : Double) -> NetprotoquicLayer {
   let result = net_proto_quic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_quic_layer_fill(s : NetprotoquicLayer, v : Double) -> Netprotoq
   result
 }
 
-pub fn net_proto_quic_layer_min(s : NetprotoquicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_layer_min(s : NetprotoquicLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_layer_max(s : NetprotoquicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_layer_max(s : NetprotoquicLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_layer_to_string(s : NetprotoquicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_quic_buffer_set(s : NetprotoquicBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_quic_buffer_sum(s : NetprotoquicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_buffer_sum(s : NetprotoquicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_buffer_mean(s : NetprotoquicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_buffer_mean(s : NetprotoquicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_buffer_scale(s : NetprotoquicBuffer, f : Double) -> NetprotoquicBuffer {
   let result = net_proto_quic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_quic_buffer_fill(s : NetprotoquicBuffer, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_quic_buffer_min(s : NetprotoquicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_buffer_min(s : NetprotoquicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_buffer_max(s : NetprotoquicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_buffer_max(s : NetprotoquicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_buffer_to_string(s : NetprotoquicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_quic_cursor_set(s : NetprotoquicCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_quic_cursor_sum(s : NetprotoquicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_cursor_sum(s : NetprotoquicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_cursor_mean(s : NetprotoquicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_cursor_mean(s : NetprotoquicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_cursor_scale(s : NetprotoquicCursor, f : Double) -> NetprotoquicCursor {
   let result = net_proto_quic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_quic_cursor_fill(s : NetprotoquicCursor, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_quic_cursor_min(s : NetprotoquicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_cursor_min(s : NetprotoquicCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_cursor_max(s : NetprotoquicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_cursor_max(s : NetprotoquicCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_cursor_to_string(s : NetprotoquicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_quic_view_set(s : NetprotoquicView, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_quic_view_sum(s : NetprotoquicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_view_sum(s : NetprotoquicView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_view_mean(s : NetprotoquicView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_view_mean(s : NetprotoquicView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_view_scale(s : NetprotoquicView, f : Double) -> NetprotoquicView {
   let result = net_proto_quic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_quic_view_fill(s : NetprotoquicView, v : Double) -> Netprotoqui
   result
 }
 
-pub fn net_proto_quic_view_min(s : NetprotoquicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_view_min(s : NetprotoquicView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_view_max(s : NetprotoquicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_view_max(s : NetprotoquicView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_view_to_string(s : NetprotoquicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_quic_range_set(s : NetprotoquicRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_quic_range_sum(s : NetprotoquicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_range_sum(s : NetprotoquicRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_range_mean(s : NetprotoquicRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_range_mean(s : NetprotoquicRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_range_scale(s : NetprotoquicRange, f : Double) -> NetprotoquicRange {
   let result = net_proto_quic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_quic_range_fill(s : NetprotoquicRange, v : Double) -> Netprotoq
   result
 }
 
-pub fn net_proto_quic_range_min(s : NetprotoquicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_range_min(s : NetprotoquicRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_range_max(s : NetprotoquicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_range_max(s : NetprotoquicRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_range_to_string(s : NetprotoquicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_quic_slice_set(s : NetprotoquicSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_quic_slice_sum(s : NetprotoquicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_quic_slice_sum(s : NetprotoquicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_quic_slice_mean(s : NetprotoquicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_quic_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_quic_slice_mean(s : NetprotoquicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_quic_slice_scale(s : NetprotoquicSlice, f : Double) -> NetprotoquicSlice {
   let result = net_proto_quic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_quic_slice_fill(s : NetprotoquicSlice, v : Double) -> Netprotoq
   result
 }
 
-pub fn net_proto_quic_slice_min(s : NetprotoquicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_slice_min(s : NetprotoquicSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_quic_slice_max(s : NetprotoquicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_quic_slice_max(s : NetprotoquicSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_quic_slice_to_string(s : NetprotoquicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

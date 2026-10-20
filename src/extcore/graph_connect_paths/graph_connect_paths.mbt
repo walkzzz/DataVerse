@@ -88,11 +88,7 @@ pub fn graph_connect_paths_make_series(vals : Array[Double], name : String) -> G
 
 pub fn graph_connect_paths_series_len(s : GraphconnectpathsSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_paths_series_sum(s : GraphconnectpathsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_paths_series_sum(s : GraphconnectpathsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_paths_series_mean(s : GraphconnectpathsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_paths_frame_set(s : GraphconnectpathsFrame, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_paths_frame_sum(s : GraphconnectpathsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_frame_sum(s : GraphconnectpathsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_frame_mean(s : GraphconnectpathsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_frame_mean(s : GraphconnectpathsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_frame_scale(s : GraphconnectpathsFrame, f : Double) -> GraphconnectpathsFrame {
   let result = graph_connect_paths_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_paths_frame_fill(s : GraphconnectpathsFrame, v : Double) ->
   result
 }
 
-pub fn graph_connect_paths_frame_min(s : GraphconnectpathsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_frame_min(s : GraphconnectpathsFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_frame_max(s : GraphconnectpathsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_frame_max(s : GraphconnectpathsFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_frame_to_string(s : GraphconnectpathsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_paths_table_set(s : GraphconnectpathsTable, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_paths_table_sum(s : GraphconnectpathsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_table_sum(s : GraphconnectpathsTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_table_mean(s : GraphconnectpathsTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_table_mean(s : GraphconnectpathsTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_table_scale(s : GraphconnectpathsTable, f : Double) -> GraphconnectpathsTable {
   let result = graph_connect_paths_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_paths_table_fill(s : GraphconnectpathsTable, v : Double) ->
   result
 }
 
-pub fn graph_connect_paths_table_min(s : GraphconnectpathsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_table_min(s : GraphconnectpathsTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_table_max(s : GraphconnectpathsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_table_max(s : GraphconnectpathsTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_table_to_string(s : GraphconnectpathsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_paths_graphn_set(s : GraphconnectpathsGraphN, i : Int, v : 
   result
 }
 
-pub fn graph_connect_paths_graphn_sum(s : GraphconnectpathsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_graphn_sum(s : GraphconnectpathsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_graphn_mean(s : GraphconnectpathsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_graphn_mean(s : GraphconnectpathsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_graphn_scale(s : GraphconnectpathsGraphN, f : Double) -> GraphconnectpathsGraphN {
   let result = graph_connect_paths_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_paths_graphn_fill(s : GraphconnectpathsGraphN, v : Double) 
   result
 }
 
-pub fn graph_connect_paths_graphn_min(s : GraphconnectpathsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_graphn_min(s : GraphconnectpathsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_graphn_max(s : GraphconnectpathsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_graphn_max(s : GraphconnectpathsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_graphn_to_string(s : GraphconnectpathsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_paths_node_set(s : GraphconnectpathsNode, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_paths_node_sum(s : GraphconnectpathsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_node_sum(s : GraphconnectpathsNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_node_mean(s : GraphconnectpathsNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_node_mean(s : GraphconnectpathsNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_node_scale(s : GraphconnectpathsNode, f : Double) -> GraphconnectpathsNode {
   let result = graph_connect_paths_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_paths_node_fill(s : GraphconnectpathsNode, v : Double) -> G
   result
 }
 
-pub fn graph_connect_paths_node_min(s : GraphconnectpathsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_node_min(s : GraphconnectpathsNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_node_max(s : GraphconnectpathsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_node_max(s : GraphconnectpathsNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_node_to_string(s : GraphconnectpathsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_paths_edge_set(s : GraphconnectpathsEdge, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_paths_edge_sum(s : GraphconnectpathsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_edge_sum(s : GraphconnectpathsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_edge_mean(s : GraphconnectpathsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_edge_mean(s : GraphconnectpathsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_edge_scale(s : GraphconnectpathsEdge, f : Double) -> GraphconnectpathsEdge {
   let result = graph_connect_paths_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_paths_edge_fill(s : GraphconnectpathsEdge, v : Double) -> G
   result
 }
 
-pub fn graph_connect_paths_edge_min(s : GraphconnectpathsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_edge_min(s : GraphconnectpathsEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_edge_max(s : GraphconnectpathsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_edge_max(s : GraphconnectpathsEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_edge_to_string(s : GraphconnectpathsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_paths_path_set(s : GraphconnectpathsPath, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_paths_path_sum(s : GraphconnectpathsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_path_sum(s : GraphconnectpathsPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_path_mean(s : GraphconnectpathsPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_path_mean(s : GraphconnectpathsPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_path_scale(s : GraphconnectpathsPath, f : Double) -> GraphconnectpathsPath {
   let result = graph_connect_paths_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_paths_path_fill(s : GraphconnectpathsPath, v : Double) -> G
   result
 }
 
-pub fn graph_connect_paths_path_min(s : GraphconnectpathsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_path_min(s : GraphconnectpathsPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_path_max(s : GraphconnectpathsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_path_max(s : GraphconnectpathsPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_path_to_string(s : GraphconnectpathsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_paths_cluster_set(s : GraphconnectpathsCluster, i : Int, v 
   result
 }
 
-pub fn graph_connect_paths_cluster_sum(s : GraphconnectpathsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_cluster_sum(s : GraphconnectpathsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_cluster_mean(s : GraphconnectpathsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_cluster_mean(s : GraphconnectpathsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_cluster_scale(s : GraphconnectpathsCluster, f : Double) -> GraphconnectpathsCluster {
   let result = graph_connect_paths_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_paths_cluster_fill(s : GraphconnectpathsCluster, v : Double
   result
 }
 
-pub fn graph_connect_paths_cluster_min(s : GraphconnectpathsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_cluster_min(s : GraphconnectpathsCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_cluster_max(s : GraphconnectpathsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_cluster_max(s : GraphconnectpathsCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_cluster_to_string(s : GraphconnectpathsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_paths_model_set(s : GraphconnectpathsModel, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_paths_model_sum(s : GraphconnectpathsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_model_sum(s : GraphconnectpathsModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_model_mean(s : GraphconnectpathsModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_model_mean(s : GraphconnectpathsModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_model_scale(s : GraphconnectpathsModel, f : Double) -> GraphconnectpathsModel {
   let result = graph_connect_paths_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_paths_model_fill(s : GraphconnectpathsModel, v : Double) ->
   result
 }
 
-pub fn graph_connect_paths_model_min(s : GraphconnectpathsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_model_min(s : GraphconnectpathsModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_model_max(s : GraphconnectpathsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_model_max(s : GraphconnectpathsModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_model_to_string(s : GraphconnectpathsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_paths_layer_set(s : GraphconnectpathsLayer, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_paths_layer_sum(s : GraphconnectpathsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_layer_sum(s : GraphconnectpathsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_layer_mean(s : GraphconnectpathsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_layer_mean(s : GraphconnectpathsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_layer_scale(s : GraphconnectpathsLayer, f : Double) -> GraphconnectpathsLayer {
   let result = graph_connect_paths_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_paths_layer_fill(s : GraphconnectpathsLayer, v : Double) ->
   result
 }
 
-pub fn graph_connect_paths_layer_min(s : GraphconnectpathsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_layer_min(s : GraphconnectpathsLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_layer_max(s : GraphconnectpathsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_layer_max(s : GraphconnectpathsLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_layer_to_string(s : GraphconnectpathsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_paths_buffer_set(s : GraphconnectpathsBuffer, i : Int, v : 
   result
 }
 
-pub fn graph_connect_paths_buffer_sum(s : GraphconnectpathsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_buffer_sum(s : GraphconnectpathsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_buffer_mean(s : GraphconnectpathsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_buffer_mean(s : GraphconnectpathsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_buffer_scale(s : GraphconnectpathsBuffer, f : Double) -> GraphconnectpathsBuffer {
   let result = graph_connect_paths_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_paths_buffer_fill(s : GraphconnectpathsBuffer, v : Double) 
   result
 }
 
-pub fn graph_connect_paths_buffer_min(s : GraphconnectpathsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_buffer_min(s : GraphconnectpathsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_buffer_max(s : GraphconnectpathsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_buffer_max(s : GraphconnectpathsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_buffer_to_string(s : GraphconnectpathsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_paths_cursor_set(s : GraphconnectpathsCursor, i : Int, v : 
   result
 }
 
-pub fn graph_connect_paths_cursor_sum(s : GraphconnectpathsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_cursor_sum(s : GraphconnectpathsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_cursor_mean(s : GraphconnectpathsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_cursor_mean(s : GraphconnectpathsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_cursor_scale(s : GraphconnectpathsCursor, f : Double) -> GraphconnectpathsCursor {
   let result = graph_connect_paths_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_paths_cursor_fill(s : GraphconnectpathsCursor, v : Double) 
   result
 }
 
-pub fn graph_connect_paths_cursor_min(s : GraphconnectpathsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_cursor_min(s : GraphconnectpathsCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_cursor_max(s : GraphconnectpathsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_cursor_max(s : GraphconnectpathsCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_cursor_to_string(s : GraphconnectpathsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_paths_view_set(s : GraphconnectpathsView, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_paths_view_sum(s : GraphconnectpathsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_view_sum(s : GraphconnectpathsView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_view_mean(s : GraphconnectpathsView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_view_mean(s : GraphconnectpathsView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_view_scale(s : GraphconnectpathsView, f : Double) -> GraphconnectpathsView {
   let result = graph_connect_paths_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_paths_view_fill(s : GraphconnectpathsView, v : Double) -> G
   result
 }
 
-pub fn graph_connect_paths_view_min(s : GraphconnectpathsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_view_min(s : GraphconnectpathsView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_view_max(s : GraphconnectpathsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_view_max(s : GraphconnectpathsView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_view_to_string(s : GraphconnectpathsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_paths_range_set(s : GraphconnectpathsRange, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_paths_range_sum(s : GraphconnectpathsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_range_sum(s : GraphconnectpathsRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_range_mean(s : GraphconnectpathsRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_range_mean(s : GraphconnectpathsRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_range_scale(s : GraphconnectpathsRange, f : Double) -> GraphconnectpathsRange {
   let result = graph_connect_paths_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_paths_range_fill(s : GraphconnectpathsRange, v : Double) ->
   result
 }
 
-pub fn graph_connect_paths_range_min(s : GraphconnectpathsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_range_min(s : GraphconnectpathsRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_range_max(s : GraphconnectpathsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_range_max(s : GraphconnectpathsRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_range_to_string(s : GraphconnectpathsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_paths_slice_set(s : GraphconnectpathsSlice, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_paths_slice_sum(s : GraphconnectpathsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_paths_slice_sum(s : GraphconnectpathsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_paths_slice_mean(s : GraphconnectpathsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_paths_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_paths_slice_mean(s : GraphconnectpathsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_paths_slice_scale(s : GraphconnectpathsSlice, f : Double) -> GraphconnectpathsSlice {
   let result = graph_connect_paths_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_paths_slice_fill(s : GraphconnectpathsSlice, v : Double) ->
   result
 }
 
-pub fn graph_connect_paths_slice_min(s : GraphconnectpathsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_slice_min(s : GraphconnectpathsSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_paths_slice_max(s : GraphconnectpathsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_paths_slice_max(s : GraphconnectpathsSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_paths_slice_to_string(s : GraphconnectpathsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

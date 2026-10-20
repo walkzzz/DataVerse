@@ -88,11 +88,7 @@ pub fn net_sec_ddos_make_series(vals : Array[Double], name : String) -> Netsecdd
 
 pub fn net_sec_ddos_series_len(s : NetsecddosSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_ddos_series_sum(s : NetsecddosSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_ddos_series_sum(s : NetsecddosSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_ddos_series_mean(s : NetsecddosSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_ddos_frame_set(s : NetsecddosFrame, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ddos_frame_sum(s : NetsecddosFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_frame_sum(s : NetsecddosFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_frame_mean(s : NetsecddosFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_frame_mean(s : NetsecddosFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_frame_scale(s : NetsecddosFrame, f : Double) -> NetsecddosFrame {
   let result = net_sec_ddos_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_ddos_frame_fill(s : NetsecddosFrame, v : Double) -> NetsecddosFra
   result
 }
 
-pub fn net_sec_ddos_frame_min(s : NetsecddosFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_frame_min(s : NetsecddosFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_frame_max(s : NetsecddosFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_frame_max(s : NetsecddosFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_frame_to_string(s : NetsecddosFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_ddos_table_set(s : NetsecddosTable, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ddos_table_sum(s : NetsecddosTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_table_sum(s : NetsecddosTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_table_mean(s : NetsecddosTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_table_mean(s : NetsecddosTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_table_scale(s : NetsecddosTable, f : Double) -> NetsecddosTable {
   let result = net_sec_ddos_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_ddos_table_fill(s : NetsecddosTable, v : Double) -> NetsecddosTab
   result
 }
 
-pub fn net_sec_ddos_table_min(s : NetsecddosTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_table_min(s : NetsecddosTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_table_max(s : NetsecddosTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_table_max(s : NetsecddosTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_table_to_string(s : NetsecddosTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_ddos_graphn_set(s : NetsecddosGraphN, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_ddos_graphn_sum(s : NetsecddosGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_graphn_sum(s : NetsecddosGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_graphn_mean(s : NetsecddosGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_graphn_mean(s : NetsecddosGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_graphn_scale(s : NetsecddosGraphN, f : Double) -> NetsecddosGraphN {
   let result = net_sec_ddos_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_ddos_graphn_fill(s : NetsecddosGraphN, v : Double) -> NetsecddosG
   result
 }
 
-pub fn net_sec_ddos_graphn_min(s : NetsecddosGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_graphn_min(s : NetsecddosGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_graphn_max(s : NetsecddosGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_graphn_max(s : NetsecddosGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_graphn_to_string(s : NetsecddosGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_ddos_node_set(s : NetsecddosNode, i : Int, v : Double) -> Netsecd
   result
 }
 
-pub fn net_sec_ddos_node_sum(s : NetsecddosNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_node_sum(s : NetsecddosNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_node_mean(s : NetsecddosNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_node_mean(s : NetsecddosNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_node_scale(s : NetsecddosNode, f : Double) -> NetsecddosNode {
   let result = net_sec_ddos_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_ddos_node_fill(s : NetsecddosNode, v : Double) -> NetsecddosNode 
   result
 }
 
-pub fn net_sec_ddos_node_min(s : NetsecddosNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_node_min(s : NetsecddosNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_node_max(s : NetsecddosNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_node_max(s : NetsecddosNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_node_to_string(s : NetsecddosNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_ddos_edge_set(s : NetsecddosEdge, i : Int, v : Double) -> Netsecd
   result
 }
 
-pub fn net_sec_ddos_edge_sum(s : NetsecddosEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_edge_sum(s : NetsecddosEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_edge_mean(s : NetsecddosEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_edge_mean(s : NetsecddosEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_edge_scale(s : NetsecddosEdge, f : Double) -> NetsecddosEdge {
   let result = net_sec_ddos_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_ddos_edge_fill(s : NetsecddosEdge, v : Double) -> NetsecddosEdge 
   result
 }
 
-pub fn net_sec_ddos_edge_min(s : NetsecddosEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_edge_min(s : NetsecddosEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_edge_max(s : NetsecddosEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_edge_max(s : NetsecddosEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_edge_to_string(s : NetsecddosEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_ddos_path_set(s : NetsecddosPath, i : Int, v : Double) -> Netsecd
   result
 }
 
-pub fn net_sec_ddos_path_sum(s : NetsecddosPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_path_sum(s : NetsecddosPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_path_mean(s : NetsecddosPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_path_mean(s : NetsecddosPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_path_scale(s : NetsecddosPath, f : Double) -> NetsecddosPath {
   let result = net_sec_ddos_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_ddos_path_fill(s : NetsecddosPath, v : Double) -> NetsecddosPath 
   result
 }
 
-pub fn net_sec_ddos_path_min(s : NetsecddosPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_path_min(s : NetsecddosPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_path_max(s : NetsecddosPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_path_max(s : NetsecddosPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_path_to_string(s : NetsecddosPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_ddos_cluster_set(s : NetsecddosCluster, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_sec_ddos_cluster_sum(s : NetsecddosCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_cluster_sum(s : NetsecddosCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_cluster_mean(s : NetsecddosCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_cluster_mean(s : NetsecddosCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_cluster_scale(s : NetsecddosCluster, f : Double) -> NetsecddosCluster {
   let result = net_sec_ddos_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_ddos_cluster_fill(s : NetsecddosCluster, v : Double) -> Netsecddo
   result
 }
 
-pub fn net_sec_ddos_cluster_min(s : NetsecddosCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_cluster_min(s : NetsecddosCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_cluster_max(s : NetsecddosCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_cluster_max(s : NetsecddosCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_cluster_to_string(s : NetsecddosCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_ddos_model_set(s : NetsecddosModel, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ddos_model_sum(s : NetsecddosModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_model_sum(s : NetsecddosModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_model_mean(s : NetsecddosModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_model_mean(s : NetsecddosModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_model_scale(s : NetsecddosModel, f : Double) -> NetsecddosModel {
   let result = net_sec_ddos_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_ddos_model_fill(s : NetsecddosModel, v : Double) -> NetsecddosMod
   result
 }
 
-pub fn net_sec_ddos_model_min(s : NetsecddosModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_model_min(s : NetsecddosModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_model_max(s : NetsecddosModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_model_max(s : NetsecddosModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_model_to_string(s : NetsecddosModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_ddos_layer_set(s : NetsecddosLayer, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ddos_layer_sum(s : NetsecddosLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_layer_sum(s : NetsecddosLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_layer_mean(s : NetsecddosLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_layer_mean(s : NetsecddosLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_layer_scale(s : NetsecddosLayer, f : Double) -> NetsecddosLayer {
   let result = net_sec_ddos_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_ddos_layer_fill(s : NetsecddosLayer, v : Double) -> NetsecddosLay
   result
 }
 
-pub fn net_sec_ddos_layer_min(s : NetsecddosLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_layer_min(s : NetsecddosLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_layer_max(s : NetsecddosLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_layer_max(s : NetsecddosLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_layer_to_string(s : NetsecddosLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_ddos_buffer_set(s : NetsecddosBuffer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_ddos_buffer_sum(s : NetsecddosBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_buffer_sum(s : NetsecddosBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_buffer_mean(s : NetsecddosBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_buffer_mean(s : NetsecddosBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_buffer_scale(s : NetsecddosBuffer, f : Double) -> NetsecddosBuffer {
   let result = net_sec_ddos_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_ddos_buffer_fill(s : NetsecddosBuffer, v : Double) -> NetsecddosB
   result
 }
 
-pub fn net_sec_ddos_buffer_min(s : NetsecddosBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_buffer_min(s : NetsecddosBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_buffer_max(s : NetsecddosBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_buffer_max(s : NetsecddosBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_buffer_to_string(s : NetsecddosBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_ddos_cursor_set(s : NetsecddosCursor, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_ddos_cursor_sum(s : NetsecddosCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_cursor_sum(s : NetsecddosCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_cursor_mean(s : NetsecddosCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_cursor_mean(s : NetsecddosCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_cursor_scale(s : NetsecddosCursor, f : Double) -> NetsecddosCursor {
   let result = net_sec_ddos_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_ddos_cursor_fill(s : NetsecddosCursor, v : Double) -> NetsecddosC
   result
 }
 
-pub fn net_sec_ddos_cursor_min(s : NetsecddosCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_cursor_min(s : NetsecddosCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_cursor_max(s : NetsecddosCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_cursor_max(s : NetsecddosCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_cursor_to_string(s : NetsecddosCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_ddos_view_set(s : NetsecddosView, i : Int, v : Double) -> Netsecd
   result
 }
 
-pub fn net_sec_ddos_view_sum(s : NetsecddosView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_view_sum(s : NetsecddosView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_view_mean(s : NetsecddosView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_view_mean(s : NetsecddosView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_view_scale(s : NetsecddosView, f : Double) -> NetsecddosView {
   let result = net_sec_ddos_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_ddos_view_fill(s : NetsecddosView, v : Double) -> NetsecddosView 
   result
 }
 
-pub fn net_sec_ddos_view_min(s : NetsecddosView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_view_min(s : NetsecddosView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_view_max(s : NetsecddosView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_view_max(s : NetsecddosView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_view_to_string(s : NetsecddosView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_ddos_range_set(s : NetsecddosRange, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ddos_range_sum(s : NetsecddosRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_range_sum(s : NetsecddosRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_range_mean(s : NetsecddosRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_range_mean(s : NetsecddosRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_range_scale(s : NetsecddosRange, f : Double) -> NetsecddosRange {
   let result = net_sec_ddos_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_ddos_range_fill(s : NetsecddosRange, v : Double) -> NetsecddosRan
   result
 }
 
-pub fn net_sec_ddos_range_min(s : NetsecddosRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_range_min(s : NetsecddosRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_range_max(s : NetsecddosRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_range_max(s : NetsecddosRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_range_to_string(s : NetsecddosRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_ddos_slice_set(s : NetsecddosSlice, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ddos_slice_sum(s : NetsecddosSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ddos_slice_sum(s : NetsecddosSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ddos_slice_mean(s : NetsecddosSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ddos_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ddos_slice_mean(s : NetsecddosSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ddos_slice_scale(s : NetsecddosSlice, f : Double) -> NetsecddosSlice {
   let result = net_sec_ddos_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_ddos_slice_fill(s : NetsecddosSlice, v : Double) -> NetsecddosSli
   result
 }
 
-pub fn net_sec_ddos_slice_min(s : NetsecddosSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_slice_min(s : NetsecddosSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ddos_slice_max(s : NetsecddosSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ddos_slice_max(s : NetsecddosSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ddos_slice_to_string(s : NetsecddosSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

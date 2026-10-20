@@ -88,11 +88,7 @@ pub fn crypto_sym_chacha_make_series(vals : Array[Double], name : String) -> Cry
 
 pub fn crypto_sym_chacha_series_len(s : CryptosymchachaSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_chacha_series_sum(s : CryptosymchachaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_chacha_series_sum(s : CryptosymchachaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_chacha_series_mean(s : CryptosymchachaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_chacha_frame_set(s : CryptosymchachaFrame, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_chacha_frame_sum(s : CryptosymchachaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_frame_sum(s : CryptosymchachaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_frame_mean(s : CryptosymchachaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_frame_mean(s : CryptosymchachaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_frame_scale(s : CryptosymchachaFrame, f : Double) -> CryptosymchachaFrame {
   let result = crypto_sym_chacha_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_chacha_frame_fill(s : CryptosymchachaFrame, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_chacha_frame_min(s : CryptosymchachaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_frame_min(s : CryptosymchachaFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_frame_max(s : CryptosymchachaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_frame_max(s : CryptosymchachaFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_frame_to_string(s : CryptosymchachaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_chacha_table_set(s : CryptosymchachaTable, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_chacha_table_sum(s : CryptosymchachaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_table_sum(s : CryptosymchachaTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_table_mean(s : CryptosymchachaTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_table_mean(s : CryptosymchachaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_table_scale(s : CryptosymchachaTable, f : Double) -> CryptosymchachaTable {
   let result = crypto_sym_chacha_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_chacha_table_fill(s : CryptosymchachaTable, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_chacha_table_min(s : CryptosymchachaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_table_min(s : CryptosymchachaTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_table_max(s : CryptosymchachaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_table_max(s : CryptosymchachaTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_table_to_string(s : CryptosymchachaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_chacha_graphn_set(s : CryptosymchachaGraphN, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_chacha_graphn_sum(s : CryptosymchachaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_graphn_sum(s : CryptosymchachaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_graphn_mean(s : CryptosymchachaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_graphn_mean(s : CryptosymchachaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_graphn_scale(s : CryptosymchachaGraphN, f : Double) -> CryptosymchachaGraphN {
   let result = crypto_sym_chacha_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_chacha_graphn_fill(s : CryptosymchachaGraphN, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_chacha_graphn_min(s : CryptosymchachaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_graphn_min(s : CryptosymchachaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_graphn_max(s : CryptosymchachaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_graphn_max(s : CryptosymchachaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_graphn_to_string(s : CryptosymchachaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_chacha_node_set(s : CryptosymchachaNode, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_chacha_node_sum(s : CryptosymchachaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_node_sum(s : CryptosymchachaNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_node_mean(s : CryptosymchachaNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_node_mean(s : CryptosymchachaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_node_scale(s : CryptosymchachaNode, f : Double) -> CryptosymchachaNode {
   let result = crypto_sym_chacha_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_chacha_node_fill(s : CryptosymchachaNode, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_chacha_node_min(s : CryptosymchachaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_node_min(s : CryptosymchachaNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_node_max(s : CryptosymchachaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_node_max(s : CryptosymchachaNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_node_to_string(s : CryptosymchachaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_chacha_edge_set(s : CryptosymchachaEdge, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_chacha_edge_sum(s : CryptosymchachaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_edge_sum(s : CryptosymchachaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_edge_mean(s : CryptosymchachaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_edge_mean(s : CryptosymchachaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_edge_scale(s : CryptosymchachaEdge, f : Double) -> CryptosymchachaEdge {
   let result = crypto_sym_chacha_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_chacha_edge_fill(s : CryptosymchachaEdge, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_chacha_edge_min(s : CryptosymchachaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_edge_min(s : CryptosymchachaEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_edge_max(s : CryptosymchachaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_edge_max(s : CryptosymchachaEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_edge_to_string(s : CryptosymchachaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_chacha_path_set(s : CryptosymchachaPath, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_chacha_path_sum(s : CryptosymchachaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_path_sum(s : CryptosymchachaPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_path_mean(s : CryptosymchachaPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_path_mean(s : CryptosymchachaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_path_scale(s : CryptosymchachaPath, f : Double) -> CryptosymchachaPath {
   let result = crypto_sym_chacha_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_chacha_path_fill(s : CryptosymchachaPath, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_chacha_path_min(s : CryptosymchachaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_path_min(s : CryptosymchachaPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_path_max(s : CryptosymchachaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_path_max(s : CryptosymchachaPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_path_to_string(s : CryptosymchachaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_chacha_cluster_set(s : CryptosymchachaCluster, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_chacha_cluster_sum(s : CryptosymchachaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_cluster_sum(s : CryptosymchachaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_cluster_mean(s : CryptosymchachaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_cluster_mean(s : CryptosymchachaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_cluster_scale(s : CryptosymchachaCluster, f : Double) -> CryptosymchachaCluster {
   let result = crypto_sym_chacha_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_chacha_cluster_fill(s : CryptosymchachaCluster, v : Double) ->
   result
 }
 
-pub fn crypto_sym_chacha_cluster_min(s : CryptosymchachaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_cluster_min(s : CryptosymchachaCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_cluster_max(s : CryptosymchachaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_cluster_max(s : CryptosymchachaCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_cluster_to_string(s : CryptosymchachaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_chacha_model_set(s : CryptosymchachaModel, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_chacha_model_sum(s : CryptosymchachaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_model_sum(s : CryptosymchachaModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_model_mean(s : CryptosymchachaModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_model_mean(s : CryptosymchachaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_model_scale(s : CryptosymchachaModel, f : Double) -> CryptosymchachaModel {
   let result = crypto_sym_chacha_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_chacha_model_fill(s : CryptosymchachaModel, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_chacha_model_min(s : CryptosymchachaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_model_min(s : CryptosymchachaModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_model_max(s : CryptosymchachaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_model_max(s : CryptosymchachaModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_model_to_string(s : CryptosymchachaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_chacha_layer_set(s : CryptosymchachaLayer, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_chacha_layer_sum(s : CryptosymchachaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_layer_sum(s : CryptosymchachaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_layer_mean(s : CryptosymchachaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_layer_mean(s : CryptosymchachaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_layer_scale(s : CryptosymchachaLayer, f : Double) -> CryptosymchachaLayer {
   let result = crypto_sym_chacha_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_chacha_layer_fill(s : CryptosymchachaLayer, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_chacha_layer_min(s : CryptosymchachaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_layer_min(s : CryptosymchachaLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_layer_max(s : CryptosymchachaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_layer_max(s : CryptosymchachaLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_layer_to_string(s : CryptosymchachaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_chacha_buffer_set(s : CryptosymchachaBuffer, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_chacha_buffer_sum(s : CryptosymchachaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_buffer_sum(s : CryptosymchachaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_buffer_mean(s : CryptosymchachaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_buffer_mean(s : CryptosymchachaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_buffer_scale(s : CryptosymchachaBuffer, f : Double) -> CryptosymchachaBuffer {
   let result = crypto_sym_chacha_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_chacha_buffer_fill(s : CryptosymchachaBuffer, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_chacha_buffer_min(s : CryptosymchachaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_buffer_min(s : CryptosymchachaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_buffer_max(s : CryptosymchachaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_buffer_max(s : CryptosymchachaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_buffer_to_string(s : CryptosymchachaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_chacha_cursor_set(s : CryptosymchachaCursor, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_chacha_cursor_sum(s : CryptosymchachaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_cursor_sum(s : CryptosymchachaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_cursor_mean(s : CryptosymchachaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_cursor_mean(s : CryptosymchachaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_cursor_scale(s : CryptosymchachaCursor, f : Double) -> CryptosymchachaCursor {
   let result = crypto_sym_chacha_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_chacha_cursor_fill(s : CryptosymchachaCursor, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_chacha_cursor_min(s : CryptosymchachaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_cursor_min(s : CryptosymchachaCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_cursor_max(s : CryptosymchachaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_cursor_max(s : CryptosymchachaCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_cursor_to_string(s : CryptosymchachaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_chacha_view_set(s : CryptosymchachaView, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_chacha_view_sum(s : CryptosymchachaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_view_sum(s : CryptosymchachaView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_view_mean(s : CryptosymchachaView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_view_mean(s : CryptosymchachaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_view_scale(s : CryptosymchachaView, f : Double) -> CryptosymchachaView {
   let result = crypto_sym_chacha_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_chacha_view_fill(s : CryptosymchachaView, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_chacha_view_min(s : CryptosymchachaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_view_min(s : CryptosymchachaView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_view_max(s : CryptosymchachaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_view_max(s : CryptosymchachaView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_view_to_string(s : CryptosymchachaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_chacha_range_set(s : CryptosymchachaRange, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_chacha_range_sum(s : CryptosymchachaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_range_sum(s : CryptosymchachaRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_range_mean(s : CryptosymchachaRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_range_mean(s : CryptosymchachaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_range_scale(s : CryptosymchachaRange, f : Double) -> CryptosymchachaRange {
   let result = crypto_sym_chacha_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_chacha_range_fill(s : CryptosymchachaRange, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_chacha_range_min(s : CryptosymchachaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_range_min(s : CryptosymchachaRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_range_max(s : CryptosymchachaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_range_max(s : CryptosymchachaRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_range_to_string(s : CryptosymchachaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_chacha_slice_set(s : CryptosymchachaSlice, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_chacha_slice_sum(s : CryptosymchachaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_chacha_slice_sum(s : CryptosymchachaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_chacha_slice_mean(s : CryptosymchachaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_chacha_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_chacha_slice_mean(s : CryptosymchachaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_chacha_slice_scale(s : CryptosymchachaSlice, f : Double) -> CryptosymchachaSlice {
   let result = crypto_sym_chacha_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_chacha_slice_fill(s : CryptosymchachaSlice, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_chacha_slice_min(s : CryptosymchachaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_slice_min(s : CryptosymchachaSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_chacha_slice_max(s : CryptosymchachaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_chacha_slice_max(s : CryptosymchachaSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_chacha_slice_to_string(s : CryptosymchachaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn sort_compare_selection_make_series(vals : Array[Double], name : String) -
 
 pub fn sort_compare_selection_series_len(s : SortcompareselectionSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_selection_series_sum(s : SortcompareselectionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_selection_series_sum(s : SortcompareselectionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_selection_series_mean(s : SortcompareselectionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_selection_frame_set(s : SortcompareselectionFrame, i : Int, 
   result
 }
 
-pub fn sort_compare_selection_frame_sum(s : SortcompareselectionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_frame_sum(s : SortcompareselectionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_frame_mean(s : SortcompareselectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_frame_mean(s : SortcompareselectionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_frame_scale(s : SortcompareselectionFrame, f : Double) -> SortcompareselectionFrame {
   let result = sort_compare_selection_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_selection_frame_fill(s : SortcompareselectionFrame, v : Doub
   result
 }
 
-pub fn sort_compare_selection_frame_min(s : SortcompareselectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_frame_min(s : SortcompareselectionFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_frame_max(s : SortcompareselectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_frame_max(s : SortcompareselectionFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_frame_to_string(s : SortcompareselectionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_selection_table_set(s : SortcompareselectionTable, i : Int, 
   result
 }
 
-pub fn sort_compare_selection_table_sum(s : SortcompareselectionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_table_sum(s : SortcompareselectionTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_table_mean(s : SortcompareselectionTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_table_mean(s : SortcompareselectionTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_table_scale(s : SortcompareselectionTable, f : Double) -> SortcompareselectionTable {
   let result = sort_compare_selection_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_selection_table_fill(s : SortcompareselectionTable, v : Doub
   result
 }
 
-pub fn sort_compare_selection_table_min(s : SortcompareselectionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_table_min(s : SortcompareselectionTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_table_max(s : SortcompareselectionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_table_max(s : SortcompareselectionTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_table_to_string(s : SortcompareselectionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_selection_graphn_set(s : SortcompareselectionGraphN, i : Int
   result
 }
 
-pub fn sort_compare_selection_graphn_sum(s : SortcompareselectionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_graphn_sum(s : SortcompareselectionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_graphn_mean(s : SortcompareselectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_graphn_mean(s : SortcompareselectionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_graphn_scale(s : SortcompareselectionGraphN, f : Double) -> SortcompareselectionGraphN {
   let result = sort_compare_selection_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_selection_graphn_fill(s : SortcompareselectionGraphN, v : Do
   result
 }
 
-pub fn sort_compare_selection_graphn_min(s : SortcompareselectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_graphn_min(s : SortcompareselectionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_graphn_max(s : SortcompareselectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_graphn_max(s : SortcompareselectionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_graphn_to_string(s : SortcompareselectionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_selection_node_set(s : SortcompareselectionNode, i : Int, v 
   result
 }
 
-pub fn sort_compare_selection_node_sum(s : SortcompareselectionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_node_sum(s : SortcompareselectionNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_node_mean(s : SortcompareselectionNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_node_mean(s : SortcompareselectionNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_node_scale(s : SortcompareselectionNode, f : Double) -> SortcompareselectionNode {
   let result = sort_compare_selection_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_selection_node_fill(s : SortcompareselectionNode, v : Double
   result
 }
 
-pub fn sort_compare_selection_node_min(s : SortcompareselectionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_node_min(s : SortcompareselectionNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_node_max(s : SortcompareselectionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_node_max(s : SortcompareselectionNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_node_to_string(s : SortcompareselectionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_selection_edge_set(s : SortcompareselectionEdge, i : Int, v 
   result
 }
 
-pub fn sort_compare_selection_edge_sum(s : SortcompareselectionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_edge_sum(s : SortcompareselectionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_edge_mean(s : SortcompareselectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_edge_mean(s : SortcompareselectionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_edge_scale(s : SortcompareselectionEdge, f : Double) -> SortcompareselectionEdge {
   let result = sort_compare_selection_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_selection_edge_fill(s : SortcompareselectionEdge, v : Double
   result
 }
 
-pub fn sort_compare_selection_edge_min(s : SortcompareselectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_edge_min(s : SortcompareselectionEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_edge_max(s : SortcompareselectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_edge_max(s : SortcompareselectionEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_edge_to_string(s : SortcompareselectionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_selection_path_set(s : SortcompareselectionPath, i : Int, v 
   result
 }
 
-pub fn sort_compare_selection_path_sum(s : SortcompareselectionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_path_sum(s : SortcompareselectionPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_path_mean(s : SortcompareselectionPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_path_mean(s : SortcompareselectionPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_path_scale(s : SortcompareselectionPath, f : Double) -> SortcompareselectionPath {
   let result = sort_compare_selection_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_selection_path_fill(s : SortcompareselectionPath, v : Double
   result
 }
 
-pub fn sort_compare_selection_path_min(s : SortcompareselectionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_path_min(s : SortcompareselectionPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_path_max(s : SortcompareselectionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_path_max(s : SortcompareselectionPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_path_to_string(s : SortcompareselectionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_selection_cluster_set(s : SortcompareselectionCluster, i : I
   result
 }
 
-pub fn sort_compare_selection_cluster_sum(s : SortcompareselectionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_cluster_sum(s : SortcompareselectionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_cluster_mean(s : SortcompareselectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_cluster_mean(s : SortcompareselectionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_cluster_scale(s : SortcompareselectionCluster, f : Double) -> SortcompareselectionCluster {
   let result = sort_compare_selection_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_selection_cluster_fill(s : SortcompareselectionCluster, v : 
   result
 }
 
-pub fn sort_compare_selection_cluster_min(s : SortcompareselectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_cluster_min(s : SortcompareselectionCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_cluster_max(s : SortcompareselectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_cluster_max(s : SortcompareselectionCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_cluster_to_string(s : SortcompareselectionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_selection_model_set(s : SortcompareselectionModel, i : Int, 
   result
 }
 
-pub fn sort_compare_selection_model_sum(s : SortcompareselectionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_model_sum(s : SortcompareselectionModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_model_mean(s : SortcompareselectionModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_model_mean(s : SortcompareselectionModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_model_scale(s : SortcompareselectionModel, f : Double) -> SortcompareselectionModel {
   let result = sort_compare_selection_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_selection_model_fill(s : SortcompareselectionModel, v : Doub
   result
 }
 
-pub fn sort_compare_selection_model_min(s : SortcompareselectionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_model_min(s : SortcompareselectionModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_model_max(s : SortcompareselectionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_model_max(s : SortcompareselectionModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_model_to_string(s : SortcompareselectionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_selection_layer_set(s : SortcompareselectionLayer, i : Int, 
   result
 }
 
-pub fn sort_compare_selection_layer_sum(s : SortcompareselectionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_layer_sum(s : SortcompareselectionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_layer_mean(s : SortcompareselectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_layer_mean(s : SortcompareselectionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_layer_scale(s : SortcompareselectionLayer, f : Double) -> SortcompareselectionLayer {
   let result = sort_compare_selection_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_selection_layer_fill(s : SortcompareselectionLayer, v : Doub
   result
 }
 
-pub fn sort_compare_selection_layer_min(s : SortcompareselectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_layer_min(s : SortcompareselectionLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_layer_max(s : SortcompareselectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_layer_max(s : SortcompareselectionLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_layer_to_string(s : SortcompareselectionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_selection_buffer_set(s : SortcompareselectionBuffer, i : Int
   result
 }
 
-pub fn sort_compare_selection_buffer_sum(s : SortcompareselectionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_buffer_sum(s : SortcompareselectionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_buffer_mean(s : SortcompareselectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_buffer_mean(s : SortcompareselectionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_buffer_scale(s : SortcompareselectionBuffer, f : Double) -> SortcompareselectionBuffer {
   let result = sort_compare_selection_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_selection_buffer_fill(s : SortcompareselectionBuffer, v : Do
   result
 }
 
-pub fn sort_compare_selection_buffer_min(s : SortcompareselectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_buffer_min(s : SortcompareselectionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_buffer_max(s : SortcompareselectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_buffer_max(s : SortcompareselectionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_buffer_to_string(s : SortcompareselectionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_selection_cursor_set(s : SortcompareselectionCursor, i : Int
   result
 }
 
-pub fn sort_compare_selection_cursor_sum(s : SortcompareselectionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_cursor_sum(s : SortcompareselectionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_cursor_mean(s : SortcompareselectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_cursor_mean(s : SortcompareselectionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_cursor_scale(s : SortcompareselectionCursor, f : Double) -> SortcompareselectionCursor {
   let result = sort_compare_selection_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_selection_cursor_fill(s : SortcompareselectionCursor, v : Do
   result
 }
 
-pub fn sort_compare_selection_cursor_min(s : SortcompareselectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_cursor_min(s : SortcompareselectionCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_cursor_max(s : SortcompareselectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_cursor_max(s : SortcompareselectionCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_cursor_to_string(s : SortcompareselectionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_selection_view_set(s : SortcompareselectionView, i : Int, v 
   result
 }
 
-pub fn sort_compare_selection_view_sum(s : SortcompareselectionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_view_sum(s : SortcompareselectionView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_view_mean(s : SortcompareselectionView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_view_mean(s : SortcompareselectionView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_view_scale(s : SortcompareselectionView, f : Double) -> SortcompareselectionView {
   let result = sort_compare_selection_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_selection_view_fill(s : SortcompareselectionView, v : Double
   result
 }
 
-pub fn sort_compare_selection_view_min(s : SortcompareselectionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_view_min(s : SortcompareselectionView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_view_max(s : SortcompareselectionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_view_max(s : SortcompareselectionView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_view_to_string(s : SortcompareselectionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_selection_range_set(s : SortcompareselectionRange, i : Int, 
   result
 }
 
-pub fn sort_compare_selection_range_sum(s : SortcompareselectionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_range_sum(s : SortcompareselectionRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_range_mean(s : SortcompareselectionRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_range_mean(s : SortcompareselectionRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_range_scale(s : SortcompareselectionRange, f : Double) -> SortcompareselectionRange {
   let result = sort_compare_selection_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_selection_range_fill(s : SortcompareselectionRange, v : Doub
   result
 }
 
-pub fn sort_compare_selection_range_min(s : SortcompareselectionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_range_min(s : SortcompareselectionRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_range_max(s : SortcompareselectionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_range_max(s : SortcompareselectionRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_range_to_string(s : SortcompareselectionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_selection_slice_set(s : SortcompareselectionSlice, i : Int, 
   result
 }
 
-pub fn sort_compare_selection_slice_sum(s : SortcompareselectionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_selection_slice_sum(s : SortcompareselectionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_selection_slice_mean(s : SortcompareselectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_selection_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_selection_slice_mean(s : SortcompareselectionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_selection_slice_scale(s : SortcompareselectionSlice, f : Double) -> SortcompareselectionSlice {
   let result = sort_compare_selection_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_selection_slice_fill(s : SortcompareselectionSlice, v : Doub
   result
 }
 
-pub fn sort_compare_selection_slice_min(s : SortcompareselectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_slice_min(s : SortcompareselectionSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_selection_slice_max(s : SortcompareselectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_selection_slice_max(s : SortcompareselectionSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_selection_slice_to_string(s : SortcompareselectionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

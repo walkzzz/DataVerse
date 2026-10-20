@@ -88,11 +88,7 @@ pub fn image_morph_dilate_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_morph_dilate_series_len(s : ImagemorphdilateSeries) -> Int { s.vals.length() }
 
-pub fn image_morph_dilate_series_sum(s : ImagemorphdilateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_morph_dilate_series_sum(s : ImagemorphdilateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_morph_dilate_series_mean(s : ImagemorphdilateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_morph_dilate_frame_set(s : ImagemorphdilateFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_dilate_frame_sum(s : ImagemorphdilateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_frame_sum(s : ImagemorphdilateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_frame_mean(s : ImagemorphdilateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_frame_mean(s : ImagemorphdilateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_frame_scale(s : ImagemorphdilateFrame, f : Double) -> ImagemorphdilateFrame {
   let result = image_morph_dilate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_morph_dilate_frame_fill(s : ImagemorphdilateFrame, v : Double) -> I
   result
 }
 
-pub fn image_morph_dilate_frame_min(s : ImagemorphdilateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_frame_min(s : ImagemorphdilateFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_frame_max(s : ImagemorphdilateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_frame_max(s : ImagemorphdilateFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_frame_to_string(s : ImagemorphdilateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_morph_dilate_table_set(s : ImagemorphdilateTable, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_dilate_table_sum(s : ImagemorphdilateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_table_sum(s : ImagemorphdilateTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_table_mean(s : ImagemorphdilateTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_table_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_table_mean(s : ImagemorphdilateTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_table_scale(s : ImagemorphdilateTable, f : Double) -> ImagemorphdilateTable {
   let result = image_morph_dilate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_morph_dilate_table_fill(s : ImagemorphdilateTable, v : Double) -> I
   result
 }
 
-pub fn image_morph_dilate_table_min(s : ImagemorphdilateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_table_min(s : ImagemorphdilateTable) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_table_max(s : ImagemorphdilateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_table_max(s : ImagemorphdilateTable) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_table_to_string(s : ImagemorphdilateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_morph_dilate_graphn_set(s : ImagemorphdilateGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_morph_dilate_graphn_sum(s : ImagemorphdilateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_graphn_sum(s : ImagemorphdilateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_graphn_mean(s : ImagemorphdilateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_graphn_mean(s : ImagemorphdilateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_graphn_scale(s : ImagemorphdilateGraphN, f : Double) -> ImagemorphdilateGraphN {
   let result = image_morph_dilate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_morph_dilate_graphn_fill(s : ImagemorphdilateGraphN, v : Double) ->
   result
 }
 
-pub fn image_morph_dilate_graphn_min(s : ImagemorphdilateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_graphn_min(s : ImagemorphdilateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_graphn_max(s : ImagemorphdilateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_graphn_max(s : ImagemorphdilateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_graphn_to_string(s : ImagemorphdilateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_morph_dilate_node_set(s : ImagemorphdilateNode, i : Int, v : Double
   result
 }
 
-pub fn image_morph_dilate_node_sum(s : ImagemorphdilateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_node_sum(s : ImagemorphdilateNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_node_mean(s : ImagemorphdilateNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_node_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_node_mean(s : ImagemorphdilateNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_node_scale(s : ImagemorphdilateNode, f : Double) -> ImagemorphdilateNode {
   let result = image_morph_dilate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_morph_dilate_node_fill(s : ImagemorphdilateNode, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_dilate_node_min(s : ImagemorphdilateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_node_min(s : ImagemorphdilateNode) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_node_max(s : ImagemorphdilateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_node_max(s : ImagemorphdilateNode) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_node_to_string(s : ImagemorphdilateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_morph_dilate_edge_set(s : ImagemorphdilateEdge, i : Int, v : Double
   result
 }
 
-pub fn image_morph_dilate_edge_sum(s : ImagemorphdilateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_edge_sum(s : ImagemorphdilateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_edge_mean(s : ImagemorphdilateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_edge_mean(s : ImagemorphdilateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_edge_scale(s : ImagemorphdilateEdge, f : Double) -> ImagemorphdilateEdge {
   let result = image_morph_dilate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_morph_dilate_edge_fill(s : ImagemorphdilateEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_dilate_edge_min(s : ImagemorphdilateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_edge_min(s : ImagemorphdilateEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_edge_max(s : ImagemorphdilateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_edge_max(s : ImagemorphdilateEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_edge_to_string(s : ImagemorphdilateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_morph_dilate_path_set(s : ImagemorphdilatePath, i : Int, v : Double
   result
 }
 
-pub fn image_morph_dilate_path_sum(s : ImagemorphdilatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_path_sum(s : ImagemorphdilatePath) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_path_mean(s : ImagemorphdilatePath) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_path_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_path_mean(s : ImagemorphdilatePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_path_scale(s : ImagemorphdilatePath, f : Double) -> ImagemorphdilatePath {
   let result = image_morph_dilate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_morph_dilate_path_fill(s : ImagemorphdilatePath, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_dilate_path_min(s : ImagemorphdilatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_path_min(s : ImagemorphdilatePath) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_path_max(s : ImagemorphdilatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_path_max(s : ImagemorphdilatePath) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_path_to_string(s : ImagemorphdilatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_morph_dilate_cluster_set(s : ImagemorphdilateCluster, i : Int, v : 
   result
 }
 
-pub fn image_morph_dilate_cluster_sum(s : ImagemorphdilateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_cluster_sum(s : ImagemorphdilateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_cluster_mean(s : ImagemorphdilateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_cluster_mean(s : ImagemorphdilateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_cluster_scale(s : ImagemorphdilateCluster, f : Double) -> ImagemorphdilateCluster {
   let result = image_morph_dilate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_morph_dilate_cluster_fill(s : ImagemorphdilateCluster, v : Double) 
   result
 }
 
-pub fn image_morph_dilate_cluster_min(s : ImagemorphdilateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_cluster_min(s : ImagemorphdilateCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_cluster_max(s : ImagemorphdilateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_cluster_max(s : ImagemorphdilateCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_cluster_to_string(s : ImagemorphdilateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_morph_dilate_model_set(s : ImagemorphdilateModel, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_dilate_model_sum(s : ImagemorphdilateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_model_sum(s : ImagemorphdilateModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_model_mean(s : ImagemorphdilateModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_model_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_model_mean(s : ImagemorphdilateModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_model_scale(s : ImagemorphdilateModel, f : Double) -> ImagemorphdilateModel {
   let result = image_morph_dilate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_morph_dilate_model_fill(s : ImagemorphdilateModel, v : Double) -> I
   result
 }
 
-pub fn image_morph_dilate_model_min(s : ImagemorphdilateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_model_min(s : ImagemorphdilateModel) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_model_max(s : ImagemorphdilateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_model_max(s : ImagemorphdilateModel) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_model_to_string(s : ImagemorphdilateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_morph_dilate_layer_set(s : ImagemorphdilateLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_dilate_layer_sum(s : ImagemorphdilateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_layer_sum(s : ImagemorphdilateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_layer_mean(s : ImagemorphdilateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_layer_mean(s : ImagemorphdilateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_layer_scale(s : ImagemorphdilateLayer, f : Double) -> ImagemorphdilateLayer {
   let result = image_morph_dilate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_morph_dilate_layer_fill(s : ImagemorphdilateLayer, v : Double) -> I
   result
 }
 
-pub fn image_morph_dilate_layer_min(s : ImagemorphdilateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_layer_min(s : ImagemorphdilateLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_layer_max(s : ImagemorphdilateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_layer_max(s : ImagemorphdilateLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_layer_to_string(s : ImagemorphdilateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_morph_dilate_buffer_set(s : ImagemorphdilateBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_morph_dilate_buffer_sum(s : ImagemorphdilateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_buffer_sum(s : ImagemorphdilateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_buffer_mean(s : ImagemorphdilateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_buffer_mean(s : ImagemorphdilateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_buffer_scale(s : ImagemorphdilateBuffer, f : Double) -> ImagemorphdilateBuffer {
   let result = image_morph_dilate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_morph_dilate_buffer_fill(s : ImagemorphdilateBuffer, v : Double) ->
   result
 }
 
-pub fn image_morph_dilate_buffer_min(s : ImagemorphdilateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_buffer_min(s : ImagemorphdilateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_buffer_max(s : ImagemorphdilateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_buffer_max(s : ImagemorphdilateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_buffer_to_string(s : ImagemorphdilateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_morph_dilate_cursor_set(s : ImagemorphdilateCursor, i : Int, v : Do
   result
 }
 
-pub fn image_morph_dilate_cursor_sum(s : ImagemorphdilateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_cursor_sum(s : ImagemorphdilateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_cursor_mean(s : ImagemorphdilateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_cursor_mean(s : ImagemorphdilateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_cursor_scale(s : ImagemorphdilateCursor, f : Double) -> ImagemorphdilateCursor {
   let result = image_morph_dilate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_morph_dilate_cursor_fill(s : ImagemorphdilateCursor, v : Double) ->
   result
 }
 
-pub fn image_morph_dilate_cursor_min(s : ImagemorphdilateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_cursor_min(s : ImagemorphdilateCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_cursor_max(s : ImagemorphdilateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_cursor_max(s : ImagemorphdilateCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_cursor_to_string(s : ImagemorphdilateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_morph_dilate_view_set(s : ImagemorphdilateView, i : Int, v : Double
   result
 }
 
-pub fn image_morph_dilate_view_sum(s : ImagemorphdilateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_view_sum(s : ImagemorphdilateView) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_view_mean(s : ImagemorphdilateView) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_view_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_view_mean(s : ImagemorphdilateView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_view_scale(s : ImagemorphdilateView, f : Double) -> ImagemorphdilateView {
   let result = image_morph_dilate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_morph_dilate_view_fill(s : ImagemorphdilateView, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_dilate_view_min(s : ImagemorphdilateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_view_min(s : ImagemorphdilateView) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_view_max(s : ImagemorphdilateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_view_max(s : ImagemorphdilateView) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_view_to_string(s : ImagemorphdilateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_morph_dilate_range_set(s : ImagemorphdilateRange, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_dilate_range_sum(s : ImagemorphdilateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_range_sum(s : ImagemorphdilateRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_range_mean(s : ImagemorphdilateRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_range_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_range_mean(s : ImagemorphdilateRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_range_scale(s : ImagemorphdilateRange, f : Double) -> ImagemorphdilateRange {
   let result = image_morph_dilate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_morph_dilate_range_fill(s : ImagemorphdilateRange, v : Double) -> I
   result
 }
 
-pub fn image_morph_dilate_range_min(s : ImagemorphdilateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_range_min(s : ImagemorphdilateRange) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_range_max(s : ImagemorphdilateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_range_max(s : ImagemorphdilateRange) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_range_to_string(s : ImagemorphdilateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_morph_dilate_slice_set(s : ImagemorphdilateSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_dilate_slice_sum(s : ImagemorphdilateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_dilate_slice_sum(s : ImagemorphdilateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_dilate_slice_mean(s : ImagemorphdilateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_dilate_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_dilate_slice_mean(s : ImagemorphdilateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_dilate_slice_scale(s : ImagemorphdilateSlice, f : Double) -> ImagemorphdilateSlice {
   let result = image_morph_dilate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_morph_dilate_slice_fill(s : ImagemorphdilateSlice, v : Double) -> I
   result
 }
 
-pub fn image_morph_dilate_slice_min(s : ImagemorphdilateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_slice_min(s : ImagemorphdilateSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_dilate_slice_max(s : ImagemorphdilateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_dilate_slice_max(s : ImagemorphdilateSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_dilate_slice_to_string(s : ImagemorphdilateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

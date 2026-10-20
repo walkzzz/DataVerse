@@ -88,11 +88,7 @@ pub fn net_sec_ips_make_series(vals : Array[Double], name : String) -> Netsecips
 
 pub fn net_sec_ips_series_len(s : NetsecipsSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_ips_series_sum(s : NetsecipsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_ips_series_sum(s : NetsecipsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_ips_series_mean(s : NetsecipsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_ips_frame_set(s : NetsecipsFrame, i : Int, v : Double) -> Netseci
   result
 }
 
-pub fn net_sec_ips_frame_sum(s : NetsecipsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_frame_sum(s : NetsecipsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_frame_mean(s : NetsecipsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_frame_mean(s : NetsecipsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_frame_scale(s : NetsecipsFrame, f : Double) -> NetsecipsFrame {
   let result = net_sec_ips_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_ips_frame_fill(s : NetsecipsFrame, v : Double) -> NetsecipsFrame 
   result
 }
 
-pub fn net_sec_ips_frame_min(s : NetsecipsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_frame_min(s : NetsecipsFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_frame_max(s : NetsecipsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_frame_max(s : NetsecipsFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_frame_to_string(s : NetsecipsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_ips_table_set(s : NetsecipsTable, i : Int, v : Double) -> Netseci
   result
 }
 
-pub fn net_sec_ips_table_sum(s : NetsecipsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_table_sum(s : NetsecipsTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_table_mean(s : NetsecipsTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_table_mean(s : NetsecipsTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_table_scale(s : NetsecipsTable, f : Double) -> NetsecipsTable {
   let result = net_sec_ips_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_ips_table_fill(s : NetsecipsTable, v : Double) -> NetsecipsTable 
   result
 }
 
-pub fn net_sec_ips_table_min(s : NetsecipsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_table_min(s : NetsecipsTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_table_max(s : NetsecipsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_table_max(s : NetsecipsTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_table_to_string(s : NetsecipsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_ips_graphn_set(s : NetsecipsGraphN, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ips_graphn_sum(s : NetsecipsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_graphn_sum(s : NetsecipsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_graphn_mean(s : NetsecipsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_graphn_mean(s : NetsecipsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_graphn_scale(s : NetsecipsGraphN, f : Double) -> NetsecipsGraphN {
   let result = net_sec_ips_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_ips_graphn_fill(s : NetsecipsGraphN, v : Double) -> NetsecipsGrap
   result
 }
 
-pub fn net_sec_ips_graphn_min(s : NetsecipsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_graphn_min(s : NetsecipsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_graphn_max(s : NetsecipsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_graphn_max(s : NetsecipsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_graphn_to_string(s : NetsecipsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_ips_node_set(s : NetsecipsNode, i : Int, v : Double) -> Netsecips
   result
 }
 
-pub fn net_sec_ips_node_sum(s : NetsecipsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_node_sum(s : NetsecipsNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_node_mean(s : NetsecipsNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_node_mean(s : NetsecipsNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_node_scale(s : NetsecipsNode, f : Double) -> NetsecipsNode {
   let result = net_sec_ips_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_ips_node_fill(s : NetsecipsNode, v : Double) -> NetsecipsNode {
   result
 }
 
-pub fn net_sec_ips_node_min(s : NetsecipsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_node_min(s : NetsecipsNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_node_max(s : NetsecipsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_node_max(s : NetsecipsNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_node_to_string(s : NetsecipsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_ips_edge_set(s : NetsecipsEdge, i : Int, v : Double) -> Netsecips
   result
 }
 
-pub fn net_sec_ips_edge_sum(s : NetsecipsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_edge_sum(s : NetsecipsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_edge_mean(s : NetsecipsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_edge_mean(s : NetsecipsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_edge_scale(s : NetsecipsEdge, f : Double) -> NetsecipsEdge {
   let result = net_sec_ips_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_ips_edge_fill(s : NetsecipsEdge, v : Double) -> NetsecipsEdge {
   result
 }
 
-pub fn net_sec_ips_edge_min(s : NetsecipsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_edge_min(s : NetsecipsEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_edge_max(s : NetsecipsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_edge_max(s : NetsecipsEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_edge_to_string(s : NetsecipsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_ips_path_set(s : NetsecipsPath, i : Int, v : Double) -> Netsecips
   result
 }
 
-pub fn net_sec_ips_path_sum(s : NetsecipsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_path_sum(s : NetsecipsPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_path_mean(s : NetsecipsPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_path_mean(s : NetsecipsPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_path_scale(s : NetsecipsPath, f : Double) -> NetsecipsPath {
   let result = net_sec_ips_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_ips_path_fill(s : NetsecipsPath, v : Double) -> NetsecipsPath {
   result
 }
 
-pub fn net_sec_ips_path_min(s : NetsecipsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_path_min(s : NetsecipsPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_path_max(s : NetsecipsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_path_max(s : NetsecipsPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_path_to_string(s : NetsecipsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_ips_cluster_set(s : NetsecipsCluster, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_sec_ips_cluster_sum(s : NetsecipsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_cluster_sum(s : NetsecipsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_cluster_mean(s : NetsecipsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_cluster_mean(s : NetsecipsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_cluster_scale(s : NetsecipsCluster, f : Double) -> NetsecipsCluster {
   let result = net_sec_ips_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_ips_cluster_fill(s : NetsecipsCluster, v : Double) -> NetsecipsCl
   result
 }
 
-pub fn net_sec_ips_cluster_min(s : NetsecipsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_cluster_min(s : NetsecipsCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_cluster_max(s : NetsecipsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_cluster_max(s : NetsecipsCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_cluster_to_string(s : NetsecipsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_ips_model_set(s : NetsecipsModel, i : Int, v : Double) -> Netseci
   result
 }
 
-pub fn net_sec_ips_model_sum(s : NetsecipsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_model_sum(s : NetsecipsModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_model_mean(s : NetsecipsModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_model_mean(s : NetsecipsModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_model_scale(s : NetsecipsModel, f : Double) -> NetsecipsModel {
   let result = net_sec_ips_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_ips_model_fill(s : NetsecipsModel, v : Double) -> NetsecipsModel 
   result
 }
 
-pub fn net_sec_ips_model_min(s : NetsecipsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_model_min(s : NetsecipsModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_model_max(s : NetsecipsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_model_max(s : NetsecipsModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_model_to_string(s : NetsecipsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_ips_layer_set(s : NetsecipsLayer, i : Int, v : Double) -> Netseci
   result
 }
 
-pub fn net_sec_ips_layer_sum(s : NetsecipsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_layer_sum(s : NetsecipsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_layer_mean(s : NetsecipsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_layer_mean(s : NetsecipsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_layer_scale(s : NetsecipsLayer, f : Double) -> NetsecipsLayer {
   let result = net_sec_ips_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_ips_layer_fill(s : NetsecipsLayer, v : Double) -> NetsecipsLayer 
   result
 }
 
-pub fn net_sec_ips_layer_min(s : NetsecipsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_layer_min(s : NetsecipsLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_layer_max(s : NetsecipsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_layer_max(s : NetsecipsLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_layer_to_string(s : NetsecipsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_ips_buffer_set(s : NetsecipsBuffer, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ips_buffer_sum(s : NetsecipsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_buffer_sum(s : NetsecipsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_buffer_mean(s : NetsecipsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_buffer_mean(s : NetsecipsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_buffer_scale(s : NetsecipsBuffer, f : Double) -> NetsecipsBuffer {
   let result = net_sec_ips_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_ips_buffer_fill(s : NetsecipsBuffer, v : Double) -> NetsecipsBuff
   result
 }
 
-pub fn net_sec_ips_buffer_min(s : NetsecipsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_buffer_min(s : NetsecipsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_buffer_max(s : NetsecipsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_buffer_max(s : NetsecipsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_buffer_to_string(s : NetsecipsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_ips_cursor_set(s : NetsecipsCursor, i : Int, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_ips_cursor_sum(s : NetsecipsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_cursor_sum(s : NetsecipsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_cursor_mean(s : NetsecipsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_cursor_mean(s : NetsecipsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_cursor_scale(s : NetsecipsCursor, f : Double) -> NetsecipsCursor {
   let result = net_sec_ips_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_ips_cursor_fill(s : NetsecipsCursor, v : Double) -> NetsecipsCurs
   result
 }
 
-pub fn net_sec_ips_cursor_min(s : NetsecipsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_cursor_min(s : NetsecipsCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_cursor_max(s : NetsecipsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_cursor_max(s : NetsecipsCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_cursor_to_string(s : NetsecipsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_ips_view_set(s : NetsecipsView, i : Int, v : Double) -> Netsecips
   result
 }
 
-pub fn net_sec_ips_view_sum(s : NetsecipsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_view_sum(s : NetsecipsView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_view_mean(s : NetsecipsView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_view_mean(s : NetsecipsView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_view_scale(s : NetsecipsView, f : Double) -> NetsecipsView {
   let result = net_sec_ips_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_ips_view_fill(s : NetsecipsView, v : Double) -> NetsecipsView {
   result
 }
 
-pub fn net_sec_ips_view_min(s : NetsecipsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_view_min(s : NetsecipsView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_view_max(s : NetsecipsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_view_max(s : NetsecipsView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_view_to_string(s : NetsecipsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_ips_range_set(s : NetsecipsRange, i : Int, v : Double) -> Netseci
   result
 }
 
-pub fn net_sec_ips_range_sum(s : NetsecipsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_range_sum(s : NetsecipsRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_range_mean(s : NetsecipsRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_range_mean(s : NetsecipsRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_range_scale(s : NetsecipsRange, f : Double) -> NetsecipsRange {
   let result = net_sec_ips_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_ips_range_fill(s : NetsecipsRange, v : Double) -> NetsecipsRange 
   result
 }
 
-pub fn net_sec_ips_range_min(s : NetsecipsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_range_min(s : NetsecipsRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_range_max(s : NetsecipsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_range_max(s : NetsecipsRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_range_to_string(s : NetsecipsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_ips_slice_set(s : NetsecipsSlice, i : Int, v : Double) -> Netseci
   result
 }
 
-pub fn net_sec_ips_slice_sum(s : NetsecipsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_ips_slice_sum(s : NetsecipsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_ips_slice_mean(s : NetsecipsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_ips_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_ips_slice_mean(s : NetsecipsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_ips_slice_scale(s : NetsecipsSlice, f : Double) -> NetsecipsSlice {
   let result = net_sec_ips_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_ips_slice_fill(s : NetsecipsSlice, v : Double) -> NetsecipsSlice 
   result
 }
 
-pub fn net_sec_ips_slice_min(s : NetsecipsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_slice_min(s : NetsecipsSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_ips_slice_max(s : NetsecipsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_ips_slice_max(s : NetsecipsSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_ips_slice_to_string(s : NetsecipsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

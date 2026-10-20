@@ -88,11 +88,7 @@ pub fn graph_search_johnson_make_series(vals : Array[Double], name : String) -> 
 
 pub fn graph_search_johnson_series_len(s : GraphsearchjohnsonSeries) -> Int { s.vals.length() }
 
-pub fn graph_search_johnson_series_sum(s : GraphsearchjohnsonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_search_johnson_series_sum(s : GraphsearchjohnsonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_search_johnson_series_mean(s : GraphsearchjohnsonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_search_johnson_frame_set(s : GraphsearchjohnsonFrame, i : Int, v : 
   result
 }
 
-pub fn graph_search_johnson_frame_sum(s : GraphsearchjohnsonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_frame_sum(s : GraphsearchjohnsonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_frame_mean(s : GraphsearchjohnsonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_frame_mean(s : GraphsearchjohnsonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_frame_scale(s : GraphsearchjohnsonFrame, f : Double) -> GraphsearchjohnsonFrame {
   let result = graph_search_johnson_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_search_johnson_frame_fill(s : GraphsearchjohnsonFrame, v : Double) 
   result
 }
 
-pub fn graph_search_johnson_frame_min(s : GraphsearchjohnsonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_frame_min(s : GraphsearchjohnsonFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_frame_max(s : GraphsearchjohnsonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_frame_max(s : GraphsearchjohnsonFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_frame_to_string(s : GraphsearchjohnsonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_search_johnson_table_set(s : GraphsearchjohnsonTable, i : Int, v : 
   result
 }
 
-pub fn graph_search_johnson_table_sum(s : GraphsearchjohnsonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_table_sum(s : GraphsearchjohnsonTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_table_mean(s : GraphsearchjohnsonTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_table_mean(s : GraphsearchjohnsonTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_table_scale(s : GraphsearchjohnsonTable, f : Double) -> GraphsearchjohnsonTable {
   let result = graph_search_johnson_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_search_johnson_table_fill(s : GraphsearchjohnsonTable, v : Double) 
   result
 }
 
-pub fn graph_search_johnson_table_min(s : GraphsearchjohnsonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_table_min(s : GraphsearchjohnsonTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_table_max(s : GraphsearchjohnsonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_table_max(s : GraphsearchjohnsonTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_table_to_string(s : GraphsearchjohnsonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_search_johnson_graphn_set(s : GraphsearchjohnsonGraphN, i : Int, v 
   result
 }
 
-pub fn graph_search_johnson_graphn_sum(s : GraphsearchjohnsonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_graphn_sum(s : GraphsearchjohnsonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_graphn_mean(s : GraphsearchjohnsonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_graphn_mean(s : GraphsearchjohnsonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_graphn_scale(s : GraphsearchjohnsonGraphN, f : Double) -> GraphsearchjohnsonGraphN {
   let result = graph_search_johnson_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_search_johnson_graphn_fill(s : GraphsearchjohnsonGraphN, v : Double
   result
 }
 
-pub fn graph_search_johnson_graphn_min(s : GraphsearchjohnsonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_graphn_min(s : GraphsearchjohnsonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_graphn_max(s : GraphsearchjohnsonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_graphn_max(s : GraphsearchjohnsonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_graphn_to_string(s : GraphsearchjohnsonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_search_johnson_node_set(s : GraphsearchjohnsonNode, i : Int, v : Do
   result
 }
 
-pub fn graph_search_johnson_node_sum(s : GraphsearchjohnsonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_node_sum(s : GraphsearchjohnsonNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_node_mean(s : GraphsearchjohnsonNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_node_mean(s : GraphsearchjohnsonNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_node_scale(s : GraphsearchjohnsonNode, f : Double) -> GraphsearchjohnsonNode {
   let result = graph_search_johnson_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_search_johnson_node_fill(s : GraphsearchjohnsonNode, v : Double) ->
   result
 }
 
-pub fn graph_search_johnson_node_min(s : GraphsearchjohnsonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_node_min(s : GraphsearchjohnsonNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_node_max(s : GraphsearchjohnsonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_node_max(s : GraphsearchjohnsonNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_node_to_string(s : GraphsearchjohnsonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_search_johnson_edge_set(s : GraphsearchjohnsonEdge, i : Int, v : Do
   result
 }
 
-pub fn graph_search_johnson_edge_sum(s : GraphsearchjohnsonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_edge_sum(s : GraphsearchjohnsonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_edge_mean(s : GraphsearchjohnsonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_edge_mean(s : GraphsearchjohnsonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_edge_scale(s : GraphsearchjohnsonEdge, f : Double) -> GraphsearchjohnsonEdge {
   let result = graph_search_johnson_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_search_johnson_edge_fill(s : GraphsearchjohnsonEdge, v : Double) ->
   result
 }
 
-pub fn graph_search_johnson_edge_min(s : GraphsearchjohnsonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_edge_min(s : GraphsearchjohnsonEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_edge_max(s : GraphsearchjohnsonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_edge_max(s : GraphsearchjohnsonEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_edge_to_string(s : GraphsearchjohnsonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_search_johnson_path_set(s : GraphsearchjohnsonPath, i : Int, v : Do
   result
 }
 
-pub fn graph_search_johnson_path_sum(s : GraphsearchjohnsonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_path_sum(s : GraphsearchjohnsonPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_path_mean(s : GraphsearchjohnsonPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_path_mean(s : GraphsearchjohnsonPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_path_scale(s : GraphsearchjohnsonPath, f : Double) -> GraphsearchjohnsonPath {
   let result = graph_search_johnson_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_search_johnson_path_fill(s : GraphsearchjohnsonPath, v : Double) ->
   result
 }
 
-pub fn graph_search_johnson_path_min(s : GraphsearchjohnsonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_path_min(s : GraphsearchjohnsonPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_path_max(s : GraphsearchjohnsonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_path_max(s : GraphsearchjohnsonPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_path_to_string(s : GraphsearchjohnsonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_search_johnson_cluster_set(s : GraphsearchjohnsonCluster, i : Int, 
   result
 }
 
-pub fn graph_search_johnson_cluster_sum(s : GraphsearchjohnsonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_cluster_sum(s : GraphsearchjohnsonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_cluster_mean(s : GraphsearchjohnsonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_cluster_mean(s : GraphsearchjohnsonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_cluster_scale(s : GraphsearchjohnsonCluster, f : Double) -> GraphsearchjohnsonCluster {
   let result = graph_search_johnson_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_search_johnson_cluster_fill(s : GraphsearchjohnsonCluster, v : Doub
   result
 }
 
-pub fn graph_search_johnson_cluster_min(s : GraphsearchjohnsonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_cluster_min(s : GraphsearchjohnsonCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_cluster_max(s : GraphsearchjohnsonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_cluster_max(s : GraphsearchjohnsonCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_cluster_to_string(s : GraphsearchjohnsonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_search_johnson_model_set(s : GraphsearchjohnsonModel, i : Int, v : 
   result
 }
 
-pub fn graph_search_johnson_model_sum(s : GraphsearchjohnsonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_model_sum(s : GraphsearchjohnsonModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_model_mean(s : GraphsearchjohnsonModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_model_mean(s : GraphsearchjohnsonModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_model_scale(s : GraphsearchjohnsonModel, f : Double) -> GraphsearchjohnsonModel {
   let result = graph_search_johnson_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_search_johnson_model_fill(s : GraphsearchjohnsonModel, v : Double) 
   result
 }
 
-pub fn graph_search_johnson_model_min(s : GraphsearchjohnsonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_model_min(s : GraphsearchjohnsonModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_model_max(s : GraphsearchjohnsonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_model_max(s : GraphsearchjohnsonModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_model_to_string(s : GraphsearchjohnsonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_search_johnson_layer_set(s : GraphsearchjohnsonLayer, i : Int, v : 
   result
 }
 
-pub fn graph_search_johnson_layer_sum(s : GraphsearchjohnsonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_layer_sum(s : GraphsearchjohnsonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_layer_mean(s : GraphsearchjohnsonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_layer_mean(s : GraphsearchjohnsonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_layer_scale(s : GraphsearchjohnsonLayer, f : Double) -> GraphsearchjohnsonLayer {
   let result = graph_search_johnson_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_search_johnson_layer_fill(s : GraphsearchjohnsonLayer, v : Double) 
   result
 }
 
-pub fn graph_search_johnson_layer_min(s : GraphsearchjohnsonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_layer_min(s : GraphsearchjohnsonLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_layer_max(s : GraphsearchjohnsonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_layer_max(s : GraphsearchjohnsonLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_layer_to_string(s : GraphsearchjohnsonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_search_johnson_buffer_set(s : GraphsearchjohnsonBuffer, i : Int, v 
   result
 }
 
-pub fn graph_search_johnson_buffer_sum(s : GraphsearchjohnsonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_buffer_sum(s : GraphsearchjohnsonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_buffer_mean(s : GraphsearchjohnsonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_buffer_mean(s : GraphsearchjohnsonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_buffer_scale(s : GraphsearchjohnsonBuffer, f : Double) -> GraphsearchjohnsonBuffer {
   let result = graph_search_johnson_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_search_johnson_buffer_fill(s : GraphsearchjohnsonBuffer, v : Double
   result
 }
 
-pub fn graph_search_johnson_buffer_min(s : GraphsearchjohnsonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_buffer_min(s : GraphsearchjohnsonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_buffer_max(s : GraphsearchjohnsonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_buffer_max(s : GraphsearchjohnsonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_buffer_to_string(s : GraphsearchjohnsonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_search_johnson_cursor_set(s : GraphsearchjohnsonCursor, i : Int, v 
   result
 }
 
-pub fn graph_search_johnson_cursor_sum(s : GraphsearchjohnsonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_cursor_sum(s : GraphsearchjohnsonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_cursor_mean(s : GraphsearchjohnsonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_cursor_mean(s : GraphsearchjohnsonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_cursor_scale(s : GraphsearchjohnsonCursor, f : Double) -> GraphsearchjohnsonCursor {
   let result = graph_search_johnson_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_search_johnson_cursor_fill(s : GraphsearchjohnsonCursor, v : Double
   result
 }
 
-pub fn graph_search_johnson_cursor_min(s : GraphsearchjohnsonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_cursor_min(s : GraphsearchjohnsonCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_cursor_max(s : GraphsearchjohnsonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_cursor_max(s : GraphsearchjohnsonCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_cursor_to_string(s : GraphsearchjohnsonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_search_johnson_view_set(s : GraphsearchjohnsonView, i : Int, v : Do
   result
 }
 
-pub fn graph_search_johnson_view_sum(s : GraphsearchjohnsonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_view_sum(s : GraphsearchjohnsonView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_view_mean(s : GraphsearchjohnsonView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_view_mean(s : GraphsearchjohnsonView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_view_scale(s : GraphsearchjohnsonView, f : Double) -> GraphsearchjohnsonView {
   let result = graph_search_johnson_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_search_johnson_view_fill(s : GraphsearchjohnsonView, v : Double) ->
   result
 }
 
-pub fn graph_search_johnson_view_min(s : GraphsearchjohnsonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_view_min(s : GraphsearchjohnsonView) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_view_max(s : GraphsearchjohnsonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_view_max(s : GraphsearchjohnsonView) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_view_to_string(s : GraphsearchjohnsonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_search_johnson_range_set(s : GraphsearchjohnsonRange, i : Int, v : 
   result
 }
 
-pub fn graph_search_johnson_range_sum(s : GraphsearchjohnsonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_range_sum(s : GraphsearchjohnsonRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_range_mean(s : GraphsearchjohnsonRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_range_mean(s : GraphsearchjohnsonRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_range_scale(s : GraphsearchjohnsonRange, f : Double) -> GraphsearchjohnsonRange {
   let result = graph_search_johnson_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_search_johnson_range_fill(s : GraphsearchjohnsonRange, v : Double) 
   result
 }
 
-pub fn graph_search_johnson_range_min(s : GraphsearchjohnsonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_range_min(s : GraphsearchjohnsonRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_range_max(s : GraphsearchjohnsonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_range_max(s : GraphsearchjohnsonRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_range_to_string(s : GraphsearchjohnsonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_search_johnson_slice_set(s : GraphsearchjohnsonSlice, i : Int, v : 
   result
 }
 
-pub fn graph_search_johnson_slice_sum(s : GraphsearchjohnsonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_johnson_slice_sum(s : GraphsearchjohnsonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_johnson_slice_mean(s : GraphsearchjohnsonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_johnson_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_johnson_slice_mean(s : GraphsearchjohnsonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_johnson_slice_scale(s : GraphsearchjohnsonSlice, f : Double) -> GraphsearchjohnsonSlice {
   let result = graph_search_johnson_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_search_johnson_slice_fill(s : GraphsearchjohnsonSlice, v : Double) 
   result
 }
 
-pub fn graph_search_johnson_slice_min(s : GraphsearchjohnsonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_slice_min(s : GraphsearchjohnsonSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_johnson_slice_max(s : GraphsearchjohnsonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_johnson_slice_max(s : GraphsearchjohnsonSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_johnson_slice_to_string(s : GraphsearchjohnsonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

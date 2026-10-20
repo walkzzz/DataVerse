@@ -88,11 +88,7 @@ pub fn chem_rxn_retro_make_series(vals : Array[Double], name : String) -> Chemrx
 
 pub fn chem_rxn_retro_series_len(s : ChemrxnretroSeries) -> Int { s.vals.length() }
 
-pub fn chem_rxn_retro_series_sum(s : ChemrxnretroSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_rxn_retro_series_sum(s : ChemrxnretroSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_rxn_retro_series_mean(s : ChemrxnretroSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_rxn_retro_frame_set(s : ChemrxnretroFrame, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_retro_frame_sum(s : ChemrxnretroFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_frame_sum(s : ChemrxnretroFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_frame_mean(s : ChemrxnretroFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_frame_mean(s : ChemrxnretroFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_frame_scale(s : ChemrxnretroFrame, f : Double) -> ChemrxnretroFrame {
   let result = chem_rxn_retro_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_rxn_retro_frame_fill(s : ChemrxnretroFrame, v : Double) -> Chemrxnre
   result
 }
 
-pub fn chem_rxn_retro_frame_min(s : ChemrxnretroFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_frame_min(s : ChemrxnretroFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_frame_max(s : ChemrxnretroFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_frame_max(s : ChemrxnretroFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_frame_to_string(s : ChemrxnretroFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_rxn_retro_table_set(s : ChemrxnretroTable, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_retro_table_sum(s : ChemrxnretroTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_table_sum(s : ChemrxnretroTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_table_mean(s : ChemrxnretroTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_table_mean(s : ChemrxnretroTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_table_scale(s : ChemrxnretroTable, f : Double) -> ChemrxnretroTable {
   let result = chem_rxn_retro_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_rxn_retro_table_fill(s : ChemrxnretroTable, v : Double) -> Chemrxnre
   result
 }
 
-pub fn chem_rxn_retro_table_min(s : ChemrxnretroTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_table_min(s : ChemrxnretroTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_table_max(s : ChemrxnretroTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_table_max(s : ChemrxnretroTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_table_to_string(s : ChemrxnretroTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_rxn_retro_graphn_set(s : ChemrxnretroGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_retro_graphn_sum(s : ChemrxnretroGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_graphn_sum(s : ChemrxnretroGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_graphn_mean(s : ChemrxnretroGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_graphn_mean(s : ChemrxnretroGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_graphn_scale(s : ChemrxnretroGraphN, f : Double) -> ChemrxnretroGraphN {
   let result = chem_rxn_retro_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_rxn_retro_graphn_fill(s : ChemrxnretroGraphN, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_retro_graphn_min(s : ChemrxnretroGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_graphn_min(s : ChemrxnretroGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_graphn_max(s : ChemrxnretroGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_graphn_max(s : ChemrxnretroGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_graphn_to_string(s : ChemrxnretroGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_rxn_retro_node_set(s : ChemrxnretroNode, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_retro_node_sum(s : ChemrxnretroNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_node_sum(s : ChemrxnretroNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_node_mean(s : ChemrxnretroNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_node_mean(s : ChemrxnretroNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_node_scale(s : ChemrxnretroNode, f : Double) -> ChemrxnretroNode {
   let result = chem_rxn_retro_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_rxn_retro_node_fill(s : ChemrxnretroNode, v : Double) -> Chemrxnretr
   result
 }
 
-pub fn chem_rxn_retro_node_min(s : ChemrxnretroNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_node_min(s : ChemrxnretroNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_node_max(s : ChemrxnretroNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_node_max(s : ChemrxnretroNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_node_to_string(s : ChemrxnretroNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_rxn_retro_edge_set(s : ChemrxnretroEdge, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_retro_edge_sum(s : ChemrxnretroEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_edge_sum(s : ChemrxnretroEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_edge_mean(s : ChemrxnretroEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_edge_mean(s : ChemrxnretroEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_edge_scale(s : ChemrxnretroEdge, f : Double) -> ChemrxnretroEdge {
   let result = chem_rxn_retro_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_rxn_retro_edge_fill(s : ChemrxnretroEdge, v : Double) -> Chemrxnretr
   result
 }
 
-pub fn chem_rxn_retro_edge_min(s : ChemrxnretroEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_edge_min(s : ChemrxnretroEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_edge_max(s : ChemrxnretroEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_edge_max(s : ChemrxnretroEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_edge_to_string(s : ChemrxnretroEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_rxn_retro_path_set(s : ChemrxnretroPath, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_retro_path_sum(s : ChemrxnretroPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_path_sum(s : ChemrxnretroPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_path_mean(s : ChemrxnretroPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_path_mean(s : ChemrxnretroPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_path_scale(s : ChemrxnretroPath, f : Double) -> ChemrxnretroPath {
   let result = chem_rxn_retro_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_rxn_retro_path_fill(s : ChemrxnretroPath, v : Double) -> Chemrxnretr
   result
 }
 
-pub fn chem_rxn_retro_path_min(s : ChemrxnretroPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_path_min(s : ChemrxnretroPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_path_max(s : ChemrxnretroPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_path_max(s : ChemrxnretroPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_path_to_string(s : ChemrxnretroPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_rxn_retro_cluster_set(s : ChemrxnretroCluster, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_retro_cluster_sum(s : ChemrxnretroCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_cluster_sum(s : ChemrxnretroCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_cluster_mean(s : ChemrxnretroCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_cluster_mean(s : ChemrxnretroCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_cluster_scale(s : ChemrxnretroCluster, f : Double) -> ChemrxnretroCluster {
   let result = chem_rxn_retro_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_rxn_retro_cluster_fill(s : ChemrxnretroCluster, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_retro_cluster_min(s : ChemrxnretroCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_cluster_min(s : ChemrxnretroCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_cluster_max(s : ChemrxnretroCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_cluster_max(s : ChemrxnretroCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_cluster_to_string(s : ChemrxnretroCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_rxn_retro_model_set(s : ChemrxnretroModel, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_retro_model_sum(s : ChemrxnretroModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_model_sum(s : ChemrxnretroModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_model_mean(s : ChemrxnretroModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_model_mean(s : ChemrxnretroModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_model_scale(s : ChemrxnretroModel, f : Double) -> ChemrxnretroModel {
   let result = chem_rxn_retro_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_rxn_retro_model_fill(s : ChemrxnretroModel, v : Double) -> Chemrxnre
   result
 }
 
-pub fn chem_rxn_retro_model_min(s : ChemrxnretroModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_model_min(s : ChemrxnretroModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_model_max(s : ChemrxnretroModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_model_max(s : ChemrxnretroModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_model_to_string(s : ChemrxnretroModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_rxn_retro_layer_set(s : ChemrxnretroLayer, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_retro_layer_sum(s : ChemrxnretroLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_layer_sum(s : ChemrxnretroLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_layer_mean(s : ChemrxnretroLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_layer_mean(s : ChemrxnretroLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_layer_scale(s : ChemrxnretroLayer, f : Double) -> ChemrxnretroLayer {
   let result = chem_rxn_retro_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_rxn_retro_layer_fill(s : ChemrxnretroLayer, v : Double) -> Chemrxnre
   result
 }
 
-pub fn chem_rxn_retro_layer_min(s : ChemrxnretroLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_layer_min(s : ChemrxnretroLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_layer_max(s : ChemrxnretroLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_layer_max(s : ChemrxnretroLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_layer_to_string(s : ChemrxnretroLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_rxn_retro_buffer_set(s : ChemrxnretroBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_retro_buffer_sum(s : ChemrxnretroBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_buffer_sum(s : ChemrxnretroBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_buffer_mean(s : ChemrxnretroBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_buffer_mean(s : ChemrxnretroBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_buffer_scale(s : ChemrxnretroBuffer, f : Double) -> ChemrxnretroBuffer {
   let result = chem_rxn_retro_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_rxn_retro_buffer_fill(s : ChemrxnretroBuffer, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_retro_buffer_min(s : ChemrxnretroBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_buffer_min(s : ChemrxnretroBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_buffer_max(s : ChemrxnretroBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_buffer_max(s : ChemrxnretroBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_buffer_to_string(s : ChemrxnretroBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_rxn_retro_cursor_set(s : ChemrxnretroCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_retro_cursor_sum(s : ChemrxnretroCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_cursor_sum(s : ChemrxnretroCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_cursor_mean(s : ChemrxnretroCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_cursor_mean(s : ChemrxnretroCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_cursor_scale(s : ChemrxnretroCursor, f : Double) -> ChemrxnretroCursor {
   let result = chem_rxn_retro_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_rxn_retro_cursor_fill(s : ChemrxnretroCursor, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_retro_cursor_min(s : ChemrxnretroCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_cursor_min(s : ChemrxnretroCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_cursor_max(s : ChemrxnretroCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_cursor_max(s : ChemrxnretroCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_cursor_to_string(s : ChemrxnretroCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_rxn_retro_view_set(s : ChemrxnretroView, i : Int, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_retro_view_sum(s : ChemrxnretroView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_view_sum(s : ChemrxnretroView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_view_mean(s : ChemrxnretroView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_view_mean(s : ChemrxnretroView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_view_scale(s : ChemrxnretroView, f : Double) -> ChemrxnretroView {
   let result = chem_rxn_retro_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_rxn_retro_view_fill(s : ChemrxnretroView, v : Double) -> Chemrxnretr
   result
 }
 
-pub fn chem_rxn_retro_view_min(s : ChemrxnretroView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_view_min(s : ChemrxnretroView) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_view_max(s : ChemrxnretroView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_view_max(s : ChemrxnretroView) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_view_to_string(s : ChemrxnretroView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_rxn_retro_range_set(s : ChemrxnretroRange, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_retro_range_sum(s : ChemrxnretroRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_range_sum(s : ChemrxnretroRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_range_mean(s : ChemrxnretroRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_range_mean(s : ChemrxnretroRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_range_scale(s : ChemrxnretroRange, f : Double) -> ChemrxnretroRange {
   let result = chem_rxn_retro_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_rxn_retro_range_fill(s : ChemrxnretroRange, v : Double) -> Chemrxnre
   result
 }
 
-pub fn chem_rxn_retro_range_min(s : ChemrxnretroRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_range_min(s : ChemrxnretroRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_range_max(s : ChemrxnretroRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_range_max(s : ChemrxnretroRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_range_to_string(s : ChemrxnretroRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_rxn_retro_slice_set(s : ChemrxnretroSlice, i : Int, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_retro_slice_sum(s : ChemrxnretroSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_retro_slice_sum(s : ChemrxnretroSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_retro_slice_mean(s : ChemrxnretroSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_retro_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_retro_slice_mean(s : ChemrxnretroSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_retro_slice_scale(s : ChemrxnretroSlice, f : Double) -> ChemrxnretroSlice {
   let result = chem_rxn_retro_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_rxn_retro_slice_fill(s : ChemrxnretroSlice, v : Double) -> Chemrxnre
   result
 }
 
-pub fn chem_rxn_retro_slice_min(s : ChemrxnretroSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_slice_min(s : ChemrxnretroSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_retro_slice_max(s : ChemrxnretroSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_retro_slice_max(s : ChemrxnretroSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_retro_slice_to_string(s : ChemrxnretroSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

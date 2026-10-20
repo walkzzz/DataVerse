@@ -88,11 +88,7 @@ pub fn ds_graph_edge_list_make_series(vals : Array[Double], name : String) -> Ds
 
 pub fn ds_graph_edge_list_series_len(s : DsgraphedgelistSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_edge_list_series_sum(s : DsgraphedgelistSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_edge_list_series_sum(s : DsgraphedgelistSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_edge_list_series_mean(s : DsgraphedgelistSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_edge_list_frame_set(s : DsgraphedgelistFrame, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_edge_list_frame_sum(s : DsgraphedgelistFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_frame_sum(s : DsgraphedgelistFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_frame_mean(s : DsgraphedgelistFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_frame_mean(s : DsgraphedgelistFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_frame_scale(s : DsgraphedgelistFrame, f : Double) -> DsgraphedgelistFrame {
   let result = ds_graph_edge_list_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_edge_list_frame_fill(s : DsgraphedgelistFrame, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_edge_list_frame_min(s : DsgraphedgelistFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_frame_min(s : DsgraphedgelistFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_frame_max(s : DsgraphedgelistFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_frame_max(s : DsgraphedgelistFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_frame_to_string(s : DsgraphedgelistFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_edge_list_table_set(s : DsgraphedgelistTable, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_edge_list_table_sum(s : DsgraphedgelistTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_table_sum(s : DsgraphedgelistTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_table_mean(s : DsgraphedgelistTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_table_mean(s : DsgraphedgelistTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_table_scale(s : DsgraphedgelistTable, f : Double) -> DsgraphedgelistTable {
   let result = ds_graph_edge_list_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_edge_list_table_fill(s : DsgraphedgelistTable, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_edge_list_table_min(s : DsgraphedgelistTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_table_min(s : DsgraphedgelistTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_table_max(s : DsgraphedgelistTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_table_max(s : DsgraphedgelistTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_table_to_string(s : DsgraphedgelistTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_edge_list_graphn_set(s : DsgraphedgelistGraphN, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_edge_list_graphn_sum(s : DsgraphedgelistGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_graphn_sum(s : DsgraphedgelistGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_graphn_mean(s : DsgraphedgelistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_graphn_mean(s : DsgraphedgelistGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_graphn_scale(s : DsgraphedgelistGraphN, f : Double) -> DsgraphedgelistGraphN {
   let result = ds_graph_edge_list_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_edge_list_graphn_fill(s : DsgraphedgelistGraphN, v : Double) -> 
   result
 }
 
-pub fn ds_graph_edge_list_graphn_min(s : DsgraphedgelistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_graphn_min(s : DsgraphedgelistGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_graphn_max(s : DsgraphedgelistGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_graphn_max(s : DsgraphedgelistGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_graphn_to_string(s : DsgraphedgelistGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_edge_list_node_set(s : DsgraphedgelistNode, i : Int, v : Double)
   result
 }
 
-pub fn ds_graph_edge_list_node_sum(s : DsgraphedgelistNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_node_sum(s : DsgraphedgelistNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_node_mean(s : DsgraphedgelistNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_node_mean(s : DsgraphedgelistNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_node_scale(s : DsgraphedgelistNode, f : Double) -> DsgraphedgelistNode {
   let result = ds_graph_edge_list_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_edge_list_node_fill(s : DsgraphedgelistNode, v : Double) -> Dsgr
   result
 }
 
-pub fn ds_graph_edge_list_node_min(s : DsgraphedgelistNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_node_min(s : DsgraphedgelistNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_node_max(s : DsgraphedgelistNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_node_max(s : DsgraphedgelistNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_node_to_string(s : DsgraphedgelistNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_edge_list_edge_set(s : DsgraphedgelistEdge, i : Int, v : Double)
   result
 }
 
-pub fn ds_graph_edge_list_edge_sum(s : DsgraphedgelistEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_edge_sum(s : DsgraphedgelistEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_edge_mean(s : DsgraphedgelistEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_edge_mean(s : DsgraphedgelistEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_edge_scale(s : DsgraphedgelistEdge, f : Double) -> DsgraphedgelistEdge {
   let result = ds_graph_edge_list_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_edge_list_edge_fill(s : DsgraphedgelistEdge, v : Double) -> Dsgr
   result
 }
 
-pub fn ds_graph_edge_list_edge_min(s : DsgraphedgelistEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_edge_min(s : DsgraphedgelistEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_edge_max(s : DsgraphedgelistEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_edge_max(s : DsgraphedgelistEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_edge_to_string(s : DsgraphedgelistEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_edge_list_path_set(s : DsgraphedgelistPath, i : Int, v : Double)
   result
 }
 
-pub fn ds_graph_edge_list_path_sum(s : DsgraphedgelistPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_path_sum(s : DsgraphedgelistPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_path_mean(s : DsgraphedgelistPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_path_mean(s : DsgraphedgelistPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_path_scale(s : DsgraphedgelistPath, f : Double) -> DsgraphedgelistPath {
   let result = ds_graph_edge_list_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_edge_list_path_fill(s : DsgraphedgelistPath, v : Double) -> Dsgr
   result
 }
 
-pub fn ds_graph_edge_list_path_min(s : DsgraphedgelistPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_path_min(s : DsgraphedgelistPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_path_max(s : DsgraphedgelistPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_path_max(s : DsgraphedgelistPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_path_to_string(s : DsgraphedgelistPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_edge_list_cluster_set(s : DsgraphedgelistCluster, i : Int, v : D
   result
 }
 
-pub fn ds_graph_edge_list_cluster_sum(s : DsgraphedgelistCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_cluster_sum(s : DsgraphedgelistCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_cluster_mean(s : DsgraphedgelistCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_cluster_mean(s : DsgraphedgelistCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_cluster_scale(s : DsgraphedgelistCluster, f : Double) -> DsgraphedgelistCluster {
   let result = ds_graph_edge_list_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_edge_list_cluster_fill(s : DsgraphedgelistCluster, v : Double) -
   result
 }
 
-pub fn ds_graph_edge_list_cluster_min(s : DsgraphedgelistCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_cluster_min(s : DsgraphedgelistCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_cluster_max(s : DsgraphedgelistCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_cluster_max(s : DsgraphedgelistCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_cluster_to_string(s : DsgraphedgelistCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_edge_list_model_set(s : DsgraphedgelistModel, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_edge_list_model_sum(s : DsgraphedgelistModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_model_sum(s : DsgraphedgelistModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_model_mean(s : DsgraphedgelistModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_model_mean(s : DsgraphedgelistModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_model_scale(s : DsgraphedgelistModel, f : Double) -> DsgraphedgelistModel {
   let result = ds_graph_edge_list_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_edge_list_model_fill(s : DsgraphedgelistModel, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_edge_list_model_min(s : DsgraphedgelistModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_model_min(s : DsgraphedgelistModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_model_max(s : DsgraphedgelistModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_model_max(s : DsgraphedgelistModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_model_to_string(s : DsgraphedgelistModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_edge_list_layer_set(s : DsgraphedgelistLayer, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_edge_list_layer_sum(s : DsgraphedgelistLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_layer_sum(s : DsgraphedgelistLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_layer_mean(s : DsgraphedgelistLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_layer_mean(s : DsgraphedgelistLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_layer_scale(s : DsgraphedgelistLayer, f : Double) -> DsgraphedgelistLayer {
   let result = ds_graph_edge_list_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_edge_list_layer_fill(s : DsgraphedgelistLayer, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_edge_list_layer_min(s : DsgraphedgelistLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_layer_min(s : DsgraphedgelistLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_layer_max(s : DsgraphedgelistLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_layer_max(s : DsgraphedgelistLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_layer_to_string(s : DsgraphedgelistLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_edge_list_buffer_set(s : DsgraphedgelistBuffer, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_edge_list_buffer_sum(s : DsgraphedgelistBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_buffer_sum(s : DsgraphedgelistBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_buffer_mean(s : DsgraphedgelistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_buffer_mean(s : DsgraphedgelistBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_buffer_scale(s : DsgraphedgelistBuffer, f : Double) -> DsgraphedgelistBuffer {
   let result = ds_graph_edge_list_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_edge_list_buffer_fill(s : DsgraphedgelistBuffer, v : Double) -> 
   result
 }
 
-pub fn ds_graph_edge_list_buffer_min(s : DsgraphedgelistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_buffer_min(s : DsgraphedgelistBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_buffer_max(s : DsgraphedgelistBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_buffer_max(s : DsgraphedgelistBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_buffer_to_string(s : DsgraphedgelistBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_edge_list_cursor_set(s : DsgraphedgelistCursor, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_edge_list_cursor_sum(s : DsgraphedgelistCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_cursor_sum(s : DsgraphedgelistCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_cursor_mean(s : DsgraphedgelistCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_cursor_mean(s : DsgraphedgelistCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_cursor_scale(s : DsgraphedgelistCursor, f : Double) -> DsgraphedgelistCursor {
   let result = ds_graph_edge_list_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_edge_list_cursor_fill(s : DsgraphedgelistCursor, v : Double) -> 
   result
 }
 
-pub fn ds_graph_edge_list_cursor_min(s : DsgraphedgelistCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_cursor_min(s : DsgraphedgelistCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_cursor_max(s : DsgraphedgelistCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_cursor_max(s : DsgraphedgelistCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_cursor_to_string(s : DsgraphedgelistCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_edge_list_view_set(s : DsgraphedgelistView, i : Int, v : Double)
   result
 }
 
-pub fn ds_graph_edge_list_view_sum(s : DsgraphedgelistView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_view_sum(s : DsgraphedgelistView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_view_mean(s : DsgraphedgelistView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_view_mean(s : DsgraphedgelistView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_view_scale(s : DsgraphedgelistView, f : Double) -> DsgraphedgelistView {
   let result = ds_graph_edge_list_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_edge_list_view_fill(s : DsgraphedgelistView, v : Double) -> Dsgr
   result
 }
 
-pub fn ds_graph_edge_list_view_min(s : DsgraphedgelistView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_view_min(s : DsgraphedgelistView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_view_max(s : DsgraphedgelistView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_view_max(s : DsgraphedgelistView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_view_to_string(s : DsgraphedgelistView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_edge_list_range_set(s : DsgraphedgelistRange, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_edge_list_range_sum(s : DsgraphedgelistRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_range_sum(s : DsgraphedgelistRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_range_mean(s : DsgraphedgelistRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_range_mean(s : DsgraphedgelistRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_range_scale(s : DsgraphedgelistRange, f : Double) -> DsgraphedgelistRange {
   let result = ds_graph_edge_list_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_edge_list_range_fill(s : DsgraphedgelistRange, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_edge_list_range_min(s : DsgraphedgelistRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_range_min(s : DsgraphedgelistRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_range_max(s : DsgraphedgelistRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_range_max(s : DsgraphedgelistRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_range_to_string(s : DsgraphedgelistRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_edge_list_slice_set(s : DsgraphedgelistSlice, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_edge_list_slice_sum(s : DsgraphedgelistSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_edge_list_slice_sum(s : DsgraphedgelistSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_edge_list_slice_mean(s : DsgraphedgelistSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_edge_list_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_edge_list_slice_mean(s : DsgraphedgelistSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_edge_list_slice_scale(s : DsgraphedgelistSlice, f : Double) -> DsgraphedgelistSlice {
   let result = ds_graph_edge_list_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_edge_list_slice_fill(s : DsgraphedgelistSlice, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_edge_list_slice_min(s : DsgraphedgelistSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_slice_min(s : DsgraphedgelistSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_edge_list_slice_max(s : DsgraphedgelistSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_edge_list_slice_max(s : DsgraphedgelistSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_edge_list_slice_to_string(s : DsgraphedgelistSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

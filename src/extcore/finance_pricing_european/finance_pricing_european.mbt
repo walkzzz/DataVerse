@@ -88,11 +88,7 @@ pub fn finance_pricing_european_make_series(vals : Array[Double], name : String)
 
 pub fn finance_pricing_european_series_len(s : FinancepricingeuropeanSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_european_series_sum(s : FinancepricingeuropeanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_european_series_sum(s : FinancepricingeuropeanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_european_series_mean(s : FinancepricingeuropeanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_european_frame_set(s : FinancepricingeuropeanFrame, i : I
   result
 }
 
-pub fn finance_pricing_european_frame_sum(s : FinancepricingeuropeanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_frame_sum(s : FinancepricingeuropeanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_frame_mean(s : FinancepricingeuropeanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_frame_mean(s : FinancepricingeuropeanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_frame_scale(s : FinancepricingeuropeanFrame, f : Double) -> FinancepricingeuropeanFrame {
   let result = finance_pricing_european_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_european_frame_fill(s : FinancepricingeuropeanFrame, v : 
   result
 }
 
-pub fn finance_pricing_european_frame_min(s : FinancepricingeuropeanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_frame_min(s : FinancepricingeuropeanFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_frame_max(s : FinancepricingeuropeanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_frame_max(s : FinancepricingeuropeanFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_frame_to_string(s : FinancepricingeuropeanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_european_table_set(s : FinancepricingeuropeanTable, i : I
   result
 }
 
-pub fn finance_pricing_european_table_sum(s : FinancepricingeuropeanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_table_sum(s : FinancepricingeuropeanTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_table_mean(s : FinancepricingeuropeanTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_table_mean(s : FinancepricingeuropeanTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_table_scale(s : FinancepricingeuropeanTable, f : Double) -> FinancepricingeuropeanTable {
   let result = finance_pricing_european_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_european_table_fill(s : FinancepricingeuropeanTable, v : 
   result
 }
 
-pub fn finance_pricing_european_table_min(s : FinancepricingeuropeanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_table_min(s : FinancepricingeuropeanTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_table_max(s : FinancepricingeuropeanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_table_max(s : FinancepricingeuropeanTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_table_to_string(s : FinancepricingeuropeanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_european_graphn_set(s : FinancepricingeuropeanGraphN, i :
   result
 }
 
-pub fn finance_pricing_european_graphn_sum(s : FinancepricingeuropeanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_graphn_sum(s : FinancepricingeuropeanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_graphn_mean(s : FinancepricingeuropeanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_graphn_mean(s : FinancepricingeuropeanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_graphn_scale(s : FinancepricingeuropeanGraphN, f : Double) -> FinancepricingeuropeanGraphN {
   let result = finance_pricing_european_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_european_graphn_fill(s : FinancepricingeuropeanGraphN, v 
   result
 }
 
-pub fn finance_pricing_european_graphn_min(s : FinancepricingeuropeanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_graphn_min(s : FinancepricingeuropeanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_graphn_max(s : FinancepricingeuropeanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_graphn_max(s : FinancepricingeuropeanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_graphn_to_string(s : FinancepricingeuropeanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_european_node_set(s : FinancepricingeuropeanNode, i : Int
   result
 }
 
-pub fn finance_pricing_european_node_sum(s : FinancepricingeuropeanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_node_sum(s : FinancepricingeuropeanNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_node_mean(s : FinancepricingeuropeanNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_node_mean(s : FinancepricingeuropeanNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_node_scale(s : FinancepricingeuropeanNode, f : Double) -> FinancepricingeuropeanNode {
   let result = finance_pricing_european_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_european_node_fill(s : FinancepricingeuropeanNode, v : Do
   result
 }
 
-pub fn finance_pricing_european_node_min(s : FinancepricingeuropeanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_node_min(s : FinancepricingeuropeanNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_node_max(s : FinancepricingeuropeanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_node_max(s : FinancepricingeuropeanNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_node_to_string(s : FinancepricingeuropeanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_european_edge_set(s : FinancepricingeuropeanEdge, i : Int
   result
 }
 
-pub fn finance_pricing_european_edge_sum(s : FinancepricingeuropeanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_edge_sum(s : FinancepricingeuropeanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_edge_mean(s : FinancepricingeuropeanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_edge_mean(s : FinancepricingeuropeanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_edge_scale(s : FinancepricingeuropeanEdge, f : Double) -> FinancepricingeuropeanEdge {
   let result = finance_pricing_european_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_european_edge_fill(s : FinancepricingeuropeanEdge, v : Do
   result
 }
 
-pub fn finance_pricing_european_edge_min(s : FinancepricingeuropeanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_edge_min(s : FinancepricingeuropeanEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_edge_max(s : FinancepricingeuropeanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_edge_max(s : FinancepricingeuropeanEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_edge_to_string(s : FinancepricingeuropeanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_european_path_set(s : FinancepricingeuropeanPath, i : Int
   result
 }
 
-pub fn finance_pricing_european_path_sum(s : FinancepricingeuropeanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_path_sum(s : FinancepricingeuropeanPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_path_mean(s : FinancepricingeuropeanPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_path_mean(s : FinancepricingeuropeanPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_path_scale(s : FinancepricingeuropeanPath, f : Double) -> FinancepricingeuropeanPath {
   let result = finance_pricing_european_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_european_path_fill(s : FinancepricingeuropeanPath, v : Do
   result
 }
 
-pub fn finance_pricing_european_path_min(s : FinancepricingeuropeanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_path_min(s : FinancepricingeuropeanPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_path_max(s : FinancepricingeuropeanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_path_max(s : FinancepricingeuropeanPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_path_to_string(s : FinancepricingeuropeanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_european_cluster_set(s : FinancepricingeuropeanCluster, i
   result
 }
 
-pub fn finance_pricing_european_cluster_sum(s : FinancepricingeuropeanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_cluster_sum(s : FinancepricingeuropeanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_cluster_mean(s : FinancepricingeuropeanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_cluster_mean(s : FinancepricingeuropeanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_cluster_scale(s : FinancepricingeuropeanCluster, f : Double) -> FinancepricingeuropeanCluster {
   let result = finance_pricing_european_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_european_cluster_fill(s : FinancepricingeuropeanCluster, 
   result
 }
 
-pub fn finance_pricing_european_cluster_min(s : FinancepricingeuropeanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_cluster_min(s : FinancepricingeuropeanCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_cluster_max(s : FinancepricingeuropeanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_cluster_max(s : FinancepricingeuropeanCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_cluster_to_string(s : FinancepricingeuropeanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_european_model_set(s : FinancepricingeuropeanModel, i : I
   result
 }
 
-pub fn finance_pricing_european_model_sum(s : FinancepricingeuropeanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_model_sum(s : FinancepricingeuropeanModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_model_mean(s : FinancepricingeuropeanModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_model_mean(s : FinancepricingeuropeanModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_model_scale(s : FinancepricingeuropeanModel, f : Double) -> FinancepricingeuropeanModel {
   let result = finance_pricing_european_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_european_model_fill(s : FinancepricingeuropeanModel, v : 
   result
 }
 
-pub fn finance_pricing_european_model_min(s : FinancepricingeuropeanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_model_min(s : FinancepricingeuropeanModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_model_max(s : FinancepricingeuropeanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_model_max(s : FinancepricingeuropeanModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_model_to_string(s : FinancepricingeuropeanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_european_layer_set(s : FinancepricingeuropeanLayer, i : I
   result
 }
 
-pub fn finance_pricing_european_layer_sum(s : FinancepricingeuropeanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_layer_sum(s : FinancepricingeuropeanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_layer_mean(s : FinancepricingeuropeanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_layer_mean(s : FinancepricingeuropeanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_layer_scale(s : FinancepricingeuropeanLayer, f : Double) -> FinancepricingeuropeanLayer {
   let result = finance_pricing_european_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_european_layer_fill(s : FinancepricingeuropeanLayer, v : 
   result
 }
 
-pub fn finance_pricing_european_layer_min(s : FinancepricingeuropeanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_layer_min(s : FinancepricingeuropeanLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_layer_max(s : FinancepricingeuropeanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_layer_max(s : FinancepricingeuropeanLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_layer_to_string(s : FinancepricingeuropeanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_european_buffer_set(s : FinancepricingeuropeanBuffer, i :
   result
 }
 
-pub fn finance_pricing_european_buffer_sum(s : FinancepricingeuropeanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_buffer_sum(s : FinancepricingeuropeanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_buffer_mean(s : FinancepricingeuropeanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_buffer_mean(s : FinancepricingeuropeanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_buffer_scale(s : FinancepricingeuropeanBuffer, f : Double) -> FinancepricingeuropeanBuffer {
   let result = finance_pricing_european_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_european_buffer_fill(s : FinancepricingeuropeanBuffer, v 
   result
 }
 
-pub fn finance_pricing_european_buffer_min(s : FinancepricingeuropeanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_buffer_min(s : FinancepricingeuropeanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_buffer_max(s : FinancepricingeuropeanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_buffer_max(s : FinancepricingeuropeanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_buffer_to_string(s : FinancepricingeuropeanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_european_cursor_set(s : FinancepricingeuropeanCursor, i :
   result
 }
 
-pub fn finance_pricing_european_cursor_sum(s : FinancepricingeuropeanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_cursor_sum(s : FinancepricingeuropeanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_cursor_mean(s : FinancepricingeuropeanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_cursor_mean(s : FinancepricingeuropeanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_cursor_scale(s : FinancepricingeuropeanCursor, f : Double) -> FinancepricingeuropeanCursor {
   let result = finance_pricing_european_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_european_cursor_fill(s : FinancepricingeuropeanCursor, v 
   result
 }
 
-pub fn finance_pricing_european_cursor_min(s : FinancepricingeuropeanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_cursor_min(s : FinancepricingeuropeanCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_cursor_max(s : FinancepricingeuropeanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_cursor_max(s : FinancepricingeuropeanCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_cursor_to_string(s : FinancepricingeuropeanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_european_view_set(s : FinancepricingeuropeanView, i : Int
   result
 }
 
-pub fn finance_pricing_european_view_sum(s : FinancepricingeuropeanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_view_sum(s : FinancepricingeuropeanView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_view_mean(s : FinancepricingeuropeanView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_view_mean(s : FinancepricingeuropeanView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_view_scale(s : FinancepricingeuropeanView, f : Double) -> FinancepricingeuropeanView {
   let result = finance_pricing_european_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_european_view_fill(s : FinancepricingeuropeanView, v : Do
   result
 }
 
-pub fn finance_pricing_european_view_min(s : FinancepricingeuropeanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_view_min(s : FinancepricingeuropeanView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_view_max(s : FinancepricingeuropeanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_view_max(s : FinancepricingeuropeanView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_view_to_string(s : FinancepricingeuropeanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_european_range_set(s : FinancepricingeuropeanRange, i : I
   result
 }
 
-pub fn finance_pricing_european_range_sum(s : FinancepricingeuropeanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_range_sum(s : FinancepricingeuropeanRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_range_mean(s : FinancepricingeuropeanRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_range_mean(s : FinancepricingeuropeanRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_range_scale(s : FinancepricingeuropeanRange, f : Double) -> FinancepricingeuropeanRange {
   let result = finance_pricing_european_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_european_range_fill(s : FinancepricingeuropeanRange, v : 
   result
 }
 
-pub fn finance_pricing_european_range_min(s : FinancepricingeuropeanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_range_min(s : FinancepricingeuropeanRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_range_max(s : FinancepricingeuropeanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_range_max(s : FinancepricingeuropeanRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_range_to_string(s : FinancepricingeuropeanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_european_slice_set(s : FinancepricingeuropeanSlice, i : I
   result
 }
 
-pub fn finance_pricing_european_slice_sum(s : FinancepricingeuropeanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_european_slice_sum(s : FinancepricingeuropeanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_european_slice_mean(s : FinancepricingeuropeanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_european_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_european_slice_mean(s : FinancepricingeuropeanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_european_slice_scale(s : FinancepricingeuropeanSlice, f : Double) -> FinancepricingeuropeanSlice {
   let result = finance_pricing_european_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_european_slice_fill(s : FinancepricingeuropeanSlice, v : 
   result
 }
 
-pub fn finance_pricing_european_slice_min(s : FinancepricingeuropeanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_slice_min(s : FinancepricingeuropeanSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_european_slice_max(s : FinancepricingeuropeanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_european_slice_max(s : FinancepricingeuropeanSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_european_slice_to_string(s : FinancepricingeuropeanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

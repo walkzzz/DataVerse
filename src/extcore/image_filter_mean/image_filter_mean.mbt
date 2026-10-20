@@ -88,11 +88,7 @@ pub fn image_filter_mean_make_series(vals : Array[Double], name : String) -> Ima
 
 pub fn image_filter_mean_series_len(s : ImagefiltermeanSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_mean_series_sum(s : ImagefiltermeanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_mean_series_sum(s : ImagefiltermeanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_mean_series_mean(s : ImagefiltermeanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_mean_frame_set(s : ImagefiltermeanFrame, i : Int, v : Double
   result
 }
 
-pub fn image_filter_mean_frame_sum(s : ImagefiltermeanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_frame_sum(s : ImagefiltermeanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_frame_mean(s : ImagefiltermeanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_frame_mean(s : ImagefiltermeanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_frame_scale(s : ImagefiltermeanFrame, f : Double) -> ImagefiltermeanFrame {
   let result = image_filter_mean_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_mean_frame_fill(s : ImagefiltermeanFrame, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_mean_frame_min(s : ImagefiltermeanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_frame_min(s : ImagefiltermeanFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_frame_max(s : ImagefiltermeanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_frame_max(s : ImagefiltermeanFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_frame_to_string(s : ImagefiltermeanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_mean_table_set(s : ImagefiltermeanTable, i : Int, v : Double
   result
 }
 
-pub fn image_filter_mean_table_sum(s : ImagefiltermeanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_table_sum(s : ImagefiltermeanTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_table_mean(s : ImagefiltermeanTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_table_mean(s : ImagefiltermeanTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_table_scale(s : ImagefiltermeanTable, f : Double) -> ImagefiltermeanTable {
   let result = image_filter_mean_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_mean_table_fill(s : ImagefiltermeanTable, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_mean_table_min(s : ImagefiltermeanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_table_min(s : ImagefiltermeanTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_table_max(s : ImagefiltermeanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_table_max(s : ImagefiltermeanTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_table_to_string(s : ImagefiltermeanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_mean_graphn_set(s : ImagefiltermeanGraphN, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_mean_graphn_sum(s : ImagefiltermeanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_graphn_sum(s : ImagefiltermeanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_graphn_mean(s : ImagefiltermeanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_graphn_mean(s : ImagefiltermeanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_graphn_scale(s : ImagefiltermeanGraphN, f : Double) -> ImagefiltermeanGraphN {
   let result = image_filter_mean_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_mean_graphn_fill(s : ImagefiltermeanGraphN, v : Double) -> I
   result
 }
 
-pub fn image_filter_mean_graphn_min(s : ImagefiltermeanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_graphn_min(s : ImagefiltermeanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_graphn_max(s : ImagefiltermeanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_graphn_max(s : ImagefiltermeanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_graphn_to_string(s : ImagefiltermeanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_mean_node_set(s : ImagefiltermeanNode, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_mean_node_sum(s : ImagefiltermeanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_node_sum(s : ImagefiltermeanNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_node_mean(s : ImagefiltermeanNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_node_mean(s : ImagefiltermeanNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_node_scale(s : ImagefiltermeanNode, f : Double) -> ImagefiltermeanNode {
   let result = image_filter_mean_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_mean_node_fill(s : ImagefiltermeanNode, v : Double) -> Image
   result
 }
 
-pub fn image_filter_mean_node_min(s : ImagefiltermeanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_node_min(s : ImagefiltermeanNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_node_max(s : ImagefiltermeanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_node_max(s : ImagefiltermeanNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_node_to_string(s : ImagefiltermeanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_mean_edge_set(s : ImagefiltermeanEdge, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_mean_edge_sum(s : ImagefiltermeanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_edge_sum(s : ImagefiltermeanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_edge_mean(s : ImagefiltermeanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_edge_mean(s : ImagefiltermeanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_edge_scale(s : ImagefiltermeanEdge, f : Double) -> ImagefiltermeanEdge {
   let result = image_filter_mean_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_mean_edge_fill(s : ImagefiltermeanEdge, v : Double) -> Image
   result
 }
 
-pub fn image_filter_mean_edge_min(s : ImagefiltermeanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_edge_min(s : ImagefiltermeanEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_edge_max(s : ImagefiltermeanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_edge_max(s : ImagefiltermeanEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_edge_to_string(s : ImagefiltermeanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_mean_path_set(s : ImagefiltermeanPath, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_mean_path_sum(s : ImagefiltermeanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_path_sum(s : ImagefiltermeanPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_path_mean(s : ImagefiltermeanPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_path_mean(s : ImagefiltermeanPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_path_scale(s : ImagefiltermeanPath, f : Double) -> ImagefiltermeanPath {
   let result = image_filter_mean_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_mean_path_fill(s : ImagefiltermeanPath, v : Double) -> Image
   result
 }
 
-pub fn image_filter_mean_path_min(s : ImagefiltermeanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_path_min(s : ImagefiltermeanPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_path_max(s : ImagefiltermeanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_path_max(s : ImagefiltermeanPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_path_to_string(s : ImagefiltermeanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_mean_cluster_set(s : ImagefiltermeanCluster, i : Int, v : Do
   result
 }
 
-pub fn image_filter_mean_cluster_sum(s : ImagefiltermeanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_cluster_sum(s : ImagefiltermeanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_cluster_mean(s : ImagefiltermeanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_cluster_mean(s : ImagefiltermeanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_cluster_scale(s : ImagefiltermeanCluster, f : Double) -> ImagefiltermeanCluster {
   let result = image_filter_mean_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_mean_cluster_fill(s : ImagefiltermeanCluster, v : Double) ->
   result
 }
 
-pub fn image_filter_mean_cluster_min(s : ImagefiltermeanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_cluster_min(s : ImagefiltermeanCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_cluster_max(s : ImagefiltermeanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_cluster_max(s : ImagefiltermeanCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_cluster_to_string(s : ImagefiltermeanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_mean_model_set(s : ImagefiltermeanModel, i : Int, v : Double
   result
 }
 
-pub fn image_filter_mean_model_sum(s : ImagefiltermeanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_model_sum(s : ImagefiltermeanModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_model_mean(s : ImagefiltermeanModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_model_mean(s : ImagefiltermeanModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_model_scale(s : ImagefiltermeanModel, f : Double) -> ImagefiltermeanModel {
   let result = image_filter_mean_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_mean_model_fill(s : ImagefiltermeanModel, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_mean_model_min(s : ImagefiltermeanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_model_min(s : ImagefiltermeanModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_model_max(s : ImagefiltermeanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_model_max(s : ImagefiltermeanModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_model_to_string(s : ImagefiltermeanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_mean_layer_set(s : ImagefiltermeanLayer, i : Int, v : Double
   result
 }
 
-pub fn image_filter_mean_layer_sum(s : ImagefiltermeanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_layer_sum(s : ImagefiltermeanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_layer_mean(s : ImagefiltermeanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_layer_mean(s : ImagefiltermeanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_layer_scale(s : ImagefiltermeanLayer, f : Double) -> ImagefiltermeanLayer {
   let result = image_filter_mean_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_mean_layer_fill(s : ImagefiltermeanLayer, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_mean_layer_min(s : ImagefiltermeanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_layer_min(s : ImagefiltermeanLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_layer_max(s : ImagefiltermeanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_layer_max(s : ImagefiltermeanLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_layer_to_string(s : ImagefiltermeanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_mean_buffer_set(s : ImagefiltermeanBuffer, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_mean_buffer_sum(s : ImagefiltermeanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_buffer_sum(s : ImagefiltermeanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_buffer_mean(s : ImagefiltermeanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_buffer_mean(s : ImagefiltermeanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_buffer_scale(s : ImagefiltermeanBuffer, f : Double) -> ImagefiltermeanBuffer {
   let result = image_filter_mean_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_mean_buffer_fill(s : ImagefiltermeanBuffer, v : Double) -> I
   result
 }
 
-pub fn image_filter_mean_buffer_min(s : ImagefiltermeanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_buffer_min(s : ImagefiltermeanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_buffer_max(s : ImagefiltermeanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_buffer_max(s : ImagefiltermeanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_buffer_to_string(s : ImagefiltermeanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_mean_cursor_set(s : ImagefiltermeanCursor, i : Int, v : Doub
   result
 }
 
-pub fn image_filter_mean_cursor_sum(s : ImagefiltermeanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_cursor_sum(s : ImagefiltermeanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_cursor_mean(s : ImagefiltermeanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_cursor_mean(s : ImagefiltermeanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_cursor_scale(s : ImagefiltermeanCursor, f : Double) -> ImagefiltermeanCursor {
   let result = image_filter_mean_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_mean_cursor_fill(s : ImagefiltermeanCursor, v : Double) -> I
   result
 }
 
-pub fn image_filter_mean_cursor_min(s : ImagefiltermeanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_cursor_min(s : ImagefiltermeanCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_cursor_max(s : ImagefiltermeanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_cursor_max(s : ImagefiltermeanCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_cursor_to_string(s : ImagefiltermeanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_mean_view_set(s : ImagefiltermeanView, i : Int, v : Double) 
   result
 }
 
-pub fn image_filter_mean_view_sum(s : ImagefiltermeanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_view_sum(s : ImagefiltermeanView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_view_mean(s : ImagefiltermeanView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_view_mean(s : ImagefiltermeanView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_view_scale(s : ImagefiltermeanView, f : Double) -> ImagefiltermeanView {
   let result = image_filter_mean_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_mean_view_fill(s : ImagefiltermeanView, v : Double) -> Image
   result
 }
 
-pub fn image_filter_mean_view_min(s : ImagefiltermeanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_view_min(s : ImagefiltermeanView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_view_max(s : ImagefiltermeanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_view_max(s : ImagefiltermeanView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_view_to_string(s : ImagefiltermeanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_mean_range_set(s : ImagefiltermeanRange, i : Int, v : Double
   result
 }
 
-pub fn image_filter_mean_range_sum(s : ImagefiltermeanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_range_sum(s : ImagefiltermeanRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_range_mean(s : ImagefiltermeanRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_range_mean(s : ImagefiltermeanRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_range_scale(s : ImagefiltermeanRange, f : Double) -> ImagefiltermeanRange {
   let result = image_filter_mean_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_mean_range_fill(s : ImagefiltermeanRange, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_mean_range_min(s : ImagefiltermeanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_range_min(s : ImagefiltermeanRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_range_max(s : ImagefiltermeanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_range_max(s : ImagefiltermeanRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_range_to_string(s : ImagefiltermeanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_mean_slice_set(s : ImagefiltermeanSlice, i : Int, v : Double
   result
 }
 
-pub fn image_filter_mean_slice_sum(s : ImagefiltermeanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_mean_slice_sum(s : ImagefiltermeanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_mean_slice_mean(s : ImagefiltermeanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_mean_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_mean_slice_mean(s : ImagefiltermeanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_mean_slice_scale(s : ImagefiltermeanSlice, f : Double) -> ImagefiltermeanSlice {
   let result = image_filter_mean_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_mean_slice_fill(s : ImagefiltermeanSlice, v : Double) -> Ima
   result
 }
 
-pub fn image_filter_mean_slice_min(s : ImagefiltermeanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_slice_min(s : ImagefiltermeanSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_mean_slice_max(s : ImagefiltermeanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_mean_slice_max(s : ImagefiltermeanSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_mean_slice_to_string(s : ImagefiltermeanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

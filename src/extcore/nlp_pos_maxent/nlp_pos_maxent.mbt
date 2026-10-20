@@ -88,11 +88,7 @@ pub fn nlp_pos_maxent_make_series(vals : Array[Double], name : String) -> Nlppos
 
 pub fn nlp_pos_maxent_series_len(s : NlpposmaxentSeries) -> Int { s.vals.length() }
 
-pub fn nlp_pos_maxent_series_sum(s : NlpposmaxentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_pos_maxent_series_sum(s : NlpposmaxentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_pos_maxent_series_mean(s : NlpposmaxentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_pos_maxent_frame_set(s : NlpposmaxentFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_maxent_frame_sum(s : NlpposmaxentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_frame_sum(s : NlpposmaxentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_frame_mean(s : NlpposmaxentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_frame_mean(s : NlpposmaxentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_frame_scale(s : NlpposmaxentFrame, f : Double) -> NlpposmaxentFrame {
   let result = nlp_pos_maxent_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_pos_maxent_frame_fill(s : NlpposmaxentFrame, v : Double) -> Nlpposmax
   result
 }
 
-pub fn nlp_pos_maxent_frame_min(s : NlpposmaxentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_frame_min(s : NlpposmaxentFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_frame_max(s : NlpposmaxentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_frame_max(s : NlpposmaxentFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_frame_to_string(s : NlpposmaxentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_pos_maxent_table_set(s : NlpposmaxentTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_maxent_table_sum(s : NlpposmaxentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_table_sum(s : NlpposmaxentTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_table_mean(s : NlpposmaxentTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_table_mean(s : NlpposmaxentTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_table_scale(s : NlpposmaxentTable, f : Double) -> NlpposmaxentTable {
   let result = nlp_pos_maxent_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_pos_maxent_table_fill(s : NlpposmaxentTable, v : Double) -> Nlpposmax
   result
 }
 
-pub fn nlp_pos_maxent_table_min(s : NlpposmaxentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_table_min(s : NlpposmaxentTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_table_max(s : NlpposmaxentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_table_max(s : NlpposmaxentTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_table_to_string(s : NlpposmaxentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_pos_maxent_graphn_set(s : NlpposmaxentGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_pos_maxent_graphn_sum(s : NlpposmaxentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_graphn_sum(s : NlpposmaxentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_graphn_mean(s : NlpposmaxentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_graphn_mean(s : NlpposmaxentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_graphn_scale(s : NlpposmaxentGraphN, f : Double) -> NlpposmaxentGraphN {
   let result = nlp_pos_maxent_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_pos_maxent_graphn_fill(s : NlpposmaxentGraphN, v : Double) -> Nlpposm
   result
 }
 
-pub fn nlp_pos_maxent_graphn_min(s : NlpposmaxentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_graphn_min(s : NlpposmaxentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_graphn_max(s : NlpposmaxentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_graphn_max(s : NlpposmaxentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_graphn_to_string(s : NlpposmaxentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_pos_maxent_node_set(s : NlpposmaxentNode, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_maxent_node_sum(s : NlpposmaxentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_node_sum(s : NlpposmaxentNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_node_mean(s : NlpposmaxentNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_node_mean(s : NlpposmaxentNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_node_scale(s : NlpposmaxentNode, f : Double) -> NlpposmaxentNode {
   let result = nlp_pos_maxent_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_pos_maxent_node_fill(s : NlpposmaxentNode, v : Double) -> Nlpposmaxen
   result
 }
 
-pub fn nlp_pos_maxent_node_min(s : NlpposmaxentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_node_min(s : NlpposmaxentNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_node_max(s : NlpposmaxentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_node_max(s : NlpposmaxentNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_node_to_string(s : NlpposmaxentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_pos_maxent_edge_set(s : NlpposmaxentEdge, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_maxent_edge_sum(s : NlpposmaxentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_edge_sum(s : NlpposmaxentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_edge_mean(s : NlpposmaxentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_edge_mean(s : NlpposmaxentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_edge_scale(s : NlpposmaxentEdge, f : Double) -> NlpposmaxentEdge {
   let result = nlp_pos_maxent_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_pos_maxent_edge_fill(s : NlpposmaxentEdge, v : Double) -> Nlpposmaxen
   result
 }
 
-pub fn nlp_pos_maxent_edge_min(s : NlpposmaxentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_edge_min(s : NlpposmaxentEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_edge_max(s : NlpposmaxentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_edge_max(s : NlpposmaxentEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_edge_to_string(s : NlpposmaxentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_pos_maxent_path_set(s : NlpposmaxentPath, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_maxent_path_sum(s : NlpposmaxentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_path_sum(s : NlpposmaxentPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_path_mean(s : NlpposmaxentPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_path_mean(s : NlpposmaxentPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_path_scale(s : NlpposmaxentPath, f : Double) -> NlpposmaxentPath {
   let result = nlp_pos_maxent_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_pos_maxent_path_fill(s : NlpposmaxentPath, v : Double) -> Nlpposmaxen
   result
 }
 
-pub fn nlp_pos_maxent_path_min(s : NlpposmaxentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_path_min(s : NlpposmaxentPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_path_max(s : NlpposmaxentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_path_max(s : NlpposmaxentPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_path_to_string(s : NlpposmaxentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_pos_maxent_cluster_set(s : NlpposmaxentCluster, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_pos_maxent_cluster_sum(s : NlpposmaxentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_cluster_sum(s : NlpposmaxentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_cluster_mean(s : NlpposmaxentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_cluster_mean(s : NlpposmaxentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_cluster_scale(s : NlpposmaxentCluster, f : Double) -> NlpposmaxentCluster {
   let result = nlp_pos_maxent_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_pos_maxent_cluster_fill(s : NlpposmaxentCluster, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_maxent_cluster_min(s : NlpposmaxentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_cluster_min(s : NlpposmaxentCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_cluster_max(s : NlpposmaxentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_cluster_max(s : NlpposmaxentCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_cluster_to_string(s : NlpposmaxentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_pos_maxent_model_set(s : NlpposmaxentModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_maxent_model_sum(s : NlpposmaxentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_model_sum(s : NlpposmaxentModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_model_mean(s : NlpposmaxentModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_model_mean(s : NlpposmaxentModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_model_scale(s : NlpposmaxentModel, f : Double) -> NlpposmaxentModel {
   let result = nlp_pos_maxent_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_pos_maxent_model_fill(s : NlpposmaxentModel, v : Double) -> Nlpposmax
   result
 }
 
-pub fn nlp_pos_maxent_model_min(s : NlpposmaxentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_model_min(s : NlpposmaxentModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_model_max(s : NlpposmaxentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_model_max(s : NlpposmaxentModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_model_to_string(s : NlpposmaxentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_pos_maxent_layer_set(s : NlpposmaxentLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_maxent_layer_sum(s : NlpposmaxentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_layer_sum(s : NlpposmaxentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_layer_mean(s : NlpposmaxentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_layer_mean(s : NlpposmaxentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_layer_scale(s : NlpposmaxentLayer, f : Double) -> NlpposmaxentLayer {
   let result = nlp_pos_maxent_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_pos_maxent_layer_fill(s : NlpposmaxentLayer, v : Double) -> Nlpposmax
   result
 }
 
-pub fn nlp_pos_maxent_layer_min(s : NlpposmaxentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_layer_min(s : NlpposmaxentLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_layer_max(s : NlpposmaxentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_layer_max(s : NlpposmaxentLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_layer_to_string(s : NlpposmaxentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_pos_maxent_buffer_set(s : NlpposmaxentBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_pos_maxent_buffer_sum(s : NlpposmaxentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_buffer_sum(s : NlpposmaxentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_buffer_mean(s : NlpposmaxentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_buffer_mean(s : NlpposmaxentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_buffer_scale(s : NlpposmaxentBuffer, f : Double) -> NlpposmaxentBuffer {
   let result = nlp_pos_maxent_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_pos_maxent_buffer_fill(s : NlpposmaxentBuffer, v : Double) -> Nlpposm
   result
 }
 
-pub fn nlp_pos_maxent_buffer_min(s : NlpposmaxentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_buffer_min(s : NlpposmaxentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_buffer_max(s : NlpposmaxentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_buffer_max(s : NlpposmaxentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_buffer_to_string(s : NlpposmaxentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_pos_maxent_cursor_set(s : NlpposmaxentCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_pos_maxent_cursor_sum(s : NlpposmaxentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_cursor_sum(s : NlpposmaxentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_cursor_mean(s : NlpposmaxentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_cursor_mean(s : NlpposmaxentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_cursor_scale(s : NlpposmaxentCursor, f : Double) -> NlpposmaxentCursor {
   let result = nlp_pos_maxent_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_pos_maxent_cursor_fill(s : NlpposmaxentCursor, v : Double) -> Nlpposm
   result
 }
 
-pub fn nlp_pos_maxent_cursor_min(s : NlpposmaxentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_cursor_min(s : NlpposmaxentCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_cursor_max(s : NlpposmaxentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_cursor_max(s : NlpposmaxentCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_cursor_to_string(s : NlpposmaxentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_pos_maxent_view_set(s : NlpposmaxentView, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_maxent_view_sum(s : NlpposmaxentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_view_sum(s : NlpposmaxentView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_view_mean(s : NlpposmaxentView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_view_mean(s : NlpposmaxentView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_view_scale(s : NlpposmaxentView, f : Double) -> NlpposmaxentView {
   let result = nlp_pos_maxent_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_pos_maxent_view_fill(s : NlpposmaxentView, v : Double) -> Nlpposmaxen
   result
 }
 
-pub fn nlp_pos_maxent_view_min(s : NlpposmaxentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_view_min(s : NlpposmaxentView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_view_max(s : NlpposmaxentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_view_max(s : NlpposmaxentView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_view_to_string(s : NlpposmaxentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_pos_maxent_range_set(s : NlpposmaxentRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_maxent_range_sum(s : NlpposmaxentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_range_sum(s : NlpposmaxentRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_range_mean(s : NlpposmaxentRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_range_mean(s : NlpposmaxentRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_range_scale(s : NlpposmaxentRange, f : Double) -> NlpposmaxentRange {
   let result = nlp_pos_maxent_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_pos_maxent_range_fill(s : NlpposmaxentRange, v : Double) -> Nlpposmax
   result
 }
 
-pub fn nlp_pos_maxent_range_min(s : NlpposmaxentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_range_min(s : NlpposmaxentRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_range_max(s : NlpposmaxentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_range_max(s : NlpposmaxentRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_range_to_string(s : NlpposmaxentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_pos_maxent_slice_set(s : NlpposmaxentSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_maxent_slice_sum(s : NlpposmaxentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_maxent_slice_sum(s : NlpposmaxentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_maxent_slice_mean(s : NlpposmaxentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_maxent_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_maxent_slice_mean(s : NlpposmaxentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_maxent_slice_scale(s : NlpposmaxentSlice, f : Double) -> NlpposmaxentSlice {
   let result = nlp_pos_maxent_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_pos_maxent_slice_fill(s : NlpposmaxentSlice, v : Double) -> Nlpposmax
   result
 }
 
-pub fn nlp_pos_maxent_slice_min(s : NlpposmaxentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_slice_min(s : NlpposmaxentSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_maxent_slice_max(s : NlpposmaxentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_maxent_slice_max(s : NlpposmaxentSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_maxent_slice_to_string(s : NlpposmaxentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

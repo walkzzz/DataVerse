@@ -88,11 +88,7 @@ pub fn graph_search_floyd_make_series(vals : Array[Double], name : String) -> Gr
 
 pub fn graph_search_floyd_series_len(s : GraphsearchfloydSeries) -> Int { s.vals.length() }
 
-pub fn graph_search_floyd_series_sum(s : GraphsearchfloydSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_search_floyd_series_sum(s : GraphsearchfloydSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_search_floyd_series_mean(s : GraphsearchfloydSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_search_floyd_frame_set(s : GraphsearchfloydFrame, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_floyd_frame_sum(s : GraphsearchfloydFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_frame_sum(s : GraphsearchfloydFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_frame_mean(s : GraphsearchfloydFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_frame_mean(s : GraphsearchfloydFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_frame_scale(s : GraphsearchfloydFrame, f : Double) -> GraphsearchfloydFrame {
   let result = graph_search_floyd_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_search_floyd_frame_fill(s : GraphsearchfloydFrame, v : Double) -> G
   result
 }
 
-pub fn graph_search_floyd_frame_min(s : GraphsearchfloydFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_frame_min(s : GraphsearchfloydFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_frame_max(s : GraphsearchfloydFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_frame_max(s : GraphsearchfloydFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_frame_to_string(s : GraphsearchfloydFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_search_floyd_table_set(s : GraphsearchfloydTable, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_floyd_table_sum(s : GraphsearchfloydTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_table_sum(s : GraphsearchfloydTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_table_mean(s : GraphsearchfloydTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_table_mean(s : GraphsearchfloydTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_table_scale(s : GraphsearchfloydTable, f : Double) -> GraphsearchfloydTable {
   let result = graph_search_floyd_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_search_floyd_table_fill(s : GraphsearchfloydTable, v : Double) -> G
   result
 }
 
-pub fn graph_search_floyd_table_min(s : GraphsearchfloydTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_table_min(s : GraphsearchfloydTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_table_max(s : GraphsearchfloydTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_table_max(s : GraphsearchfloydTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_table_to_string(s : GraphsearchfloydTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_search_floyd_graphn_set(s : GraphsearchfloydGraphN, i : Int, v : Do
   result
 }
 
-pub fn graph_search_floyd_graphn_sum(s : GraphsearchfloydGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_graphn_sum(s : GraphsearchfloydGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_graphn_mean(s : GraphsearchfloydGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_graphn_mean(s : GraphsearchfloydGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_graphn_scale(s : GraphsearchfloydGraphN, f : Double) -> GraphsearchfloydGraphN {
   let result = graph_search_floyd_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_search_floyd_graphn_fill(s : GraphsearchfloydGraphN, v : Double) ->
   result
 }
 
-pub fn graph_search_floyd_graphn_min(s : GraphsearchfloydGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_graphn_min(s : GraphsearchfloydGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_graphn_max(s : GraphsearchfloydGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_graphn_max(s : GraphsearchfloydGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_graphn_to_string(s : GraphsearchfloydGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_search_floyd_node_set(s : GraphsearchfloydNode, i : Int, v : Double
   result
 }
 
-pub fn graph_search_floyd_node_sum(s : GraphsearchfloydNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_node_sum(s : GraphsearchfloydNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_node_mean(s : GraphsearchfloydNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_node_mean(s : GraphsearchfloydNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_node_scale(s : GraphsearchfloydNode, f : Double) -> GraphsearchfloydNode {
   let result = graph_search_floyd_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_search_floyd_node_fill(s : GraphsearchfloydNode, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_floyd_node_min(s : GraphsearchfloydNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_node_min(s : GraphsearchfloydNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_node_max(s : GraphsearchfloydNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_node_max(s : GraphsearchfloydNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_node_to_string(s : GraphsearchfloydNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_search_floyd_edge_set(s : GraphsearchfloydEdge, i : Int, v : Double
   result
 }
 
-pub fn graph_search_floyd_edge_sum(s : GraphsearchfloydEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_edge_sum(s : GraphsearchfloydEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_edge_mean(s : GraphsearchfloydEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_edge_mean(s : GraphsearchfloydEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_edge_scale(s : GraphsearchfloydEdge, f : Double) -> GraphsearchfloydEdge {
   let result = graph_search_floyd_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_search_floyd_edge_fill(s : GraphsearchfloydEdge, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_floyd_edge_min(s : GraphsearchfloydEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_edge_min(s : GraphsearchfloydEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_edge_max(s : GraphsearchfloydEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_edge_max(s : GraphsearchfloydEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_edge_to_string(s : GraphsearchfloydEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_search_floyd_path_set(s : GraphsearchfloydPath, i : Int, v : Double
   result
 }
 
-pub fn graph_search_floyd_path_sum(s : GraphsearchfloydPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_path_sum(s : GraphsearchfloydPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_path_mean(s : GraphsearchfloydPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_path_mean(s : GraphsearchfloydPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_path_scale(s : GraphsearchfloydPath, f : Double) -> GraphsearchfloydPath {
   let result = graph_search_floyd_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_search_floyd_path_fill(s : GraphsearchfloydPath, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_floyd_path_min(s : GraphsearchfloydPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_path_min(s : GraphsearchfloydPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_path_max(s : GraphsearchfloydPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_path_max(s : GraphsearchfloydPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_path_to_string(s : GraphsearchfloydPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_search_floyd_cluster_set(s : GraphsearchfloydCluster, i : Int, v : 
   result
 }
 
-pub fn graph_search_floyd_cluster_sum(s : GraphsearchfloydCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_cluster_sum(s : GraphsearchfloydCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_cluster_mean(s : GraphsearchfloydCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_cluster_mean(s : GraphsearchfloydCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_cluster_scale(s : GraphsearchfloydCluster, f : Double) -> GraphsearchfloydCluster {
   let result = graph_search_floyd_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_search_floyd_cluster_fill(s : GraphsearchfloydCluster, v : Double) 
   result
 }
 
-pub fn graph_search_floyd_cluster_min(s : GraphsearchfloydCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_cluster_min(s : GraphsearchfloydCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_cluster_max(s : GraphsearchfloydCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_cluster_max(s : GraphsearchfloydCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_cluster_to_string(s : GraphsearchfloydCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_search_floyd_model_set(s : GraphsearchfloydModel, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_floyd_model_sum(s : GraphsearchfloydModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_model_sum(s : GraphsearchfloydModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_model_mean(s : GraphsearchfloydModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_model_mean(s : GraphsearchfloydModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_model_scale(s : GraphsearchfloydModel, f : Double) -> GraphsearchfloydModel {
   let result = graph_search_floyd_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_search_floyd_model_fill(s : GraphsearchfloydModel, v : Double) -> G
   result
 }
 
-pub fn graph_search_floyd_model_min(s : GraphsearchfloydModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_model_min(s : GraphsearchfloydModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_model_max(s : GraphsearchfloydModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_model_max(s : GraphsearchfloydModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_model_to_string(s : GraphsearchfloydModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_search_floyd_layer_set(s : GraphsearchfloydLayer, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_floyd_layer_sum(s : GraphsearchfloydLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_layer_sum(s : GraphsearchfloydLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_layer_mean(s : GraphsearchfloydLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_layer_mean(s : GraphsearchfloydLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_layer_scale(s : GraphsearchfloydLayer, f : Double) -> GraphsearchfloydLayer {
   let result = graph_search_floyd_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_search_floyd_layer_fill(s : GraphsearchfloydLayer, v : Double) -> G
   result
 }
 
-pub fn graph_search_floyd_layer_min(s : GraphsearchfloydLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_layer_min(s : GraphsearchfloydLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_layer_max(s : GraphsearchfloydLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_layer_max(s : GraphsearchfloydLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_layer_to_string(s : GraphsearchfloydLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_search_floyd_buffer_set(s : GraphsearchfloydBuffer, i : Int, v : Do
   result
 }
 
-pub fn graph_search_floyd_buffer_sum(s : GraphsearchfloydBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_buffer_sum(s : GraphsearchfloydBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_buffer_mean(s : GraphsearchfloydBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_buffer_mean(s : GraphsearchfloydBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_buffer_scale(s : GraphsearchfloydBuffer, f : Double) -> GraphsearchfloydBuffer {
   let result = graph_search_floyd_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_search_floyd_buffer_fill(s : GraphsearchfloydBuffer, v : Double) ->
   result
 }
 
-pub fn graph_search_floyd_buffer_min(s : GraphsearchfloydBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_buffer_min(s : GraphsearchfloydBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_buffer_max(s : GraphsearchfloydBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_buffer_max(s : GraphsearchfloydBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_buffer_to_string(s : GraphsearchfloydBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_search_floyd_cursor_set(s : GraphsearchfloydCursor, i : Int, v : Do
   result
 }
 
-pub fn graph_search_floyd_cursor_sum(s : GraphsearchfloydCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_cursor_sum(s : GraphsearchfloydCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_cursor_mean(s : GraphsearchfloydCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_cursor_mean(s : GraphsearchfloydCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_cursor_scale(s : GraphsearchfloydCursor, f : Double) -> GraphsearchfloydCursor {
   let result = graph_search_floyd_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_search_floyd_cursor_fill(s : GraphsearchfloydCursor, v : Double) ->
   result
 }
 
-pub fn graph_search_floyd_cursor_min(s : GraphsearchfloydCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_cursor_min(s : GraphsearchfloydCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_cursor_max(s : GraphsearchfloydCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_cursor_max(s : GraphsearchfloydCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_cursor_to_string(s : GraphsearchfloydCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_search_floyd_view_set(s : GraphsearchfloydView, i : Int, v : Double
   result
 }
 
-pub fn graph_search_floyd_view_sum(s : GraphsearchfloydView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_view_sum(s : GraphsearchfloydView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_view_mean(s : GraphsearchfloydView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_view_mean(s : GraphsearchfloydView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_view_scale(s : GraphsearchfloydView, f : Double) -> GraphsearchfloydView {
   let result = graph_search_floyd_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_search_floyd_view_fill(s : GraphsearchfloydView, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_floyd_view_min(s : GraphsearchfloydView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_view_min(s : GraphsearchfloydView) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_view_max(s : GraphsearchfloydView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_view_max(s : GraphsearchfloydView) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_view_to_string(s : GraphsearchfloydView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_search_floyd_range_set(s : GraphsearchfloydRange, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_floyd_range_sum(s : GraphsearchfloydRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_range_sum(s : GraphsearchfloydRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_range_mean(s : GraphsearchfloydRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_range_mean(s : GraphsearchfloydRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_range_scale(s : GraphsearchfloydRange, f : Double) -> GraphsearchfloydRange {
   let result = graph_search_floyd_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_search_floyd_range_fill(s : GraphsearchfloydRange, v : Double) -> G
   result
 }
 
-pub fn graph_search_floyd_range_min(s : GraphsearchfloydRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_range_min(s : GraphsearchfloydRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_range_max(s : GraphsearchfloydRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_range_max(s : GraphsearchfloydRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_range_to_string(s : GraphsearchfloydRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_search_floyd_slice_set(s : GraphsearchfloydSlice, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_floyd_slice_sum(s : GraphsearchfloydSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_floyd_slice_sum(s : GraphsearchfloydSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_floyd_slice_mean(s : GraphsearchfloydSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_floyd_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_floyd_slice_mean(s : GraphsearchfloydSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_floyd_slice_scale(s : GraphsearchfloydSlice, f : Double) -> GraphsearchfloydSlice {
   let result = graph_search_floyd_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_search_floyd_slice_fill(s : GraphsearchfloydSlice, v : Double) -> G
   result
 }
 
-pub fn graph_search_floyd_slice_min(s : GraphsearchfloydSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_slice_min(s : GraphsearchfloydSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_floyd_slice_max(s : GraphsearchfloydSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_floyd_slice_max(s : GraphsearchfloydSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_floyd_slice_to_string(s : GraphsearchfloydSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

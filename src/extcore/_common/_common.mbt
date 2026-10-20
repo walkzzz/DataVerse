@@ -83,14 +83,17 @@ pub fn mean(data : Array[Double]) -> Double {
   let n = data.length()
   match n {
     0 => 0.0
-    _ => {
-      let mut sum = 0.0
-      for i in 0..<n {
-        sum = sum + data[i]
-      }
-      sum / n.to_double()
-    }
+    _ => sum(data) / n.to_double()
   }
+}
+
+/// 求和
+pub fn sum(data : Array[Double]) -> Double {
+  let mut total = 0.0
+  for i in 0..<data.length() {
+    total = total + data[i]
+  }
+  total
 }
 
 /// 方差

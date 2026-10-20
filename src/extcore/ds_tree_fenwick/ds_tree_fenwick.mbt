@@ -88,11 +88,7 @@ pub fn ds_tree_fenwick_make_series(vals : Array[Double], name : String) -> Dstre
 
 pub fn ds_tree_fenwick_series_len(s : DstreefenwickSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_fenwick_series_sum(s : DstreefenwickSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_fenwick_series_sum(s : DstreefenwickSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_fenwick_series_mean(s : DstreefenwickSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_fenwick_frame_set(s : DstreefenwickFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_fenwick_frame_sum(s : DstreefenwickFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_frame_sum(s : DstreefenwickFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_frame_mean(s : DstreefenwickFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_frame_mean(s : DstreefenwickFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_frame_scale(s : DstreefenwickFrame, f : Double) -> DstreefenwickFrame {
   let result = ds_tree_fenwick_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_fenwick_frame_fill(s : DstreefenwickFrame, v : Double) -> Dstreef
   result
 }
 
-pub fn ds_tree_fenwick_frame_min(s : DstreefenwickFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_frame_min(s : DstreefenwickFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_frame_max(s : DstreefenwickFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_frame_max(s : DstreefenwickFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_frame_to_string(s : DstreefenwickFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_fenwick_table_set(s : DstreefenwickTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_fenwick_table_sum(s : DstreefenwickTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_table_sum(s : DstreefenwickTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_table_mean(s : DstreefenwickTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_table_mean(s : DstreefenwickTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_table_scale(s : DstreefenwickTable, f : Double) -> DstreefenwickTable {
   let result = ds_tree_fenwick_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_fenwick_table_fill(s : DstreefenwickTable, v : Double) -> Dstreef
   result
 }
 
-pub fn ds_tree_fenwick_table_min(s : DstreefenwickTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_table_min(s : DstreefenwickTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_table_max(s : DstreefenwickTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_table_max(s : DstreefenwickTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_table_to_string(s : DstreefenwickTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_fenwick_graphn_set(s : DstreefenwickGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_fenwick_graphn_sum(s : DstreefenwickGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_graphn_sum(s : DstreefenwickGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_graphn_mean(s : DstreefenwickGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_graphn_mean(s : DstreefenwickGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_graphn_scale(s : DstreefenwickGraphN, f : Double) -> DstreefenwickGraphN {
   let result = ds_tree_fenwick_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_fenwick_graphn_fill(s : DstreefenwickGraphN, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_fenwick_graphn_min(s : DstreefenwickGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_graphn_min(s : DstreefenwickGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_graphn_max(s : DstreefenwickGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_graphn_max(s : DstreefenwickGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_graphn_to_string(s : DstreefenwickGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_fenwick_node_set(s : DstreefenwickNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_fenwick_node_sum(s : DstreefenwickNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_node_sum(s : DstreefenwickNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_node_mean(s : DstreefenwickNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_node_mean(s : DstreefenwickNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_node_scale(s : DstreefenwickNode, f : Double) -> DstreefenwickNode {
   let result = ds_tree_fenwick_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_fenwick_node_fill(s : DstreefenwickNode, v : Double) -> Dstreefen
   result
 }
 
-pub fn ds_tree_fenwick_node_min(s : DstreefenwickNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_node_min(s : DstreefenwickNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_node_max(s : DstreefenwickNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_node_max(s : DstreefenwickNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_node_to_string(s : DstreefenwickNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_fenwick_edge_set(s : DstreefenwickEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_fenwick_edge_sum(s : DstreefenwickEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_edge_sum(s : DstreefenwickEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_edge_mean(s : DstreefenwickEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_edge_mean(s : DstreefenwickEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_edge_scale(s : DstreefenwickEdge, f : Double) -> DstreefenwickEdge {
   let result = ds_tree_fenwick_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_fenwick_edge_fill(s : DstreefenwickEdge, v : Double) -> Dstreefen
   result
 }
 
-pub fn ds_tree_fenwick_edge_min(s : DstreefenwickEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_edge_min(s : DstreefenwickEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_edge_max(s : DstreefenwickEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_edge_max(s : DstreefenwickEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_edge_to_string(s : DstreefenwickEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_fenwick_path_set(s : DstreefenwickPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_fenwick_path_sum(s : DstreefenwickPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_path_sum(s : DstreefenwickPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_path_mean(s : DstreefenwickPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_path_mean(s : DstreefenwickPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_path_scale(s : DstreefenwickPath, f : Double) -> DstreefenwickPath {
   let result = ds_tree_fenwick_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_fenwick_path_fill(s : DstreefenwickPath, v : Double) -> Dstreefen
   result
 }
 
-pub fn ds_tree_fenwick_path_min(s : DstreefenwickPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_path_min(s : DstreefenwickPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_path_max(s : DstreefenwickPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_path_max(s : DstreefenwickPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_path_to_string(s : DstreefenwickPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_fenwick_cluster_set(s : DstreefenwickCluster, i : Int, v : Double
   result
 }
 
-pub fn ds_tree_fenwick_cluster_sum(s : DstreefenwickCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_cluster_sum(s : DstreefenwickCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_cluster_mean(s : DstreefenwickCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_cluster_mean(s : DstreefenwickCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_cluster_scale(s : DstreefenwickCluster, f : Double) -> DstreefenwickCluster {
   let result = ds_tree_fenwick_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_fenwick_cluster_fill(s : DstreefenwickCluster, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_fenwick_cluster_min(s : DstreefenwickCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_cluster_min(s : DstreefenwickCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_cluster_max(s : DstreefenwickCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_cluster_max(s : DstreefenwickCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_cluster_to_string(s : DstreefenwickCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_fenwick_model_set(s : DstreefenwickModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_fenwick_model_sum(s : DstreefenwickModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_model_sum(s : DstreefenwickModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_model_mean(s : DstreefenwickModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_model_mean(s : DstreefenwickModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_model_scale(s : DstreefenwickModel, f : Double) -> DstreefenwickModel {
   let result = ds_tree_fenwick_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_fenwick_model_fill(s : DstreefenwickModel, v : Double) -> Dstreef
   result
 }
 
-pub fn ds_tree_fenwick_model_min(s : DstreefenwickModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_model_min(s : DstreefenwickModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_model_max(s : DstreefenwickModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_model_max(s : DstreefenwickModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_model_to_string(s : DstreefenwickModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_fenwick_layer_set(s : DstreefenwickLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_fenwick_layer_sum(s : DstreefenwickLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_layer_sum(s : DstreefenwickLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_layer_mean(s : DstreefenwickLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_layer_mean(s : DstreefenwickLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_layer_scale(s : DstreefenwickLayer, f : Double) -> DstreefenwickLayer {
   let result = ds_tree_fenwick_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_fenwick_layer_fill(s : DstreefenwickLayer, v : Double) -> Dstreef
   result
 }
 
-pub fn ds_tree_fenwick_layer_min(s : DstreefenwickLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_layer_min(s : DstreefenwickLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_layer_max(s : DstreefenwickLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_layer_max(s : DstreefenwickLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_layer_to_string(s : DstreefenwickLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_fenwick_buffer_set(s : DstreefenwickBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_fenwick_buffer_sum(s : DstreefenwickBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_buffer_sum(s : DstreefenwickBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_buffer_mean(s : DstreefenwickBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_buffer_mean(s : DstreefenwickBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_buffer_scale(s : DstreefenwickBuffer, f : Double) -> DstreefenwickBuffer {
   let result = ds_tree_fenwick_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_fenwick_buffer_fill(s : DstreefenwickBuffer, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_fenwick_buffer_min(s : DstreefenwickBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_buffer_min(s : DstreefenwickBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_buffer_max(s : DstreefenwickBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_buffer_max(s : DstreefenwickBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_buffer_to_string(s : DstreefenwickBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_fenwick_cursor_set(s : DstreefenwickCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_fenwick_cursor_sum(s : DstreefenwickCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_cursor_sum(s : DstreefenwickCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_cursor_mean(s : DstreefenwickCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_cursor_mean(s : DstreefenwickCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_cursor_scale(s : DstreefenwickCursor, f : Double) -> DstreefenwickCursor {
   let result = ds_tree_fenwick_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_fenwick_cursor_fill(s : DstreefenwickCursor, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_fenwick_cursor_min(s : DstreefenwickCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_cursor_min(s : DstreefenwickCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_cursor_max(s : DstreefenwickCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_cursor_max(s : DstreefenwickCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_cursor_to_string(s : DstreefenwickCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_fenwick_view_set(s : DstreefenwickView, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_fenwick_view_sum(s : DstreefenwickView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_view_sum(s : DstreefenwickView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_view_mean(s : DstreefenwickView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_view_mean(s : DstreefenwickView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_view_scale(s : DstreefenwickView, f : Double) -> DstreefenwickView {
   let result = ds_tree_fenwick_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_fenwick_view_fill(s : DstreefenwickView, v : Double) -> Dstreefen
   result
 }
 
-pub fn ds_tree_fenwick_view_min(s : DstreefenwickView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_view_min(s : DstreefenwickView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_view_max(s : DstreefenwickView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_view_max(s : DstreefenwickView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_view_to_string(s : DstreefenwickView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_fenwick_range_set(s : DstreefenwickRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_fenwick_range_sum(s : DstreefenwickRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_range_sum(s : DstreefenwickRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_range_mean(s : DstreefenwickRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_range_mean(s : DstreefenwickRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_range_scale(s : DstreefenwickRange, f : Double) -> DstreefenwickRange {
   let result = ds_tree_fenwick_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_fenwick_range_fill(s : DstreefenwickRange, v : Double) -> Dstreef
   result
 }
 
-pub fn ds_tree_fenwick_range_min(s : DstreefenwickRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_range_min(s : DstreefenwickRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_range_max(s : DstreefenwickRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_range_max(s : DstreefenwickRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_range_to_string(s : DstreefenwickRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_fenwick_slice_set(s : DstreefenwickSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_fenwick_slice_sum(s : DstreefenwickSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_fenwick_slice_sum(s : DstreefenwickSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_fenwick_slice_mean(s : DstreefenwickSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_fenwick_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_fenwick_slice_mean(s : DstreefenwickSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_fenwick_slice_scale(s : DstreefenwickSlice, f : Double) -> DstreefenwickSlice {
   let result = ds_tree_fenwick_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_fenwick_slice_fill(s : DstreefenwickSlice, v : Double) -> Dstreef
   result
 }
 
-pub fn ds_tree_fenwick_slice_min(s : DstreefenwickSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_slice_min(s : DstreefenwickSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_fenwick_slice_max(s : DstreefenwickSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_fenwick_slice_max(s : DstreefenwickSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_fenwick_slice_to_string(s : DstreefenwickSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

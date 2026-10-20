@@ -88,11 +88,7 @@ pub fn math_quadratic_prog_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_quadratic_prog_series_len(s : MathquadraticprogSeries) -> Int { s.vals.length() }
 
-pub fn math_quadratic_prog_series_sum(s : MathquadraticprogSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_quadratic_prog_series_sum(s : MathquadraticprogSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_quadratic_prog_series_mean(s : MathquadraticprogSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_quadratic_prog_frame_set(s : MathquadraticprogFrame, i : Int, v : Do
   result
 }
 
-pub fn math_quadratic_prog_frame_sum(s : MathquadraticprogFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_frame_sum(s : MathquadraticprogFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_frame_mean(s : MathquadraticprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_frame_mean(s : MathquadraticprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_frame_scale(s : MathquadraticprogFrame, f : Double) -> MathquadraticprogFrame {
   let result = math_quadratic_prog_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_quadratic_prog_frame_fill(s : MathquadraticprogFrame, v : Double) ->
   result
 }
 
-pub fn math_quadratic_prog_frame_min(s : MathquadraticprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_frame_min(s : MathquadraticprogFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_frame_max(s : MathquadraticprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_frame_max(s : MathquadraticprogFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_frame_to_string(s : MathquadraticprogFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_quadratic_prog_table_set(s : MathquadraticprogTable, i : Int, v : Do
   result
 }
 
-pub fn math_quadratic_prog_table_sum(s : MathquadraticprogTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_table_sum(s : MathquadraticprogTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_table_mean(s : MathquadraticprogTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_table_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_table_mean(s : MathquadraticprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_table_scale(s : MathquadraticprogTable, f : Double) -> MathquadraticprogTable {
   let result = math_quadratic_prog_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_quadratic_prog_table_fill(s : MathquadraticprogTable, v : Double) ->
   result
 }
 
-pub fn math_quadratic_prog_table_min(s : MathquadraticprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_table_min(s : MathquadraticprogTable) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_table_max(s : MathquadraticprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_table_max(s : MathquadraticprogTable) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_table_to_string(s : MathquadraticprogTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_quadratic_prog_graphn_set(s : MathquadraticprogGraphN, i : Int, v : 
   result
 }
 
-pub fn math_quadratic_prog_graphn_sum(s : MathquadraticprogGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_graphn_sum(s : MathquadraticprogGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_graphn_mean(s : MathquadraticprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_graphn_mean(s : MathquadraticprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_graphn_scale(s : MathquadraticprogGraphN, f : Double) -> MathquadraticprogGraphN {
   let result = math_quadratic_prog_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_quadratic_prog_graphn_fill(s : MathquadraticprogGraphN, v : Double) 
   result
 }
 
-pub fn math_quadratic_prog_graphn_min(s : MathquadraticprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_graphn_min(s : MathquadraticprogGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_graphn_max(s : MathquadraticprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_graphn_max(s : MathquadraticprogGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_graphn_to_string(s : MathquadraticprogGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_quadratic_prog_node_set(s : MathquadraticprogNode, i : Int, v : Doub
   result
 }
 
-pub fn math_quadratic_prog_node_sum(s : MathquadraticprogNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_node_sum(s : MathquadraticprogNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_node_mean(s : MathquadraticprogNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_node_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_node_mean(s : MathquadraticprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_node_scale(s : MathquadraticprogNode, f : Double) -> MathquadraticprogNode {
   let result = math_quadratic_prog_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_quadratic_prog_node_fill(s : MathquadraticprogNode, v : Double) -> M
   result
 }
 
-pub fn math_quadratic_prog_node_min(s : MathquadraticprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_node_min(s : MathquadraticprogNode) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_node_max(s : MathquadraticprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_node_max(s : MathquadraticprogNode) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_node_to_string(s : MathquadraticprogNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_quadratic_prog_edge_set(s : MathquadraticprogEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_quadratic_prog_edge_sum(s : MathquadraticprogEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_edge_sum(s : MathquadraticprogEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_edge_mean(s : MathquadraticprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_edge_mean(s : MathquadraticprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_edge_scale(s : MathquadraticprogEdge, f : Double) -> MathquadraticprogEdge {
   let result = math_quadratic_prog_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_quadratic_prog_edge_fill(s : MathquadraticprogEdge, v : Double) -> M
   result
 }
 
-pub fn math_quadratic_prog_edge_min(s : MathquadraticprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_edge_min(s : MathquadraticprogEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_edge_max(s : MathquadraticprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_edge_max(s : MathquadraticprogEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_edge_to_string(s : MathquadraticprogEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_quadratic_prog_path_set(s : MathquadraticprogPath, i : Int, v : Doub
   result
 }
 
-pub fn math_quadratic_prog_path_sum(s : MathquadraticprogPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_path_sum(s : MathquadraticprogPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_path_mean(s : MathquadraticprogPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_path_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_path_mean(s : MathquadraticprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_path_scale(s : MathquadraticprogPath, f : Double) -> MathquadraticprogPath {
   let result = math_quadratic_prog_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_quadratic_prog_path_fill(s : MathquadraticprogPath, v : Double) -> M
   result
 }
 
-pub fn math_quadratic_prog_path_min(s : MathquadraticprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_path_min(s : MathquadraticprogPath) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_path_max(s : MathquadraticprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_path_max(s : MathquadraticprogPath) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_path_to_string(s : MathquadraticprogPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_quadratic_prog_cluster_set(s : MathquadraticprogCluster, i : Int, v 
   result
 }
 
-pub fn math_quadratic_prog_cluster_sum(s : MathquadraticprogCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_cluster_sum(s : MathquadraticprogCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_cluster_mean(s : MathquadraticprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_cluster_mean(s : MathquadraticprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_cluster_scale(s : MathquadraticprogCluster, f : Double) -> MathquadraticprogCluster {
   let result = math_quadratic_prog_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_quadratic_prog_cluster_fill(s : MathquadraticprogCluster, v : Double
   result
 }
 
-pub fn math_quadratic_prog_cluster_min(s : MathquadraticprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_cluster_min(s : MathquadraticprogCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_cluster_max(s : MathquadraticprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_cluster_max(s : MathquadraticprogCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_cluster_to_string(s : MathquadraticprogCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_quadratic_prog_model_set(s : MathquadraticprogModel, i : Int, v : Do
   result
 }
 
-pub fn math_quadratic_prog_model_sum(s : MathquadraticprogModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_model_sum(s : MathquadraticprogModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_model_mean(s : MathquadraticprogModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_model_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_model_mean(s : MathquadraticprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_model_scale(s : MathquadraticprogModel, f : Double) -> MathquadraticprogModel {
   let result = math_quadratic_prog_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_quadratic_prog_model_fill(s : MathquadraticprogModel, v : Double) ->
   result
 }
 
-pub fn math_quadratic_prog_model_min(s : MathquadraticprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_model_min(s : MathquadraticprogModel) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_model_max(s : MathquadraticprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_model_max(s : MathquadraticprogModel) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_model_to_string(s : MathquadraticprogModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_quadratic_prog_layer_set(s : MathquadraticprogLayer, i : Int, v : Do
   result
 }
 
-pub fn math_quadratic_prog_layer_sum(s : MathquadraticprogLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_layer_sum(s : MathquadraticprogLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_layer_mean(s : MathquadraticprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_layer_mean(s : MathquadraticprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_layer_scale(s : MathquadraticprogLayer, f : Double) -> MathquadraticprogLayer {
   let result = math_quadratic_prog_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_quadratic_prog_layer_fill(s : MathquadraticprogLayer, v : Double) ->
   result
 }
 
-pub fn math_quadratic_prog_layer_min(s : MathquadraticprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_layer_min(s : MathquadraticprogLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_layer_max(s : MathquadraticprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_layer_max(s : MathquadraticprogLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_layer_to_string(s : MathquadraticprogLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_quadratic_prog_buffer_set(s : MathquadraticprogBuffer, i : Int, v : 
   result
 }
 
-pub fn math_quadratic_prog_buffer_sum(s : MathquadraticprogBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_buffer_sum(s : MathquadraticprogBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_buffer_mean(s : MathquadraticprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_buffer_mean(s : MathquadraticprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_buffer_scale(s : MathquadraticprogBuffer, f : Double) -> MathquadraticprogBuffer {
   let result = math_quadratic_prog_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_quadratic_prog_buffer_fill(s : MathquadraticprogBuffer, v : Double) 
   result
 }
 
-pub fn math_quadratic_prog_buffer_min(s : MathquadraticprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_buffer_min(s : MathquadraticprogBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_buffer_max(s : MathquadraticprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_buffer_max(s : MathquadraticprogBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_buffer_to_string(s : MathquadraticprogBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_quadratic_prog_cursor_set(s : MathquadraticprogCursor, i : Int, v : 
   result
 }
 
-pub fn math_quadratic_prog_cursor_sum(s : MathquadraticprogCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_cursor_sum(s : MathquadraticprogCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_cursor_mean(s : MathquadraticprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_cursor_mean(s : MathquadraticprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_cursor_scale(s : MathquadraticprogCursor, f : Double) -> MathquadraticprogCursor {
   let result = math_quadratic_prog_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_quadratic_prog_cursor_fill(s : MathquadraticprogCursor, v : Double) 
   result
 }
 
-pub fn math_quadratic_prog_cursor_min(s : MathquadraticprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_cursor_min(s : MathquadraticprogCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_cursor_max(s : MathquadraticprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_cursor_max(s : MathquadraticprogCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_cursor_to_string(s : MathquadraticprogCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_quadratic_prog_view_set(s : MathquadraticprogView, i : Int, v : Doub
   result
 }
 
-pub fn math_quadratic_prog_view_sum(s : MathquadraticprogView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_view_sum(s : MathquadraticprogView) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_view_mean(s : MathquadraticprogView) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_view_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_view_mean(s : MathquadraticprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_view_scale(s : MathquadraticprogView, f : Double) -> MathquadraticprogView {
   let result = math_quadratic_prog_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_quadratic_prog_view_fill(s : MathquadraticprogView, v : Double) -> M
   result
 }
 
-pub fn math_quadratic_prog_view_min(s : MathquadraticprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_view_min(s : MathquadraticprogView) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_view_max(s : MathquadraticprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_view_max(s : MathquadraticprogView) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_view_to_string(s : MathquadraticprogView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_quadratic_prog_range_set(s : MathquadraticprogRange, i : Int, v : Do
   result
 }
 
-pub fn math_quadratic_prog_range_sum(s : MathquadraticprogRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_range_sum(s : MathquadraticprogRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_range_mean(s : MathquadraticprogRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_range_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_range_mean(s : MathquadraticprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_range_scale(s : MathquadraticprogRange, f : Double) -> MathquadraticprogRange {
   let result = math_quadratic_prog_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_quadratic_prog_range_fill(s : MathquadraticprogRange, v : Double) ->
   result
 }
 
-pub fn math_quadratic_prog_range_min(s : MathquadraticprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_range_min(s : MathquadraticprogRange) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_range_max(s : MathquadraticprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_range_max(s : MathquadraticprogRange) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_range_to_string(s : MathquadraticprogRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_quadratic_prog_slice_set(s : MathquadraticprogSlice, i : Int, v : Do
   result
 }
 
-pub fn math_quadratic_prog_slice_sum(s : MathquadraticprogSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_quadratic_prog_slice_sum(s : MathquadraticprogSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_quadratic_prog_slice_mean(s : MathquadraticprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_quadratic_prog_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_quadratic_prog_slice_mean(s : MathquadraticprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_quadratic_prog_slice_scale(s : MathquadraticprogSlice, f : Double) -> MathquadraticprogSlice {
   let result = math_quadratic_prog_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_quadratic_prog_slice_fill(s : MathquadraticprogSlice, v : Double) ->
   result
 }
 
-pub fn math_quadratic_prog_slice_min(s : MathquadraticprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_slice_min(s : MathquadraticprogSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_quadratic_prog_slice_max(s : MathquadraticprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_quadratic_prog_slice_max(s : MathquadraticprogSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_quadratic_prog_slice_to_string(s : MathquadraticprogSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

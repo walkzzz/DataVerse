@@ -88,11 +88,7 @@ pub fn timeseries_anomaly_prophet_make_series(vals : Array[Double], name : Strin
 
 pub fn timeseries_anomaly_prophet_series_len(s : TimeseriesanomalyprophetSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_anomaly_prophet_series_sum(s : TimeseriesanomalyprophetSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_series_sum(s : TimeseriesanomalyprophetSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_anomaly_prophet_series_mean(s : TimeseriesanomalyprophetSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_anomaly_prophet_frame_set(s : TimeseriesanomalyprophetFrame, i
   result
 }
 
-pub fn timeseries_anomaly_prophet_frame_sum(s : TimeseriesanomalyprophetFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_frame_sum(s : TimeseriesanomalyprophetFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_frame_mean(s : TimeseriesanomalyprophetFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_frame_mean(s : TimeseriesanomalyprophetFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_frame_scale(s : TimeseriesanomalyprophetFrame, f : Double) -> TimeseriesanomalyprophetFrame {
   let result = timeseries_anomaly_prophet_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_anomaly_prophet_frame_fill(s : TimeseriesanomalyprophetFrame, 
   result
 }
 
-pub fn timeseries_anomaly_prophet_frame_min(s : TimeseriesanomalyprophetFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_frame_min(s : TimeseriesanomalyprophetFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_frame_max(s : TimeseriesanomalyprophetFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_frame_max(s : TimeseriesanomalyprophetFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_frame_to_string(s : TimeseriesanomalyprophetFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_anomaly_prophet_table_set(s : TimeseriesanomalyprophetTable, i
   result
 }
 
-pub fn timeseries_anomaly_prophet_table_sum(s : TimeseriesanomalyprophetTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_table_sum(s : TimeseriesanomalyprophetTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_table_mean(s : TimeseriesanomalyprophetTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_table_mean(s : TimeseriesanomalyprophetTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_table_scale(s : TimeseriesanomalyprophetTable, f : Double) -> TimeseriesanomalyprophetTable {
   let result = timeseries_anomaly_prophet_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_anomaly_prophet_table_fill(s : TimeseriesanomalyprophetTable, 
   result
 }
 
-pub fn timeseries_anomaly_prophet_table_min(s : TimeseriesanomalyprophetTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_table_min(s : TimeseriesanomalyprophetTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_table_max(s : TimeseriesanomalyprophetTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_table_max(s : TimeseriesanomalyprophetTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_table_to_string(s : TimeseriesanomalyprophetTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_anomaly_prophet_graphn_set(s : TimeseriesanomalyprophetGraphN,
   result
 }
 
-pub fn timeseries_anomaly_prophet_graphn_sum(s : TimeseriesanomalyprophetGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_graphn_sum(s : TimeseriesanomalyprophetGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_graphn_mean(s : TimeseriesanomalyprophetGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_graphn_mean(s : TimeseriesanomalyprophetGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_graphn_scale(s : TimeseriesanomalyprophetGraphN, f : Double) -> TimeseriesanomalyprophetGraphN {
   let result = timeseries_anomaly_prophet_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_anomaly_prophet_graphn_fill(s : TimeseriesanomalyprophetGraphN
   result
 }
 
-pub fn timeseries_anomaly_prophet_graphn_min(s : TimeseriesanomalyprophetGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_graphn_min(s : TimeseriesanomalyprophetGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_graphn_max(s : TimeseriesanomalyprophetGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_graphn_max(s : TimeseriesanomalyprophetGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_graphn_to_string(s : TimeseriesanomalyprophetGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_anomaly_prophet_node_set(s : TimeseriesanomalyprophetNode, i :
   result
 }
 
-pub fn timeseries_anomaly_prophet_node_sum(s : TimeseriesanomalyprophetNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_node_sum(s : TimeseriesanomalyprophetNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_node_mean(s : TimeseriesanomalyprophetNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_node_mean(s : TimeseriesanomalyprophetNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_node_scale(s : TimeseriesanomalyprophetNode, f : Double) -> TimeseriesanomalyprophetNode {
   let result = timeseries_anomaly_prophet_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_anomaly_prophet_node_fill(s : TimeseriesanomalyprophetNode, v 
   result
 }
 
-pub fn timeseries_anomaly_prophet_node_min(s : TimeseriesanomalyprophetNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_node_min(s : TimeseriesanomalyprophetNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_node_max(s : TimeseriesanomalyprophetNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_node_max(s : TimeseriesanomalyprophetNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_node_to_string(s : TimeseriesanomalyprophetNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_anomaly_prophet_edge_set(s : TimeseriesanomalyprophetEdge, i :
   result
 }
 
-pub fn timeseries_anomaly_prophet_edge_sum(s : TimeseriesanomalyprophetEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_edge_sum(s : TimeseriesanomalyprophetEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_edge_mean(s : TimeseriesanomalyprophetEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_edge_mean(s : TimeseriesanomalyprophetEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_edge_scale(s : TimeseriesanomalyprophetEdge, f : Double) -> TimeseriesanomalyprophetEdge {
   let result = timeseries_anomaly_prophet_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_anomaly_prophet_edge_fill(s : TimeseriesanomalyprophetEdge, v 
   result
 }
 
-pub fn timeseries_anomaly_prophet_edge_min(s : TimeseriesanomalyprophetEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_edge_min(s : TimeseriesanomalyprophetEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_edge_max(s : TimeseriesanomalyprophetEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_edge_max(s : TimeseriesanomalyprophetEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_edge_to_string(s : TimeseriesanomalyprophetEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_anomaly_prophet_path_set(s : TimeseriesanomalyprophetPath, i :
   result
 }
 
-pub fn timeseries_anomaly_prophet_path_sum(s : TimeseriesanomalyprophetPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_path_sum(s : TimeseriesanomalyprophetPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_path_mean(s : TimeseriesanomalyprophetPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_path_mean(s : TimeseriesanomalyprophetPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_path_scale(s : TimeseriesanomalyprophetPath, f : Double) -> TimeseriesanomalyprophetPath {
   let result = timeseries_anomaly_prophet_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_anomaly_prophet_path_fill(s : TimeseriesanomalyprophetPath, v 
   result
 }
 
-pub fn timeseries_anomaly_prophet_path_min(s : TimeseriesanomalyprophetPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_path_min(s : TimeseriesanomalyprophetPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_path_max(s : TimeseriesanomalyprophetPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_path_max(s : TimeseriesanomalyprophetPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_path_to_string(s : TimeseriesanomalyprophetPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_anomaly_prophet_cluster_set(s : TimeseriesanomalyprophetCluste
   result
 }
 
-pub fn timeseries_anomaly_prophet_cluster_sum(s : TimeseriesanomalyprophetCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_cluster_sum(s : TimeseriesanomalyprophetCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_cluster_mean(s : TimeseriesanomalyprophetCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_cluster_mean(s : TimeseriesanomalyprophetCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_cluster_scale(s : TimeseriesanomalyprophetCluster, f : Double) -> TimeseriesanomalyprophetCluster {
   let result = timeseries_anomaly_prophet_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_anomaly_prophet_cluster_fill(s : TimeseriesanomalyprophetClust
   result
 }
 
-pub fn timeseries_anomaly_prophet_cluster_min(s : TimeseriesanomalyprophetCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_cluster_min(s : TimeseriesanomalyprophetCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_cluster_max(s : TimeseriesanomalyprophetCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_cluster_max(s : TimeseriesanomalyprophetCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_cluster_to_string(s : TimeseriesanomalyprophetCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_anomaly_prophet_model_set(s : TimeseriesanomalyprophetModel, i
   result
 }
 
-pub fn timeseries_anomaly_prophet_model_sum(s : TimeseriesanomalyprophetModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_model_sum(s : TimeseriesanomalyprophetModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_model_mean(s : TimeseriesanomalyprophetModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_model_mean(s : TimeseriesanomalyprophetModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_model_scale(s : TimeseriesanomalyprophetModel, f : Double) -> TimeseriesanomalyprophetModel {
   let result = timeseries_anomaly_prophet_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_anomaly_prophet_model_fill(s : TimeseriesanomalyprophetModel, 
   result
 }
 
-pub fn timeseries_anomaly_prophet_model_min(s : TimeseriesanomalyprophetModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_model_min(s : TimeseriesanomalyprophetModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_model_max(s : TimeseriesanomalyprophetModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_model_max(s : TimeseriesanomalyprophetModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_model_to_string(s : TimeseriesanomalyprophetModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_anomaly_prophet_layer_set(s : TimeseriesanomalyprophetLayer, i
   result
 }
 
-pub fn timeseries_anomaly_prophet_layer_sum(s : TimeseriesanomalyprophetLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_layer_sum(s : TimeseriesanomalyprophetLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_layer_mean(s : TimeseriesanomalyprophetLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_layer_mean(s : TimeseriesanomalyprophetLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_layer_scale(s : TimeseriesanomalyprophetLayer, f : Double) -> TimeseriesanomalyprophetLayer {
   let result = timeseries_anomaly_prophet_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_anomaly_prophet_layer_fill(s : TimeseriesanomalyprophetLayer, 
   result
 }
 
-pub fn timeseries_anomaly_prophet_layer_min(s : TimeseriesanomalyprophetLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_layer_min(s : TimeseriesanomalyprophetLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_layer_max(s : TimeseriesanomalyprophetLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_layer_max(s : TimeseriesanomalyprophetLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_layer_to_string(s : TimeseriesanomalyprophetLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_anomaly_prophet_buffer_set(s : TimeseriesanomalyprophetBuffer,
   result
 }
 
-pub fn timeseries_anomaly_prophet_buffer_sum(s : TimeseriesanomalyprophetBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_buffer_sum(s : TimeseriesanomalyprophetBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_buffer_mean(s : TimeseriesanomalyprophetBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_buffer_mean(s : TimeseriesanomalyprophetBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_buffer_scale(s : TimeseriesanomalyprophetBuffer, f : Double) -> TimeseriesanomalyprophetBuffer {
   let result = timeseries_anomaly_prophet_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_anomaly_prophet_buffer_fill(s : TimeseriesanomalyprophetBuffer
   result
 }
 
-pub fn timeseries_anomaly_prophet_buffer_min(s : TimeseriesanomalyprophetBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_buffer_min(s : TimeseriesanomalyprophetBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_buffer_max(s : TimeseriesanomalyprophetBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_buffer_max(s : TimeseriesanomalyprophetBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_buffer_to_string(s : TimeseriesanomalyprophetBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_anomaly_prophet_cursor_set(s : TimeseriesanomalyprophetCursor,
   result
 }
 
-pub fn timeseries_anomaly_prophet_cursor_sum(s : TimeseriesanomalyprophetCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_cursor_sum(s : TimeseriesanomalyprophetCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_cursor_mean(s : TimeseriesanomalyprophetCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_cursor_mean(s : TimeseriesanomalyprophetCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_cursor_scale(s : TimeseriesanomalyprophetCursor, f : Double) -> TimeseriesanomalyprophetCursor {
   let result = timeseries_anomaly_prophet_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_anomaly_prophet_cursor_fill(s : TimeseriesanomalyprophetCursor
   result
 }
 
-pub fn timeseries_anomaly_prophet_cursor_min(s : TimeseriesanomalyprophetCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_cursor_min(s : TimeseriesanomalyprophetCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_cursor_max(s : TimeseriesanomalyprophetCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_cursor_max(s : TimeseriesanomalyprophetCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_cursor_to_string(s : TimeseriesanomalyprophetCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_anomaly_prophet_view_set(s : TimeseriesanomalyprophetView, i :
   result
 }
 
-pub fn timeseries_anomaly_prophet_view_sum(s : TimeseriesanomalyprophetView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_view_sum(s : TimeseriesanomalyprophetView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_view_mean(s : TimeseriesanomalyprophetView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_view_mean(s : TimeseriesanomalyprophetView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_view_scale(s : TimeseriesanomalyprophetView, f : Double) -> TimeseriesanomalyprophetView {
   let result = timeseries_anomaly_prophet_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_anomaly_prophet_view_fill(s : TimeseriesanomalyprophetView, v 
   result
 }
 
-pub fn timeseries_anomaly_prophet_view_min(s : TimeseriesanomalyprophetView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_view_min(s : TimeseriesanomalyprophetView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_view_max(s : TimeseriesanomalyprophetView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_view_max(s : TimeseriesanomalyprophetView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_view_to_string(s : TimeseriesanomalyprophetView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_anomaly_prophet_range_set(s : TimeseriesanomalyprophetRange, i
   result
 }
 
-pub fn timeseries_anomaly_prophet_range_sum(s : TimeseriesanomalyprophetRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_range_sum(s : TimeseriesanomalyprophetRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_range_mean(s : TimeseriesanomalyprophetRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_range_mean(s : TimeseriesanomalyprophetRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_range_scale(s : TimeseriesanomalyprophetRange, f : Double) -> TimeseriesanomalyprophetRange {
   let result = timeseries_anomaly_prophet_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_anomaly_prophet_range_fill(s : TimeseriesanomalyprophetRange, 
   result
 }
 
-pub fn timeseries_anomaly_prophet_range_min(s : TimeseriesanomalyprophetRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_range_min(s : TimeseriesanomalyprophetRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_range_max(s : TimeseriesanomalyprophetRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_range_max(s : TimeseriesanomalyprophetRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_range_to_string(s : TimeseriesanomalyprophetRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_anomaly_prophet_slice_set(s : TimeseriesanomalyprophetSlice, i
   result
 }
 
-pub fn timeseries_anomaly_prophet_slice_sum(s : TimeseriesanomalyprophetSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_prophet_slice_sum(s : TimeseriesanomalyprophetSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_prophet_slice_mean(s : TimeseriesanomalyprophetSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_prophet_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_prophet_slice_mean(s : TimeseriesanomalyprophetSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_prophet_slice_scale(s : TimeseriesanomalyprophetSlice, f : Double) -> TimeseriesanomalyprophetSlice {
   let result = timeseries_anomaly_prophet_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_anomaly_prophet_slice_fill(s : TimeseriesanomalyprophetSlice, 
   result
 }
 
-pub fn timeseries_anomaly_prophet_slice_min(s : TimeseriesanomalyprophetSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_slice_min(s : TimeseriesanomalyprophetSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_prophet_slice_max(s : TimeseriesanomalyprophetSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_prophet_slice_max(s : TimeseriesanomalyprophetSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_prophet_slice_to_string(s : TimeseriesanomalyprophetSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

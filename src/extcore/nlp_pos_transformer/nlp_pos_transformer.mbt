@@ -88,11 +88,7 @@ pub fn nlp_pos_transformer_make_series(vals : Array[Double], name : String) -> N
 
 pub fn nlp_pos_transformer_series_len(s : NlppostransformerSeries) -> Int { s.vals.length() }
 
-pub fn nlp_pos_transformer_series_sum(s : NlppostransformerSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_pos_transformer_series_sum(s : NlppostransformerSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_pos_transformer_series_mean(s : NlppostransformerSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_pos_transformer_frame_set(s : NlppostransformerFrame, i : Int, v : Do
   result
 }
 
-pub fn nlp_pos_transformer_frame_sum(s : NlppostransformerFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_frame_sum(s : NlppostransformerFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_frame_mean(s : NlppostransformerFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_frame_mean(s : NlppostransformerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_frame_scale(s : NlppostransformerFrame, f : Double) -> NlppostransformerFrame {
   let result = nlp_pos_transformer_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_pos_transformer_frame_fill(s : NlppostransformerFrame, v : Double) ->
   result
 }
 
-pub fn nlp_pos_transformer_frame_min(s : NlppostransformerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_frame_min(s : NlppostransformerFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_frame_max(s : NlppostransformerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_frame_max(s : NlppostransformerFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_frame_to_string(s : NlppostransformerFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_pos_transformer_table_set(s : NlppostransformerTable, i : Int, v : Do
   result
 }
 
-pub fn nlp_pos_transformer_table_sum(s : NlppostransformerTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_table_sum(s : NlppostransformerTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_table_mean(s : NlppostransformerTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_table_mean(s : NlppostransformerTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_table_scale(s : NlppostransformerTable, f : Double) -> NlppostransformerTable {
   let result = nlp_pos_transformer_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_pos_transformer_table_fill(s : NlppostransformerTable, v : Double) ->
   result
 }
 
-pub fn nlp_pos_transformer_table_min(s : NlppostransformerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_table_min(s : NlppostransformerTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_table_max(s : NlppostransformerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_table_max(s : NlppostransformerTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_table_to_string(s : NlppostransformerTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_pos_transformer_graphn_set(s : NlppostransformerGraphN, i : Int, v : 
   result
 }
 
-pub fn nlp_pos_transformer_graphn_sum(s : NlppostransformerGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_graphn_sum(s : NlppostransformerGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_graphn_mean(s : NlppostransformerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_graphn_mean(s : NlppostransformerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_graphn_scale(s : NlppostransformerGraphN, f : Double) -> NlppostransformerGraphN {
   let result = nlp_pos_transformer_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_pos_transformer_graphn_fill(s : NlppostransformerGraphN, v : Double) 
   result
 }
 
-pub fn nlp_pos_transformer_graphn_min(s : NlppostransformerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_graphn_min(s : NlppostransformerGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_graphn_max(s : NlppostransformerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_graphn_max(s : NlppostransformerGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_graphn_to_string(s : NlppostransformerGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_pos_transformer_node_set(s : NlppostransformerNode, i : Int, v : Doub
   result
 }
 
-pub fn nlp_pos_transformer_node_sum(s : NlppostransformerNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_node_sum(s : NlppostransformerNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_node_mean(s : NlppostransformerNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_node_mean(s : NlppostransformerNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_node_scale(s : NlppostransformerNode, f : Double) -> NlppostransformerNode {
   let result = nlp_pos_transformer_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_pos_transformer_node_fill(s : NlppostransformerNode, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_transformer_node_min(s : NlppostransformerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_node_min(s : NlppostransformerNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_node_max(s : NlppostransformerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_node_max(s : NlppostransformerNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_node_to_string(s : NlppostransformerNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_pos_transformer_edge_set(s : NlppostransformerEdge, i : Int, v : Doub
   result
 }
 
-pub fn nlp_pos_transformer_edge_sum(s : NlppostransformerEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_edge_sum(s : NlppostransformerEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_edge_mean(s : NlppostransformerEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_edge_mean(s : NlppostransformerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_edge_scale(s : NlppostransformerEdge, f : Double) -> NlppostransformerEdge {
   let result = nlp_pos_transformer_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_pos_transformer_edge_fill(s : NlppostransformerEdge, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_transformer_edge_min(s : NlppostransformerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_edge_min(s : NlppostransformerEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_edge_max(s : NlppostransformerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_edge_max(s : NlppostransformerEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_edge_to_string(s : NlppostransformerEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_pos_transformer_path_set(s : NlppostransformerPath, i : Int, v : Doub
   result
 }
 
-pub fn nlp_pos_transformer_path_sum(s : NlppostransformerPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_path_sum(s : NlppostransformerPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_path_mean(s : NlppostransformerPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_path_mean(s : NlppostransformerPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_path_scale(s : NlppostransformerPath, f : Double) -> NlppostransformerPath {
   let result = nlp_pos_transformer_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_pos_transformer_path_fill(s : NlppostransformerPath, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_transformer_path_min(s : NlppostransformerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_path_min(s : NlppostransformerPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_path_max(s : NlppostransformerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_path_max(s : NlppostransformerPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_path_to_string(s : NlppostransformerPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_pos_transformer_cluster_set(s : NlppostransformerCluster, i : Int, v 
   result
 }
 
-pub fn nlp_pos_transformer_cluster_sum(s : NlppostransformerCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_cluster_sum(s : NlppostransformerCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_cluster_mean(s : NlppostransformerCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_cluster_mean(s : NlppostransformerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_cluster_scale(s : NlppostransformerCluster, f : Double) -> NlppostransformerCluster {
   let result = nlp_pos_transformer_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_pos_transformer_cluster_fill(s : NlppostransformerCluster, v : Double
   result
 }
 
-pub fn nlp_pos_transformer_cluster_min(s : NlppostransformerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_cluster_min(s : NlppostransformerCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_cluster_max(s : NlppostransformerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_cluster_max(s : NlppostransformerCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_cluster_to_string(s : NlppostransformerCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_pos_transformer_model_set(s : NlppostransformerModel, i : Int, v : Do
   result
 }
 
-pub fn nlp_pos_transformer_model_sum(s : NlppostransformerModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_model_sum(s : NlppostransformerModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_model_mean(s : NlppostransformerModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_model_mean(s : NlppostransformerModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_model_scale(s : NlppostransformerModel, f : Double) -> NlppostransformerModel {
   let result = nlp_pos_transformer_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_pos_transformer_model_fill(s : NlppostransformerModel, v : Double) ->
   result
 }
 
-pub fn nlp_pos_transformer_model_min(s : NlppostransformerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_model_min(s : NlppostransformerModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_model_max(s : NlppostransformerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_model_max(s : NlppostransformerModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_model_to_string(s : NlppostransformerModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_pos_transformer_layer_set(s : NlppostransformerLayer, i : Int, v : Do
   result
 }
 
-pub fn nlp_pos_transformer_layer_sum(s : NlppostransformerLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_layer_sum(s : NlppostransformerLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_layer_mean(s : NlppostransformerLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_layer_mean(s : NlppostransformerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_layer_scale(s : NlppostransformerLayer, f : Double) -> NlppostransformerLayer {
   let result = nlp_pos_transformer_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_pos_transformer_layer_fill(s : NlppostransformerLayer, v : Double) ->
   result
 }
 
-pub fn nlp_pos_transformer_layer_min(s : NlppostransformerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_layer_min(s : NlppostransformerLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_layer_max(s : NlppostransformerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_layer_max(s : NlppostransformerLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_layer_to_string(s : NlppostransformerLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_pos_transformer_buffer_set(s : NlppostransformerBuffer, i : Int, v : 
   result
 }
 
-pub fn nlp_pos_transformer_buffer_sum(s : NlppostransformerBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_buffer_sum(s : NlppostransformerBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_buffer_mean(s : NlppostransformerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_buffer_mean(s : NlppostransformerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_buffer_scale(s : NlppostransformerBuffer, f : Double) -> NlppostransformerBuffer {
   let result = nlp_pos_transformer_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_pos_transformer_buffer_fill(s : NlppostransformerBuffer, v : Double) 
   result
 }
 
-pub fn nlp_pos_transformer_buffer_min(s : NlppostransformerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_buffer_min(s : NlppostransformerBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_buffer_max(s : NlppostransformerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_buffer_max(s : NlppostransformerBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_buffer_to_string(s : NlppostransformerBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_pos_transformer_cursor_set(s : NlppostransformerCursor, i : Int, v : 
   result
 }
 
-pub fn nlp_pos_transformer_cursor_sum(s : NlppostransformerCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_cursor_sum(s : NlppostransformerCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_cursor_mean(s : NlppostransformerCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_cursor_mean(s : NlppostransformerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_cursor_scale(s : NlppostransformerCursor, f : Double) -> NlppostransformerCursor {
   let result = nlp_pos_transformer_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_pos_transformer_cursor_fill(s : NlppostransformerCursor, v : Double) 
   result
 }
 
-pub fn nlp_pos_transformer_cursor_min(s : NlppostransformerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_cursor_min(s : NlppostransformerCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_cursor_max(s : NlppostransformerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_cursor_max(s : NlppostransformerCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_cursor_to_string(s : NlppostransformerCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_pos_transformer_view_set(s : NlppostransformerView, i : Int, v : Doub
   result
 }
 
-pub fn nlp_pos_transformer_view_sum(s : NlppostransformerView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_view_sum(s : NlppostransformerView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_view_mean(s : NlppostransformerView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_view_mean(s : NlppostransformerView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_view_scale(s : NlppostransformerView, f : Double) -> NlppostransformerView {
   let result = nlp_pos_transformer_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_pos_transformer_view_fill(s : NlppostransformerView, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_transformer_view_min(s : NlppostransformerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_view_min(s : NlppostransformerView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_view_max(s : NlppostransformerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_view_max(s : NlppostransformerView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_view_to_string(s : NlppostransformerView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_pos_transformer_range_set(s : NlppostransformerRange, i : Int, v : Do
   result
 }
 
-pub fn nlp_pos_transformer_range_sum(s : NlppostransformerRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_range_sum(s : NlppostransformerRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_range_mean(s : NlppostransformerRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_range_mean(s : NlppostransformerRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_range_scale(s : NlppostransformerRange, f : Double) -> NlppostransformerRange {
   let result = nlp_pos_transformer_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_pos_transformer_range_fill(s : NlppostransformerRange, v : Double) ->
   result
 }
 
-pub fn nlp_pos_transformer_range_min(s : NlppostransformerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_range_min(s : NlppostransformerRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_range_max(s : NlppostransformerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_range_max(s : NlppostransformerRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_range_to_string(s : NlppostransformerRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_pos_transformer_slice_set(s : NlppostransformerSlice, i : Int, v : Do
   result
 }
 
-pub fn nlp_pos_transformer_slice_sum(s : NlppostransformerSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_transformer_slice_sum(s : NlppostransformerSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_transformer_slice_mean(s : NlppostransformerSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_transformer_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_transformer_slice_mean(s : NlppostransformerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_transformer_slice_scale(s : NlppostransformerSlice, f : Double) -> NlppostransformerSlice {
   let result = nlp_pos_transformer_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_pos_transformer_slice_fill(s : NlppostransformerSlice, v : Double) ->
   result
 }
 
-pub fn nlp_pos_transformer_slice_min(s : NlppostransformerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_slice_min(s : NlppostransformerSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_transformer_slice_max(s : NlppostransformerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_transformer_slice_max(s : NlppostransformerSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_transformer_slice_to_string(s : NlppostransformerSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

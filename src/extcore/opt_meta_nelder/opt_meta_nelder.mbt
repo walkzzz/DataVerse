@@ -88,11 +88,7 @@ pub fn opt_meta_nelder_make_series(vals : Array[Double], name : String) -> Optme
 
 pub fn opt_meta_nelder_series_len(s : OptmetanelderSeries) -> Int { s.vals.length() }
 
-pub fn opt_meta_nelder_series_sum(s : OptmetanelderSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_meta_nelder_series_sum(s : OptmetanelderSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_meta_nelder_series_mean(s : OptmetanelderSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_meta_nelder_frame_set(s : OptmetanelderFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_nelder_frame_sum(s : OptmetanelderFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_frame_sum(s : OptmetanelderFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_frame_mean(s : OptmetanelderFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_frame_mean(s : OptmetanelderFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_frame_scale(s : OptmetanelderFrame, f : Double) -> OptmetanelderFrame {
   let result = opt_meta_nelder_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_meta_nelder_frame_fill(s : OptmetanelderFrame, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_nelder_frame_min(s : OptmetanelderFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_frame_min(s : OptmetanelderFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_frame_max(s : OptmetanelderFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_frame_max(s : OptmetanelderFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_frame_to_string(s : OptmetanelderFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_meta_nelder_table_set(s : OptmetanelderTable, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_nelder_table_sum(s : OptmetanelderTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_table_sum(s : OptmetanelderTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_table_mean(s : OptmetanelderTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_table_mean(s : OptmetanelderTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_table_scale(s : OptmetanelderTable, f : Double) -> OptmetanelderTable {
   let result = opt_meta_nelder_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_meta_nelder_table_fill(s : OptmetanelderTable, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_nelder_table_min(s : OptmetanelderTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_table_min(s : OptmetanelderTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_table_max(s : OptmetanelderTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_table_max(s : OptmetanelderTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_table_to_string(s : OptmetanelderTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_meta_nelder_graphn_set(s : OptmetanelderGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn opt_meta_nelder_graphn_sum(s : OptmetanelderGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_graphn_sum(s : OptmetanelderGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_graphn_mean(s : OptmetanelderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_graphn_mean(s : OptmetanelderGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_graphn_scale(s : OptmetanelderGraphN, f : Double) -> OptmetanelderGraphN {
   let result = opt_meta_nelder_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_meta_nelder_graphn_fill(s : OptmetanelderGraphN, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_nelder_graphn_min(s : OptmetanelderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_graphn_min(s : OptmetanelderGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_graphn_max(s : OptmetanelderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_graphn_max(s : OptmetanelderGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_graphn_to_string(s : OptmetanelderGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_meta_nelder_node_set(s : OptmetanelderNode, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_nelder_node_sum(s : OptmetanelderNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_node_sum(s : OptmetanelderNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_node_mean(s : OptmetanelderNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_node_mean(s : OptmetanelderNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_node_scale(s : OptmetanelderNode, f : Double) -> OptmetanelderNode {
   let result = opt_meta_nelder_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_meta_nelder_node_fill(s : OptmetanelderNode, v : Double) -> Optmetane
   result
 }
 
-pub fn opt_meta_nelder_node_min(s : OptmetanelderNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_node_min(s : OptmetanelderNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_node_max(s : OptmetanelderNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_node_max(s : OptmetanelderNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_node_to_string(s : OptmetanelderNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_meta_nelder_edge_set(s : OptmetanelderEdge, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_nelder_edge_sum(s : OptmetanelderEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_edge_sum(s : OptmetanelderEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_edge_mean(s : OptmetanelderEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_edge_mean(s : OptmetanelderEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_edge_scale(s : OptmetanelderEdge, f : Double) -> OptmetanelderEdge {
   let result = opt_meta_nelder_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_meta_nelder_edge_fill(s : OptmetanelderEdge, v : Double) -> Optmetane
   result
 }
 
-pub fn opt_meta_nelder_edge_min(s : OptmetanelderEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_edge_min(s : OptmetanelderEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_edge_max(s : OptmetanelderEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_edge_max(s : OptmetanelderEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_edge_to_string(s : OptmetanelderEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_meta_nelder_path_set(s : OptmetanelderPath, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_nelder_path_sum(s : OptmetanelderPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_path_sum(s : OptmetanelderPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_path_mean(s : OptmetanelderPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_path_mean(s : OptmetanelderPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_path_scale(s : OptmetanelderPath, f : Double) -> OptmetanelderPath {
   let result = opt_meta_nelder_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_meta_nelder_path_fill(s : OptmetanelderPath, v : Double) -> Optmetane
   result
 }
 
-pub fn opt_meta_nelder_path_min(s : OptmetanelderPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_path_min(s : OptmetanelderPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_path_max(s : OptmetanelderPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_path_max(s : OptmetanelderPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_path_to_string(s : OptmetanelderPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_meta_nelder_cluster_set(s : OptmetanelderCluster, i : Int, v : Double
   result
 }
 
-pub fn opt_meta_nelder_cluster_sum(s : OptmetanelderCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_cluster_sum(s : OptmetanelderCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_cluster_mean(s : OptmetanelderCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_cluster_mean(s : OptmetanelderCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_cluster_scale(s : OptmetanelderCluster, f : Double) -> OptmetanelderCluster {
   let result = opt_meta_nelder_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_meta_nelder_cluster_fill(s : OptmetanelderCluster, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_nelder_cluster_min(s : OptmetanelderCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_cluster_min(s : OptmetanelderCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_cluster_max(s : OptmetanelderCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_cluster_max(s : OptmetanelderCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_cluster_to_string(s : OptmetanelderCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_meta_nelder_model_set(s : OptmetanelderModel, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_nelder_model_sum(s : OptmetanelderModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_model_sum(s : OptmetanelderModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_model_mean(s : OptmetanelderModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_model_mean(s : OptmetanelderModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_model_scale(s : OptmetanelderModel, f : Double) -> OptmetanelderModel {
   let result = opt_meta_nelder_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_meta_nelder_model_fill(s : OptmetanelderModel, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_nelder_model_min(s : OptmetanelderModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_model_min(s : OptmetanelderModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_model_max(s : OptmetanelderModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_model_max(s : OptmetanelderModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_model_to_string(s : OptmetanelderModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_meta_nelder_layer_set(s : OptmetanelderLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_nelder_layer_sum(s : OptmetanelderLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_layer_sum(s : OptmetanelderLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_layer_mean(s : OptmetanelderLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_layer_mean(s : OptmetanelderLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_layer_scale(s : OptmetanelderLayer, f : Double) -> OptmetanelderLayer {
   let result = opt_meta_nelder_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_meta_nelder_layer_fill(s : OptmetanelderLayer, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_nelder_layer_min(s : OptmetanelderLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_layer_min(s : OptmetanelderLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_layer_max(s : OptmetanelderLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_layer_max(s : OptmetanelderLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_layer_to_string(s : OptmetanelderLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_meta_nelder_buffer_set(s : OptmetanelderBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn opt_meta_nelder_buffer_sum(s : OptmetanelderBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_buffer_sum(s : OptmetanelderBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_buffer_mean(s : OptmetanelderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_buffer_mean(s : OptmetanelderBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_buffer_scale(s : OptmetanelderBuffer, f : Double) -> OptmetanelderBuffer {
   let result = opt_meta_nelder_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_meta_nelder_buffer_fill(s : OptmetanelderBuffer, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_nelder_buffer_min(s : OptmetanelderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_buffer_min(s : OptmetanelderBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_buffer_max(s : OptmetanelderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_buffer_max(s : OptmetanelderBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_buffer_to_string(s : OptmetanelderBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_meta_nelder_cursor_set(s : OptmetanelderCursor, i : Int, v : Double) 
   result
 }
 
-pub fn opt_meta_nelder_cursor_sum(s : OptmetanelderCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_cursor_sum(s : OptmetanelderCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_cursor_mean(s : OptmetanelderCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_cursor_mean(s : OptmetanelderCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_cursor_scale(s : OptmetanelderCursor, f : Double) -> OptmetanelderCursor {
   let result = opt_meta_nelder_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_meta_nelder_cursor_fill(s : OptmetanelderCursor, v : Double) -> Optme
   result
 }
 
-pub fn opt_meta_nelder_cursor_min(s : OptmetanelderCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_cursor_min(s : OptmetanelderCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_cursor_max(s : OptmetanelderCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_cursor_max(s : OptmetanelderCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_cursor_to_string(s : OptmetanelderCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_meta_nelder_view_set(s : OptmetanelderView, i : Int, v : Double) -> O
   result
 }
 
-pub fn opt_meta_nelder_view_sum(s : OptmetanelderView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_view_sum(s : OptmetanelderView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_view_mean(s : OptmetanelderView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_view_mean(s : OptmetanelderView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_view_scale(s : OptmetanelderView, f : Double) -> OptmetanelderView {
   let result = opt_meta_nelder_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_meta_nelder_view_fill(s : OptmetanelderView, v : Double) -> Optmetane
   result
 }
 
-pub fn opt_meta_nelder_view_min(s : OptmetanelderView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_view_min(s : OptmetanelderView) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_view_max(s : OptmetanelderView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_view_max(s : OptmetanelderView) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_view_to_string(s : OptmetanelderView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_meta_nelder_range_set(s : OptmetanelderRange, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_nelder_range_sum(s : OptmetanelderRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_range_sum(s : OptmetanelderRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_range_mean(s : OptmetanelderRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_range_mean(s : OptmetanelderRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_range_scale(s : OptmetanelderRange, f : Double) -> OptmetanelderRange {
   let result = opt_meta_nelder_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_meta_nelder_range_fill(s : OptmetanelderRange, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_nelder_range_min(s : OptmetanelderRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_range_min(s : OptmetanelderRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_range_max(s : OptmetanelderRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_range_max(s : OptmetanelderRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_range_to_string(s : OptmetanelderRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_meta_nelder_slice_set(s : OptmetanelderSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn opt_meta_nelder_slice_sum(s : OptmetanelderSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_nelder_slice_sum(s : OptmetanelderSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_nelder_slice_mean(s : OptmetanelderSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_nelder_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_nelder_slice_mean(s : OptmetanelderSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_nelder_slice_scale(s : OptmetanelderSlice, f : Double) -> OptmetanelderSlice {
   let result = opt_meta_nelder_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_meta_nelder_slice_fill(s : OptmetanelderSlice, v : Double) -> Optmeta
   result
 }
 
-pub fn opt_meta_nelder_slice_min(s : OptmetanelderSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_slice_min(s : OptmetanelderSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_nelder_slice_max(s : OptmetanelderSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_nelder_slice_max(s : OptmetanelderSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_nelder_slice_to_string(s : OptmetanelderSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

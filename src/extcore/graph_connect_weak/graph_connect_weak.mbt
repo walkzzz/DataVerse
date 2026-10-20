@@ -88,11 +88,7 @@ pub fn graph_connect_weak_make_series(vals : Array[Double], name : String) -> Gr
 
 pub fn graph_connect_weak_series_len(s : GraphconnectweakSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_weak_series_sum(s : GraphconnectweakSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_weak_series_sum(s : GraphconnectweakSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_weak_series_mean(s : GraphconnectweakSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_weak_frame_set(s : GraphconnectweakFrame, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_weak_frame_sum(s : GraphconnectweakFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_frame_sum(s : GraphconnectweakFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_frame_mean(s : GraphconnectweakFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_frame_mean(s : GraphconnectweakFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_frame_scale(s : GraphconnectweakFrame, f : Double) -> GraphconnectweakFrame {
   let result = graph_connect_weak_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_weak_frame_fill(s : GraphconnectweakFrame, v : Double) -> G
   result
 }
 
-pub fn graph_connect_weak_frame_min(s : GraphconnectweakFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_frame_min(s : GraphconnectweakFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_frame_max(s : GraphconnectweakFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_frame_max(s : GraphconnectweakFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_frame_to_string(s : GraphconnectweakFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_weak_table_set(s : GraphconnectweakTable, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_weak_table_sum(s : GraphconnectweakTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_table_sum(s : GraphconnectweakTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_table_mean(s : GraphconnectweakTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_table_mean(s : GraphconnectweakTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_table_scale(s : GraphconnectweakTable, f : Double) -> GraphconnectweakTable {
   let result = graph_connect_weak_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_weak_table_fill(s : GraphconnectweakTable, v : Double) -> G
   result
 }
 
-pub fn graph_connect_weak_table_min(s : GraphconnectweakTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_table_min(s : GraphconnectweakTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_table_max(s : GraphconnectweakTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_table_max(s : GraphconnectweakTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_table_to_string(s : GraphconnectweakTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_weak_graphn_set(s : GraphconnectweakGraphN, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_weak_graphn_sum(s : GraphconnectweakGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_graphn_sum(s : GraphconnectweakGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_graphn_mean(s : GraphconnectweakGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_graphn_mean(s : GraphconnectweakGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_graphn_scale(s : GraphconnectweakGraphN, f : Double) -> GraphconnectweakGraphN {
   let result = graph_connect_weak_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_weak_graphn_fill(s : GraphconnectweakGraphN, v : Double) ->
   result
 }
 
-pub fn graph_connect_weak_graphn_min(s : GraphconnectweakGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_graphn_min(s : GraphconnectweakGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_graphn_max(s : GraphconnectweakGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_graphn_max(s : GraphconnectweakGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_graphn_to_string(s : GraphconnectweakGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_weak_node_set(s : GraphconnectweakNode, i : Int, v : Double
   result
 }
 
-pub fn graph_connect_weak_node_sum(s : GraphconnectweakNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_node_sum(s : GraphconnectweakNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_node_mean(s : GraphconnectweakNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_node_mean(s : GraphconnectweakNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_node_scale(s : GraphconnectweakNode, f : Double) -> GraphconnectweakNode {
   let result = graph_connect_weak_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_weak_node_fill(s : GraphconnectweakNode, v : Double) -> Gra
   result
 }
 
-pub fn graph_connect_weak_node_min(s : GraphconnectweakNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_node_min(s : GraphconnectweakNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_node_max(s : GraphconnectweakNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_node_max(s : GraphconnectweakNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_node_to_string(s : GraphconnectweakNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_weak_edge_set(s : GraphconnectweakEdge, i : Int, v : Double
   result
 }
 
-pub fn graph_connect_weak_edge_sum(s : GraphconnectweakEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_edge_sum(s : GraphconnectweakEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_edge_mean(s : GraphconnectweakEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_edge_mean(s : GraphconnectweakEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_edge_scale(s : GraphconnectweakEdge, f : Double) -> GraphconnectweakEdge {
   let result = graph_connect_weak_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_weak_edge_fill(s : GraphconnectweakEdge, v : Double) -> Gra
   result
 }
 
-pub fn graph_connect_weak_edge_min(s : GraphconnectweakEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_edge_min(s : GraphconnectweakEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_edge_max(s : GraphconnectweakEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_edge_max(s : GraphconnectweakEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_edge_to_string(s : GraphconnectweakEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_weak_path_set(s : GraphconnectweakPath, i : Int, v : Double
   result
 }
 
-pub fn graph_connect_weak_path_sum(s : GraphconnectweakPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_path_sum(s : GraphconnectweakPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_path_mean(s : GraphconnectweakPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_path_mean(s : GraphconnectweakPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_path_scale(s : GraphconnectweakPath, f : Double) -> GraphconnectweakPath {
   let result = graph_connect_weak_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_weak_path_fill(s : GraphconnectweakPath, v : Double) -> Gra
   result
 }
 
-pub fn graph_connect_weak_path_min(s : GraphconnectweakPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_path_min(s : GraphconnectweakPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_path_max(s : GraphconnectweakPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_path_max(s : GraphconnectweakPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_path_to_string(s : GraphconnectweakPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_weak_cluster_set(s : GraphconnectweakCluster, i : Int, v : 
   result
 }
 
-pub fn graph_connect_weak_cluster_sum(s : GraphconnectweakCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_cluster_sum(s : GraphconnectweakCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_cluster_mean(s : GraphconnectweakCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_cluster_mean(s : GraphconnectweakCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_cluster_scale(s : GraphconnectweakCluster, f : Double) -> GraphconnectweakCluster {
   let result = graph_connect_weak_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_weak_cluster_fill(s : GraphconnectweakCluster, v : Double) 
   result
 }
 
-pub fn graph_connect_weak_cluster_min(s : GraphconnectweakCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_cluster_min(s : GraphconnectweakCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_cluster_max(s : GraphconnectweakCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_cluster_max(s : GraphconnectweakCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_cluster_to_string(s : GraphconnectweakCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_weak_model_set(s : GraphconnectweakModel, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_weak_model_sum(s : GraphconnectweakModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_model_sum(s : GraphconnectweakModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_model_mean(s : GraphconnectweakModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_model_mean(s : GraphconnectweakModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_model_scale(s : GraphconnectweakModel, f : Double) -> GraphconnectweakModel {
   let result = graph_connect_weak_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_weak_model_fill(s : GraphconnectweakModel, v : Double) -> G
   result
 }
 
-pub fn graph_connect_weak_model_min(s : GraphconnectweakModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_model_min(s : GraphconnectweakModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_model_max(s : GraphconnectweakModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_model_max(s : GraphconnectweakModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_model_to_string(s : GraphconnectweakModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_weak_layer_set(s : GraphconnectweakLayer, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_weak_layer_sum(s : GraphconnectweakLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_layer_sum(s : GraphconnectweakLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_layer_mean(s : GraphconnectweakLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_layer_mean(s : GraphconnectweakLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_layer_scale(s : GraphconnectweakLayer, f : Double) -> GraphconnectweakLayer {
   let result = graph_connect_weak_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_weak_layer_fill(s : GraphconnectweakLayer, v : Double) -> G
   result
 }
 
-pub fn graph_connect_weak_layer_min(s : GraphconnectweakLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_layer_min(s : GraphconnectweakLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_layer_max(s : GraphconnectweakLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_layer_max(s : GraphconnectweakLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_layer_to_string(s : GraphconnectweakLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_weak_buffer_set(s : GraphconnectweakBuffer, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_weak_buffer_sum(s : GraphconnectweakBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_buffer_sum(s : GraphconnectweakBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_buffer_mean(s : GraphconnectweakBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_buffer_mean(s : GraphconnectweakBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_buffer_scale(s : GraphconnectweakBuffer, f : Double) -> GraphconnectweakBuffer {
   let result = graph_connect_weak_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_weak_buffer_fill(s : GraphconnectweakBuffer, v : Double) ->
   result
 }
 
-pub fn graph_connect_weak_buffer_min(s : GraphconnectweakBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_buffer_min(s : GraphconnectweakBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_buffer_max(s : GraphconnectweakBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_buffer_max(s : GraphconnectweakBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_buffer_to_string(s : GraphconnectweakBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_weak_cursor_set(s : GraphconnectweakCursor, i : Int, v : Do
   result
 }
 
-pub fn graph_connect_weak_cursor_sum(s : GraphconnectweakCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_cursor_sum(s : GraphconnectweakCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_cursor_mean(s : GraphconnectweakCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_cursor_mean(s : GraphconnectweakCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_cursor_scale(s : GraphconnectweakCursor, f : Double) -> GraphconnectweakCursor {
   let result = graph_connect_weak_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_weak_cursor_fill(s : GraphconnectweakCursor, v : Double) ->
   result
 }
 
-pub fn graph_connect_weak_cursor_min(s : GraphconnectweakCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_cursor_min(s : GraphconnectweakCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_cursor_max(s : GraphconnectweakCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_cursor_max(s : GraphconnectweakCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_cursor_to_string(s : GraphconnectweakCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_weak_view_set(s : GraphconnectweakView, i : Int, v : Double
   result
 }
 
-pub fn graph_connect_weak_view_sum(s : GraphconnectweakView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_view_sum(s : GraphconnectweakView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_view_mean(s : GraphconnectweakView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_view_mean(s : GraphconnectweakView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_view_scale(s : GraphconnectweakView, f : Double) -> GraphconnectweakView {
   let result = graph_connect_weak_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_weak_view_fill(s : GraphconnectweakView, v : Double) -> Gra
   result
 }
 
-pub fn graph_connect_weak_view_min(s : GraphconnectweakView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_view_min(s : GraphconnectweakView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_view_max(s : GraphconnectweakView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_view_max(s : GraphconnectweakView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_view_to_string(s : GraphconnectweakView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_weak_range_set(s : GraphconnectweakRange, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_weak_range_sum(s : GraphconnectweakRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_range_sum(s : GraphconnectweakRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_range_mean(s : GraphconnectweakRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_range_mean(s : GraphconnectweakRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_range_scale(s : GraphconnectweakRange, f : Double) -> GraphconnectweakRange {
   let result = graph_connect_weak_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_weak_range_fill(s : GraphconnectweakRange, v : Double) -> G
   result
 }
 
-pub fn graph_connect_weak_range_min(s : GraphconnectweakRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_range_min(s : GraphconnectweakRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_range_max(s : GraphconnectweakRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_range_max(s : GraphconnectweakRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_range_to_string(s : GraphconnectweakRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_weak_slice_set(s : GraphconnectweakSlice, i : Int, v : Doub
   result
 }
 
-pub fn graph_connect_weak_slice_sum(s : GraphconnectweakSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_weak_slice_sum(s : GraphconnectweakSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_weak_slice_mean(s : GraphconnectweakSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_weak_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_weak_slice_mean(s : GraphconnectweakSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_weak_slice_scale(s : GraphconnectweakSlice, f : Double) -> GraphconnectweakSlice {
   let result = graph_connect_weak_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_weak_slice_fill(s : GraphconnectweakSlice, v : Double) -> G
   result
 }
 
-pub fn graph_connect_weak_slice_min(s : GraphconnectweakSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_slice_min(s : GraphconnectweakSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_weak_slice_max(s : GraphconnectweakSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_weak_slice_max(s : GraphconnectweakSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_weak_slice_to_string(s : GraphconnectweakSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

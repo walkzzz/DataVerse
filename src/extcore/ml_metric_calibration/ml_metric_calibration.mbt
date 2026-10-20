@@ -88,11 +88,7 @@ pub fn ml_metric_calibration_make_series(vals : Array[Double], name : String) ->
 
 pub fn ml_metric_calibration_series_len(s : MlmetriccalibrationSeries) -> Int { s.vals.length() }
 
-pub fn ml_metric_calibration_series_sum(s : MlmetriccalibrationSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_metric_calibration_series_sum(s : MlmetriccalibrationSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_metric_calibration_series_mean(s : MlmetriccalibrationSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_metric_calibration_frame_set(s : MlmetriccalibrationFrame, i : Int, v 
   result
 }
 
-pub fn ml_metric_calibration_frame_sum(s : MlmetriccalibrationFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_frame_sum(s : MlmetriccalibrationFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_frame_mean(s : MlmetriccalibrationFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_frame_mean(s : MlmetriccalibrationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_frame_scale(s : MlmetriccalibrationFrame, f : Double) -> MlmetriccalibrationFrame {
   let result = ml_metric_calibration_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_metric_calibration_frame_fill(s : MlmetriccalibrationFrame, v : Double
   result
 }
 
-pub fn ml_metric_calibration_frame_min(s : MlmetriccalibrationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_frame_min(s : MlmetriccalibrationFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_frame_max(s : MlmetriccalibrationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_frame_max(s : MlmetriccalibrationFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_frame_to_string(s : MlmetriccalibrationFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_metric_calibration_table_set(s : MlmetriccalibrationTable, i : Int, v 
   result
 }
 
-pub fn ml_metric_calibration_table_sum(s : MlmetriccalibrationTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_table_sum(s : MlmetriccalibrationTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_table_mean(s : MlmetriccalibrationTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_table_mean(s : MlmetriccalibrationTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_table_scale(s : MlmetriccalibrationTable, f : Double) -> MlmetriccalibrationTable {
   let result = ml_metric_calibration_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_metric_calibration_table_fill(s : MlmetriccalibrationTable, v : Double
   result
 }
 
-pub fn ml_metric_calibration_table_min(s : MlmetriccalibrationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_table_min(s : MlmetriccalibrationTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_table_max(s : MlmetriccalibrationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_table_max(s : MlmetriccalibrationTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_table_to_string(s : MlmetriccalibrationTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_metric_calibration_graphn_set(s : MlmetriccalibrationGraphN, i : Int, 
   result
 }
 
-pub fn ml_metric_calibration_graphn_sum(s : MlmetriccalibrationGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_graphn_sum(s : MlmetriccalibrationGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_graphn_mean(s : MlmetriccalibrationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_graphn_mean(s : MlmetriccalibrationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_graphn_scale(s : MlmetriccalibrationGraphN, f : Double) -> MlmetriccalibrationGraphN {
   let result = ml_metric_calibration_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_metric_calibration_graphn_fill(s : MlmetriccalibrationGraphN, v : Doub
   result
 }
 
-pub fn ml_metric_calibration_graphn_min(s : MlmetriccalibrationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_graphn_min(s : MlmetriccalibrationGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_graphn_max(s : MlmetriccalibrationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_graphn_max(s : MlmetriccalibrationGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_graphn_to_string(s : MlmetriccalibrationGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_metric_calibration_node_set(s : MlmetriccalibrationNode, i : Int, v : 
   result
 }
 
-pub fn ml_metric_calibration_node_sum(s : MlmetriccalibrationNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_node_sum(s : MlmetriccalibrationNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_node_mean(s : MlmetriccalibrationNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_node_mean(s : MlmetriccalibrationNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_node_scale(s : MlmetriccalibrationNode, f : Double) -> MlmetriccalibrationNode {
   let result = ml_metric_calibration_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_metric_calibration_node_fill(s : MlmetriccalibrationNode, v : Double) 
   result
 }
 
-pub fn ml_metric_calibration_node_min(s : MlmetriccalibrationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_node_min(s : MlmetriccalibrationNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_node_max(s : MlmetriccalibrationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_node_max(s : MlmetriccalibrationNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_node_to_string(s : MlmetriccalibrationNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_metric_calibration_edge_set(s : MlmetriccalibrationEdge, i : Int, v : 
   result
 }
 
-pub fn ml_metric_calibration_edge_sum(s : MlmetriccalibrationEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_edge_sum(s : MlmetriccalibrationEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_edge_mean(s : MlmetriccalibrationEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_edge_mean(s : MlmetriccalibrationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_edge_scale(s : MlmetriccalibrationEdge, f : Double) -> MlmetriccalibrationEdge {
   let result = ml_metric_calibration_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_metric_calibration_edge_fill(s : MlmetriccalibrationEdge, v : Double) 
   result
 }
 
-pub fn ml_metric_calibration_edge_min(s : MlmetriccalibrationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_edge_min(s : MlmetriccalibrationEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_edge_max(s : MlmetriccalibrationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_edge_max(s : MlmetriccalibrationEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_edge_to_string(s : MlmetriccalibrationEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_metric_calibration_path_set(s : MlmetriccalibrationPath, i : Int, v : 
   result
 }
 
-pub fn ml_metric_calibration_path_sum(s : MlmetriccalibrationPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_path_sum(s : MlmetriccalibrationPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_path_mean(s : MlmetriccalibrationPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_path_mean(s : MlmetriccalibrationPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_path_scale(s : MlmetriccalibrationPath, f : Double) -> MlmetriccalibrationPath {
   let result = ml_metric_calibration_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_metric_calibration_path_fill(s : MlmetriccalibrationPath, v : Double) 
   result
 }
 
-pub fn ml_metric_calibration_path_min(s : MlmetriccalibrationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_path_min(s : MlmetriccalibrationPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_path_max(s : MlmetriccalibrationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_path_max(s : MlmetriccalibrationPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_path_to_string(s : MlmetriccalibrationPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_metric_calibration_cluster_set(s : MlmetriccalibrationCluster, i : Int
   result
 }
 
-pub fn ml_metric_calibration_cluster_sum(s : MlmetriccalibrationCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_cluster_sum(s : MlmetriccalibrationCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_cluster_mean(s : MlmetriccalibrationCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_cluster_mean(s : MlmetriccalibrationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_cluster_scale(s : MlmetriccalibrationCluster, f : Double) -> MlmetriccalibrationCluster {
   let result = ml_metric_calibration_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_metric_calibration_cluster_fill(s : MlmetriccalibrationCluster, v : Do
   result
 }
 
-pub fn ml_metric_calibration_cluster_min(s : MlmetriccalibrationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_cluster_min(s : MlmetriccalibrationCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_cluster_max(s : MlmetriccalibrationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_cluster_max(s : MlmetriccalibrationCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_cluster_to_string(s : MlmetriccalibrationCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_metric_calibration_model_set(s : MlmetriccalibrationModel, i : Int, v 
   result
 }
 
-pub fn ml_metric_calibration_model_sum(s : MlmetriccalibrationModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_model_sum(s : MlmetriccalibrationModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_model_mean(s : MlmetriccalibrationModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_model_mean(s : MlmetriccalibrationModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_model_scale(s : MlmetriccalibrationModel, f : Double) -> MlmetriccalibrationModel {
   let result = ml_metric_calibration_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_metric_calibration_model_fill(s : MlmetriccalibrationModel, v : Double
   result
 }
 
-pub fn ml_metric_calibration_model_min(s : MlmetriccalibrationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_model_min(s : MlmetriccalibrationModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_model_max(s : MlmetriccalibrationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_model_max(s : MlmetriccalibrationModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_model_to_string(s : MlmetriccalibrationModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_metric_calibration_layer_set(s : MlmetriccalibrationLayer, i : Int, v 
   result
 }
 
-pub fn ml_metric_calibration_layer_sum(s : MlmetriccalibrationLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_layer_sum(s : MlmetriccalibrationLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_layer_mean(s : MlmetriccalibrationLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_layer_mean(s : MlmetriccalibrationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_layer_scale(s : MlmetriccalibrationLayer, f : Double) -> MlmetriccalibrationLayer {
   let result = ml_metric_calibration_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_metric_calibration_layer_fill(s : MlmetriccalibrationLayer, v : Double
   result
 }
 
-pub fn ml_metric_calibration_layer_min(s : MlmetriccalibrationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_layer_min(s : MlmetriccalibrationLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_layer_max(s : MlmetriccalibrationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_layer_max(s : MlmetriccalibrationLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_layer_to_string(s : MlmetriccalibrationLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_metric_calibration_buffer_set(s : MlmetriccalibrationBuffer, i : Int, 
   result
 }
 
-pub fn ml_metric_calibration_buffer_sum(s : MlmetriccalibrationBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_buffer_sum(s : MlmetriccalibrationBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_buffer_mean(s : MlmetriccalibrationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_buffer_mean(s : MlmetriccalibrationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_buffer_scale(s : MlmetriccalibrationBuffer, f : Double) -> MlmetriccalibrationBuffer {
   let result = ml_metric_calibration_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_metric_calibration_buffer_fill(s : MlmetriccalibrationBuffer, v : Doub
   result
 }
 
-pub fn ml_metric_calibration_buffer_min(s : MlmetriccalibrationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_buffer_min(s : MlmetriccalibrationBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_buffer_max(s : MlmetriccalibrationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_buffer_max(s : MlmetriccalibrationBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_buffer_to_string(s : MlmetriccalibrationBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_metric_calibration_cursor_set(s : MlmetriccalibrationCursor, i : Int, 
   result
 }
 
-pub fn ml_metric_calibration_cursor_sum(s : MlmetriccalibrationCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_cursor_sum(s : MlmetriccalibrationCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_cursor_mean(s : MlmetriccalibrationCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_cursor_mean(s : MlmetriccalibrationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_cursor_scale(s : MlmetriccalibrationCursor, f : Double) -> MlmetriccalibrationCursor {
   let result = ml_metric_calibration_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_metric_calibration_cursor_fill(s : MlmetriccalibrationCursor, v : Doub
   result
 }
 
-pub fn ml_metric_calibration_cursor_min(s : MlmetriccalibrationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_cursor_min(s : MlmetriccalibrationCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_cursor_max(s : MlmetriccalibrationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_cursor_max(s : MlmetriccalibrationCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_cursor_to_string(s : MlmetriccalibrationCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_metric_calibration_view_set(s : MlmetriccalibrationView, i : Int, v : 
   result
 }
 
-pub fn ml_metric_calibration_view_sum(s : MlmetriccalibrationView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_view_sum(s : MlmetriccalibrationView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_view_mean(s : MlmetriccalibrationView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_view_mean(s : MlmetriccalibrationView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_view_scale(s : MlmetriccalibrationView, f : Double) -> MlmetriccalibrationView {
   let result = ml_metric_calibration_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_metric_calibration_view_fill(s : MlmetriccalibrationView, v : Double) 
   result
 }
 
-pub fn ml_metric_calibration_view_min(s : MlmetriccalibrationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_view_min(s : MlmetriccalibrationView) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_view_max(s : MlmetriccalibrationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_view_max(s : MlmetriccalibrationView) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_view_to_string(s : MlmetriccalibrationView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_metric_calibration_range_set(s : MlmetriccalibrationRange, i : Int, v 
   result
 }
 
-pub fn ml_metric_calibration_range_sum(s : MlmetriccalibrationRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_range_sum(s : MlmetriccalibrationRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_range_mean(s : MlmetriccalibrationRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_range_mean(s : MlmetriccalibrationRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_range_scale(s : MlmetriccalibrationRange, f : Double) -> MlmetriccalibrationRange {
   let result = ml_metric_calibration_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_metric_calibration_range_fill(s : MlmetriccalibrationRange, v : Double
   result
 }
 
-pub fn ml_metric_calibration_range_min(s : MlmetriccalibrationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_range_min(s : MlmetriccalibrationRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_range_max(s : MlmetriccalibrationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_range_max(s : MlmetriccalibrationRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_range_to_string(s : MlmetriccalibrationRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_metric_calibration_slice_set(s : MlmetriccalibrationSlice, i : Int, v 
   result
 }
 
-pub fn ml_metric_calibration_slice_sum(s : MlmetriccalibrationSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_metric_calibration_slice_sum(s : MlmetriccalibrationSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_metric_calibration_slice_mean(s : MlmetriccalibrationSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_metric_calibration_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_metric_calibration_slice_mean(s : MlmetriccalibrationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_metric_calibration_slice_scale(s : MlmetriccalibrationSlice, f : Double) -> MlmetriccalibrationSlice {
   let result = ml_metric_calibration_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_metric_calibration_slice_fill(s : MlmetriccalibrationSlice, v : Double
   result
 }
 
-pub fn ml_metric_calibration_slice_min(s : MlmetriccalibrationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_slice_min(s : MlmetriccalibrationSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_metric_calibration_slice_max(s : MlmetriccalibrationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_metric_calibration_slice_max(s : MlmetriccalibrationSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_metric_calibration_slice_to_string(s : MlmetriccalibrationSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

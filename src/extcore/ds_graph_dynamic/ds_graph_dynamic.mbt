@@ -88,11 +88,7 @@ pub fn ds_graph_dynamic_make_series(vals : Array[Double], name : String) -> Dsgr
 
 pub fn ds_graph_dynamic_series_len(s : DsgraphdynamicSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_dynamic_series_sum(s : DsgraphdynamicSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_dynamic_series_sum(s : DsgraphdynamicSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_dynamic_series_mean(s : DsgraphdynamicSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_dynamic_frame_set(s : DsgraphdynamicFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_dynamic_frame_sum(s : DsgraphdynamicFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_frame_sum(s : DsgraphdynamicFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_frame_mean(s : DsgraphdynamicFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_frame_mean(s : DsgraphdynamicFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_frame_scale(s : DsgraphdynamicFrame, f : Double) -> DsgraphdynamicFrame {
   let result = ds_graph_dynamic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_dynamic_frame_fill(s : DsgraphdynamicFrame, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_dynamic_frame_min(s : DsgraphdynamicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_frame_min(s : DsgraphdynamicFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_frame_max(s : DsgraphdynamicFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_frame_max(s : DsgraphdynamicFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_frame_to_string(s : DsgraphdynamicFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_dynamic_table_set(s : DsgraphdynamicTable, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_dynamic_table_sum(s : DsgraphdynamicTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_table_sum(s : DsgraphdynamicTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_table_mean(s : DsgraphdynamicTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_table_mean(s : DsgraphdynamicTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_table_scale(s : DsgraphdynamicTable, f : Double) -> DsgraphdynamicTable {
   let result = ds_graph_dynamic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_dynamic_table_fill(s : DsgraphdynamicTable, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_dynamic_table_min(s : DsgraphdynamicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_table_min(s : DsgraphdynamicTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_table_max(s : DsgraphdynamicTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_table_max(s : DsgraphdynamicTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_table_to_string(s : DsgraphdynamicTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_dynamic_graphn_set(s : DsgraphdynamicGraphN, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_dynamic_graphn_sum(s : DsgraphdynamicGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_graphn_sum(s : DsgraphdynamicGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_graphn_mean(s : DsgraphdynamicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_graphn_mean(s : DsgraphdynamicGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_graphn_scale(s : DsgraphdynamicGraphN, f : Double) -> DsgraphdynamicGraphN {
   let result = ds_graph_dynamic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_dynamic_graphn_fill(s : DsgraphdynamicGraphN, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_dynamic_graphn_min(s : DsgraphdynamicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_graphn_min(s : DsgraphdynamicGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_graphn_max(s : DsgraphdynamicGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_graphn_max(s : DsgraphdynamicGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_graphn_to_string(s : DsgraphdynamicGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_dynamic_node_set(s : DsgraphdynamicNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_dynamic_node_sum(s : DsgraphdynamicNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_node_sum(s : DsgraphdynamicNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_node_mean(s : DsgraphdynamicNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_node_mean(s : DsgraphdynamicNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_node_scale(s : DsgraphdynamicNode, f : Double) -> DsgraphdynamicNode {
   let result = ds_graph_dynamic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_dynamic_node_fill(s : DsgraphdynamicNode, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_dynamic_node_min(s : DsgraphdynamicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_node_min(s : DsgraphdynamicNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_node_max(s : DsgraphdynamicNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_node_max(s : DsgraphdynamicNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_node_to_string(s : DsgraphdynamicNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_dynamic_edge_set(s : DsgraphdynamicEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_dynamic_edge_sum(s : DsgraphdynamicEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_edge_sum(s : DsgraphdynamicEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_edge_mean(s : DsgraphdynamicEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_edge_mean(s : DsgraphdynamicEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_edge_scale(s : DsgraphdynamicEdge, f : Double) -> DsgraphdynamicEdge {
   let result = ds_graph_dynamic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_dynamic_edge_fill(s : DsgraphdynamicEdge, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_dynamic_edge_min(s : DsgraphdynamicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_edge_min(s : DsgraphdynamicEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_edge_max(s : DsgraphdynamicEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_edge_max(s : DsgraphdynamicEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_edge_to_string(s : DsgraphdynamicEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_dynamic_path_set(s : DsgraphdynamicPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_dynamic_path_sum(s : DsgraphdynamicPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_path_sum(s : DsgraphdynamicPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_path_mean(s : DsgraphdynamicPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_path_mean(s : DsgraphdynamicPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_path_scale(s : DsgraphdynamicPath, f : Double) -> DsgraphdynamicPath {
   let result = ds_graph_dynamic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_dynamic_path_fill(s : DsgraphdynamicPath, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_dynamic_path_min(s : DsgraphdynamicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_path_min(s : DsgraphdynamicPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_path_max(s : DsgraphdynamicPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_path_max(s : DsgraphdynamicPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_path_to_string(s : DsgraphdynamicPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_dynamic_cluster_set(s : DsgraphdynamicCluster, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_dynamic_cluster_sum(s : DsgraphdynamicCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_cluster_sum(s : DsgraphdynamicCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_cluster_mean(s : DsgraphdynamicCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_cluster_mean(s : DsgraphdynamicCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_cluster_scale(s : DsgraphdynamicCluster, f : Double) -> DsgraphdynamicCluster {
   let result = ds_graph_dynamic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_dynamic_cluster_fill(s : DsgraphdynamicCluster, v : Double) -> D
   result
 }
 
-pub fn ds_graph_dynamic_cluster_min(s : DsgraphdynamicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_cluster_min(s : DsgraphdynamicCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_cluster_max(s : DsgraphdynamicCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_cluster_max(s : DsgraphdynamicCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_cluster_to_string(s : DsgraphdynamicCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_dynamic_model_set(s : DsgraphdynamicModel, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_dynamic_model_sum(s : DsgraphdynamicModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_model_sum(s : DsgraphdynamicModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_model_mean(s : DsgraphdynamicModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_model_mean(s : DsgraphdynamicModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_model_scale(s : DsgraphdynamicModel, f : Double) -> DsgraphdynamicModel {
   let result = ds_graph_dynamic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_dynamic_model_fill(s : DsgraphdynamicModel, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_dynamic_model_min(s : DsgraphdynamicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_model_min(s : DsgraphdynamicModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_model_max(s : DsgraphdynamicModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_model_max(s : DsgraphdynamicModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_model_to_string(s : DsgraphdynamicModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_dynamic_layer_set(s : DsgraphdynamicLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_dynamic_layer_sum(s : DsgraphdynamicLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_layer_sum(s : DsgraphdynamicLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_layer_mean(s : DsgraphdynamicLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_layer_mean(s : DsgraphdynamicLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_layer_scale(s : DsgraphdynamicLayer, f : Double) -> DsgraphdynamicLayer {
   let result = ds_graph_dynamic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_dynamic_layer_fill(s : DsgraphdynamicLayer, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_dynamic_layer_min(s : DsgraphdynamicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_layer_min(s : DsgraphdynamicLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_layer_max(s : DsgraphdynamicLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_layer_max(s : DsgraphdynamicLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_layer_to_string(s : DsgraphdynamicLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_dynamic_buffer_set(s : DsgraphdynamicBuffer, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_dynamic_buffer_sum(s : DsgraphdynamicBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_buffer_sum(s : DsgraphdynamicBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_buffer_mean(s : DsgraphdynamicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_buffer_mean(s : DsgraphdynamicBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_buffer_scale(s : DsgraphdynamicBuffer, f : Double) -> DsgraphdynamicBuffer {
   let result = ds_graph_dynamic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_dynamic_buffer_fill(s : DsgraphdynamicBuffer, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_dynamic_buffer_min(s : DsgraphdynamicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_buffer_min(s : DsgraphdynamicBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_buffer_max(s : DsgraphdynamicBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_buffer_max(s : DsgraphdynamicBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_buffer_to_string(s : DsgraphdynamicBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_dynamic_cursor_set(s : DsgraphdynamicCursor, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_dynamic_cursor_sum(s : DsgraphdynamicCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_cursor_sum(s : DsgraphdynamicCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_cursor_mean(s : DsgraphdynamicCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_cursor_mean(s : DsgraphdynamicCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_cursor_scale(s : DsgraphdynamicCursor, f : Double) -> DsgraphdynamicCursor {
   let result = ds_graph_dynamic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_dynamic_cursor_fill(s : DsgraphdynamicCursor, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_dynamic_cursor_min(s : DsgraphdynamicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_cursor_min(s : DsgraphdynamicCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_cursor_max(s : DsgraphdynamicCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_cursor_max(s : DsgraphdynamicCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_cursor_to_string(s : DsgraphdynamicCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_dynamic_view_set(s : DsgraphdynamicView, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_graph_dynamic_view_sum(s : DsgraphdynamicView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_view_sum(s : DsgraphdynamicView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_view_mean(s : DsgraphdynamicView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_view_mean(s : DsgraphdynamicView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_view_scale(s : DsgraphdynamicView, f : Double) -> DsgraphdynamicView {
   let result = ds_graph_dynamic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_dynamic_view_fill(s : DsgraphdynamicView, v : Double) -> Dsgraph
   result
 }
 
-pub fn ds_graph_dynamic_view_min(s : DsgraphdynamicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_view_min(s : DsgraphdynamicView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_view_max(s : DsgraphdynamicView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_view_max(s : DsgraphdynamicView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_view_to_string(s : DsgraphdynamicView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_dynamic_range_set(s : DsgraphdynamicRange, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_dynamic_range_sum(s : DsgraphdynamicRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_range_sum(s : DsgraphdynamicRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_range_mean(s : DsgraphdynamicRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_range_mean(s : DsgraphdynamicRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_range_scale(s : DsgraphdynamicRange, f : Double) -> DsgraphdynamicRange {
   let result = ds_graph_dynamic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_dynamic_range_fill(s : DsgraphdynamicRange, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_dynamic_range_min(s : DsgraphdynamicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_range_min(s : DsgraphdynamicRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_range_max(s : DsgraphdynamicRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_range_max(s : DsgraphdynamicRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_range_to_string(s : DsgraphdynamicRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_dynamic_slice_set(s : DsgraphdynamicSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_dynamic_slice_sum(s : DsgraphdynamicSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_dynamic_slice_sum(s : DsgraphdynamicSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_dynamic_slice_mean(s : DsgraphdynamicSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_dynamic_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_dynamic_slice_mean(s : DsgraphdynamicSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_dynamic_slice_scale(s : DsgraphdynamicSlice, f : Double) -> DsgraphdynamicSlice {
   let result = ds_graph_dynamic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_dynamic_slice_fill(s : DsgraphdynamicSlice, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_dynamic_slice_min(s : DsgraphdynamicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_slice_min(s : DsgraphdynamicSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_dynamic_slice_max(s : DsgraphdynamicSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_dynamic_slice_max(s : DsgraphdynamicSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_dynamic_slice_to_string(s : DsgraphdynamicSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

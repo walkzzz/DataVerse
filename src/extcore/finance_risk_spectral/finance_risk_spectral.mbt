@@ -88,11 +88,7 @@ pub fn finance_risk_spectral_make_series(vals : Array[Double], name : String) ->
 
 pub fn finance_risk_spectral_series_len(s : FinanceriskspectralSeries) -> Int { s.vals.length() }
 
-pub fn finance_risk_spectral_series_sum(s : FinanceriskspectralSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_risk_spectral_series_sum(s : FinanceriskspectralSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_risk_spectral_series_mean(s : FinanceriskspectralSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_risk_spectral_frame_set(s : FinanceriskspectralFrame, i : Int, v 
   result
 }
 
-pub fn finance_risk_spectral_frame_sum(s : FinanceriskspectralFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_frame_sum(s : FinanceriskspectralFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_frame_mean(s : FinanceriskspectralFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_frame_mean(s : FinanceriskspectralFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_frame_scale(s : FinanceriskspectralFrame, f : Double) -> FinanceriskspectralFrame {
   let result = finance_risk_spectral_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_risk_spectral_frame_fill(s : FinanceriskspectralFrame, v : Double
   result
 }
 
-pub fn finance_risk_spectral_frame_min(s : FinanceriskspectralFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_frame_min(s : FinanceriskspectralFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_frame_max(s : FinanceriskspectralFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_frame_max(s : FinanceriskspectralFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_frame_to_string(s : FinanceriskspectralFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_risk_spectral_table_set(s : FinanceriskspectralTable, i : Int, v 
   result
 }
 
-pub fn finance_risk_spectral_table_sum(s : FinanceriskspectralTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_table_sum(s : FinanceriskspectralTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_table_mean(s : FinanceriskspectralTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_table_mean(s : FinanceriskspectralTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_table_scale(s : FinanceriskspectralTable, f : Double) -> FinanceriskspectralTable {
   let result = finance_risk_spectral_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_risk_spectral_table_fill(s : FinanceriskspectralTable, v : Double
   result
 }
 
-pub fn finance_risk_spectral_table_min(s : FinanceriskspectralTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_table_min(s : FinanceriskspectralTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_table_max(s : FinanceriskspectralTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_table_max(s : FinanceriskspectralTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_table_to_string(s : FinanceriskspectralTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_risk_spectral_graphn_set(s : FinanceriskspectralGraphN, i : Int, 
   result
 }
 
-pub fn finance_risk_spectral_graphn_sum(s : FinanceriskspectralGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_graphn_sum(s : FinanceriskspectralGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_graphn_mean(s : FinanceriskspectralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_graphn_mean(s : FinanceriskspectralGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_graphn_scale(s : FinanceriskspectralGraphN, f : Double) -> FinanceriskspectralGraphN {
   let result = finance_risk_spectral_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_risk_spectral_graphn_fill(s : FinanceriskspectralGraphN, v : Doub
   result
 }
 
-pub fn finance_risk_spectral_graphn_min(s : FinanceriskspectralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_graphn_min(s : FinanceriskspectralGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_graphn_max(s : FinanceriskspectralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_graphn_max(s : FinanceriskspectralGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_graphn_to_string(s : FinanceriskspectralGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_risk_spectral_node_set(s : FinanceriskspectralNode, i : Int, v : 
   result
 }
 
-pub fn finance_risk_spectral_node_sum(s : FinanceriskspectralNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_node_sum(s : FinanceriskspectralNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_node_mean(s : FinanceriskspectralNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_node_mean(s : FinanceriskspectralNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_node_scale(s : FinanceriskspectralNode, f : Double) -> FinanceriskspectralNode {
   let result = finance_risk_spectral_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_risk_spectral_node_fill(s : FinanceriskspectralNode, v : Double) 
   result
 }
 
-pub fn finance_risk_spectral_node_min(s : FinanceriskspectralNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_node_min(s : FinanceriskspectralNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_node_max(s : FinanceriskspectralNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_node_max(s : FinanceriskspectralNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_node_to_string(s : FinanceriskspectralNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_risk_spectral_edge_set(s : FinanceriskspectralEdge, i : Int, v : 
   result
 }
 
-pub fn finance_risk_spectral_edge_sum(s : FinanceriskspectralEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_edge_sum(s : FinanceriskspectralEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_edge_mean(s : FinanceriskspectralEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_edge_mean(s : FinanceriskspectralEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_edge_scale(s : FinanceriskspectralEdge, f : Double) -> FinanceriskspectralEdge {
   let result = finance_risk_spectral_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_risk_spectral_edge_fill(s : FinanceriskspectralEdge, v : Double) 
   result
 }
 
-pub fn finance_risk_spectral_edge_min(s : FinanceriskspectralEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_edge_min(s : FinanceriskspectralEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_edge_max(s : FinanceriskspectralEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_edge_max(s : FinanceriskspectralEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_edge_to_string(s : FinanceriskspectralEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_risk_spectral_path_set(s : FinanceriskspectralPath, i : Int, v : 
   result
 }
 
-pub fn finance_risk_spectral_path_sum(s : FinanceriskspectralPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_path_sum(s : FinanceriskspectralPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_path_mean(s : FinanceriskspectralPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_path_mean(s : FinanceriskspectralPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_path_scale(s : FinanceriskspectralPath, f : Double) -> FinanceriskspectralPath {
   let result = finance_risk_spectral_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_risk_spectral_path_fill(s : FinanceriskspectralPath, v : Double) 
   result
 }
 
-pub fn finance_risk_spectral_path_min(s : FinanceriskspectralPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_path_min(s : FinanceriskspectralPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_path_max(s : FinanceriskspectralPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_path_max(s : FinanceriskspectralPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_path_to_string(s : FinanceriskspectralPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_risk_spectral_cluster_set(s : FinanceriskspectralCluster, i : Int
   result
 }
 
-pub fn finance_risk_spectral_cluster_sum(s : FinanceriskspectralCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_cluster_sum(s : FinanceriskspectralCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_cluster_mean(s : FinanceriskspectralCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_cluster_mean(s : FinanceriskspectralCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_cluster_scale(s : FinanceriskspectralCluster, f : Double) -> FinanceriskspectralCluster {
   let result = finance_risk_spectral_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_risk_spectral_cluster_fill(s : FinanceriskspectralCluster, v : Do
   result
 }
 
-pub fn finance_risk_spectral_cluster_min(s : FinanceriskspectralCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_cluster_min(s : FinanceriskspectralCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_cluster_max(s : FinanceriskspectralCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_cluster_max(s : FinanceriskspectralCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_cluster_to_string(s : FinanceriskspectralCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_risk_spectral_model_set(s : FinanceriskspectralModel, i : Int, v 
   result
 }
 
-pub fn finance_risk_spectral_model_sum(s : FinanceriskspectralModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_model_sum(s : FinanceriskspectralModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_model_mean(s : FinanceriskspectralModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_model_mean(s : FinanceriskspectralModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_model_scale(s : FinanceriskspectralModel, f : Double) -> FinanceriskspectralModel {
   let result = finance_risk_spectral_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_risk_spectral_model_fill(s : FinanceriskspectralModel, v : Double
   result
 }
 
-pub fn finance_risk_spectral_model_min(s : FinanceriskspectralModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_model_min(s : FinanceriskspectralModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_model_max(s : FinanceriskspectralModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_model_max(s : FinanceriskspectralModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_model_to_string(s : FinanceriskspectralModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_risk_spectral_layer_set(s : FinanceriskspectralLayer, i : Int, v 
   result
 }
 
-pub fn finance_risk_spectral_layer_sum(s : FinanceriskspectralLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_layer_sum(s : FinanceriskspectralLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_layer_mean(s : FinanceriskspectralLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_layer_mean(s : FinanceriskspectralLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_layer_scale(s : FinanceriskspectralLayer, f : Double) -> FinanceriskspectralLayer {
   let result = finance_risk_spectral_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_risk_spectral_layer_fill(s : FinanceriskspectralLayer, v : Double
   result
 }
 
-pub fn finance_risk_spectral_layer_min(s : FinanceriskspectralLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_layer_min(s : FinanceriskspectralLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_layer_max(s : FinanceriskspectralLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_layer_max(s : FinanceriskspectralLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_layer_to_string(s : FinanceriskspectralLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_risk_spectral_buffer_set(s : FinanceriskspectralBuffer, i : Int, 
   result
 }
 
-pub fn finance_risk_spectral_buffer_sum(s : FinanceriskspectralBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_buffer_sum(s : FinanceriskspectralBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_buffer_mean(s : FinanceriskspectralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_buffer_mean(s : FinanceriskspectralBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_buffer_scale(s : FinanceriskspectralBuffer, f : Double) -> FinanceriskspectralBuffer {
   let result = finance_risk_spectral_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_risk_spectral_buffer_fill(s : FinanceriskspectralBuffer, v : Doub
   result
 }
 
-pub fn finance_risk_spectral_buffer_min(s : FinanceriskspectralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_buffer_min(s : FinanceriskspectralBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_buffer_max(s : FinanceriskspectralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_buffer_max(s : FinanceriskspectralBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_buffer_to_string(s : FinanceriskspectralBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_risk_spectral_cursor_set(s : FinanceriskspectralCursor, i : Int, 
   result
 }
 
-pub fn finance_risk_spectral_cursor_sum(s : FinanceriskspectralCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_cursor_sum(s : FinanceriskspectralCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_cursor_mean(s : FinanceriskspectralCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_cursor_mean(s : FinanceriskspectralCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_cursor_scale(s : FinanceriskspectralCursor, f : Double) -> FinanceriskspectralCursor {
   let result = finance_risk_spectral_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_risk_spectral_cursor_fill(s : FinanceriskspectralCursor, v : Doub
   result
 }
 
-pub fn finance_risk_spectral_cursor_min(s : FinanceriskspectralCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_cursor_min(s : FinanceriskspectralCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_cursor_max(s : FinanceriskspectralCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_cursor_max(s : FinanceriskspectralCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_cursor_to_string(s : FinanceriskspectralCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_risk_spectral_view_set(s : FinanceriskspectralView, i : Int, v : 
   result
 }
 
-pub fn finance_risk_spectral_view_sum(s : FinanceriskspectralView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_view_sum(s : FinanceriskspectralView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_view_mean(s : FinanceriskspectralView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_view_mean(s : FinanceriskspectralView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_view_scale(s : FinanceriskspectralView, f : Double) -> FinanceriskspectralView {
   let result = finance_risk_spectral_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_risk_spectral_view_fill(s : FinanceriskspectralView, v : Double) 
   result
 }
 
-pub fn finance_risk_spectral_view_min(s : FinanceriskspectralView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_view_min(s : FinanceriskspectralView) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_view_max(s : FinanceriskspectralView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_view_max(s : FinanceriskspectralView) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_view_to_string(s : FinanceriskspectralView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_risk_spectral_range_set(s : FinanceriskspectralRange, i : Int, v 
   result
 }
 
-pub fn finance_risk_spectral_range_sum(s : FinanceriskspectralRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_range_sum(s : FinanceriskspectralRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_range_mean(s : FinanceriskspectralRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_range_mean(s : FinanceriskspectralRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_range_scale(s : FinanceriskspectralRange, f : Double) -> FinanceriskspectralRange {
   let result = finance_risk_spectral_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_risk_spectral_range_fill(s : FinanceriskspectralRange, v : Double
   result
 }
 
-pub fn finance_risk_spectral_range_min(s : FinanceriskspectralRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_range_min(s : FinanceriskspectralRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_range_max(s : FinanceriskspectralRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_range_max(s : FinanceriskspectralRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_range_to_string(s : FinanceriskspectralRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_risk_spectral_slice_set(s : FinanceriskspectralSlice, i : Int, v 
   result
 }
 
-pub fn finance_risk_spectral_slice_sum(s : FinanceriskspectralSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_spectral_slice_sum(s : FinanceriskspectralSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_spectral_slice_mean(s : FinanceriskspectralSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_spectral_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_spectral_slice_mean(s : FinanceriskspectralSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_spectral_slice_scale(s : FinanceriskspectralSlice, f : Double) -> FinanceriskspectralSlice {
   let result = finance_risk_spectral_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_risk_spectral_slice_fill(s : FinanceriskspectralSlice, v : Double
   result
 }
 
-pub fn finance_risk_spectral_slice_min(s : FinanceriskspectralSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_slice_min(s : FinanceriskspectralSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_spectral_slice_max(s : FinanceriskspectralSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_spectral_slice_max(s : FinanceriskspectralSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_spectral_slice_to_string(s : FinanceriskspectralSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

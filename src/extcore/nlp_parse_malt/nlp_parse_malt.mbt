@@ -88,11 +88,7 @@ pub fn nlp_parse_malt_make_series(vals : Array[Double], name : String) -> Nlppar
 
 pub fn nlp_parse_malt_series_len(s : NlpparsemaltSeries) -> Int { s.vals.length() }
 
-pub fn nlp_parse_malt_series_sum(s : NlpparsemaltSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_parse_malt_series_sum(s : NlpparsemaltSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_parse_malt_series_mean(s : NlpparsemaltSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_parse_malt_frame_set(s : NlpparsemaltFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_malt_frame_sum(s : NlpparsemaltFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_frame_sum(s : NlpparsemaltFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_frame_mean(s : NlpparsemaltFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_frame_mean(s : NlpparsemaltFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_frame_scale(s : NlpparsemaltFrame, f : Double) -> NlpparsemaltFrame {
   let result = nlp_parse_malt_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_parse_malt_frame_fill(s : NlpparsemaltFrame, v : Double) -> Nlpparsem
   result
 }
 
-pub fn nlp_parse_malt_frame_min(s : NlpparsemaltFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_frame_min(s : NlpparsemaltFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_frame_max(s : NlpparsemaltFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_frame_max(s : NlpparsemaltFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_frame_to_string(s : NlpparsemaltFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_parse_malt_table_set(s : NlpparsemaltTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_malt_table_sum(s : NlpparsemaltTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_table_sum(s : NlpparsemaltTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_table_mean(s : NlpparsemaltTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_table_mean(s : NlpparsemaltTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_table_scale(s : NlpparsemaltTable, f : Double) -> NlpparsemaltTable {
   let result = nlp_parse_malt_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_parse_malt_table_fill(s : NlpparsemaltTable, v : Double) -> Nlpparsem
   result
 }
 
-pub fn nlp_parse_malt_table_min(s : NlpparsemaltTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_table_min(s : NlpparsemaltTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_table_max(s : NlpparsemaltTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_table_max(s : NlpparsemaltTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_table_to_string(s : NlpparsemaltTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_parse_malt_graphn_set(s : NlpparsemaltGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_malt_graphn_sum(s : NlpparsemaltGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_graphn_sum(s : NlpparsemaltGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_graphn_mean(s : NlpparsemaltGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_graphn_mean(s : NlpparsemaltGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_graphn_scale(s : NlpparsemaltGraphN, f : Double) -> NlpparsemaltGraphN {
   let result = nlp_parse_malt_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_parse_malt_graphn_fill(s : NlpparsemaltGraphN, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_malt_graphn_min(s : NlpparsemaltGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_graphn_min(s : NlpparsemaltGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_graphn_max(s : NlpparsemaltGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_graphn_max(s : NlpparsemaltGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_graphn_to_string(s : NlpparsemaltGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_parse_malt_node_set(s : NlpparsemaltNode, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_malt_node_sum(s : NlpparsemaltNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_node_sum(s : NlpparsemaltNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_node_mean(s : NlpparsemaltNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_node_mean(s : NlpparsemaltNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_node_scale(s : NlpparsemaltNode, f : Double) -> NlpparsemaltNode {
   let result = nlp_parse_malt_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_parse_malt_node_fill(s : NlpparsemaltNode, v : Double) -> Nlpparsemal
   result
 }
 
-pub fn nlp_parse_malt_node_min(s : NlpparsemaltNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_node_min(s : NlpparsemaltNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_node_max(s : NlpparsemaltNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_node_max(s : NlpparsemaltNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_node_to_string(s : NlpparsemaltNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_parse_malt_edge_set(s : NlpparsemaltEdge, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_malt_edge_sum(s : NlpparsemaltEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_edge_sum(s : NlpparsemaltEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_edge_mean(s : NlpparsemaltEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_edge_mean(s : NlpparsemaltEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_edge_scale(s : NlpparsemaltEdge, f : Double) -> NlpparsemaltEdge {
   let result = nlp_parse_malt_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_parse_malt_edge_fill(s : NlpparsemaltEdge, v : Double) -> Nlpparsemal
   result
 }
 
-pub fn nlp_parse_malt_edge_min(s : NlpparsemaltEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_edge_min(s : NlpparsemaltEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_edge_max(s : NlpparsemaltEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_edge_max(s : NlpparsemaltEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_edge_to_string(s : NlpparsemaltEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_parse_malt_path_set(s : NlpparsemaltPath, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_malt_path_sum(s : NlpparsemaltPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_path_sum(s : NlpparsemaltPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_path_mean(s : NlpparsemaltPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_path_mean(s : NlpparsemaltPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_path_scale(s : NlpparsemaltPath, f : Double) -> NlpparsemaltPath {
   let result = nlp_parse_malt_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_parse_malt_path_fill(s : NlpparsemaltPath, v : Double) -> Nlpparsemal
   result
 }
 
-pub fn nlp_parse_malt_path_min(s : NlpparsemaltPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_path_min(s : NlpparsemaltPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_path_max(s : NlpparsemaltPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_path_max(s : NlpparsemaltPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_path_to_string(s : NlpparsemaltPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_parse_malt_cluster_set(s : NlpparsemaltCluster, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_parse_malt_cluster_sum(s : NlpparsemaltCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_cluster_sum(s : NlpparsemaltCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_cluster_mean(s : NlpparsemaltCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_cluster_mean(s : NlpparsemaltCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_cluster_scale(s : NlpparsemaltCluster, f : Double) -> NlpparsemaltCluster {
   let result = nlp_parse_malt_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_parse_malt_cluster_fill(s : NlpparsemaltCluster, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_malt_cluster_min(s : NlpparsemaltCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_cluster_min(s : NlpparsemaltCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_cluster_max(s : NlpparsemaltCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_cluster_max(s : NlpparsemaltCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_cluster_to_string(s : NlpparsemaltCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_parse_malt_model_set(s : NlpparsemaltModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_malt_model_sum(s : NlpparsemaltModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_model_sum(s : NlpparsemaltModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_model_mean(s : NlpparsemaltModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_model_mean(s : NlpparsemaltModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_model_scale(s : NlpparsemaltModel, f : Double) -> NlpparsemaltModel {
   let result = nlp_parse_malt_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_parse_malt_model_fill(s : NlpparsemaltModel, v : Double) -> Nlpparsem
   result
 }
 
-pub fn nlp_parse_malt_model_min(s : NlpparsemaltModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_model_min(s : NlpparsemaltModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_model_max(s : NlpparsemaltModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_model_max(s : NlpparsemaltModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_model_to_string(s : NlpparsemaltModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_parse_malt_layer_set(s : NlpparsemaltLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_malt_layer_sum(s : NlpparsemaltLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_layer_sum(s : NlpparsemaltLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_layer_mean(s : NlpparsemaltLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_layer_mean(s : NlpparsemaltLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_layer_scale(s : NlpparsemaltLayer, f : Double) -> NlpparsemaltLayer {
   let result = nlp_parse_malt_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_parse_malt_layer_fill(s : NlpparsemaltLayer, v : Double) -> Nlpparsem
   result
 }
 
-pub fn nlp_parse_malt_layer_min(s : NlpparsemaltLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_layer_min(s : NlpparsemaltLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_layer_max(s : NlpparsemaltLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_layer_max(s : NlpparsemaltLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_layer_to_string(s : NlpparsemaltLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_parse_malt_buffer_set(s : NlpparsemaltBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_malt_buffer_sum(s : NlpparsemaltBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_buffer_sum(s : NlpparsemaltBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_buffer_mean(s : NlpparsemaltBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_buffer_mean(s : NlpparsemaltBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_buffer_scale(s : NlpparsemaltBuffer, f : Double) -> NlpparsemaltBuffer {
   let result = nlp_parse_malt_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_parse_malt_buffer_fill(s : NlpparsemaltBuffer, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_malt_buffer_min(s : NlpparsemaltBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_buffer_min(s : NlpparsemaltBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_buffer_max(s : NlpparsemaltBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_buffer_max(s : NlpparsemaltBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_buffer_to_string(s : NlpparsemaltBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_parse_malt_cursor_set(s : NlpparsemaltCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_malt_cursor_sum(s : NlpparsemaltCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_cursor_sum(s : NlpparsemaltCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_cursor_mean(s : NlpparsemaltCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_cursor_mean(s : NlpparsemaltCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_cursor_scale(s : NlpparsemaltCursor, f : Double) -> NlpparsemaltCursor {
   let result = nlp_parse_malt_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_parse_malt_cursor_fill(s : NlpparsemaltCursor, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_malt_cursor_min(s : NlpparsemaltCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_cursor_min(s : NlpparsemaltCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_cursor_max(s : NlpparsemaltCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_cursor_max(s : NlpparsemaltCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_cursor_to_string(s : NlpparsemaltCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_parse_malt_view_set(s : NlpparsemaltView, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_malt_view_sum(s : NlpparsemaltView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_view_sum(s : NlpparsemaltView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_view_mean(s : NlpparsemaltView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_view_mean(s : NlpparsemaltView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_view_scale(s : NlpparsemaltView, f : Double) -> NlpparsemaltView {
   let result = nlp_parse_malt_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_parse_malt_view_fill(s : NlpparsemaltView, v : Double) -> Nlpparsemal
   result
 }
 
-pub fn nlp_parse_malt_view_min(s : NlpparsemaltView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_view_min(s : NlpparsemaltView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_view_max(s : NlpparsemaltView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_view_max(s : NlpparsemaltView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_view_to_string(s : NlpparsemaltView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_parse_malt_range_set(s : NlpparsemaltRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_malt_range_sum(s : NlpparsemaltRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_range_sum(s : NlpparsemaltRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_range_mean(s : NlpparsemaltRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_range_mean(s : NlpparsemaltRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_range_scale(s : NlpparsemaltRange, f : Double) -> NlpparsemaltRange {
   let result = nlp_parse_malt_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_parse_malt_range_fill(s : NlpparsemaltRange, v : Double) -> Nlpparsem
   result
 }
 
-pub fn nlp_parse_malt_range_min(s : NlpparsemaltRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_range_min(s : NlpparsemaltRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_range_max(s : NlpparsemaltRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_range_max(s : NlpparsemaltRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_range_to_string(s : NlpparsemaltRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_parse_malt_slice_set(s : NlpparsemaltSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_malt_slice_sum(s : NlpparsemaltSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_malt_slice_sum(s : NlpparsemaltSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_malt_slice_mean(s : NlpparsemaltSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_malt_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_malt_slice_mean(s : NlpparsemaltSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_malt_slice_scale(s : NlpparsemaltSlice, f : Double) -> NlpparsemaltSlice {
   let result = nlp_parse_malt_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_parse_malt_slice_fill(s : NlpparsemaltSlice, v : Double) -> Nlpparsem
   result
 }
 
-pub fn nlp_parse_malt_slice_min(s : NlpparsemaltSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_slice_min(s : NlpparsemaltSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_malt_slice_max(s : NlpparsemaltSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_malt_slice_max(s : NlpparsemaltSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_malt_slice_to_string(s : NlpparsemaltSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

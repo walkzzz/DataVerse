@@ -88,11 +88,7 @@ pub fn geo_intersect_ray_make_series(vals : Array[Double], name : String) -> Geo
 
 pub fn geo_intersect_ray_series_len(s : GeointersectraySeries) -> Int { s.vals.length() }
 
-pub fn geo_intersect_ray_series_sum(s : GeointersectraySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_intersect_ray_series_sum(s : GeointersectraySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_intersect_ray_series_mean(s : GeointersectraySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_intersect_ray_frame_set(s : GeointersectrayFrame, i : Int, v : Double
   result
 }
 
-pub fn geo_intersect_ray_frame_sum(s : GeointersectrayFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_frame_sum(s : GeointersectrayFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_frame_mean(s : GeointersectrayFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_frame_mean(s : GeointersectrayFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_frame_scale(s : GeointersectrayFrame, f : Double) -> GeointersectrayFrame {
   let result = geo_intersect_ray_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_intersect_ray_frame_fill(s : GeointersectrayFrame, v : Double) -> Geo
   result
 }
 
-pub fn geo_intersect_ray_frame_min(s : GeointersectrayFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_frame_min(s : GeointersectrayFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_frame_max(s : GeointersectrayFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_frame_max(s : GeointersectrayFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_frame_to_string(s : GeointersectrayFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_intersect_ray_table_set(s : GeointersectrayTable, i : Int, v : Double
   result
 }
 
-pub fn geo_intersect_ray_table_sum(s : GeointersectrayTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_table_sum(s : GeointersectrayTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_table_mean(s : GeointersectrayTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_table_mean(s : GeointersectrayTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_table_scale(s : GeointersectrayTable, f : Double) -> GeointersectrayTable {
   let result = geo_intersect_ray_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_intersect_ray_table_fill(s : GeointersectrayTable, v : Double) -> Geo
   result
 }
 
-pub fn geo_intersect_ray_table_min(s : GeointersectrayTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_table_min(s : GeointersectrayTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_table_max(s : GeointersectrayTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_table_max(s : GeointersectrayTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_table_to_string(s : GeointersectrayTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_intersect_ray_graphn_set(s : GeointersectrayGraphN, i : Int, v : Doub
   result
 }
 
-pub fn geo_intersect_ray_graphn_sum(s : GeointersectrayGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_graphn_sum(s : GeointersectrayGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_graphn_mean(s : GeointersectrayGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_graphn_mean(s : GeointersectrayGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_graphn_scale(s : GeointersectrayGraphN, f : Double) -> GeointersectrayGraphN {
   let result = geo_intersect_ray_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_intersect_ray_graphn_fill(s : GeointersectrayGraphN, v : Double) -> G
   result
 }
 
-pub fn geo_intersect_ray_graphn_min(s : GeointersectrayGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_graphn_min(s : GeointersectrayGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_graphn_max(s : GeointersectrayGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_graphn_max(s : GeointersectrayGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_graphn_to_string(s : GeointersectrayGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_intersect_ray_node_set(s : GeointersectrayNode, i : Int, v : Double) 
   result
 }
 
-pub fn geo_intersect_ray_node_sum(s : GeointersectrayNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_node_sum(s : GeointersectrayNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_node_mean(s : GeointersectrayNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_node_mean(s : GeointersectrayNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_node_scale(s : GeointersectrayNode, f : Double) -> GeointersectrayNode {
   let result = geo_intersect_ray_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_intersect_ray_node_fill(s : GeointersectrayNode, v : Double) -> Geoin
   result
 }
 
-pub fn geo_intersect_ray_node_min(s : GeointersectrayNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_node_min(s : GeointersectrayNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_node_max(s : GeointersectrayNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_node_max(s : GeointersectrayNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_node_to_string(s : GeointersectrayNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_intersect_ray_edge_set(s : GeointersectrayEdge, i : Int, v : Double) 
   result
 }
 
-pub fn geo_intersect_ray_edge_sum(s : GeointersectrayEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_edge_sum(s : GeointersectrayEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_edge_mean(s : GeointersectrayEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_edge_mean(s : GeointersectrayEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_edge_scale(s : GeointersectrayEdge, f : Double) -> GeointersectrayEdge {
   let result = geo_intersect_ray_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_intersect_ray_edge_fill(s : GeointersectrayEdge, v : Double) -> Geoin
   result
 }
 
-pub fn geo_intersect_ray_edge_min(s : GeointersectrayEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_edge_min(s : GeointersectrayEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_edge_max(s : GeointersectrayEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_edge_max(s : GeointersectrayEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_edge_to_string(s : GeointersectrayEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_intersect_ray_path_set(s : GeointersectrayPath, i : Int, v : Double) 
   result
 }
 
-pub fn geo_intersect_ray_path_sum(s : GeointersectrayPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_path_sum(s : GeointersectrayPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_path_mean(s : GeointersectrayPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_path_mean(s : GeointersectrayPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_path_scale(s : GeointersectrayPath, f : Double) -> GeointersectrayPath {
   let result = geo_intersect_ray_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_intersect_ray_path_fill(s : GeointersectrayPath, v : Double) -> Geoin
   result
 }
 
-pub fn geo_intersect_ray_path_min(s : GeointersectrayPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_path_min(s : GeointersectrayPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_path_max(s : GeointersectrayPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_path_max(s : GeointersectrayPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_path_to_string(s : GeointersectrayPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_intersect_ray_cluster_set(s : GeointersectrayCluster, i : Int, v : Do
   result
 }
 
-pub fn geo_intersect_ray_cluster_sum(s : GeointersectrayCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_cluster_sum(s : GeointersectrayCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_cluster_mean(s : GeointersectrayCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_cluster_mean(s : GeointersectrayCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_cluster_scale(s : GeointersectrayCluster, f : Double) -> GeointersectrayCluster {
   let result = geo_intersect_ray_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_intersect_ray_cluster_fill(s : GeointersectrayCluster, v : Double) ->
   result
 }
 
-pub fn geo_intersect_ray_cluster_min(s : GeointersectrayCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_cluster_min(s : GeointersectrayCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_cluster_max(s : GeointersectrayCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_cluster_max(s : GeointersectrayCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_cluster_to_string(s : GeointersectrayCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_intersect_ray_model_set(s : GeointersectrayModel, i : Int, v : Double
   result
 }
 
-pub fn geo_intersect_ray_model_sum(s : GeointersectrayModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_model_sum(s : GeointersectrayModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_model_mean(s : GeointersectrayModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_model_mean(s : GeointersectrayModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_model_scale(s : GeointersectrayModel, f : Double) -> GeointersectrayModel {
   let result = geo_intersect_ray_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_intersect_ray_model_fill(s : GeointersectrayModel, v : Double) -> Geo
   result
 }
 
-pub fn geo_intersect_ray_model_min(s : GeointersectrayModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_model_min(s : GeointersectrayModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_model_max(s : GeointersectrayModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_model_max(s : GeointersectrayModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_model_to_string(s : GeointersectrayModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_intersect_ray_layer_set(s : GeointersectrayLayer, i : Int, v : Double
   result
 }
 
-pub fn geo_intersect_ray_layer_sum(s : GeointersectrayLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_layer_sum(s : GeointersectrayLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_layer_mean(s : GeointersectrayLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_layer_mean(s : GeointersectrayLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_layer_scale(s : GeointersectrayLayer, f : Double) -> GeointersectrayLayer {
   let result = geo_intersect_ray_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_intersect_ray_layer_fill(s : GeointersectrayLayer, v : Double) -> Geo
   result
 }
 
-pub fn geo_intersect_ray_layer_min(s : GeointersectrayLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_layer_min(s : GeointersectrayLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_layer_max(s : GeointersectrayLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_layer_max(s : GeointersectrayLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_layer_to_string(s : GeointersectrayLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_intersect_ray_buffer_set(s : GeointersectrayBuffer, i : Int, v : Doub
   result
 }
 
-pub fn geo_intersect_ray_buffer_sum(s : GeointersectrayBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_buffer_sum(s : GeointersectrayBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_buffer_mean(s : GeointersectrayBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_buffer_mean(s : GeointersectrayBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_buffer_scale(s : GeointersectrayBuffer, f : Double) -> GeointersectrayBuffer {
   let result = geo_intersect_ray_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_intersect_ray_buffer_fill(s : GeointersectrayBuffer, v : Double) -> G
   result
 }
 
-pub fn geo_intersect_ray_buffer_min(s : GeointersectrayBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_buffer_min(s : GeointersectrayBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_buffer_max(s : GeointersectrayBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_buffer_max(s : GeointersectrayBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_buffer_to_string(s : GeointersectrayBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_intersect_ray_cursor_set(s : GeointersectrayCursor, i : Int, v : Doub
   result
 }
 
-pub fn geo_intersect_ray_cursor_sum(s : GeointersectrayCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_cursor_sum(s : GeointersectrayCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_cursor_mean(s : GeointersectrayCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_cursor_mean(s : GeointersectrayCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_cursor_scale(s : GeointersectrayCursor, f : Double) -> GeointersectrayCursor {
   let result = geo_intersect_ray_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_intersect_ray_cursor_fill(s : GeointersectrayCursor, v : Double) -> G
   result
 }
 
-pub fn geo_intersect_ray_cursor_min(s : GeointersectrayCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_cursor_min(s : GeointersectrayCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_cursor_max(s : GeointersectrayCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_cursor_max(s : GeointersectrayCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_cursor_to_string(s : GeointersectrayCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_intersect_ray_view_set(s : GeointersectrayView, i : Int, v : Double) 
   result
 }
 
-pub fn geo_intersect_ray_view_sum(s : GeointersectrayView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_view_sum(s : GeointersectrayView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_view_mean(s : GeointersectrayView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_view_mean(s : GeointersectrayView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_view_scale(s : GeointersectrayView, f : Double) -> GeointersectrayView {
   let result = geo_intersect_ray_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_intersect_ray_view_fill(s : GeointersectrayView, v : Double) -> Geoin
   result
 }
 
-pub fn geo_intersect_ray_view_min(s : GeointersectrayView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_view_min(s : GeointersectrayView) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_view_max(s : GeointersectrayView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_view_max(s : GeointersectrayView) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_view_to_string(s : GeointersectrayView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_intersect_ray_range_set(s : GeointersectrayRange, i : Int, v : Double
   result
 }
 
-pub fn geo_intersect_ray_range_sum(s : GeointersectrayRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_range_sum(s : GeointersectrayRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_range_mean(s : GeointersectrayRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_range_mean(s : GeointersectrayRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_range_scale(s : GeointersectrayRange, f : Double) -> GeointersectrayRange {
   let result = geo_intersect_ray_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_intersect_ray_range_fill(s : GeointersectrayRange, v : Double) -> Geo
   result
 }
 
-pub fn geo_intersect_ray_range_min(s : GeointersectrayRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_range_min(s : GeointersectrayRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_range_max(s : GeointersectrayRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_range_max(s : GeointersectrayRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_range_to_string(s : GeointersectrayRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_intersect_ray_slice_set(s : GeointersectraySlice, i : Int, v : Double
   result
 }
 
-pub fn geo_intersect_ray_slice_sum(s : GeointersectraySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_ray_slice_sum(s : GeointersectraySlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_ray_slice_mean(s : GeointersectraySlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_ray_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_ray_slice_mean(s : GeointersectraySlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_ray_slice_scale(s : GeointersectraySlice, f : Double) -> GeointersectraySlice {
   let result = geo_intersect_ray_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_intersect_ray_slice_fill(s : GeointersectraySlice, v : Double) -> Geo
   result
 }
 
-pub fn geo_intersect_ray_slice_min(s : GeointersectraySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_slice_min(s : GeointersectraySlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_ray_slice_max(s : GeointersectraySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_ray_slice_max(s : GeointersectraySlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_ray_slice_to_string(s : GeointersectraySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

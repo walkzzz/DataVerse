@@ -88,11 +88,7 @@ pub fn stats_dist_gamma_make_series(vals : Array[Double], name : String) -> Stat
 
 pub fn stats_dist_gamma_series_len(s : StatsdistgammaSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_gamma_series_sum(s : StatsdistgammaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_gamma_series_sum(s : StatsdistgammaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_gamma_series_mean(s : StatsdistgammaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_gamma_frame_set(s : StatsdistgammaFrame, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_gamma_frame_sum(s : StatsdistgammaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_frame_sum(s : StatsdistgammaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_frame_mean(s : StatsdistgammaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_frame_mean(s : StatsdistgammaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_frame_scale(s : StatsdistgammaFrame, f : Double) -> StatsdistgammaFrame {
   let result = stats_dist_gamma_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_gamma_frame_fill(s : StatsdistgammaFrame, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_gamma_frame_min(s : StatsdistgammaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_frame_min(s : StatsdistgammaFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_frame_max(s : StatsdistgammaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_frame_max(s : StatsdistgammaFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_frame_to_string(s : StatsdistgammaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_gamma_table_set(s : StatsdistgammaTable, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_gamma_table_sum(s : StatsdistgammaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_table_sum(s : StatsdistgammaTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_table_mean(s : StatsdistgammaTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_table_mean(s : StatsdistgammaTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_table_scale(s : StatsdistgammaTable, f : Double) -> StatsdistgammaTable {
   let result = stats_dist_gamma_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_gamma_table_fill(s : StatsdistgammaTable, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_gamma_table_min(s : StatsdistgammaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_table_min(s : StatsdistgammaTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_table_max(s : StatsdistgammaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_table_max(s : StatsdistgammaTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_table_to_string(s : StatsdistgammaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_gamma_graphn_set(s : StatsdistgammaGraphN, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_gamma_graphn_sum(s : StatsdistgammaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_graphn_sum(s : StatsdistgammaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_graphn_mean(s : StatsdistgammaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_graphn_mean(s : StatsdistgammaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_graphn_scale(s : StatsdistgammaGraphN, f : Double) -> StatsdistgammaGraphN {
   let result = stats_dist_gamma_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_gamma_graphn_fill(s : StatsdistgammaGraphN, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_gamma_graphn_min(s : StatsdistgammaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_graphn_min(s : StatsdistgammaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_graphn_max(s : StatsdistgammaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_graphn_max(s : StatsdistgammaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_graphn_to_string(s : StatsdistgammaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_gamma_node_set(s : StatsdistgammaNode, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_gamma_node_sum(s : StatsdistgammaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_node_sum(s : StatsdistgammaNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_node_mean(s : StatsdistgammaNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_node_mean(s : StatsdistgammaNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_node_scale(s : StatsdistgammaNode, f : Double) -> StatsdistgammaNode {
   let result = stats_dist_gamma_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_gamma_node_fill(s : StatsdistgammaNode, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_gamma_node_min(s : StatsdistgammaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_node_min(s : StatsdistgammaNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_node_max(s : StatsdistgammaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_node_max(s : StatsdistgammaNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_node_to_string(s : StatsdistgammaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_gamma_edge_set(s : StatsdistgammaEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_gamma_edge_sum(s : StatsdistgammaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_edge_sum(s : StatsdistgammaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_edge_mean(s : StatsdistgammaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_edge_mean(s : StatsdistgammaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_edge_scale(s : StatsdistgammaEdge, f : Double) -> StatsdistgammaEdge {
   let result = stats_dist_gamma_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_gamma_edge_fill(s : StatsdistgammaEdge, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_gamma_edge_min(s : StatsdistgammaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_edge_min(s : StatsdistgammaEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_edge_max(s : StatsdistgammaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_edge_max(s : StatsdistgammaEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_edge_to_string(s : StatsdistgammaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_gamma_path_set(s : StatsdistgammaPath, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_gamma_path_sum(s : StatsdistgammaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_path_sum(s : StatsdistgammaPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_path_mean(s : StatsdistgammaPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_path_mean(s : StatsdistgammaPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_path_scale(s : StatsdistgammaPath, f : Double) -> StatsdistgammaPath {
   let result = stats_dist_gamma_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_gamma_path_fill(s : StatsdistgammaPath, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_gamma_path_min(s : StatsdistgammaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_path_min(s : StatsdistgammaPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_path_max(s : StatsdistgammaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_path_max(s : StatsdistgammaPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_path_to_string(s : StatsdistgammaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_gamma_cluster_set(s : StatsdistgammaCluster, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_gamma_cluster_sum(s : StatsdistgammaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_cluster_sum(s : StatsdistgammaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_cluster_mean(s : StatsdistgammaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_cluster_mean(s : StatsdistgammaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_cluster_scale(s : StatsdistgammaCluster, f : Double) -> StatsdistgammaCluster {
   let result = stats_dist_gamma_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_gamma_cluster_fill(s : StatsdistgammaCluster, v : Double) -> S
   result
 }
 
-pub fn stats_dist_gamma_cluster_min(s : StatsdistgammaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_cluster_min(s : StatsdistgammaCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_cluster_max(s : StatsdistgammaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_cluster_max(s : StatsdistgammaCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_cluster_to_string(s : StatsdistgammaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_gamma_model_set(s : StatsdistgammaModel, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_gamma_model_sum(s : StatsdistgammaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_model_sum(s : StatsdistgammaModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_model_mean(s : StatsdistgammaModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_model_mean(s : StatsdistgammaModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_model_scale(s : StatsdistgammaModel, f : Double) -> StatsdistgammaModel {
   let result = stats_dist_gamma_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_gamma_model_fill(s : StatsdistgammaModel, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_gamma_model_min(s : StatsdistgammaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_model_min(s : StatsdistgammaModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_model_max(s : StatsdistgammaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_model_max(s : StatsdistgammaModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_model_to_string(s : StatsdistgammaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_gamma_layer_set(s : StatsdistgammaLayer, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_gamma_layer_sum(s : StatsdistgammaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_layer_sum(s : StatsdistgammaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_layer_mean(s : StatsdistgammaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_layer_mean(s : StatsdistgammaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_layer_scale(s : StatsdistgammaLayer, f : Double) -> StatsdistgammaLayer {
   let result = stats_dist_gamma_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_gamma_layer_fill(s : StatsdistgammaLayer, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_gamma_layer_min(s : StatsdistgammaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_layer_min(s : StatsdistgammaLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_layer_max(s : StatsdistgammaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_layer_max(s : StatsdistgammaLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_layer_to_string(s : StatsdistgammaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_gamma_buffer_set(s : StatsdistgammaBuffer, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_gamma_buffer_sum(s : StatsdistgammaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_buffer_sum(s : StatsdistgammaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_buffer_mean(s : StatsdistgammaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_buffer_mean(s : StatsdistgammaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_buffer_scale(s : StatsdistgammaBuffer, f : Double) -> StatsdistgammaBuffer {
   let result = stats_dist_gamma_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_gamma_buffer_fill(s : StatsdistgammaBuffer, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_gamma_buffer_min(s : StatsdistgammaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_buffer_min(s : StatsdistgammaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_buffer_max(s : StatsdistgammaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_buffer_max(s : StatsdistgammaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_buffer_to_string(s : StatsdistgammaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_gamma_cursor_set(s : StatsdistgammaCursor, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_gamma_cursor_sum(s : StatsdistgammaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_cursor_sum(s : StatsdistgammaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_cursor_mean(s : StatsdistgammaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_cursor_mean(s : StatsdistgammaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_cursor_scale(s : StatsdistgammaCursor, f : Double) -> StatsdistgammaCursor {
   let result = stats_dist_gamma_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_gamma_cursor_fill(s : StatsdistgammaCursor, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_gamma_cursor_min(s : StatsdistgammaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_cursor_min(s : StatsdistgammaCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_cursor_max(s : StatsdistgammaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_cursor_max(s : StatsdistgammaCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_cursor_to_string(s : StatsdistgammaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_gamma_view_set(s : StatsdistgammaView, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_gamma_view_sum(s : StatsdistgammaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_view_sum(s : StatsdistgammaView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_view_mean(s : StatsdistgammaView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_view_mean(s : StatsdistgammaView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_view_scale(s : StatsdistgammaView, f : Double) -> StatsdistgammaView {
   let result = stats_dist_gamma_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_gamma_view_fill(s : StatsdistgammaView, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_gamma_view_min(s : StatsdistgammaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_view_min(s : StatsdistgammaView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_view_max(s : StatsdistgammaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_view_max(s : StatsdistgammaView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_view_to_string(s : StatsdistgammaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_gamma_range_set(s : StatsdistgammaRange, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_gamma_range_sum(s : StatsdistgammaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_range_sum(s : StatsdistgammaRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_range_mean(s : StatsdistgammaRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_range_mean(s : StatsdistgammaRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_range_scale(s : StatsdistgammaRange, f : Double) -> StatsdistgammaRange {
   let result = stats_dist_gamma_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_gamma_range_fill(s : StatsdistgammaRange, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_gamma_range_min(s : StatsdistgammaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_range_min(s : StatsdistgammaRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_range_max(s : StatsdistgammaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_range_max(s : StatsdistgammaRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_range_to_string(s : StatsdistgammaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_gamma_slice_set(s : StatsdistgammaSlice, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_gamma_slice_sum(s : StatsdistgammaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_gamma_slice_sum(s : StatsdistgammaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_gamma_slice_mean(s : StatsdistgammaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_gamma_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_gamma_slice_mean(s : StatsdistgammaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_gamma_slice_scale(s : StatsdistgammaSlice, f : Double) -> StatsdistgammaSlice {
   let result = stats_dist_gamma_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_gamma_slice_fill(s : StatsdistgammaSlice, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_gamma_slice_min(s : StatsdistgammaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_slice_min(s : StatsdistgammaSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_gamma_slice_max(s : StatsdistgammaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_gamma_slice_max(s : StatsdistgammaSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_gamma_slice_to_string(s : StatsdistgammaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

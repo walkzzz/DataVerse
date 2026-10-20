@@ -88,11 +88,7 @@ pub fn ds_hash_hopscotch_make_series(vals : Array[Double], name : String) -> Dsh
 
 pub fn ds_hash_hopscotch_series_len(s : DshashhopscotchSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_hopscotch_series_sum(s : DshashhopscotchSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_hopscotch_series_sum(s : DshashhopscotchSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_hopscotch_series_mean(s : DshashhopscotchSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_hopscotch_frame_set(s : DshashhopscotchFrame, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_hopscotch_frame_sum(s : DshashhopscotchFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_frame_sum(s : DshashhopscotchFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_frame_mean(s : DshashhopscotchFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_frame_mean(s : DshashhopscotchFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_frame_scale(s : DshashhopscotchFrame, f : Double) -> DshashhopscotchFrame {
   let result = ds_hash_hopscotch_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_hopscotch_frame_fill(s : DshashhopscotchFrame, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_hopscotch_frame_min(s : DshashhopscotchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_frame_min(s : DshashhopscotchFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_frame_max(s : DshashhopscotchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_frame_max(s : DshashhopscotchFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_frame_to_string(s : DshashhopscotchFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_hopscotch_table_set(s : DshashhopscotchTable, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_hopscotch_table_sum(s : DshashhopscotchTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_table_sum(s : DshashhopscotchTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_table_mean(s : DshashhopscotchTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_table_mean(s : DshashhopscotchTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_table_scale(s : DshashhopscotchTable, f : Double) -> DshashhopscotchTable {
   let result = ds_hash_hopscotch_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_hopscotch_table_fill(s : DshashhopscotchTable, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_hopscotch_table_min(s : DshashhopscotchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_table_min(s : DshashhopscotchTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_table_max(s : DshashhopscotchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_table_max(s : DshashhopscotchTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_table_to_string(s : DshashhopscotchTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_hopscotch_graphn_set(s : DshashhopscotchGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_hopscotch_graphn_sum(s : DshashhopscotchGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_graphn_sum(s : DshashhopscotchGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_graphn_mean(s : DshashhopscotchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_graphn_mean(s : DshashhopscotchGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_graphn_scale(s : DshashhopscotchGraphN, f : Double) -> DshashhopscotchGraphN {
   let result = ds_hash_hopscotch_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_hopscotch_graphn_fill(s : DshashhopscotchGraphN, v : Double) -> D
   result
 }
 
-pub fn ds_hash_hopscotch_graphn_min(s : DshashhopscotchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_graphn_min(s : DshashhopscotchGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_graphn_max(s : DshashhopscotchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_graphn_max(s : DshashhopscotchGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_graphn_to_string(s : DshashhopscotchGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_hopscotch_node_set(s : DshashhopscotchNode, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_hopscotch_node_sum(s : DshashhopscotchNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_node_sum(s : DshashhopscotchNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_node_mean(s : DshashhopscotchNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_node_mean(s : DshashhopscotchNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_node_scale(s : DshashhopscotchNode, f : Double) -> DshashhopscotchNode {
   let result = ds_hash_hopscotch_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_hopscotch_node_fill(s : DshashhopscotchNode, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_hopscotch_node_min(s : DshashhopscotchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_node_min(s : DshashhopscotchNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_node_max(s : DshashhopscotchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_node_max(s : DshashhopscotchNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_node_to_string(s : DshashhopscotchNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_hopscotch_edge_set(s : DshashhopscotchEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_hopscotch_edge_sum(s : DshashhopscotchEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_edge_sum(s : DshashhopscotchEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_edge_mean(s : DshashhopscotchEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_edge_mean(s : DshashhopscotchEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_edge_scale(s : DshashhopscotchEdge, f : Double) -> DshashhopscotchEdge {
   let result = ds_hash_hopscotch_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_hopscotch_edge_fill(s : DshashhopscotchEdge, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_hopscotch_edge_min(s : DshashhopscotchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_edge_min(s : DshashhopscotchEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_edge_max(s : DshashhopscotchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_edge_max(s : DshashhopscotchEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_edge_to_string(s : DshashhopscotchEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_hopscotch_path_set(s : DshashhopscotchPath, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_hopscotch_path_sum(s : DshashhopscotchPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_path_sum(s : DshashhopscotchPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_path_mean(s : DshashhopscotchPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_path_mean(s : DshashhopscotchPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_path_scale(s : DshashhopscotchPath, f : Double) -> DshashhopscotchPath {
   let result = ds_hash_hopscotch_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_hopscotch_path_fill(s : DshashhopscotchPath, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_hopscotch_path_min(s : DshashhopscotchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_path_min(s : DshashhopscotchPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_path_max(s : DshashhopscotchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_path_max(s : DshashhopscotchPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_path_to_string(s : DshashhopscotchPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_hopscotch_cluster_set(s : DshashhopscotchCluster, i : Int, v : Do
   result
 }
 
-pub fn ds_hash_hopscotch_cluster_sum(s : DshashhopscotchCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_cluster_sum(s : DshashhopscotchCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_cluster_mean(s : DshashhopscotchCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_cluster_mean(s : DshashhopscotchCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_cluster_scale(s : DshashhopscotchCluster, f : Double) -> DshashhopscotchCluster {
   let result = ds_hash_hopscotch_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_hopscotch_cluster_fill(s : DshashhopscotchCluster, v : Double) ->
   result
 }
 
-pub fn ds_hash_hopscotch_cluster_min(s : DshashhopscotchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_cluster_min(s : DshashhopscotchCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_cluster_max(s : DshashhopscotchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_cluster_max(s : DshashhopscotchCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_cluster_to_string(s : DshashhopscotchCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_hopscotch_model_set(s : DshashhopscotchModel, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_hopscotch_model_sum(s : DshashhopscotchModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_model_sum(s : DshashhopscotchModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_model_mean(s : DshashhopscotchModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_model_mean(s : DshashhopscotchModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_model_scale(s : DshashhopscotchModel, f : Double) -> DshashhopscotchModel {
   let result = ds_hash_hopscotch_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_hopscotch_model_fill(s : DshashhopscotchModel, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_hopscotch_model_min(s : DshashhopscotchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_model_min(s : DshashhopscotchModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_model_max(s : DshashhopscotchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_model_max(s : DshashhopscotchModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_model_to_string(s : DshashhopscotchModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_hopscotch_layer_set(s : DshashhopscotchLayer, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_hopscotch_layer_sum(s : DshashhopscotchLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_layer_sum(s : DshashhopscotchLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_layer_mean(s : DshashhopscotchLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_layer_mean(s : DshashhopscotchLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_layer_scale(s : DshashhopscotchLayer, f : Double) -> DshashhopscotchLayer {
   let result = ds_hash_hopscotch_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_hopscotch_layer_fill(s : DshashhopscotchLayer, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_hopscotch_layer_min(s : DshashhopscotchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_layer_min(s : DshashhopscotchLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_layer_max(s : DshashhopscotchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_layer_max(s : DshashhopscotchLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_layer_to_string(s : DshashhopscotchLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_hopscotch_buffer_set(s : DshashhopscotchBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_hopscotch_buffer_sum(s : DshashhopscotchBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_buffer_sum(s : DshashhopscotchBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_buffer_mean(s : DshashhopscotchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_buffer_mean(s : DshashhopscotchBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_buffer_scale(s : DshashhopscotchBuffer, f : Double) -> DshashhopscotchBuffer {
   let result = ds_hash_hopscotch_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_hopscotch_buffer_fill(s : DshashhopscotchBuffer, v : Double) -> D
   result
 }
 
-pub fn ds_hash_hopscotch_buffer_min(s : DshashhopscotchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_buffer_min(s : DshashhopscotchBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_buffer_max(s : DshashhopscotchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_buffer_max(s : DshashhopscotchBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_buffer_to_string(s : DshashhopscotchBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_hopscotch_cursor_set(s : DshashhopscotchCursor, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_hopscotch_cursor_sum(s : DshashhopscotchCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_cursor_sum(s : DshashhopscotchCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_cursor_mean(s : DshashhopscotchCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_cursor_mean(s : DshashhopscotchCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_cursor_scale(s : DshashhopscotchCursor, f : Double) -> DshashhopscotchCursor {
   let result = ds_hash_hopscotch_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_hopscotch_cursor_fill(s : DshashhopscotchCursor, v : Double) -> D
   result
 }
 
-pub fn ds_hash_hopscotch_cursor_min(s : DshashhopscotchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_cursor_min(s : DshashhopscotchCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_cursor_max(s : DshashhopscotchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_cursor_max(s : DshashhopscotchCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_cursor_to_string(s : DshashhopscotchCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_hopscotch_view_set(s : DshashhopscotchView, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_hopscotch_view_sum(s : DshashhopscotchView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_view_sum(s : DshashhopscotchView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_view_mean(s : DshashhopscotchView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_view_mean(s : DshashhopscotchView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_view_scale(s : DshashhopscotchView, f : Double) -> DshashhopscotchView {
   let result = ds_hash_hopscotch_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_hopscotch_view_fill(s : DshashhopscotchView, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_hopscotch_view_min(s : DshashhopscotchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_view_min(s : DshashhopscotchView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_view_max(s : DshashhopscotchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_view_max(s : DshashhopscotchView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_view_to_string(s : DshashhopscotchView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_hopscotch_range_set(s : DshashhopscotchRange, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_hopscotch_range_sum(s : DshashhopscotchRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_range_sum(s : DshashhopscotchRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_range_mean(s : DshashhopscotchRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_range_mean(s : DshashhopscotchRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_range_scale(s : DshashhopscotchRange, f : Double) -> DshashhopscotchRange {
   let result = ds_hash_hopscotch_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_hopscotch_range_fill(s : DshashhopscotchRange, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_hopscotch_range_min(s : DshashhopscotchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_range_min(s : DshashhopscotchRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_range_max(s : DshashhopscotchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_range_max(s : DshashhopscotchRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_range_to_string(s : DshashhopscotchRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_hopscotch_slice_set(s : DshashhopscotchSlice, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_hopscotch_slice_sum(s : DshashhopscotchSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_hopscotch_slice_sum(s : DshashhopscotchSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_hopscotch_slice_mean(s : DshashhopscotchSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_hopscotch_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_hopscotch_slice_mean(s : DshashhopscotchSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_hopscotch_slice_scale(s : DshashhopscotchSlice, f : Double) -> DshashhopscotchSlice {
   let result = ds_hash_hopscotch_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_hopscotch_slice_fill(s : DshashhopscotchSlice, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_hopscotch_slice_min(s : DshashhopscotchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_slice_min(s : DshashhopscotchSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_hopscotch_slice_max(s : DshashhopscotchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_hopscotch_slice_max(s : DshashhopscotchSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_hopscotch_slice_to_string(s : DshashhopscotchSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

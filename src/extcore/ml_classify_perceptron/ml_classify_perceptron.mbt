@@ -88,11 +88,7 @@ pub fn ml_classify_perceptron_make_series(vals : Array[Double], name : String) -
 
 pub fn ml_classify_perceptron_series_len(s : MlclassifyperceptronSeries) -> Int { s.vals.length() }
 
-pub fn ml_classify_perceptron_series_sum(s : MlclassifyperceptronSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_classify_perceptron_series_sum(s : MlclassifyperceptronSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_classify_perceptron_series_mean(s : MlclassifyperceptronSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_classify_perceptron_frame_set(s : MlclassifyperceptronFrame, i : Int, 
   result
 }
 
-pub fn ml_classify_perceptron_frame_sum(s : MlclassifyperceptronFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_frame_sum(s : MlclassifyperceptronFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_frame_mean(s : MlclassifyperceptronFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_frame_mean(s : MlclassifyperceptronFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_frame_scale(s : MlclassifyperceptronFrame, f : Double) -> MlclassifyperceptronFrame {
   let result = ml_classify_perceptron_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_classify_perceptron_frame_fill(s : MlclassifyperceptronFrame, v : Doub
   result
 }
 
-pub fn ml_classify_perceptron_frame_min(s : MlclassifyperceptronFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_frame_min(s : MlclassifyperceptronFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_frame_max(s : MlclassifyperceptronFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_frame_max(s : MlclassifyperceptronFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_frame_to_string(s : MlclassifyperceptronFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_classify_perceptron_table_set(s : MlclassifyperceptronTable, i : Int, 
   result
 }
 
-pub fn ml_classify_perceptron_table_sum(s : MlclassifyperceptronTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_table_sum(s : MlclassifyperceptronTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_table_mean(s : MlclassifyperceptronTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_table_mean(s : MlclassifyperceptronTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_table_scale(s : MlclassifyperceptronTable, f : Double) -> MlclassifyperceptronTable {
   let result = ml_classify_perceptron_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_classify_perceptron_table_fill(s : MlclassifyperceptronTable, v : Doub
   result
 }
 
-pub fn ml_classify_perceptron_table_min(s : MlclassifyperceptronTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_table_min(s : MlclassifyperceptronTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_table_max(s : MlclassifyperceptronTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_table_max(s : MlclassifyperceptronTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_table_to_string(s : MlclassifyperceptronTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_classify_perceptron_graphn_set(s : MlclassifyperceptronGraphN, i : Int
   result
 }
 
-pub fn ml_classify_perceptron_graphn_sum(s : MlclassifyperceptronGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_graphn_sum(s : MlclassifyperceptronGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_graphn_mean(s : MlclassifyperceptronGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_graphn_mean(s : MlclassifyperceptronGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_graphn_scale(s : MlclassifyperceptronGraphN, f : Double) -> MlclassifyperceptronGraphN {
   let result = ml_classify_perceptron_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_classify_perceptron_graphn_fill(s : MlclassifyperceptronGraphN, v : Do
   result
 }
 
-pub fn ml_classify_perceptron_graphn_min(s : MlclassifyperceptronGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_graphn_min(s : MlclassifyperceptronGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_graphn_max(s : MlclassifyperceptronGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_graphn_max(s : MlclassifyperceptronGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_graphn_to_string(s : MlclassifyperceptronGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_classify_perceptron_node_set(s : MlclassifyperceptronNode, i : Int, v 
   result
 }
 
-pub fn ml_classify_perceptron_node_sum(s : MlclassifyperceptronNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_node_sum(s : MlclassifyperceptronNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_node_mean(s : MlclassifyperceptronNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_node_mean(s : MlclassifyperceptronNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_node_scale(s : MlclassifyperceptronNode, f : Double) -> MlclassifyperceptronNode {
   let result = ml_classify_perceptron_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_classify_perceptron_node_fill(s : MlclassifyperceptronNode, v : Double
   result
 }
 
-pub fn ml_classify_perceptron_node_min(s : MlclassifyperceptronNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_node_min(s : MlclassifyperceptronNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_node_max(s : MlclassifyperceptronNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_node_max(s : MlclassifyperceptronNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_node_to_string(s : MlclassifyperceptronNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_classify_perceptron_edge_set(s : MlclassifyperceptronEdge, i : Int, v 
   result
 }
 
-pub fn ml_classify_perceptron_edge_sum(s : MlclassifyperceptronEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_edge_sum(s : MlclassifyperceptronEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_edge_mean(s : MlclassifyperceptronEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_edge_mean(s : MlclassifyperceptronEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_edge_scale(s : MlclassifyperceptronEdge, f : Double) -> MlclassifyperceptronEdge {
   let result = ml_classify_perceptron_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_classify_perceptron_edge_fill(s : MlclassifyperceptronEdge, v : Double
   result
 }
 
-pub fn ml_classify_perceptron_edge_min(s : MlclassifyperceptronEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_edge_min(s : MlclassifyperceptronEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_edge_max(s : MlclassifyperceptronEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_edge_max(s : MlclassifyperceptronEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_edge_to_string(s : MlclassifyperceptronEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_classify_perceptron_path_set(s : MlclassifyperceptronPath, i : Int, v 
   result
 }
 
-pub fn ml_classify_perceptron_path_sum(s : MlclassifyperceptronPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_path_sum(s : MlclassifyperceptronPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_path_mean(s : MlclassifyperceptronPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_path_mean(s : MlclassifyperceptronPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_path_scale(s : MlclassifyperceptronPath, f : Double) -> MlclassifyperceptronPath {
   let result = ml_classify_perceptron_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_classify_perceptron_path_fill(s : MlclassifyperceptronPath, v : Double
   result
 }
 
-pub fn ml_classify_perceptron_path_min(s : MlclassifyperceptronPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_path_min(s : MlclassifyperceptronPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_path_max(s : MlclassifyperceptronPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_path_max(s : MlclassifyperceptronPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_path_to_string(s : MlclassifyperceptronPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_classify_perceptron_cluster_set(s : MlclassifyperceptronCluster, i : I
   result
 }
 
-pub fn ml_classify_perceptron_cluster_sum(s : MlclassifyperceptronCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_cluster_sum(s : MlclassifyperceptronCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_cluster_mean(s : MlclassifyperceptronCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_cluster_mean(s : MlclassifyperceptronCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_cluster_scale(s : MlclassifyperceptronCluster, f : Double) -> MlclassifyperceptronCluster {
   let result = ml_classify_perceptron_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_classify_perceptron_cluster_fill(s : MlclassifyperceptronCluster, v : 
   result
 }
 
-pub fn ml_classify_perceptron_cluster_min(s : MlclassifyperceptronCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_cluster_min(s : MlclassifyperceptronCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_cluster_max(s : MlclassifyperceptronCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_cluster_max(s : MlclassifyperceptronCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_cluster_to_string(s : MlclassifyperceptronCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_classify_perceptron_model_set(s : MlclassifyperceptronModel, i : Int, 
   result
 }
 
-pub fn ml_classify_perceptron_model_sum(s : MlclassifyperceptronModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_model_sum(s : MlclassifyperceptronModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_model_mean(s : MlclassifyperceptronModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_model_mean(s : MlclassifyperceptronModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_model_scale(s : MlclassifyperceptronModel, f : Double) -> MlclassifyperceptronModel {
   let result = ml_classify_perceptron_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_classify_perceptron_model_fill(s : MlclassifyperceptronModel, v : Doub
   result
 }
 
-pub fn ml_classify_perceptron_model_min(s : MlclassifyperceptronModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_model_min(s : MlclassifyperceptronModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_model_max(s : MlclassifyperceptronModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_model_max(s : MlclassifyperceptronModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_model_to_string(s : MlclassifyperceptronModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_classify_perceptron_layer_set(s : MlclassifyperceptronLayer, i : Int, 
   result
 }
 
-pub fn ml_classify_perceptron_layer_sum(s : MlclassifyperceptronLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_layer_sum(s : MlclassifyperceptronLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_layer_mean(s : MlclassifyperceptronLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_layer_mean(s : MlclassifyperceptronLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_layer_scale(s : MlclassifyperceptronLayer, f : Double) -> MlclassifyperceptronLayer {
   let result = ml_classify_perceptron_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_classify_perceptron_layer_fill(s : MlclassifyperceptronLayer, v : Doub
   result
 }
 
-pub fn ml_classify_perceptron_layer_min(s : MlclassifyperceptronLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_layer_min(s : MlclassifyperceptronLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_layer_max(s : MlclassifyperceptronLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_layer_max(s : MlclassifyperceptronLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_layer_to_string(s : MlclassifyperceptronLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_classify_perceptron_buffer_set(s : MlclassifyperceptronBuffer, i : Int
   result
 }
 
-pub fn ml_classify_perceptron_buffer_sum(s : MlclassifyperceptronBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_buffer_sum(s : MlclassifyperceptronBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_buffer_mean(s : MlclassifyperceptronBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_buffer_mean(s : MlclassifyperceptronBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_buffer_scale(s : MlclassifyperceptronBuffer, f : Double) -> MlclassifyperceptronBuffer {
   let result = ml_classify_perceptron_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_classify_perceptron_buffer_fill(s : MlclassifyperceptronBuffer, v : Do
   result
 }
 
-pub fn ml_classify_perceptron_buffer_min(s : MlclassifyperceptronBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_buffer_min(s : MlclassifyperceptronBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_buffer_max(s : MlclassifyperceptronBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_buffer_max(s : MlclassifyperceptronBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_buffer_to_string(s : MlclassifyperceptronBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_classify_perceptron_cursor_set(s : MlclassifyperceptronCursor, i : Int
   result
 }
 
-pub fn ml_classify_perceptron_cursor_sum(s : MlclassifyperceptronCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_cursor_sum(s : MlclassifyperceptronCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_cursor_mean(s : MlclassifyperceptronCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_cursor_mean(s : MlclassifyperceptronCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_cursor_scale(s : MlclassifyperceptronCursor, f : Double) -> MlclassifyperceptronCursor {
   let result = ml_classify_perceptron_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_classify_perceptron_cursor_fill(s : MlclassifyperceptronCursor, v : Do
   result
 }
 
-pub fn ml_classify_perceptron_cursor_min(s : MlclassifyperceptronCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_cursor_min(s : MlclassifyperceptronCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_cursor_max(s : MlclassifyperceptronCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_cursor_max(s : MlclassifyperceptronCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_cursor_to_string(s : MlclassifyperceptronCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_classify_perceptron_view_set(s : MlclassifyperceptronView, i : Int, v 
   result
 }
 
-pub fn ml_classify_perceptron_view_sum(s : MlclassifyperceptronView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_view_sum(s : MlclassifyperceptronView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_view_mean(s : MlclassifyperceptronView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_view_mean(s : MlclassifyperceptronView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_view_scale(s : MlclassifyperceptronView, f : Double) -> MlclassifyperceptronView {
   let result = ml_classify_perceptron_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_classify_perceptron_view_fill(s : MlclassifyperceptronView, v : Double
   result
 }
 
-pub fn ml_classify_perceptron_view_min(s : MlclassifyperceptronView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_view_min(s : MlclassifyperceptronView) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_view_max(s : MlclassifyperceptronView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_view_max(s : MlclassifyperceptronView) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_view_to_string(s : MlclassifyperceptronView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_classify_perceptron_range_set(s : MlclassifyperceptronRange, i : Int, 
   result
 }
 
-pub fn ml_classify_perceptron_range_sum(s : MlclassifyperceptronRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_range_sum(s : MlclassifyperceptronRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_range_mean(s : MlclassifyperceptronRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_range_mean(s : MlclassifyperceptronRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_range_scale(s : MlclassifyperceptronRange, f : Double) -> MlclassifyperceptronRange {
   let result = ml_classify_perceptron_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_classify_perceptron_range_fill(s : MlclassifyperceptronRange, v : Doub
   result
 }
 
-pub fn ml_classify_perceptron_range_min(s : MlclassifyperceptronRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_range_min(s : MlclassifyperceptronRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_range_max(s : MlclassifyperceptronRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_range_max(s : MlclassifyperceptronRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_range_to_string(s : MlclassifyperceptronRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_classify_perceptron_slice_set(s : MlclassifyperceptronSlice, i : Int, 
   result
 }
 
-pub fn ml_classify_perceptron_slice_sum(s : MlclassifyperceptronSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_perceptron_slice_sum(s : MlclassifyperceptronSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_perceptron_slice_mean(s : MlclassifyperceptronSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_perceptron_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_perceptron_slice_mean(s : MlclassifyperceptronSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_perceptron_slice_scale(s : MlclassifyperceptronSlice, f : Double) -> MlclassifyperceptronSlice {
   let result = ml_classify_perceptron_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_classify_perceptron_slice_fill(s : MlclassifyperceptronSlice, v : Doub
   result
 }
 
-pub fn ml_classify_perceptron_slice_min(s : MlclassifyperceptronSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_slice_min(s : MlclassifyperceptronSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_perceptron_slice_max(s : MlclassifyperceptronSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_perceptron_slice_max(s : MlclassifyperceptronSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_perceptron_slice_to_string(s : MlclassifyperceptronSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

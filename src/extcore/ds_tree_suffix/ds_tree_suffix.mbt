@@ -88,11 +88,7 @@ pub fn ds_tree_suffix_make_series(vals : Array[Double], name : String) -> Dstree
 
 pub fn ds_tree_suffix_series_len(s : DstreesuffixSeries) -> Int { s.vals.length() }
 
-pub fn ds_tree_suffix_series_sum(s : DstreesuffixSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_tree_suffix_series_sum(s : DstreesuffixSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_tree_suffix_series_mean(s : DstreesuffixSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_tree_suffix_frame_set(s : DstreesuffixFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_suffix_frame_sum(s : DstreesuffixFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_frame_sum(s : DstreesuffixFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_frame_mean(s : DstreesuffixFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_frame_mean(s : DstreesuffixFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_frame_scale(s : DstreesuffixFrame, f : Double) -> DstreesuffixFrame {
   let result = ds_tree_suffix_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_tree_suffix_frame_fill(s : DstreesuffixFrame, v : Double) -> Dstreesuf
   result
 }
 
-pub fn ds_tree_suffix_frame_min(s : DstreesuffixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_frame_min(s : DstreesuffixFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_frame_max(s : DstreesuffixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_frame_max(s : DstreesuffixFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_frame_to_string(s : DstreesuffixFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_tree_suffix_table_set(s : DstreesuffixTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_suffix_table_sum(s : DstreesuffixTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_table_sum(s : DstreesuffixTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_table_mean(s : DstreesuffixTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_table_mean(s : DstreesuffixTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_table_scale(s : DstreesuffixTable, f : Double) -> DstreesuffixTable {
   let result = ds_tree_suffix_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_tree_suffix_table_fill(s : DstreesuffixTable, v : Double) -> Dstreesuf
   result
 }
 
-pub fn ds_tree_suffix_table_min(s : DstreesuffixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_table_min(s : DstreesuffixTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_table_max(s : DstreesuffixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_table_max(s : DstreesuffixTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_table_to_string(s : DstreesuffixTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_tree_suffix_graphn_set(s : DstreesuffixGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_suffix_graphn_sum(s : DstreesuffixGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_graphn_sum(s : DstreesuffixGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_graphn_mean(s : DstreesuffixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_graphn_mean(s : DstreesuffixGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_graphn_scale(s : DstreesuffixGraphN, f : Double) -> DstreesuffixGraphN {
   let result = ds_tree_suffix_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_tree_suffix_graphn_fill(s : DstreesuffixGraphN, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_suffix_graphn_min(s : DstreesuffixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_graphn_min(s : DstreesuffixGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_graphn_max(s : DstreesuffixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_graphn_max(s : DstreesuffixGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_graphn_to_string(s : DstreesuffixGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_tree_suffix_node_set(s : DstreesuffixNode, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_suffix_node_sum(s : DstreesuffixNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_node_sum(s : DstreesuffixNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_node_mean(s : DstreesuffixNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_node_mean(s : DstreesuffixNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_node_scale(s : DstreesuffixNode, f : Double) -> DstreesuffixNode {
   let result = ds_tree_suffix_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_tree_suffix_node_fill(s : DstreesuffixNode, v : Double) -> Dstreesuffi
   result
 }
 
-pub fn ds_tree_suffix_node_min(s : DstreesuffixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_node_min(s : DstreesuffixNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_node_max(s : DstreesuffixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_node_max(s : DstreesuffixNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_node_to_string(s : DstreesuffixNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_tree_suffix_edge_set(s : DstreesuffixEdge, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_suffix_edge_sum(s : DstreesuffixEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_edge_sum(s : DstreesuffixEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_edge_mean(s : DstreesuffixEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_edge_mean(s : DstreesuffixEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_edge_scale(s : DstreesuffixEdge, f : Double) -> DstreesuffixEdge {
   let result = ds_tree_suffix_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_tree_suffix_edge_fill(s : DstreesuffixEdge, v : Double) -> Dstreesuffi
   result
 }
 
-pub fn ds_tree_suffix_edge_min(s : DstreesuffixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_edge_min(s : DstreesuffixEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_edge_max(s : DstreesuffixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_edge_max(s : DstreesuffixEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_edge_to_string(s : DstreesuffixEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_tree_suffix_path_set(s : DstreesuffixPath, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_suffix_path_sum(s : DstreesuffixPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_path_sum(s : DstreesuffixPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_path_mean(s : DstreesuffixPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_path_mean(s : DstreesuffixPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_path_scale(s : DstreesuffixPath, f : Double) -> DstreesuffixPath {
   let result = ds_tree_suffix_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_tree_suffix_path_fill(s : DstreesuffixPath, v : Double) -> Dstreesuffi
   result
 }
 
-pub fn ds_tree_suffix_path_min(s : DstreesuffixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_path_min(s : DstreesuffixPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_path_max(s : DstreesuffixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_path_max(s : DstreesuffixPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_path_to_string(s : DstreesuffixPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_tree_suffix_cluster_set(s : DstreesuffixCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ds_tree_suffix_cluster_sum(s : DstreesuffixCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_cluster_sum(s : DstreesuffixCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_cluster_mean(s : DstreesuffixCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_cluster_mean(s : DstreesuffixCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_cluster_scale(s : DstreesuffixCluster, f : Double) -> DstreesuffixCluster {
   let result = ds_tree_suffix_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_tree_suffix_cluster_fill(s : DstreesuffixCluster, v : Double) -> Dstre
   result
 }
 
-pub fn ds_tree_suffix_cluster_min(s : DstreesuffixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_cluster_min(s : DstreesuffixCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_cluster_max(s : DstreesuffixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_cluster_max(s : DstreesuffixCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_cluster_to_string(s : DstreesuffixCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_tree_suffix_model_set(s : DstreesuffixModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_suffix_model_sum(s : DstreesuffixModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_model_sum(s : DstreesuffixModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_model_mean(s : DstreesuffixModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_model_mean(s : DstreesuffixModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_model_scale(s : DstreesuffixModel, f : Double) -> DstreesuffixModel {
   let result = ds_tree_suffix_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_tree_suffix_model_fill(s : DstreesuffixModel, v : Double) -> Dstreesuf
   result
 }
 
-pub fn ds_tree_suffix_model_min(s : DstreesuffixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_model_min(s : DstreesuffixModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_model_max(s : DstreesuffixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_model_max(s : DstreesuffixModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_model_to_string(s : DstreesuffixModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_tree_suffix_layer_set(s : DstreesuffixLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_suffix_layer_sum(s : DstreesuffixLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_layer_sum(s : DstreesuffixLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_layer_mean(s : DstreesuffixLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_layer_mean(s : DstreesuffixLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_layer_scale(s : DstreesuffixLayer, f : Double) -> DstreesuffixLayer {
   let result = ds_tree_suffix_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_tree_suffix_layer_fill(s : DstreesuffixLayer, v : Double) -> Dstreesuf
   result
 }
 
-pub fn ds_tree_suffix_layer_min(s : DstreesuffixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_layer_min(s : DstreesuffixLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_layer_max(s : DstreesuffixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_layer_max(s : DstreesuffixLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_layer_to_string(s : DstreesuffixLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_tree_suffix_buffer_set(s : DstreesuffixBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_suffix_buffer_sum(s : DstreesuffixBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_buffer_sum(s : DstreesuffixBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_buffer_mean(s : DstreesuffixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_buffer_mean(s : DstreesuffixBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_buffer_scale(s : DstreesuffixBuffer, f : Double) -> DstreesuffixBuffer {
   let result = ds_tree_suffix_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_tree_suffix_buffer_fill(s : DstreesuffixBuffer, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_suffix_buffer_min(s : DstreesuffixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_buffer_min(s : DstreesuffixBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_buffer_max(s : DstreesuffixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_buffer_max(s : DstreesuffixBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_buffer_to_string(s : DstreesuffixBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_tree_suffix_cursor_set(s : DstreesuffixCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_tree_suffix_cursor_sum(s : DstreesuffixCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_cursor_sum(s : DstreesuffixCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_cursor_mean(s : DstreesuffixCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_cursor_mean(s : DstreesuffixCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_cursor_scale(s : DstreesuffixCursor, f : Double) -> DstreesuffixCursor {
   let result = ds_tree_suffix_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_tree_suffix_cursor_fill(s : DstreesuffixCursor, v : Double) -> Dstrees
   result
 }
 
-pub fn ds_tree_suffix_cursor_min(s : DstreesuffixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_cursor_min(s : DstreesuffixCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_cursor_max(s : DstreesuffixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_cursor_max(s : DstreesuffixCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_cursor_to_string(s : DstreesuffixCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_tree_suffix_view_set(s : DstreesuffixView, i : Int, v : Double) -> Dst
   result
 }
 
-pub fn ds_tree_suffix_view_sum(s : DstreesuffixView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_view_sum(s : DstreesuffixView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_view_mean(s : DstreesuffixView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_view_mean(s : DstreesuffixView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_view_scale(s : DstreesuffixView, f : Double) -> DstreesuffixView {
   let result = ds_tree_suffix_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_tree_suffix_view_fill(s : DstreesuffixView, v : Double) -> Dstreesuffi
   result
 }
 
-pub fn ds_tree_suffix_view_min(s : DstreesuffixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_view_min(s : DstreesuffixView) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_view_max(s : DstreesuffixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_view_max(s : DstreesuffixView) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_view_to_string(s : DstreesuffixView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_tree_suffix_range_set(s : DstreesuffixRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_suffix_range_sum(s : DstreesuffixRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_range_sum(s : DstreesuffixRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_range_mean(s : DstreesuffixRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_range_mean(s : DstreesuffixRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_range_scale(s : DstreesuffixRange, f : Double) -> DstreesuffixRange {
   let result = ds_tree_suffix_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_tree_suffix_range_fill(s : DstreesuffixRange, v : Double) -> Dstreesuf
   result
 }
 
-pub fn ds_tree_suffix_range_min(s : DstreesuffixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_range_min(s : DstreesuffixRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_range_max(s : DstreesuffixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_range_max(s : DstreesuffixRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_range_to_string(s : DstreesuffixRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_tree_suffix_slice_set(s : DstreesuffixSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_tree_suffix_slice_sum(s : DstreesuffixSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_tree_suffix_slice_sum(s : DstreesuffixSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_tree_suffix_slice_mean(s : DstreesuffixSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_tree_suffix_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_tree_suffix_slice_mean(s : DstreesuffixSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_tree_suffix_slice_scale(s : DstreesuffixSlice, f : Double) -> DstreesuffixSlice {
   let result = ds_tree_suffix_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_tree_suffix_slice_fill(s : DstreesuffixSlice, v : Double) -> Dstreesuf
   result
 }
 
-pub fn ds_tree_suffix_slice_min(s : DstreesuffixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_slice_min(s : DstreesuffixSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_tree_suffix_slice_max(s : DstreesuffixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_tree_suffix_slice_max(s : DstreesuffixSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_tree_suffix_slice_to_string(s : DstreesuffixSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

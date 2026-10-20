@@ -88,11 +88,7 @@ pub fn bio_seq_align_structural_make_series(vals : Array[Double], name : String)
 
 pub fn bio_seq_align_structural_series_len(s : BioseqalignstructuralSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_align_structural_series_sum(s : BioseqalignstructuralSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_align_structural_series_sum(s : BioseqalignstructuralSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_align_structural_series_mean(s : BioseqalignstructuralSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_align_structural_frame_set(s : BioseqalignstructuralFrame, i : In
   result
 }
 
-pub fn bio_seq_align_structural_frame_sum(s : BioseqalignstructuralFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_frame_sum(s : BioseqalignstructuralFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_frame_mean(s : BioseqalignstructuralFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_frame_mean(s : BioseqalignstructuralFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_frame_scale(s : BioseqalignstructuralFrame, f : Double) -> BioseqalignstructuralFrame {
   let result = bio_seq_align_structural_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_align_structural_frame_fill(s : BioseqalignstructuralFrame, v : D
   result
 }
 
-pub fn bio_seq_align_structural_frame_min(s : BioseqalignstructuralFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_frame_min(s : BioseqalignstructuralFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_frame_max(s : BioseqalignstructuralFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_frame_max(s : BioseqalignstructuralFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_frame_to_string(s : BioseqalignstructuralFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_align_structural_table_set(s : BioseqalignstructuralTable, i : In
   result
 }
 
-pub fn bio_seq_align_structural_table_sum(s : BioseqalignstructuralTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_table_sum(s : BioseqalignstructuralTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_table_mean(s : BioseqalignstructuralTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_table_mean(s : BioseqalignstructuralTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_table_scale(s : BioseqalignstructuralTable, f : Double) -> BioseqalignstructuralTable {
   let result = bio_seq_align_structural_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_align_structural_table_fill(s : BioseqalignstructuralTable, v : D
   result
 }
 
-pub fn bio_seq_align_structural_table_min(s : BioseqalignstructuralTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_table_min(s : BioseqalignstructuralTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_table_max(s : BioseqalignstructuralTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_table_max(s : BioseqalignstructuralTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_table_to_string(s : BioseqalignstructuralTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_align_structural_graphn_set(s : BioseqalignstructuralGraphN, i : 
   result
 }
 
-pub fn bio_seq_align_structural_graphn_sum(s : BioseqalignstructuralGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_graphn_sum(s : BioseqalignstructuralGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_graphn_mean(s : BioseqalignstructuralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_graphn_mean(s : BioseqalignstructuralGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_graphn_scale(s : BioseqalignstructuralGraphN, f : Double) -> BioseqalignstructuralGraphN {
   let result = bio_seq_align_structural_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_align_structural_graphn_fill(s : BioseqalignstructuralGraphN, v :
   result
 }
 
-pub fn bio_seq_align_structural_graphn_min(s : BioseqalignstructuralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_graphn_min(s : BioseqalignstructuralGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_graphn_max(s : BioseqalignstructuralGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_graphn_max(s : BioseqalignstructuralGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_graphn_to_string(s : BioseqalignstructuralGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_align_structural_node_set(s : BioseqalignstructuralNode, i : Int,
   result
 }
 
-pub fn bio_seq_align_structural_node_sum(s : BioseqalignstructuralNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_node_sum(s : BioseqalignstructuralNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_node_mean(s : BioseqalignstructuralNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_node_mean(s : BioseqalignstructuralNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_node_scale(s : BioseqalignstructuralNode, f : Double) -> BioseqalignstructuralNode {
   let result = bio_seq_align_structural_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_align_structural_node_fill(s : BioseqalignstructuralNode, v : Dou
   result
 }
 
-pub fn bio_seq_align_structural_node_min(s : BioseqalignstructuralNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_node_min(s : BioseqalignstructuralNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_node_max(s : BioseqalignstructuralNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_node_max(s : BioseqalignstructuralNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_node_to_string(s : BioseqalignstructuralNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_align_structural_edge_set(s : BioseqalignstructuralEdge, i : Int,
   result
 }
 
-pub fn bio_seq_align_structural_edge_sum(s : BioseqalignstructuralEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_edge_sum(s : BioseqalignstructuralEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_edge_mean(s : BioseqalignstructuralEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_edge_mean(s : BioseqalignstructuralEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_edge_scale(s : BioseqalignstructuralEdge, f : Double) -> BioseqalignstructuralEdge {
   let result = bio_seq_align_structural_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_align_structural_edge_fill(s : BioseqalignstructuralEdge, v : Dou
   result
 }
 
-pub fn bio_seq_align_structural_edge_min(s : BioseqalignstructuralEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_edge_min(s : BioseqalignstructuralEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_edge_max(s : BioseqalignstructuralEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_edge_max(s : BioseqalignstructuralEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_edge_to_string(s : BioseqalignstructuralEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_align_structural_path_set(s : BioseqalignstructuralPath, i : Int,
   result
 }
 
-pub fn bio_seq_align_structural_path_sum(s : BioseqalignstructuralPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_path_sum(s : BioseqalignstructuralPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_path_mean(s : BioseqalignstructuralPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_path_mean(s : BioseqalignstructuralPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_path_scale(s : BioseqalignstructuralPath, f : Double) -> BioseqalignstructuralPath {
   let result = bio_seq_align_structural_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_align_structural_path_fill(s : BioseqalignstructuralPath, v : Dou
   result
 }
 
-pub fn bio_seq_align_structural_path_min(s : BioseqalignstructuralPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_path_min(s : BioseqalignstructuralPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_path_max(s : BioseqalignstructuralPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_path_max(s : BioseqalignstructuralPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_path_to_string(s : BioseqalignstructuralPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_align_structural_cluster_set(s : BioseqalignstructuralCluster, i 
   result
 }
 
-pub fn bio_seq_align_structural_cluster_sum(s : BioseqalignstructuralCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_cluster_sum(s : BioseqalignstructuralCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_cluster_mean(s : BioseqalignstructuralCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_cluster_mean(s : BioseqalignstructuralCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_cluster_scale(s : BioseqalignstructuralCluster, f : Double) -> BioseqalignstructuralCluster {
   let result = bio_seq_align_structural_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_align_structural_cluster_fill(s : BioseqalignstructuralCluster, v
   result
 }
 
-pub fn bio_seq_align_structural_cluster_min(s : BioseqalignstructuralCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_cluster_min(s : BioseqalignstructuralCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_cluster_max(s : BioseqalignstructuralCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_cluster_max(s : BioseqalignstructuralCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_cluster_to_string(s : BioseqalignstructuralCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_align_structural_model_set(s : BioseqalignstructuralModel, i : In
   result
 }
 
-pub fn bio_seq_align_structural_model_sum(s : BioseqalignstructuralModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_model_sum(s : BioseqalignstructuralModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_model_mean(s : BioseqalignstructuralModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_model_mean(s : BioseqalignstructuralModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_model_scale(s : BioseqalignstructuralModel, f : Double) -> BioseqalignstructuralModel {
   let result = bio_seq_align_structural_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_align_structural_model_fill(s : BioseqalignstructuralModel, v : D
   result
 }
 
-pub fn bio_seq_align_structural_model_min(s : BioseqalignstructuralModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_model_min(s : BioseqalignstructuralModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_model_max(s : BioseqalignstructuralModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_model_max(s : BioseqalignstructuralModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_model_to_string(s : BioseqalignstructuralModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_align_structural_layer_set(s : BioseqalignstructuralLayer, i : In
   result
 }
 
-pub fn bio_seq_align_structural_layer_sum(s : BioseqalignstructuralLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_layer_sum(s : BioseqalignstructuralLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_layer_mean(s : BioseqalignstructuralLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_layer_mean(s : BioseqalignstructuralLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_layer_scale(s : BioseqalignstructuralLayer, f : Double) -> BioseqalignstructuralLayer {
   let result = bio_seq_align_structural_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_align_structural_layer_fill(s : BioseqalignstructuralLayer, v : D
   result
 }
 
-pub fn bio_seq_align_structural_layer_min(s : BioseqalignstructuralLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_layer_min(s : BioseqalignstructuralLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_layer_max(s : BioseqalignstructuralLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_layer_max(s : BioseqalignstructuralLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_layer_to_string(s : BioseqalignstructuralLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_align_structural_buffer_set(s : BioseqalignstructuralBuffer, i : 
   result
 }
 
-pub fn bio_seq_align_structural_buffer_sum(s : BioseqalignstructuralBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_buffer_sum(s : BioseqalignstructuralBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_buffer_mean(s : BioseqalignstructuralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_buffer_mean(s : BioseqalignstructuralBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_buffer_scale(s : BioseqalignstructuralBuffer, f : Double) -> BioseqalignstructuralBuffer {
   let result = bio_seq_align_structural_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_align_structural_buffer_fill(s : BioseqalignstructuralBuffer, v :
   result
 }
 
-pub fn bio_seq_align_structural_buffer_min(s : BioseqalignstructuralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_buffer_min(s : BioseqalignstructuralBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_buffer_max(s : BioseqalignstructuralBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_buffer_max(s : BioseqalignstructuralBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_buffer_to_string(s : BioseqalignstructuralBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_align_structural_cursor_set(s : BioseqalignstructuralCursor, i : 
   result
 }
 
-pub fn bio_seq_align_structural_cursor_sum(s : BioseqalignstructuralCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_cursor_sum(s : BioseqalignstructuralCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_cursor_mean(s : BioseqalignstructuralCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_cursor_mean(s : BioseqalignstructuralCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_cursor_scale(s : BioseqalignstructuralCursor, f : Double) -> BioseqalignstructuralCursor {
   let result = bio_seq_align_structural_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_align_structural_cursor_fill(s : BioseqalignstructuralCursor, v :
   result
 }
 
-pub fn bio_seq_align_structural_cursor_min(s : BioseqalignstructuralCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_cursor_min(s : BioseqalignstructuralCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_cursor_max(s : BioseqalignstructuralCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_cursor_max(s : BioseqalignstructuralCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_cursor_to_string(s : BioseqalignstructuralCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_align_structural_view_set(s : BioseqalignstructuralView, i : Int,
   result
 }
 
-pub fn bio_seq_align_structural_view_sum(s : BioseqalignstructuralView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_view_sum(s : BioseqalignstructuralView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_view_mean(s : BioseqalignstructuralView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_view_mean(s : BioseqalignstructuralView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_view_scale(s : BioseqalignstructuralView, f : Double) -> BioseqalignstructuralView {
   let result = bio_seq_align_structural_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_align_structural_view_fill(s : BioseqalignstructuralView, v : Dou
   result
 }
 
-pub fn bio_seq_align_structural_view_min(s : BioseqalignstructuralView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_view_min(s : BioseqalignstructuralView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_view_max(s : BioseqalignstructuralView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_view_max(s : BioseqalignstructuralView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_view_to_string(s : BioseqalignstructuralView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_align_structural_range_set(s : BioseqalignstructuralRange, i : In
   result
 }
 
-pub fn bio_seq_align_structural_range_sum(s : BioseqalignstructuralRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_range_sum(s : BioseqalignstructuralRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_range_mean(s : BioseqalignstructuralRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_range_mean(s : BioseqalignstructuralRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_range_scale(s : BioseqalignstructuralRange, f : Double) -> BioseqalignstructuralRange {
   let result = bio_seq_align_structural_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_align_structural_range_fill(s : BioseqalignstructuralRange, v : D
   result
 }
 
-pub fn bio_seq_align_structural_range_min(s : BioseqalignstructuralRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_range_min(s : BioseqalignstructuralRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_range_max(s : BioseqalignstructuralRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_range_max(s : BioseqalignstructuralRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_range_to_string(s : BioseqalignstructuralRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_align_structural_slice_set(s : BioseqalignstructuralSlice, i : In
   result
 }
 
-pub fn bio_seq_align_structural_slice_sum(s : BioseqalignstructuralSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_align_structural_slice_sum(s : BioseqalignstructuralSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_align_structural_slice_mean(s : BioseqalignstructuralSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_align_structural_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_align_structural_slice_mean(s : BioseqalignstructuralSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_align_structural_slice_scale(s : BioseqalignstructuralSlice, f : Double) -> BioseqalignstructuralSlice {
   let result = bio_seq_align_structural_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_align_structural_slice_fill(s : BioseqalignstructuralSlice, v : D
   result
 }
 
-pub fn bio_seq_align_structural_slice_min(s : BioseqalignstructuralSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_slice_min(s : BioseqalignstructuralSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_align_structural_slice_max(s : BioseqalignstructuralSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_align_structural_slice_max(s : BioseqalignstructuralSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_align_structural_slice_to_string(s : BioseqalignstructuralSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

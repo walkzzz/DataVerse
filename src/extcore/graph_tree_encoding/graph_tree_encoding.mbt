@@ -88,11 +88,7 @@ pub fn graph_tree_encoding_make_series(vals : Array[Double], name : String) -> G
 
 pub fn graph_tree_encoding_series_len(s : GraphtreeencodingSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_encoding_series_sum(s : GraphtreeencodingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_encoding_series_sum(s : GraphtreeencodingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_encoding_series_mean(s : GraphtreeencodingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_encoding_frame_set(s : GraphtreeencodingFrame, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_encoding_frame_sum(s : GraphtreeencodingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_frame_sum(s : GraphtreeencodingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_frame_mean(s : GraphtreeencodingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_frame_mean(s : GraphtreeencodingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_frame_scale(s : GraphtreeencodingFrame, f : Double) -> GraphtreeencodingFrame {
   let result = graph_tree_encoding_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_encoding_frame_fill(s : GraphtreeencodingFrame, v : Double) ->
   result
 }
 
-pub fn graph_tree_encoding_frame_min(s : GraphtreeencodingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_frame_min(s : GraphtreeencodingFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_frame_max(s : GraphtreeencodingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_frame_max(s : GraphtreeencodingFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_frame_to_string(s : GraphtreeencodingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_encoding_table_set(s : GraphtreeencodingTable, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_encoding_table_sum(s : GraphtreeencodingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_table_sum(s : GraphtreeencodingTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_table_mean(s : GraphtreeencodingTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_table_mean(s : GraphtreeencodingTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_table_scale(s : GraphtreeencodingTable, f : Double) -> GraphtreeencodingTable {
   let result = graph_tree_encoding_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_encoding_table_fill(s : GraphtreeencodingTable, v : Double) ->
   result
 }
 
-pub fn graph_tree_encoding_table_min(s : GraphtreeencodingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_table_min(s : GraphtreeencodingTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_table_max(s : GraphtreeencodingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_table_max(s : GraphtreeencodingTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_table_to_string(s : GraphtreeencodingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_encoding_graphn_set(s : GraphtreeencodingGraphN, i : Int, v : 
   result
 }
 
-pub fn graph_tree_encoding_graphn_sum(s : GraphtreeencodingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_graphn_sum(s : GraphtreeencodingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_graphn_mean(s : GraphtreeencodingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_graphn_mean(s : GraphtreeencodingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_graphn_scale(s : GraphtreeencodingGraphN, f : Double) -> GraphtreeencodingGraphN {
   let result = graph_tree_encoding_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_encoding_graphn_fill(s : GraphtreeencodingGraphN, v : Double) 
   result
 }
 
-pub fn graph_tree_encoding_graphn_min(s : GraphtreeencodingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_graphn_min(s : GraphtreeencodingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_graphn_max(s : GraphtreeencodingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_graphn_max(s : GraphtreeencodingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_graphn_to_string(s : GraphtreeencodingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_encoding_node_set(s : GraphtreeencodingNode, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_encoding_node_sum(s : GraphtreeencodingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_node_sum(s : GraphtreeencodingNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_node_mean(s : GraphtreeencodingNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_node_mean(s : GraphtreeencodingNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_node_scale(s : GraphtreeencodingNode, f : Double) -> GraphtreeencodingNode {
   let result = graph_tree_encoding_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_encoding_node_fill(s : GraphtreeencodingNode, v : Double) -> G
   result
 }
 
-pub fn graph_tree_encoding_node_min(s : GraphtreeencodingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_node_min(s : GraphtreeencodingNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_node_max(s : GraphtreeencodingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_node_max(s : GraphtreeencodingNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_node_to_string(s : GraphtreeencodingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_encoding_edge_set(s : GraphtreeencodingEdge, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_encoding_edge_sum(s : GraphtreeencodingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_edge_sum(s : GraphtreeencodingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_edge_mean(s : GraphtreeencodingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_edge_mean(s : GraphtreeencodingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_edge_scale(s : GraphtreeencodingEdge, f : Double) -> GraphtreeencodingEdge {
   let result = graph_tree_encoding_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_encoding_edge_fill(s : GraphtreeencodingEdge, v : Double) -> G
   result
 }
 
-pub fn graph_tree_encoding_edge_min(s : GraphtreeencodingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_edge_min(s : GraphtreeencodingEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_edge_max(s : GraphtreeencodingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_edge_max(s : GraphtreeencodingEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_edge_to_string(s : GraphtreeencodingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_encoding_path_set(s : GraphtreeencodingPath, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_encoding_path_sum(s : GraphtreeencodingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_path_sum(s : GraphtreeencodingPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_path_mean(s : GraphtreeencodingPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_path_mean(s : GraphtreeencodingPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_path_scale(s : GraphtreeencodingPath, f : Double) -> GraphtreeencodingPath {
   let result = graph_tree_encoding_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_encoding_path_fill(s : GraphtreeencodingPath, v : Double) -> G
   result
 }
 
-pub fn graph_tree_encoding_path_min(s : GraphtreeencodingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_path_min(s : GraphtreeencodingPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_path_max(s : GraphtreeencodingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_path_max(s : GraphtreeencodingPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_path_to_string(s : GraphtreeencodingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_encoding_cluster_set(s : GraphtreeencodingCluster, i : Int, v 
   result
 }
 
-pub fn graph_tree_encoding_cluster_sum(s : GraphtreeencodingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_cluster_sum(s : GraphtreeencodingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_cluster_mean(s : GraphtreeencodingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_cluster_mean(s : GraphtreeencodingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_cluster_scale(s : GraphtreeencodingCluster, f : Double) -> GraphtreeencodingCluster {
   let result = graph_tree_encoding_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_encoding_cluster_fill(s : GraphtreeencodingCluster, v : Double
   result
 }
 
-pub fn graph_tree_encoding_cluster_min(s : GraphtreeencodingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_cluster_min(s : GraphtreeencodingCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_cluster_max(s : GraphtreeencodingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_cluster_max(s : GraphtreeencodingCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_cluster_to_string(s : GraphtreeencodingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_encoding_model_set(s : GraphtreeencodingModel, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_encoding_model_sum(s : GraphtreeencodingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_model_sum(s : GraphtreeencodingModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_model_mean(s : GraphtreeencodingModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_model_mean(s : GraphtreeencodingModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_model_scale(s : GraphtreeencodingModel, f : Double) -> GraphtreeencodingModel {
   let result = graph_tree_encoding_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_encoding_model_fill(s : GraphtreeencodingModel, v : Double) ->
   result
 }
 
-pub fn graph_tree_encoding_model_min(s : GraphtreeencodingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_model_min(s : GraphtreeencodingModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_model_max(s : GraphtreeencodingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_model_max(s : GraphtreeencodingModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_model_to_string(s : GraphtreeencodingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_encoding_layer_set(s : GraphtreeencodingLayer, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_encoding_layer_sum(s : GraphtreeencodingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_layer_sum(s : GraphtreeencodingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_layer_mean(s : GraphtreeencodingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_layer_mean(s : GraphtreeencodingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_layer_scale(s : GraphtreeencodingLayer, f : Double) -> GraphtreeencodingLayer {
   let result = graph_tree_encoding_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_encoding_layer_fill(s : GraphtreeencodingLayer, v : Double) ->
   result
 }
 
-pub fn graph_tree_encoding_layer_min(s : GraphtreeencodingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_layer_min(s : GraphtreeencodingLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_layer_max(s : GraphtreeencodingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_layer_max(s : GraphtreeencodingLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_layer_to_string(s : GraphtreeencodingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_encoding_buffer_set(s : GraphtreeencodingBuffer, i : Int, v : 
   result
 }
 
-pub fn graph_tree_encoding_buffer_sum(s : GraphtreeencodingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_buffer_sum(s : GraphtreeencodingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_buffer_mean(s : GraphtreeencodingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_buffer_mean(s : GraphtreeencodingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_buffer_scale(s : GraphtreeencodingBuffer, f : Double) -> GraphtreeencodingBuffer {
   let result = graph_tree_encoding_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_encoding_buffer_fill(s : GraphtreeencodingBuffer, v : Double) 
   result
 }
 
-pub fn graph_tree_encoding_buffer_min(s : GraphtreeencodingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_buffer_min(s : GraphtreeencodingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_buffer_max(s : GraphtreeencodingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_buffer_max(s : GraphtreeencodingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_buffer_to_string(s : GraphtreeencodingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_encoding_cursor_set(s : GraphtreeencodingCursor, i : Int, v : 
   result
 }
 
-pub fn graph_tree_encoding_cursor_sum(s : GraphtreeencodingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_cursor_sum(s : GraphtreeencodingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_cursor_mean(s : GraphtreeencodingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_cursor_mean(s : GraphtreeencodingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_cursor_scale(s : GraphtreeencodingCursor, f : Double) -> GraphtreeencodingCursor {
   let result = graph_tree_encoding_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_encoding_cursor_fill(s : GraphtreeencodingCursor, v : Double) 
   result
 }
 
-pub fn graph_tree_encoding_cursor_min(s : GraphtreeencodingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_cursor_min(s : GraphtreeencodingCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_cursor_max(s : GraphtreeencodingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_cursor_max(s : GraphtreeencodingCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_cursor_to_string(s : GraphtreeencodingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_encoding_view_set(s : GraphtreeencodingView, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_encoding_view_sum(s : GraphtreeencodingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_view_sum(s : GraphtreeencodingView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_view_mean(s : GraphtreeencodingView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_view_mean(s : GraphtreeencodingView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_view_scale(s : GraphtreeencodingView, f : Double) -> GraphtreeencodingView {
   let result = graph_tree_encoding_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_encoding_view_fill(s : GraphtreeencodingView, v : Double) -> G
   result
 }
 
-pub fn graph_tree_encoding_view_min(s : GraphtreeencodingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_view_min(s : GraphtreeencodingView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_view_max(s : GraphtreeencodingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_view_max(s : GraphtreeencodingView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_view_to_string(s : GraphtreeencodingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_encoding_range_set(s : GraphtreeencodingRange, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_encoding_range_sum(s : GraphtreeencodingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_range_sum(s : GraphtreeencodingRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_range_mean(s : GraphtreeencodingRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_range_mean(s : GraphtreeencodingRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_range_scale(s : GraphtreeencodingRange, f : Double) -> GraphtreeencodingRange {
   let result = graph_tree_encoding_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_encoding_range_fill(s : GraphtreeencodingRange, v : Double) ->
   result
 }
 
-pub fn graph_tree_encoding_range_min(s : GraphtreeencodingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_range_min(s : GraphtreeencodingRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_range_max(s : GraphtreeencodingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_range_max(s : GraphtreeencodingRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_range_to_string(s : GraphtreeencodingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_encoding_slice_set(s : GraphtreeencodingSlice, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_encoding_slice_sum(s : GraphtreeencodingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_encoding_slice_sum(s : GraphtreeencodingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_encoding_slice_mean(s : GraphtreeencodingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_encoding_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_encoding_slice_mean(s : GraphtreeencodingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_encoding_slice_scale(s : GraphtreeencodingSlice, f : Double) -> GraphtreeencodingSlice {
   let result = graph_tree_encoding_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_encoding_slice_fill(s : GraphtreeencodingSlice, v : Double) ->
   result
 }
 
-pub fn graph_tree_encoding_slice_min(s : GraphtreeencodingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_slice_min(s : GraphtreeencodingSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_encoding_slice_max(s : GraphtreeencodingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_encoding_slice_max(s : GraphtreeencodingSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_encoding_slice_to_string(s : GraphtreeencodingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

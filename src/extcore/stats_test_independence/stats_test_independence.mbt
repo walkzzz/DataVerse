@@ -88,11 +88,7 @@ pub fn stats_test_independence_make_series(vals : Array[Double], name : String) 
 
 pub fn stats_test_independence_series_len(s : StatstestindependenceSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_independence_series_sum(s : StatstestindependenceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_independence_series_sum(s : StatstestindependenceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_independence_series_mean(s : StatstestindependenceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_independence_frame_set(s : StatstestindependenceFrame, i : Int
   result
 }
 
-pub fn stats_test_independence_frame_sum(s : StatstestindependenceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_frame_sum(s : StatstestindependenceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_frame_mean(s : StatstestindependenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_frame_mean(s : StatstestindependenceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_frame_scale(s : StatstestindependenceFrame, f : Double) -> StatstestindependenceFrame {
   let result = stats_test_independence_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_independence_frame_fill(s : StatstestindependenceFrame, v : Do
   result
 }
 
-pub fn stats_test_independence_frame_min(s : StatstestindependenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_frame_min(s : StatstestindependenceFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_frame_max(s : StatstestindependenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_frame_max(s : StatstestindependenceFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_frame_to_string(s : StatstestindependenceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_independence_table_set(s : StatstestindependenceTable, i : Int
   result
 }
 
-pub fn stats_test_independence_table_sum(s : StatstestindependenceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_table_sum(s : StatstestindependenceTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_table_mean(s : StatstestindependenceTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_table_mean(s : StatstestindependenceTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_table_scale(s : StatstestindependenceTable, f : Double) -> StatstestindependenceTable {
   let result = stats_test_independence_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_independence_table_fill(s : StatstestindependenceTable, v : Do
   result
 }
 
-pub fn stats_test_independence_table_min(s : StatstestindependenceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_table_min(s : StatstestindependenceTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_table_max(s : StatstestindependenceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_table_max(s : StatstestindependenceTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_table_to_string(s : StatstestindependenceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_independence_graphn_set(s : StatstestindependenceGraphN, i : I
   result
 }
 
-pub fn stats_test_independence_graphn_sum(s : StatstestindependenceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_graphn_sum(s : StatstestindependenceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_graphn_mean(s : StatstestindependenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_graphn_mean(s : StatstestindependenceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_graphn_scale(s : StatstestindependenceGraphN, f : Double) -> StatstestindependenceGraphN {
   let result = stats_test_independence_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_independence_graphn_fill(s : StatstestindependenceGraphN, v : 
   result
 }
 
-pub fn stats_test_independence_graphn_min(s : StatstestindependenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_graphn_min(s : StatstestindependenceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_graphn_max(s : StatstestindependenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_graphn_max(s : StatstestindependenceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_graphn_to_string(s : StatstestindependenceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_independence_node_set(s : StatstestindependenceNode, i : Int, 
   result
 }
 
-pub fn stats_test_independence_node_sum(s : StatstestindependenceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_node_sum(s : StatstestindependenceNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_node_mean(s : StatstestindependenceNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_node_mean(s : StatstestindependenceNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_node_scale(s : StatstestindependenceNode, f : Double) -> StatstestindependenceNode {
   let result = stats_test_independence_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_independence_node_fill(s : StatstestindependenceNode, v : Doub
   result
 }
 
-pub fn stats_test_independence_node_min(s : StatstestindependenceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_node_min(s : StatstestindependenceNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_node_max(s : StatstestindependenceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_node_max(s : StatstestindependenceNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_node_to_string(s : StatstestindependenceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_independence_edge_set(s : StatstestindependenceEdge, i : Int, 
   result
 }
 
-pub fn stats_test_independence_edge_sum(s : StatstestindependenceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_edge_sum(s : StatstestindependenceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_edge_mean(s : StatstestindependenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_edge_mean(s : StatstestindependenceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_edge_scale(s : StatstestindependenceEdge, f : Double) -> StatstestindependenceEdge {
   let result = stats_test_independence_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_independence_edge_fill(s : StatstestindependenceEdge, v : Doub
   result
 }
 
-pub fn stats_test_independence_edge_min(s : StatstestindependenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_edge_min(s : StatstestindependenceEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_edge_max(s : StatstestindependenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_edge_max(s : StatstestindependenceEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_edge_to_string(s : StatstestindependenceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_independence_path_set(s : StatstestindependencePath, i : Int, 
   result
 }
 
-pub fn stats_test_independence_path_sum(s : StatstestindependencePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_path_sum(s : StatstestindependencePath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_path_mean(s : StatstestindependencePath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_path_mean(s : StatstestindependencePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_path_scale(s : StatstestindependencePath, f : Double) -> StatstestindependencePath {
   let result = stats_test_independence_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_independence_path_fill(s : StatstestindependencePath, v : Doub
   result
 }
 
-pub fn stats_test_independence_path_min(s : StatstestindependencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_path_min(s : StatstestindependencePath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_path_max(s : StatstestindependencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_path_max(s : StatstestindependencePath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_path_to_string(s : StatstestindependencePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_independence_cluster_set(s : StatstestindependenceCluster, i :
   result
 }
 
-pub fn stats_test_independence_cluster_sum(s : StatstestindependenceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_cluster_sum(s : StatstestindependenceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_cluster_mean(s : StatstestindependenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_cluster_mean(s : StatstestindependenceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_cluster_scale(s : StatstestindependenceCluster, f : Double) -> StatstestindependenceCluster {
   let result = stats_test_independence_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_independence_cluster_fill(s : StatstestindependenceCluster, v 
   result
 }
 
-pub fn stats_test_independence_cluster_min(s : StatstestindependenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_cluster_min(s : StatstestindependenceCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_cluster_max(s : StatstestindependenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_cluster_max(s : StatstestindependenceCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_cluster_to_string(s : StatstestindependenceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_independence_model_set(s : StatstestindependenceModel, i : Int
   result
 }
 
-pub fn stats_test_independence_model_sum(s : StatstestindependenceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_model_sum(s : StatstestindependenceModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_model_mean(s : StatstestindependenceModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_model_mean(s : StatstestindependenceModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_model_scale(s : StatstestindependenceModel, f : Double) -> StatstestindependenceModel {
   let result = stats_test_independence_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_independence_model_fill(s : StatstestindependenceModel, v : Do
   result
 }
 
-pub fn stats_test_independence_model_min(s : StatstestindependenceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_model_min(s : StatstestindependenceModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_model_max(s : StatstestindependenceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_model_max(s : StatstestindependenceModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_model_to_string(s : StatstestindependenceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_independence_layer_set(s : StatstestindependenceLayer, i : Int
   result
 }
 
-pub fn stats_test_independence_layer_sum(s : StatstestindependenceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_layer_sum(s : StatstestindependenceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_layer_mean(s : StatstestindependenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_layer_mean(s : StatstestindependenceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_layer_scale(s : StatstestindependenceLayer, f : Double) -> StatstestindependenceLayer {
   let result = stats_test_independence_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_independence_layer_fill(s : StatstestindependenceLayer, v : Do
   result
 }
 
-pub fn stats_test_independence_layer_min(s : StatstestindependenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_layer_min(s : StatstestindependenceLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_layer_max(s : StatstestindependenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_layer_max(s : StatstestindependenceLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_layer_to_string(s : StatstestindependenceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_independence_buffer_set(s : StatstestindependenceBuffer, i : I
   result
 }
 
-pub fn stats_test_independence_buffer_sum(s : StatstestindependenceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_buffer_sum(s : StatstestindependenceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_buffer_mean(s : StatstestindependenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_buffer_mean(s : StatstestindependenceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_buffer_scale(s : StatstestindependenceBuffer, f : Double) -> StatstestindependenceBuffer {
   let result = stats_test_independence_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_independence_buffer_fill(s : StatstestindependenceBuffer, v : 
   result
 }
 
-pub fn stats_test_independence_buffer_min(s : StatstestindependenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_buffer_min(s : StatstestindependenceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_buffer_max(s : StatstestindependenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_buffer_max(s : StatstestindependenceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_buffer_to_string(s : StatstestindependenceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_independence_cursor_set(s : StatstestindependenceCursor, i : I
   result
 }
 
-pub fn stats_test_independence_cursor_sum(s : StatstestindependenceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_cursor_sum(s : StatstestindependenceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_cursor_mean(s : StatstestindependenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_cursor_mean(s : StatstestindependenceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_cursor_scale(s : StatstestindependenceCursor, f : Double) -> StatstestindependenceCursor {
   let result = stats_test_independence_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_independence_cursor_fill(s : StatstestindependenceCursor, v : 
   result
 }
 
-pub fn stats_test_independence_cursor_min(s : StatstestindependenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_cursor_min(s : StatstestindependenceCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_cursor_max(s : StatstestindependenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_cursor_max(s : StatstestindependenceCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_cursor_to_string(s : StatstestindependenceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_independence_view_set(s : StatstestindependenceView, i : Int, 
   result
 }
 
-pub fn stats_test_independence_view_sum(s : StatstestindependenceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_view_sum(s : StatstestindependenceView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_view_mean(s : StatstestindependenceView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_view_mean(s : StatstestindependenceView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_view_scale(s : StatstestindependenceView, f : Double) -> StatstestindependenceView {
   let result = stats_test_independence_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_independence_view_fill(s : StatstestindependenceView, v : Doub
   result
 }
 
-pub fn stats_test_independence_view_min(s : StatstestindependenceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_view_min(s : StatstestindependenceView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_view_max(s : StatstestindependenceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_view_max(s : StatstestindependenceView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_view_to_string(s : StatstestindependenceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_independence_range_set(s : StatstestindependenceRange, i : Int
   result
 }
 
-pub fn stats_test_independence_range_sum(s : StatstestindependenceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_range_sum(s : StatstestindependenceRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_range_mean(s : StatstestindependenceRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_range_mean(s : StatstestindependenceRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_range_scale(s : StatstestindependenceRange, f : Double) -> StatstestindependenceRange {
   let result = stats_test_independence_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_independence_range_fill(s : StatstestindependenceRange, v : Do
   result
 }
 
-pub fn stats_test_independence_range_min(s : StatstestindependenceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_range_min(s : StatstestindependenceRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_range_max(s : StatstestindependenceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_range_max(s : StatstestindependenceRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_range_to_string(s : StatstestindependenceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_independence_slice_set(s : StatstestindependenceSlice, i : Int
   result
 }
 
-pub fn stats_test_independence_slice_sum(s : StatstestindependenceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_independence_slice_sum(s : StatstestindependenceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_independence_slice_mean(s : StatstestindependenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_independence_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_independence_slice_mean(s : StatstestindependenceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_independence_slice_scale(s : StatstestindependenceSlice, f : Double) -> StatstestindependenceSlice {
   let result = stats_test_independence_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_independence_slice_fill(s : StatstestindependenceSlice, v : Do
   result
 }
 
-pub fn stats_test_independence_slice_min(s : StatstestindependenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_slice_min(s : StatstestindependenceSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_independence_slice_max(s : StatstestindependenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_independence_slice_max(s : StatstestindependenceSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_independence_slice_to_string(s : StatstestindependenceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

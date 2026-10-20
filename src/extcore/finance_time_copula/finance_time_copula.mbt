@@ -88,11 +88,7 @@ pub fn finance_time_copula_make_series(vals : Array[Double], name : String) -> F
 
 pub fn finance_time_copula_series_len(s : FinancetimecopulaSeries) -> Int { s.vals.length() }
 
-pub fn finance_time_copula_series_sum(s : FinancetimecopulaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_time_copula_series_sum(s : FinancetimecopulaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_time_copula_series_mean(s : FinancetimecopulaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_time_copula_frame_set(s : FinancetimecopulaFrame, i : Int, v : Do
   result
 }
 
-pub fn finance_time_copula_frame_sum(s : FinancetimecopulaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_frame_sum(s : FinancetimecopulaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_frame_mean(s : FinancetimecopulaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_frame_mean(s : FinancetimecopulaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_frame_scale(s : FinancetimecopulaFrame, f : Double) -> FinancetimecopulaFrame {
   let result = finance_time_copula_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_time_copula_frame_fill(s : FinancetimecopulaFrame, v : Double) ->
   result
 }
 
-pub fn finance_time_copula_frame_min(s : FinancetimecopulaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_frame_min(s : FinancetimecopulaFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_frame_max(s : FinancetimecopulaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_frame_max(s : FinancetimecopulaFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_frame_to_string(s : FinancetimecopulaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_time_copula_table_set(s : FinancetimecopulaTable, i : Int, v : Do
   result
 }
 
-pub fn finance_time_copula_table_sum(s : FinancetimecopulaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_table_sum(s : FinancetimecopulaTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_table_mean(s : FinancetimecopulaTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_table_mean(s : FinancetimecopulaTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_table_scale(s : FinancetimecopulaTable, f : Double) -> FinancetimecopulaTable {
   let result = finance_time_copula_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_time_copula_table_fill(s : FinancetimecopulaTable, v : Double) ->
   result
 }
 
-pub fn finance_time_copula_table_min(s : FinancetimecopulaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_table_min(s : FinancetimecopulaTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_table_max(s : FinancetimecopulaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_table_max(s : FinancetimecopulaTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_table_to_string(s : FinancetimecopulaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_time_copula_graphn_set(s : FinancetimecopulaGraphN, i : Int, v : 
   result
 }
 
-pub fn finance_time_copula_graphn_sum(s : FinancetimecopulaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_graphn_sum(s : FinancetimecopulaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_graphn_mean(s : FinancetimecopulaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_graphn_mean(s : FinancetimecopulaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_graphn_scale(s : FinancetimecopulaGraphN, f : Double) -> FinancetimecopulaGraphN {
   let result = finance_time_copula_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_time_copula_graphn_fill(s : FinancetimecopulaGraphN, v : Double) 
   result
 }
 
-pub fn finance_time_copula_graphn_min(s : FinancetimecopulaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_graphn_min(s : FinancetimecopulaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_graphn_max(s : FinancetimecopulaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_graphn_max(s : FinancetimecopulaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_graphn_to_string(s : FinancetimecopulaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_time_copula_node_set(s : FinancetimecopulaNode, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_copula_node_sum(s : FinancetimecopulaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_node_sum(s : FinancetimecopulaNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_node_mean(s : FinancetimecopulaNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_node_mean(s : FinancetimecopulaNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_node_scale(s : FinancetimecopulaNode, f : Double) -> FinancetimecopulaNode {
   let result = finance_time_copula_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_time_copula_node_fill(s : FinancetimecopulaNode, v : Double) -> F
   result
 }
 
-pub fn finance_time_copula_node_min(s : FinancetimecopulaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_node_min(s : FinancetimecopulaNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_node_max(s : FinancetimecopulaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_node_max(s : FinancetimecopulaNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_node_to_string(s : FinancetimecopulaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_time_copula_edge_set(s : FinancetimecopulaEdge, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_copula_edge_sum(s : FinancetimecopulaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_edge_sum(s : FinancetimecopulaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_edge_mean(s : FinancetimecopulaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_edge_mean(s : FinancetimecopulaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_edge_scale(s : FinancetimecopulaEdge, f : Double) -> FinancetimecopulaEdge {
   let result = finance_time_copula_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_time_copula_edge_fill(s : FinancetimecopulaEdge, v : Double) -> F
   result
 }
 
-pub fn finance_time_copula_edge_min(s : FinancetimecopulaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_edge_min(s : FinancetimecopulaEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_edge_max(s : FinancetimecopulaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_edge_max(s : FinancetimecopulaEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_edge_to_string(s : FinancetimecopulaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_time_copula_path_set(s : FinancetimecopulaPath, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_copula_path_sum(s : FinancetimecopulaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_path_sum(s : FinancetimecopulaPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_path_mean(s : FinancetimecopulaPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_path_mean(s : FinancetimecopulaPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_path_scale(s : FinancetimecopulaPath, f : Double) -> FinancetimecopulaPath {
   let result = finance_time_copula_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_time_copula_path_fill(s : FinancetimecopulaPath, v : Double) -> F
   result
 }
 
-pub fn finance_time_copula_path_min(s : FinancetimecopulaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_path_min(s : FinancetimecopulaPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_path_max(s : FinancetimecopulaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_path_max(s : FinancetimecopulaPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_path_to_string(s : FinancetimecopulaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_time_copula_cluster_set(s : FinancetimecopulaCluster, i : Int, v 
   result
 }
 
-pub fn finance_time_copula_cluster_sum(s : FinancetimecopulaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_cluster_sum(s : FinancetimecopulaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_cluster_mean(s : FinancetimecopulaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_cluster_mean(s : FinancetimecopulaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_cluster_scale(s : FinancetimecopulaCluster, f : Double) -> FinancetimecopulaCluster {
   let result = finance_time_copula_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_time_copula_cluster_fill(s : FinancetimecopulaCluster, v : Double
   result
 }
 
-pub fn finance_time_copula_cluster_min(s : FinancetimecopulaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_cluster_min(s : FinancetimecopulaCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_cluster_max(s : FinancetimecopulaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_cluster_max(s : FinancetimecopulaCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_cluster_to_string(s : FinancetimecopulaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_time_copula_model_set(s : FinancetimecopulaModel, i : Int, v : Do
   result
 }
 
-pub fn finance_time_copula_model_sum(s : FinancetimecopulaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_model_sum(s : FinancetimecopulaModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_model_mean(s : FinancetimecopulaModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_model_mean(s : FinancetimecopulaModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_model_scale(s : FinancetimecopulaModel, f : Double) -> FinancetimecopulaModel {
   let result = finance_time_copula_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_time_copula_model_fill(s : FinancetimecopulaModel, v : Double) ->
   result
 }
 
-pub fn finance_time_copula_model_min(s : FinancetimecopulaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_model_min(s : FinancetimecopulaModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_model_max(s : FinancetimecopulaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_model_max(s : FinancetimecopulaModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_model_to_string(s : FinancetimecopulaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_time_copula_layer_set(s : FinancetimecopulaLayer, i : Int, v : Do
   result
 }
 
-pub fn finance_time_copula_layer_sum(s : FinancetimecopulaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_layer_sum(s : FinancetimecopulaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_layer_mean(s : FinancetimecopulaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_layer_mean(s : FinancetimecopulaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_layer_scale(s : FinancetimecopulaLayer, f : Double) -> FinancetimecopulaLayer {
   let result = finance_time_copula_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_time_copula_layer_fill(s : FinancetimecopulaLayer, v : Double) ->
   result
 }
 
-pub fn finance_time_copula_layer_min(s : FinancetimecopulaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_layer_min(s : FinancetimecopulaLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_layer_max(s : FinancetimecopulaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_layer_max(s : FinancetimecopulaLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_layer_to_string(s : FinancetimecopulaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_time_copula_buffer_set(s : FinancetimecopulaBuffer, i : Int, v : 
   result
 }
 
-pub fn finance_time_copula_buffer_sum(s : FinancetimecopulaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_buffer_sum(s : FinancetimecopulaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_buffer_mean(s : FinancetimecopulaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_buffer_mean(s : FinancetimecopulaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_buffer_scale(s : FinancetimecopulaBuffer, f : Double) -> FinancetimecopulaBuffer {
   let result = finance_time_copula_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_time_copula_buffer_fill(s : FinancetimecopulaBuffer, v : Double) 
   result
 }
 
-pub fn finance_time_copula_buffer_min(s : FinancetimecopulaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_buffer_min(s : FinancetimecopulaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_buffer_max(s : FinancetimecopulaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_buffer_max(s : FinancetimecopulaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_buffer_to_string(s : FinancetimecopulaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_time_copula_cursor_set(s : FinancetimecopulaCursor, i : Int, v : 
   result
 }
 
-pub fn finance_time_copula_cursor_sum(s : FinancetimecopulaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_cursor_sum(s : FinancetimecopulaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_cursor_mean(s : FinancetimecopulaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_cursor_mean(s : FinancetimecopulaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_cursor_scale(s : FinancetimecopulaCursor, f : Double) -> FinancetimecopulaCursor {
   let result = finance_time_copula_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_time_copula_cursor_fill(s : FinancetimecopulaCursor, v : Double) 
   result
 }
 
-pub fn finance_time_copula_cursor_min(s : FinancetimecopulaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_cursor_min(s : FinancetimecopulaCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_cursor_max(s : FinancetimecopulaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_cursor_max(s : FinancetimecopulaCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_cursor_to_string(s : FinancetimecopulaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_time_copula_view_set(s : FinancetimecopulaView, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_copula_view_sum(s : FinancetimecopulaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_view_sum(s : FinancetimecopulaView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_view_mean(s : FinancetimecopulaView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_view_mean(s : FinancetimecopulaView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_view_scale(s : FinancetimecopulaView, f : Double) -> FinancetimecopulaView {
   let result = finance_time_copula_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_time_copula_view_fill(s : FinancetimecopulaView, v : Double) -> F
   result
 }
 
-pub fn finance_time_copula_view_min(s : FinancetimecopulaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_view_min(s : FinancetimecopulaView) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_view_max(s : FinancetimecopulaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_view_max(s : FinancetimecopulaView) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_view_to_string(s : FinancetimecopulaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_time_copula_range_set(s : FinancetimecopulaRange, i : Int, v : Do
   result
 }
 
-pub fn finance_time_copula_range_sum(s : FinancetimecopulaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_range_sum(s : FinancetimecopulaRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_range_mean(s : FinancetimecopulaRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_range_mean(s : FinancetimecopulaRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_range_scale(s : FinancetimecopulaRange, f : Double) -> FinancetimecopulaRange {
   let result = finance_time_copula_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_time_copula_range_fill(s : FinancetimecopulaRange, v : Double) ->
   result
 }
 
-pub fn finance_time_copula_range_min(s : FinancetimecopulaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_range_min(s : FinancetimecopulaRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_range_max(s : FinancetimecopulaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_range_max(s : FinancetimecopulaRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_range_to_string(s : FinancetimecopulaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_time_copula_slice_set(s : FinancetimecopulaSlice, i : Int, v : Do
   result
 }
 
-pub fn finance_time_copula_slice_sum(s : FinancetimecopulaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_copula_slice_sum(s : FinancetimecopulaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_copula_slice_mean(s : FinancetimecopulaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_copula_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_copula_slice_mean(s : FinancetimecopulaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_copula_slice_scale(s : FinancetimecopulaSlice, f : Double) -> FinancetimecopulaSlice {
   let result = finance_time_copula_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_time_copula_slice_fill(s : FinancetimecopulaSlice, v : Double) ->
   result
 }
 
-pub fn finance_time_copula_slice_min(s : FinancetimecopulaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_slice_min(s : FinancetimecopulaSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_copula_slice_max(s : FinancetimecopulaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_copula_slice_max(s : FinancetimecopulaSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_copula_slice_to_string(s : FinancetimecopulaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

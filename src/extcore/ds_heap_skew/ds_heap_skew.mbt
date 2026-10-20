@@ -88,11 +88,7 @@ pub fn ds_heap_skew_make_series(vals : Array[Double], name : String) -> Dsheapsk
 
 pub fn ds_heap_skew_series_len(s : DsheapskewSeries) -> Int { s.vals.length() }
 
-pub fn ds_heap_skew_series_sum(s : DsheapskewSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_heap_skew_series_sum(s : DsheapskewSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_heap_skew_series_mean(s : DsheapskewSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_heap_skew_frame_set(s : DsheapskewFrame, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_skew_frame_sum(s : DsheapskewFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_frame_sum(s : DsheapskewFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_frame_mean(s : DsheapskewFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_frame_mean(s : DsheapskewFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_frame_scale(s : DsheapskewFrame, f : Double) -> DsheapskewFrame {
   let result = ds_heap_skew_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_heap_skew_frame_fill(s : DsheapskewFrame, v : Double) -> DsheapskewFra
   result
 }
 
-pub fn ds_heap_skew_frame_min(s : DsheapskewFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_frame_min(s : DsheapskewFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_frame_max(s : DsheapskewFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_frame_max(s : DsheapskewFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_frame_to_string(s : DsheapskewFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_heap_skew_table_set(s : DsheapskewTable, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_skew_table_sum(s : DsheapskewTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_table_sum(s : DsheapskewTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_table_mean(s : DsheapskewTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_table_mean(s : DsheapskewTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_table_scale(s : DsheapskewTable, f : Double) -> DsheapskewTable {
   let result = ds_heap_skew_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_heap_skew_table_fill(s : DsheapskewTable, v : Double) -> DsheapskewTab
   result
 }
 
-pub fn ds_heap_skew_table_min(s : DsheapskewTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_table_min(s : DsheapskewTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_table_max(s : DsheapskewTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_table_max(s : DsheapskewTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_table_to_string(s : DsheapskewTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_heap_skew_graphn_set(s : DsheapskewGraphN, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_skew_graphn_sum(s : DsheapskewGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_graphn_sum(s : DsheapskewGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_graphn_mean(s : DsheapskewGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_graphn_mean(s : DsheapskewGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_graphn_scale(s : DsheapskewGraphN, f : Double) -> DsheapskewGraphN {
   let result = ds_heap_skew_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_heap_skew_graphn_fill(s : DsheapskewGraphN, v : Double) -> DsheapskewG
   result
 }
 
-pub fn ds_heap_skew_graphn_min(s : DsheapskewGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_graphn_min(s : DsheapskewGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_graphn_max(s : DsheapskewGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_graphn_max(s : DsheapskewGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_graphn_to_string(s : DsheapskewGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_heap_skew_node_set(s : DsheapskewNode, i : Int, v : Double) -> Dsheaps
   result
 }
 
-pub fn ds_heap_skew_node_sum(s : DsheapskewNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_node_sum(s : DsheapskewNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_node_mean(s : DsheapskewNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_node_mean(s : DsheapskewNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_node_scale(s : DsheapskewNode, f : Double) -> DsheapskewNode {
   let result = ds_heap_skew_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_heap_skew_node_fill(s : DsheapskewNode, v : Double) -> DsheapskewNode 
   result
 }
 
-pub fn ds_heap_skew_node_min(s : DsheapskewNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_node_min(s : DsheapskewNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_node_max(s : DsheapskewNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_node_max(s : DsheapskewNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_node_to_string(s : DsheapskewNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_heap_skew_edge_set(s : DsheapskewEdge, i : Int, v : Double) -> Dsheaps
   result
 }
 
-pub fn ds_heap_skew_edge_sum(s : DsheapskewEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_edge_sum(s : DsheapskewEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_edge_mean(s : DsheapskewEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_edge_mean(s : DsheapskewEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_edge_scale(s : DsheapskewEdge, f : Double) -> DsheapskewEdge {
   let result = ds_heap_skew_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_heap_skew_edge_fill(s : DsheapskewEdge, v : Double) -> DsheapskewEdge 
   result
 }
 
-pub fn ds_heap_skew_edge_min(s : DsheapskewEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_edge_min(s : DsheapskewEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_edge_max(s : DsheapskewEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_edge_max(s : DsheapskewEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_edge_to_string(s : DsheapskewEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_heap_skew_path_set(s : DsheapskewPath, i : Int, v : Double) -> Dsheaps
   result
 }
 
-pub fn ds_heap_skew_path_sum(s : DsheapskewPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_path_sum(s : DsheapskewPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_path_mean(s : DsheapskewPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_path_mean(s : DsheapskewPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_path_scale(s : DsheapskewPath, f : Double) -> DsheapskewPath {
   let result = ds_heap_skew_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_heap_skew_path_fill(s : DsheapskewPath, v : Double) -> DsheapskewPath 
   result
 }
 
-pub fn ds_heap_skew_path_min(s : DsheapskewPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_path_min(s : DsheapskewPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_path_max(s : DsheapskewPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_path_max(s : DsheapskewPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_path_to_string(s : DsheapskewPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_heap_skew_cluster_set(s : DsheapskewCluster, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_skew_cluster_sum(s : DsheapskewCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_cluster_sum(s : DsheapskewCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_cluster_mean(s : DsheapskewCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_cluster_mean(s : DsheapskewCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_cluster_scale(s : DsheapskewCluster, f : Double) -> DsheapskewCluster {
   let result = ds_heap_skew_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_heap_skew_cluster_fill(s : DsheapskewCluster, v : Double) -> Dsheapske
   result
 }
 
-pub fn ds_heap_skew_cluster_min(s : DsheapskewCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_cluster_min(s : DsheapskewCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_cluster_max(s : DsheapskewCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_cluster_max(s : DsheapskewCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_cluster_to_string(s : DsheapskewCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_heap_skew_model_set(s : DsheapskewModel, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_skew_model_sum(s : DsheapskewModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_model_sum(s : DsheapskewModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_model_mean(s : DsheapskewModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_model_mean(s : DsheapskewModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_model_scale(s : DsheapskewModel, f : Double) -> DsheapskewModel {
   let result = ds_heap_skew_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_heap_skew_model_fill(s : DsheapskewModel, v : Double) -> DsheapskewMod
   result
 }
 
-pub fn ds_heap_skew_model_min(s : DsheapskewModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_model_min(s : DsheapskewModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_model_max(s : DsheapskewModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_model_max(s : DsheapskewModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_model_to_string(s : DsheapskewModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_heap_skew_layer_set(s : DsheapskewLayer, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_skew_layer_sum(s : DsheapskewLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_layer_sum(s : DsheapskewLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_layer_mean(s : DsheapskewLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_layer_mean(s : DsheapskewLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_layer_scale(s : DsheapskewLayer, f : Double) -> DsheapskewLayer {
   let result = ds_heap_skew_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_heap_skew_layer_fill(s : DsheapskewLayer, v : Double) -> DsheapskewLay
   result
 }
 
-pub fn ds_heap_skew_layer_min(s : DsheapskewLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_layer_min(s : DsheapskewLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_layer_max(s : DsheapskewLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_layer_max(s : DsheapskewLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_layer_to_string(s : DsheapskewLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_heap_skew_buffer_set(s : DsheapskewBuffer, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_skew_buffer_sum(s : DsheapskewBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_buffer_sum(s : DsheapskewBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_buffer_mean(s : DsheapskewBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_buffer_mean(s : DsheapskewBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_buffer_scale(s : DsheapskewBuffer, f : Double) -> DsheapskewBuffer {
   let result = ds_heap_skew_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_heap_skew_buffer_fill(s : DsheapskewBuffer, v : Double) -> DsheapskewB
   result
 }
 
-pub fn ds_heap_skew_buffer_min(s : DsheapskewBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_buffer_min(s : DsheapskewBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_buffer_max(s : DsheapskewBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_buffer_max(s : DsheapskewBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_buffer_to_string(s : DsheapskewBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_heap_skew_cursor_set(s : DsheapskewCursor, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_skew_cursor_sum(s : DsheapskewCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_cursor_sum(s : DsheapskewCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_cursor_mean(s : DsheapskewCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_cursor_mean(s : DsheapskewCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_cursor_scale(s : DsheapskewCursor, f : Double) -> DsheapskewCursor {
   let result = ds_heap_skew_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_heap_skew_cursor_fill(s : DsheapskewCursor, v : Double) -> DsheapskewC
   result
 }
 
-pub fn ds_heap_skew_cursor_min(s : DsheapskewCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_cursor_min(s : DsheapskewCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_cursor_max(s : DsheapskewCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_cursor_max(s : DsheapskewCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_cursor_to_string(s : DsheapskewCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_heap_skew_view_set(s : DsheapskewView, i : Int, v : Double) -> Dsheaps
   result
 }
 
-pub fn ds_heap_skew_view_sum(s : DsheapskewView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_view_sum(s : DsheapskewView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_view_mean(s : DsheapskewView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_view_mean(s : DsheapskewView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_view_scale(s : DsheapskewView, f : Double) -> DsheapskewView {
   let result = ds_heap_skew_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_heap_skew_view_fill(s : DsheapskewView, v : Double) -> DsheapskewView 
   result
 }
 
-pub fn ds_heap_skew_view_min(s : DsheapskewView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_view_min(s : DsheapskewView) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_view_max(s : DsheapskewView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_view_max(s : DsheapskewView) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_view_to_string(s : DsheapskewView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_heap_skew_range_set(s : DsheapskewRange, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_skew_range_sum(s : DsheapskewRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_range_sum(s : DsheapskewRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_range_mean(s : DsheapskewRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_range_mean(s : DsheapskewRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_range_scale(s : DsheapskewRange, f : Double) -> DsheapskewRange {
   let result = ds_heap_skew_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_heap_skew_range_fill(s : DsheapskewRange, v : Double) -> DsheapskewRan
   result
 }
 
-pub fn ds_heap_skew_range_min(s : DsheapskewRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_range_min(s : DsheapskewRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_range_max(s : DsheapskewRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_range_max(s : DsheapskewRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_range_to_string(s : DsheapskewRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_heap_skew_slice_set(s : DsheapskewSlice, i : Int, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_skew_slice_sum(s : DsheapskewSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_skew_slice_sum(s : DsheapskewSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_skew_slice_mean(s : DsheapskewSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_skew_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_skew_slice_mean(s : DsheapskewSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_skew_slice_scale(s : DsheapskewSlice, f : Double) -> DsheapskewSlice {
   let result = ds_heap_skew_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_heap_skew_slice_fill(s : DsheapskewSlice, v : Double) -> DsheapskewSli
   result
 }
 
-pub fn ds_heap_skew_slice_min(s : DsheapskewSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_slice_min(s : DsheapskewSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_skew_slice_max(s : DsheapskewSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_skew_slice_max(s : DsheapskewSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_skew_slice_to_string(s : DsheapskewSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn chem_rxn_mechanism_make_series(vals : Array[Double], name : String) -> Ch
 
 pub fn chem_rxn_mechanism_series_len(s : ChemrxnmechanismSeries) -> Int { s.vals.length() }
 
-pub fn chem_rxn_mechanism_series_sum(s : ChemrxnmechanismSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_rxn_mechanism_series_sum(s : ChemrxnmechanismSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_rxn_mechanism_series_mean(s : ChemrxnmechanismSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_rxn_mechanism_frame_set(s : ChemrxnmechanismFrame, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_mechanism_frame_sum(s : ChemrxnmechanismFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_frame_sum(s : ChemrxnmechanismFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_frame_mean(s : ChemrxnmechanismFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_frame_mean(s : ChemrxnmechanismFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_frame_scale(s : ChemrxnmechanismFrame, f : Double) -> ChemrxnmechanismFrame {
   let result = chem_rxn_mechanism_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_rxn_mechanism_frame_fill(s : ChemrxnmechanismFrame, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_mechanism_frame_min(s : ChemrxnmechanismFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_frame_min(s : ChemrxnmechanismFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_frame_max(s : ChemrxnmechanismFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_frame_max(s : ChemrxnmechanismFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_frame_to_string(s : ChemrxnmechanismFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_rxn_mechanism_table_set(s : ChemrxnmechanismTable, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_mechanism_table_sum(s : ChemrxnmechanismTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_table_sum(s : ChemrxnmechanismTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_table_mean(s : ChemrxnmechanismTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_table_mean(s : ChemrxnmechanismTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_table_scale(s : ChemrxnmechanismTable, f : Double) -> ChemrxnmechanismTable {
   let result = chem_rxn_mechanism_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_rxn_mechanism_table_fill(s : ChemrxnmechanismTable, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_mechanism_table_min(s : ChemrxnmechanismTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_table_min(s : ChemrxnmechanismTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_table_max(s : ChemrxnmechanismTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_table_max(s : ChemrxnmechanismTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_table_to_string(s : ChemrxnmechanismTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_rxn_mechanism_graphn_set(s : ChemrxnmechanismGraphN, i : Int, v : Do
   result
 }
 
-pub fn chem_rxn_mechanism_graphn_sum(s : ChemrxnmechanismGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_graphn_sum(s : ChemrxnmechanismGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_graphn_mean(s : ChemrxnmechanismGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_graphn_mean(s : ChemrxnmechanismGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_graphn_scale(s : ChemrxnmechanismGraphN, f : Double) -> ChemrxnmechanismGraphN {
   let result = chem_rxn_mechanism_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_rxn_mechanism_graphn_fill(s : ChemrxnmechanismGraphN, v : Double) ->
   result
 }
 
-pub fn chem_rxn_mechanism_graphn_min(s : ChemrxnmechanismGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_graphn_min(s : ChemrxnmechanismGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_graphn_max(s : ChemrxnmechanismGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_graphn_max(s : ChemrxnmechanismGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_graphn_to_string(s : ChemrxnmechanismGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_rxn_mechanism_node_set(s : ChemrxnmechanismNode, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_mechanism_node_sum(s : ChemrxnmechanismNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_node_sum(s : ChemrxnmechanismNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_node_mean(s : ChemrxnmechanismNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_node_mean(s : ChemrxnmechanismNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_node_scale(s : ChemrxnmechanismNode, f : Double) -> ChemrxnmechanismNode {
   let result = chem_rxn_mechanism_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_rxn_mechanism_node_fill(s : ChemrxnmechanismNode, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_mechanism_node_min(s : ChemrxnmechanismNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_node_min(s : ChemrxnmechanismNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_node_max(s : ChemrxnmechanismNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_node_max(s : ChemrxnmechanismNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_node_to_string(s : ChemrxnmechanismNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_rxn_mechanism_edge_set(s : ChemrxnmechanismEdge, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_mechanism_edge_sum(s : ChemrxnmechanismEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_edge_sum(s : ChemrxnmechanismEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_edge_mean(s : ChemrxnmechanismEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_edge_mean(s : ChemrxnmechanismEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_edge_scale(s : ChemrxnmechanismEdge, f : Double) -> ChemrxnmechanismEdge {
   let result = chem_rxn_mechanism_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_rxn_mechanism_edge_fill(s : ChemrxnmechanismEdge, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_mechanism_edge_min(s : ChemrxnmechanismEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_edge_min(s : ChemrxnmechanismEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_edge_max(s : ChemrxnmechanismEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_edge_max(s : ChemrxnmechanismEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_edge_to_string(s : ChemrxnmechanismEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_rxn_mechanism_path_set(s : ChemrxnmechanismPath, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_mechanism_path_sum(s : ChemrxnmechanismPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_path_sum(s : ChemrxnmechanismPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_path_mean(s : ChemrxnmechanismPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_path_mean(s : ChemrxnmechanismPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_path_scale(s : ChemrxnmechanismPath, f : Double) -> ChemrxnmechanismPath {
   let result = chem_rxn_mechanism_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_rxn_mechanism_path_fill(s : ChemrxnmechanismPath, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_mechanism_path_min(s : ChemrxnmechanismPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_path_min(s : ChemrxnmechanismPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_path_max(s : ChemrxnmechanismPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_path_max(s : ChemrxnmechanismPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_path_to_string(s : ChemrxnmechanismPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_rxn_mechanism_cluster_set(s : ChemrxnmechanismCluster, i : Int, v : 
   result
 }
 
-pub fn chem_rxn_mechanism_cluster_sum(s : ChemrxnmechanismCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_cluster_sum(s : ChemrxnmechanismCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_cluster_mean(s : ChemrxnmechanismCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_cluster_mean(s : ChemrxnmechanismCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_cluster_scale(s : ChemrxnmechanismCluster, f : Double) -> ChemrxnmechanismCluster {
   let result = chem_rxn_mechanism_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_rxn_mechanism_cluster_fill(s : ChemrxnmechanismCluster, v : Double) 
   result
 }
 
-pub fn chem_rxn_mechanism_cluster_min(s : ChemrxnmechanismCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_cluster_min(s : ChemrxnmechanismCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_cluster_max(s : ChemrxnmechanismCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_cluster_max(s : ChemrxnmechanismCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_cluster_to_string(s : ChemrxnmechanismCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_rxn_mechanism_model_set(s : ChemrxnmechanismModel, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_mechanism_model_sum(s : ChemrxnmechanismModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_model_sum(s : ChemrxnmechanismModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_model_mean(s : ChemrxnmechanismModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_model_mean(s : ChemrxnmechanismModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_model_scale(s : ChemrxnmechanismModel, f : Double) -> ChemrxnmechanismModel {
   let result = chem_rxn_mechanism_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_rxn_mechanism_model_fill(s : ChemrxnmechanismModel, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_mechanism_model_min(s : ChemrxnmechanismModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_model_min(s : ChemrxnmechanismModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_model_max(s : ChemrxnmechanismModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_model_max(s : ChemrxnmechanismModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_model_to_string(s : ChemrxnmechanismModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_rxn_mechanism_layer_set(s : ChemrxnmechanismLayer, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_mechanism_layer_sum(s : ChemrxnmechanismLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_layer_sum(s : ChemrxnmechanismLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_layer_mean(s : ChemrxnmechanismLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_layer_mean(s : ChemrxnmechanismLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_layer_scale(s : ChemrxnmechanismLayer, f : Double) -> ChemrxnmechanismLayer {
   let result = chem_rxn_mechanism_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_rxn_mechanism_layer_fill(s : ChemrxnmechanismLayer, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_mechanism_layer_min(s : ChemrxnmechanismLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_layer_min(s : ChemrxnmechanismLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_layer_max(s : ChemrxnmechanismLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_layer_max(s : ChemrxnmechanismLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_layer_to_string(s : ChemrxnmechanismLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_rxn_mechanism_buffer_set(s : ChemrxnmechanismBuffer, i : Int, v : Do
   result
 }
 
-pub fn chem_rxn_mechanism_buffer_sum(s : ChemrxnmechanismBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_buffer_sum(s : ChemrxnmechanismBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_buffer_mean(s : ChemrxnmechanismBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_buffer_mean(s : ChemrxnmechanismBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_buffer_scale(s : ChemrxnmechanismBuffer, f : Double) -> ChemrxnmechanismBuffer {
   let result = chem_rxn_mechanism_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_rxn_mechanism_buffer_fill(s : ChemrxnmechanismBuffer, v : Double) ->
   result
 }
 
-pub fn chem_rxn_mechanism_buffer_min(s : ChemrxnmechanismBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_buffer_min(s : ChemrxnmechanismBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_buffer_max(s : ChemrxnmechanismBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_buffer_max(s : ChemrxnmechanismBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_buffer_to_string(s : ChemrxnmechanismBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_rxn_mechanism_cursor_set(s : ChemrxnmechanismCursor, i : Int, v : Do
   result
 }
 
-pub fn chem_rxn_mechanism_cursor_sum(s : ChemrxnmechanismCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_cursor_sum(s : ChemrxnmechanismCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_cursor_mean(s : ChemrxnmechanismCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_cursor_mean(s : ChemrxnmechanismCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_cursor_scale(s : ChemrxnmechanismCursor, f : Double) -> ChemrxnmechanismCursor {
   let result = chem_rxn_mechanism_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_rxn_mechanism_cursor_fill(s : ChemrxnmechanismCursor, v : Double) ->
   result
 }
 
-pub fn chem_rxn_mechanism_cursor_min(s : ChemrxnmechanismCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_cursor_min(s : ChemrxnmechanismCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_cursor_max(s : ChemrxnmechanismCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_cursor_max(s : ChemrxnmechanismCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_cursor_to_string(s : ChemrxnmechanismCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_rxn_mechanism_view_set(s : ChemrxnmechanismView, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_mechanism_view_sum(s : ChemrxnmechanismView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_view_sum(s : ChemrxnmechanismView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_view_mean(s : ChemrxnmechanismView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_view_mean(s : ChemrxnmechanismView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_view_scale(s : ChemrxnmechanismView, f : Double) -> ChemrxnmechanismView {
   let result = chem_rxn_mechanism_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_rxn_mechanism_view_fill(s : ChemrxnmechanismView, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_mechanism_view_min(s : ChemrxnmechanismView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_view_min(s : ChemrxnmechanismView) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_view_max(s : ChemrxnmechanismView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_view_max(s : ChemrxnmechanismView) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_view_to_string(s : ChemrxnmechanismView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_rxn_mechanism_range_set(s : ChemrxnmechanismRange, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_mechanism_range_sum(s : ChemrxnmechanismRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_range_sum(s : ChemrxnmechanismRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_range_mean(s : ChemrxnmechanismRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_range_mean(s : ChemrxnmechanismRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_range_scale(s : ChemrxnmechanismRange, f : Double) -> ChemrxnmechanismRange {
   let result = chem_rxn_mechanism_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_rxn_mechanism_range_fill(s : ChemrxnmechanismRange, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_mechanism_range_min(s : ChemrxnmechanismRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_range_min(s : ChemrxnmechanismRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_range_max(s : ChemrxnmechanismRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_range_max(s : ChemrxnmechanismRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_range_to_string(s : ChemrxnmechanismRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_rxn_mechanism_slice_set(s : ChemrxnmechanismSlice, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_mechanism_slice_sum(s : ChemrxnmechanismSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_mechanism_slice_sum(s : ChemrxnmechanismSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_mechanism_slice_mean(s : ChemrxnmechanismSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_mechanism_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_mechanism_slice_mean(s : ChemrxnmechanismSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_mechanism_slice_scale(s : ChemrxnmechanismSlice, f : Double) -> ChemrxnmechanismSlice {
   let result = chem_rxn_mechanism_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_rxn_mechanism_slice_fill(s : ChemrxnmechanismSlice, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_mechanism_slice_min(s : ChemrxnmechanismSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_slice_min(s : ChemrxnmechanismSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_mechanism_slice_max(s : ChemrxnmechanismSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_mechanism_slice_max(s : ChemrxnmechanismSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_mechanism_slice_to_string(s : ChemrxnmechanismSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

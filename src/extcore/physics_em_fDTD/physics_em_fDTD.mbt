@@ -88,11 +88,7 @@ pub fn physics_em_fDTD_make_series(vals : Array[Double], name : String) -> Physi
 
 pub fn physics_em_fDTD_series_len(s : PhysicsemfDTDSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_fDTD_series_sum(s : PhysicsemfDTDSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_fDTD_series_sum(s : PhysicsemfDTDSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_fDTD_series_mean(s : PhysicsemfDTDSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_fDTD_frame_set(s : PhysicsemfDTDFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fDTD_frame_sum(s : PhysicsemfDTDFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_frame_sum(s : PhysicsemfDTDFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_frame_mean(s : PhysicsemfDTDFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_frame_mean(s : PhysicsemfDTDFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_frame_scale(s : PhysicsemfDTDFrame, f : Double) -> PhysicsemfDTDFrame {
   let result = physics_em_fDTD_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_fDTD_frame_fill(s : PhysicsemfDTDFrame, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fDTD_frame_min(s : PhysicsemfDTDFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_frame_min(s : PhysicsemfDTDFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_frame_max(s : PhysicsemfDTDFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_frame_max(s : PhysicsemfDTDFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_frame_to_string(s : PhysicsemfDTDFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_fDTD_table_set(s : PhysicsemfDTDTable, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fDTD_table_sum(s : PhysicsemfDTDTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_table_sum(s : PhysicsemfDTDTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_table_mean(s : PhysicsemfDTDTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_table_mean(s : PhysicsemfDTDTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_table_scale(s : PhysicsemfDTDTable, f : Double) -> PhysicsemfDTDTable {
   let result = physics_em_fDTD_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_fDTD_table_fill(s : PhysicsemfDTDTable, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fDTD_table_min(s : PhysicsemfDTDTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_table_min(s : PhysicsemfDTDTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_table_max(s : PhysicsemfDTDTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_table_max(s : PhysicsemfDTDTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_table_to_string(s : PhysicsemfDTDTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_fDTD_graphn_set(s : PhysicsemfDTDGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_fDTD_graphn_sum(s : PhysicsemfDTDGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_graphn_sum(s : PhysicsemfDTDGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_graphn_mean(s : PhysicsemfDTDGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_graphn_mean(s : PhysicsemfDTDGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_graphn_scale(s : PhysicsemfDTDGraphN, f : Double) -> PhysicsemfDTDGraphN {
   let result = physics_em_fDTD_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_fDTD_graphn_fill(s : PhysicsemfDTDGraphN, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_fDTD_graphn_min(s : PhysicsemfDTDGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_graphn_min(s : PhysicsemfDTDGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_graphn_max(s : PhysicsemfDTDGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_graphn_max(s : PhysicsemfDTDGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_graphn_to_string(s : PhysicsemfDTDGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_fDTD_node_set(s : PhysicsemfDTDNode, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fDTD_node_sum(s : PhysicsemfDTDNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_node_sum(s : PhysicsemfDTDNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_node_mean(s : PhysicsemfDTDNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_node_mean(s : PhysicsemfDTDNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_node_scale(s : PhysicsemfDTDNode, f : Double) -> PhysicsemfDTDNode {
   let result = physics_em_fDTD_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_fDTD_node_fill(s : PhysicsemfDTDNode, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fDTD_node_min(s : PhysicsemfDTDNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_node_min(s : PhysicsemfDTDNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_node_max(s : PhysicsemfDTDNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_node_max(s : PhysicsemfDTDNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_node_to_string(s : PhysicsemfDTDNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_fDTD_edge_set(s : PhysicsemfDTDEdge, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fDTD_edge_sum(s : PhysicsemfDTDEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_edge_sum(s : PhysicsemfDTDEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_edge_mean(s : PhysicsemfDTDEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_edge_mean(s : PhysicsemfDTDEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_edge_scale(s : PhysicsemfDTDEdge, f : Double) -> PhysicsemfDTDEdge {
   let result = physics_em_fDTD_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_fDTD_edge_fill(s : PhysicsemfDTDEdge, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fDTD_edge_min(s : PhysicsemfDTDEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_edge_min(s : PhysicsemfDTDEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_edge_max(s : PhysicsemfDTDEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_edge_max(s : PhysicsemfDTDEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_edge_to_string(s : PhysicsemfDTDEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_fDTD_path_set(s : PhysicsemfDTDPath, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fDTD_path_sum(s : PhysicsemfDTDPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_path_sum(s : PhysicsemfDTDPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_path_mean(s : PhysicsemfDTDPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_path_mean(s : PhysicsemfDTDPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_path_scale(s : PhysicsemfDTDPath, f : Double) -> PhysicsemfDTDPath {
   let result = physics_em_fDTD_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_fDTD_path_fill(s : PhysicsemfDTDPath, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fDTD_path_min(s : PhysicsemfDTDPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_path_min(s : PhysicsemfDTDPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_path_max(s : PhysicsemfDTDPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_path_max(s : PhysicsemfDTDPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_path_to_string(s : PhysicsemfDTDPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_fDTD_cluster_set(s : PhysicsemfDTDCluster, i : Int, v : Double
   result
 }
 
-pub fn physics_em_fDTD_cluster_sum(s : PhysicsemfDTDCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_cluster_sum(s : PhysicsemfDTDCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_cluster_mean(s : PhysicsemfDTDCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_cluster_mean(s : PhysicsemfDTDCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_cluster_scale(s : PhysicsemfDTDCluster, f : Double) -> PhysicsemfDTDCluster {
   let result = physics_em_fDTD_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_fDTD_cluster_fill(s : PhysicsemfDTDCluster, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_fDTD_cluster_min(s : PhysicsemfDTDCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_cluster_min(s : PhysicsemfDTDCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_cluster_max(s : PhysicsemfDTDCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_cluster_max(s : PhysicsemfDTDCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_cluster_to_string(s : PhysicsemfDTDCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_fDTD_model_set(s : PhysicsemfDTDModel, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fDTD_model_sum(s : PhysicsemfDTDModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_model_sum(s : PhysicsemfDTDModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_model_mean(s : PhysicsemfDTDModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_model_mean(s : PhysicsemfDTDModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_model_scale(s : PhysicsemfDTDModel, f : Double) -> PhysicsemfDTDModel {
   let result = physics_em_fDTD_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_fDTD_model_fill(s : PhysicsemfDTDModel, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fDTD_model_min(s : PhysicsemfDTDModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_model_min(s : PhysicsemfDTDModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_model_max(s : PhysicsemfDTDModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_model_max(s : PhysicsemfDTDModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_model_to_string(s : PhysicsemfDTDModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_fDTD_layer_set(s : PhysicsemfDTDLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fDTD_layer_sum(s : PhysicsemfDTDLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_layer_sum(s : PhysicsemfDTDLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_layer_mean(s : PhysicsemfDTDLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_layer_mean(s : PhysicsemfDTDLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_layer_scale(s : PhysicsemfDTDLayer, f : Double) -> PhysicsemfDTDLayer {
   let result = physics_em_fDTD_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_fDTD_layer_fill(s : PhysicsemfDTDLayer, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fDTD_layer_min(s : PhysicsemfDTDLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_layer_min(s : PhysicsemfDTDLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_layer_max(s : PhysicsemfDTDLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_layer_max(s : PhysicsemfDTDLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_layer_to_string(s : PhysicsemfDTDLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_fDTD_buffer_set(s : PhysicsemfDTDBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_fDTD_buffer_sum(s : PhysicsemfDTDBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_buffer_sum(s : PhysicsemfDTDBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_buffer_mean(s : PhysicsemfDTDBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_buffer_mean(s : PhysicsemfDTDBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_buffer_scale(s : PhysicsemfDTDBuffer, f : Double) -> PhysicsemfDTDBuffer {
   let result = physics_em_fDTD_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_fDTD_buffer_fill(s : PhysicsemfDTDBuffer, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_fDTD_buffer_min(s : PhysicsemfDTDBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_buffer_min(s : PhysicsemfDTDBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_buffer_max(s : PhysicsemfDTDBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_buffer_max(s : PhysicsemfDTDBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_buffer_to_string(s : PhysicsemfDTDBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_fDTD_cursor_set(s : PhysicsemfDTDCursor, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_fDTD_cursor_sum(s : PhysicsemfDTDCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_cursor_sum(s : PhysicsemfDTDCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_cursor_mean(s : PhysicsemfDTDCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_cursor_mean(s : PhysicsemfDTDCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_cursor_scale(s : PhysicsemfDTDCursor, f : Double) -> PhysicsemfDTDCursor {
   let result = physics_em_fDTD_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_fDTD_cursor_fill(s : PhysicsemfDTDCursor, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_fDTD_cursor_min(s : PhysicsemfDTDCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_cursor_min(s : PhysicsemfDTDCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_cursor_max(s : PhysicsemfDTDCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_cursor_max(s : PhysicsemfDTDCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_cursor_to_string(s : PhysicsemfDTDCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_fDTD_view_set(s : PhysicsemfDTDView, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_fDTD_view_sum(s : PhysicsemfDTDView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_view_sum(s : PhysicsemfDTDView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_view_mean(s : PhysicsemfDTDView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_view_mean(s : PhysicsemfDTDView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_view_scale(s : PhysicsemfDTDView, f : Double) -> PhysicsemfDTDView {
   let result = physics_em_fDTD_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_fDTD_view_fill(s : PhysicsemfDTDView, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_fDTD_view_min(s : PhysicsemfDTDView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_view_min(s : PhysicsemfDTDView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_view_max(s : PhysicsemfDTDView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_view_max(s : PhysicsemfDTDView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_view_to_string(s : PhysicsemfDTDView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_fDTD_range_set(s : PhysicsemfDTDRange, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fDTD_range_sum(s : PhysicsemfDTDRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_range_sum(s : PhysicsemfDTDRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_range_mean(s : PhysicsemfDTDRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_range_mean(s : PhysicsemfDTDRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_range_scale(s : PhysicsemfDTDRange, f : Double) -> PhysicsemfDTDRange {
   let result = physics_em_fDTD_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_fDTD_range_fill(s : PhysicsemfDTDRange, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fDTD_range_min(s : PhysicsemfDTDRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_range_min(s : PhysicsemfDTDRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_range_max(s : PhysicsemfDTDRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_range_max(s : PhysicsemfDTDRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_range_to_string(s : PhysicsemfDTDRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_fDTD_slice_set(s : PhysicsemfDTDSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_fDTD_slice_sum(s : PhysicsemfDTDSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_fDTD_slice_sum(s : PhysicsemfDTDSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_fDTD_slice_mean(s : PhysicsemfDTDSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_fDTD_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_fDTD_slice_mean(s : PhysicsemfDTDSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_fDTD_slice_scale(s : PhysicsemfDTDSlice, f : Double) -> PhysicsemfDTDSlice {
   let result = physics_em_fDTD_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_fDTD_slice_fill(s : PhysicsemfDTDSlice, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_fDTD_slice_min(s : PhysicsemfDTDSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_slice_min(s : PhysicsemfDTDSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_fDTD_slice_max(s : PhysicsemfDTDSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_fDTD_slice_max(s : PhysicsemfDTDSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_fDTD_slice_to_string(s : PhysicsemfDTDSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

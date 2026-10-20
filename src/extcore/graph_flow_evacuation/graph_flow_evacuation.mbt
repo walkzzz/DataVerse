@@ -88,11 +88,7 @@ pub fn graph_flow_evacuation_make_series(vals : Array[Double], name : String) ->
 
 pub fn graph_flow_evacuation_series_len(s : GraphflowevacuationSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_evacuation_series_sum(s : GraphflowevacuationSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_evacuation_series_sum(s : GraphflowevacuationSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_evacuation_series_mean(s : GraphflowevacuationSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_evacuation_frame_set(s : GraphflowevacuationFrame, i : Int, v 
   result
 }
 
-pub fn graph_flow_evacuation_frame_sum(s : GraphflowevacuationFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_frame_sum(s : GraphflowevacuationFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_frame_mean(s : GraphflowevacuationFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_frame_mean(s : GraphflowevacuationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_frame_scale(s : GraphflowevacuationFrame, f : Double) -> GraphflowevacuationFrame {
   let result = graph_flow_evacuation_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_evacuation_frame_fill(s : GraphflowevacuationFrame, v : Double
   result
 }
 
-pub fn graph_flow_evacuation_frame_min(s : GraphflowevacuationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_frame_min(s : GraphflowevacuationFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_frame_max(s : GraphflowevacuationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_frame_max(s : GraphflowevacuationFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_frame_to_string(s : GraphflowevacuationFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_evacuation_table_set(s : GraphflowevacuationTable, i : Int, v 
   result
 }
 
-pub fn graph_flow_evacuation_table_sum(s : GraphflowevacuationTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_table_sum(s : GraphflowevacuationTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_table_mean(s : GraphflowevacuationTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_table_mean(s : GraphflowevacuationTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_table_scale(s : GraphflowevacuationTable, f : Double) -> GraphflowevacuationTable {
   let result = graph_flow_evacuation_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_evacuation_table_fill(s : GraphflowevacuationTable, v : Double
   result
 }
 
-pub fn graph_flow_evacuation_table_min(s : GraphflowevacuationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_table_min(s : GraphflowevacuationTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_table_max(s : GraphflowevacuationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_table_max(s : GraphflowevacuationTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_table_to_string(s : GraphflowevacuationTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_evacuation_graphn_set(s : GraphflowevacuationGraphN, i : Int, 
   result
 }
 
-pub fn graph_flow_evacuation_graphn_sum(s : GraphflowevacuationGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_graphn_sum(s : GraphflowevacuationGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_graphn_mean(s : GraphflowevacuationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_graphn_mean(s : GraphflowevacuationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_graphn_scale(s : GraphflowevacuationGraphN, f : Double) -> GraphflowevacuationGraphN {
   let result = graph_flow_evacuation_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_evacuation_graphn_fill(s : GraphflowevacuationGraphN, v : Doub
   result
 }
 
-pub fn graph_flow_evacuation_graphn_min(s : GraphflowevacuationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_graphn_min(s : GraphflowevacuationGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_graphn_max(s : GraphflowevacuationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_graphn_max(s : GraphflowevacuationGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_graphn_to_string(s : GraphflowevacuationGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_evacuation_node_set(s : GraphflowevacuationNode, i : Int, v : 
   result
 }
 
-pub fn graph_flow_evacuation_node_sum(s : GraphflowevacuationNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_node_sum(s : GraphflowevacuationNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_node_mean(s : GraphflowevacuationNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_node_mean(s : GraphflowevacuationNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_node_scale(s : GraphflowevacuationNode, f : Double) -> GraphflowevacuationNode {
   let result = graph_flow_evacuation_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_evacuation_node_fill(s : GraphflowevacuationNode, v : Double) 
   result
 }
 
-pub fn graph_flow_evacuation_node_min(s : GraphflowevacuationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_node_min(s : GraphflowevacuationNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_node_max(s : GraphflowevacuationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_node_max(s : GraphflowevacuationNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_node_to_string(s : GraphflowevacuationNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_evacuation_edge_set(s : GraphflowevacuationEdge, i : Int, v : 
   result
 }
 
-pub fn graph_flow_evacuation_edge_sum(s : GraphflowevacuationEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_edge_sum(s : GraphflowevacuationEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_edge_mean(s : GraphflowevacuationEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_edge_mean(s : GraphflowevacuationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_edge_scale(s : GraphflowevacuationEdge, f : Double) -> GraphflowevacuationEdge {
   let result = graph_flow_evacuation_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_evacuation_edge_fill(s : GraphflowevacuationEdge, v : Double) 
   result
 }
 
-pub fn graph_flow_evacuation_edge_min(s : GraphflowevacuationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_edge_min(s : GraphflowevacuationEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_edge_max(s : GraphflowevacuationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_edge_max(s : GraphflowevacuationEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_edge_to_string(s : GraphflowevacuationEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_evacuation_path_set(s : GraphflowevacuationPath, i : Int, v : 
   result
 }
 
-pub fn graph_flow_evacuation_path_sum(s : GraphflowevacuationPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_path_sum(s : GraphflowevacuationPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_path_mean(s : GraphflowevacuationPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_path_mean(s : GraphflowevacuationPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_path_scale(s : GraphflowevacuationPath, f : Double) -> GraphflowevacuationPath {
   let result = graph_flow_evacuation_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_evacuation_path_fill(s : GraphflowevacuationPath, v : Double) 
   result
 }
 
-pub fn graph_flow_evacuation_path_min(s : GraphflowevacuationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_path_min(s : GraphflowevacuationPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_path_max(s : GraphflowevacuationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_path_max(s : GraphflowevacuationPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_path_to_string(s : GraphflowevacuationPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_evacuation_cluster_set(s : GraphflowevacuationCluster, i : Int
   result
 }
 
-pub fn graph_flow_evacuation_cluster_sum(s : GraphflowevacuationCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_cluster_sum(s : GraphflowevacuationCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_cluster_mean(s : GraphflowevacuationCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_cluster_mean(s : GraphflowevacuationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_cluster_scale(s : GraphflowevacuationCluster, f : Double) -> GraphflowevacuationCluster {
   let result = graph_flow_evacuation_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_evacuation_cluster_fill(s : GraphflowevacuationCluster, v : Do
   result
 }
 
-pub fn graph_flow_evacuation_cluster_min(s : GraphflowevacuationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_cluster_min(s : GraphflowevacuationCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_cluster_max(s : GraphflowevacuationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_cluster_max(s : GraphflowevacuationCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_cluster_to_string(s : GraphflowevacuationCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_evacuation_model_set(s : GraphflowevacuationModel, i : Int, v 
   result
 }
 
-pub fn graph_flow_evacuation_model_sum(s : GraphflowevacuationModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_model_sum(s : GraphflowevacuationModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_model_mean(s : GraphflowevacuationModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_model_mean(s : GraphflowevacuationModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_model_scale(s : GraphflowevacuationModel, f : Double) -> GraphflowevacuationModel {
   let result = graph_flow_evacuation_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_evacuation_model_fill(s : GraphflowevacuationModel, v : Double
   result
 }
 
-pub fn graph_flow_evacuation_model_min(s : GraphflowevacuationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_model_min(s : GraphflowevacuationModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_model_max(s : GraphflowevacuationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_model_max(s : GraphflowevacuationModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_model_to_string(s : GraphflowevacuationModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_evacuation_layer_set(s : GraphflowevacuationLayer, i : Int, v 
   result
 }
 
-pub fn graph_flow_evacuation_layer_sum(s : GraphflowevacuationLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_layer_sum(s : GraphflowevacuationLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_layer_mean(s : GraphflowevacuationLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_layer_mean(s : GraphflowevacuationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_layer_scale(s : GraphflowevacuationLayer, f : Double) -> GraphflowevacuationLayer {
   let result = graph_flow_evacuation_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_evacuation_layer_fill(s : GraphflowevacuationLayer, v : Double
   result
 }
 
-pub fn graph_flow_evacuation_layer_min(s : GraphflowevacuationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_layer_min(s : GraphflowevacuationLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_layer_max(s : GraphflowevacuationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_layer_max(s : GraphflowevacuationLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_layer_to_string(s : GraphflowevacuationLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_evacuation_buffer_set(s : GraphflowevacuationBuffer, i : Int, 
   result
 }
 
-pub fn graph_flow_evacuation_buffer_sum(s : GraphflowevacuationBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_buffer_sum(s : GraphflowevacuationBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_buffer_mean(s : GraphflowevacuationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_buffer_mean(s : GraphflowevacuationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_buffer_scale(s : GraphflowevacuationBuffer, f : Double) -> GraphflowevacuationBuffer {
   let result = graph_flow_evacuation_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_evacuation_buffer_fill(s : GraphflowevacuationBuffer, v : Doub
   result
 }
 
-pub fn graph_flow_evacuation_buffer_min(s : GraphflowevacuationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_buffer_min(s : GraphflowevacuationBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_buffer_max(s : GraphflowevacuationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_buffer_max(s : GraphflowevacuationBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_buffer_to_string(s : GraphflowevacuationBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_evacuation_cursor_set(s : GraphflowevacuationCursor, i : Int, 
   result
 }
 
-pub fn graph_flow_evacuation_cursor_sum(s : GraphflowevacuationCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_cursor_sum(s : GraphflowevacuationCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_cursor_mean(s : GraphflowevacuationCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_cursor_mean(s : GraphflowevacuationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_cursor_scale(s : GraphflowevacuationCursor, f : Double) -> GraphflowevacuationCursor {
   let result = graph_flow_evacuation_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_evacuation_cursor_fill(s : GraphflowevacuationCursor, v : Doub
   result
 }
 
-pub fn graph_flow_evacuation_cursor_min(s : GraphflowevacuationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_cursor_min(s : GraphflowevacuationCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_cursor_max(s : GraphflowevacuationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_cursor_max(s : GraphflowevacuationCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_cursor_to_string(s : GraphflowevacuationCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_evacuation_view_set(s : GraphflowevacuationView, i : Int, v : 
   result
 }
 
-pub fn graph_flow_evacuation_view_sum(s : GraphflowevacuationView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_view_sum(s : GraphflowevacuationView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_view_mean(s : GraphflowevacuationView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_view_mean(s : GraphflowevacuationView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_view_scale(s : GraphflowevacuationView, f : Double) -> GraphflowevacuationView {
   let result = graph_flow_evacuation_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_evacuation_view_fill(s : GraphflowevacuationView, v : Double) 
   result
 }
 
-pub fn graph_flow_evacuation_view_min(s : GraphflowevacuationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_view_min(s : GraphflowevacuationView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_view_max(s : GraphflowevacuationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_view_max(s : GraphflowevacuationView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_view_to_string(s : GraphflowevacuationView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_evacuation_range_set(s : GraphflowevacuationRange, i : Int, v 
   result
 }
 
-pub fn graph_flow_evacuation_range_sum(s : GraphflowevacuationRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_range_sum(s : GraphflowevacuationRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_range_mean(s : GraphflowevacuationRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_range_mean(s : GraphflowevacuationRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_range_scale(s : GraphflowevacuationRange, f : Double) -> GraphflowevacuationRange {
   let result = graph_flow_evacuation_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_evacuation_range_fill(s : GraphflowevacuationRange, v : Double
   result
 }
 
-pub fn graph_flow_evacuation_range_min(s : GraphflowevacuationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_range_min(s : GraphflowevacuationRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_range_max(s : GraphflowevacuationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_range_max(s : GraphflowevacuationRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_range_to_string(s : GraphflowevacuationRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_evacuation_slice_set(s : GraphflowevacuationSlice, i : Int, v 
   result
 }
 
-pub fn graph_flow_evacuation_slice_sum(s : GraphflowevacuationSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_evacuation_slice_sum(s : GraphflowevacuationSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_evacuation_slice_mean(s : GraphflowevacuationSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_evacuation_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_evacuation_slice_mean(s : GraphflowevacuationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_evacuation_slice_scale(s : GraphflowevacuationSlice, f : Double) -> GraphflowevacuationSlice {
   let result = graph_flow_evacuation_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_evacuation_slice_fill(s : GraphflowevacuationSlice, v : Double
   result
 }
 
-pub fn graph_flow_evacuation_slice_min(s : GraphflowevacuationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_slice_min(s : GraphflowevacuationSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_evacuation_slice_max(s : GraphflowevacuationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_evacuation_slice_max(s : GraphflowevacuationSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_evacuation_slice_to_string(s : GraphflowevacuationSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

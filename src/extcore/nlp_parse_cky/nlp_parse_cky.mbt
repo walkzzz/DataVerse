@@ -88,11 +88,7 @@ pub fn nlp_parse_cky_make_series(vals : Array[Double], name : String) -> Nlppars
 
 pub fn nlp_parse_cky_series_len(s : NlpparseckySeries) -> Int { s.vals.length() }
 
-pub fn nlp_parse_cky_series_sum(s : NlpparseckySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_parse_cky_series_sum(s : NlpparseckySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_parse_cky_series_mean(s : NlpparseckySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_parse_cky_frame_set(s : NlpparseckyFrame, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cky_frame_sum(s : NlpparseckyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_frame_sum(s : NlpparseckyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_frame_mean(s : NlpparseckyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_frame_mean(s : NlpparseckyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_frame_scale(s : NlpparseckyFrame, f : Double) -> NlpparseckyFrame {
   let result = nlp_parse_cky_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_parse_cky_frame_fill(s : NlpparseckyFrame, v : Double) -> Nlpparsecky
   result
 }
 
-pub fn nlp_parse_cky_frame_min(s : NlpparseckyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_frame_min(s : NlpparseckyFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_frame_max(s : NlpparseckyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_frame_max(s : NlpparseckyFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_frame_to_string(s : NlpparseckyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_parse_cky_table_set(s : NlpparseckyTable, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cky_table_sum(s : NlpparseckyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_table_sum(s : NlpparseckyTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_table_mean(s : NlpparseckyTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_table_mean(s : NlpparseckyTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_table_scale(s : NlpparseckyTable, f : Double) -> NlpparseckyTable {
   let result = nlp_parse_cky_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_parse_cky_table_fill(s : NlpparseckyTable, v : Double) -> Nlpparsecky
   result
 }
 
-pub fn nlp_parse_cky_table_min(s : NlpparseckyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_table_min(s : NlpparseckyTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_table_max(s : NlpparseckyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_table_max(s : NlpparseckyTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_table_to_string(s : NlpparseckyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_parse_cky_graphn_set(s : NlpparseckyGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_cky_graphn_sum(s : NlpparseckyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_graphn_sum(s : NlpparseckyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_graphn_mean(s : NlpparseckyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_graphn_mean(s : NlpparseckyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_graphn_scale(s : NlpparseckyGraphN, f : Double) -> NlpparseckyGraphN {
   let result = nlp_parse_cky_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_parse_cky_graphn_fill(s : NlpparseckyGraphN, v : Double) -> Nlpparsec
   result
 }
 
-pub fn nlp_parse_cky_graphn_min(s : NlpparseckyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_graphn_min(s : NlpparseckyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_graphn_max(s : NlpparseckyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_graphn_max(s : NlpparseckyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_graphn_to_string(s : NlpparseckyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_parse_cky_node_set(s : NlpparseckyNode, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cky_node_sum(s : NlpparseckyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_node_sum(s : NlpparseckyNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_node_mean(s : NlpparseckyNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_node_mean(s : NlpparseckyNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_node_scale(s : NlpparseckyNode, f : Double) -> NlpparseckyNode {
   let result = nlp_parse_cky_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_parse_cky_node_fill(s : NlpparseckyNode, v : Double) -> NlpparseckyNo
   result
 }
 
-pub fn nlp_parse_cky_node_min(s : NlpparseckyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_node_min(s : NlpparseckyNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_node_max(s : NlpparseckyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_node_max(s : NlpparseckyNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_node_to_string(s : NlpparseckyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_parse_cky_edge_set(s : NlpparseckyEdge, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cky_edge_sum(s : NlpparseckyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_edge_sum(s : NlpparseckyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_edge_mean(s : NlpparseckyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_edge_mean(s : NlpparseckyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_edge_scale(s : NlpparseckyEdge, f : Double) -> NlpparseckyEdge {
   let result = nlp_parse_cky_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_parse_cky_edge_fill(s : NlpparseckyEdge, v : Double) -> NlpparseckyEd
   result
 }
 
-pub fn nlp_parse_cky_edge_min(s : NlpparseckyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_edge_min(s : NlpparseckyEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_edge_max(s : NlpparseckyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_edge_max(s : NlpparseckyEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_edge_to_string(s : NlpparseckyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_parse_cky_path_set(s : NlpparseckyPath, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cky_path_sum(s : NlpparseckyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_path_sum(s : NlpparseckyPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_path_mean(s : NlpparseckyPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_path_mean(s : NlpparseckyPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_path_scale(s : NlpparseckyPath, f : Double) -> NlpparseckyPath {
   let result = nlp_parse_cky_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_parse_cky_path_fill(s : NlpparseckyPath, v : Double) -> NlpparseckyPa
   result
 }
 
-pub fn nlp_parse_cky_path_min(s : NlpparseckyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_path_min(s : NlpparseckyPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_path_max(s : NlpparseckyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_path_max(s : NlpparseckyPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_path_to_string(s : NlpparseckyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_parse_cky_cluster_set(s : NlpparseckyCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_cky_cluster_sum(s : NlpparseckyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_cluster_sum(s : NlpparseckyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_cluster_mean(s : NlpparseckyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_cluster_mean(s : NlpparseckyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_cluster_scale(s : NlpparseckyCluster, f : Double) -> NlpparseckyCluster {
   let result = nlp_parse_cky_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_parse_cky_cluster_fill(s : NlpparseckyCluster, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_cky_cluster_min(s : NlpparseckyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_cluster_min(s : NlpparseckyCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_cluster_max(s : NlpparseckyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_cluster_max(s : NlpparseckyCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_cluster_to_string(s : NlpparseckyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_parse_cky_model_set(s : NlpparseckyModel, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cky_model_sum(s : NlpparseckyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_model_sum(s : NlpparseckyModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_model_mean(s : NlpparseckyModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_model_mean(s : NlpparseckyModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_model_scale(s : NlpparseckyModel, f : Double) -> NlpparseckyModel {
   let result = nlp_parse_cky_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_parse_cky_model_fill(s : NlpparseckyModel, v : Double) -> Nlpparsecky
   result
 }
 
-pub fn nlp_parse_cky_model_min(s : NlpparseckyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_model_min(s : NlpparseckyModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_model_max(s : NlpparseckyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_model_max(s : NlpparseckyModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_model_to_string(s : NlpparseckyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_parse_cky_layer_set(s : NlpparseckyLayer, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cky_layer_sum(s : NlpparseckyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_layer_sum(s : NlpparseckyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_layer_mean(s : NlpparseckyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_layer_mean(s : NlpparseckyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_layer_scale(s : NlpparseckyLayer, f : Double) -> NlpparseckyLayer {
   let result = nlp_parse_cky_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_parse_cky_layer_fill(s : NlpparseckyLayer, v : Double) -> Nlpparsecky
   result
 }
 
-pub fn nlp_parse_cky_layer_min(s : NlpparseckyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_layer_min(s : NlpparseckyLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_layer_max(s : NlpparseckyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_layer_max(s : NlpparseckyLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_layer_to_string(s : NlpparseckyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_parse_cky_buffer_set(s : NlpparseckyBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_cky_buffer_sum(s : NlpparseckyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_buffer_sum(s : NlpparseckyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_buffer_mean(s : NlpparseckyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_buffer_mean(s : NlpparseckyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_buffer_scale(s : NlpparseckyBuffer, f : Double) -> NlpparseckyBuffer {
   let result = nlp_parse_cky_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_parse_cky_buffer_fill(s : NlpparseckyBuffer, v : Double) -> Nlpparsec
   result
 }
 
-pub fn nlp_parse_cky_buffer_min(s : NlpparseckyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_buffer_min(s : NlpparseckyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_buffer_max(s : NlpparseckyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_buffer_max(s : NlpparseckyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_buffer_to_string(s : NlpparseckyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_parse_cky_cursor_set(s : NlpparseckyCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_cky_cursor_sum(s : NlpparseckyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_cursor_sum(s : NlpparseckyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_cursor_mean(s : NlpparseckyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_cursor_mean(s : NlpparseckyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_cursor_scale(s : NlpparseckyCursor, f : Double) -> NlpparseckyCursor {
   let result = nlp_parse_cky_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_parse_cky_cursor_fill(s : NlpparseckyCursor, v : Double) -> Nlpparsec
   result
 }
 
-pub fn nlp_parse_cky_cursor_min(s : NlpparseckyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_cursor_min(s : NlpparseckyCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_cursor_max(s : NlpparseckyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_cursor_max(s : NlpparseckyCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_cursor_to_string(s : NlpparseckyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_parse_cky_view_set(s : NlpparseckyView, i : Int, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_cky_view_sum(s : NlpparseckyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_view_sum(s : NlpparseckyView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_view_mean(s : NlpparseckyView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_view_mean(s : NlpparseckyView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_view_scale(s : NlpparseckyView, f : Double) -> NlpparseckyView {
   let result = nlp_parse_cky_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_parse_cky_view_fill(s : NlpparseckyView, v : Double) -> NlpparseckyVi
   result
 }
 
-pub fn nlp_parse_cky_view_min(s : NlpparseckyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_view_min(s : NlpparseckyView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_view_max(s : NlpparseckyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_view_max(s : NlpparseckyView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_view_to_string(s : NlpparseckyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_parse_cky_range_set(s : NlpparseckyRange, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cky_range_sum(s : NlpparseckyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_range_sum(s : NlpparseckyRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_range_mean(s : NlpparseckyRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_range_mean(s : NlpparseckyRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_range_scale(s : NlpparseckyRange, f : Double) -> NlpparseckyRange {
   let result = nlp_parse_cky_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_parse_cky_range_fill(s : NlpparseckyRange, v : Double) -> Nlpparsecky
   result
 }
 
-pub fn nlp_parse_cky_range_min(s : NlpparseckyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_range_min(s : NlpparseckyRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_range_max(s : NlpparseckyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_range_max(s : NlpparseckyRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_range_to_string(s : NlpparseckyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_parse_cky_slice_set(s : NlpparseckySlice, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_cky_slice_sum(s : NlpparseckySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_cky_slice_sum(s : NlpparseckySlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_cky_slice_mean(s : NlpparseckySlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_cky_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_cky_slice_mean(s : NlpparseckySlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_cky_slice_scale(s : NlpparseckySlice, f : Double) -> NlpparseckySlice {
   let result = nlp_parse_cky_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_parse_cky_slice_fill(s : NlpparseckySlice, v : Double) -> Nlpparsecky
   result
 }
 
-pub fn nlp_parse_cky_slice_min(s : NlpparseckySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_slice_min(s : NlpparseckySlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_cky_slice_max(s : NlpparseckySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_cky_slice_max(s : NlpparseckySlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_cky_slice_to_string(s : NlpparseckySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

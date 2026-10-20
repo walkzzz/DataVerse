@@ -88,11 +88,7 @@ pub fn physics_heat_steady_make_series(vals : Array[Double], name : String) -> P
 
 pub fn physics_heat_steady_series_len(s : PhysicsheatsteadySeries) -> Int { s.vals.length() }
 
-pub fn physics_heat_steady_series_sum(s : PhysicsheatsteadySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_heat_steady_series_sum(s : PhysicsheatsteadySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_heat_steady_series_mean(s : PhysicsheatsteadySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_heat_steady_frame_set(s : PhysicsheatsteadyFrame, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_steady_frame_sum(s : PhysicsheatsteadyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_frame_sum(s : PhysicsheatsteadyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_frame_mean(s : PhysicsheatsteadyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_frame_mean(s : PhysicsheatsteadyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_frame_scale(s : PhysicsheatsteadyFrame, f : Double) -> PhysicsheatsteadyFrame {
   let result = physics_heat_steady_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_heat_steady_frame_fill(s : PhysicsheatsteadyFrame, v : Double) ->
   result
 }
 
-pub fn physics_heat_steady_frame_min(s : PhysicsheatsteadyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_frame_min(s : PhysicsheatsteadyFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_frame_max(s : PhysicsheatsteadyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_frame_max(s : PhysicsheatsteadyFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_frame_to_string(s : PhysicsheatsteadyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_heat_steady_table_set(s : PhysicsheatsteadyTable, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_steady_table_sum(s : PhysicsheatsteadyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_table_sum(s : PhysicsheatsteadyTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_table_mean(s : PhysicsheatsteadyTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_table_mean(s : PhysicsheatsteadyTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_table_scale(s : PhysicsheatsteadyTable, f : Double) -> PhysicsheatsteadyTable {
   let result = physics_heat_steady_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_heat_steady_table_fill(s : PhysicsheatsteadyTable, v : Double) ->
   result
 }
 
-pub fn physics_heat_steady_table_min(s : PhysicsheatsteadyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_table_min(s : PhysicsheatsteadyTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_table_max(s : PhysicsheatsteadyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_table_max(s : PhysicsheatsteadyTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_table_to_string(s : PhysicsheatsteadyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_heat_steady_graphn_set(s : PhysicsheatsteadyGraphN, i : Int, v : 
   result
 }
 
-pub fn physics_heat_steady_graphn_sum(s : PhysicsheatsteadyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_graphn_sum(s : PhysicsheatsteadyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_graphn_mean(s : PhysicsheatsteadyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_graphn_mean(s : PhysicsheatsteadyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_graphn_scale(s : PhysicsheatsteadyGraphN, f : Double) -> PhysicsheatsteadyGraphN {
   let result = physics_heat_steady_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_heat_steady_graphn_fill(s : PhysicsheatsteadyGraphN, v : Double) 
   result
 }
 
-pub fn physics_heat_steady_graphn_min(s : PhysicsheatsteadyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_graphn_min(s : PhysicsheatsteadyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_graphn_max(s : PhysicsheatsteadyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_graphn_max(s : PhysicsheatsteadyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_graphn_to_string(s : PhysicsheatsteadyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_heat_steady_node_set(s : PhysicsheatsteadyNode, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_steady_node_sum(s : PhysicsheatsteadyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_node_sum(s : PhysicsheatsteadyNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_node_mean(s : PhysicsheatsteadyNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_node_mean(s : PhysicsheatsteadyNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_node_scale(s : PhysicsheatsteadyNode, f : Double) -> PhysicsheatsteadyNode {
   let result = physics_heat_steady_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_heat_steady_node_fill(s : PhysicsheatsteadyNode, v : Double) -> P
   result
 }
 
-pub fn physics_heat_steady_node_min(s : PhysicsheatsteadyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_node_min(s : PhysicsheatsteadyNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_node_max(s : PhysicsheatsteadyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_node_max(s : PhysicsheatsteadyNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_node_to_string(s : PhysicsheatsteadyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_heat_steady_edge_set(s : PhysicsheatsteadyEdge, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_steady_edge_sum(s : PhysicsheatsteadyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_edge_sum(s : PhysicsheatsteadyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_edge_mean(s : PhysicsheatsteadyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_edge_mean(s : PhysicsheatsteadyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_edge_scale(s : PhysicsheatsteadyEdge, f : Double) -> PhysicsheatsteadyEdge {
   let result = physics_heat_steady_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_heat_steady_edge_fill(s : PhysicsheatsteadyEdge, v : Double) -> P
   result
 }
 
-pub fn physics_heat_steady_edge_min(s : PhysicsheatsteadyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_edge_min(s : PhysicsheatsteadyEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_edge_max(s : PhysicsheatsteadyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_edge_max(s : PhysicsheatsteadyEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_edge_to_string(s : PhysicsheatsteadyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_heat_steady_path_set(s : PhysicsheatsteadyPath, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_steady_path_sum(s : PhysicsheatsteadyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_path_sum(s : PhysicsheatsteadyPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_path_mean(s : PhysicsheatsteadyPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_path_mean(s : PhysicsheatsteadyPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_path_scale(s : PhysicsheatsteadyPath, f : Double) -> PhysicsheatsteadyPath {
   let result = physics_heat_steady_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_heat_steady_path_fill(s : PhysicsheatsteadyPath, v : Double) -> P
   result
 }
 
-pub fn physics_heat_steady_path_min(s : PhysicsheatsteadyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_path_min(s : PhysicsheatsteadyPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_path_max(s : PhysicsheatsteadyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_path_max(s : PhysicsheatsteadyPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_path_to_string(s : PhysicsheatsteadyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_heat_steady_cluster_set(s : PhysicsheatsteadyCluster, i : Int, v 
   result
 }
 
-pub fn physics_heat_steady_cluster_sum(s : PhysicsheatsteadyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_cluster_sum(s : PhysicsheatsteadyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_cluster_mean(s : PhysicsheatsteadyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_cluster_mean(s : PhysicsheatsteadyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_cluster_scale(s : PhysicsheatsteadyCluster, f : Double) -> PhysicsheatsteadyCluster {
   let result = physics_heat_steady_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_heat_steady_cluster_fill(s : PhysicsheatsteadyCluster, v : Double
   result
 }
 
-pub fn physics_heat_steady_cluster_min(s : PhysicsheatsteadyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_cluster_min(s : PhysicsheatsteadyCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_cluster_max(s : PhysicsheatsteadyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_cluster_max(s : PhysicsheatsteadyCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_cluster_to_string(s : PhysicsheatsteadyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_heat_steady_model_set(s : PhysicsheatsteadyModel, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_steady_model_sum(s : PhysicsheatsteadyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_model_sum(s : PhysicsheatsteadyModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_model_mean(s : PhysicsheatsteadyModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_model_mean(s : PhysicsheatsteadyModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_model_scale(s : PhysicsheatsteadyModel, f : Double) -> PhysicsheatsteadyModel {
   let result = physics_heat_steady_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_heat_steady_model_fill(s : PhysicsheatsteadyModel, v : Double) ->
   result
 }
 
-pub fn physics_heat_steady_model_min(s : PhysicsheatsteadyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_model_min(s : PhysicsheatsteadyModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_model_max(s : PhysicsheatsteadyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_model_max(s : PhysicsheatsteadyModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_model_to_string(s : PhysicsheatsteadyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_heat_steady_layer_set(s : PhysicsheatsteadyLayer, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_steady_layer_sum(s : PhysicsheatsteadyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_layer_sum(s : PhysicsheatsteadyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_layer_mean(s : PhysicsheatsteadyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_layer_mean(s : PhysicsheatsteadyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_layer_scale(s : PhysicsheatsteadyLayer, f : Double) -> PhysicsheatsteadyLayer {
   let result = physics_heat_steady_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_heat_steady_layer_fill(s : PhysicsheatsteadyLayer, v : Double) ->
   result
 }
 
-pub fn physics_heat_steady_layer_min(s : PhysicsheatsteadyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_layer_min(s : PhysicsheatsteadyLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_layer_max(s : PhysicsheatsteadyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_layer_max(s : PhysicsheatsteadyLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_layer_to_string(s : PhysicsheatsteadyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_heat_steady_buffer_set(s : PhysicsheatsteadyBuffer, i : Int, v : 
   result
 }
 
-pub fn physics_heat_steady_buffer_sum(s : PhysicsheatsteadyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_buffer_sum(s : PhysicsheatsteadyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_buffer_mean(s : PhysicsheatsteadyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_buffer_mean(s : PhysicsheatsteadyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_buffer_scale(s : PhysicsheatsteadyBuffer, f : Double) -> PhysicsheatsteadyBuffer {
   let result = physics_heat_steady_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_heat_steady_buffer_fill(s : PhysicsheatsteadyBuffer, v : Double) 
   result
 }
 
-pub fn physics_heat_steady_buffer_min(s : PhysicsheatsteadyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_buffer_min(s : PhysicsheatsteadyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_buffer_max(s : PhysicsheatsteadyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_buffer_max(s : PhysicsheatsteadyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_buffer_to_string(s : PhysicsheatsteadyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_heat_steady_cursor_set(s : PhysicsheatsteadyCursor, i : Int, v : 
   result
 }
 
-pub fn physics_heat_steady_cursor_sum(s : PhysicsheatsteadyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_cursor_sum(s : PhysicsheatsteadyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_cursor_mean(s : PhysicsheatsteadyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_cursor_mean(s : PhysicsheatsteadyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_cursor_scale(s : PhysicsheatsteadyCursor, f : Double) -> PhysicsheatsteadyCursor {
   let result = physics_heat_steady_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_heat_steady_cursor_fill(s : PhysicsheatsteadyCursor, v : Double) 
   result
 }
 
-pub fn physics_heat_steady_cursor_min(s : PhysicsheatsteadyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_cursor_min(s : PhysicsheatsteadyCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_cursor_max(s : PhysicsheatsteadyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_cursor_max(s : PhysicsheatsteadyCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_cursor_to_string(s : PhysicsheatsteadyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_heat_steady_view_set(s : PhysicsheatsteadyView, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_steady_view_sum(s : PhysicsheatsteadyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_view_sum(s : PhysicsheatsteadyView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_view_mean(s : PhysicsheatsteadyView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_view_mean(s : PhysicsheatsteadyView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_view_scale(s : PhysicsheatsteadyView, f : Double) -> PhysicsheatsteadyView {
   let result = physics_heat_steady_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_heat_steady_view_fill(s : PhysicsheatsteadyView, v : Double) -> P
   result
 }
 
-pub fn physics_heat_steady_view_min(s : PhysicsheatsteadyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_view_min(s : PhysicsheatsteadyView) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_view_max(s : PhysicsheatsteadyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_view_max(s : PhysicsheatsteadyView) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_view_to_string(s : PhysicsheatsteadyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_heat_steady_range_set(s : PhysicsheatsteadyRange, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_steady_range_sum(s : PhysicsheatsteadyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_range_sum(s : PhysicsheatsteadyRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_range_mean(s : PhysicsheatsteadyRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_range_mean(s : PhysicsheatsteadyRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_range_scale(s : PhysicsheatsteadyRange, f : Double) -> PhysicsheatsteadyRange {
   let result = physics_heat_steady_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_heat_steady_range_fill(s : PhysicsheatsteadyRange, v : Double) ->
   result
 }
 
-pub fn physics_heat_steady_range_min(s : PhysicsheatsteadyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_range_min(s : PhysicsheatsteadyRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_range_max(s : PhysicsheatsteadyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_range_max(s : PhysicsheatsteadyRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_range_to_string(s : PhysicsheatsteadyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_heat_steady_slice_set(s : PhysicsheatsteadySlice, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_steady_slice_sum(s : PhysicsheatsteadySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_steady_slice_sum(s : PhysicsheatsteadySlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_steady_slice_mean(s : PhysicsheatsteadySlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_steady_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_steady_slice_mean(s : PhysicsheatsteadySlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_steady_slice_scale(s : PhysicsheatsteadySlice, f : Double) -> PhysicsheatsteadySlice {
   let result = physics_heat_steady_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_heat_steady_slice_fill(s : PhysicsheatsteadySlice, v : Double) ->
   result
 }
 
-pub fn physics_heat_steady_slice_min(s : PhysicsheatsteadySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_slice_min(s : PhysicsheatsteadySlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_steady_slice_max(s : PhysicsheatsteadySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_steady_slice_max(s : PhysicsheatsteadySlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_steady_slice_to_string(s : PhysicsheatsteadySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

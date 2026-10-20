@@ -88,11 +88,7 @@ pub fn ds_hash_robin_make_series(vals : Array[Double], name : String) -> Dshashr
 
 pub fn ds_hash_robin_series_len(s : DshashrobinSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_robin_series_sum(s : DshashrobinSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_robin_series_sum(s : DshashrobinSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_robin_series_mean(s : DshashrobinSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_robin_frame_set(s : DshashrobinFrame, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_robin_frame_sum(s : DshashrobinFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_frame_sum(s : DshashrobinFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_frame_mean(s : DshashrobinFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_frame_mean(s : DshashrobinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_frame_scale(s : DshashrobinFrame, f : Double) -> DshashrobinFrame {
   let result = ds_hash_robin_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_robin_frame_fill(s : DshashrobinFrame, v : Double) -> Dshashrobin
   result
 }
 
-pub fn ds_hash_robin_frame_min(s : DshashrobinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_frame_min(s : DshashrobinFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_frame_max(s : DshashrobinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_frame_max(s : DshashrobinFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_frame_to_string(s : DshashrobinFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_robin_table_set(s : DshashrobinTable, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_robin_table_sum(s : DshashrobinTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_table_sum(s : DshashrobinTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_table_mean(s : DshashrobinTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_table_mean(s : DshashrobinTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_table_scale(s : DshashrobinTable, f : Double) -> DshashrobinTable {
   let result = ds_hash_robin_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_robin_table_fill(s : DshashrobinTable, v : Double) -> Dshashrobin
   result
 }
 
-pub fn ds_hash_robin_table_min(s : DshashrobinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_table_min(s : DshashrobinTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_table_max(s : DshashrobinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_table_max(s : DshashrobinTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_table_to_string(s : DshashrobinTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_robin_graphn_set(s : DshashrobinGraphN, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_robin_graphn_sum(s : DshashrobinGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_graphn_sum(s : DshashrobinGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_graphn_mean(s : DshashrobinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_graphn_mean(s : DshashrobinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_graphn_scale(s : DshashrobinGraphN, f : Double) -> DshashrobinGraphN {
   let result = ds_hash_robin_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_robin_graphn_fill(s : DshashrobinGraphN, v : Double) -> Dshashrob
   result
 }
 
-pub fn ds_hash_robin_graphn_min(s : DshashrobinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_graphn_min(s : DshashrobinGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_graphn_max(s : DshashrobinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_graphn_max(s : DshashrobinGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_graphn_to_string(s : DshashrobinGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_robin_node_set(s : DshashrobinNode, i : Int, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_robin_node_sum(s : DshashrobinNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_node_sum(s : DshashrobinNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_node_mean(s : DshashrobinNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_node_mean(s : DshashrobinNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_node_scale(s : DshashrobinNode, f : Double) -> DshashrobinNode {
   let result = ds_hash_robin_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_robin_node_fill(s : DshashrobinNode, v : Double) -> DshashrobinNo
   result
 }
 
-pub fn ds_hash_robin_node_min(s : DshashrobinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_node_min(s : DshashrobinNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_node_max(s : DshashrobinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_node_max(s : DshashrobinNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_node_to_string(s : DshashrobinNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_robin_edge_set(s : DshashrobinEdge, i : Int, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_robin_edge_sum(s : DshashrobinEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_edge_sum(s : DshashrobinEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_edge_mean(s : DshashrobinEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_edge_mean(s : DshashrobinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_edge_scale(s : DshashrobinEdge, f : Double) -> DshashrobinEdge {
   let result = ds_hash_robin_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_robin_edge_fill(s : DshashrobinEdge, v : Double) -> DshashrobinEd
   result
 }
 
-pub fn ds_hash_robin_edge_min(s : DshashrobinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_edge_min(s : DshashrobinEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_edge_max(s : DshashrobinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_edge_max(s : DshashrobinEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_edge_to_string(s : DshashrobinEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_robin_path_set(s : DshashrobinPath, i : Int, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_robin_path_sum(s : DshashrobinPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_path_sum(s : DshashrobinPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_path_mean(s : DshashrobinPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_path_mean(s : DshashrobinPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_path_scale(s : DshashrobinPath, f : Double) -> DshashrobinPath {
   let result = ds_hash_robin_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_robin_path_fill(s : DshashrobinPath, v : Double) -> DshashrobinPa
   result
 }
 
-pub fn ds_hash_robin_path_min(s : DshashrobinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_path_min(s : DshashrobinPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_path_max(s : DshashrobinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_path_max(s : DshashrobinPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_path_to_string(s : DshashrobinPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_robin_cluster_set(s : DshashrobinCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_robin_cluster_sum(s : DshashrobinCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_cluster_sum(s : DshashrobinCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_cluster_mean(s : DshashrobinCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_cluster_mean(s : DshashrobinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_cluster_scale(s : DshashrobinCluster, f : Double) -> DshashrobinCluster {
   let result = ds_hash_robin_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_robin_cluster_fill(s : DshashrobinCluster, v : Double) -> Dshashr
   result
 }
 
-pub fn ds_hash_robin_cluster_min(s : DshashrobinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_cluster_min(s : DshashrobinCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_cluster_max(s : DshashrobinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_cluster_max(s : DshashrobinCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_cluster_to_string(s : DshashrobinCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_robin_model_set(s : DshashrobinModel, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_robin_model_sum(s : DshashrobinModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_model_sum(s : DshashrobinModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_model_mean(s : DshashrobinModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_model_mean(s : DshashrobinModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_model_scale(s : DshashrobinModel, f : Double) -> DshashrobinModel {
   let result = ds_hash_robin_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_robin_model_fill(s : DshashrobinModel, v : Double) -> Dshashrobin
   result
 }
 
-pub fn ds_hash_robin_model_min(s : DshashrobinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_model_min(s : DshashrobinModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_model_max(s : DshashrobinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_model_max(s : DshashrobinModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_model_to_string(s : DshashrobinModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_robin_layer_set(s : DshashrobinLayer, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_robin_layer_sum(s : DshashrobinLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_layer_sum(s : DshashrobinLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_layer_mean(s : DshashrobinLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_layer_mean(s : DshashrobinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_layer_scale(s : DshashrobinLayer, f : Double) -> DshashrobinLayer {
   let result = ds_hash_robin_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_robin_layer_fill(s : DshashrobinLayer, v : Double) -> Dshashrobin
   result
 }
 
-pub fn ds_hash_robin_layer_min(s : DshashrobinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_layer_min(s : DshashrobinLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_layer_max(s : DshashrobinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_layer_max(s : DshashrobinLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_layer_to_string(s : DshashrobinLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_robin_buffer_set(s : DshashrobinBuffer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_robin_buffer_sum(s : DshashrobinBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_buffer_sum(s : DshashrobinBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_buffer_mean(s : DshashrobinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_buffer_mean(s : DshashrobinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_buffer_scale(s : DshashrobinBuffer, f : Double) -> DshashrobinBuffer {
   let result = ds_hash_robin_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_robin_buffer_fill(s : DshashrobinBuffer, v : Double) -> Dshashrob
   result
 }
 
-pub fn ds_hash_robin_buffer_min(s : DshashrobinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_buffer_min(s : DshashrobinBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_buffer_max(s : DshashrobinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_buffer_max(s : DshashrobinBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_buffer_to_string(s : DshashrobinBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_robin_cursor_set(s : DshashrobinCursor, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_robin_cursor_sum(s : DshashrobinCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_cursor_sum(s : DshashrobinCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_cursor_mean(s : DshashrobinCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_cursor_mean(s : DshashrobinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_cursor_scale(s : DshashrobinCursor, f : Double) -> DshashrobinCursor {
   let result = ds_hash_robin_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_robin_cursor_fill(s : DshashrobinCursor, v : Double) -> Dshashrob
   result
 }
 
-pub fn ds_hash_robin_cursor_min(s : DshashrobinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_cursor_min(s : DshashrobinCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_cursor_max(s : DshashrobinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_cursor_max(s : DshashrobinCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_cursor_to_string(s : DshashrobinCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_robin_view_set(s : DshashrobinView, i : Int, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_robin_view_sum(s : DshashrobinView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_view_sum(s : DshashrobinView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_view_mean(s : DshashrobinView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_view_mean(s : DshashrobinView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_view_scale(s : DshashrobinView, f : Double) -> DshashrobinView {
   let result = ds_hash_robin_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_robin_view_fill(s : DshashrobinView, v : Double) -> DshashrobinVi
   result
 }
 
-pub fn ds_hash_robin_view_min(s : DshashrobinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_view_min(s : DshashrobinView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_view_max(s : DshashrobinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_view_max(s : DshashrobinView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_view_to_string(s : DshashrobinView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_robin_range_set(s : DshashrobinRange, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_robin_range_sum(s : DshashrobinRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_range_sum(s : DshashrobinRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_range_mean(s : DshashrobinRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_range_mean(s : DshashrobinRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_range_scale(s : DshashrobinRange, f : Double) -> DshashrobinRange {
   let result = ds_hash_robin_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_robin_range_fill(s : DshashrobinRange, v : Double) -> Dshashrobin
   result
 }
 
-pub fn ds_hash_robin_range_min(s : DshashrobinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_range_min(s : DshashrobinRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_range_max(s : DshashrobinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_range_max(s : DshashrobinRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_range_to_string(s : DshashrobinRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_robin_slice_set(s : DshashrobinSlice, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_robin_slice_sum(s : DshashrobinSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_robin_slice_sum(s : DshashrobinSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_robin_slice_mean(s : DshashrobinSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_robin_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_robin_slice_mean(s : DshashrobinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_robin_slice_scale(s : DshashrobinSlice, f : Double) -> DshashrobinSlice {
   let result = ds_hash_robin_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_robin_slice_fill(s : DshashrobinSlice, v : Double) -> Dshashrobin
   result
 }
 
-pub fn ds_hash_robin_slice_min(s : DshashrobinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_slice_min(s : DshashrobinSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_robin_slice_max(s : DshashrobinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_robin_slice_max(s : DshashrobinSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_robin_slice_to_string(s : DshashrobinSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

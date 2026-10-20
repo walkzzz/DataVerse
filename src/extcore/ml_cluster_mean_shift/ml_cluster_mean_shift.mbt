@@ -88,11 +88,7 @@ pub fn ml_cluster_mean_shift_make_series(vals : Array[Double], name : String) ->
 
 pub fn ml_cluster_mean_shift_series_len(s : MlclustermeanshiftSeries) -> Int { s.vals.length() }
 
-pub fn ml_cluster_mean_shift_series_sum(s : MlclustermeanshiftSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_series_sum(s : MlclustermeanshiftSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_cluster_mean_shift_series_mean(s : MlclustermeanshiftSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_cluster_mean_shift_frame_set(s : MlclustermeanshiftFrame, i : Int, v :
   result
 }
 
-pub fn ml_cluster_mean_shift_frame_sum(s : MlclustermeanshiftFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_frame_sum(s : MlclustermeanshiftFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_frame_mean(s : MlclustermeanshiftFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_frame_mean(s : MlclustermeanshiftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_frame_scale(s : MlclustermeanshiftFrame, f : Double) -> MlclustermeanshiftFrame {
   let result = ml_cluster_mean_shift_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_cluster_mean_shift_frame_fill(s : MlclustermeanshiftFrame, v : Double)
   result
 }
 
-pub fn ml_cluster_mean_shift_frame_min(s : MlclustermeanshiftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_frame_min(s : MlclustermeanshiftFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_frame_max(s : MlclustermeanshiftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_frame_max(s : MlclustermeanshiftFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_frame_to_string(s : MlclustermeanshiftFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_cluster_mean_shift_table_set(s : MlclustermeanshiftTable, i : Int, v :
   result
 }
 
-pub fn ml_cluster_mean_shift_table_sum(s : MlclustermeanshiftTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_table_sum(s : MlclustermeanshiftTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_table_mean(s : MlclustermeanshiftTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_table_mean(s : MlclustermeanshiftTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_table_scale(s : MlclustermeanshiftTable, f : Double) -> MlclustermeanshiftTable {
   let result = ml_cluster_mean_shift_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_cluster_mean_shift_table_fill(s : MlclustermeanshiftTable, v : Double)
   result
 }
 
-pub fn ml_cluster_mean_shift_table_min(s : MlclustermeanshiftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_table_min(s : MlclustermeanshiftTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_table_max(s : MlclustermeanshiftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_table_max(s : MlclustermeanshiftTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_table_to_string(s : MlclustermeanshiftTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_cluster_mean_shift_graphn_set(s : MlclustermeanshiftGraphN, i : Int, v
   result
 }
 
-pub fn ml_cluster_mean_shift_graphn_sum(s : MlclustermeanshiftGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_graphn_sum(s : MlclustermeanshiftGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_graphn_mean(s : MlclustermeanshiftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_graphn_mean(s : MlclustermeanshiftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_graphn_scale(s : MlclustermeanshiftGraphN, f : Double) -> MlclustermeanshiftGraphN {
   let result = ml_cluster_mean_shift_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_cluster_mean_shift_graphn_fill(s : MlclustermeanshiftGraphN, v : Doubl
   result
 }
 
-pub fn ml_cluster_mean_shift_graphn_min(s : MlclustermeanshiftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_graphn_min(s : MlclustermeanshiftGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_graphn_max(s : MlclustermeanshiftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_graphn_max(s : MlclustermeanshiftGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_graphn_to_string(s : MlclustermeanshiftGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_cluster_mean_shift_node_set(s : MlclustermeanshiftNode, i : Int, v : D
   result
 }
 
-pub fn ml_cluster_mean_shift_node_sum(s : MlclustermeanshiftNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_node_sum(s : MlclustermeanshiftNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_node_mean(s : MlclustermeanshiftNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_node_mean(s : MlclustermeanshiftNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_node_scale(s : MlclustermeanshiftNode, f : Double) -> MlclustermeanshiftNode {
   let result = ml_cluster_mean_shift_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_cluster_mean_shift_node_fill(s : MlclustermeanshiftNode, v : Double) -
   result
 }
 
-pub fn ml_cluster_mean_shift_node_min(s : MlclustermeanshiftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_node_min(s : MlclustermeanshiftNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_node_max(s : MlclustermeanshiftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_node_max(s : MlclustermeanshiftNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_node_to_string(s : MlclustermeanshiftNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_cluster_mean_shift_edge_set(s : MlclustermeanshiftEdge, i : Int, v : D
   result
 }
 
-pub fn ml_cluster_mean_shift_edge_sum(s : MlclustermeanshiftEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_edge_sum(s : MlclustermeanshiftEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_edge_mean(s : MlclustermeanshiftEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_edge_mean(s : MlclustermeanshiftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_edge_scale(s : MlclustermeanshiftEdge, f : Double) -> MlclustermeanshiftEdge {
   let result = ml_cluster_mean_shift_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_cluster_mean_shift_edge_fill(s : MlclustermeanshiftEdge, v : Double) -
   result
 }
 
-pub fn ml_cluster_mean_shift_edge_min(s : MlclustermeanshiftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_edge_min(s : MlclustermeanshiftEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_edge_max(s : MlclustermeanshiftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_edge_max(s : MlclustermeanshiftEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_edge_to_string(s : MlclustermeanshiftEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_cluster_mean_shift_path_set(s : MlclustermeanshiftPath, i : Int, v : D
   result
 }
 
-pub fn ml_cluster_mean_shift_path_sum(s : MlclustermeanshiftPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_path_sum(s : MlclustermeanshiftPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_path_mean(s : MlclustermeanshiftPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_path_mean(s : MlclustermeanshiftPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_path_scale(s : MlclustermeanshiftPath, f : Double) -> MlclustermeanshiftPath {
   let result = ml_cluster_mean_shift_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_cluster_mean_shift_path_fill(s : MlclustermeanshiftPath, v : Double) -
   result
 }
 
-pub fn ml_cluster_mean_shift_path_min(s : MlclustermeanshiftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_path_min(s : MlclustermeanshiftPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_path_max(s : MlclustermeanshiftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_path_max(s : MlclustermeanshiftPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_path_to_string(s : MlclustermeanshiftPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_cluster_mean_shift_cluster_set(s : MlclustermeanshiftCluster, i : Int,
   result
 }
 
-pub fn ml_cluster_mean_shift_cluster_sum(s : MlclustermeanshiftCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_cluster_sum(s : MlclustermeanshiftCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_cluster_mean(s : MlclustermeanshiftCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_cluster_mean(s : MlclustermeanshiftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_cluster_scale(s : MlclustermeanshiftCluster, f : Double) -> MlclustermeanshiftCluster {
   let result = ml_cluster_mean_shift_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_cluster_mean_shift_cluster_fill(s : MlclustermeanshiftCluster, v : Dou
   result
 }
 
-pub fn ml_cluster_mean_shift_cluster_min(s : MlclustermeanshiftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_cluster_min(s : MlclustermeanshiftCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_cluster_max(s : MlclustermeanshiftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_cluster_max(s : MlclustermeanshiftCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_cluster_to_string(s : MlclustermeanshiftCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_cluster_mean_shift_model_set(s : MlclustermeanshiftModel, i : Int, v :
   result
 }
 
-pub fn ml_cluster_mean_shift_model_sum(s : MlclustermeanshiftModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_model_sum(s : MlclustermeanshiftModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_model_mean(s : MlclustermeanshiftModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_model_mean(s : MlclustermeanshiftModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_model_scale(s : MlclustermeanshiftModel, f : Double) -> MlclustermeanshiftModel {
   let result = ml_cluster_mean_shift_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_cluster_mean_shift_model_fill(s : MlclustermeanshiftModel, v : Double)
   result
 }
 
-pub fn ml_cluster_mean_shift_model_min(s : MlclustermeanshiftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_model_min(s : MlclustermeanshiftModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_model_max(s : MlclustermeanshiftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_model_max(s : MlclustermeanshiftModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_model_to_string(s : MlclustermeanshiftModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_cluster_mean_shift_layer_set(s : MlclustermeanshiftLayer, i : Int, v :
   result
 }
 
-pub fn ml_cluster_mean_shift_layer_sum(s : MlclustermeanshiftLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_layer_sum(s : MlclustermeanshiftLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_layer_mean(s : MlclustermeanshiftLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_layer_mean(s : MlclustermeanshiftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_layer_scale(s : MlclustermeanshiftLayer, f : Double) -> MlclustermeanshiftLayer {
   let result = ml_cluster_mean_shift_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_cluster_mean_shift_layer_fill(s : MlclustermeanshiftLayer, v : Double)
   result
 }
 
-pub fn ml_cluster_mean_shift_layer_min(s : MlclustermeanshiftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_layer_min(s : MlclustermeanshiftLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_layer_max(s : MlclustermeanshiftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_layer_max(s : MlclustermeanshiftLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_layer_to_string(s : MlclustermeanshiftLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_cluster_mean_shift_buffer_set(s : MlclustermeanshiftBuffer, i : Int, v
   result
 }
 
-pub fn ml_cluster_mean_shift_buffer_sum(s : MlclustermeanshiftBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_buffer_sum(s : MlclustermeanshiftBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_buffer_mean(s : MlclustermeanshiftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_buffer_mean(s : MlclustermeanshiftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_buffer_scale(s : MlclustermeanshiftBuffer, f : Double) -> MlclustermeanshiftBuffer {
   let result = ml_cluster_mean_shift_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_cluster_mean_shift_buffer_fill(s : MlclustermeanshiftBuffer, v : Doubl
   result
 }
 
-pub fn ml_cluster_mean_shift_buffer_min(s : MlclustermeanshiftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_buffer_min(s : MlclustermeanshiftBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_buffer_max(s : MlclustermeanshiftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_buffer_max(s : MlclustermeanshiftBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_buffer_to_string(s : MlclustermeanshiftBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_cluster_mean_shift_cursor_set(s : MlclustermeanshiftCursor, i : Int, v
   result
 }
 
-pub fn ml_cluster_mean_shift_cursor_sum(s : MlclustermeanshiftCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_cursor_sum(s : MlclustermeanshiftCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_cursor_mean(s : MlclustermeanshiftCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_cursor_mean(s : MlclustermeanshiftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_cursor_scale(s : MlclustermeanshiftCursor, f : Double) -> MlclustermeanshiftCursor {
   let result = ml_cluster_mean_shift_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_cluster_mean_shift_cursor_fill(s : MlclustermeanshiftCursor, v : Doubl
   result
 }
 
-pub fn ml_cluster_mean_shift_cursor_min(s : MlclustermeanshiftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_cursor_min(s : MlclustermeanshiftCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_cursor_max(s : MlclustermeanshiftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_cursor_max(s : MlclustermeanshiftCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_cursor_to_string(s : MlclustermeanshiftCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_cluster_mean_shift_view_set(s : MlclustermeanshiftView, i : Int, v : D
   result
 }
 
-pub fn ml_cluster_mean_shift_view_sum(s : MlclustermeanshiftView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_view_sum(s : MlclustermeanshiftView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_view_mean(s : MlclustermeanshiftView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_view_mean(s : MlclustermeanshiftView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_view_scale(s : MlclustermeanshiftView, f : Double) -> MlclustermeanshiftView {
   let result = ml_cluster_mean_shift_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_cluster_mean_shift_view_fill(s : MlclustermeanshiftView, v : Double) -
   result
 }
 
-pub fn ml_cluster_mean_shift_view_min(s : MlclustermeanshiftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_view_min(s : MlclustermeanshiftView) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_view_max(s : MlclustermeanshiftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_view_max(s : MlclustermeanshiftView) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_view_to_string(s : MlclustermeanshiftView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_cluster_mean_shift_range_set(s : MlclustermeanshiftRange, i : Int, v :
   result
 }
 
-pub fn ml_cluster_mean_shift_range_sum(s : MlclustermeanshiftRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_range_sum(s : MlclustermeanshiftRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_range_mean(s : MlclustermeanshiftRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_range_mean(s : MlclustermeanshiftRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_range_scale(s : MlclustermeanshiftRange, f : Double) -> MlclustermeanshiftRange {
   let result = ml_cluster_mean_shift_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_cluster_mean_shift_range_fill(s : MlclustermeanshiftRange, v : Double)
   result
 }
 
-pub fn ml_cluster_mean_shift_range_min(s : MlclustermeanshiftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_range_min(s : MlclustermeanshiftRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_range_max(s : MlclustermeanshiftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_range_max(s : MlclustermeanshiftRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_range_to_string(s : MlclustermeanshiftRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_cluster_mean_shift_slice_set(s : MlclustermeanshiftSlice, i : Int, v :
   result
 }
 
-pub fn ml_cluster_mean_shift_slice_sum(s : MlclustermeanshiftSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_mean_shift_slice_sum(s : MlclustermeanshiftSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_mean_shift_slice_mean(s : MlclustermeanshiftSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_mean_shift_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_mean_shift_slice_mean(s : MlclustermeanshiftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_mean_shift_slice_scale(s : MlclustermeanshiftSlice, f : Double) -> MlclustermeanshiftSlice {
   let result = ml_cluster_mean_shift_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_cluster_mean_shift_slice_fill(s : MlclustermeanshiftSlice, v : Double)
   result
 }
 
-pub fn ml_cluster_mean_shift_slice_min(s : MlclustermeanshiftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_slice_min(s : MlclustermeanshiftSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_mean_shift_slice_max(s : MlclustermeanshiftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_mean_shift_slice_max(s : MlclustermeanshiftSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_mean_shift_slice_to_string(s : MlclustermeanshiftSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn timeseries_decomp_classical_make_series(vals : Array[Double], name : Stri
 
 pub fn timeseries_decomp_classical_series_len(s : TimeseriesdecompclassicalSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_decomp_classical_series_sum(s : TimeseriesdecompclassicalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_decomp_classical_series_sum(s : TimeseriesdecompclassicalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_decomp_classical_series_mean(s : TimeseriesdecompclassicalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_decomp_classical_frame_set(s : TimeseriesdecompclassicalFrame,
   result
 }
 
-pub fn timeseries_decomp_classical_frame_sum(s : TimeseriesdecompclassicalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_frame_sum(s : TimeseriesdecompclassicalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_frame_mean(s : TimeseriesdecompclassicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_frame_mean(s : TimeseriesdecompclassicalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_frame_scale(s : TimeseriesdecompclassicalFrame, f : Double) -> TimeseriesdecompclassicalFrame {
   let result = timeseries_decomp_classical_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_decomp_classical_frame_fill(s : TimeseriesdecompclassicalFrame
   result
 }
 
-pub fn timeseries_decomp_classical_frame_min(s : TimeseriesdecompclassicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_frame_min(s : TimeseriesdecompclassicalFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_frame_max(s : TimeseriesdecompclassicalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_frame_max(s : TimeseriesdecompclassicalFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_frame_to_string(s : TimeseriesdecompclassicalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_decomp_classical_table_set(s : TimeseriesdecompclassicalTable,
   result
 }
 
-pub fn timeseries_decomp_classical_table_sum(s : TimeseriesdecompclassicalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_table_sum(s : TimeseriesdecompclassicalTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_table_mean(s : TimeseriesdecompclassicalTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_table_mean(s : TimeseriesdecompclassicalTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_table_scale(s : TimeseriesdecompclassicalTable, f : Double) -> TimeseriesdecompclassicalTable {
   let result = timeseries_decomp_classical_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_decomp_classical_table_fill(s : TimeseriesdecompclassicalTable
   result
 }
 
-pub fn timeseries_decomp_classical_table_min(s : TimeseriesdecompclassicalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_table_min(s : TimeseriesdecompclassicalTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_table_max(s : TimeseriesdecompclassicalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_table_max(s : TimeseriesdecompclassicalTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_table_to_string(s : TimeseriesdecompclassicalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_decomp_classical_graphn_set(s : TimeseriesdecompclassicalGraph
   result
 }
 
-pub fn timeseries_decomp_classical_graphn_sum(s : TimeseriesdecompclassicalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_graphn_sum(s : TimeseriesdecompclassicalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_graphn_mean(s : TimeseriesdecompclassicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_graphn_mean(s : TimeseriesdecompclassicalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_graphn_scale(s : TimeseriesdecompclassicalGraphN, f : Double) -> TimeseriesdecompclassicalGraphN {
   let result = timeseries_decomp_classical_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_decomp_classical_graphn_fill(s : TimeseriesdecompclassicalGrap
   result
 }
 
-pub fn timeseries_decomp_classical_graphn_min(s : TimeseriesdecompclassicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_graphn_min(s : TimeseriesdecompclassicalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_graphn_max(s : TimeseriesdecompclassicalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_graphn_max(s : TimeseriesdecompclassicalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_graphn_to_string(s : TimeseriesdecompclassicalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_decomp_classical_node_set(s : TimeseriesdecompclassicalNode, i
   result
 }
 
-pub fn timeseries_decomp_classical_node_sum(s : TimeseriesdecompclassicalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_node_sum(s : TimeseriesdecompclassicalNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_node_mean(s : TimeseriesdecompclassicalNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_node_mean(s : TimeseriesdecompclassicalNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_node_scale(s : TimeseriesdecompclassicalNode, f : Double) -> TimeseriesdecompclassicalNode {
   let result = timeseries_decomp_classical_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_decomp_classical_node_fill(s : TimeseriesdecompclassicalNode, 
   result
 }
 
-pub fn timeseries_decomp_classical_node_min(s : TimeseriesdecompclassicalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_node_min(s : TimeseriesdecompclassicalNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_node_max(s : TimeseriesdecompclassicalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_node_max(s : TimeseriesdecompclassicalNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_node_to_string(s : TimeseriesdecompclassicalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_decomp_classical_edge_set(s : TimeseriesdecompclassicalEdge, i
   result
 }
 
-pub fn timeseries_decomp_classical_edge_sum(s : TimeseriesdecompclassicalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_edge_sum(s : TimeseriesdecompclassicalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_edge_mean(s : TimeseriesdecompclassicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_edge_mean(s : TimeseriesdecompclassicalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_edge_scale(s : TimeseriesdecompclassicalEdge, f : Double) -> TimeseriesdecompclassicalEdge {
   let result = timeseries_decomp_classical_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_decomp_classical_edge_fill(s : TimeseriesdecompclassicalEdge, 
   result
 }
 
-pub fn timeseries_decomp_classical_edge_min(s : TimeseriesdecompclassicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_edge_min(s : TimeseriesdecompclassicalEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_edge_max(s : TimeseriesdecompclassicalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_edge_max(s : TimeseriesdecompclassicalEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_edge_to_string(s : TimeseriesdecompclassicalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_decomp_classical_path_set(s : TimeseriesdecompclassicalPath, i
   result
 }
 
-pub fn timeseries_decomp_classical_path_sum(s : TimeseriesdecompclassicalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_path_sum(s : TimeseriesdecompclassicalPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_path_mean(s : TimeseriesdecompclassicalPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_path_mean(s : TimeseriesdecompclassicalPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_path_scale(s : TimeseriesdecompclassicalPath, f : Double) -> TimeseriesdecompclassicalPath {
   let result = timeseries_decomp_classical_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_decomp_classical_path_fill(s : TimeseriesdecompclassicalPath, 
   result
 }
 
-pub fn timeseries_decomp_classical_path_min(s : TimeseriesdecompclassicalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_path_min(s : TimeseriesdecompclassicalPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_path_max(s : TimeseriesdecompclassicalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_path_max(s : TimeseriesdecompclassicalPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_path_to_string(s : TimeseriesdecompclassicalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_decomp_classical_cluster_set(s : TimeseriesdecompclassicalClus
   result
 }
 
-pub fn timeseries_decomp_classical_cluster_sum(s : TimeseriesdecompclassicalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_cluster_sum(s : TimeseriesdecompclassicalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_cluster_mean(s : TimeseriesdecompclassicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_cluster_mean(s : TimeseriesdecompclassicalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_cluster_scale(s : TimeseriesdecompclassicalCluster, f : Double) -> TimeseriesdecompclassicalCluster {
   let result = timeseries_decomp_classical_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_decomp_classical_cluster_fill(s : TimeseriesdecompclassicalClu
   result
 }
 
-pub fn timeseries_decomp_classical_cluster_min(s : TimeseriesdecompclassicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_cluster_min(s : TimeseriesdecompclassicalCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_cluster_max(s : TimeseriesdecompclassicalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_cluster_max(s : TimeseriesdecompclassicalCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_cluster_to_string(s : TimeseriesdecompclassicalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_decomp_classical_model_set(s : TimeseriesdecompclassicalModel,
   result
 }
 
-pub fn timeseries_decomp_classical_model_sum(s : TimeseriesdecompclassicalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_model_sum(s : TimeseriesdecompclassicalModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_model_mean(s : TimeseriesdecompclassicalModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_model_mean(s : TimeseriesdecompclassicalModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_model_scale(s : TimeseriesdecompclassicalModel, f : Double) -> TimeseriesdecompclassicalModel {
   let result = timeseries_decomp_classical_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_decomp_classical_model_fill(s : TimeseriesdecompclassicalModel
   result
 }
 
-pub fn timeseries_decomp_classical_model_min(s : TimeseriesdecompclassicalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_model_min(s : TimeseriesdecompclassicalModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_model_max(s : TimeseriesdecompclassicalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_model_max(s : TimeseriesdecompclassicalModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_model_to_string(s : TimeseriesdecompclassicalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_decomp_classical_layer_set(s : TimeseriesdecompclassicalLayer,
   result
 }
 
-pub fn timeseries_decomp_classical_layer_sum(s : TimeseriesdecompclassicalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_layer_sum(s : TimeseriesdecompclassicalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_layer_mean(s : TimeseriesdecompclassicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_layer_mean(s : TimeseriesdecompclassicalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_layer_scale(s : TimeseriesdecompclassicalLayer, f : Double) -> TimeseriesdecompclassicalLayer {
   let result = timeseries_decomp_classical_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_decomp_classical_layer_fill(s : TimeseriesdecompclassicalLayer
   result
 }
 
-pub fn timeseries_decomp_classical_layer_min(s : TimeseriesdecompclassicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_layer_min(s : TimeseriesdecompclassicalLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_layer_max(s : TimeseriesdecompclassicalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_layer_max(s : TimeseriesdecompclassicalLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_layer_to_string(s : TimeseriesdecompclassicalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_decomp_classical_buffer_set(s : TimeseriesdecompclassicalBuffe
   result
 }
 
-pub fn timeseries_decomp_classical_buffer_sum(s : TimeseriesdecompclassicalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_buffer_sum(s : TimeseriesdecompclassicalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_buffer_mean(s : TimeseriesdecompclassicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_buffer_mean(s : TimeseriesdecompclassicalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_buffer_scale(s : TimeseriesdecompclassicalBuffer, f : Double) -> TimeseriesdecompclassicalBuffer {
   let result = timeseries_decomp_classical_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_decomp_classical_buffer_fill(s : TimeseriesdecompclassicalBuff
   result
 }
 
-pub fn timeseries_decomp_classical_buffer_min(s : TimeseriesdecompclassicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_buffer_min(s : TimeseriesdecompclassicalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_buffer_max(s : TimeseriesdecompclassicalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_buffer_max(s : TimeseriesdecompclassicalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_buffer_to_string(s : TimeseriesdecompclassicalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_decomp_classical_cursor_set(s : TimeseriesdecompclassicalCurso
   result
 }
 
-pub fn timeseries_decomp_classical_cursor_sum(s : TimeseriesdecompclassicalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_cursor_sum(s : TimeseriesdecompclassicalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_cursor_mean(s : TimeseriesdecompclassicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_cursor_mean(s : TimeseriesdecompclassicalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_cursor_scale(s : TimeseriesdecompclassicalCursor, f : Double) -> TimeseriesdecompclassicalCursor {
   let result = timeseries_decomp_classical_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_decomp_classical_cursor_fill(s : TimeseriesdecompclassicalCurs
   result
 }
 
-pub fn timeseries_decomp_classical_cursor_min(s : TimeseriesdecompclassicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_cursor_min(s : TimeseriesdecompclassicalCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_cursor_max(s : TimeseriesdecompclassicalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_cursor_max(s : TimeseriesdecompclassicalCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_cursor_to_string(s : TimeseriesdecompclassicalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_decomp_classical_view_set(s : TimeseriesdecompclassicalView, i
   result
 }
 
-pub fn timeseries_decomp_classical_view_sum(s : TimeseriesdecompclassicalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_view_sum(s : TimeseriesdecompclassicalView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_view_mean(s : TimeseriesdecompclassicalView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_view_mean(s : TimeseriesdecompclassicalView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_view_scale(s : TimeseriesdecompclassicalView, f : Double) -> TimeseriesdecompclassicalView {
   let result = timeseries_decomp_classical_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_decomp_classical_view_fill(s : TimeseriesdecompclassicalView, 
   result
 }
 
-pub fn timeseries_decomp_classical_view_min(s : TimeseriesdecompclassicalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_view_min(s : TimeseriesdecompclassicalView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_view_max(s : TimeseriesdecompclassicalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_view_max(s : TimeseriesdecompclassicalView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_view_to_string(s : TimeseriesdecompclassicalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_decomp_classical_range_set(s : TimeseriesdecompclassicalRange,
   result
 }
 
-pub fn timeseries_decomp_classical_range_sum(s : TimeseriesdecompclassicalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_range_sum(s : TimeseriesdecompclassicalRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_range_mean(s : TimeseriesdecompclassicalRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_range_mean(s : TimeseriesdecompclassicalRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_range_scale(s : TimeseriesdecompclassicalRange, f : Double) -> TimeseriesdecompclassicalRange {
   let result = timeseries_decomp_classical_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_decomp_classical_range_fill(s : TimeseriesdecompclassicalRange
   result
 }
 
-pub fn timeseries_decomp_classical_range_min(s : TimeseriesdecompclassicalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_range_min(s : TimeseriesdecompclassicalRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_range_max(s : TimeseriesdecompclassicalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_range_max(s : TimeseriesdecompclassicalRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_range_to_string(s : TimeseriesdecompclassicalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_decomp_classical_slice_set(s : TimeseriesdecompclassicalSlice,
   result
 }
 
-pub fn timeseries_decomp_classical_slice_sum(s : TimeseriesdecompclassicalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_classical_slice_sum(s : TimeseriesdecompclassicalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_classical_slice_mean(s : TimeseriesdecompclassicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_classical_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_classical_slice_mean(s : TimeseriesdecompclassicalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_classical_slice_scale(s : TimeseriesdecompclassicalSlice, f : Double) -> TimeseriesdecompclassicalSlice {
   let result = timeseries_decomp_classical_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_decomp_classical_slice_fill(s : TimeseriesdecompclassicalSlice
   result
 }
 
-pub fn timeseries_decomp_classical_slice_min(s : TimeseriesdecompclassicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_slice_min(s : TimeseriesdecompclassicalSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_classical_slice_max(s : TimeseriesdecompclassicalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_classical_slice_max(s : TimeseriesdecompclassicalSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_classical_slice_to_string(s : TimeseriesdecompclassicalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn finance_pricing_basket_make_series(vals : Array[Double], name : String) -
 
 pub fn finance_pricing_basket_series_len(s : FinancepricingbasketSeries) -> Int { s.vals.length() }
 
-pub fn finance_pricing_basket_series_sum(s : FinancepricingbasketSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_pricing_basket_series_sum(s : FinancepricingbasketSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_pricing_basket_series_mean(s : FinancepricingbasketSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_pricing_basket_frame_set(s : FinancepricingbasketFrame, i : Int, 
   result
 }
 
-pub fn finance_pricing_basket_frame_sum(s : FinancepricingbasketFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_frame_sum(s : FinancepricingbasketFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_frame_mean(s : FinancepricingbasketFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_frame_mean(s : FinancepricingbasketFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_frame_scale(s : FinancepricingbasketFrame, f : Double) -> FinancepricingbasketFrame {
   let result = finance_pricing_basket_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_pricing_basket_frame_fill(s : FinancepricingbasketFrame, v : Doub
   result
 }
 
-pub fn finance_pricing_basket_frame_min(s : FinancepricingbasketFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_frame_min(s : FinancepricingbasketFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_frame_max(s : FinancepricingbasketFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_frame_max(s : FinancepricingbasketFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_frame_to_string(s : FinancepricingbasketFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_pricing_basket_table_set(s : FinancepricingbasketTable, i : Int, 
   result
 }
 
-pub fn finance_pricing_basket_table_sum(s : FinancepricingbasketTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_table_sum(s : FinancepricingbasketTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_table_mean(s : FinancepricingbasketTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_table_mean(s : FinancepricingbasketTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_table_scale(s : FinancepricingbasketTable, f : Double) -> FinancepricingbasketTable {
   let result = finance_pricing_basket_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_pricing_basket_table_fill(s : FinancepricingbasketTable, v : Doub
   result
 }
 
-pub fn finance_pricing_basket_table_min(s : FinancepricingbasketTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_table_min(s : FinancepricingbasketTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_table_max(s : FinancepricingbasketTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_table_max(s : FinancepricingbasketTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_table_to_string(s : FinancepricingbasketTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_pricing_basket_graphn_set(s : FinancepricingbasketGraphN, i : Int
   result
 }
 
-pub fn finance_pricing_basket_graphn_sum(s : FinancepricingbasketGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_graphn_sum(s : FinancepricingbasketGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_graphn_mean(s : FinancepricingbasketGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_graphn_mean(s : FinancepricingbasketGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_graphn_scale(s : FinancepricingbasketGraphN, f : Double) -> FinancepricingbasketGraphN {
   let result = finance_pricing_basket_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_pricing_basket_graphn_fill(s : FinancepricingbasketGraphN, v : Do
   result
 }
 
-pub fn finance_pricing_basket_graphn_min(s : FinancepricingbasketGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_graphn_min(s : FinancepricingbasketGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_graphn_max(s : FinancepricingbasketGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_graphn_max(s : FinancepricingbasketGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_graphn_to_string(s : FinancepricingbasketGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_pricing_basket_node_set(s : FinancepricingbasketNode, i : Int, v 
   result
 }
 
-pub fn finance_pricing_basket_node_sum(s : FinancepricingbasketNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_node_sum(s : FinancepricingbasketNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_node_mean(s : FinancepricingbasketNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_node_mean(s : FinancepricingbasketNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_node_scale(s : FinancepricingbasketNode, f : Double) -> FinancepricingbasketNode {
   let result = finance_pricing_basket_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_pricing_basket_node_fill(s : FinancepricingbasketNode, v : Double
   result
 }
 
-pub fn finance_pricing_basket_node_min(s : FinancepricingbasketNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_node_min(s : FinancepricingbasketNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_node_max(s : FinancepricingbasketNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_node_max(s : FinancepricingbasketNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_node_to_string(s : FinancepricingbasketNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_pricing_basket_edge_set(s : FinancepricingbasketEdge, i : Int, v 
   result
 }
 
-pub fn finance_pricing_basket_edge_sum(s : FinancepricingbasketEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_edge_sum(s : FinancepricingbasketEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_edge_mean(s : FinancepricingbasketEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_edge_mean(s : FinancepricingbasketEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_edge_scale(s : FinancepricingbasketEdge, f : Double) -> FinancepricingbasketEdge {
   let result = finance_pricing_basket_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_pricing_basket_edge_fill(s : FinancepricingbasketEdge, v : Double
   result
 }
 
-pub fn finance_pricing_basket_edge_min(s : FinancepricingbasketEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_edge_min(s : FinancepricingbasketEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_edge_max(s : FinancepricingbasketEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_edge_max(s : FinancepricingbasketEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_edge_to_string(s : FinancepricingbasketEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_pricing_basket_path_set(s : FinancepricingbasketPath, i : Int, v 
   result
 }
 
-pub fn finance_pricing_basket_path_sum(s : FinancepricingbasketPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_path_sum(s : FinancepricingbasketPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_path_mean(s : FinancepricingbasketPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_path_mean(s : FinancepricingbasketPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_path_scale(s : FinancepricingbasketPath, f : Double) -> FinancepricingbasketPath {
   let result = finance_pricing_basket_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_pricing_basket_path_fill(s : FinancepricingbasketPath, v : Double
   result
 }
 
-pub fn finance_pricing_basket_path_min(s : FinancepricingbasketPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_path_min(s : FinancepricingbasketPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_path_max(s : FinancepricingbasketPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_path_max(s : FinancepricingbasketPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_path_to_string(s : FinancepricingbasketPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_pricing_basket_cluster_set(s : FinancepricingbasketCluster, i : I
   result
 }
 
-pub fn finance_pricing_basket_cluster_sum(s : FinancepricingbasketCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_cluster_sum(s : FinancepricingbasketCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_cluster_mean(s : FinancepricingbasketCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_cluster_mean(s : FinancepricingbasketCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_cluster_scale(s : FinancepricingbasketCluster, f : Double) -> FinancepricingbasketCluster {
   let result = finance_pricing_basket_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_pricing_basket_cluster_fill(s : FinancepricingbasketCluster, v : 
   result
 }
 
-pub fn finance_pricing_basket_cluster_min(s : FinancepricingbasketCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_cluster_min(s : FinancepricingbasketCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_cluster_max(s : FinancepricingbasketCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_cluster_max(s : FinancepricingbasketCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_cluster_to_string(s : FinancepricingbasketCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_pricing_basket_model_set(s : FinancepricingbasketModel, i : Int, 
   result
 }
 
-pub fn finance_pricing_basket_model_sum(s : FinancepricingbasketModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_model_sum(s : FinancepricingbasketModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_model_mean(s : FinancepricingbasketModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_model_mean(s : FinancepricingbasketModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_model_scale(s : FinancepricingbasketModel, f : Double) -> FinancepricingbasketModel {
   let result = finance_pricing_basket_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_pricing_basket_model_fill(s : FinancepricingbasketModel, v : Doub
   result
 }
 
-pub fn finance_pricing_basket_model_min(s : FinancepricingbasketModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_model_min(s : FinancepricingbasketModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_model_max(s : FinancepricingbasketModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_model_max(s : FinancepricingbasketModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_model_to_string(s : FinancepricingbasketModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_pricing_basket_layer_set(s : FinancepricingbasketLayer, i : Int, 
   result
 }
 
-pub fn finance_pricing_basket_layer_sum(s : FinancepricingbasketLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_layer_sum(s : FinancepricingbasketLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_layer_mean(s : FinancepricingbasketLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_layer_mean(s : FinancepricingbasketLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_layer_scale(s : FinancepricingbasketLayer, f : Double) -> FinancepricingbasketLayer {
   let result = finance_pricing_basket_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_pricing_basket_layer_fill(s : FinancepricingbasketLayer, v : Doub
   result
 }
 
-pub fn finance_pricing_basket_layer_min(s : FinancepricingbasketLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_layer_min(s : FinancepricingbasketLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_layer_max(s : FinancepricingbasketLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_layer_max(s : FinancepricingbasketLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_layer_to_string(s : FinancepricingbasketLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_pricing_basket_buffer_set(s : FinancepricingbasketBuffer, i : Int
   result
 }
 
-pub fn finance_pricing_basket_buffer_sum(s : FinancepricingbasketBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_buffer_sum(s : FinancepricingbasketBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_buffer_mean(s : FinancepricingbasketBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_buffer_mean(s : FinancepricingbasketBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_buffer_scale(s : FinancepricingbasketBuffer, f : Double) -> FinancepricingbasketBuffer {
   let result = finance_pricing_basket_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_pricing_basket_buffer_fill(s : FinancepricingbasketBuffer, v : Do
   result
 }
 
-pub fn finance_pricing_basket_buffer_min(s : FinancepricingbasketBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_buffer_min(s : FinancepricingbasketBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_buffer_max(s : FinancepricingbasketBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_buffer_max(s : FinancepricingbasketBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_buffer_to_string(s : FinancepricingbasketBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_pricing_basket_cursor_set(s : FinancepricingbasketCursor, i : Int
   result
 }
 
-pub fn finance_pricing_basket_cursor_sum(s : FinancepricingbasketCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_cursor_sum(s : FinancepricingbasketCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_cursor_mean(s : FinancepricingbasketCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_cursor_mean(s : FinancepricingbasketCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_cursor_scale(s : FinancepricingbasketCursor, f : Double) -> FinancepricingbasketCursor {
   let result = finance_pricing_basket_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_pricing_basket_cursor_fill(s : FinancepricingbasketCursor, v : Do
   result
 }
 
-pub fn finance_pricing_basket_cursor_min(s : FinancepricingbasketCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_cursor_min(s : FinancepricingbasketCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_cursor_max(s : FinancepricingbasketCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_cursor_max(s : FinancepricingbasketCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_cursor_to_string(s : FinancepricingbasketCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_pricing_basket_view_set(s : FinancepricingbasketView, i : Int, v 
   result
 }
 
-pub fn finance_pricing_basket_view_sum(s : FinancepricingbasketView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_view_sum(s : FinancepricingbasketView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_view_mean(s : FinancepricingbasketView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_view_mean(s : FinancepricingbasketView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_view_scale(s : FinancepricingbasketView, f : Double) -> FinancepricingbasketView {
   let result = finance_pricing_basket_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_pricing_basket_view_fill(s : FinancepricingbasketView, v : Double
   result
 }
 
-pub fn finance_pricing_basket_view_min(s : FinancepricingbasketView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_view_min(s : FinancepricingbasketView) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_view_max(s : FinancepricingbasketView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_view_max(s : FinancepricingbasketView) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_view_to_string(s : FinancepricingbasketView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_pricing_basket_range_set(s : FinancepricingbasketRange, i : Int, 
   result
 }
 
-pub fn finance_pricing_basket_range_sum(s : FinancepricingbasketRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_range_sum(s : FinancepricingbasketRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_range_mean(s : FinancepricingbasketRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_range_mean(s : FinancepricingbasketRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_range_scale(s : FinancepricingbasketRange, f : Double) -> FinancepricingbasketRange {
   let result = finance_pricing_basket_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_pricing_basket_range_fill(s : FinancepricingbasketRange, v : Doub
   result
 }
 
-pub fn finance_pricing_basket_range_min(s : FinancepricingbasketRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_range_min(s : FinancepricingbasketRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_range_max(s : FinancepricingbasketRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_range_max(s : FinancepricingbasketRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_range_to_string(s : FinancepricingbasketRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_pricing_basket_slice_set(s : FinancepricingbasketSlice, i : Int, 
   result
 }
 
-pub fn finance_pricing_basket_slice_sum(s : FinancepricingbasketSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_pricing_basket_slice_sum(s : FinancepricingbasketSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_pricing_basket_slice_mean(s : FinancepricingbasketSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_pricing_basket_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_pricing_basket_slice_mean(s : FinancepricingbasketSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_pricing_basket_slice_scale(s : FinancepricingbasketSlice, f : Double) -> FinancepricingbasketSlice {
   let result = finance_pricing_basket_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_pricing_basket_slice_fill(s : FinancepricingbasketSlice, v : Doub
   result
 }
 
-pub fn finance_pricing_basket_slice_min(s : FinancepricingbasketSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_slice_min(s : FinancepricingbasketSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_pricing_basket_slice_max(s : FinancepricingbasketSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_pricing_basket_slice_max(s : FinancepricingbasketSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_pricing_basket_slice_to_string(s : FinancepricingbasketSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

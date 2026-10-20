@@ -88,11 +88,7 @@ pub fn ml_rl_actor_critic_make_series(vals : Array[Double], name : String) -> Ml
 
 pub fn ml_rl_actor_critic_series_len(s : MlrlactorcriticSeries) -> Int { s.vals.length() }
 
-pub fn ml_rl_actor_critic_series_sum(s : MlrlactorcriticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_rl_actor_critic_series_sum(s : MlrlactorcriticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_rl_actor_critic_series_mean(s : MlrlactorcriticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_rl_actor_critic_frame_set(s : MlrlactorcriticFrame, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_actor_critic_frame_sum(s : MlrlactorcriticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_frame_sum(s : MlrlactorcriticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_frame_mean(s : MlrlactorcriticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_frame_mean(s : MlrlactorcriticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_frame_scale(s : MlrlactorcriticFrame, f : Double) -> MlrlactorcriticFrame {
   let result = ml_rl_actor_critic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_rl_actor_critic_frame_fill(s : MlrlactorcriticFrame, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_actor_critic_frame_min(s : MlrlactorcriticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_frame_min(s : MlrlactorcriticFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_frame_max(s : MlrlactorcriticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_frame_max(s : MlrlactorcriticFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_frame_to_string(s : MlrlactorcriticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_rl_actor_critic_table_set(s : MlrlactorcriticTable, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_actor_critic_table_sum(s : MlrlactorcriticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_table_sum(s : MlrlactorcriticTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_table_mean(s : MlrlactorcriticTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_table_mean(s : MlrlactorcriticTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_table_scale(s : MlrlactorcriticTable, f : Double) -> MlrlactorcriticTable {
   let result = ml_rl_actor_critic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_rl_actor_critic_table_fill(s : MlrlactorcriticTable, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_actor_critic_table_min(s : MlrlactorcriticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_table_min(s : MlrlactorcriticTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_table_max(s : MlrlactorcriticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_table_max(s : MlrlactorcriticTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_table_to_string(s : MlrlactorcriticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_rl_actor_critic_graphn_set(s : MlrlactorcriticGraphN, i : Int, v : Dou
   result
 }
 
-pub fn ml_rl_actor_critic_graphn_sum(s : MlrlactorcriticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_graphn_sum(s : MlrlactorcriticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_graphn_mean(s : MlrlactorcriticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_graphn_mean(s : MlrlactorcriticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_graphn_scale(s : MlrlactorcriticGraphN, f : Double) -> MlrlactorcriticGraphN {
   let result = ml_rl_actor_critic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_rl_actor_critic_graphn_fill(s : MlrlactorcriticGraphN, v : Double) -> 
   result
 }
 
-pub fn ml_rl_actor_critic_graphn_min(s : MlrlactorcriticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_graphn_min(s : MlrlactorcriticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_graphn_max(s : MlrlactorcriticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_graphn_max(s : MlrlactorcriticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_graphn_to_string(s : MlrlactorcriticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_rl_actor_critic_node_set(s : MlrlactorcriticNode, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_actor_critic_node_sum(s : MlrlactorcriticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_node_sum(s : MlrlactorcriticNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_node_mean(s : MlrlactorcriticNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_node_mean(s : MlrlactorcriticNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_node_scale(s : MlrlactorcriticNode, f : Double) -> MlrlactorcriticNode {
   let result = ml_rl_actor_critic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_rl_actor_critic_node_fill(s : MlrlactorcriticNode, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_actor_critic_node_min(s : MlrlactorcriticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_node_min(s : MlrlactorcriticNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_node_max(s : MlrlactorcriticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_node_max(s : MlrlactorcriticNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_node_to_string(s : MlrlactorcriticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_rl_actor_critic_edge_set(s : MlrlactorcriticEdge, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_actor_critic_edge_sum(s : MlrlactorcriticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_edge_sum(s : MlrlactorcriticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_edge_mean(s : MlrlactorcriticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_edge_mean(s : MlrlactorcriticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_edge_scale(s : MlrlactorcriticEdge, f : Double) -> MlrlactorcriticEdge {
   let result = ml_rl_actor_critic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_rl_actor_critic_edge_fill(s : MlrlactorcriticEdge, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_actor_critic_edge_min(s : MlrlactorcriticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_edge_min(s : MlrlactorcriticEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_edge_max(s : MlrlactorcriticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_edge_max(s : MlrlactorcriticEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_edge_to_string(s : MlrlactorcriticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_rl_actor_critic_path_set(s : MlrlactorcriticPath, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_actor_critic_path_sum(s : MlrlactorcriticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_path_sum(s : MlrlactorcriticPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_path_mean(s : MlrlactorcriticPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_path_mean(s : MlrlactorcriticPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_path_scale(s : MlrlactorcriticPath, f : Double) -> MlrlactorcriticPath {
   let result = ml_rl_actor_critic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_rl_actor_critic_path_fill(s : MlrlactorcriticPath, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_actor_critic_path_min(s : MlrlactorcriticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_path_min(s : MlrlactorcriticPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_path_max(s : MlrlactorcriticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_path_max(s : MlrlactorcriticPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_path_to_string(s : MlrlactorcriticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_rl_actor_critic_cluster_set(s : MlrlactorcriticCluster, i : Int, v : D
   result
 }
 
-pub fn ml_rl_actor_critic_cluster_sum(s : MlrlactorcriticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_cluster_sum(s : MlrlactorcriticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_cluster_mean(s : MlrlactorcriticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_cluster_mean(s : MlrlactorcriticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_cluster_scale(s : MlrlactorcriticCluster, f : Double) -> MlrlactorcriticCluster {
   let result = ml_rl_actor_critic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_rl_actor_critic_cluster_fill(s : MlrlactorcriticCluster, v : Double) -
   result
 }
 
-pub fn ml_rl_actor_critic_cluster_min(s : MlrlactorcriticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_cluster_min(s : MlrlactorcriticCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_cluster_max(s : MlrlactorcriticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_cluster_max(s : MlrlactorcriticCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_cluster_to_string(s : MlrlactorcriticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_rl_actor_critic_model_set(s : MlrlactorcriticModel, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_actor_critic_model_sum(s : MlrlactorcriticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_model_sum(s : MlrlactorcriticModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_model_mean(s : MlrlactorcriticModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_model_mean(s : MlrlactorcriticModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_model_scale(s : MlrlactorcriticModel, f : Double) -> MlrlactorcriticModel {
   let result = ml_rl_actor_critic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_rl_actor_critic_model_fill(s : MlrlactorcriticModel, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_actor_critic_model_min(s : MlrlactorcriticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_model_min(s : MlrlactorcriticModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_model_max(s : MlrlactorcriticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_model_max(s : MlrlactorcriticModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_model_to_string(s : MlrlactorcriticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_rl_actor_critic_layer_set(s : MlrlactorcriticLayer, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_actor_critic_layer_sum(s : MlrlactorcriticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_layer_sum(s : MlrlactorcriticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_layer_mean(s : MlrlactorcriticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_layer_mean(s : MlrlactorcriticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_layer_scale(s : MlrlactorcriticLayer, f : Double) -> MlrlactorcriticLayer {
   let result = ml_rl_actor_critic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_rl_actor_critic_layer_fill(s : MlrlactorcriticLayer, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_actor_critic_layer_min(s : MlrlactorcriticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_layer_min(s : MlrlactorcriticLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_layer_max(s : MlrlactorcriticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_layer_max(s : MlrlactorcriticLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_layer_to_string(s : MlrlactorcriticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_rl_actor_critic_buffer_set(s : MlrlactorcriticBuffer, i : Int, v : Dou
   result
 }
 
-pub fn ml_rl_actor_critic_buffer_sum(s : MlrlactorcriticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_buffer_sum(s : MlrlactorcriticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_buffer_mean(s : MlrlactorcriticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_buffer_mean(s : MlrlactorcriticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_buffer_scale(s : MlrlactorcriticBuffer, f : Double) -> MlrlactorcriticBuffer {
   let result = ml_rl_actor_critic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_rl_actor_critic_buffer_fill(s : MlrlactorcriticBuffer, v : Double) -> 
   result
 }
 
-pub fn ml_rl_actor_critic_buffer_min(s : MlrlactorcriticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_buffer_min(s : MlrlactorcriticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_buffer_max(s : MlrlactorcriticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_buffer_max(s : MlrlactorcriticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_buffer_to_string(s : MlrlactorcriticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_rl_actor_critic_cursor_set(s : MlrlactorcriticCursor, i : Int, v : Dou
   result
 }
 
-pub fn ml_rl_actor_critic_cursor_sum(s : MlrlactorcriticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_cursor_sum(s : MlrlactorcriticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_cursor_mean(s : MlrlactorcriticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_cursor_mean(s : MlrlactorcriticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_cursor_scale(s : MlrlactorcriticCursor, f : Double) -> MlrlactorcriticCursor {
   let result = ml_rl_actor_critic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_rl_actor_critic_cursor_fill(s : MlrlactorcriticCursor, v : Double) -> 
   result
 }
 
-pub fn ml_rl_actor_critic_cursor_min(s : MlrlactorcriticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_cursor_min(s : MlrlactorcriticCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_cursor_max(s : MlrlactorcriticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_cursor_max(s : MlrlactorcriticCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_cursor_to_string(s : MlrlactorcriticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_rl_actor_critic_view_set(s : MlrlactorcriticView, i : Int, v : Double)
   result
 }
 
-pub fn ml_rl_actor_critic_view_sum(s : MlrlactorcriticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_view_sum(s : MlrlactorcriticView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_view_mean(s : MlrlactorcriticView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_view_mean(s : MlrlactorcriticView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_view_scale(s : MlrlactorcriticView, f : Double) -> MlrlactorcriticView {
   let result = ml_rl_actor_critic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_rl_actor_critic_view_fill(s : MlrlactorcriticView, v : Double) -> Mlrl
   result
 }
 
-pub fn ml_rl_actor_critic_view_min(s : MlrlactorcriticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_view_min(s : MlrlactorcriticView) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_view_max(s : MlrlactorcriticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_view_max(s : MlrlactorcriticView) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_view_to_string(s : MlrlactorcriticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_rl_actor_critic_range_set(s : MlrlactorcriticRange, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_actor_critic_range_sum(s : MlrlactorcriticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_range_sum(s : MlrlactorcriticRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_range_mean(s : MlrlactorcriticRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_range_mean(s : MlrlactorcriticRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_range_scale(s : MlrlactorcriticRange, f : Double) -> MlrlactorcriticRange {
   let result = ml_rl_actor_critic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_rl_actor_critic_range_fill(s : MlrlactorcriticRange, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_actor_critic_range_min(s : MlrlactorcriticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_range_min(s : MlrlactorcriticRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_range_max(s : MlrlactorcriticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_range_max(s : MlrlactorcriticRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_range_to_string(s : MlrlactorcriticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_rl_actor_critic_slice_set(s : MlrlactorcriticSlice, i : Int, v : Doubl
   result
 }
 
-pub fn ml_rl_actor_critic_slice_sum(s : MlrlactorcriticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_rl_actor_critic_slice_sum(s : MlrlactorcriticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_rl_actor_critic_slice_mean(s : MlrlactorcriticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_rl_actor_critic_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_rl_actor_critic_slice_mean(s : MlrlactorcriticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_rl_actor_critic_slice_scale(s : MlrlactorcriticSlice, f : Double) -> MlrlactorcriticSlice {
   let result = ml_rl_actor_critic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_rl_actor_critic_slice_fill(s : MlrlactorcriticSlice, v : Double) -> Ml
   result
 }
 
-pub fn ml_rl_actor_critic_slice_min(s : MlrlactorcriticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_slice_min(s : MlrlactorcriticSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_rl_actor_critic_slice_max(s : MlrlactorcriticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_rl_actor_critic_slice_max(s : MlrlactorcriticSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_rl_actor_critic_slice_to_string(s : MlrlactorcriticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

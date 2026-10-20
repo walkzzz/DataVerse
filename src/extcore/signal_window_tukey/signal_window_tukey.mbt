@@ -88,11 +88,7 @@ pub fn signal_window_tukey_make_series(vals : Array[Double], name : String) -> S
 
 pub fn signal_window_tukey_series_len(s : SignalwindowtukeySeries) -> Int { s.vals.length() }
 
-pub fn signal_window_tukey_series_sum(s : SignalwindowtukeySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_tukey_series_sum(s : SignalwindowtukeySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_tukey_series_mean(s : SignalwindowtukeySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_tukey_frame_set(s : SignalwindowtukeyFrame, i : Int, v : Do
   result
 }
 
-pub fn signal_window_tukey_frame_sum(s : SignalwindowtukeyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_frame_sum(s : SignalwindowtukeyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_frame_mean(s : SignalwindowtukeyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_frame_mean(s : SignalwindowtukeyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_frame_scale(s : SignalwindowtukeyFrame, f : Double) -> SignalwindowtukeyFrame {
   let result = signal_window_tukey_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_tukey_frame_fill(s : SignalwindowtukeyFrame, v : Double) ->
   result
 }
 
-pub fn signal_window_tukey_frame_min(s : SignalwindowtukeyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_frame_min(s : SignalwindowtukeyFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_frame_max(s : SignalwindowtukeyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_frame_max(s : SignalwindowtukeyFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_frame_to_string(s : SignalwindowtukeyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_tukey_table_set(s : SignalwindowtukeyTable, i : Int, v : Do
   result
 }
 
-pub fn signal_window_tukey_table_sum(s : SignalwindowtukeyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_table_sum(s : SignalwindowtukeyTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_table_mean(s : SignalwindowtukeyTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_table_mean(s : SignalwindowtukeyTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_table_scale(s : SignalwindowtukeyTable, f : Double) -> SignalwindowtukeyTable {
   let result = signal_window_tukey_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_tukey_table_fill(s : SignalwindowtukeyTable, v : Double) ->
   result
 }
 
-pub fn signal_window_tukey_table_min(s : SignalwindowtukeyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_table_min(s : SignalwindowtukeyTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_table_max(s : SignalwindowtukeyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_table_max(s : SignalwindowtukeyTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_table_to_string(s : SignalwindowtukeyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_tukey_graphn_set(s : SignalwindowtukeyGraphN, i : Int, v : 
   result
 }
 
-pub fn signal_window_tukey_graphn_sum(s : SignalwindowtukeyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_graphn_sum(s : SignalwindowtukeyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_graphn_mean(s : SignalwindowtukeyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_graphn_mean(s : SignalwindowtukeyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_graphn_scale(s : SignalwindowtukeyGraphN, f : Double) -> SignalwindowtukeyGraphN {
   let result = signal_window_tukey_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_tukey_graphn_fill(s : SignalwindowtukeyGraphN, v : Double) 
   result
 }
 
-pub fn signal_window_tukey_graphn_min(s : SignalwindowtukeyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_graphn_min(s : SignalwindowtukeyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_graphn_max(s : SignalwindowtukeyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_graphn_max(s : SignalwindowtukeyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_graphn_to_string(s : SignalwindowtukeyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_tukey_node_set(s : SignalwindowtukeyNode, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_tukey_node_sum(s : SignalwindowtukeyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_node_sum(s : SignalwindowtukeyNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_node_mean(s : SignalwindowtukeyNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_node_mean(s : SignalwindowtukeyNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_node_scale(s : SignalwindowtukeyNode, f : Double) -> SignalwindowtukeyNode {
   let result = signal_window_tukey_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_tukey_node_fill(s : SignalwindowtukeyNode, v : Double) -> S
   result
 }
 
-pub fn signal_window_tukey_node_min(s : SignalwindowtukeyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_node_min(s : SignalwindowtukeyNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_node_max(s : SignalwindowtukeyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_node_max(s : SignalwindowtukeyNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_node_to_string(s : SignalwindowtukeyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_tukey_edge_set(s : SignalwindowtukeyEdge, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_tukey_edge_sum(s : SignalwindowtukeyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_edge_sum(s : SignalwindowtukeyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_edge_mean(s : SignalwindowtukeyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_edge_mean(s : SignalwindowtukeyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_edge_scale(s : SignalwindowtukeyEdge, f : Double) -> SignalwindowtukeyEdge {
   let result = signal_window_tukey_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_tukey_edge_fill(s : SignalwindowtukeyEdge, v : Double) -> S
   result
 }
 
-pub fn signal_window_tukey_edge_min(s : SignalwindowtukeyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_edge_min(s : SignalwindowtukeyEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_edge_max(s : SignalwindowtukeyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_edge_max(s : SignalwindowtukeyEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_edge_to_string(s : SignalwindowtukeyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_tukey_path_set(s : SignalwindowtukeyPath, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_tukey_path_sum(s : SignalwindowtukeyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_path_sum(s : SignalwindowtukeyPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_path_mean(s : SignalwindowtukeyPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_path_mean(s : SignalwindowtukeyPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_path_scale(s : SignalwindowtukeyPath, f : Double) -> SignalwindowtukeyPath {
   let result = signal_window_tukey_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_tukey_path_fill(s : SignalwindowtukeyPath, v : Double) -> S
   result
 }
 
-pub fn signal_window_tukey_path_min(s : SignalwindowtukeyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_path_min(s : SignalwindowtukeyPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_path_max(s : SignalwindowtukeyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_path_max(s : SignalwindowtukeyPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_path_to_string(s : SignalwindowtukeyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_tukey_cluster_set(s : SignalwindowtukeyCluster, i : Int, v 
   result
 }
 
-pub fn signal_window_tukey_cluster_sum(s : SignalwindowtukeyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_cluster_sum(s : SignalwindowtukeyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_cluster_mean(s : SignalwindowtukeyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_cluster_mean(s : SignalwindowtukeyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_cluster_scale(s : SignalwindowtukeyCluster, f : Double) -> SignalwindowtukeyCluster {
   let result = signal_window_tukey_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_tukey_cluster_fill(s : SignalwindowtukeyCluster, v : Double
   result
 }
 
-pub fn signal_window_tukey_cluster_min(s : SignalwindowtukeyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_cluster_min(s : SignalwindowtukeyCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_cluster_max(s : SignalwindowtukeyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_cluster_max(s : SignalwindowtukeyCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_cluster_to_string(s : SignalwindowtukeyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_tukey_model_set(s : SignalwindowtukeyModel, i : Int, v : Do
   result
 }
 
-pub fn signal_window_tukey_model_sum(s : SignalwindowtukeyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_model_sum(s : SignalwindowtukeyModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_model_mean(s : SignalwindowtukeyModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_model_mean(s : SignalwindowtukeyModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_model_scale(s : SignalwindowtukeyModel, f : Double) -> SignalwindowtukeyModel {
   let result = signal_window_tukey_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_tukey_model_fill(s : SignalwindowtukeyModel, v : Double) ->
   result
 }
 
-pub fn signal_window_tukey_model_min(s : SignalwindowtukeyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_model_min(s : SignalwindowtukeyModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_model_max(s : SignalwindowtukeyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_model_max(s : SignalwindowtukeyModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_model_to_string(s : SignalwindowtukeyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_tukey_layer_set(s : SignalwindowtukeyLayer, i : Int, v : Do
   result
 }
 
-pub fn signal_window_tukey_layer_sum(s : SignalwindowtukeyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_layer_sum(s : SignalwindowtukeyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_layer_mean(s : SignalwindowtukeyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_layer_mean(s : SignalwindowtukeyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_layer_scale(s : SignalwindowtukeyLayer, f : Double) -> SignalwindowtukeyLayer {
   let result = signal_window_tukey_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_tukey_layer_fill(s : SignalwindowtukeyLayer, v : Double) ->
   result
 }
 
-pub fn signal_window_tukey_layer_min(s : SignalwindowtukeyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_layer_min(s : SignalwindowtukeyLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_layer_max(s : SignalwindowtukeyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_layer_max(s : SignalwindowtukeyLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_layer_to_string(s : SignalwindowtukeyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_tukey_buffer_set(s : SignalwindowtukeyBuffer, i : Int, v : 
   result
 }
 
-pub fn signal_window_tukey_buffer_sum(s : SignalwindowtukeyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_buffer_sum(s : SignalwindowtukeyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_buffer_mean(s : SignalwindowtukeyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_buffer_mean(s : SignalwindowtukeyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_buffer_scale(s : SignalwindowtukeyBuffer, f : Double) -> SignalwindowtukeyBuffer {
   let result = signal_window_tukey_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_tukey_buffer_fill(s : SignalwindowtukeyBuffer, v : Double) 
   result
 }
 
-pub fn signal_window_tukey_buffer_min(s : SignalwindowtukeyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_buffer_min(s : SignalwindowtukeyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_buffer_max(s : SignalwindowtukeyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_buffer_max(s : SignalwindowtukeyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_buffer_to_string(s : SignalwindowtukeyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_tukey_cursor_set(s : SignalwindowtukeyCursor, i : Int, v : 
   result
 }
 
-pub fn signal_window_tukey_cursor_sum(s : SignalwindowtukeyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_cursor_sum(s : SignalwindowtukeyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_cursor_mean(s : SignalwindowtukeyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_cursor_mean(s : SignalwindowtukeyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_cursor_scale(s : SignalwindowtukeyCursor, f : Double) -> SignalwindowtukeyCursor {
   let result = signal_window_tukey_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_tukey_cursor_fill(s : SignalwindowtukeyCursor, v : Double) 
   result
 }
 
-pub fn signal_window_tukey_cursor_min(s : SignalwindowtukeyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_cursor_min(s : SignalwindowtukeyCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_cursor_max(s : SignalwindowtukeyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_cursor_max(s : SignalwindowtukeyCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_cursor_to_string(s : SignalwindowtukeyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_tukey_view_set(s : SignalwindowtukeyView, i : Int, v : Doub
   result
 }
 
-pub fn signal_window_tukey_view_sum(s : SignalwindowtukeyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_view_sum(s : SignalwindowtukeyView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_view_mean(s : SignalwindowtukeyView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_view_mean(s : SignalwindowtukeyView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_view_scale(s : SignalwindowtukeyView, f : Double) -> SignalwindowtukeyView {
   let result = signal_window_tukey_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_tukey_view_fill(s : SignalwindowtukeyView, v : Double) -> S
   result
 }
 
-pub fn signal_window_tukey_view_min(s : SignalwindowtukeyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_view_min(s : SignalwindowtukeyView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_view_max(s : SignalwindowtukeyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_view_max(s : SignalwindowtukeyView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_view_to_string(s : SignalwindowtukeyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_tukey_range_set(s : SignalwindowtukeyRange, i : Int, v : Do
   result
 }
 
-pub fn signal_window_tukey_range_sum(s : SignalwindowtukeyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_range_sum(s : SignalwindowtukeyRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_range_mean(s : SignalwindowtukeyRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_range_mean(s : SignalwindowtukeyRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_range_scale(s : SignalwindowtukeyRange, f : Double) -> SignalwindowtukeyRange {
   let result = signal_window_tukey_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_tukey_range_fill(s : SignalwindowtukeyRange, v : Double) ->
   result
 }
 
-pub fn signal_window_tukey_range_min(s : SignalwindowtukeyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_range_min(s : SignalwindowtukeyRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_range_max(s : SignalwindowtukeyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_range_max(s : SignalwindowtukeyRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_range_to_string(s : SignalwindowtukeyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_tukey_slice_set(s : SignalwindowtukeySlice, i : Int, v : Do
   result
 }
 
-pub fn signal_window_tukey_slice_sum(s : SignalwindowtukeySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_tukey_slice_sum(s : SignalwindowtukeySlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_tukey_slice_mean(s : SignalwindowtukeySlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_tukey_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_tukey_slice_mean(s : SignalwindowtukeySlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_tukey_slice_scale(s : SignalwindowtukeySlice, f : Double) -> SignalwindowtukeySlice {
   let result = signal_window_tukey_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_tukey_slice_fill(s : SignalwindowtukeySlice, v : Double) ->
   result
 }
 
-pub fn signal_window_tukey_slice_min(s : SignalwindowtukeySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_slice_min(s : SignalwindowtukeySlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_tukey_slice_max(s : SignalwindowtukeySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_tukey_slice_max(s : SignalwindowtukeySlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_tukey_slice_to_string(s : SignalwindowtukeySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

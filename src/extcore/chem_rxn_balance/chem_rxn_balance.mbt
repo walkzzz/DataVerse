@@ -88,11 +88,7 @@ pub fn chem_rxn_balance_make_series(vals : Array[Double], name : String) -> Chem
 
 pub fn chem_rxn_balance_series_len(s : ChemrxnbalanceSeries) -> Int { s.vals.length() }
 
-pub fn chem_rxn_balance_series_sum(s : ChemrxnbalanceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_rxn_balance_series_sum(s : ChemrxnbalanceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_rxn_balance_series_mean(s : ChemrxnbalanceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_rxn_balance_frame_set(s : ChemrxnbalanceFrame, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_balance_frame_sum(s : ChemrxnbalanceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_frame_sum(s : ChemrxnbalanceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_frame_mean(s : ChemrxnbalanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_frame_mean(s : ChemrxnbalanceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_frame_scale(s : ChemrxnbalanceFrame, f : Double) -> ChemrxnbalanceFrame {
   let result = chem_rxn_balance_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_rxn_balance_frame_fill(s : ChemrxnbalanceFrame, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_balance_frame_min(s : ChemrxnbalanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_frame_min(s : ChemrxnbalanceFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_frame_max(s : ChemrxnbalanceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_frame_max(s : ChemrxnbalanceFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_frame_to_string(s : ChemrxnbalanceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_rxn_balance_table_set(s : ChemrxnbalanceTable, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_balance_table_sum(s : ChemrxnbalanceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_table_sum(s : ChemrxnbalanceTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_table_mean(s : ChemrxnbalanceTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_table_mean(s : ChemrxnbalanceTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_table_scale(s : ChemrxnbalanceTable, f : Double) -> ChemrxnbalanceTable {
   let result = chem_rxn_balance_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_rxn_balance_table_fill(s : ChemrxnbalanceTable, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_balance_table_min(s : ChemrxnbalanceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_table_min(s : ChemrxnbalanceTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_table_max(s : ChemrxnbalanceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_table_max(s : ChemrxnbalanceTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_table_to_string(s : ChemrxnbalanceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_rxn_balance_graphn_set(s : ChemrxnbalanceGraphN, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_balance_graphn_sum(s : ChemrxnbalanceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_graphn_sum(s : ChemrxnbalanceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_graphn_mean(s : ChemrxnbalanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_graphn_mean(s : ChemrxnbalanceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_graphn_scale(s : ChemrxnbalanceGraphN, f : Double) -> ChemrxnbalanceGraphN {
   let result = chem_rxn_balance_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_rxn_balance_graphn_fill(s : ChemrxnbalanceGraphN, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_balance_graphn_min(s : ChemrxnbalanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_graphn_min(s : ChemrxnbalanceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_graphn_max(s : ChemrxnbalanceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_graphn_max(s : ChemrxnbalanceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_graphn_to_string(s : ChemrxnbalanceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_rxn_balance_node_set(s : ChemrxnbalanceNode, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_balance_node_sum(s : ChemrxnbalanceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_node_sum(s : ChemrxnbalanceNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_node_mean(s : ChemrxnbalanceNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_node_mean(s : ChemrxnbalanceNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_node_scale(s : ChemrxnbalanceNode, f : Double) -> ChemrxnbalanceNode {
   let result = chem_rxn_balance_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_rxn_balance_node_fill(s : ChemrxnbalanceNode, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_balance_node_min(s : ChemrxnbalanceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_node_min(s : ChemrxnbalanceNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_node_max(s : ChemrxnbalanceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_node_max(s : ChemrxnbalanceNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_node_to_string(s : ChemrxnbalanceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_rxn_balance_edge_set(s : ChemrxnbalanceEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_balance_edge_sum(s : ChemrxnbalanceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_edge_sum(s : ChemrxnbalanceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_edge_mean(s : ChemrxnbalanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_edge_mean(s : ChemrxnbalanceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_edge_scale(s : ChemrxnbalanceEdge, f : Double) -> ChemrxnbalanceEdge {
   let result = chem_rxn_balance_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_rxn_balance_edge_fill(s : ChemrxnbalanceEdge, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_balance_edge_min(s : ChemrxnbalanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_edge_min(s : ChemrxnbalanceEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_edge_max(s : ChemrxnbalanceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_edge_max(s : ChemrxnbalanceEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_edge_to_string(s : ChemrxnbalanceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_rxn_balance_path_set(s : ChemrxnbalancePath, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_balance_path_sum(s : ChemrxnbalancePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_path_sum(s : ChemrxnbalancePath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_path_mean(s : ChemrxnbalancePath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_path_mean(s : ChemrxnbalancePath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_path_scale(s : ChemrxnbalancePath, f : Double) -> ChemrxnbalancePath {
   let result = chem_rxn_balance_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_rxn_balance_path_fill(s : ChemrxnbalancePath, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_balance_path_min(s : ChemrxnbalancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_path_min(s : ChemrxnbalancePath) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_path_max(s : ChemrxnbalancePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_path_max(s : ChemrxnbalancePath) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_path_to_string(s : ChemrxnbalancePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_rxn_balance_cluster_set(s : ChemrxnbalanceCluster, i : Int, v : Doub
   result
 }
 
-pub fn chem_rxn_balance_cluster_sum(s : ChemrxnbalanceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_cluster_sum(s : ChemrxnbalanceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_cluster_mean(s : ChemrxnbalanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_cluster_mean(s : ChemrxnbalanceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_cluster_scale(s : ChemrxnbalanceCluster, f : Double) -> ChemrxnbalanceCluster {
   let result = chem_rxn_balance_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_rxn_balance_cluster_fill(s : ChemrxnbalanceCluster, v : Double) -> C
   result
 }
 
-pub fn chem_rxn_balance_cluster_min(s : ChemrxnbalanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_cluster_min(s : ChemrxnbalanceCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_cluster_max(s : ChemrxnbalanceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_cluster_max(s : ChemrxnbalanceCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_cluster_to_string(s : ChemrxnbalanceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_rxn_balance_model_set(s : ChemrxnbalanceModel, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_balance_model_sum(s : ChemrxnbalanceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_model_sum(s : ChemrxnbalanceModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_model_mean(s : ChemrxnbalanceModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_model_mean(s : ChemrxnbalanceModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_model_scale(s : ChemrxnbalanceModel, f : Double) -> ChemrxnbalanceModel {
   let result = chem_rxn_balance_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_rxn_balance_model_fill(s : ChemrxnbalanceModel, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_balance_model_min(s : ChemrxnbalanceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_model_min(s : ChemrxnbalanceModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_model_max(s : ChemrxnbalanceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_model_max(s : ChemrxnbalanceModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_model_to_string(s : ChemrxnbalanceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_rxn_balance_layer_set(s : ChemrxnbalanceLayer, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_balance_layer_sum(s : ChemrxnbalanceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_layer_sum(s : ChemrxnbalanceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_layer_mean(s : ChemrxnbalanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_layer_mean(s : ChemrxnbalanceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_layer_scale(s : ChemrxnbalanceLayer, f : Double) -> ChemrxnbalanceLayer {
   let result = chem_rxn_balance_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_rxn_balance_layer_fill(s : ChemrxnbalanceLayer, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_balance_layer_min(s : ChemrxnbalanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_layer_min(s : ChemrxnbalanceLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_layer_max(s : ChemrxnbalanceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_layer_max(s : ChemrxnbalanceLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_layer_to_string(s : ChemrxnbalanceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_rxn_balance_buffer_set(s : ChemrxnbalanceBuffer, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_balance_buffer_sum(s : ChemrxnbalanceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_buffer_sum(s : ChemrxnbalanceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_buffer_mean(s : ChemrxnbalanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_buffer_mean(s : ChemrxnbalanceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_buffer_scale(s : ChemrxnbalanceBuffer, f : Double) -> ChemrxnbalanceBuffer {
   let result = chem_rxn_balance_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_rxn_balance_buffer_fill(s : ChemrxnbalanceBuffer, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_balance_buffer_min(s : ChemrxnbalanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_buffer_min(s : ChemrxnbalanceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_buffer_max(s : ChemrxnbalanceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_buffer_max(s : ChemrxnbalanceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_buffer_to_string(s : ChemrxnbalanceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_rxn_balance_cursor_set(s : ChemrxnbalanceCursor, i : Int, v : Double
   result
 }
 
-pub fn chem_rxn_balance_cursor_sum(s : ChemrxnbalanceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_cursor_sum(s : ChemrxnbalanceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_cursor_mean(s : ChemrxnbalanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_cursor_mean(s : ChemrxnbalanceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_cursor_scale(s : ChemrxnbalanceCursor, f : Double) -> ChemrxnbalanceCursor {
   let result = chem_rxn_balance_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_rxn_balance_cursor_fill(s : ChemrxnbalanceCursor, v : Double) -> Che
   result
 }
 
-pub fn chem_rxn_balance_cursor_min(s : ChemrxnbalanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_cursor_min(s : ChemrxnbalanceCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_cursor_max(s : ChemrxnbalanceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_cursor_max(s : ChemrxnbalanceCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_cursor_to_string(s : ChemrxnbalanceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_rxn_balance_view_set(s : ChemrxnbalanceView, i : Int, v : Double) ->
   result
 }
 
-pub fn chem_rxn_balance_view_sum(s : ChemrxnbalanceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_view_sum(s : ChemrxnbalanceView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_view_mean(s : ChemrxnbalanceView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_view_mean(s : ChemrxnbalanceView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_view_scale(s : ChemrxnbalanceView, f : Double) -> ChemrxnbalanceView {
   let result = chem_rxn_balance_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_rxn_balance_view_fill(s : ChemrxnbalanceView, v : Double) -> Chemrxn
   result
 }
 
-pub fn chem_rxn_balance_view_min(s : ChemrxnbalanceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_view_min(s : ChemrxnbalanceView) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_view_max(s : ChemrxnbalanceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_view_max(s : ChemrxnbalanceView) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_view_to_string(s : ChemrxnbalanceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_rxn_balance_range_set(s : ChemrxnbalanceRange, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_balance_range_sum(s : ChemrxnbalanceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_range_sum(s : ChemrxnbalanceRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_range_mean(s : ChemrxnbalanceRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_range_mean(s : ChemrxnbalanceRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_range_scale(s : ChemrxnbalanceRange, f : Double) -> ChemrxnbalanceRange {
   let result = chem_rxn_balance_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_rxn_balance_range_fill(s : ChemrxnbalanceRange, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_balance_range_min(s : ChemrxnbalanceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_range_min(s : ChemrxnbalanceRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_range_max(s : ChemrxnbalanceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_range_max(s : ChemrxnbalanceRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_range_to_string(s : ChemrxnbalanceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_rxn_balance_slice_set(s : ChemrxnbalanceSlice, i : Int, v : Double) 
   result
 }
 
-pub fn chem_rxn_balance_slice_sum(s : ChemrxnbalanceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_rxn_balance_slice_sum(s : ChemrxnbalanceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_rxn_balance_slice_mean(s : ChemrxnbalanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_rxn_balance_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_rxn_balance_slice_mean(s : ChemrxnbalanceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_rxn_balance_slice_scale(s : ChemrxnbalanceSlice, f : Double) -> ChemrxnbalanceSlice {
   let result = chem_rxn_balance_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_rxn_balance_slice_fill(s : ChemrxnbalanceSlice, v : Double) -> Chemr
   result
 }
 
-pub fn chem_rxn_balance_slice_min(s : ChemrxnbalanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_slice_min(s : ChemrxnbalanceSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_rxn_balance_slice_max(s : ChemrxnbalanceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_rxn_balance_slice_max(s : ChemrxnbalanceSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_rxn_balance_slice_to_string(s : ChemrxnbalanceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

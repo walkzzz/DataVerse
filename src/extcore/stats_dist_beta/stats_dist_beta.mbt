@@ -88,11 +88,7 @@ pub fn stats_dist_beta_make_series(vals : Array[Double], name : String) -> Stats
 
 pub fn stats_dist_beta_series_len(s : StatsdistbetaSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_beta_series_sum(s : StatsdistbetaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_beta_series_sum(s : StatsdistbetaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_beta_series_mean(s : StatsdistbetaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_beta_frame_set(s : StatsdistbetaFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_beta_frame_sum(s : StatsdistbetaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_frame_sum(s : StatsdistbetaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_frame_mean(s : StatsdistbetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_frame_mean(s : StatsdistbetaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_frame_scale(s : StatsdistbetaFrame, f : Double) -> StatsdistbetaFrame {
   let result = stats_dist_beta_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_beta_frame_fill(s : StatsdistbetaFrame, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_beta_frame_min(s : StatsdistbetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_frame_min(s : StatsdistbetaFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_frame_max(s : StatsdistbetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_frame_max(s : StatsdistbetaFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_frame_to_string(s : StatsdistbetaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_beta_table_set(s : StatsdistbetaTable, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_beta_table_sum(s : StatsdistbetaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_table_sum(s : StatsdistbetaTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_table_mean(s : StatsdistbetaTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_table_mean(s : StatsdistbetaTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_table_scale(s : StatsdistbetaTable, f : Double) -> StatsdistbetaTable {
   let result = stats_dist_beta_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_beta_table_fill(s : StatsdistbetaTable, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_beta_table_min(s : StatsdistbetaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_table_min(s : StatsdistbetaTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_table_max(s : StatsdistbetaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_table_max(s : StatsdistbetaTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_table_to_string(s : StatsdistbetaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_beta_graphn_set(s : StatsdistbetaGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_beta_graphn_sum(s : StatsdistbetaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_graphn_sum(s : StatsdistbetaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_graphn_mean(s : StatsdistbetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_graphn_mean(s : StatsdistbetaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_graphn_scale(s : StatsdistbetaGraphN, f : Double) -> StatsdistbetaGraphN {
   let result = stats_dist_beta_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_beta_graphn_fill(s : StatsdistbetaGraphN, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_beta_graphn_min(s : StatsdistbetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_graphn_min(s : StatsdistbetaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_graphn_max(s : StatsdistbetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_graphn_max(s : StatsdistbetaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_graphn_to_string(s : StatsdistbetaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_beta_node_set(s : StatsdistbetaNode, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_dist_beta_node_sum(s : StatsdistbetaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_node_sum(s : StatsdistbetaNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_node_mean(s : StatsdistbetaNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_node_mean(s : StatsdistbetaNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_node_scale(s : StatsdistbetaNode, f : Double) -> StatsdistbetaNode {
   let result = stats_dist_beta_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_beta_node_fill(s : StatsdistbetaNode, v : Double) -> Statsdist
   result
 }
 
-pub fn stats_dist_beta_node_min(s : StatsdistbetaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_node_min(s : StatsdistbetaNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_node_max(s : StatsdistbetaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_node_max(s : StatsdistbetaNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_node_to_string(s : StatsdistbetaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_beta_edge_set(s : StatsdistbetaEdge, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_dist_beta_edge_sum(s : StatsdistbetaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_edge_sum(s : StatsdistbetaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_edge_mean(s : StatsdistbetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_edge_mean(s : StatsdistbetaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_edge_scale(s : StatsdistbetaEdge, f : Double) -> StatsdistbetaEdge {
   let result = stats_dist_beta_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_beta_edge_fill(s : StatsdistbetaEdge, v : Double) -> Statsdist
   result
 }
 
-pub fn stats_dist_beta_edge_min(s : StatsdistbetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_edge_min(s : StatsdistbetaEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_edge_max(s : StatsdistbetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_edge_max(s : StatsdistbetaEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_edge_to_string(s : StatsdistbetaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_beta_path_set(s : StatsdistbetaPath, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_dist_beta_path_sum(s : StatsdistbetaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_path_sum(s : StatsdistbetaPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_path_mean(s : StatsdistbetaPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_path_mean(s : StatsdistbetaPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_path_scale(s : StatsdistbetaPath, f : Double) -> StatsdistbetaPath {
   let result = stats_dist_beta_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_beta_path_fill(s : StatsdistbetaPath, v : Double) -> Statsdist
   result
 }
 
-pub fn stats_dist_beta_path_min(s : StatsdistbetaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_path_min(s : StatsdistbetaPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_path_max(s : StatsdistbetaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_path_max(s : StatsdistbetaPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_path_to_string(s : StatsdistbetaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_beta_cluster_set(s : StatsdistbetaCluster, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_beta_cluster_sum(s : StatsdistbetaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_cluster_sum(s : StatsdistbetaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_cluster_mean(s : StatsdistbetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_cluster_mean(s : StatsdistbetaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_cluster_scale(s : StatsdistbetaCluster, f : Double) -> StatsdistbetaCluster {
   let result = stats_dist_beta_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_beta_cluster_fill(s : StatsdistbetaCluster, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_beta_cluster_min(s : StatsdistbetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_cluster_min(s : StatsdistbetaCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_cluster_max(s : StatsdistbetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_cluster_max(s : StatsdistbetaCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_cluster_to_string(s : StatsdistbetaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_beta_model_set(s : StatsdistbetaModel, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_beta_model_sum(s : StatsdistbetaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_model_sum(s : StatsdistbetaModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_model_mean(s : StatsdistbetaModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_model_mean(s : StatsdistbetaModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_model_scale(s : StatsdistbetaModel, f : Double) -> StatsdistbetaModel {
   let result = stats_dist_beta_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_beta_model_fill(s : StatsdistbetaModel, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_beta_model_min(s : StatsdistbetaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_model_min(s : StatsdistbetaModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_model_max(s : StatsdistbetaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_model_max(s : StatsdistbetaModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_model_to_string(s : StatsdistbetaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_beta_layer_set(s : StatsdistbetaLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_beta_layer_sum(s : StatsdistbetaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_layer_sum(s : StatsdistbetaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_layer_mean(s : StatsdistbetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_layer_mean(s : StatsdistbetaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_layer_scale(s : StatsdistbetaLayer, f : Double) -> StatsdistbetaLayer {
   let result = stats_dist_beta_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_beta_layer_fill(s : StatsdistbetaLayer, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_beta_layer_min(s : StatsdistbetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_layer_min(s : StatsdistbetaLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_layer_max(s : StatsdistbetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_layer_max(s : StatsdistbetaLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_layer_to_string(s : StatsdistbetaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_beta_buffer_set(s : StatsdistbetaBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_beta_buffer_sum(s : StatsdistbetaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_buffer_sum(s : StatsdistbetaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_buffer_mean(s : StatsdistbetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_buffer_mean(s : StatsdistbetaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_buffer_scale(s : StatsdistbetaBuffer, f : Double) -> StatsdistbetaBuffer {
   let result = stats_dist_beta_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_beta_buffer_fill(s : StatsdistbetaBuffer, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_beta_buffer_min(s : StatsdistbetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_buffer_min(s : StatsdistbetaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_buffer_max(s : StatsdistbetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_buffer_max(s : StatsdistbetaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_buffer_to_string(s : StatsdistbetaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_beta_cursor_set(s : StatsdistbetaCursor, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_beta_cursor_sum(s : StatsdistbetaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_cursor_sum(s : StatsdistbetaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_cursor_mean(s : StatsdistbetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_cursor_mean(s : StatsdistbetaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_cursor_scale(s : StatsdistbetaCursor, f : Double) -> StatsdistbetaCursor {
   let result = stats_dist_beta_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_beta_cursor_fill(s : StatsdistbetaCursor, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_beta_cursor_min(s : StatsdistbetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_cursor_min(s : StatsdistbetaCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_cursor_max(s : StatsdistbetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_cursor_max(s : StatsdistbetaCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_cursor_to_string(s : StatsdistbetaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_beta_view_set(s : StatsdistbetaView, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_dist_beta_view_sum(s : StatsdistbetaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_view_sum(s : StatsdistbetaView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_view_mean(s : StatsdistbetaView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_view_mean(s : StatsdistbetaView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_view_scale(s : StatsdistbetaView, f : Double) -> StatsdistbetaView {
   let result = stats_dist_beta_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_beta_view_fill(s : StatsdistbetaView, v : Double) -> Statsdist
   result
 }
 
-pub fn stats_dist_beta_view_min(s : StatsdistbetaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_view_min(s : StatsdistbetaView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_view_max(s : StatsdistbetaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_view_max(s : StatsdistbetaView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_view_to_string(s : StatsdistbetaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_beta_range_set(s : StatsdistbetaRange, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_beta_range_sum(s : StatsdistbetaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_range_sum(s : StatsdistbetaRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_range_mean(s : StatsdistbetaRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_range_mean(s : StatsdistbetaRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_range_scale(s : StatsdistbetaRange, f : Double) -> StatsdistbetaRange {
   let result = stats_dist_beta_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_beta_range_fill(s : StatsdistbetaRange, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_beta_range_min(s : StatsdistbetaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_range_min(s : StatsdistbetaRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_range_max(s : StatsdistbetaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_range_max(s : StatsdistbetaRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_range_to_string(s : StatsdistbetaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_beta_slice_set(s : StatsdistbetaSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn stats_dist_beta_slice_sum(s : StatsdistbetaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_beta_slice_sum(s : StatsdistbetaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_beta_slice_mean(s : StatsdistbetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_beta_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_beta_slice_mean(s : StatsdistbetaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_beta_slice_scale(s : StatsdistbetaSlice, f : Double) -> StatsdistbetaSlice {
   let result = stats_dist_beta_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_beta_slice_fill(s : StatsdistbetaSlice, v : Double) -> Statsdi
   result
 }
 
-pub fn stats_dist_beta_slice_min(s : StatsdistbetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_slice_min(s : StatsdistbetaSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_beta_slice_max(s : StatsdistbetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_beta_slice_max(s : StatsdistbetaSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_beta_slice_to_string(s : StatsdistbetaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn nlp_pos_crf_make_series(vals : Array[Double], name : String) -> Nlpposcrf
 
 pub fn nlp_pos_crf_series_len(s : NlpposcrfSeries) -> Int { s.vals.length() }
 
-pub fn nlp_pos_crf_series_sum(s : NlpposcrfSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_pos_crf_series_sum(s : NlpposcrfSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_pos_crf_series_mean(s : NlpposcrfSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_pos_crf_frame_set(s : NlpposcrfFrame, i : Int, v : Double) -> Nlpposc
   result
 }
 
-pub fn nlp_pos_crf_frame_sum(s : NlpposcrfFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_frame_sum(s : NlpposcrfFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_frame_mean(s : NlpposcrfFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_frame_mean(s : NlpposcrfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_frame_scale(s : NlpposcrfFrame, f : Double) -> NlpposcrfFrame {
   let result = nlp_pos_crf_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_pos_crf_frame_fill(s : NlpposcrfFrame, v : Double) -> NlpposcrfFrame 
   result
 }
 
-pub fn nlp_pos_crf_frame_min(s : NlpposcrfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_frame_min(s : NlpposcrfFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_frame_max(s : NlpposcrfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_frame_max(s : NlpposcrfFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_frame_to_string(s : NlpposcrfFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_pos_crf_table_set(s : NlpposcrfTable, i : Int, v : Double) -> Nlpposc
   result
 }
 
-pub fn nlp_pos_crf_table_sum(s : NlpposcrfTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_table_sum(s : NlpposcrfTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_table_mean(s : NlpposcrfTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_table_mean(s : NlpposcrfTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_table_scale(s : NlpposcrfTable, f : Double) -> NlpposcrfTable {
   let result = nlp_pos_crf_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_pos_crf_table_fill(s : NlpposcrfTable, v : Double) -> NlpposcrfTable 
   result
 }
 
-pub fn nlp_pos_crf_table_min(s : NlpposcrfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_table_min(s : NlpposcrfTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_table_max(s : NlpposcrfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_table_max(s : NlpposcrfTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_table_to_string(s : NlpposcrfTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_pos_crf_graphn_set(s : NlpposcrfGraphN, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_crf_graphn_sum(s : NlpposcrfGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_graphn_sum(s : NlpposcrfGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_graphn_mean(s : NlpposcrfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_graphn_mean(s : NlpposcrfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_graphn_scale(s : NlpposcrfGraphN, f : Double) -> NlpposcrfGraphN {
   let result = nlp_pos_crf_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_pos_crf_graphn_fill(s : NlpposcrfGraphN, v : Double) -> NlpposcrfGrap
   result
 }
 
-pub fn nlp_pos_crf_graphn_min(s : NlpposcrfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_graphn_min(s : NlpposcrfGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_graphn_max(s : NlpposcrfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_graphn_max(s : NlpposcrfGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_graphn_to_string(s : NlpposcrfGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_pos_crf_node_set(s : NlpposcrfNode, i : Int, v : Double) -> Nlpposcrf
   result
 }
 
-pub fn nlp_pos_crf_node_sum(s : NlpposcrfNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_node_sum(s : NlpposcrfNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_node_mean(s : NlpposcrfNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_node_mean(s : NlpposcrfNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_node_scale(s : NlpposcrfNode, f : Double) -> NlpposcrfNode {
   let result = nlp_pos_crf_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_pos_crf_node_fill(s : NlpposcrfNode, v : Double) -> NlpposcrfNode {
   result
 }
 
-pub fn nlp_pos_crf_node_min(s : NlpposcrfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_node_min(s : NlpposcrfNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_node_max(s : NlpposcrfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_node_max(s : NlpposcrfNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_node_to_string(s : NlpposcrfNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_pos_crf_edge_set(s : NlpposcrfEdge, i : Int, v : Double) -> Nlpposcrf
   result
 }
 
-pub fn nlp_pos_crf_edge_sum(s : NlpposcrfEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_edge_sum(s : NlpposcrfEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_edge_mean(s : NlpposcrfEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_edge_mean(s : NlpposcrfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_edge_scale(s : NlpposcrfEdge, f : Double) -> NlpposcrfEdge {
   let result = nlp_pos_crf_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_pos_crf_edge_fill(s : NlpposcrfEdge, v : Double) -> NlpposcrfEdge {
   result
 }
 
-pub fn nlp_pos_crf_edge_min(s : NlpposcrfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_edge_min(s : NlpposcrfEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_edge_max(s : NlpposcrfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_edge_max(s : NlpposcrfEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_edge_to_string(s : NlpposcrfEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_pos_crf_path_set(s : NlpposcrfPath, i : Int, v : Double) -> Nlpposcrf
   result
 }
 
-pub fn nlp_pos_crf_path_sum(s : NlpposcrfPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_path_sum(s : NlpposcrfPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_path_mean(s : NlpposcrfPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_path_mean(s : NlpposcrfPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_path_scale(s : NlpposcrfPath, f : Double) -> NlpposcrfPath {
   let result = nlp_pos_crf_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_pos_crf_path_fill(s : NlpposcrfPath, v : Double) -> NlpposcrfPath {
   result
 }
 
-pub fn nlp_pos_crf_path_min(s : NlpposcrfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_path_min(s : NlpposcrfPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_path_max(s : NlpposcrfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_path_max(s : NlpposcrfPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_path_to_string(s : NlpposcrfPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_pos_crf_cluster_set(s : NlpposcrfCluster, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_crf_cluster_sum(s : NlpposcrfCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_cluster_sum(s : NlpposcrfCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_cluster_mean(s : NlpposcrfCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_cluster_mean(s : NlpposcrfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_cluster_scale(s : NlpposcrfCluster, f : Double) -> NlpposcrfCluster {
   let result = nlp_pos_crf_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_pos_crf_cluster_fill(s : NlpposcrfCluster, v : Double) -> NlpposcrfCl
   result
 }
 
-pub fn nlp_pos_crf_cluster_min(s : NlpposcrfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_cluster_min(s : NlpposcrfCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_cluster_max(s : NlpposcrfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_cluster_max(s : NlpposcrfCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_cluster_to_string(s : NlpposcrfCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_pos_crf_model_set(s : NlpposcrfModel, i : Int, v : Double) -> Nlpposc
   result
 }
 
-pub fn nlp_pos_crf_model_sum(s : NlpposcrfModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_model_sum(s : NlpposcrfModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_model_mean(s : NlpposcrfModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_model_mean(s : NlpposcrfModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_model_scale(s : NlpposcrfModel, f : Double) -> NlpposcrfModel {
   let result = nlp_pos_crf_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_pos_crf_model_fill(s : NlpposcrfModel, v : Double) -> NlpposcrfModel 
   result
 }
 
-pub fn nlp_pos_crf_model_min(s : NlpposcrfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_model_min(s : NlpposcrfModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_model_max(s : NlpposcrfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_model_max(s : NlpposcrfModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_model_to_string(s : NlpposcrfModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_pos_crf_layer_set(s : NlpposcrfLayer, i : Int, v : Double) -> Nlpposc
   result
 }
 
-pub fn nlp_pos_crf_layer_sum(s : NlpposcrfLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_layer_sum(s : NlpposcrfLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_layer_mean(s : NlpposcrfLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_layer_mean(s : NlpposcrfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_layer_scale(s : NlpposcrfLayer, f : Double) -> NlpposcrfLayer {
   let result = nlp_pos_crf_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_pos_crf_layer_fill(s : NlpposcrfLayer, v : Double) -> NlpposcrfLayer 
   result
 }
 
-pub fn nlp_pos_crf_layer_min(s : NlpposcrfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_layer_min(s : NlpposcrfLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_layer_max(s : NlpposcrfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_layer_max(s : NlpposcrfLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_layer_to_string(s : NlpposcrfLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_pos_crf_buffer_set(s : NlpposcrfBuffer, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_crf_buffer_sum(s : NlpposcrfBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_buffer_sum(s : NlpposcrfBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_buffer_mean(s : NlpposcrfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_buffer_mean(s : NlpposcrfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_buffer_scale(s : NlpposcrfBuffer, f : Double) -> NlpposcrfBuffer {
   let result = nlp_pos_crf_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_pos_crf_buffer_fill(s : NlpposcrfBuffer, v : Double) -> NlpposcrfBuff
   result
 }
 
-pub fn nlp_pos_crf_buffer_min(s : NlpposcrfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_buffer_min(s : NlpposcrfBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_buffer_max(s : NlpposcrfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_buffer_max(s : NlpposcrfBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_buffer_to_string(s : NlpposcrfBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_pos_crf_cursor_set(s : NlpposcrfCursor, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_crf_cursor_sum(s : NlpposcrfCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_cursor_sum(s : NlpposcrfCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_cursor_mean(s : NlpposcrfCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_cursor_mean(s : NlpposcrfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_cursor_scale(s : NlpposcrfCursor, f : Double) -> NlpposcrfCursor {
   let result = nlp_pos_crf_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_pos_crf_cursor_fill(s : NlpposcrfCursor, v : Double) -> NlpposcrfCurs
   result
 }
 
-pub fn nlp_pos_crf_cursor_min(s : NlpposcrfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_cursor_min(s : NlpposcrfCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_cursor_max(s : NlpposcrfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_cursor_max(s : NlpposcrfCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_cursor_to_string(s : NlpposcrfCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_pos_crf_view_set(s : NlpposcrfView, i : Int, v : Double) -> Nlpposcrf
   result
 }
 
-pub fn nlp_pos_crf_view_sum(s : NlpposcrfView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_view_sum(s : NlpposcrfView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_view_mean(s : NlpposcrfView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_view_mean(s : NlpposcrfView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_view_scale(s : NlpposcrfView, f : Double) -> NlpposcrfView {
   let result = nlp_pos_crf_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_pos_crf_view_fill(s : NlpposcrfView, v : Double) -> NlpposcrfView {
   result
 }
 
-pub fn nlp_pos_crf_view_min(s : NlpposcrfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_view_min(s : NlpposcrfView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_view_max(s : NlpposcrfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_view_max(s : NlpposcrfView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_view_to_string(s : NlpposcrfView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_pos_crf_range_set(s : NlpposcrfRange, i : Int, v : Double) -> Nlpposc
   result
 }
 
-pub fn nlp_pos_crf_range_sum(s : NlpposcrfRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_range_sum(s : NlpposcrfRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_range_mean(s : NlpposcrfRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_range_mean(s : NlpposcrfRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_range_scale(s : NlpposcrfRange, f : Double) -> NlpposcrfRange {
   let result = nlp_pos_crf_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_pos_crf_range_fill(s : NlpposcrfRange, v : Double) -> NlpposcrfRange 
   result
 }
 
-pub fn nlp_pos_crf_range_min(s : NlpposcrfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_range_min(s : NlpposcrfRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_range_max(s : NlpposcrfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_range_max(s : NlpposcrfRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_range_to_string(s : NlpposcrfRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_pos_crf_slice_set(s : NlpposcrfSlice, i : Int, v : Double) -> Nlpposc
   result
 }
 
-pub fn nlp_pos_crf_slice_sum(s : NlpposcrfSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_crf_slice_sum(s : NlpposcrfSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_crf_slice_mean(s : NlpposcrfSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_crf_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_crf_slice_mean(s : NlpposcrfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_crf_slice_scale(s : NlpposcrfSlice, f : Double) -> NlpposcrfSlice {
   let result = nlp_pos_crf_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_pos_crf_slice_fill(s : NlpposcrfSlice, v : Double) -> NlpposcrfSlice 
   result
 }
 
-pub fn nlp_pos_crf_slice_min(s : NlpposcrfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_slice_min(s : NlpposcrfSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_crf_slice_max(s : NlpposcrfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_crf_slice_max(s : NlpposcrfSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_crf_slice_to_string(s : NlpposcrfSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

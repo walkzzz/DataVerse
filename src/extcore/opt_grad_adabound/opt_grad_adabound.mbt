@@ -88,11 +88,7 @@ pub fn opt_grad_adabound_make_series(vals : Array[Double], name : String) -> Opt
 
 pub fn opt_grad_adabound_series_len(s : OptgradadaboundSeries) -> Int { s.vals.length() }
 
-pub fn opt_grad_adabound_series_sum(s : OptgradadaboundSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_grad_adabound_series_sum(s : OptgradadaboundSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_grad_adabound_series_mean(s : OptgradadaboundSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_grad_adabound_frame_set(s : OptgradadaboundFrame, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_adabound_frame_sum(s : OptgradadaboundFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_frame_sum(s : OptgradadaboundFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_frame_mean(s : OptgradadaboundFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_frame_mean(s : OptgradadaboundFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_frame_scale(s : OptgradadaboundFrame, f : Double) -> OptgradadaboundFrame {
   let result = opt_grad_adabound_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_grad_adabound_frame_fill(s : OptgradadaboundFrame, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_adabound_frame_min(s : OptgradadaboundFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_frame_min(s : OptgradadaboundFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_frame_max(s : OptgradadaboundFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_frame_max(s : OptgradadaboundFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_frame_to_string(s : OptgradadaboundFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_grad_adabound_table_set(s : OptgradadaboundTable, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_adabound_table_sum(s : OptgradadaboundTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_table_sum(s : OptgradadaboundTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_table_mean(s : OptgradadaboundTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_table_mean(s : OptgradadaboundTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_table_scale(s : OptgradadaboundTable, f : Double) -> OptgradadaboundTable {
   let result = opt_grad_adabound_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_grad_adabound_table_fill(s : OptgradadaboundTable, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_adabound_table_min(s : OptgradadaboundTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_table_min(s : OptgradadaboundTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_table_max(s : OptgradadaboundTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_table_max(s : OptgradadaboundTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_table_to_string(s : OptgradadaboundTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_grad_adabound_graphn_set(s : OptgradadaboundGraphN, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_adabound_graphn_sum(s : OptgradadaboundGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_graphn_sum(s : OptgradadaboundGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_graphn_mean(s : OptgradadaboundGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_graphn_mean(s : OptgradadaboundGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_graphn_scale(s : OptgradadaboundGraphN, f : Double) -> OptgradadaboundGraphN {
   let result = opt_grad_adabound_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_grad_adabound_graphn_fill(s : OptgradadaboundGraphN, v : Double) -> O
   result
 }
 
-pub fn opt_grad_adabound_graphn_min(s : OptgradadaboundGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_graphn_min(s : OptgradadaboundGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_graphn_max(s : OptgradadaboundGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_graphn_max(s : OptgradadaboundGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_graphn_to_string(s : OptgradadaboundGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_grad_adabound_node_set(s : OptgradadaboundNode, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_adabound_node_sum(s : OptgradadaboundNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_node_sum(s : OptgradadaboundNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_node_mean(s : OptgradadaboundNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_node_mean(s : OptgradadaboundNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_node_scale(s : OptgradadaboundNode, f : Double) -> OptgradadaboundNode {
   let result = opt_grad_adabound_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_grad_adabound_node_fill(s : OptgradadaboundNode, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_adabound_node_min(s : OptgradadaboundNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_node_min(s : OptgradadaboundNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_node_max(s : OptgradadaboundNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_node_max(s : OptgradadaboundNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_node_to_string(s : OptgradadaboundNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_grad_adabound_edge_set(s : OptgradadaboundEdge, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_adabound_edge_sum(s : OptgradadaboundEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_edge_sum(s : OptgradadaboundEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_edge_mean(s : OptgradadaboundEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_edge_mean(s : OptgradadaboundEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_edge_scale(s : OptgradadaboundEdge, f : Double) -> OptgradadaboundEdge {
   let result = opt_grad_adabound_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_grad_adabound_edge_fill(s : OptgradadaboundEdge, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_adabound_edge_min(s : OptgradadaboundEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_edge_min(s : OptgradadaboundEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_edge_max(s : OptgradadaboundEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_edge_max(s : OptgradadaboundEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_edge_to_string(s : OptgradadaboundEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_grad_adabound_path_set(s : OptgradadaboundPath, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_adabound_path_sum(s : OptgradadaboundPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_path_sum(s : OptgradadaboundPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_path_mean(s : OptgradadaboundPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_path_mean(s : OptgradadaboundPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_path_scale(s : OptgradadaboundPath, f : Double) -> OptgradadaboundPath {
   let result = opt_grad_adabound_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_grad_adabound_path_fill(s : OptgradadaboundPath, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_adabound_path_min(s : OptgradadaboundPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_path_min(s : OptgradadaboundPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_path_max(s : OptgradadaboundPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_path_max(s : OptgradadaboundPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_path_to_string(s : OptgradadaboundPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_grad_adabound_cluster_set(s : OptgradadaboundCluster, i : Int, v : Do
   result
 }
 
-pub fn opt_grad_adabound_cluster_sum(s : OptgradadaboundCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_cluster_sum(s : OptgradadaboundCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_cluster_mean(s : OptgradadaboundCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_cluster_mean(s : OptgradadaboundCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_cluster_scale(s : OptgradadaboundCluster, f : Double) -> OptgradadaboundCluster {
   let result = opt_grad_adabound_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_grad_adabound_cluster_fill(s : OptgradadaboundCluster, v : Double) ->
   result
 }
 
-pub fn opt_grad_adabound_cluster_min(s : OptgradadaboundCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_cluster_min(s : OptgradadaboundCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_cluster_max(s : OptgradadaboundCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_cluster_max(s : OptgradadaboundCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_cluster_to_string(s : OptgradadaboundCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_grad_adabound_model_set(s : OptgradadaboundModel, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_adabound_model_sum(s : OptgradadaboundModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_model_sum(s : OptgradadaboundModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_model_mean(s : OptgradadaboundModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_model_mean(s : OptgradadaboundModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_model_scale(s : OptgradadaboundModel, f : Double) -> OptgradadaboundModel {
   let result = opt_grad_adabound_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_grad_adabound_model_fill(s : OptgradadaboundModel, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_adabound_model_min(s : OptgradadaboundModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_model_min(s : OptgradadaboundModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_model_max(s : OptgradadaboundModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_model_max(s : OptgradadaboundModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_model_to_string(s : OptgradadaboundModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_grad_adabound_layer_set(s : OptgradadaboundLayer, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_adabound_layer_sum(s : OptgradadaboundLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_layer_sum(s : OptgradadaboundLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_layer_mean(s : OptgradadaboundLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_layer_mean(s : OptgradadaboundLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_layer_scale(s : OptgradadaboundLayer, f : Double) -> OptgradadaboundLayer {
   let result = opt_grad_adabound_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_grad_adabound_layer_fill(s : OptgradadaboundLayer, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_adabound_layer_min(s : OptgradadaboundLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_layer_min(s : OptgradadaboundLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_layer_max(s : OptgradadaboundLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_layer_max(s : OptgradadaboundLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_layer_to_string(s : OptgradadaboundLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_grad_adabound_buffer_set(s : OptgradadaboundBuffer, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_adabound_buffer_sum(s : OptgradadaboundBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_buffer_sum(s : OptgradadaboundBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_buffer_mean(s : OptgradadaboundBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_buffer_mean(s : OptgradadaboundBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_buffer_scale(s : OptgradadaboundBuffer, f : Double) -> OptgradadaboundBuffer {
   let result = opt_grad_adabound_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_grad_adabound_buffer_fill(s : OptgradadaboundBuffer, v : Double) -> O
   result
 }
 
-pub fn opt_grad_adabound_buffer_min(s : OptgradadaboundBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_buffer_min(s : OptgradadaboundBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_buffer_max(s : OptgradadaboundBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_buffer_max(s : OptgradadaboundBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_buffer_to_string(s : OptgradadaboundBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_grad_adabound_cursor_set(s : OptgradadaboundCursor, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_adabound_cursor_sum(s : OptgradadaboundCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_cursor_sum(s : OptgradadaboundCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_cursor_mean(s : OptgradadaboundCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_cursor_mean(s : OptgradadaboundCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_cursor_scale(s : OptgradadaboundCursor, f : Double) -> OptgradadaboundCursor {
   let result = opt_grad_adabound_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_grad_adabound_cursor_fill(s : OptgradadaboundCursor, v : Double) -> O
   result
 }
 
-pub fn opt_grad_adabound_cursor_min(s : OptgradadaboundCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_cursor_min(s : OptgradadaboundCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_cursor_max(s : OptgradadaboundCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_cursor_max(s : OptgradadaboundCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_cursor_to_string(s : OptgradadaboundCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_grad_adabound_view_set(s : OptgradadaboundView, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_adabound_view_sum(s : OptgradadaboundView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_view_sum(s : OptgradadaboundView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_view_mean(s : OptgradadaboundView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_view_mean(s : OptgradadaboundView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_view_scale(s : OptgradadaboundView, f : Double) -> OptgradadaboundView {
   let result = opt_grad_adabound_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_grad_adabound_view_fill(s : OptgradadaboundView, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_adabound_view_min(s : OptgradadaboundView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_view_min(s : OptgradadaboundView) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_view_max(s : OptgradadaboundView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_view_max(s : OptgradadaboundView) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_view_to_string(s : OptgradadaboundView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_grad_adabound_range_set(s : OptgradadaboundRange, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_adabound_range_sum(s : OptgradadaboundRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_range_sum(s : OptgradadaboundRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_range_mean(s : OptgradadaboundRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_range_mean(s : OptgradadaboundRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_range_scale(s : OptgradadaboundRange, f : Double) -> OptgradadaboundRange {
   let result = opt_grad_adabound_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_grad_adabound_range_fill(s : OptgradadaboundRange, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_adabound_range_min(s : OptgradadaboundRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_range_min(s : OptgradadaboundRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_range_max(s : OptgradadaboundRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_range_max(s : OptgradadaboundRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_range_to_string(s : OptgradadaboundRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_grad_adabound_slice_set(s : OptgradadaboundSlice, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_adabound_slice_sum(s : OptgradadaboundSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_adabound_slice_sum(s : OptgradadaboundSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_adabound_slice_mean(s : OptgradadaboundSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_adabound_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_adabound_slice_mean(s : OptgradadaboundSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_adabound_slice_scale(s : OptgradadaboundSlice, f : Double) -> OptgradadaboundSlice {
   let result = opt_grad_adabound_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_grad_adabound_slice_fill(s : OptgradadaboundSlice, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_adabound_slice_min(s : OptgradadaboundSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_slice_min(s : OptgradadaboundSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_adabound_slice_max(s : OptgradadaboundSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_adabound_slice_max(s : OptgradadaboundSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_adabound_slice_to_string(s : OptgradadaboundSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

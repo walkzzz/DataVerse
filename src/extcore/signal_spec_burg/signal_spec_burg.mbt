@@ -88,11 +88,7 @@ pub fn signal_spec_burg_make_series(vals : Array[Double], name : String) -> Sign
 
 pub fn signal_spec_burg_series_len(s : SignalspecburgSeries) -> Int { s.vals.length() }
 
-pub fn signal_spec_burg_series_sum(s : SignalspecburgSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_spec_burg_series_sum(s : SignalspecburgSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_spec_burg_series_mean(s : SignalspecburgSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_spec_burg_frame_set(s : SignalspecburgFrame, i : Int, v : Double) 
   result
 }
 
-pub fn signal_spec_burg_frame_sum(s : SignalspecburgFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_frame_sum(s : SignalspecburgFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_frame_mean(s : SignalspecburgFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_frame_mean(s : SignalspecburgFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_frame_scale(s : SignalspecburgFrame, f : Double) -> SignalspecburgFrame {
   let result = signal_spec_burg_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_spec_burg_frame_fill(s : SignalspecburgFrame, v : Double) -> Signa
   result
 }
 
-pub fn signal_spec_burg_frame_min(s : SignalspecburgFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_frame_min(s : SignalspecburgFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_frame_max(s : SignalspecburgFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_frame_max(s : SignalspecburgFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_frame_to_string(s : SignalspecburgFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_spec_burg_table_set(s : SignalspecburgTable, i : Int, v : Double) 
   result
 }
 
-pub fn signal_spec_burg_table_sum(s : SignalspecburgTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_table_sum(s : SignalspecburgTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_table_mean(s : SignalspecburgTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_table_mean(s : SignalspecburgTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_table_scale(s : SignalspecburgTable, f : Double) -> SignalspecburgTable {
   let result = signal_spec_burg_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_spec_burg_table_fill(s : SignalspecburgTable, v : Double) -> Signa
   result
 }
 
-pub fn signal_spec_burg_table_min(s : SignalspecburgTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_table_min(s : SignalspecburgTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_table_max(s : SignalspecburgTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_table_max(s : SignalspecburgTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_table_to_string(s : SignalspecburgTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_spec_burg_graphn_set(s : SignalspecburgGraphN, i : Int, v : Double
   result
 }
 
-pub fn signal_spec_burg_graphn_sum(s : SignalspecburgGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_graphn_sum(s : SignalspecburgGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_graphn_mean(s : SignalspecburgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_graphn_mean(s : SignalspecburgGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_graphn_scale(s : SignalspecburgGraphN, f : Double) -> SignalspecburgGraphN {
   let result = signal_spec_burg_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_spec_burg_graphn_fill(s : SignalspecburgGraphN, v : Double) -> Sig
   result
 }
 
-pub fn signal_spec_burg_graphn_min(s : SignalspecburgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_graphn_min(s : SignalspecburgGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_graphn_max(s : SignalspecburgGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_graphn_max(s : SignalspecburgGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_graphn_to_string(s : SignalspecburgGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_spec_burg_node_set(s : SignalspecburgNode, i : Int, v : Double) ->
   result
 }
 
-pub fn signal_spec_burg_node_sum(s : SignalspecburgNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_node_sum(s : SignalspecburgNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_node_mean(s : SignalspecburgNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_node_mean(s : SignalspecburgNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_node_scale(s : SignalspecburgNode, f : Double) -> SignalspecburgNode {
   let result = signal_spec_burg_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_spec_burg_node_fill(s : SignalspecburgNode, v : Double) -> Signals
   result
 }
 
-pub fn signal_spec_burg_node_min(s : SignalspecburgNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_node_min(s : SignalspecburgNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_node_max(s : SignalspecburgNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_node_max(s : SignalspecburgNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_node_to_string(s : SignalspecburgNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_spec_burg_edge_set(s : SignalspecburgEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn signal_spec_burg_edge_sum(s : SignalspecburgEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_edge_sum(s : SignalspecburgEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_edge_mean(s : SignalspecburgEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_edge_mean(s : SignalspecburgEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_edge_scale(s : SignalspecburgEdge, f : Double) -> SignalspecburgEdge {
   let result = signal_spec_burg_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_spec_burg_edge_fill(s : SignalspecburgEdge, v : Double) -> Signals
   result
 }
 
-pub fn signal_spec_burg_edge_min(s : SignalspecburgEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_edge_min(s : SignalspecburgEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_edge_max(s : SignalspecburgEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_edge_max(s : SignalspecburgEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_edge_to_string(s : SignalspecburgEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_spec_burg_path_set(s : SignalspecburgPath, i : Int, v : Double) ->
   result
 }
 
-pub fn signal_spec_burg_path_sum(s : SignalspecburgPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_path_sum(s : SignalspecburgPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_path_mean(s : SignalspecburgPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_path_mean(s : SignalspecburgPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_path_scale(s : SignalspecburgPath, f : Double) -> SignalspecburgPath {
   let result = signal_spec_burg_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_spec_burg_path_fill(s : SignalspecburgPath, v : Double) -> Signals
   result
 }
 
-pub fn signal_spec_burg_path_min(s : SignalspecburgPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_path_min(s : SignalspecburgPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_path_max(s : SignalspecburgPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_path_max(s : SignalspecburgPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_path_to_string(s : SignalspecburgPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_spec_burg_cluster_set(s : SignalspecburgCluster, i : Int, v : Doub
   result
 }
 
-pub fn signal_spec_burg_cluster_sum(s : SignalspecburgCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_cluster_sum(s : SignalspecburgCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_cluster_mean(s : SignalspecburgCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_cluster_mean(s : SignalspecburgCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_cluster_scale(s : SignalspecburgCluster, f : Double) -> SignalspecburgCluster {
   let result = signal_spec_burg_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_spec_burg_cluster_fill(s : SignalspecburgCluster, v : Double) -> S
   result
 }
 
-pub fn signal_spec_burg_cluster_min(s : SignalspecburgCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_cluster_min(s : SignalspecburgCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_cluster_max(s : SignalspecburgCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_cluster_max(s : SignalspecburgCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_cluster_to_string(s : SignalspecburgCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_spec_burg_model_set(s : SignalspecburgModel, i : Int, v : Double) 
   result
 }
 
-pub fn signal_spec_burg_model_sum(s : SignalspecburgModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_model_sum(s : SignalspecburgModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_model_mean(s : SignalspecburgModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_model_mean(s : SignalspecburgModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_model_scale(s : SignalspecburgModel, f : Double) -> SignalspecburgModel {
   let result = signal_spec_burg_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_spec_burg_model_fill(s : SignalspecburgModel, v : Double) -> Signa
   result
 }
 
-pub fn signal_spec_burg_model_min(s : SignalspecburgModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_model_min(s : SignalspecburgModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_model_max(s : SignalspecburgModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_model_max(s : SignalspecburgModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_model_to_string(s : SignalspecburgModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_spec_burg_layer_set(s : SignalspecburgLayer, i : Int, v : Double) 
   result
 }
 
-pub fn signal_spec_burg_layer_sum(s : SignalspecburgLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_layer_sum(s : SignalspecburgLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_layer_mean(s : SignalspecburgLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_layer_mean(s : SignalspecburgLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_layer_scale(s : SignalspecburgLayer, f : Double) -> SignalspecburgLayer {
   let result = signal_spec_burg_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_spec_burg_layer_fill(s : SignalspecburgLayer, v : Double) -> Signa
   result
 }
 
-pub fn signal_spec_burg_layer_min(s : SignalspecburgLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_layer_min(s : SignalspecburgLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_layer_max(s : SignalspecburgLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_layer_max(s : SignalspecburgLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_layer_to_string(s : SignalspecburgLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_spec_burg_buffer_set(s : SignalspecburgBuffer, i : Int, v : Double
   result
 }
 
-pub fn signal_spec_burg_buffer_sum(s : SignalspecburgBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_buffer_sum(s : SignalspecburgBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_buffer_mean(s : SignalspecburgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_buffer_mean(s : SignalspecburgBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_buffer_scale(s : SignalspecburgBuffer, f : Double) -> SignalspecburgBuffer {
   let result = signal_spec_burg_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_spec_burg_buffer_fill(s : SignalspecburgBuffer, v : Double) -> Sig
   result
 }
 
-pub fn signal_spec_burg_buffer_min(s : SignalspecburgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_buffer_min(s : SignalspecburgBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_buffer_max(s : SignalspecburgBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_buffer_max(s : SignalspecburgBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_buffer_to_string(s : SignalspecburgBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_spec_burg_cursor_set(s : SignalspecburgCursor, i : Int, v : Double
   result
 }
 
-pub fn signal_spec_burg_cursor_sum(s : SignalspecburgCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_cursor_sum(s : SignalspecburgCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_cursor_mean(s : SignalspecburgCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_cursor_mean(s : SignalspecburgCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_cursor_scale(s : SignalspecburgCursor, f : Double) -> SignalspecburgCursor {
   let result = signal_spec_burg_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_spec_burg_cursor_fill(s : SignalspecburgCursor, v : Double) -> Sig
   result
 }
 
-pub fn signal_spec_burg_cursor_min(s : SignalspecburgCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_cursor_min(s : SignalspecburgCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_cursor_max(s : SignalspecburgCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_cursor_max(s : SignalspecburgCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_cursor_to_string(s : SignalspecburgCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_spec_burg_view_set(s : SignalspecburgView, i : Int, v : Double) ->
   result
 }
 
-pub fn signal_spec_burg_view_sum(s : SignalspecburgView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_view_sum(s : SignalspecburgView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_view_mean(s : SignalspecburgView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_view_mean(s : SignalspecburgView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_view_scale(s : SignalspecburgView, f : Double) -> SignalspecburgView {
   let result = signal_spec_burg_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_spec_burg_view_fill(s : SignalspecburgView, v : Double) -> Signals
   result
 }
 
-pub fn signal_spec_burg_view_min(s : SignalspecburgView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_view_min(s : SignalspecburgView) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_view_max(s : SignalspecburgView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_view_max(s : SignalspecburgView) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_view_to_string(s : SignalspecburgView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_spec_burg_range_set(s : SignalspecburgRange, i : Int, v : Double) 
   result
 }
 
-pub fn signal_spec_burg_range_sum(s : SignalspecburgRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_range_sum(s : SignalspecburgRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_range_mean(s : SignalspecburgRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_range_mean(s : SignalspecburgRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_range_scale(s : SignalspecburgRange, f : Double) -> SignalspecburgRange {
   let result = signal_spec_burg_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_spec_burg_range_fill(s : SignalspecburgRange, v : Double) -> Signa
   result
 }
 
-pub fn signal_spec_burg_range_min(s : SignalspecburgRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_range_min(s : SignalspecburgRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_range_max(s : SignalspecburgRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_range_max(s : SignalspecburgRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_range_to_string(s : SignalspecburgRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_spec_burg_slice_set(s : SignalspecburgSlice, i : Int, v : Double) 
   result
 }
 
-pub fn signal_spec_burg_slice_sum(s : SignalspecburgSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_burg_slice_sum(s : SignalspecburgSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_burg_slice_mean(s : SignalspecburgSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_burg_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_burg_slice_mean(s : SignalspecburgSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_burg_slice_scale(s : SignalspecburgSlice, f : Double) -> SignalspecburgSlice {
   let result = signal_spec_burg_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_spec_burg_slice_fill(s : SignalspecburgSlice, v : Double) -> Signa
   result
 }
 
-pub fn signal_spec_burg_slice_min(s : SignalspecburgSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_slice_min(s : SignalspecburgSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_burg_slice_max(s : SignalspecburgSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_burg_slice_max(s : SignalspecburgSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_burg_slice_to_string(s : SignalspecburgSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

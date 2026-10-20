@@ -88,11 +88,7 @@ pub fn db_query_window_make_series(vals : Array[Double], name : String) -> Dbque
 
 pub fn db_query_window_series_len(s : DbquerywindowSeries) -> Int { s.vals.length() }
 
-pub fn db_query_window_series_sum(s : DbquerywindowSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_window_series_sum(s : DbquerywindowSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_window_series_mean(s : DbquerywindowSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_window_frame_set(s : DbquerywindowFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_window_frame_sum(s : DbquerywindowFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_frame_sum(s : DbquerywindowFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_frame_mean(s : DbquerywindowFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_frame_mean(s : DbquerywindowFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_frame_scale(s : DbquerywindowFrame, f : Double) -> DbquerywindowFrame {
   let result = db_query_window_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_window_frame_fill(s : DbquerywindowFrame, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_window_frame_min(s : DbquerywindowFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_frame_min(s : DbquerywindowFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_frame_max(s : DbquerywindowFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_frame_max(s : DbquerywindowFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_frame_to_string(s : DbquerywindowFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_window_table_set(s : DbquerywindowTable, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_window_table_sum(s : DbquerywindowTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_table_sum(s : DbquerywindowTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_table_mean(s : DbquerywindowTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_table_mean(s : DbquerywindowTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_table_scale(s : DbquerywindowTable, f : Double) -> DbquerywindowTable {
   let result = db_query_window_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_window_table_fill(s : DbquerywindowTable, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_window_table_min(s : DbquerywindowTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_table_min(s : DbquerywindowTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_table_max(s : DbquerywindowTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_table_max(s : DbquerywindowTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_table_to_string(s : DbquerywindowTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_window_graphn_set(s : DbquerywindowGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_window_graphn_sum(s : DbquerywindowGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_graphn_sum(s : DbquerywindowGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_graphn_mean(s : DbquerywindowGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_graphn_mean(s : DbquerywindowGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_graphn_scale(s : DbquerywindowGraphN, f : Double) -> DbquerywindowGraphN {
   let result = db_query_window_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_window_graphn_fill(s : DbquerywindowGraphN, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_window_graphn_min(s : DbquerywindowGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_graphn_min(s : DbquerywindowGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_graphn_max(s : DbquerywindowGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_graphn_max(s : DbquerywindowGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_graphn_to_string(s : DbquerywindowGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_window_node_set(s : DbquerywindowNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_window_node_sum(s : DbquerywindowNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_node_sum(s : DbquerywindowNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_node_mean(s : DbquerywindowNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_node_mean(s : DbquerywindowNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_node_scale(s : DbquerywindowNode, f : Double) -> DbquerywindowNode {
   let result = db_query_window_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_window_node_fill(s : DbquerywindowNode, v : Double) -> Dbquerywi
   result
 }
 
-pub fn db_query_window_node_min(s : DbquerywindowNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_node_min(s : DbquerywindowNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_node_max(s : DbquerywindowNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_node_max(s : DbquerywindowNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_node_to_string(s : DbquerywindowNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_window_edge_set(s : DbquerywindowEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_window_edge_sum(s : DbquerywindowEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_edge_sum(s : DbquerywindowEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_edge_mean(s : DbquerywindowEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_edge_mean(s : DbquerywindowEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_edge_scale(s : DbquerywindowEdge, f : Double) -> DbquerywindowEdge {
   let result = db_query_window_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_window_edge_fill(s : DbquerywindowEdge, v : Double) -> Dbquerywi
   result
 }
 
-pub fn db_query_window_edge_min(s : DbquerywindowEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_edge_min(s : DbquerywindowEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_edge_max(s : DbquerywindowEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_edge_max(s : DbquerywindowEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_edge_to_string(s : DbquerywindowEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_window_path_set(s : DbquerywindowPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_window_path_sum(s : DbquerywindowPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_path_sum(s : DbquerywindowPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_path_mean(s : DbquerywindowPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_path_mean(s : DbquerywindowPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_path_scale(s : DbquerywindowPath, f : Double) -> DbquerywindowPath {
   let result = db_query_window_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_window_path_fill(s : DbquerywindowPath, v : Double) -> Dbquerywi
   result
 }
 
-pub fn db_query_window_path_min(s : DbquerywindowPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_path_min(s : DbquerywindowPath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_path_max(s : DbquerywindowPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_path_max(s : DbquerywindowPath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_path_to_string(s : DbquerywindowPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_window_cluster_set(s : DbquerywindowCluster, i : Int, v : Double
   result
 }
 
-pub fn db_query_window_cluster_sum(s : DbquerywindowCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_cluster_sum(s : DbquerywindowCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_cluster_mean(s : DbquerywindowCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_cluster_mean(s : DbquerywindowCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_cluster_scale(s : DbquerywindowCluster, f : Double) -> DbquerywindowCluster {
   let result = db_query_window_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_window_cluster_fill(s : DbquerywindowCluster, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_window_cluster_min(s : DbquerywindowCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_cluster_min(s : DbquerywindowCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_cluster_max(s : DbquerywindowCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_cluster_max(s : DbquerywindowCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_cluster_to_string(s : DbquerywindowCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_window_model_set(s : DbquerywindowModel, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_window_model_sum(s : DbquerywindowModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_model_sum(s : DbquerywindowModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_model_mean(s : DbquerywindowModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_model_mean(s : DbquerywindowModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_model_scale(s : DbquerywindowModel, f : Double) -> DbquerywindowModel {
   let result = db_query_window_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_window_model_fill(s : DbquerywindowModel, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_window_model_min(s : DbquerywindowModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_model_min(s : DbquerywindowModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_model_max(s : DbquerywindowModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_model_max(s : DbquerywindowModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_model_to_string(s : DbquerywindowModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_window_layer_set(s : DbquerywindowLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_window_layer_sum(s : DbquerywindowLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_layer_sum(s : DbquerywindowLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_layer_mean(s : DbquerywindowLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_layer_mean(s : DbquerywindowLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_layer_scale(s : DbquerywindowLayer, f : Double) -> DbquerywindowLayer {
   let result = db_query_window_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_window_layer_fill(s : DbquerywindowLayer, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_window_layer_min(s : DbquerywindowLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_layer_min(s : DbquerywindowLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_layer_max(s : DbquerywindowLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_layer_max(s : DbquerywindowLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_layer_to_string(s : DbquerywindowLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_window_buffer_set(s : DbquerywindowBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_window_buffer_sum(s : DbquerywindowBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_buffer_sum(s : DbquerywindowBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_buffer_mean(s : DbquerywindowBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_buffer_mean(s : DbquerywindowBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_buffer_scale(s : DbquerywindowBuffer, f : Double) -> DbquerywindowBuffer {
   let result = db_query_window_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_window_buffer_fill(s : DbquerywindowBuffer, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_window_buffer_min(s : DbquerywindowBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_buffer_min(s : DbquerywindowBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_buffer_max(s : DbquerywindowBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_buffer_max(s : DbquerywindowBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_buffer_to_string(s : DbquerywindowBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_window_cursor_set(s : DbquerywindowCursor, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_window_cursor_sum(s : DbquerywindowCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_cursor_sum(s : DbquerywindowCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_cursor_mean(s : DbquerywindowCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_cursor_mean(s : DbquerywindowCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_cursor_scale(s : DbquerywindowCursor, f : Double) -> DbquerywindowCursor {
   let result = db_query_window_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_window_cursor_fill(s : DbquerywindowCursor, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_window_cursor_min(s : DbquerywindowCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_cursor_min(s : DbquerywindowCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_cursor_max(s : DbquerywindowCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_cursor_max(s : DbquerywindowCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_cursor_to_string(s : DbquerywindowCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_window_view_set(s : DbquerywindowView, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_window_view_sum(s : DbquerywindowView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_view_sum(s : DbquerywindowView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_view_mean(s : DbquerywindowView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_view_mean(s : DbquerywindowView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_view_scale(s : DbquerywindowView, f : Double) -> DbquerywindowView {
   let result = db_query_window_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_window_view_fill(s : DbquerywindowView, v : Double) -> Dbquerywi
   result
 }
 
-pub fn db_query_window_view_min(s : DbquerywindowView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_view_min(s : DbquerywindowView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_view_max(s : DbquerywindowView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_view_max(s : DbquerywindowView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_view_to_string(s : DbquerywindowView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_window_range_set(s : DbquerywindowRange, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_window_range_sum(s : DbquerywindowRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_range_sum(s : DbquerywindowRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_range_mean(s : DbquerywindowRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_range_mean(s : DbquerywindowRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_range_scale(s : DbquerywindowRange, f : Double) -> DbquerywindowRange {
   let result = db_query_window_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_window_range_fill(s : DbquerywindowRange, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_window_range_min(s : DbquerywindowRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_range_min(s : DbquerywindowRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_range_max(s : DbquerywindowRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_range_max(s : DbquerywindowRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_range_to_string(s : DbquerywindowRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_window_slice_set(s : DbquerywindowSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_window_slice_sum(s : DbquerywindowSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_window_slice_sum(s : DbquerywindowSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_window_slice_mean(s : DbquerywindowSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_window_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_window_slice_mean(s : DbquerywindowSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_window_slice_scale(s : DbquerywindowSlice, f : Double) -> DbquerywindowSlice {
   let result = db_query_window_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_window_slice_fill(s : DbquerywindowSlice, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_window_slice_min(s : DbquerywindowSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_slice_min(s : DbquerywindowSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_window_slice_max(s : DbquerywindowSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_window_slice_max(s : DbquerywindowSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_window_slice_to_string(s : DbquerywindowSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

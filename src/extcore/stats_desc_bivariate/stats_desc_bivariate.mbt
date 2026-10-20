@@ -88,11 +88,7 @@ pub fn stats_desc_bivariate_make_series(vals : Array[Double], name : String) -> 
 
 pub fn stats_desc_bivariate_series_len(s : StatsdescbivariateSeries) -> Int { s.vals.length() }
 
-pub fn stats_desc_bivariate_series_sum(s : StatsdescbivariateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_desc_bivariate_series_sum(s : StatsdescbivariateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_desc_bivariate_series_mean(s : StatsdescbivariateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_desc_bivariate_frame_set(s : StatsdescbivariateFrame, i : Int, v : 
   result
 }
 
-pub fn stats_desc_bivariate_frame_sum(s : StatsdescbivariateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_frame_sum(s : StatsdescbivariateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_frame_mean(s : StatsdescbivariateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_frame_mean(s : StatsdescbivariateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_frame_scale(s : StatsdescbivariateFrame, f : Double) -> StatsdescbivariateFrame {
   let result = stats_desc_bivariate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_desc_bivariate_frame_fill(s : StatsdescbivariateFrame, v : Double) 
   result
 }
 
-pub fn stats_desc_bivariate_frame_min(s : StatsdescbivariateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_frame_min(s : StatsdescbivariateFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_frame_max(s : StatsdescbivariateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_frame_max(s : StatsdescbivariateFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_frame_to_string(s : StatsdescbivariateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_desc_bivariate_table_set(s : StatsdescbivariateTable, i : Int, v : 
   result
 }
 
-pub fn stats_desc_bivariate_table_sum(s : StatsdescbivariateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_table_sum(s : StatsdescbivariateTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_table_mean(s : StatsdescbivariateTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_table_mean(s : StatsdescbivariateTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_table_scale(s : StatsdescbivariateTable, f : Double) -> StatsdescbivariateTable {
   let result = stats_desc_bivariate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_desc_bivariate_table_fill(s : StatsdescbivariateTable, v : Double) 
   result
 }
 
-pub fn stats_desc_bivariate_table_min(s : StatsdescbivariateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_table_min(s : StatsdescbivariateTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_table_max(s : StatsdescbivariateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_table_max(s : StatsdescbivariateTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_table_to_string(s : StatsdescbivariateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_desc_bivariate_graphn_set(s : StatsdescbivariateGraphN, i : Int, v 
   result
 }
 
-pub fn stats_desc_bivariate_graphn_sum(s : StatsdescbivariateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_graphn_sum(s : StatsdescbivariateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_graphn_mean(s : StatsdescbivariateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_graphn_mean(s : StatsdescbivariateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_graphn_scale(s : StatsdescbivariateGraphN, f : Double) -> StatsdescbivariateGraphN {
   let result = stats_desc_bivariate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_desc_bivariate_graphn_fill(s : StatsdescbivariateGraphN, v : Double
   result
 }
 
-pub fn stats_desc_bivariate_graphn_min(s : StatsdescbivariateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_graphn_min(s : StatsdescbivariateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_graphn_max(s : StatsdescbivariateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_graphn_max(s : StatsdescbivariateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_graphn_to_string(s : StatsdescbivariateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_desc_bivariate_node_set(s : StatsdescbivariateNode, i : Int, v : Do
   result
 }
 
-pub fn stats_desc_bivariate_node_sum(s : StatsdescbivariateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_node_sum(s : StatsdescbivariateNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_node_mean(s : StatsdescbivariateNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_node_mean(s : StatsdescbivariateNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_node_scale(s : StatsdescbivariateNode, f : Double) -> StatsdescbivariateNode {
   let result = stats_desc_bivariate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_desc_bivariate_node_fill(s : StatsdescbivariateNode, v : Double) ->
   result
 }
 
-pub fn stats_desc_bivariate_node_min(s : StatsdescbivariateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_node_min(s : StatsdescbivariateNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_node_max(s : StatsdescbivariateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_node_max(s : StatsdescbivariateNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_node_to_string(s : StatsdescbivariateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_desc_bivariate_edge_set(s : StatsdescbivariateEdge, i : Int, v : Do
   result
 }
 
-pub fn stats_desc_bivariate_edge_sum(s : StatsdescbivariateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_edge_sum(s : StatsdescbivariateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_edge_mean(s : StatsdescbivariateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_edge_mean(s : StatsdescbivariateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_edge_scale(s : StatsdescbivariateEdge, f : Double) -> StatsdescbivariateEdge {
   let result = stats_desc_bivariate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_desc_bivariate_edge_fill(s : StatsdescbivariateEdge, v : Double) ->
   result
 }
 
-pub fn stats_desc_bivariate_edge_min(s : StatsdescbivariateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_edge_min(s : StatsdescbivariateEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_edge_max(s : StatsdescbivariateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_edge_max(s : StatsdescbivariateEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_edge_to_string(s : StatsdescbivariateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_desc_bivariate_path_set(s : StatsdescbivariatePath, i : Int, v : Do
   result
 }
 
-pub fn stats_desc_bivariate_path_sum(s : StatsdescbivariatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_path_sum(s : StatsdescbivariatePath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_path_mean(s : StatsdescbivariatePath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_path_mean(s : StatsdescbivariatePath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_path_scale(s : StatsdescbivariatePath, f : Double) -> StatsdescbivariatePath {
   let result = stats_desc_bivariate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_desc_bivariate_path_fill(s : StatsdescbivariatePath, v : Double) ->
   result
 }
 
-pub fn stats_desc_bivariate_path_min(s : StatsdescbivariatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_path_min(s : StatsdescbivariatePath) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_path_max(s : StatsdescbivariatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_path_max(s : StatsdescbivariatePath) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_path_to_string(s : StatsdescbivariatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_desc_bivariate_cluster_set(s : StatsdescbivariateCluster, i : Int, 
   result
 }
 
-pub fn stats_desc_bivariate_cluster_sum(s : StatsdescbivariateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_cluster_sum(s : StatsdescbivariateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_cluster_mean(s : StatsdescbivariateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_cluster_mean(s : StatsdescbivariateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_cluster_scale(s : StatsdescbivariateCluster, f : Double) -> StatsdescbivariateCluster {
   let result = stats_desc_bivariate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_desc_bivariate_cluster_fill(s : StatsdescbivariateCluster, v : Doub
   result
 }
 
-pub fn stats_desc_bivariate_cluster_min(s : StatsdescbivariateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_cluster_min(s : StatsdescbivariateCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_cluster_max(s : StatsdescbivariateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_cluster_max(s : StatsdescbivariateCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_cluster_to_string(s : StatsdescbivariateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_desc_bivariate_model_set(s : StatsdescbivariateModel, i : Int, v : 
   result
 }
 
-pub fn stats_desc_bivariate_model_sum(s : StatsdescbivariateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_model_sum(s : StatsdescbivariateModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_model_mean(s : StatsdescbivariateModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_model_mean(s : StatsdescbivariateModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_model_scale(s : StatsdescbivariateModel, f : Double) -> StatsdescbivariateModel {
   let result = stats_desc_bivariate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_desc_bivariate_model_fill(s : StatsdescbivariateModel, v : Double) 
   result
 }
 
-pub fn stats_desc_bivariate_model_min(s : StatsdescbivariateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_model_min(s : StatsdescbivariateModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_model_max(s : StatsdescbivariateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_model_max(s : StatsdescbivariateModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_model_to_string(s : StatsdescbivariateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_desc_bivariate_layer_set(s : StatsdescbivariateLayer, i : Int, v : 
   result
 }
 
-pub fn stats_desc_bivariate_layer_sum(s : StatsdescbivariateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_layer_sum(s : StatsdescbivariateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_layer_mean(s : StatsdescbivariateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_layer_mean(s : StatsdescbivariateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_layer_scale(s : StatsdescbivariateLayer, f : Double) -> StatsdescbivariateLayer {
   let result = stats_desc_bivariate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_desc_bivariate_layer_fill(s : StatsdescbivariateLayer, v : Double) 
   result
 }
 
-pub fn stats_desc_bivariate_layer_min(s : StatsdescbivariateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_layer_min(s : StatsdescbivariateLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_layer_max(s : StatsdescbivariateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_layer_max(s : StatsdescbivariateLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_layer_to_string(s : StatsdescbivariateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_desc_bivariate_buffer_set(s : StatsdescbivariateBuffer, i : Int, v 
   result
 }
 
-pub fn stats_desc_bivariate_buffer_sum(s : StatsdescbivariateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_buffer_sum(s : StatsdescbivariateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_buffer_mean(s : StatsdescbivariateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_buffer_mean(s : StatsdescbivariateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_buffer_scale(s : StatsdescbivariateBuffer, f : Double) -> StatsdescbivariateBuffer {
   let result = stats_desc_bivariate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_desc_bivariate_buffer_fill(s : StatsdescbivariateBuffer, v : Double
   result
 }
 
-pub fn stats_desc_bivariate_buffer_min(s : StatsdescbivariateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_buffer_min(s : StatsdescbivariateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_buffer_max(s : StatsdescbivariateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_buffer_max(s : StatsdescbivariateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_buffer_to_string(s : StatsdescbivariateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_desc_bivariate_cursor_set(s : StatsdescbivariateCursor, i : Int, v 
   result
 }
 
-pub fn stats_desc_bivariate_cursor_sum(s : StatsdescbivariateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_cursor_sum(s : StatsdescbivariateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_cursor_mean(s : StatsdescbivariateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_cursor_mean(s : StatsdescbivariateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_cursor_scale(s : StatsdescbivariateCursor, f : Double) -> StatsdescbivariateCursor {
   let result = stats_desc_bivariate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_desc_bivariate_cursor_fill(s : StatsdescbivariateCursor, v : Double
   result
 }
 
-pub fn stats_desc_bivariate_cursor_min(s : StatsdescbivariateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_cursor_min(s : StatsdescbivariateCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_cursor_max(s : StatsdescbivariateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_cursor_max(s : StatsdescbivariateCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_cursor_to_string(s : StatsdescbivariateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_desc_bivariate_view_set(s : StatsdescbivariateView, i : Int, v : Do
   result
 }
 
-pub fn stats_desc_bivariate_view_sum(s : StatsdescbivariateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_view_sum(s : StatsdescbivariateView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_view_mean(s : StatsdescbivariateView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_view_mean(s : StatsdescbivariateView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_view_scale(s : StatsdescbivariateView, f : Double) -> StatsdescbivariateView {
   let result = stats_desc_bivariate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_desc_bivariate_view_fill(s : StatsdescbivariateView, v : Double) ->
   result
 }
 
-pub fn stats_desc_bivariate_view_min(s : StatsdescbivariateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_view_min(s : StatsdescbivariateView) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_view_max(s : StatsdescbivariateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_view_max(s : StatsdescbivariateView) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_view_to_string(s : StatsdescbivariateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_desc_bivariate_range_set(s : StatsdescbivariateRange, i : Int, v : 
   result
 }
 
-pub fn stats_desc_bivariate_range_sum(s : StatsdescbivariateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_range_sum(s : StatsdescbivariateRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_range_mean(s : StatsdescbivariateRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_range_mean(s : StatsdescbivariateRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_range_scale(s : StatsdescbivariateRange, f : Double) -> StatsdescbivariateRange {
   let result = stats_desc_bivariate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_desc_bivariate_range_fill(s : StatsdescbivariateRange, v : Double) 
   result
 }
 
-pub fn stats_desc_bivariate_range_min(s : StatsdescbivariateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_range_min(s : StatsdescbivariateRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_range_max(s : StatsdescbivariateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_range_max(s : StatsdescbivariateRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_range_to_string(s : StatsdescbivariateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_desc_bivariate_slice_set(s : StatsdescbivariateSlice, i : Int, v : 
   result
 }
 
-pub fn stats_desc_bivariate_slice_sum(s : StatsdescbivariateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_bivariate_slice_sum(s : StatsdescbivariateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_bivariate_slice_mean(s : StatsdescbivariateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_bivariate_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_bivariate_slice_mean(s : StatsdescbivariateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_bivariate_slice_scale(s : StatsdescbivariateSlice, f : Double) -> StatsdescbivariateSlice {
   let result = stats_desc_bivariate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_desc_bivariate_slice_fill(s : StatsdescbivariateSlice, v : Double) 
   result
 }
 
-pub fn stats_desc_bivariate_slice_min(s : StatsdescbivariateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_slice_min(s : StatsdescbivariateSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_bivariate_slice_max(s : StatsdescbivariateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_bivariate_slice_max(s : StatsdescbivariateSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_bivariate_slice_to_string(s : StatsdescbivariateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

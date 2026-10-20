@@ -88,11 +88,7 @@ pub fn bio_seq_assembly_metagenome_make_series(vals : Array[Double], name : Stri
 
 pub fn bio_seq_assembly_metagenome_series_len(s : BioseqassemblymetagenomeSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_assembly_metagenome_series_sum(s : BioseqassemblymetagenomeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_series_sum(s : BioseqassemblymetagenomeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_assembly_metagenome_series_mean(s : BioseqassemblymetagenomeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_assembly_metagenome_frame_set(s : BioseqassemblymetagenomeFrame, 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_frame_sum(s : BioseqassemblymetagenomeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_frame_sum(s : BioseqassemblymetagenomeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_frame_mean(s : BioseqassemblymetagenomeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_frame_mean(s : BioseqassemblymetagenomeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_frame_scale(s : BioseqassemblymetagenomeFrame, f : Double) -> BioseqassemblymetagenomeFrame {
   let result = bio_seq_assembly_metagenome_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_assembly_metagenome_frame_fill(s : BioseqassemblymetagenomeFrame,
   result
 }
 
-pub fn bio_seq_assembly_metagenome_frame_min(s : BioseqassemblymetagenomeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_frame_min(s : BioseqassemblymetagenomeFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_frame_max(s : BioseqassemblymetagenomeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_frame_max(s : BioseqassemblymetagenomeFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_frame_to_string(s : BioseqassemblymetagenomeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_assembly_metagenome_table_set(s : BioseqassemblymetagenomeTable, 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_table_sum(s : BioseqassemblymetagenomeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_table_sum(s : BioseqassemblymetagenomeTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_table_mean(s : BioseqassemblymetagenomeTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_table_mean(s : BioseqassemblymetagenomeTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_table_scale(s : BioseqassemblymetagenomeTable, f : Double) -> BioseqassemblymetagenomeTable {
   let result = bio_seq_assembly_metagenome_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_assembly_metagenome_table_fill(s : BioseqassemblymetagenomeTable,
   result
 }
 
-pub fn bio_seq_assembly_metagenome_table_min(s : BioseqassemblymetagenomeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_table_min(s : BioseqassemblymetagenomeTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_table_max(s : BioseqassemblymetagenomeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_table_max(s : BioseqassemblymetagenomeTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_table_to_string(s : BioseqassemblymetagenomeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_assembly_metagenome_graphn_set(s : BioseqassemblymetagenomeGraphN
   result
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_sum(s : BioseqassemblymetagenomeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_graphn_sum(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_graphn_mean(s : BioseqassemblymetagenomeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_graphn_mean(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_graphn_scale(s : BioseqassemblymetagenomeGraphN, f : Double) -> BioseqassemblymetagenomeGraphN {
   let result = bio_seq_assembly_metagenome_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_assembly_metagenome_graphn_fill(s : BioseqassemblymetagenomeGraph
   result
 }
 
-pub fn bio_seq_assembly_metagenome_graphn_min(s : BioseqassemblymetagenomeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_graphn_min(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_graphn_max(s : BioseqassemblymetagenomeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_graphn_max(s : BioseqassemblymetagenomeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_graphn_to_string(s : BioseqassemblymetagenomeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_assembly_metagenome_node_set(s : BioseqassemblymetagenomeNode, i 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_node_sum(s : BioseqassemblymetagenomeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_node_sum(s : BioseqassemblymetagenomeNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_node_mean(s : BioseqassemblymetagenomeNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_node_mean(s : BioseqassemblymetagenomeNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_node_scale(s : BioseqassemblymetagenomeNode, f : Double) -> BioseqassemblymetagenomeNode {
   let result = bio_seq_assembly_metagenome_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_assembly_metagenome_node_fill(s : BioseqassemblymetagenomeNode, v
   result
 }
 
-pub fn bio_seq_assembly_metagenome_node_min(s : BioseqassemblymetagenomeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_node_min(s : BioseqassemblymetagenomeNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_node_max(s : BioseqassemblymetagenomeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_node_max(s : BioseqassemblymetagenomeNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_node_to_string(s : BioseqassemblymetagenomeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_assembly_metagenome_edge_set(s : BioseqassemblymetagenomeEdge, i 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_edge_sum(s : BioseqassemblymetagenomeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_edge_sum(s : BioseqassemblymetagenomeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_edge_mean(s : BioseqassemblymetagenomeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_edge_mean(s : BioseqassemblymetagenomeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_edge_scale(s : BioseqassemblymetagenomeEdge, f : Double) -> BioseqassemblymetagenomeEdge {
   let result = bio_seq_assembly_metagenome_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_assembly_metagenome_edge_fill(s : BioseqassemblymetagenomeEdge, v
   result
 }
 
-pub fn bio_seq_assembly_metagenome_edge_min(s : BioseqassemblymetagenomeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_edge_min(s : BioseqassemblymetagenomeEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_edge_max(s : BioseqassemblymetagenomeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_edge_max(s : BioseqassemblymetagenomeEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_edge_to_string(s : BioseqassemblymetagenomeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_assembly_metagenome_path_set(s : BioseqassemblymetagenomePath, i 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_path_sum(s : BioseqassemblymetagenomePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_path_sum(s : BioseqassemblymetagenomePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_path_mean(s : BioseqassemblymetagenomePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_path_mean(s : BioseqassemblymetagenomePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_path_scale(s : BioseqassemblymetagenomePath, f : Double) -> BioseqassemblymetagenomePath {
   let result = bio_seq_assembly_metagenome_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_assembly_metagenome_path_fill(s : BioseqassemblymetagenomePath, v
   result
 }
 
-pub fn bio_seq_assembly_metagenome_path_min(s : BioseqassemblymetagenomePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_path_min(s : BioseqassemblymetagenomePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_path_max(s : BioseqassemblymetagenomePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_path_max(s : BioseqassemblymetagenomePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_path_to_string(s : BioseqassemblymetagenomePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_assembly_metagenome_cluster_set(s : BioseqassemblymetagenomeClust
   result
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_sum(s : BioseqassemblymetagenomeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_cluster_sum(s : BioseqassemblymetagenomeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_cluster_mean(s : BioseqassemblymetagenomeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_cluster_mean(s : BioseqassemblymetagenomeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_cluster_scale(s : BioseqassemblymetagenomeCluster, f : Double) -> BioseqassemblymetagenomeCluster {
   let result = bio_seq_assembly_metagenome_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_assembly_metagenome_cluster_fill(s : BioseqassemblymetagenomeClus
   result
 }
 
-pub fn bio_seq_assembly_metagenome_cluster_min(s : BioseqassemblymetagenomeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_cluster_min(s : BioseqassemblymetagenomeCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_cluster_max(s : BioseqassemblymetagenomeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_cluster_max(s : BioseqassemblymetagenomeCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_cluster_to_string(s : BioseqassemblymetagenomeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_assembly_metagenome_model_set(s : BioseqassemblymetagenomeModel, 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_model_sum(s : BioseqassemblymetagenomeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_model_sum(s : BioseqassemblymetagenomeModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_model_mean(s : BioseqassemblymetagenomeModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_model_mean(s : BioseqassemblymetagenomeModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_model_scale(s : BioseqassemblymetagenomeModel, f : Double) -> BioseqassemblymetagenomeModel {
   let result = bio_seq_assembly_metagenome_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_assembly_metagenome_model_fill(s : BioseqassemblymetagenomeModel,
   result
 }
 
-pub fn bio_seq_assembly_metagenome_model_min(s : BioseqassemblymetagenomeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_model_min(s : BioseqassemblymetagenomeModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_model_max(s : BioseqassemblymetagenomeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_model_max(s : BioseqassemblymetagenomeModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_model_to_string(s : BioseqassemblymetagenomeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_assembly_metagenome_layer_set(s : BioseqassemblymetagenomeLayer, 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_layer_sum(s : BioseqassemblymetagenomeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_layer_sum(s : BioseqassemblymetagenomeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_layer_mean(s : BioseqassemblymetagenomeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_layer_mean(s : BioseqassemblymetagenomeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_layer_scale(s : BioseqassemblymetagenomeLayer, f : Double) -> BioseqassemblymetagenomeLayer {
   let result = bio_seq_assembly_metagenome_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_assembly_metagenome_layer_fill(s : BioseqassemblymetagenomeLayer,
   result
 }
 
-pub fn bio_seq_assembly_metagenome_layer_min(s : BioseqassemblymetagenomeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_layer_min(s : BioseqassemblymetagenomeLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_layer_max(s : BioseqassemblymetagenomeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_layer_max(s : BioseqassemblymetagenomeLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_layer_to_string(s : BioseqassemblymetagenomeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_assembly_metagenome_buffer_set(s : BioseqassemblymetagenomeBuffer
   result
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_sum(s : BioseqassemblymetagenomeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_buffer_sum(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_buffer_mean(s : BioseqassemblymetagenomeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_buffer_mean(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_buffer_scale(s : BioseqassemblymetagenomeBuffer, f : Double) -> BioseqassemblymetagenomeBuffer {
   let result = bio_seq_assembly_metagenome_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_assembly_metagenome_buffer_fill(s : BioseqassemblymetagenomeBuffe
   result
 }
 
-pub fn bio_seq_assembly_metagenome_buffer_min(s : BioseqassemblymetagenomeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_buffer_min(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_buffer_max(s : BioseqassemblymetagenomeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_buffer_max(s : BioseqassemblymetagenomeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_buffer_to_string(s : BioseqassemblymetagenomeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_assembly_metagenome_cursor_set(s : BioseqassemblymetagenomeCursor
   result
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_sum(s : BioseqassemblymetagenomeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_cursor_sum(s : BioseqassemblymetagenomeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_cursor_mean(s : BioseqassemblymetagenomeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_cursor_mean(s : BioseqassemblymetagenomeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_cursor_scale(s : BioseqassemblymetagenomeCursor, f : Double) -> BioseqassemblymetagenomeCursor {
   let result = bio_seq_assembly_metagenome_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_assembly_metagenome_cursor_fill(s : BioseqassemblymetagenomeCurso
   result
 }
 
-pub fn bio_seq_assembly_metagenome_cursor_min(s : BioseqassemblymetagenomeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_cursor_min(s : BioseqassemblymetagenomeCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_cursor_max(s : BioseqassemblymetagenomeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_cursor_max(s : BioseqassemblymetagenomeCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_cursor_to_string(s : BioseqassemblymetagenomeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_assembly_metagenome_view_set(s : BioseqassemblymetagenomeView, i 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_view_sum(s : BioseqassemblymetagenomeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_view_sum(s : BioseqassemblymetagenomeView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_view_mean(s : BioseqassemblymetagenomeView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_view_mean(s : BioseqassemblymetagenomeView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_view_scale(s : BioseqassemblymetagenomeView, f : Double) -> BioseqassemblymetagenomeView {
   let result = bio_seq_assembly_metagenome_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_assembly_metagenome_view_fill(s : BioseqassemblymetagenomeView, v
   result
 }
 
-pub fn bio_seq_assembly_metagenome_view_min(s : BioseqassemblymetagenomeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_view_min(s : BioseqassemblymetagenomeView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_view_max(s : BioseqassemblymetagenomeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_view_max(s : BioseqassemblymetagenomeView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_view_to_string(s : BioseqassemblymetagenomeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_assembly_metagenome_range_set(s : BioseqassemblymetagenomeRange, 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_range_sum(s : BioseqassemblymetagenomeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_range_sum(s : BioseqassemblymetagenomeRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_range_mean(s : BioseqassemblymetagenomeRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_range_mean(s : BioseqassemblymetagenomeRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_range_scale(s : BioseqassemblymetagenomeRange, f : Double) -> BioseqassemblymetagenomeRange {
   let result = bio_seq_assembly_metagenome_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_assembly_metagenome_range_fill(s : BioseqassemblymetagenomeRange,
   result
 }
 
-pub fn bio_seq_assembly_metagenome_range_min(s : BioseqassemblymetagenomeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_range_min(s : BioseqassemblymetagenomeRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_range_max(s : BioseqassemblymetagenomeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_range_max(s : BioseqassemblymetagenomeRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_range_to_string(s : BioseqassemblymetagenomeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_assembly_metagenome_slice_set(s : BioseqassemblymetagenomeSlice, 
   result
 }
 
-pub fn bio_seq_assembly_metagenome_slice_sum(s : BioseqassemblymetagenomeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_metagenome_slice_sum(s : BioseqassemblymetagenomeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_metagenome_slice_mean(s : BioseqassemblymetagenomeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_metagenome_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_metagenome_slice_mean(s : BioseqassemblymetagenomeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_metagenome_slice_scale(s : BioseqassemblymetagenomeSlice, f : Double) -> BioseqassemblymetagenomeSlice {
   let result = bio_seq_assembly_metagenome_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_assembly_metagenome_slice_fill(s : BioseqassemblymetagenomeSlice,
   result
 }
 
-pub fn bio_seq_assembly_metagenome_slice_min(s : BioseqassemblymetagenomeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_slice_min(s : BioseqassemblymetagenomeSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_metagenome_slice_max(s : BioseqassemblymetagenomeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_metagenome_slice_max(s : BioseqassemblymetagenomeSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_metagenome_slice_to_string(s : BioseqassemblymetagenomeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

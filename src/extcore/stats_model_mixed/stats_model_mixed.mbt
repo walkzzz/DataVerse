@@ -88,11 +88,7 @@ pub fn stats_model_mixed_make_series(vals : Array[Double], name : String) -> Sta
 
 pub fn stats_model_mixed_series_len(s : StatsmodelmixedSeries) -> Int { s.vals.length() }
 
-pub fn stats_model_mixed_series_sum(s : StatsmodelmixedSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_model_mixed_series_sum(s : StatsmodelmixedSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_model_mixed_series_mean(s : StatsmodelmixedSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_model_mixed_frame_set(s : StatsmodelmixedFrame, i : Int, v : Double
   result
 }
 
-pub fn stats_model_mixed_frame_sum(s : StatsmodelmixedFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_frame_sum(s : StatsmodelmixedFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_frame_mean(s : StatsmodelmixedFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_frame_mean(s : StatsmodelmixedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_frame_scale(s : StatsmodelmixedFrame, f : Double) -> StatsmodelmixedFrame {
   let result = stats_model_mixed_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_model_mixed_frame_fill(s : StatsmodelmixedFrame, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_mixed_frame_min(s : StatsmodelmixedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_frame_min(s : StatsmodelmixedFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_frame_max(s : StatsmodelmixedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_frame_max(s : StatsmodelmixedFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_frame_to_string(s : StatsmodelmixedFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_model_mixed_table_set(s : StatsmodelmixedTable, i : Int, v : Double
   result
 }
 
-pub fn stats_model_mixed_table_sum(s : StatsmodelmixedTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_table_sum(s : StatsmodelmixedTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_table_mean(s : StatsmodelmixedTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_table_mean(s : StatsmodelmixedTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_table_scale(s : StatsmodelmixedTable, f : Double) -> StatsmodelmixedTable {
   let result = stats_model_mixed_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_model_mixed_table_fill(s : StatsmodelmixedTable, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_mixed_table_min(s : StatsmodelmixedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_table_min(s : StatsmodelmixedTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_table_max(s : StatsmodelmixedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_table_max(s : StatsmodelmixedTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_table_to_string(s : StatsmodelmixedTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_model_mixed_graphn_set(s : StatsmodelmixedGraphN, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_mixed_graphn_sum(s : StatsmodelmixedGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_graphn_sum(s : StatsmodelmixedGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_graphn_mean(s : StatsmodelmixedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_graphn_mean(s : StatsmodelmixedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_graphn_scale(s : StatsmodelmixedGraphN, f : Double) -> StatsmodelmixedGraphN {
   let result = stats_model_mixed_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_model_mixed_graphn_fill(s : StatsmodelmixedGraphN, v : Double) -> S
   result
 }
 
-pub fn stats_model_mixed_graphn_min(s : StatsmodelmixedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_graphn_min(s : StatsmodelmixedGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_graphn_max(s : StatsmodelmixedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_graphn_max(s : StatsmodelmixedGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_graphn_to_string(s : StatsmodelmixedGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_model_mixed_node_set(s : StatsmodelmixedNode, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_mixed_node_sum(s : StatsmodelmixedNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_node_sum(s : StatsmodelmixedNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_node_mean(s : StatsmodelmixedNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_node_mean(s : StatsmodelmixedNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_node_scale(s : StatsmodelmixedNode, f : Double) -> StatsmodelmixedNode {
   let result = stats_model_mixed_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_model_mixed_node_fill(s : StatsmodelmixedNode, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_mixed_node_min(s : StatsmodelmixedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_node_min(s : StatsmodelmixedNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_node_max(s : StatsmodelmixedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_node_max(s : StatsmodelmixedNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_node_to_string(s : StatsmodelmixedNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_model_mixed_edge_set(s : StatsmodelmixedEdge, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_mixed_edge_sum(s : StatsmodelmixedEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_edge_sum(s : StatsmodelmixedEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_edge_mean(s : StatsmodelmixedEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_edge_mean(s : StatsmodelmixedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_edge_scale(s : StatsmodelmixedEdge, f : Double) -> StatsmodelmixedEdge {
   let result = stats_model_mixed_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_model_mixed_edge_fill(s : StatsmodelmixedEdge, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_mixed_edge_min(s : StatsmodelmixedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_edge_min(s : StatsmodelmixedEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_edge_max(s : StatsmodelmixedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_edge_max(s : StatsmodelmixedEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_edge_to_string(s : StatsmodelmixedEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_model_mixed_path_set(s : StatsmodelmixedPath, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_mixed_path_sum(s : StatsmodelmixedPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_path_sum(s : StatsmodelmixedPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_path_mean(s : StatsmodelmixedPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_path_mean(s : StatsmodelmixedPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_path_scale(s : StatsmodelmixedPath, f : Double) -> StatsmodelmixedPath {
   let result = stats_model_mixed_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_model_mixed_path_fill(s : StatsmodelmixedPath, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_mixed_path_min(s : StatsmodelmixedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_path_min(s : StatsmodelmixedPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_path_max(s : StatsmodelmixedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_path_max(s : StatsmodelmixedPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_path_to_string(s : StatsmodelmixedPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_model_mixed_cluster_set(s : StatsmodelmixedCluster, i : Int, v : Do
   result
 }
 
-pub fn stats_model_mixed_cluster_sum(s : StatsmodelmixedCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_cluster_sum(s : StatsmodelmixedCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_cluster_mean(s : StatsmodelmixedCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_cluster_mean(s : StatsmodelmixedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_cluster_scale(s : StatsmodelmixedCluster, f : Double) -> StatsmodelmixedCluster {
   let result = stats_model_mixed_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_model_mixed_cluster_fill(s : StatsmodelmixedCluster, v : Double) ->
   result
 }
 
-pub fn stats_model_mixed_cluster_min(s : StatsmodelmixedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_cluster_min(s : StatsmodelmixedCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_cluster_max(s : StatsmodelmixedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_cluster_max(s : StatsmodelmixedCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_cluster_to_string(s : StatsmodelmixedCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_model_mixed_model_set(s : StatsmodelmixedModel, i : Int, v : Double
   result
 }
 
-pub fn stats_model_mixed_model_sum(s : StatsmodelmixedModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_model_sum(s : StatsmodelmixedModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_model_mean(s : StatsmodelmixedModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_model_mean(s : StatsmodelmixedModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_model_scale(s : StatsmodelmixedModel, f : Double) -> StatsmodelmixedModel {
   let result = stats_model_mixed_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_model_mixed_model_fill(s : StatsmodelmixedModel, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_mixed_model_min(s : StatsmodelmixedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_model_min(s : StatsmodelmixedModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_model_max(s : StatsmodelmixedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_model_max(s : StatsmodelmixedModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_model_to_string(s : StatsmodelmixedModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_model_mixed_layer_set(s : StatsmodelmixedLayer, i : Int, v : Double
   result
 }
 
-pub fn stats_model_mixed_layer_sum(s : StatsmodelmixedLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_layer_sum(s : StatsmodelmixedLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_layer_mean(s : StatsmodelmixedLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_layer_mean(s : StatsmodelmixedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_layer_scale(s : StatsmodelmixedLayer, f : Double) -> StatsmodelmixedLayer {
   let result = stats_model_mixed_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_model_mixed_layer_fill(s : StatsmodelmixedLayer, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_mixed_layer_min(s : StatsmodelmixedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_layer_min(s : StatsmodelmixedLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_layer_max(s : StatsmodelmixedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_layer_max(s : StatsmodelmixedLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_layer_to_string(s : StatsmodelmixedLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_model_mixed_buffer_set(s : StatsmodelmixedBuffer, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_mixed_buffer_sum(s : StatsmodelmixedBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_buffer_sum(s : StatsmodelmixedBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_buffer_mean(s : StatsmodelmixedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_buffer_mean(s : StatsmodelmixedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_buffer_scale(s : StatsmodelmixedBuffer, f : Double) -> StatsmodelmixedBuffer {
   let result = stats_model_mixed_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_model_mixed_buffer_fill(s : StatsmodelmixedBuffer, v : Double) -> S
   result
 }
 
-pub fn stats_model_mixed_buffer_min(s : StatsmodelmixedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_buffer_min(s : StatsmodelmixedBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_buffer_max(s : StatsmodelmixedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_buffer_max(s : StatsmodelmixedBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_buffer_to_string(s : StatsmodelmixedBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_model_mixed_cursor_set(s : StatsmodelmixedCursor, i : Int, v : Doub
   result
 }
 
-pub fn stats_model_mixed_cursor_sum(s : StatsmodelmixedCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_cursor_sum(s : StatsmodelmixedCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_cursor_mean(s : StatsmodelmixedCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_cursor_mean(s : StatsmodelmixedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_cursor_scale(s : StatsmodelmixedCursor, f : Double) -> StatsmodelmixedCursor {
   let result = stats_model_mixed_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_model_mixed_cursor_fill(s : StatsmodelmixedCursor, v : Double) -> S
   result
 }
 
-pub fn stats_model_mixed_cursor_min(s : StatsmodelmixedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_cursor_min(s : StatsmodelmixedCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_cursor_max(s : StatsmodelmixedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_cursor_max(s : StatsmodelmixedCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_cursor_to_string(s : StatsmodelmixedCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_model_mixed_view_set(s : StatsmodelmixedView, i : Int, v : Double) 
   result
 }
 
-pub fn stats_model_mixed_view_sum(s : StatsmodelmixedView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_view_sum(s : StatsmodelmixedView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_view_mean(s : StatsmodelmixedView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_view_mean(s : StatsmodelmixedView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_view_scale(s : StatsmodelmixedView, f : Double) -> StatsmodelmixedView {
   let result = stats_model_mixed_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_model_mixed_view_fill(s : StatsmodelmixedView, v : Double) -> Stats
   result
 }
 
-pub fn stats_model_mixed_view_min(s : StatsmodelmixedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_view_min(s : StatsmodelmixedView) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_view_max(s : StatsmodelmixedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_view_max(s : StatsmodelmixedView) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_view_to_string(s : StatsmodelmixedView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_model_mixed_range_set(s : StatsmodelmixedRange, i : Int, v : Double
   result
 }
 
-pub fn stats_model_mixed_range_sum(s : StatsmodelmixedRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_range_sum(s : StatsmodelmixedRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_range_mean(s : StatsmodelmixedRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_range_mean(s : StatsmodelmixedRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_range_scale(s : StatsmodelmixedRange, f : Double) -> StatsmodelmixedRange {
   let result = stats_model_mixed_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_model_mixed_range_fill(s : StatsmodelmixedRange, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_mixed_range_min(s : StatsmodelmixedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_range_min(s : StatsmodelmixedRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_range_max(s : StatsmodelmixedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_range_max(s : StatsmodelmixedRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_range_to_string(s : StatsmodelmixedRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_model_mixed_slice_set(s : StatsmodelmixedSlice, i : Int, v : Double
   result
 }
 
-pub fn stats_model_mixed_slice_sum(s : StatsmodelmixedSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_model_mixed_slice_sum(s : StatsmodelmixedSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_model_mixed_slice_mean(s : StatsmodelmixedSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_model_mixed_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_model_mixed_slice_mean(s : StatsmodelmixedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_model_mixed_slice_scale(s : StatsmodelmixedSlice, f : Double) -> StatsmodelmixedSlice {
   let result = stats_model_mixed_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_model_mixed_slice_fill(s : StatsmodelmixedSlice, v : Double) -> Sta
   result
 }
 
-pub fn stats_model_mixed_slice_min(s : StatsmodelmixedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_slice_min(s : StatsmodelmixedSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_model_mixed_slice_max(s : StatsmodelmixedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_model_mixed_slice_max(s : StatsmodelmixedSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_model_mixed_slice_to_string(s : StatsmodelmixedSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn physics_em_high_freq_make_series(vals : Array[Double], name : String) -> 
 
 pub fn physics_em_high_freq_series_len(s : PhysicsemhighfreqSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_high_freq_series_sum(s : PhysicsemhighfreqSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_high_freq_series_sum(s : PhysicsemhighfreqSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_high_freq_series_mean(s : PhysicsemhighfreqSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_high_freq_frame_set(s : PhysicsemhighfreqFrame, i : Int, v : D
   result
 }
 
-pub fn physics_em_high_freq_frame_sum(s : PhysicsemhighfreqFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_frame_sum(s : PhysicsemhighfreqFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_frame_mean(s : PhysicsemhighfreqFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_frame_mean(s : PhysicsemhighfreqFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_frame_scale(s : PhysicsemhighfreqFrame, f : Double) -> PhysicsemhighfreqFrame {
   let result = physics_em_high_freq_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_high_freq_frame_fill(s : PhysicsemhighfreqFrame, v : Double) -
   result
 }
 
-pub fn physics_em_high_freq_frame_min(s : PhysicsemhighfreqFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_frame_min(s : PhysicsemhighfreqFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_frame_max(s : PhysicsemhighfreqFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_frame_max(s : PhysicsemhighfreqFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_frame_to_string(s : PhysicsemhighfreqFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_high_freq_table_set(s : PhysicsemhighfreqTable, i : Int, v : D
   result
 }
 
-pub fn physics_em_high_freq_table_sum(s : PhysicsemhighfreqTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_table_sum(s : PhysicsemhighfreqTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_table_mean(s : PhysicsemhighfreqTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_table_mean(s : PhysicsemhighfreqTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_table_scale(s : PhysicsemhighfreqTable, f : Double) -> PhysicsemhighfreqTable {
   let result = physics_em_high_freq_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_high_freq_table_fill(s : PhysicsemhighfreqTable, v : Double) -
   result
 }
 
-pub fn physics_em_high_freq_table_min(s : PhysicsemhighfreqTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_table_min(s : PhysicsemhighfreqTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_table_max(s : PhysicsemhighfreqTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_table_max(s : PhysicsemhighfreqTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_table_to_string(s : PhysicsemhighfreqTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_high_freq_graphn_set(s : PhysicsemhighfreqGraphN, i : Int, v :
   result
 }
 
-pub fn physics_em_high_freq_graphn_sum(s : PhysicsemhighfreqGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_graphn_sum(s : PhysicsemhighfreqGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_graphn_mean(s : PhysicsemhighfreqGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_graphn_mean(s : PhysicsemhighfreqGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_graphn_scale(s : PhysicsemhighfreqGraphN, f : Double) -> PhysicsemhighfreqGraphN {
   let result = physics_em_high_freq_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_high_freq_graphn_fill(s : PhysicsemhighfreqGraphN, v : Double)
   result
 }
 
-pub fn physics_em_high_freq_graphn_min(s : PhysicsemhighfreqGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_graphn_min(s : PhysicsemhighfreqGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_graphn_max(s : PhysicsemhighfreqGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_graphn_max(s : PhysicsemhighfreqGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_graphn_to_string(s : PhysicsemhighfreqGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_high_freq_node_set(s : PhysicsemhighfreqNode, i : Int, v : Dou
   result
 }
 
-pub fn physics_em_high_freq_node_sum(s : PhysicsemhighfreqNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_node_sum(s : PhysicsemhighfreqNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_node_mean(s : PhysicsemhighfreqNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_node_mean(s : PhysicsemhighfreqNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_node_scale(s : PhysicsemhighfreqNode, f : Double) -> PhysicsemhighfreqNode {
   let result = physics_em_high_freq_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_high_freq_node_fill(s : PhysicsemhighfreqNode, v : Double) -> 
   result
 }
 
-pub fn physics_em_high_freq_node_min(s : PhysicsemhighfreqNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_node_min(s : PhysicsemhighfreqNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_node_max(s : PhysicsemhighfreqNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_node_max(s : PhysicsemhighfreqNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_node_to_string(s : PhysicsemhighfreqNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_high_freq_edge_set(s : PhysicsemhighfreqEdge, i : Int, v : Dou
   result
 }
 
-pub fn physics_em_high_freq_edge_sum(s : PhysicsemhighfreqEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_edge_sum(s : PhysicsemhighfreqEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_edge_mean(s : PhysicsemhighfreqEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_edge_mean(s : PhysicsemhighfreqEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_edge_scale(s : PhysicsemhighfreqEdge, f : Double) -> PhysicsemhighfreqEdge {
   let result = physics_em_high_freq_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_high_freq_edge_fill(s : PhysicsemhighfreqEdge, v : Double) -> 
   result
 }
 
-pub fn physics_em_high_freq_edge_min(s : PhysicsemhighfreqEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_edge_min(s : PhysicsemhighfreqEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_edge_max(s : PhysicsemhighfreqEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_edge_max(s : PhysicsemhighfreqEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_edge_to_string(s : PhysicsemhighfreqEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_high_freq_path_set(s : PhysicsemhighfreqPath, i : Int, v : Dou
   result
 }
 
-pub fn physics_em_high_freq_path_sum(s : PhysicsemhighfreqPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_path_sum(s : PhysicsemhighfreqPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_path_mean(s : PhysicsemhighfreqPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_path_mean(s : PhysicsemhighfreqPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_path_scale(s : PhysicsemhighfreqPath, f : Double) -> PhysicsemhighfreqPath {
   let result = physics_em_high_freq_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_high_freq_path_fill(s : PhysicsemhighfreqPath, v : Double) -> 
   result
 }
 
-pub fn physics_em_high_freq_path_min(s : PhysicsemhighfreqPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_path_min(s : PhysicsemhighfreqPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_path_max(s : PhysicsemhighfreqPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_path_max(s : PhysicsemhighfreqPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_path_to_string(s : PhysicsemhighfreqPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_high_freq_cluster_set(s : PhysicsemhighfreqCluster, i : Int, v
   result
 }
 
-pub fn physics_em_high_freq_cluster_sum(s : PhysicsemhighfreqCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_cluster_sum(s : PhysicsemhighfreqCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_cluster_mean(s : PhysicsemhighfreqCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_cluster_mean(s : PhysicsemhighfreqCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_cluster_scale(s : PhysicsemhighfreqCluster, f : Double) -> PhysicsemhighfreqCluster {
   let result = physics_em_high_freq_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_high_freq_cluster_fill(s : PhysicsemhighfreqCluster, v : Doubl
   result
 }
 
-pub fn physics_em_high_freq_cluster_min(s : PhysicsemhighfreqCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_cluster_min(s : PhysicsemhighfreqCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_cluster_max(s : PhysicsemhighfreqCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_cluster_max(s : PhysicsemhighfreqCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_cluster_to_string(s : PhysicsemhighfreqCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_high_freq_model_set(s : PhysicsemhighfreqModel, i : Int, v : D
   result
 }
 
-pub fn physics_em_high_freq_model_sum(s : PhysicsemhighfreqModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_model_sum(s : PhysicsemhighfreqModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_model_mean(s : PhysicsemhighfreqModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_model_mean(s : PhysicsemhighfreqModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_model_scale(s : PhysicsemhighfreqModel, f : Double) -> PhysicsemhighfreqModel {
   let result = physics_em_high_freq_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_high_freq_model_fill(s : PhysicsemhighfreqModel, v : Double) -
   result
 }
 
-pub fn physics_em_high_freq_model_min(s : PhysicsemhighfreqModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_model_min(s : PhysicsemhighfreqModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_model_max(s : PhysicsemhighfreqModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_model_max(s : PhysicsemhighfreqModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_model_to_string(s : PhysicsemhighfreqModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_high_freq_layer_set(s : PhysicsemhighfreqLayer, i : Int, v : D
   result
 }
 
-pub fn physics_em_high_freq_layer_sum(s : PhysicsemhighfreqLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_layer_sum(s : PhysicsemhighfreqLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_layer_mean(s : PhysicsemhighfreqLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_layer_mean(s : PhysicsemhighfreqLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_layer_scale(s : PhysicsemhighfreqLayer, f : Double) -> PhysicsemhighfreqLayer {
   let result = physics_em_high_freq_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_high_freq_layer_fill(s : PhysicsemhighfreqLayer, v : Double) -
   result
 }
 
-pub fn physics_em_high_freq_layer_min(s : PhysicsemhighfreqLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_layer_min(s : PhysicsemhighfreqLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_layer_max(s : PhysicsemhighfreqLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_layer_max(s : PhysicsemhighfreqLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_layer_to_string(s : PhysicsemhighfreqLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_high_freq_buffer_set(s : PhysicsemhighfreqBuffer, i : Int, v :
   result
 }
 
-pub fn physics_em_high_freq_buffer_sum(s : PhysicsemhighfreqBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_buffer_sum(s : PhysicsemhighfreqBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_buffer_mean(s : PhysicsemhighfreqBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_buffer_mean(s : PhysicsemhighfreqBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_buffer_scale(s : PhysicsemhighfreqBuffer, f : Double) -> PhysicsemhighfreqBuffer {
   let result = physics_em_high_freq_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_high_freq_buffer_fill(s : PhysicsemhighfreqBuffer, v : Double)
   result
 }
 
-pub fn physics_em_high_freq_buffer_min(s : PhysicsemhighfreqBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_buffer_min(s : PhysicsemhighfreqBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_buffer_max(s : PhysicsemhighfreqBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_buffer_max(s : PhysicsemhighfreqBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_buffer_to_string(s : PhysicsemhighfreqBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_high_freq_cursor_set(s : PhysicsemhighfreqCursor, i : Int, v :
   result
 }
 
-pub fn physics_em_high_freq_cursor_sum(s : PhysicsemhighfreqCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_cursor_sum(s : PhysicsemhighfreqCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_cursor_mean(s : PhysicsemhighfreqCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_cursor_mean(s : PhysicsemhighfreqCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_cursor_scale(s : PhysicsemhighfreqCursor, f : Double) -> PhysicsemhighfreqCursor {
   let result = physics_em_high_freq_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_high_freq_cursor_fill(s : PhysicsemhighfreqCursor, v : Double)
   result
 }
 
-pub fn physics_em_high_freq_cursor_min(s : PhysicsemhighfreqCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_cursor_min(s : PhysicsemhighfreqCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_cursor_max(s : PhysicsemhighfreqCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_cursor_max(s : PhysicsemhighfreqCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_cursor_to_string(s : PhysicsemhighfreqCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_high_freq_view_set(s : PhysicsemhighfreqView, i : Int, v : Dou
   result
 }
 
-pub fn physics_em_high_freq_view_sum(s : PhysicsemhighfreqView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_view_sum(s : PhysicsemhighfreqView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_view_mean(s : PhysicsemhighfreqView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_view_mean(s : PhysicsemhighfreqView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_view_scale(s : PhysicsemhighfreqView, f : Double) -> PhysicsemhighfreqView {
   let result = physics_em_high_freq_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_high_freq_view_fill(s : PhysicsemhighfreqView, v : Double) -> 
   result
 }
 
-pub fn physics_em_high_freq_view_min(s : PhysicsemhighfreqView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_view_min(s : PhysicsemhighfreqView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_view_max(s : PhysicsemhighfreqView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_view_max(s : PhysicsemhighfreqView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_view_to_string(s : PhysicsemhighfreqView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_high_freq_range_set(s : PhysicsemhighfreqRange, i : Int, v : D
   result
 }
 
-pub fn physics_em_high_freq_range_sum(s : PhysicsemhighfreqRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_range_sum(s : PhysicsemhighfreqRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_range_mean(s : PhysicsemhighfreqRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_range_mean(s : PhysicsemhighfreqRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_range_scale(s : PhysicsemhighfreqRange, f : Double) -> PhysicsemhighfreqRange {
   let result = physics_em_high_freq_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_high_freq_range_fill(s : PhysicsemhighfreqRange, v : Double) -
   result
 }
 
-pub fn physics_em_high_freq_range_min(s : PhysicsemhighfreqRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_range_min(s : PhysicsemhighfreqRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_range_max(s : PhysicsemhighfreqRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_range_max(s : PhysicsemhighfreqRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_range_to_string(s : PhysicsemhighfreqRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_high_freq_slice_set(s : PhysicsemhighfreqSlice, i : Int, v : D
   result
 }
 
-pub fn physics_em_high_freq_slice_sum(s : PhysicsemhighfreqSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_high_freq_slice_sum(s : PhysicsemhighfreqSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_high_freq_slice_mean(s : PhysicsemhighfreqSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_high_freq_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_high_freq_slice_mean(s : PhysicsemhighfreqSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_high_freq_slice_scale(s : PhysicsemhighfreqSlice, f : Double) -> PhysicsemhighfreqSlice {
   let result = physics_em_high_freq_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_high_freq_slice_fill(s : PhysicsemhighfreqSlice, v : Double) -
   result
 }
 
-pub fn physics_em_high_freq_slice_min(s : PhysicsemhighfreqSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_slice_min(s : PhysicsemhighfreqSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_high_freq_slice_max(s : PhysicsemhighfreqSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_high_freq_slice_max(s : PhysicsemhighfreqSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_high_freq_slice_to_string(s : PhysicsemhighfreqSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

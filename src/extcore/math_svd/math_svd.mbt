@@ -88,11 +88,7 @@ pub fn math_svd_make_series(vals : Array[Double], name : String) -> MathsvdSerie
 
 pub fn math_svd_series_len(s : MathsvdSeries) -> Int { s.vals.length() }
 
-pub fn math_svd_series_sum(s : MathsvdSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_svd_series_sum(s : MathsvdSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_svd_series_mean(s : MathsvdSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_svd_frame_set(s : MathsvdFrame, i : Int, v : Double) -> MathsvdFrame
   result
 }
 
-pub fn math_svd_frame_sum(s : MathsvdFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_frame_sum(s : MathsvdFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_frame_mean(s : MathsvdFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_frame_mean(s : MathsvdFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_frame_scale(s : MathsvdFrame, f : Double) -> MathsvdFrame {
   let result = math_svd_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_svd_frame_fill(s : MathsvdFrame, v : Double) -> MathsvdFrame {
   result
 }
 
-pub fn math_svd_frame_min(s : MathsvdFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_frame_min(s : MathsvdFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_frame_max(s : MathsvdFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_frame_max(s : MathsvdFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_frame_to_string(s : MathsvdFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_svd_table_set(s : MathsvdTable, i : Int, v : Double) -> MathsvdTable
   result
 }
 
-pub fn math_svd_table_sum(s : MathsvdTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_table_sum(s : MathsvdTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_table_mean(s : MathsvdTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_table_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_table_mean(s : MathsvdTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_table_scale(s : MathsvdTable, f : Double) -> MathsvdTable {
   let result = math_svd_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_svd_table_fill(s : MathsvdTable, v : Double) -> MathsvdTable {
   result
 }
 
-pub fn math_svd_table_min(s : MathsvdTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_table_min(s : MathsvdTable) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_table_max(s : MathsvdTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_table_max(s : MathsvdTable) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_table_to_string(s : MathsvdTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_svd_graphn_set(s : MathsvdGraphN, i : Int, v : Double) -> MathsvdGra
   result
 }
 
-pub fn math_svd_graphn_sum(s : MathsvdGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_graphn_sum(s : MathsvdGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_graphn_mean(s : MathsvdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_graphn_mean(s : MathsvdGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_graphn_scale(s : MathsvdGraphN, f : Double) -> MathsvdGraphN {
   let result = math_svd_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_svd_graphn_fill(s : MathsvdGraphN, v : Double) -> MathsvdGraphN {
   result
 }
 
-pub fn math_svd_graphn_min(s : MathsvdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_graphn_min(s : MathsvdGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_graphn_max(s : MathsvdGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_graphn_max(s : MathsvdGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_graphn_to_string(s : MathsvdGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_svd_node_set(s : MathsvdNode, i : Int, v : Double) -> MathsvdNode {
   result
 }
 
-pub fn math_svd_node_sum(s : MathsvdNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_node_sum(s : MathsvdNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_node_mean(s : MathsvdNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_node_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_node_mean(s : MathsvdNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_node_scale(s : MathsvdNode, f : Double) -> MathsvdNode {
   let result = math_svd_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_svd_node_fill(s : MathsvdNode, v : Double) -> MathsvdNode {
   result
 }
 
-pub fn math_svd_node_min(s : MathsvdNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_node_min(s : MathsvdNode) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_node_max(s : MathsvdNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_node_max(s : MathsvdNode) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_node_to_string(s : MathsvdNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_svd_edge_set(s : MathsvdEdge, i : Int, v : Double) -> MathsvdEdge {
   result
 }
 
-pub fn math_svd_edge_sum(s : MathsvdEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_edge_sum(s : MathsvdEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_edge_mean(s : MathsvdEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_edge_mean(s : MathsvdEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_edge_scale(s : MathsvdEdge, f : Double) -> MathsvdEdge {
   let result = math_svd_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_svd_edge_fill(s : MathsvdEdge, v : Double) -> MathsvdEdge {
   result
 }
 
-pub fn math_svd_edge_min(s : MathsvdEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_edge_min(s : MathsvdEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_edge_max(s : MathsvdEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_edge_max(s : MathsvdEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_edge_to_string(s : MathsvdEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_svd_path_set(s : MathsvdPath, i : Int, v : Double) -> MathsvdPath {
   result
 }
 
-pub fn math_svd_path_sum(s : MathsvdPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_path_sum(s : MathsvdPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_path_mean(s : MathsvdPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_path_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_path_mean(s : MathsvdPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_path_scale(s : MathsvdPath, f : Double) -> MathsvdPath {
   let result = math_svd_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_svd_path_fill(s : MathsvdPath, v : Double) -> MathsvdPath {
   result
 }
 
-pub fn math_svd_path_min(s : MathsvdPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_path_min(s : MathsvdPath) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_path_max(s : MathsvdPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_path_max(s : MathsvdPath) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_path_to_string(s : MathsvdPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_svd_cluster_set(s : MathsvdCluster, i : Int, v : Double) -> MathsvdC
   result
 }
 
-pub fn math_svd_cluster_sum(s : MathsvdCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_cluster_sum(s : MathsvdCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_cluster_mean(s : MathsvdCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_cluster_mean(s : MathsvdCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_cluster_scale(s : MathsvdCluster, f : Double) -> MathsvdCluster {
   let result = math_svd_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_svd_cluster_fill(s : MathsvdCluster, v : Double) -> MathsvdCluster {
   result
 }
 
-pub fn math_svd_cluster_min(s : MathsvdCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_cluster_min(s : MathsvdCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_cluster_max(s : MathsvdCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_cluster_max(s : MathsvdCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_cluster_to_string(s : MathsvdCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_svd_model_set(s : MathsvdModel, i : Int, v : Double) -> MathsvdModel
   result
 }
 
-pub fn math_svd_model_sum(s : MathsvdModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_model_sum(s : MathsvdModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_model_mean(s : MathsvdModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_model_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_model_mean(s : MathsvdModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_model_scale(s : MathsvdModel, f : Double) -> MathsvdModel {
   let result = math_svd_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_svd_model_fill(s : MathsvdModel, v : Double) -> MathsvdModel {
   result
 }
 
-pub fn math_svd_model_min(s : MathsvdModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_model_min(s : MathsvdModel) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_model_max(s : MathsvdModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_model_max(s : MathsvdModel) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_model_to_string(s : MathsvdModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_svd_layer_set(s : MathsvdLayer, i : Int, v : Double) -> MathsvdLayer
   result
 }
 
-pub fn math_svd_layer_sum(s : MathsvdLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_layer_sum(s : MathsvdLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_layer_mean(s : MathsvdLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_layer_mean(s : MathsvdLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_layer_scale(s : MathsvdLayer, f : Double) -> MathsvdLayer {
   let result = math_svd_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_svd_layer_fill(s : MathsvdLayer, v : Double) -> MathsvdLayer {
   result
 }
 
-pub fn math_svd_layer_min(s : MathsvdLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_layer_min(s : MathsvdLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_layer_max(s : MathsvdLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_layer_max(s : MathsvdLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_layer_to_string(s : MathsvdLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_svd_buffer_set(s : MathsvdBuffer, i : Int, v : Double) -> MathsvdBuf
   result
 }
 
-pub fn math_svd_buffer_sum(s : MathsvdBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_buffer_sum(s : MathsvdBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_buffer_mean(s : MathsvdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_buffer_mean(s : MathsvdBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_buffer_scale(s : MathsvdBuffer, f : Double) -> MathsvdBuffer {
   let result = math_svd_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_svd_buffer_fill(s : MathsvdBuffer, v : Double) -> MathsvdBuffer {
   result
 }
 
-pub fn math_svd_buffer_min(s : MathsvdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_buffer_min(s : MathsvdBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_buffer_max(s : MathsvdBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_buffer_max(s : MathsvdBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_buffer_to_string(s : MathsvdBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_svd_cursor_set(s : MathsvdCursor, i : Int, v : Double) -> MathsvdCur
   result
 }
 
-pub fn math_svd_cursor_sum(s : MathsvdCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_cursor_sum(s : MathsvdCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_cursor_mean(s : MathsvdCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_cursor_mean(s : MathsvdCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_cursor_scale(s : MathsvdCursor, f : Double) -> MathsvdCursor {
   let result = math_svd_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_svd_cursor_fill(s : MathsvdCursor, v : Double) -> MathsvdCursor {
   result
 }
 
-pub fn math_svd_cursor_min(s : MathsvdCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_cursor_min(s : MathsvdCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_cursor_max(s : MathsvdCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_cursor_max(s : MathsvdCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_cursor_to_string(s : MathsvdCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_svd_view_set(s : MathsvdView, i : Int, v : Double) -> MathsvdView {
   result
 }
 
-pub fn math_svd_view_sum(s : MathsvdView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_view_sum(s : MathsvdView) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_view_mean(s : MathsvdView) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_view_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_view_mean(s : MathsvdView) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_view_scale(s : MathsvdView, f : Double) -> MathsvdView {
   let result = math_svd_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_svd_view_fill(s : MathsvdView, v : Double) -> MathsvdView {
   result
 }
 
-pub fn math_svd_view_min(s : MathsvdView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_view_min(s : MathsvdView) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_view_max(s : MathsvdView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_view_max(s : MathsvdView) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_view_to_string(s : MathsvdView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_svd_range_set(s : MathsvdRange, i : Int, v : Double) -> MathsvdRange
   result
 }
 
-pub fn math_svd_range_sum(s : MathsvdRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_range_sum(s : MathsvdRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_range_mean(s : MathsvdRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_range_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_range_mean(s : MathsvdRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_range_scale(s : MathsvdRange, f : Double) -> MathsvdRange {
   let result = math_svd_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_svd_range_fill(s : MathsvdRange, v : Double) -> MathsvdRange {
   result
 }
 
-pub fn math_svd_range_min(s : MathsvdRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_range_min(s : MathsvdRange) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_range_max(s : MathsvdRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_range_max(s : MathsvdRange) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_range_to_string(s : MathsvdRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_svd_slice_set(s : MathsvdSlice, i : Int, v : Double) -> MathsvdSlice
   result
 }
 
-pub fn math_svd_slice_sum(s : MathsvdSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_svd_slice_sum(s : MathsvdSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_svd_slice_mean(s : MathsvdSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_svd_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_svd_slice_mean(s : MathsvdSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_svd_slice_scale(s : MathsvdSlice, f : Double) -> MathsvdSlice {
   let result = math_svd_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_svd_slice_fill(s : MathsvdSlice, v : Double) -> MathsvdSlice {
   result
 }
 
-pub fn math_svd_slice_min(s : MathsvdSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_slice_min(s : MathsvdSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_svd_slice_max(s : MathsvdSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_svd_slice_max(s : MathsvdSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_svd_slice_to_string(s : MathsvdSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

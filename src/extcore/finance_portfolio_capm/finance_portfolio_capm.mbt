@@ -88,11 +88,7 @@ pub fn finance_portfolio_capm_make_series(vals : Array[Double], name : String) -
 
 pub fn finance_portfolio_capm_series_len(s : FinanceportfoliocapmSeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_capm_series_sum(s : FinanceportfoliocapmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_capm_series_sum(s : FinanceportfoliocapmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_capm_series_mean(s : FinanceportfoliocapmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_capm_frame_set(s : FinanceportfoliocapmFrame, i : Int, 
   result
 }
 
-pub fn finance_portfolio_capm_frame_sum(s : FinanceportfoliocapmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_frame_sum(s : FinanceportfoliocapmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_frame_mean(s : FinanceportfoliocapmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_frame_mean(s : FinanceportfoliocapmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_frame_scale(s : FinanceportfoliocapmFrame, f : Double) -> FinanceportfoliocapmFrame {
   let result = finance_portfolio_capm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_capm_frame_fill(s : FinanceportfoliocapmFrame, v : Doub
   result
 }
 
-pub fn finance_portfolio_capm_frame_min(s : FinanceportfoliocapmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_frame_min(s : FinanceportfoliocapmFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_frame_max(s : FinanceportfoliocapmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_frame_max(s : FinanceportfoliocapmFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_frame_to_string(s : FinanceportfoliocapmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_capm_table_set(s : FinanceportfoliocapmTable, i : Int, 
   result
 }
 
-pub fn finance_portfolio_capm_table_sum(s : FinanceportfoliocapmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_table_sum(s : FinanceportfoliocapmTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_table_mean(s : FinanceportfoliocapmTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_table_mean(s : FinanceportfoliocapmTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_table_scale(s : FinanceportfoliocapmTable, f : Double) -> FinanceportfoliocapmTable {
   let result = finance_portfolio_capm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_capm_table_fill(s : FinanceportfoliocapmTable, v : Doub
   result
 }
 
-pub fn finance_portfolio_capm_table_min(s : FinanceportfoliocapmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_table_min(s : FinanceportfoliocapmTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_table_max(s : FinanceportfoliocapmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_table_max(s : FinanceportfoliocapmTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_table_to_string(s : FinanceportfoliocapmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_capm_graphn_set(s : FinanceportfoliocapmGraphN, i : Int
   result
 }
 
-pub fn finance_portfolio_capm_graphn_sum(s : FinanceportfoliocapmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_graphn_sum(s : FinanceportfoliocapmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_graphn_mean(s : FinanceportfoliocapmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_graphn_mean(s : FinanceportfoliocapmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_graphn_scale(s : FinanceportfoliocapmGraphN, f : Double) -> FinanceportfoliocapmGraphN {
   let result = finance_portfolio_capm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_capm_graphn_fill(s : FinanceportfoliocapmGraphN, v : Do
   result
 }
 
-pub fn finance_portfolio_capm_graphn_min(s : FinanceportfoliocapmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_graphn_min(s : FinanceportfoliocapmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_graphn_max(s : FinanceportfoliocapmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_graphn_max(s : FinanceportfoliocapmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_graphn_to_string(s : FinanceportfoliocapmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_capm_node_set(s : FinanceportfoliocapmNode, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_capm_node_sum(s : FinanceportfoliocapmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_node_sum(s : FinanceportfoliocapmNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_node_mean(s : FinanceportfoliocapmNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_node_mean(s : FinanceportfoliocapmNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_node_scale(s : FinanceportfoliocapmNode, f : Double) -> FinanceportfoliocapmNode {
   let result = finance_portfolio_capm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_capm_node_fill(s : FinanceportfoliocapmNode, v : Double
   result
 }
 
-pub fn finance_portfolio_capm_node_min(s : FinanceportfoliocapmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_node_min(s : FinanceportfoliocapmNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_node_max(s : FinanceportfoliocapmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_node_max(s : FinanceportfoliocapmNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_node_to_string(s : FinanceportfoliocapmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_capm_edge_set(s : FinanceportfoliocapmEdge, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_capm_edge_sum(s : FinanceportfoliocapmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_edge_sum(s : FinanceportfoliocapmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_edge_mean(s : FinanceportfoliocapmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_edge_mean(s : FinanceportfoliocapmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_edge_scale(s : FinanceportfoliocapmEdge, f : Double) -> FinanceportfoliocapmEdge {
   let result = finance_portfolio_capm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_capm_edge_fill(s : FinanceportfoliocapmEdge, v : Double
   result
 }
 
-pub fn finance_portfolio_capm_edge_min(s : FinanceportfoliocapmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_edge_min(s : FinanceportfoliocapmEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_edge_max(s : FinanceportfoliocapmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_edge_max(s : FinanceportfoliocapmEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_edge_to_string(s : FinanceportfoliocapmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_capm_path_set(s : FinanceportfoliocapmPath, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_capm_path_sum(s : FinanceportfoliocapmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_path_sum(s : FinanceportfoliocapmPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_path_mean(s : FinanceportfoliocapmPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_path_mean(s : FinanceportfoliocapmPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_path_scale(s : FinanceportfoliocapmPath, f : Double) -> FinanceportfoliocapmPath {
   let result = finance_portfolio_capm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_capm_path_fill(s : FinanceportfoliocapmPath, v : Double
   result
 }
 
-pub fn finance_portfolio_capm_path_min(s : FinanceportfoliocapmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_path_min(s : FinanceportfoliocapmPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_path_max(s : FinanceportfoliocapmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_path_max(s : FinanceportfoliocapmPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_path_to_string(s : FinanceportfoliocapmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_capm_cluster_set(s : FinanceportfoliocapmCluster, i : I
   result
 }
 
-pub fn finance_portfolio_capm_cluster_sum(s : FinanceportfoliocapmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_cluster_sum(s : FinanceportfoliocapmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_cluster_mean(s : FinanceportfoliocapmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_cluster_mean(s : FinanceportfoliocapmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_cluster_scale(s : FinanceportfoliocapmCluster, f : Double) -> FinanceportfoliocapmCluster {
   let result = finance_portfolio_capm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_capm_cluster_fill(s : FinanceportfoliocapmCluster, v : 
   result
 }
 
-pub fn finance_portfolio_capm_cluster_min(s : FinanceportfoliocapmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_cluster_min(s : FinanceportfoliocapmCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_cluster_max(s : FinanceportfoliocapmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_cluster_max(s : FinanceportfoliocapmCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_cluster_to_string(s : FinanceportfoliocapmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_capm_model_set(s : FinanceportfoliocapmModel, i : Int, 
   result
 }
 
-pub fn finance_portfolio_capm_model_sum(s : FinanceportfoliocapmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_model_sum(s : FinanceportfoliocapmModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_model_mean(s : FinanceportfoliocapmModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_model_mean(s : FinanceportfoliocapmModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_model_scale(s : FinanceportfoliocapmModel, f : Double) -> FinanceportfoliocapmModel {
   let result = finance_portfolio_capm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_capm_model_fill(s : FinanceportfoliocapmModel, v : Doub
   result
 }
 
-pub fn finance_portfolio_capm_model_min(s : FinanceportfoliocapmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_model_min(s : FinanceportfoliocapmModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_model_max(s : FinanceportfoliocapmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_model_max(s : FinanceportfoliocapmModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_model_to_string(s : FinanceportfoliocapmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_capm_layer_set(s : FinanceportfoliocapmLayer, i : Int, 
   result
 }
 
-pub fn finance_portfolio_capm_layer_sum(s : FinanceportfoliocapmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_layer_sum(s : FinanceportfoliocapmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_layer_mean(s : FinanceportfoliocapmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_layer_mean(s : FinanceportfoliocapmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_layer_scale(s : FinanceportfoliocapmLayer, f : Double) -> FinanceportfoliocapmLayer {
   let result = finance_portfolio_capm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_capm_layer_fill(s : FinanceportfoliocapmLayer, v : Doub
   result
 }
 
-pub fn finance_portfolio_capm_layer_min(s : FinanceportfoliocapmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_layer_min(s : FinanceportfoliocapmLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_layer_max(s : FinanceportfoliocapmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_layer_max(s : FinanceportfoliocapmLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_layer_to_string(s : FinanceportfoliocapmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_capm_buffer_set(s : FinanceportfoliocapmBuffer, i : Int
   result
 }
 
-pub fn finance_portfolio_capm_buffer_sum(s : FinanceportfoliocapmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_buffer_sum(s : FinanceportfoliocapmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_buffer_mean(s : FinanceportfoliocapmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_buffer_mean(s : FinanceportfoliocapmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_buffer_scale(s : FinanceportfoliocapmBuffer, f : Double) -> FinanceportfoliocapmBuffer {
   let result = finance_portfolio_capm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_capm_buffer_fill(s : FinanceportfoliocapmBuffer, v : Do
   result
 }
 
-pub fn finance_portfolio_capm_buffer_min(s : FinanceportfoliocapmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_buffer_min(s : FinanceportfoliocapmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_buffer_max(s : FinanceportfoliocapmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_buffer_max(s : FinanceportfoliocapmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_buffer_to_string(s : FinanceportfoliocapmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_capm_cursor_set(s : FinanceportfoliocapmCursor, i : Int
   result
 }
 
-pub fn finance_portfolio_capm_cursor_sum(s : FinanceportfoliocapmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_cursor_sum(s : FinanceportfoliocapmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_cursor_mean(s : FinanceportfoliocapmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_cursor_mean(s : FinanceportfoliocapmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_cursor_scale(s : FinanceportfoliocapmCursor, f : Double) -> FinanceportfoliocapmCursor {
   let result = finance_portfolio_capm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_capm_cursor_fill(s : FinanceportfoliocapmCursor, v : Do
   result
 }
 
-pub fn finance_portfolio_capm_cursor_min(s : FinanceportfoliocapmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_cursor_min(s : FinanceportfoliocapmCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_cursor_max(s : FinanceportfoliocapmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_cursor_max(s : FinanceportfoliocapmCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_cursor_to_string(s : FinanceportfoliocapmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_capm_view_set(s : FinanceportfoliocapmView, i : Int, v 
   result
 }
 
-pub fn finance_portfolio_capm_view_sum(s : FinanceportfoliocapmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_view_sum(s : FinanceportfoliocapmView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_view_mean(s : FinanceportfoliocapmView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_view_mean(s : FinanceportfoliocapmView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_view_scale(s : FinanceportfoliocapmView, f : Double) -> FinanceportfoliocapmView {
   let result = finance_portfolio_capm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_capm_view_fill(s : FinanceportfoliocapmView, v : Double
   result
 }
 
-pub fn finance_portfolio_capm_view_min(s : FinanceportfoliocapmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_view_min(s : FinanceportfoliocapmView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_view_max(s : FinanceportfoliocapmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_view_max(s : FinanceportfoliocapmView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_view_to_string(s : FinanceportfoliocapmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_capm_range_set(s : FinanceportfoliocapmRange, i : Int, 
   result
 }
 
-pub fn finance_portfolio_capm_range_sum(s : FinanceportfoliocapmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_range_sum(s : FinanceportfoliocapmRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_range_mean(s : FinanceportfoliocapmRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_range_mean(s : FinanceportfoliocapmRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_range_scale(s : FinanceportfoliocapmRange, f : Double) -> FinanceportfoliocapmRange {
   let result = finance_portfolio_capm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_capm_range_fill(s : FinanceportfoliocapmRange, v : Doub
   result
 }
 
-pub fn finance_portfolio_capm_range_min(s : FinanceportfoliocapmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_range_min(s : FinanceportfoliocapmRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_range_max(s : FinanceportfoliocapmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_range_max(s : FinanceportfoliocapmRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_range_to_string(s : FinanceportfoliocapmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_capm_slice_set(s : FinanceportfoliocapmSlice, i : Int, 
   result
 }
 
-pub fn finance_portfolio_capm_slice_sum(s : FinanceportfoliocapmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_capm_slice_sum(s : FinanceportfoliocapmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_capm_slice_mean(s : FinanceportfoliocapmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_capm_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_capm_slice_mean(s : FinanceportfoliocapmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_capm_slice_scale(s : FinanceportfoliocapmSlice, f : Double) -> FinanceportfoliocapmSlice {
   let result = finance_portfolio_capm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_capm_slice_fill(s : FinanceportfoliocapmSlice, v : Doub
   result
 }
 
-pub fn finance_portfolio_capm_slice_min(s : FinanceportfoliocapmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_slice_min(s : FinanceportfoliocapmSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_capm_slice_max(s : FinanceportfoliocapmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_capm_slice_max(s : FinanceportfoliocapmSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_capm_slice_to_string(s : FinanceportfoliocapmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

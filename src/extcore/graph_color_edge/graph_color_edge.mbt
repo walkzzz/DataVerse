@@ -88,11 +88,7 @@ pub fn graph_color_edge_make_series(vals : Array[Double], name : String) -> Grap
 
 pub fn graph_color_edge_series_len(s : GraphcoloredgeSeries) -> Int { s.vals.length() }
 
-pub fn graph_color_edge_series_sum(s : GraphcoloredgeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_color_edge_series_sum(s : GraphcoloredgeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_color_edge_series_mean(s : GraphcoloredgeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_color_edge_frame_set(s : GraphcoloredgeFrame, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_edge_frame_sum(s : GraphcoloredgeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_frame_sum(s : GraphcoloredgeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_frame_mean(s : GraphcoloredgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_frame_mean(s : GraphcoloredgeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_frame_scale(s : GraphcoloredgeFrame, f : Double) -> GraphcoloredgeFrame {
   let result = graph_color_edge_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_color_edge_frame_fill(s : GraphcoloredgeFrame, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_edge_frame_min(s : GraphcoloredgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_frame_min(s : GraphcoloredgeFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_frame_max(s : GraphcoloredgeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_frame_max(s : GraphcoloredgeFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_frame_to_string(s : GraphcoloredgeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_color_edge_table_set(s : GraphcoloredgeTable, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_edge_table_sum(s : GraphcoloredgeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_table_sum(s : GraphcoloredgeTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_table_mean(s : GraphcoloredgeTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_table_mean(s : GraphcoloredgeTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_table_scale(s : GraphcoloredgeTable, f : Double) -> GraphcoloredgeTable {
   let result = graph_color_edge_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_color_edge_table_fill(s : GraphcoloredgeTable, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_edge_table_min(s : GraphcoloredgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_table_min(s : GraphcoloredgeTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_table_max(s : GraphcoloredgeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_table_max(s : GraphcoloredgeTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_table_to_string(s : GraphcoloredgeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_color_edge_graphn_set(s : GraphcoloredgeGraphN, i : Int, v : Double
   result
 }
 
-pub fn graph_color_edge_graphn_sum(s : GraphcoloredgeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_graphn_sum(s : GraphcoloredgeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_graphn_mean(s : GraphcoloredgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_graphn_mean(s : GraphcoloredgeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_graphn_scale(s : GraphcoloredgeGraphN, f : Double) -> GraphcoloredgeGraphN {
   let result = graph_color_edge_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_color_edge_graphn_fill(s : GraphcoloredgeGraphN, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_edge_graphn_min(s : GraphcoloredgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_graphn_min(s : GraphcoloredgeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_graphn_max(s : GraphcoloredgeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_graphn_max(s : GraphcoloredgeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_graphn_to_string(s : GraphcoloredgeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_color_edge_node_set(s : GraphcoloredgeNode, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_color_edge_node_sum(s : GraphcoloredgeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_node_sum(s : GraphcoloredgeNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_node_mean(s : GraphcoloredgeNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_node_mean(s : GraphcoloredgeNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_node_scale(s : GraphcoloredgeNode, f : Double) -> GraphcoloredgeNode {
   let result = graph_color_edge_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_color_edge_node_fill(s : GraphcoloredgeNode, v : Double) -> Graphco
   result
 }
 
-pub fn graph_color_edge_node_min(s : GraphcoloredgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_node_min(s : GraphcoloredgeNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_node_max(s : GraphcoloredgeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_node_max(s : GraphcoloredgeNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_node_to_string(s : GraphcoloredgeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_color_edge_edge_set(s : GraphcoloredgeEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_color_edge_edge_sum(s : GraphcoloredgeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_edge_sum(s : GraphcoloredgeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_edge_mean(s : GraphcoloredgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_edge_mean(s : GraphcoloredgeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_edge_scale(s : GraphcoloredgeEdge, f : Double) -> GraphcoloredgeEdge {
   let result = graph_color_edge_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_color_edge_edge_fill(s : GraphcoloredgeEdge, v : Double) -> Graphco
   result
 }
 
-pub fn graph_color_edge_edge_min(s : GraphcoloredgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_edge_min(s : GraphcoloredgeEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_edge_max(s : GraphcoloredgeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_edge_max(s : GraphcoloredgeEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_edge_to_string(s : GraphcoloredgeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_color_edge_path_set(s : GraphcoloredgePath, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_color_edge_path_sum(s : GraphcoloredgePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_path_sum(s : GraphcoloredgePath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_path_mean(s : GraphcoloredgePath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_path_mean(s : GraphcoloredgePath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_path_scale(s : GraphcoloredgePath, f : Double) -> GraphcoloredgePath {
   let result = graph_color_edge_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_color_edge_path_fill(s : GraphcoloredgePath, v : Double) -> Graphco
   result
 }
 
-pub fn graph_color_edge_path_min(s : GraphcoloredgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_path_min(s : GraphcoloredgePath) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_path_max(s : GraphcoloredgePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_path_max(s : GraphcoloredgePath) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_path_to_string(s : GraphcoloredgePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_color_edge_cluster_set(s : GraphcoloredgeCluster, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_edge_cluster_sum(s : GraphcoloredgeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_cluster_sum(s : GraphcoloredgeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_cluster_mean(s : GraphcoloredgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_cluster_mean(s : GraphcoloredgeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_cluster_scale(s : GraphcoloredgeCluster, f : Double) -> GraphcoloredgeCluster {
   let result = graph_color_edge_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_color_edge_cluster_fill(s : GraphcoloredgeCluster, v : Double) -> G
   result
 }
 
-pub fn graph_color_edge_cluster_min(s : GraphcoloredgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_cluster_min(s : GraphcoloredgeCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_cluster_max(s : GraphcoloredgeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_cluster_max(s : GraphcoloredgeCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_cluster_to_string(s : GraphcoloredgeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_color_edge_model_set(s : GraphcoloredgeModel, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_edge_model_sum(s : GraphcoloredgeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_model_sum(s : GraphcoloredgeModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_model_mean(s : GraphcoloredgeModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_model_mean(s : GraphcoloredgeModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_model_scale(s : GraphcoloredgeModel, f : Double) -> GraphcoloredgeModel {
   let result = graph_color_edge_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_color_edge_model_fill(s : GraphcoloredgeModel, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_edge_model_min(s : GraphcoloredgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_model_min(s : GraphcoloredgeModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_model_max(s : GraphcoloredgeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_model_max(s : GraphcoloredgeModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_model_to_string(s : GraphcoloredgeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_color_edge_layer_set(s : GraphcoloredgeLayer, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_edge_layer_sum(s : GraphcoloredgeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_layer_sum(s : GraphcoloredgeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_layer_mean(s : GraphcoloredgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_layer_mean(s : GraphcoloredgeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_layer_scale(s : GraphcoloredgeLayer, f : Double) -> GraphcoloredgeLayer {
   let result = graph_color_edge_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_color_edge_layer_fill(s : GraphcoloredgeLayer, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_edge_layer_min(s : GraphcoloredgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_layer_min(s : GraphcoloredgeLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_layer_max(s : GraphcoloredgeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_layer_max(s : GraphcoloredgeLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_layer_to_string(s : GraphcoloredgeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_color_edge_buffer_set(s : GraphcoloredgeBuffer, i : Int, v : Double
   result
 }
 
-pub fn graph_color_edge_buffer_sum(s : GraphcoloredgeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_buffer_sum(s : GraphcoloredgeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_buffer_mean(s : GraphcoloredgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_buffer_mean(s : GraphcoloredgeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_buffer_scale(s : GraphcoloredgeBuffer, f : Double) -> GraphcoloredgeBuffer {
   let result = graph_color_edge_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_color_edge_buffer_fill(s : GraphcoloredgeBuffer, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_edge_buffer_min(s : GraphcoloredgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_buffer_min(s : GraphcoloredgeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_buffer_max(s : GraphcoloredgeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_buffer_max(s : GraphcoloredgeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_buffer_to_string(s : GraphcoloredgeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_color_edge_cursor_set(s : GraphcoloredgeCursor, i : Int, v : Double
   result
 }
 
-pub fn graph_color_edge_cursor_sum(s : GraphcoloredgeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_cursor_sum(s : GraphcoloredgeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_cursor_mean(s : GraphcoloredgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_cursor_mean(s : GraphcoloredgeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_cursor_scale(s : GraphcoloredgeCursor, f : Double) -> GraphcoloredgeCursor {
   let result = graph_color_edge_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_color_edge_cursor_fill(s : GraphcoloredgeCursor, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_edge_cursor_min(s : GraphcoloredgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_cursor_min(s : GraphcoloredgeCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_cursor_max(s : GraphcoloredgeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_cursor_max(s : GraphcoloredgeCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_cursor_to_string(s : GraphcoloredgeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_color_edge_view_set(s : GraphcoloredgeView, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_color_edge_view_sum(s : GraphcoloredgeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_view_sum(s : GraphcoloredgeView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_view_mean(s : GraphcoloredgeView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_view_mean(s : GraphcoloredgeView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_view_scale(s : GraphcoloredgeView, f : Double) -> GraphcoloredgeView {
   let result = graph_color_edge_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_color_edge_view_fill(s : GraphcoloredgeView, v : Double) -> Graphco
   result
 }
 
-pub fn graph_color_edge_view_min(s : GraphcoloredgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_view_min(s : GraphcoloredgeView) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_view_max(s : GraphcoloredgeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_view_max(s : GraphcoloredgeView) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_view_to_string(s : GraphcoloredgeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_color_edge_range_set(s : GraphcoloredgeRange, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_edge_range_sum(s : GraphcoloredgeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_range_sum(s : GraphcoloredgeRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_range_mean(s : GraphcoloredgeRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_range_mean(s : GraphcoloredgeRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_range_scale(s : GraphcoloredgeRange, f : Double) -> GraphcoloredgeRange {
   let result = graph_color_edge_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_color_edge_range_fill(s : GraphcoloredgeRange, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_edge_range_min(s : GraphcoloredgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_range_min(s : GraphcoloredgeRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_range_max(s : GraphcoloredgeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_range_max(s : GraphcoloredgeRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_range_to_string(s : GraphcoloredgeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_color_edge_slice_set(s : GraphcoloredgeSlice, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_edge_slice_sum(s : GraphcoloredgeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_edge_slice_sum(s : GraphcoloredgeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_edge_slice_mean(s : GraphcoloredgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_edge_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_edge_slice_mean(s : GraphcoloredgeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_edge_slice_scale(s : GraphcoloredgeSlice, f : Double) -> GraphcoloredgeSlice {
   let result = graph_color_edge_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_color_edge_slice_fill(s : GraphcoloredgeSlice, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_edge_slice_min(s : GraphcoloredgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_slice_min(s : GraphcoloredgeSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_edge_slice_max(s : GraphcoloredgeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_edge_slice_max(s : GraphcoloredgeSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_edge_slice_to_string(s : GraphcoloredgeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

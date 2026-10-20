@@ -88,11 +88,7 @@ pub fn geo_dist_vincenty_make_series(vals : Array[Double], name : String) -> Geo
 
 pub fn geo_dist_vincenty_series_len(s : GeodistvincentySeries) -> Int { s.vals.length() }
 
-pub fn geo_dist_vincenty_series_sum(s : GeodistvincentySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_dist_vincenty_series_sum(s : GeodistvincentySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_dist_vincenty_series_mean(s : GeodistvincentySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_dist_vincenty_frame_set(s : GeodistvincentyFrame, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_vincenty_frame_sum(s : GeodistvincentyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_frame_sum(s : GeodistvincentyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_frame_mean(s : GeodistvincentyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_frame_mean(s : GeodistvincentyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_frame_scale(s : GeodistvincentyFrame, f : Double) -> GeodistvincentyFrame {
   let result = geo_dist_vincenty_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_dist_vincenty_frame_fill(s : GeodistvincentyFrame, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_vincenty_frame_min(s : GeodistvincentyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_frame_min(s : GeodistvincentyFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_frame_max(s : GeodistvincentyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_frame_max(s : GeodistvincentyFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_frame_to_string(s : GeodistvincentyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_dist_vincenty_table_set(s : GeodistvincentyTable, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_vincenty_table_sum(s : GeodistvincentyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_table_sum(s : GeodistvincentyTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_table_mean(s : GeodistvincentyTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_table_mean(s : GeodistvincentyTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_table_scale(s : GeodistvincentyTable, f : Double) -> GeodistvincentyTable {
   let result = geo_dist_vincenty_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_dist_vincenty_table_fill(s : GeodistvincentyTable, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_vincenty_table_min(s : GeodistvincentyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_table_min(s : GeodistvincentyTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_table_max(s : GeodistvincentyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_table_max(s : GeodistvincentyTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_table_to_string(s : GeodistvincentyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_dist_vincenty_graphn_set(s : GeodistvincentyGraphN, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_vincenty_graphn_sum(s : GeodistvincentyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_graphn_sum(s : GeodistvincentyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_graphn_mean(s : GeodistvincentyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_graphn_mean(s : GeodistvincentyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_graphn_scale(s : GeodistvincentyGraphN, f : Double) -> GeodistvincentyGraphN {
   let result = geo_dist_vincenty_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_dist_vincenty_graphn_fill(s : GeodistvincentyGraphN, v : Double) -> G
   result
 }
 
-pub fn geo_dist_vincenty_graphn_min(s : GeodistvincentyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_graphn_min(s : GeodistvincentyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_graphn_max(s : GeodistvincentyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_graphn_max(s : GeodistvincentyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_graphn_to_string(s : GeodistvincentyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_dist_vincenty_node_set(s : GeodistvincentyNode, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_vincenty_node_sum(s : GeodistvincentyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_node_sum(s : GeodistvincentyNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_node_mean(s : GeodistvincentyNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_node_mean(s : GeodistvincentyNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_node_scale(s : GeodistvincentyNode, f : Double) -> GeodistvincentyNode {
   let result = geo_dist_vincenty_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_dist_vincenty_node_fill(s : GeodistvincentyNode, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_vincenty_node_min(s : GeodistvincentyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_node_min(s : GeodistvincentyNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_node_max(s : GeodistvincentyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_node_max(s : GeodistvincentyNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_node_to_string(s : GeodistvincentyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_dist_vincenty_edge_set(s : GeodistvincentyEdge, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_vincenty_edge_sum(s : GeodistvincentyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_edge_sum(s : GeodistvincentyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_edge_mean(s : GeodistvincentyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_edge_mean(s : GeodistvincentyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_edge_scale(s : GeodistvincentyEdge, f : Double) -> GeodistvincentyEdge {
   let result = geo_dist_vincenty_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_dist_vincenty_edge_fill(s : GeodistvincentyEdge, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_vincenty_edge_min(s : GeodistvincentyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_edge_min(s : GeodistvincentyEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_edge_max(s : GeodistvincentyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_edge_max(s : GeodistvincentyEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_edge_to_string(s : GeodistvincentyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_dist_vincenty_path_set(s : GeodistvincentyPath, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_vincenty_path_sum(s : GeodistvincentyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_path_sum(s : GeodistvincentyPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_path_mean(s : GeodistvincentyPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_path_mean(s : GeodistvincentyPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_path_scale(s : GeodistvincentyPath, f : Double) -> GeodistvincentyPath {
   let result = geo_dist_vincenty_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_dist_vincenty_path_fill(s : GeodistvincentyPath, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_vincenty_path_min(s : GeodistvincentyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_path_min(s : GeodistvincentyPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_path_max(s : GeodistvincentyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_path_max(s : GeodistvincentyPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_path_to_string(s : GeodistvincentyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_dist_vincenty_cluster_set(s : GeodistvincentyCluster, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_vincenty_cluster_sum(s : GeodistvincentyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_cluster_sum(s : GeodistvincentyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_cluster_mean(s : GeodistvincentyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_cluster_mean(s : GeodistvincentyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_cluster_scale(s : GeodistvincentyCluster, f : Double) -> GeodistvincentyCluster {
   let result = geo_dist_vincenty_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_dist_vincenty_cluster_fill(s : GeodistvincentyCluster, v : Double) ->
   result
 }
 
-pub fn geo_dist_vincenty_cluster_min(s : GeodistvincentyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_cluster_min(s : GeodistvincentyCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_cluster_max(s : GeodistvincentyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_cluster_max(s : GeodistvincentyCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_cluster_to_string(s : GeodistvincentyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_dist_vincenty_model_set(s : GeodistvincentyModel, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_vincenty_model_sum(s : GeodistvincentyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_model_sum(s : GeodistvincentyModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_model_mean(s : GeodistvincentyModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_model_mean(s : GeodistvincentyModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_model_scale(s : GeodistvincentyModel, f : Double) -> GeodistvincentyModel {
   let result = geo_dist_vincenty_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_dist_vincenty_model_fill(s : GeodistvincentyModel, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_vincenty_model_min(s : GeodistvincentyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_model_min(s : GeodistvincentyModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_model_max(s : GeodistvincentyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_model_max(s : GeodistvincentyModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_model_to_string(s : GeodistvincentyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_dist_vincenty_layer_set(s : GeodistvincentyLayer, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_vincenty_layer_sum(s : GeodistvincentyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_layer_sum(s : GeodistvincentyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_layer_mean(s : GeodistvincentyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_layer_mean(s : GeodistvincentyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_layer_scale(s : GeodistvincentyLayer, f : Double) -> GeodistvincentyLayer {
   let result = geo_dist_vincenty_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_dist_vincenty_layer_fill(s : GeodistvincentyLayer, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_vincenty_layer_min(s : GeodistvincentyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_layer_min(s : GeodistvincentyLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_layer_max(s : GeodistvincentyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_layer_max(s : GeodistvincentyLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_layer_to_string(s : GeodistvincentyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_dist_vincenty_buffer_set(s : GeodistvincentyBuffer, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_vincenty_buffer_sum(s : GeodistvincentyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_buffer_sum(s : GeodistvincentyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_buffer_mean(s : GeodistvincentyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_buffer_mean(s : GeodistvincentyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_buffer_scale(s : GeodistvincentyBuffer, f : Double) -> GeodistvincentyBuffer {
   let result = geo_dist_vincenty_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_dist_vincenty_buffer_fill(s : GeodistvincentyBuffer, v : Double) -> G
   result
 }
 
-pub fn geo_dist_vincenty_buffer_min(s : GeodistvincentyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_buffer_min(s : GeodistvincentyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_buffer_max(s : GeodistvincentyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_buffer_max(s : GeodistvincentyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_buffer_to_string(s : GeodistvincentyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_dist_vincenty_cursor_set(s : GeodistvincentyCursor, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_vincenty_cursor_sum(s : GeodistvincentyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_cursor_sum(s : GeodistvincentyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_cursor_mean(s : GeodistvincentyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_cursor_mean(s : GeodistvincentyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_cursor_scale(s : GeodistvincentyCursor, f : Double) -> GeodistvincentyCursor {
   let result = geo_dist_vincenty_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_dist_vincenty_cursor_fill(s : GeodistvincentyCursor, v : Double) -> G
   result
 }
 
-pub fn geo_dist_vincenty_cursor_min(s : GeodistvincentyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_cursor_min(s : GeodistvincentyCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_cursor_max(s : GeodistvincentyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_cursor_max(s : GeodistvincentyCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_cursor_to_string(s : GeodistvincentyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_dist_vincenty_view_set(s : GeodistvincentyView, i : Int, v : Double) 
   result
 }
 
-pub fn geo_dist_vincenty_view_sum(s : GeodistvincentyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_view_sum(s : GeodistvincentyView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_view_mean(s : GeodistvincentyView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_view_mean(s : GeodistvincentyView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_view_scale(s : GeodistvincentyView, f : Double) -> GeodistvincentyView {
   let result = geo_dist_vincenty_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_dist_vincenty_view_fill(s : GeodistvincentyView, v : Double) -> Geodi
   result
 }
 
-pub fn geo_dist_vincenty_view_min(s : GeodistvincentyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_view_min(s : GeodistvincentyView) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_view_max(s : GeodistvincentyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_view_max(s : GeodistvincentyView) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_view_to_string(s : GeodistvincentyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_dist_vincenty_range_set(s : GeodistvincentyRange, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_vincenty_range_sum(s : GeodistvincentyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_range_sum(s : GeodistvincentyRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_range_mean(s : GeodistvincentyRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_range_mean(s : GeodistvincentyRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_range_scale(s : GeodistvincentyRange, f : Double) -> GeodistvincentyRange {
   let result = geo_dist_vincenty_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_dist_vincenty_range_fill(s : GeodistvincentyRange, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_vincenty_range_min(s : GeodistvincentyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_range_min(s : GeodistvincentyRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_range_max(s : GeodistvincentyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_range_max(s : GeodistvincentyRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_range_to_string(s : GeodistvincentyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_dist_vincenty_slice_set(s : GeodistvincentySlice, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_vincenty_slice_sum(s : GeodistvincentySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_vincenty_slice_sum(s : GeodistvincentySlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_vincenty_slice_mean(s : GeodistvincentySlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_vincenty_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_vincenty_slice_mean(s : GeodistvincentySlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_vincenty_slice_scale(s : GeodistvincentySlice, f : Double) -> GeodistvincentySlice {
   let result = geo_dist_vincenty_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_dist_vincenty_slice_fill(s : GeodistvincentySlice, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_vincenty_slice_min(s : GeodistvincentySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_slice_min(s : GeodistvincentySlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_vincenty_slice_max(s : GeodistvincentySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_vincenty_slice_max(s : GeodistvincentySlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_vincenty_slice_to_string(s : GeodistvincentySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

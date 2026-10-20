@@ -88,11 +88,7 @@ pub fn bio_phylo_bayesian_make_series(vals : Array[Double], name : String) -> Bi
 
 pub fn bio_phylo_bayesian_series_len(s : BiophylobayesianSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_bayesian_series_sum(s : BiophylobayesianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_bayesian_series_sum(s : BiophylobayesianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_bayesian_series_mean(s : BiophylobayesianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_bayesian_frame_set(s : BiophylobayesianFrame, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bayesian_frame_sum(s : BiophylobayesianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_frame_sum(s : BiophylobayesianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_frame_mean(s : BiophylobayesianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_frame_mean(s : BiophylobayesianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_frame_scale(s : BiophylobayesianFrame, f : Double) -> BiophylobayesianFrame {
   let result = bio_phylo_bayesian_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_bayesian_frame_fill(s : BiophylobayesianFrame, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bayesian_frame_min(s : BiophylobayesianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_frame_min(s : BiophylobayesianFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_frame_max(s : BiophylobayesianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_frame_max(s : BiophylobayesianFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_frame_to_string(s : BiophylobayesianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_bayesian_table_set(s : BiophylobayesianTable, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bayesian_table_sum(s : BiophylobayesianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_table_sum(s : BiophylobayesianTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_table_mean(s : BiophylobayesianTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_table_mean(s : BiophylobayesianTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_table_scale(s : BiophylobayesianTable, f : Double) -> BiophylobayesianTable {
   let result = bio_phylo_bayesian_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_bayesian_table_fill(s : BiophylobayesianTable, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bayesian_table_min(s : BiophylobayesianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_table_min(s : BiophylobayesianTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_table_max(s : BiophylobayesianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_table_max(s : BiophylobayesianTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_table_to_string(s : BiophylobayesianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_bayesian_graphn_set(s : BiophylobayesianGraphN, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bayesian_graphn_sum(s : BiophylobayesianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_graphn_sum(s : BiophylobayesianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_graphn_mean(s : BiophylobayesianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_graphn_mean(s : BiophylobayesianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_graphn_scale(s : BiophylobayesianGraphN, f : Double) -> BiophylobayesianGraphN {
   let result = bio_phylo_bayesian_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_bayesian_graphn_fill(s : BiophylobayesianGraphN, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bayesian_graphn_min(s : BiophylobayesianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_graphn_min(s : BiophylobayesianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_graphn_max(s : BiophylobayesianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_graphn_max(s : BiophylobayesianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_graphn_to_string(s : BiophylobayesianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_bayesian_node_set(s : BiophylobayesianNode, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_bayesian_node_sum(s : BiophylobayesianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_node_sum(s : BiophylobayesianNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_node_mean(s : BiophylobayesianNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_node_mean(s : BiophylobayesianNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_node_scale(s : BiophylobayesianNode, f : Double) -> BiophylobayesianNode {
   let result = bio_phylo_bayesian_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_bayesian_node_fill(s : BiophylobayesianNode, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_bayesian_node_min(s : BiophylobayesianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_node_min(s : BiophylobayesianNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_node_max(s : BiophylobayesianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_node_max(s : BiophylobayesianNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_node_to_string(s : BiophylobayesianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_bayesian_edge_set(s : BiophylobayesianEdge, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_bayesian_edge_sum(s : BiophylobayesianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_edge_sum(s : BiophylobayesianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_edge_mean(s : BiophylobayesianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_edge_mean(s : BiophylobayesianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_edge_scale(s : BiophylobayesianEdge, f : Double) -> BiophylobayesianEdge {
   let result = bio_phylo_bayesian_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_bayesian_edge_fill(s : BiophylobayesianEdge, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_bayesian_edge_min(s : BiophylobayesianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_edge_min(s : BiophylobayesianEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_edge_max(s : BiophylobayesianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_edge_max(s : BiophylobayesianEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_edge_to_string(s : BiophylobayesianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_bayesian_path_set(s : BiophylobayesianPath, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_bayesian_path_sum(s : BiophylobayesianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_path_sum(s : BiophylobayesianPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_path_mean(s : BiophylobayesianPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_path_mean(s : BiophylobayesianPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_path_scale(s : BiophylobayesianPath, f : Double) -> BiophylobayesianPath {
   let result = bio_phylo_bayesian_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_bayesian_path_fill(s : BiophylobayesianPath, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_bayesian_path_min(s : BiophylobayesianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_path_min(s : BiophylobayesianPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_path_max(s : BiophylobayesianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_path_max(s : BiophylobayesianPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_path_to_string(s : BiophylobayesianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_bayesian_cluster_set(s : BiophylobayesianCluster, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_bayesian_cluster_sum(s : BiophylobayesianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_cluster_sum(s : BiophylobayesianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_cluster_mean(s : BiophylobayesianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_cluster_mean(s : BiophylobayesianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_cluster_scale(s : BiophylobayesianCluster, f : Double) -> BiophylobayesianCluster {
   let result = bio_phylo_bayesian_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_bayesian_cluster_fill(s : BiophylobayesianCluster, v : Double) 
   result
 }
 
-pub fn bio_phylo_bayesian_cluster_min(s : BiophylobayesianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_cluster_min(s : BiophylobayesianCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_cluster_max(s : BiophylobayesianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_cluster_max(s : BiophylobayesianCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_cluster_to_string(s : BiophylobayesianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_bayesian_model_set(s : BiophylobayesianModel, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bayesian_model_sum(s : BiophylobayesianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_model_sum(s : BiophylobayesianModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_model_mean(s : BiophylobayesianModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_model_mean(s : BiophylobayesianModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_model_scale(s : BiophylobayesianModel, f : Double) -> BiophylobayesianModel {
   let result = bio_phylo_bayesian_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_bayesian_model_fill(s : BiophylobayesianModel, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bayesian_model_min(s : BiophylobayesianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_model_min(s : BiophylobayesianModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_model_max(s : BiophylobayesianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_model_max(s : BiophylobayesianModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_model_to_string(s : BiophylobayesianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_bayesian_layer_set(s : BiophylobayesianLayer, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bayesian_layer_sum(s : BiophylobayesianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_layer_sum(s : BiophylobayesianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_layer_mean(s : BiophylobayesianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_layer_mean(s : BiophylobayesianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_layer_scale(s : BiophylobayesianLayer, f : Double) -> BiophylobayesianLayer {
   let result = bio_phylo_bayesian_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_bayesian_layer_fill(s : BiophylobayesianLayer, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bayesian_layer_min(s : BiophylobayesianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_layer_min(s : BiophylobayesianLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_layer_max(s : BiophylobayesianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_layer_max(s : BiophylobayesianLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_layer_to_string(s : BiophylobayesianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_bayesian_buffer_set(s : BiophylobayesianBuffer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bayesian_buffer_sum(s : BiophylobayesianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_buffer_sum(s : BiophylobayesianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_buffer_mean(s : BiophylobayesianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_buffer_mean(s : BiophylobayesianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_buffer_scale(s : BiophylobayesianBuffer, f : Double) -> BiophylobayesianBuffer {
   let result = bio_phylo_bayesian_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_bayesian_buffer_fill(s : BiophylobayesianBuffer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bayesian_buffer_min(s : BiophylobayesianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_buffer_min(s : BiophylobayesianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_buffer_max(s : BiophylobayesianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_buffer_max(s : BiophylobayesianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_buffer_to_string(s : BiophylobayesianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_bayesian_cursor_set(s : BiophylobayesianCursor, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bayesian_cursor_sum(s : BiophylobayesianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_cursor_sum(s : BiophylobayesianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_cursor_mean(s : BiophylobayesianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_cursor_mean(s : BiophylobayesianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_cursor_scale(s : BiophylobayesianCursor, f : Double) -> BiophylobayesianCursor {
   let result = bio_phylo_bayesian_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_bayesian_cursor_fill(s : BiophylobayesianCursor, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bayesian_cursor_min(s : BiophylobayesianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_cursor_min(s : BiophylobayesianCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_cursor_max(s : BiophylobayesianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_cursor_max(s : BiophylobayesianCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_cursor_to_string(s : BiophylobayesianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_bayesian_view_set(s : BiophylobayesianView, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_bayesian_view_sum(s : BiophylobayesianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_view_sum(s : BiophylobayesianView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_view_mean(s : BiophylobayesianView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_view_mean(s : BiophylobayesianView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_view_scale(s : BiophylobayesianView, f : Double) -> BiophylobayesianView {
   let result = bio_phylo_bayesian_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_bayesian_view_fill(s : BiophylobayesianView, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_bayesian_view_min(s : BiophylobayesianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_view_min(s : BiophylobayesianView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_view_max(s : BiophylobayesianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_view_max(s : BiophylobayesianView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_view_to_string(s : BiophylobayesianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_bayesian_range_set(s : BiophylobayesianRange, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bayesian_range_sum(s : BiophylobayesianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_range_sum(s : BiophylobayesianRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_range_mean(s : BiophylobayesianRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_range_mean(s : BiophylobayesianRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_range_scale(s : BiophylobayesianRange, f : Double) -> BiophylobayesianRange {
   let result = bio_phylo_bayesian_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_bayesian_range_fill(s : BiophylobayesianRange, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bayesian_range_min(s : BiophylobayesianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_range_min(s : BiophylobayesianRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_range_max(s : BiophylobayesianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_range_max(s : BiophylobayesianRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_range_to_string(s : BiophylobayesianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_bayesian_slice_set(s : BiophylobayesianSlice, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bayesian_slice_sum(s : BiophylobayesianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bayesian_slice_sum(s : BiophylobayesianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bayesian_slice_mean(s : BiophylobayesianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bayesian_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bayesian_slice_mean(s : BiophylobayesianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bayesian_slice_scale(s : BiophylobayesianSlice, f : Double) -> BiophylobayesianSlice {
   let result = bio_phylo_bayesian_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_bayesian_slice_fill(s : BiophylobayesianSlice, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bayesian_slice_min(s : BiophylobayesianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_slice_min(s : BiophylobayesianSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bayesian_slice_max(s : BiophylobayesianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bayesian_slice_max(s : BiophylobayesianSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bayesian_slice_to_string(s : BiophylobayesianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

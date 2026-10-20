@@ -88,11 +88,7 @@ pub fn bio_struct_tertiary_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_struct_tertiary_series_len(s : BiostructtertiarySeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_tertiary_series_sum(s : BiostructtertiarySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_tertiary_series_sum(s : BiostructtertiarySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_tertiary_series_mean(s : BiostructtertiarySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_tertiary_frame_set(s : BiostructtertiaryFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_tertiary_frame_sum(s : BiostructtertiaryFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_frame_sum(s : BiostructtertiaryFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_frame_mean(s : BiostructtertiaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_frame_mean(s : BiostructtertiaryFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_frame_scale(s : BiostructtertiaryFrame, f : Double) -> BiostructtertiaryFrame {
   let result = bio_struct_tertiary_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_tertiary_frame_fill(s : BiostructtertiaryFrame, v : Double) ->
   result
 }
 
-pub fn bio_struct_tertiary_frame_min(s : BiostructtertiaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_frame_min(s : BiostructtertiaryFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_frame_max(s : BiostructtertiaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_frame_max(s : BiostructtertiaryFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_frame_to_string(s : BiostructtertiaryFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_tertiary_table_set(s : BiostructtertiaryTable, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_tertiary_table_sum(s : BiostructtertiaryTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_table_sum(s : BiostructtertiaryTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_table_mean(s : BiostructtertiaryTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_table_mean(s : BiostructtertiaryTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_table_scale(s : BiostructtertiaryTable, f : Double) -> BiostructtertiaryTable {
   let result = bio_struct_tertiary_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_tertiary_table_fill(s : BiostructtertiaryTable, v : Double) ->
   result
 }
 
-pub fn bio_struct_tertiary_table_min(s : BiostructtertiaryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_table_min(s : BiostructtertiaryTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_table_max(s : BiostructtertiaryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_table_max(s : BiostructtertiaryTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_table_to_string(s : BiostructtertiaryTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_tertiary_graphn_set(s : BiostructtertiaryGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_struct_tertiary_graphn_sum(s : BiostructtertiaryGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_graphn_sum(s : BiostructtertiaryGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_graphn_mean(s : BiostructtertiaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_graphn_mean(s : BiostructtertiaryGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_graphn_scale(s : BiostructtertiaryGraphN, f : Double) -> BiostructtertiaryGraphN {
   let result = bio_struct_tertiary_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_tertiary_graphn_fill(s : BiostructtertiaryGraphN, v : Double) 
   result
 }
 
-pub fn bio_struct_tertiary_graphn_min(s : BiostructtertiaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_graphn_min(s : BiostructtertiaryGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_graphn_max(s : BiostructtertiaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_graphn_max(s : BiostructtertiaryGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_graphn_to_string(s : BiostructtertiaryGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_tertiary_node_set(s : BiostructtertiaryNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_tertiary_node_sum(s : BiostructtertiaryNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_node_sum(s : BiostructtertiaryNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_node_mean(s : BiostructtertiaryNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_node_mean(s : BiostructtertiaryNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_node_scale(s : BiostructtertiaryNode, f : Double) -> BiostructtertiaryNode {
   let result = bio_struct_tertiary_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_tertiary_node_fill(s : BiostructtertiaryNode, v : Double) -> B
   result
 }
 
-pub fn bio_struct_tertiary_node_min(s : BiostructtertiaryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_node_min(s : BiostructtertiaryNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_node_max(s : BiostructtertiaryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_node_max(s : BiostructtertiaryNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_node_to_string(s : BiostructtertiaryNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_tertiary_edge_set(s : BiostructtertiaryEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_tertiary_edge_sum(s : BiostructtertiaryEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_edge_sum(s : BiostructtertiaryEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_edge_mean(s : BiostructtertiaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_edge_mean(s : BiostructtertiaryEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_edge_scale(s : BiostructtertiaryEdge, f : Double) -> BiostructtertiaryEdge {
   let result = bio_struct_tertiary_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_tertiary_edge_fill(s : BiostructtertiaryEdge, v : Double) -> B
   result
 }
 
-pub fn bio_struct_tertiary_edge_min(s : BiostructtertiaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_edge_min(s : BiostructtertiaryEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_edge_max(s : BiostructtertiaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_edge_max(s : BiostructtertiaryEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_edge_to_string(s : BiostructtertiaryEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_tertiary_path_set(s : BiostructtertiaryPath, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_tertiary_path_sum(s : BiostructtertiaryPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_path_sum(s : BiostructtertiaryPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_path_mean(s : BiostructtertiaryPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_path_mean(s : BiostructtertiaryPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_path_scale(s : BiostructtertiaryPath, f : Double) -> BiostructtertiaryPath {
   let result = bio_struct_tertiary_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_tertiary_path_fill(s : BiostructtertiaryPath, v : Double) -> B
   result
 }
 
-pub fn bio_struct_tertiary_path_min(s : BiostructtertiaryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_path_min(s : BiostructtertiaryPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_path_max(s : BiostructtertiaryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_path_max(s : BiostructtertiaryPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_path_to_string(s : BiostructtertiaryPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_tertiary_cluster_set(s : BiostructtertiaryCluster, i : Int, v 
   result
 }
 
-pub fn bio_struct_tertiary_cluster_sum(s : BiostructtertiaryCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_cluster_sum(s : BiostructtertiaryCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_cluster_mean(s : BiostructtertiaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_cluster_mean(s : BiostructtertiaryCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_cluster_scale(s : BiostructtertiaryCluster, f : Double) -> BiostructtertiaryCluster {
   let result = bio_struct_tertiary_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_tertiary_cluster_fill(s : BiostructtertiaryCluster, v : Double
   result
 }
 
-pub fn bio_struct_tertiary_cluster_min(s : BiostructtertiaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_cluster_min(s : BiostructtertiaryCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_cluster_max(s : BiostructtertiaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_cluster_max(s : BiostructtertiaryCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_cluster_to_string(s : BiostructtertiaryCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_tertiary_model_set(s : BiostructtertiaryModel, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_tertiary_model_sum(s : BiostructtertiaryModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_model_sum(s : BiostructtertiaryModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_model_mean(s : BiostructtertiaryModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_model_mean(s : BiostructtertiaryModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_model_scale(s : BiostructtertiaryModel, f : Double) -> BiostructtertiaryModel {
   let result = bio_struct_tertiary_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_tertiary_model_fill(s : BiostructtertiaryModel, v : Double) ->
   result
 }
 
-pub fn bio_struct_tertiary_model_min(s : BiostructtertiaryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_model_min(s : BiostructtertiaryModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_model_max(s : BiostructtertiaryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_model_max(s : BiostructtertiaryModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_model_to_string(s : BiostructtertiaryModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_tertiary_layer_set(s : BiostructtertiaryLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_tertiary_layer_sum(s : BiostructtertiaryLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_layer_sum(s : BiostructtertiaryLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_layer_mean(s : BiostructtertiaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_layer_mean(s : BiostructtertiaryLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_layer_scale(s : BiostructtertiaryLayer, f : Double) -> BiostructtertiaryLayer {
   let result = bio_struct_tertiary_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_tertiary_layer_fill(s : BiostructtertiaryLayer, v : Double) ->
   result
 }
 
-pub fn bio_struct_tertiary_layer_min(s : BiostructtertiaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_layer_min(s : BiostructtertiaryLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_layer_max(s : BiostructtertiaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_layer_max(s : BiostructtertiaryLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_layer_to_string(s : BiostructtertiaryLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_tertiary_buffer_set(s : BiostructtertiaryBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_struct_tertiary_buffer_sum(s : BiostructtertiaryBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_buffer_sum(s : BiostructtertiaryBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_buffer_mean(s : BiostructtertiaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_buffer_mean(s : BiostructtertiaryBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_buffer_scale(s : BiostructtertiaryBuffer, f : Double) -> BiostructtertiaryBuffer {
   let result = bio_struct_tertiary_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_tertiary_buffer_fill(s : BiostructtertiaryBuffer, v : Double) 
   result
 }
 
-pub fn bio_struct_tertiary_buffer_min(s : BiostructtertiaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_buffer_min(s : BiostructtertiaryBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_buffer_max(s : BiostructtertiaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_buffer_max(s : BiostructtertiaryBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_buffer_to_string(s : BiostructtertiaryBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_tertiary_cursor_set(s : BiostructtertiaryCursor, i : Int, v : 
   result
 }
 
-pub fn bio_struct_tertiary_cursor_sum(s : BiostructtertiaryCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_cursor_sum(s : BiostructtertiaryCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_cursor_mean(s : BiostructtertiaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_cursor_mean(s : BiostructtertiaryCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_cursor_scale(s : BiostructtertiaryCursor, f : Double) -> BiostructtertiaryCursor {
   let result = bio_struct_tertiary_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_tertiary_cursor_fill(s : BiostructtertiaryCursor, v : Double) 
   result
 }
 
-pub fn bio_struct_tertiary_cursor_min(s : BiostructtertiaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_cursor_min(s : BiostructtertiaryCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_cursor_max(s : BiostructtertiaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_cursor_max(s : BiostructtertiaryCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_cursor_to_string(s : BiostructtertiaryCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_tertiary_view_set(s : BiostructtertiaryView, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_tertiary_view_sum(s : BiostructtertiaryView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_view_sum(s : BiostructtertiaryView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_view_mean(s : BiostructtertiaryView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_view_mean(s : BiostructtertiaryView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_view_scale(s : BiostructtertiaryView, f : Double) -> BiostructtertiaryView {
   let result = bio_struct_tertiary_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_tertiary_view_fill(s : BiostructtertiaryView, v : Double) -> B
   result
 }
 
-pub fn bio_struct_tertiary_view_min(s : BiostructtertiaryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_view_min(s : BiostructtertiaryView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_view_max(s : BiostructtertiaryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_view_max(s : BiostructtertiaryView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_view_to_string(s : BiostructtertiaryView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_tertiary_range_set(s : BiostructtertiaryRange, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_tertiary_range_sum(s : BiostructtertiaryRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_range_sum(s : BiostructtertiaryRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_range_mean(s : BiostructtertiaryRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_range_mean(s : BiostructtertiaryRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_range_scale(s : BiostructtertiaryRange, f : Double) -> BiostructtertiaryRange {
   let result = bio_struct_tertiary_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_tertiary_range_fill(s : BiostructtertiaryRange, v : Double) ->
   result
 }
 
-pub fn bio_struct_tertiary_range_min(s : BiostructtertiaryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_range_min(s : BiostructtertiaryRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_range_max(s : BiostructtertiaryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_range_max(s : BiostructtertiaryRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_range_to_string(s : BiostructtertiaryRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_tertiary_slice_set(s : BiostructtertiarySlice, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_tertiary_slice_sum(s : BiostructtertiarySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_tertiary_slice_sum(s : BiostructtertiarySlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_tertiary_slice_mean(s : BiostructtertiarySlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_tertiary_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_tertiary_slice_mean(s : BiostructtertiarySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_tertiary_slice_scale(s : BiostructtertiarySlice, f : Double) -> BiostructtertiarySlice {
   let result = bio_struct_tertiary_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_tertiary_slice_fill(s : BiostructtertiarySlice, v : Double) ->
   result
 }
 
-pub fn bio_struct_tertiary_slice_min(s : BiostructtertiarySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_slice_min(s : BiostructtertiarySlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_tertiary_slice_max(s : BiostructtertiarySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_tertiary_slice_max(s : BiostructtertiarySlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_tertiary_slice_to_string(s : BiostructtertiarySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

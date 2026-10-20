@@ -88,11 +88,7 @@ pub fn timeseries_anomaly_autoencoder_make_series(vals : Array[Double], name : S
 
 pub fn timeseries_anomaly_autoencoder_series_len(s : TimeseriesanomalyautoencoderSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_anomaly_autoencoder_series_sum(s : TimeseriesanomalyautoencoderSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_series_sum(s : TimeseriesanomalyautoencoderSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_anomaly_autoencoder_series_mean(s : TimeseriesanomalyautoencoderSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_anomaly_autoencoder_frame_set(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_sum(s : TimeseriesanomalyautoencoderFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_frame_sum(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_frame_mean(s : TimeseriesanomalyautoencoderFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_frame_mean(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_frame_scale(s : TimeseriesanomalyautoencoderFrame, f : Double) -> TimeseriesanomalyautoencoderFrame {
   let result = timeseries_anomaly_autoencoder_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_anomaly_autoencoder_frame_fill(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_frame_min(s : TimeseriesanomalyautoencoderFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_frame_min(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_frame_max(s : TimeseriesanomalyautoencoderFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_frame_max(s : TimeseriesanomalyautoencoderFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_frame_to_string(s : TimeseriesanomalyautoencoderFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_anomaly_autoencoder_table_set(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_table_sum(s : TimeseriesanomalyautoencoderTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_table_sum(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_table_mean(s : TimeseriesanomalyautoencoderTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_table_mean(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_table_scale(s : TimeseriesanomalyautoencoderTable, f : Double) -> TimeseriesanomalyautoencoderTable {
   let result = timeseries_anomaly_autoencoder_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_anomaly_autoencoder_table_fill(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_table_min(s : TimeseriesanomalyautoencoderTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_table_min(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_table_max(s : TimeseriesanomalyautoencoderTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_table_max(s : TimeseriesanomalyautoencoderTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_table_to_string(s : TimeseriesanomalyautoencoderTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_anomaly_autoencoder_graphn_set(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_sum(s : TimeseriesanomalyautoencoderGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_graphn_sum(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_graphn_mean(s : TimeseriesanomalyautoencoderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_graphn_mean(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_graphn_scale(s : TimeseriesanomalyautoencoderGraphN, f : Double) -> TimeseriesanomalyautoencoderGraphN {
   let result = timeseries_anomaly_autoencoder_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_anomaly_autoencoder_graphn_fill(s : Timeseriesanomalyautoencod
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_graphn_min(s : TimeseriesanomalyautoencoderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_graphn_min(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_graphn_max(s : TimeseriesanomalyautoencoderGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_graphn_max(s : TimeseriesanomalyautoencoderGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_graphn_to_string(s : TimeseriesanomalyautoencoderGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_anomaly_autoencoder_node_set(s : TimeseriesanomalyautoencoderN
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_node_sum(s : TimeseriesanomalyautoencoderNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_node_sum(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_node_mean(s : TimeseriesanomalyautoencoderNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_node_mean(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_node_scale(s : TimeseriesanomalyautoencoderNode, f : Double) -> TimeseriesanomalyautoencoderNode {
   let result = timeseries_anomaly_autoencoder_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_anomaly_autoencoder_node_fill(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_node_min(s : TimeseriesanomalyautoencoderNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_node_min(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_node_max(s : TimeseriesanomalyautoencoderNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_node_max(s : TimeseriesanomalyautoencoderNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_node_to_string(s : TimeseriesanomalyautoencoderNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_anomaly_autoencoder_edge_set(s : TimeseriesanomalyautoencoderE
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_sum(s : TimeseriesanomalyautoencoderEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_edge_sum(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_edge_mean(s : TimeseriesanomalyautoencoderEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_edge_mean(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_edge_scale(s : TimeseriesanomalyautoencoderEdge, f : Double) -> TimeseriesanomalyautoencoderEdge {
   let result = timeseries_anomaly_autoencoder_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_anomaly_autoencoder_edge_fill(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_edge_min(s : TimeseriesanomalyautoencoderEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_edge_min(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_edge_max(s : TimeseriesanomalyautoencoderEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_edge_max(s : TimeseriesanomalyautoencoderEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_edge_to_string(s : TimeseriesanomalyautoencoderEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_anomaly_autoencoder_path_set(s : TimeseriesanomalyautoencoderP
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_path_sum(s : TimeseriesanomalyautoencoderPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_path_sum(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_path_mean(s : TimeseriesanomalyautoencoderPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_path_mean(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_path_scale(s : TimeseriesanomalyautoencoderPath, f : Double) -> TimeseriesanomalyautoencoderPath {
   let result = timeseries_anomaly_autoencoder_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_anomaly_autoencoder_path_fill(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_path_min(s : TimeseriesanomalyautoencoderPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_path_min(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_path_max(s : TimeseriesanomalyautoencoderPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_path_max(s : TimeseriesanomalyautoencoderPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_path_to_string(s : TimeseriesanomalyautoencoderPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_anomaly_autoencoder_cluster_set(s : Timeseriesanomalyautoencod
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_sum(s : TimeseriesanomalyautoencoderCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_cluster_sum(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_cluster_mean(s : TimeseriesanomalyautoencoderCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_cluster_mean(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_cluster_scale(s : TimeseriesanomalyautoencoderCluster, f : Double) -> TimeseriesanomalyautoencoderCluster {
   let result = timeseries_anomaly_autoencoder_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_anomaly_autoencoder_cluster_fill(s : Timeseriesanomalyautoenco
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_cluster_min(s : TimeseriesanomalyautoencoderCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_cluster_min(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_cluster_max(s : TimeseriesanomalyautoencoderCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_cluster_max(s : TimeseriesanomalyautoencoderCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_cluster_to_string(s : TimeseriesanomalyautoencoderCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_anomaly_autoencoder_model_set(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_model_sum(s : TimeseriesanomalyautoencoderModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_model_sum(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_model_mean(s : TimeseriesanomalyautoencoderModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_model_mean(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_model_scale(s : TimeseriesanomalyautoencoderModel, f : Double) -> TimeseriesanomalyautoencoderModel {
   let result = timeseries_anomaly_autoencoder_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_anomaly_autoencoder_model_fill(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_model_min(s : TimeseriesanomalyautoencoderModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_model_min(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_model_max(s : TimeseriesanomalyautoencoderModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_model_max(s : TimeseriesanomalyautoencoderModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_model_to_string(s : TimeseriesanomalyautoencoderModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_anomaly_autoencoder_layer_set(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_sum(s : TimeseriesanomalyautoencoderLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_layer_sum(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_layer_mean(s : TimeseriesanomalyautoencoderLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_layer_mean(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_layer_scale(s : TimeseriesanomalyautoencoderLayer, f : Double) -> TimeseriesanomalyautoencoderLayer {
   let result = timeseries_anomaly_autoencoder_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_anomaly_autoencoder_layer_fill(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_layer_min(s : TimeseriesanomalyautoencoderLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_layer_min(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_layer_max(s : TimeseriesanomalyautoencoderLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_layer_max(s : TimeseriesanomalyautoencoderLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_layer_to_string(s : TimeseriesanomalyautoencoderLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_anomaly_autoencoder_buffer_set(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_sum(s : TimeseriesanomalyautoencoderBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_buffer_sum(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_buffer_mean(s : TimeseriesanomalyautoencoderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_buffer_mean(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_buffer_scale(s : TimeseriesanomalyautoencoderBuffer, f : Double) -> TimeseriesanomalyautoencoderBuffer {
   let result = timeseries_anomaly_autoencoder_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_anomaly_autoencoder_buffer_fill(s : Timeseriesanomalyautoencod
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_buffer_min(s : TimeseriesanomalyautoencoderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_buffer_min(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_buffer_max(s : TimeseriesanomalyautoencoderBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_buffer_max(s : TimeseriesanomalyautoencoderBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_buffer_to_string(s : TimeseriesanomalyautoencoderBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_anomaly_autoencoder_cursor_set(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_sum(s : TimeseriesanomalyautoencoderCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_cursor_sum(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_cursor_mean(s : TimeseriesanomalyautoencoderCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_cursor_mean(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_cursor_scale(s : TimeseriesanomalyautoencoderCursor, f : Double) -> TimeseriesanomalyautoencoderCursor {
   let result = timeseries_anomaly_autoencoder_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_anomaly_autoencoder_cursor_fill(s : Timeseriesanomalyautoencod
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_cursor_min(s : TimeseriesanomalyautoencoderCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_cursor_min(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_cursor_max(s : TimeseriesanomalyautoencoderCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_cursor_max(s : TimeseriesanomalyautoencoderCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_cursor_to_string(s : TimeseriesanomalyautoencoderCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_anomaly_autoencoder_view_set(s : TimeseriesanomalyautoencoderV
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_view_sum(s : TimeseriesanomalyautoencoderView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_view_sum(s : TimeseriesanomalyautoencoderView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_view_mean(s : TimeseriesanomalyautoencoderView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_view_mean(s : TimeseriesanomalyautoencoderView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_view_scale(s : TimeseriesanomalyautoencoderView, f : Double) -> TimeseriesanomalyautoencoderView {
   let result = timeseries_anomaly_autoencoder_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_anomaly_autoencoder_view_fill(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_view_min(s : TimeseriesanomalyautoencoderView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_view_min(s : TimeseriesanomalyautoencoderView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_view_max(s : TimeseriesanomalyautoencoderView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_view_max(s : TimeseriesanomalyautoencoderView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_view_to_string(s : TimeseriesanomalyautoencoderView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_anomaly_autoencoder_range_set(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_range_sum(s : TimeseriesanomalyautoencoderRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_range_sum(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_range_mean(s : TimeseriesanomalyautoencoderRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_range_mean(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_range_scale(s : TimeseriesanomalyautoencoderRange, f : Double) -> TimeseriesanomalyautoencoderRange {
   let result = timeseries_anomaly_autoencoder_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_anomaly_autoencoder_range_fill(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_range_min(s : TimeseriesanomalyautoencoderRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_range_min(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_range_max(s : TimeseriesanomalyautoencoderRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_range_max(s : TimeseriesanomalyautoencoderRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_range_to_string(s : TimeseriesanomalyautoencoderRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_anomaly_autoencoder_slice_set(s : Timeseriesanomalyautoencoder
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_sum(s : TimeseriesanomalyautoencoderSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_autoencoder_slice_sum(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_slice_mean(s : TimeseriesanomalyautoencoderSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_autoencoder_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_autoencoder_slice_mean(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_slice_scale(s : TimeseriesanomalyautoencoderSlice, f : Double) -> TimeseriesanomalyautoencoderSlice {
   let result = timeseries_anomaly_autoencoder_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_anomaly_autoencoder_slice_fill(s : Timeseriesanomalyautoencode
   result
 }
 
-pub fn timeseries_anomaly_autoencoder_slice_min(s : TimeseriesanomalyautoencoderSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_slice_min(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_autoencoder_slice_max(s : TimeseriesanomalyautoencoderSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_autoencoder_slice_max(s : TimeseriesanomalyautoencoderSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_autoencoder_slice_to_string(s : TimeseriesanomalyautoencoderSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

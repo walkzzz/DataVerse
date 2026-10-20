@@ -88,11 +88,7 @@ pub fn timeseries_anomaly_isolation_make_series(vals : Array[Double], name : Str
 
 pub fn timeseries_anomaly_isolation_series_len(s : TimeseriesanomalyisolationSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_anomaly_isolation_series_sum(s : TimeseriesanomalyisolationSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_series_sum(s : TimeseriesanomalyisolationSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_anomaly_isolation_series_mean(s : TimeseriesanomalyisolationSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_anomaly_isolation_frame_set(s : TimeseriesanomalyisolationFram
   result
 }
 
-pub fn timeseries_anomaly_isolation_frame_sum(s : TimeseriesanomalyisolationFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_frame_sum(s : TimeseriesanomalyisolationFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_frame_mean(s : TimeseriesanomalyisolationFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_frame_mean(s : TimeseriesanomalyisolationFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_frame_scale(s : TimeseriesanomalyisolationFrame, f : Double) -> TimeseriesanomalyisolationFrame {
   let result = timeseries_anomaly_isolation_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_anomaly_isolation_frame_fill(s : TimeseriesanomalyisolationFra
   result
 }
 
-pub fn timeseries_anomaly_isolation_frame_min(s : TimeseriesanomalyisolationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_frame_min(s : TimeseriesanomalyisolationFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_frame_max(s : TimeseriesanomalyisolationFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_frame_max(s : TimeseriesanomalyisolationFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_frame_to_string(s : TimeseriesanomalyisolationFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_anomaly_isolation_table_set(s : TimeseriesanomalyisolationTabl
   result
 }
 
-pub fn timeseries_anomaly_isolation_table_sum(s : TimeseriesanomalyisolationTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_table_sum(s : TimeseriesanomalyisolationTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_table_mean(s : TimeseriesanomalyisolationTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_table_mean(s : TimeseriesanomalyisolationTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_table_scale(s : TimeseriesanomalyisolationTable, f : Double) -> TimeseriesanomalyisolationTable {
   let result = timeseries_anomaly_isolation_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_anomaly_isolation_table_fill(s : TimeseriesanomalyisolationTab
   result
 }
 
-pub fn timeseries_anomaly_isolation_table_min(s : TimeseriesanomalyisolationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_table_min(s : TimeseriesanomalyisolationTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_table_max(s : TimeseriesanomalyisolationTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_table_max(s : TimeseriesanomalyisolationTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_table_to_string(s : TimeseriesanomalyisolationTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_anomaly_isolation_graphn_set(s : TimeseriesanomalyisolationGra
   result
 }
 
-pub fn timeseries_anomaly_isolation_graphn_sum(s : TimeseriesanomalyisolationGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_graphn_sum(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_graphn_mean(s : TimeseriesanomalyisolationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_graphn_mean(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_graphn_scale(s : TimeseriesanomalyisolationGraphN, f : Double) -> TimeseriesanomalyisolationGraphN {
   let result = timeseries_anomaly_isolation_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_anomaly_isolation_graphn_fill(s : TimeseriesanomalyisolationGr
   result
 }
 
-pub fn timeseries_anomaly_isolation_graphn_min(s : TimeseriesanomalyisolationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_graphn_min(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_graphn_max(s : TimeseriesanomalyisolationGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_graphn_max(s : TimeseriesanomalyisolationGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_graphn_to_string(s : TimeseriesanomalyisolationGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_anomaly_isolation_node_set(s : TimeseriesanomalyisolationNode,
   result
 }
 
-pub fn timeseries_anomaly_isolation_node_sum(s : TimeseriesanomalyisolationNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_node_sum(s : TimeseriesanomalyisolationNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_node_mean(s : TimeseriesanomalyisolationNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_node_mean(s : TimeseriesanomalyisolationNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_node_scale(s : TimeseriesanomalyisolationNode, f : Double) -> TimeseriesanomalyisolationNode {
   let result = timeseries_anomaly_isolation_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_anomaly_isolation_node_fill(s : TimeseriesanomalyisolationNode
   result
 }
 
-pub fn timeseries_anomaly_isolation_node_min(s : TimeseriesanomalyisolationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_node_min(s : TimeseriesanomalyisolationNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_node_max(s : TimeseriesanomalyisolationNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_node_max(s : TimeseriesanomalyisolationNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_node_to_string(s : TimeseriesanomalyisolationNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_anomaly_isolation_edge_set(s : TimeseriesanomalyisolationEdge,
   result
 }
 
-pub fn timeseries_anomaly_isolation_edge_sum(s : TimeseriesanomalyisolationEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_edge_sum(s : TimeseriesanomalyisolationEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_edge_mean(s : TimeseriesanomalyisolationEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_edge_mean(s : TimeseriesanomalyisolationEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_edge_scale(s : TimeseriesanomalyisolationEdge, f : Double) -> TimeseriesanomalyisolationEdge {
   let result = timeseries_anomaly_isolation_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_anomaly_isolation_edge_fill(s : TimeseriesanomalyisolationEdge
   result
 }
 
-pub fn timeseries_anomaly_isolation_edge_min(s : TimeseriesanomalyisolationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_edge_min(s : TimeseriesanomalyisolationEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_edge_max(s : TimeseriesanomalyisolationEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_edge_max(s : TimeseriesanomalyisolationEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_edge_to_string(s : TimeseriesanomalyisolationEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_anomaly_isolation_path_set(s : TimeseriesanomalyisolationPath,
   result
 }
 
-pub fn timeseries_anomaly_isolation_path_sum(s : TimeseriesanomalyisolationPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_path_sum(s : TimeseriesanomalyisolationPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_path_mean(s : TimeseriesanomalyisolationPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_path_mean(s : TimeseriesanomalyisolationPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_path_scale(s : TimeseriesanomalyisolationPath, f : Double) -> TimeseriesanomalyisolationPath {
   let result = timeseries_anomaly_isolation_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_anomaly_isolation_path_fill(s : TimeseriesanomalyisolationPath
   result
 }
 
-pub fn timeseries_anomaly_isolation_path_min(s : TimeseriesanomalyisolationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_path_min(s : TimeseriesanomalyisolationPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_path_max(s : TimeseriesanomalyisolationPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_path_max(s : TimeseriesanomalyisolationPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_path_to_string(s : TimeseriesanomalyisolationPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_anomaly_isolation_cluster_set(s : TimeseriesanomalyisolationCl
   result
 }
 
-pub fn timeseries_anomaly_isolation_cluster_sum(s : TimeseriesanomalyisolationCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_cluster_sum(s : TimeseriesanomalyisolationCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_cluster_mean(s : TimeseriesanomalyisolationCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_cluster_mean(s : TimeseriesanomalyisolationCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_cluster_scale(s : TimeseriesanomalyisolationCluster, f : Double) -> TimeseriesanomalyisolationCluster {
   let result = timeseries_anomaly_isolation_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_anomaly_isolation_cluster_fill(s : TimeseriesanomalyisolationC
   result
 }
 
-pub fn timeseries_anomaly_isolation_cluster_min(s : TimeseriesanomalyisolationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_cluster_min(s : TimeseriesanomalyisolationCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_cluster_max(s : TimeseriesanomalyisolationCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_cluster_max(s : TimeseriesanomalyisolationCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_cluster_to_string(s : TimeseriesanomalyisolationCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_anomaly_isolation_model_set(s : TimeseriesanomalyisolationMode
   result
 }
 
-pub fn timeseries_anomaly_isolation_model_sum(s : TimeseriesanomalyisolationModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_model_sum(s : TimeseriesanomalyisolationModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_model_mean(s : TimeseriesanomalyisolationModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_model_mean(s : TimeseriesanomalyisolationModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_model_scale(s : TimeseriesanomalyisolationModel, f : Double) -> TimeseriesanomalyisolationModel {
   let result = timeseries_anomaly_isolation_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_anomaly_isolation_model_fill(s : TimeseriesanomalyisolationMod
   result
 }
 
-pub fn timeseries_anomaly_isolation_model_min(s : TimeseriesanomalyisolationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_model_min(s : TimeseriesanomalyisolationModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_model_max(s : TimeseriesanomalyisolationModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_model_max(s : TimeseriesanomalyisolationModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_model_to_string(s : TimeseriesanomalyisolationModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_anomaly_isolation_layer_set(s : TimeseriesanomalyisolationLaye
   result
 }
 
-pub fn timeseries_anomaly_isolation_layer_sum(s : TimeseriesanomalyisolationLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_layer_sum(s : TimeseriesanomalyisolationLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_layer_mean(s : TimeseriesanomalyisolationLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_layer_mean(s : TimeseriesanomalyisolationLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_layer_scale(s : TimeseriesanomalyisolationLayer, f : Double) -> TimeseriesanomalyisolationLayer {
   let result = timeseries_anomaly_isolation_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_anomaly_isolation_layer_fill(s : TimeseriesanomalyisolationLay
   result
 }
 
-pub fn timeseries_anomaly_isolation_layer_min(s : TimeseriesanomalyisolationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_layer_min(s : TimeseriesanomalyisolationLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_layer_max(s : TimeseriesanomalyisolationLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_layer_max(s : TimeseriesanomalyisolationLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_layer_to_string(s : TimeseriesanomalyisolationLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_anomaly_isolation_buffer_set(s : TimeseriesanomalyisolationBuf
   result
 }
 
-pub fn timeseries_anomaly_isolation_buffer_sum(s : TimeseriesanomalyisolationBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_buffer_sum(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_buffer_mean(s : TimeseriesanomalyisolationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_buffer_mean(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_buffer_scale(s : TimeseriesanomalyisolationBuffer, f : Double) -> TimeseriesanomalyisolationBuffer {
   let result = timeseries_anomaly_isolation_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_anomaly_isolation_buffer_fill(s : TimeseriesanomalyisolationBu
   result
 }
 
-pub fn timeseries_anomaly_isolation_buffer_min(s : TimeseriesanomalyisolationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_buffer_min(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_buffer_max(s : TimeseriesanomalyisolationBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_buffer_max(s : TimeseriesanomalyisolationBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_buffer_to_string(s : TimeseriesanomalyisolationBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_anomaly_isolation_cursor_set(s : TimeseriesanomalyisolationCur
   result
 }
 
-pub fn timeseries_anomaly_isolation_cursor_sum(s : TimeseriesanomalyisolationCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_cursor_sum(s : TimeseriesanomalyisolationCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_cursor_mean(s : TimeseriesanomalyisolationCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_cursor_mean(s : TimeseriesanomalyisolationCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_cursor_scale(s : TimeseriesanomalyisolationCursor, f : Double) -> TimeseriesanomalyisolationCursor {
   let result = timeseries_anomaly_isolation_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_anomaly_isolation_cursor_fill(s : TimeseriesanomalyisolationCu
   result
 }
 
-pub fn timeseries_anomaly_isolation_cursor_min(s : TimeseriesanomalyisolationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_cursor_min(s : TimeseriesanomalyisolationCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_cursor_max(s : TimeseriesanomalyisolationCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_cursor_max(s : TimeseriesanomalyisolationCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_cursor_to_string(s : TimeseriesanomalyisolationCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_anomaly_isolation_view_set(s : TimeseriesanomalyisolationView,
   result
 }
 
-pub fn timeseries_anomaly_isolation_view_sum(s : TimeseriesanomalyisolationView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_view_sum(s : TimeseriesanomalyisolationView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_view_mean(s : TimeseriesanomalyisolationView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_view_mean(s : TimeseriesanomalyisolationView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_view_scale(s : TimeseriesanomalyisolationView, f : Double) -> TimeseriesanomalyisolationView {
   let result = timeseries_anomaly_isolation_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_anomaly_isolation_view_fill(s : TimeseriesanomalyisolationView
   result
 }
 
-pub fn timeseries_anomaly_isolation_view_min(s : TimeseriesanomalyisolationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_view_min(s : TimeseriesanomalyisolationView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_view_max(s : TimeseriesanomalyisolationView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_view_max(s : TimeseriesanomalyisolationView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_view_to_string(s : TimeseriesanomalyisolationView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_anomaly_isolation_range_set(s : TimeseriesanomalyisolationRang
   result
 }
 
-pub fn timeseries_anomaly_isolation_range_sum(s : TimeseriesanomalyisolationRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_range_sum(s : TimeseriesanomalyisolationRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_range_mean(s : TimeseriesanomalyisolationRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_range_mean(s : TimeseriesanomalyisolationRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_range_scale(s : TimeseriesanomalyisolationRange, f : Double) -> TimeseriesanomalyisolationRange {
   let result = timeseries_anomaly_isolation_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_anomaly_isolation_range_fill(s : TimeseriesanomalyisolationRan
   result
 }
 
-pub fn timeseries_anomaly_isolation_range_min(s : TimeseriesanomalyisolationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_range_min(s : TimeseriesanomalyisolationRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_range_max(s : TimeseriesanomalyisolationRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_range_max(s : TimeseriesanomalyisolationRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_range_to_string(s : TimeseriesanomalyisolationRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_anomaly_isolation_slice_set(s : TimeseriesanomalyisolationSlic
   result
 }
 
-pub fn timeseries_anomaly_isolation_slice_sum(s : TimeseriesanomalyisolationSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_anomaly_isolation_slice_sum(s : TimeseriesanomalyisolationSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_anomaly_isolation_slice_mean(s : TimeseriesanomalyisolationSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_anomaly_isolation_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_anomaly_isolation_slice_mean(s : TimeseriesanomalyisolationSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_anomaly_isolation_slice_scale(s : TimeseriesanomalyisolationSlice, f : Double) -> TimeseriesanomalyisolationSlice {
   let result = timeseries_anomaly_isolation_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_anomaly_isolation_slice_fill(s : TimeseriesanomalyisolationSli
   result
 }
 
-pub fn timeseries_anomaly_isolation_slice_min(s : TimeseriesanomalyisolationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_slice_min(s : TimeseriesanomalyisolationSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_anomaly_isolation_slice_max(s : TimeseriesanomalyisolationSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_anomaly_isolation_slice_max(s : TimeseriesanomalyisolationSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_anomaly_isolation_slice_to_string(s : TimeseriesanomalyisolationSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

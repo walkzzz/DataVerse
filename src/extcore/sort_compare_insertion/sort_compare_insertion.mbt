@@ -88,11 +88,7 @@ pub fn sort_compare_insertion_make_series(vals : Array[Double], name : String) -
 
 pub fn sort_compare_insertion_series_len(s : SortcompareinsertionSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_insertion_series_sum(s : SortcompareinsertionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_insertion_series_sum(s : SortcompareinsertionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_insertion_series_mean(s : SortcompareinsertionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_insertion_frame_set(s : SortcompareinsertionFrame, i : Int, 
   result
 }
 
-pub fn sort_compare_insertion_frame_sum(s : SortcompareinsertionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_frame_sum(s : SortcompareinsertionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_frame_mean(s : SortcompareinsertionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_frame_mean(s : SortcompareinsertionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_frame_scale(s : SortcompareinsertionFrame, f : Double) -> SortcompareinsertionFrame {
   let result = sort_compare_insertion_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_insertion_frame_fill(s : SortcompareinsertionFrame, v : Doub
   result
 }
 
-pub fn sort_compare_insertion_frame_min(s : SortcompareinsertionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_frame_min(s : SortcompareinsertionFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_frame_max(s : SortcompareinsertionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_frame_max(s : SortcompareinsertionFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_frame_to_string(s : SortcompareinsertionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_insertion_table_set(s : SortcompareinsertionTable, i : Int, 
   result
 }
 
-pub fn sort_compare_insertion_table_sum(s : SortcompareinsertionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_table_sum(s : SortcompareinsertionTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_table_mean(s : SortcompareinsertionTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_table_mean(s : SortcompareinsertionTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_table_scale(s : SortcompareinsertionTable, f : Double) -> SortcompareinsertionTable {
   let result = sort_compare_insertion_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_insertion_table_fill(s : SortcompareinsertionTable, v : Doub
   result
 }
 
-pub fn sort_compare_insertion_table_min(s : SortcompareinsertionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_table_min(s : SortcompareinsertionTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_table_max(s : SortcompareinsertionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_table_max(s : SortcompareinsertionTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_table_to_string(s : SortcompareinsertionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_insertion_graphn_set(s : SortcompareinsertionGraphN, i : Int
   result
 }
 
-pub fn sort_compare_insertion_graphn_sum(s : SortcompareinsertionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_graphn_sum(s : SortcompareinsertionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_graphn_mean(s : SortcompareinsertionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_graphn_mean(s : SortcompareinsertionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_graphn_scale(s : SortcompareinsertionGraphN, f : Double) -> SortcompareinsertionGraphN {
   let result = sort_compare_insertion_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_insertion_graphn_fill(s : SortcompareinsertionGraphN, v : Do
   result
 }
 
-pub fn sort_compare_insertion_graphn_min(s : SortcompareinsertionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_graphn_min(s : SortcompareinsertionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_graphn_max(s : SortcompareinsertionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_graphn_max(s : SortcompareinsertionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_graphn_to_string(s : SortcompareinsertionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_insertion_node_set(s : SortcompareinsertionNode, i : Int, v 
   result
 }
 
-pub fn sort_compare_insertion_node_sum(s : SortcompareinsertionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_node_sum(s : SortcompareinsertionNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_node_mean(s : SortcompareinsertionNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_node_mean(s : SortcompareinsertionNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_node_scale(s : SortcompareinsertionNode, f : Double) -> SortcompareinsertionNode {
   let result = sort_compare_insertion_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_insertion_node_fill(s : SortcompareinsertionNode, v : Double
   result
 }
 
-pub fn sort_compare_insertion_node_min(s : SortcompareinsertionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_node_min(s : SortcompareinsertionNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_node_max(s : SortcompareinsertionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_node_max(s : SortcompareinsertionNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_node_to_string(s : SortcompareinsertionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_insertion_edge_set(s : SortcompareinsertionEdge, i : Int, v 
   result
 }
 
-pub fn sort_compare_insertion_edge_sum(s : SortcompareinsertionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_edge_sum(s : SortcompareinsertionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_edge_mean(s : SortcompareinsertionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_edge_mean(s : SortcompareinsertionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_edge_scale(s : SortcompareinsertionEdge, f : Double) -> SortcompareinsertionEdge {
   let result = sort_compare_insertion_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_insertion_edge_fill(s : SortcompareinsertionEdge, v : Double
   result
 }
 
-pub fn sort_compare_insertion_edge_min(s : SortcompareinsertionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_edge_min(s : SortcompareinsertionEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_edge_max(s : SortcompareinsertionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_edge_max(s : SortcompareinsertionEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_edge_to_string(s : SortcompareinsertionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_insertion_path_set(s : SortcompareinsertionPath, i : Int, v 
   result
 }
 
-pub fn sort_compare_insertion_path_sum(s : SortcompareinsertionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_path_sum(s : SortcompareinsertionPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_path_mean(s : SortcompareinsertionPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_path_mean(s : SortcompareinsertionPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_path_scale(s : SortcompareinsertionPath, f : Double) -> SortcompareinsertionPath {
   let result = sort_compare_insertion_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_insertion_path_fill(s : SortcompareinsertionPath, v : Double
   result
 }
 
-pub fn sort_compare_insertion_path_min(s : SortcompareinsertionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_path_min(s : SortcompareinsertionPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_path_max(s : SortcompareinsertionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_path_max(s : SortcompareinsertionPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_path_to_string(s : SortcompareinsertionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_insertion_cluster_set(s : SortcompareinsertionCluster, i : I
   result
 }
 
-pub fn sort_compare_insertion_cluster_sum(s : SortcompareinsertionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_cluster_sum(s : SortcompareinsertionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_cluster_mean(s : SortcompareinsertionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_cluster_mean(s : SortcompareinsertionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_cluster_scale(s : SortcompareinsertionCluster, f : Double) -> SortcompareinsertionCluster {
   let result = sort_compare_insertion_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_insertion_cluster_fill(s : SortcompareinsertionCluster, v : 
   result
 }
 
-pub fn sort_compare_insertion_cluster_min(s : SortcompareinsertionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_cluster_min(s : SortcompareinsertionCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_cluster_max(s : SortcompareinsertionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_cluster_max(s : SortcompareinsertionCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_cluster_to_string(s : SortcompareinsertionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_insertion_model_set(s : SortcompareinsertionModel, i : Int, 
   result
 }
 
-pub fn sort_compare_insertion_model_sum(s : SortcompareinsertionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_model_sum(s : SortcompareinsertionModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_model_mean(s : SortcompareinsertionModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_model_mean(s : SortcompareinsertionModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_model_scale(s : SortcompareinsertionModel, f : Double) -> SortcompareinsertionModel {
   let result = sort_compare_insertion_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_insertion_model_fill(s : SortcompareinsertionModel, v : Doub
   result
 }
 
-pub fn sort_compare_insertion_model_min(s : SortcompareinsertionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_model_min(s : SortcompareinsertionModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_model_max(s : SortcompareinsertionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_model_max(s : SortcompareinsertionModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_model_to_string(s : SortcompareinsertionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_insertion_layer_set(s : SortcompareinsertionLayer, i : Int, 
   result
 }
 
-pub fn sort_compare_insertion_layer_sum(s : SortcompareinsertionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_layer_sum(s : SortcompareinsertionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_layer_mean(s : SortcompareinsertionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_layer_mean(s : SortcompareinsertionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_layer_scale(s : SortcompareinsertionLayer, f : Double) -> SortcompareinsertionLayer {
   let result = sort_compare_insertion_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_insertion_layer_fill(s : SortcompareinsertionLayer, v : Doub
   result
 }
 
-pub fn sort_compare_insertion_layer_min(s : SortcompareinsertionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_layer_min(s : SortcompareinsertionLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_layer_max(s : SortcompareinsertionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_layer_max(s : SortcompareinsertionLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_layer_to_string(s : SortcompareinsertionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_insertion_buffer_set(s : SortcompareinsertionBuffer, i : Int
   result
 }
 
-pub fn sort_compare_insertion_buffer_sum(s : SortcompareinsertionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_buffer_sum(s : SortcompareinsertionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_buffer_mean(s : SortcompareinsertionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_buffer_mean(s : SortcompareinsertionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_buffer_scale(s : SortcompareinsertionBuffer, f : Double) -> SortcompareinsertionBuffer {
   let result = sort_compare_insertion_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_insertion_buffer_fill(s : SortcompareinsertionBuffer, v : Do
   result
 }
 
-pub fn sort_compare_insertion_buffer_min(s : SortcompareinsertionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_buffer_min(s : SortcompareinsertionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_buffer_max(s : SortcompareinsertionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_buffer_max(s : SortcompareinsertionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_buffer_to_string(s : SortcompareinsertionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_insertion_cursor_set(s : SortcompareinsertionCursor, i : Int
   result
 }
 
-pub fn sort_compare_insertion_cursor_sum(s : SortcompareinsertionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_cursor_sum(s : SortcompareinsertionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_cursor_mean(s : SortcompareinsertionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_cursor_mean(s : SortcompareinsertionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_cursor_scale(s : SortcompareinsertionCursor, f : Double) -> SortcompareinsertionCursor {
   let result = sort_compare_insertion_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_insertion_cursor_fill(s : SortcompareinsertionCursor, v : Do
   result
 }
 
-pub fn sort_compare_insertion_cursor_min(s : SortcompareinsertionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_cursor_min(s : SortcompareinsertionCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_cursor_max(s : SortcompareinsertionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_cursor_max(s : SortcompareinsertionCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_cursor_to_string(s : SortcompareinsertionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_insertion_view_set(s : SortcompareinsertionView, i : Int, v 
   result
 }
 
-pub fn sort_compare_insertion_view_sum(s : SortcompareinsertionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_view_sum(s : SortcompareinsertionView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_view_mean(s : SortcompareinsertionView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_view_mean(s : SortcompareinsertionView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_view_scale(s : SortcompareinsertionView, f : Double) -> SortcompareinsertionView {
   let result = sort_compare_insertion_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_insertion_view_fill(s : SortcompareinsertionView, v : Double
   result
 }
 
-pub fn sort_compare_insertion_view_min(s : SortcompareinsertionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_view_min(s : SortcompareinsertionView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_view_max(s : SortcompareinsertionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_view_max(s : SortcompareinsertionView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_view_to_string(s : SortcompareinsertionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_insertion_range_set(s : SortcompareinsertionRange, i : Int, 
   result
 }
 
-pub fn sort_compare_insertion_range_sum(s : SortcompareinsertionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_range_sum(s : SortcompareinsertionRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_range_mean(s : SortcompareinsertionRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_range_mean(s : SortcompareinsertionRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_range_scale(s : SortcompareinsertionRange, f : Double) -> SortcompareinsertionRange {
   let result = sort_compare_insertion_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_insertion_range_fill(s : SortcompareinsertionRange, v : Doub
   result
 }
 
-pub fn sort_compare_insertion_range_min(s : SortcompareinsertionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_range_min(s : SortcompareinsertionRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_range_max(s : SortcompareinsertionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_range_max(s : SortcompareinsertionRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_range_to_string(s : SortcompareinsertionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_insertion_slice_set(s : SortcompareinsertionSlice, i : Int, 
   result
 }
 
-pub fn sort_compare_insertion_slice_sum(s : SortcompareinsertionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_insertion_slice_sum(s : SortcompareinsertionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_insertion_slice_mean(s : SortcompareinsertionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_insertion_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_insertion_slice_mean(s : SortcompareinsertionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_insertion_slice_scale(s : SortcompareinsertionSlice, f : Double) -> SortcompareinsertionSlice {
   let result = sort_compare_insertion_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_insertion_slice_fill(s : SortcompareinsertionSlice, v : Doub
   result
 }
 
-pub fn sort_compare_insertion_slice_min(s : SortcompareinsertionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_slice_min(s : SortcompareinsertionSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_insertion_slice_max(s : SortcompareinsertionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_insertion_slice_max(s : SortcompareinsertionSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_insertion_slice_to_string(s : SortcompareinsertionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_qr_decomp_make_series(vals : Array[Double], name : String) -> Mathqr
 
 pub fn math_qr_decomp_series_len(s : MathqrdecompSeries) -> Int { s.vals.length() }
 
-pub fn math_qr_decomp_series_sum(s : MathqrdecompSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_qr_decomp_series_sum(s : MathqrdecompSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_qr_decomp_series_mean(s : MathqrdecompSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_qr_decomp_frame_set(s : MathqrdecompFrame, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_qr_decomp_frame_sum(s : MathqrdecompFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_frame_sum(s : MathqrdecompFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_frame_mean(s : MathqrdecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_frame_mean(s : MathqrdecompFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_frame_scale(s : MathqrdecompFrame, f : Double) -> MathqrdecompFrame {
   let result = math_qr_decomp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_qr_decomp_frame_fill(s : MathqrdecompFrame, v : Double) -> Mathqrdec
   result
 }
 
-pub fn math_qr_decomp_frame_min(s : MathqrdecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_frame_min(s : MathqrdecompFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_frame_max(s : MathqrdecompFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_frame_max(s : MathqrdecompFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_frame_to_string(s : MathqrdecompFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_qr_decomp_table_set(s : MathqrdecompTable, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_qr_decomp_table_sum(s : MathqrdecompTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_table_sum(s : MathqrdecompTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_table_mean(s : MathqrdecompTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_table_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_table_mean(s : MathqrdecompTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_table_scale(s : MathqrdecompTable, f : Double) -> MathqrdecompTable {
   let result = math_qr_decomp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_qr_decomp_table_fill(s : MathqrdecompTable, v : Double) -> Mathqrdec
   result
 }
 
-pub fn math_qr_decomp_table_min(s : MathqrdecompTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_table_min(s : MathqrdecompTable) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_table_max(s : MathqrdecompTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_table_max(s : MathqrdecompTable) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_table_to_string(s : MathqrdecompTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_qr_decomp_graphn_set(s : MathqrdecompGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn math_qr_decomp_graphn_sum(s : MathqrdecompGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_graphn_sum(s : MathqrdecompGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_graphn_mean(s : MathqrdecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_graphn_mean(s : MathqrdecompGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_graphn_scale(s : MathqrdecompGraphN, f : Double) -> MathqrdecompGraphN {
   let result = math_qr_decomp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_qr_decomp_graphn_fill(s : MathqrdecompGraphN, v : Double) -> Mathqrd
   result
 }
 
-pub fn math_qr_decomp_graphn_min(s : MathqrdecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_graphn_min(s : MathqrdecompGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_graphn_max(s : MathqrdecompGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_graphn_max(s : MathqrdecompGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_graphn_to_string(s : MathqrdecompGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_qr_decomp_node_set(s : MathqrdecompNode, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_qr_decomp_node_sum(s : MathqrdecompNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_node_sum(s : MathqrdecompNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_node_mean(s : MathqrdecompNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_node_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_node_mean(s : MathqrdecompNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_node_scale(s : MathqrdecompNode, f : Double) -> MathqrdecompNode {
   let result = math_qr_decomp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_qr_decomp_node_fill(s : MathqrdecompNode, v : Double) -> Mathqrdecom
   result
 }
 
-pub fn math_qr_decomp_node_min(s : MathqrdecompNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_node_min(s : MathqrdecompNode) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_node_max(s : MathqrdecompNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_node_max(s : MathqrdecompNode) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_node_to_string(s : MathqrdecompNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_qr_decomp_edge_set(s : MathqrdecompEdge, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_qr_decomp_edge_sum(s : MathqrdecompEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_edge_sum(s : MathqrdecompEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_edge_mean(s : MathqrdecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_edge_mean(s : MathqrdecompEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_edge_scale(s : MathqrdecompEdge, f : Double) -> MathqrdecompEdge {
   let result = math_qr_decomp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_qr_decomp_edge_fill(s : MathqrdecompEdge, v : Double) -> Mathqrdecom
   result
 }
 
-pub fn math_qr_decomp_edge_min(s : MathqrdecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_edge_min(s : MathqrdecompEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_edge_max(s : MathqrdecompEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_edge_max(s : MathqrdecompEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_edge_to_string(s : MathqrdecompEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_qr_decomp_path_set(s : MathqrdecompPath, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_qr_decomp_path_sum(s : MathqrdecompPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_path_sum(s : MathqrdecompPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_path_mean(s : MathqrdecompPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_path_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_path_mean(s : MathqrdecompPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_path_scale(s : MathqrdecompPath, f : Double) -> MathqrdecompPath {
   let result = math_qr_decomp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_qr_decomp_path_fill(s : MathqrdecompPath, v : Double) -> Mathqrdecom
   result
 }
 
-pub fn math_qr_decomp_path_min(s : MathqrdecompPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_path_min(s : MathqrdecompPath) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_path_max(s : MathqrdecompPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_path_max(s : MathqrdecompPath) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_path_to_string(s : MathqrdecompPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_qr_decomp_cluster_set(s : MathqrdecompCluster, i : Int, v : Double) 
   result
 }
 
-pub fn math_qr_decomp_cluster_sum(s : MathqrdecompCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_cluster_sum(s : MathqrdecompCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_cluster_mean(s : MathqrdecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_cluster_mean(s : MathqrdecompCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_cluster_scale(s : MathqrdecompCluster, f : Double) -> MathqrdecompCluster {
   let result = math_qr_decomp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_qr_decomp_cluster_fill(s : MathqrdecompCluster, v : Double) -> Mathq
   result
 }
 
-pub fn math_qr_decomp_cluster_min(s : MathqrdecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_cluster_min(s : MathqrdecompCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_cluster_max(s : MathqrdecompCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_cluster_max(s : MathqrdecompCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_cluster_to_string(s : MathqrdecompCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_qr_decomp_model_set(s : MathqrdecompModel, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_qr_decomp_model_sum(s : MathqrdecompModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_model_sum(s : MathqrdecompModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_model_mean(s : MathqrdecompModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_model_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_model_mean(s : MathqrdecompModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_model_scale(s : MathqrdecompModel, f : Double) -> MathqrdecompModel {
   let result = math_qr_decomp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_qr_decomp_model_fill(s : MathqrdecompModel, v : Double) -> Mathqrdec
   result
 }
 
-pub fn math_qr_decomp_model_min(s : MathqrdecompModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_model_min(s : MathqrdecompModel) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_model_max(s : MathqrdecompModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_model_max(s : MathqrdecompModel) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_model_to_string(s : MathqrdecompModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_qr_decomp_layer_set(s : MathqrdecompLayer, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_qr_decomp_layer_sum(s : MathqrdecompLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_layer_sum(s : MathqrdecompLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_layer_mean(s : MathqrdecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_layer_mean(s : MathqrdecompLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_layer_scale(s : MathqrdecompLayer, f : Double) -> MathqrdecompLayer {
   let result = math_qr_decomp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_qr_decomp_layer_fill(s : MathqrdecompLayer, v : Double) -> Mathqrdec
   result
 }
 
-pub fn math_qr_decomp_layer_min(s : MathqrdecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_layer_min(s : MathqrdecompLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_layer_max(s : MathqrdecompLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_layer_max(s : MathqrdecompLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_layer_to_string(s : MathqrdecompLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_qr_decomp_buffer_set(s : MathqrdecompBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn math_qr_decomp_buffer_sum(s : MathqrdecompBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_buffer_sum(s : MathqrdecompBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_buffer_mean(s : MathqrdecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_buffer_mean(s : MathqrdecompBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_buffer_scale(s : MathqrdecompBuffer, f : Double) -> MathqrdecompBuffer {
   let result = math_qr_decomp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_qr_decomp_buffer_fill(s : MathqrdecompBuffer, v : Double) -> Mathqrd
   result
 }
 
-pub fn math_qr_decomp_buffer_min(s : MathqrdecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_buffer_min(s : MathqrdecompBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_buffer_max(s : MathqrdecompBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_buffer_max(s : MathqrdecompBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_buffer_to_string(s : MathqrdecompBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_qr_decomp_cursor_set(s : MathqrdecompCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn math_qr_decomp_cursor_sum(s : MathqrdecompCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_cursor_sum(s : MathqrdecompCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_cursor_mean(s : MathqrdecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_cursor_mean(s : MathqrdecompCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_cursor_scale(s : MathqrdecompCursor, f : Double) -> MathqrdecompCursor {
   let result = math_qr_decomp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_qr_decomp_cursor_fill(s : MathqrdecompCursor, v : Double) -> Mathqrd
   result
 }
 
-pub fn math_qr_decomp_cursor_min(s : MathqrdecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_cursor_min(s : MathqrdecompCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_cursor_max(s : MathqrdecompCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_cursor_max(s : MathqrdecompCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_cursor_to_string(s : MathqrdecompCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_qr_decomp_view_set(s : MathqrdecompView, i : Int, v : Double) -> Mat
   result
 }
 
-pub fn math_qr_decomp_view_sum(s : MathqrdecompView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_view_sum(s : MathqrdecompView) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_view_mean(s : MathqrdecompView) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_view_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_view_mean(s : MathqrdecompView) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_view_scale(s : MathqrdecompView, f : Double) -> MathqrdecompView {
   let result = math_qr_decomp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_qr_decomp_view_fill(s : MathqrdecompView, v : Double) -> Mathqrdecom
   result
 }
 
-pub fn math_qr_decomp_view_min(s : MathqrdecompView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_view_min(s : MathqrdecompView) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_view_max(s : MathqrdecompView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_view_max(s : MathqrdecompView) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_view_to_string(s : MathqrdecompView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_qr_decomp_range_set(s : MathqrdecompRange, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_qr_decomp_range_sum(s : MathqrdecompRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_range_sum(s : MathqrdecompRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_range_mean(s : MathqrdecompRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_range_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_range_mean(s : MathqrdecompRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_range_scale(s : MathqrdecompRange, f : Double) -> MathqrdecompRange {
   let result = math_qr_decomp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_qr_decomp_range_fill(s : MathqrdecompRange, v : Double) -> Mathqrdec
   result
 }
 
-pub fn math_qr_decomp_range_min(s : MathqrdecompRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_range_min(s : MathqrdecompRange) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_range_max(s : MathqrdecompRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_range_max(s : MathqrdecompRange) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_range_to_string(s : MathqrdecompRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_qr_decomp_slice_set(s : MathqrdecompSlice, i : Int, v : Double) -> M
   result
 }
 
-pub fn math_qr_decomp_slice_sum(s : MathqrdecompSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_qr_decomp_slice_sum(s : MathqrdecompSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_qr_decomp_slice_mean(s : MathqrdecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_qr_decomp_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_qr_decomp_slice_mean(s : MathqrdecompSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_qr_decomp_slice_scale(s : MathqrdecompSlice, f : Double) -> MathqrdecompSlice {
   let result = math_qr_decomp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_qr_decomp_slice_fill(s : MathqrdecompSlice, v : Double) -> Mathqrdec
   result
 }
 
-pub fn math_qr_decomp_slice_min(s : MathqrdecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_slice_min(s : MathqrdecompSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_qr_decomp_slice_max(s : MathqrdecompSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_qr_decomp_slice_max(s : MathqrdecompSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_qr_decomp_slice_to_string(s : MathqrdecompSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

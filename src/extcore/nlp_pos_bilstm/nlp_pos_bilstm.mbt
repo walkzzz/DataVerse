@@ -88,11 +88,7 @@ pub fn nlp_pos_bilstm_make_series(vals : Array[Double], name : String) -> Nlppos
 
 pub fn nlp_pos_bilstm_series_len(s : NlpposbilstmSeries) -> Int { s.vals.length() }
 
-pub fn nlp_pos_bilstm_series_sum(s : NlpposbilstmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_pos_bilstm_series_sum(s : NlpposbilstmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_pos_bilstm_series_mean(s : NlpposbilstmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_pos_bilstm_frame_set(s : NlpposbilstmFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_bilstm_frame_sum(s : NlpposbilstmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_frame_sum(s : NlpposbilstmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_frame_mean(s : NlpposbilstmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_frame_mean(s : NlpposbilstmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_frame_scale(s : NlpposbilstmFrame, f : Double) -> NlpposbilstmFrame {
   let result = nlp_pos_bilstm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_pos_bilstm_frame_fill(s : NlpposbilstmFrame, v : Double) -> Nlpposbil
   result
 }
 
-pub fn nlp_pos_bilstm_frame_min(s : NlpposbilstmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_frame_min(s : NlpposbilstmFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_frame_max(s : NlpposbilstmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_frame_max(s : NlpposbilstmFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_frame_to_string(s : NlpposbilstmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_pos_bilstm_table_set(s : NlpposbilstmTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_bilstm_table_sum(s : NlpposbilstmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_table_sum(s : NlpposbilstmTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_table_mean(s : NlpposbilstmTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_table_mean(s : NlpposbilstmTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_table_scale(s : NlpposbilstmTable, f : Double) -> NlpposbilstmTable {
   let result = nlp_pos_bilstm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_pos_bilstm_table_fill(s : NlpposbilstmTable, v : Double) -> Nlpposbil
   result
 }
 
-pub fn nlp_pos_bilstm_table_min(s : NlpposbilstmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_table_min(s : NlpposbilstmTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_table_max(s : NlpposbilstmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_table_max(s : NlpposbilstmTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_table_to_string(s : NlpposbilstmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_pos_bilstm_graphn_set(s : NlpposbilstmGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_pos_bilstm_graphn_sum(s : NlpposbilstmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_graphn_sum(s : NlpposbilstmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_graphn_mean(s : NlpposbilstmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_graphn_mean(s : NlpposbilstmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_graphn_scale(s : NlpposbilstmGraphN, f : Double) -> NlpposbilstmGraphN {
   let result = nlp_pos_bilstm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_pos_bilstm_graphn_fill(s : NlpposbilstmGraphN, v : Double) -> Nlpposb
   result
 }
 
-pub fn nlp_pos_bilstm_graphn_min(s : NlpposbilstmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_graphn_min(s : NlpposbilstmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_graphn_max(s : NlpposbilstmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_graphn_max(s : NlpposbilstmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_graphn_to_string(s : NlpposbilstmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_pos_bilstm_node_set(s : NlpposbilstmNode, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_bilstm_node_sum(s : NlpposbilstmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_node_sum(s : NlpposbilstmNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_node_mean(s : NlpposbilstmNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_node_mean(s : NlpposbilstmNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_node_scale(s : NlpposbilstmNode, f : Double) -> NlpposbilstmNode {
   let result = nlp_pos_bilstm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_pos_bilstm_node_fill(s : NlpposbilstmNode, v : Double) -> Nlpposbilst
   result
 }
 
-pub fn nlp_pos_bilstm_node_min(s : NlpposbilstmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_node_min(s : NlpposbilstmNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_node_max(s : NlpposbilstmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_node_max(s : NlpposbilstmNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_node_to_string(s : NlpposbilstmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_pos_bilstm_edge_set(s : NlpposbilstmEdge, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_bilstm_edge_sum(s : NlpposbilstmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_edge_sum(s : NlpposbilstmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_edge_mean(s : NlpposbilstmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_edge_mean(s : NlpposbilstmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_edge_scale(s : NlpposbilstmEdge, f : Double) -> NlpposbilstmEdge {
   let result = nlp_pos_bilstm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_pos_bilstm_edge_fill(s : NlpposbilstmEdge, v : Double) -> Nlpposbilst
   result
 }
 
-pub fn nlp_pos_bilstm_edge_min(s : NlpposbilstmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_edge_min(s : NlpposbilstmEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_edge_max(s : NlpposbilstmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_edge_max(s : NlpposbilstmEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_edge_to_string(s : NlpposbilstmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_pos_bilstm_path_set(s : NlpposbilstmPath, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_bilstm_path_sum(s : NlpposbilstmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_path_sum(s : NlpposbilstmPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_path_mean(s : NlpposbilstmPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_path_mean(s : NlpposbilstmPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_path_scale(s : NlpposbilstmPath, f : Double) -> NlpposbilstmPath {
   let result = nlp_pos_bilstm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_pos_bilstm_path_fill(s : NlpposbilstmPath, v : Double) -> Nlpposbilst
   result
 }
 
-pub fn nlp_pos_bilstm_path_min(s : NlpposbilstmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_path_min(s : NlpposbilstmPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_path_max(s : NlpposbilstmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_path_max(s : NlpposbilstmPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_path_to_string(s : NlpposbilstmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_pos_bilstm_cluster_set(s : NlpposbilstmCluster, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_pos_bilstm_cluster_sum(s : NlpposbilstmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_cluster_sum(s : NlpposbilstmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_cluster_mean(s : NlpposbilstmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_cluster_mean(s : NlpposbilstmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_cluster_scale(s : NlpposbilstmCluster, f : Double) -> NlpposbilstmCluster {
   let result = nlp_pos_bilstm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_pos_bilstm_cluster_fill(s : NlpposbilstmCluster, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_bilstm_cluster_min(s : NlpposbilstmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_cluster_min(s : NlpposbilstmCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_cluster_max(s : NlpposbilstmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_cluster_max(s : NlpposbilstmCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_cluster_to_string(s : NlpposbilstmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_pos_bilstm_model_set(s : NlpposbilstmModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_bilstm_model_sum(s : NlpposbilstmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_model_sum(s : NlpposbilstmModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_model_mean(s : NlpposbilstmModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_model_mean(s : NlpposbilstmModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_model_scale(s : NlpposbilstmModel, f : Double) -> NlpposbilstmModel {
   let result = nlp_pos_bilstm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_pos_bilstm_model_fill(s : NlpposbilstmModel, v : Double) -> Nlpposbil
   result
 }
 
-pub fn nlp_pos_bilstm_model_min(s : NlpposbilstmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_model_min(s : NlpposbilstmModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_model_max(s : NlpposbilstmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_model_max(s : NlpposbilstmModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_model_to_string(s : NlpposbilstmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_pos_bilstm_layer_set(s : NlpposbilstmLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_bilstm_layer_sum(s : NlpposbilstmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_layer_sum(s : NlpposbilstmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_layer_mean(s : NlpposbilstmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_layer_mean(s : NlpposbilstmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_layer_scale(s : NlpposbilstmLayer, f : Double) -> NlpposbilstmLayer {
   let result = nlp_pos_bilstm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_pos_bilstm_layer_fill(s : NlpposbilstmLayer, v : Double) -> Nlpposbil
   result
 }
 
-pub fn nlp_pos_bilstm_layer_min(s : NlpposbilstmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_layer_min(s : NlpposbilstmLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_layer_max(s : NlpposbilstmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_layer_max(s : NlpposbilstmLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_layer_to_string(s : NlpposbilstmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_pos_bilstm_buffer_set(s : NlpposbilstmBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_pos_bilstm_buffer_sum(s : NlpposbilstmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_buffer_sum(s : NlpposbilstmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_buffer_mean(s : NlpposbilstmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_buffer_mean(s : NlpposbilstmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_buffer_scale(s : NlpposbilstmBuffer, f : Double) -> NlpposbilstmBuffer {
   let result = nlp_pos_bilstm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_pos_bilstm_buffer_fill(s : NlpposbilstmBuffer, v : Double) -> Nlpposb
   result
 }
 
-pub fn nlp_pos_bilstm_buffer_min(s : NlpposbilstmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_buffer_min(s : NlpposbilstmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_buffer_max(s : NlpposbilstmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_buffer_max(s : NlpposbilstmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_buffer_to_string(s : NlpposbilstmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_pos_bilstm_cursor_set(s : NlpposbilstmCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_pos_bilstm_cursor_sum(s : NlpposbilstmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_cursor_sum(s : NlpposbilstmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_cursor_mean(s : NlpposbilstmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_cursor_mean(s : NlpposbilstmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_cursor_scale(s : NlpposbilstmCursor, f : Double) -> NlpposbilstmCursor {
   let result = nlp_pos_bilstm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_pos_bilstm_cursor_fill(s : NlpposbilstmCursor, v : Double) -> Nlpposb
   result
 }
 
-pub fn nlp_pos_bilstm_cursor_min(s : NlpposbilstmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_cursor_min(s : NlpposbilstmCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_cursor_max(s : NlpposbilstmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_cursor_max(s : NlpposbilstmCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_cursor_to_string(s : NlpposbilstmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_pos_bilstm_view_set(s : NlpposbilstmView, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_pos_bilstm_view_sum(s : NlpposbilstmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_view_sum(s : NlpposbilstmView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_view_mean(s : NlpposbilstmView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_view_mean(s : NlpposbilstmView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_view_scale(s : NlpposbilstmView, f : Double) -> NlpposbilstmView {
   let result = nlp_pos_bilstm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_pos_bilstm_view_fill(s : NlpposbilstmView, v : Double) -> Nlpposbilst
   result
 }
 
-pub fn nlp_pos_bilstm_view_min(s : NlpposbilstmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_view_min(s : NlpposbilstmView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_view_max(s : NlpposbilstmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_view_max(s : NlpposbilstmView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_view_to_string(s : NlpposbilstmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_pos_bilstm_range_set(s : NlpposbilstmRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_bilstm_range_sum(s : NlpposbilstmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_range_sum(s : NlpposbilstmRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_range_mean(s : NlpposbilstmRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_range_mean(s : NlpposbilstmRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_range_scale(s : NlpposbilstmRange, f : Double) -> NlpposbilstmRange {
   let result = nlp_pos_bilstm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_pos_bilstm_range_fill(s : NlpposbilstmRange, v : Double) -> Nlpposbil
   result
 }
 
-pub fn nlp_pos_bilstm_range_min(s : NlpposbilstmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_range_min(s : NlpposbilstmRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_range_max(s : NlpposbilstmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_range_max(s : NlpposbilstmRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_range_to_string(s : NlpposbilstmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_pos_bilstm_slice_set(s : NlpposbilstmSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_pos_bilstm_slice_sum(s : NlpposbilstmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_bilstm_slice_sum(s : NlpposbilstmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_bilstm_slice_mean(s : NlpposbilstmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_bilstm_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_bilstm_slice_mean(s : NlpposbilstmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_bilstm_slice_scale(s : NlpposbilstmSlice, f : Double) -> NlpposbilstmSlice {
   let result = nlp_pos_bilstm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_pos_bilstm_slice_fill(s : NlpposbilstmSlice, v : Double) -> Nlpposbil
   result
 }
 
-pub fn nlp_pos_bilstm_slice_min(s : NlpposbilstmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_slice_min(s : NlpposbilstmSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_bilstm_slice_max(s : NlpposbilstmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_bilstm_slice_max(s : NlpposbilstmSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_bilstm_slice_to_string(s : NlpposbilstmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

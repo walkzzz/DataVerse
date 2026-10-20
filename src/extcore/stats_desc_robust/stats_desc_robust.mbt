@@ -88,11 +88,7 @@ pub fn stats_desc_robust_make_series(vals : Array[Double], name : String) -> Sta
 
 pub fn stats_desc_robust_series_len(s : StatsdescrobustSeries) -> Int { s.vals.length() }
 
-pub fn stats_desc_robust_series_sum(s : StatsdescrobustSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_desc_robust_series_sum(s : StatsdescrobustSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_desc_robust_series_mean(s : StatsdescrobustSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_desc_robust_frame_set(s : StatsdescrobustFrame, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_robust_frame_sum(s : StatsdescrobustFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_frame_sum(s : StatsdescrobustFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_frame_mean(s : StatsdescrobustFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_frame_mean(s : StatsdescrobustFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_frame_scale(s : StatsdescrobustFrame, f : Double) -> StatsdescrobustFrame {
   let result = stats_desc_robust_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_desc_robust_frame_fill(s : StatsdescrobustFrame, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_robust_frame_min(s : StatsdescrobustFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_frame_min(s : StatsdescrobustFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_frame_max(s : StatsdescrobustFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_frame_max(s : StatsdescrobustFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_frame_to_string(s : StatsdescrobustFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_desc_robust_table_set(s : StatsdescrobustTable, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_robust_table_sum(s : StatsdescrobustTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_table_sum(s : StatsdescrobustTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_table_mean(s : StatsdescrobustTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_table_mean(s : StatsdescrobustTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_table_scale(s : StatsdescrobustTable, f : Double) -> StatsdescrobustTable {
   let result = stats_desc_robust_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_desc_robust_table_fill(s : StatsdescrobustTable, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_robust_table_min(s : StatsdescrobustTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_table_min(s : StatsdescrobustTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_table_max(s : StatsdescrobustTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_table_max(s : StatsdescrobustTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_table_to_string(s : StatsdescrobustTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_desc_robust_graphn_set(s : StatsdescrobustGraphN, i : Int, v : Doub
   result
 }
 
-pub fn stats_desc_robust_graphn_sum(s : StatsdescrobustGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_graphn_sum(s : StatsdescrobustGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_graphn_mean(s : StatsdescrobustGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_graphn_mean(s : StatsdescrobustGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_graphn_scale(s : StatsdescrobustGraphN, f : Double) -> StatsdescrobustGraphN {
   let result = stats_desc_robust_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_desc_robust_graphn_fill(s : StatsdescrobustGraphN, v : Double) -> S
   result
 }
 
-pub fn stats_desc_robust_graphn_min(s : StatsdescrobustGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_graphn_min(s : StatsdescrobustGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_graphn_max(s : StatsdescrobustGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_graphn_max(s : StatsdescrobustGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_graphn_to_string(s : StatsdescrobustGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_desc_robust_node_set(s : StatsdescrobustNode, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_robust_node_sum(s : StatsdescrobustNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_node_sum(s : StatsdescrobustNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_node_mean(s : StatsdescrobustNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_node_mean(s : StatsdescrobustNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_node_scale(s : StatsdescrobustNode, f : Double) -> StatsdescrobustNode {
   let result = stats_desc_robust_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_desc_robust_node_fill(s : StatsdescrobustNode, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_robust_node_min(s : StatsdescrobustNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_node_min(s : StatsdescrobustNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_node_max(s : StatsdescrobustNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_node_max(s : StatsdescrobustNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_node_to_string(s : StatsdescrobustNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_desc_robust_edge_set(s : StatsdescrobustEdge, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_robust_edge_sum(s : StatsdescrobustEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_edge_sum(s : StatsdescrobustEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_edge_mean(s : StatsdescrobustEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_edge_mean(s : StatsdescrobustEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_edge_scale(s : StatsdescrobustEdge, f : Double) -> StatsdescrobustEdge {
   let result = stats_desc_robust_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_desc_robust_edge_fill(s : StatsdescrobustEdge, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_robust_edge_min(s : StatsdescrobustEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_edge_min(s : StatsdescrobustEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_edge_max(s : StatsdescrobustEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_edge_max(s : StatsdescrobustEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_edge_to_string(s : StatsdescrobustEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_desc_robust_path_set(s : StatsdescrobustPath, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_robust_path_sum(s : StatsdescrobustPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_path_sum(s : StatsdescrobustPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_path_mean(s : StatsdescrobustPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_path_mean(s : StatsdescrobustPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_path_scale(s : StatsdescrobustPath, f : Double) -> StatsdescrobustPath {
   let result = stats_desc_robust_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_desc_robust_path_fill(s : StatsdescrobustPath, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_robust_path_min(s : StatsdescrobustPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_path_min(s : StatsdescrobustPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_path_max(s : StatsdescrobustPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_path_max(s : StatsdescrobustPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_path_to_string(s : StatsdescrobustPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_desc_robust_cluster_set(s : StatsdescrobustCluster, i : Int, v : Do
   result
 }
 
-pub fn stats_desc_robust_cluster_sum(s : StatsdescrobustCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_cluster_sum(s : StatsdescrobustCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_cluster_mean(s : StatsdescrobustCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_cluster_mean(s : StatsdescrobustCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_cluster_scale(s : StatsdescrobustCluster, f : Double) -> StatsdescrobustCluster {
   let result = stats_desc_robust_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_desc_robust_cluster_fill(s : StatsdescrobustCluster, v : Double) ->
   result
 }
 
-pub fn stats_desc_robust_cluster_min(s : StatsdescrobustCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_cluster_min(s : StatsdescrobustCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_cluster_max(s : StatsdescrobustCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_cluster_max(s : StatsdescrobustCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_cluster_to_string(s : StatsdescrobustCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_desc_robust_model_set(s : StatsdescrobustModel, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_robust_model_sum(s : StatsdescrobustModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_model_sum(s : StatsdescrobustModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_model_mean(s : StatsdescrobustModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_model_mean(s : StatsdescrobustModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_model_scale(s : StatsdescrobustModel, f : Double) -> StatsdescrobustModel {
   let result = stats_desc_robust_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_desc_robust_model_fill(s : StatsdescrobustModel, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_robust_model_min(s : StatsdescrobustModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_model_min(s : StatsdescrobustModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_model_max(s : StatsdescrobustModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_model_max(s : StatsdescrobustModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_model_to_string(s : StatsdescrobustModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_desc_robust_layer_set(s : StatsdescrobustLayer, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_robust_layer_sum(s : StatsdescrobustLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_layer_sum(s : StatsdescrobustLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_layer_mean(s : StatsdescrobustLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_layer_mean(s : StatsdescrobustLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_layer_scale(s : StatsdescrobustLayer, f : Double) -> StatsdescrobustLayer {
   let result = stats_desc_robust_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_desc_robust_layer_fill(s : StatsdescrobustLayer, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_robust_layer_min(s : StatsdescrobustLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_layer_min(s : StatsdescrobustLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_layer_max(s : StatsdescrobustLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_layer_max(s : StatsdescrobustLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_layer_to_string(s : StatsdescrobustLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_desc_robust_buffer_set(s : StatsdescrobustBuffer, i : Int, v : Doub
   result
 }
 
-pub fn stats_desc_robust_buffer_sum(s : StatsdescrobustBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_buffer_sum(s : StatsdescrobustBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_buffer_mean(s : StatsdescrobustBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_buffer_mean(s : StatsdescrobustBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_buffer_scale(s : StatsdescrobustBuffer, f : Double) -> StatsdescrobustBuffer {
   let result = stats_desc_robust_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_desc_robust_buffer_fill(s : StatsdescrobustBuffer, v : Double) -> S
   result
 }
 
-pub fn stats_desc_robust_buffer_min(s : StatsdescrobustBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_buffer_min(s : StatsdescrobustBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_buffer_max(s : StatsdescrobustBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_buffer_max(s : StatsdescrobustBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_buffer_to_string(s : StatsdescrobustBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_desc_robust_cursor_set(s : StatsdescrobustCursor, i : Int, v : Doub
   result
 }
 
-pub fn stats_desc_robust_cursor_sum(s : StatsdescrobustCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_cursor_sum(s : StatsdescrobustCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_cursor_mean(s : StatsdescrobustCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_cursor_mean(s : StatsdescrobustCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_cursor_scale(s : StatsdescrobustCursor, f : Double) -> StatsdescrobustCursor {
   let result = stats_desc_robust_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_desc_robust_cursor_fill(s : StatsdescrobustCursor, v : Double) -> S
   result
 }
 
-pub fn stats_desc_robust_cursor_min(s : StatsdescrobustCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_cursor_min(s : StatsdescrobustCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_cursor_max(s : StatsdescrobustCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_cursor_max(s : StatsdescrobustCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_cursor_to_string(s : StatsdescrobustCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_desc_robust_view_set(s : StatsdescrobustView, i : Int, v : Double) 
   result
 }
 
-pub fn stats_desc_robust_view_sum(s : StatsdescrobustView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_view_sum(s : StatsdescrobustView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_view_mean(s : StatsdescrobustView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_view_mean(s : StatsdescrobustView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_view_scale(s : StatsdescrobustView, f : Double) -> StatsdescrobustView {
   let result = stats_desc_robust_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_desc_robust_view_fill(s : StatsdescrobustView, v : Double) -> Stats
   result
 }
 
-pub fn stats_desc_robust_view_min(s : StatsdescrobustView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_view_min(s : StatsdescrobustView) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_view_max(s : StatsdescrobustView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_view_max(s : StatsdescrobustView) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_view_to_string(s : StatsdescrobustView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_desc_robust_range_set(s : StatsdescrobustRange, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_robust_range_sum(s : StatsdescrobustRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_range_sum(s : StatsdescrobustRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_range_mean(s : StatsdescrobustRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_range_mean(s : StatsdescrobustRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_range_scale(s : StatsdescrobustRange, f : Double) -> StatsdescrobustRange {
   let result = stats_desc_robust_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_desc_robust_range_fill(s : StatsdescrobustRange, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_robust_range_min(s : StatsdescrobustRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_range_min(s : StatsdescrobustRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_range_max(s : StatsdescrobustRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_range_max(s : StatsdescrobustRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_range_to_string(s : StatsdescrobustRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_desc_robust_slice_set(s : StatsdescrobustSlice, i : Int, v : Double
   result
 }
 
-pub fn stats_desc_robust_slice_sum(s : StatsdescrobustSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_desc_robust_slice_sum(s : StatsdescrobustSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_desc_robust_slice_mean(s : StatsdescrobustSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_desc_robust_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_desc_robust_slice_mean(s : StatsdescrobustSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_desc_robust_slice_scale(s : StatsdescrobustSlice, f : Double) -> StatsdescrobustSlice {
   let result = stats_desc_robust_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_desc_robust_slice_fill(s : StatsdescrobustSlice, v : Double) -> Sta
   result
 }
 
-pub fn stats_desc_robust_slice_min(s : StatsdescrobustSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_slice_min(s : StatsdescrobustSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_desc_robust_slice_max(s : StatsdescrobustSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_desc_robust_slice_max(s : StatsdescrobustSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_desc_robust_slice_to_string(s : StatsdescrobustSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

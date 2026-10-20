@@ -88,11 +88,7 @@ pub fn finance_portfolio_black_make_series(vals : Array[Double], name : String) 
 
 pub fn finance_portfolio_black_series_len(s : FinanceportfolioblackSeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_black_series_sum(s : FinanceportfolioblackSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_black_series_sum(s : FinanceportfolioblackSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_black_series_mean(s : FinanceportfolioblackSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_black_frame_set(s : FinanceportfolioblackFrame, i : Int
   result
 }
 
-pub fn finance_portfolio_black_frame_sum(s : FinanceportfolioblackFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_frame_sum(s : FinanceportfolioblackFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_frame_mean(s : FinanceportfolioblackFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_frame_mean(s : FinanceportfolioblackFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_frame_scale(s : FinanceportfolioblackFrame, f : Double) -> FinanceportfolioblackFrame {
   let result = finance_portfolio_black_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_black_frame_fill(s : FinanceportfolioblackFrame, v : Do
   result
 }
 
-pub fn finance_portfolio_black_frame_min(s : FinanceportfolioblackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_frame_min(s : FinanceportfolioblackFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_frame_max(s : FinanceportfolioblackFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_frame_max(s : FinanceportfolioblackFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_frame_to_string(s : FinanceportfolioblackFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_black_table_set(s : FinanceportfolioblackTable, i : Int
   result
 }
 
-pub fn finance_portfolio_black_table_sum(s : FinanceportfolioblackTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_table_sum(s : FinanceportfolioblackTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_table_mean(s : FinanceportfolioblackTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_table_mean(s : FinanceportfolioblackTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_table_scale(s : FinanceportfolioblackTable, f : Double) -> FinanceportfolioblackTable {
   let result = finance_portfolio_black_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_black_table_fill(s : FinanceportfolioblackTable, v : Do
   result
 }
 
-pub fn finance_portfolio_black_table_min(s : FinanceportfolioblackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_table_min(s : FinanceportfolioblackTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_table_max(s : FinanceportfolioblackTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_table_max(s : FinanceportfolioblackTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_table_to_string(s : FinanceportfolioblackTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_black_graphn_set(s : FinanceportfolioblackGraphN, i : I
   result
 }
 
-pub fn finance_portfolio_black_graphn_sum(s : FinanceportfolioblackGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_graphn_sum(s : FinanceportfolioblackGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_graphn_mean(s : FinanceportfolioblackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_graphn_mean(s : FinanceportfolioblackGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_graphn_scale(s : FinanceportfolioblackGraphN, f : Double) -> FinanceportfolioblackGraphN {
   let result = finance_portfolio_black_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_black_graphn_fill(s : FinanceportfolioblackGraphN, v : 
   result
 }
 
-pub fn finance_portfolio_black_graphn_min(s : FinanceportfolioblackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_graphn_min(s : FinanceportfolioblackGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_graphn_max(s : FinanceportfolioblackGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_graphn_max(s : FinanceportfolioblackGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_graphn_to_string(s : FinanceportfolioblackGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_black_node_set(s : FinanceportfolioblackNode, i : Int, 
   result
 }
 
-pub fn finance_portfolio_black_node_sum(s : FinanceportfolioblackNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_node_sum(s : FinanceportfolioblackNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_node_mean(s : FinanceportfolioblackNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_node_mean(s : FinanceportfolioblackNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_node_scale(s : FinanceportfolioblackNode, f : Double) -> FinanceportfolioblackNode {
   let result = finance_portfolio_black_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_black_node_fill(s : FinanceportfolioblackNode, v : Doub
   result
 }
 
-pub fn finance_portfolio_black_node_min(s : FinanceportfolioblackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_node_min(s : FinanceportfolioblackNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_node_max(s : FinanceportfolioblackNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_node_max(s : FinanceportfolioblackNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_node_to_string(s : FinanceportfolioblackNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_black_edge_set(s : FinanceportfolioblackEdge, i : Int, 
   result
 }
 
-pub fn finance_portfolio_black_edge_sum(s : FinanceportfolioblackEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_edge_sum(s : FinanceportfolioblackEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_edge_mean(s : FinanceportfolioblackEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_edge_mean(s : FinanceportfolioblackEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_edge_scale(s : FinanceportfolioblackEdge, f : Double) -> FinanceportfolioblackEdge {
   let result = finance_portfolio_black_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_black_edge_fill(s : FinanceportfolioblackEdge, v : Doub
   result
 }
 
-pub fn finance_portfolio_black_edge_min(s : FinanceportfolioblackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_edge_min(s : FinanceportfolioblackEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_edge_max(s : FinanceportfolioblackEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_edge_max(s : FinanceportfolioblackEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_edge_to_string(s : FinanceportfolioblackEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_black_path_set(s : FinanceportfolioblackPath, i : Int, 
   result
 }
 
-pub fn finance_portfolio_black_path_sum(s : FinanceportfolioblackPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_path_sum(s : FinanceportfolioblackPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_path_mean(s : FinanceportfolioblackPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_path_mean(s : FinanceportfolioblackPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_path_scale(s : FinanceportfolioblackPath, f : Double) -> FinanceportfolioblackPath {
   let result = finance_portfolio_black_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_black_path_fill(s : FinanceportfolioblackPath, v : Doub
   result
 }
 
-pub fn finance_portfolio_black_path_min(s : FinanceportfolioblackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_path_min(s : FinanceportfolioblackPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_path_max(s : FinanceportfolioblackPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_path_max(s : FinanceportfolioblackPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_path_to_string(s : FinanceportfolioblackPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_black_cluster_set(s : FinanceportfolioblackCluster, i :
   result
 }
 
-pub fn finance_portfolio_black_cluster_sum(s : FinanceportfolioblackCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_cluster_sum(s : FinanceportfolioblackCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_cluster_mean(s : FinanceportfolioblackCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_cluster_mean(s : FinanceportfolioblackCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_cluster_scale(s : FinanceportfolioblackCluster, f : Double) -> FinanceportfolioblackCluster {
   let result = finance_portfolio_black_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_black_cluster_fill(s : FinanceportfolioblackCluster, v 
   result
 }
 
-pub fn finance_portfolio_black_cluster_min(s : FinanceportfolioblackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_cluster_min(s : FinanceportfolioblackCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_cluster_max(s : FinanceportfolioblackCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_cluster_max(s : FinanceportfolioblackCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_cluster_to_string(s : FinanceportfolioblackCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_black_model_set(s : FinanceportfolioblackModel, i : Int
   result
 }
 
-pub fn finance_portfolio_black_model_sum(s : FinanceportfolioblackModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_model_sum(s : FinanceportfolioblackModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_model_mean(s : FinanceportfolioblackModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_model_mean(s : FinanceportfolioblackModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_model_scale(s : FinanceportfolioblackModel, f : Double) -> FinanceportfolioblackModel {
   let result = finance_portfolio_black_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_black_model_fill(s : FinanceportfolioblackModel, v : Do
   result
 }
 
-pub fn finance_portfolio_black_model_min(s : FinanceportfolioblackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_model_min(s : FinanceportfolioblackModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_model_max(s : FinanceportfolioblackModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_model_max(s : FinanceportfolioblackModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_model_to_string(s : FinanceportfolioblackModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_black_layer_set(s : FinanceportfolioblackLayer, i : Int
   result
 }
 
-pub fn finance_portfolio_black_layer_sum(s : FinanceportfolioblackLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_layer_sum(s : FinanceportfolioblackLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_layer_mean(s : FinanceportfolioblackLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_layer_mean(s : FinanceportfolioblackLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_layer_scale(s : FinanceportfolioblackLayer, f : Double) -> FinanceportfolioblackLayer {
   let result = finance_portfolio_black_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_black_layer_fill(s : FinanceportfolioblackLayer, v : Do
   result
 }
 
-pub fn finance_portfolio_black_layer_min(s : FinanceportfolioblackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_layer_min(s : FinanceportfolioblackLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_layer_max(s : FinanceportfolioblackLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_layer_max(s : FinanceportfolioblackLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_layer_to_string(s : FinanceportfolioblackLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_black_buffer_set(s : FinanceportfolioblackBuffer, i : I
   result
 }
 
-pub fn finance_portfolio_black_buffer_sum(s : FinanceportfolioblackBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_buffer_sum(s : FinanceportfolioblackBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_buffer_mean(s : FinanceportfolioblackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_buffer_mean(s : FinanceportfolioblackBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_buffer_scale(s : FinanceportfolioblackBuffer, f : Double) -> FinanceportfolioblackBuffer {
   let result = finance_portfolio_black_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_black_buffer_fill(s : FinanceportfolioblackBuffer, v : 
   result
 }
 
-pub fn finance_portfolio_black_buffer_min(s : FinanceportfolioblackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_buffer_min(s : FinanceportfolioblackBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_buffer_max(s : FinanceportfolioblackBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_buffer_max(s : FinanceportfolioblackBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_buffer_to_string(s : FinanceportfolioblackBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_black_cursor_set(s : FinanceportfolioblackCursor, i : I
   result
 }
 
-pub fn finance_portfolio_black_cursor_sum(s : FinanceportfolioblackCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_cursor_sum(s : FinanceportfolioblackCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_cursor_mean(s : FinanceportfolioblackCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_cursor_mean(s : FinanceportfolioblackCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_cursor_scale(s : FinanceportfolioblackCursor, f : Double) -> FinanceportfolioblackCursor {
   let result = finance_portfolio_black_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_black_cursor_fill(s : FinanceportfolioblackCursor, v : 
   result
 }
 
-pub fn finance_portfolio_black_cursor_min(s : FinanceportfolioblackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_cursor_min(s : FinanceportfolioblackCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_cursor_max(s : FinanceportfolioblackCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_cursor_max(s : FinanceportfolioblackCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_cursor_to_string(s : FinanceportfolioblackCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_black_view_set(s : FinanceportfolioblackView, i : Int, 
   result
 }
 
-pub fn finance_portfolio_black_view_sum(s : FinanceportfolioblackView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_view_sum(s : FinanceportfolioblackView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_view_mean(s : FinanceportfolioblackView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_view_mean(s : FinanceportfolioblackView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_view_scale(s : FinanceportfolioblackView, f : Double) -> FinanceportfolioblackView {
   let result = finance_portfolio_black_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_black_view_fill(s : FinanceportfolioblackView, v : Doub
   result
 }
 
-pub fn finance_portfolio_black_view_min(s : FinanceportfolioblackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_view_min(s : FinanceportfolioblackView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_view_max(s : FinanceportfolioblackView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_view_max(s : FinanceportfolioblackView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_view_to_string(s : FinanceportfolioblackView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_black_range_set(s : FinanceportfolioblackRange, i : Int
   result
 }
 
-pub fn finance_portfolio_black_range_sum(s : FinanceportfolioblackRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_range_sum(s : FinanceportfolioblackRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_range_mean(s : FinanceportfolioblackRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_range_mean(s : FinanceportfolioblackRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_range_scale(s : FinanceportfolioblackRange, f : Double) -> FinanceportfolioblackRange {
   let result = finance_portfolio_black_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_black_range_fill(s : FinanceportfolioblackRange, v : Do
   result
 }
 
-pub fn finance_portfolio_black_range_min(s : FinanceportfolioblackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_range_min(s : FinanceportfolioblackRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_range_max(s : FinanceportfolioblackRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_range_max(s : FinanceportfolioblackRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_range_to_string(s : FinanceportfolioblackRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_black_slice_set(s : FinanceportfolioblackSlice, i : Int
   result
 }
 
-pub fn finance_portfolio_black_slice_sum(s : FinanceportfolioblackSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_black_slice_sum(s : FinanceportfolioblackSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_black_slice_mean(s : FinanceportfolioblackSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_black_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_black_slice_mean(s : FinanceportfolioblackSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_black_slice_scale(s : FinanceportfolioblackSlice, f : Double) -> FinanceportfolioblackSlice {
   let result = finance_portfolio_black_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_black_slice_fill(s : FinanceportfolioblackSlice, v : Do
   result
 }
 
-pub fn finance_portfolio_black_slice_min(s : FinanceportfolioblackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_slice_min(s : FinanceportfolioblackSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_black_slice_max(s : FinanceportfolioblackSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_black_slice_max(s : FinanceportfolioblackSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_black_slice_to_string(s : FinanceportfolioblackSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

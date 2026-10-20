@@ -88,11 +88,7 @@ pub fn graph_connect_circuit_make_series(vals : Array[Double], name : String) ->
 
 pub fn graph_connect_circuit_series_len(s : GraphconnectcircuitSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_circuit_series_sum(s : GraphconnectcircuitSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_circuit_series_sum(s : GraphconnectcircuitSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_circuit_series_mean(s : GraphconnectcircuitSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_circuit_frame_set(s : GraphconnectcircuitFrame, i : Int, v 
   result
 }
 
-pub fn graph_connect_circuit_frame_sum(s : GraphconnectcircuitFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_frame_sum(s : GraphconnectcircuitFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_frame_mean(s : GraphconnectcircuitFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_frame_mean(s : GraphconnectcircuitFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_frame_scale(s : GraphconnectcircuitFrame, f : Double) -> GraphconnectcircuitFrame {
   let result = graph_connect_circuit_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_circuit_frame_fill(s : GraphconnectcircuitFrame, v : Double
   result
 }
 
-pub fn graph_connect_circuit_frame_min(s : GraphconnectcircuitFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_frame_min(s : GraphconnectcircuitFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_frame_max(s : GraphconnectcircuitFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_frame_max(s : GraphconnectcircuitFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_frame_to_string(s : GraphconnectcircuitFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_circuit_table_set(s : GraphconnectcircuitTable, i : Int, v 
   result
 }
 
-pub fn graph_connect_circuit_table_sum(s : GraphconnectcircuitTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_table_sum(s : GraphconnectcircuitTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_table_mean(s : GraphconnectcircuitTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_table_mean(s : GraphconnectcircuitTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_table_scale(s : GraphconnectcircuitTable, f : Double) -> GraphconnectcircuitTable {
   let result = graph_connect_circuit_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_circuit_table_fill(s : GraphconnectcircuitTable, v : Double
   result
 }
 
-pub fn graph_connect_circuit_table_min(s : GraphconnectcircuitTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_table_min(s : GraphconnectcircuitTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_table_max(s : GraphconnectcircuitTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_table_max(s : GraphconnectcircuitTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_table_to_string(s : GraphconnectcircuitTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_circuit_graphn_set(s : GraphconnectcircuitGraphN, i : Int, 
   result
 }
 
-pub fn graph_connect_circuit_graphn_sum(s : GraphconnectcircuitGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_graphn_sum(s : GraphconnectcircuitGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_graphn_mean(s : GraphconnectcircuitGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_graphn_mean(s : GraphconnectcircuitGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_graphn_scale(s : GraphconnectcircuitGraphN, f : Double) -> GraphconnectcircuitGraphN {
   let result = graph_connect_circuit_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_circuit_graphn_fill(s : GraphconnectcircuitGraphN, v : Doub
   result
 }
 
-pub fn graph_connect_circuit_graphn_min(s : GraphconnectcircuitGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_graphn_min(s : GraphconnectcircuitGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_graphn_max(s : GraphconnectcircuitGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_graphn_max(s : GraphconnectcircuitGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_graphn_to_string(s : GraphconnectcircuitGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_circuit_node_set(s : GraphconnectcircuitNode, i : Int, v : 
   result
 }
 
-pub fn graph_connect_circuit_node_sum(s : GraphconnectcircuitNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_node_sum(s : GraphconnectcircuitNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_node_mean(s : GraphconnectcircuitNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_node_mean(s : GraphconnectcircuitNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_node_scale(s : GraphconnectcircuitNode, f : Double) -> GraphconnectcircuitNode {
   let result = graph_connect_circuit_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_circuit_node_fill(s : GraphconnectcircuitNode, v : Double) 
   result
 }
 
-pub fn graph_connect_circuit_node_min(s : GraphconnectcircuitNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_node_min(s : GraphconnectcircuitNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_node_max(s : GraphconnectcircuitNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_node_max(s : GraphconnectcircuitNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_node_to_string(s : GraphconnectcircuitNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_circuit_edge_set(s : GraphconnectcircuitEdge, i : Int, v : 
   result
 }
 
-pub fn graph_connect_circuit_edge_sum(s : GraphconnectcircuitEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_edge_sum(s : GraphconnectcircuitEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_edge_mean(s : GraphconnectcircuitEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_edge_mean(s : GraphconnectcircuitEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_edge_scale(s : GraphconnectcircuitEdge, f : Double) -> GraphconnectcircuitEdge {
   let result = graph_connect_circuit_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_circuit_edge_fill(s : GraphconnectcircuitEdge, v : Double) 
   result
 }
 
-pub fn graph_connect_circuit_edge_min(s : GraphconnectcircuitEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_edge_min(s : GraphconnectcircuitEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_edge_max(s : GraphconnectcircuitEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_edge_max(s : GraphconnectcircuitEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_edge_to_string(s : GraphconnectcircuitEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_circuit_path_set(s : GraphconnectcircuitPath, i : Int, v : 
   result
 }
 
-pub fn graph_connect_circuit_path_sum(s : GraphconnectcircuitPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_path_sum(s : GraphconnectcircuitPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_path_mean(s : GraphconnectcircuitPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_path_mean(s : GraphconnectcircuitPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_path_scale(s : GraphconnectcircuitPath, f : Double) -> GraphconnectcircuitPath {
   let result = graph_connect_circuit_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_circuit_path_fill(s : GraphconnectcircuitPath, v : Double) 
   result
 }
 
-pub fn graph_connect_circuit_path_min(s : GraphconnectcircuitPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_path_min(s : GraphconnectcircuitPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_path_max(s : GraphconnectcircuitPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_path_max(s : GraphconnectcircuitPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_path_to_string(s : GraphconnectcircuitPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_circuit_cluster_set(s : GraphconnectcircuitCluster, i : Int
   result
 }
 
-pub fn graph_connect_circuit_cluster_sum(s : GraphconnectcircuitCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_cluster_sum(s : GraphconnectcircuitCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_cluster_mean(s : GraphconnectcircuitCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_cluster_mean(s : GraphconnectcircuitCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_cluster_scale(s : GraphconnectcircuitCluster, f : Double) -> GraphconnectcircuitCluster {
   let result = graph_connect_circuit_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_circuit_cluster_fill(s : GraphconnectcircuitCluster, v : Do
   result
 }
 
-pub fn graph_connect_circuit_cluster_min(s : GraphconnectcircuitCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_cluster_min(s : GraphconnectcircuitCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_cluster_max(s : GraphconnectcircuitCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_cluster_max(s : GraphconnectcircuitCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_cluster_to_string(s : GraphconnectcircuitCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_circuit_model_set(s : GraphconnectcircuitModel, i : Int, v 
   result
 }
 
-pub fn graph_connect_circuit_model_sum(s : GraphconnectcircuitModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_model_sum(s : GraphconnectcircuitModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_model_mean(s : GraphconnectcircuitModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_model_mean(s : GraphconnectcircuitModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_model_scale(s : GraphconnectcircuitModel, f : Double) -> GraphconnectcircuitModel {
   let result = graph_connect_circuit_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_circuit_model_fill(s : GraphconnectcircuitModel, v : Double
   result
 }
 
-pub fn graph_connect_circuit_model_min(s : GraphconnectcircuitModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_model_min(s : GraphconnectcircuitModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_model_max(s : GraphconnectcircuitModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_model_max(s : GraphconnectcircuitModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_model_to_string(s : GraphconnectcircuitModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_circuit_layer_set(s : GraphconnectcircuitLayer, i : Int, v 
   result
 }
 
-pub fn graph_connect_circuit_layer_sum(s : GraphconnectcircuitLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_layer_sum(s : GraphconnectcircuitLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_layer_mean(s : GraphconnectcircuitLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_layer_mean(s : GraphconnectcircuitLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_layer_scale(s : GraphconnectcircuitLayer, f : Double) -> GraphconnectcircuitLayer {
   let result = graph_connect_circuit_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_circuit_layer_fill(s : GraphconnectcircuitLayer, v : Double
   result
 }
 
-pub fn graph_connect_circuit_layer_min(s : GraphconnectcircuitLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_layer_min(s : GraphconnectcircuitLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_layer_max(s : GraphconnectcircuitLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_layer_max(s : GraphconnectcircuitLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_layer_to_string(s : GraphconnectcircuitLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_circuit_buffer_set(s : GraphconnectcircuitBuffer, i : Int, 
   result
 }
 
-pub fn graph_connect_circuit_buffer_sum(s : GraphconnectcircuitBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_buffer_sum(s : GraphconnectcircuitBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_buffer_mean(s : GraphconnectcircuitBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_buffer_mean(s : GraphconnectcircuitBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_buffer_scale(s : GraphconnectcircuitBuffer, f : Double) -> GraphconnectcircuitBuffer {
   let result = graph_connect_circuit_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_circuit_buffer_fill(s : GraphconnectcircuitBuffer, v : Doub
   result
 }
 
-pub fn graph_connect_circuit_buffer_min(s : GraphconnectcircuitBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_buffer_min(s : GraphconnectcircuitBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_buffer_max(s : GraphconnectcircuitBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_buffer_max(s : GraphconnectcircuitBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_buffer_to_string(s : GraphconnectcircuitBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_circuit_cursor_set(s : GraphconnectcircuitCursor, i : Int, 
   result
 }
 
-pub fn graph_connect_circuit_cursor_sum(s : GraphconnectcircuitCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_cursor_sum(s : GraphconnectcircuitCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_cursor_mean(s : GraphconnectcircuitCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_cursor_mean(s : GraphconnectcircuitCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_cursor_scale(s : GraphconnectcircuitCursor, f : Double) -> GraphconnectcircuitCursor {
   let result = graph_connect_circuit_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_circuit_cursor_fill(s : GraphconnectcircuitCursor, v : Doub
   result
 }
 
-pub fn graph_connect_circuit_cursor_min(s : GraphconnectcircuitCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_cursor_min(s : GraphconnectcircuitCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_cursor_max(s : GraphconnectcircuitCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_cursor_max(s : GraphconnectcircuitCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_cursor_to_string(s : GraphconnectcircuitCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_circuit_view_set(s : GraphconnectcircuitView, i : Int, v : 
   result
 }
 
-pub fn graph_connect_circuit_view_sum(s : GraphconnectcircuitView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_view_sum(s : GraphconnectcircuitView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_view_mean(s : GraphconnectcircuitView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_view_mean(s : GraphconnectcircuitView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_view_scale(s : GraphconnectcircuitView, f : Double) -> GraphconnectcircuitView {
   let result = graph_connect_circuit_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_circuit_view_fill(s : GraphconnectcircuitView, v : Double) 
   result
 }
 
-pub fn graph_connect_circuit_view_min(s : GraphconnectcircuitView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_view_min(s : GraphconnectcircuitView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_view_max(s : GraphconnectcircuitView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_view_max(s : GraphconnectcircuitView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_view_to_string(s : GraphconnectcircuitView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_circuit_range_set(s : GraphconnectcircuitRange, i : Int, v 
   result
 }
 
-pub fn graph_connect_circuit_range_sum(s : GraphconnectcircuitRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_range_sum(s : GraphconnectcircuitRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_range_mean(s : GraphconnectcircuitRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_range_mean(s : GraphconnectcircuitRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_range_scale(s : GraphconnectcircuitRange, f : Double) -> GraphconnectcircuitRange {
   let result = graph_connect_circuit_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_circuit_range_fill(s : GraphconnectcircuitRange, v : Double
   result
 }
 
-pub fn graph_connect_circuit_range_min(s : GraphconnectcircuitRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_range_min(s : GraphconnectcircuitRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_range_max(s : GraphconnectcircuitRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_range_max(s : GraphconnectcircuitRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_range_to_string(s : GraphconnectcircuitRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_circuit_slice_set(s : GraphconnectcircuitSlice, i : Int, v 
   result
 }
 
-pub fn graph_connect_circuit_slice_sum(s : GraphconnectcircuitSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_circuit_slice_sum(s : GraphconnectcircuitSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_circuit_slice_mean(s : GraphconnectcircuitSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_circuit_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_circuit_slice_mean(s : GraphconnectcircuitSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_circuit_slice_scale(s : GraphconnectcircuitSlice, f : Double) -> GraphconnectcircuitSlice {
   let result = graph_connect_circuit_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_circuit_slice_fill(s : GraphconnectcircuitSlice, v : Double
   result
 }
 
-pub fn graph_connect_circuit_slice_min(s : GraphconnectcircuitSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_slice_min(s : GraphconnectcircuitSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_circuit_slice_max(s : GraphconnectcircuitSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_circuit_slice_max(s : GraphconnectcircuitSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_circuit_slice_to_string(s : GraphconnectcircuitSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

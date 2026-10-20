@@ -88,11 +88,7 @@ pub fn geo_buffer_bbox_make_series(vals : Array[Double], name : String) -> Geobu
 
 pub fn geo_buffer_bbox_series_len(s : GeobufferbboxSeries) -> Int { s.vals.length() }
 
-pub fn geo_buffer_bbox_series_sum(s : GeobufferbboxSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_buffer_bbox_series_sum(s : GeobufferbboxSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_buffer_bbox_series_mean(s : GeobufferbboxSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_buffer_bbox_frame_set(s : GeobufferbboxFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_buffer_bbox_frame_sum(s : GeobufferbboxFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_frame_sum(s : GeobufferbboxFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_frame_mean(s : GeobufferbboxFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_frame_mean(s : GeobufferbboxFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_frame_scale(s : GeobufferbboxFrame, f : Double) -> GeobufferbboxFrame {
   let result = geo_buffer_bbox_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_buffer_bbox_frame_fill(s : GeobufferbboxFrame, v : Double) -> Geobuff
   result
 }
 
-pub fn geo_buffer_bbox_frame_min(s : GeobufferbboxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_frame_min(s : GeobufferbboxFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_frame_max(s : GeobufferbboxFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_frame_max(s : GeobufferbboxFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_frame_to_string(s : GeobufferbboxFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_buffer_bbox_table_set(s : GeobufferbboxTable, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_buffer_bbox_table_sum(s : GeobufferbboxTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_table_sum(s : GeobufferbboxTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_table_mean(s : GeobufferbboxTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_table_mean(s : GeobufferbboxTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_table_scale(s : GeobufferbboxTable, f : Double) -> GeobufferbboxTable {
   let result = geo_buffer_bbox_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_buffer_bbox_table_fill(s : GeobufferbboxTable, v : Double) -> Geobuff
   result
 }
 
-pub fn geo_buffer_bbox_table_min(s : GeobufferbboxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_table_min(s : GeobufferbboxTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_table_max(s : GeobufferbboxTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_table_max(s : GeobufferbboxTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_table_to_string(s : GeobufferbboxTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_buffer_bbox_graphn_set(s : GeobufferbboxGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn geo_buffer_bbox_graphn_sum(s : GeobufferbboxGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_graphn_sum(s : GeobufferbboxGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_graphn_mean(s : GeobufferbboxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_graphn_mean(s : GeobufferbboxGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_graphn_scale(s : GeobufferbboxGraphN, f : Double) -> GeobufferbboxGraphN {
   let result = geo_buffer_bbox_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_buffer_bbox_graphn_fill(s : GeobufferbboxGraphN, v : Double) -> Geobu
   result
 }
 
-pub fn geo_buffer_bbox_graphn_min(s : GeobufferbboxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_graphn_min(s : GeobufferbboxGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_graphn_max(s : GeobufferbboxGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_graphn_max(s : GeobufferbboxGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_graphn_to_string(s : GeobufferbboxGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_buffer_bbox_node_set(s : GeobufferbboxNode, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_bbox_node_sum(s : GeobufferbboxNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_node_sum(s : GeobufferbboxNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_node_mean(s : GeobufferbboxNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_node_mean(s : GeobufferbboxNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_node_scale(s : GeobufferbboxNode, f : Double) -> GeobufferbboxNode {
   let result = geo_buffer_bbox_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_buffer_bbox_node_fill(s : GeobufferbboxNode, v : Double) -> Geobuffer
   result
 }
 
-pub fn geo_buffer_bbox_node_min(s : GeobufferbboxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_node_min(s : GeobufferbboxNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_node_max(s : GeobufferbboxNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_node_max(s : GeobufferbboxNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_node_to_string(s : GeobufferbboxNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_buffer_bbox_edge_set(s : GeobufferbboxEdge, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_bbox_edge_sum(s : GeobufferbboxEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_edge_sum(s : GeobufferbboxEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_edge_mean(s : GeobufferbboxEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_edge_mean(s : GeobufferbboxEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_edge_scale(s : GeobufferbboxEdge, f : Double) -> GeobufferbboxEdge {
   let result = geo_buffer_bbox_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_buffer_bbox_edge_fill(s : GeobufferbboxEdge, v : Double) -> Geobuffer
   result
 }
 
-pub fn geo_buffer_bbox_edge_min(s : GeobufferbboxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_edge_min(s : GeobufferbboxEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_edge_max(s : GeobufferbboxEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_edge_max(s : GeobufferbboxEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_edge_to_string(s : GeobufferbboxEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_buffer_bbox_path_set(s : GeobufferbboxPath, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_bbox_path_sum(s : GeobufferbboxPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_path_sum(s : GeobufferbboxPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_path_mean(s : GeobufferbboxPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_path_mean(s : GeobufferbboxPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_path_scale(s : GeobufferbboxPath, f : Double) -> GeobufferbboxPath {
   let result = geo_buffer_bbox_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_buffer_bbox_path_fill(s : GeobufferbboxPath, v : Double) -> Geobuffer
   result
 }
 
-pub fn geo_buffer_bbox_path_min(s : GeobufferbboxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_path_min(s : GeobufferbboxPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_path_max(s : GeobufferbboxPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_path_max(s : GeobufferbboxPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_path_to_string(s : GeobufferbboxPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_buffer_bbox_cluster_set(s : GeobufferbboxCluster, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_bbox_cluster_sum(s : GeobufferbboxCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_cluster_sum(s : GeobufferbboxCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_cluster_mean(s : GeobufferbboxCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_cluster_mean(s : GeobufferbboxCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_cluster_scale(s : GeobufferbboxCluster, f : Double) -> GeobufferbboxCluster {
   let result = geo_buffer_bbox_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_buffer_bbox_cluster_fill(s : GeobufferbboxCluster, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_bbox_cluster_min(s : GeobufferbboxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_cluster_min(s : GeobufferbboxCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_cluster_max(s : GeobufferbboxCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_cluster_max(s : GeobufferbboxCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_cluster_to_string(s : GeobufferbboxCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_buffer_bbox_model_set(s : GeobufferbboxModel, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_buffer_bbox_model_sum(s : GeobufferbboxModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_model_sum(s : GeobufferbboxModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_model_mean(s : GeobufferbboxModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_model_mean(s : GeobufferbboxModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_model_scale(s : GeobufferbboxModel, f : Double) -> GeobufferbboxModel {
   let result = geo_buffer_bbox_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_buffer_bbox_model_fill(s : GeobufferbboxModel, v : Double) -> Geobuff
   result
 }
 
-pub fn geo_buffer_bbox_model_min(s : GeobufferbboxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_model_min(s : GeobufferbboxModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_model_max(s : GeobufferbboxModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_model_max(s : GeobufferbboxModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_model_to_string(s : GeobufferbboxModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_buffer_bbox_layer_set(s : GeobufferbboxLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_buffer_bbox_layer_sum(s : GeobufferbboxLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_layer_sum(s : GeobufferbboxLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_layer_mean(s : GeobufferbboxLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_layer_mean(s : GeobufferbboxLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_layer_scale(s : GeobufferbboxLayer, f : Double) -> GeobufferbboxLayer {
   let result = geo_buffer_bbox_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_buffer_bbox_layer_fill(s : GeobufferbboxLayer, v : Double) -> Geobuff
   result
 }
 
-pub fn geo_buffer_bbox_layer_min(s : GeobufferbboxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_layer_min(s : GeobufferbboxLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_layer_max(s : GeobufferbboxLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_layer_max(s : GeobufferbboxLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_layer_to_string(s : GeobufferbboxLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_buffer_bbox_buffer_set(s : GeobufferbboxBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn geo_buffer_bbox_buffer_sum(s : GeobufferbboxBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_buffer_sum(s : GeobufferbboxBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_buffer_mean(s : GeobufferbboxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_buffer_mean(s : GeobufferbboxBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_buffer_scale(s : GeobufferbboxBuffer, f : Double) -> GeobufferbboxBuffer {
   let result = geo_buffer_bbox_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_buffer_bbox_buffer_fill(s : GeobufferbboxBuffer, v : Double) -> Geobu
   result
 }
 
-pub fn geo_buffer_bbox_buffer_min(s : GeobufferbboxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_buffer_min(s : GeobufferbboxBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_buffer_max(s : GeobufferbboxBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_buffer_max(s : GeobufferbboxBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_buffer_to_string(s : GeobufferbboxBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_buffer_bbox_cursor_set(s : GeobufferbboxCursor, i : Int, v : Double) 
   result
 }
 
-pub fn geo_buffer_bbox_cursor_sum(s : GeobufferbboxCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_cursor_sum(s : GeobufferbboxCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_cursor_mean(s : GeobufferbboxCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_cursor_mean(s : GeobufferbboxCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_cursor_scale(s : GeobufferbboxCursor, f : Double) -> GeobufferbboxCursor {
   let result = geo_buffer_bbox_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_buffer_bbox_cursor_fill(s : GeobufferbboxCursor, v : Double) -> Geobu
   result
 }
 
-pub fn geo_buffer_bbox_cursor_min(s : GeobufferbboxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_cursor_min(s : GeobufferbboxCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_cursor_max(s : GeobufferbboxCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_cursor_max(s : GeobufferbboxCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_cursor_to_string(s : GeobufferbboxCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_buffer_bbox_view_set(s : GeobufferbboxView, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_bbox_view_sum(s : GeobufferbboxView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_view_sum(s : GeobufferbboxView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_view_mean(s : GeobufferbboxView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_view_mean(s : GeobufferbboxView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_view_scale(s : GeobufferbboxView, f : Double) -> GeobufferbboxView {
   let result = geo_buffer_bbox_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_buffer_bbox_view_fill(s : GeobufferbboxView, v : Double) -> Geobuffer
   result
 }
 
-pub fn geo_buffer_bbox_view_min(s : GeobufferbboxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_view_min(s : GeobufferbboxView) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_view_max(s : GeobufferbboxView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_view_max(s : GeobufferbboxView) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_view_to_string(s : GeobufferbboxView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_buffer_bbox_range_set(s : GeobufferbboxRange, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_buffer_bbox_range_sum(s : GeobufferbboxRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_range_sum(s : GeobufferbboxRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_range_mean(s : GeobufferbboxRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_range_mean(s : GeobufferbboxRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_range_scale(s : GeobufferbboxRange, f : Double) -> GeobufferbboxRange {
   let result = geo_buffer_bbox_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_buffer_bbox_range_fill(s : GeobufferbboxRange, v : Double) -> Geobuff
   result
 }
 
-pub fn geo_buffer_bbox_range_min(s : GeobufferbboxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_range_min(s : GeobufferbboxRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_range_max(s : GeobufferbboxRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_range_max(s : GeobufferbboxRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_range_to_string(s : GeobufferbboxRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_buffer_bbox_slice_set(s : GeobufferbboxSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn geo_buffer_bbox_slice_sum(s : GeobufferbboxSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_bbox_slice_sum(s : GeobufferbboxSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_bbox_slice_mean(s : GeobufferbboxSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_bbox_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_bbox_slice_mean(s : GeobufferbboxSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_bbox_slice_scale(s : GeobufferbboxSlice, f : Double) -> GeobufferbboxSlice {
   let result = geo_buffer_bbox_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_buffer_bbox_slice_fill(s : GeobufferbboxSlice, v : Double) -> Geobuff
   result
 }
 
-pub fn geo_buffer_bbox_slice_min(s : GeobufferbboxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_slice_min(s : GeobufferbboxSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_bbox_slice_max(s : GeobufferbboxSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_bbox_slice_max(s : GeobufferbboxSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_bbox_slice_to_string(s : GeobufferbboxSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

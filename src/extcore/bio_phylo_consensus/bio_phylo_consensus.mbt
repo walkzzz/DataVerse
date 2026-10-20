@@ -88,11 +88,7 @@ pub fn bio_phylo_consensus_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_phylo_consensus_series_len(s : BiophyloconsensusSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_consensus_series_sum(s : BiophyloconsensusSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_consensus_series_sum(s : BiophyloconsensusSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_consensus_series_mean(s : BiophyloconsensusSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_consensus_frame_set(s : BiophyloconsensusFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_consensus_frame_sum(s : BiophyloconsensusFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_frame_sum(s : BiophyloconsensusFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_frame_mean(s : BiophyloconsensusFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_frame_mean(s : BiophyloconsensusFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_frame_scale(s : BiophyloconsensusFrame, f : Double) -> BiophyloconsensusFrame {
   let result = bio_phylo_consensus_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_consensus_frame_fill(s : BiophyloconsensusFrame, v : Double) ->
   result
 }
 
-pub fn bio_phylo_consensus_frame_min(s : BiophyloconsensusFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_frame_min(s : BiophyloconsensusFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_frame_max(s : BiophyloconsensusFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_frame_max(s : BiophyloconsensusFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_frame_to_string(s : BiophyloconsensusFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_consensus_table_set(s : BiophyloconsensusTable, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_consensus_table_sum(s : BiophyloconsensusTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_table_sum(s : BiophyloconsensusTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_table_mean(s : BiophyloconsensusTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_table_mean(s : BiophyloconsensusTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_table_scale(s : BiophyloconsensusTable, f : Double) -> BiophyloconsensusTable {
   let result = bio_phylo_consensus_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_consensus_table_fill(s : BiophyloconsensusTable, v : Double) ->
   result
 }
 
-pub fn bio_phylo_consensus_table_min(s : BiophyloconsensusTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_table_min(s : BiophyloconsensusTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_table_max(s : BiophyloconsensusTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_table_max(s : BiophyloconsensusTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_table_to_string(s : BiophyloconsensusTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_consensus_graphn_set(s : BiophyloconsensusGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_consensus_graphn_sum(s : BiophyloconsensusGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_graphn_sum(s : BiophyloconsensusGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_graphn_mean(s : BiophyloconsensusGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_graphn_mean(s : BiophyloconsensusGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_graphn_scale(s : BiophyloconsensusGraphN, f : Double) -> BiophyloconsensusGraphN {
   let result = bio_phylo_consensus_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_consensus_graphn_fill(s : BiophyloconsensusGraphN, v : Double) 
   result
 }
 
-pub fn bio_phylo_consensus_graphn_min(s : BiophyloconsensusGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_graphn_min(s : BiophyloconsensusGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_graphn_max(s : BiophyloconsensusGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_graphn_max(s : BiophyloconsensusGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_graphn_to_string(s : BiophyloconsensusGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_consensus_node_set(s : BiophyloconsensusNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_consensus_node_sum(s : BiophyloconsensusNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_node_sum(s : BiophyloconsensusNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_node_mean(s : BiophyloconsensusNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_node_mean(s : BiophyloconsensusNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_node_scale(s : BiophyloconsensusNode, f : Double) -> BiophyloconsensusNode {
   let result = bio_phylo_consensus_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_consensus_node_fill(s : BiophyloconsensusNode, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_consensus_node_min(s : BiophyloconsensusNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_node_min(s : BiophyloconsensusNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_node_max(s : BiophyloconsensusNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_node_max(s : BiophyloconsensusNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_node_to_string(s : BiophyloconsensusNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_consensus_edge_set(s : BiophyloconsensusEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_consensus_edge_sum(s : BiophyloconsensusEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_edge_sum(s : BiophyloconsensusEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_edge_mean(s : BiophyloconsensusEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_edge_mean(s : BiophyloconsensusEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_edge_scale(s : BiophyloconsensusEdge, f : Double) -> BiophyloconsensusEdge {
   let result = bio_phylo_consensus_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_consensus_edge_fill(s : BiophyloconsensusEdge, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_consensus_edge_min(s : BiophyloconsensusEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_edge_min(s : BiophyloconsensusEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_edge_max(s : BiophyloconsensusEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_edge_max(s : BiophyloconsensusEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_edge_to_string(s : BiophyloconsensusEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_consensus_path_set(s : BiophyloconsensusPath, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_consensus_path_sum(s : BiophyloconsensusPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_path_sum(s : BiophyloconsensusPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_path_mean(s : BiophyloconsensusPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_path_mean(s : BiophyloconsensusPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_path_scale(s : BiophyloconsensusPath, f : Double) -> BiophyloconsensusPath {
   let result = bio_phylo_consensus_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_consensus_path_fill(s : BiophyloconsensusPath, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_consensus_path_min(s : BiophyloconsensusPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_path_min(s : BiophyloconsensusPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_path_max(s : BiophyloconsensusPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_path_max(s : BiophyloconsensusPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_path_to_string(s : BiophyloconsensusPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_consensus_cluster_set(s : BiophyloconsensusCluster, i : Int, v 
   result
 }
 
-pub fn bio_phylo_consensus_cluster_sum(s : BiophyloconsensusCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_cluster_sum(s : BiophyloconsensusCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_cluster_mean(s : BiophyloconsensusCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_cluster_mean(s : BiophyloconsensusCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_cluster_scale(s : BiophyloconsensusCluster, f : Double) -> BiophyloconsensusCluster {
   let result = bio_phylo_consensus_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_consensus_cluster_fill(s : BiophyloconsensusCluster, v : Double
   result
 }
 
-pub fn bio_phylo_consensus_cluster_min(s : BiophyloconsensusCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_cluster_min(s : BiophyloconsensusCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_cluster_max(s : BiophyloconsensusCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_cluster_max(s : BiophyloconsensusCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_cluster_to_string(s : BiophyloconsensusCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_consensus_model_set(s : BiophyloconsensusModel, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_consensus_model_sum(s : BiophyloconsensusModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_model_sum(s : BiophyloconsensusModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_model_mean(s : BiophyloconsensusModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_model_mean(s : BiophyloconsensusModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_model_scale(s : BiophyloconsensusModel, f : Double) -> BiophyloconsensusModel {
   let result = bio_phylo_consensus_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_consensus_model_fill(s : BiophyloconsensusModel, v : Double) ->
   result
 }
 
-pub fn bio_phylo_consensus_model_min(s : BiophyloconsensusModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_model_min(s : BiophyloconsensusModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_model_max(s : BiophyloconsensusModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_model_max(s : BiophyloconsensusModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_model_to_string(s : BiophyloconsensusModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_consensus_layer_set(s : BiophyloconsensusLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_consensus_layer_sum(s : BiophyloconsensusLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_layer_sum(s : BiophyloconsensusLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_layer_mean(s : BiophyloconsensusLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_layer_mean(s : BiophyloconsensusLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_layer_scale(s : BiophyloconsensusLayer, f : Double) -> BiophyloconsensusLayer {
   let result = bio_phylo_consensus_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_consensus_layer_fill(s : BiophyloconsensusLayer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_consensus_layer_min(s : BiophyloconsensusLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_layer_min(s : BiophyloconsensusLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_layer_max(s : BiophyloconsensusLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_layer_max(s : BiophyloconsensusLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_layer_to_string(s : BiophyloconsensusLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_consensus_buffer_set(s : BiophyloconsensusBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_consensus_buffer_sum(s : BiophyloconsensusBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_buffer_sum(s : BiophyloconsensusBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_buffer_mean(s : BiophyloconsensusBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_buffer_mean(s : BiophyloconsensusBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_buffer_scale(s : BiophyloconsensusBuffer, f : Double) -> BiophyloconsensusBuffer {
   let result = bio_phylo_consensus_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_consensus_buffer_fill(s : BiophyloconsensusBuffer, v : Double) 
   result
 }
 
-pub fn bio_phylo_consensus_buffer_min(s : BiophyloconsensusBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_buffer_min(s : BiophyloconsensusBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_buffer_max(s : BiophyloconsensusBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_buffer_max(s : BiophyloconsensusBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_buffer_to_string(s : BiophyloconsensusBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_consensus_cursor_set(s : BiophyloconsensusCursor, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_consensus_cursor_sum(s : BiophyloconsensusCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_cursor_sum(s : BiophyloconsensusCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_cursor_mean(s : BiophyloconsensusCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_cursor_mean(s : BiophyloconsensusCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_cursor_scale(s : BiophyloconsensusCursor, f : Double) -> BiophyloconsensusCursor {
   let result = bio_phylo_consensus_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_consensus_cursor_fill(s : BiophyloconsensusCursor, v : Double) 
   result
 }
 
-pub fn bio_phylo_consensus_cursor_min(s : BiophyloconsensusCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_cursor_min(s : BiophyloconsensusCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_cursor_max(s : BiophyloconsensusCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_cursor_max(s : BiophyloconsensusCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_cursor_to_string(s : BiophyloconsensusCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_consensus_view_set(s : BiophyloconsensusView, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_consensus_view_sum(s : BiophyloconsensusView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_view_sum(s : BiophyloconsensusView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_view_mean(s : BiophyloconsensusView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_view_mean(s : BiophyloconsensusView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_view_scale(s : BiophyloconsensusView, f : Double) -> BiophyloconsensusView {
   let result = bio_phylo_consensus_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_consensus_view_fill(s : BiophyloconsensusView, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_consensus_view_min(s : BiophyloconsensusView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_view_min(s : BiophyloconsensusView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_view_max(s : BiophyloconsensusView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_view_max(s : BiophyloconsensusView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_view_to_string(s : BiophyloconsensusView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_consensus_range_set(s : BiophyloconsensusRange, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_consensus_range_sum(s : BiophyloconsensusRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_range_sum(s : BiophyloconsensusRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_range_mean(s : BiophyloconsensusRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_range_mean(s : BiophyloconsensusRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_range_scale(s : BiophyloconsensusRange, f : Double) -> BiophyloconsensusRange {
   let result = bio_phylo_consensus_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_consensus_range_fill(s : BiophyloconsensusRange, v : Double) ->
   result
 }
 
-pub fn bio_phylo_consensus_range_min(s : BiophyloconsensusRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_range_min(s : BiophyloconsensusRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_range_max(s : BiophyloconsensusRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_range_max(s : BiophyloconsensusRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_range_to_string(s : BiophyloconsensusRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_consensus_slice_set(s : BiophyloconsensusSlice, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_consensus_slice_sum(s : BiophyloconsensusSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_consensus_slice_sum(s : BiophyloconsensusSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_consensus_slice_mean(s : BiophyloconsensusSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_consensus_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_consensus_slice_mean(s : BiophyloconsensusSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_consensus_slice_scale(s : BiophyloconsensusSlice, f : Double) -> BiophyloconsensusSlice {
   let result = bio_phylo_consensus_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_consensus_slice_fill(s : BiophyloconsensusSlice, v : Double) ->
   result
 }
 
-pub fn bio_phylo_consensus_slice_min(s : BiophyloconsensusSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_slice_min(s : BiophyloconsensusSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_consensus_slice_max(s : BiophyloconsensusSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_consensus_slice_max(s : BiophyloconsensusSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_consensus_slice_to_string(s : BiophyloconsensusSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

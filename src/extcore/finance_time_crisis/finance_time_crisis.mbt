@@ -88,11 +88,7 @@ pub fn finance_time_crisis_make_series(vals : Array[Double], name : String) -> F
 
 pub fn finance_time_crisis_series_len(s : FinancetimecrisisSeries) -> Int { s.vals.length() }
 
-pub fn finance_time_crisis_series_sum(s : FinancetimecrisisSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_time_crisis_series_sum(s : FinancetimecrisisSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_time_crisis_series_mean(s : FinancetimecrisisSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_time_crisis_frame_set(s : FinancetimecrisisFrame, i : Int, v : Do
   result
 }
 
-pub fn finance_time_crisis_frame_sum(s : FinancetimecrisisFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_frame_sum(s : FinancetimecrisisFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_frame_mean(s : FinancetimecrisisFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_frame_mean(s : FinancetimecrisisFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_frame_scale(s : FinancetimecrisisFrame, f : Double) -> FinancetimecrisisFrame {
   let result = finance_time_crisis_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_time_crisis_frame_fill(s : FinancetimecrisisFrame, v : Double) ->
   result
 }
 
-pub fn finance_time_crisis_frame_min(s : FinancetimecrisisFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_frame_min(s : FinancetimecrisisFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_frame_max(s : FinancetimecrisisFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_frame_max(s : FinancetimecrisisFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_frame_to_string(s : FinancetimecrisisFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_time_crisis_table_set(s : FinancetimecrisisTable, i : Int, v : Do
   result
 }
 
-pub fn finance_time_crisis_table_sum(s : FinancetimecrisisTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_table_sum(s : FinancetimecrisisTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_table_mean(s : FinancetimecrisisTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_table_mean(s : FinancetimecrisisTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_table_scale(s : FinancetimecrisisTable, f : Double) -> FinancetimecrisisTable {
   let result = finance_time_crisis_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_time_crisis_table_fill(s : FinancetimecrisisTable, v : Double) ->
   result
 }
 
-pub fn finance_time_crisis_table_min(s : FinancetimecrisisTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_table_min(s : FinancetimecrisisTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_table_max(s : FinancetimecrisisTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_table_max(s : FinancetimecrisisTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_table_to_string(s : FinancetimecrisisTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_time_crisis_graphn_set(s : FinancetimecrisisGraphN, i : Int, v : 
   result
 }
 
-pub fn finance_time_crisis_graphn_sum(s : FinancetimecrisisGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_graphn_sum(s : FinancetimecrisisGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_graphn_mean(s : FinancetimecrisisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_graphn_mean(s : FinancetimecrisisGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_graphn_scale(s : FinancetimecrisisGraphN, f : Double) -> FinancetimecrisisGraphN {
   let result = finance_time_crisis_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_time_crisis_graphn_fill(s : FinancetimecrisisGraphN, v : Double) 
   result
 }
 
-pub fn finance_time_crisis_graphn_min(s : FinancetimecrisisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_graphn_min(s : FinancetimecrisisGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_graphn_max(s : FinancetimecrisisGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_graphn_max(s : FinancetimecrisisGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_graphn_to_string(s : FinancetimecrisisGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_time_crisis_node_set(s : FinancetimecrisisNode, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_crisis_node_sum(s : FinancetimecrisisNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_node_sum(s : FinancetimecrisisNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_node_mean(s : FinancetimecrisisNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_node_mean(s : FinancetimecrisisNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_node_scale(s : FinancetimecrisisNode, f : Double) -> FinancetimecrisisNode {
   let result = finance_time_crisis_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_time_crisis_node_fill(s : FinancetimecrisisNode, v : Double) -> F
   result
 }
 
-pub fn finance_time_crisis_node_min(s : FinancetimecrisisNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_node_min(s : FinancetimecrisisNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_node_max(s : FinancetimecrisisNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_node_max(s : FinancetimecrisisNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_node_to_string(s : FinancetimecrisisNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_time_crisis_edge_set(s : FinancetimecrisisEdge, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_crisis_edge_sum(s : FinancetimecrisisEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_edge_sum(s : FinancetimecrisisEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_edge_mean(s : FinancetimecrisisEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_edge_mean(s : FinancetimecrisisEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_edge_scale(s : FinancetimecrisisEdge, f : Double) -> FinancetimecrisisEdge {
   let result = finance_time_crisis_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_time_crisis_edge_fill(s : FinancetimecrisisEdge, v : Double) -> F
   result
 }
 
-pub fn finance_time_crisis_edge_min(s : FinancetimecrisisEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_edge_min(s : FinancetimecrisisEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_edge_max(s : FinancetimecrisisEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_edge_max(s : FinancetimecrisisEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_edge_to_string(s : FinancetimecrisisEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_time_crisis_path_set(s : FinancetimecrisisPath, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_crisis_path_sum(s : FinancetimecrisisPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_path_sum(s : FinancetimecrisisPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_path_mean(s : FinancetimecrisisPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_path_mean(s : FinancetimecrisisPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_path_scale(s : FinancetimecrisisPath, f : Double) -> FinancetimecrisisPath {
   let result = finance_time_crisis_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_time_crisis_path_fill(s : FinancetimecrisisPath, v : Double) -> F
   result
 }
 
-pub fn finance_time_crisis_path_min(s : FinancetimecrisisPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_path_min(s : FinancetimecrisisPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_path_max(s : FinancetimecrisisPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_path_max(s : FinancetimecrisisPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_path_to_string(s : FinancetimecrisisPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_time_crisis_cluster_set(s : FinancetimecrisisCluster, i : Int, v 
   result
 }
 
-pub fn finance_time_crisis_cluster_sum(s : FinancetimecrisisCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_cluster_sum(s : FinancetimecrisisCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_cluster_mean(s : FinancetimecrisisCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_cluster_mean(s : FinancetimecrisisCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_cluster_scale(s : FinancetimecrisisCluster, f : Double) -> FinancetimecrisisCluster {
   let result = finance_time_crisis_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_time_crisis_cluster_fill(s : FinancetimecrisisCluster, v : Double
   result
 }
 
-pub fn finance_time_crisis_cluster_min(s : FinancetimecrisisCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_cluster_min(s : FinancetimecrisisCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_cluster_max(s : FinancetimecrisisCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_cluster_max(s : FinancetimecrisisCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_cluster_to_string(s : FinancetimecrisisCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_time_crisis_model_set(s : FinancetimecrisisModel, i : Int, v : Do
   result
 }
 
-pub fn finance_time_crisis_model_sum(s : FinancetimecrisisModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_model_sum(s : FinancetimecrisisModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_model_mean(s : FinancetimecrisisModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_model_mean(s : FinancetimecrisisModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_model_scale(s : FinancetimecrisisModel, f : Double) -> FinancetimecrisisModel {
   let result = finance_time_crisis_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_time_crisis_model_fill(s : FinancetimecrisisModel, v : Double) ->
   result
 }
 
-pub fn finance_time_crisis_model_min(s : FinancetimecrisisModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_model_min(s : FinancetimecrisisModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_model_max(s : FinancetimecrisisModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_model_max(s : FinancetimecrisisModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_model_to_string(s : FinancetimecrisisModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_time_crisis_layer_set(s : FinancetimecrisisLayer, i : Int, v : Do
   result
 }
 
-pub fn finance_time_crisis_layer_sum(s : FinancetimecrisisLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_layer_sum(s : FinancetimecrisisLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_layer_mean(s : FinancetimecrisisLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_layer_mean(s : FinancetimecrisisLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_layer_scale(s : FinancetimecrisisLayer, f : Double) -> FinancetimecrisisLayer {
   let result = finance_time_crisis_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_time_crisis_layer_fill(s : FinancetimecrisisLayer, v : Double) ->
   result
 }
 
-pub fn finance_time_crisis_layer_min(s : FinancetimecrisisLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_layer_min(s : FinancetimecrisisLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_layer_max(s : FinancetimecrisisLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_layer_max(s : FinancetimecrisisLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_layer_to_string(s : FinancetimecrisisLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_time_crisis_buffer_set(s : FinancetimecrisisBuffer, i : Int, v : 
   result
 }
 
-pub fn finance_time_crisis_buffer_sum(s : FinancetimecrisisBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_buffer_sum(s : FinancetimecrisisBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_buffer_mean(s : FinancetimecrisisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_buffer_mean(s : FinancetimecrisisBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_buffer_scale(s : FinancetimecrisisBuffer, f : Double) -> FinancetimecrisisBuffer {
   let result = finance_time_crisis_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_time_crisis_buffer_fill(s : FinancetimecrisisBuffer, v : Double) 
   result
 }
 
-pub fn finance_time_crisis_buffer_min(s : FinancetimecrisisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_buffer_min(s : FinancetimecrisisBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_buffer_max(s : FinancetimecrisisBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_buffer_max(s : FinancetimecrisisBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_buffer_to_string(s : FinancetimecrisisBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_time_crisis_cursor_set(s : FinancetimecrisisCursor, i : Int, v : 
   result
 }
 
-pub fn finance_time_crisis_cursor_sum(s : FinancetimecrisisCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_cursor_sum(s : FinancetimecrisisCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_cursor_mean(s : FinancetimecrisisCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_cursor_mean(s : FinancetimecrisisCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_cursor_scale(s : FinancetimecrisisCursor, f : Double) -> FinancetimecrisisCursor {
   let result = finance_time_crisis_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_time_crisis_cursor_fill(s : FinancetimecrisisCursor, v : Double) 
   result
 }
 
-pub fn finance_time_crisis_cursor_min(s : FinancetimecrisisCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_cursor_min(s : FinancetimecrisisCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_cursor_max(s : FinancetimecrisisCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_cursor_max(s : FinancetimecrisisCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_cursor_to_string(s : FinancetimecrisisCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_time_crisis_view_set(s : FinancetimecrisisView, i : Int, v : Doub
   result
 }
 
-pub fn finance_time_crisis_view_sum(s : FinancetimecrisisView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_view_sum(s : FinancetimecrisisView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_view_mean(s : FinancetimecrisisView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_view_mean(s : FinancetimecrisisView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_view_scale(s : FinancetimecrisisView, f : Double) -> FinancetimecrisisView {
   let result = finance_time_crisis_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_time_crisis_view_fill(s : FinancetimecrisisView, v : Double) -> F
   result
 }
 
-pub fn finance_time_crisis_view_min(s : FinancetimecrisisView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_view_min(s : FinancetimecrisisView) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_view_max(s : FinancetimecrisisView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_view_max(s : FinancetimecrisisView) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_view_to_string(s : FinancetimecrisisView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_time_crisis_range_set(s : FinancetimecrisisRange, i : Int, v : Do
   result
 }
 
-pub fn finance_time_crisis_range_sum(s : FinancetimecrisisRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_range_sum(s : FinancetimecrisisRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_range_mean(s : FinancetimecrisisRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_range_mean(s : FinancetimecrisisRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_range_scale(s : FinancetimecrisisRange, f : Double) -> FinancetimecrisisRange {
   let result = finance_time_crisis_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_time_crisis_range_fill(s : FinancetimecrisisRange, v : Double) ->
   result
 }
 
-pub fn finance_time_crisis_range_min(s : FinancetimecrisisRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_range_min(s : FinancetimecrisisRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_range_max(s : FinancetimecrisisRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_range_max(s : FinancetimecrisisRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_range_to_string(s : FinancetimecrisisRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_time_crisis_slice_set(s : FinancetimecrisisSlice, i : Int, v : Do
   result
 }
 
-pub fn finance_time_crisis_slice_sum(s : FinancetimecrisisSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_time_crisis_slice_sum(s : FinancetimecrisisSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_time_crisis_slice_mean(s : FinancetimecrisisSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_time_crisis_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_time_crisis_slice_mean(s : FinancetimecrisisSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_time_crisis_slice_scale(s : FinancetimecrisisSlice, f : Double) -> FinancetimecrisisSlice {
   let result = finance_time_crisis_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_time_crisis_slice_fill(s : FinancetimecrisisSlice, v : Double) ->
   result
 }
 
-pub fn finance_time_crisis_slice_min(s : FinancetimecrisisSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_slice_min(s : FinancetimecrisisSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_time_crisis_slice_max(s : FinancetimecrisisSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_time_crisis_slice_max(s : FinancetimecrisisSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_time_crisis_slice_to_string(s : FinancetimecrisisSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

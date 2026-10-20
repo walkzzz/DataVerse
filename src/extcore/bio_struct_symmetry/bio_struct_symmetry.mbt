@@ -88,11 +88,7 @@ pub fn bio_struct_symmetry_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_struct_symmetry_series_len(s : BiostructsymmetrySeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_symmetry_series_sum(s : BiostructsymmetrySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_symmetry_series_sum(s : BiostructsymmetrySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_symmetry_series_mean(s : BiostructsymmetrySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_symmetry_frame_set(s : BiostructsymmetryFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_symmetry_frame_sum(s : BiostructsymmetryFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_frame_sum(s : BiostructsymmetryFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_frame_mean(s : BiostructsymmetryFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_frame_mean(s : BiostructsymmetryFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_frame_scale(s : BiostructsymmetryFrame, f : Double) -> BiostructsymmetryFrame {
   let result = bio_struct_symmetry_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_symmetry_frame_fill(s : BiostructsymmetryFrame, v : Double) ->
   result
 }
 
-pub fn bio_struct_symmetry_frame_min(s : BiostructsymmetryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_frame_min(s : BiostructsymmetryFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_frame_max(s : BiostructsymmetryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_frame_max(s : BiostructsymmetryFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_frame_to_string(s : BiostructsymmetryFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_symmetry_table_set(s : BiostructsymmetryTable, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_symmetry_table_sum(s : BiostructsymmetryTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_table_sum(s : BiostructsymmetryTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_table_mean(s : BiostructsymmetryTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_table_mean(s : BiostructsymmetryTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_table_scale(s : BiostructsymmetryTable, f : Double) -> BiostructsymmetryTable {
   let result = bio_struct_symmetry_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_symmetry_table_fill(s : BiostructsymmetryTable, v : Double) ->
   result
 }
 
-pub fn bio_struct_symmetry_table_min(s : BiostructsymmetryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_table_min(s : BiostructsymmetryTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_table_max(s : BiostructsymmetryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_table_max(s : BiostructsymmetryTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_table_to_string(s : BiostructsymmetryTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_symmetry_graphn_set(s : BiostructsymmetryGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_struct_symmetry_graphn_sum(s : BiostructsymmetryGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_graphn_sum(s : BiostructsymmetryGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_graphn_mean(s : BiostructsymmetryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_graphn_mean(s : BiostructsymmetryGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_graphn_scale(s : BiostructsymmetryGraphN, f : Double) -> BiostructsymmetryGraphN {
   let result = bio_struct_symmetry_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_symmetry_graphn_fill(s : BiostructsymmetryGraphN, v : Double) 
   result
 }
 
-pub fn bio_struct_symmetry_graphn_min(s : BiostructsymmetryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_graphn_min(s : BiostructsymmetryGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_graphn_max(s : BiostructsymmetryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_graphn_max(s : BiostructsymmetryGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_graphn_to_string(s : BiostructsymmetryGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_symmetry_node_set(s : BiostructsymmetryNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_symmetry_node_sum(s : BiostructsymmetryNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_node_sum(s : BiostructsymmetryNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_node_mean(s : BiostructsymmetryNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_node_mean(s : BiostructsymmetryNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_node_scale(s : BiostructsymmetryNode, f : Double) -> BiostructsymmetryNode {
   let result = bio_struct_symmetry_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_symmetry_node_fill(s : BiostructsymmetryNode, v : Double) -> B
   result
 }
 
-pub fn bio_struct_symmetry_node_min(s : BiostructsymmetryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_node_min(s : BiostructsymmetryNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_node_max(s : BiostructsymmetryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_node_max(s : BiostructsymmetryNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_node_to_string(s : BiostructsymmetryNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_symmetry_edge_set(s : BiostructsymmetryEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_symmetry_edge_sum(s : BiostructsymmetryEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_edge_sum(s : BiostructsymmetryEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_edge_mean(s : BiostructsymmetryEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_edge_mean(s : BiostructsymmetryEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_edge_scale(s : BiostructsymmetryEdge, f : Double) -> BiostructsymmetryEdge {
   let result = bio_struct_symmetry_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_symmetry_edge_fill(s : BiostructsymmetryEdge, v : Double) -> B
   result
 }
 
-pub fn bio_struct_symmetry_edge_min(s : BiostructsymmetryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_edge_min(s : BiostructsymmetryEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_edge_max(s : BiostructsymmetryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_edge_max(s : BiostructsymmetryEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_edge_to_string(s : BiostructsymmetryEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_symmetry_path_set(s : BiostructsymmetryPath, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_symmetry_path_sum(s : BiostructsymmetryPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_path_sum(s : BiostructsymmetryPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_path_mean(s : BiostructsymmetryPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_path_mean(s : BiostructsymmetryPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_path_scale(s : BiostructsymmetryPath, f : Double) -> BiostructsymmetryPath {
   let result = bio_struct_symmetry_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_symmetry_path_fill(s : BiostructsymmetryPath, v : Double) -> B
   result
 }
 
-pub fn bio_struct_symmetry_path_min(s : BiostructsymmetryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_path_min(s : BiostructsymmetryPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_path_max(s : BiostructsymmetryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_path_max(s : BiostructsymmetryPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_path_to_string(s : BiostructsymmetryPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_symmetry_cluster_set(s : BiostructsymmetryCluster, i : Int, v 
   result
 }
 
-pub fn bio_struct_symmetry_cluster_sum(s : BiostructsymmetryCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_cluster_sum(s : BiostructsymmetryCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_cluster_mean(s : BiostructsymmetryCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_cluster_mean(s : BiostructsymmetryCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_cluster_scale(s : BiostructsymmetryCluster, f : Double) -> BiostructsymmetryCluster {
   let result = bio_struct_symmetry_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_symmetry_cluster_fill(s : BiostructsymmetryCluster, v : Double
   result
 }
 
-pub fn bio_struct_symmetry_cluster_min(s : BiostructsymmetryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_cluster_min(s : BiostructsymmetryCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_cluster_max(s : BiostructsymmetryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_cluster_max(s : BiostructsymmetryCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_cluster_to_string(s : BiostructsymmetryCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_symmetry_model_set(s : BiostructsymmetryModel, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_symmetry_model_sum(s : BiostructsymmetryModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_model_sum(s : BiostructsymmetryModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_model_mean(s : BiostructsymmetryModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_model_mean(s : BiostructsymmetryModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_model_scale(s : BiostructsymmetryModel, f : Double) -> BiostructsymmetryModel {
   let result = bio_struct_symmetry_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_symmetry_model_fill(s : BiostructsymmetryModel, v : Double) ->
   result
 }
 
-pub fn bio_struct_symmetry_model_min(s : BiostructsymmetryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_model_min(s : BiostructsymmetryModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_model_max(s : BiostructsymmetryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_model_max(s : BiostructsymmetryModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_model_to_string(s : BiostructsymmetryModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_symmetry_layer_set(s : BiostructsymmetryLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_symmetry_layer_sum(s : BiostructsymmetryLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_layer_sum(s : BiostructsymmetryLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_layer_mean(s : BiostructsymmetryLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_layer_mean(s : BiostructsymmetryLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_layer_scale(s : BiostructsymmetryLayer, f : Double) -> BiostructsymmetryLayer {
   let result = bio_struct_symmetry_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_symmetry_layer_fill(s : BiostructsymmetryLayer, v : Double) ->
   result
 }
 
-pub fn bio_struct_symmetry_layer_min(s : BiostructsymmetryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_layer_min(s : BiostructsymmetryLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_layer_max(s : BiostructsymmetryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_layer_max(s : BiostructsymmetryLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_layer_to_string(s : BiostructsymmetryLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_symmetry_buffer_set(s : BiostructsymmetryBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_struct_symmetry_buffer_sum(s : BiostructsymmetryBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_buffer_sum(s : BiostructsymmetryBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_buffer_mean(s : BiostructsymmetryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_buffer_mean(s : BiostructsymmetryBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_buffer_scale(s : BiostructsymmetryBuffer, f : Double) -> BiostructsymmetryBuffer {
   let result = bio_struct_symmetry_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_symmetry_buffer_fill(s : BiostructsymmetryBuffer, v : Double) 
   result
 }
 
-pub fn bio_struct_symmetry_buffer_min(s : BiostructsymmetryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_buffer_min(s : BiostructsymmetryBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_buffer_max(s : BiostructsymmetryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_buffer_max(s : BiostructsymmetryBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_buffer_to_string(s : BiostructsymmetryBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_symmetry_cursor_set(s : BiostructsymmetryCursor, i : Int, v : 
   result
 }
 
-pub fn bio_struct_symmetry_cursor_sum(s : BiostructsymmetryCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_cursor_sum(s : BiostructsymmetryCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_cursor_mean(s : BiostructsymmetryCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_cursor_mean(s : BiostructsymmetryCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_cursor_scale(s : BiostructsymmetryCursor, f : Double) -> BiostructsymmetryCursor {
   let result = bio_struct_symmetry_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_symmetry_cursor_fill(s : BiostructsymmetryCursor, v : Double) 
   result
 }
 
-pub fn bio_struct_symmetry_cursor_min(s : BiostructsymmetryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_cursor_min(s : BiostructsymmetryCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_cursor_max(s : BiostructsymmetryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_cursor_max(s : BiostructsymmetryCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_cursor_to_string(s : BiostructsymmetryCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_symmetry_view_set(s : BiostructsymmetryView, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_symmetry_view_sum(s : BiostructsymmetryView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_view_sum(s : BiostructsymmetryView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_view_mean(s : BiostructsymmetryView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_view_mean(s : BiostructsymmetryView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_view_scale(s : BiostructsymmetryView, f : Double) -> BiostructsymmetryView {
   let result = bio_struct_symmetry_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_symmetry_view_fill(s : BiostructsymmetryView, v : Double) -> B
   result
 }
 
-pub fn bio_struct_symmetry_view_min(s : BiostructsymmetryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_view_min(s : BiostructsymmetryView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_view_max(s : BiostructsymmetryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_view_max(s : BiostructsymmetryView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_view_to_string(s : BiostructsymmetryView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_symmetry_range_set(s : BiostructsymmetryRange, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_symmetry_range_sum(s : BiostructsymmetryRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_range_sum(s : BiostructsymmetryRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_range_mean(s : BiostructsymmetryRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_range_mean(s : BiostructsymmetryRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_range_scale(s : BiostructsymmetryRange, f : Double) -> BiostructsymmetryRange {
   let result = bio_struct_symmetry_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_symmetry_range_fill(s : BiostructsymmetryRange, v : Double) ->
   result
 }
 
-pub fn bio_struct_symmetry_range_min(s : BiostructsymmetryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_range_min(s : BiostructsymmetryRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_range_max(s : BiostructsymmetryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_range_max(s : BiostructsymmetryRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_range_to_string(s : BiostructsymmetryRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_symmetry_slice_set(s : BiostructsymmetrySlice, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_symmetry_slice_sum(s : BiostructsymmetrySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_symmetry_slice_sum(s : BiostructsymmetrySlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_symmetry_slice_mean(s : BiostructsymmetrySlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_symmetry_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_symmetry_slice_mean(s : BiostructsymmetrySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_symmetry_slice_scale(s : BiostructsymmetrySlice, f : Double) -> BiostructsymmetrySlice {
   let result = bio_struct_symmetry_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_symmetry_slice_fill(s : BiostructsymmetrySlice, v : Double) ->
   result
 }
 
-pub fn bio_struct_symmetry_slice_min(s : BiostructsymmetrySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_slice_min(s : BiostructsymmetrySlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_symmetry_slice_max(s : BiostructsymmetrySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_symmetry_slice_max(s : BiostructsymmetrySlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_symmetry_slice_to_string(s : BiostructsymmetrySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn timeseries_forecast_ensemble_make_series(vals : Array[Double], name : Str
 
 pub fn timeseries_forecast_ensemble_series_len(s : TimeseriesforecastensembleSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_ensemble_series_sum(s : TimeseriesforecastensembleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_series_sum(s : TimeseriesforecastensembleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_ensemble_series_mean(s : TimeseriesforecastensembleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_ensemble_frame_set(s : TimeseriesforecastensembleFram
   result
 }
 
-pub fn timeseries_forecast_ensemble_frame_sum(s : TimeseriesforecastensembleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_frame_sum(s : TimeseriesforecastensembleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_frame_mean(s : TimeseriesforecastensembleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_frame_mean(s : TimeseriesforecastensembleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_frame_scale(s : TimeseriesforecastensembleFrame, f : Double) -> TimeseriesforecastensembleFrame {
   let result = timeseries_forecast_ensemble_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_ensemble_frame_fill(s : TimeseriesforecastensembleFra
   result
 }
 
-pub fn timeseries_forecast_ensemble_frame_min(s : TimeseriesforecastensembleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_frame_min(s : TimeseriesforecastensembleFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_frame_max(s : TimeseriesforecastensembleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_frame_max(s : TimeseriesforecastensembleFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_frame_to_string(s : TimeseriesforecastensembleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_ensemble_table_set(s : TimeseriesforecastensembleTabl
   result
 }
 
-pub fn timeseries_forecast_ensemble_table_sum(s : TimeseriesforecastensembleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_table_sum(s : TimeseriesforecastensembleTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_table_mean(s : TimeseriesforecastensembleTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_table_mean(s : TimeseriesforecastensembleTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_table_scale(s : TimeseriesforecastensembleTable, f : Double) -> TimeseriesforecastensembleTable {
   let result = timeseries_forecast_ensemble_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_ensemble_table_fill(s : TimeseriesforecastensembleTab
   result
 }
 
-pub fn timeseries_forecast_ensemble_table_min(s : TimeseriesforecastensembleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_table_min(s : TimeseriesforecastensembleTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_table_max(s : TimeseriesforecastensembleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_table_max(s : TimeseriesforecastensembleTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_table_to_string(s : TimeseriesforecastensembleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_ensemble_graphn_set(s : TimeseriesforecastensembleGra
   result
 }
 
-pub fn timeseries_forecast_ensemble_graphn_sum(s : TimeseriesforecastensembleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_graphn_sum(s : TimeseriesforecastensembleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_graphn_mean(s : TimeseriesforecastensembleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_graphn_mean(s : TimeseriesforecastensembleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_graphn_scale(s : TimeseriesforecastensembleGraphN, f : Double) -> TimeseriesforecastensembleGraphN {
   let result = timeseries_forecast_ensemble_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_ensemble_graphn_fill(s : TimeseriesforecastensembleGr
   result
 }
 
-pub fn timeseries_forecast_ensemble_graphn_min(s : TimeseriesforecastensembleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_graphn_min(s : TimeseriesforecastensembleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_graphn_max(s : TimeseriesforecastensembleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_graphn_max(s : TimeseriesforecastensembleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_graphn_to_string(s : TimeseriesforecastensembleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_ensemble_node_set(s : TimeseriesforecastensembleNode,
   result
 }
 
-pub fn timeseries_forecast_ensemble_node_sum(s : TimeseriesforecastensembleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_node_sum(s : TimeseriesforecastensembleNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_node_mean(s : TimeseriesforecastensembleNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_node_mean(s : TimeseriesforecastensembleNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_node_scale(s : TimeseriesforecastensembleNode, f : Double) -> TimeseriesforecastensembleNode {
   let result = timeseries_forecast_ensemble_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_ensemble_node_fill(s : TimeseriesforecastensembleNode
   result
 }
 
-pub fn timeseries_forecast_ensemble_node_min(s : TimeseriesforecastensembleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_node_min(s : TimeseriesforecastensembleNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_node_max(s : TimeseriesforecastensembleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_node_max(s : TimeseriesforecastensembleNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_node_to_string(s : TimeseriesforecastensembleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_ensemble_edge_set(s : TimeseriesforecastensembleEdge,
   result
 }
 
-pub fn timeseries_forecast_ensemble_edge_sum(s : TimeseriesforecastensembleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_edge_sum(s : TimeseriesforecastensembleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_edge_mean(s : TimeseriesforecastensembleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_edge_mean(s : TimeseriesforecastensembleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_edge_scale(s : TimeseriesforecastensembleEdge, f : Double) -> TimeseriesforecastensembleEdge {
   let result = timeseries_forecast_ensemble_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_ensemble_edge_fill(s : TimeseriesforecastensembleEdge
   result
 }
 
-pub fn timeseries_forecast_ensemble_edge_min(s : TimeseriesforecastensembleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_edge_min(s : TimeseriesforecastensembleEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_edge_max(s : TimeseriesforecastensembleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_edge_max(s : TimeseriesforecastensembleEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_edge_to_string(s : TimeseriesforecastensembleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_ensemble_path_set(s : TimeseriesforecastensemblePath,
   result
 }
 
-pub fn timeseries_forecast_ensemble_path_sum(s : TimeseriesforecastensemblePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_path_sum(s : TimeseriesforecastensemblePath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_path_mean(s : TimeseriesforecastensemblePath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_path_mean(s : TimeseriesforecastensemblePath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_path_scale(s : TimeseriesforecastensemblePath, f : Double) -> TimeseriesforecastensemblePath {
   let result = timeseries_forecast_ensemble_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_ensemble_path_fill(s : TimeseriesforecastensemblePath
   result
 }
 
-pub fn timeseries_forecast_ensemble_path_min(s : TimeseriesforecastensemblePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_path_min(s : TimeseriesforecastensemblePath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_path_max(s : TimeseriesforecastensemblePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_path_max(s : TimeseriesforecastensemblePath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_path_to_string(s : TimeseriesforecastensemblePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_ensemble_cluster_set(s : TimeseriesforecastensembleCl
   result
 }
 
-pub fn timeseries_forecast_ensemble_cluster_sum(s : TimeseriesforecastensembleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_cluster_sum(s : TimeseriesforecastensembleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_cluster_mean(s : TimeseriesforecastensembleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_cluster_mean(s : TimeseriesforecastensembleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_cluster_scale(s : TimeseriesforecastensembleCluster, f : Double) -> TimeseriesforecastensembleCluster {
   let result = timeseries_forecast_ensemble_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_ensemble_cluster_fill(s : TimeseriesforecastensembleC
   result
 }
 
-pub fn timeseries_forecast_ensemble_cluster_min(s : TimeseriesforecastensembleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_cluster_min(s : TimeseriesforecastensembleCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_cluster_max(s : TimeseriesforecastensembleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_cluster_max(s : TimeseriesforecastensembleCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_cluster_to_string(s : TimeseriesforecastensembleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_ensemble_model_set(s : TimeseriesforecastensembleMode
   result
 }
 
-pub fn timeseries_forecast_ensemble_model_sum(s : TimeseriesforecastensembleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_model_sum(s : TimeseriesforecastensembleModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_model_mean(s : TimeseriesforecastensembleModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_model_mean(s : TimeseriesforecastensembleModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_model_scale(s : TimeseriesforecastensembleModel, f : Double) -> TimeseriesforecastensembleModel {
   let result = timeseries_forecast_ensemble_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_ensemble_model_fill(s : TimeseriesforecastensembleMod
   result
 }
 
-pub fn timeseries_forecast_ensemble_model_min(s : TimeseriesforecastensembleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_model_min(s : TimeseriesforecastensembleModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_model_max(s : TimeseriesforecastensembleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_model_max(s : TimeseriesforecastensembleModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_model_to_string(s : TimeseriesforecastensembleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_ensemble_layer_set(s : TimeseriesforecastensembleLaye
   result
 }
 
-pub fn timeseries_forecast_ensemble_layer_sum(s : TimeseriesforecastensembleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_layer_sum(s : TimeseriesforecastensembleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_layer_mean(s : TimeseriesforecastensembleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_layer_mean(s : TimeseriesforecastensembleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_layer_scale(s : TimeseriesforecastensembleLayer, f : Double) -> TimeseriesforecastensembleLayer {
   let result = timeseries_forecast_ensemble_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_ensemble_layer_fill(s : TimeseriesforecastensembleLay
   result
 }
 
-pub fn timeseries_forecast_ensemble_layer_min(s : TimeseriesforecastensembleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_layer_min(s : TimeseriesforecastensembleLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_layer_max(s : TimeseriesforecastensembleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_layer_max(s : TimeseriesforecastensembleLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_layer_to_string(s : TimeseriesforecastensembleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_ensemble_buffer_set(s : TimeseriesforecastensembleBuf
   result
 }
 
-pub fn timeseries_forecast_ensemble_buffer_sum(s : TimeseriesforecastensembleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_buffer_sum(s : TimeseriesforecastensembleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_buffer_mean(s : TimeseriesforecastensembleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_buffer_mean(s : TimeseriesforecastensembleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_buffer_scale(s : TimeseriesforecastensembleBuffer, f : Double) -> TimeseriesforecastensembleBuffer {
   let result = timeseries_forecast_ensemble_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_ensemble_buffer_fill(s : TimeseriesforecastensembleBu
   result
 }
 
-pub fn timeseries_forecast_ensemble_buffer_min(s : TimeseriesforecastensembleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_buffer_min(s : TimeseriesforecastensembleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_buffer_max(s : TimeseriesforecastensembleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_buffer_max(s : TimeseriesforecastensembleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_buffer_to_string(s : TimeseriesforecastensembleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_ensemble_cursor_set(s : TimeseriesforecastensembleCur
   result
 }
 
-pub fn timeseries_forecast_ensemble_cursor_sum(s : TimeseriesforecastensembleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_cursor_sum(s : TimeseriesforecastensembleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_cursor_mean(s : TimeseriesforecastensembleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_cursor_mean(s : TimeseriesforecastensembleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_cursor_scale(s : TimeseriesforecastensembleCursor, f : Double) -> TimeseriesforecastensembleCursor {
   let result = timeseries_forecast_ensemble_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_ensemble_cursor_fill(s : TimeseriesforecastensembleCu
   result
 }
 
-pub fn timeseries_forecast_ensemble_cursor_min(s : TimeseriesforecastensembleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_cursor_min(s : TimeseriesforecastensembleCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_cursor_max(s : TimeseriesforecastensembleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_cursor_max(s : TimeseriesforecastensembleCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_cursor_to_string(s : TimeseriesforecastensembleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_ensemble_view_set(s : TimeseriesforecastensembleView,
   result
 }
 
-pub fn timeseries_forecast_ensemble_view_sum(s : TimeseriesforecastensembleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_view_sum(s : TimeseriesforecastensembleView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_view_mean(s : TimeseriesforecastensembleView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_view_mean(s : TimeseriesforecastensembleView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_view_scale(s : TimeseriesforecastensembleView, f : Double) -> TimeseriesforecastensembleView {
   let result = timeseries_forecast_ensemble_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_ensemble_view_fill(s : TimeseriesforecastensembleView
   result
 }
 
-pub fn timeseries_forecast_ensemble_view_min(s : TimeseriesforecastensembleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_view_min(s : TimeseriesforecastensembleView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_view_max(s : TimeseriesforecastensembleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_view_max(s : TimeseriesforecastensembleView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_view_to_string(s : TimeseriesforecastensembleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_ensemble_range_set(s : TimeseriesforecastensembleRang
   result
 }
 
-pub fn timeseries_forecast_ensemble_range_sum(s : TimeseriesforecastensembleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_range_sum(s : TimeseriesforecastensembleRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_range_mean(s : TimeseriesforecastensembleRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_range_mean(s : TimeseriesforecastensembleRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_range_scale(s : TimeseriesforecastensembleRange, f : Double) -> TimeseriesforecastensembleRange {
   let result = timeseries_forecast_ensemble_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_ensemble_range_fill(s : TimeseriesforecastensembleRan
   result
 }
 
-pub fn timeseries_forecast_ensemble_range_min(s : TimeseriesforecastensembleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_range_min(s : TimeseriesforecastensembleRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_range_max(s : TimeseriesforecastensembleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_range_max(s : TimeseriesforecastensembleRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_range_to_string(s : TimeseriesforecastensembleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_ensemble_slice_set(s : TimeseriesforecastensembleSlic
   result
 }
 
-pub fn timeseries_forecast_ensemble_slice_sum(s : TimeseriesforecastensembleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_ensemble_slice_sum(s : TimeseriesforecastensembleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_ensemble_slice_mean(s : TimeseriesforecastensembleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_ensemble_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_ensemble_slice_mean(s : TimeseriesforecastensembleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_ensemble_slice_scale(s : TimeseriesforecastensembleSlice, f : Double) -> TimeseriesforecastensembleSlice {
   let result = timeseries_forecast_ensemble_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_ensemble_slice_fill(s : TimeseriesforecastensembleSli
   result
 }
 
-pub fn timeseries_forecast_ensemble_slice_min(s : TimeseriesforecastensembleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_slice_min(s : TimeseriesforecastensembleSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_ensemble_slice_max(s : TimeseriesforecastensembleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_ensemble_slice_max(s : TimeseriesforecastensembleSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_ensemble_slice_to_string(s : TimeseriesforecastensembleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn timeseries_forecast_seasonal_make_series(vals : Array[Double], name : Str
 
 pub fn timeseries_forecast_seasonal_series_len(s : TimeseriesforecastseasonalSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_seasonal_series_sum(s : TimeseriesforecastseasonalSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_series_sum(s : TimeseriesforecastseasonalSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_seasonal_series_mean(s : TimeseriesforecastseasonalSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_seasonal_frame_set(s : TimeseriesforecastseasonalFram
   result
 }
 
-pub fn timeseries_forecast_seasonal_frame_sum(s : TimeseriesforecastseasonalFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_frame_sum(s : TimeseriesforecastseasonalFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_frame_mean(s : TimeseriesforecastseasonalFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_frame_mean(s : TimeseriesforecastseasonalFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_frame_scale(s : TimeseriesforecastseasonalFrame, f : Double) -> TimeseriesforecastseasonalFrame {
   let result = timeseries_forecast_seasonal_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_seasonal_frame_fill(s : TimeseriesforecastseasonalFra
   result
 }
 
-pub fn timeseries_forecast_seasonal_frame_min(s : TimeseriesforecastseasonalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_frame_min(s : TimeseriesforecastseasonalFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_frame_max(s : TimeseriesforecastseasonalFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_frame_max(s : TimeseriesforecastseasonalFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_frame_to_string(s : TimeseriesforecastseasonalFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_seasonal_table_set(s : TimeseriesforecastseasonalTabl
   result
 }
 
-pub fn timeseries_forecast_seasonal_table_sum(s : TimeseriesforecastseasonalTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_table_sum(s : TimeseriesforecastseasonalTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_table_mean(s : TimeseriesforecastseasonalTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_table_mean(s : TimeseriesforecastseasonalTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_table_scale(s : TimeseriesforecastseasonalTable, f : Double) -> TimeseriesforecastseasonalTable {
   let result = timeseries_forecast_seasonal_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_seasonal_table_fill(s : TimeseriesforecastseasonalTab
   result
 }
 
-pub fn timeseries_forecast_seasonal_table_min(s : TimeseriesforecastseasonalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_table_min(s : TimeseriesforecastseasonalTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_table_max(s : TimeseriesforecastseasonalTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_table_max(s : TimeseriesforecastseasonalTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_table_to_string(s : TimeseriesforecastseasonalTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_seasonal_graphn_set(s : TimeseriesforecastseasonalGra
   result
 }
 
-pub fn timeseries_forecast_seasonal_graphn_sum(s : TimeseriesforecastseasonalGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_graphn_sum(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_graphn_mean(s : TimeseriesforecastseasonalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_graphn_mean(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_graphn_scale(s : TimeseriesforecastseasonalGraphN, f : Double) -> TimeseriesforecastseasonalGraphN {
   let result = timeseries_forecast_seasonal_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_seasonal_graphn_fill(s : TimeseriesforecastseasonalGr
   result
 }
 
-pub fn timeseries_forecast_seasonal_graphn_min(s : TimeseriesforecastseasonalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_graphn_min(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_graphn_max(s : TimeseriesforecastseasonalGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_graphn_max(s : TimeseriesforecastseasonalGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_graphn_to_string(s : TimeseriesforecastseasonalGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_seasonal_node_set(s : TimeseriesforecastseasonalNode,
   result
 }
 
-pub fn timeseries_forecast_seasonal_node_sum(s : TimeseriesforecastseasonalNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_node_sum(s : TimeseriesforecastseasonalNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_node_mean(s : TimeseriesforecastseasonalNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_node_mean(s : TimeseriesforecastseasonalNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_node_scale(s : TimeseriesforecastseasonalNode, f : Double) -> TimeseriesforecastseasonalNode {
   let result = timeseries_forecast_seasonal_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_seasonal_node_fill(s : TimeseriesforecastseasonalNode
   result
 }
 
-pub fn timeseries_forecast_seasonal_node_min(s : TimeseriesforecastseasonalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_node_min(s : TimeseriesforecastseasonalNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_node_max(s : TimeseriesforecastseasonalNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_node_max(s : TimeseriesforecastseasonalNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_node_to_string(s : TimeseriesforecastseasonalNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_seasonal_edge_set(s : TimeseriesforecastseasonalEdge,
   result
 }
 
-pub fn timeseries_forecast_seasonal_edge_sum(s : TimeseriesforecastseasonalEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_edge_sum(s : TimeseriesforecastseasonalEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_edge_mean(s : TimeseriesforecastseasonalEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_edge_mean(s : TimeseriesforecastseasonalEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_edge_scale(s : TimeseriesforecastseasonalEdge, f : Double) -> TimeseriesforecastseasonalEdge {
   let result = timeseries_forecast_seasonal_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_seasonal_edge_fill(s : TimeseriesforecastseasonalEdge
   result
 }
 
-pub fn timeseries_forecast_seasonal_edge_min(s : TimeseriesforecastseasonalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_edge_min(s : TimeseriesforecastseasonalEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_edge_max(s : TimeseriesforecastseasonalEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_edge_max(s : TimeseriesforecastseasonalEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_edge_to_string(s : TimeseriesforecastseasonalEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_seasonal_path_set(s : TimeseriesforecastseasonalPath,
   result
 }
 
-pub fn timeseries_forecast_seasonal_path_sum(s : TimeseriesforecastseasonalPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_path_sum(s : TimeseriesforecastseasonalPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_path_mean(s : TimeseriesforecastseasonalPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_path_mean(s : TimeseriesforecastseasonalPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_path_scale(s : TimeseriesforecastseasonalPath, f : Double) -> TimeseriesforecastseasonalPath {
   let result = timeseries_forecast_seasonal_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_seasonal_path_fill(s : TimeseriesforecastseasonalPath
   result
 }
 
-pub fn timeseries_forecast_seasonal_path_min(s : TimeseriesforecastseasonalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_path_min(s : TimeseriesforecastseasonalPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_path_max(s : TimeseriesforecastseasonalPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_path_max(s : TimeseriesforecastseasonalPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_path_to_string(s : TimeseriesforecastseasonalPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_seasonal_cluster_set(s : TimeseriesforecastseasonalCl
   result
 }
 
-pub fn timeseries_forecast_seasonal_cluster_sum(s : TimeseriesforecastseasonalCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_cluster_sum(s : TimeseriesforecastseasonalCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_cluster_mean(s : TimeseriesforecastseasonalCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_cluster_mean(s : TimeseriesforecastseasonalCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_cluster_scale(s : TimeseriesforecastseasonalCluster, f : Double) -> TimeseriesforecastseasonalCluster {
   let result = timeseries_forecast_seasonal_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_seasonal_cluster_fill(s : TimeseriesforecastseasonalC
   result
 }
 
-pub fn timeseries_forecast_seasonal_cluster_min(s : TimeseriesforecastseasonalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_cluster_min(s : TimeseriesforecastseasonalCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_cluster_max(s : TimeseriesforecastseasonalCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_cluster_max(s : TimeseriesforecastseasonalCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_cluster_to_string(s : TimeseriesforecastseasonalCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_seasonal_model_set(s : TimeseriesforecastseasonalMode
   result
 }
 
-pub fn timeseries_forecast_seasonal_model_sum(s : TimeseriesforecastseasonalModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_model_sum(s : TimeseriesforecastseasonalModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_model_mean(s : TimeseriesforecastseasonalModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_model_mean(s : TimeseriesforecastseasonalModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_model_scale(s : TimeseriesforecastseasonalModel, f : Double) -> TimeseriesforecastseasonalModel {
   let result = timeseries_forecast_seasonal_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_seasonal_model_fill(s : TimeseriesforecastseasonalMod
   result
 }
 
-pub fn timeseries_forecast_seasonal_model_min(s : TimeseriesforecastseasonalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_model_min(s : TimeseriesforecastseasonalModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_model_max(s : TimeseriesforecastseasonalModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_model_max(s : TimeseriesforecastseasonalModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_model_to_string(s : TimeseriesforecastseasonalModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_seasonal_layer_set(s : TimeseriesforecastseasonalLaye
   result
 }
 
-pub fn timeseries_forecast_seasonal_layer_sum(s : TimeseriesforecastseasonalLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_layer_sum(s : TimeseriesforecastseasonalLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_layer_mean(s : TimeseriesforecastseasonalLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_layer_mean(s : TimeseriesforecastseasonalLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_layer_scale(s : TimeseriesforecastseasonalLayer, f : Double) -> TimeseriesforecastseasonalLayer {
   let result = timeseries_forecast_seasonal_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_seasonal_layer_fill(s : TimeseriesforecastseasonalLay
   result
 }
 
-pub fn timeseries_forecast_seasonal_layer_min(s : TimeseriesforecastseasonalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_layer_min(s : TimeseriesforecastseasonalLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_layer_max(s : TimeseriesforecastseasonalLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_layer_max(s : TimeseriesforecastseasonalLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_layer_to_string(s : TimeseriesforecastseasonalLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_seasonal_buffer_set(s : TimeseriesforecastseasonalBuf
   result
 }
 
-pub fn timeseries_forecast_seasonal_buffer_sum(s : TimeseriesforecastseasonalBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_buffer_sum(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_buffer_mean(s : TimeseriesforecastseasonalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_buffer_mean(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_buffer_scale(s : TimeseriesforecastseasonalBuffer, f : Double) -> TimeseriesforecastseasonalBuffer {
   let result = timeseries_forecast_seasonal_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_seasonal_buffer_fill(s : TimeseriesforecastseasonalBu
   result
 }
 
-pub fn timeseries_forecast_seasonal_buffer_min(s : TimeseriesforecastseasonalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_buffer_min(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_buffer_max(s : TimeseriesforecastseasonalBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_buffer_max(s : TimeseriesforecastseasonalBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_buffer_to_string(s : TimeseriesforecastseasonalBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_seasonal_cursor_set(s : TimeseriesforecastseasonalCur
   result
 }
 
-pub fn timeseries_forecast_seasonal_cursor_sum(s : TimeseriesforecastseasonalCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_cursor_sum(s : TimeseriesforecastseasonalCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_cursor_mean(s : TimeseriesforecastseasonalCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_cursor_mean(s : TimeseriesforecastseasonalCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_cursor_scale(s : TimeseriesforecastseasonalCursor, f : Double) -> TimeseriesforecastseasonalCursor {
   let result = timeseries_forecast_seasonal_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_seasonal_cursor_fill(s : TimeseriesforecastseasonalCu
   result
 }
 
-pub fn timeseries_forecast_seasonal_cursor_min(s : TimeseriesforecastseasonalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_cursor_min(s : TimeseriesforecastseasonalCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_cursor_max(s : TimeseriesforecastseasonalCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_cursor_max(s : TimeseriesforecastseasonalCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_cursor_to_string(s : TimeseriesforecastseasonalCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_seasonal_view_set(s : TimeseriesforecastseasonalView,
   result
 }
 
-pub fn timeseries_forecast_seasonal_view_sum(s : TimeseriesforecastseasonalView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_view_sum(s : TimeseriesforecastseasonalView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_view_mean(s : TimeseriesforecastseasonalView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_view_mean(s : TimeseriesforecastseasonalView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_view_scale(s : TimeseriesforecastseasonalView, f : Double) -> TimeseriesforecastseasonalView {
   let result = timeseries_forecast_seasonal_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_seasonal_view_fill(s : TimeseriesforecastseasonalView
   result
 }
 
-pub fn timeseries_forecast_seasonal_view_min(s : TimeseriesforecastseasonalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_view_min(s : TimeseriesforecastseasonalView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_view_max(s : TimeseriesforecastseasonalView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_view_max(s : TimeseriesforecastseasonalView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_view_to_string(s : TimeseriesforecastseasonalView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_seasonal_range_set(s : TimeseriesforecastseasonalRang
   result
 }
 
-pub fn timeseries_forecast_seasonal_range_sum(s : TimeseriesforecastseasonalRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_range_sum(s : TimeseriesforecastseasonalRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_range_mean(s : TimeseriesforecastseasonalRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_range_mean(s : TimeseriesforecastseasonalRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_range_scale(s : TimeseriesforecastseasonalRange, f : Double) -> TimeseriesforecastseasonalRange {
   let result = timeseries_forecast_seasonal_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_seasonal_range_fill(s : TimeseriesforecastseasonalRan
   result
 }
 
-pub fn timeseries_forecast_seasonal_range_min(s : TimeseriesforecastseasonalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_range_min(s : TimeseriesforecastseasonalRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_range_max(s : TimeseriesforecastseasonalRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_range_max(s : TimeseriesforecastseasonalRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_range_to_string(s : TimeseriesforecastseasonalRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_seasonal_slice_set(s : TimeseriesforecastseasonalSlic
   result
 }
 
-pub fn timeseries_forecast_seasonal_slice_sum(s : TimeseriesforecastseasonalSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_seasonal_slice_sum(s : TimeseriesforecastseasonalSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_seasonal_slice_mean(s : TimeseriesforecastseasonalSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_seasonal_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_seasonal_slice_mean(s : TimeseriesforecastseasonalSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_seasonal_slice_scale(s : TimeseriesforecastseasonalSlice, f : Double) -> TimeseriesforecastseasonalSlice {
   let result = timeseries_forecast_seasonal_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_seasonal_slice_fill(s : TimeseriesforecastseasonalSli
   result
 }
 
-pub fn timeseries_forecast_seasonal_slice_min(s : TimeseriesforecastseasonalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_slice_min(s : TimeseriesforecastseasonalSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_seasonal_slice_max(s : TimeseriesforecastseasonalSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_seasonal_slice_max(s : TimeseriesforecastseasonalSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_seasonal_slice_to_string(s : TimeseriesforecastseasonalSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn db_query_join_make_series(vals : Array[Double], name : String) -> Dbquery
 
 pub fn db_query_join_series_len(s : DbqueryjoinSeries) -> Int { s.vals.length() }
 
-pub fn db_query_join_series_sum(s : DbqueryjoinSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_join_series_sum(s : DbqueryjoinSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_join_series_mean(s : DbqueryjoinSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_join_frame_set(s : DbqueryjoinFrame, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_join_frame_sum(s : DbqueryjoinFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_frame_sum(s : DbqueryjoinFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_frame_mean(s : DbqueryjoinFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_frame_mean(s : DbqueryjoinFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_frame_scale(s : DbqueryjoinFrame, f : Double) -> DbqueryjoinFrame {
   let result = db_query_join_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_join_frame_fill(s : DbqueryjoinFrame, v : Double) -> Dbqueryjoin
   result
 }
 
-pub fn db_query_join_frame_min(s : DbqueryjoinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_frame_min(s : DbqueryjoinFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_frame_max(s : DbqueryjoinFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_frame_max(s : DbqueryjoinFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_frame_to_string(s : DbqueryjoinFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_join_table_set(s : DbqueryjoinTable, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_join_table_sum(s : DbqueryjoinTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_table_sum(s : DbqueryjoinTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_table_mean(s : DbqueryjoinTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_table_mean(s : DbqueryjoinTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_table_scale(s : DbqueryjoinTable, f : Double) -> DbqueryjoinTable {
   let result = db_query_join_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_join_table_fill(s : DbqueryjoinTable, v : Double) -> Dbqueryjoin
   result
 }
 
-pub fn db_query_join_table_min(s : DbqueryjoinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_table_min(s : DbqueryjoinTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_table_max(s : DbqueryjoinTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_table_max(s : DbqueryjoinTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_table_to_string(s : DbqueryjoinTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_join_graphn_set(s : DbqueryjoinGraphN, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_join_graphn_sum(s : DbqueryjoinGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_graphn_sum(s : DbqueryjoinGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_graphn_mean(s : DbqueryjoinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_graphn_mean(s : DbqueryjoinGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_graphn_scale(s : DbqueryjoinGraphN, f : Double) -> DbqueryjoinGraphN {
   let result = db_query_join_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_join_graphn_fill(s : DbqueryjoinGraphN, v : Double) -> Dbqueryjo
   result
 }
 
-pub fn db_query_join_graphn_min(s : DbqueryjoinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_graphn_min(s : DbqueryjoinGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_graphn_max(s : DbqueryjoinGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_graphn_max(s : DbqueryjoinGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_graphn_to_string(s : DbqueryjoinGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_join_node_set(s : DbqueryjoinNode, i : Int, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_join_node_sum(s : DbqueryjoinNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_node_sum(s : DbqueryjoinNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_node_mean(s : DbqueryjoinNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_node_mean(s : DbqueryjoinNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_node_scale(s : DbqueryjoinNode, f : Double) -> DbqueryjoinNode {
   let result = db_query_join_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_join_node_fill(s : DbqueryjoinNode, v : Double) -> DbqueryjoinNo
   result
 }
 
-pub fn db_query_join_node_min(s : DbqueryjoinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_node_min(s : DbqueryjoinNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_node_max(s : DbqueryjoinNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_node_max(s : DbqueryjoinNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_node_to_string(s : DbqueryjoinNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_join_edge_set(s : DbqueryjoinEdge, i : Int, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_join_edge_sum(s : DbqueryjoinEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_edge_sum(s : DbqueryjoinEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_edge_mean(s : DbqueryjoinEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_edge_mean(s : DbqueryjoinEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_edge_scale(s : DbqueryjoinEdge, f : Double) -> DbqueryjoinEdge {
   let result = db_query_join_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_join_edge_fill(s : DbqueryjoinEdge, v : Double) -> DbqueryjoinEd
   result
 }
 
-pub fn db_query_join_edge_min(s : DbqueryjoinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_edge_min(s : DbqueryjoinEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_edge_max(s : DbqueryjoinEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_edge_max(s : DbqueryjoinEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_edge_to_string(s : DbqueryjoinEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_join_path_set(s : DbqueryjoinPath, i : Int, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_join_path_sum(s : DbqueryjoinPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_path_sum(s : DbqueryjoinPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_path_mean(s : DbqueryjoinPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_path_mean(s : DbqueryjoinPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_path_scale(s : DbqueryjoinPath, f : Double) -> DbqueryjoinPath {
   let result = db_query_join_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_join_path_fill(s : DbqueryjoinPath, v : Double) -> DbqueryjoinPa
   result
 }
 
-pub fn db_query_join_path_min(s : DbqueryjoinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_path_min(s : DbqueryjoinPath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_path_max(s : DbqueryjoinPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_path_max(s : DbqueryjoinPath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_path_to_string(s : DbqueryjoinPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_join_cluster_set(s : DbqueryjoinCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_join_cluster_sum(s : DbqueryjoinCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_cluster_sum(s : DbqueryjoinCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_cluster_mean(s : DbqueryjoinCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_cluster_mean(s : DbqueryjoinCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_cluster_scale(s : DbqueryjoinCluster, f : Double) -> DbqueryjoinCluster {
   let result = db_query_join_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_join_cluster_fill(s : DbqueryjoinCluster, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_join_cluster_min(s : DbqueryjoinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_cluster_min(s : DbqueryjoinCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_cluster_max(s : DbqueryjoinCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_cluster_max(s : DbqueryjoinCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_cluster_to_string(s : DbqueryjoinCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_join_model_set(s : DbqueryjoinModel, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_join_model_sum(s : DbqueryjoinModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_model_sum(s : DbqueryjoinModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_model_mean(s : DbqueryjoinModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_model_mean(s : DbqueryjoinModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_model_scale(s : DbqueryjoinModel, f : Double) -> DbqueryjoinModel {
   let result = db_query_join_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_join_model_fill(s : DbqueryjoinModel, v : Double) -> Dbqueryjoin
   result
 }
 
-pub fn db_query_join_model_min(s : DbqueryjoinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_model_min(s : DbqueryjoinModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_model_max(s : DbqueryjoinModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_model_max(s : DbqueryjoinModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_model_to_string(s : DbqueryjoinModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_join_layer_set(s : DbqueryjoinLayer, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_join_layer_sum(s : DbqueryjoinLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_layer_sum(s : DbqueryjoinLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_layer_mean(s : DbqueryjoinLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_layer_mean(s : DbqueryjoinLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_layer_scale(s : DbqueryjoinLayer, f : Double) -> DbqueryjoinLayer {
   let result = db_query_join_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_join_layer_fill(s : DbqueryjoinLayer, v : Double) -> Dbqueryjoin
   result
 }
 
-pub fn db_query_join_layer_min(s : DbqueryjoinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_layer_min(s : DbqueryjoinLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_layer_max(s : DbqueryjoinLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_layer_max(s : DbqueryjoinLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_layer_to_string(s : DbqueryjoinLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_join_buffer_set(s : DbqueryjoinBuffer, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_join_buffer_sum(s : DbqueryjoinBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_buffer_sum(s : DbqueryjoinBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_buffer_mean(s : DbqueryjoinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_buffer_mean(s : DbqueryjoinBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_buffer_scale(s : DbqueryjoinBuffer, f : Double) -> DbqueryjoinBuffer {
   let result = db_query_join_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_join_buffer_fill(s : DbqueryjoinBuffer, v : Double) -> Dbqueryjo
   result
 }
 
-pub fn db_query_join_buffer_min(s : DbqueryjoinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_buffer_min(s : DbqueryjoinBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_buffer_max(s : DbqueryjoinBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_buffer_max(s : DbqueryjoinBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_buffer_to_string(s : DbqueryjoinBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_join_cursor_set(s : DbqueryjoinCursor, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_join_cursor_sum(s : DbqueryjoinCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_cursor_sum(s : DbqueryjoinCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_cursor_mean(s : DbqueryjoinCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_cursor_mean(s : DbqueryjoinCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_cursor_scale(s : DbqueryjoinCursor, f : Double) -> DbqueryjoinCursor {
   let result = db_query_join_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_join_cursor_fill(s : DbqueryjoinCursor, v : Double) -> Dbqueryjo
   result
 }
 
-pub fn db_query_join_cursor_min(s : DbqueryjoinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_cursor_min(s : DbqueryjoinCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_cursor_max(s : DbqueryjoinCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_cursor_max(s : DbqueryjoinCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_cursor_to_string(s : DbqueryjoinCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_join_view_set(s : DbqueryjoinView, i : Int, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_join_view_sum(s : DbqueryjoinView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_view_sum(s : DbqueryjoinView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_view_mean(s : DbqueryjoinView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_view_mean(s : DbqueryjoinView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_view_scale(s : DbqueryjoinView, f : Double) -> DbqueryjoinView {
   let result = db_query_join_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_join_view_fill(s : DbqueryjoinView, v : Double) -> DbqueryjoinVi
   result
 }
 
-pub fn db_query_join_view_min(s : DbqueryjoinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_view_min(s : DbqueryjoinView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_view_max(s : DbqueryjoinView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_view_max(s : DbqueryjoinView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_view_to_string(s : DbqueryjoinView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_join_range_set(s : DbqueryjoinRange, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_join_range_sum(s : DbqueryjoinRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_range_sum(s : DbqueryjoinRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_range_mean(s : DbqueryjoinRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_range_mean(s : DbqueryjoinRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_range_scale(s : DbqueryjoinRange, f : Double) -> DbqueryjoinRange {
   let result = db_query_join_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_join_range_fill(s : DbqueryjoinRange, v : Double) -> Dbqueryjoin
   result
 }
 
-pub fn db_query_join_range_min(s : DbqueryjoinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_range_min(s : DbqueryjoinRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_range_max(s : DbqueryjoinRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_range_max(s : DbqueryjoinRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_range_to_string(s : DbqueryjoinRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_join_slice_set(s : DbqueryjoinSlice, i : Int, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_join_slice_sum(s : DbqueryjoinSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_join_slice_sum(s : DbqueryjoinSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_join_slice_mean(s : DbqueryjoinSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_join_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_join_slice_mean(s : DbqueryjoinSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_join_slice_scale(s : DbqueryjoinSlice, f : Double) -> DbqueryjoinSlice {
   let result = db_query_join_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_join_slice_fill(s : DbqueryjoinSlice, v : Double) -> Dbqueryjoin
   result
 }
 
-pub fn db_query_join_slice_min(s : DbqueryjoinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_slice_min(s : DbqueryjoinSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_join_slice_max(s : DbqueryjoinSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_join_slice_max(s : DbqueryjoinSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_join_slice_to_string(s : DbqueryjoinSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

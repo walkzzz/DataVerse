@@ -88,11 +88,7 @@ pub fn ds_heap_pairing_make_series(vals : Array[Double], name : String) -> Dshea
 
 pub fn ds_heap_pairing_series_len(s : DsheappairingSeries) -> Int { s.vals.length() }
 
-pub fn ds_heap_pairing_series_sum(s : DsheappairingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_heap_pairing_series_sum(s : DsheappairingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_heap_pairing_series_mean(s : DsheappairingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_heap_pairing_frame_set(s : DsheappairingFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_pairing_frame_sum(s : DsheappairingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_frame_sum(s : DsheappairingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_frame_mean(s : DsheappairingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_frame_mean(s : DsheappairingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_frame_scale(s : DsheappairingFrame, f : Double) -> DsheappairingFrame {
   let result = ds_heap_pairing_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_heap_pairing_frame_fill(s : DsheappairingFrame, v : Double) -> Dsheapp
   result
 }
 
-pub fn ds_heap_pairing_frame_min(s : DsheappairingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_frame_min(s : DsheappairingFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_frame_max(s : DsheappairingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_frame_max(s : DsheappairingFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_frame_to_string(s : DsheappairingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_heap_pairing_table_set(s : DsheappairingTable, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_pairing_table_sum(s : DsheappairingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_table_sum(s : DsheappairingTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_table_mean(s : DsheappairingTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_table_mean(s : DsheappairingTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_table_scale(s : DsheappairingTable, f : Double) -> DsheappairingTable {
   let result = ds_heap_pairing_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_heap_pairing_table_fill(s : DsheappairingTable, v : Double) -> Dsheapp
   result
 }
 
-pub fn ds_heap_pairing_table_min(s : DsheappairingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_table_min(s : DsheappairingTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_table_max(s : DsheappairingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_table_max(s : DsheappairingTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_table_to_string(s : DsheappairingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_heap_pairing_graphn_set(s : DsheappairingGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_pairing_graphn_sum(s : DsheappairingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_graphn_sum(s : DsheappairingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_graphn_mean(s : DsheappairingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_graphn_mean(s : DsheappairingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_graphn_scale(s : DsheappairingGraphN, f : Double) -> DsheappairingGraphN {
   let result = ds_heap_pairing_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_heap_pairing_graphn_fill(s : DsheappairingGraphN, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_pairing_graphn_min(s : DsheappairingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_graphn_min(s : DsheappairingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_graphn_max(s : DsheappairingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_graphn_max(s : DsheappairingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_graphn_to_string(s : DsheappairingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_heap_pairing_node_set(s : DsheappairingNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_pairing_node_sum(s : DsheappairingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_node_sum(s : DsheappairingNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_node_mean(s : DsheappairingNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_node_mean(s : DsheappairingNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_node_scale(s : DsheappairingNode, f : Double) -> DsheappairingNode {
   let result = ds_heap_pairing_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_heap_pairing_node_fill(s : DsheappairingNode, v : Double) -> Dsheappai
   result
 }
 
-pub fn ds_heap_pairing_node_min(s : DsheappairingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_node_min(s : DsheappairingNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_node_max(s : DsheappairingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_node_max(s : DsheappairingNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_node_to_string(s : DsheappairingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_heap_pairing_edge_set(s : DsheappairingEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_pairing_edge_sum(s : DsheappairingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_edge_sum(s : DsheappairingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_edge_mean(s : DsheappairingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_edge_mean(s : DsheappairingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_edge_scale(s : DsheappairingEdge, f : Double) -> DsheappairingEdge {
   let result = ds_heap_pairing_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_heap_pairing_edge_fill(s : DsheappairingEdge, v : Double) -> Dsheappai
   result
 }
 
-pub fn ds_heap_pairing_edge_min(s : DsheappairingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_edge_min(s : DsheappairingEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_edge_max(s : DsheappairingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_edge_max(s : DsheappairingEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_edge_to_string(s : DsheappairingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_heap_pairing_path_set(s : DsheappairingPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_pairing_path_sum(s : DsheappairingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_path_sum(s : DsheappairingPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_path_mean(s : DsheappairingPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_path_mean(s : DsheappairingPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_path_scale(s : DsheappairingPath, f : Double) -> DsheappairingPath {
   let result = ds_heap_pairing_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_heap_pairing_path_fill(s : DsheappairingPath, v : Double) -> Dsheappai
   result
 }
 
-pub fn ds_heap_pairing_path_min(s : DsheappairingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_path_min(s : DsheappairingPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_path_max(s : DsheappairingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_path_max(s : DsheappairingPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_path_to_string(s : DsheappairingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_heap_pairing_cluster_set(s : DsheappairingCluster, i : Int, v : Double
   result
 }
 
-pub fn ds_heap_pairing_cluster_sum(s : DsheappairingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_cluster_sum(s : DsheappairingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_cluster_mean(s : DsheappairingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_cluster_mean(s : DsheappairingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_cluster_scale(s : DsheappairingCluster, f : Double) -> DsheappairingCluster {
   let result = ds_heap_pairing_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_heap_pairing_cluster_fill(s : DsheappairingCluster, v : Double) -> Dsh
   result
 }
 
-pub fn ds_heap_pairing_cluster_min(s : DsheappairingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_cluster_min(s : DsheappairingCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_cluster_max(s : DsheappairingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_cluster_max(s : DsheappairingCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_cluster_to_string(s : DsheappairingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_heap_pairing_model_set(s : DsheappairingModel, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_pairing_model_sum(s : DsheappairingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_model_sum(s : DsheappairingModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_model_mean(s : DsheappairingModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_model_mean(s : DsheappairingModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_model_scale(s : DsheappairingModel, f : Double) -> DsheappairingModel {
   let result = ds_heap_pairing_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_heap_pairing_model_fill(s : DsheappairingModel, v : Double) -> Dsheapp
   result
 }
 
-pub fn ds_heap_pairing_model_min(s : DsheappairingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_model_min(s : DsheappairingModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_model_max(s : DsheappairingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_model_max(s : DsheappairingModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_model_to_string(s : DsheappairingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_heap_pairing_layer_set(s : DsheappairingLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_pairing_layer_sum(s : DsheappairingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_layer_sum(s : DsheappairingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_layer_mean(s : DsheappairingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_layer_mean(s : DsheappairingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_layer_scale(s : DsheappairingLayer, f : Double) -> DsheappairingLayer {
   let result = ds_heap_pairing_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_heap_pairing_layer_fill(s : DsheappairingLayer, v : Double) -> Dsheapp
   result
 }
 
-pub fn ds_heap_pairing_layer_min(s : DsheappairingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_layer_min(s : DsheappairingLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_layer_max(s : DsheappairingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_layer_max(s : DsheappairingLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_layer_to_string(s : DsheappairingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_heap_pairing_buffer_set(s : DsheappairingBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_pairing_buffer_sum(s : DsheappairingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_buffer_sum(s : DsheappairingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_buffer_mean(s : DsheappairingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_buffer_mean(s : DsheappairingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_buffer_scale(s : DsheappairingBuffer, f : Double) -> DsheappairingBuffer {
   let result = ds_heap_pairing_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_heap_pairing_buffer_fill(s : DsheappairingBuffer, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_pairing_buffer_min(s : DsheappairingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_buffer_min(s : DsheappairingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_buffer_max(s : DsheappairingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_buffer_max(s : DsheappairingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_buffer_to_string(s : DsheappairingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_heap_pairing_cursor_set(s : DsheappairingCursor, i : Int, v : Double) 
   result
 }
 
-pub fn ds_heap_pairing_cursor_sum(s : DsheappairingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_cursor_sum(s : DsheappairingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_cursor_mean(s : DsheappairingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_cursor_mean(s : DsheappairingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_cursor_scale(s : DsheappairingCursor, f : Double) -> DsheappairingCursor {
   let result = ds_heap_pairing_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_heap_pairing_cursor_fill(s : DsheappairingCursor, v : Double) -> Dshea
   result
 }
 
-pub fn ds_heap_pairing_cursor_min(s : DsheappairingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_cursor_min(s : DsheappairingCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_cursor_max(s : DsheappairingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_cursor_max(s : DsheappairingCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_cursor_to_string(s : DsheappairingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_heap_pairing_view_set(s : DsheappairingView, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_heap_pairing_view_sum(s : DsheappairingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_view_sum(s : DsheappairingView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_view_mean(s : DsheappairingView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_view_mean(s : DsheappairingView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_view_scale(s : DsheappairingView, f : Double) -> DsheappairingView {
   let result = ds_heap_pairing_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_heap_pairing_view_fill(s : DsheappairingView, v : Double) -> Dsheappai
   result
 }
 
-pub fn ds_heap_pairing_view_min(s : DsheappairingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_view_min(s : DsheappairingView) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_view_max(s : DsheappairingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_view_max(s : DsheappairingView) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_view_to_string(s : DsheappairingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_heap_pairing_range_set(s : DsheappairingRange, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_pairing_range_sum(s : DsheappairingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_range_sum(s : DsheappairingRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_range_mean(s : DsheappairingRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_range_mean(s : DsheappairingRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_range_scale(s : DsheappairingRange, f : Double) -> DsheappairingRange {
   let result = ds_heap_pairing_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_heap_pairing_range_fill(s : DsheappairingRange, v : Double) -> Dsheapp
   result
 }
 
-pub fn ds_heap_pairing_range_min(s : DsheappairingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_range_min(s : DsheappairingRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_range_max(s : DsheappairingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_range_max(s : DsheappairingRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_range_to_string(s : DsheappairingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_heap_pairing_slice_set(s : DsheappairingSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_heap_pairing_slice_sum(s : DsheappairingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_heap_pairing_slice_sum(s : DsheappairingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_heap_pairing_slice_mean(s : DsheappairingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_heap_pairing_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_heap_pairing_slice_mean(s : DsheappairingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_heap_pairing_slice_scale(s : DsheappairingSlice, f : Double) -> DsheappairingSlice {
   let result = ds_heap_pairing_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_heap_pairing_slice_fill(s : DsheappairingSlice, v : Double) -> Dsheapp
   result
 }
 
-pub fn ds_heap_pairing_slice_min(s : DsheappairingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_slice_min(s : DsheappairingSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_heap_pairing_slice_max(s : DsheappairingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_heap_pairing_slice_max(s : DsheappairingSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_heap_pairing_slice_to_string(s : DsheappairingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

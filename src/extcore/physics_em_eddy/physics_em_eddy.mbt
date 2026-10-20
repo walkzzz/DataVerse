@@ -88,11 +88,7 @@ pub fn physics_em_eddy_make_series(vals : Array[Double], name : String) -> Physi
 
 pub fn physics_em_eddy_series_len(s : PhysicsemeddySeries) -> Int { s.vals.length() }
 
-pub fn physics_em_eddy_series_sum(s : PhysicsemeddySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_eddy_series_sum(s : PhysicsemeddySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_eddy_series_mean(s : PhysicsemeddySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_eddy_frame_set(s : PhysicsemeddyFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_eddy_frame_sum(s : PhysicsemeddyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_frame_sum(s : PhysicsemeddyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_frame_mean(s : PhysicsemeddyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_frame_mean(s : PhysicsemeddyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_frame_scale(s : PhysicsemeddyFrame, f : Double) -> PhysicsemeddyFrame {
   let result = physics_em_eddy_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_eddy_frame_fill(s : PhysicsemeddyFrame, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_eddy_frame_min(s : PhysicsemeddyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_frame_min(s : PhysicsemeddyFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_frame_max(s : PhysicsemeddyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_frame_max(s : PhysicsemeddyFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_frame_to_string(s : PhysicsemeddyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_eddy_table_set(s : PhysicsemeddyTable, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_eddy_table_sum(s : PhysicsemeddyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_table_sum(s : PhysicsemeddyTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_table_mean(s : PhysicsemeddyTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_table_mean(s : PhysicsemeddyTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_table_scale(s : PhysicsemeddyTable, f : Double) -> PhysicsemeddyTable {
   let result = physics_em_eddy_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_eddy_table_fill(s : PhysicsemeddyTable, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_eddy_table_min(s : PhysicsemeddyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_table_min(s : PhysicsemeddyTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_table_max(s : PhysicsemeddyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_table_max(s : PhysicsemeddyTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_table_to_string(s : PhysicsemeddyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_eddy_graphn_set(s : PhysicsemeddyGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_eddy_graphn_sum(s : PhysicsemeddyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_graphn_sum(s : PhysicsemeddyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_graphn_mean(s : PhysicsemeddyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_graphn_mean(s : PhysicsemeddyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_graphn_scale(s : PhysicsemeddyGraphN, f : Double) -> PhysicsemeddyGraphN {
   let result = physics_em_eddy_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_eddy_graphn_fill(s : PhysicsemeddyGraphN, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_eddy_graphn_min(s : PhysicsemeddyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_graphn_min(s : PhysicsemeddyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_graphn_max(s : PhysicsemeddyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_graphn_max(s : PhysicsemeddyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_graphn_to_string(s : PhysicsemeddyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_eddy_node_set(s : PhysicsemeddyNode, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_eddy_node_sum(s : PhysicsemeddyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_node_sum(s : PhysicsemeddyNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_node_mean(s : PhysicsemeddyNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_node_mean(s : PhysicsemeddyNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_node_scale(s : PhysicsemeddyNode, f : Double) -> PhysicsemeddyNode {
   let result = physics_em_eddy_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_eddy_node_fill(s : PhysicsemeddyNode, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_eddy_node_min(s : PhysicsemeddyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_node_min(s : PhysicsemeddyNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_node_max(s : PhysicsemeddyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_node_max(s : PhysicsemeddyNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_node_to_string(s : PhysicsemeddyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_eddy_edge_set(s : PhysicsemeddyEdge, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_eddy_edge_sum(s : PhysicsemeddyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_edge_sum(s : PhysicsemeddyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_edge_mean(s : PhysicsemeddyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_edge_mean(s : PhysicsemeddyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_edge_scale(s : PhysicsemeddyEdge, f : Double) -> PhysicsemeddyEdge {
   let result = physics_em_eddy_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_eddy_edge_fill(s : PhysicsemeddyEdge, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_eddy_edge_min(s : PhysicsemeddyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_edge_min(s : PhysicsemeddyEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_edge_max(s : PhysicsemeddyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_edge_max(s : PhysicsemeddyEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_edge_to_string(s : PhysicsemeddyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_eddy_path_set(s : PhysicsemeddyPath, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_eddy_path_sum(s : PhysicsemeddyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_path_sum(s : PhysicsemeddyPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_path_mean(s : PhysicsemeddyPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_path_mean(s : PhysicsemeddyPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_path_scale(s : PhysicsemeddyPath, f : Double) -> PhysicsemeddyPath {
   let result = physics_em_eddy_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_eddy_path_fill(s : PhysicsemeddyPath, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_eddy_path_min(s : PhysicsemeddyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_path_min(s : PhysicsemeddyPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_path_max(s : PhysicsemeddyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_path_max(s : PhysicsemeddyPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_path_to_string(s : PhysicsemeddyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_eddy_cluster_set(s : PhysicsemeddyCluster, i : Int, v : Double
   result
 }
 
-pub fn physics_em_eddy_cluster_sum(s : PhysicsemeddyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_cluster_sum(s : PhysicsemeddyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_cluster_mean(s : PhysicsemeddyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_cluster_mean(s : PhysicsemeddyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_cluster_scale(s : PhysicsemeddyCluster, f : Double) -> PhysicsemeddyCluster {
   let result = physics_em_eddy_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_eddy_cluster_fill(s : PhysicsemeddyCluster, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_eddy_cluster_min(s : PhysicsemeddyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_cluster_min(s : PhysicsemeddyCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_cluster_max(s : PhysicsemeddyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_cluster_max(s : PhysicsemeddyCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_cluster_to_string(s : PhysicsemeddyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_eddy_model_set(s : PhysicsemeddyModel, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_eddy_model_sum(s : PhysicsemeddyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_model_sum(s : PhysicsemeddyModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_model_mean(s : PhysicsemeddyModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_model_mean(s : PhysicsemeddyModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_model_scale(s : PhysicsemeddyModel, f : Double) -> PhysicsemeddyModel {
   let result = physics_em_eddy_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_eddy_model_fill(s : PhysicsemeddyModel, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_eddy_model_min(s : PhysicsemeddyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_model_min(s : PhysicsemeddyModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_model_max(s : PhysicsemeddyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_model_max(s : PhysicsemeddyModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_model_to_string(s : PhysicsemeddyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_eddy_layer_set(s : PhysicsemeddyLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_eddy_layer_sum(s : PhysicsemeddyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_layer_sum(s : PhysicsemeddyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_layer_mean(s : PhysicsemeddyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_layer_mean(s : PhysicsemeddyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_layer_scale(s : PhysicsemeddyLayer, f : Double) -> PhysicsemeddyLayer {
   let result = physics_em_eddy_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_eddy_layer_fill(s : PhysicsemeddyLayer, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_eddy_layer_min(s : PhysicsemeddyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_layer_min(s : PhysicsemeddyLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_layer_max(s : PhysicsemeddyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_layer_max(s : PhysicsemeddyLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_layer_to_string(s : PhysicsemeddyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_eddy_buffer_set(s : PhysicsemeddyBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_eddy_buffer_sum(s : PhysicsemeddyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_buffer_sum(s : PhysicsemeddyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_buffer_mean(s : PhysicsemeddyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_buffer_mean(s : PhysicsemeddyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_buffer_scale(s : PhysicsemeddyBuffer, f : Double) -> PhysicsemeddyBuffer {
   let result = physics_em_eddy_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_eddy_buffer_fill(s : PhysicsemeddyBuffer, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_eddy_buffer_min(s : PhysicsemeddyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_buffer_min(s : PhysicsemeddyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_buffer_max(s : PhysicsemeddyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_buffer_max(s : PhysicsemeddyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_buffer_to_string(s : PhysicsemeddyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_eddy_cursor_set(s : PhysicsemeddyCursor, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_eddy_cursor_sum(s : PhysicsemeddyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_cursor_sum(s : PhysicsemeddyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_cursor_mean(s : PhysicsemeddyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_cursor_mean(s : PhysicsemeddyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_cursor_scale(s : PhysicsemeddyCursor, f : Double) -> PhysicsemeddyCursor {
   let result = physics_em_eddy_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_eddy_cursor_fill(s : PhysicsemeddyCursor, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_eddy_cursor_min(s : PhysicsemeddyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_cursor_min(s : PhysicsemeddyCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_cursor_max(s : PhysicsemeddyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_cursor_max(s : PhysicsemeddyCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_cursor_to_string(s : PhysicsemeddyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_eddy_view_set(s : PhysicsemeddyView, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_eddy_view_sum(s : PhysicsemeddyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_view_sum(s : PhysicsemeddyView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_view_mean(s : PhysicsemeddyView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_view_mean(s : PhysicsemeddyView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_view_scale(s : PhysicsemeddyView, f : Double) -> PhysicsemeddyView {
   let result = physics_em_eddy_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_eddy_view_fill(s : PhysicsemeddyView, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_eddy_view_min(s : PhysicsemeddyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_view_min(s : PhysicsemeddyView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_view_max(s : PhysicsemeddyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_view_max(s : PhysicsemeddyView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_view_to_string(s : PhysicsemeddyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_eddy_range_set(s : PhysicsemeddyRange, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_eddy_range_sum(s : PhysicsemeddyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_range_sum(s : PhysicsemeddyRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_range_mean(s : PhysicsemeddyRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_range_mean(s : PhysicsemeddyRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_range_scale(s : PhysicsemeddyRange, f : Double) -> PhysicsemeddyRange {
   let result = physics_em_eddy_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_eddy_range_fill(s : PhysicsemeddyRange, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_eddy_range_min(s : PhysicsemeddyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_range_min(s : PhysicsemeddyRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_range_max(s : PhysicsemeddyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_range_max(s : PhysicsemeddyRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_range_to_string(s : PhysicsemeddyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_eddy_slice_set(s : PhysicsemeddySlice, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_eddy_slice_sum(s : PhysicsemeddySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_eddy_slice_sum(s : PhysicsemeddySlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_eddy_slice_mean(s : PhysicsemeddySlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_eddy_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_eddy_slice_mean(s : PhysicsemeddySlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_eddy_slice_scale(s : PhysicsemeddySlice, f : Double) -> PhysicsemeddySlice {
   let result = physics_em_eddy_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_eddy_slice_fill(s : PhysicsemeddySlice, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_eddy_slice_min(s : PhysicsemeddySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_slice_min(s : PhysicsemeddySlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_eddy_slice_max(s : PhysicsemeddySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_eddy_slice_max(s : PhysicsemeddySlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_eddy_slice_to_string(s : PhysicsemeddySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

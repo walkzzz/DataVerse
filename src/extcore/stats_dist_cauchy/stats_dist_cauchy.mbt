@@ -88,11 +88,7 @@ pub fn stats_dist_cauchy_make_series(vals : Array[Double], name : String) -> Sta
 
 pub fn stats_dist_cauchy_series_len(s : StatsdistcauchySeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_cauchy_series_sum(s : StatsdistcauchySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_cauchy_series_sum(s : StatsdistcauchySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_cauchy_series_mean(s : StatsdistcauchySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_cauchy_frame_set(s : StatsdistcauchyFrame, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_cauchy_frame_sum(s : StatsdistcauchyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_frame_sum(s : StatsdistcauchyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_frame_mean(s : StatsdistcauchyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_frame_mean(s : StatsdistcauchyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_frame_scale(s : StatsdistcauchyFrame, f : Double) -> StatsdistcauchyFrame {
   let result = stats_dist_cauchy_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_cauchy_frame_fill(s : StatsdistcauchyFrame, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_cauchy_frame_min(s : StatsdistcauchyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_frame_min(s : StatsdistcauchyFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_frame_max(s : StatsdistcauchyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_frame_max(s : StatsdistcauchyFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_frame_to_string(s : StatsdistcauchyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_cauchy_table_set(s : StatsdistcauchyTable, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_cauchy_table_sum(s : StatsdistcauchyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_table_sum(s : StatsdistcauchyTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_table_mean(s : StatsdistcauchyTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_table_mean(s : StatsdistcauchyTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_table_scale(s : StatsdistcauchyTable, f : Double) -> StatsdistcauchyTable {
   let result = stats_dist_cauchy_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_cauchy_table_fill(s : StatsdistcauchyTable, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_cauchy_table_min(s : StatsdistcauchyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_table_min(s : StatsdistcauchyTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_table_max(s : StatsdistcauchyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_table_max(s : StatsdistcauchyTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_table_to_string(s : StatsdistcauchyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_cauchy_graphn_set(s : StatsdistcauchyGraphN, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_cauchy_graphn_sum(s : StatsdistcauchyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_graphn_sum(s : StatsdistcauchyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_graphn_mean(s : StatsdistcauchyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_graphn_mean(s : StatsdistcauchyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_graphn_scale(s : StatsdistcauchyGraphN, f : Double) -> StatsdistcauchyGraphN {
   let result = stats_dist_cauchy_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_cauchy_graphn_fill(s : StatsdistcauchyGraphN, v : Double) -> S
   result
 }
 
-pub fn stats_dist_cauchy_graphn_min(s : StatsdistcauchyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_graphn_min(s : StatsdistcauchyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_graphn_max(s : StatsdistcauchyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_graphn_max(s : StatsdistcauchyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_graphn_to_string(s : StatsdistcauchyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_cauchy_node_set(s : StatsdistcauchyNode, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_cauchy_node_sum(s : StatsdistcauchyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_node_sum(s : StatsdistcauchyNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_node_mean(s : StatsdistcauchyNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_node_mean(s : StatsdistcauchyNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_node_scale(s : StatsdistcauchyNode, f : Double) -> StatsdistcauchyNode {
   let result = stats_dist_cauchy_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_cauchy_node_fill(s : StatsdistcauchyNode, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_cauchy_node_min(s : StatsdistcauchyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_node_min(s : StatsdistcauchyNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_node_max(s : StatsdistcauchyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_node_max(s : StatsdistcauchyNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_node_to_string(s : StatsdistcauchyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_cauchy_edge_set(s : StatsdistcauchyEdge, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_cauchy_edge_sum(s : StatsdistcauchyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_edge_sum(s : StatsdistcauchyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_edge_mean(s : StatsdistcauchyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_edge_mean(s : StatsdistcauchyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_edge_scale(s : StatsdistcauchyEdge, f : Double) -> StatsdistcauchyEdge {
   let result = stats_dist_cauchy_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_cauchy_edge_fill(s : StatsdistcauchyEdge, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_cauchy_edge_min(s : StatsdistcauchyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_edge_min(s : StatsdistcauchyEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_edge_max(s : StatsdistcauchyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_edge_max(s : StatsdistcauchyEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_edge_to_string(s : StatsdistcauchyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_cauchy_path_set(s : StatsdistcauchyPath, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_cauchy_path_sum(s : StatsdistcauchyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_path_sum(s : StatsdistcauchyPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_path_mean(s : StatsdistcauchyPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_path_mean(s : StatsdistcauchyPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_path_scale(s : StatsdistcauchyPath, f : Double) -> StatsdistcauchyPath {
   let result = stats_dist_cauchy_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_cauchy_path_fill(s : StatsdistcauchyPath, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_cauchy_path_min(s : StatsdistcauchyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_path_min(s : StatsdistcauchyPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_path_max(s : StatsdistcauchyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_path_max(s : StatsdistcauchyPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_path_to_string(s : StatsdistcauchyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_cauchy_cluster_set(s : StatsdistcauchyCluster, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_cauchy_cluster_sum(s : StatsdistcauchyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_cluster_sum(s : StatsdistcauchyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_cluster_mean(s : StatsdistcauchyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_cluster_mean(s : StatsdistcauchyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_cluster_scale(s : StatsdistcauchyCluster, f : Double) -> StatsdistcauchyCluster {
   let result = stats_dist_cauchy_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_cauchy_cluster_fill(s : StatsdistcauchyCluster, v : Double) ->
   result
 }
 
-pub fn stats_dist_cauchy_cluster_min(s : StatsdistcauchyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_cluster_min(s : StatsdistcauchyCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_cluster_max(s : StatsdistcauchyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_cluster_max(s : StatsdistcauchyCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_cluster_to_string(s : StatsdistcauchyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_cauchy_model_set(s : StatsdistcauchyModel, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_cauchy_model_sum(s : StatsdistcauchyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_model_sum(s : StatsdistcauchyModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_model_mean(s : StatsdistcauchyModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_model_mean(s : StatsdistcauchyModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_model_scale(s : StatsdistcauchyModel, f : Double) -> StatsdistcauchyModel {
   let result = stats_dist_cauchy_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_cauchy_model_fill(s : StatsdistcauchyModel, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_cauchy_model_min(s : StatsdistcauchyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_model_min(s : StatsdistcauchyModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_model_max(s : StatsdistcauchyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_model_max(s : StatsdistcauchyModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_model_to_string(s : StatsdistcauchyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_cauchy_layer_set(s : StatsdistcauchyLayer, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_cauchy_layer_sum(s : StatsdistcauchyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_layer_sum(s : StatsdistcauchyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_layer_mean(s : StatsdistcauchyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_layer_mean(s : StatsdistcauchyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_layer_scale(s : StatsdistcauchyLayer, f : Double) -> StatsdistcauchyLayer {
   let result = stats_dist_cauchy_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_cauchy_layer_fill(s : StatsdistcauchyLayer, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_cauchy_layer_min(s : StatsdistcauchyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_layer_min(s : StatsdistcauchyLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_layer_max(s : StatsdistcauchyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_layer_max(s : StatsdistcauchyLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_layer_to_string(s : StatsdistcauchyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_cauchy_buffer_set(s : StatsdistcauchyBuffer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_cauchy_buffer_sum(s : StatsdistcauchyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_buffer_sum(s : StatsdistcauchyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_buffer_mean(s : StatsdistcauchyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_buffer_mean(s : StatsdistcauchyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_buffer_scale(s : StatsdistcauchyBuffer, f : Double) -> StatsdistcauchyBuffer {
   let result = stats_dist_cauchy_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_cauchy_buffer_fill(s : StatsdistcauchyBuffer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_cauchy_buffer_min(s : StatsdistcauchyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_buffer_min(s : StatsdistcauchyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_buffer_max(s : StatsdistcauchyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_buffer_max(s : StatsdistcauchyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_buffer_to_string(s : StatsdistcauchyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_cauchy_cursor_set(s : StatsdistcauchyCursor, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_cauchy_cursor_sum(s : StatsdistcauchyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_cursor_sum(s : StatsdistcauchyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_cursor_mean(s : StatsdistcauchyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_cursor_mean(s : StatsdistcauchyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_cursor_scale(s : StatsdistcauchyCursor, f : Double) -> StatsdistcauchyCursor {
   let result = stats_dist_cauchy_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_cauchy_cursor_fill(s : StatsdistcauchyCursor, v : Double) -> S
   result
 }
 
-pub fn stats_dist_cauchy_cursor_min(s : StatsdistcauchyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_cursor_min(s : StatsdistcauchyCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_cursor_max(s : StatsdistcauchyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_cursor_max(s : StatsdistcauchyCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_cursor_to_string(s : StatsdistcauchyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_cauchy_view_set(s : StatsdistcauchyView, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_cauchy_view_sum(s : StatsdistcauchyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_view_sum(s : StatsdistcauchyView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_view_mean(s : StatsdistcauchyView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_view_mean(s : StatsdistcauchyView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_view_scale(s : StatsdistcauchyView, f : Double) -> StatsdistcauchyView {
   let result = stats_dist_cauchy_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_cauchy_view_fill(s : StatsdistcauchyView, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_cauchy_view_min(s : StatsdistcauchyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_view_min(s : StatsdistcauchyView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_view_max(s : StatsdistcauchyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_view_max(s : StatsdistcauchyView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_view_to_string(s : StatsdistcauchyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_cauchy_range_set(s : StatsdistcauchyRange, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_cauchy_range_sum(s : StatsdistcauchyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_range_sum(s : StatsdistcauchyRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_range_mean(s : StatsdistcauchyRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_range_mean(s : StatsdistcauchyRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_range_scale(s : StatsdistcauchyRange, f : Double) -> StatsdistcauchyRange {
   let result = stats_dist_cauchy_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_cauchy_range_fill(s : StatsdistcauchyRange, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_cauchy_range_min(s : StatsdistcauchyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_range_min(s : StatsdistcauchyRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_range_max(s : StatsdistcauchyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_range_max(s : StatsdistcauchyRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_range_to_string(s : StatsdistcauchyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_cauchy_slice_set(s : StatsdistcauchySlice, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_cauchy_slice_sum(s : StatsdistcauchySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_cauchy_slice_sum(s : StatsdistcauchySlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_cauchy_slice_mean(s : StatsdistcauchySlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_cauchy_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_cauchy_slice_mean(s : StatsdistcauchySlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_cauchy_slice_scale(s : StatsdistcauchySlice, f : Double) -> StatsdistcauchySlice {
   let result = stats_dist_cauchy_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_cauchy_slice_fill(s : StatsdistcauchySlice, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_cauchy_slice_min(s : StatsdistcauchySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_slice_min(s : StatsdistcauchySlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_cauchy_slice_max(s : StatsdistcauchySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_cauchy_slice_max(s : StatsdistcauchySlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_cauchy_slice_to_string(s : StatsdistcauchySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

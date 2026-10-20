@@ -88,11 +88,7 @@ pub fn nlp_pos_tn_make_series(vals : Array[Double], name : String) -> NlppostnSe
 
 pub fn nlp_pos_tn_series_len(s : NlppostnSeries) -> Int { s.vals.length() }
 
-pub fn nlp_pos_tn_series_sum(s : NlppostnSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_pos_tn_series_sum(s : NlppostnSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_pos_tn_series_mean(s : NlppostnSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_pos_tn_frame_set(s : NlppostnFrame, i : Int, v : Double) -> NlppostnF
   result
 }
 
-pub fn nlp_pos_tn_frame_sum(s : NlppostnFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_frame_sum(s : NlppostnFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_frame_mean(s : NlppostnFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_frame_mean(s : NlppostnFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_frame_scale(s : NlppostnFrame, f : Double) -> NlppostnFrame {
   let result = nlp_pos_tn_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_pos_tn_frame_fill(s : NlppostnFrame, v : Double) -> NlppostnFrame {
   result
 }
 
-pub fn nlp_pos_tn_frame_min(s : NlppostnFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_frame_min(s : NlppostnFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_frame_max(s : NlppostnFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_frame_max(s : NlppostnFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_frame_to_string(s : NlppostnFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_pos_tn_table_set(s : NlppostnTable, i : Int, v : Double) -> NlppostnT
   result
 }
 
-pub fn nlp_pos_tn_table_sum(s : NlppostnTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_table_sum(s : NlppostnTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_table_mean(s : NlppostnTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_table_mean(s : NlppostnTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_table_scale(s : NlppostnTable, f : Double) -> NlppostnTable {
   let result = nlp_pos_tn_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_pos_tn_table_fill(s : NlppostnTable, v : Double) -> NlppostnTable {
   result
 }
 
-pub fn nlp_pos_tn_table_min(s : NlppostnTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_table_min(s : NlppostnTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_table_max(s : NlppostnTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_table_max(s : NlppostnTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_table_to_string(s : NlppostnTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_pos_tn_graphn_set(s : NlppostnGraphN, i : Int, v : Double) -> Nlppost
   result
 }
 
-pub fn nlp_pos_tn_graphn_sum(s : NlppostnGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_graphn_sum(s : NlppostnGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_graphn_mean(s : NlppostnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_graphn_mean(s : NlppostnGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_graphn_scale(s : NlppostnGraphN, f : Double) -> NlppostnGraphN {
   let result = nlp_pos_tn_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_pos_tn_graphn_fill(s : NlppostnGraphN, v : Double) -> NlppostnGraphN 
   result
 }
 
-pub fn nlp_pos_tn_graphn_min(s : NlppostnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_graphn_min(s : NlppostnGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_graphn_max(s : NlppostnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_graphn_max(s : NlppostnGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_graphn_to_string(s : NlppostnGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_pos_tn_node_set(s : NlppostnNode, i : Int, v : Double) -> NlppostnNod
   result
 }
 
-pub fn nlp_pos_tn_node_sum(s : NlppostnNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_node_sum(s : NlppostnNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_node_mean(s : NlppostnNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_node_mean(s : NlppostnNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_node_scale(s : NlppostnNode, f : Double) -> NlppostnNode {
   let result = nlp_pos_tn_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_pos_tn_node_fill(s : NlppostnNode, v : Double) -> NlppostnNode {
   result
 }
 
-pub fn nlp_pos_tn_node_min(s : NlppostnNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_node_min(s : NlppostnNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_node_max(s : NlppostnNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_node_max(s : NlppostnNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_node_to_string(s : NlppostnNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_pos_tn_edge_set(s : NlppostnEdge, i : Int, v : Double) -> NlppostnEdg
   result
 }
 
-pub fn nlp_pos_tn_edge_sum(s : NlppostnEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_edge_sum(s : NlppostnEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_edge_mean(s : NlppostnEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_edge_mean(s : NlppostnEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_edge_scale(s : NlppostnEdge, f : Double) -> NlppostnEdge {
   let result = nlp_pos_tn_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_pos_tn_edge_fill(s : NlppostnEdge, v : Double) -> NlppostnEdge {
   result
 }
 
-pub fn nlp_pos_tn_edge_min(s : NlppostnEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_edge_min(s : NlppostnEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_edge_max(s : NlppostnEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_edge_max(s : NlppostnEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_edge_to_string(s : NlppostnEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_pos_tn_path_set(s : NlppostnPath, i : Int, v : Double) -> NlppostnPat
   result
 }
 
-pub fn nlp_pos_tn_path_sum(s : NlppostnPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_path_sum(s : NlppostnPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_path_mean(s : NlppostnPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_path_mean(s : NlppostnPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_path_scale(s : NlppostnPath, f : Double) -> NlppostnPath {
   let result = nlp_pos_tn_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_pos_tn_path_fill(s : NlppostnPath, v : Double) -> NlppostnPath {
   result
 }
 
-pub fn nlp_pos_tn_path_min(s : NlppostnPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_path_min(s : NlppostnPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_path_max(s : NlppostnPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_path_max(s : NlppostnPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_path_to_string(s : NlppostnPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_pos_tn_cluster_set(s : NlppostnCluster, i : Int, v : Double) -> Nlppo
   result
 }
 
-pub fn nlp_pos_tn_cluster_sum(s : NlppostnCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_cluster_sum(s : NlppostnCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_cluster_mean(s : NlppostnCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_cluster_mean(s : NlppostnCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_cluster_scale(s : NlppostnCluster, f : Double) -> NlppostnCluster {
   let result = nlp_pos_tn_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_pos_tn_cluster_fill(s : NlppostnCluster, v : Double) -> NlppostnClust
   result
 }
 
-pub fn nlp_pos_tn_cluster_min(s : NlppostnCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_cluster_min(s : NlppostnCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_cluster_max(s : NlppostnCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_cluster_max(s : NlppostnCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_cluster_to_string(s : NlppostnCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_pos_tn_model_set(s : NlppostnModel, i : Int, v : Double) -> NlppostnM
   result
 }
 
-pub fn nlp_pos_tn_model_sum(s : NlppostnModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_model_sum(s : NlppostnModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_model_mean(s : NlppostnModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_model_mean(s : NlppostnModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_model_scale(s : NlppostnModel, f : Double) -> NlppostnModel {
   let result = nlp_pos_tn_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_pos_tn_model_fill(s : NlppostnModel, v : Double) -> NlppostnModel {
   result
 }
 
-pub fn nlp_pos_tn_model_min(s : NlppostnModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_model_min(s : NlppostnModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_model_max(s : NlppostnModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_model_max(s : NlppostnModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_model_to_string(s : NlppostnModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_pos_tn_layer_set(s : NlppostnLayer, i : Int, v : Double) -> NlppostnL
   result
 }
 
-pub fn nlp_pos_tn_layer_sum(s : NlppostnLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_layer_sum(s : NlppostnLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_layer_mean(s : NlppostnLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_layer_mean(s : NlppostnLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_layer_scale(s : NlppostnLayer, f : Double) -> NlppostnLayer {
   let result = nlp_pos_tn_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_pos_tn_layer_fill(s : NlppostnLayer, v : Double) -> NlppostnLayer {
   result
 }
 
-pub fn nlp_pos_tn_layer_min(s : NlppostnLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_layer_min(s : NlppostnLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_layer_max(s : NlppostnLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_layer_max(s : NlppostnLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_layer_to_string(s : NlppostnLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_pos_tn_buffer_set(s : NlppostnBuffer, i : Int, v : Double) -> Nlppost
   result
 }
 
-pub fn nlp_pos_tn_buffer_sum(s : NlppostnBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_buffer_sum(s : NlppostnBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_buffer_mean(s : NlppostnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_buffer_mean(s : NlppostnBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_buffer_scale(s : NlppostnBuffer, f : Double) -> NlppostnBuffer {
   let result = nlp_pos_tn_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_pos_tn_buffer_fill(s : NlppostnBuffer, v : Double) -> NlppostnBuffer 
   result
 }
 
-pub fn nlp_pos_tn_buffer_min(s : NlppostnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_buffer_min(s : NlppostnBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_buffer_max(s : NlppostnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_buffer_max(s : NlppostnBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_buffer_to_string(s : NlppostnBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_pos_tn_cursor_set(s : NlppostnCursor, i : Int, v : Double) -> Nlppost
   result
 }
 
-pub fn nlp_pos_tn_cursor_sum(s : NlppostnCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_cursor_sum(s : NlppostnCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_cursor_mean(s : NlppostnCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_cursor_mean(s : NlppostnCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_cursor_scale(s : NlppostnCursor, f : Double) -> NlppostnCursor {
   let result = nlp_pos_tn_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_pos_tn_cursor_fill(s : NlppostnCursor, v : Double) -> NlppostnCursor 
   result
 }
 
-pub fn nlp_pos_tn_cursor_min(s : NlppostnCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_cursor_min(s : NlppostnCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_cursor_max(s : NlppostnCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_cursor_max(s : NlppostnCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_cursor_to_string(s : NlppostnCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_pos_tn_view_set(s : NlppostnView, i : Int, v : Double) -> NlppostnVie
   result
 }
 
-pub fn nlp_pos_tn_view_sum(s : NlppostnView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_view_sum(s : NlppostnView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_view_mean(s : NlppostnView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_view_mean(s : NlppostnView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_view_scale(s : NlppostnView, f : Double) -> NlppostnView {
   let result = nlp_pos_tn_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_pos_tn_view_fill(s : NlppostnView, v : Double) -> NlppostnView {
   result
 }
 
-pub fn nlp_pos_tn_view_min(s : NlppostnView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_view_min(s : NlppostnView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_view_max(s : NlppostnView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_view_max(s : NlppostnView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_view_to_string(s : NlppostnView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_pos_tn_range_set(s : NlppostnRange, i : Int, v : Double) -> NlppostnR
   result
 }
 
-pub fn nlp_pos_tn_range_sum(s : NlppostnRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_range_sum(s : NlppostnRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_range_mean(s : NlppostnRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_range_mean(s : NlppostnRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_range_scale(s : NlppostnRange, f : Double) -> NlppostnRange {
   let result = nlp_pos_tn_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_pos_tn_range_fill(s : NlppostnRange, v : Double) -> NlppostnRange {
   result
 }
 
-pub fn nlp_pos_tn_range_min(s : NlppostnRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_range_min(s : NlppostnRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_range_max(s : NlppostnRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_range_max(s : NlppostnRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_range_to_string(s : NlppostnRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_pos_tn_slice_set(s : NlppostnSlice, i : Int, v : Double) -> NlppostnS
   result
 }
 
-pub fn nlp_pos_tn_slice_sum(s : NlppostnSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_pos_tn_slice_sum(s : NlppostnSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_pos_tn_slice_mean(s : NlppostnSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_pos_tn_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_pos_tn_slice_mean(s : NlppostnSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_pos_tn_slice_scale(s : NlppostnSlice, f : Double) -> NlppostnSlice {
   let result = nlp_pos_tn_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_pos_tn_slice_fill(s : NlppostnSlice, v : Double) -> NlppostnSlice {
   result
 }
 
-pub fn nlp_pos_tn_slice_min(s : NlppostnSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_slice_min(s : NlppostnSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_pos_tn_slice_max(s : NlppostnSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_pos_tn_slice_max(s : NlppostnSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_pos_tn_slice_to_string(s : NlppostnSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

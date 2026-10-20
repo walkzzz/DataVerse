@@ -88,11 +88,7 @@ pub fn nlp_embed_elmo_make_series(vals : Array[Double], name : String) -> Nlpemb
 
 pub fn nlp_embed_elmo_series_len(s : NlpembedelmoSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_elmo_series_sum(s : NlpembedelmoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_elmo_series_sum(s : NlpembedelmoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_elmo_series_mean(s : NlpembedelmoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_elmo_frame_set(s : NlpembedelmoFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_elmo_frame_sum(s : NlpembedelmoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_frame_sum(s : NlpembedelmoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_frame_mean(s : NlpembedelmoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_frame_mean(s : NlpembedelmoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_frame_scale(s : NlpembedelmoFrame, f : Double) -> NlpembedelmoFrame {
   let result = nlp_embed_elmo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_elmo_frame_fill(s : NlpembedelmoFrame, v : Double) -> Nlpembede
   result
 }
 
-pub fn nlp_embed_elmo_frame_min(s : NlpembedelmoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_frame_min(s : NlpembedelmoFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_frame_max(s : NlpembedelmoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_frame_max(s : NlpembedelmoFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_frame_to_string(s : NlpembedelmoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_elmo_table_set(s : NlpembedelmoTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_elmo_table_sum(s : NlpembedelmoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_table_sum(s : NlpembedelmoTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_table_mean(s : NlpembedelmoTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_table_mean(s : NlpembedelmoTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_table_scale(s : NlpembedelmoTable, f : Double) -> NlpembedelmoTable {
   let result = nlp_embed_elmo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_elmo_table_fill(s : NlpembedelmoTable, v : Double) -> Nlpembede
   result
 }
 
-pub fn nlp_embed_elmo_table_min(s : NlpembedelmoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_table_min(s : NlpembedelmoTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_table_max(s : NlpembedelmoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_table_max(s : NlpembedelmoTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_table_to_string(s : NlpembedelmoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_elmo_graphn_set(s : NlpembedelmoGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_elmo_graphn_sum(s : NlpembedelmoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_graphn_sum(s : NlpembedelmoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_graphn_mean(s : NlpembedelmoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_graphn_mean(s : NlpembedelmoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_graphn_scale(s : NlpembedelmoGraphN, f : Double) -> NlpembedelmoGraphN {
   let result = nlp_embed_elmo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_elmo_graphn_fill(s : NlpembedelmoGraphN, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_elmo_graphn_min(s : NlpembedelmoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_graphn_min(s : NlpembedelmoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_graphn_max(s : NlpembedelmoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_graphn_max(s : NlpembedelmoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_graphn_to_string(s : NlpembedelmoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_elmo_node_set(s : NlpembedelmoNode, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_elmo_node_sum(s : NlpembedelmoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_node_sum(s : NlpembedelmoNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_node_mean(s : NlpembedelmoNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_node_mean(s : NlpembedelmoNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_node_scale(s : NlpembedelmoNode, f : Double) -> NlpembedelmoNode {
   let result = nlp_embed_elmo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_elmo_node_fill(s : NlpembedelmoNode, v : Double) -> Nlpembedelm
   result
 }
 
-pub fn nlp_embed_elmo_node_min(s : NlpembedelmoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_node_min(s : NlpembedelmoNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_node_max(s : NlpembedelmoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_node_max(s : NlpembedelmoNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_node_to_string(s : NlpembedelmoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_elmo_edge_set(s : NlpembedelmoEdge, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_elmo_edge_sum(s : NlpembedelmoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_edge_sum(s : NlpembedelmoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_edge_mean(s : NlpembedelmoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_edge_mean(s : NlpembedelmoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_edge_scale(s : NlpembedelmoEdge, f : Double) -> NlpembedelmoEdge {
   let result = nlp_embed_elmo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_elmo_edge_fill(s : NlpembedelmoEdge, v : Double) -> Nlpembedelm
   result
 }
 
-pub fn nlp_embed_elmo_edge_min(s : NlpembedelmoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_edge_min(s : NlpembedelmoEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_edge_max(s : NlpembedelmoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_edge_max(s : NlpembedelmoEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_edge_to_string(s : NlpembedelmoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_elmo_path_set(s : NlpembedelmoPath, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_elmo_path_sum(s : NlpembedelmoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_path_sum(s : NlpembedelmoPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_path_mean(s : NlpembedelmoPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_path_mean(s : NlpembedelmoPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_path_scale(s : NlpembedelmoPath, f : Double) -> NlpembedelmoPath {
   let result = nlp_embed_elmo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_elmo_path_fill(s : NlpembedelmoPath, v : Double) -> Nlpembedelm
   result
 }
 
-pub fn nlp_embed_elmo_path_min(s : NlpembedelmoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_path_min(s : NlpembedelmoPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_path_max(s : NlpembedelmoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_path_max(s : NlpembedelmoPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_path_to_string(s : NlpembedelmoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_elmo_cluster_set(s : NlpembedelmoCluster, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_embed_elmo_cluster_sum(s : NlpembedelmoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_cluster_sum(s : NlpembedelmoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_cluster_mean(s : NlpembedelmoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_cluster_mean(s : NlpembedelmoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_cluster_scale(s : NlpembedelmoCluster, f : Double) -> NlpembedelmoCluster {
   let result = nlp_embed_elmo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_elmo_cluster_fill(s : NlpembedelmoCluster, v : Double) -> Nlpem
   result
 }
 
-pub fn nlp_embed_elmo_cluster_min(s : NlpembedelmoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_cluster_min(s : NlpembedelmoCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_cluster_max(s : NlpembedelmoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_cluster_max(s : NlpembedelmoCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_cluster_to_string(s : NlpembedelmoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_elmo_model_set(s : NlpembedelmoModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_elmo_model_sum(s : NlpembedelmoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_model_sum(s : NlpembedelmoModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_model_mean(s : NlpembedelmoModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_model_mean(s : NlpembedelmoModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_model_scale(s : NlpembedelmoModel, f : Double) -> NlpembedelmoModel {
   let result = nlp_embed_elmo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_elmo_model_fill(s : NlpembedelmoModel, v : Double) -> Nlpembede
   result
 }
 
-pub fn nlp_embed_elmo_model_min(s : NlpembedelmoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_model_min(s : NlpembedelmoModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_model_max(s : NlpembedelmoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_model_max(s : NlpembedelmoModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_model_to_string(s : NlpembedelmoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_elmo_layer_set(s : NlpembedelmoLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_elmo_layer_sum(s : NlpembedelmoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_layer_sum(s : NlpembedelmoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_layer_mean(s : NlpembedelmoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_layer_mean(s : NlpembedelmoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_layer_scale(s : NlpembedelmoLayer, f : Double) -> NlpembedelmoLayer {
   let result = nlp_embed_elmo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_elmo_layer_fill(s : NlpembedelmoLayer, v : Double) -> Nlpembede
   result
 }
 
-pub fn nlp_embed_elmo_layer_min(s : NlpembedelmoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_layer_min(s : NlpembedelmoLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_layer_max(s : NlpembedelmoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_layer_max(s : NlpembedelmoLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_layer_to_string(s : NlpembedelmoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_elmo_buffer_set(s : NlpembedelmoBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_elmo_buffer_sum(s : NlpembedelmoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_buffer_sum(s : NlpembedelmoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_buffer_mean(s : NlpembedelmoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_buffer_mean(s : NlpembedelmoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_buffer_scale(s : NlpembedelmoBuffer, f : Double) -> NlpembedelmoBuffer {
   let result = nlp_embed_elmo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_elmo_buffer_fill(s : NlpembedelmoBuffer, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_elmo_buffer_min(s : NlpembedelmoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_buffer_min(s : NlpembedelmoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_buffer_max(s : NlpembedelmoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_buffer_max(s : NlpembedelmoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_buffer_to_string(s : NlpembedelmoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_elmo_cursor_set(s : NlpembedelmoCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_embed_elmo_cursor_sum(s : NlpembedelmoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_cursor_sum(s : NlpembedelmoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_cursor_mean(s : NlpembedelmoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_cursor_mean(s : NlpembedelmoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_cursor_scale(s : NlpembedelmoCursor, f : Double) -> NlpembedelmoCursor {
   let result = nlp_embed_elmo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_elmo_cursor_fill(s : NlpembedelmoCursor, v : Double) -> Nlpembe
   result
 }
 
-pub fn nlp_embed_elmo_cursor_min(s : NlpembedelmoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_cursor_min(s : NlpembedelmoCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_cursor_max(s : NlpembedelmoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_cursor_max(s : NlpembedelmoCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_cursor_to_string(s : NlpembedelmoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_elmo_view_set(s : NlpembedelmoView, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_embed_elmo_view_sum(s : NlpembedelmoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_view_sum(s : NlpembedelmoView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_view_mean(s : NlpembedelmoView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_view_mean(s : NlpembedelmoView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_view_scale(s : NlpembedelmoView, f : Double) -> NlpembedelmoView {
   let result = nlp_embed_elmo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_elmo_view_fill(s : NlpembedelmoView, v : Double) -> Nlpembedelm
   result
 }
 
-pub fn nlp_embed_elmo_view_min(s : NlpembedelmoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_view_min(s : NlpembedelmoView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_view_max(s : NlpembedelmoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_view_max(s : NlpembedelmoView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_view_to_string(s : NlpembedelmoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_elmo_range_set(s : NlpembedelmoRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_elmo_range_sum(s : NlpembedelmoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_range_sum(s : NlpembedelmoRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_range_mean(s : NlpembedelmoRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_range_mean(s : NlpembedelmoRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_range_scale(s : NlpembedelmoRange, f : Double) -> NlpembedelmoRange {
   let result = nlp_embed_elmo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_elmo_range_fill(s : NlpembedelmoRange, v : Double) -> Nlpembede
   result
 }
 
-pub fn nlp_embed_elmo_range_min(s : NlpembedelmoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_range_min(s : NlpembedelmoRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_range_max(s : NlpembedelmoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_range_max(s : NlpembedelmoRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_range_to_string(s : NlpembedelmoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_elmo_slice_set(s : NlpembedelmoSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_embed_elmo_slice_sum(s : NlpembedelmoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_elmo_slice_sum(s : NlpembedelmoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_elmo_slice_mean(s : NlpembedelmoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_elmo_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_elmo_slice_mean(s : NlpembedelmoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_elmo_slice_scale(s : NlpembedelmoSlice, f : Double) -> NlpembedelmoSlice {
   let result = nlp_embed_elmo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_elmo_slice_fill(s : NlpembedelmoSlice, v : Double) -> Nlpembede
   result
 }
 
-pub fn nlp_embed_elmo_slice_min(s : NlpembedelmoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_slice_min(s : NlpembedelmoSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_elmo_slice_max(s : NlpembedelmoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_elmo_slice_max(s : NlpembedelmoSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_elmo_slice_to_string(s : NlpembedelmoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

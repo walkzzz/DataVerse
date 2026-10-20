@@ -88,11 +88,7 @@ pub fn bio_phylo_neighbor_make_series(vals : Array[Double], name : String) -> Bi
 
 pub fn bio_phylo_neighbor_series_len(s : BiophyloneighborSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_neighbor_series_sum(s : BiophyloneighborSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_neighbor_series_sum(s : BiophyloneighborSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_neighbor_series_mean(s : BiophyloneighborSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_neighbor_frame_set(s : BiophyloneighborFrame, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_neighbor_frame_sum(s : BiophyloneighborFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_frame_sum(s : BiophyloneighborFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_frame_mean(s : BiophyloneighborFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_frame_mean(s : BiophyloneighborFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_frame_scale(s : BiophyloneighborFrame, f : Double) -> BiophyloneighborFrame {
   let result = bio_phylo_neighbor_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_neighbor_frame_fill(s : BiophyloneighborFrame, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_neighbor_frame_min(s : BiophyloneighborFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_frame_min(s : BiophyloneighborFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_frame_max(s : BiophyloneighborFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_frame_max(s : BiophyloneighborFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_frame_to_string(s : BiophyloneighborFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_neighbor_table_set(s : BiophyloneighborTable, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_neighbor_table_sum(s : BiophyloneighborTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_table_sum(s : BiophyloneighborTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_table_mean(s : BiophyloneighborTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_table_mean(s : BiophyloneighborTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_table_scale(s : BiophyloneighborTable, f : Double) -> BiophyloneighborTable {
   let result = bio_phylo_neighbor_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_neighbor_table_fill(s : BiophyloneighborTable, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_neighbor_table_min(s : BiophyloneighborTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_table_min(s : BiophyloneighborTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_table_max(s : BiophyloneighborTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_table_max(s : BiophyloneighborTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_table_to_string(s : BiophyloneighborTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_neighbor_graphn_set(s : BiophyloneighborGraphN, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_neighbor_graphn_sum(s : BiophyloneighborGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_graphn_sum(s : BiophyloneighborGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_graphn_mean(s : BiophyloneighborGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_graphn_mean(s : BiophyloneighborGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_graphn_scale(s : BiophyloneighborGraphN, f : Double) -> BiophyloneighborGraphN {
   let result = bio_phylo_neighbor_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_neighbor_graphn_fill(s : BiophyloneighborGraphN, v : Double) ->
   result
 }
 
-pub fn bio_phylo_neighbor_graphn_min(s : BiophyloneighborGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_graphn_min(s : BiophyloneighborGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_graphn_max(s : BiophyloneighborGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_graphn_max(s : BiophyloneighborGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_graphn_to_string(s : BiophyloneighborGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_neighbor_node_set(s : BiophyloneighborNode, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_neighbor_node_sum(s : BiophyloneighborNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_node_sum(s : BiophyloneighborNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_node_mean(s : BiophyloneighborNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_node_mean(s : BiophyloneighborNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_node_scale(s : BiophyloneighborNode, f : Double) -> BiophyloneighborNode {
   let result = bio_phylo_neighbor_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_neighbor_node_fill(s : BiophyloneighborNode, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_neighbor_node_min(s : BiophyloneighborNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_node_min(s : BiophyloneighborNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_node_max(s : BiophyloneighborNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_node_max(s : BiophyloneighborNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_node_to_string(s : BiophyloneighborNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_neighbor_edge_set(s : BiophyloneighborEdge, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_neighbor_edge_sum(s : BiophyloneighborEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_edge_sum(s : BiophyloneighborEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_edge_mean(s : BiophyloneighborEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_edge_mean(s : BiophyloneighborEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_edge_scale(s : BiophyloneighborEdge, f : Double) -> BiophyloneighborEdge {
   let result = bio_phylo_neighbor_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_neighbor_edge_fill(s : BiophyloneighborEdge, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_neighbor_edge_min(s : BiophyloneighborEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_edge_min(s : BiophyloneighborEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_edge_max(s : BiophyloneighborEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_edge_max(s : BiophyloneighborEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_edge_to_string(s : BiophyloneighborEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_neighbor_path_set(s : BiophyloneighborPath, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_neighbor_path_sum(s : BiophyloneighborPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_path_sum(s : BiophyloneighborPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_path_mean(s : BiophyloneighborPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_path_mean(s : BiophyloneighborPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_path_scale(s : BiophyloneighborPath, f : Double) -> BiophyloneighborPath {
   let result = bio_phylo_neighbor_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_neighbor_path_fill(s : BiophyloneighborPath, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_neighbor_path_min(s : BiophyloneighborPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_path_min(s : BiophyloneighborPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_path_max(s : BiophyloneighborPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_path_max(s : BiophyloneighborPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_path_to_string(s : BiophyloneighborPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_neighbor_cluster_set(s : BiophyloneighborCluster, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_neighbor_cluster_sum(s : BiophyloneighborCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_cluster_sum(s : BiophyloneighborCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_cluster_mean(s : BiophyloneighborCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_cluster_mean(s : BiophyloneighborCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_cluster_scale(s : BiophyloneighborCluster, f : Double) -> BiophyloneighborCluster {
   let result = bio_phylo_neighbor_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_neighbor_cluster_fill(s : BiophyloneighborCluster, v : Double) 
   result
 }
 
-pub fn bio_phylo_neighbor_cluster_min(s : BiophyloneighborCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_cluster_min(s : BiophyloneighborCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_cluster_max(s : BiophyloneighborCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_cluster_max(s : BiophyloneighborCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_cluster_to_string(s : BiophyloneighborCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_neighbor_model_set(s : BiophyloneighborModel, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_neighbor_model_sum(s : BiophyloneighborModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_model_sum(s : BiophyloneighborModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_model_mean(s : BiophyloneighborModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_model_mean(s : BiophyloneighborModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_model_scale(s : BiophyloneighborModel, f : Double) -> BiophyloneighborModel {
   let result = bio_phylo_neighbor_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_neighbor_model_fill(s : BiophyloneighborModel, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_neighbor_model_min(s : BiophyloneighborModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_model_min(s : BiophyloneighborModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_model_max(s : BiophyloneighborModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_model_max(s : BiophyloneighborModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_model_to_string(s : BiophyloneighborModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_neighbor_layer_set(s : BiophyloneighborLayer, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_neighbor_layer_sum(s : BiophyloneighborLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_layer_sum(s : BiophyloneighborLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_layer_mean(s : BiophyloneighborLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_layer_mean(s : BiophyloneighborLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_layer_scale(s : BiophyloneighborLayer, f : Double) -> BiophyloneighborLayer {
   let result = bio_phylo_neighbor_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_neighbor_layer_fill(s : BiophyloneighborLayer, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_neighbor_layer_min(s : BiophyloneighborLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_layer_min(s : BiophyloneighborLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_layer_max(s : BiophyloneighborLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_layer_max(s : BiophyloneighborLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_layer_to_string(s : BiophyloneighborLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_neighbor_buffer_set(s : BiophyloneighborBuffer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_neighbor_buffer_sum(s : BiophyloneighborBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_buffer_sum(s : BiophyloneighborBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_buffer_mean(s : BiophyloneighborBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_buffer_mean(s : BiophyloneighborBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_buffer_scale(s : BiophyloneighborBuffer, f : Double) -> BiophyloneighborBuffer {
   let result = bio_phylo_neighbor_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_neighbor_buffer_fill(s : BiophyloneighborBuffer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_neighbor_buffer_min(s : BiophyloneighborBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_buffer_min(s : BiophyloneighborBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_buffer_max(s : BiophyloneighborBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_buffer_max(s : BiophyloneighborBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_buffer_to_string(s : BiophyloneighborBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_neighbor_cursor_set(s : BiophyloneighborCursor, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_neighbor_cursor_sum(s : BiophyloneighborCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_cursor_sum(s : BiophyloneighborCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_cursor_mean(s : BiophyloneighborCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_cursor_mean(s : BiophyloneighborCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_cursor_scale(s : BiophyloneighborCursor, f : Double) -> BiophyloneighborCursor {
   let result = bio_phylo_neighbor_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_neighbor_cursor_fill(s : BiophyloneighborCursor, v : Double) ->
   result
 }
 
-pub fn bio_phylo_neighbor_cursor_min(s : BiophyloneighborCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_cursor_min(s : BiophyloneighborCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_cursor_max(s : BiophyloneighborCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_cursor_max(s : BiophyloneighborCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_cursor_to_string(s : BiophyloneighborCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_neighbor_view_set(s : BiophyloneighborView, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_neighbor_view_sum(s : BiophyloneighborView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_view_sum(s : BiophyloneighborView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_view_mean(s : BiophyloneighborView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_view_mean(s : BiophyloneighborView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_view_scale(s : BiophyloneighborView, f : Double) -> BiophyloneighborView {
   let result = bio_phylo_neighbor_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_neighbor_view_fill(s : BiophyloneighborView, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_neighbor_view_min(s : BiophyloneighborView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_view_min(s : BiophyloneighborView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_view_max(s : BiophyloneighborView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_view_max(s : BiophyloneighborView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_view_to_string(s : BiophyloneighborView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_neighbor_range_set(s : BiophyloneighborRange, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_neighbor_range_sum(s : BiophyloneighborRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_range_sum(s : BiophyloneighborRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_range_mean(s : BiophyloneighborRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_range_mean(s : BiophyloneighborRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_range_scale(s : BiophyloneighborRange, f : Double) -> BiophyloneighborRange {
   let result = bio_phylo_neighbor_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_neighbor_range_fill(s : BiophyloneighborRange, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_neighbor_range_min(s : BiophyloneighborRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_range_min(s : BiophyloneighborRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_range_max(s : BiophyloneighborRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_range_max(s : BiophyloneighborRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_range_to_string(s : BiophyloneighborRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_neighbor_slice_set(s : BiophyloneighborSlice, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_neighbor_slice_sum(s : BiophyloneighborSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_neighbor_slice_sum(s : BiophyloneighborSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_neighbor_slice_mean(s : BiophyloneighborSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_neighbor_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_neighbor_slice_mean(s : BiophyloneighborSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_neighbor_slice_scale(s : BiophyloneighborSlice, f : Double) -> BiophyloneighborSlice {
   let result = bio_phylo_neighbor_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_neighbor_slice_fill(s : BiophyloneighborSlice, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_neighbor_slice_min(s : BiophyloneighborSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_slice_min(s : BiophyloneighborSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_neighbor_slice_max(s : BiophyloneighborSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_neighbor_slice_max(s : BiophyloneighborSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_neighbor_slice_to_string(s : BiophyloneighborSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

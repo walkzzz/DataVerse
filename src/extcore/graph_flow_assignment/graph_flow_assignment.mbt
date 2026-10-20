@@ -88,11 +88,7 @@ pub fn graph_flow_assignment_make_series(vals : Array[Double], name : String) ->
 
 pub fn graph_flow_assignment_series_len(s : GraphflowassignmentSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_assignment_series_sum(s : GraphflowassignmentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_assignment_series_sum(s : GraphflowassignmentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_assignment_series_mean(s : GraphflowassignmentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_assignment_frame_set(s : GraphflowassignmentFrame, i : Int, v 
   result
 }
 
-pub fn graph_flow_assignment_frame_sum(s : GraphflowassignmentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_frame_sum(s : GraphflowassignmentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_frame_mean(s : GraphflowassignmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_frame_mean(s : GraphflowassignmentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_frame_scale(s : GraphflowassignmentFrame, f : Double) -> GraphflowassignmentFrame {
   let result = graph_flow_assignment_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_assignment_frame_fill(s : GraphflowassignmentFrame, v : Double
   result
 }
 
-pub fn graph_flow_assignment_frame_min(s : GraphflowassignmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_frame_min(s : GraphflowassignmentFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_frame_max(s : GraphflowassignmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_frame_max(s : GraphflowassignmentFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_frame_to_string(s : GraphflowassignmentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_assignment_table_set(s : GraphflowassignmentTable, i : Int, v 
   result
 }
 
-pub fn graph_flow_assignment_table_sum(s : GraphflowassignmentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_table_sum(s : GraphflowassignmentTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_table_mean(s : GraphflowassignmentTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_table_mean(s : GraphflowassignmentTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_table_scale(s : GraphflowassignmentTable, f : Double) -> GraphflowassignmentTable {
   let result = graph_flow_assignment_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_assignment_table_fill(s : GraphflowassignmentTable, v : Double
   result
 }
 
-pub fn graph_flow_assignment_table_min(s : GraphflowassignmentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_table_min(s : GraphflowassignmentTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_table_max(s : GraphflowassignmentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_table_max(s : GraphflowassignmentTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_table_to_string(s : GraphflowassignmentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_assignment_graphn_set(s : GraphflowassignmentGraphN, i : Int, 
   result
 }
 
-pub fn graph_flow_assignment_graphn_sum(s : GraphflowassignmentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_graphn_sum(s : GraphflowassignmentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_graphn_mean(s : GraphflowassignmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_graphn_mean(s : GraphflowassignmentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_graphn_scale(s : GraphflowassignmentGraphN, f : Double) -> GraphflowassignmentGraphN {
   let result = graph_flow_assignment_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_assignment_graphn_fill(s : GraphflowassignmentGraphN, v : Doub
   result
 }
 
-pub fn graph_flow_assignment_graphn_min(s : GraphflowassignmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_graphn_min(s : GraphflowassignmentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_graphn_max(s : GraphflowassignmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_graphn_max(s : GraphflowassignmentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_graphn_to_string(s : GraphflowassignmentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_assignment_node_set(s : GraphflowassignmentNode, i : Int, v : 
   result
 }
 
-pub fn graph_flow_assignment_node_sum(s : GraphflowassignmentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_node_sum(s : GraphflowassignmentNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_node_mean(s : GraphflowassignmentNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_node_mean(s : GraphflowassignmentNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_node_scale(s : GraphflowassignmentNode, f : Double) -> GraphflowassignmentNode {
   let result = graph_flow_assignment_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_assignment_node_fill(s : GraphflowassignmentNode, v : Double) 
   result
 }
 
-pub fn graph_flow_assignment_node_min(s : GraphflowassignmentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_node_min(s : GraphflowassignmentNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_node_max(s : GraphflowassignmentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_node_max(s : GraphflowassignmentNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_node_to_string(s : GraphflowassignmentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_assignment_edge_set(s : GraphflowassignmentEdge, i : Int, v : 
   result
 }
 
-pub fn graph_flow_assignment_edge_sum(s : GraphflowassignmentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_edge_sum(s : GraphflowassignmentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_edge_mean(s : GraphflowassignmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_edge_mean(s : GraphflowassignmentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_edge_scale(s : GraphflowassignmentEdge, f : Double) -> GraphflowassignmentEdge {
   let result = graph_flow_assignment_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_assignment_edge_fill(s : GraphflowassignmentEdge, v : Double) 
   result
 }
 
-pub fn graph_flow_assignment_edge_min(s : GraphflowassignmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_edge_min(s : GraphflowassignmentEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_edge_max(s : GraphflowassignmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_edge_max(s : GraphflowassignmentEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_edge_to_string(s : GraphflowassignmentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_assignment_path_set(s : GraphflowassignmentPath, i : Int, v : 
   result
 }
 
-pub fn graph_flow_assignment_path_sum(s : GraphflowassignmentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_path_sum(s : GraphflowassignmentPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_path_mean(s : GraphflowassignmentPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_path_mean(s : GraphflowassignmentPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_path_scale(s : GraphflowassignmentPath, f : Double) -> GraphflowassignmentPath {
   let result = graph_flow_assignment_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_assignment_path_fill(s : GraphflowassignmentPath, v : Double) 
   result
 }
 
-pub fn graph_flow_assignment_path_min(s : GraphflowassignmentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_path_min(s : GraphflowassignmentPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_path_max(s : GraphflowassignmentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_path_max(s : GraphflowassignmentPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_path_to_string(s : GraphflowassignmentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_assignment_cluster_set(s : GraphflowassignmentCluster, i : Int
   result
 }
 
-pub fn graph_flow_assignment_cluster_sum(s : GraphflowassignmentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_cluster_sum(s : GraphflowassignmentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_cluster_mean(s : GraphflowassignmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_cluster_mean(s : GraphflowassignmentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_cluster_scale(s : GraphflowassignmentCluster, f : Double) -> GraphflowassignmentCluster {
   let result = graph_flow_assignment_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_assignment_cluster_fill(s : GraphflowassignmentCluster, v : Do
   result
 }
 
-pub fn graph_flow_assignment_cluster_min(s : GraphflowassignmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_cluster_min(s : GraphflowassignmentCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_cluster_max(s : GraphflowassignmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_cluster_max(s : GraphflowassignmentCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_cluster_to_string(s : GraphflowassignmentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_assignment_model_set(s : GraphflowassignmentModel, i : Int, v 
   result
 }
 
-pub fn graph_flow_assignment_model_sum(s : GraphflowassignmentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_model_sum(s : GraphflowassignmentModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_model_mean(s : GraphflowassignmentModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_model_mean(s : GraphflowassignmentModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_model_scale(s : GraphflowassignmentModel, f : Double) -> GraphflowassignmentModel {
   let result = graph_flow_assignment_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_assignment_model_fill(s : GraphflowassignmentModel, v : Double
   result
 }
 
-pub fn graph_flow_assignment_model_min(s : GraphflowassignmentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_model_min(s : GraphflowassignmentModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_model_max(s : GraphflowassignmentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_model_max(s : GraphflowassignmentModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_model_to_string(s : GraphflowassignmentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_assignment_layer_set(s : GraphflowassignmentLayer, i : Int, v 
   result
 }
 
-pub fn graph_flow_assignment_layer_sum(s : GraphflowassignmentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_layer_sum(s : GraphflowassignmentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_layer_mean(s : GraphflowassignmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_layer_mean(s : GraphflowassignmentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_layer_scale(s : GraphflowassignmentLayer, f : Double) -> GraphflowassignmentLayer {
   let result = graph_flow_assignment_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_assignment_layer_fill(s : GraphflowassignmentLayer, v : Double
   result
 }
 
-pub fn graph_flow_assignment_layer_min(s : GraphflowassignmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_layer_min(s : GraphflowassignmentLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_layer_max(s : GraphflowassignmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_layer_max(s : GraphflowassignmentLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_layer_to_string(s : GraphflowassignmentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_assignment_buffer_set(s : GraphflowassignmentBuffer, i : Int, 
   result
 }
 
-pub fn graph_flow_assignment_buffer_sum(s : GraphflowassignmentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_buffer_sum(s : GraphflowassignmentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_buffer_mean(s : GraphflowassignmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_buffer_mean(s : GraphflowassignmentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_buffer_scale(s : GraphflowassignmentBuffer, f : Double) -> GraphflowassignmentBuffer {
   let result = graph_flow_assignment_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_assignment_buffer_fill(s : GraphflowassignmentBuffer, v : Doub
   result
 }
 
-pub fn graph_flow_assignment_buffer_min(s : GraphflowassignmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_buffer_min(s : GraphflowassignmentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_buffer_max(s : GraphflowassignmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_buffer_max(s : GraphflowassignmentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_buffer_to_string(s : GraphflowassignmentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_assignment_cursor_set(s : GraphflowassignmentCursor, i : Int, 
   result
 }
 
-pub fn graph_flow_assignment_cursor_sum(s : GraphflowassignmentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_cursor_sum(s : GraphflowassignmentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_cursor_mean(s : GraphflowassignmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_cursor_mean(s : GraphflowassignmentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_cursor_scale(s : GraphflowassignmentCursor, f : Double) -> GraphflowassignmentCursor {
   let result = graph_flow_assignment_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_assignment_cursor_fill(s : GraphflowassignmentCursor, v : Doub
   result
 }
 
-pub fn graph_flow_assignment_cursor_min(s : GraphflowassignmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_cursor_min(s : GraphflowassignmentCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_cursor_max(s : GraphflowassignmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_cursor_max(s : GraphflowassignmentCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_cursor_to_string(s : GraphflowassignmentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_assignment_view_set(s : GraphflowassignmentView, i : Int, v : 
   result
 }
 
-pub fn graph_flow_assignment_view_sum(s : GraphflowassignmentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_view_sum(s : GraphflowassignmentView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_view_mean(s : GraphflowassignmentView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_view_mean(s : GraphflowassignmentView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_view_scale(s : GraphflowassignmentView, f : Double) -> GraphflowassignmentView {
   let result = graph_flow_assignment_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_assignment_view_fill(s : GraphflowassignmentView, v : Double) 
   result
 }
 
-pub fn graph_flow_assignment_view_min(s : GraphflowassignmentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_view_min(s : GraphflowassignmentView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_view_max(s : GraphflowassignmentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_view_max(s : GraphflowassignmentView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_view_to_string(s : GraphflowassignmentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_assignment_range_set(s : GraphflowassignmentRange, i : Int, v 
   result
 }
 
-pub fn graph_flow_assignment_range_sum(s : GraphflowassignmentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_range_sum(s : GraphflowassignmentRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_range_mean(s : GraphflowassignmentRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_range_mean(s : GraphflowassignmentRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_range_scale(s : GraphflowassignmentRange, f : Double) -> GraphflowassignmentRange {
   let result = graph_flow_assignment_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_assignment_range_fill(s : GraphflowassignmentRange, v : Double
   result
 }
 
-pub fn graph_flow_assignment_range_min(s : GraphflowassignmentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_range_min(s : GraphflowassignmentRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_range_max(s : GraphflowassignmentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_range_max(s : GraphflowassignmentRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_range_to_string(s : GraphflowassignmentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_assignment_slice_set(s : GraphflowassignmentSlice, i : Int, v 
   result
 }
 
-pub fn graph_flow_assignment_slice_sum(s : GraphflowassignmentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_assignment_slice_sum(s : GraphflowassignmentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_assignment_slice_mean(s : GraphflowassignmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_assignment_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_assignment_slice_mean(s : GraphflowassignmentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_assignment_slice_scale(s : GraphflowassignmentSlice, f : Double) -> GraphflowassignmentSlice {
   let result = graph_flow_assignment_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_assignment_slice_fill(s : GraphflowassignmentSlice, v : Double
   result
 }
 
-pub fn graph_flow_assignment_slice_min(s : GraphflowassignmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_slice_min(s : GraphflowassignmentSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_assignment_slice_max(s : GraphflowassignmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_assignment_slice_max(s : GraphflowassignmentSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_assignment_slice_to_string(s : GraphflowassignmentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

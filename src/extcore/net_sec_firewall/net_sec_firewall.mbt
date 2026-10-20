@@ -88,11 +88,7 @@ pub fn net_sec_firewall_make_series(vals : Array[Double], name : String) -> Nets
 
 pub fn net_sec_firewall_series_len(s : NetsecfirewallSeries) -> Int { s.vals.length() }
 
-pub fn net_sec_firewall_series_sum(s : NetsecfirewallSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_sec_firewall_series_sum(s : NetsecfirewallSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_sec_firewall_series_mean(s : NetsecfirewallSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_sec_firewall_frame_set(s : NetsecfirewallFrame, i : Int, v : Double) 
   result
 }
 
-pub fn net_sec_firewall_frame_sum(s : NetsecfirewallFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_frame_sum(s : NetsecfirewallFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_frame_mean(s : NetsecfirewallFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_frame_mean(s : NetsecfirewallFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_frame_scale(s : NetsecfirewallFrame, f : Double) -> NetsecfirewallFrame {
   let result = net_sec_firewall_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_sec_firewall_frame_fill(s : NetsecfirewallFrame, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_firewall_frame_min(s : NetsecfirewallFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_frame_min(s : NetsecfirewallFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_frame_max(s : NetsecfirewallFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_frame_max(s : NetsecfirewallFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_frame_to_string(s : NetsecfirewallFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_sec_firewall_table_set(s : NetsecfirewallTable, i : Int, v : Double) 
   result
 }
 
-pub fn net_sec_firewall_table_sum(s : NetsecfirewallTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_table_sum(s : NetsecfirewallTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_table_mean(s : NetsecfirewallTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_table_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_table_mean(s : NetsecfirewallTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_table_scale(s : NetsecfirewallTable, f : Double) -> NetsecfirewallTable {
   let result = net_sec_firewall_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_sec_firewall_table_fill(s : NetsecfirewallTable, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_firewall_table_min(s : NetsecfirewallTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_table_min(s : NetsecfirewallTable) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_table_max(s : NetsecfirewallTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_table_max(s : NetsecfirewallTable) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_table_to_string(s : NetsecfirewallTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_sec_firewall_graphn_set(s : NetsecfirewallGraphN, i : Int, v : Double
   result
 }
 
-pub fn net_sec_firewall_graphn_sum(s : NetsecfirewallGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_graphn_sum(s : NetsecfirewallGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_graphn_mean(s : NetsecfirewallGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_graphn_mean(s : NetsecfirewallGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_graphn_scale(s : NetsecfirewallGraphN, f : Double) -> NetsecfirewallGraphN {
   let result = net_sec_firewall_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_sec_firewall_graphn_fill(s : NetsecfirewallGraphN, v : Double) -> Net
   result
 }
 
-pub fn net_sec_firewall_graphn_min(s : NetsecfirewallGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_graphn_min(s : NetsecfirewallGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_graphn_max(s : NetsecfirewallGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_graphn_max(s : NetsecfirewallGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_graphn_to_string(s : NetsecfirewallGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_sec_firewall_node_set(s : NetsecfirewallNode, i : Int, v : Double) ->
   result
 }
 
-pub fn net_sec_firewall_node_sum(s : NetsecfirewallNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_node_sum(s : NetsecfirewallNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_node_mean(s : NetsecfirewallNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_node_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_node_mean(s : NetsecfirewallNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_node_scale(s : NetsecfirewallNode, f : Double) -> NetsecfirewallNode {
   let result = net_sec_firewall_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_sec_firewall_node_fill(s : NetsecfirewallNode, v : Double) -> Netsecf
   result
 }
 
-pub fn net_sec_firewall_node_min(s : NetsecfirewallNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_node_min(s : NetsecfirewallNode) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_node_max(s : NetsecfirewallNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_node_max(s : NetsecfirewallNode) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_node_to_string(s : NetsecfirewallNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_sec_firewall_edge_set(s : NetsecfirewallEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn net_sec_firewall_edge_sum(s : NetsecfirewallEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_edge_sum(s : NetsecfirewallEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_edge_mean(s : NetsecfirewallEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_edge_mean(s : NetsecfirewallEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_edge_scale(s : NetsecfirewallEdge, f : Double) -> NetsecfirewallEdge {
   let result = net_sec_firewall_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_sec_firewall_edge_fill(s : NetsecfirewallEdge, v : Double) -> Netsecf
   result
 }
 
-pub fn net_sec_firewall_edge_min(s : NetsecfirewallEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_edge_min(s : NetsecfirewallEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_edge_max(s : NetsecfirewallEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_edge_max(s : NetsecfirewallEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_edge_to_string(s : NetsecfirewallEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_sec_firewall_path_set(s : NetsecfirewallPath, i : Int, v : Double) ->
   result
 }
 
-pub fn net_sec_firewall_path_sum(s : NetsecfirewallPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_path_sum(s : NetsecfirewallPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_path_mean(s : NetsecfirewallPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_path_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_path_mean(s : NetsecfirewallPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_path_scale(s : NetsecfirewallPath, f : Double) -> NetsecfirewallPath {
   let result = net_sec_firewall_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_sec_firewall_path_fill(s : NetsecfirewallPath, v : Double) -> Netsecf
   result
 }
 
-pub fn net_sec_firewall_path_min(s : NetsecfirewallPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_path_min(s : NetsecfirewallPath) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_path_max(s : NetsecfirewallPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_path_max(s : NetsecfirewallPath) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_path_to_string(s : NetsecfirewallPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_sec_firewall_cluster_set(s : NetsecfirewallCluster, i : Int, v : Doub
   result
 }
 
-pub fn net_sec_firewall_cluster_sum(s : NetsecfirewallCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_cluster_sum(s : NetsecfirewallCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_cluster_mean(s : NetsecfirewallCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_cluster_mean(s : NetsecfirewallCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_cluster_scale(s : NetsecfirewallCluster, f : Double) -> NetsecfirewallCluster {
   let result = net_sec_firewall_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_sec_firewall_cluster_fill(s : NetsecfirewallCluster, v : Double) -> N
   result
 }
 
-pub fn net_sec_firewall_cluster_min(s : NetsecfirewallCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_cluster_min(s : NetsecfirewallCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_cluster_max(s : NetsecfirewallCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_cluster_max(s : NetsecfirewallCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_cluster_to_string(s : NetsecfirewallCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_sec_firewall_model_set(s : NetsecfirewallModel, i : Int, v : Double) 
   result
 }
 
-pub fn net_sec_firewall_model_sum(s : NetsecfirewallModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_model_sum(s : NetsecfirewallModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_model_mean(s : NetsecfirewallModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_model_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_model_mean(s : NetsecfirewallModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_model_scale(s : NetsecfirewallModel, f : Double) -> NetsecfirewallModel {
   let result = net_sec_firewall_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_sec_firewall_model_fill(s : NetsecfirewallModel, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_firewall_model_min(s : NetsecfirewallModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_model_min(s : NetsecfirewallModel) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_model_max(s : NetsecfirewallModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_model_max(s : NetsecfirewallModel) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_model_to_string(s : NetsecfirewallModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_sec_firewall_layer_set(s : NetsecfirewallLayer, i : Int, v : Double) 
   result
 }
 
-pub fn net_sec_firewall_layer_sum(s : NetsecfirewallLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_layer_sum(s : NetsecfirewallLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_layer_mean(s : NetsecfirewallLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_layer_mean(s : NetsecfirewallLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_layer_scale(s : NetsecfirewallLayer, f : Double) -> NetsecfirewallLayer {
   let result = net_sec_firewall_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_sec_firewall_layer_fill(s : NetsecfirewallLayer, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_firewall_layer_min(s : NetsecfirewallLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_layer_min(s : NetsecfirewallLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_layer_max(s : NetsecfirewallLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_layer_max(s : NetsecfirewallLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_layer_to_string(s : NetsecfirewallLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_sec_firewall_buffer_set(s : NetsecfirewallBuffer, i : Int, v : Double
   result
 }
 
-pub fn net_sec_firewall_buffer_sum(s : NetsecfirewallBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_buffer_sum(s : NetsecfirewallBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_buffer_mean(s : NetsecfirewallBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_buffer_mean(s : NetsecfirewallBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_buffer_scale(s : NetsecfirewallBuffer, f : Double) -> NetsecfirewallBuffer {
   let result = net_sec_firewall_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_sec_firewall_buffer_fill(s : NetsecfirewallBuffer, v : Double) -> Net
   result
 }
 
-pub fn net_sec_firewall_buffer_min(s : NetsecfirewallBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_buffer_min(s : NetsecfirewallBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_buffer_max(s : NetsecfirewallBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_buffer_max(s : NetsecfirewallBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_buffer_to_string(s : NetsecfirewallBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_sec_firewall_cursor_set(s : NetsecfirewallCursor, i : Int, v : Double
   result
 }
 
-pub fn net_sec_firewall_cursor_sum(s : NetsecfirewallCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_cursor_sum(s : NetsecfirewallCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_cursor_mean(s : NetsecfirewallCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_cursor_mean(s : NetsecfirewallCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_cursor_scale(s : NetsecfirewallCursor, f : Double) -> NetsecfirewallCursor {
   let result = net_sec_firewall_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_sec_firewall_cursor_fill(s : NetsecfirewallCursor, v : Double) -> Net
   result
 }
 
-pub fn net_sec_firewall_cursor_min(s : NetsecfirewallCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_cursor_min(s : NetsecfirewallCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_cursor_max(s : NetsecfirewallCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_cursor_max(s : NetsecfirewallCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_cursor_to_string(s : NetsecfirewallCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_sec_firewall_view_set(s : NetsecfirewallView, i : Int, v : Double) ->
   result
 }
 
-pub fn net_sec_firewall_view_sum(s : NetsecfirewallView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_view_sum(s : NetsecfirewallView) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_view_mean(s : NetsecfirewallView) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_view_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_view_mean(s : NetsecfirewallView) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_view_scale(s : NetsecfirewallView, f : Double) -> NetsecfirewallView {
   let result = net_sec_firewall_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_sec_firewall_view_fill(s : NetsecfirewallView, v : Double) -> Netsecf
   result
 }
 
-pub fn net_sec_firewall_view_min(s : NetsecfirewallView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_view_min(s : NetsecfirewallView) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_view_max(s : NetsecfirewallView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_view_max(s : NetsecfirewallView) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_view_to_string(s : NetsecfirewallView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_sec_firewall_range_set(s : NetsecfirewallRange, i : Int, v : Double) 
   result
 }
 
-pub fn net_sec_firewall_range_sum(s : NetsecfirewallRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_range_sum(s : NetsecfirewallRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_range_mean(s : NetsecfirewallRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_range_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_range_mean(s : NetsecfirewallRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_range_scale(s : NetsecfirewallRange, f : Double) -> NetsecfirewallRange {
   let result = net_sec_firewall_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_sec_firewall_range_fill(s : NetsecfirewallRange, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_firewall_range_min(s : NetsecfirewallRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_range_min(s : NetsecfirewallRange) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_range_max(s : NetsecfirewallRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_range_max(s : NetsecfirewallRange) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_range_to_string(s : NetsecfirewallRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_sec_firewall_slice_set(s : NetsecfirewallSlice, i : Int, v : Double) 
   result
 }
 
-pub fn net_sec_firewall_slice_sum(s : NetsecfirewallSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_sec_firewall_slice_sum(s : NetsecfirewallSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_sec_firewall_slice_mean(s : NetsecfirewallSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_sec_firewall_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_sec_firewall_slice_mean(s : NetsecfirewallSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_sec_firewall_slice_scale(s : NetsecfirewallSlice, f : Double) -> NetsecfirewallSlice {
   let result = net_sec_firewall_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_sec_firewall_slice_fill(s : NetsecfirewallSlice, v : Double) -> Netse
   result
 }
 
-pub fn net_sec_firewall_slice_min(s : NetsecfirewallSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_slice_min(s : NetsecfirewallSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_sec_firewall_slice_max(s : NetsecfirewallSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_sec_firewall_slice_max(s : NetsecfirewallSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_sec_firewall_slice_to_string(s : NetsecfirewallSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

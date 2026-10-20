@@ -88,11 +88,7 @@ pub fn signal_transform_fft_make_series(vals : Array[Double], name : String) -> 
 
 pub fn signal_transform_fft_series_len(s : SignaltransformfftSeries) -> Int { s.vals.length() }
 
-pub fn signal_transform_fft_series_sum(s : SignaltransformfftSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_transform_fft_series_sum(s : SignaltransformfftSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_transform_fft_series_mean(s : SignaltransformfftSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_transform_fft_frame_set(s : SignaltransformfftFrame, i : Int, v : 
   result
 }
 
-pub fn signal_transform_fft_frame_sum(s : SignaltransformfftFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_frame_sum(s : SignaltransformfftFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_frame_mean(s : SignaltransformfftFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_frame_mean(s : SignaltransformfftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_frame_scale(s : SignaltransformfftFrame, f : Double) -> SignaltransformfftFrame {
   let result = signal_transform_fft_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_transform_fft_frame_fill(s : SignaltransformfftFrame, v : Double) 
   result
 }
 
-pub fn signal_transform_fft_frame_min(s : SignaltransformfftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_frame_min(s : SignaltransformfftFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_frame_max(s : SignaltransformfftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_frame_max(s : SignaltransformfftFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_frame_to_string(s : SignaltransformfftFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_transform_fft_table_set(s : SignaltransformfftTable, i : Int, v : 
   result
 }
 
-pub fn signal_transform_fft_table_sum(s : SignaltransformfftTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_table_sum(s : SignaltransformfftTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_table_mean(s : SignaltransformfftTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_table_mean(s : SignaltransformfftTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_table_scale(s : SignaltransformfftTable, f : Double) -> SignaltransformfftTable {
   let result = signal_transform_fft_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_transform_fft_table_fill(s : SignaltransformfftTable, v : Double) 
   result
 }
 
-pub fn signal_transform_fft_table_min(s : SignaltransformfftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_table_min(s : SignaltransformfftTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_table_max(s : SignaltransformfftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_table_max(s : SignaltransformfftTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_table_to_string(s : SignaltransformfftTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_transform_fft_graphn_set(s : SignaltransformfftGraphN, i : Int, v 
   result
 }
 
-pub fn signal_transform_fft_graphn_sum(s : SignaltransformfftGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_graphn_sum(s : SignaltransformfftGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_graphn_mean(s : SignaltransformfftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_graphn_mean(s : SignaltransformfftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_graphn_scale(s : SignaltransformfftGraphN, f : Double) -> SignaltransformfftGraphN {
   let result = signal_transform_fft_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_transform_fft_graphn_fill(s : SignaltransformfftGraphN, v : Double
   result
 }
 
-pub fn signal_transform_fft_graphn_min(s : SignaltransformfftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_graphn_min(s : SignaltransformfftGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_graphn_max(s : SignaltransformfftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_graphn_max(s : SignaltransformfftGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_graphn_to_string(s : SignaltransformfftGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_transform_fft_node_set(s : SignaltransformfftNode, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_fft_node_sum(s : SignaltransformfftNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_node_sum(s : SignaltransformfftNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_node_mean(s : SignaltransformfftNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_node_mean(s : SignaltransformfftNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_node_scale(s : SignaltransformfftNode, f : Double) -> SignaltransformfftNode {
   let result = signal_transform_fft_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_transform_fft_node_fill(s : SignaltransformfftNode, v : Double) ->
   result
 }
 
-pub fn signal_transform_fft_node_min(s : SignaltransformfftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_node_min(s : SignaltransformfftNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_node_max(s : SignaltransformfftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_node_max(s : SignaltransformfftNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_node_to_string(s : SignaltransformfftNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_transform_fft_edge_set(s : SignaltransformfftEdge, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_fft_edge_sum(s : SignaltransformfftEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_edge_sum(s : SignaltransformfftEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_edge_mean(s : SignaltransformfftEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_edge_mean(s : SignaltransformfftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_edge_scale(s : SignaltransformfftEdge, f : Double) -> SignaltransformfftEdge {
   let result = signal_transform_fft_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_transform_fft_edge_fill(s : SignaltransformfftEdge, v : Double) ->
   result
 }
 
-pub fn signal_transform_fft_edge_min(s : SignaltransformfftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_edge_min(s : SignaltransformfftEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_edge_max(s : SignaltransformfftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_edge_max(s : SignaltransformfftEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_edge_to_string(s : SignaltransformfftEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_transform_fft_path_set(s : SignaltransformfftPath, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_fft_path_sum(s : SignaltransformfftPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_path_sum(s : SignaltransformfftPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_path_mean(s : SignaltransformfftPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_path_mean(s : SignaltransformfftPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_path_scale(s : SignaltransformfftPath, f : Double) -> SignaltransformfftPath {
   let result = signal_transform_fft_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_transform_fft_path_fill(s : SignaltransformfftPath, v : Double) ->
   result
 }
 
-pub fn signal_transform_fft_path_min(s : SignaltransformfftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_path_min(s : SignaltransformfftPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_path_max(s : SignaltransformfftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_path_max(s : SignaltransformfftPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_path_to_string(s : SignaltransformfftPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_transform_fft_cluster_set(s : SignaltransformfftCluster, i : Int, 
   result
 }
 
-pub fn signal_transform_fft_cluster_sum(s : SignaltransformfftCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_cluster_sum(s : SignaltransformfftCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_cluster_mean(s : SignaltransformfftCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_cluster_mean(s : SignaltransformfftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_cluster_scale(s : SignaltransformfftCluster, f : Double) -> SignaltransformfftCluster {
   let result = signal_transform_fft_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_transform_fft_cluster_fill(s : SignaltransformfftCluster, v : Doub
   result
 }
 
-pub fn signal_transform_fft_cluster_min(s : SignaltransformfftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_cluster_min(s : SignaltransformfftCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_cluster_max(s : SignaltransformfftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_cluster_max(s : SignaltransformfftCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_cluster_to_string(s : SignaltransformfftCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_transform_fft_model_set(s : SignaltransformfftModel, i : Int, v : 
   result
 }
 
-pub fn signal_transform_fft_model_sum(s : SignaltransformfftModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_model_sum(s : SignaltransformfftModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_model_mean(s : SignaltransformfftModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_model_mean(s : SignaltransformfftModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_model_scale(s : SignaltransformfftModel, f : Double) -> SignaltransformfftModel {
   let result = signal_transform_fft_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_transform_fft_model_fill(s : SignaltransformfftModel, v : Double) 
   result
 }
 
-pub fn signal_transform_fft_model_min(s : SignaltransformfftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_model_min(s : SignaltransformfftModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_model_max(s : SignaltransformfftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_model_max(s : SignaltransformfftModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_model_to_string(s : SignaltransformfftModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_transform_fft_layer_set(s : SignaltransformfftLayer, i : Int, v : 
   result
 }
 
-pub fn signal_transform_fft_layer_sum(s : SignaltransformfftLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_layer_sum(s : SignaltransformfftLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_layer_mean(s : SignaltransformfftLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_layer_mean(s : SignaltransformfftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_layer_scale(s : SignaltransformfftLayer, f : Double) -> SignaltransformfftLayer {
   let result = signal_transform_fft_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_transform_fft_layer_fill(s : SignaltransformfftLayer, v : Double) 
   result
 }
 
-pub fn signal_transform_fft_layer_min(s : SignaltransformfftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_layer_min(s : SignaltransformfftLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_layer_max(s : SignaltransformfftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_layer_max(s : SignaltransformfftLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_layer_to_string(s : SignaltransformfftLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_transform_fft_buffer_set(s : SignaltransformfftBuffer, i : Int, v 
   result
 }
 
-pub fn signal_transform_fft_buffer_sum(s : SignaltransformfftBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_buffer_sum(s : SignaltransformfftBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_buffer_mean(s : SignaltransformfftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_buffer_mean(s : SignaltransformfftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_buffer_scale(s : SignaltransformfftBuffer, f : Double) -> SignaltransformfftBuffer {
   let result = signal_transform_fft_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_transform_fft_buffer_fill(s : SignaltransformfftBuffer, v : Double
   result
 }
 
-pub fn signal_transform_fft_buffer_min(s : SignaltransformfftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_buffer_min(s : SignaltransformfftBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_buffer_max(s : SignaltransformfftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_buffer_max(s : SignaltransformfftBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_buffer_to_string(s : SignaltransformfftBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_transform_fft_cursor_set(s : SignaltransformfftCursor, i : Int, v 
   result
 }
 
-pub fn signal_transform_fft_cursor_sum(s : SignaltransformfftCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_cursor_sum(s : SignaltransformfftCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_cursor_mean(s : SignaltransformfftCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_cursor_mean(s : SignaltransformfftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_cursor_scale(s : SignaltransformfftCursor, f : Double) -> SignaltransformfftCursor {
   let result = signal_transform_fft_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_transform_fft_cursor_fill(s : SignaltransformfftCursor, v : Double
   result
 }
 
-pub fn signal_transform_fft_cursor_min(s : SignaltransformfftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_cursor_min(s : SignaltransformfftCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_cursor_max(s : SignaltransformfftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_cursor_max(s : SignaltransformfftCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_cursor_to_string(s : SignaltransformfftCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_transform_fft_view_set(s : SignaltransformfftView, i : Int, v : Do
   result
 }
 
-pub fn signal_transform_fft_view_sum(s : SignaltransformfftView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_view_sum(s : SignaltransformfftView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_view_mean(s : SignaltransformfftView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_view_mean(s : SignaltransformfftView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_view_scale(s : SignaltransformfftView, f : Double) -> SignaltransformfftView {
   let result = signal_transform_fft_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_transform_fft_view_fill(s : SignaltransformfftView, v : Double) ->
   result
 }
 
-pub fn signal_transform_fft_view_min(s : SignaltransformfftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_view_min(s : SignaltransformfftView) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_view_max(s : SignaltransformfftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_view_max(s : SignaltransformfftView) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_view_to_string(s : SignaltransformfftView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_transform_fft_range_set(s : SignaltransformfftRange, i : Int, v : 
   result
 }
 
-pub fn signal_transform_fft_range_sum(s : SignaltransformfftRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_range_sum(s : SignaltransformfftRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_range_mean(s : SignaltransformfftRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_range_mean(s : SignaltransformfftRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_range_scale(s : SignaltransformfftRange, f : Double) -> SignaltransformfftRange {
   let result = signal_transform_fft_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_transform_fft_range_fill(s : SignaltransformfftRange, v : Double) 
   result
 }
 
-pub fn signal_transform_fft_range_min(s : SignaltransformfftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_range_min(s : SignaltransformfftRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_range_max(s : SignaltransformfftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_range_max(s : SignaltransformfftRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_range_to_string(s : SignaltransformfftRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_transform_fft_slice_set(s : SignaltransformfftSlice, i : Int, v : 
   result
 }
 
-pub fn signal_transform_fft_slice_sum(s : SignaltransformfftSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_fft_slice_sum(s : SignaltransformfftSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_fft_slice_mean(s : SignaltransformfftSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_fft_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_fft_slice_mean(s : SignaltransformfftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_fft_slice_scale(s : SignaltransformfftSlice, f : Double) -> SignaltransformfftSlice {
   let result = signal_transform_fft_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_transform_fft_slice_fill(s : SignaltransformfftSlice, v : Double) 
   result
 }
 
-pub fn signal_transform_fft_slice_min(s : SignaltransformfftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_slice_min(s : SignaltransformfftSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_fft_slice_max(s : SignaltransformfftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_fft_slice_max(s : SignaltransformfftSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_fft_slice_to_string(s : SignaltransformfftSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

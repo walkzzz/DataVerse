@@ -88,11 +88,7 @@ pub fn crypto_sym_camellia_make_series(vals : Array[Double], name : String) -> C
 
 pub fn crypto_sym_camellia_series_len(s : CryptosymcamelliaSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_camellia_series_sum(s : CryptosymcamelliaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_camellia_series_sum(s : CryptosymcamelliaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_camellia_series_mean(s : CryptosymcamelliaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_camellia_frame_set(s : CryptosymcamelliaFrame, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_camellia_frame_sum(s : CryptosymcamelliaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_frame_sum(s : CryptosymcamelliaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_frame_mean(s : CryptosymcamelliaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_frame_mean(s : CryptosymcamelliaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_frame_scale(s : CryptosymcamelliaFrame, f : Double) -> CryptosymcamelliaFrame {
   let result = crypto_sym_camellia_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_camellia_frame_fill(s : CryptosymcamelliaFrame, v : Double) ->
   result
 }
 
-pub fn crypto_sym_camellia_frame_min(s : CryptosymcamelliaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_frame_min(s : CryptosymcamelliaFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_frame_max(s : CryptosymcamelliaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_frame_max(s : CryptosymcamelliaFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_frame_to_string(s : CryptosymcamelliaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_camellia_table_set(s : CryptosymcamelliaTable, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_camellia_table_sum(s : CryptosymcamelliaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_table_sum(s : CryptosymcamelliaTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_table_mean(s : CryptosymcamelliaTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_table_mean(s : CryptosymcamelliaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_table_scale(s : CryptosymcamelliaTable, f : Double) -> CryptosymcamelliaTable {
   let result = crypto_sym_camellia_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_camellia_table_fill(s : CryptosymcamelliaTable, v : Double) ->
   result
 }
 
-pub fn crypto_sym_camellia_table_min(s : CryptosymcamelliaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_table_min(s : CryptosymcamelliaTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_table_max(s : CryptosymcamelliaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_table_max(s : CryptosymcamelliaTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_table_to_string(s : CryptosymcamelliaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_camellia_graphn_set(s : CryptosymcamelliaGraphN, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_camellia_graphn_sum(s : CryptosymcamelliaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_graphn_sum(s : CryptosymcamelliaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_graphn_mean(s : CryptosymcamelliaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_graphn_mean(s : CryptosymcamelliaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_graphn_scale(s : CryptosymcamelliaGraphN, f : Double) -> CryptosymcamelliaGraphN {
   let result = crypto_sym_camellia_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_camellia_graphn_fill(s : CryptosymcamelliaGraphN, v : Double) 
   result
 }
 
-pub fn crypto_sym_camellia_graphn_min(s : CryptosymcamelliaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_graphn_min(s : CryptosymcamelliaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_graphn_max(s : CryptosymcamelliaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_graphn_max(s : CryptosymcamelliaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_graphn_to_string(s : CryptosymcamelliaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_camellia_node_set(s : CryptosymcamelliaNode, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_camellia_node_sum(s : CryptosymcamelliaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_node_sum(s : CryptosymcamelliaNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_node_mean(s : CryptosymcamelliaNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_node_mean(s : CryptosymcamelliaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_node_scale(s : CryptosymcamelliaNode, f : Double) -> CryptosymcamelliaNode {
   let result = crypto_sym_camellia_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_camellia_node_fill(s : CryptosymcamelliaNode, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_camellia_node_min(s : CryptosymcamelliaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_node_min(s : CryptosymcamelliaNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_node_max(s : CryptosymcamelliaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_node_max(s : CryptosymcamelliaNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_node_to_string(s : CryptosymcamelliaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_camellia_edge_set(s : CryptosymcamelliaEdge, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_camellia_edge_sum(s : CryptosymcamelliaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_edge_sum(s : CryptosymcamelliaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_edge_mean(s : CryptosymcamelliaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_edge_mean(s : CryptosymcamelliaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_edge_scale(s : CryptosymcamelliaEdge, f : Double) -> CryptosymcamelliaEdge {
   let result = crypto_sym_camellia_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_camellia_edge_fill(s : CryptosymcamelliaEdge, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_camellia_edge_min(s : CryptosymcamelliaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_edge_min(s : CryptosymcamelliaEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_edge_max(s : CryptosymcamelliaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_edge_max(s : CryptosymcamelliaEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_edge_to_string(s : CryptosymcamelliaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_camellia_path_set(s : CryptosymcamelliaPath, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_camellia_path_sum(s : CryptosymcamelliaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_path_sum(s : CryptosymcamelliaPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_path_mean(s : CryptosymcamelliaPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_path_mean(s : CryptosymcamelliaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_path_scale(s : CryptosymcamelliaPath, f : Double) -> CryptosymcamelliaPath {
   let result = crypto_sym_camellia_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_camellia_path_fill(s : CryptosymcamelliaPath, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_camellia_path_min(s : CryptosymcamelliaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_path_min(s : CryptosymcamelliaPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_path_max(s : CryptosymcamelliaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_path_max(s : CryptosymcamelliaPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_path_to_string(s : CryptosymcamelliaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_camellia_cluster_set(s : CryptosymcamelliaCluster, i : Int, v 
   result
 }
 
-pub fn crypto_sym_camellia_cluster_sum(s : CryptosymcamelliaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_cluster_sum(s : CryptosymcamelliaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_cluster_mean(s : CryptosymcamelliaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_cluster_mean(s : CryptosymcamelliaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_cluster_scale(s : CryptosymcamelliaCluster, f : Double) -> CryptosymcamelliaCluster {
   let result = crypto_sym_camellia_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_camellia_cluster_fill(s : CryptosymcamelliaCluster, v : Double
   result
 }
 
-pub fn crypto_sym_camellia_cluster_min(s : CryptosymcamelliaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_cluster_min(s : CryptosymcamelliaCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_cluster_max(s : CryptosymcamelliaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_cluster_max(s : CryptosymcamelliaCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_cluster_to_string(s : CryptosymcamelliaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_camellia_model_set(s : CryptosymcamelliaModel, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_camellia_model_sum(s : CryptosymcamelliaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_model_sum(s : CryptosymcamelliaModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_model_mean(s : CryptosymcamelliaModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_model_mean(s : CryptosymcamelliaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_model_scale(s : CryptosymcamelliaModel, f : Double) -> CryptosymcamelliaModel {
   let result = crypto_sym_camellia_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_camellia_model_fill(s : CryptosymcamelliaModel, v : Double) ->
   result
 }
 
-pub fn crypto_sym_camellia_model_min(s : CryptosymcamelliaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_model_min(s : CryptosymcamelliaModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_model_max(s : CryptosymcamelliaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_model_max(s : CryptosymcamelliaModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_model_to_string(s : CryptosymcamelliaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_camellia_layer_set(s : CryptosymcamelliaLayer, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_camellia_layer_sum(s : CryptosymcamelliaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_layer_sum(s : CryptosymcamelliaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_layer_mean(s : CryptosymcamelliaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_layer_mean(s : CryptosymcamelliaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_layer_scale(s : CryptosymcamelliaLayer, f : Double) -> CryptosymcamelliaLayer {
   let result = crypto_sym_camellia_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_camellia_layer_fill(s : CryptosymcamelliaLayer, v : Double) ->
   result
 }
 
-pub fn crypto_sym_camellia_layer_min(s : CryptosymcamelliaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_layer_min(s : CryptosymcamelliaLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_layer_max(s : CryptosymcamelliaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_layer_max(s : CryptosymcamelliaLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_layer_to_string(s : CryptosymcamelliaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_camellia_buffer_set(s : CryptosymcamelliaBuffer, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_camellia_buffer_sum(s : CryptosymcamelliaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_buffer_sum(s : CryptosymcamelliaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_buffer_mean(s : CryptosymcamelliaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_buffer_mean(s : CryptosymcamelliaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_buffer_scale(s : CryptosymcamelliaBuffer, f : Double) -> CryptosymcamelliaBuffer {
   let result = crypto_sym_camellia_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_camellia_buffer_fill(s : CryptosymcamelliaBuffer, v : Double) 
   result
 }
 
-pub fn crypto_sym_camellia_buffer_min(s : CryptosymcamelliaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_buffer_min(s : CryptosymcamelliaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_buffer_max(s : CryptosymcamelliaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_buffer_max(s : CryptosymcamelliaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_buffer_to_string(s : CryptosymcamelliaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_camellia_cursor_set(s : CryptosymcamelliaCursor, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_camellia_cursor_sum(s : CryptosymcamelliaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_cursor_sum(s : CryptosymcamelliaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_cursor_mean(s : CryptosymcamelliaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_cursor_mean(s : CryptosymcamelliaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_cursor_scale(s : CryptosymcamelliaCursor, f : Double) -> CryptosymcamelliaCursor {
   let result = crypto_sym_camellia_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_camellia_cursor_fill(s : CryptosymcamelliaCursor, v : Double) 
   result
 }
 
-pub fn crypto_sym_camellia_cursor_min(s : CryptosymcamelliaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_cursor_min(s : CryptosymcamelliaCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_cursor_max(s : CryptosymcamelliaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_cursor_max(s : CryptosymcamelliaCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_cursor_to_string(s : CryptosymcamelliaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_camellia_view_set(s : CryptosymcamelliaView, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_camellia_view_sum(s : CryptosymcamelliaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_view_sum(s : CryptosymcamelliaView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_view_mean(s : CryptosymcamelliaView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_view_mean(s : CryptosymcamelliaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_view_scale(s : CryptosymcamelliaView, f : Double) -> CryptosymcamelliaView {
   let result = crypto_sym_camellia_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_camellia_view_fill(s : CryptosymcamelliaView, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_camellia_view_min(s : CryptosymcamelliaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_view_min(s : CryptosymcamelliaView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_view_max(s : CryptosymcamelliaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_view_max(s : CryptosymcamelliaView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_view_to_string(s : CryptosymcamelliaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_camellia_range_set(s : CryptosymcamelliaRange, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_camellia_range_sum(s : CryptosymcamelliaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_range_sum(s : CryptosymcamelliaRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_range_mean(s : CryptosymcamelliaRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_range_mean(s : CryptosymcamelliaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_range_scale(s : CryptosymcamelliaRange, f : Double) -> CryptosymcamelliaRange {
   let result = crypto_sym_camellia_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_camellia_range_fill(s : CryptosymcamelliaRange, v : Double) ->
   result
 }
 
-pub fn crypto_sym_camellia_range_min(s : CryptosymcamelliaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_range_min(s : CryptosymcamelliaRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_range_max(s : CryptosymcamelliaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_range_max(s : CryptosymcamelliaRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_range_to_string(s : CryptosymcamelliaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_camellia_slice_set(s : CryptosymcamelliaSlice, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_camellia_slice_sum(s : CryptosymcamelliaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_camellia_slice_sum(s : CryptosymcamelliaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_camellia_slice_mean(s : CryptosymcamelliaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_camellia_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_camellia_slice_mean(s : CryptosymcamelliaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_camellia_slice_scale(s : CryptosymcamelliaSlice, f : Double) -> CryptosymcamelliaSlice {
   let result = crypto_sym_camellia_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_camellia_slice_fill(s : CryptosymcamelliaSlice, v : Double) ->
   result
 }
 
-pub fn crypto_sym_camellia_slice_min(s : CryptosymcamelliaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_slice_min(s : CryptosymcamelliaSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_camellia_slice_max(s : CryptosymcamelliaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_camellia_slice_max(s : CryptosymcamelliaSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_camellia_slice_to_string(s : CryptosymcamelliaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

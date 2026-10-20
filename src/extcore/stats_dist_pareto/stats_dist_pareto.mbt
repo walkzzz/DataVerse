@@ -88,11 +88,7 @@ pub fn stats_dist_pareto_make_series(vals : Array[Double], name : String) -> Sta
 
 pub fn stats_dist_pareto_series_len(s : StatsdistparetoSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_pareto_series_sum(s : StatsdistparetoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_pareto_series_sum(s : StatsdistparetoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_pareto_series_mean(s : StatsdistparetoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_pareto_frame_set(s : StatsdistparetoFrame, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_pareto_frame_sum(s : StatsdistparetoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_frame_sum(s : StatsdistparetoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_frame_mean(s : StatsdistparetoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_frame_mean(s : StatsdistparetoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_frame_scale(s : StatsdistparetoFrame, f : Double) -> StatsdistparetoFrame {
   let result = stats_dist_pareto_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_pareto_frame_fill(s : StatsdistparetoFrame, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_pareto_frame_min(s : StatsdistparetoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_frame_min(s : StatsdistparetoFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_frame_max(s : StatsdistparetoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_frame_max(s : StatsdistparetoFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_frame_to_string(s : StatsdistparetoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_pareto_table_set(s : StatsdistparetoTable, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_pareto_table_sum(s : StatsdistparetoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_table_sum(s : StatsdistparetoTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_table_mean(s : StatsdistparetoTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_table_mean(s : StatsdistparetoTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_table_scale(s : StatsdistparetoTable, f : Double) -> StatsdistparetoTable {
   let result = stats_dist_pareto_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_pareto_table_fill(s : StatsdistparetoTable, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_pareto_table_min(s : StatsdistparetoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_table_min(s : StatsdistparetoTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_table_max(s : StatsdistparetoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_table_max(s : StatsdistparetoTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_table_to_string(s : StatsdistparetoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_pareto_graphn_set(s : StatsdistparetoGraphN, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_pareto_graphn_sum(s : StatsdistparetoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_graphn_sum(s : StatsdistparetoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_graphn_mean(s : StatsdistparetoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_graphn_mean(s : StatsdistparetoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_graphn_scale(s : StatsdistparetoGraphN, f : Double) -> StatsdistparetoGraphN {
   let result = stats_dist_pareto_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_pareto_graphn_fill(s : StatsdistparetoGraphN, v : Double) -> S
   result
 }
 
-pub fn stats_dist_pareto_graphn_min(s : StatsdistparetoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_graphn_min(s : StatsdistparetoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_graphn_max(s : StatsdistparetoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_graphn_max(s : StatsdistparetoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_graphn_to_string(s : StatsdistparetoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_pareto_node_set(s : StatsdistparetoNode, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_pareto_node_sum(s : StatsdistparetoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_node_sum(s : StatsdistparetoNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_node_mean(s : StatsdistparetoNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_node_mean(s : StatsdistparetoNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_node_scale(s : StatsdistparetoNode, f : Double) -> StatsdistparetoNode {
   let result = stats_dist_pareto_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_pareto_node_fill(s : StatsdistparetoNode, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_pareto_node_min(s : StatsdistparetoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_node_min(s : StatsdistparetoNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_node_max(s : StatsdistparetoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_node_max(s : StatsdistparetoNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_node_to_string(s : StatsdistparetoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_pareto_edge_set(s : StatsdistparetoEdge, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_pareto_edge_sum(s : StatsdistparetoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_edge_sum(s : StatsdistparetoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_edge_mean(s : StatsdistparetoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_edge_mean(s : StatsdistparetoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_edge_scale(s : StatsdistparetoEdge, f : Double) -> StatsdistparetoEdge {
   let result = stats_dist_pareto_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_pareto_edge_fill(s : StatsdistparetoEdge, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_pareto_edge_min(s : StatsdistparetoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_edge_min(s : StatsdistparetoEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_edge_max(s : StatsdistparetoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_edge_max(s : StatsdistparetoEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_edge_to_string(s : StatsdistparetoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_pareto_path_set(s : StatsdistparetoPath, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_pareto_path_sum(s : StatsdistparetoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_path_sum(s : StatsdistparetoPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_path_mean(s : StatsdistparetoPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_path_mean(s : StatsdistparetoPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_path_scale(s : StatsdistparetoPath, f : Double) -> StatsdistparetoPath {
   let result = stats_dist_pareto_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_pareto_path_fill(s : StatsdistparetoPath, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_pareto_path_min(s : StatsdistparetoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_path_min(s : StatsdistparetoPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_path_max(s : StatsdistparetoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_path_max(s : StatsdistparetoPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_path_to_string(s : StatsdistparetoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_pareto_cluster_set(s : StatsdistparetoCluster, i : Int, v : Do
   result
 }
 
-pub fn stats_dist_pareto_cluster_sum(s : StatsdistparetoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_cluster_sum(s : StatsdistparetoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_cluster_mean(s : StatsdistparetoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_cluster_mean(s : StatsdistparetoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_cluster_scale(s : StatsdistparetoCluster, f : Double) -> StatsdistparetoCluster {
   let result = stats_dist_pareto_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_pareto_cluster_fill(s : StatsdistparetoCluster, v : Double) ->
   result
 }
 
-pub fn stats_dist_pareto_cluster_min(s : StatsdistparetoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_cluster_min(s : StatsdistparetoCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_cluster_max(s : StatsdistparetoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_cluster_max(s : StatsdistparetoCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_cluster_to_string(s : StatsdistparetoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_pareto_model_set(s : StatsdistparetoModel, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_pareto_model_sum(s : StatsdistparetoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_model_sum(s : StatsdistparetoModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_model_mean(s : StatsdistparetoModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_model_mean(s : StatsdistparetoModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_model_scale(s : StatsdistparetoModel, f : Double) -> StatsdistparetoModel {
   let result = stats_dist_pareto_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_pareto_model_fill(s : StatsdistparetoModel, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_pareto_model_min(s : StatsdistparetoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_model_min(s : StatsdistparetoModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_model_max(s : StatsdistparetoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_model_max(s : StatsdistparetoModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_model_to_string(s : StatsdistparetoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_pareto_layer_set(s : StatsdistparetoLayer, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_pareto_layer_sum(s : StatsdistparetoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_layer_sum(s : StatsdistparetoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_layer_mean(s : StatsdistparetoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_layer_mean(s : StatsdistparetoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_layer_scale(s : StatsdistparetoLayer, f : Double) -> StatsdistparetoLayer {
   let result = stats_dist_pareto_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_pareto_layer_fill(s : StatsdistparetoLayer, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_pareto_layer_min(s : StatsdistparetoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_layer_min(s : StatsdistparetoLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_layer_max(s : StatsdistparetoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_layer_max(s : StatsdistparetoLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_layer_to_string(s : StatsdistparetoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_pareto_buffer_set(s : StatsdistparetoBuffer, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_pareto_buffer_sum(s : StatsdistparetoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_buffer_sum(s : StatsdistparetoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_buffer_mean(s : StatsdistparetoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_buffer_mean(s : StatsdistparetoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_buffer_scale(s : StatsdistparetoBuffer, f : Double) -> StatsdistparetoBuffer {
   let result = stats_dist_pareto_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_pareto_buffer_fill(s : StatsdistparetoBuffer, v : Double) -> S
   result
 }
 
-pub fn stats_dist_pareto_buffer_min(s : StatsdistparetoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_buffer_min(s : StatsdistparetoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_buffer_max(s : StatsdistparetoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_buffer_max(s : StatsdistparetoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_buffer_to_string(s : StatsdistparetoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_pareto_cursor_set(s : StatsdistparetoCursor, i : Int, v : Doub
   result
 }
 
-pub fn stats_dist_pareto_cursor_sum(s : StatsdistparetoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_cursor_sum(s : StatsdistparetoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_cursor_mean(s : StatsdistparetoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_cursor_mean(s : StatsdistparetoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_cursor_scale(s : StatsdistparetoCursor, f : Double) -> StatsdistparetoCursor {
   let result = stats_dist_pareto_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_pareto_cursor_fill(s : StatsdistparetoCursor, v : Double) -> S
   result
 }
 
-pub fn stats_dist_pareto_cursor_min(s : StatsdistparetoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_cursor_min(s : StatsdistparetoCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_cursor_max(s : StatsdistparetoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_cursor_max(s : StatsdistparetoCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_cursor_to_string(s : StatsdistparetoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_pareto_view_set(s : StatsdistparetoView, i : Int, v : Double) 
   result
 }
 
-pub fn stats_dist_pareto_view_sum(s : StatsdistparetoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_view_sum(s : StatsdistparetoView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_view_mean(s : StatsdistparetoView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_view_mean(s : StatsdistparetoView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_view_scale(s : StatsdistparetoView, f : Double) -> StatsdistparetoView {
   let result = stats_dist_pareto_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_pareto_view_fill(s : StatsdistparetoView, v : Double) -> Stats
   result
 }
 
-pub fn stats_dist_pareto_view_min(s : StatsdistparetoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_view_min(s : StatsdistparetoView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_view_max(s : StatsdistparetoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_view_max(s : StatsdistparetoView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_view_to_string(s : StatsdistparetoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_pareto_range_set(s : StatsdistparetoRange, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_pareto_range_sum(s : StatsdistparetoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_range_sum(s : StatsdistparetoRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_range_mean(s : StatsdistparetoRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_range_mean(s : StatsdistparetoRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_range_scale(s : StatsdistparetoRange, f : Double) -> StatsdistparetoRange {
   let result = stats_dist_pareto_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_pareto_range_fill(s : StatsdistparetoRange, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_pareto_range_min(s : StatsdistparetoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_range_min(s : StatsdistparetoRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_range_max(s : StatsdistparetoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_range_max(s : StatsdistparetoRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_range_to_string(s : StatsdistparetoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_pareto_slice_set(s : StatsdistparetoSlice, i : Int, v : Double
   result
 }
 
-pub fn stats_dist_pareto_slice_sum(s : StatsdistparetoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_pareto_slice_sum(s : StatsdistparetoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_pareto_slice_mean(s : StatsdistparetoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_pareto_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_pareto_slice_mean(s : StatsdistparetoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_pareto_slice_scale(s : StatsdistparetoSlice, f : Double) -> StatsdistparetoSlice {
   let result = stats_dist_pareto_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_pareto_slice_fill(s : StatsdistparetoSlice, v : Double) -> Sta
   result
 }
 
-pub fn stats_dist_pareto_slice_min(s : StatsdistparetoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_slice_min(s : StatsdistparetoSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_pareto_slice_max(s : StatsdistparetoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_pareto_slice_max(s : StatsdistparetoSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_pareto_slice_to_string(s : StatsdistparetoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

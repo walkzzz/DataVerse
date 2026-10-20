@@ -88,11 +88,7 @@ pub fn geo_proj_mercator_make_series(vals : Array[Double], name : String) -> Geo
 
 pub fn geo_proj_mercator_series_len(s : GeoprojmercatorSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_mercator_series_sum(s : GeoprojmercatorSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_mercator_series_sum(s : GeoprojmercatorSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_mercator_series_mean(s : GeoprojmercatorSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_mercator_frame_set(s : GeoprojmercatorFrame, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_mercator_frame_sum(s : GeoprojmercatorFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_frame_sum(s : GeoprojmercatorFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_frame_mean(s : GeoprojmercatorFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_frame_mean(s : GeoprojmercatorFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_frame_scale(s : GeoprojmercatorFrame, f : Double) -> GeoprojmercatorFrame {
   let result = geo_proj_mercator_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_mercator_frame_fill(s : GeoprojmercatorFrame, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_mercator_frame_min(s : GeoprojmercatorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_frame_min(s : GeoprojmercatorFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_frame_max(s : GeoprojmercatorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_frame_max(s : GeoprojmercatorFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_frame_to_string(s : GeoprojmercatorFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_mercator_table_set(s : GeoprojmercatorTable, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_mercator_table_sum(s : GeoprojmercatorTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_table_sum(s : GeoprojmercatorTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_table_mean(s : GeoprojmercatorTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_table_mean(s : GeoprojmercatorTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_table_scale(s : GeoprojmercatorTable, f : Double) -> GeoprojmercatorTable {
   let result = geo_proj_mercator_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_mercator_table_fill(s : GeoprojmercatorTable, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_mercator_table_min(s : GeoprojmercatorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_table_min(s : GeoprojmercatorTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_table_max(s : GeoprojmercatorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_table_max(s : GeoprojmercatorTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_table_to_string(s : GeoprojmercatorTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_mercator_graphn_set(s : GeoprojmercatorGraphN, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_mercator_graphn_sum(s : GeoprojmercatorGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_graphn_sum(s : GeoprojmercatorGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_graphn_mean(s : GeoprojmercatorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_graphn_mean(s : GeoprojmercatorGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_graphn_scale(s : GeoprojmercatorGraphN, f : Double) -> GeoprojmercatorGraphN {
   let result = geo_proj_mercator_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_mercator_graphn_fill(s : GeoprojmercatorGraphN, v : Double) -> G
   result
 }
 
-pub fn geo_proj_mercator_graphn_min(s : GeoprojmercatorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_graphn_min(s : GeoprojmercatorGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_graphn_max(s : GeoprojmercatorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_graphn_max(s : GeoprojmercatorGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_graphn_to_string(s : GeoprojmercatorGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_mercator_node_set(s : GeoprojmercatorNode, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_mercator_node_sum(s : GeoprojmercatorNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_node_sum(s : GeoprojmercatorNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_node_mean(s : GeoprojmercatorNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_node_mean(s : GeoprojmercatorNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_node_scale(s : GeoprojmercatorNode, f : Double) -> GeoprojmercatorNode {
   let result = geo_proj_mercator_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_mercator_node_fill(s : GeoprojmercatorNode, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_mercator_node_min(s : GeoprojmercatorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_node_min(s : GeoprojmercatorNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_node_max(s : GeoprojmercatorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_node_max(s : GeoprojmercatorNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_node_to_string(s : GeoprojmercatorNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_mercator_edge_set(s : GeoprojmercatorEdge, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_mercator_edge_sum(s : GeoprojmercatorEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_edge_sum(s : GeoprojmercatorEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_edge_mean(s : GeoprojmercatorEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_edge_mean(s : GeoprojmercatorEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_edge_scale(s : GeoprojmercatorEdge, f : Double) -> GeoprojmercatorEdge {
   let result = geo_proj_mercator_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_mercator_edge_fill(s : GeoprojmercatorEdge, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_mercator_edge_min(s : GeoprojmercatorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_edge_min(s : GeoprojmercatorEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_edge_max(s : GeoprojmercatorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_edge_max(s : GeoprojmercatorEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_edge_to_string(s : GeoprojmercatorEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_mercator_path_set(s : GeoprojmercatorPath, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_mercator_path_sum(s : GeoprojmercatorPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_path_sum(s : GeoprojmercatorPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_path_mean(s : GeoprojmercatorPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_path_mean(s : GeoprojmercatorPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_path_scale(s : GeoprojmercatorPath, f : Double) -> GeoprojmercatorPath {
   let result = geo_proj_mercator_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_mercator_path_fill(s : GeoprojmercatorPath, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_mercator_path_min(s : GeoprojmercatorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_path_min(s : GeoprojmercatorPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_path_max(s : GeoprojmercatorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_path_max(s : GeoprojmercatorPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_path_to_string(s : GeoprojmercatorPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_mercator_cluster_set(s : GeoprojmercatorCluster, i : Int, v : Do
   result
 }
 
-pub fn geo_proj_mercator_cluster_sum(s : GeoprojmercatorCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_cluster_sum(s : GeoprojmercatorCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_cluster_mean(s : GeoprojmercatorCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_cluster_mean(s : GeoprojmercatorCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_cluster_scale(s : GeoprojmercatorCluster, f : Double) -> GeoprojmercatorCluster {
   let result = geo_proj_mercator_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_mercator_cluster_fill(s : GeoprojmercatorCluster, v : Double) ->
   result
 }
 
-pub fn geo_proj_mercator_cluster_min(s : GeoprojmercatorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_cluster_min(s : GeoprojmercatorCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_cluster_max(s : GeoprojmercatorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_cluster_max(s : GeoprojmercatorCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_cluster_to_string(s : GeoprojmercatorCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_mercator_model_set(s : GeoprojmercatorModel, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_mercator_model_sum(s : GeoprojmercatorModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_model_sum(s : GeoprojmercatorModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_model_mean(s : GeoprojmercatorModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_model_mean(s : GeoprojmercatorModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_model_scale(s : GeoprojmercatorModel, f : Double) -> GeoprojmercatorModel {
   let result = geo_proj_mercator_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_mercator_model_fill(s : GeoprojmercatorModel, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_mercator_model_min(s : GeoprojmercatorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_model_min(s : GeoprojmercatorModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_model_max(s : GeoprojmercatorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_model_max(s : GeoprojmercatorModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_model_to_string(s : GeoprojmercatorModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_mercator_layer_set(s : GeoprojmercatorLayer, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_mercator_layer_sum(s : GeoprojmercatorLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_layer_sum(s : GeoprojmercatorLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_layer_mean(s : GeoprojmercatorLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_layer_mean(s : GeoprojmercatorLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_layer_scale(s : GeoprojmercatorLayer, f : Double) -> GeoprojmercatorLayer {
   let result = geo_proj_mercator_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_mercator_layer_fill(s : GeoprojmercatorLayer, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_mercator_layer_min(s : GeoprojmercatorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_layer_min(s : GeoprojmercatorLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_layer_max(s : GeoprojmercatorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_layer_max(s : GeoprojmercatorLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_layer_to_string(s : GeoprojmercatorLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_mercator_buffer_set(s : GeoprojmercatorBuffer, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_mercator_buffer_sum(s : GeoprojmercatorBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_buffer_sum(s : GeoprojmercatorBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_buffer_mean(s : GeoprojmercatorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_buffer_mean(s : GeoprojmercatorBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_buffer_scale(s : GeoprojmercatorBuffer, f : Double) -> GeoprojmercatorBuffer {
   let result = geo_proj_mercator_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_mercator_buffer_fill(s : GeoprojmercatorBuffer, v : Double) -> G
   result
 }
 
-pub fn geo_proj_mercator_buffer_min(s : GeoprojmercatorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_buffer_min(s : GeoprojmercatorBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_buffer_max(s : GeoprojmercatorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_buffer_max(s : GeoprojmercatorBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_buffer_to_string(s : GeoprojmercatorBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_mercator_cursor_set(s : GeoprojmercatorCursor, i : Int, v : Doub
   result
 }
 
-pub fn geo_proj_mercator_cursor_sum(s : GeoprojmercatorCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_cursor_sum(s : GeoprojmercatorCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_cursor_mean(s : GeoprojmercatorCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_cursor_mean(s : GeoprojmercatorCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_cursor_scale(s : GeoprojmercatorCursor, f : Double) -> GeoprojmercatorCursor {
   let result = geo_proj_mercator_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_mercator_cursor_fill(s : GeoprojmercatorCursor, v : Double) -> G
   result
 }
 
-pub fn geo_proj_mercator_cursor_min(s : GeoprojmercatorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_cursor_min(s : GeoprojmercatorCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_cursor_max(s : GeoprojmercatorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_cursor_max(s : GeoprojmercatorCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_cursor_to_string(s : GeoprojmercatorCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_mercator_view_set(s : GeoprojmercatorView, i : Int, v : Double) 
   result
 }
 
-pub fn geo_proj_mercator_view_sum(s : GeoprojmercatorView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_view_sum(s : GeoprojmercatorView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_view_mean(s : GeoprojmercatorView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_view_mean(s : GeoprojmercatorView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_view_scale(s : GeoprojmercatorView, f : Double) -> GeoprojmercatorView {
   let result = geo_proj_mercator_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_mercator_view_fill(s : GeoprojmercatorView, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_mercator_view_min(s : GeoprojmercatorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_view_min(s : GeoprojmercatorView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_view_max(s : GeoprojmercatorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_view_max(s : GeoprojmercatorView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_view_to_string(s : GeoprojmercatorView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_mercator_range_set(s : GeoprojmercatorRange, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_mercator_range_sum(s : GeoprojmercatorRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_range_sum(s : GeoprojmercatorRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_range_mean(s : GeoprojmercatorRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_range_mean(s : GeoprojmercatorRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_range_scale(s : GeoprojmercatorRange, f : Double) -> GeoprojmercatorRange {
   let result = geo_proj_mercator_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_mercator_range_fill(s : GeoprojmercatorRange, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_mercator_range_min(s : GeoprojmercatorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_range_min(s : GeoprojmercatorRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_range_max(s : GeoprojmercatorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_range_max(s : GeoprojmercatorRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_range_to_string(s : GeoprojmercatorRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_mercator_slice_set(s : GeoprojmercatorSlice, i : Int, v : Double
   result
 }
 
-pub fn geo_proj_mercator_slice_sum(s : GeoprojmercatorSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_mercator_slice_sum(s : GeoprojmercatorSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_mercator_slice_mean(s : GeoprojmercatorSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_mercator_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_mercator_slice_mean(s : GeoprojmercatorSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_mercator_slice_scale(s : GeoprojmercatorSlice, f : Double) -> GeoprojmercatorSlice {
   let result = geo_proj_mercator_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_mercator_slice_fill(s : GeoprojmercatorSlice, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_mercator_slice_min(s : GeoprojmercatorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_slice_min(s : GeoprojmercatorSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_mercator_slice_max(s : GeoprojmercatorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_mercator_slice_max(s : GeoprojmercatorSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_mercator_slice_to_string(s : GeoprojmercatorSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

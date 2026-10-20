@@ -88,11 +88,7 @@ pub fn opt_grad_momentum_make_series(vals : Array[Double], name : String) -> Opt
 
 pub fn opt_grad_momentum_series_len(s : OptgradmomentumSeries) -> Int { s.vals.length() }
 
-pub fn opt_grad_momentum_series_sum(s : OptgradmomentumSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_grad_momentum_series_sum(s : OptgradmomentumSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_grad_momentum_series_mean(s : OptgradmomentumSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_grad_momentum_frame_set(s : OptgradmomentumFrame, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_momentum_frame_sum(s : OptgradmomentumFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_frame_sum(s : OptgradmomentumFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_frame_mean(s : OptgradmomentumFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_frame_mean(s : OptgradmomentumFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_frame_scale(s : OptgradmomentumFrame, f : Double) -> OptgradmomentumFrame {
   let result = opt_grad_momentum_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_grad_momentum_frame_fill(s : OptgradmomentumFrame, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_momentum_frame_min(s : OptgradmomentumFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_frame_min(s : OptgradmomentumFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_frame_max(s : OptgradmomentumFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_frame_max(s : OptgradmomentumFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_frame_to_string(s : OptgradmomentumFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_grad_momentum_table_set(s : OptgradmomentumTable, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_momentum_table_sum(s : OptgradmomentumTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_table_sum(s : OptgradmomentumTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_table_mean(s : OptgradmomentumTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_table_mean(s : OptgradmomentumTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_table_scale(s : OptgradmomentumTable, f : Double) -> OptgradmomentumTable {
   let result = opt_grad_momentum_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_grad_momentum_table_fill(s : OptgradmomentumTable, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_momentum_table_min(s : OptgradmomentumTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_table_min(s : OptgradmomentumTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_table_max(s : OptgradmomentumTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_table_max(s : OptgradmomentumTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_table_to_string(s : OptgradmomentumTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_grad_momentum_graphn_set(s : OptgradmomentumGraphN, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_momentum_graphn_sum(s : OptgradmomentumGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_graphn_sum(s : OptgradmomentumGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_graphn_mean(s : OptgradmomentumGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_graphn_mean(s : OptgradmomentumGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_graphn_scale(s : OptgradmomentumGraphN, f : Double) -> OptgradmomentumGraphN {
   let result = opt_grad_momentum_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_grad_momentum_graphn_fill(s : OptgradmomentumGraphN, v : Double) -> O
   result
 }
 
-pub fn opt_grad_momentum_graphn_min(s : OptgradmomentumGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_graphn_min(s : OptgradmomentumGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_graphn_max(s : OptgradmomentumGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_graphn_max(s : OptgradmomentumGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_graphn_to_string(s : OptgradmomentumGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_grad_momentum_node_set(s : OptgradmomentumNode, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_momentum_node_sum(s : OptgradmomentumNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_node_sum(s : OptgradmomentumNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_node_mean(s : OptgradmomentumNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_node_mean(s : OptgradmomentumNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_node_scale(s : OptgradmomentumNode, f : Double) -> OptgradmomentumNode {
   let result = opt_grad_momentum_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_grad_momentum_node_fill(s : OptgradmomentumNode, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_momentum_node_min(s : OptgradmomentumNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_node_min(s : OptgradmomentumNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_node_max(s : OptgradmomentumNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_node_max(s : OptgradmomentumNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_node_to_string(s : OptgradmomentumNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_grad_momentum_edge_set(s : OptgradmomentumEdge, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_momentum_edge_sum(s : OptgradmomentumEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_edge_sum(s : OptgradmomentumEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_edge_mean(s : OptgradmomentumEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_edge_mean(s : OptgradmomentumEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_edge_scale(s : OptgradmomentumEdge, f : Double) -> OptgradmomentumEdge {
   let result = opt_grad_momentum_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_grad_momentum_edge_fill(s : OptgradmomentumEdge, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_momentum_edge_min(s : OptgradmomentumEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_edge_min(s : OptgradmomentumEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_edge_max(s : OptgradmomentumEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_edge_max(s : OptgradmomentumEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_edge_to_string(s : OptgradmomentumEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_grad_momentum_path_set(s : OptgradmomentumPath, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_momentum_path_sum(s : OptgradmomentumPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_path_sum(s : OptgradmomentumPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_path_mean(s : OptgradmomentumPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_path_mean(s : OptgradmomentumPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_path_scale(s : OptgradmomentumPath, f : Double) -> OptgradmomentumPath {
   let result = opt_grad_momentum_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_grad_momentum_path_fill(s : OptgradmomentumPath, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_momentum_path_min(s : OptgradmomentumPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_path_min(s : OptgradmomentumPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_path_max(s : OptgradmomentumPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_path_max(s : OptgradmomentumPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_path_to_string(s : OptgradmomentumPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_grad_momentum_cluster_set(s : OptgradmomentumCluster, i : Int, v : Do
   result
 }
 
-pub fn opt_grad_momentum_cluster_sum(s : OptgradmomentumCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_cluster_sum(s : OptgradmomentumCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_cluster_mean(s : OptgradmomentumCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_cluster_mean(s : OptgradmomentumCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_cluster_scale(s : OptgradmomentumCluster, f : Double) -> OptgradmomentumCluster {
   let result = opt_grad_momentum_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_grad_momentum_cluster_fill(s : OptgradmomentumCluster, v : Double) ->
   result
 }
 
-pub fn opt_grad_momentum_cluster_min(s : OptgradmomentumCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_cluster_min(s : OptgradmomentumCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_cluster_max(s : OptgradmomentumCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_cluster_max(s : OptgradmomentumCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_cluster_to_string(s : OptgradmomentumCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_grad_momentum_model_set(s : OptgradmomentumModel, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_momentum_model_sum(s : OptgradmomentumModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_model_sum(s : OptgradmomentumModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_model_mean(s : OptgradmomentumModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_model_mean(s : OptgradmomentumModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_model_scale(s : OptgradmomentumModel, f : Double) -> OptgradmomentumModel {
   let result = opt_grad_momentum_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_grad_momentum_model_fill(s : OptgradmomentumModel, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_momentum_model_min(s : OptgradmomentumModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_model_min(s : OptgradmomentumModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_model_max(s : OptgradmomentumModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_model_max(s : OptgradmomentumModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_model_to_string(s : OptgradmomentumModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_grad_momentum_layer_set(s : OptgradmomentumLayer, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_momentum_layer_sum(s : OptgradmomentumLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_layer_sum(s : OptgradmomentumLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_layer_mean(s : OptgradmomentumLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_layer_mean(s : OptgradmomentumLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_layer_scale(s : OptgradmomentumLayer, f : Double) -> OptgradmomentumLayer {
   let result = opt_grad_momentum_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_grad_momentum_layer_fill(s : OptgradmomentumLayer, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_momentum_layer_min(s : OptgradmomentumLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_layer_min(s : OptgradmomentumLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_layer_max(s : OptgradmomentumLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_layer_max(s : OptgradmomentumLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_layer_to_string(s : OptgradmomentumLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_grad_momentum_buffer_set(s : OptgradmomentumBuffer, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_momentum_buffer_sum(s : OptgradmomentumBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_buffer_sum(s : OptgradmomentumBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_buffer_mean(s : OptgradmomentumBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_buffer_mean(s : OptgradmomentumBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_buffer_scale(s : OptgradmomentumBuffer, f : Double) -> OptgradmomentumBuffer {
   let result = opt_grad_momentum_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_grad_momentum_buffer_fill(s : OptgradmomentumBuffer, v : Double) -> O
   result
 }
 
-pub fn opt_grad_momentum_buffer_min(s : OptgradmomentumBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_buffer_min(s : OptgradmomentumBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_buffer_max(s : OptgradmomentumBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_buffer_max(s : OptgradmomentumBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_buffer_to_string(s : OptgradmomentumBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_grad_momentum_cursor_set(s : OptgradmomentumCursor, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_momentum_cursor_sum(s : OptgradmomentumCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_cursor_sum(s : OptgradmomentumCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_cursor_mean(s : OptgradmomentumCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_cursor_mean(s : OptgradmomentumCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_cursor_scale(s : OptgradmomentumCursor, f : Double) -> OptgradmomentumCursor {
   let result = opt_grad_momentum_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_grad_momentum_cursor_fill(s : OptgradmomentumCursor, v : Double) -> O
   result
 }
 
-pub fn opt_grad_momentum_cursor_min(s : OptgradmomentumCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_cursor_min(s : OptgradmomentumCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_cursor_max(s : OptgradmomentumCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_cursor_max(s : OptgradmomentumCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_cursor_to_string(s : OptgradmomentumCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_grad_momentum_view_set(s : OptgradmomentumView, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_momentum_view_sum(s : OptgradmomentumView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_view_sum(s : OptgradmomentumView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_view_mean(s : OptgradmomentumView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_view_mean(s : OptgradmomentumView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_view_scale(s : OptgradmomentumView, f : Double) -> OptgradmomentumView {
   let result = opt_grad_momentum_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_grad_momentum_view_fill(s : OptgradmomentumView, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_momentum_view_min(s : OptgradmomentumView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_view_min(s : OptgradmomentumView) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_view_max(s : OptgradmomentumView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_view_max(s : OptgradmomentumView) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_view_to_string(s : OptgradmomentumView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_grad_momentum_range_set(s : OptgradmomentumRange, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_momentum_range_sum(s : OptgradmomentumRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_range_sum(s : OptgradmomentumRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_range_mean(s : OptgradmomentumRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_range_mean(s : OptgradmomentumRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_range_scale(s : OptgradmomentumRange, f : Double) -> OptgradmomentumRange {
   let result = opt_grad_momentum_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_grad_momentum_range_fill(s : OptgradmomentumRange, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_momentum_range_min(s : OptgradmomentumRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_range_min(s : OptgradmomentumRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_range_max(s : OptgradmomentumRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_range_max(s : OptgradmomentumRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_range_to_string(s : OptgradmomentumRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_grad_momentum_slice_set(s : OptgradmomentumSlice, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_momentum_slice_sum(s : OptgradmomentumSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_momentum_slice_sum(s : OptgradmomentumSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_momentum_slice_mean(s : OptgradmomentumSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_momentum_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_momentum_slice_mean(s : OptgradmomentumSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_momentum_slice_scale(s : OptgradmomentumSlice, f : Double) -> OptgradmomentumSlice {
   let result = opt_grad_momentum_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_grad_momentum_slice_fill(s : OptgradmomentumSlice, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_momentum_slice_min(s : OptgradmomentumSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_slice_min(s : OptgradmomentumSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_momentum_slice_max(s : OptgradmomentumSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_momentum_slice_max(s : OptgradmomentumSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_momentum_slice_to_string(s : OptgradmomentumSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

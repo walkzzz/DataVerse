@@ -88,11 +88,7 @@ pub fn stats_test_f_make_series(vals : Array[Double], name : String) -> Statstes
 
 pub fn stats_test_f_series_len(s : StatstestfSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_f_series_sum(s : StatstestfSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_f_series_sum(s : StatstestfSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_f_series_mean(s : StatstestfSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_f_frame_set(s : StatstestfFrame, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_f_frame_sum(s : StatstestfFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_frame_sum(s : StatstestfFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_frame_mean(s : StatstestfFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_frame_mean(s : StatstestfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_frame_scale(s : StatstestfFrame, f : Double) -> StatstestfFrame {
   let result = stats_test_f_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_f_frame_fill(s : StatstestfFrame, v : Double) -> StatstestfFra
   result
 }
 
-pub fn stats_test_f_frame_min(s : StatstestfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_frame_min(s : StatstestfFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_frame_max(s : StatstestfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_frame_max(s : StatstestfFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_frame_to_string(s : StatstestfFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_f_table_set(s : StatstestfTable, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_f_table_sum(s : StatstestfTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_table_sum(s : StatstestfTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_table_mean(s : StatstestfTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_table_mean(s : StatstestfTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_table_scale(s : StatstestfTable, f : Double) -> StatstestfTable {
   let result = stats_test_f_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_f_table_fill(s : StatstestfTable, v : Double) -> StatstestfTab
   result
 }
 
-pub fn stats_test_f_table_min(s : StatstestfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_table_min(s : StatstestfTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_table_max(s : StatstestfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_table_max(s : StatstestfTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_table_to_string(s : StatstestfTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_f_graphn_set(s : StatstestfGraphN, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_f_graphn_sum(s : StatstestfGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_graphn_sum(s : StatstestfGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_graphn_mean(s : StatstestfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_graphn_mean(s : StatstestfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_graphn_scale(s : StatstestfGraphN, f : Double) -> StatstestfGraphN {
   let result = stats_test_f_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_f_graphn_fill(s : StatstestfGraphN, v : Double) -> StatstestfG
   result
 }
 
-pub fn stats_test_f_graphn_min(s : StatstestfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_graphn_min(s : StatstestfGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_graphn_max(s : StatstestfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_graphn_max(s : StatstestfGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_graphn_to_string(s : StatstestfGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_f_node_set(s : StatstestfNode, i : Int, v : Double) -> Statste
   result
 }
 
-pub fn stats_test_f_node_sum(s : StatstestfNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_node_sum(s : StatstestfNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_node_mean(s : StatstestfNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_node_mean(s : StatstestfNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_node_scale(s : StatstestfNode, f : Double) -> StatstestfNode {
   let result = stats_test_f_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_f_node_fill(s : StatstestfNode, v : Double) -> StatstestfNode 
   result
 }
 
-pub fn stats_test_f_node_min(s : StatstestfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_node_min(s : StatstestfNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_node_max(s : StatstestfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_node_max(s : StatstestfNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_node_to_string(s : StatstestfNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_f_edge_set(s : StatstestfEdge, i : Int, v : Double) -> Statste
   result
 }
 
-pub fn stats_test_f_edge_sum(s : StatstestfEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_edge_sum(s : StatstestfEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_edge_mean(s : StatstestfEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_edge_mean(s : StatstestfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_edge_scale(s : StatstestfEdge, f : Double) -> StatstestfEdge {
   let result = stats_test_f_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_f_edge_fill(s : StatstestfEdge, v : Double) -> StatstestfEdge 
   result
 }
 
-pub fn stats_test_f_edge_min(s : StatstestfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_edge_min(s : StatstestfEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_edge_max(s : StatstestfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_edge_max(s : StatstestfEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_edge_to_string(s : StatstestfEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_f_path_set(s : StatstestfPath, i : Int, v : Double) -> Statste
   result
 }
 
-pub fn stats_test_f_path_sum(s : StatstestfPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_path_sum(s : StatstestfPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_path_mean(s : StatstestfPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_path_mean(s : StatstestfPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_path_scale(s : StatstestfPath, f : Double) -> StatstestfPath {
   let result = stats_test_f_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_f_path_fill(s : StatstestfPath, v : Double) -> StatstestfPath 
   result
 }
 
-pub fn stats_test_f_path_min(s : StatstestfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_path_min(s : StatstestfPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_path_max(s : StatstestfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_path_max(s : StatstestfPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_path_to_string(s : StatstestfPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_f_cluster_set(s : StatstestfCluster, i : Int, v : Double) -> S
   result
 }
 
-pub fn stats_test_f_cluster_sum(s : StatstestfCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_cluster_sum(s : StatstestfCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_cluster_mean(s : StatstestfCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_cluster_mean(s : StatstestfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_cluster_scale(s : StatstestfCluster, f : Double) -> StatstestfCluster {
   let result = stats_test_f_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_f_cluster_fill(s : StatstestfCluster, v : Double) -> Statstest
   result
 }
 
-pub fn stats_test_f_cluster_min(s : StatstestfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_cluster_min(s : StatstestfCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_cluster_max(s : StatstestfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_cluster_max(s : StatstestfCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_cluster_to_string(s : StatstestfCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_f_model_set(s : StatstestfModel, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_f_model_sum(s : StatstestfModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_model_sum(s : StatstestfModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_model_mean(s : StatstestfModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_model_mean(s : StatstestfModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_model_scale(s : StatstestfModel, f : Double) -> StatstestfModel {
   let result = stats_test_f_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_f_model_fill(s : StatstestfModel, v : Double) -> StatstestfMod
   result
 }
 
-pub fn stats_test_f_model_min(s : StatstestfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_model_min(s : StatstestfModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_model_max(s : StatstestfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_model_max(s : StatstestfModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_model_to_string(s : StatstestfModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_f_layer_set(s : StatstestfLayer, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_f_layer_sum(s : StatstestfLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_layer_sum(s : StatstestfLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_layer_mean(s : StatstestfLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_layer_mean(s : StatstestfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_layer_scale(s : StatstestfLayer, f : Double) -> StatstestfLayer {
   let result = stats_test_f_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_f_layer_fill(s : StatstestfLayer, v : Double) -> StatstestfLay
   result
 }
 
-pub fn stats_test_f_layer_min(s : StatstestfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_layer_min(s : StatstestfLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_layer_max(s : StatstestfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_layer_max(s : StatstestfLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_layer_to_string(s : StatstestfLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_f_buffer_set(s : StatstestfBuffer, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_f_buffer_sum(s : StatstestfBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_buffer_sum(s : StatstestfBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_buffer_mean(s : StatstestfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_buffer_mean(s : StatstestfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_buffer_scale(s : StatstestfBuffer, f : Double) -> StatstestfBuffer {
   let result = stats_test_f_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_f_buffer_fill(s : StatstestfBuffer, v : Double) -> StatstestfB
   result
 }
 
-pub fn stats_test_f_buffer_min(s : StatstestfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_buffer_min(s : StatstestfBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_buffer_max(s : StatstestfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_buffer_max(s : StatstestfBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_buffer_to_string(s : StatstestfBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_f_cursor_set(s : StatstestfCursor, i : Int, v : Double) -> Sta
   result
 }
 
-pub fn stats_test_f_cursor_sum(s : StatstestfCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_cursor_sum(s : StatstestfCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_cursor_mean(s : StatstestfCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_cursor_mean(s : StatstestfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_cursor_scale(s : StatstestfCursor, f : Double) -> StatstestfCursor {
   let result = stats_test_f_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_f_cursor_fill(s : StatstestfCursor, v : Double) -> StatstestfC
   result
 }
 
-pub fn stats_test_f_cursor_min(s : StatstestfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_cursor_min(s : StatstestfCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_cursor_max(s : StatstestfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_cursor_max(s : StatstestfCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_cursor_to_string(s : StatstestfCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_f_view_set(s : StatstestfView, i : Int, v : Double) -> Statste
   result
 }
 
-pub fn stats_test_f_view_sum(s : StatstestfView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_view_sum(s : StatstestfView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_view_mean(s : StatstestfView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_view_mean(s : StatstestfView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_view_scale(s : StatstestfView, f : Double) -> StatstestfView {
   let result = stats_test_f_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_f_view_fill(s : StatstestfView, v : Double) -> StatstestfView 
   result
 }
 
-pub fn stats_test_f_view_min(s : StatstestfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_view_min(s : StatstestfView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_view_max(s : StatstestfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_view_max(s : StatstestfView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_view_to_string(s : StatstestfView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_f_range_set(s : StatstestfRange, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_f_range_sum(s : StatstestfRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_range_sum(s : StatstestfRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_range_mean(s : StatstestfRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_range_mean(s : StatstestfRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_range_scale(s : StatstestfRange, f : Double) -> StatstestfRange {
   let result = stats_test_f_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_f_range_fill(s : StatstestfRange, v : Double) -> StatstestfRan
   result
 }
 
-pub fn stats_test_f_range_min(s : StatstestfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_range_min(s : StatstestfRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_range_max(s : StatstestfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_range_max(s : StatstestfRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_range_to_string(s : StatstestfRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_f_slice_set(s : StatstestfSlice, i : Int, v : Double) -> Stats
   result
 }
 
-pub fn stats_test_f_slice_sum(s : StatstestfSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_f_slice_sum(s : StatstestfSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_f_slice_mean(s : StatstestfSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_f_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_f_slice_mean(s : StatstestfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_f_slice_scale(s : StatstestfSlice, f : Double) -> StatstestfSlice {
   let result = stats_test_f_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_f_slice_fill(s : StatstestfSlice, v : Double) -> StatstestfSli
   result
 }
 
-pub fn stats_test_f_slice_min(s : StatstestfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_slice_min(s : StatstestfSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_f_slice_max(s : StatstestfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_f_slice_max(s : StatstestfSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_f_slice_to_string(s : StatstestfSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

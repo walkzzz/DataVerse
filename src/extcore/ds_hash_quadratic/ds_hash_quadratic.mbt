@@ -88,11 +88,7 @@ pub fn ds_hash_quadratic_make_series(vals : Array[Double], name : String) -> Dsh
 
 pub fn ds_hash_quadratic_series_len(s : DshashquadraticSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_quadratic_series_sum(s : DshashquadraticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_quadratic_series_sum(s : DshashquadraticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_quadratic_series_mean(s : DshashquadraticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_quadratic_frame_set(s : DshashquadraticFrame, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_quadratic_frame_sum(s : DshashquadraticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_frame_sum(s : DshashquadraticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_frame_mean(s : DshashquadraticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_frame_mean(s : DshashquadraticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_frame_scale(s : DshashquadraticFrame, f : Double) -> DshashquadraticFrame {
   let result = ds_hash_quadratic_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_quadratic_frame_fill(s : DshashquadraticFrame, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_quadratic_frame_min(s : DshashquadraticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_frame_min(s : DshashquadraticFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_frame_max(s : DshashquadraticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_frame_max(s : DshashquadraticFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_frame_to_string(s : DshashquadraticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_quadratic_table_set(s : DshashquadraticTable, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_quadratic_table_sum(s : DshashquadraticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_table_sum(s : DshashquadraticTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_table_mean(s : DshashquadraticTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_table_mean(s : DshashquadraticTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_table_scale(s : DshashquadraticTable, f : Double) -> DshashquadraticTable {
   let result = ds_hash_quadratic_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_quadratic_table_fill(s : DshashquadraticTable, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_quadratic_table_min(s : DshashquadraticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_table_min(s : DshashquadraticTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_table_max(s : DshashquadraticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_table_max(s : DshashquadraticTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_table_to_string(s : DshashquadraticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_quadratic_graphn_set(s : DshashquadraticGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_quadratic_graphn_sum(s : DshashquadraticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_graphn_sum(s : DshashquadraticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_graphn_mean(s : DshashquadraticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_graphn_mean(s : DshashquadraticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_graphn_scale(s : DshashquadraticGraphN, f : Double) -> DshashquadraticGraphN {
   let result = ds_hash_quadratic_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_quadratic_graphn_fill(s : DshashquadraticGraphN, v : Double) -> D
   result
 }
 
-pub fn ds_hash_quadratic_graphn_min(s : DshashquadraticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_graphn_min(s : DshashquadraticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_graphn_max(s : DshashquadraticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_graphn_max(s : DshashquadraticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_graphn_to_string(s : DshashquadraticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_quadratic_node_set(s : DshashquadraticNode, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_quadratic_node_sum(s : DshashquadraticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_node_sum(s : DshashquadraticNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_node_mean(s : DshashquadraticNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_node_mean(s : DshashquadraticNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_node_scale(s : DshashquadraticNode, f : Double) -> DshashquadraticNode {
   let result = ds_hash_quadratic_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_quadratic_node_fill(s : DshashquadraticNode, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_quadratic_node_min(s : DshashquadraticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_node_min(s : DshashquadraticNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_node_max(s : DshashquadraticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_node_max(s : DshashquadraticNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_node_to_string(s : DshashquadraticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_quadratic_edge_set(s : DshashquadraticEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_quadratic_edge_sum(s : DshashquadraticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_edge_sum(s : DshashquadraticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_edge_mean(s : DshashquadraticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_edge_mean(s : DshashquadraticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_edge_scale(s : DshashquadraticEdge, f : Double) -> DshashquadraticEdge {
   let result = ds_hash_quadratic_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_quadratic_edge_fill(s : DshashquadraticEdge, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_quadratic_edge_min(s : DshashquadraticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_edge_min(s : DshashquadraticEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_edge_max(s : DshashquadraticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_edge_max(s : DshashquadraticEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_edge_to_string(s : DshashquadraticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_quadratic_path_set(s : DshashquadraticPath, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_quadratic_path_sum(s : DshashquadraticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_path_sum(s : DshashquadraticPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_path_mean(s : DshashquadraticPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_path_mean(s : DshashquadraticPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_path_scale(s : DshashquadraticPath, f : Double) -> DshashquadraticPath {
   let result = ds_hash_quadratic_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_quadratic_path_fill(s : DshashquadraticPath, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_quadratic_path_min(s : DshashquadraticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_path_min(s : DshashquadraticPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_path_max(s : DshashquadraticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_path_max(s : DshashquadraticPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_path_to_string(s : DshashquadraticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_quadratic_cluster_set(s : DshashquadraticCluster, i : Int, v : Do
   result
 }
 
-pub fn ds_hash_quadratic_cluster_sum(s : DshashquadraticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_cluster_sum(s : DshashquadraticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_cluster_mean(s : DshashquadraticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_cluster_mean(s : DshashquadraticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_cluster_scale(s : DshashquadraticCluster, f : Double) -> DshashquadraticCluster {
   let result = ds_hash_quadratic_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_quadratic_cluster_fill(s : DshashquadraticCluster, v : Double) ->
   result
 }
 
-pub fn ds_hash_quadratic_cluster_min(s : DshashquadraticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_cluster_min(s : DshashquadraticCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_cluster_max(s : DshashquadraticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_cluster_max(s : DshashquadraticCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_cluster_to_string(s : DshashquadraticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_quadratic_model_set(s : DshashquadraticModel, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_quadratic_model_sum(s : DshashquadraticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_model_sum(s : DshashquadraticModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_model_mean(s : DshashquadraticModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_model_mean(s : DshashquadraticModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_model_scale(s : DshashquadraticModel, f : Double) -> DshashquadraticModel {
   let result = ds_hash_quadratic_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_quadratic_model_fill(s : DshashquadraticModel, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_quadratic_model_min(s : DshashquadraticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_model_min(s : DshashquadraticModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_model_max(s : DshashquadraticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_model_max(s : DshashquadraticModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_model_to_string(s : DshashquadraticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_quadratic_layer_set(s : DshashquadraticLayer, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_quadratic_layer_sum(s : DshashquadraticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_layer_sum(s : DshashquadraticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_layer_mean(s : DshashquadraticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_layer_mean(s : DshashquadraticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_layer_scale(s : DshashquadraticLayer, f : Double) -> DshashquadraticLayer {
   let result = ds_hash_quadratic_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_quadratic_layer_fill(s : DshashquadraticLayer, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_quadratic_layer_min(s : DshashquadraticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_layer_min(s : DshashquadraticLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_layer_max(s : DshashquadraticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_layer_max(s : DshashquadraticLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_layer_to_string(s : DshashquadraticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_quadratic_buffer_set(s : DshashquadraticBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_quadratic_buffer_sum(s : DshashquadraticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_buffer_sum(s : DshashquadraticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_buffer_mean(s : DshashquadraticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_buffer_mean(s : DshashquadraticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_buffer_scale(s : DshashquadraticBuffer, f : Double) -> DshashquadraticBuffer {
   let result = ds_hash_quadratic_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_quadratic_buffer_fill(s : DshashquadraticBuffer, v : Double) -> D
   result
 }
 
-pub fn ds_hash_quadratic_buffer_min(s : DshashquadraticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_buffer_min(s : DshashquadraticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_buffer_max(s : DshashquadraticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_buffer_max(s : DshashquadraticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_buffer_to_string(s : DshashquadraticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_quadratic_cursor_set(s : DshashquadraticCursor, i : Int, v : Doub
   result
 }
 
-pub fn ds_hash_quadratic_cursor_sum(s : DshashquadraticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_cursor_sum(s : DshashquadraticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_cursor_mean(s : DshashquadraticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_cursor_mean(s : DshashquadraticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_cursor_scale(s : DshashquadraticCursor, f : Double) -> DshashquadraticCursor {
   let result = ds_hash_quadratic_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_quadratic_cursor_fill(s : DshashquadraticCursor, v : Double) -> D
   result
 }
 
-pub fn ds_hash_quadratic_cursor_min(s : DshashquadraticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_cursor_min(s : DshashquadraticCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_cursor_max(s : DshashquadraticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_cursor_max(s : DshashquadraticCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_cursor_to_string(s : DshashquadraticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_quadratic_view_set(s : DshashquadraticView, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_quadratic_view_sum(s : DshashquadraticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_view_sum(s : DshashquadraticView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_view_mean(s : DshashquadraticView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_view_mean(s : DshashquadraticView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_view_scale(s : DshashquadraticView, f : Double) -> DshashquadraticView {
   let result = ds_hash_quadratic_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_quadratic_view_fill(s : DshashquadraticView, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_quadratic_view_min(s : DshashquadraticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_view_min(s : DshashquadraticView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_view_max(s : DshashquadraticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_view_max(s : DshashquadraticView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_view_to_string(s : DshashquadraticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_quadratic_range_set(s : DshashquadraticRange, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_quadratic_range_sum(s : DshashquadraticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_range_sum(s : DshashquadraticRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_range_mean(s : DshashquadraticRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_range_mean(s : DshashquadraticRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_range_scale(s : DshashquadraticRange, f : Double) -> DshashquadraticRange {
   let result = ds_hash_quadratic_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_quadratic_range_fill(s : DshashquadraticRange, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_quadratic_range_min(s : DshashquadraticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_range_min(s : DshashquadraticRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_range_max(s : DshashquadraticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_range_max(s : DshashquadraticRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_range_to_string(s : DshashquadraticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_quadratic_slice_set(s : DshashquadraticSlice, i : Int, v : Double
   result
 }
 
-pub fn ds_hash_quadratic_slice_sum(s : DshashquadraticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_quadratic_slice_sum(s : DshashquadraticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_quadratic_slice_mean(s : DshashquadraticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_quadratic_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_quadratic_slice_mean(s : DshashquadraticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_quadratic_slice_scale(s : DshashquadraticSlice, f : Double) -> DshashquadraticSlice {
   let result = ds_hash_quadratic_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_quadratic_slice_fill(s : DshashquadraticSlice, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_quadratic_slice_min(s : DshashquadraticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_slice_min(s : DshashquadraticSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_quadratic_slice_max(s : DshashquadraticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_quadratic_slice_max(s : DshashquadraticSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_quadratic_slice_to_string(s : DshashquadraticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

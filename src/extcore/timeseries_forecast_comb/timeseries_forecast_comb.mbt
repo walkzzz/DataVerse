@@ -88,11 +88,7 @@ pub fn timeseries_forecast_comb_make_series(vals : Array[Double], name : String)
 
 pub fn timeseries_forecast_comb_series_len(s : TimeseriesforecastcombSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_comb_series_sum(s : TimeseriesforecastcombSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_comb_series_sum(s : TimeseriesforecastcombSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_comb_series_mean(s : TimeseriesforecastcombSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_comb_frame_set(s : TimeseriesforecastcombFrame, i : I
   result
 }
 
-pub fn timeseries_forecast_comb_frame_sum(s : TimeseriesforecastcombFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_frame_sum(s : TimeseriesforecastcombFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_frame_mean(s : TimeseriesforecastcombFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_frame_mean(s : TimeseriesforecastcombFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_frame_scale(s : TimeseriesforecastcombFrame, f : Double) -> TimeseriesforecastcombFrame {
   let result = timeseries_forecast_comb_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_comb_frame_fill(s : TimeseriesforecastcombFrame, v : 
   result
 }
 
-pub fn timeseries_forecast_comb_frame_min(s : TimeseriesforecastcombFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_frame_min(s : TimeseriesforecastcombFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_frame_max(s : TimeseriesforecastcombFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_frame_max(s : TimeseriesforecastcombFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_frame_to_string(s : TimeseriesforecastcombFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_comb_table_set(s : TimeseriesforecastcombTable, i : I
   result
 }
 
-pub fn timeseries_forecast_comb_table_sum(s : TimeseriesforecastcombTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_table_sum(s : TimeseriesforecastcombTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_table_mean(s : TimeseriesforecastcombTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_table_mean(s : TimeseriesforecastcombTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_table_scale(s : TimeseriesforecastcombTable, f : Double) -> TimeseriesforecastcombTable {
   let result = timeseries_forecast_comb_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_comb_table_fill(s : TimeseriesforecastcombTable, v : 
   result
 }
 
-pub fn timeseries_forecast_comb_table_min(s : TimeseriesforecastcombTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_table_min(s : TimeseriesforecastcombTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_table_max(s : TimeseriesforecastcombTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_table_max(s : TimeseriesforecastcombTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_table_to_string(s : TimeseriesforecastcombTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_comb_graphn_set(s : TimeseriesforecastcombGraphN, i :
   result
 }
 
-pub fn timeseries_forecast_comb_graphn_sum(s : TimeseriesforecastcombGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_graphn_sum(s : TimeseriesforecastcombGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_graphn_mean(s : TimeseriesforecastcombGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_graphn_mean(s : TimeseriesforecastcombGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_graphn_scale(s : TimeseriesforecastcombGraphN, f : Double) -> TimeseriesforecastcombGraphN {
   let result = timeseries_forecast_comb_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_comb_graphn_fill(s : TimeseriesforecastcombGraphN, v 
   result
 }
 
-pub fn timeseries_forecast_comb_graphn_min(s : TimeseriesforecastcombGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_graphn_min(s : TimeseriesforecastcombGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_graphn_max(s : TimeseriesforecastcombGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_graphn_max(s : TimeseriesforecastcombGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_graphn_to_string(s : TimeseriesforecastcombGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_comb_node_set(s : TimeseriesforecastcombNode, i : Int
   result
 }
 
-pub fn timeseries_forecast_comb_node_sum(s : TimeseriesforecastcombNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_node_sum(s : TimeseriesforecastcombNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_node_mean(s : TimeseriesforecastcombNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_node_mean(s : TimeseriesforecastcombNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_node_scale(s : TimeseriesforecastcombNode, f : Double) -> TimeseriesforecastcombNode {
   let result = timeseries_forecast_comb_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_comb_node_fill(s : TimeseriesforecastcombNode, v : Do
   result
 }
 
-pub fn timeseries_forecast_comb_node_min(s : TimeseriesforecastcombNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_node_min(s : TimeseriesforecastcombNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_node_max(s : TimeseriesforecastcombNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_node_max(s : TimeseriesforecastcombNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_node_to_string(s : TimeseriesforecastcombNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_comb_edge_set(s : TimeseriesforecastcombEdge, i : Int
   result
 }
 
-pub fn timeseries_forecast_comb_edge_sum(s : TimeseriesforecastcombEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_edge_sum(s : TimeseriesforecastcombEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_edge_mean(s : TimeseriesforecastcombEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_edge_mean(s : TimeseriesforecastcombEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_edge_scale(s : TimeseriesforecastcombEdge, f : Double) -> TimeseriesforecastcombEdge {
   let result = timeseries_forecast_comb_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_comb_edge_fill(s : TimeseriesforecastcombEdge, v : Do
   result
 }
 
-pub fn timeseries_forecast_comb_edge_min(s : TimeseriesforecastcombEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_edge_min(s : TimeseriesforecastcombEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_edge_max(s : TimeseriesforecastcombEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_edge_max(s : TimeseriesforecastcombEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_edge_to_string(s : TimeseriesforecastcombEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_comb_path_set(s : TimeseriesforecastcombPath, i : Int
   result
 }
 
-pub fn timeseries_forecast_comb_path_sum(s : TimeseriesforecastcombPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_path_sum(s : TimeseriesforecastcombPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_path_mean(s : TimeseriesforecastcombPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_path_mean(s : TimeseriesforecastcombPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_path_scale(s : TimeseriesforecastcombPath, f : Double) -> TimeseriesforecastcombPath {
   let result = timeseries_forecast_comb_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_comb_path_fill(s : TimeseriesforecastcombPath, v : Do
   result
 }
 
-pub fn timeseries_forecast_comb_path_min(s : TimeseriesforecastcombPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_path_min(s : TimeseriesforecastcombPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_path_max(s : TimeseriesforecastcombPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_path_max(s : TimeseriesforecastcombPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_path_to_string(s : TimeseriesforecastcombPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_comb_cluster_set(s : TimeseriesforecastcombCluster, i
   result
 }
 
-pub fn timeseries_forecast_comb_cluster_sum(s : TimeseriesforecastcombCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_cluster_sum(s : TimeseriesforecastcombCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_cluster_mean(s : TimeseriesforecastcombCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_cluster_mean(s : TimeseriesforecastcombCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_cluster_scale(s : TimeseriesforecastcombCluster, f : Double) -> TimeseriesforecastcombCluster {
   let result = timeseries_forecast_comb_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_comb_cluster_fill(s : TimeseriesforecastcombCluster, 
   result
 }
 
-pub fn timeseries_forecast_comb_cluster_min(s : TimeseriesforecastcombCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_cluster_min(s : TimeseriesforecastcombCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_cluster_max(s : TimeseriesforecastcombCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_cluster_max(s : TimeseriesforecastcombCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_cluster_to_string(s : TimeseriesforecastcombCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_comb_model_set(s : TimeseriesforecastcombModel, i : I
   result
 }
 
-pub fn timeseries_forecast_comb_model_sum(s : TimeseriesforecastcombModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_model_sum(s : TimeseriesforecastcombModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_model_mean(s : TimeseriesforecastcombModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_model_mean(s : TimeseriesforecastcombModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_model_scale(s : TimeseriesforecastcombModel, f : Double) -> TimeseriesforecastcombModel {
   let result = timeseries_forecast_comb_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_comb_model_fill(s : TimeseriesforecastcombModel, v : 
   result
 }
 
-pub fn timeseries_forecast_comb_model_min(s : TimeseriesforecastcombModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_model_min(s : TimeseriesforecastcombModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_model_max(s : TimeseriesforecastcombModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_model_max(s : TimeseriesforecastcombModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_model_to_string(s : TimeseriesforecastcombModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_comb_layer_set(s : TimeseriesforecastcombLayer, i : I
   result
 }
 
-pub fn timeseries_forecast_comb_layer_sum(s : TimeseriesforecastcombLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_layer_sum(s : TimeseriesforecastcombLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_layer_mean(s : TimeseriesforecastcombLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_layer_mean(s : TimeseriesforecastcombLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_layer_scale(s : TimeseriesforecastcombLayer, f : Double) -> TimeseriesforecastcombLayer {
   let result = timeseries_forecast_comb_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_comb_layer_fill(s : TimeseriesforecastcombLayer, v : 
   result
 }
 
-pub fn timeseries_forecast_comb_layer_min(s : TimeseriesforecastcombLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_layer_min(s : TimeseriesforecastcombLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_layer_max(s : TimeseriesforecastcombLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_layer_max(s : TimeseriesforecastcombLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_layer_to_string(s : TimeseriesforecastcombLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_comb_buffer_set(s : TimeseriesforecastcombBuffer, i :
   result
 }
 
-pub fn timeseries_forecast_comb_buffer_sum(s : TimeseriesforecastcombBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_buffer_sum(s : TimeseriesforecastcombBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_buffer_mean(s : TimeseriesforecastcombBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_buffer_mean(s : TimeseriesforecastcombBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_buffer_scale(s : TimeseriesforecastcombBuffer, f : Double) -> TimeseriesforecastcombBuffer {
   let result = timeseries_forecast_comb_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_comb_buffer_fill(s : TimeseriesforecastcombBuffer, v 
   result
 }
 
-pub fn timeseries_forecast_comb_buffer_min(s : TimeseriesforecastcombBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_buffer_min(s : TimeseriesforecastcombBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_buffer_max(s : TimeseriesforecastcombBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_buffer_max(s : TimeseriesforecastcombBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_buffer_to_string(s : TimeseriesforecastcombBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_comb_cursor_set(s : TimeseriesforecastcombCursor, i :
   result
 }
 
-pub fn timeseries_forecast_comb_cursor_sum(s : TimeseriesforecastcombCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_cursor_sum(s : TimeseriesforecastcombCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_cursor_mean(s : TimeseriesforecastcombCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_cursor_mean(s : TimeseriesforecastcombCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_cursor_scale(s : TimeseriesforecastcombCursor, f : Double) -> TimeseriesforecastcombCursor {
   let result = timeseries_forecast_comb_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_comb_cursor_fill(s : TimeseriesforecastcombCursor, v 
   result
 }
 
-pub fn timeseries_forecast_comb_cursor_min(s : TimeseriesforecastcombCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_cursor_min(s : TimeseriesforecastcombCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_cursor_max(s : TimeseriesforecastcombCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_cursor_max(s : TimeseriesforecastcombCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_cursor_to_string(s : TimeseriesforecastcombCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_comb_view_set(s : TimeseriesforecastcombView, i : Int
   result
 }
 
-pub fn timeseries_forecast_comb_view_sum(s : TimeseriesforecastcombView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_view_sum(s : TimeseriesforecastcombView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_view_mean(s : TimeseriesforecastcombView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_view_mean(s : TimeseriesforecastcombView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_view_scale(s : TimeseriesforecastcombView, f : Double) -> TimeseriesforecastcombView {
   let result = timeseries_forecast_comb_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_comb_view_fill(s : TimeseriesforecastcombView, v : Do
   result
 }
 
-pub fn timeseries_forecast_comb_view_min(s : TimeseriesforecastcombView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_view_min(s : TimeseriesforecastcombView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_view_max(s : TimeseriesforecastcombView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_view_max(s : TimeseriesforecastcombView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_view_to_string(s : TimeseriesforecastcombView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_comb_range_set(s : TimeseriesforecastcombRange, i : I
   result
 }
 
-pub fn timeseries_forecast_comb_range_sum(s : TimeseriesforecastcombRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_range_sum(s : TimeseriesforecastcombRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_range_mean(s : TimeseriesforecastcombRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_range_mean(s : TimeseriesforecastcombRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_range_scale(s : TimeseriesforecastcombRange, f : Double) -> TimeseriesforecastcombRange {
   let result = timeseries_forecast_comb_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_comb_range_fill(s : TimeseriesforecastcombRange, v : 
   result
 }
 
-pub fn timeseries_forecast_comb_range_min(s : TimeseriesforecastcombRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_range_min(s : TimeseriesforecastcombRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_range_max(s : TimeseriesforecastcombRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_range_max(s : TimeseriesforecastcombRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_range_to_string(s : TimeseriesforecastcombRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_comb_slice_set(s : TimeseriesforecastcombSlice, i : I
   result
 }
 
-pub fn timeseries_forecast_comb_slice_sum(s : TimeseriesforecastcombSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_comb_slice_sum(s : TimeseriesforecastcombSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_comb_slice_mean(s : TimeseriesforecastcombSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_comb_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_comb_slice_mean(s : TimeseriesforecastcombSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_comb_slice_scale(s : TimeseriesforecastcombSlice, f : Double) -> TimeseriesforecastcombSlice {
   let result = timeseries_forecast_comb_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_comb_slice_fill(s : TimeseriesforecastcombSlice, v : 
   result
 }
 
-pub fn timeseries_forecast_comb_slice_min(s : TimeseriesforecastcombSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_slice_min(s : TimeseriesforecastcombSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_comb_slice_max(s : TimeseriesforecastcombSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_comb_slice_max(s : TimeseriesforecastcombSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_comb_slice_to_string(s : TimeseriesforecastcombSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

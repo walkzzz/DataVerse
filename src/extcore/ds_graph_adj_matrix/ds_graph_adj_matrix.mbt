@@ -88,11 +88,7 @@ pub fn ds_graph_adj_matrix_make_series(vals : Array[Double], name : String) -> D
 
 pub fn ds_graph_adj_matrix_series_len(s : DsgraphadjmatrixSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_adj_matrix_series_sum(s : DsgraphadjmatrixSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_series_sum(s : DsgraphadjmatrixSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_adj_matrix_series_mean(s : DsgraphadjmatrixSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_adj_matrix_frame_set(s : DsgraphadjmatrixFrame, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_adj_matrix_frame_sum(s : DsgraphadjmatrixFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_frame_sum(s : DsgraphadjmatrixFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_frame_mean(s : DsgraphadjmatrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_frame_mean(s : DsgraphadjmatrixFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_frame_scale(s : DsgraphadjmatrixFrame, f : Double) -> DsgraphadjmatrixFrame {
   let result = ds_graph_adj_matrix_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_adj_matrix_frame_fill(s : DsgraphadjmatrixFrame, v : Double) -> 
   result
 }
 
-pub fn ds_graph_adj_matrix_frame_min(s : DsgraphadjmatrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_frame_min(s : DsgraphadjmatrixFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_frame_max(s : DsgraphadjmatrixFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_frame_max(s : DsgraphadjmatrixFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_frame_to_string(s : DsgraphadjmatrixFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_adj_matrix_table_set(s : DsgraphadjmatrixTable, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_adj_matrix_table_sum(s : DsgraphadjmatrixTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_table_sum(s : DsgraphadjmatrixTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_table_mean(s : DsgraphadjmatrixTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_table_mean(s : DsgraphadjmatrixTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_table_scale(s : DsgraphadjmatrixTable, f : Double) -> DsgraphadjmatrixTable {
   let result = ds_graph_adj_matrix_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_adj_matrix_table_fill(s : DsgraphadjmatrixTable, v : Double) -> 
   result
 }
 
-pub fn ds_graph_adj_matrix_table_min(s : DsgraphadjmatrixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_table_min(s : DsgraphadjmatrixTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_table_max(s : DsgraphadjmatrixTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_table_max(s : DsgraphadjmatrixTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_table_to_string(s : DsgraphadjmatrixTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_adj_matrix_graphn_set(s : DsgraphadjmatrixGraphN, i : Int, v : D
   result
 }
 
-pub fn ds_graph_adj_matrix_graphn_sum(s : DsgraphadjmatrixGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_graphn_sum(s : DsgraphadjmatrixGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_graphn_mean(s : DsgraphadjmatrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_graphn_mean(s : DsgraphadjmatrixGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_graphn_scale(s : DsgraphadjmatrixGraphN, f : Double) -> DsgraphadjmatrixGraphN {
   let result = ds_graph_adj_matrix_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_adj_matrix_graphn_fill(s : DsgraphadjmatrixGraphN, v : Double) -
   result
 }
 
-pub fn ds_graph_adj_matrix_graphn_min(s : DsgraphadjmatrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_graphn_min(s : DsgraphadjmatrixGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_graphn_max(s : DsgraphadjmatrixGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_graphn_max(s : DsgraphadjmatrixGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_graphn_to_string(s : DsgraphadjmatrixGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_adj_matrix_node_set(s : DsgraphadjmatrixNode, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_adj_matrix_node_sum(s : DsgraphadjmatrixNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_node_sum(s : DsgraphadjmatrixNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_node_mean(s : DsgraphadjmatrixNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_node_mean(s : DsgraphadjmatrixNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_node_scale(s : DsgraphadjmatrixNode, f : Double) -> DsgraphadjmatrixNode {
   let result = ds_graph_adj_matrix_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_adj_matrix_node_fill(s : DsgraphadjmatrixNode, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_adj_matrix_node_min(s : DsgraphadjmatrixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_node_min(s : DsgraphadjmatrixNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_node_max(s : DsgraphadjmatrixNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_node_max(s : DsgraphadjmatrixNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_node_to_string(s : DsgraphadjmatrixNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_adj_matrix_edge_set(s : DsgraphadjmatrixEdge, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_adj_matrix_edge_sum(s : DsgraphadjmatrixEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_edge_sum(s : DsgraphadjmatrixEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_edge_mean(s : DsgraphadjmatrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_edge_mean(s : DsgraphadjmatrixEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_edge_scale(s : DsgraphadjmatrixEdge, f : Double) -> DsgraphadjmatrixEdge {
   let result = ds_graph_adj_matrix_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_adj_matrix_edge_fill(s : DsgraphadjmatrixEdge, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_adj_matrix_edge_min(s : DsgraphadjmatrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_edge_min(s : DsgraphadjmatrixEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_edge_max(s : DsgraphadjmatrixEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_edge_max(s : DsgraphadjmatrixEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_edge_to_string(s : DsgraphadjmatrixEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_adj_matrix_path_set(s : DsgraphadjmatrixPath, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_adj_matrix_path_sum(s : DsgraphadjmatrixPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_path_sum(s : DsgraphadjmatrixPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_path_mean(s : DsgraphadjmatrixPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_path_mean(s : DsgraphadjmatrixPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_path_scale(s : DsgraphadjmatrixPath, f : Double) -> DsgraphadjmatrixPath {
   let result = ds_graph_adj_matrix_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_adj_matrix_path_fill(s : DsgraphadjmatrixPath, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_adj_matrix_path_min(s : DsgraphadjmatrixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_path_min(s : DsgraphadjmatrixPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_path_max(s : DsgraphadjmatrixPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_path_max(s : DsgraphadjmatrixPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_path_to_string(s : DsgraphadjmatrixPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_adj_matrix_cluster_set(s : DsgraphadjmatrixCluster, i : Int, v :
   result
 }
 
-pub fn ds_graph_adj_matrix_cluster_sum(s : DsgraphadjmatrixCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_cluster_sum(s : DsgraphadjmatrixCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_cluster_mean(s : DsgraphadjmatrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_cluster_mean(s : DsgraphadjmatrixCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_cluster_scale(s : DsgraphadjmatrixCluster, f : Double) -> DsgraphadjmatrixCluster {
   let result = ds_graph_adj_matrix_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_adj_matrix_cluster_fill(s : DsgraphadjmatrixCluster, v : Double)
   result
 }
 
-pub fn ds_graph_adj_matrix_cluster_min(s : DsgraphadjmatrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_cluster_min(s : DsgraphadjmatrixCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_cluster_max(s : DsgraphadjmatrixCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_cluster_max(s : DsgraphadjmatrixCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_cluster_to_string(s : DsgraphadjmatrixCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_adj_matrix_model_set(s : DsgraphadjmatrixModel, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_adj_matrix_model_sum(s : DsgraphadjmatrixModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_model_sum(s : DsgraphadjmatrixModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_model_mean(s : DsgraphadjmatrixModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_model_mean(s : DsgraphadjmatrixModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_model_scale(s : DsgraphadjmatrixModel, f : Double) -> DsgraphadjmatrixModel {
   let result = ds_graph_adj_matrix_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_adj_matrix_model_fill(s : DsgraphadjmatrixModel, v : Double) -> 
   result
 }
 
-pub fn ds_graph_adj_matrix_model_min(s : DsgraphadjmatrixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_model_min(s : DsgraphadjmatrixModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_model_max(s : DsgraphadjmatrixModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_model_max(s : DsgraphadjmatrixModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_model_to_string(s : DsgraphadjmatrixModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_adj_matrix_layer_set(s : DsgraphadjmatrixLayer, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_adj_matrix_layer_sum(s : DsgraphadjmatrixLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_layer_sum(s : DsgraphadjmatrixLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_layer_mean(s : DsgraphadjmatrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_layer_mean(s : DsgraphadjmatrixLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_layer_scale(s : DsgraphadjmatrixLayer, f : Double) -> DsgraphadjmatrixLayer {
   let result = ds_graph_adj_matrix_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_adj_matrix_layer_fill(s : DsgraphadjmatrixLayer, v : Double) -> 
   result
 }
 
-pub fn ds_graph_adj_matrix_layer_min(s : DsgraphadjmatrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_layer_min(s : DsgraphadjmatrixLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_layer_max(s : DsgraphadjmatrixLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_layer_max(s : DsgraphadjmatrixLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_layer_to_string(s : DsgraphadjmatrixLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_adj_matrix_buffer_set(s : DsgraphadjmatrixBuffer, i : Int, v : D
   result
 }
 
-pub fn ds_graph_adj_matrix_buffer_sum(s : DsgraphadjmatrixBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_buffer_sum(s : DsgraphadjmatrixBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_buffer_mean(s : DsgraphadjmatrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_buffer_mean(s : DsgraphadjmatrixBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_buffer_scale(s : DsgraphadjmatrixBuffer, f : Double) -> DsgraphadjmatrixBuffer {
   let result = ds_graph_adj_matrix_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_adj_matrix_buffer_fill(s : DsgraphadjmatrixBuffer, v : Double) -
   result
 }
 
-pub fn ds_graph_adj_matrix_buffer_min(s : DsgraphadjmatrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_buffer_min(s : DsgraphadjmatrixBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_buffer_max(s : DsgraphadjmatrixBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_buffer_max(s : DsgraphadjmatrixBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_buffer_to_string(s : DsgraphadjmatrixBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_adj_matrix_cursor_set(s : DsgraphadjmatrixCursor, i : Int, v : D
   result
 }
 
-pub fn ds_graph_adj_matrix_cursor_sum(s : DsgraphadjmatrixCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_cursor_sum(s : DsgraphadjmatrixCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_cursor_mean(s : DsgraphadjmatrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_cursor_mean(s : DsgraphadjmatrixCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_cursor_scale(s : DsgraphadjmatrixCursor, f : Double) -> DsgraphadjmatrixCursor {
   let result = ds_graph_adj_matrix_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_adj_matrix_cursor_fill(s : DsgraphadjmatrixCursor, v : Double) -
   result
 }
 
-pub fn ds_graph_adj_matrix_cursor_min(s : DsgraphadjmatrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_cursor_min(s : DsgraphadjmatrixCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_cursor_max(s : DsgraphadjmatrixCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_cursor_max(s : DsgraphadjmatrixCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_cursor_to_string(s : DsgraphadjmatrixCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_adj_matrix_view_set(s : DsgraphadjmatrixView, i : Int, v : Doubl
   result
 }
 
-pub fn ds_graph_adj_matrix_view_sum(s : DsgraphadjmatrixView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_view_sum(s : DsgraphadjmatrixView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_view_mean(s : DsgraphadjmatrixView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_view_mean(s : DsgraphadjmatrixView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_view_scale(s : DsgraphadjmatrixView, f : Double) -> DsgraphadjmatrixView {
   let result = ds_graph_adj_matrix_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_adj_matrix_view_fill(s : DsgraphadjmatrixView, v : Double) -> Ds
   result
 }
 
-pub fn ds_graph_adj_matrix_view_min(s : DsgraphadjmatrixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_view_min(s : DsgraphadjmatrixView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_view_max(s : DsgraphadjmatrixView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_view_max(s : DsgraphadjmatrixView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_view_to_string(s : DsgraphadjmatrixView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_adj_matrix_range_set(s : DsgraphadjmatrixRange, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_adj_matrix_range_sum(s : DsgraphadjmatrixRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_range_sum(s : DsgraphadjmatrixRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_range_mean(s : DsgraphadjmatrixRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_range_mean(s : DsgraphadjmatrixRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_range_scale(s : DsgraphadjmatrixRange, f : Double) -> DsgraphadjmatrixRange {
   let result = ds_graph_adj_matrix_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_adj_matrix_range_fill(s : DsgraphadjmatrixRange, v : Double) -> 
   result
 }
 
-pub fn ds_graph_adj_matrix_range_min(s : DsgraphadjmatrixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_range_min(s : DsgraphadjmatrixRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_range_max(s : DsgraphadjmatrixRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_range_max(s : DsgraphadjmatrixRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_range_to_string(s : DsgraphadjmatrixRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_adj_matrix_slice_set(s : DsgraphadjmatrixSlice, i : Int, v : Dou
   result
 }
 
-pub fn ds_graph_adj_matrix_slice_sum(s : DsgraphadjmatrixSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_adj_matrix_slice_sum(s : DsgraphadjmatrixSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_adj_matrix_slice_mean(s : DsgraphadjmatrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_adj_matrix_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_adj_matrix_slice_mean(s : DsgraphadjmatrixSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_adj_matrix_slice_scale(s : DsgraphadjmatrixSlice, f : Double) -> DsgraphadjmatrixSlice {
   let result = ds_graph_adj_matrix_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_adj_matrix_slice_fill(s : DsgraphadjmatrixSlice, v : Double) -> 
   result
 }
 
-pub fn ds_graph_adj_matrix_slice_min(s : DsgraphadjmatrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_slice_min(s : DsgraphadjmatrixSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_adj_matrix_slice_max(s : DsgraphadjmatrixSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_adj_matrix_slice_max(s : DsgraphadjmatrixSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_adj_matrix_slice_to_string(s : DsgraphadjmatrixSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

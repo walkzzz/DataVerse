@@ -88,11 +88,7 @@ pub fn timeseries_decomp_moving_make_series(vals : Array[Double], name : String)
 
 pub fn timeseries_decomp_moving_series_len(s : TimeseriesdecompmovingSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_decomp_moving_series_sum(s : TimeseriesdecompmovingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_decomp_moving_series_sum(s : TimeseriesdecompmovingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_decomp_moving_series_mean(s : TimeseriesdecompmovingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_decomp_moving_frame_set(s : TimeseriesdecompmovingFrame, i : I
   result
 }
 
-pub fn timeseries_decomp_moving_frame_sum(s : TimeseriesdecompmovingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_frame_sum(s : TimeseriesdecompmovingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_frame_mean(s : TimeseriesdecompmovingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_frame_mean(s : TimeseriesdecompmovingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_frame_scale(s : TimeseriesdecompmovingFrame, f : Double) -> TimeseriesdecompmovingFrame {
   let result = timeseries_decomp_moving_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_decomp_moving_frame_fill(s : TimeseriesdecompmovingFrame, v : 
   result
 }
 
-pub fn timeseries_decomp_moving_frame_min(s : TimeseriesdecompmovingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_frame_min(s : TimeseriesdecompmovingFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_frame_max(s : TimeseriesdecompmovingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_frame_max(s : TimeseriesdecompmovingFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_frame_to_string(s : TimeseriesdecompmovingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_decomp_moving_table_set(s : TimeseriesdecompmovingTable, i : I
   result
 }
 
-pub fn timeseries_decomp_moving_table_sum(s : TimeseriesdecompmovingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_table_sum(s : TimeseriesdecompmovingTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_table_mean(s : TimeseriesdecompmovingTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_table_mean(s : TimeseriesdecompmovingTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_table_scale(s : TimeseriesdecompmovingTable, f : Double) -> TimeseriesdecompmovingTable {
   let result = timeseries_decomp_moving_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_decomp_moving_table_fill(s : TimeseriesdecompmovingTable, v : 
   result
 }
 
-pub fn timeseries_decomp_moving_table_min(s : TimeseriesdecompmovingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_table_min(s : TimeseriesdecompmovingTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_table_max(s : TimeseriesdecompmovingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_table_max(s : TimeseriesdecompmovingTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_table_to_string(s : TimeseriesdecompmovingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_decomp_moving_graphn_set(s : TimeseriesdecompmovingGraphN, i :
   result
 }
 
-pub fn timeseries_decomp_moving_graphn_sum(s : TimeseriesdecompmovingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_graphn_sum(s : TimeseriesdecompmovingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_graphn_mean(s : TimeseriesdecompmovingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_graphn_mean(s : TimeseriesdecompmovingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_graphn_scale(s : TimeseriesdecompmovingGraphN, f : Double) -> TimeseriesdecompmovingGraphN {
   let result = timeseries_decomp_moving_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_decomp_moving_graphn_fill(s : TimeseriesdecompmovingGraphN, v 
   result
 }
 
-pub fn timeseries_decomp_moving_graphn_min(s : TimeseriesdecompmovingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_graphn_min(s : TimeseriesdecompmovingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_graphn_max(s : TimeseriesdecompmovingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_graphn_max(s : TimeseriesdecompmovingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_graphn_to_string(s : TimeseriesdecompmovingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_decomp_moving_node_set(s : TimeseriesdecompmovingNode, i : Int
   result
 }
 
-pub fn timeseries_decomp_moving_node_sum(s : TimeseriesdecompmovingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_node_sum(s : TimeseriesdecompmovingNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_node_mean(s : TimeseriesdecompmovingNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_node_mean(s : TimeseriesdecompmovingNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_node_scale(s : TimeseriesdecompmovingNode, f : Double) -> TimeseriesdecompmovingNode {
   let result = timeseries_decomp_moving_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_decomp_moving_node_fill(s : TimeseriesdecompmovingNode, v : Do
   result
 }
 
-pub fn timeseries_decomp_moving_node_min(s : TimeseriesdecompmovingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_node_min(s : TimeseriesdecompmovingNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_node_max(s : TimeseriesdecompmovingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_node_max(s : TimeseriesdecompmovingNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_node_to_string(s : TimeseriesdecompmovingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_decomp_moving_edge_set(s : TimeseriesdecompmovingEdge, i : Int
   result
 }
 
-pub fn timeseries_decomp_moving_edge_sum(s : TimeseriesdecompmovingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_edge_sum(s : TimeseriesdecompmovingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_edge_mean(s : TimeseriesdecompmovingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_edge_mean(s : TimeseriesdecompmovingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_edge_scale(s : TimeseriesdecompmovingEdge, f : Double) -> TimeseriesdecompmovingEdge {
   let result = timeseries_decomp_moving_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_decomp_moving_edge_fill(s : TimeseriesdecompmovingEdge, v : Do
   result
 }
 
-pub fn timeseries_decomp_moving_edge_min(s : TimeseriesdecompmovingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_edge_min(s : TimeseriesdecompmovingEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_edge_max(s : TimeseriesdecompmovingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_edge_max(s : TimeseriesdecompmovingEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_edge_to_string(s : TimeseriesdecompmovingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_decomp_moving_path_set(s : TimeseriesdecompmovingPath, i : Int
   result
 }
 
-pub fn timeseries_decomp_moving_path_sum(s : TimeseriesdecompmovingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_path_sum(s : TimeseriesdecompmovingPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_path_mean(s : TimeseriesdecompmovingPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_path_mean(s : TimeseriesdecompmovingPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_path_scale(s : TimeseriesdecompmovingPath, f : Double) -> TimeseriesdecompmovingPath {
   let result = timeseries_decomp_moving_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_decomp_moving_path_fill(s : TimeseriesdecompmovingPath, v : Do
   result
 }
 
-pub fn timeseries_decomp_moving_path_min(s : TimeseriesdecompmovingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_path_min(s : TimeseriesdecompmovingPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_path_max(s : TimeseriesdecompmovingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_path_max(s : TimeseriesdecompmovingPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_path_to_string(s : TimeseriesdecompmovingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_decomp_moving_cluster_set(s : TimeseriesdecompmovingCluster, i
   result
 }
 
-pub fn timeseries_decomp_moving_cluster_sum(s : TimeseriesdecompmovingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_cluster_sum(s : TimeseriesdecompmovingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_cluster_mean(s : TimeseriesdecompmovingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_cluster_mean(s : TimeseriesdecompmovingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_cluster_scale(s : TimeseriesdecompmovingCluster, f : Double) -> TimeseriesdecompmovingCluster {
   let result = timeseries_decomp_moving_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_decomp_moving_cluster_fill(s : TimeseriesdecompmovingCluster, 
   result
 }
 
-pub fn timeseries_decomp_moving_cluster_min(s : TimeseriesdecompmovingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_cluster_min(s : TimeseriesdecompmovingCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_cluster_max(s : TimeseriesdecompmovingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_cluster_max(s : TimeseriesdecompmovingCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_cluster_to_string(s : TimeseriesdecompmovingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_decomp_moving_model_set(s : TimeseriesdecompmovingModel, i : I
   result
 }
 
-pub fn timeseries_decomp_moving_model_sum(s : TimeseriesdecompmovingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_model_sum(s : TimeseriesdecompmovingModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_model_mean(s : TimeseriesdecompmovingModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_model_mean(s : TimeseriesdecompmovingModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_model_scale(s : TimeseriesdecompmovingModel, f : Double) -> TimeseriesdecompmovingModel {
   let result = timeseries_decomp_moving_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_decomp_moving_model_fill(s : TimeseriesdecompmovingModel, v : 
   result
 }
 
-pub fn timeseries_decomp_moving_model_min(s : TimeseriesdecompmovingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_model_min(s : TimeseriesdecompmovingModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_model_max(s : TimeseriesdecompmovingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_model_max(s : TimeseriesdecompmovingModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_model_to_string(s : TimeseriesdecompmovingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_decomp_moving_layer_set(s : TimeseriesdecompmovingLayer, i : I
   result
 }
 
-pub fn timeseries_decomp_moving_layer_sum(s : TimeseriesdecompmovingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_layer_sum(s : TimeseriesdecompmovingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_layer_mean(s : TimeseriesdecompmovingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_layer_mean(s : TimeseriesdecompmovingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_layer_scale(s : TimeseriesdecompmovingLayer, f : Double) -> TimeseriesdecompmovingLayer {
   let result = timeseries_decomp_moving_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_decomp_moving_layer_fill(s : TimeseriesdecompmovingLayer, v : 
   result
 }
 
-pub fn timeseries_decomp_moving_layer_min(s : TimeseriesdecompmovingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_layer_min(s : TimeseriesdecompmovingLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_layer_max(s : TimeseriesdecompmovingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_layer_max(s : TimeseriesdecompmovingLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_layer_to_string(s : TimeseriesdecompmovingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_decomp_moving_buffer_set(s : TimeseriesdecompmovingBuffer, i :
   result
 }
 
-pub fn timeseries_decomp_moving_buffer_sum(s : TimeseriesdecompmovingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_buffer_sum(s : TimeseriesdecompmovingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_buffer_mean(s : TimeseriesdecompmovingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_buffer_mean(s : TimeseriesdecompmovingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_buffer_scale(s : TimeseriesdecompmovingBuffer, f : Double) -> TimeseriesdecompmovingBuffer {
   let result = timeseries_decomp_moving_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_decomp_moving_buffer_fill(s : TimeseriesdecompmovingBuffer, v 
   result
 }
 
-pub fn timeseries_decomp_moving_buffer_min(s : TimeseriesdecompmovingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_buffer_min(s : TimeseriesdecompmovingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_buffer_max(s : TimeseriesdecompmovingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_buffer_max(s : TimeseriesdecompmovingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_buffer_to_string(s : TimeseriesdecompmovingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_decomp_moving_cursor_set(s : TimeseriesdecompmovingCursor, i :
   result
 }
 
-pub fn timeseries_decomp_moving_cursor_sum(s : TimeseriesdecompmovingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_cursor_sum(s : TimeseriesdecompmovingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_cursor_mean(s : TimeseriesdecompmovingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_cursor_mean(s : TimeseriesdecompmovingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_cursor_scale(s : TimeseriesdecompmovingCursor, f : Double) -> TimeseriesdecompmovingCursor {
   let result = timeseries_decomp_moving_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_decomp_moving_cursor_fill(s : TimeseriesdecompmovingCursor, v 
   result
 }
 
-pub fn timeseries_decomp_moving_cursor_min(s : TimeseriesdecompmovingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_cursor_min(s : TimeseriesdecompmovingCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_cursor_max(s : TimeseriesdecompmovingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_cursor_max(s : TimeseriesdecompmovingCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_cursor_to_string(s : TimeseriesdecompmovingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_decomp_moving_view_set(s : TimeseriesdecompmovingView, i : Int
   result
 }
 
-pub fn timeseries_decomp_moving_view_sum(s : TimeseriesdecompmovingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_view_sum(s : TimeseriesdecompmovingView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_view_mean(s : TimeseriesdecompmovingView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_view_mean(s : TimeseriesdecompmovingView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_view_scale(s : TimeseriesdecompmovingView, f : Double) -> TimeseriesdecompmovingView {
   let result = timeseries_decomp_moving_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_decomp_moving_view_fill(s : TimeseriesdecompmovingView, v : Do
   result
 }
 
-pub fn timeseries_decomp_moving_view_min(s : TimeseriesdecompmovingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_view_min(s : TimeseriesdecompmovingView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_view_max(s : TimeseriesdecompmovingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_view_max(s : TimeseriesdecompmovingView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_view_to_string(s : TimeseriesdecompmovingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_decomp_moving_range_set(s : TimeseriesdecompmovingRange, i : I
   result
 }
 
-pub fn timeseries_decomp_moving_range_sum(s : TimeseriesdecompmovingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_range_sum(s : TimeseriesdecompmovingRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_range_mean(s : TimeseriesdecompmovingRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_range_mean(s : TimeseriesdecompmovingRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_range_scale(s : TimeseriesdecompmovingRange, f : Double) -> TimeseriesdecompmovingRange {
   let result = timeseries_decomp_moving_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_decomp_moving_range_fill(s : TimeseriesdecompmovingRange, v : 
   result
 }
 
-pub fn timeseries_decomp_moving_range_min(s : TimeseriesdecompmovingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_range_min(s : TimeseriesdecompmovingRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_range_max(s : TimeseriesdecompmovingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_range_max(s : TimeseriesdecompmovingRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_range_to_string(s : TimeseriesdecompmovingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_decomp_moving_slice_set(s : TimeseriesdecompmovingSlice, i : I
   result
 }
 
-pub fn timeseries_decomp_moving_slice_sum(s : TimeseriesdecompmovingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_moving_slice_sum(s : TimeseriesdecompmovingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_moving_slice_mean(s : TimeseriesdecompmovingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_moving_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_moving_slice_mean(s : TimeseriesdecompmovingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_moving_slice_scale(s : TimeseriesdecompmovingSlice, f : Double) -> TimeseriesdecompmovingSlice {
   let result = timeseries_decomp_moving_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_decomp_moving_slice_fill(s : TimeseriesdecompmovingSlice, v : 
   result
 }
 
-pub fn timeseries_decomp_moving_slice_min(s : TimeseriesdecompmovingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_slice_min(s : TimeseriesdecompmovingSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_moving_slice_max(s : TimeseriesdecompmovingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_moving_slice_max(s : TimeseriesdecompmovingSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_moving_slice_to_string(s : TimeseriesdecompmovingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

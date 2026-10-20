@@ -88,11 +88,7 @@ pub fn stats_test_normality_make_series(vals : Array[Double], name : String) -> 
 
 pub fn stats_test_normality_series_len(s : StatstestnormalitySeries) -> Int { s.vals.length() }
 
-pub fn stats_test_normality_series_sum(s : StatstestnormalitySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_normality_series_sum(s : StatstestnormalitySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_normality_series_mean(s : StatstestnormalitySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_normality_frame_set(s : StatstestnormalityFrame, i : Int, v : 
   result
 }
 
-pub fn stats_test_normality_frame_sum(s : StatstestnormalityFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_frame_sum(s : StatstestnormalityFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_frame_mean(s : StatstestnormalityFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_frame_mean(s : StatstestnormalityFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_frame_scale(s : StatstestnormalityFrame, f : Double) -> StatstestnormalityFrame {
   let result = stats_test_normality_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_normality_frame_fill(s : StatstestnormalityFrame, v : Double) 
   result
 }
 
-pub fn stats_test_normality_frame_min(s : StatstestnormalityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_frame_min(s : StatstestnormalityFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_frame_max(s : StatstestnormalityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_frame_max(s : StatstestnormalityFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_frame_to_string(s : StatstestnormalityFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_normality_table_set(s : StatstestnormalityTable, i : Int, v : 
   result
 }
 
-pub fn stats_test_normality_table_sum(s : StatstestnormalityTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_table_sum(s : StatstestnormalityTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_table_mean(s : StatstestnormalityTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_table_mean(s : StatstestnormalityTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_table_scale(s : StatstestnormalityTable, f : Double) -> StatstestnormalityTable {
   let result = stats_test_normality_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_normality_table_fill(s : StatstestnormalityTable, v : Double) 
   result
 }
 
-pub fn stats_test_normality_table_min(s : StatstestnormalityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_table_min(s : StatstestnormalityTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_table_max(s : StatstestnormalityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_table_max(s : StatstestnormalityTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_table_to_string(s : StatstestnormalityTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_normality_graphn_set(s : StatstestnormalityGraphN, i : Int, v 
   result
 }
 
-pub fn stats_test_normality_graphn_sum(s : StatstestnormalityGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_graphn_sum(s : StatstestnormalityGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_graphn_mean(s : StatstestnormalityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_graphn_mean(s : StatstestnormalityGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_graphn_scale(s : StatstestnormalityGraphN, f : Double) -> StatstestnormalityGraphN {
   let result = stats_test_normality_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_normality_graphn_fill(s : StatstestnormalityGraphN, v : Double
   result
 }
 
-pub fn stats_test_normality_graphn_min(s : StatstestnormalityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_graphn_min(s : StatstestnormalityGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_graphn_max(s : StatstestnormalityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_graphn_max(s : StatstestnormalityGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_graphn_to_string(s : StatstestnormalityGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_normality_node_set(s : StatstestnormalityNode, i : Int, v : Do
   result
 }
 
-pub fn stats_test_normality_node_sum(s : StatstestnormalityNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_node_sum(s : StatstestnormalityNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_node_mean(s : StatstestnormalityNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_node_mean(s : StatstestnormalityNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_node_scale(s : StatstestnormalityNode, f : Double) -> StatstestnormalityNode {
   let result = stats_test_normality_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_normality_node_fill(s : StatstestnormalityNode, v : Double) ->
   result
 }
 
-pub fn stats_test_normality_node_min(s : StatstestnormalityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_node_min(s : StatstestnormalityNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_node_max(s : StatstestnormalityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_node_max(s : StatstestnormalityNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_node_to_string(s : StatstestnormalityNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_normality_edge_set(s : StatstestnormalityEdge, i : Int, v : Do
   result
 }
 
-pub fn stats_test_normality_edge_sum(s : StatstestnormalityEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_edge_sum(s : StatstestnormalityEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_edge_mean(s : StatstestnormalityEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_edge_mean(s : StatstestnormalityEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_edge_scale(s : StatstestnormalityEdge, f : Double) -> StatstestnormalityEdge {
   let result = stats_test_normality_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_normality_edge_fill(s : StatstestnormalityEdge, v : Double) ->
   result
 }
 
-pub fn stats_test_normality_edge_min(s : StatstestnormalityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_edge_min(s : StatstestnormalityEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_edge_max(s : StatstestnormalityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_edge_max(s : StatstestnormalityEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_edge_to_string(s : StatstestnormalityEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_normality_path_set(s : StatstestnormalityPath, i : Int, v : Do
   result
 }
 
-pub fn stats_test_normality_path_sum(s : StatstestnormalityPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_path_sum(s : StatstestnormalityPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_path_mean(s : StatstestnormalityPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_path_mean(s : StatstestnormalityPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_path_scale(s : StatstestnormalityPath, f : Double) -> StatstestnormalityPath {
   let result = stats_test_normality_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_normality_path_fill(s : StatstestnormalityPath, v : Double) ->
   result
 }
 
-pub fn stats_test_normality_path_min(s : StatstestnormalityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_path_min(s : StatstestnormalityPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_path_max(s : StatstestnormalityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_path_max(s : StatstestnormalityPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_path_to_string(s : StatstestnormalityPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_normality_cluster_set(s : StatstestnormalityCluster, i : Int, 
   result
 }
 
-pub fn stats_test_normality_cluster_sum(s : StatstestnormalityCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_cluster_sum(s : StatstestnormalityCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_cluster_mean(s : StatstestnormalityCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_cluster_mean(s : StatstestnormalityCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_cluster_scale(s : StatstestnormalityCluster, f : Double) -> StatstestnormalityCluster {
   let result = stats_test_normality_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_normality_cluster_fill(s : StatstestnormalityCluster, v : Doub
   result
 }
 
-pub fn stats_test_normality_cluster_min(s : StatstestnormalityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_cluster_min(s : StatstestnormalityCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_cluster_max(s : StatstestnormalityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_cluster_max(s : StatstestnormalityCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_cluster_to_string(s : StatstestnormalityCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_normality_model_set(s : StatstestnormalityModel, i : Int, v : 
   result
 }
 
-pub fn stats_test_normality_model_sum(s : StatstestnormalityModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_model_sum(s : StatstestnormalityModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_model_mean(s : StatstestnormalityModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_model_mean(s : StatstestnormalityModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_model_scale(s : StatstestnormalityModel, f : Double) -> StatstestnormalityModel {
   let result = stats_test_normality_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_normality_model_fill(s : StatstestnormalityModel, v : Double) 
   result
 }
 
-pub fn stats_test_normality_model_min(s : StatstestnormalityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_model_min(s : StatstestnormalityModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_model_max(s : StatstestnormalityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_model_max(s : StatstestnormalityModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_model_to_string(s : StatstestnormalityModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_normality_layer_set(s : StatstestnormalityLayer, i : Int, v : 
   result
 }
 
-pub fn stats_test_normality_layer_sum(s : StatstestnormalityLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_layer_sum(s : StatstestnormalityLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_layer_mean(s : StatstestnormalityLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_layer_mean(s : StatstestnormalityLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_layer_scale(s : StatstestnormalityLayer, f : Double) -> StatstestnormalityLayer {
   let result = stats_test_normality_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_normality_layer_fill(s : StatstestnormalityLayer, v : Double) 
   result
 }
 
-pub fn stats_test_normality_layer_min(s : StatstestnormalityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_layer_min(s : StatstestnormalityLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_layer_max(s : StatstestnormalityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_layer_max(s : StatstestnormalityLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_layer_to_string(s : StatstestnormalityLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_normality_buffer_set(s : StatstestnormalityBuffer, i : Int, v 
   result
 }
 
-pub fn stats_test_normality_buffer_sum(s : StatstestnormalityBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_buffer_sum(s : StatstestnormalityBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_buffer_mean(s : StatstestnormalityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_buffer_mean(s : StatstestnormalityBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_buffer_scale(s : StatstestnormalityBuffer, f : Double) -> StatstestnormalityBuffer {
   let result = stats_test_normality_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_normality_buffer_fill(s : StatstestnormalityBuffer, v : Double
   result
 }
 
-pub fn stats_test_normality_buffer_min(s : StatstestnormalityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_buffer_min(s : StatstestnormalityBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_buffer_max(s : StatstestnormalityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_buffer_max(s : StatstestnormalityBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_buffer_to_string(s : StatstestnormalityBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_normality_cursor_set(s : StatstestnormalityCursor, i : Int, v 
   result
 }
 
-pub fn stats_test_normality_cursor_sum(s : StatstestnormalityCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_cursor_sum(s : StatstestnormalityCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_cursor_mean(s : StatstestnormalityCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_cursor_mean(s : StatstestnormalityCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_cursor_scale(s : StatstestnormalityCursor, f : Double) -> StatstestnormalityCursor {
   let result = stats_test_normality_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_normality_cursor_fill(s : StatstestnormalityCursor, v : Double
   result
 }
 
-pub fn stats_test_normality_cursor_min(s : StatstestnormalityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_cursor_min(s : StatstestnormalityCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_cursor_max(s : StatstestnormalityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_cursor_max(s : StatstestnormalityCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_cursor_to_string(s : StatstestnormalityCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_normality_view_set(s : StatstestnormalityView, i : Int, v : Do
   result
 }
 
-pub fn stats_test_normality_view_sum(s : StatstestnormalityView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_view_sum(s : StatstestnormalityView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_view_mean(s : StatstestnormalityView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_view_mean(s : StatstestnormalityView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_view_scale(s : StatstestnormalityView, f : Double) -> StatstestnormalityView {
   let result = stats_test_normality_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_normality_view_fill(s : StatstestnormalityView, v : Double) ->
   result
 }
 
-pub fn stats_test_normality_view_min(s : StatstestnormalityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_view_min(s : StatstestnormalityView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_view_max(s : StatstestnormalityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_view_max(s : StatstestnormalityView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_view_to_string(s : StatstestnormalityView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_normality_range_set(s : StatstestnormalityRange, i : Int, v : 
   result
 }
 
-pub fn stats_test_normality_range_sum(s : StatstestnormalityRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_range_sum(s : StatstestnormalityRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_range_mean(s : StatstestnormalityRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_range_mean(s : StatstestnormalityRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_range_scale(s : StatstestnormalityRange, f : Double) -> StatstestnormalityRange {
   let result = stats_test_normality_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_normality_range_fill(s : StatstestnormalityRange, v : Double) 
   result
 }
 
-pub fn stats_test_normality_range_min(s : StatstestnormalityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_range_min(s : StatstestnormalityRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_range_max(s : StatstestnormalityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_range_max(s : StatstestnormalityRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_range_to_string(s : StatstestnormalityRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_normality_slice_set(s : StatstestnormalitySlice, i : Int, v : 
   result
 }
 
-pub fn stats_test_normality_slice_sum(s : StatstestnormalitySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_normality_slice_sum(s : StatstestnormalitySlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_normality_slice_mean(s : StatstestnormalitySlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_normality_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_normality_slice_mean(s : StatstestnormalitySlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_normality_slice_scale(s : StatstestnormalitySlice, f : Double) -> StatstestnormalitySlice {
   let result = stats_test_normality_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_normality_slice_fill(s : StatstestnormalitySlice, v : Double) 
   result
 }
 
-pub fn stats_test_normality_slice_min(s : StatstestnormalitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_slice_min(s : StatstestnormalitySlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_normality_slice_max(s : StatstestnormalitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_normality_slice_max(s : StatstestnormalitySlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_normality_slice_to_string(s : StatstestnormalitySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

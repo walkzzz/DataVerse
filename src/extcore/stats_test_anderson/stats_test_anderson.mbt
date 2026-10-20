@@ -88,11 +88,7 @@ pub fn stats_test_anderson_make_series(vals : Array[Double], name : String) -> S
 
 pub fn stats_test_anderson_series_len(s : StatstestandersonSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_anderson_series_sum(s : StatstestandersonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_anderson_series_sum(s : StatstestandersonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_anderson_series_mean(s : StatstestandersonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_anderson_frame_set(s : StatstestandersonFrame, i : Int, v : Do
   result
 }
 
-pub fn stats_test_anderson_frame_sum(s : StatstestandersonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_frame_sum(s : StatstestandersonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_frame_mean(s : StatstestandersonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_frame_mean(s : StatstestandersonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_frame_scale(s : StatstestandersonFrame, f : Double) -> StatstestandersonFrame {
   let result = stats_test_anderson_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_anderson_frame_fill(s : StatstestandersonFrame, v : Double) ->
   result
 }
 
-pub fn stats_test_anderson_frame_min(s : StatstestandersonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_frame_min(s : StatstestandersonFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_frame_max(s : StatstestandersonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_frame_max(s : StatstestandersonFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_frame_to_string(s : StatstestandersonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_anderson_table_set(s : StatstestandersonTable, i : Int, v : Do
   result
 }
 
-pub fn stats_test_anderson_table_sum(s : StatstestandersonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_table_sum(s : StatstestandersonTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_table_mean(s : StatstestandersonTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_table_mean(s : StatstestandersonTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_table_scale(s : StatstestandersonTable, f : Double) -> StatstestandersonTable {
   let result = stats_test_anderson_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_anderson_table_fill(s : StatstestandersonTable, v : Double) ->
   result
 }
 
-pub fn stats_test_anderson_table_min(s : StatstestandersonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_table_min(s : StatstestandersonTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_table_max(s : StatstestandersonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_table_max(s : StatstestandersonTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_table_to_string(s : StatstestandersonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_anderson_graphn_set(s : StatstestandersonGraphN, i : Int, v : 
   result
 }
 
-pub fn stats_test_anderson_graphn_sum(s : StatstestandersonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_graphn_sum(s : StatstestandersonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_graphn_mean(s : StatstestandersonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_graphn_mean(s : StatstestandersonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_graphn_scale(s : StatstestandersonGraphN, f : Double) -> StatstestandersonGraphN {
   let result = stats_test_anderson_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_anderson_graphn_fill(s : StatstestandersonGraphN, v : Double) 
   result
 }
 
-pub fn stats_test_anderson_graphn_min(s : StatstestandersonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_graphn_min(s : StatstestandersonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_graphn_max(s : StatstestandersonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_graphn_max(s : StatstestandersonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_graphn_to_string(s : StatstestandersonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_anderson_node_set(s : StatstestandersonNode, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_anderson_node_sum(s : StatstestandersonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_node_sum(s : StatstestandersonNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_node_mean(s : StatstestandersonNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_node_mean(s : StatstestandersonNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_node_scale(s : StatstestandersonNode, f : Double) -> StatstestandersonNode {
   let result = stats_test_anderson_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_anderson_node_fill(s : StatstestandersonNode, v : Double) -> S
   result
 }
 
-pub fn stats_test_anderson_node_min(s : StatstestandersonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_node_min(s : StatstestandersonNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_node_max(s : StatstestandersonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_node_max(s : StatstestandersonNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_node_to_string(s : StatstestandersonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_anderson_edge_set(s : StatstestandersonEdge, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_anderson_edge_sum(s : StatstestandersonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_edge_sum(s : StatstestandersonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_edge_mean(s : StatstestandersonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_edge_mean(s : StatstestandersonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_edge_scale(s : StatstestandersonEdge, f : Double) -> StatstestandersonEdge {
   let result = stats_test_anderson_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_anderson_edge_fill(s : StatstestandersonEdge, v : Double) -> S
   result
 }
 
-pub fn stats_test_anderson_edge_min(s : StatstestandersonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_edge_min(s : StatstestandersonEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_edge_max(s : StatstestandersonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_edge_max(s : StatstestandersonEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_edge_to_string(s : StatstestandersonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_anderson_path_set(s : StatstestandersonPath, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_anderson_path_sum(s : StatstestandersonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_path_sum(s : StatstestandersonPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_path_mean(s : StatstestandersonPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_path_mean(s : StatstestandersonPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_path_scale(s : StatstestandersonPath, f : Double) -> StatstestandersonPath {
   let result = stats_test_anderson_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_anderson_path_fill(s : StatstestandersonPath, v : Double) -> S
   result
 }
 
-pub fn stats_test_anderson_path_min(s : StatstestandersonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_path_min(s : StatstestandersonPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_path_max(s : StatstestandersonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_path_max(s : StatstestandersonPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_path_to_string(s : StatstestandersonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_anderson_cluster_set(s : StatstestandersonCluster, i : Int, v 
   result
 }
 
-pub fn stats_test_anderson_cluster_sum(s : StatstestandersonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_cluster_sum(s : StatstestandersonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_cluster_mean(s : StatstestandersonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_cluster_mean(s : StatstestandersonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_cluster_scale(s : StatstestandersonCluster, f : Double) -> StatstestandersonCluster {
   let result = stats_test_anderson_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_anderson_cluster_fill(s : StatstestandersonCluster, v : Double
   result
 }
 
-pub fn stats_test_anderson_cluster_min(s : StatstestandersonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_cluster_min(s : StatstestandersonCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_cluster_max(s : StatstestandersonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_cluster_max(s : StatstestandersonCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_cluster_to_string(s : StatstestandersonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_anderson_model_set(s : StatstestandersonModel, i : Int, v : Do
   result
 }
 
-pub fn stats_test_anderson_model_sum(s : StatstestandersonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_model_sum(s : StatstestandersonModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_model_mean(s : StatstestandersonModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_model_mean(s : StatstestandersonModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_model_scale(s : StatstestandersonModel, f : Double) -> StatstestandersonModel {
   let result = stats_test_anderson_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_anderson_model_fill(s : StatstestandersonModel, v : Double) ->
   result
 }
 
-pub fn stats_test_anderson_model_min(s : StatstestandersonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_model_min(s : StatstestandersonModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_model_max(s : StatstestandersonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_model_max(s : StatstestandersonModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_model_to_string(s : StatstestandersonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_anderson_layer_set(s : StatstestandersonLayer, i : Int, v : Do
   result
 }
 
-pub fn stats_test_anderson_layer_sum(s : StatstestandersonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_layer_sum(s : StatstestandersonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_layer_mean(s : StatstestandersonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_layer_mean(s : StatstestandersonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_layer_scale(s : StatstestandersonLayer, f : Double) -> StatstestandersonLayer {
   let result = stats_test_anderson_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_anderson_layer_fill(s : StatstestandersonLayer, v : Double) ->
   result
 }
 
-pub fn stats_test_anderson_layer_min(s : StatstestandersonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_layer_min(s : StatstestandersonLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_layer_max(s : StatstestandersonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_layer_max(s : StatstestandersonLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_layer_to_string(s : StatstestandersonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_anderson_buffer_set(s : StatstestandersonBuffer, i : Int, v : 
   result
 }
 
-pub fn stats_test_anderson_buffer_sum(s : StatstestandersonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_buffer_sum(s : StatstestandersonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_buffer_mean(s : StatstestandersonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_buffer_mean(s : StatstestandersonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_buffer_scale(s : StatstestandersonBuffer, f : Double) -> StatstestandersonBuffer {
   let result = stats_test_anderson_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_anderson_buffer_fill(s : StatstestandersonBuffer, v : Double) 
   result
 }
 
-pub fn stats_test_anderson_buffer_min(s : StatstestandersonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_buffer_min(s : StatstestandersonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_buffer_max(s : StatstestandersonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_buffer_max(s : StatstestandersonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_buffer_to_string(s : StatstestandersonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_anderson_cursor_set(s : StatstestandersonCursor, i : Int, v : 
   result
 }
 
-pub fn stats_test_anderson_cursor_sum(s : StatstestandersonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_cursor_sum(s : StatstestandersonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_cursor_mean(s : StatstestandersonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_cursor_mean(s : StatstestandersonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_cursor_scale(s : StatstestandersonCursor, f : Double) -> StatstestandersonCursor {
   let result = stats_test_anderson_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_anderson_cursor_fill(s : StatstestandersonCursor, v : Double) 
   result
 }
 
-pub fn stats_test_anderson_cursor_min(s : StatstestandersonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_cursor_min(s : StatstestandersonCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_cursor_max(s : StatstestandersonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_cursor_max(s : StatstestandersonCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_cursor_to_string(s : StatstestandersonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_anderson_view_set(s : StatstestandersonView, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_anderson_view_sum(s : StatstestandersonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_view_sum(s : StatstestandersonView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_view_mean(s : StatstestandersonView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_view_mean(s : StatstestandersonView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_view_scale(s : StatstestandersonView, f : Double) -> StatstestandersonView {
   let result = stats_test_anderson_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_anderson_view_fill(s : StatstestandersonView, v : Double) -> S
   result
 }
 
-pub fn stats_test_anderson_view_min(s : StatstestandersonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_view_min(s : StatstestandersonView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_view_max(s : StatstestandersonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_view_max(s : StatstestandersonView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_view_to_string(s : StatstestandersonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_anderson_range_set(s : StatstestandersonRange, i : Int, v : Do
   result
 }
 
-pub fn stats_test_anderson_range_sum(s : StatstestandersonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_range_sum(s : StatstestandersonRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_range_mean(s : StatstestandersonRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_range_mean(s : StatstestandersonRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_range_scale(s : StatstestandersonRange, f : Double) -> StatstestandersonRange {
   let result = stats_test_anderson_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_anderson_range_fill(s : StatstestandersonRange, v : Double) ->
   result
 }
 
-pub fn stats_test_anderson_range_min(s : StatstestandersonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_range_min(s : StatstestandersonRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_range_max(s : StatstestandersonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_range_max(s : StatstestandersonRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_range_to_string(s : StatstestandersonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_anderson_slice_set(s : StatstestandersonSlice, i : Int, v : Do
   result
 }
 
-pub fn stats_test_anderson_slice_sum(s : StatstestandersonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_anderson_slice_sum(s : StatstestandersonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_anderson_slice_mean(s : StatstestandersonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_anderson_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_anderson_slice_mean(s : StatstestandersonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_anderson_slice_scale(s : StatstestandersonSlice, f : Double) -> StatstestandersonSlice {
   let result = stats_test_anderson_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_anderson_slice_fill(s : StatstestandersonSlice, v : Double) ->
   result
 }
 
-pub fn stats_test_anderson_slice_min(s : StatstestandersonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_slice_min(s : StatstestandersonSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_anderson_slice_max(s : StatstestandersonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_anderson_slice_max(s : StatstestandersonSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_anderson_slice_to_string(s : StatstestandersonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

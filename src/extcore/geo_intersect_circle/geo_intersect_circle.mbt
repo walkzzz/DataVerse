@@ -88,11 +88,7 @@ pub fn geo_intersect_circle_make_series(vals : Array[Double], name : String) -> 
 
 pub fn geo_intersect_circle_series_len(s : GeointersectcircleSeries) -> Int { s.vals.length() }
 
-pub fn geo_intersect_circle_series_sum(s : GeointersectcircleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_intersect_circle_series_sum(s : GeointersectcircleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_intersect_circle_series_mean(s : GeointersectcircleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_intersect_circle_frame_set(s : GeointersectcircleFrame, i : Int, v : 
   result
 }
 
-pub fn geo_intersect_circle_frame_sum(s : GeointersectcircleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_frame_sum(s : GeointersectcircleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_frame_mean(s : GeointersectcircleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_frame_mean(s : GeointersectcircleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_frame_scale(s : GeointersectcircleFrame, f : Double) -> GeointersectcircleFrame {
   let result = geo_intersect_circle_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_intersect_circle_frame_fill(s : GeointersectcircleFrame, v : Double) 
   result
 }
 
-pub fn geo_intersect_circle_frame_min(s : GeointersectcircleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_frame_min(s : GeointersectcircleFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_frame_max(s : GeointersectcircleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_frame_max(s : GeointersectcircleFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_frame_to_string(s : GeointersectcircleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_intersect_circle_table_set(s : GeointersectcircleTable, i : Int, v : 
   result
 }
 
-pub fn geo_intersect_circle_table_sum(s : GeointersectcircleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_table_sum(s : GeointersectcircleTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_table_mean(s : GeointersectcircleTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_table_mean(s : GeointersectcircleTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_table_scale(s : GeointersectcircleTable, f : Double) -> GeointersectcircleTable {
   let result = geo_intersect_circle_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_intersect_circle_table_fill(s : GeointersectcircleTable, v : Double) 
   result
 }
 
-pub fn geo_intersect_circle_table_min(s : GeointersectcircleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_table_min(s : GeointersectcircleTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_table_max(s : GeointersectcircleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_table_max(s : GeointersectcircleTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_table_to_string(s : GeointersectcircleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_intersect_circle_graphn_set(s : GeointersectcircleGraphN, i : Int, v 
   result
 }
 
-pub fn geo_intersect_circle_graphn_sum(s : GeointersectcircleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_graphn_sum(s : GeointersectcircleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_graphn_mean(s : GeointersectcircleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_graphn_mean(s : GeointersectcircleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_graphn_scale(s : GeointersectcircleGraphN, f : Double) -> GeointersectcircleGraphN {
   let result = geo_intersect_circle_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_intersect_circle_graphn_fill(s : GeointersectcircleGraphN, v : Double
   result
 }
 
-pub fn geo_intersect_circle_graphn_min(s : GeointersectcircleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_graphn_min(s : GeointersectcircleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_graphn_max(s : GeointersectcircleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_graphn_max(s : GeointersectcircleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_graphn_to_string(s : GeointersectcircleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_intersect_circle_node_set(s : GeointersectcircleNode, i : Int, v : Do
   result
 }
 
-pub fn geo_intersect_circle_node_sum(s : GeointersectcircleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_node_sum(s : GeointersectcircleNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_node_mean(s : GeointersectcircleNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_node_mean(s : GeointersectcircleNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_node_scale(s : GeointersectcircleNode, f : Double) -> GeointersectcircleNode {
   let result = geo_intersect_circle_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_intersect_circle_node_fill(s : GeointersectcircleNode, v : Double) ->
   result
 }
 
-pub fn geo_intersect_circle_node_min(s : GeointersectcircleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_node_min(s : GeointersectcircleNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_node_max(s : GeointersectcircleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_node_max(s : GeointersectcircleNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_node_to_string(s : GeointersectcircleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_intersect_circle_edge_set(s : GeointersectcircleEdge, i : Int, v : Do
   result
 }
 
-pub fn geo_intersect_circle_edge_sum(s : GeointersectcircleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_edge_sum(s : GeointersectcircleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_edge_mean(s : GeointersectcircleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_edge_mean(s : GeointersectcircleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_edge_scale(s : GeointersectcircleEdge, f : Double) -> GeointersectcircleEdge {
   let result = geo_intersect_circle_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_intersect_circle_edge_fill(s : GeointersectcircleEdge, v : Double) ->
   result
 }
 
-pub fn geo_intersect_circle_edge_min(s : GeointersectcircleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_edge_min(s : GeointersectcircleEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_edge_max(s : GeointersectcircleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_edge_max(s : GeointersectcircleEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_edge_to_string(s : GeointersectcircleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_intersect_circle_path_set(s : GeointersectcirclePath, i : Int, v : Do
   result
 }
 
-pub fn geo_intersect_circle_path_sum(s : GeointersectcirclePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_path_sum(s : GeointersectcirclePath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_path_mean(s : GeointersectcirclePath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_path_mean(s : GeointersectcirclePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_path_scale(s : GeointersectcirclePath, f : Double) -> GeointersectcirclePath {
   let result = geo_intersect_circle_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_intersect_circle_path_fill(s : GeointersectcirclePath, v : Double) ->
   result
 }
 
-pub fn geo_intersect_circle_path_min(s : GeointersectcirclePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_path_min(s : GeointersectcirclePath) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_path_max(s : GeointersectcirclePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_path_max(s : GeointersectcirclePath) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_path_to_string(s : GeointersectcirclePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_intersect_circle_cluster_set(s : GeointersectcircleCluster, i : Int, 
   result
 }
 
-pub fn geo_intersect_circle_cluster_sum(s : GeointersectcircleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_cluster_sum(s : GeointersectcircleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_cluster_mean(s : GeointersectcircleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_cluster_mean(s : GeointersectcircleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_cluster_scale(s : GeointersectcircleCluster, f : Double) -> GeointersectcircleCluster {
   let result = geo_intersect_circle_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_intersect_circle_cluster_fill(s : GeointersectcircleCluster, v : Doub
   result
 }
 
-pub fn geo_intersect_circle_cluster_min(s : GeointersectcircleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_cluster_min(s : GeointersectcircleCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_cluster_max(s : GeointersectcircleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_cluster_max(s : GeointersectcircleCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_cluster_to_string(s : GeointersectcircleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_intersect_circle_model_set(s : GeointersectcircleModel, i : Int, v : 
   result
 }
 
-pub fn geo_intersect_circle_model_sum(s : GeointersectcircleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_model_sum(s : GeointersectcircleModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_model_mean(s : GeointersectcircleModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_model_mean(s : GeointersectcircleModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_model_scale(s : GeointersectcircleModel, f : Double) -> GeointersectcircleModel {
   let result = geo_intersect_circle_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_intersect_circle_model_fill(s : GeointersectcircleModel, v : Double) 
   result
 }
 
-pub fn geo_intersect_circle_model_min(s : GeointersectcircleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_model_min(s : GeointersectcircleModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_model_max(s : GeointersectcircleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_model_max(s : GeointersectcircleModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_model_to_string(s : GeointersectcircleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_intersect_circle_layer_set(s : GeointersectcircleLayer, i : Int, v : 
   result
 }
 
-pub fn geo_intersect_circle_layer_sum(s : GeointersectcircleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_layer_sum(s : GeointersectcircleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_layer_mean(s : GeointersectcircleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_layer_mean(s : GeointersectcircleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_layer_scale(s : GeointersectcircleLayer, f : Double) -> GeointersectcircleLayer {
   let result = geo_intersect_circle_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_intersect_circle_layer_fill(s : GeointersectcircleLayer, v : Double) 
   result
 }
 
-pub fn geo_intersect_circle_layer_min(s : GeointersectcircleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_layer_min(s : GeointersectcircleLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_layer_max(s : GeointersectcircleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_layer_max(s : GeointersectcircleLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_layer_to_string(s : GeointersectcircleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_intersect_circle_buffer_set(s : GeointersectcircleBuffer, i : Int, v 
   result
 }
 
-pub fn geo_intersect_circle_buffer_sum(s : GeointersectcircleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_buffer_sum(s : GeointersectcircleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_buffer_mean(s : GeointersectcircleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_buffer_mean(s : GeointersectcircleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_buffer_scale(s : GeointersectcircleBuffer, f : Double) -> GeointersectcircleBuffer {
   let result = geo_intersect_circle_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_intersect_circle_buffer_fill(s : GeointersectcircleBuffer, v : Double
   result
 }
 
-pub fn geo_intersect_circle_buffer_min(s : GeointersectcircleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_buffer_min(s : GeointersectcircleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_buffer_max(s : GeointersectcircleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_buffer_max(s : GeointersectcircleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_buffer_to_string(s : GeointersectcircleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_intersect_circle_cursor_set(s : GeointersectcircleCursor, i : Int, v 
   result
 }
 
-pub fn geo_intersect_circle_cursor_sum(s : GeointersectcircleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_cursor_sum(s : GeointersectcircleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_cursor_mean(s : GeointersectcircleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_cursor_mean(s : GeointersectcircleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_cursor_scale(s : GeointersectcircleCursor, f : Double) -> GeointersectcircleCursor {
   let result = geo_intersect_circle_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_intersect_circle_cursor_fill(s : GeointersectcircleCursor, v : Double
   result
 }
 
-pub fn geo_intersect_circle_cursor_min(s : GeointersectcircleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_cursor_min(s : GeointersectcircleCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_cursor_max(s : GeointersectcircleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_cursor_max(s : GeointersectcircleCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_cursor_to_string(s : GeointersectcircleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_intersect_circle_view_set(s : GeointersectcircleView, i : Int, v : Do
   result
 }
 
-pub fn geo_intersect_circle_view_sum(s : GeointersectcircleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_view_sum(s : GeointersectcircleView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_view_mean(s : GeointersectcircleView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_view_mean(s : GeointersectcircleView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_view_scale(s : GeointersectcircleView, f : Double) -> GeointersectcircleView {
   let result = geo_intersect_circle_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_intersect_circle_view_fill(s : GeointersectcircleView, v : Double) ->
   result
 }
 
-pub fn geo_intersect_circle_view_min(s : GeointersectcircleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_view_min(s : GeointersectcircleView) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_view_max(s : GeointersectcircleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_view_max(s : GeointersectcircleView) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_view_to_string(s : GeointersectcircleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_intersect_circle_range_set(s : GeointersectcircleRange, i : Int, v : 
   result
 }
 
-pub fn geo_intersect_circle_range_sum(s : GeointersectcircleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_range_sum(s : GeointersectcircleRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_range_mean(s : GeointersectcircleRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_range_mean(s : GeointersectcircleRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_range_scale(s : GeointersectcircleRange, f : Double) -> GeointersectcircleRange {
   let result = geo_intersect_circle_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_intersect_circle_range_fill(s : GeointersectcircleRange, v : Double) 
   result
 }
 
-pub fn geo_intersect_circle_range_min(s : GeointersectcircleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_range_min(s : GeointersectcircleRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_range_max(s : GeointersectcircleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_range_max(s : GeointersectcircleRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_range_to_string(s : GeointersectcircleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_intersect_circle_slice_set(s : GeointersectcircleSlice, i : Int, v : 
   result
 }
 
-pub fn geo_intersect_circle_slice_sum(s : GeointersectcircleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_intersect_circle_slice_sum(s : GeointersectcircleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_intersect_circle_slice_mean(s : GeointersectcircleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_intersect_circle_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_intersect_circle_slice_mean(s : GeointersectcircleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_intersect_circle_slice_scale(s : GeointersectcircleSlice, f : Double) -> GeointersectcircleSlice {
   let result = geo_intersect_circle_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_intersect_circle_slice_fill(s : GeointersectcircleSlice, v : Double) 
   result
 }
 
-pub fn geo_intersect_circle_slice_min(s : GeointersectcircleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_slice_min(s : GeointersectcircleSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_intersect_circle_slice_max(s : GeointersectcircleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_intersect_circle_slice_max(s : GeointersectcircleSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_intersect_circle_slice_to_string(s : GeointersectcircleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

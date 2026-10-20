@@ -88,11 +88,7 @@ pub fn image_transform_translate_make_series(vals : Array[Double], name : String
 
 pub fn image_transform_translate_series_len(s : ImagetransformtranslateSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_translate_series_sum(s : ImagetransformtranslateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_translate_series_sum(s : ImagetransformtranslateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_translate_series_mean(s : ImagetransformtranslateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_translate_frame_set(s : ImagetransformtranslateFrame, i :
   result
 }
 
-pub fn image_transform_translate_frame_sum(s : ImagetransformtranslateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_frame_sum(s : ImagetransformtranslateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_frame_mean(s : ImagetransformtranslateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_frame_mean(s : ImagetransformtranslateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_frame_scale(s : ImagetransformtranslateFrame, f : Double) -> ImagetransformtranslateFrame {
   let result = image_transform_translate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_translate_frame_fill(s : ImagetransformtranslateFrame, v 
   result
 }
 
-pub fn image_transform_translate_frame_min(s : ImagetransformtranslateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_frame_min(s : ImagetransformtranslateFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_frame_max(s : ImagetransformtranslateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_frame_max(s : ImagetransformtranslateFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_frame_to_string(s : ImagetransformtranslateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_translate_table_set(s : ImagetransformtranslateTable, i :
   result
 }
 
-pub fn image_transform_translate_table_sum(s : ImagetransformtranslateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_table_sum(s : ImagetransformtranslateTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_table_mean(s : ImagetransformtranslateTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_table_mean(s : ImagetransformtranslateTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_table_scale(s : ImagetransformtranslateTable, f : Double) -> ImagetransformtranslateTable {
   let result = image_transform_translate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_translate_table_fill(s : ImagetransformtranslateTable, v 
   result
 }
 
-pub fn image_transform_translate_table_min(s : ImagetransformtranslateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_table_min(s : ImagetransformtranslateTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_table_max(s : ImagetransformtranslateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_table_max(s : ImagetransformtranslateTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_table_to_string(s : ImagetransformtranslateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_translate_graphn_set(s : ImagetransformtranslateGraphN, i
   result
 }
 
-pub fn image_transform_translate_graphn_sum(s : ImagetransformtranslateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_graphn_sum(s : ImagetransformtranslateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_graphn_mean(s : ImagetransformtranslateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_graphn_mean(s : ImagetransformtranslateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_graphn_scale(s : ImagetransformtranslateGraphN, f : Double) -> ImagetransformtranslateGraphN {
   let result = image_transform_translate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_translate_graphn_fill(s : ImagetransformtranslateGraphN, 
   result
 }
 
-pub fn image_transform_translate_graphn_min(s : ImagetransformtranslateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_graphn_min(s : ImagetransformtranslateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_graphn_max(s : ImagetransformtranslateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_graphn_max(s : ImagetransformtranslateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_graphn_to_string(s : ImagetransformtranslateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_translate_node_set(s : ImagetransformtranslateNode, i : I
   result
 }
 
-pub fn image_transform_translate_node_sum(s : ImagetransformtranslateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_node_sum(s : ImagetransformtranslateNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_node_mean(s : ImagetransformtranslateNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_node_mean(s : ImagetransformtranslateNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_node_scale(s : ImagetransformtranslateNode, f : Double) -> ImagetransformtranslateNode {
   let result = image_transform_translate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_translate_node_fill(s : ImagetransformtranslateNode, v : 
   result
 }
 
-pub fn image_transform_translate_node_min(s : ImagetransformtranslateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_node_min(s : ImagetransformtranslateNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_node_max(s : ImagetransformtranslateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_node_max(s : ImagetransformtranslateNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_node_to_string(s : ImagetransformtranslateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_translate_edge_set(s : ImagetransformtranslateEdge, i : I
   result
 }
 
-pub fn image_transform_translate_edge_sum(s : ImagetransformtranslateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_edge_sum(s : ImagetransformtranslateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_edge_mean(s : ImagetransformtranslateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_edge_mean(s : ImagetransformtranslateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_edge_scale(s : ImagetransformtranslateEdge, f : Double) -> ImagetransformtranslateEdge {
   let result = image_transform_translate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_translate_edge_fill(s : ImagetransformtranslateEdge, v : 
   result
 }
 
-pub fn image_transform_translate_edge_min(s : ImagetransformtranslateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_edge_min(s : ImagetransformtranslateEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_edge_max(s : ImagetransformtranslateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_edge_max(s : ImagetransformtranslateEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_edge_to_string(s : ImagetransformtranslateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_translate_path_set(s : ImagetransformtranslatePath, i : I
   result
 }
 
-pub fn image_transform_translate_path_sum(s : ImagetransformtranslatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_path_sum(s : ImagetransformtranslatePath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_path_mean(s : ImagetransformtranslatePath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_path_mean(s : ImagetransformtranslatePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_path_scale(s : ImagetransformtranslatePath, f : Double) -> ImagetransformtranslatePath {
   let result = image_transform_translate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_translate_path_fill(s : ImagetransformtranslatePath, v : 
   result
 }
 
-pub fn image_transform_translate_path_min(s : ImagetransformtranslatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_path_min(s : ImagetransformtranslatePath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_path_max(s : ImagetransformtranslatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_path_max(s : ImagetransformtranslatePath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_path_to_string(s : ImagetransformtranslatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_translate_cluster_set(s : ImagetransformtranslateCluster,
   result
 }
 
-pub fn image_transform_translate_cluster_sum(s : ImagetransformtranslateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_cluster_sum(s : ImagetransformtranslateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_cluster_mean(s : ImagetransformtranslateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_cluster_mean(s : ImagetransformtranslateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_cluster_scale(s : ImagetransformtranslateCluster, f : Double) -> ImagetransformtranslateCluster {
   let result = image_transform_translate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_translate_cluster_fill(s : ImagetransformtranslateCluster
   result
 }
 
-pub fn image_transform_translate_cluster_min(s : ImagetransformtranslateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_cluster_min(s : ImagetransformtranslateCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_cluster_max(s : ImagetransformtranslateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_cluster_max(s : ImagetransformtranslateCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_cluster_to_string(s : ImagetransformtranslateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_translate_model_set(s : ImagetransformtranslateModel, i :
   result
 }
 
-pub fn image_transform_translate_model_sum(s : ImagetransformtranslateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_model_sum(s : ImagetransformtranslateModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_model_mean(s : ImagetransformtranslateModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_model_mean(s : ImagetransformtranslateModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_model_scale(s : ImagetransformtranslateModel, f : Double) -> ImagetransformtranslateModel {
   let result = image_transform_translate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_translate_model_fill(s : ImagetransformtranslateModel, v 
   result
 }
 
-pub fn image_transform_translate_model_min(s : ImagetransformtranslateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_model_min(s : ImagetransformtranslateModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_model_max(s : ImagetransformtranslateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_model_max(s : ImagetransformtranslateModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_model_to_string(s : ImagetransformtranslateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_translate_layer_set(s : ImagetransformtranslateLayer, i :
   result
 }
 
-pub fn image_transform_translate_layer_sum(s : ImagetransformtranslateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_layer_sum(s : ImagetransformtranslateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_layer_mean(s : ImagetransformtranslateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_layer_mean(s : ImagetransformtranslateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_layer_scale(s : ImagetransformtranslateLayer, f : Double) -> ImagetransformtranslateLayer {
   let result = image_transform_translate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_translate_layer_fill(s : ImagetransformtranslateLayer, v 
   result
 }
 
-pub fn image_transform_translate_layer_min(s : ImagetransformtranslateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_layer_min(s : ImagetransformtranslateLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_layer_max(s : ImagetransformtranslateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_layer_max(s : ImagetransformtranslateLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_layer_to_string(s : ImagetransformtranslateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_translate_buffer_set(s : ImagetransformtranslateBuffer, i
   result
 }
 
-pub fn image_transform_translate_buffer_sum(s : ImagetransformtranslateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_buffer_sum(s : ImagetransformtranslateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_buffer_mean(s : ImagetransformtranslateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_buffer_mean(s : ImagetransformtranslateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_buffer_scale(s : ImagetransformtranslateBuffer, f : Double) -> ImagetransformtranslateBuffer {
   let result = image_transform_translate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_translate_buffer_fill(s : ImagetransformtranslateBuffer, 
   result
 }
 
-pub fn image_transform_translate_buffer_min(s : ImagetransformtranslateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_buffer_min(s : ImagetransformtranslateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_buffer_max(s : ImagetransformtranslateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_buffer_max(s : ImagetransformtranslateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_buffer_to_string(s : ImagetransformtranslateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_translate_cursor_set(s : ImagetransformtranslateCursor, i
   result
 }
 
-pub fn image_transform_translate_cursor_sum(s : ImagetransformtranslateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_cursor_sum(s : ImagetransformtranslateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_cursor_mean(s : ImagetransformtranslateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_cursor_mean(s : ImagetransformtranslateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_cursor_scale(s : ImagetransformtranslateCursor, f : Double) -> ImagetransformtranslateCursor {
   let result = image_transform_translate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_translate_cursor_fill(s : ImagetransformtranslateCursor, 
   result
 }
 
-pub fn image_transform_translate_cursor_min(s : ImagetransformtranslateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_cursor_min(s : ImagetransformtranslateCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_cursor_max(s : ImagetransformtranslateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_cursor_max(s : ImagetransformtranslateCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_cursor_to_string(s : ImagetransformtranslateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_translate_view_set(s : ImagetransformtranslateView, i : I
   result
 }
 
-pub fn image_transform_translate_view_sum(s : ImagetransformtranslateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_view_sum(s : ImagetransformtranslateView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_view_mean(s : ImagetransformtranslateView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_view_mean(s : ImagetransformtranslateView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_view_scale(s : ImagetransformtranslateView, f : Double) -> ImagetransformtranslateView {
   let result = image_transform_translate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_translate_view_fill(s : ImagetransformtranslateView, v : 
   result
 }
 
-pub fn image_transform_translate_view_min(s : ImagetransformtranslateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_view_min(s : ImagetransformtranslateView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_view_max(s : ImagetransformtranslateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_view_max(s : ImagetransformtranslateView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_view_to_string(s : ImagetransformtranslateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_translate_range_set(s : ImagetransformtranslateRange, i :
   result
 }
 
-pub fn image_transform_translate_range_sum(s : ImagetransformtranslateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_range_sum(s : ImagetransformtranslateRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_range_mean(s : ImagetransformtranslateRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_range_mean(s : ImagetransformtranslateRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_range_scale(s : ImagetransformtranslateRange, f : Double) -> ImagetransformtranslateRange {
   let result = image_transform_translate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_translate_range_fill(s : ImagetransformtranslateRange, v 
   result
 }
 
-pub fn image_transform_translate_range_min(s : ImagetransformtranslateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_range_min(s : ImagetransformtranslateRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_range_max(s : ImagetransformtranslateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_range_max(s : ImagetransformtranslateRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_range_to_string(s : ImagetransformtranslateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_translate_slice_set(s : ImagetransformtranslateSlice, i :
   result
 }
 
-pub fn image_transform_translate_slice_sum(s : ImagetransformtranslateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_translate_slice_sum(s : ImagetransformtranslateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_translate_slice_mean(s : ImagetransformtranslateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_translate_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_translate_slice_mean(s : ImagetransformtranslateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_translate_slice_scale(s : ImagetransformtranslateSlice, f : Double) -> ImagetransformtranslateSlice {
   let result = image_transform_translate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_translate_slice_fill(s : ImagetransformtranslateSlice, v 
   result
 }
 
-pub fn image_transform_translate_slice_min(s : ImagetransformtranslateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_slice_min(s : ImagetransformtranslateSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_translate_slice_max(s : ImagetransformtranslateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_translate_slice_max(s : ImagetransformtranslateSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_translate_slice_to_string(s : ImagetransformtranslateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

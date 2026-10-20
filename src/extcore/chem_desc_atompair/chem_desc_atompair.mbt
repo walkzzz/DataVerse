@@ -88,11 +88,7 @@ pub fn chem_desc_atompair_make_series(vals : Array[Double], name : String) -> Ch
 
 pub fn chem_desc_atompair_series_len(s : ChemdescatompairSeries) -> Int { s.vals.length() }
 
-pub fn chem_desc_atompair_series_sum(s : ChemdescatompairSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_desc_atompair_series_sum(s : ChemdescatompairSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_desc_atompair_series_mean(s : ChemdescatompairSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_desc_atompair_frame_set(s : ChemdescatompairFrame, i : Int, v : Doub
   result
 }
 
-pub fn chem_desc_atompair_frame_sum(s : ChemdescatompairFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_frame_sum(s : ChemdescatompairFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_frame_mean(s : ChemdescatompairFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_frame_mean(s : ChemdescatompairFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_frame_scale(s : ChemdescatompairFrame, f : Double) -> ChemdescatompairFrame {
   let result = chem_desc_atompair_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_desc_atompair_frame_fill(s : ChemdescatompairFrame, v : Double) -> C
   result
 }
 
-pub fn chem_desc_atompair_frame_min(s : ChemdescatompairFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_frame_min(s : ChemdescatompairFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_frame_max(s : ChemdescatompairFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_frame_max(s : ChemdescatompairFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_frame_to_string(s : ChemdescatompairFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_desc_atompair_table_set(s : ChemdescatompairTable, i : Int, v : Doub
   result
 }
 
-pub fn chem_desc_atompair_table_sum(s : ChemdescatompairTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_table_sum(s : ChemdescatompairTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_table_mean(s : ChemdescatompairTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_table_mean(s : ChemdescatompairTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_table_scale(s : ChemdescatompairTable, f : Double) -> ChemdescatompairTable {
   let result = chem_desc_atompair_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_desc_atompair_table_fill(s : ChemdescatompairTable, v : Double) -> C
   result
 }
 
-pub fn chem_desc_atompair_table_min(s : ChemdescatompairTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_table_min(s : ChemdescatompairTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_table_max(s : ChemdescatompairTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_table_max(s : ChemdescatompairTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_table_to_string(s : ChemdescatompairTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_desc_atompair_graphn_set(s : ChemdescatompairGraphN, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_atompair_graphn_sum(s : ChemdescatompairGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_graphn_sum(s : ChemdescatompairGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_graphn_mean(s : ChemdescatompairGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_graphn_mean(s : ChemdescatompairGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_graphn_scale(s : ChemdescatompairGraphN, f : Double) -> ChemdescatompairGraphN {
   let result = chem_desc_atompair_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_desc_atompair_graphn_fill(s : ChemdescatompairGraphN, v : Double) ->
   result
 }
 
-pub fn chem_desc_atompair_graphn_min(s : ChemdescatompairGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_graphn_min(s : ChemdescatompairGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_graphn_max(s : ChemdescatompairGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_graphn_max(s : ChemdescatompairGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_graphn_to_string(s : ChemdescatompairGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_desc_atompair_node_set(s : ChemdescatompairNode, i : Int, v : Double
   result
 }
 
-pub fn chem_desc_atompair_node_sum(s : ChemdescatompairNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_node_sum(s : ChemdescatompairNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_node_mean(s : ChemdescatompairNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_node_mean(s : ChemdescatompairNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_node_scale(s : ChemdescatompairNode, f : Double) -> ChemdescatompairNode {
   let result = chem_desc_atompair_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_desc_atompair_node_fill(s : ChemdescatompairNode, v : Double) -> Che
   result
 }
 
-pub fn chem_desc_atompair_node_min(s : ChemdescatompairNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_node_min(s : ChemdescatompairNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_node_max(s : ChemdescatompairNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_node_max(s : ChemdescatompairNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_node_to_string(s : ChemdescatompairNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_desc_atompair_edge_set(s : ChemdescatompairEdge, i : Int, v : Double
   result
 }
 
-pub fn chem_desc_atompair_edge_sum(s : ChemdescatompairEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_edge_sum(s : ChemdescatompairEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_edge_mean(s : ChemdescatompairEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_edge_mean(s : ChemdescatompairEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_edge_scale(s : ChemdescatompairEdge, f : Double) -> ChemdescatompairEdge {
   let result = chem_desc_atompair_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_desc_atompair_edge_fill(s : ChemdescatompairEdge, v : Double) -> Che
   result
 }
 
-pub fn chem_desc_atompair_edge_min(s : ChemdescatompairEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_edge_min(s : ChemdescatompairEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_edge_max(s : ChemdescatompairEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_edge_max(s : ChemdescatompairEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_edge_to_string(s : ChemdescatompairEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_desc_atompair_path_set(s : ChemdescatompairPath, i : Int, v : Double
   result
 }
 
-pub fn chem_desc_atompair_path_sum(s : ChemdescatompairPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_path_sum(s : ChemdescatompairPath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_path_mean(s : ChemdescatompairPath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_path_mean(s : ChemdescatompairPath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_path_scale(s : ChemdescatompairPath, f : Double) -> ChemdescatompairPath {
   let result = chem_desc_atompair_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_desc_atompair_path_fill(s : ChemdescatompairPath, v : Double) -> Che
   result
 }
 
-pub fn chem_desc_atompair_path_min(s : ChemdescatompairPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_path_min(s : ChemdescatompairPath) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_path_max(s : ChemdescatompairPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_path_max(s : ChemdescatompairPath) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_path_to_string(s : ChemdescatompairPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_desc_atompair_cluster_set(s : ChemdescatompairCluster, i : Int, v : 
   result
 }
 
-pub fn chem_desc_atompair_cluster_sum(s : ChemdescatompairCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_cluster_sum(s : ChemdescatompairCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_cluster_mean(s : ChemdescatompairCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_cluster_mean(s : ChemdescatompairCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_cluster_scale(s : ChemdescatompairCluster, f : Double) -> ChemdescatompairCluster {
   let result = chem_desc_atompair_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_desc_atompair_cluster_fill(s : ChemdescatompairCluster, v : Double) 
   result
 }
 
-pub fn chem_desc_atompair_cluster_min(s : ChemdescatompairCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_cluster_min(s : ChemdescatompairCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_cluster_max(s : ChemdescatompairCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_cluster_max(s : ChemdescatompairCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_cluster_to_string(s : ChemdescatompairCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_desc_atompair_model_set(s : ChemdescatompairModel, i : Int, v : Doub
   result
 }
 
-pub fn chem_desc_atompair_model_sum(s : ChemdescatompairModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_model_sum(s : ChemdescatompairModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_model_mean(s : ChemdescatompairModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_model_mean(s : ChemdescatompairModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_model_scale(s : ChemdescatompairModel, f : Double) -> ChemdescatompairModel {
   let result = chem_desc_atompair_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_desc_atompair_model_fill(s : ChemdescatompairModel, v : Double) -> C
   result
 }
 
-pub fn chem_desc_atompair_model_min(s : ChemdescatompairModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_model_min(s : ChemdescatompairModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_model_max(s : ChemdescatompairModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_model_max(s : ChemdescatompairModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_model_to_string(s : ChemdescatompairModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_desc_atompair_layer_set(s : ChemdescatompairLayer, i : Int, v : Doub
   result
 }
 
-pub fn chem_desc_atompair_layer_sum(s : ChemdescatompairLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_layer_sum(s : ChemdescatompairLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_layer_mean(s : ChemdescatompairLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_layer_mean(s : ChemdescatompairLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_layer_scale(s : ChemdescatompairLayer, f : Double) -> ChemdescatompairLayer {
   let result = chem_desc_atompair_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_desc_atompair_layer_fill(s : ChemdescatompairLayer, v : Double) -> C
   result
 }
 
-pub fn chem_desc_atompair_layer_min(s : ChemdescatompairLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_layer_min(s : ChemdescatompairLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_layer_max(s : ChemdescatompairLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_layer_max(s : ChemdescatompairLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_layer_to_string(s : ChemdescatompairLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_desc_atompair_buffer_set(s : ChemdescatompairBuffer, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_atompair_buffer_sum(s : ChemdescatompairBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_buffer_sum(s : ChemdescatompairBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_buffer_mean(s : ChemdescatompairBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_buffer_mean(s : ChemdescatompairBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_buffer_scale(s : ChemdescatompairBuffer, f : Double) -> ChemdescatompairBuffer {
   let result = chem_desc_atompair_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_desc_atompair_buffer_fill(s : ChemdescatompairBuffer, v : Double) ->
   result
 }
 
-pub fn chem_desc_atompair_buffer_min(s : ChemdescatompairBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_buffer_min(s : ChemdescatompairBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_buffer_max(s : ChemdescatompairBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_buffer_max(s : ChemdescatompairBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_buffer_to_string(s : ChemdescatompairBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_desc_atompair_cursor_set(s : ChemdescatompairCursor, i : Int, v : Do
   result
 }
 
-pub fn chem_desc_atompair_cursor_sum(s : ChemdescatompairCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_cursor_sum(s : ChemdescatompairCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_cursor_mean(s : ChemdescatompairCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_cursor_mean(s : ChemdescatompairCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_cursor_scale(s : ChemdescatompairCursor, f : Double) -> ChemdescatompairCursor {
   let result = chem_desc_atompair_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_desc_atompair_cursor_fill(s : ChemdescatompairCursor, v : Double) ->
   result
 }
 
-pub fn chem_desc_atompair_cursor_min(s : ChemdescatompairCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_cursor_min(s : ChemdescatompairCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_cursor_max(s : ChemdescatompairCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_cursor_max(s : ChemdescatompairCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_cursor_to_string(s : ChemdescatompairCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_desc_atompair_view_set(s : ChemdescatompairView, i : Int, v : Double
   result
 }
 
-pub fn chem_desc_atompair_view_sum(s : ChemdescatompairView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_view_sum(s : ChemdescatompairView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_view_mean(s : ChemdescatompairView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_view_mean(s : ChemdescatompairView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_view_scale(s : ChemdescatompairView, f : Double) -> ChemdescatompairView {
   let result = chem_desc_atompair_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_desc_atompair_view_fill(s : ChemdescatompairView, v : Double) -> Che
   result
 }
 
-pub fn chem_desc_atompair_view_min(s : ChemdescatompairView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_view_min(s : ChemdescatompairView) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_view_max(s : ChemdescatompairView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_view_max(s : ChemdescatompairView) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_view_to_string(s : ChemdescatompairView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_desc_atompair_range_set(s : ChemdescatompairRange, i : Int, v : Doub
   result
 }
 
-pub fn chem_desc_atompair_range_sum(s : ChemdescatompairRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_range_sum(s : ChemdescatompairRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_range_mean(s : ChemdescatompairRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_range_mean(s : ChemdescatompairRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_range_scale(s : ChemdescatompairRange, f : Double) -> ChemdescatompairRange {
   let result = chem_desc_atompair_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_desc_atompair_range_fill(s : ChemdescatompairRange, v : Double) -> C
   result
 }
 
-pub fn chem_desc_atompair_range_min(s : ChemdescatompairRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_range_min(s : ChemdescatompairRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_range_max(s : ChemdescatompairRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_range_max(s : ChemdescatompairRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_range_to_string(s : ChemdescatompairRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_desc_atompair_slice_set(s : ChemdescatompairSlice, i : Int, v : Doub
   result
 }
 
-pub fn chem_desc_atompair_slice_sum(s : ChemdescatompairSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_desc_atompair_slice_sum(s : ChemdescatompairSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_desc_atompair_slice_mean(s : ChemdescatompairSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_desc_atompair_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_desc_atompair_slice_mean(s : ChemdescatompairSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_desc_atompair_slice_scale(s : ChemdescatompairSlice, f : Double) -> ChemdescatompairSlice {
   let result = chem_desc_atompair_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_desc_atompair_slice_fill(s : ChemdescatompairSlice, v : Double) -> C
   result
 }
 
-pub fn chem_desc_atompair_slice_min(s : ChemdescatompairSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_slice_min(s : ChemdescatompairSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_desc_atompair_slice_max(s : ChemdescatompairSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_desc_atompair_slice_max(s : ChemdescatompairSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_desc_atompair_slice_to_string(s : ChemdescatompairSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

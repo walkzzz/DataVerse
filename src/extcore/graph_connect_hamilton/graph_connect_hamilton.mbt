@@ -88,11 +88,7 @@ pub fn graph_connect_hamilton_make_series(vals : Array[Double], name : String) -
 
 pub fn graph_connect_hamilton_series_len(s : GraphconnecthamiltonSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_hamilton_series_sum(s : GraphconnecthamiltonSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_hamilton_series_sum(s : GraphconnecthamiltonSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_hamilton_series_mean(s : GraphconnecthamiltonSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_hamilton_frame_set(s : GraphconnecthamiltonFrame, i : Int, 
   result
 }
 
-pub fn graph_connect_hamilton_frame_sum(s : GraphconnecthamiltonFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_frame_sum(s : GraphconnecthamiltonFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_frame_mean(s : GraphconnecthamiltonFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_frame_mean(s : GraphconnecthamiltonFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_frame_scale(s : GraphconnecthamiltonFrame, f : Double) -> GraphconnecthamiltonFrame {
   let result = graph_connect_hamilton_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_hamilton_frame_fill(s : GraphconnecthamiltonFrame, v : Doub
   result
 }
 
-pub fn graph_connect_hamilton_frame_min(s : GraphconnecthamiltonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_frame_min(s : GraphconnecthamiltonFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_frame_max(s : GraphconnecthamiltonFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_frame_max(s : GraphconnecthamiltonFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_frame_to_string(s : GraphconnecthamiltonFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_hamilton_table_set(s : GraphconnecthamiltonTable, i : Int, 
   result
 }
 
-pub fn graph_connect_hamilton_table_sum(s : GraphconnecthamiltonTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_table_sum(s : GraphconnecthamiltonTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_table_mean(s : GraphconnecthamiltonTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_table_mean(s : GraphconnecthamiltonTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_table_scale(s : GraphconnecthamiltonTable, f : Double) -> GraphconnecthamiltonTable {
   let result = graph_connect_hamilton_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_hamilton_table_fill(s : GraphconnecthamiltonTable, v : Doub
   result
 }
 
-pub fn graph_connect_hamilton_table_min(s : GraphconnecthamiltonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_table_min(s : GraphconnecthamiltonTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_table_max(s : GraphconnecthamiltonTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_table_max(s : GraphconnecthamiltonTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_table_to_string(s : GraphconnecthamiltonTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_hamilton_graphn_set(s : GraphconnecthamiltonGraphN, i : Int
   result
 }
 
-pub fn graph_connect_hamilton_graphn_sum(s : GraphconnecthamiltonGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_graphn_sum(s : GraphconnecthamiltonGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_graphn_mean(s : GraphconnecthamiltonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_graphn_mean(s : GraphconnecthamiltonGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_graphn_scale(s : GraphconnecthamiltonGraphN, f : Double) -> GraphconnecthamiltonGraphN {
   let result = graph_connect_hamilton_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_hamilton_graphn_fill(s : GraphconnecthamiltonGraphN, v : Do
   result
 }
 
-pub fn graph_connect_hamilton_graphn_min(s : GraphconnecthamiltonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_graphn_min(s : GraphconnecthamiltonGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_graphn_max(s : GraphconnecthamiltonGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_graphn_max(s : GraphconnecthamiltonGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_graphn_to_string(s : GraphconnecthamiltonGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_hamilton_node_set(s : GraphconnecthamiltonNode, i : Int, v 
   result
 }
 
-pub fn graph_connect_hamilton_node_sum(s : GraphconnecthamiltonNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_node_sum(s : GraphconnecthamiltonNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_node_mean(s : GraphconnecthamiltonNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_node_mean(s : GraphconnecthamiltonNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_node_scale(s : GraphconnecthamiltonNode, f : Double) -> GraphconnecthamiltonNode {
   let result = graph_connect_hamilton_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_hamilton_node_fill(s : GraphconnecthamiltonNode, v : Double
   result
 }
 
-pub fn graph_connect_hamilton_node_min(s : GraphconnecthamiltonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_node_min(s : GraphconnecthamiltonNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_node_max(s : GraphconnecthamiltonNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_node_max(s : GraphconnecthamiltonNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_node_to_string(s : GraphconnecthamiltonNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_hamilton_edge_set(s : GraphconnecthamiltonEdge, i : Int, v 
   result
 }
 
-pub fn graph_connect_hamilton_edge_sum(s : GraphconnecthamiltonEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_edge_sum(s : GraphconnecthamiltonEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_edge_mean(s : GraphconnecthamiltonEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_edge_mean(s : GraphconnecthamiltonEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_edge_scale(s : GraphconnecthamiltonEdge, f : Double) -> GraphconnecthamiltonEdge {
   let result = graph_connect_hamilton_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_hamilton_edge_fill(s : GraphconnecthamiltonEdge, v : Double
   result
 }
 
-pub fn graph_connect_hamilton_edge_min(s : GraphconnecthamiltonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_edge_min(s : GraphconnecthamiltonEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_edge_max(s : GraphconnecthamiltonEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_edge_max(s : GraphconnecthamiltonEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_edge_to_string(s : GraphconnecthamiltonEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_hamilton_path_set(s : GraphconnecthamiltonPath, i : Int, v 
   result
 }
 
-pub fn graph_connect_hamilton_path_sum(s : GraphconnecthamiltonPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_path_sum(s : GraphconnecthamiltonPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_path_mean(s : GraphconnecthamiltonPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_path_mean(s : GraphconnecthamiltonPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_path_scale(s : GraphconnecthamiltonPath, f : Double) -> GraphconnecthamiltonPath {
   let result = graph_connect_hamilton_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_hamilton_path_fill(s : GraphconnecthamiltonPath, v : Double
   result
 }
 
-pub fn graph_connect_hamilton_path_min(s : GraphconnecthamiltonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_path_min(s : GraphconnecthamiltonPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_path_max(s : GraphconnecthamiltonPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_path_max(s : GraphconnecthamiltonPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_path_to_string(s : GraphconnecthamiltonPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_hamilton_cluster_set(s : GraphconnecthamiltonCluster, i : I
   result
 }
 
-pub fn graph_connect_hamilton_cluster_sum(s : GraphconnecthamiltonCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_cluster_sum(s : GraphconnecthamiltonCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_cluster_mean(s : GraphconnecthamiltonCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_cluster_mean(s : GraphconnecthamiltonCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_cluster_scale(s : GraphconnecthamiltonCluster, f : Double) -> GraphconnecthamiltonCluster {
   let result = graph_connect_hamilton_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_hamilton_cluster_fill(s : GraphconnecthamiltonCluster, v : 
   result
 }
 
-pub fn graph_connect_hamilton_cluster_min(s : GraphconnecthamiltonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_cluster_min(s : GraphconnecthamiltonCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_cluster_max(s : GraphconnecthamiltonCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_cluster_max(s : GraphconnecthamiltonCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_cluster_to_string(s : GraphconnecthamiltonCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_hamilton_model_set(s : GraphconnecthamiltonModel, i : Int, 
   result
 }
 
-pub fn graph_connect_hamilton_model_sum(s : GraphconnecthamiltonModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_model_sum(s : GraphconnecthamiltonModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_model_mean(s : GraphconnecthamiltonModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_model_mean(s : GraphconnecthamiltonModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_model_scale(s : GraphconnecthamiltonModel, f : Double) -> GraphconnecthamiltonModel {
   let result = graph_connect_hamilton_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_hamilton_model_fill(s : GraphconnecthamiltonModel, v : Doub
   result
 }
 
-pub fn graph_connect_hamilton_model_min(s : GraphconnecthamiltonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_model_min(s : GraphconnecthamiltonModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_model_max(s : GraphconnecthamiltonModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_model_max(s : GraphconnecthamiltonModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_model_to_string(s : GraphconnecthamiltonModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_hamilton_layer_set(s : GraphconnecthamiltonLayer, i : Int, 
   result
 }
 
-pub fn graph_connect_hamilton_layer_sum(s : GraphconnecthamiltonLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_layer_sum(s : GraphconnecthamiltonLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_layer_mean(s : GraphconnecthamiltonLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_layer_mean(s : GraphconnecthamiltonLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_layer_scale(s : GraphconnecthamiltonLayer, f : Double) -> GraphconnecthamiltonLayer {
   let result = graph_connect_hamilton_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_hamilton_layer_fill(s : GraphconnecthamiltonLayer, v : Doub
   result
 }
 
-pub fn graph_connect_hamilton_layer_min(s : GraphconnecthamiltonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_layer_min(s : GraphconnecthamiltonLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_layer_max(s : GraphconnecthamiltonLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_layer_max(s : GraphconnecthamiltonLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_layer_to_string(s : GraphconnecthamiltonLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_hamilton_buffer_set(s : GraphconnecthamiltonBuffer, i : Int
   result
 }
 
-pub fn graph_connect_hamilton_buffer_sum(s : GraphconnecthamiltonBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_buffer_sum(s : GraphconnecthamiltonBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_buffer_mean(s : GraphconnecthamiltonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_buffer_mean(s : GraphconnecthamiltonBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_buffer_scale(s : GraphconnecthamiltonBuffer, f : Double) -> GraphconnecthamiltonBuffer {
   let result = graph_connect_hamilton_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_hamilton_buffer_fill(s : GraphconnecthamiltonBuffer, v : Do
   result
 }
 
-pub fn graph_connect_hamilton_buffer_min(s : GraphconnecthamiltonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_buffer_min(s : GraphconnecthamiltonBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_buffer_max(s : GraphconnecthamiltonBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_buffer_max(s : GraphconnecthamiltonBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_buffer_to_string(s : GraphconnecthamiltonBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_hamilton_cursor_set(s : GraphconnecthamiltonCursor, i : Int
   result
 }
 
-pub fn graph_connect_hamilton_cursor_sum(s : GraphconnecthamiltonCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_cursor_sum(s : GraphconnecthamiltonCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_cursor_mean(s : GraphconnecthamiltonCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_cursor_mean(s : GraphconnecthamiltonCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_cursor_scale(s : GraphconnecthamiltonCursor, f : Double) -> GraphconnecthamiltonCursor {
   let result = graph_connect_hamilton_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_hamilton_cursor_fill(s : GraphconnecthamiltonCursor, v : Do
   result
 }
 
-pub fn graph_connect_hamilton_cursor_min(s : GraphconnecthamiltonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_cursor_min(s : GraphconnecthamiltonCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_cursor_max(s : GraphconnecthamiltonCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_cursor_max(s : GraphconnecthamiltonCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_cursor_to_string(s : GraphconnecthamiltonCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_hamilton_view_set(s : GraphconnecthamiltonView, i : Int, v 
   result
 }
 
-pub fn graph_connect_hamilton_view_sum(s : GraphconnecthamiltonView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_view_sum(s : GraphconnecthamiltonView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_view_mean(s : GraphconnecthamiltonView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_view_mean(s : GraphconnecthamiltonView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_view_scale(s : GraphconnecthamiltonView, f : Double) -> GraphconnecthamiltonView {
   let result = graph_connect_hamilton_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_hamilton_view_fill(s : GraphconnecthamiltonView, v : Double
   result
 }
 
-pub fn graph_connect_hamilton_view_min(s : GraphconnecthamiltonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_view_min(s : GraphconnecthamiltonView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_view_max(s : GraphconnecthamiltonView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_view_max(s : GraphconnecthamiltonView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_view_to_string(s : GraphconnecthamiltonView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_hamilton_range_set(s : GraphconnecthamiltonRange, i : Int, 
   result
 }
 
-pub fn graph_connect_hamilton_range_sum(s : GraphconnecthamiltonRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_range_sum(s : GraphconnecthamiltonRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_range_mean(s : GraphconnecthamiltonRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_range_mean(s : GraphconnecthamiltonRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_range_scale(s : GraphconnecthamiltonRange, f : Double) -> GraphconnecthamiltonRange {
   let result = graph_connect_hamilton_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_hamilton_range_fill(s : GraphconnecthamiltonRange, v : Doub
   result
 }
 
-pub fn graph_connect_hamilton_range_min(s : GraphconnecthamiltonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_range_min(s : GraphconnecthamiltonRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_range_max(s : GraphconnecthamiltonRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_range_max(s : GraphconnecthamiltonRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_range_to_string(s : GraphconnecthamiltonRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_hamilton_slice_set(s : GraphconnecthamiltonSlice, i : Int, 
   result
 }
 
-pub fn graph_connect_hamilton_slice_sum(s : GraphconnecthamiltonSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_hamilton_slice_sum(s : GraphconnecthamiltonSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_hamilton_slice_mean(s : GraphconnecthamiltonSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_hamilton_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_hamilton_slice_mean(s : GraphconnecthamiltonSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_hamilton_slice_scale(s : GraphconnecthamiltonSlice, f : Double) -> GraphconnecthamiltonSlice {
   let result = graph_connect_hamilton_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_hamilton_slice_fill(s : GraphconnecthamiltonSlice, v : Doub
   result
 }
 
-pub fn graph_connect_hamilton_slice_min(s : GraphconnecthamiltonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_slice_min(s : GraphconnecthamiltonSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_hamilton_slice_max(s : GraphconnecthamiltonSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_hamilton_slice_max(s : GraphconnecthamiltonSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_hamilton_slice_to_string(s : GraphconnecthamiltonSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

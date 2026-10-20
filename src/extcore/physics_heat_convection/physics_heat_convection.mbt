@@ -88,11 +88,7 @@ pub fn physics_heat_convection_make_series(vals : Array[Double], name : String) 
 
 pub fn physics_heat_convection_series_len(s : PhysicsheatconvectionSeries) -> Int { s.vals.length() }
 
-pub fn physics_heat_convection_series_sum(s : PhysicsheatconvectionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_heat_convection_series_sum(s : PhysicsheatconvectionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_heat_convection_series_mean(s : PhysicsheatconvectionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_heat_convection_frame_set(s : PhysicsheatconvectionFrame, i : Int
   result
 }
 
-pub fn physics_heat_convection_frame_sum(s : PhysicsheatconvectionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_frame_sum(s : PhysicsheatconvectionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_frame_mean(s : PhysicsheatconvectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_frame_mean(s : PhysicsheatconvectionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_frame_scale(s : PhysicsheatconvectionFrame, f : Double) -> PhysicsheatconvectionFrame {
   let result = physics_heat_convection_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_heat_convection_frame_fill(s : PhysicsheatconvectionFrame, v : Do
   result
 }
 
-pub fn physics_heat_convection_frame_min(s : PhysicsheatconvectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_frame_min(s : PhysicsheatconvectionFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_frame_max(s : PhysicsheatconvectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_frame_max(s : PhysicsheatconvectionFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_frame_to_string(s : PhysicsheatconvectionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_heat_convection_table_set(s : PhysicsheatconvectionTable, i : Int
   result
 }
 
-pub fn physics_heat_convection_table_sum(s : PhysicsheatconvectionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_table_sum(s : PhysicsheatconvectionTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_table_mean(s : PhysicsheatconvectionTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_table_mean(s : PhysicsheatconvectionTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_table_scale(s : PhysicsheatconvectionTable, f : Double) -> PhysicsheatconvectionTable {
   let result = physics_heat_convection_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_heat_convection_table_fill(s : PhysicsheatconvectionTable, v : Do
   result
 }
 
-pub fn physics_heat_convection_table_min(s : PhysicsheatconvectionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_table_min(s : PhysicsheatconvectionTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_table_max(s : PhysicsheatconvectionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_table_max(s : PhysicsheatconvectionTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_table_to_string(s : PhysicsheatconvectionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_heat_convection_graphn_set(s : PhysicsheatconvectionGraphN, i : I
   result
 }
 
-pub fn physics_heat_convection_graphn_sum(s : PhysicsheatconvectionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_graphn_sum(s : PhysicsheatconvectionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_graphn_mean(s : PhysicsheatconvectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_graphn_mean(s : PhysicsheatconvectionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_graphn_scale(s : PhysicsheatconvectionGraphN, f : Double) -> PhysicsheatconvectionGraphN {
   let result = physics_heat_convection_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_heat_convection_graphn_fill(s : PhysicsheatconvectionGraphN, v : 
   result
 }
 
-pub fn physics_heat_convection_graphn_min(s : PhysicsheatconvectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_graphn_min(s : PhysicsheatconvectionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_graphn_max(s : PhysicsheatconvectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_graphn_max(s : PhysicsheatconvectionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_graphn_to_string(s : PhysicsheatconvectionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_heat_convection_node_set(s : PhysicsheatconvectionNode, i : Int, 
   result
 }
 
-pub fn physics_heat_convection_node_sum(s : PhysicsheatconvectionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_node_sum(s : PhysicsheatconvectionNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_node_mean(s : PhysicsheatconvectionNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_node_mean(s : PhysicsheatconvectionNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_node_scale(s : PhysicsheatconvectionNode, f : Double) -> PhysicsheatconvectionNode {
   let result = physics_heat_convection_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_heat_convection_node_fill(s : PhysicsheatconvectionNode, v : Doub
   result
 }
 
-pub fn physics_heat_convection_node_min(s : PhysicsheatconvectionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_node_min(s : PhysicsheatconvectionNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_node_max(s : PhysicsheatconvectionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_node_max(s : PhysicsheatconvectionNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_node_to_string(s : PhysicsheatconvectionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_heat_convection_edge_set(s : PhysicsheatconvectionEdge, i : Int, 
   result
 }
 
-pub fn physics_heat_convection_edge_sum(s : PhysicsheatconvectionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_edge_sum(s : PhysicsheatconvectionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_edge_mean(s : PhysicsheatconvectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_edge_mean(s : PhysicsheatconvectionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_edge_scale(s : PhysicsheatconvectionEdge, f : Double) -> PhysicsheatconvectionEdge {
   let result = physics_heat_convection_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_heat_convection_edge_fill(s : PhysicsheatconvectionEdge, v : Doub
   result
 }
 
-pub fn physics_heat_convection_edge_min(s : PhysicsheatconvectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_edge_min(s : PhysicsheatconvectionEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_edge_max(s : PhysicsheatconvectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_edge_max(s : PhysicsheatconvectionEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_edge_to_string(s : PhysicsheatconvectionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_heat_convection_path_set(s : PhysicsheatconvectionPath, i : Int, 
   result
 }
 
-pub fn physics_heat_convection_path_sum(s : PhysicsheatconvectionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_path_sum(s : PhysicsheatconvectionPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_path_mean(s : PhysicsheatconvectionPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_path_mean(s : PhysicsheatconvectionPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_path_scale(s : PhysicsheatconvectionPath, f : Double) -> PhysicsheatconvectionPath {
   let result = physics_heat_convection_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_heat_convection_path_fill(s : PhysicsheatconvectionPath, v : Doub
   result
 }
 
-pub fn physics_heat_convection_path_min(s : PhysicsheatconvectionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_path_min(s : PhysicsheatconvectionPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_path_max(s : PhysicsheatconvectionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_path_max(s : PhysicsheatconvectionPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_path_to_string(s : PhysicsheatconvectionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_heat_convection_cluster_set(s : PhysicsheatconvectionCluster, i :
   result
 }
 
-pub fn physics_heat_convection_cluster_sum(s : PhysicsheatconvectionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_cluster_sum(s : PhysicsheatconvectionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_cluster_mean(s : PhysicsheatconvectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_cluster_mean(s : PhysicsheatconvectionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_cluster_scale(s : PhysicsheatconvectionCluster, f : Double) -> PhysicsheatconvectionCluster {
   let result = physics_heat_convection_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_heat_convection_cluster_fill(s : PhysicsheatconvectionCluster, v 
   result
 }
 
-pub fn physics_heat_convection_cluster_min(s : PhysicsheatconvectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_cluster_min(s : PhysicsheatconvectionCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_cluster_max(s : PhysicsheatconvectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_cluster_max(s : PhysicsheatconvectionCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_cluster_to_string(s : PhysicsheatconvectionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_heat_convection_model_set(s : PhysicsheatconvectionModel, i : Int
   result
 }
 
-pub fn physics_heat_convection_model_sum(s : PhysicsheatconvectionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_model_sum(s : PhysicsheatconvectionModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_model_mean(s : PhysicsheatconvectionModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_model_mean(s : PhysicsheatconvectionModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_model_scale(s : PhysicsheatconvectionModel, f : Double) -> PhysicsheatconvectionModel {
   let result = physics_heat_convection_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_heat_convection_model_fill(s : PhysicsheatconvectionModel, v : Do
   result
 }
 
-pub fn physics_heat_convection_model_min(s : PhysicsheatconvectionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_model_min(s : PhysicsheatconvectionModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_model_max(s : PhysicsheatconvectionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_model_max(s : PhysicsheatconvectionModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_model_to_string(s : PhysicsheatconvectionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_heat_convection_layer_set(s : PhysicsheatconvectionLayer, i : Int
   result
 }
 
-pub fn physics_heat_convection_layer_sum(s : PhysicsheatconvectionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_layer_sum(s : PhysicsheatconvectionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_layer_mean(s : PhysicsheatconvectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_layer_mean(s : PhysicsheatconvectionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_layer_scale(s : PhysicsheatconvectionLayer, f : Double) -> PhysicsheatconvectionLayer {
   let result = physics_heat_convection_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_heat_convection_layer_fill(s : PhysicsheatconvectionLayer, v : Do
   result
 }
 
-pub fn physics_heat_convection_layer_min(s : PhysicsheatconvectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_layer_min(s : PhysicsheatconvectionLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_layer_max(s : PhysicsheatconvectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_layer_max(s : PhysicsheatconvectionLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_layer_to_string(s : PhysicsheatconvectionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_heat_convection_buffer_set(s : PhysicsheatconvectionBuffer, i : I
   result
 }
 
-pub fn physics_heat_convection_buffer_sum(s : PhysicsheatconvectionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_buffer_sum(s : PhysicsheatconvectionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_buffer_mean(s : PhysicsheatconvectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_buffer_mean(s : PhysicsheatconvectionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_buffer_scale(s : PhysicsheatconvectionBuffer, f : Double) -> PhysicsheatconvectionBuffer {
   let result = physics_heat_convection_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_heat_convection_buffer_fill(s : PhysicsheatconvectionBuffer, v : 
   result
 }
 
-pub fn physics_heat_convection_buffer_min(s : PhysicsheatconvectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_buffer_min(s : PhysicsheatconvectionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_buffer_max(s : PhysicsheatconvectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_buffer_max(s : PhysicsheatconvectionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_buffer_to_string(s : PhysicsheatconvectionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_heat_convection_cursor_set(s : PhysicsheatconvectionCursor, i : I
   result
 }
 
-pub fn physics_heat_convection_cursor_sum(s : PhysicsheatconvectionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_cursor_sum(s : PhysicsheatconvectionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_cursor_mean(s : PhysicsheatconvectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_cursor_mean(s : PhysicsheatconvectionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_cursor_scale(s : PhysicsheatconvectionCursor, f : Double) -> PhysicsheatconvectionCursor {
   let result = physics_heat_convection_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_heat_convection_cursor_fill(s : PhysicsheatconvectionCursor, v : 
   result
 }
 
-pub fn physics_heat_convection_cursor_min(s : PhysicsheatconvectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_cursor_min(s : PhysicsheatconvectionCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_cursor_max(s : PhysicsheatconvectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_cursor_max(s : PhysicsheatconvectionCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_cursor_to_string(s : PhysicsheatconvectionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_heat_convection_view_set(s : PhysicsheatconvectionView, i : Int, 
   result
 }
 
-pub fn physics_heat_convection_view_sum(s : PhysicsheatconvectionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_view_sum(s : PhysicsheatconvectionView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_view_mean(s : PhysicsheatconvectionView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_view_mean(s : PhysicsheatconvectionView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_view_scale(s : PhysicsheatconvectionView, f : Double) -> PhysicsheatconvectionView {
   let result = physics_heat_convection_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_heat_convection_view_fill(s : PhysicsheatconvectionView, v : Doub
   result
 }
 
-pub fn physics_heat_convection_view_min(s : PhysicsheatconvectionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_view_min(s : PhysicsheatconvectionView) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_view_max(s : PhysicsheatconvectionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_view_max(s : PhysicsheatconvectionView) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_view_to_string(s : PhysicsheatconvectionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_heat_convection_range_set(s : PhysicsheatconvectionRange, i : Int
   result
 }
 
-pub fn physics_heat_convection_range_sum(s : PhysicsheatconvectionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_range_sum(s : PhysicsheatconvectionRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_range_mean(s : PhysicsheatconvectionRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_range_mean(s : PhysicsheatconvectionRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_range_scale(s : PhysicsheatconvectionRange, f : Double) -> PhysicsheatconvectionRange {
   let result = physics_heat_convection_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_heat_convection_range_fill(s : PhysicsheatconvectionRange, v : Do
   result
 }
 
-pub fn physics_heat_convection_range_min(s : PhysicsheatconvectionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_range_min(s : PhysicsheatconvectionRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_range_max(s : PhysicsheatconvectionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_range_max(s : PhysicsheatconvectionRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_range_to_string(s : PhysicsheatconvectionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_heat_convection_slice_set(s : PhysicsheatconvectionSlice, i : Int
   result
 }
 
-pub fn physics_heat_convection_slice_sum(s : PhysicsheatconvectionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_convection_slice_sum(s : PhysicsheatconvectionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_convection_slice_mean(s : PhysicsheatconvectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_convection_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_convection_slice_mean(s : PhysicsheatconvectionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_convection_slice_scale(s : PhysicsheatconvectionSlice, f : Double) -> PhysicsheatconvectionSlice {
   let result = physics_heat_convection_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_heat_convection_slice_fill(s : PhysicsheatconvectionSlice, v : Do
   result
 }
 
-pub fn physics_heat_convection_slice_min(s : PhysicsheatconvectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_slice_min(s : PhysicsheatconvectionSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_convection_slice_max(s : PhysicsheatconvectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_convection_slice_max(s : PhysicsheatconvectionSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_convection_slice_to_string(s : PhysicsheatconvectionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

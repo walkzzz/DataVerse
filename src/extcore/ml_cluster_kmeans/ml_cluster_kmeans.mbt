@@ -88,11 +88,7 @@ pub fn ml_cluster_kmeans_make_series(vals : Array[Double], name : String) -> Mlc
 
 pub fn ml_cluster_kmeans_series_len(s : MlclusterkmeansSeries) -> Int { s.vals.length() }
 
-pub fn ml_cluster_kmeans_series_sum(s : MlclusterkmeansSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_cluster_kmeans_series_sum(s : MlclusterkmeansSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_cluster_kmeans_series_mean(s : MlclusterkmeansSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_cluster_kmeans_frame_set(s : MlclusterkmeansFrame, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_kmeans_frame_sum(s : MlclusterkmeansFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_frame_sum(s : MlclusterkmeansFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_frame_mean(s : MlclusterkmeansFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_frame_mean(s : MlclusterkmeansFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_frame_scale(s : MlclusterkmeansFrame, f : Double) -> MlclusterkmeansFrame {
   let result = ml_cluster_kmeans_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_cluster_kmeans_frame_fill(s : MlclusterkmeansFrame, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_kmeans_frame_min(s : MlclusterkmeansFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_frame_min(s : MlclusterkmeansFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_frame_max(s : MlclusterkmeansFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_frame_max(s : MlclusterkmeansFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_frame_to_string(s : MlclusterkmeansFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_cluster_kmeans_table_set(s : MlclusterkmeansTable, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_kmeans_table_sum(s : MlclusterkmeansTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_table_sum(s : MlclusterkmeansTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_table_mean(s : MlclusterkmeansTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_table_mean(s : MlclusterkmeansTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_table_scale(s : MlclusterkmeansTable, f : Double) -> MlclusterkmeansTable {
   let result = ml_cluster_kmeans_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_cluster_kmeans_table_fill(s : MlclusterkmeansTable, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_kmeans_table_min(s : MlclusterkmeansTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_table_min(s : MlclusterkmeansTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_table_max(s : MlclusterkmeansTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_table_max(s : MlclusterkmeansTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_table_to_string(s : MlclusterkmeansTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_cluster_kmeans_graphn_set(s : MlclusterkmeansGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_kmeans_graphn_sum(s : MlclusterkmeansGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_graphn_sum(s : MlclusterkmeansGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_graphn_mean(s : MlclusterkmeansGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_graphn_mean(s : MlclusterkmeansGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_graphn_scale(s : MlclusterkmeansGraphN, f : Double) -> MlclusterkmeansGraphN {
   let result = ml_cluster_kmeans_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_cluster_kmeans_graphn_fill(s : MlclusterkmeansGraphN, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_kmeans_graphn_min(s : MlclusterkmeansGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_graphn_min(s : MlclusterkmeansGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_graphn_max(s : MlclusterkmeansGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_graphn_max(s : MlclusterkmeansGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_graphn_to_string(s : MlclusterkmeansGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_cluster_kmeans_node_set(s : MlclusterkmeansNode, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_kmeans_node_sum(s : MlclusterkmeansNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_node_sum(s : MlclusterkmeansNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_node_mean(s : MlclusterkmeansNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_node_mean(s : MlclusterkmeansNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_node_scale(s : MlclusterkmeansNode, f : Double) -> MlclusterkmeansNode {
   let result = ml_cluster_kmeans_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_cluster_kmeans_node_fill(s : MlclusterkmeansNode, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_kmeans_node_min(s : MlclusterkmeansNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_node_min(s : MlclusterkmeansNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_node_max(s : MlclusterkmeansNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_node_max(s : MlclusterkmeansNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_node_to_string(s : MlclusterkmeansNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_cluster_kmeans_edge_set(s : MlclusterkmeansEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_kmeans_edge_sum(s : MlclusterkmeansEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_edge_sum(s : MlclusterkmeansEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_edge_mean(s : MlclusterkmeansEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_edge_mean(s : MlclusterkmeansEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_edge_scale(s : MlclusterkmeansEdge, f : Double) -> MlclusterkmeansEdge {
   let result = ml_cluster_kmeans_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_cluster_kmeans_edge_fill(s : MlclusterkmeansEdge, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_kmeans_edge_min(s : MlclusterkmeansEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_edge_min(s : MlclusterkmeansEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_edge_max(s : MlclusterkmeansEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_edge_max(s : MlclusterkmeansEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_edge_to_string(s : MlclusterkmeansEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_cluster_kmeans_path_set(s : MlclusterkmeansPath, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_kmeans_path_sum(s : MlclusterkmeansPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_path_sum(s : MlclusterkmeansPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_path_mean(s : MlclusterkmeansPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_path_mean(s : MlclusterkmeansPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_path_scale(s : MlclusterkmeansPath, f : Double) -> MlclusterkmeansPath {
   let result = ml_cluster_kmeans_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_cluster_kmeans_path_fill(s : MlclusterkmeansPath, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_kmeans_path_min(s : MlclusterkmeansPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_path_min(s : MlclusterkmeansPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_path_max(s : MlclusterkmeansPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_path_max(s : MlclusterkmeansPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_path_to_string(s : MlclusterkmeansPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_cluster_kmeans_cluster_set(s : MlclusterkmeansCluster, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_kmeans_cluster_sum(s : MlclusterkmeansCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_cluster_sum(s : MlclusterkmeansCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_cluster_mean(s : MlclusterkmeansCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_cluster_mean(s : MlclusterkmeansCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_cluster_scale(s : MlclusterkmeansCluster, f : Double) -> MlclusterkmeansCluster {
   let result = ml_cluster_kmeans_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_cluster_kmeans_cluster_fill(s : MlclusterkmeansCluster, v : Double) ->
   result
 }
 
-pub fn ml_cluster_kmeans_cluster_min(s : MlclusterkmeansCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_cluster_min(s : MlclusterkmeansCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_cluster_max(s : MlclusterkmeansCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_cluster_max(s : MlclusterkmeansCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_cluster_to_string(s : MlclusterkmeansCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_cluster_kmeans_model_set(s : MlclusterkmeansModel, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_kmeans_model_sum(s : MlclusterkmeansModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_model_sum(s : MlclusterkmeansModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_model_mean(s : MlclusterkmeansModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_model_mean(s : MlclusterkmeansModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_model_scale(s : MlclusterkmeansModel, f : Double) -> MlclusterkmeansModel {
   let result = ml_cluster_kmeans_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_cluster_kmeans_model_fill(s : MlclusterkmeansModel, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_kmeans_model_min(s : MlclusterkmeansModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_model_min(s : MlclusterkmeansModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_model_max(s : MlclusterkmeansModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_model_max(s : MlclusterkmeansModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_model_to_string(s : MlclusterkmeansModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_cluster_kmeans_layer_set(s : MlclusterkmeansLayer, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_kmeans_layer_sum(s : MlclusterkmeansLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_layer_sum(s : MlclusterkmeansLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_layer_mean(s : MlclusterkmeansLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_layer_mean(s : MlclusterkmeansLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_layer_scale(s : MlclusterkmeansLayer, f : Double) -> MlclusterkmeansLayer {
   let result = ml_cluster_kmeans_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_cluster_kmeans_layer_fill(s : MlclusterkmeansLayer, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_kmeans_layer_min(s : MlclusterkmeansLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_layer_min(s : MlclusterkmeansLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_layer_max(s : MlclusterkmeansLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_layer_max(s : MlclusterkmeansLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_layer_to_string(s : MlclusterkmeansLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_cluster_kmeans_buffer_set(s : MlclusterkmeansBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_kmeans_buffer_sum(s : MlclusterkmeansBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_buffer_sum(s : MlclusterkmeansBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_buffer_mean(s : MlclusterkmeansBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_buffer_mean(s : MlclusterkmeansBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_buffer_scale(s : MlclusterkmeansBuffer, f : Double) -> MlclusterkmeansBuffer {
   let result = ml_cluster_kmeans_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_cluster_kmeans_buffer_fill(s : MlclusterkmeansBuffer, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_kmeans_buffer_min(s : MlclusterkmeansBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_buffer_min(s : MlclusterkmeansBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_buffer_max(s : MlclusterkmeansBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_buffer_max(s : MlclusterkmeansBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_buffer_to_string(s : MlclusterkmeansBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_cluster_kmeans_cursor_set(s : MlclusterkmeansCursor, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_kmeans_cursor_sum(s : MlclusterkmeansCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_cursor_sum(s : MlclusterkmeansCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_cursor_mean(s : MlclusterkmeansCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_cursor_mean(s : MlclusterkmeansCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_cursor_scale(s : MlclusterkmeansCursor, f : Double) -> MlclusterkmeansCursor {
   let result = ml_cluster_kmeans_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_cluster_kmeans_cursor_fill(s : MlclusterkmeansCursor, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_kmeans_cursor_min(s : MlclusterkmeansCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_cursor_min(s : MlclusterkmeansCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_cursor_max(s : MlclusterkmeansCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_cursor_max(s : MlclusterkmeansCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_cursor_to_string(s : MlclusterkmeansCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_cluster_kmeans_view_set(s : MlclusterkmeansView, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_kmeans_view_sum(s : MlclusterkmeansView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_view_sum(s : MlclusterkmeansView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_view_mean(s : MlclusterkmeansView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_view_mean(s : MlclusterkmeansView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_view_scale(s : MlclusterkmeansView, f : Double) -> MlclusterkmeansView {
   let result = ml_cluster_kmeans_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_cluster_kmeans_view_fill(s : MlclusterkmeansView, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_kmeans_view_min(s : MlclusterkmeansView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_view_min(s : MlclusterkmeansView) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_view_max(s : MlclusterkmeansView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_view_max(s : MlclusterkmeansView) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_view_to_string(s : MlclusterkmeansView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_cluster_kmeans_range_set(s : MlclusterkmeansRange, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_kmeans_range_sum(s : MlclusterkmeansRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_range_sum(s : MlclusterkmeansRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_range_mean(s : MlclusterkmeansRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_range_mean(s : MlclusterkmeansRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_range_scale(s : MlclusterkmeansRange, f : Double) -> MlclusterkmeansRange {
   let result = ml_cluster_kmeans_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_cluster_kmeans_range_fill(s : MlclusterkmeansRange, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_kmeans_range_min(s : MlclusterkmeansRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_range_min(s : MlclusterkmeansRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_range_max(s : MlclusterkmeansRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_range_max(s : MlclusterkmeansRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_range_to_string(s : MlclusterkmeansRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_cluster_kmeans_slice_set(s : MlclusterkmeansSlice, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_kmeans_slice_sum(s : MlclusterkmeansSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_kmeans_slice_sum(s : MlclusterkmeansSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_kmeans_slice_mean(s : MlclusterkmeansSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_kmeans_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_kmeans_slice_mean(s : MlclusterkmeansSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_kmeans_slice_scale(s : MlclusterkmeansSlice, f : Double) -> MlclusterkmeansSlice {
   let result = ml_cluster_kmeans_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_cluster_kmeans_slice_fill(s : MlclusterkmeansSlice, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_kmeans_slice_min(s : MlclusterkmeansSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_slice_min(s : MlclusterkmeansSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_kmeans_slice_max(s : MlclusterkmeansSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_kmeans_slice_max(s : MlclusterkmeansSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_kmeans_slice_to_string(s : MlclusterkmeansSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

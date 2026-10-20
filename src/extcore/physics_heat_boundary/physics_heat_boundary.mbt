@@ -88,11 +88,7 @@ pub fn physics_heat_boundary_make_series(vals : Array[Double], name : String) ->
 
 pub fn physics_heat_boundary_series_len(s : PhysicsheatboundarySeries) -> Int { s.vals.length() }
 
-pub fn physics_heat_boundary_series_sum(s : PhysicsheatboundarySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_heat_boundary_series_sum(s : PhysicsheatboundarySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_heat_boundary_series_mean(s : PhysicsheatboundarySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_heat_boundary_frame_set(s : PhysicsheatboundaryFrame, i : Int, v 
   result
 }
 
-pub fn physics_heat_boundary_frame_sum(s : PhysicsheatboundaryFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_frame_sum(s : PhysicsheatboundaryFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_frame_mean(s : PhysicsheatboundaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_frame_mean(s : PhysicsheatboundaryFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_frame_scale(s : PhysicsheatboundaryFrame, f : Double) -> PhysicsheatboundaryFrame {
   let result = physics_heat_boundary_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_heat_boundary_frame_fill(s : PhysicsheatboundaryFrame, v : Double
   result
 }
 
-pub fn physics_heat_boundary_frame_min(s : PhysicsheatboundaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_frame_min(s : PhysicsheatboundaryFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_frame_max(s : PhysicsheatboundaryFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_frame_max(s : PhysicsheatboundaryFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_frame_to_string(s : PhysicsheatboundaryFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_heat_boundary_table_set(s : PhysicsheatboundaryTable, i : Int, v 
   result
 }
 
-pub fn physics_heat_boundary_table_sum(s : PhysicsheatboundaryTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_table_sum(s : PhysicsheatboundaryTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_table_mean(s : PhysicsheatboundaryTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_table_mean(s : PhysicsheatboundaryTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_table_scale(s : PhysicsheatboundaryTable, f : Double) -> PhysicsheatboundaryTable {
   let result = physics_heat_boundary_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_heat_boundary_table_fill(s : PhysicsheatboundaryTable, v : Double
   result
 }
 
-pub fn physics_heat_boundary_table_min(s : PhysicsheatboundaryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_table_min(s : PhysicsheatboundaryTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_table_max(s : PhysicsheatboundaryTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_table_max(s : PhysicsheatboundaryTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_table_to_string(s : PhysicsheatboundaryTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_heat_boundary_graphn_set(s : PhysicsheatboundaryGraphN, i : Int, 
   result
 }
 
-pub fn physics_heat_boundary_graphn_sum(s : PhysicsheatboundaryGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_graphn_sum(s : PhysicsheatboundaryGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_graphn_mean(s : PhysicsheatboundaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_graphn_mean(s : PhysicsheatboundaryGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_graphn_scale(s : PhysicsheatboundaryGraphN, f : Double) -> PhysicsheatboundaryGraphN {
   let result = physics_heat_boundary_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_heat_boundary_graphn_fill(s : PhysicsheatboundaryGraphN, v : Doub
   result
 }
 
-pub fn physics_heat_boundary_graphn_min(s : PhysicsheatboundaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_graphn_min(s : PhysicsheatboundaryGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_graphn_max(s : PhysicsheatboundaryGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_graphn_max(s : PhysicsheatboundaryGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_graphn_to_string(s : PhysicsheatboundaryGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_heat_boundary_node_set(s : PhysicsheatboundaryNode, i : Int, v : 
   result
 }
 
-pub fn physics_heat_boundary_node_sum(s : PhysicsheatboundaryNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_node_sum(s : PhysicsheatboundaryNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_node_mean(s : PhysicsheatboundaryNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_node_mean(s : PhysicsheatboundaryNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_node_scale(s : PhysicsheatboundaryNode, f : Double) -> PhysicsheatboundaryNode {
   let result = physics_heat_boundary_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_heat_boundary_node_fill(s : PhysicsheatboundaryNode, v : Double) 
   result
 }
 
-pub fn physics_heat_boundary_node_min(s : PhysicsheatboundaryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_node_min(s : PhysicsheatboundaryNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_node_max(s : PhysicsheatboundaryNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_node_max(s : PhysicsheatboundaryNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_node_to_string(s : PhysicsheatboundaryNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_heat_boundary_edge_set(s : PhysicsheatboundaryEdge, i : Int, v : 
   result
 }
 
-pub fn physics_heat_boundary_edge_sum(s : PhysicsheatboundaryEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_edge_sum(s : PhysicsheatboundaryEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_edge_mean(s : PhysicsheatboundaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_edge_mean(s : PhysicsheatboundaryEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_edge_scale(s : PhysicsheatboundaryEdge, f : Double) -> PhysicsheatboundaryEdge {
   let result = physics_heat_boundary_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_heat_boundary_edge_fill(s : PhysicsheatboundaryEdge, v : Double) 
   result
 }
 
-pub fn physics_heat_boundary_edge_min(s : PhysicsheatboundaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_edge_min(s : PhysicsheatboundaryEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_edge_max(s : PhysicsheatboundaryEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_edge_max(s : PhysicsheatboundaryEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_edge_to_string(s : PhysicsheatboundaryEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_heat_boundary_path_set(s : PhysicsheatboundaryPath, i : Int, v : 
   result
 }
 
-pub fn physics_heat_boundary_path_sum(s : PhysicsheatboundaryPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_path_sum(s : PhysicsheatboundaryPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_path_mean(s : PhysicsheatboundaryPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_path_mean(s : PhysicsheatboundaryPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_path_scale(s : PhysicsheatboundaryPath, f : Double) -> PhysicsheatboundaryPath {
   let result = physics_heat_boundary_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_heat_boundary_path_fill(s : PhysicsheatboundaryPath, v : Double) 
   result
 }
 
-pub fn physics_heat_boundary_path_min(s : PhysicsheatboundaryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_path_min(s : PhysicsheatboundaryPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_path_max(s : PhysicsheatboundaryPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_path_max(s : PhysicsheatboundaryPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_path_to_string(s : PhysicsheatboundaryPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_heat_boundary_cluster_set(s : PhysicsheatboundaryCluster, i : Int
   result
 }
 
-pub fn physics_heat_boundary_cluster_sum(s : PhysicsheatboundaryCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_cluster_sum(s : PhysicsheatboundaryCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_cluster_mean(s : PhysicsheatboundaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_cluster_mean(s : PhysicsheatboundaryCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_cluster_scale(s : PhysicsheatboundaryCluster, f : Double) -> PhysicsheatboundaryCluster {
   let result = physics_heat_boundary_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_heat_boundary_cluster_fill(s : PhysicsheatboundaryCluster, v : Do
   result
 }
 
-pub fn physics_heat_boundary_cluster_min(s : PhysicsheatboundaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_cluster_min(s : PhysicsheatboundaryCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_cluster_max(s : PhysicsheatboundaryCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_cluster_max(s : PhysicsheatboundaryCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_cluster_to_string(s : PhysicsheatboundaryCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_heat_boundary_model_set(s : PhysicsheatboundaryModel, i : Int, v 
   result
 }
 
-pub fn physics_heat_boundary_model_sum(s : PhysicsheatboundaryModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_model_sum(s : PhysicsheatboundaryModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_model_mean(s : PhysicsheatboundaryModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_model_mean(s : PhysicsheatboundaryModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_model_scale(s : PhysicsheatboundaryModel, f : Double) -> PhysicsheatboundaryModel {
   let result = physics_heat_boundary_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_heat_boundary_model_fill(s : PhysicsheatboundaryModel, v : Double
   result
 }
 
-pub fn physics_heat_boundary_model_min(s : PhysicsheatboundaryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_model_min(s : PhysicsheatboundaryModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_model_max(s : PhysicsheatboundaryModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_model_max(s : PhysicsheatboundaryModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_model_to_string(s : PhysicsheatboundaryModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_heat_boundary_layer_set(s : PhysicsheatboundaryLayer, i : Int, v 
   result
 }
 
-pub fn physics_heat_boundary_layer_sum(s : PhysicsheatboundaryLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_layer_sum(s : PhysicsheatboundaryLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_layer_mean(s : PhysicsheatboundaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_layer_mean(s : PhysicsheatboundaryLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_layer_scale(s : PhysicsheatboundaryLayer, f : Double) -> PhysicsheatboundaryLayer {
   let result = physics_heat_boundary_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_heat_boundary_layer_fill(s : PhysicsheatboundaryLayer, v : Double
   result
 }
 
-pub fn physics_heat_boundary_layer_min(s : PhysicsheatboundaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_layer_min(s : PhysicsheatboundaryLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_layer_max(s : PhysicsheatboundaryLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_layer_max(s : PhysicsheatboundaryLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_layer_to_string(s : PhysicsheatboundaryLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_heat_boundary_buffer_set(s : PhysicsheatboundaryBuffer, i : Int, 
   result
 }
 
-pub fn physics_heat_boundary_buffer_sum(s : PhysicsheatboundaryBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_buffer_sum(s : PhysicsheatboundaryBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_buffer_mean(s : PhysicsheatboundaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_buffer_mean(s : PhysicsheatboundaryBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_buffer_scale(s : PhysicsheatboundaryBuffer, f : Double) -> PhysicsheatboundaryBuffer {
   let result = physics_heat_boundary_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_heat_boundary_buffer_fill(s : PhysicsheatboundaryBuffer, v : Doub
   result
 }
 
-pub fn physics_heat_boundary_buffer_min(s : PhysicsheatboundaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_buffer_min(s : PhysicsheatboundaryBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_buffer_max(s : PhysicsheatboundaryBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_buffer_max(s : PhysicsheatboundaryBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_buffer_to_string(s : PhysicsheatboundaryBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_heat_boundary_cursor_set(s : PhysicsheatboundaryCursor, i : Int, 
   result
 }
 
-pub fn physics_heat_boundary_cursor_sum(s : PhysicsheatboundaryCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_cursor_sum(s : PhysicsheatboundaryCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_cursor_mean(s : PhysicsheatboundaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_cursor_mean(s : PhysicsheatboundaryCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_cursor_scale(s : PhysicsheatboundaryCursor, f : Double) -> PhysicsheatboundaryCursor {
   let result = physics_heat_boundary_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_heat_boundary_cursor_fill(s : PhysicsheatboundaryCursor, v : Doub
   result
 }
 
-pub fn physics_heat_boundary_cursor_min(s : PhysicsheatboundaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_cursor_min(s : PhysicsheatboundaryCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_cursor_max(s : PhysicsheatboundaryCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_cursor_max(s : PhysicsheatboundaryCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_cursor_to_string(s : PhysicsheatboundaryCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_heat_boundary_view_set(s : PhysicsheatboundaryView, i : Int, v : 
   result
 }
 
-pub fn physics_heat_boundary_view_sum(s : PhysicsheatboundaryView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_view_sum(s : PhysicsheatboundaryView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_view_mean(s : PhysicsheatboundaryView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_view_mean(s : PhysicsheatboundaryView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_view_scale(s : PhysicsheatboundaryView, f : Double) -> PhysicsheatboundaryView {
   let result = physics_heat_boundary_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_heat_boundary_view_fill(s : PhysicsheatboundaryView, v : Double) 
   result
 }
 
-pub fn physics_heat_boundary_view_min(s : PhysicsheatboundaryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_view_min(s : PhysicsheatboundaryView) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_view_max(s : PhysicsheatboundaryView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_view_max(s : PhysicsheatboundaryView) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_view_to_string(s : PhysicsheatboundaryView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_heat_boundary_range_set(s : PhysicsheatboundaryRange, i : Int, v 
   result
 }
 
-pub fn physics_heat_boundary_range_sum(s : PhysicsheatboundaryRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_range_sum(s : PhysicsheatboundaryRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_range_mean(s : PhysicsheatboundaryRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_range_mean(s : PhysicsheatboundaryRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_range_scale(s : PhysicsheatboundaryRange, f : Double) -> PhysicsheatboundaryRange {
   let result = physics_heat_boundary_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_heat_boundary_range_fill(s : PhysicsheatboundaryRange, v : Double
   result
 }
 
-pub fn physics_heat_boundary_range_min(s : PhysicsheatboundaryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_range_min(s : PhysicsheatboundaryRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_range_max(s : PhysicsheatboundaryRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_range_max(s : PhysicsheatboundaryRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_range_to_string(s : PhysicsheatboundaryRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_heat_boundary_slice_set(s : PhysicsheatboundarySlice, i : Int, v 
   result
 }
 
-pub fn physics_heat_boundary_slice_sum(s : PhysicsheatboundarySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_boundary_slice_sum(s : PhysicsheatboundarySlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_boundary_slice_mean(s : PhysicsheatboundarySlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_boundary_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_boundary_slice_mean(s : PhysicsheatboundarySlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_boundary_slice_scale(s : PhysicsheatboundarySlice, f : Double) -> PhysicsheatboundarySlice {
   let result = physics_heat_boundary_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_heat_boundary_slice_fill(s : PhysicsheatboundarySlice, v : Double
   result
 }
 
-pub fn physics_heat_boundary_slice_min(s : PhysicsheatboundarySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_slice_min(s : PhysicsheatboundarySlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_boundary_slice_max(s : PhysicsheatboundarySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_boundary_slice_max(s : PhysicsheatboundarySlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_boundary_slice_to_string(s : PhysicsheatboundarySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

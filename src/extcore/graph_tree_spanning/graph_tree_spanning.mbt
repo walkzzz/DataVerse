@@ -88,11 +88,7 @@ pub fn graph_tree_spanning_make_series(vals : Array[Double], name : String) -> G
 
 pub fn graph_tree_spanning_series_len(s : GraphtreespanningSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_spanning_series_sum(s : GraphtreespanningSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_spanning_series_sum(s : GraphtreespanningSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_spanning_series_mean(s : GraphtreespanningSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_spanning_frame_set(s : GraphtreespanningFrame, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_spanning_frame_sum(s : GraphtreespanningFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_frame_sum(s : GraphtreespanningFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_frame_mean(s : GraphtreespanningFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_frame_mean(s : GraphtreespanningFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_frame_scale(s : GraphtreespanningFrame, f : Double) -> GraphtreespanningFrame {
   let result = graph_tree_spanning_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_spanning_frame_fill(s : GraphtreespanningFrame, v : Double) ->
   result
 }
 
-pub fn graph_tree_spanning_frame_min(s : GraphtreespanningFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_frame_min(s : GraphtreespanningFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_frame_max(s : GraphtreespanningFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_frame_max(s : GraphtreespanningFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_frame_to_string(s : GraphtreespanningFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_spanning_table_set(s : GraphtreespanningTable, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_spanning_table_sum(s : GraphtreespanningTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_table_sum(s : GraphtreespanningTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_table_mean(s : GraphtreespanningTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_table_mean(s : GraphtreespanningTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_table_scale(s : GraphtreespanningTable, f : Double) -> GraphtreespanningTable {
   let result = graph_tree_spanning_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_spanning_table_fill(s : GraphtreespanningTable, v : Double) ->
   result
 }
 
-pub fn graph_tree_spanning_table_min(s : GraphtreespanningTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_table_min(s : GraphtreespanningTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_table_max(s : GraphtreespanningTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_table_max(s : GraphtreespanningTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_table_to_string(s : GraphtreespanningTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_spanning_graphn_set(s : GraphtreespanningGraphN, i : Int, v : 
   result
 }
 
-pub fn graph_tree_spanning_graphn_sum(s : GraphtreespanningGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_graphn_sum(s : GraphtreespanningGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_graphn_mean(s : GraphtreespanningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_graphn_mean(s : GraphtreespanningGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_graphn_scale(s : GraphtreespanningGraphN, f : Double) -> GraphtreespanningGraphN {
   let result = graph_tree_spanning_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_spanning_graphn_fill(s : GraphtreespanningGraphN, v : Double) 
   result
 }
 
-pub fn graph_tree_spanning_graphn_min(s : GraphtreespanningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_graphn_min(s : GraphtreespanningGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_graphn_max(s : GraphtreespanningGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_graphn_max(s : GraphtreespanningGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_graphn_to_string(s : GraphtreespanningGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_spanning_node_set(s : GraphtreespanningNode, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_spanning_node_sum(s : GraphtreespanningNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_node_sum(s : GraphtreespanningNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_node_mean(s : GraphtreespanningNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_node_mean(s : GraphtreespanningNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_node_scale(s : GraphtreespanningNode, f : Double) -> GraphtreespanningNode {
   let result = graph_tree_spanning_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_spanning_node_fill(s : GraphtreespanningNode, v : Double) -> G
   result
 }
 
-pub fn graph_tree_spanning_node_min(s : GraphtreespanningNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_node_min(s : GraphtreespanningNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_node_max(s : GraphtreespanningNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_node_max(s : GraphtreespanningNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_node_to_string(s : GraphtreespanningNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_spanning_edge_set(s : GraphtreespanningEdge, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_spanning_edge_sum(s : GraphtreespanningEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_edge_sum(s : GraphtreespanningEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_edge_mean(s : GraphtreespanningEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_edge_mean(s : GraphtreespanningEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_edge_scale(s : GraphtreespanningEdge, f : Double) -> GraphtreespanningEdge {
   let result = graph_tree_spanning_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_spanning_edge_fill(s : GraphtreespanningEdge, v : Double) -> G
   result
 }
 
-pub fn graph_tree_spanning_edge_min(s : GraphtreespanningEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_edge_min(s : GraphtreespanningEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_edge_max(s : GraphtreespanningEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_edge_max(s : GraphtreespanningEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_edge_to_string(s : GraphtreespanningEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_spanning_path_set(s : GraphtreespanningPath, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_spanning_path_sum(s : GraphtreespanningPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_path_sum(s : GraphtreespanningPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_path_mean(s : GraphtreespanningPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_path_mean(s : GraphtreespanningPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_path_scale(s : GraphtreespanningPath, f : Double) -> GraphtreespanningPath {
   let result = graph_tree_spanning_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_spanning_path_fill(s : GraphtreespanningPath, v : Double) -> G
   result
 }
 
-pub fn graph_tree_spanning_path_min(s : GraphtreespanningPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_path_min(s : GraphtreespanningPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_path_max(s : GraphtreespanningPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_path_max(s : GraphtreespanningPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_path_to_string(s : GraphtreespanningPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_spanning_cluster_set(s : GraphtreespanningCluster, i : Int, v 
   result
 }
 
-pub fn graph_tree_spanning_cluster_sum(s : GraphtreespanningCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_cluster_sum(s : GraphtreespanningCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_cluster_mean(s : GraphtreespanningCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_cluster_mean(s : GraphtreespanningCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_cluster_scale(s : GraphtreespanningCluster, f : Double) -> GraphtreespanningCluster {
   let result = graph_tree_spanning_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_spanning_cluster_fill(s : GraphtreespanningCluster, v : Double
   result
 }
 
-pub fn graph_tree_spanning_cluster_min(s : GraphtreespanningCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_cluster_min(s : GraphtreespanningCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_cluster_max(s : GraphtreespanningCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_cluster_max(s : GraphtreespanningCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_cluster_to_string(s : GraphtreespanningCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_spanning_model_set(s : GraphtreespanningModel, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_spanning_model_sum(s : GraphtreespanningModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_model_sum(s : GraphtreespanningModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_model_mean(s : GraphtreespanningModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_model_mean(s : GraphtreespanningModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_model_scale(s : GraphtreespanningModel, f : Double) -> GraphtreespanningModel {
   let result = graph_tree_spanning_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_spanning_model_fill(s : GraphtreespanningModel, v : Double) ->
   result
 }
 
-pub fn graph_tree_spanning_model_min(s : GraphtreespanningModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_model_min(s : GraphtreespanningModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_model_max(s : GraphtreespanningModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_model_max(s : GraphtreespanningModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_model_to_string(s : GraphtreespanningModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_spanning_layer_set(s : GraphtreespanningLayer, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_spanning_layer_sum(s : GraphtreespanningLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_layer_sum(s : GraphtreespanningLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_layer_mean(s : GraphtreespanningLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_layer_mean(s : GraphtreespanningLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_layer_scale(s : GraphtreespanningLayer, f : Double) -> GraphtreespanningLayer {
   let result = graph_tree_spanning_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_spanning_layer_fill(s : GraphtreespanningLayer, v : Double) ->
   result
 }
 
-pub fn graph_tree_spanning_layer_min(s : GraphtreespanningLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_layer_min(s : GraphtreespanningLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_layer_max(s : GraphtreespanningLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_layer_max(s : GraphtreespanningLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_layer_to_string(s : GraphtreespanningLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_spanning_buffer_set(s : GraphtreespanningBuffer, i : Int, v : 
   result
 }
 
-pub fn graph_tree_spanning_buffer_sum(s : GraphtreespanningBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_buffer_sum(s : GraphtreespanningBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_buffer_mean(s : GraphtreespanningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_buffer_mean(s : GraphtreespanningBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_buffer_scale(s : GraphtreespanningBuffer, f : Double) -> GraphtreespanningBuffer {
   let result = graph_tree_spanning_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_spanning_buffer_fill(s : GraphtreespanningBuffer, v : Double) 
   result
 }
 
-pub fn graph_tree_spanning_buffer_min(s : GraphtreespanningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_buffer_min(s : GraphtreespanningBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_buffer_max(s : GraphtreespanningBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_buffer_max(s : GraphtreespanningBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_buffer_to_string(s : GraphtreespanningBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_spanning_cursor_set(s : GraphtreespanningCursor, i : Int, v : 
   result
 }
 
-pub fn graph_tree_spanning_cursor_sum(s : GraphtreespanningCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_cursor_sum(s : GraphtreespanningCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_cursor_mean(s : GraphtreespanningCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_cursor_mean(s : GraphtreespanningCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_cursor_scale(s : GraphtreespanningCursor, f : Double) -> GraphtreespanningCursor {
   let result = graph_tree_spanning_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_spanning_cursor_fill(s : GraphtreespanningCursor, v : Double) 
   result
 }
 
-pub fn graph_tree_spanning_cursor_min(s : GraphtreespanningCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_cursor_min(s : GraphtreespanningCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_cursor_max(s : GraphtreespanningCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_cursor_max(s : GraphtreespanningCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_cursor_to_string(s : GraphtreespanningCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_spanning_view_set(s : GraphtreespanningView, i : Int, v : Doub
   result
 }
 
-pub fn graph_tree_spanning_view_sum(s : GraphtreespanningView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_view_sum(s : GraphtreespanningView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_view_mean(s : GraphtreespanningView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_view_mean(s : GraphtreespanningView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_view_scale(s : GraphtreespanningView, f : Double) -> GraphtreespanningView {
   let result = graph_tree_spanning_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_spanning_view_fill(s : GraphtreespanningView, v : Double) -> G
   result
 }
 
-pub fn graph_tree_spanning_view_min(s : GraphtreespanningView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_view_min(s : GraphtreespanningView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_view_max(s : GraphtreespanningView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_view_max(s : GraphtreespanningView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_view_to_string(s : GraphtreespanningView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_spanning_range_set(s : GraphtreespanningRange, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_spanning_range_sum(s : GraphtreespanningRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_range_sum(s : GraphtreespanningRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_range_mean(s : GraphtreespanningRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_range_mean(s : GraphtreespanningRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_range_scale(s : GraphtreespanningRange, f : Double) -> GraphtreespanningRange {
   let result = graph_tree_spanning_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_spanning_range_fill(s : GraphtreespanningRange, v : Double) ->
   result
 }
 
-pub fn graph_tree_spanning_range_min(s : GraphtreespanningRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_range_min(s : GraphtreespanningRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_range_max(s : GraphtreespanningRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_range_max(s : GraphtreespanningRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_range_to_string(s : GraphtreespanningRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_spanning_slice_set(s : GraphtreespanningSlice, i : Int, v : Do
   result
 }
 
-pub fn graph_tree_spanning_slice_sum(s : GraphtreespanningSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_spanning_slice_sum(s : GraphtreespanningSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_spanning_slice_mean(s : GraphtreespanningSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_spanning_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_spanning_slice_mean(s : GraphtreespanningSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_spanning_slice_scale(s : GraphtreespanningSlice, f : Double) -> GraphtreespanningSlice {
   let result = graph_tree_spanning_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_spanning_slice_fill(s : GraphtreespanningSlice, v : Double) ->
   result
 }
 
-pub fn graph_tree_spanning_slice_min(s : GraphtreespanningSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_slice_min(s : GraphtreespanningSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_spanning_slice_max(s : GraphtreespanningSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_spanning_slice_max(s : GraphtreespanningSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_spanning_slice_to_string(s : GraphtreespanningSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

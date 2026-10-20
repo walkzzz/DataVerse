@@ -88,11 +88,7 @@ pub fn physics_fluid_level_set_make_series(vals : Array[Double], name : String) 
 
 pub fn physics_fluid_level_set_series_len(s : PhysicsfluidlevelsetSeries) -> Int { s.vals.length() }
 
-pub fn physics_fluid_level_set_series_sum(s : PhysicsfluidlevelsetSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_fluid_level_set_series_sum(s : PhysicsfluidlevelsetSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_fluid_level_set_series_mean(s : PhysicsfluidlevelsetSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_fluid_level_set_frame_set(s : PhysicsfluidlevelsetFrame, i : Int,
   result
 }
 
-pub fn physics_fluid_level_set_frame_sum(s : PhysicsfluidlevelsetFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_frame_sum(s : PhysicsfluidlevelsetFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_frame_mean(s : PhysicsfluidlevelsetFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_frame_mean(s : PhysicsfluidlevelsetFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_frame_scale(s : PhysicsfluidlevelsetFrame, f : Double) -> PhysicsfluidlevelsetFrame {
   let result = physics_fluid_level_set_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_fluid_level_set_frame_fill(s : PhysicsfluidlevelsetFrame, v : Dou
   result
 }
 
-pub fn physics_fluid_level_set_frame_min(s : PhysicsfluidlevelsetFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_frame_min(s : PhysicsfluidlevelsetFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_frame_max(s : PhysicsfluidlevelsetFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_frame_max(s : PhysicsfluidlevelsetFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_frame_to_string(s : PhysicsfluidlevelsetFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_fluid_level_set_table_set(s : PhysicsfluidlevelsetTable, i : Int,
   result
 }
 
-pub fn physics_fluid_level_set_table_sum(s : PhysicsfluidlevelsetTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_table_sum(s : PhysicsfluidlevelsetTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_table_mean(s : PhysicsfluidlevelsetTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_table_mean(s : PhysicsfluidlevelsetTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_table_scale(s : PhysicsfluidlevelsetTable, f : Double) -> PhysicsfluidlevelsetTable {
   let result = physics_fluid_level_set_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_fluid_level_set_table_fill(s : PhysicsfluidlevelsetTable, v : Dou
   result
 }
 
-pub fn physics_fluid_level_set_table_min(s : PhysicsfluidlevelsetTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_table_min(s : PhysicsfluidlevelsetTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_table_max(s : PhysicsfluidlevelsetTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_table_max(s : PhysicsfluidlevelsetTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_table_to_string(s : PhysicsfluidlevelsetTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_fluid_level_set_graphn_set(s : PhysicsfluidlevelsetGraphN, i : In
   result
 }
 
-pub fn physics_fluid_level_set_graphn_sum(s : PhysicsfluidlevelsetGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_graphn_sum(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_graphn_mean(s : PhysicsfluidlevelsetGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_graphn_mean(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_graphn_scale(s : PhysicsfluidlevelsetGraphN, f : Double) -> PhysicsfluidlevelsetGraphN {
   let result = physics_fluid_level_set_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_fluid_level_set_graphn_fill(s : PhysicsfluidlevelsetGraphN, v : D
   result
 }
 
-pub fn physics_fluid_level_set_graphn_min(s : PhysicsfluidlevelsetGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_graphn_min(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_graphn_max(s : PhysicsfluidlevelsetGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_graphn_max(s : PhysicsfluidlevelsetGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_graphn_to_string(s : PhysicsfluidlevelsetGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_fluid_level_set_node_set(s : PhysicsfluidlevelsetNode, i : Int, v
   result
 }
 
-pub fn physics_fluid_level_set_node_sum(s : PhysicsfluidlevelsetNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_node_sum(s : PhysicsfluidlevelsetNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_node_mean(s : PhysicsfluidlevelsetNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_node_mean(s : PhysicsfluidlevelsetNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_node_scale(s : PhysicsfluidlevelsetNode, f : Double) -> PhysicsfluidlevelsetNode {
   let result = physics_fluid_level_set_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_fluid_level_set_node_fill(s : PhysicsfluidlevelsetNode, v : Doubl
   result
 }
 
-pub fn physics_fluid_level_set_node_min(s : PhysicsfluidlevelsetNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_node_min(s : PhysicsfluidlevelsetNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_node_max(s : PhysicsfluidlevelsetNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_node_max(s : PhysicsfluidlevelsetNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_node_to_string(s : PhysicsfluidlevelsetNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_fluid_level_set_edge_set(s : PhysicsfluidlevelsetEdge, i : Int, v
   result
 }
 
-pub fn physics_fluid_level_set_edge_sum(s : PhysicsfluidlevelsetEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_edge_sum(s : PhysicsfluidlevelsetEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_edge_mean(s : PhysicsfluidlevelsetEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_edge_mean(s : PhysicsfluidlevelsetEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_edge_scale(s : PhysicsfluidlevelsetEdge, f : Double) -> PhysicsfluidlevelsetEdge {
   let result = physics_fluid_level_set_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_fluid_level_set_edge_fill(s : PhysicsfluidlevelsetEdge, v : Doubl
   result
 }
 
-pub fn physics_fluid_level_set_edge_min(s : PhysicsfluidlevelsetEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_edge_min(s : PhysicsfluidlevelsetEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_edge_max(s : PhysicsfluidlevelsetEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_edge_max(s : PhysicsfluidlevelsetEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_edge_to_string(s : PhysicsfluidlevelsetEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_fluid_level_set_path_set(s : PhysicsfluidlevelsetPath, i : Int, v
   result
 }
 
-pub fn physics_fluid_level_set_path_sum(s : PhysicsfluidlevelsetPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_path_sum(s : PhysicsfluidlevelsetPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_path_mean(s : PhysicsfluidlevelsetPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_path_mean(s : PhysicsfluidlevelsetPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_path_scale(s : PhysicsfluidlevelsetPath, f : Double) -> PhysicsfluidlevelsetPath {
   let result = physics_fluid_level_set_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_fluid_level_set_path_fill(s : PhysicsfluidlevelsetPath, v : Doubl
   result
 }
 
-pub fn physics_fluid_level_set_path_min(s : PhysicsfluidlevelsetPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_path_min(s : PhysicsfluidlevelsetPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_path_max(s : PhysicsfluidlevelsetPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_path_max(s : PhysicsfluidlevelsetPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_path_to_string(s : PhysicsfluidlevelsetPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_fluid_level_set_cluster_set(s : PhysicsfluidlevelsetCluster, i : 
   result
 }
 
-pub fn physics_fluid_level_set_cluster_sum(s : PhysicsfluidlevelsetCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_cluster_sum(s : PhysicsfluidlevelsetCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_cluster_mean(s : PhysicsfluidlevelsetCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_cluster_mean(s : PhysicsfluidlevelsetCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_cluster_scale(s : PhysicsfluidlevelsetCluster, f : Double) -> PhysicsfluidlevelsetCluster {
   let result = physics_fluid_level_set_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_fluid_level_set_cluster_fill(s : PhysicsfluidlevelsetCluster, v :
   result
 }
 
-pub fn physics_fluid_level_set_cluster_min(s : PhysicsfluidlevelsetCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_cluster_min(s : PhysicsfluidlevelsetCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_cluster_max(s : PhysicsfluidlevelsetCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_cluster_max(s : PhysicsfluidlevelsetCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_cluster_to_string(s : PhysicsfluidlevelsetCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_fluid_level_set_model_set(s : PhysicsfluidlevelsetModel, i : Int,
   result
 }
 
-pub fn physics_fluid_level_set_model_sum(s : PhysicsfluidlevelsetModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_model_sum(s : PhysicsfluidlevelsetModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_model_mean(s : PhysicsfluidlevelsetModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_model_mean(s : PhysicsfluidlevelsetModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_model_scale(s : PhysicsfluidlevelsetModel, f : Double) -> PhysicsfluidlevelsetModel {
   let result = physics_fluid_level_set_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_fluid_level_set_model_fill(s : PhysicsfluidlevelsetModel, v : Dou
   result
 }
 
-pub fn physics_fluid_level_set_model_min(s : PhysicsfluidlevelsetModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_model_min(s : PhysicsfluidlevelsetModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_model_max(s : PhysicsfluidlevelsetModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_model_max(s : PhysicsfluidlevelsetModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_model_to_string(s : PhysicsfluidlevelsetModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_fluid_level_set_layer_set(s : PhysicsfluidlevelsetLayer, i : Int,
   result
 }
 
-pub fn physics_fluid_level_set_layer_sum(s : PhysicsfluidlevelsetLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_layer_sum(s : PhysicsfluidlevelsetLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_layer_mean(s : PhysicsfluidlevelsetLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_layer_mean(s : PhysicsfluidlevelsetLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_layer_scale(s : PhysicsfluidlevelsetLayer, f : Double) -> PhysicsfluidlevelsetLayer {
   let result = physics_fluid_level_set_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_fluid_level_set_layer_fill(s : PhysicsfluidlevelsetLayer, v : Dou
   result
 }
 
-pub fn physics_fluid_level_set_layer_min(s : PhysicsfluidlevelsetLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_layer_min(s : PhysicsfluidlevelsetLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_layer_max(s : PhysicsfluidlevelsetLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_layer_max(s : PhysicsfluidlevelsetLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_layer_to_string(s : PhysicsfluidlevelsetLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_fluid_level_set_buffer_set(s : PhysicsfluidlevelsetBuffer, i : In
   result
 }
 
-pub fn physics_fluid_level_set_buffer_sum(s : PhysicsfluidlevelsetBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_buffer_sum(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_buffer_mean(s : PhysicsfluidlevelsetBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_buffer_mean(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_buffer_scale(s : PhysicsfluidlevelsetBuffer, f : Double) -> PhysicsfluidlevelsetBuffer {
   let result = physics_fluid_level_set_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_fluid_level_set_buffer_fill(s : PhysicsfluidlevelsetBuffer, v : D
   result
 }
 
-pub fn physics_fluid_level_set_buffer_min(s : PhysicsfluidlevelsetBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_buffer_min(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_buffer_max(s : PhysicsfluidlevelsetBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_buffer_max(s : PhysicsfluidlevelsetBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_buffer_to_string(s : PhysicsfluidlevelsetBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_fluid_level_set_cursor_set(s : PhysicsfluidlevelsetCursor, i : In
   result
 }
 
-pub fn physics_fluid_level_set_cursor_sum(s : PhysicsfluidlevelsetCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_cursor_sum(s : PhysicsfluidlevelsetCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_cursor_mean(s : PhysicsfluidlevelsetCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_cursor_mean(s : PhysicsfluidlevelsetCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_cursor_scale(s : PhysicsfluidlevelsetCursor, f : Double) -> PhysicsfluidlevelsetCursor {
   let result = physics_fluid_level_set_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_fluid_level_set_cursor_fill(s : PhysicsfluidlevelsetCursor, v : D
   result
 }
 
-pub fn physics_fluid_level_set_cursor_min(s : PhysicsfluidlevelsetCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_cursor_min(s : PhysicsfluidlevelsetCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_cursor_max(s : PhysicsfluidlevelsetCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_cursor_max(s : PhysicsfluidlevelsetCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_cursor_to_string(s : PhysicsfluidlevelsetCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_fluid_level_set_view_set(s : PhysicsfluidlevelsetView, i : Int, v
   result
 }
 
-pub fn physics_fluid_level_set_view_sum(s : PhysicsfluidlevelsetView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_view_sum(s : PhysicsfluidlevelsetView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_view_mean(s : PhysicsfluidlevelsetView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_view_mean(s : PhysicsfluidlevelsetView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_view_scale(s : PhysicsfluidlevelsetView, f : Double) -> PhysicsfluidlevelsetView {
   let result = physics_fluid_level_set_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_fluid_level_set_view_fill(s : PhysicsfluidlevelsetView, v : Doubl
   result
 }
 
-pub fn physics_fluid_level_set_view_min(s : PhysicsfluidlevelsetView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_view_min(s : PhysicsfluidlevelsetView) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_view_max(s : PhysicsfluidlevelsetView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_view_max(s : PhysicsfluidlevelsetView) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_view_to_string(s : PhysicsfluidlevelsetView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_fluid_level_set_range_set(s : PhysicsfluidlevelsetRange, i : Int,
   result
 }
 
-pub fn physics_fluid_level_set_range_sum(s : PhysicsfluidlevelsetRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_range_sum(s : PhysicsfluidlevelsetRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_range_mean(s : PhysicsfluidlevelsetRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_range_mean(s : PhysicsfluidlevelsetRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_range_scale(s : PhysicsfluidlevelsetRange, f : Double) -> PhysicsfluidlevelsetRange {
   let result = physics_fluid_level_set_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_fluid_level_set_range_fill(s : PhysicsfluidlevelsetRange, v : Dou
   result
 }
 
-pub fn physics_fluid_level_set_range_min(s : PhysicsfluidlevelsetRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_range_min(s : PhysicsfluidlevelsetRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_range_max(s : PhysicsfluidlevelsetRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_range_max(s : PhysicsfluidlevelsetRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_range_to_string(s : PhysicsfluidlevelsetRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_fluid_level_set_slice_set(s : PhysicsfluidlevelsetSlice, i : Int,
   result
 }
 
-pub fn physics_fluid_level_set_slice_sum(s : PhysicsfluidlevelsetSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_level_set_slice_sum(s : PhysicsfluidlevelsetSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_level_set_slice_mean(s : PhysicsfluidlevelsetSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_level_set_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_level_set_slice_mean(s : PhysicsfluidlevelsetSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_level_set_slice_scale(s : PhysicsfluidlevelsetSlice, f : Double) -> PhysicsfluidlevelsetSlice {
   let result = physics_fluid_level_set_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_fluid_level_set_slice_fill(s : PhysicsfluidlevelsetSlice, v : Dou
   result
 }
 
-pub fn physics_fluid_level_set_slice_min(s : PhysicsfluidlevelsetSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_slice_min(s : PhysicsfluidlevelsetSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_level_set_slice_max(s : PhysicsfluidlevelsetSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_level_set_slice_max(s : PhysicsfluidlevelsetSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_level_set_slice_to_string(s : PhysicsfluidlevelsetSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

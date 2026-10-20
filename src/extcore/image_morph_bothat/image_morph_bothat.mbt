@@ -88,11 +88,7 @@ pub fn image_morph_bothat_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_morph_bothat_series_len(s : ImagemorphbothatSeries) -> Int { s.vals.length() }
 
-pub fn image_morph_bothat_series_sum(s : ImagemorphbothatSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_morph_bothat_series_sum(s : ImagemorphbothatSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_morph_bothat_series_mean(s : ImagemorphbothatSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_morph_bothat_frame_set(s : ImagemorphbothatFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_bothat_frame_sum(s : ImagemorphbothatFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_frame_sum(s : ImagemorphbothatFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_frame_mean(s : ImagemorphbothatFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_frame_mean(s : ImagemorphbothatFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_frame_scale(s : ImagemorphbothatFrame, f : Double) -> ImagemorphbothatFrame {
   let result = image_morph_bothat_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_morph_bothat_frame_fill(s : ImagemorphbothatFrame, v : Double) -> I
   result
 }
 
-pub fn image_morph_bothat_frame_min(s : ImagemorphbothatFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_frame_min(s : ImagemorphbothatFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_frame_max(s : ImagemorphbothatFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_frame_max(s : ImagemorphbothatFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_frame_to_string(s : ImagemorphbothatFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_morph_bothat_table_set(s : ImagemorphbothatTable, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_bothat_table_sum(s : ImagemorphbothatTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_table_sum(s : ImagemorphbothatTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_table_mean(s : ImagemorphbothatTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_table_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_table_mean(s : ImagemorphbothatTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_table_scale(s : ImagemorphbothatTable, f : Double) -> ImagemorphbothatTable {
   let result = image_morph_bothat_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_morph_bothat_table_fill(s : ImagemorphbothatTable, v : Double) -> I
   result
 }
 
-pub fn image_morph_bothat_table_min(s : ImagemorphbothatTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_table_min(s : ImagemorphbothatTable) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_table_max(s : ImagemorphbothatTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_table_max(s : ImagemorphbothatTable) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_table_to_string(s : ImagemorphbothatTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_morph_bothat_graphn_set(s : ImagemorphbothatGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_morph_bothat_graphn_sum(s : ImagemorphbothatGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_graphn_sum(s : ImagemorphbothatGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_graphn_mean(s : ImagemorphbothatGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_graphn_mean(s : ImagemorphbothatGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_graphn_scale(s : ImagemorphbothatGraphN, f : Double) -> ImagemorphbothatGraphN {
   let result = image_morph_bothat_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_morph_bothat_graphn_fill(s : ImagemorphbothatGraphN, v : Double) ->
   result
 }
 
-pub fn image_morph_bothat_graphn_min(s : ImagemorphbothatGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_graphn_min(s : ImagemorphbothatGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_graphn_max(s : ImagemorphbothatGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_graphn_max(s : ImagemorphbothatGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_graphn_to_string(s : ImagemorphbothatGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_morph_bothat_node_set(s : ImagemorphbothatNode, i : Int, v : Double
   result
 }
 
-pub fn image_morph_bothat_node_sum(s : ImagemorphbothatNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_node_sum(s : ImagemorphbothatNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_node_mean(s : ImagemorphbothatNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_node_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_node_mean(s : ImagemorphbothatNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_node_scale(s : ImagemorphbothatNode, f : Double) -> ImagemorphbothatNode {
   let result = image_morph_bothat_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_morph_bothat_node_fill(s : ImagemorphbothatNode, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_bothat_node_min(s : ImagemorphbothatNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_node_min(s : ImagemorphbothatNode) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_node_max(s : ImagemorphbothatNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_node_max(s : ImagemorphbothatNode) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_node_to_string(s : ImagemorphbothatNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_morph_bothat_edge_set(s : ImagemorphbothatEdge, i : Int, v : Double
   result
 }
 
-pub fn image_morph_bothat_edge_sum(s : ImagemorphbothatEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_edge_sum(s : ImagemorphbothatEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_edge_mean(s : ImagemorphbothatEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_edge_mean(s : ImagemorphbothatEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_edge_scale(s : ImagemorphbothatEdge, f : Double) -> ImagemorphbothatEdge {
   let result = image_morph_bothat_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_morph_bothat_edge_fill(s : ImagemorphbothatEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_bothat_edge_min(s : ImagemorphbothatEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_edge_min(s : ImagemorphbothatEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_edge_max(s : ImagemorphbothatEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_edge_max(s : ImagemorphbothatEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_edge_to_string(s : ImagemorphbothatEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_morph_bothat_path_set(s : ImagemorphbothatPath, i : Int, v : Double
   result
 }
 
-pub fn image_morph_bothat_path_sum(s : ImagemorphbothatPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_path_sum(s : ImagemorphbothatPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_path_mean(s : ImagemorphbothatPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_path_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_path_mean(s : ImagemorphbothatPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_path_scale(s : ImagemorphbothatPath, f : Double) -> ImagemorphbothatPath {
   let result = image_morph_bothat_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_morph_bothat_path_fill(s : ImagemorphbothatPath, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_bothat_path_min(s : ImagemorphbothatPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_path_min(s : ImagemorphbothatPath) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_path_max(s : ImagemorphbothatPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_path_max(s : ImagemorphbothatPath) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_path_to_string(s : ImagemorphbothatPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_morph_bothat_cluster_set(s : ImagemorphbothatCluster, i : Int, v : 
   result
 }
 
-pub fn image_morph_bothat_cluster_sum(s : ImagemorphbothatCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_cluster_sum(s : ImagemorphbothatCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_cluster_mean(s : ImagemorphbothatCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_cluster_mean(s : ImagemorphbothatCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_cluster_scale(s : ImagemorphbothatCluster, f : Double) -> ImagemorphbothatCluster {
   let result = image_morph_bothat_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_morph_bothat_cluster_fill(s : ImagemorphbothatCluster, v : Double) 
   result
 }
 
-pub fn image_morph_bothat_cluster_min(s : ImagemorphbothatCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_cluster_min(s : ImagemorphbothatCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_cluster_max(s : ImagemorphbothatCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_cluster_max(s : ImagemorphbothatCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_cluster_to_string(s : ImagemorphbothatCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_morph_bothat_model_set(s : ImagemorphbothatModel, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_bothat_model_sum(s : ImagemorphbothatModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_model_sum(s : ImagemorphbothatModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_model_mean(s : ImagemorphbothatModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_model_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_model_mean(s : ImagemorphbothatModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_model_scale(s : ImagemorphbothatModel, f : Double) -> ImagemorphbothatModel {
   let result = image_morph_bothat_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_morph_bothat_model_fill(s : ImagemorphbothatModel, v : Double) -> I
   result
 }
 
-pub fn image_morph_bothat_model_min(s : ImagemorphbothatModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_model_min(s : ImagemorphbothatModel) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_model_max(s : ImagemorphbothatModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_model_max(s : ImagemorphbothatModel) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_model_to_string(s : ImagemorphbothatModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_morph_bothat_layer_set(s : ImagemorphbothatLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_bothat_layer_sum(s : ImagemorphbothatLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_layer_sum(s : ImagemorphbothatLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_layer_mean(s : ImagemorphbothatLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_layer_mean(s : ImagemorphbothatLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_layer_scale(s : ImagemorphbothatLayer, f : Double) -> ImagemorphbothatLayer {
   let result = image_morph_bothat_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_morph_bothat_layer_fill(s : ImagemorphbothatLayer, v : Double) -> I
   result
 }
 
-pub fn image_morph_bothat_layer_min(s : ImagemorphbothatLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_layer_min(s : ImagemorphbothatLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_layer_max(s : ImagemorphbothatLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_layer_max(s : ImagemorphbothatLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_layer_to_string(s : ImagemorphbothatLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_morph_bothat_buffer_set(s : ImagemorphbothatBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_morph_bothat_buffer_sum(s : ImagemorphbothatBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_buffer_sum(s : ImagemorphbothatBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_buffer_mean(s : ImagemorphbothatBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_buffer_mean(s : ImagemorphbothatBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_buffer_scale(s : ImagemorphbothatBuffer, f : Double) -> ImagemorphbothatBuffer {
   let result = image_morph_bothat_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_morph_bothat_buffer_fill(s : ImagemorphbothatBuffer, v : Double) ->
   result
 }
 
-pub fn image_morph_bothat_buffer_min(s : ImagemorphbothatBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_buffer_min(s : ImagemorphbothatBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_buffer_max(s : ImagemorphbothatBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_buffer_max(s : ImagemorphbothatBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_buffer_to_string(s : ImagemorphbothatBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_morph_bothat_cursor_set(s : ImagemorphbothatCursor, i : Int, v : Do
   result
 }
 
-pub fn image_morph_bothat_cursor_sum(s : ImagemorphbothatCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_cursor_sum(s : ImagemorphbothatCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_cursor_mean(s : ImagemorphbothatCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_cursor_mean(s : ImagemorphbothatCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_cursor_scale(s : ImagemorphbothatCursor, f : Double) -> ImagemorphbothatCursor {
   let result = image_morph_bothat_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_morph_bothat_cursor_fill(s : ImagemorphbothatCursor, v : Double) ->
   result
 }
 
-pub fn image_morph_bothat_cursor_min(s : ImagemorphbothatCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_cursor_min(s : ImagemorphbothatCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_cursor_max(s : ImagemorphbothatCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_cursor_max(s : ImagemorphbothatCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_cursor_to_string(s : ImagemorphbothatCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_morph_bothat_view_set(s : ImagemorphbothatView, i : Int, v : Double
   result
 }
 
-pub fn image_morph_bothat_view_sum(s : ImagemorphbothatView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_view_sum(s : ImagemorphbothatView) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_view_mean(s : ImagemorphbothatView) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_view_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_view_mean(s : ImagemorphbothatView) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_view_scale(s : ImagemorphbothatView, f : Double) -> ImagemorphbothatView {
   let result = image_morph_bothat_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_morph_bothat_view_fill(s : ImagemorphbothatView, v : Double) -> Ima
   result
 }
 
-pub fn image_morph_bothat_view_min(s : ImagemorphbothatView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_view_min(s : ImagemorphbothatView) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_view_max(s : ImagemorphbothatView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_view_max(s : ImagemorphbothatView) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_view_to_string(s : ImagemorphbothatView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_morph_bothat_range_set(s : ImagemorphbothatRange, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_bothat_range_sum(s : ImagemorphbothatRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_range_sum(s : ImagemorphbothatRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_range_mean(s : ImagemorphbothatRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_range_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_range_mean(s : ImagemorphbothatRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_range_scale(s : ImagemorphbothatRange, f : Double) -> ImagemorphbothatRange {
   let result = image_morph_bothat_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_morph_bothat_range_fill(s : ImagemorphbothatRange, v : Double) -> I
   result
 }
 
-pub fn image_morph_bothat_range_min(s : ImagemorphbothatRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_range_min(s : ImagemorphbothatRange) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_range_max(s : ImagemorphbothatRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_range_max(s : ImagemorphbothatRange) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_range_to_string(s : ImagemorphbothatRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_morph_bothat_slice_set(s : ImagemorphbothatSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_morph_bothat_slice_sum(s : ImagemorphbothatSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_morph_bothat_slice_sum(s : ImagemorphbothatSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_morph_bothat_slice_mean(s : ImagemorphbothatSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_morph_bothat_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_morph_bothat_slice_mean(s : ImagemorphbothatSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_morph_bothat_slice_scale(s : ImagemorphbothatSlice, f : Double) -> ImagemorphbothatSlice {
   let result = image_morph_bothat_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_morph_bothat_slice_fill(s : ImagemorphbothatSlice, v : Double) -> I
   result
 }
 
-pub fn image_morph_bothat_slice_min(s : ImagemorphbothatSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_slice_min(s : ImagemorphbothatSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_morph_bothat_slice_max(s : ImagemorphbothatSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_morph_bothat_slice_max(s : ImagemorphbothatSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_morph_bothat_slice_to_string(s : ImagemorphbothatSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_proto_tcp_make_series(vals : Array[Double], name : String) -> Netprot
 
 pub fn net_proto_tcp_series_len(s : NetprototcpSeries) -> Int { s.vals.length() }
 
-pub fn net_proto_tcp_series_sum(s : NetprototcpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_tcp_series_sum(s : NetprototcpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_tcp_series_mean(s : NetprototcpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_tcp_frame_set(s : NetprototcpFrame, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_tcp_frame_sum(s : NetprototcpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_frame_sum(s : NetprototcpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_frame_mean(s : NetprototcpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_frame_mean(s : NetprototcpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_frame_scale(s : NetprototcpFrame, f : Double) -> NetprototcpFrame {
   let result = net_proto_tcp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_tcp_frame_fill(s : NetprototcpFrame, v : Double) -> Netprototcp
   result
 }
 
-pub fn net_proto_tcp_frame_min(s : NetprototcpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_frame_min(s : NetprototcpFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_frame_max(s : NetprototcpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_frame_max(s : NetprototcpFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_frame_to_string(s : NetprototcpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_tcp_table_set(s : NetprototcpTable, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_tcp_table_sum(s : NetprototcpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_table_sum(s : NetprototcpTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_table_mean(s : NetprototcpTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_table_mean(s : NetprototcpTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_table_scale(s : NetprototcpTable, f : Double) -> NetprototcpTable {
   let result = net_proto_tcp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_tcp_table_fill(s : NetprototcpTable, v : Double) -> Netprototcp
   result
 }
 
-pub fn net_proto_tcp_table_min(s : NetprototcpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_table_min(s : NetprototcpTable) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_table_max(s : NetprototcpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_table_max(s : NetprototcpTable) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_table_to_string(s : NetprototcpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_tcp_graphn_set(s : NetprototcpGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_tcp_graphn_sum(s : NetprototcpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_graphn_sum(s : NetprototcpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_graphn_mean(s : NetprototcpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_graphn_mean(s : NetprototcpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_graphn_scale(s : NetprototcpGraphN, f : Double) -> NetprototcpGraphN {
   let result = net_proto_tcp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_tcp_graphn_fill(s : NetprototcpGraphN, v : Double) -> Netprotot
   result
 }
 
-pub fn net_proto_tcp_graphn_min(s : NetprototcpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_graphn_min(s : NetprototcpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_graphn_max(s : NetprototcpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_graphn_max(s : NetprototcpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_graphn_to_string(s : NetprototcpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_tcp_node_set(s : NetprototcpNode, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_tcp_node_sum(s : NetprototcpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_node_sum(s : NetprototcpNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_node_mean(s : NetprototcpNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_node_mean(s : NetprototcpNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_node_scale(s : NetprototcpNode, f : Double) -> NetprototcpNode {
   let result = net_proto_tcp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_tcp_node_fill(s : NetprototcpNode, v : Double) -> NetprototcpNo
   result
 }
 
-pub fn net_proto_tcp_node_min(s : NetprototcpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_node_min(s : NetprototcpNode) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_node_max(s : NetprototcpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_node_max(s : NetprototcpNode) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_node_to_string(s : NetprototcpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_tcp_edge_set(s : NetprototcpEdge, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_tcp_edge_sum(s : NetprototcpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_edge_sum(s : NetprototcpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_edge_mean(s : NetprototcpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_edge_mean(s : NetprototcpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_edge_scale(s : NetprototcpEdge, f : Double) -> NetprototcpEdge {
   let result = net_proto_tcp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_tcp_edge_fill(s : NetprototcpEdge, v : Double) -> NetprototcpEd
   result
 }
 
-pub fn net_proto_tcp_edge_min(s : NetprototcpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_edge_min(s : NetprototcpEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_edge_max(s : NetprototcpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_edge_max(s : NetprototcpEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_edge_to_string(s : NetprototcpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_tcp_path_set(s : NetprototcpPath, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_tcp_path_sum(s : NetprototcpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_path_sum(s : NetprototcpPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_path_mean(s : NetprototcpPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_path_mean(s : NetprototcpPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_path_scale(s : NetprototcpPath, f : Double) -> NetprototcpPath {
   let result = net_proto_tcp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_tcp_path_fill(s : NetprototcpPath, v : Double) -> NetprototcpPa
   result
 }
 
-pub fn net_proto_tcp_path_min(s : NetprototcpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_path_min(s : NetprototcpPath) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_path_max(s : NetprototcpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_path_max(s : NetprototcpPath) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_path_to_string(s : NetprototcpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_tcp_cluster_set(s : NetprototcpCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_tcp_cluster_sum(s : NetprototcpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_cluster_sum(s : NetprototcpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_cluster_mean(s : NetprototcpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_cluster_mean(s : NetprototcpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_cluster_scale(s : NetprototcpCluster, f : Double) -> NetprototcpCluster {
   let result = net_proto_tcp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_tcp_cluster_fill(s : NetprototcpCluster, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_tcp_cluster_min(s : NetprototcpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_cluster_min(s : NetprototcpCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_cluster_max(s : NetprototcpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_cluster_max(s : NetprototcpCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_cluster_to_string(s : NetprototcpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_tcp_model_set(s : NetprototcpModel, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_tcp_model_sum(s : NetprototcpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_model_sum(s : NetprototcpModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_model_mean(s : NetprototcpModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_model_mean(s : NetprototcpModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_model_scale(s : NetprototcpModel, f : Double) -> NetprototcpModel {
   let result = net_proto_tcp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_tcp_model_fill(s : NetprototcpModel, v : Double) -> Netprototcp
   result
 }
 
-pub fn net_proto_tcp_model_min(s : NetprototcpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_model_min(s : NetprototcpModel) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_model_max(s : NetprototcpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_model_max(s : NetprototcpModel) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_model_to_string(s : NetprototcpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_tcp_layer_set(s : NetprototcpLayer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_tcp_layer_sum(s : NetprototcpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_layer_sum(s : NetprototcpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_layer_mean(s : NetprototcpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_layer_mean(s : NetprototcpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_layer_scale(s : NetprototcpLayer, f : Double) -> NetprototcpLayer {
   let result = net_proto_tcp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_tcp_layer_fill(s : NetprototcpLayer, v : Double) -> Netprototcp
   result
 }
 
-pub fn net_proto_tcp_layer_min(s : NetprototcpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_layer_min(s : NetprototcpLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_layer_max(s : NetprototcpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_layer_max(s : NetprototcpLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_layer_to_string(s : NetprototcpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_tcp_buffer_set(s : NetprototcpBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_tcp_buffer_sum(s : NetprototcpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_buffer_sum(s : NetprototcpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_buffer_mean(s : NetprototcpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_buffer_mean(s : NetprototcpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_buffer_scale(s : NetprototcpBuffer, f : Double) -> NetprototcpBuffer {
   let result = net_proto_tcp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_tcp_buffer_fill(s : NetprototcpBuffer, v : Double) -> Netprotot
   result
 }
 
-pub fn net_proto_tcp_buffer_min(s : NetprototcpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_buffer_min(s : NetprototcpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_buffer_max(s : NetprototcpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_buffer_max(s : NetprototcpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_buffer_to_string(s : NetprototcpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_tcp_cursor_set(s : NetprototcpCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_tcp_cursor_sum(s : NetprototcpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_cursor_sum(s : NetprototcpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_cursor_mean(s : NetprototcpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_cursor_mean(s : NetprototcpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_cursor_scale(s : NetprototcpCursor, f : Double) -> NetprototcpCursor {
   let result = net_proto_tcp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_tcp_cursor_fill(s : NetprototcpCursor, v : Double) -> Netprotot
   result
 }
 
-pub fn net_proto_tcp_cursor_min(s : NetprototcpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_cursor_min(s : NetprototcpCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_cursor_max(s : NetprototcpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_cursor_max(s : NetprototcpCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_cursor_to_string(s : NetprototcpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_tcp_view_set(s : NetprototcpView, i : Int, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_tcp_view_sum(s : NetprototcpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_view_sum(s : NetprototcpView) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_view_mean(s : NetprototcpView) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_view_mean(s : NetprototcpView) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_view_scale(s : NetprototcpView, f : Double) -> NetprototcpView {
   let result = net_proto_tcp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_tcp_view_fill(s : NetprototcpView, v : Double) -> NetprototcpVi
   result
 }
 
-pub fn net_proto_tcp_view_min(s : NetprototcpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_view_min(s : NetprototcpView) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_view_max(s : NetprototcpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_view_max(s : NetprototcpView) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_view_to_string(s : NetprototcpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_tcp_range_set(s : NetprototcpRange, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_tcp_range_sum(s : NetprototcpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_range_sum(s : NetprototcpRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_range_mean(s : NetprototcpRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_range_mean(s : NetprototcpRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_range_scale(s : NetprototcpRange, f : Double) -> NetprototcpRange {
   let result = net_proto_tcp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_tcp_range_fill(s : NetprototcpRange, v : Double) -> Netprototcp
   result
 }
 
-pub fn net_proto_tcp_range_min(s : NetprototcpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_range_min(s : NetprototcpRange) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_range_max(s : NetprototcpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_range_max(s : NetprototcpRange) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_range_to_string(s : NetprototcpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_tcp_slice_set(s : NetprototcpSlice, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_proto_tcp_slice_sum(s : NetprototcpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_tcp_slice_sum(s : NetprototcpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_tcp_slice_mean(s : NetprototcpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_tcp_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_tcp_slice_mean(s : NetprototcpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_tcp_slice_scale(s : NetprototcpSlice, f : Double) -> NetprototcpSlice {
   let result = net_proto_tcp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_tcp_slice_fill(s : NetprototcpSlice, v : Double) -> Netprototcp
   result
 }
 
-pub fn net_proto_tcp_slice_min(s : NetprototcpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_slice_min(s : NetprototcpSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_tcp_slice_max(s : NetprototcpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_tcp_slice_max(s : NetprototcpSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_tcp_slice_to_string(s : NetprototcpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

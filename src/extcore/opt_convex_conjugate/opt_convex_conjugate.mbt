@@ -88,11 +88,7 @@ pub fn opt_convex_conjugate_make_series(vals : Array[Double], name : String) -> 
 
 pub fn opt_convex_conjugate_series_len(s : OptconvexconjugateSeries) -> Int { s.vals.length() }
 
-pub fn opt_convex_conjugate_series_sum(s : OptconvexconjugateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_convex_conjugate_series_sum(s : OptconvexconjugateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_convex_conjugate_series_mean(s : OptconvexconjugateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_convex_conjugate_frame_set(s : OptconvexconjugateFrame, i : Int, v : 
   result
 }
 
-pub fn opt_convex_conjugate_frame_sum(s : OptconvexconjugateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_frame_sum(s : OptconvexconjugateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_frame_mean(s : OptconvexconjugateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_frame_mean(s : OptconvexconjugateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_frame_scale(s : OptconvexconjugateFrame, f : Double) -> OptconvexconjugateFrame {
   let result = opt_convex_conjugate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_convex_conjugate_frame_fill(s : OptconvexconjugateFrame, v : Double) 
   result
 }
 
-pub fn opt_convex_conjugate_frame_min(s : OptconvexconjugateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_frame_min(s : OptconvexconjugateFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_frame_max(s : OptconvexconjugateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_frame_max(s : OptconvexconjugateFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_frame_to_string(s : OptconvexconjugateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_convex_conjugate_table_set(s : OptconvexconjugateTable, i : Int, v : 
   result
 }
 
-pub fn opt_convex_conjugate_table_sum(s : OptconvexconjugateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_table_sum(s : OptconvexconjugateTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_table_mean(s : OptconvexconjugateTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_table_mean(s : OptconvexconjugateTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_table_scale(s : OptconvexconjugateTable, f : Double) -> OptconvexconjugateTable {
   let result = opt_convex_conjugate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_convex_conjugate_table_fill(s : OptconvexconjugateTable, v : Double) 
   result
 }
 
-pub fn opt_convex_conjugate_table_min(s : OptconvexconjugateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_table_min(s : OptconvexconjugateTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_table_max(s : OptconvexconjugateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_table_max(s : OptconvexconjugateTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_table_to_string(s : OptconvexconjugateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_convex_conjugate_graphn_set(s : OptconvexconjugateGraphN, i : Int, v 
   result
 }
 
-pub fn opt_convex_conjugate_graphn_sum(s : OptconvexconjugateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_graphn_sum(s : OptconvexconjugateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_graphn_mean(s : OptconvexconjugateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_graphn_mean(s : OptconvexconjugateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_graphn_scale(s : OptconvexconjugateGraphN, f : Double) -> OptconvexconjugateGraphN {
   let result = opt_convex_conjugate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_convex_conjugate_graphn_fill(s : OptconvexconjugateGraphN, v : Double
   result
 }
 
-pub fn opt_convex_conjugate_graphn_min(s : OptconvexconjugateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_graphn_min(s : OptconvexconjugateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_graphn_max(s : OptconvexconjugateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_graphn_max(s : OptconvexconjugateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_graphn_to_string(s : OptconvexconjugateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_convex_conjugate_node_set(s : OptconvexconjugateNode, i : Int, v : Do
   result
 }
 
-pub fn opt_convex_conjugate_node_sum(s : OptconvexconjugateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_node_sum(s : OptconvexconjugateNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_node_mean(s : OptconvexconjugateNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_node_mean(s : OptconvexconjugateNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_node_scale(s : OptconvexconjugateNode, f : Double) -> OptconvexconjugateNode {
   let result = opt_convex_conjugate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_convex_conjugate_node_fill(s : OptconvexconjugateNode, v : Double) ->
   result
 }
 
-pub fn opt_convex_conjugate_node_min(s : OptconvexconjugateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_node_min(s : OptconvexconjugateNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_node_max(s : OptconvexconjugateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_node_max(s : OptconvexconjugateNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_node_to_string(s : OptconvexconjugateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_convex_conjugate_edge_set(s : OptconvexconjugateEdge, i : Int, v : Do
   result
 }
 
-pub fn opt_convex_conjugate_edge_sum(s : OptconvexconjugateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_edge_sum(s : OptconvexconjugateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_edge_mean(s : OptconvexconjugateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_edge_mean(s : OptconvexconjugateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_edge_scale(s : OptconvexconjugateEdge, f : Double) -> OptconvexconjugateEdge {
   let result = opt_convex_conjugate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_convex_conjugate_edge_fill(s : OptconvexconjugateEdge, v : Double) ->
   result
 }
 
-pub fn opt_convex_conjugate_edge_min(s : OptconvexconjugateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_edge_min(s : OptconvexconjugateEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_edge_max(s : OptconvexconjugateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_edge_max(s : OptconvexconjugateEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_edge_to_string(s : OptconvexconjugateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_convex_conjugate_path_set(s : OptconvexconjugatePath, i : Int, v : Do
   result
 }
 
-pub fn opt_convex_conjugate_path_sum(s : OptconvexconjugatePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_path_sum(s : OptconvexconjugatePath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_path_mean(s : OptconvexconjugatePath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_path_mean(s : OptconvexconjugatePath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_path_scale(s : OptconvexconjugatePath, f : Double) -> OptconvexconjugatePath {
   let result = opt_convex_conjugate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_convex_conjugate_path_fill(s : OptconvexconjugatePath, v : Double) ->
   result
 }
 
-pub fn opt_convex_conjugate_path_min(s : OptconvexconjugatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_path_min(s : OptconvexconjugatePath) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_path_max(s : OptconvexconjugatePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_path_max(s : OptconvexconjugatePath) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_path_to_string(s : OptconvexconjugatePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_convex_conjugate_cluster_set(s : OptconvexconjugateCluster, i : Int, 
   result
 }
 
-pub fn opt_convex_conjugate_cluster_sum(s : OptconvexconjugateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_cluster_sum(s : OptconvexconjugateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_cluster_mean(s : OptconvexconjugateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_cluster_mean(s : OptconvexconjugateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_cluster_scale(s : OptconvexconjugateCluster, f : Double) -> OptconvexconjugateCluster {
   let result = opt_convex_conjugate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_convex_conjugate_cluster_fill(s : OptconvexconjugateCluster, v : Doub
   result
 }
 
-pub fn opt_convex_conjugate_cluster_min(s : OptconvexconjugateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_cluster_min(s : OptconvexconjugateCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_cluster_max(s : OptconvexconjugateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_cluster_max(s : OptconvexconjugateCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_cluster_to_string(s : OptconvexconjugateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_convex_conjugate_model_set(s : OptconvexconjugateModel, i : Int, v : 
   result
 }
 
-pub fn opt_convex_conjugate_model_sum(s : OptconvexconjugateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_model_sum(s : OptconvexconjugateModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_model_mean(s : OptconvexconjugateModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_model_mean(s : OptconvexconjugateModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_model_scale(s : OptconvexconjugateModel, f : Double) -> OptconvexconjugateModel {
   let result = opt_convex_conjugate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_convex_conjugate_model_fill(s : OptconvexconjugateModel, v : Double) 
   result
 }
 
-pub fn opt_convex_conjugate_model_min(s : OptconvexconjugateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_model_min(s : OptconvexconjugateModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_model_max(s : OptconvexconjugateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_model_max(s : OptconvexconjugateModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_model_to_string(s : OptconvexconjugateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_convex_conjugate_layer_set(s : OptconvexconjugateLayer, i : Int, v : 
   result
 }
 
-pub fn opt_convex_conjugate_layer_sum(s : OptconvexconjugateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_layer_sum(s : OptconvexconjugateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_layer_mean(s : OptconvexconjugateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_layer_mean(s : OptconvexconjugateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_layer_scale(s : OptconvexconjugateLayer, f : Double) -> OptconvexconjugateLayer {
   let result = opt_convex_conjugate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_convex_conjugate_layer_fill(s : OptconvexconjugateLayer, v : Double) 
   result
 }
 
-pub fn opt_convex_conjugate_layer_min(s : OptconvexconjugateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_layer_min(s : OptconvexconjugateLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_layer_max(s : OptconvexconjugateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_layer_max(s : OptconvexconjugateLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_layer_to_string(s : OptconvexconjugateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_convex_conjugate_buffer_set(s : OptconvexconjugateBuffer, i : Int, v 
   result
 }
 
-pub fn opt_convex_conjugate_buffer_sum(s : OptconvexconjugateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_buffer_sum(s : OptconvexconjugateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_buffer_mean(s : OptconvexconjugateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_buffer_mean(s : OptconvexconjugateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_buffer_scale(s : OptconvexconjugateBuffer, f : Double) -> OptconvexconjugateBuffer {
   let result = opt_convex_conjugate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_convex_conjugate_buffer_fill(s : OptconvexconjugateBuffer, v : Double
   result
 }
 
-pub fn opt_convex_conjugate_buffer_min(s : OptconvexconjugateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_buffer_min(s : OptconvexconjugateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_buffer_max(s : OptconvexconjugateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_buffer_max(s : OptconvexconjugateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_buffer_to_string(s : OptconvexconjugateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_convex_conjugate_cursor_set(s : OptconvexconjugateCursor, i : Int, v 
   result
 }
 
-pub fn opt_convex_conjugate_cursor_sum(s : OptconvexconjugateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_cursor_sum(s : OptconvexconjugateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_cursor_mean(s : OptconvexconjugateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_cursor_mean(s : OptconvexconjugateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_cursor_scale(s : OptconvexconjugateCursor, f : Double) -> OptconvexconjugateCursor {
   let result = opt_convex_conjugate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_convex_conjugate_cursor_fill(s : OptconvexconjugateCursor, v : Double
   result
 }
 
-pub fn opt_convex_conjugate_cursor_min(s : OptconvexconjugateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_cursor_min(s : OptconvexconjugateCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_cursor_max(s : OptconvexconjugateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_cursor_max(s : OptconvexconjugateCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_cursor_to_string(s : OptconvexconjugateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_convex_conjugate_view_set(s : OptconvexconjugateView, i : Int, v : Do
   result
 }
 
-pub fn opt_convex_conjugate_view_sum(s : OptconvexconjugateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_view_sum(s : OptconvexconjugateView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_view_mean(s : OptconvexconjugateView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_view_mean(s : OptconvexconjugateView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_view_scale(s : OptconvexconjugateView, f : Double) -> OptconvexconjugateView {
   let result = opt_convex_conjugate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_convex_conjugate_view_fill(s : OptconvexconjugateView, v : Double) ->
   result
 }
 
-pub fn opt_convex_conjugate_view_min(s : OptconvexconjugateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_view_min(s : OptconvexconjugateView) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_view_max(s : OptconvexconjugateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_view_max(s : OptconvexconjugateView) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_view_to_string(s : OptconvexconjugateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_convex_conjugate_range_set(s : OptconvexconjugateRange, i : Int, v : 
   result
 }
 
-pub fn opt_convex_conjugate_range_sum(s : OptconvexconjugateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_range_sum(s : OptconvexconjugateRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_range_mean(s : OptconvexconjugateRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_range_mean(s : OptconvexconjugateRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_range_scale(s : OptconvexconjugateRange, f : Double) -> OptconvexconjugateRange {
   let result = opt_convex_conjugate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_convex_conjugate_range_fill(s : OptconvexconjugateRange, v : Double) 
   result
 }
 
-pub fn opt_convex_conjugate_range_min(s : OptconvexconjugateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_range_min(s : OptconvexconjugateRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_range_max(s : OptconvexconjugateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_range_max(s : OptconvexconjugateRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_range_to_string(s : OptconvexconjugateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_convex_conjugate_slice_set(s : OptconvexconjugateSlice, i : Int, v : 
   result
 }
 
-pub fn opt_convex_conjugate_slice_sum(s : OptconvexconjugateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_convex_conjugate_slice_sum(s : OptconvexconjugateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_convex_conjugate_slice_mean(s : OptconvexconjugateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_convex_conjugate_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_convex_conjugate_slice_mean(s : OptconvexconjugateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_convex_conjugate_slice_scale(s : OptconvexconjugateSlice, f : Double) -> OptconvexconjugateSlice {
   let result = opt_convex_conjugate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_convex_conjugate_slice_fill(s : OptconvexconjugateSlice, v : Double) 
   result
 }
 
-pub fn opt_convex_conjugate_slice_min(s : OptconvexconjugateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_slice_min(s : OptconvexconjugateSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_convex_conjugate_slice_max(s : OptconvexconjugateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_convex_conjugate_slice_max(s : OptconvexconjugateSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_convex_conjugate_slice_to_string(s : OptconvexconjugateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

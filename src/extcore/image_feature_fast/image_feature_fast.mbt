@@ -88,11 +88,7 @@ pub fn image_feature_fast_make_series(vals : Array[Double], name : String) -> Im
 
 pub fn image_feature_fast_series_len(s : ImagefeaturefastSeries) -> Int { s.vals.length() }
 
-pub fn image_feature_fast_series_sum(s : ImagefeaturefastSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_feature_fast_series_sum(s : ImagefeaturefastSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_feature_fast_series_mean(s : ImagefeaturefastSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_feature_fast_frame_set(s : ImagefeaturefastFrame, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_fast_frame_sum(s : ImagefeaturefastFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_frame_sum(s : ImagefeaturefastFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_frame_mean(s : ImagefeaturefastFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_frame_mean(s : ImagefeaturefastFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_frame_scale(s : ImagefeaturefastFrame, f : Double) -> ImagefeaturefastFrame {
   let result = image_feature_fast_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_feature_fast_frame_fill(s : ImagefeaturefastFrame, v : Double) -> I
   result
 }
 
-pub fn image_feature_fast_frame_min(s : ImagefeaturefastFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_frame_min(s : ImagefeaturefastFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_frame_max(s : ImagefeaturefastFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_frame_max(s : ImagefeaturefastFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_frame_to_string(s : ImagefeaturefastFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_feature_fast_table_set(s : ImagefeaturefastTable, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_fast_table_sum(s : ImagefeaturefastTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_table_sum(s : ImagefeaturefastTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_table_mean(s : ImagefeaturefastTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_table_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_table_mean(s : ImagefeaturefastTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_table_scale(s : ImagefeaturefastTable, f : Double) -> ImagefeaturefastTable {
   let result = image_feature_fast_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_feature_fast_table_fill(s : ImagefeaturefastTable, v : Double) -> I
   result
 }
 
-pub fn image_feature_fast_table_min(s : ImagefeaturefastTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_table_min(s : ImagefeaturefastTable) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_table_max(s : ImagefeaturefastTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_table_max(s : ImagefeaturefastTable) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_table_to_string(s : ImagefeaturefastTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_feature_fast_graphn_set(s : ImagefeaturefastGraphN, i : Int, v : Do
   result
 }
 
-pub fn image_feature_fast_graphn_sum(s : ImagefeaturefastGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_graphn_sum(s : ImagefeaturefastGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_graphn_mean(s : ImagefeaturefastGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_graphn_mean(s : ImagefeaturefastGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_graphn_scale(s : ImagefeaturefastGraphN, f : Double) -> ImagefeaturefastGraphN {
   let result = image_feature_fast_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_feature_fast_graphn_fill(s : ImagefeaturefastGraphN, v : Double) ->
   result
 }
 
-pub fn image_feature_fast_graphn_min(s : ImagefeaturefastGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_graphn_min(s : ImagefeaturefastGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_graphn_max(s : ImagefeaturefastGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_graphn_max(s : ImagefeaturefastGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_graphn_to_string(s : ImagefeaturefastGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_feature_fast_node_set(s : ImagefeaturefastNode, i : Int, v : Double
   result
 }
 
-pub fn image_feature_fast_node_sum(s : ImagefeaturefastNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_node_sum(s : ImagefeaturefastNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_node_mean(s : ImagefeaturefastNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_node_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_node_mean(s : ImagefeaturefastNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_node_scale(s : ImagefeaturefastNode, f : Double) -> ImagefeaturefastNode {
   let result = image_feature_fast_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_feature_fast_node_fill(s : ImagefeaturefastNode, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_fast_node_min(s : ImagefeaturefastNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_node_min(s : ImagefeaturefastNode) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_node_max(s : ImagefeaturefastNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_node_max(s : ImagefeaturefastNode) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_node_to_string(s : ImagefeaturefastNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_feature_fast_edge_set(s : ImagefeaturefastEdge, i : Int, v : Double
   result
 }
 
-pub fn image_feature_fast_edge_sum(s : ImagefeaturefastEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_edge_sum(s : ImagefeaturefastEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_edge_mean(s : ImagefeaturefastEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_edge_mean(s : ImagefeaturefastEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_edge_scale(s : ImagefeaturefastEdge, f : Double) -> ImagefeaturefastEdge {
   let result = image_feature_fast_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_feature_fast_edge_fill(s : ImagefeaturefastEdge, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_fast_edge_min(s : ImagefeaturefastEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_edge_min(s : ImagefeaturefastEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_edge_max(s : ImagefeaturefastEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_edge_max(s : ImagefeaturefastEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_edge_to_string(s : ImagefeaturefastEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_feature_fast_path_set(s : ImagefeaturefastPath, i : Int, v : Double
   result
 }
 
-pub fn image_feature_fast_path_sum(s : ImagefeaturefastPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_path_sum(s : ImagefeaturefastPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_path_mean(s : ImagefeaturefastPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_path_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_path_mean(s : ImagefeaturefastPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_path_scale(s : ImagefeaturefastPath, f : Double) -> ImagefeaturefastPath {
   let result = image_feature_fast_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_feature_fast_path_fill(s : ImagefeaturefastPath, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_fast_path_min(s : ImagefeaturefastPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_path_min(s : ImagefeaturefastPath) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_path_max(s : ImagefeaturefastPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_path_max(s : ImagefeaturefastPath) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_path_to_string(s : ImagefeaturefastPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_feature_fast_cluster_set(s : ImagefeaturefastCluster, i : Int, v : 
   result
 }
 
-pub fn image_feature_fast_cluster_sum(s : ImagefeaturefastCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_cluster_sum(s : ImagefeaturefastCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_cluster_mean(s : ImagefeaturefastCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_cluster_mean(s : ImagefeaturefastCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_cluster_scale(s : ImagefeaturefastCluster, f : Double) -> ImagefeaturefastCluster {
   let result = image_feature_fast_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_feature_fast_cluster_fill(s : ImagefeaturefastCluster, v : Double) 
   result
 }
 
-pub fn image_feature_fast_cluster_min(s : ImagefeaturefastCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_cluster_min(s : ImagefeaturefastCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_cluster_max(s : ImagefeaturefastCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_cluster_max(s : ImagefeaturefastCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_cluster_to_string(s : ImagefeaturefastCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_feature_fast_model_set(s : ImagefeaturefastModel, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_fast_model_sum(s : ImagefeaturefastModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_model_sum(s : ImagefeaturefastModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_model_mean(s : ImagefeaturefastModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_model_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_model_mean(s : ImagefeaturefastModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_model_scale(s : ImagefeaturefastModel, f : Double) -> ImagefeaturefastModel {
   let result = image_feature_fast_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_feature_fast_model_fill(s : ImagefeaturefastModel, v : Double) -> I
   result
 }
 
-pub fn image_feature_fast_model_min(s : ImagefeaturefastModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_model_min(s : ImagefeaturefastModel) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_model_max(s : ImagefeaturefastModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_model_max(s : ImagefeaturefastModel) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_model_to_string(s : ImagefeaturefastModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_feature_fast_layer_set(s : ImagefeaturefastLayer, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_fast_layer_sum(s : ImagefeaturefastLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_layer_sum(s : ImagefeaturefastLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_layer_mean(s : ImagefeaturefastLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_layer_mean(s : ImagefeaturefastLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_layer_scale(s : ImagefeaturefastLayer, f : Double) -> ImagefeaturefastLayer {
   let result = image_feature_fast_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_feature_fast_layer_fill(s : ImagefeaturefastLayer, v : Double) -> I
   result
 }
 
-pub fn image_feature_fast_layer_min(s : ImagefeaturefastLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_layer_min(s : ImagefeaturefastLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_layer_max(s : ImagefeaturefastLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_layer_max(s : ImagefeaturefastLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_layer_to_string(s : ImagefeaturefastLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_feature_fast_buffer_set(s : ImagefeaturefastBuffer, i : Int, v : Do
   result
 }
 
-pub fn image_feature_fast_buffer_sum(s : ImagefeaturefastBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_buffer_sum(s : ImagefeaturefastBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_buffer_mean(s : ImagefeaturefastBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_buffer_mean(s : ImagefeaturefastBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_buffer_scale(s : ImagefeaturefastBuffer, f : Double) -> ImagefeaturefastBuffer {
   let result = image_feature_fast_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_feature_fast_buffer_fill(s : ImagefeaturefastBuffer, v : Double) ->
   result
 }
 
-pub fn image_feature_fast_buffer_min(s : ImagefeaturefastBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_buffer_min(s : ImagefeaturefastBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_buffer_max(s : ImagefeaturefastBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_buffer_max(s : ImagefeaturefastBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_buffer_to_string(s : ImagefeaturefastBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_feature_fast_cursor_set(s : ImagefeaturefastCursor, i : Int, v : Do
   result
 }
 
-pub fn image_feature_fast_cursor_sum(s : ImagefeaturefastCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_cursor_sum(s : ImagefeaturefastCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_cursor_mean(s : ImagefeaturefastCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_cursor_mean(s : ImagefeaturefastCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_cursor_scale(s : ImagefeaturefastCursor, f : Double) -> ImagefeaturefastCursor {
   let result = image_feature_fast_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_feature_fast_cursor_fill(s : ImagefeaturefastCursor, v : Double) ->
   result
 }
 
-pub fn image_feature_fast_cursor_min(s : ImagefeaturefastCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_cursor_min(s : ImagefeaturefastCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_cursor_max(s : ImagefeaturefastCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_cursor_max(s : ImagefeaturefastCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_cursor_to_string(s : ImagefeaturefastCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_feature_fast_view_set(s : ImagefeaturefastView, i : Int, v : Double
   result
 }
 
-pub fn image_feature_fast_view_sum(s : ImagefeaturefastView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_view_sum(s : ImagefeaturefastView) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_view_mean(s : ImagefeaturefastView) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_view_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_view_mean(s : ImagefeaturefastView) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_view_scale(s : ImagefeaturefastView, f : Double) -> ImagefeaturefastView {
   let result = image_feature_fast_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_feature_fast_view_fill(s : ImagefeaturefastView, v : Double) -> Ima
   result
 }
 
-pub fn image_feature_fast_view_min(s : ImagefeaturefastView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_view_min(s : ImagefeaturefastView) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_view_max(s : ImagefeaturefastView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_view_max(s : ImagefeaturefastView) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_view_to_string(s : ImagefeaturefastView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_feature_fast_range_set(s : ImagefeaturefastRange, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_fast_range_sum(s : ImagefeaturefastRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_range_sum(s : ImagefeaturefastRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_range_mean(s : ImagefeaturefastRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_range_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_range_mean(s : ImagefeaturefastRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_range_scale(s : ImagefeaturefastRange, f : Double) -> ImagefeaturefastRange {
   let result = image_feature_fast_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_feature_fast_range_fill(s : ImagefeaturefastRange, v : Double) -> I
   result
 }
 
-pub fn image_feature_fast_range_min(s : ImagefeaturefastRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_range_min(s : ImagefeaturefastRange) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_range_max(s : ImagefeaturefastRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_range_max(s : ImagefeaturefastRange) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_range_to_string(s : ImagefeaturefastRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_feature_fast_slice_set(s : ImagefeaturefastSlice, i : Int, v : Doub
   result
 }
 
-pub fn image_feature_fast_slice_sum(s : ImagefeaturefastSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_feature_fast_slice_sum(s : ImagefeaturefastSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_feature_fast_slice_mean(s : ImagefeaturefastSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_feature_fast_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_feature_fast_slice_mean(s : ImagefeaturefastSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_feature_fast_slice_scale(s : ImagefeaturefastSlice, f : Double) -> ImagefeaturefastSlice {
   let result = image_feature_fast_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_feature_fast_slice_fill(s : ImagefeaturefastSlice, v : Double) -> I
   result
 }
 
-pub fn image_feature_fast_slice_min(s : ImagefeaturefastSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_slice_min(s : ImagefeaturefastSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_feature_fast_slice_max(s : ImagefeaturefastSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_feature_fast_slice_max(s : ImagefeaturefastSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_feature_fast_slice_to_string(s : ImagefeaturefastSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

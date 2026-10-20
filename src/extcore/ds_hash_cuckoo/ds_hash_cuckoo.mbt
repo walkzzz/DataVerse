@@ -88,11 +88,7 @@ pub fn ds_hash_cuckoo_make_series(vals : Array[Double], name : String) -> Dshash
 
 pub fn ds_hash_cuckoo_series_len(s : DshashcuckooSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_cuckoo_series_sum(s : DshashcuckooSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_cuckoo_series_sum(s : DshashcuckooSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_cuckoo_series_mean(s : DshashcuckooSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_cuckoo_frame_set(s : DshashcuckooFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_cuckoo_frame_sum(s : DshashcuckooFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_frame_sum(s : DshashcuckooFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_frame_mean(s : DshashcuckooFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_frame_mean(s : DshashcuckooFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_frame_scale(s : DshashcuckooFrame, f : Double) -> DshashcuckooFrame {
   let result = ds_hash_cuckoo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_cuckoo_frame_fill(s : DshashcuckooFrame, v : Double) -> Dshashcuc
   result
 }
 
-pub fn ds_hash_cuckoo_frame_min(s : DshashcuckooFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_frame_min(s : DshashcuckooFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_frame_max(s : DshashcuckooFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_frame_max(s : DshashcuckooFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_frame_to_string(s : DshashcuckooFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_cuckoo_table_set(s : DshashcuckooTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_cuckoo_table_sum(s : DshashcuckooTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_table_sum(s : DshashcuckooTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_table_mean(s : DshashcuckooTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_table_mean(s : DshashcuckooTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_table_scale(s : DshashcuckooTable, f : Double) -> DshashcuckooTable {
   let result = ds_hash_cuckoo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_cuckoo_table_fill(s : DshashcuckooTable, v : Double) -> Dshashcuc
   result
 }
 
-pub fn ds_hash_cuckoo_table_min(s : DshashcuckooTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_table_min(s : DshashcuckooTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_table_max(s : DshashcuckooTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_table_max(s : DshashcuckooTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_table_to_string(s : DshashcuckooTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_cuckoo_graphn_set(s : DshashcuckooGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_cuckoo_graphn_sum(s : DshashcuckooGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_graphn_sum(s : DshashcuckooGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_graphn_mean(s : DshashcuckooGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_graphn_mean(s : DshashcuckooGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_graphn_scale(s : DshashcuckooGraphN, f : Double) -> DshashcuckooGraphN {
   let result = ds_hash_cuckoo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_cuckoo_graphn_fill(s : DshashcuckooGraphN, v : Double) -> Dshashc
   result
 }
 
-pub fn ds_hash_cuckoo_graphn_min(s : DshashcuckooGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_graphn_min(s : DshashcuckooGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_graphn_max(s : DshashcuckooGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_graphn_max(s : DshashcuckooGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_graphn_to_string(s : DshashcuckooGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_cuckoo_node_set(s : DshashcuckooNode, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_cuckoo_node_sum(s : DshashcuckooNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_node_sum(s : DshashcuckooNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_node_mean(s : DshashcuckooNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_node_mean(s : DshashcuckooNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_node_scale(s : DshashcuckooNode, f : Double) -> DshashcuckooNode {
   let result = ds_hash_cuckoo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_cuckoo_node_fill(s : DshashcuckooNode, v : Double) -> Dshashcucko
   result
 }
 
-pub fn ds_hash_cuckoo_node_min(s : DshashcuckooNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_node_min(s : DshashcuckooNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_node_max(s : DshashcuckooNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_node_max(s : DshashcuckooNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_node_to_string(s : DshashcuckooNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_cuckoo_edge_set(s : DshashcuckooEdge, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_cuckoo_edge_sum(s : DshashcuckooEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_edge_sum(s : DshashcuckooEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_edge_mean(s : DshashcuckooEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_edge_mean(s : DshashcuckooEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_edge_scale(s : DshashcuckooEdge, f : Double) -> DshashcuckooEdge {
   let result = ds_hash_cuckoo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_cuckoo_edge_fill(s : DshashcuckooEdge, v : Double) -> Dshashcucko
   result
 }
 
-pub fn ds_hash_cuckoo_edge_min(s : DshashcuckooEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_edge_min(s : DshashcuckooEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_edge_max(s : DshashcuckooEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_edge_max(s : DshashcuckooEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_edge_to_string(s : DshashcuckooEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_cuckoo_path_set(s : DshashcuckooPath, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_cuckoo_path_sum(s : DshashcuckooPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_path_sum(s : DshashcuckooPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_path_mean(s : DshashcuckooPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_path_mean(s : DshashcuckooPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_path_scale(s : DshashcuckooPath, f : Double) -> DshashcuckooPath {
   let result = ds_hash_cuckoo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_cuckoo_path_fill(s : DshashcuckooPath, v : Double) -> Dshashcucko
   result
 }
 
-pub fn ds_hash_cuckoo_path_min(s : DshashcuckooPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_path_min(s : DshashcuckooPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_path_max(s : DshashcuckooPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_path_max(s : DshashcuckooPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_path_to_string(s : DshashcuckooPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_cuckoo_cluster_set(s : DshashcuckooCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_cuckoo_cluster_sum(s : DshashcuckooCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_cluster_sum(s : DshashcuckooCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_cluster_mean(s : DshashcuckooCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_cluster_mean(s : DshashcuckooCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_cluster_scale(s : DshashcuckooCluster, f : Double) -> DshashcuckooCluster {
   let result = ds_hash_cuckoo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_cuckoo_cluster_fill(s : DshashcuckooCluster, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_cuckoo_cluster_min(s : DshashcuckooCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_cluster_min(s : DshashcuckooCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_cluster_max(s : DshashcuckooCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_cluster_max(s : DshashcuckooCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_cluster_to_string(s : DshashcuckooCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_cuckoo_model_set(s : DshashcuckooModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_cuckoo_model_sum(s : DshashcuckooModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_model_sum(s : DshashcuckooModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_model_mean(s : DshashcuckooModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_model_mean(s : DshashcuckooModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_model_scale(s : DshashcuckooModel, f : Double) -> DshashcuckooModel {
   let result = ds_hash_cuckoo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_cuckoo_model_fill(s : DshashcuckooModel, v : Double) -> Dshashcuc
   result
 }
 
-pub fn ds_hash_cuckoo_model_min(s : DshashcuckooModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_model_min(s : DshashcuckooModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_model_max(s : DshashcuckooModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_model_max(s : DshashcuckooModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_model_to_string(s : DshashcuckooModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_cuckoo_layer_set(s : DshashcuckooLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_cuckoo_layer_sum(s : DshashcuckooLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_layer_sum(s : DshashcuckooLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_layer_mean(s : DshashcuckooLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_layer_mean(s : DshashcuckooLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_layer_scale(s : DshashcuckooLayer, f : Double) -> DshashcuckooLayer {
   let result = ds_hash_cuckoo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_cuckoo_layer_fill(s : DshashcuckooLayer, v : Double) -> Dshashcuc
   result
 }
 
-pub fn ds_hash_cuckoo_layer_min(s : DshashcuckooLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_layer_min(s : DshashcuckooLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_layer_max(s : DshashcuckooLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_layer_max(s : DshashcuckooLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_layer_to_string(s : DshashcuckooLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_cuckoo_buffer_set(s : DshashcuckooBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_cuckoo_buffer_sum(s : DshashcuckooBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_buffer_sum(s : DshashcuckooBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_buffer_mean(s : DshashcuckooBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_buffer_mean(s : DshashcuckooBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_buffer_scale(s : DshashcuckooBuffer, f : Double) -> DshashcuckooBuffer {
   let result = ds_hash_cuckoo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_cuckoo_buffer_fill(s : DshashcuckooBuffer, v : Double) -> Dshashc
   result
 }
 
-pub fn ds_hash_cuckoo_buffer_min(s : DshashcuckooBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_buffer_min(s : DshashcuckooBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_buffer_max(s : DshashcuckooBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_buffer_max(s : DshashcuckooBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_buffer_to_string(s : DshashcuckooBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_cuckoo_cursor_set(s : DshashcuckooCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_cuckoo_cursor_sum(s : DshashcuckooCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_cursor_sum(s : DshashcuckooCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_cursor_mean(s : DshashcuckooCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_cursor_mean(s : DshashcuckooCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_cursor_scale(s : DshashcuckooCursor, f : Double) -> DshashcuckooCursor {
   let result = ds_hash_cuckoo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_cuckoo_cursor_fill(s : DshashcuckooCursor, v : Double) -> Dshashc
   result
 }
 
-pub fn ds_hash_cuckoo_cursor_min(s : DshashcuckooCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_cursor_min(s : DshashcuckooCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_cursor_max(s : DshashcuckooCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_cursor_max(s : DshashcuckooCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_cursor_to_string(s : DshashcuckooCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_cuckoo_view_set(s : DshashcuckooView, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_cuckoo_view_sum(s : DshashcuckooView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_view_sum(s : DshashcuckooView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_view_mean(s : DshashcuckooView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_view_mean(s : DshashcuckooView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_view_scale(s : DshashcuckooView, f : Double) -> DshashcuckooView {
   let result = ds_hash_cuckoo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_cuckoo_view_fill(s : DshashcuckooView, v : Double) -> Dshashcucko
   result
 }
 
-pub fn ds_hash_cuckoo_view_min(s : DshashcuckooView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_view_min(s : DshashcuckooView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_view_max(s : DshashcuckooView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_view_max(s : DshashcuckooView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_view_to_string(s : DshashcuckooView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_cuckoo_range_set(s : DshashcuckooRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_cuckoo_range_sum(s : DshashcuckooRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_range_sum(s : DshashcuckooRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_range_mean(s : DshashcuckooRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_range_mean(s : DshashcuckooRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_range_scale(s : DshashcuckooRange, f : Double) -> DshashcuckooRange {
   let result = ds_hash_cuckoo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_cuckoo_range_fill(s : DshashcuckooRange, v : Double) -> Dshashcuc
   result
 }
 
-pub fn ds_hash_cuckoo_range_min(s : DshashcuckooRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_range_min(s : DshashcuckooRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_range_max(s : DshashcuckooRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_range_max(s : DshashcuckooRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_range_to_string(s : DshashcuckooRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_cuckoo_slice_set(s : DshashcuckooSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_cuckoo_slice_sum(s : DshashcuckooSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_cuckoo_slice_sum(s : DshashcuckooSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_cuckoo_slice_mean(s : DshashcuckooSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_cuckoo_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_cuckoo_slice_mean(s : DshashcuckooSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_cuckoo_slice_scale(s : DshashcuckooSlice, f : Double) -> DshashcuckooSlice {
   let result = ds_hash_cuckoo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_cuckoo_slice_fill(s : DshashcuckooSlice, v : Double) -> Dshashcuc
   result
 }
 
-pub fn ds_hash_cuckoo_slice_min(s : DshashcuckooSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_slice_min(s : DshashcuckooSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_cuckoo_slice_max(s : DshashcuckooSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_cuckoo_slice_max(s : DshashcuckooSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_cuckoo_slice_to_string(s : DshashcuckooSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_flow_shaping_make_series(vals : Array[Double], name : String) -> Netf
 
 pub fn net_flow_shaping_series_len(s : NetflowshapingSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_shaping_series_sum(s : NetflowshapingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_shaping_series_sum(s : NetflowshapingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_shaping_series_mean(s : NetflowshapingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_shaping_frame_set(s : NetflowshapingFrame, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_shaping_frame_sum(s : NetflowshapingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_frame_sum(s : NetflowshapingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_frame_mean(s : NetflowshapingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_frame_mean(s : NetflowshapingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_frame_scale(s : NetflowshapingFrame, f : Double) -> NetflowshapingFrame {
   let result = net_flow_shaping_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_shaping_frame_fill(s : NetflowshapingFrame, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_shaping_frame_min(s : NetflowshapingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_frame_min(s : NetflowshapingFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_frame_max(s : NetflowshapingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_frame_max(s : NetflowshapingFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_frame_to_string(s : NetflowshapingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_shaping_table_set(s : NetflowshapingTable, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_shaping_table_sum(s : NetflowshapingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_table_sum(s : NetflowshapingTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_table_mean(s : NetflowshapingTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_table_mean(s : NetflowshapingTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_table_scale(s : NetflowshapingTable, f : Double) -> NetflowshapingTable {
   let result = net_flow_shaping_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_shaping_table_fill(s : NetflowshapingTable, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_shaping_table_min(s : NetflowshapingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_table_min(s : NetflowshapingTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_table_max(s : NetflowshapingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_table_max(s : NetflowshapingTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_table_to_string(s : NetflowshapingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_shaping_graphn_set(s : NetflowshapingGraphN, i : Int, v : Double
   result
 }
 
-pub fn net_flow_shaping_graphn_sum(s : NetflowshapingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_graphn_sum(s : NetflowshapingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_graphn_mean(s : NetflowshapingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_graphn_mean(s : NetflowshapingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_graphn_scale(s : NetflowshapingGraphN, f : Double) -> NetflowshapingGraphN {
   let result = net_flow_shaping_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_shaping_graphn_fill(s : NetflowshapingGraphN, v : Double) -> Net
   result
 }
 
-pub fn net_flow_shaping_graphn_min(s : NetflowshapingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_graphn_min(s : NetflowshapingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_graphn_max(s : NetflowshapingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_graphn_max(s : NetflowshapingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_graphn_to_string(s : NetflowshapingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_shaping_node_set(s : NetflowshapingNode, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_shaping_node_sum(s : NetflowshapingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_node_sum(s : NetflowshapingNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_node_mean(s : NetflowshapingNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_node_mean(s : NetflowshapingNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_node_scale(s : NetflowshapingNode, f : Double) -> NetflowshapingNode {
   let result = net_flow_shaping_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_shaping_node_fill(s : NetflowshapingNode, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_shaping_node_min(s : NetflowshapingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_node_min(s : NetflowshapingNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_node_max(s : NetflowshapingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_node_max(s : NetflowshapingNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_node_to_string(s : NetflowshapingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_shaping_edge_set(s : NetflowshapingEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_shaping_edge_sum(s : NetflowshapingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_edge_sum(s : NetflowshapingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_edge_mean(s : NetflowshapingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_edge_mean(s : NetflowshapingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_edge_scale(s : NetflowshapingEdge, f : Double) -> NetflowshapingEdge {
   let result = net_flow_shaping_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_shaping_edge_fill(s : NetflowshapingEdge, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_shaping_edge_min(s : NetflowshapingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_edge_min(s : NetflowshapingEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_edge_max(s : NetflowshapingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_edge_max(s : NetflowshapingEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_edge_to_string(s : NetflowshapingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_shaping_path_set(s : NetflowshapingPath, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_shaping_path_sum(s : NetflowshapingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_path_sum(s : NetflowshapingPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_path_mean(s : NetflowshapingPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_path_mean(s : NetflowshapingPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_path_scale(s : NetflowshapingPath, f : Double) -> NetflowshapingPath {
   let result = net_flow_shaping_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_shaping_path_fill(s : NetflowshapingPath, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_shaping_path_min(s : NetflowshapingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_path_min(s : NetflowshapingPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_path_max(s : NetflowshapingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_path_max(s : NetflowshapingPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_path_to_string(s : NetflowshapingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_shaping_cluster_set(s : NetflowshapingCluster, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_shaping_cluster_sum(s : NetflowshapingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_cluster_sum(s : NetflowshapingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_cluster_mean(s : NetflowshapingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_cluster_mean(s : NetflowshapingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_cluster_scale(s : NetflowshapingCluster, f : Double) -> NetflowshapingCluster {
   let result = net_flow_shaping_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_shaping_cluster_fill(s : NetflowshapingCluster, v : Double) -> N
   result
 }
 
-pub fn net_flow_shaping_cluster_min(s : NetflowshapingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_cluster_min(s : NetflowshapingCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_cluster_max(s : NetflowshapingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_cluster_max(s : NetflowshapingCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_cluster_to_string(s : NetflowshapingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_shaping_model_set(s : NetflowshapingModel, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_shaping_model_sum(s : NetflowshapingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_model_sum(s : NetflowshapingModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_model_mean(s : NetflowshapingModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_model_mean(s : NetflowshapingModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_model_scale(s : NetflowshapingModel, f : Double) -> NetflowshapingModel {
   let result = net_flow_shaping_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_shaping_model_fill(s : NetflowshapingModel, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_shaping_model_min(s : NetflowshapingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_model_min(s : NetflowshapingModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_model_max(s : NetflowshapingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_model_max(s : NetflowshapingModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_model_to_string(s : NetflowshapingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_shaping_layer_set(s : NetflowshapingLayer, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_shaping_layer_sum(s : NetflowshapingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_layer_sum(s : NetflowshapingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_layer_mean(s : NetflowshapingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_layer_mean(s : NetflowshapingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_layer_scale(s : NetflowshapingLayer, f : Double) -> NetflowshapingLayer {
   let result = net_flow_shaping_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_shaping_layer_fill(s : NetflowshapingLayer, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_shaping_layer_min(s : NetflowshapingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_layer_min(s : NetflowshapingLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_layer_max(s : NetflowshapingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_layer_max(s : NetflowshapingLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_layer_to_string(s : NetflowshapingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_shaping_buffer_set(s : NetflowshapingBuffer, i : Int, v : Double
   result
 }
 
-pub fn net_flow_shaping_buffer_sum(s : NetflowshapingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_buffer_sum(s : NetflowshapingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_buffer_mean(s : NetflowshapingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_buffer_mean(s : NetflowshapingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_buffer_scale(s : NetflowshapingBuffer, f : Double) -> NetflowshapingBuffer {
   let result = net_flow_shaping_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_shaping_buffer_fill(s : NetflowshapingBuffer, v : Double) -> Net
   result
 }
 
-pub fn net_flow_shaping_buffer_min(s : NetflowshapingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_buffer_min(s : NetflowshapingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_buffer_max(s : NetflowshapingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_buffer_max(s : NetflowshapingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_buffer_to_string(s : NetflowshapingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_shaping_cursor_set(s : NetflowshapingCursor, i : Int, v : Double
   result
 }
 
-pub fn net_flow_shaping_cursor_sum(s : NetflowshapingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_cursor_sum(s : NetflowshapingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_cursor_mean(s : NetflowshapingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_cursor_mean(s : NetflowshapingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_cursor_scale(s : NetflowshapingCursor, f : Double) -> NetflowshapingCursor {
   let result = net_flow_shaping_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_shaping_cursor_fill(s : NetflowshapingCursor, v : Double) -> Net
   result
 }
 
-pub fn net_flow_shaping_cursor_min(s : NetflowshapingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_cursor_min(s : NetflowshapingCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_cursor_max(s : NetflowshapingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_cursor_max(s : NetflowshapingCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_cursor_to_string(s : NetflowshapingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_shaping_view_set(s : NetflowshapingView, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_shaping_view_sum(s : NetflowshapingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_view_sum(s : NetflowshapingView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_view_mean(s : NetflowshapingView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_view_mean(s : NetflowshapingView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_view_scale(s : NetflowshapingView, f : Double) -> NetflowshapingView {
   let result = net_flow_shaping_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_shaping_view_fill(s : NetflowshapingView, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_shaping_view_min(s : NetflowshapingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_view_min(s : NetflowshapingView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_view_max(s : NetflowshapingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_view_max(s : NetflowshapingView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_view_to_string(s : NetflowshapingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_shaping_range_set(s : NetflowshapingRange, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_shaping_range_sum(s : NetflowshapingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_range_sum(s : NetflowshapingRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_range_mean(s : NetflowshapingRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_range_mean(s : NetflowshapingRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_range_scale(s : NetflowshapingRange, f : Double) -> NetflowshapingRange {
   let result = net_flow_shaping_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_shaping_range_fill(s : NetflowshapingRange, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_shaping_range_min(s : NetflowshapingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_range_min(s : NetflowshapingRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_range_max(s : NetflowshapingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_range_max(s : NetflowshapingRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_range_to_string(s : NetflowshapingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_shaping_slice_set(s : NetflowshapingSlice, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_shaping_slice_sum(s : NetflowshapingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_shaping_slice_sum(s : NetflowshapingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_shaping_slice_mean(s : NetflowshapingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_shaping_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_shaping_slice_mean(s : NetflowshapingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_shaping_slice_scale(s : NetflowshapingSlice, f : Double) -> NetflowshapingSlice {
   let result = net_flow_shaping_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_shaping_slice_fill(s : NetflowshapingSlice, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_shaping_slice_min(s : NetflowshapingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_slice_min(s : NetflowshapingSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_shaping_slice_max(s : NetflowshapingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_shaping_slice_max(s : NetflowshapingSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_shaping_slice_to_string(s : NetflowshapingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

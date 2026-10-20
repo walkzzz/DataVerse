@@ -88,11 +88,7 @@ pub fn sort_exchange_gnome_make_series(vals : Array[Double], name : String) -> S
 
 pub fn sort_exchange_gnome_series_len(s : SortexchangegnomeSeries) -> Int { s.vals.length() }
 
-pub fn sort_exchange_gnome_series_sum(s : SortexchangegnomeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_exchange_gnome_series_sum(s : SortexchangegnomeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_exchange_gnome_series_mean(s : SortexchangegnomeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_exchange_gnome_frame_set(s : SortexchangegnomeFrame, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_gnome_frame_sum(s : SortexchangegnomeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_frame_sum(s : SortexchangegnomeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_frame_mean(s : SortexchangegnomeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_frame_mean(s : SortexchangegnomeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_frame_scale(s : SortexchangegnomeFrame, f : Double) -> SortexchangegnomeFrame {
   let result = sort_exchange_gnome_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_exchange_gnome_frame_fill(s : SortexchangegnomeFrame, v : Double) ->
   result
 }
 
-pub fn sort_exchange_gnome_frame_min(s : SortexchangegnomeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_frame_min(s : SortexchangegnomeFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_frame_max(s : SortexchangegnomeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_frame_max(s : SortexchangegnomeFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_frame_to_string(s : SortexchangegnomeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_exchange_gnome_table_set(s : SortexchangegnomeTable, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_gnome_table_sum(s : SortexchangegnomeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_table_sum(s : SortexchangegnomeTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_table_mean(s : SortexchangegnomeTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_table_mean(s : SortexchangegnomeTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_table_scale(s : SortexchangegnomeTable, f : Double) -> SortexchangegnomeTable {
   let result = sort_exchange_gnome_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_exchange_gnome_table_fill(s : SortexchangegnomeTable, v : Double) ->
   result
 }
 
-pub fn sort_exchange_gnome_table_min(s : SortexchangegnomeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_table_min(s : SortexchangegnomeTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_table_max(s : SortexchangegnomeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_table_max(s : SortexchangegnomeTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_table_to_string(s : SortexchangegnomeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_exchange_gnome_graphn_set(s : SortexchangegnomeGraphN, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_gnome_graphn_sum(s : SortexchangegnomeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_graphn_sum(s : SortexchangegnomeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_graphn_mean(s : SortexchangegnomeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_graphn_mean(s : SortexchangegnomeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_graphn_scale(s : SortexchangegnomeGraphN, f : Double) -> SortexchangegnomeGraphN {
   let result = sort_exchange_gnome_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_exchange_gnome_graphn_fill(s : SortexchangegnomeGraphN, v : Double) 
   result
 }
 
-pub fn sort_exchange_gnome_graphn_min(s : SortexchangegnomeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_graphn_min(s : SortexchangegnomeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_graphn_max(s : SortexchangegnomeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_graphn_max(s : SortexchangegnomeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_graphn_to_string(s : SortexchangegnomeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_exchange_gnome_node_set(s : SortexchangegnomeNode, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_gnome_node_sum(s : SortexchangegnomeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_node_sum(s : SortexchangegnomeNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_node_mean(s : SortexchangegnomeNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_node_mean(s : SortexchangegnomeNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_node_scale(s : SortexchangegnomeNode, f : Double) -> SortexchangegnomeNode {
   let result = sort_exchange_gnome_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_exchange_gnome_node_fill(s : SortexchangegnomeNode, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_gnome_node_min(s : SortexchangegnomeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_node_min(s : SortexchangegnomeNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_node_max(s : SortexchangegnomeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_node_max(s : SortexchangegnomeNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_node_to_string(s : SortexchangegnomeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_exchange_gnome_edge_set(s : SortexchangegnomeEdge, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_gnome_edge_sum(s : SortexchangegnomeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_edge_sum(s : SortexchangegnomeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_edge_mean(s : SortexchangegnomeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_edge_mean(s : SortexchangegnomeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_edge_scale(s : SortexchangegnomeEdge, f : Double) -> SortexchangegnomeEdge {
   let result = sort_exchange_gnome_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_exchange_gnome_edge_fill(s : SortexchangegnomeEdge, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_gnome_edge_min(s : SortexchangegnomeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_edge_min(s : SortexchangegnomeEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_edge_max(s : SortexchangegnomeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_edge_max(s : SortexchangegnomeEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_edge_to_string(s : SortexchangegnomeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_exchange_gnome_path_set(s : SortexchangegnomePath, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_gnome_path_sum(s : SortexchangegnomePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_path_sum(s : SortexchangegnomePath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_path_mean(s : SortexchangegnomePath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_path_mean(s : SortexchangegnomePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_path_scale(s : SortexchangegnomePath, f : Double) -> SortexchangegnomePath {
   let result = sort_exchange_gnome_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_exchange_gnome_path_fill(s : SortexchangegnomePath, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_gnome_path_min(s : SortexchangegnomePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_path_min(s : SortexchangegnomePath) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_path_max(s : SortexchangegnomePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_path_max(s : SortexchangegnomePath) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_path_to_string(s : SortexchangegnomePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_exchange_gnome_cluster_set(s : SortexchangegnomeCluster, i : Int, v 
   result
 }
 
-pub fn sort_exchange_gnome_cluster_sum(s : SortexchangegnomeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_cluster_sum(s : SortexchangegnomeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_cluster_mean(s : SortexchangegnomeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_cluster_mean(s : SortexchangegnomeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_cluster_scale(s : SortexchangegnomeCluster, f : Double) -> SortexchangegnomeCluster {
   let result = sort_exchange_gnome_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_exchange_gnome_cluster_fill(s : SortexchangegnomeCluster, v : Double
   result
 }
 
-pub fn sort_exchange_gnome_cluster_min(s : SortexchangegnomeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_cluster_min(s : SortexchangegnomeCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_cluster_max(s : SortexchangegnomeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_cluster_max(s : SortexchangegnomeCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_cluster_to_string(s : SortexchangegnomeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_exchange_gnome_model_set(s : SortexchangegnomeModel, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_gnome_model_sum(s : SortexchangegnomeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_model_sum(s : SortexchangegnomeModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_model_mean(s : SortexchangegnomeModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_model_mean(s : SortexchangegnomeModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_model_scale(s : SortexchangegnomeModel, f : Double) -> SortexchangegnomeModel {
   let result = sort_exchange_gnome_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_exchange_gnome_model_fill(s : SortexchangegnomeModel, v : Double) ->
   result
 }
 
-pub fn sort_exchange_gnome_model_min(s : SortexchangegnomeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_model_min(s : SortexchangegnomeModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_model_max(s : SortexchangegnomeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_model_max(s : SortexchangegnomeModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_model_to_string(s : SortexchangegnomeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_exchange_gnome_layer_set(s : SortexchangegnomeLayer, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_gnome_layer_sum(s : SortexchangegnomeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_layer_sum(s : SortexchangegnomeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_layer_mean(s : SortexchangegnomeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_layer_mean(s : SortexchangegnomeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_layer_scale(s : SortexchangegnomeLayer, f : Double) -> SortexchangegnomeLayer {
   let result = sort_exchange_gnome_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_exchange_gnome_layer_fill(s : SortexchangegnomeLayer, v : Double) ->
   result
 }
 
-pub fn sort_exchange_gnome_layer_min(s : SortexchangegnomeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_layer_min(s : SortexchangegnomeLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_layer_max(s : SortexchangegnomeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_layer_max(s : SortexchangegnomeLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_layer_to_string(s : SortexchangegnomeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_exchange_gnome_buffer_set(s : SortexchangegnomeBuffer, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_gnome_buffer_sum(s : SortexchangegnomeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_buffer_sum(s : SortexchangegnomeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_buffer_mean(s : SortexchangegnomeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_buffer_mean(s : SortexchangegnomeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_buffer_scale(s : SortexchangegnomeBuffer, f : Double) -> SortexchangegnomeBuffer {
   let result = sort_exchange_gnome_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_exchange_gnome_buffer_fill(s : SortexchangegnomeBuffer, v : Double) 
   result
 }
 
-pub fn sort_exchange_gnome_buffer_min(s : SortexchangegnomeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_buffer_min(s : SortexchangegnomeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_buffer_max(s : SortexchangegnomeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_buffer_max(s : SortexchangegnomeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_buffer_to_string(s : SortexchangegnomeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_exchange_gnome_cursor_set(s : SortexchangegnomeCursor, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_gnome_cursor_sum(s : SortexchangegnomeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_cursor_sum(s : SortexchangegnomeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_cursor_mean(s : SortexchangegnomeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_cursor_mean(s : SortexchangegnomeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_cursor_scale(s : SortexchangegnomeCursor, f : Double) -> SortexchangegnomeCursor {
   let result = sort_exchange_gnome_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_exchange_gnome_cursor_fill(s : SortexchangegnomeCursor, v : Double) 
   result
 }
 
-pub fn sort_exchange_gnome_cursor_min(s : SortexchangegnomeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_cursor_min(s : SortexchangegnomeCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_cursor_max(s : SortexchangegnomeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_cursor_max(s : SortexchangegnomeCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_cursor_to_string(s : SortexchangegnomeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_exchange_gnome_view_set(s : SortexchangegnomeView, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_gnome_view_sum(s : SortexchangegnomeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_view_sum(s : SortexchangegnomeView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_view_mean(s : SortexchangegnomeView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_view_mean(s : SortexchangegnomeView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_view_scale(s : SortexchangegnomeView, f : Double) -> SortexchangegnomeView {
   let result = sort_exchange_gnome_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_exchange_gnome_view_fill(s : SortexchangegnomeView, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_gnome_view_min(s : SortexchangegnomeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_view_min(s : SortexchangegnomeView) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_view_max(s : SortexchangegnomeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_view_max(s : SortexchangegnomeView) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_view_to_string(s : SortexchangegnomeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_exchange_gnome_range_set(s : SortexchangegnomeRange, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_gnome_range_sum(s : SortexchangegnomeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_range_sum(s : SortexchangegnomeRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_range_mean(s : SortexchangegnomeRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_range_mean(s : SortexchangegnomeRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_range_scale(s : SortexchangegnomeRange, f : Double) -> SortexchangegnomeRange {
   let result = sort_exchange_gnome_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_exchange_gnome_range_fill(s : SortexchangegnomeRange, v : Double) ->
   result
 }
 
-pub fn sort_exchange_gnome_range_min(s : SortexchangegnomeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_range_min(s : SortexchangegnomeRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_range_max(s : SortexchangegnomeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_range_max(s : SortexchangegnomeRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_range_to_string(s : SortexchangegnomeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_exchange_gnome_slice_set(s : SortexchangegnomeSlice, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_gnome_slice_sum(s : SortexchangegnomeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_gnome_slice_sum(s : SortexchangegnomeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_gnome_slice_mean(s : SortexchangegnomeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_gnome_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_gnome_slice_mean(s : SortexchangegnomeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_gnome_slice_scale(s : SortexchangegnomeSlice, f : Double) -> SortexchangegnomeSlice {
   let result = sort_exchange_gnome_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_exchange_gnome_slice_fill(s : SortexchangegnomeSlice, v : Double) ->
   result
 }
 
-pub fn sort_exchange_gnome_slice_min(s : SortexchangegnomeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_slice_min(s : SortexchangegnomeSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_gnome_slice_max(s : SortexchangegnomeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_gnome_slice_max(s : SortexchangegnomeSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_gnome_slice_to_string(s : SortexchangegnomeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn ml_ensemble_adaboost_make_series(vals : Array[Double], name : String) -> 
 
 pub fn ml_ensemble_adaboost_series_len(s : MlensembleadaboostSeries) -> Int { s.vals.length() }
 
-pub fn ml_ensemble_adaboost_series_sum(s : MlensembleadaboostSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_series_sum(s : MlensembleadaboostSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_ensemble_adaboost_series_mean(s : MlensembleadaboostSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_ensemble_adaboost_frame_set(s : MlensembleadaboostFrame, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_adaboost_frame_sum(s : MlensembleadaboostFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_frame_sum(s : MlensembleadaboostFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_frame_mean(s : MlensembleadaboostFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_frame_mean(s : MlensembleadaboostFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_frame_scale(s : MlensembleadaboostFrame, f : Double) -> MlensembleadaboostFrame {
   let result = ml_ensemble_adaboost_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_ensemble_adaboost_frame_fill(s : MlensembleadaboostFrame, v : Double) 
   result
 }
 
-pub fn ml_ensemble_adaboost_frame_min(s : MlensembleadaboostFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_frame_min(s : MlensembleadaboostFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_frame_max(s : MlensembleadaboostFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_frame_max(s : MlensembleadaboostFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_frame_to_string(s : MlensembleadaboostFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_ensemble_adaboost_table_set(s : MlensembleadaboostTable, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_adaboost_table_sum(s : MlensembleadaboostTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_table_sum(s : MlensembleadaboostTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_table_mean(s : MlensembleadaboostTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_table_mean(s : MlensembleadaboostTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_table_scale(s : MlensembleadaboostTable, f : Double) -> MlensembleadaboostTable {
   let result = ml_ensemble_adaboost_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_ensemble_adaboost_table_fill(s : MlensembleadaboostTable, v : Double) 
   result
 }
 
-pub fn ml_ensemble_adaboost_table_min(s : MlensembleadaboostTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_table_min(s : MlensembleadaboostTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_table_max(s : MlensembleadaboostTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_table_max(s : MlensembleadaboostTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_table_to_string(s : MlensembleadaboostTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_ensemble_adaboost_graphn_set(s : MlensembleadaboostGraphN, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_adaboost_graphn_sum(s : MlensembleadaboostGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_graphn_sum(s : MlensembleadaboostGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_graphn_mean(s : MlensembleadaboostGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_graphn_mean(s : MlensembleadaboostGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_graphn_scale(s : MlensembleadaboostGraphN, f : Double) -> MlensembleadaboostGraphN {
   let result = ml_ensemble_adaboost_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_ensemble_adaboost_graphn_fill(s : MlensembleadaboostGraphN, v : Double
   result
 }
 
-pub fn ml_ensemble_adaboost_graphn_min(s : MlensembleadaboostGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_graphn_min(s : MlensembleadaboostGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_graphn_max(s : MlensembleadaboostGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_graphn_max(s : MlensembleadaboostGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_graphn_to_string(s : MlensembleadaboostGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_ensemble_adaboost_node_set(s : MlensembleadaboostNode, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_adaboost_node_sum(s : MlensembleadaboostNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_node_sum(s : MlensembleadaboostNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_node_mean(s : MlensembleadaboostNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_node_mean(s : MlensembleadaboostNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_node_scale(s : MlensembleadaboostNode, f : Double) -> MlensembleadaboostNode {
   let result = ml_ensemble_adaboost_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_ensemble_adaboost_node_fill(s : MlensembleadaboostNode, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_adaboost_node_min(s : MlensembleadaboostNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_node_min(s : MlensembleadaboostNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_node_max(s : MlensembleadaboostNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_node_max(s : MlensembleadaboostNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_node_to_string(s : MlensembleadaboostNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_ensemble_adaboost_edge_set(s : MlensembleadaboostEdge, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_adaboost_edge_sum(s : MlensembleadaboostEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_edge_sum(s : MlensembleadaboostEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_edge_mean(s : MlensembleadaboostEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_edge_mean(s : MlensembleadaboostEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_edge_scale(s : MlensembleadaboostEdge, f : Double) -> MlensembleadaboostEdge {
   let result = ml_ensemble_adaboost_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_ensemble_adaboost_edge_fill(s : MlensembleadaboostEdge, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_adaboost_edge_min(s : MlensembleadaboostEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_edge_min(s : MlensembleadaboostEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_edge_max(s : MlensembleadaboostEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_edge_max(s : MlensembleadaboostEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_edge_to_string(s : MlensembleadaboostEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_ensemble_adaboost_path_set(s : MlensembleadaboostPath, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_adaboost_path_sum(s : MlensembleadaboostPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_path_sum(s : MlensembleadaboostPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_path_mean(s : MlensembleadaboostPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_path_mean(s : MlensembleadaboostPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_path_scale(s : MlensembleadaboostPath, f : Double) -> MlensembleadaboostPath {
   let result = ml_ensemble_adaboost_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_ensemble_adaboost_path_fill(s : MlensembleadaboostPath, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_adaboost_path_min(s : MlensembleadaboostPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_path_min(s : MlensembleadaboostPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_path_max(s : MlensembleadaboostPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_path_max(s : MlensembleadaboostPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_path_to_string(s : MlensembleadaboostPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_ensemble_adaboost_cluster_set(s : MlensembleadaboostCluster, i : Int, 
   result
 }
 
-pub fn ml_ensemble_adaboost_cluster_sum(s : MlensembleadaboostCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_cluster_sum(s : MlensembleadaboostCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_cluster_mean(s : MlensembleadaboostCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_cluster_mean(s : MlensembleadaboostCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_cluster_scale(s : MlensembleadaboostCluster, f : Double) -> MlensembleadaboostCluster {
   let result = ml_ensemble_adaboost_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_ensemble_adaboost_cluster_fill(s : MlensembleadaboostCluster, v : Doub
   result
 }
 
-pub fn ml_ensemble_adaboost_cluster_min(s : MlensembleadaboostCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_cluster_min(s : MlensembleadaboostCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_cluster_max(s : MlensembleadaboostCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_cluster_max(s : MlensembleadaboostCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_cluster_to_string(s : MlensembleadaboostCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_ensemble_adaboost_model_set(s : MlensembleadaboostModel, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_adaboost_model_sum(s : MlensembleadaboostModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_model_sum(s : MlensembleadaboostModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_model_mean(s : MlensembleadaboostModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_model_mean(s : MlensembleadaboostModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_model_scale(s : MlensembleadaboostModel, f : Double) -> MlensembleadaboostModel {
   let result = ml_ensemble_adaboost_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_ensemble_adaboost_model_fill(s : MlensembleadaboostModel, v : Double) 
   result
 }
 
-pub fn ml_ensemble_adaboost_model_min(s : MlensembleadaboostModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_model_min(s : MlensembleadaboostModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_model_max(s : MlensembleadaboostModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_model_max(s : MlensembleadaboostModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_model_to_string(s : MlensembleadaboostModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_ensemble_adaboost_layer_set(s : MlensembleadaboostLayer, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_adaboost_layer_sum(s : MlensembleadaboostLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_layer_sum(s : MlensembleadaboostLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_layer_mean(s : MlensembleadaboostLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_layer_mean(s : MlensembleadaboostLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_layer_scale(s : MlensembleadaboostLayer, f : Double) -> MlensembleadaboostLayer {
   let result = ml_ensemble_adaboost_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_ensemble_adaboost_layer_fill(s : MlensembleadaboostLayer, v : Double) 
   result
 }
 
-pub fn ml_ensemble_adaboost_layer_min(s : MlensembleadaboostLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_layer_min(s : MlensembleadaboostLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_layer_max(s : MlensembleadaboostLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_layer_max(s : MlensembleadaboostLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_layer_to_string(s : MlensembleadaboostLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_ensemble_adaboost_buffer_set(s : MlensembleadaboostBuffer, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_adaboost_buffer_sum(s : MlensembleadaboostBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_buffer_sum(s : MlensembleadaboostBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_buffer_mean(s : MlensembleadaboostBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_buffer_mean(s : MlensembleadaboostBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_buffer_scale(s : MlensembleadaboostBuffer, f : Double) -> MlensembleadaboostBuffer {
   let result = ml_ensemble_adaboost_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_ensemble_adaboost_buffer_fill(s : MlensembleadaboostBuffer, v : Double
   result
 }
 
-pub fn ml_ensemble_adaboost_buffer_min(s : MlensembleadaboostBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_buffer_min(s : MlensembleadaboostBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_buffer_max(s : MlensembleadaboostBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_buffer_max(s : MlensembleadaboostBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_buffer_to_string(s : MlensembleadaboostBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_ensemble_adaboost_cursor_set(s : MlensembleadaboostCursor, i : Int, v 
   result
 }
 
-pub fn ml_ensemble_adaboost_cursor_sum(s : MlensembleadaboostCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_cursor_sum(s : MlensembleadaboostCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_cursor_mean(s : MlensembleadaboostCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_cursor_mean(s : MlensembleadaboostCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_cursor_scale(s : MlensembleadaboostCursor, f : Double) -> MlensembleadaboostCursor {
   let result = ml_ensemble_adaboost_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_ensemble_adaboost_cursor_fill(s : MlensembleadaboostCursor, v : Double
   result
 }
 
-pub fn ml_ensemble_adaboost_cursor_min(s : MlensembleadaboostCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_cursor_min(s : MlensembleadaboostCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_cursor_max(s : MlensembleadaboostCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_cursor_max(s : MlensembleadaboostCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_cursor_to_string(s : MlensembleadaboostCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_ensemble_adaboost_view_set(s : MlensembleadaboostView, i : Int, v : Do
   result
 }
 
-pub fn ml_ensemble_adaboost_view_sum(s : MlensembleadaboostView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_view_sum(s : MlensembleadaboostView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_view_mean(s : MlensembleadaboostView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_view_mean(s : MlensembleadaboostView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_view_scale(s : MlensembleadaboostView, f : Double) -> MlensembleadaboostView {
   let result = ml_ensemble_adaboost_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_ensemble_adaboost_view_fill(s : MlensembleadaboostView, v : Double) ->
   result
 }
 
-pub fn ml_ensemble_adaboost_view_min(s : MlensembleadaboostView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_view_min(s : MlensembleadaboostView) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_view_max(s : MlensembleadaboostView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_view_max(s : MlensembleadaboostView) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_view_to_string(s : MlensembleadaboostView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_ensemble_adaboost_range_set(s : MlensembleadaboostRange, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_adaboost_range_sum(s : MlensembleadaboostRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_range_sum(s : MlensembleadaboostRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_range_mean(s : MlensembleadaboostRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_range_mean(s : MlensembleadaboostRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_range_scale(s : MlensembleadaboostRange, f : Double) -> MlensembleadaboostRange {
   let result = ml_ensemble_adaboost_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_ensemble_adaboost_range_fill(s : MlensembleadaboostRange, v : Double) 
   result
 }
 
-pub fn ml_ensemble_adaboost_range_min(s : MlensembleadaboostRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_range_min(s : MlensembleadaboostRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_range_max(s : MlensembleadaboostRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_range_max(s : MlensembleadaboostRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_range_to_string(s : MlensembleadaboostRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_ensemble_adaboost_slice_set(s : MlensembleadaboostSlice, i : Int, v : 
   result
 }
 
-pub fn ml_ensemble_adaboost_slice_sum(s : MlensembleadaboostSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_ensemble_adaboost_slice_sum(s : MlensembleadaboostSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_ensemble_adaboost_slice_mean(s : MlensembleadaboostSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_ensemble_adaboost_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_ensemble_adaboost_slice_mean(s : MlensembleadaboostSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_ensemble_adaboost_slice_scale(s : MlensembleadaboostSlice, f : Double) -> MlensembleadaboostSlice {
   let result = ml_ensemble_adaboost_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_ensemble_adaboost_slice_fill(s : MlensembleadaboostSlice, v : Double) 
   result
 }
 
-pub fn ml_ensemble_adaboost_slice_min(s : MlensembleadaboostSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_slice_min(s : MlensembleadaboostSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_ensemble_adaboost_slice_max(s : MlensembleadaboostSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_ensemble_adaboost_slice_max(s : MlensembleadaboostSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_ensemble_adaboost_slice_to_string(s : MlensembleadaboostSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

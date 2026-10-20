@@ -88,11 +88,7 @@ pub fn math_special_bessel_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_special_bessel_series_len(s : MathspecialbesselSeries) -> Int { s.vals.length() }
 
-pub fn math_special_bessel_series_sum(s : MathspecialbesselSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_bessel_series_sum(s : MathspecialbesselSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_bessel_series_mean(s : MathspecialbesselSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_bessel_frame_set(s : MathspecialbesselFrame, i : Int, v : Do
   result
 }
 
-pub fn math_special_bessel_frame_sum(s : MathspecialbesselFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_frame_sum(s : MathspecialbesselFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_frame_mean(s : MathspecialbesselFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_frame_mean(s : MathspecialbesselFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_frame_scale(s : MathspecialbesselFrame, f : Double) -> MathspecialbesselFrame {
   let result = math_special_bessel_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_bessel_frame_fill(s : MathspecialbesselFrame, v : Double) ->
   result
 }
 
-pub fn math_special_bessel_frame_min(s : MathspecialbesselFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_frame_min(s : MathspecialbesselFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_frame_max(s : MathspecialbesselFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_frame_max(s : MathspecialbesselFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_frame_to_string(s : MathspecialbesselFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_bessel_table_set(s : MathspecialbesselTable, i : Int, v : Do
   result
 }
 
-pub fn math_special_bessel_table_sum(s : MathspecialbesselTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_table_sum(s : MathspecialbesselTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_table_mean(s : MathspecialbesselTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_table_mean(s : MathspecialbesselTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_table_scale(s : MathspecialbesselTable, f : Double) -> MathspecialbesselTable {
   let result = math_special_bessel_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_bessel_table_fill(s : MathspecialbesselTable, v : Double) ->
   result
 }
 
-pub fn math_special_bessel_table_min(s : MathspecialbesselTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_table_min(s : MathspecialbesselTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_table_max(s : MathspecialbesselTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_table_max(s : MathspecialbesselTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_table_to_string(s : MathspecialbesselTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_bessel_graphn_set(s : MathspecialbesselGraphN, i : Int, v : 
   result
 }
 
-pub fn math_special_bessel_graphn_sum(s : MathspecialbesselGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_graphn_sum(s : MathspecialbesselGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_graphn_mean(s : MathspecialbesselGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_graphn_mean(s : MathspecialbesselGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_graphn_scale(s : MathspecialbesselGraphN, f : Double) -> MathspecialbesselGraphN {
   let result = math_special_bessel_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_bessel_graphn_fill(s : MathspecialbesselGraphN, v : Double) 
   result
 }
 
-pub fn math_special_bessel_graphn_min(s : MathspecialbesselGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_graphn_min(s : MathspecialbesselGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_graphn_max(s : MathspecialbesselGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_graphn_max(s : MathspecialbesselGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_graphn_to_string(s : MathspecialbesselGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_bessel_node_set(s : MathspecialbesselNode, i : Int, v : Doub
   result
 }
 
-pub fn math_special_bessel_node_sum(s : MathspecialbesselNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_node_sum(s : MathspecialbesselNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_node_mean(s : MathspecialbesselNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_node_mean(s : MathspecialbesselNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_node_scale(s : MathspecialbesselNode, f : Double) -> MathspecialbesselNode {
   let result = math_special_bessel_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_bessel_node_fill(s : MathspecialbesselNode, v : Double) -> M
   result
 }
 
-pub fn math_special_bessel_node_min(s : MathspecialbesselNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_node_min(s : MathspecialbesselNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_node_max(s : MathspecialbesselNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_node_max(s : MathspecialbesselNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_node_to_string(s : MathspecialbesselNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_bessel_edge_set(s : MathspecialbesselEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_special_bessel_edge_sum(s : MathspecialbesselEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_edge_sum(s : MathspecialbesselEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_edge_mean(s : MathspecialbesselEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_edge_mean(s : MathspecialbesselEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_edge_scale(s : MathspecialbesselEdge, f : Double) -> MathspecialbesselEdge {
   let result = math_special_bessel_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_bessel_edge_fill(s : MathspecialbesselEdge, v : Double) -> M
   result
 }
 
-pub fn math_special_bessel_edge_min(s : MathspecialbesselEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_edge_min(s : MathspecialbesselEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_edge_max(s : MathspecialbesselEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_edge_max(s : MathspecialbesselEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_edge_to_string(s : MathspecialbesselEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_bessel_path_set(s : MathspecialbesselPath, i : Int, v : Doub
   result
 }
 
-pub fn math_special_bessel_path_sum(s : MathspecialbesselPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_path_sum(s : MathspecialbesselPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_path_mean(s : MathspecialbesselPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_path_mean(s : MathspecialbesselPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_path_scale(s : MathspecialbesselPath, f : Double) -> MathspecialbesselPath {
   let result = math_special_bessel_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_bessel_path_fill(s : MathspecialbesselPath, v : Double) -> M
   result
 }
 
-pub fn math_special_bessel_path_min(s : MathspecialbesselPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_path_min(s : MathspecialbesselPath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_path_max(s : MathspecialbesselPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_path_max(s : MathspecialbesselPath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_path_to_string(s : MathspecialbesselPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_bessel_cluster_set(s : MathspecialbesselCluster, i : Int, v 
   result
 }
 
-pub fn math_special_bessel_cluster_sum(s : MathspecialbesselCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_cluster_sum(s : MathspecialbesselCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_cluster_mean(s : MathspecialbesselCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_cluster_mean(s : MathspecialbesselCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_cluster_scale(s : MathspecialbesselCluster, f : Double) -> MathspecialbesselCluster {
   let result = math_special_bessel_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_bessel_cluster_fill(s : MathspecialbesselCluster, v : Double
   result
 }
 
-pub fn math_special_bessel_cluster_min(s : MathspecialbesselCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_cluster_min(s : MathspecialbesselCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_cluster_max(s : MathspecialbesselCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_cluster_max(s : MathspecialbesselCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_cluster_to_string(s : MathspecialbesselCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_bessel_model_set(s : MathspecialbesselModel, i : Int, v : Do
   result
 }
 
-pub fn math_special_bessel_model_sum(s : MathspecialbesselModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_model_sum(s : MathspecialbesselModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_model_mean(s : MathspecialbesselModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_model_mean(s : MathspecialbesselModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_model_scale(s : MathspecialbesselModel, f : Double) -> MathspecialbesselModel {
   let result = math_special_bessel_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_bessel_model_fill(s : MathspecialbesselModel, v : Double) ->
   result
 }
 
-pub fn math_special_bessel_model_min(s : MathspecialbesselModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_model_min(s : MathspecialbesselModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_model_max(s : MathspecialbesselModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_model_max(s : MathspecialbesselModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_model_to_string(s : MathspecialbesselModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_bessel_layer_set(s : MathspecialbesselLayer, i : Int, v : Do
   result
 }
 
-pub fn math_special_bessel_layer_sum(s : MathspecialbesselLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_layer_sum(s : MathspecialbesselLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_layer_mean(s : MathspecialbesselLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_layer_mean(s : MathspecialbesselLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_layer_scale(s : MathspecialbesselLayer, f : Double) -> MathspecialbesselLayer {
   let result = math_special_bessel_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_bessel_layer_fill(s : MathspecialbesselLayer, v : Double) ->
   result
 }
 
-pub fn math_special_bessel_layer_min(s : MathspecialbesselLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_layer_min(s : MathspecialbesselLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_layer_max(s : MathspecialbesselLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_layer_max(s : MathspecialbesselLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_layer_to_string(s : MathspecialbesselLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_bessel_buffer_set(s : MathspecialbesselBuffer, i : Int, v : 
   result
 }
 
-pub fn math_special_bessel_buffer_sum(s : MathspecialbesselBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_buffer_sum(s : MathspecialbesselBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_buffer_mean(s : MathspecialbesselBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_buffer_mean(s : MathspecialbesselBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_buffer_scale(s : MathspecialbesselBuffer, f : Double) -> MathspecialbesselBuffer {
   let result = math_special_bessel_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_bessel_buffer_fill(s : MathspecialbesselBuffer, v : Double) 
   result
 }
 
-pub fn math_special_bessel_buffer_min(s : MathspecialbesselBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_buffer_min(s : MathspecialbesselBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_buffer_max(s : MathspecialbesselBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_buffer_max(s : MathspecialbesselBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_buffer_to_string(s : MathspecialbesselBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_bessel_cursor_set(s : MathspecialbesselCursor, i : Int, v : 
   result
 }
 
-pub fn math_special_bessel_cursor_sum(s : MathspecialbesselCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_cursor_sum(s : MathspecialbesselCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_cursor_mean(s : MathspecialbesselCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_cursor_mean(s : MathspecialbesselCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_cursor_scale(s : MathspecialbesselCursor, f : Double) -> MathspecialbesselCursor {
   let result = math_special_bessel_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_bessel_cursor_fill(s : MathspecialbesselCursor, v : Double) 
   result
 }
 
-pub fn math_special_bessel_cursor_min(s : MathspecialbesselCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_cursor_min(s : MathspecialbesselCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_cursor_max(s : MathspecialbesselCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_cursor_max(s : MathspecialbesselCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_cursor_to_string(s : MathspecialbesselCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_bessel_view_set(s : MathspecialbesselView, i : Int, v : Doub
   result
 }
 
-pub fn math_special_bessel_view_sum(s : MathspecialbesselView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_view_sum(s : MathspecialbesselView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_view_mean(s : MathspecialbesselView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_view_mean(s : MathspecialbesselView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_view_scale(s : MathspecialbesselView, f : Double) -> MathspecialbesselView {
   let result = math_special_bessel_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_bessel_view_fill(s : MathspecialbesselView, v : Double) -> M
   result
 }
 
-pub fn math_special_bessel_view_min(s : MathspecialbesselView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_view_min(s : MathspecialbesselView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_view_max(s : MathspecialbesselView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_view_max(s : MathspecialbesselView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_view_to_string(s : MathspecialbesselView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_bessel_range_set(s : MathspecialbesselRange, i : Int, v : Do
   result
 }
 
-pub fn math_special_bessel_range_sum(s : MathspecialbesselRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_range_sum(s : MathspecialbesselRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_range_mean(s : MathspecialbesselRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_range_mean(s : MathspecialbesselRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_range_scale(s : MathspecialbesselRange, f : Double) -> MathspecialbesselRange {
   let result = math_special_bessel_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_bessel_range_fill(s : MathspecialbesselRange, v : Double) ->
   result
 }
 
-pub fn math_special_bessel_range_min(s : MathspecialbesselRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_range_min(s : MathspecialbesselRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_range_max(s : MathspecialbesselRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_range_max(s : MathspecialbesselRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_range_to_string(s : MathspecialbesselRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_bessel_slice_set(s : MathspecialbesselSlice, i : Int, v : Do
   result
 }
 
-pub fn math_special_bessel_slice_sum(s : MathspecialbesselSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_bessel_slice_sum(s : MathspecialbesselSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_bessel_slice_mean(s : MathspecialbesselSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_bessel_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_bessel_slice_mean(s : MathspecialbesselSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_bessel_slice_scale(s : MathspecialbesselSlice, f : Double) -> MathspecialbesselSlice {
   let result = math_special_bessel_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_bessel_slice_fill(s : MathspecialbesselSlice, v : Double) ->
   result
 }
 
-pub fn math_special_bessel_slice_min(s : MathspecialbesselSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_slice_min(s : MathspecialbesselSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_bessel_slice_max(s : MathspecialbesselSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_bessel_slice_max(s : MathspecialbesselSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_bessel_slice_to_string(s : MathspecialbesselSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

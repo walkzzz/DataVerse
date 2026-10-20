@@ -88,11 +88,7 @@ pub fn crypto_asym_ecc_make_series(vals : Array[Double], name : String) -> Crypt
 
 pub fn crypto_asym_ecc_series_len(s : CryptoasymeccSeries) -> Int { s.vals.length() }
 
-pub fn crypto_asym_ecc_series_sum(s : CryptoasymeccSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_asym_ecc_series_sum(s : CryptoasymeccSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_asym_ecc_series_mean(s : CryptoasymeccSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_asym_ecc_frame_set(s : CryptoasymeccFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_ecc_frame_sum(s : CryptoasymeccFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_frame_sum(s : CryptoasymeccFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_frame_mean(s : CryptoasymeccFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_frame_mean(s : CryptoasymeccFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_frame_scale(s : CryptoasymeccFrame, f : Double) -> CryptoasymeccFrame {
   let result = crypto_asym_ecc_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_asym_ecc_frame_fill(s : CryptoasymeccFrame, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_ecc_frame_min(s : CryptoasymeccFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_frame_min(s : CryptoasymeccFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_frame_max(s : CryptoasymeccFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_frame_max(s : CryptoasymeccFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_frame_to_string(s : CryptoasymeccFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_asym_ecc_table_set(s : CryptoasymeccTable, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_ecc_table_sum(s : CryptoasymeccTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_table_sum(s : CryptoasymeccTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_table_mean(s : CryptoasymeccTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_table_mean(s : CryptoasymeccTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_table_scale(s : CryptoasymeccTable, f : Double) -> CryptoasymeccTable {
   let result = crypto_asym_ecc_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_asym_ecc_table_fill(s : CryptoasymeccTable, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_ecc_table_min(s : CryptoasymeccTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_table_min(s : CryptoasymeccTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_table_max(s : CryptoasymeccTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_table_max(s : CryptoasymeccTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_table_to_string(s : CryptoasymeccTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_asym_ecc_graphn_set(s : CryptoasymeccGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_ecc_graphn_sum(s : CryptoasymeccGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_graphn_sum(s : CryptoasymeccGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_graphn_mean(s : CryptoasymeccGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_graphn_mean(s : CryptoasymeccGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_graphn_scale(s : CryptoasymeccGraphN, f : Double) -> CryptoasymeccGraphN {
   let result = crypto_asym_ecc_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_asym_ecc_graphn_fill(s : CryptoasymeccGraphN, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_ecc_graphn_min(s : CryptoasymeccGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_graphn_min(s : CryptoasymeccGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_graphn_max(s : CryptoasymeccGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_graphn_max(s : CryptoasymeccGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_graphn_to_string(s : CryptoasymeccGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_asym_ecc_node_set(s : CryptoasymeccNode, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_ecc_node_sum(s : CryptoasymeccNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_node_sum(s : CryptoasymeccNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_node_mean(s : CryptoasymeccNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_node_mean(s : CryptoasymeccNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_node_scale(s : CryptoasymeccNode, f : Double) -> CryptoasymeccNode {
   let result = crypto_asym_ecc_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_asym_ecc_node_fill(s : CryptoasymeccNode, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_ecc_node_min(s : CryptoasymeccNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_node_min(s : CryptoasymeccNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_node_max(s : CryptoasymeccNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_node_max(s : CryptoasymeccNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_node_to_string(s : CryptoasymeccNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_asym_ecc_edge_set(s : CryptoasymeccEdge, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_ecc_edge_sum(s : CryptoasymeccEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_edge_sum(s : CryptoasymeccEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_edge_mean(s : CryptoasymeccEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_edge_mean(s : CryptoasymeccEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_edge_scale(s : CryptoasymeccEdge, f : Double) -> CryptoasymeccEdge {
   let result = crypto_asym_ecc_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_asym_ecc_edge_fill(s : CryptoasymeccEdge, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_ecc_edge_min(s : CryptoasymeccEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_edge_min(s : CryptoasymeccEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_edge_max(s : CryptoasymeccEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_edge_max(s : CryptoasymeccEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_edge_to_string(s : CryptoasymeccEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_asym_ecc_path_set(s : CryptoasymeccPath, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_ecc_path_sum(s : CryptoasymeccPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_path_sum(s : CryptoasymeccPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_path_mean(s : CryptoasymeccPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_path_mean(s : CryptoasymeccPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_path_scale(s : CryptoasymeccPath, f : Double) -> CryptoasymeccPath {
   let result = crypto_asym_ecc_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_asym_ecc_path_fill(s : CryptoasymeccPath, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_ecc_path_min(s : CryptoasymeccPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_path_min(s : CryptoasymeccPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_path_max(s : CryptoasymeccPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_path_max(s : CryptoasymeccPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_path_to_string(s : CryptoasymeccPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_asym_ecc_cluster_set(s : CryptoasymeccCluster, i : Int, v : Double
   result
 }
 
-pub fn crypto_asym_ecc_cluster_sum(s : CryptoasymeccCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_cluster_sum(s : CryptoasymeccCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_cluster_mean(s : CryptoasymeccCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_cluster_mean(s : CryptoasymeccCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_cluster_scale(s : CryptoasymeccCluster, f : Double) -> CryptoasymeccCluster {
   let result = crypto_asym_ecc_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_asym_ecc_cluster_fill(s : CryptoasymeccCluster, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_ecc_cluster_min(s : CryptoasymeccCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_cluster_min(s : CryptoasymeccCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_cluster_max(s : CryptoasymeccCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_cluster_max(s : CryptoasymeccCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_cluster_to_string(s : CryptoasymeccCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_asym_ecc_model_set(s : CryptoasymeccModel, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_ecc_model_sum(s : CryptoasymeccModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_model_sum(s : CryptoasymeccModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_model_mean(s : CryptoasymeccModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_model_mean(s : CryptoasymeccModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_model_scale(s : CryptoasymeccModel, f : Double) -> CryptoasymeccModel {
   let result = crypto_asym_ecc_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_asym_ecc_model_fill(s : CryptoasymeccModel, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_ecc_model_min(s : CryptoasymeccModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_model_min(s : CryptoasymeccModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_model_max(s : CryptoasymeccModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_model_max(s : CryptoasymeccModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_model_to_string(s : CryptoasymeccModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_asym_ecc_layer_set(s : CryptoasymeccLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_ecc_layer_sum(s : CryptoasymeccLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_layer_sum(s : CryptoasymeccLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_layer_mean(s : CryptoasymeccLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_layer_mean(s : CryptoasymeccLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_layer_scale(s : CryptoasymeccLayer, f : Double) -> CryptoasymeccLayer {
   let result = crypto_asym_ecc_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_asym_ecc_layer_fill(s : CryptoasymeccLayer, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_ecc_layer_min(s : CryptoasymeccLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_layer_min(s : CryptoasymeccLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_layer_max(s : CryptoasymeccLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_layer_max(s : CryptoasymeccLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_layer_to_string(s : CryptoasymeccLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_asym_ecc_buffer_set(s : CryptoasymeccBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_ecc_buffer_sum(s : CryptoasymeccBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_buffer_sum(s : CryptoasymeccBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_buffer_mean(s : CryptoasymeccBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_buffer_mean(s : CryptoasymeccBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_buffer_scale(s : CryptoasymeccBuffer, f : Double) -> CryptoasymeccBuffer {
   let result = crypto_asym_ecc_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_asym_ecc_buffer_fill(s : CryptoasymeccBuffer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_ecc_buffer_min(s : CryptoasymeccBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_buffer_min(s : CryptoasymeccBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_buffer_max(s : CryptoasymeccBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_buffer_max(s : CryptoasymeccBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_buffer_to_string(s : CryptoasymeccBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_asym_ecc_cursor_set(s : CryptoasymeccCursor, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_ecc_cursor_sum(s : CryptoasymeccCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_cursor_sum(s : CryptoasymeccCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_cursor_mean(s : CryptoasymeccCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_cursor_mean(s : CryptoasymeccCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_cursor_scale(s : CryptoasymeccCursor, f : Double) -> CryptoasymeccCursor {
   let result = crypto_asym_ecc_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_asym_ecc_cursor_fill(s : CryptoasymeccCursor, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_ecc_cursor_min(s : CryptoasymeccCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_cursor_min(s : CryptoasymeccCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_cursor_max(s : CryptoasymeccCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_cursor_max(s : CryptoasymeccCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_cursor_to_string(s : CryptoasymeccCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_asym_ecc_view_set(s : CryptoasymeccView, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_ecc_view_sum(s : CryptoasymeccView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_view_sum(s : CryptoasymeccView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_view_mean(s : CryptoasymeccView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_view_mean(s : CryptoasymeccView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_view_scale(s : CryptoasymeccView, f : Double) -> CryptoasymeccView {
   let result = crypto_asym_ecc_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_asym_ecc_view_fill(s : CryptoasymeccView, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_ecc_view_min(s : CryptoasymeccView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_view_min(s : CryptoasymeccView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_view_max(s : CryptoasymeccView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_view_max(s : CryptoasymeccView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_view_to_string(s : CryptoasymeccView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_asym_ecc_range_set(s : CryptoasymeccRange, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_ecc_range_sum(s : CryptoasymeccRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_range_sum(s : CryptoasymeccRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_range_mean(s : CryptoasymeccRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_range_mean(s : CryptoasymeccRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_range_scale(s : CryptoasymeccRange, f : Double) -> CryptoasymeccRange {
   let result = crypto_asym_ecc_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_asym_ecc_range_fill(s : CryptoasymeccRange, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_ecc_range_min(s : CryptoasymeccRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_range_min(s : CryptoasymeccRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_range_max(s : CryptoasymeccRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_range_max(s : CryptoasymeccRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_range_to_string(s : CryptoasymeccRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_asym_ecc_slice_set(s : CryptoasymeccSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_ecc_slice_sum(s : CryptoasymeccSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_ecc_slice_sum(s : CryptoasymeccSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_ecc_slice_mean(s : CryptoasymeccSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_ecc_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_ecc_slice_mean(s : CryptoasymeccSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_ecc_slice_scale(s : CryptoasymeccSlice, f : Double) -> CryptoasymeccSlice {
   let result = crypto_asym_ecc_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_asym_ecc_slice_fill(s : CryptoasymeccSlice, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_ecc_slice_min(s : CryptoasymeccSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_slice_min(s : CryptoasymeccSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_ecc_slice_max(s : CryptoasymeccSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_ecc_slice_max(s : CryptoasymeccSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_ecc_slice_to_string(s : CryptoasymeccSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

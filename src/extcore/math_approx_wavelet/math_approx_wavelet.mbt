@@ -88,11 +88,7 @@ pub fn math_approx_wavelet_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_approx_wavelet_series_len(s : MathapproxwaveletSeries) -> Int { s.vals.length() }
 
-pub fn math_approx_wavelet_series_sum(s : MathapproxwaveletSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_approx_wavelet_series_sum(s : MathapproxwaveletSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_approx_wavelet_series_mean(s : MathapproxwaveletSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_approx_wavelet_frame_set(s : MathapproxwaveletFrame, i : Int, v : Do
   result
 }
 
-pub fn math_approx_wavelet_frame_sum(s : MathapproxwaveletFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_frame_sum(s : MathapproxwaveletFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_frame_mean(s : MathapproxwaveletFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_frame_mean(s : MathapproxwaveletFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_frame_scale(s : MathapproxwaveletFrame, f : Double) -> MathapproxwaveletFrame {
   let result = math_approx_wavelet_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_approx_wavelet_frame_fill(s : MathapproxwaveletFrame, v : Double) ->
   result
 }
 
-pub fn math_approx_wavelet_frame_min(s : MathapproxwaveletFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_frame_min(s : MathapproxwaveletFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_frame_max(s : MathapproxwaveletFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_frame_max(s : MathapproxwaveletFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_frame_to_string(s : MathapproxwaveletFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_approx_wavelet_table_set(s : MathapproxwaveletTable, i : Int, v : Do
   result
 }
 
-pub fn math_approx_wavelet_table_sum(s : MathapproxwaveletTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_table_sum(s : MathapproxwaveletTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_table_mean(s : MathapproxwaveletTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_table_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_table_mean(s : MathapproxwaveletTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_table_scale(s : MathapproxwaveletTable, f : Double) -> MathapproxwaveletTable {
   let result = math_approx_wavelet_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_approx_wavelet_table_fill(s : MathapproxwaveletTable, v : Double) ->
   result
 }
 
-pub fn math_approx_wavelet_table_min(s : MathapproxwaveletTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_table_min(s : MathapproxwaveletTable) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_table_max(s : MathapproxwaveletTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_table_max(s : MathapproxwaveletTable) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_table_to_string(s : MathapproxwaveletTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_approx_wavelet_graphn_set(s : MathapproxwaveletGraphN, i : Int, v : 
   result
 }
 
-pub fn math_approx_wavelet_graphn_sum(s : MathapproxwaveletGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_graphn_sum(s : MathapproxwaveletGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_graphn_mean(s : MathapproxwaveletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_graphn_mean(s : MathapproxwaveletGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_graphn_scale(s : MathapproxwaveletGraphN, f : Double) -> MathapproxwaveletGraphN {
   let result = math_approx_wavelet_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_approx_wavelet_graphn_fill(s : MathapproxwaveletGraphN, v : Double) 
   result
 }
 
-pub fn math_approx_wavelet_graphn_min(s : MathapproxwaveletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_graphn_min(s : MathapproxwaveletGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_graphn_max(s : MathapproxwaveletGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_graphn_max(s : MathapproxwaveletGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_graphn_to_string(s : MathapproxwaveletGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_approx_wavelet_node_set(s : MathapproxwaveletNode, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_wavelet_node_sum(s : MathapproxwaveletNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_node_sum(s : MathapproxwaveletNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_node_mean(s : MathapproxwaveletNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_node_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_node_mean(s : MathapproxwaveletNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_node_scale(s : MathapproxwaveletNode, f : Double) -> MathapproxwaveletNode {
   let result = math_approx_wavelet_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_approx_wavelet_node_fill(s : MathapproxwaveletNode, v : Double) -> M
   result
 }
 
-pub fn math_approx_wavelet_node_min(s : MathapproxwaveletNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_node_min(s : MathapproxwaveletNode) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_node_max(s : MathapproxwaveletNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_node_max(s : MathapproxwaveletNode) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_node_to_string(s : MathapproxwaveletNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_approx_wavelet_edge_set(s : MathapproxwaveletEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_wavelet_edge_sum(s : MathapproxwaveletEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_edge_sum(s : MathapproxwaveletEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_edge_mean(s : MathapproxwaveletEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_edge_mean(s : MathapproxwaveletEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_edge_scale(s : MathapproxwaveletEdge, f : Double) -> MathapproxwaveletEdge {
   let result = math_approx_wavelet_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_approx_wavelet_edge_fill(s : MathapproxwaveletEdge, v : Double) -> M
   result
 }
 
-pub fn math_approx_wavelet_edge_min(s : MathapproxwaveletEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_edge_min(s : MathapproxwaveletEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_edge_max(s : MathapproxwaveletEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_edge_max(s : MathapproxwaveletEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_edge_to_string(s : MathapproxwaveletEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_approx_wavelet_path_set(s : MathapproxwaveletPath, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_wavelet_path_sum(s : MathapproxwaveletPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_path_sum(s : MathapproxwaveletPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_path_mean(s : MathapproxwaveletPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_path_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_path_mean(s : MathapproxwaveletPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_path_scale(s : MathapproxwaveletPath, f : Double) -> MathapproxwaveletPath {
   let result = math_approx_wavelet_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_approx_wavelet_path_fill(s : MathapproxwaveletPath, v : Double) -> M
   result
 }
 
-pub fn math_approx_wavelet_path_min(s : MathapproxwaveletPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_path_min(s : MathapproxwaveletPath) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_path_max(s : MathapproxwaveletPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_path_max(s : MathapproxwaveletPath) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_path_to_string(s : MathapproxwaveletPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_approx_wavelet_cluster_set(s : MathapproxwaveletCluster, i : Int, v 
   result
 }
 
-pub fn math_approx_wavelet_cluster_sum(s : MathapproxwaveletCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_cluster_sum(s : MathapproxwaveletCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_cluster_mean(s : MathapproxwaveletCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_cluster_mean(s : MathapproxwaveletCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_cluster_scale(s : MathapproxwaveletCluster, f : Double) -> MathapproxwaveletCluster {
   let result = math_approx_wavelet_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_approx_wavelet_cluster_fill(s : MathapproxwaveletCluster, v : Double
   result
 }
 
-pub fn math_approx_wavelet_cluster_min(s : MathapproxwaveletCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_cluster_min(s : MathapproxwaveletCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_cluster_max(s : MathapproxwaveletCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_cluster_max(s : MathapproxwaveletCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_cluster_to_string(s : MathapproxwaveletCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_approx_wavelet_model_set(s : MathapproxwaveletModel, i : Int, v : Do
   result
 }
 
-pub fn math_approx_wavelet_model_sum(s : MathapproxwaveletModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_model_sum(s : MathapproxwaveletModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_model_mean(s : MathapproxwaveletModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_model_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_model_mean(s : MathapproxwaveletModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_model_scale(s : MathapproxwaveletModel, f : Double) -> MathapproxwaveletModel {
   let result = math_approx_wavelet_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_approx_wavelet_model_fill(s : MathapproxwaveletModel, v : Double) ->
   result
 }
 
-pub fn math_approx_wavelet_model_min(s : MathapproxwaveletModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_model_min(s : MathapproxwaveletModel) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_model_max(s : MathapproxwaveletModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_model_max(s : MathapproxwaveletModel) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_model_to_string(s : MathapproxwaveletModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_approx_wavelet_layer_set(s : MathapproxwaveletLayer, i : Int, v : Do
   result
 }
 
-pub fn math_approx_wavelet_layer_sum(s : MathapproxwaveletLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_layer_sum(s : MathapproxwaveletLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_layer_mean(s : MathapproxwaveletLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_layer_mean(s : MathapproxwaveletLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_layer_scale(s : MathapproxwaveletLayer, f : Double) -> MathapproxwaveletLayer {
   let result = math_approx_wavelet_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_approx_wavelet_layer_fill(s : MathapproxwaveletLayer, v : Double) ->
   result
 }
 
-pub fn math_approx_wavelet_layer_min(s : MathapproxwaveletLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_layer_min(s : MathapproxwaveletLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_layer_max(s : MathapproxwaveletLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_layer_max(s : MathapproxwaveletLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_layer_to_string(s : MathapproxwaveletLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_approx_wavelet_buffer_set(s : MathapproxwaveletBuffer, i : Int, v : 
   result
 }
 
-pub fn math_approx_wavelet_buffer_sum(s : MathapproxwaveletBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_buffer_sum(s : MathapproxwaveletBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_buffer_mean(s : MathapproxwaveletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_buffer_mean(s : MathapproxwaveletBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_buffer_scale(s : MathapproxwaveletBuffer, f : Double) -> MathapproxwaveletBuffer {
   let result = math_approx_wavelet_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_approx_wavelet_buffer_fill(s : MathapproxwaveletBuffer, v : Double) 
   result
 }
 
-pub fn math_approx_wavelet_buffer_min(s : MathapproxwaveletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_buffer_min(s : MathapproxwaveletBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_buffer_max(s : MathapproxwaveletBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_buffer_max(s : MathapproxwaveletBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_buffer_to_string(s : MathapproxwaveletBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_approx_wavelet_cursor_set(s : MathapproxwaveletCursor, i : Int, v : 
   result
 }
 
-pub fn math_approx_wavelet_cursor_sum(s : MathapproxwaveletCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_cursor_sum(s : MathapproxwaveletCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_cursor_mean(s : MathapproxwaveletCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_cursor_mean(s : MathapproxwaveletCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_cursor_scale(s : MathapproxwaveletCursor, f : Double) -> MathapproxwaveletCursor {
   let result = math_approx_wavelet_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_approx_wavelet_cursor_fill(s : MathapproxwaveletCursor, v : Double) 
   result
 }
 
-pub fn math_approx_wavelet_cursor_min(s : MathapproxwaveletCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_cursor_min(s : MathapproxwaveletCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_cursor_max(s : MathapproxwaveletCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_cursor_max(s : MathapproxwaveletCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_cursor_to_string(s : MathapproxwaveletCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_approx_wavelet_view_set(s : MathapproxwaveletView, i : Int, v : Doub
   result
 }
 
-pub fn math_approx_wavelet_view_sum(s : MathapproxwaveletView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_view_sum(s : MathapproxwaveletView) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_view_mean(s : MathapproxwaveletView) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_view_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_view_mean(s : MathapproxwaveletView) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_view_scale(s : MathapproxwaveletView, f : Double) -> MathapproxwaveletView {
   let result = math_approx_wavelet_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_approx_wavelet_view_fill(s : MathapproxwaveletView, v : Double) -> M
   result
 }
 
-pub fn math_approx_wavelet_view_min(s : MathapproxwaveletView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_view_min(s : MathapproxwaveletView) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_view_max(s : MathapproxwaveletView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_view_max(s : MathapproxwaveletView) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_view_to_string(s : MathapproxwaveletView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_approx_wavelet_range_set(s : MathapproxwaveletRange, i : Int, v : Do
   result
 }
 
-pub fn math_approx_wavelet_range_sum(s : MathapproxwaveletRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_range_sum(s : MathapproxwaveletRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_range_mean(s : MathapproxwaveletRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_range_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_range_mean(s : MathapproxwaveletRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_range_scale(s : MathapproxwaveletRange, f : Double) -> MathapproxwaveletRange {
   let result = math_approx_wavelet_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_approx_wavelet_range_fill(s : MathapproxwaveletRange, v : Double) ->
   result
 }
 
-pub fn math_approx_wavelet_range_min(s : MathapproxwaveletRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_range_min(s : MathapproxwaveletRange) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_range_max(s : MathapproxwaveletRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_range_max(s : MathapproxwaveletRange) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_range_to_string(s : MathapproxwaveletRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_approx_wavelet_slice_set(s : MathapproxwaveletSlice, i : Int, v : Do
   result
 }
 
-pub fn math_approx_wavelet_slice_sum(s : MathapproxwaveletSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_approx_wavelet_slice_sum(s : MathapproxwaveletSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_approx_wavelet_slice_mean(s : MathapproxwaveletSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_approx_wavelet_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_approx_wavelet_slice_mean(s : MathapproxwaveletSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_approx_wavelet_slice_scale(s : MathapproxwaveletSlice, f : Double) -> MathapproxwaveletSlice {
   let result = math_approx_wavelet_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_approx_wavelet_slice_fill(s : MathapproxwaveletSlice, v : Double) ->
   result
 }
 
-pub fn math_approx_wavelet_slice_min(s : MathapproxwaveletSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_slice_min(s : MathapproxwaveletSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_approx_wavelet_slice_max(s : MathapproxwaveletSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_approx_wavelet_slice_max(s : MathapproxwaveletSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_approx_wavelet_slice_to_string(s : MathapproxwaveletSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

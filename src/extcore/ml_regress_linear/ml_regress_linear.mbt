@@ -88,11 +88,7 @@ pub fn ml_regress_linear_make_series(vals : Array[Double], name : String) -> Mlr
 
 pub fn ml_regress_linear_series_len(s : MlregresslinearSeries) -> Int { s.vals.length() }
 
-pub fn ml_regress_linear_series_sum(s : MlregresslinearSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_regress_linear_series_sum(s : MlregresslinearSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_regress_linear_series_mean(s : MlregresslinearSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_regress_linear_frame_set(s : MlregresslinearFrame, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_linear_frame_sum(s : MlregresslinearFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_frame_sum(s : MlregresslinearFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_frame_mean(s : MlregresslinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_frame_mean(s : MlregresslinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_frame_scale(s : MlregresslinearFrame, f : Double) -> MlregresslinearFrame {
   let result = ml_regress_linear_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_regress_linear_frame_fill(s : MlregresslinearFrame, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_linear_frame_min(s : MlregresslinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_frame_min(s : MlregresslinearFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_frame_max(s : MlregresslinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_frame_max(s : MlregresslinearFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_frame_to_string(s : MlregresslinearFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_regress_linear_table_set(s : MlregresslinearTable, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_linear_table_sum(s : MlregresslinearTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_table_sum(s : MlregresslinearTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_table_mean(s : MlregresslinearTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_table_mean(s : MlregresslinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_table_scale(s : MlregresslinearTable, f : Double) -> MlregresslinearTable {
   let result = ml_regress_linear_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_regress_linear_table_fill(s : MlregresslinearTable, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_linear_table_min(s : MlregresslinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_table_min(s : MlregresslinearTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_table_max(s : MlregresslinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_table_max(s : MlregresslinearTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_table_to_string(s : MlregresslinearTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_regress_linear_graphn_set(s : MlregresslinearGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_linear_graphn_sum(s : MlregresslinearGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_graphn_sum(s : MlregresslinearGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_graphn_mean(s : MlregresslinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_graphn_mean(s : MlregresslinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_graphn_scale(s : MlregresslinearGraphN, f : Double) -> MlregresslinearGraphN {
   let result = ml_regress_linear_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_regress_linear_graphn_fill(s : MlregresslinearGraphN, v : Double) -> M
   result
 }
 
-pub fn ml_regress_linear_graphn_min(s : MlregresslinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_graphn_min(s : MlregresslinearGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_graphn_max(s : MlregresslinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_graphn_max(s : MlregresslinearGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_graphn_to_string(s : MlregresslinearGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_regress_linear_node_set(s : MlregresslinearNode, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_linear_node_sum(s : MlregresslinearNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_node_sum(s : MlregresslinearNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_node_mean(s : MlregresslinearNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_node_mean(s : MlregresslinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_node_scale(s : MlregresslinearNode, f : Double) -> MlregresslinearNode {
   let result = ml_regress_linear_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_regress_linear_node_fill(s : MlregresslinearNode, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_linear_node_min(s : MlregresslinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_node_min(s : MlregresslinearNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_node_max(s : MlregresslinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_node_max(s : MlregresslinearNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_node_to_string(s : MlregresslinearNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_regress_linear_edge_set(s : MlregresslinearEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_linear_edge_sum(s : MlregresslinearEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_edge_sum(s : MlregresslinearEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_edge_mean(s : MlregresslinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_edge_mean(s : MlregresslinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_edge_scale(s : MlregresslinearEdge, f : Double) -> MlregresslinearEdge {
   let result = ml_regress_linear_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_regress_linear_edge_fill(s : MlregresslinearEdge, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_linear_edge_min(s : MlregresslinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_edge_min(s : MlregresslinearEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_edge_max(s : MlregresslinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_edge_max(s : MlregresslinearEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_edge_to_string(s : MlregresslinearEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_regress_linear_path_set(s : MlregresslinearPath, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_linear_path_sum(s : MlregresslinearPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_path_sum(s : MlregresslinearPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_path_mean(s : MlregresslinearPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_path_mean(s : MlregresslinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_path_scale(s : MlregresslinearPath, f : Double) -> MlregresslinearPath {
   let result = ml_regress_linear_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_regress_linear_path_fill(s : MlregresslinearPath, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_linear_path_min(s : MlregresslinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_path_min(s : MlregresslinearPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_path_max(s : MlregresslinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_path_max(s : MlregresslinearPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_path_to_string(s : MlregresslinearPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_regress_linear_cluster_set(s : MlregresslinearCluster, i : Int, v : Do
   result
 }
 
-pub fn ml_regress_linear_cluster_sum(s : MlregresslinearCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_cluster_sum(s : MlregresslinearCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_cluster_mean(s : MlregresslinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_cluster_mean(s : MlregresslinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_cluster_scale(s : MlregresslinearCluster, f : Double) -> MlregresslinearCluster {
   let result = ml_regress_linear_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_regress_linear_cluster_fill(s : MlregresslinearCluster, v : Double) ->
   result
 }
 
-pub fn ml_regress_linear_cluster_min(s : MlregresslinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_cluster_min(s : MlregresslinearCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_cluster_max(s : MlregresslinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_cluster_max(s : MlregresslinearCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_cluster_to_string(s : MlregresslinearCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_regress_linear_model_set(s : MlregresslinearModel, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_linear_model_sum(s : MlregresslinearModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_model_sum(s : MlregresslinearModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_model_mean(s : MlregresslinearModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_model_mean(s : MlregresslinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_model_scale(s : MlregresslinearModel, f : Double) -> MlregresslinearModel {
   let result = ml_regress_linear_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_regress_linear_model_fill(s : MlregresslinearModel, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_linear_model_min(s : MlregresslinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_model_min(s : MlregresslinearModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_model_max(s : MlregresslinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_model_max(s : MlregresslinearModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_model_to_string(s : MlregresslinearModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_regress_linear_layer_set(s : MlregresslinearLayer, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_linear_layer_sum(s : MlregresslinearLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_layer_sum(s : MlregresslinearLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_layer_mean(s : MlregresslinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_layer_mean(s : MlregresslinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_layer_scale(s : MlregresslinearLayer, f : Double) -> MlregresslinearLayer {
   let result = ml_regress_linear_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_regress_linear_layer_fill(s : MlregresslinearLayer, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_linear_layer_min(s : MlregresslinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_layer_min(s : MlregresslinearLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_layer_max(s : MlregresslinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_layer_max(s : MlregresslinearLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_layer_to_string(s : MlregresslinearLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_regress_linear_buffer_set(s : MlregresslinearBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_linear_buffer_sum(s : MlregresslinearBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_buffer_sum(s : MlregresslinearBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_buffer_mean(s : MlregresslinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_buffer_mean(s : MlregresslinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_buffer_scale(s : MlregresslinearBuffer, f : Double) -> MlregresslinearBuffer {
   let result = ml_regress_linear_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_regress_linear_buffer_fill(s : MlregresslinearBuffer, v : Double) -> M
   result
 }
 
-pub fn ml_regress_linear_buffer_min(s : MlregresslinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_buffer_min(s : MlregresslinearBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_buffer_max(s : MlregresslinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_buffer_max(s : MlregresslinearBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_buffer_to_string(s : MlregresslinearBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_regress_linear_cursor_set(s : MlregresslinearCursor, i : Int, v : Doub
   result
 }
 
-pub fn ml_regress_linear_cursor_sum(s : MlregresslinearCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_cursor_sum(s : MlregresslinearCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_cursor_mean(s : MlregresslinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_cursor_mean(s : MlregresslinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_cursor_scale(s : MlregresslinearCursor, f : Double) -> MlregresslinearCursor {
   let result = ml_regress_linear_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_regress_linear_cursor_fill(s : MlregresslinearCursor, v : Double) -> M
   result
 }
 
-pub fn ml_regress_linear_cursor_min(s : MlregresslinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_cursor_min(s : MlregresslinearCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_cursor_max(s : MlregresslinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_cursor_max(s : MlregresslinearCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_cursor_to_string(s : MlregresslinearCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_regress_linear_view_set(s : MlregresslinearView, i : Int, v : Double) 
   result
 }
 
-pub fn ml_regress_linear_view_sum(s : MlregresslinearView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_view_sum(s : MlregresslinearView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_view_mean(s : MlregresslinearView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_view_mean(s : MlregresslinearView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_view_scale(s : MlregresslinearView, f : Double) -> MlregresslinearView {
   let result = ml_regress_linear_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_regress_linear_view_fill(s : MlregresslinearView, v : Double) -> Mlreg
   result
 }
 
-pub fn ml_regress_linear_view_min(s : MlregresslinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_view_min(s : MlregresslinearView) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_view_max(s : MlregresslinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_view_max(s : MlregresslinearView) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_view_to_string(s : MlregresslinearView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_regress_linear_range_set(s : MlregresslinearRange, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_linear_range_sum(s : MlregresslinearRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_range_sum(s : MlregresslinearRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_range_mean(s : MlregresslinearRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_range_mean(s : MlregresslinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_range_scale(s : MlregresslinearRange, f : Double) -> MlregresslinearRange {
   let result = ml_regress_linear_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_regress_linear_range_fill(s : MlregresslinearRange, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_linear_range_min(s : MlregresslinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_range_min(s : MlregresslinearRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_range_max(s : MlregresslinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_range_max(s : MlregresslinearRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_range_to_string(s : MlregresslinearRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_regress_linear_slice_set(s : MlregresslinearSlice, i : Int, v : Double
   result
 }
 
-pub fn ml_regress_linear_slice_sum(s : MlregresslinearSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_regress_linear_slice_sum(s : MlregresslinearSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_regress_linear_slice_mean(s : MlregresslinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_regress_linear_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_regress_linear_slice_mean(s : MlregresslinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_regress_linear_slice_scale(s : MlregresslinearSlice, f : Double) -> MlregresslinearSlice {
   let result = ml_regress_linear_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_regress_linear_slice_fill(s : MlregresslinearSlice, v : Double) -> Mlr
   result
 }
 
-pub fn ml_regress_linear_slice_min(s : MlregresslinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_slice_min(s : MlregresslinearSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_regress_linear_slice_max(s : MlregresslinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_regress_linear_slice_max(s : MlregresslinearSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_regress_linear_slice_to_string(s : MlregresslinearSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

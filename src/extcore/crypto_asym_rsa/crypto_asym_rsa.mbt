@@ -88,11 +88,7 @@ pub fn crypto_asym_rsa_make_series(vals : Array[Double], name : String) -> Crypt
 
 pub fn crypto_asym_rsa_series_len(s : CryptoasymrsaSeries) -> Int { s.vals.length() }
 
-pub fn crypto_asym_rsa_series_sum(s : CryptoasymrsaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_asym_rsa_series_sum(s : CryptoasymrsaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_asym_rsa_series_mean(s : CryptoasymrsaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_asym_rsa_frame_set(s : CryptoasymrsaFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_rsa_frame_sum(s : CryptoasymrsaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_frame_sum(s : CryptoasymrsaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_frame_mean(s : CryptoasymrsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_frame_mean(s : CryptoasymrsaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_frame_scale(s : CryptoasymrsaFrame, f : Double) -> CryptoasymrsaFrame {
   let result = crypto_asym_rsa_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_asym_rsa_frame_fill(s : CryptoasymrsaFrame, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_rsa_frame_min(s : CryptoasymrsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_frame_min(s : CryptoasymrsaFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_frame_max(s : CryptoasymrsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_frame_max(s : CryptoasymrsaFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_frame_to_string(s : CryptoasymrsaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_asym_rsa_table_set(s : CryptoasymrsaTable, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_rsa_table_sum(s : CryptoasymrsaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_table_sum(s : CryptoasymrsaTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_table_mean(s : CryptoasymrsaTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_table_mean(s : CryptoasymrsaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_table_scale(s : CryptoasymrsaTable, f : Double) -> CryptoasymrsaTable {
   let result = crypto_asym_rsa_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_asym_rsa_table_fill(s : CryptoasymrsaTable, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_rsa_table_min(s : CryptoasymrsaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_table_min(s : CryptoasymrsaTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_table_max(s : CryptoasymrsaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_table_max(s : CryptoasymrsaTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_table_to_string(s : CryptoasymrsaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_asym_rsa_graphn_set(s : CryptoasymrsaGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_rsa_graphn_sum(s : CryptoasymrsaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_graphn_sum(s : CryptoasymrsaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_graphn_mean(s : CryptoasymrsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_graphn_mean(s : CryptoasymrsaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_graphn_scale(s : CryptoasymrsaGraphN, f : Double) -> CryptoasymrsaGraphN {
   let result = crypto_asym_rsa_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_asym_rsa_graphn_fill(s : CryptoasymrsaGraphN, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_rsa_graphn_min(s : CryptoasymrsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_graphn_min(s : CryptoasymrsaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_graphn_max(s : CryptoasymrsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_graphn_max(s : CryptoasymrsaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_graphn_to_string(s : CryptoasymrsaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_asym_rsa_node_set(s : CryptoasymrsaNode, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_rsa_node_sum(s : CryptoasymrsaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_node_sum(s : CryptoasymrsaNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_node_mean(s : CryptoasymrsaNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_node_mean(s : CryptoasymrsaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_node_scale(s : CryptoasymrsaNode, f : Double) -> CryptoasymrsaNode {
   let result = crypto_asym_rsa_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_asym_rsa_node_fill(s : CryptoasymrsaNode, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_rsa_node_min(s : CryptoasymrsaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_node_min(s : CryptoasymrsaNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_node_max(s : CryptoasymrsaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_node_max(s : CryptoasymrsaNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_node_to_string(s : CryptoasymrsaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_asym_rsa_edge_set(s : CryptoasymrsaEdge, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_rsa_edge_sum(s : CryptoasymrsaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_edge_sum(s : CryptoasymrsaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_edge_mean(s : CryptoasymrsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_edge_mean(s : CryptoasymrsaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_edge_scale(s : CryptoasymrsaEdge, f : Double) -> CryptoasymrsaEdge {
   let result = crypto_asym_rsa_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_asym_rsa_edge_fill(s : CryptoasymrsaEdge, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_rsa_edge_min(s : CryptoasymrsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_edge_min(s : CryptoasymrsaEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_edge_max(s : CryptoasymrsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_edge_max(s : CryptoasymrsaEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_edge_to_string(s : CryptoasymrsaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_asym_rsa_path_set(s : CryptoasymrsaPath, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_rsa_path_sum(s : CryptoasymrsaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_path_sum(s : CryptoasymrsaPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_path_mean(s : CryptoasymrsaPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_path_mean(s : CryptoasymrsaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_path_scale(s : CryptoasymrsaPath, f : Double) -> CryptoasymrsaPath {
   let result = crypto_asym_rsa_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_asym_rsa_path_fill(s : CryptoasymrsaPath, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_rsa_path_min(s : CryptoasymrsaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_path_min(s : CryptoasymrsaPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_path_max(s : CryptoasymrsaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_path_max(s : CryptoasymrsaPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_path_to_string(s : CryptoasymrsaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_asym_rsa_cluster_set(s : CryptoasymrsaCluster, i : Int, v : Double
   result
 }
 
-pub fn crypto_asym_rsa_cluster_sum(s : CryptoasymrsaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_cluster_sum(s : CryptoasymrsaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_cluster_mean(s : CryptoasymrsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_cluster_mean(s : CryptoasymrsaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_cluster_scale(s : CryptoasymrsaCluster, f : Double) -> CryptoasymrsaCluster {
   let result = crypto_asym_rsa_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_asym_rsa_cluster_fill(s : CryptoasymrsaCluster, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_rsa_cluster_min(s : CryptoasymrsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_cluster_min(s : CryptoasymrsaCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_cluster_max(s : CryptoasymrsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_cluster_max(s : CryptoasymrsaCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_cluster_to_string(s : CryptoasymrsaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_asym_rsa_model_set(s : CryptoasymrsaModel, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_rsa_model_sum(s : CryptoasymrsaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_model_sum(s : CryptoasymrsaModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_model_mean(s : CryptoasymrsaModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_model_mean(s : CryptoasymrsaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_model_scale(s : CryptoasymrsaModel, f : Double) -> CryptoasymrsaModel {
   let result = crypto_asym_rsa_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_asym_rsa_model_fill(s : CryptoasymrsaModel, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_rsa_model_min(s : CryptoasymrsaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_model_min(s : CryptoasymrsaModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_model_max(s : CryptoasymrsaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_model_max(s : CryptoasymrsaModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_model_to_string(s : CryptoasymrsaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_asym_rsa_layer_set(s : CryptoasymrsaLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_rsa_layer_sum(s : CryptoasymrsaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_layer_sum(s : CryptoasymrsaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_layer_mean(s : CryptoasymrsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_layer_mean(s : CryptoasymrsaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_layer_scale(s : CryptoasymrsaLayer, f : Double) -> CryptoasymrsaLayer {
   let result = crypto_asym_rsa_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_asym_rsa_layer_fill(s : CryptoasymrsaLayer, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_rsa_layer_min(s : CryptoasymrsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_layer_min(s : CryptoasymrsaLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_layer_max(s : CryptoasymrsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_layer_max(s : CryptoasymrsaLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_layer_to_string(s : CryptoasymrsaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_asym_rsa_buffer_set(s : CryptoasymrsaBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_rsa_buffer_sum(s : CryptoasymrsaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_buffer_sum(s : CryptoasymrsaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_buffer_mean(s : CryptoasymrsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_buffer_mean(s : CryptoasymrsaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_buffer_scale(s : CryptoasymrsaBuffer, f : Double) -> CryptoasymrsaBuffer {
   let result = crypto_asym_rsa_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_asym_rsa_buffer_fill(s : CryptoasymrsaBuffer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_rsa_buffer_min(s : CryptoasymrsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_buffer_min(s : CryptoasymrsaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_buffer_max(s : CryptoasymrsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_buffer_max(s : CryptoasymrsaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_buffer_to_string(s : CryptoasymrsaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_asym_rsa_cursor_set(s : CryptoasymrsaCursor, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_rsa_cursor_sum(s : CryptoasymrsaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_cursor_sum(s : CryptoasymrsaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_cursor_mean(s : CryptoasymrsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_cursor_mean(s : CryptoasymrsaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_cursor_scale(s : CryptoasymrsaCursor, f : Double) -> CryptoasymrsaCursor {
   let result = crypto_asym_rsa_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_asym_rsa_cursor_fill(s : CryptoasymrsaCursor, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_rsa_cursor_min(s : CryptoasymrsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_cursor_min(s : CryptoasymrsaCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_cursor_max(s : CryptoasymrsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_cursor_max(s : CryptoasymrsaCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_cursor_to_string(s : CryptoasymrsaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_asym_rsa_view_set(s : CryptoasymrsaView, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_rsa_view_sum(s : CryptoasymrsaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_view_sum(s : CryptoasymrsaView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_view_mean(s : CryptoasymrsaView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_view_mean(s : CryptoasymrsaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_view_scale(s : CryptoasymrsaView, f : Double) -> CryptoasymrsaView {
   let result = crypto_asym_rsa_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_asym_rsa_view_fill(s : CryptoasymrsaView, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_rsa_view_min(s : CryptoasymrsaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_view_min(s : CryptoasymrsaView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_view_max(s : CryptoasymrsaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_view_max(s : CryptoasymrsaView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_view_to_string(s : CryptoasymrsaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_asym_rsa_range_set(s : CryptoasymrsaRange, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_rsa_range_sum(s : CryptoasymrsaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_range_sum(s : CryptoasymrsaRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_range_mean(s : CryptoasymrsaRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_range_mean(s : CryptoasymrsaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_range_scale(s : CryptoasymrsaRange, f : Double) -> CryptoasymrsaRange {
   let result = crypto_asym_rsa_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_asym_rsa_range_fill(s : CryptoasymrsaRange, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_rsa_range_min(s : CryptoasymrsaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_range_min(s : CryptoasymrsaRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_range_max(s : CryptoasymrsaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_range_max(s : CryptoasymrsaRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_range_to_string(s : CryptoasymrsaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_asym_rsa_slice_set(s : CryptoasymrsaSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_rsa_slice_sum(s : CryptoasymrsaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_rsa_slice_sum(s : CryptoasymrsaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_rsa_slice_mean(s : CryptoasymrsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_rsa_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_rsa_slice_mean(s : CryptoasymrsaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_rsa_slice_scale(s : CryptoasymrsaSlice, f : Double) -> CryptoasymrsaSlice {
   let result = crypto_asym_rsa_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_asym_rsa_slice_fill(s : CryptoasymrsaSlice, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_rsa_slice_min(s : CryptoasymrsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_slice_min(s : CryptoasymrsaSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_rsa_slice_max(s : CryptoasymrsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_rsa_slice_max(s : CryptoasymrsaSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_rsa_slice_to_string(s : CryptoasymrsaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn physics_mechanics_soft_make_series(vals : Array[Double], name : String) -
 
 pub fn physics_mechanics_soft_series_len(s : PhysicsmechanicssoftSeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_soft_series_sum(s : PhysicsmechanicssoftSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_soft_series_sum(s : PhysicsmechanicssoftSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_soft_series_mean(s : PhysicsmechanicssoftSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_soft_frame_set(s : PhysicsmechanicssoftFrame, i : Int, 
   result
 }
 
-pub fn physics_mechanics_soft_frame_sum(s : PhysicsmechanicssoftFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_frame_sum(s : PhysicsmechanicssoftFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_frame_mean(s : PhysicsmechanicssoftFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_frame_mean(s : PhysicsmechanicssoftFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_frame_scale(s : PhysicsmechanicssoftFrame, f : Double) -> PhysicsmechanicssoftFrame {
   let result = physics_mechanics_soft_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_soft_frame_fill(s : PhysicsmechanicssoftFrame, v : Doub
   result
 }
 
-pub fn physics_mechanics_soft_frame_min(s : PhysicsmechanicssoftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_frame_min(s : PhysicsmechanicssoftFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_frame_max(s : PhysicsmechanicssoftFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_frame_max(s : PhysicsmechanicssoftFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_frame_to_string(s : PhysicsmechanicssoftFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_soft_table_set(s : PhysicsmechanicssoftTable, i : Int, 
   result
 }
 
-pub fn physics_mechanics_soft_table_sum(s : PhysicsmechanicssoftTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_table_sum(s : PhysicsmechanicssoftTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_table_mean(s : PhysicsmechanicssoftTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_table_mean(s : PhysicsmechanicssoftTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_table_scale(s : PhysicsmechanicssoftTable, f : Double) -> PhysicsmechanicssoftTable {
   let result = physics_mechanics_soft_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_soft_table_fill(s : PhysicsmechanicssoftTable, v : Doub
   result
 }
 
-pub fn physics_mechanics_soft_table_min(s : PhysicsmechanicssoftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_table_min(s : PhysicsmechanicssoftTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_table_max(s : PhysicsmechanicssoftTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_table_max(s : PhysicsmechanicssoftTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_table_to_string(s : PhysicsmechanicssoftTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_soft_graphn_set(s : PhysicsmechanicssoftGraphN, i : Int
   result
 }
 
-pub fn physics_mechanics_soft_graphn_sum(s : PhysicsmechanicssoftGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_graphn_sum(s : PhysicsmechanicssoftGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_graphn_mean(s : PhysicsmechanicssoftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_graphn_mean(s : PhysicsmechanicssoftGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_graphn_scale(s : PhysicsmechanicssoftGraphN, f : Double) -> PhysicsmechanicssoftGraphN {
   let result = physics_mechanics_soft_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_soft_graphn_fill(s : PhysicsmechanicssoftGraphN, v : Do
   result
 }
 
-pub fn physics_mechanics_soft_graphn_min(s : PhysicsmechanicssoftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_graphn_min(s : PhysicsmechanicssoftGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_graphn_max(s : PhysicsmechanicssoftGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_graphn_max(s : PhysicsmechanicssoftGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_graphn_to_string(s : PhysicsmechanicssoftGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_soft_node_set(s : PhysicsmechanicssoftNode, i : Int, v 
   result
 }
 
-pub fn physics_mechanics_soft_node_sum(s : PhysicsmechanicssoftNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_node_sum(s : PhysicsmechanicssoftNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_node_mean(s : PhysicsmechanicssoftNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_node_mean(s : PhysicsmechanicssoftNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_node_scale(s : PhysicsmechanicssoftNode, f : Double) -> PhysicsmechanicssoftNode {
   let result = physics_mechanics_soft_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_soft_node_fill(s : PhysicsmechanicssoftNode, v : Double
   result
 }
 
-pub fn physics_mechanics_soft_node_min(s : PhysicsmechanicssoftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_node_min(s : PhysicsmechanicssoftNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_node_max(s : PhysicsmechanicssoftNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_node_max(s : PhysicsmechanicssoftNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_node_to_string(s : PhysicsmechanicssoftNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_soft_edge_set(s : PhysicsmechanicssoftEdge, i : Int, v 
   result
 }
 
-pub fn physics_mechanics_soft_edge_sum(s : PhysicsmechanicssoftEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_edge_sum(s : PhysicsmechanicssoftEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_edge_mean(s : PhysicsmechanicssoftEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_edge_mean(s : PhysicsmechanicssoftEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_edge_scale(s : PhysicsmechanicssoftEdge, f : Double) -> PhysicsmechanicssoftEdge {
   let result = physics_mechanics_soft_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_soft_edge_fill(s : PhysicsmechanicssoftEdge, v : Double
   result
 }
 
-pub fn physics_mechanics_soft_edge_min(s : PhysicsmechanicssoftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_edge_min(s : PhysicsmechanicssoftEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_edge_max(s : PhysicsmechanicssoftEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_edge_max(s : PhysicsmechanicssoftEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_edge_to_string(s : PhysicsmechanicssoftEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_soft_path_set(s : PhysicsmechanicssoftPath, i : Int, v 
   result
 }
 
-pub fn physics_mechanics_soft_path_sum(s : PhysicsmechanicssoftPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_path_sum(s : PhysicsmechanicssoftPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_path_mean(s : PhysicsmechanicssoftPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_path_mean(s : PhysicsmechanicssoftPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_path_scale(s : PhysicsmechanicssoftPath, f : Double) -> PhysicsmechanicssoftPath {
   let result = physics_mechanics_soft_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_soft_path_fill(s : PhysicsmechanicssoftPath, v : Double
   result
 }
 
-pub fn physics_mechanics_soft_path_min(s : PhysicsmechanicssoftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_path_min(s : PhysicsmechanicssoftPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_path_max(s : PhysicsmechanicssoftPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_path_max(s : PhysicsmechanicssoftPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_path_to_string(s : PhysicsmechanicssoftPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_soft_cluster_set(s : PhysicsmechanicssoftCluster, i : I
   result
 }
 
-pub fn physics_mechanics_soft_cluster_sum(s : PhysicsmechanicssoftCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_cluster_sum(s : PhysicsmechanicssoftCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_cluster_mean(s : PhysicsmechanicssoftCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_cluster_mean(s : PhysicsmechanicssoftCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_cluster_scale(s : PhysicsmechanicssoftCluster, f : Double) -> PhysicsmechanicssoftCluster {
   let result = physics_mechanics_soft_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_soft_cluster_fill(s : PhysicsmechanicssoftCluster, v : 
   result
 }
 
-pub fn physics_mechanics_soft_cluster_min(s : PhysicsmechanicssoftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_cluster_min(s : PhysicsmechanicssoftCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_cluster_max(s : PhysicsmechanicssoftCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_cluster_max(s : PhysicsmechanicssoftCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_cluster_to_string(s : PhysicsmechanicssoftCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_soft_model_set(s : PhysicsmechanicssoftModel, i : Int, 
   result
 }
 
-pub fn physics_mechanics_soft_model_sum(s : PhysicsmechanicssoftModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_model_sum(s : PhysicsmechanicssoftModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_model_mean(s : PhysicsmechanicssoftModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_model_mean(s : PhysicsmechanicssoftModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_model_scale(s : PhysicsmechanicssoftModel, f : Double) -> PhysicsmechanicssoftModel {
   let result = physics_mechanics_soft_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_soft_model_fill(s : PhysicsmechanicssoftModel, v : Doub
   result
 }
 
-pub fn physics_mechanics_soft_model_min(s : PhysicsmechanicssoftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_model_min(s : PhysicsmechanicssoftModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_model_max(s : PhysicsmechanicssoftModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_model_max(s : PhysicsmechanicssoftModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_model_to_string(s : PhysicsmechanicssoftModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_soft_layer_set(s : PhysicsmechanicssoftLayer, i : Int, 
   result
 }
 
-pub fn physics_mechanics_soft_layer_sum(s : PhysicsmechanicssoftLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_layer_sum(s : PhysicsmechanicssoftLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_layer_mean(s : PhysicsmechanicssoftLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_layer_mean(s : PhysicsmechanicssoftLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_layer_scale(s : PhysicsmechanicssoftLayer, f : Double) -> PhysicsmechanicssoftLayer {
   let result = physics_mechanics_soft_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_soft_layer_fill(s : PhysicsmechanicssoftLayer, v : Doub
   result
 }
 
-pub fn physics_mechanics_soft_layer_min(s : PhysicsmechanicssoftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_layer_min(s : PhysicsmechanicssoftLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_layer_max(s : PhysicsmechanicssoftLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_layer_max(s : PhysicsmechanicssoftLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_layer_to_string(s : PhysicsmechanicssoftLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_soft_buffer_set(s : PhysicsmechanicssoftBuffer, i : Int
   result
 }
 
-pub fn physics_mechanics_soft_buffer_sum(s : PhysicsmechanicssoftBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_buffer_sum(s : PhysicsmechanicssoftBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_buffer_mean(s : PhysicsmechanicssoftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_buffer_mean(s : PhysicsmechanicssoftBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_buffer_scale(s : PhysicsmechanicssoftBuffer, f : Double) -> PhysicsmechanicssoftBuffer {
   let result = physics_mechanics_soft_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_soft_buffer_fill(s : PhysicsmechanicssoftBuffer, v : Do
   result
 }
 
-pub fn physics_mechanics_soft_buffer_min(s : PhysicsmechanicssoftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_buffer_min(s : PhysicsmechanicssoftBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_buffer_max(s : PhysicsmechanicssoftBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_buffer_max(s : PhysicsmechanicssoftBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_buffer_to_string(s : PhysicsmechanicssoftBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_soft_cursor_set(s : PhysicsmechanicssoftCursor, i : Int
   result
 }
 
-pub fn physics_mechanics_soft_cursor_sum(s : PhysicsmechanicssoftCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_cursor_sum(s : PhysicsmechanicssoftCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_cursor_mean(s : PhysicsmechanicssoftCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_cursor_mean(s : PhysicsmechanicssoftCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_cursor_scale(s : PhysicsmechanicssoftCursor, f : Double) -> PhysicsmechanicssoftCursor {
   let result = physics_mechanics_soft_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_soft_cursor_fill(s : PhysicsmechanicssoftCursor, v : Do
   result
 }
 
-pub fn physics_mechanics_soft_cursor_min(s : PhysicsmechanicssoftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_cursor_min(s : PhysicsmechanicssoftCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_cursor_max(s : PhysicsmechanicssoftCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_cursor_max(s : PhysicsmechanicssoftCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_cursor_to_string(s : PhysicsmechanicssoftCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_soft_view_set(s : PhysicsmechanicssoftView, i : Int, v 
   result
 }
 
-pub fn physics_mechanics_soft_view_sum(s : PhysicsmechanicssoftView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_view_sum(s : PhysicsmechanicssoftView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_view_mean(s : PhysicsmechanicssoftView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_view_mean(s : PhysicsmechanicssoftView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_view_scale(s : PhysicsmechanicssoftView, f : Double) -> PhysicsmechanicssoftView {
   let result = physics_mechanics_soft_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_soft_view_fill(s : PhysicsmechanicssoftView, v : Double
   result
 }
 
-pub fn physics_mechanics_soft_view_min(s : PhysicsmechanicssoftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_view_min(s : PhysicsmechanicssoftView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_view_max(s : PhysicsmechanicssoftView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_view_max(s : PhysicsmechanicssoftView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_view_to_string(s : PhysicsmechanicssoftView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_soft_range_set(s : PhysicsmechanicssoftRange, i : Int, 
   result
 }
 
-pub fn physics_mechanics_soft_range_sum(s : PhysicsmechanicssoftRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_range_sum(s : PhysicsmechanicssoftRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_range_mean(s : PhysicsmechanicssoftRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_range_mean(s : PhysicsmechanicssoftRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_range_scale(s : PhysicsmechanicssoftRange, f : Double) -> PhysicsmechanicssoftRange {
   let result = physics_mechanics_soft_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_soft_range_fill(s : PhysicsmechanicssoftRange, v : Doub
   result
 }
 
-pub fn physics_mechanics_soft_range_min(s : PhysicsmechanicssoftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_range_min(s : PhysicsmechanicssoftRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_range_max(s : PhysicsmechanicssoftRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_range_max(s : PhysicsmechanicssoftRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_range_to_string(s : PhysicsmechanicssoftRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_soft_slice_set(s : PhysicsmechanicssoftSlice, i : Int, 
   result
 }
 
-pub fn physics_mechanics_soft_slice_sum(s : PhysicsmechanicssoftSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_soft_slice_sum(s : PhysicsmechanicssoftSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_soft_slice_mean(s : PhysicsmechanicssoftSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_soft_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_soft_slice_mean(s : PhysicsmechanicssoftSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_soft_slice_scale(s : PhysicsmechanicssoftSlice, f : Double) -> PhysicsmechanicssoftSlice {
   let result = physics_mechanics_soft_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_soft_slice_fill(s : PhysicsmechanicssoftSlice, v : Doub
   result
 }
 
-pub fn physics_mechanics_soft_slice_min(s : PhysicsmechanicssoftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_slice_min(s : PhysicsmechanicssoftSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_soft_slice_max(s : PhysicsmechanicssoftSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_soft_slice_max(s : PhysicsmechanicssoftSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_soft_slice_to_string(s : PhysicsmechanicssoftSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

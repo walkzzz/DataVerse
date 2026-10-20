@@ -88,11 +88,7 @@ pub fn signal_transform_hilbert_make_series(vals : Array[Double], name : String)
 
 pub fn signal_transform_hilbert_series_len(s : SignaltransformhilbertSeries) -> Int { s.vals.length() }
 
-pub fn signal_transform_hilbert_series_sum(s : SignaltransformhilbertSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_transform_hilbert_series_sum(s : SignaltransformhilbertSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_transform_hilbert_series_mean(s : SignaltransformhilbertSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_transform_hilbert_frame_set(s : SignaltransformhilbertFrame, i : I
   result
 }
 
-pub fn signal_transform_hilbert_frame_sum(s : SignaltransformhilbertFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_frame_sum(s : SignaltransformhilbertFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_frame_mean(s : SignaltransformhilbertFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_frame_mean(s : SignaltransformhilbertFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_frame_scale(s : SignaltransformhilbertFrame, f : Double) -> SignaltransformhilbertFrame {
   let result = signal_transform_hilbert_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_transform_hilbert_frame_fill(s : SignaltransformhilbertFrame, v : 
   result
 }
 
-pub fn signal_transform_hilbert_frame_min(s : SignaltransformhilbertFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_frame_min(s : SignaltransformhilbertFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_frame_max(s : SignaltransformhilbertFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_frame_max(s : SignaltransformhilbertFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_frame_to_string(s : SignaltransformhilbertFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_transform_hilbert_table_set(s : SignaltransformhilbertTable, i : I
   result
 }
 
-pub fn signal_transform_hilbert_table_sum(s : SignaltransformhilbertTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_table_sum(s : SignaltransformhilbertTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_table_mean(s : SignaltransformhilbertTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_table_mean(s : SignaltransformhilbertTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_table_scale(s : SignaltransformhilbertTable, f : Double) -> SignaltransformhilbertTable {
   let result = signal_transform_hilbert_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_transform_hilbert_table_fill(s : SignaltransformhilbertTable, v : 
   result
 }
 
-pub fn signal_transform_hilbert_table_min(s : SignaltransformhilbertTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_table_min(s : SignaltransformhilbertTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_table_max(s : SignaltransformhilbertTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_table_max(s : SignaltransformhilbertTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_table_to_string(s : SignaltransformhilbertTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_transform_hilbert_graphn_set(s : SignaltransformhilbertGraphN, i :
   result
 }
 
-pub fn signal_transform_hilbert_graphn_sum(s : SignaltransformhilbertGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_graphn_sum(s : SignaltransformhilbertGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_graphn_mean(s : SignaltransformhilbertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_graphn_mean(s : SignaltransformhilbertGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_graphn_scale(s : SignaltransformhilbertGraphN, f : Double) -> SignaltransformhilbertGraphN {
   let result = signal_transform_hilbert_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_transform_hilbert_graphn_fill(s : SignaltransformhilbertGraphN, v 
   result
 }
 
-pub fn signal_transform_hilbert_graphn_min(s : SignaltransformhilbertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_graphn_min(s : SignaltransformhilbertGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_graphn_max(s : SignaltransformhilbertGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_graphn_max(s : SignaltransformhilbertGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_graphn_to_string(s : SignaltransformhilbertGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_transform_hilbert_node_set(s : SignaltransformhilbertNode, i : Int
   result
 }
 
-pub fn signal_transform_hilbert_node_sum(s : SignaltransformhilbertNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_node_sum(s : SignaltransformhilbertNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_node_mean(s : SignaltransformhilbertNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_node_mean(s : SignaltransformhilbertNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_node_scale(s : SignaltransformhilbertNode, f : Double) -> SignaltransformhilbertNode {
   let result = signal_transform_hilbert_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_transform_hilbert_node_fill(s : SignaltransformhilbertNode, v : Do
   result
 }
 
-pub fn signal_transform_hilbert_node_min(s : SignaltransformhilbertNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_node_min(s : SignaltransformhilbertNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_node_max(s : SignaltransformhilbertNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_node_max(s : SignaltransformhilbertNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_node_to_string(s : SignaltransformhilbertNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_transform_hilbert_edge_set(s : SignaltransformhilbertEdge, i : Int
   result
 }
 
-pub fn signal_transform_hilbert_edge_sum(s : SignaltransformhilbertEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_edge_sum(s : SignaltransformhilbertEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_edge_mean(s : SignaltransformhilbertEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_edge_mean(s : SignaltransformhilbertEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_edge_scale(s : SignaltransformhilbertEdge, f : Double) -> SignaltransformhilbertEdge {
   let result = signal_transform_hilbert_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_transform_hilbert_edge_fill(s : SignaltransformhilbertEdge, v : Do
   result
 }
 
-pub fn signal_transform_hilbert_edge_min(s : SignaltransformhilbertEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_edge_min(s : SignaltransformhilbertEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_edge_max(s : SignaltransformhilbertEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_edge_max(s : SignaltransformhilbertEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_edge_to_string(s : SignaltransformhilbertEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_transform_hilbert_path_set(s : SignaltransformhilbertPath, i : Int
   result
 }
 
-pub fn signal_transform_hilbert_path_sum(s : SignaltransformhilbertPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_path_sum(s : SignaltransformhilbertPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_path_mean(s : SignaltransformhilbertPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_path_mean(s : SignaltransformhilbertPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_path_scale(s : SignaltransformhilbertPath, f : Double) -> SignaltransformhilbertPath {
   let result = signal_transform_hilbert_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_transform_hilbert_path_fill(s : SignaltransformhilbertPath, v : Do
   result
 }
 
-pub fn signal_transform_hilbert_path_min(s : SignaltransformhilbertPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_path_min(s : SignaltransformhilbertPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_path_max(s : SignaltransformhilbertPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_path_max(s : SignaltransformhilbertPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_path_to_string(s : SignaltransformhilbertPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_transform_hilbert_cluster_set(s : SignaltransformhilbertCluster, i
   result
 }
 
-pub fn signal_transform_hilbert_cluster_sum(s : SignaltransformhilbertCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_cluster_sum(s : SignaltransformhilbertCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_cluster_mean(s : SignaltransformhilbertCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_cluster_mean(s : SignaltransformhilbertCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_cluster_scale(s : SignaltransformhilbertCluster, f : Double) -> SignaltransformhilbertCluster {
   let result = signal_transform_hilbert_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_transform_hilbert_cluster_fill(s : SignaltransformhilbertCluster, 
   result
 }
 
-pub fn signal_transform_hilbert_cluster_min(s : SignaltransformhilbertCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_cluster_min(s : SignaltransformhilbertCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_cluster_max(s : SignaltransformhilbertCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_cluster_max(s : SignaltransformhilbertCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_cluster_to_string(s : SignaltransformhilbertCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_transform_hilbert_model_set(s : SignaltransformhilbertModel, i : I
   result
 }
 
-pub fn signal_transform_hilbert_model_sum(s : SignaltransformhilbertModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_model_sum(s : SignaltransformhilbertModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_model_mean(s : SignaltransformhilbertModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_model_mean(s : SignaltransformhilbertModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_model_scale(s : SignaltransformhilbertModel, f : Double) -> SignaltransformhilbertModel {
   let result = signal_transform_hilbert_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_transform_hilbert_model_fill(s : SignaltransformhilbertModel, v : 
   result
 }
 
-pub fn signal_transform_hilbert_model_min(s : SignaltransformhilbertModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_model_min(s : SignaltransformhilbertModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_model_max(s : SignaltransformhilbertModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_model_max(s : SignaltransformhilbertModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_model_to_string(s : SignaltransformhilbertModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_transform_hilbert_layer_set(s : SignaltransformhilbertLayer, i : I
   result
 }
 
-pub fn signal_transform_hilbert_layer_sum(s : SignaltransformhilbertLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_layer_sum(s : SignaltransformhilbertLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_layer_mean(s : SignaltransformhilbertLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_layer_mean(s : SignaltransformhilbertLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_layer_scale(s : SignaltransformhilbertLayer, f : Double) -> SignaltransformhilbertLayer {
   let result = signal_transform_hilbert_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_transform_hilbert_layer_fill(s : SignaltransformhilbertLayer, v : 
   result
 }
 
-pub fn signal_transform_hilbert_layer_min(s : SignaltransformhilbertLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_layer_min(s : SignaltransformhilbertLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_layer_max(s : SignaltransformhilbertLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_layer_max(s : SignaltransformhilbertLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_layer_to_string(s : SignaltransformhilbertLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_transform_hilbert_buffer_set(s : SignaltransformhilbertBuffer, i :
   result
 }
 
-pub fn signal_transform_hilbert_buffer_sum(s : SignaltransformhilbertBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_buffer_sum(s : SignaltransformhilbertBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_buffer_mean(s : SignaltransformhilbertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_buffer_mean(s : SignaltransformhilbertBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_buffer_scale(s : SignaltransformhilbertBuffer, f : Double) -> SignaltransformhilbertBuffer {
   let result = signal_transform_hilbert_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_transform_hilbert_buffer_fill(s : SignaltransformhilbertBuffer, v 
   result
 }
 
-pub fn signal_transform_hilbert_buffer_min(s : SignaltransformhilbertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_buffer_min(s : SignaltransformhilbertBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_buffer_max(s : SignaltransformhilbertBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_buffer_max(s : SignaltransformhilbertBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_buffer_to_string(s : SignaltransformhilbertBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_transform_hilbert_cursor_set(s : SignaltransformhilbertCursor, i :
   result
 }
 
-pub fn signal_transform_hilbert_cursor_sum(s : SignaltransformhilbertCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_cursor_sum(s : SignaltransformhilbertCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_cursor_mean(s : SignaltransformhilbertCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_cursor_mean(s : SignaltransformhilbertCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_cursor_scale(s : SignaltransformhilbertCursor, f : Double) -> SignaltransformhilbertCursor {
   let result = signal_transform_hilbert_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_transform_hilbert_cursor_fill(s : SignaltransformhilbertCursor, v 
   result
 }
 
-pub fn signal_transform_hilbert_cursor_min(s : SignaltransformhilbertCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_cursor_min(s : SignaltransformhilbertCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_cursor_max(s : SignaltransformhilbertCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_cursor_max(s : SignaltransformhilbertCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_cursor_to_string(s : SignaltransformhilbertCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_transform_hilbert_view_set(s : SignaltransformhilbertView, i : Int
   result
 }
 
-pub fn signal_transform_hilbert_view_sum(s : SignaltransformhilbertView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_view_sum(s : SignaltransformhilbertView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_view_mean(s : SignaltransformhilbertView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_view_mean(s : SignaltransformhilbertView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_view_scale(s : SignaltransformhilbertView, f : Double) -> SignaltransformhilbertView {
   let result = signal_transform_hilbert_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_transform_hilbert_view_fill(s : SignaltransformhilbertView, v : Do
   result
 }
 
-pub fn signal_transform_hilbert_view_min(s : SignaltransformhilbertView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_view_min(s : SignaltransformhilbertView) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_view_max(s : SignaltransformhilbertView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_view_max(s : SignaltransformhilbertView) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_view_to_string(s : SignaltransformhilbertView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_transform_hilbert_range_set(s : SignaltransformhilbertRange, i : I
   result
 }
 
-pub fn signal_transform_hilbert_range_sum(s : SignaltransformhilbertRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_range_sum(s : SignaltransformhilbertRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_range_mean(s : SignaltransformhilbertRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_range_mean(s : SignaltransformhilbertRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_range_scale(s : SignaltransformhilbertRange, f : Double) -> SignaltransformhilbertRange {
   let result = signal_transform_hilbert_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_transform_hilbert_range_fill(s : SignaltransformhilbertRange, v : 
   result
 }
 
-pub fn signal_transform_hilbert_range_min(s : SignaltransformhilbertRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_range_min(s : SignaltransformhilbertRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_range_max(s : SignaltransformhilbertRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_range_max(s : SignaltransformhilbertRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_range_to_string(s : SignaltransformhilbertRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_transform_hilbert_slice_set(s : SignaltransformhilbertSlice, i : I
   result
 }
 
-pub fn signal_transform_hilbert_slice_sum(s : SignaltransformhilbertSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_hilbert_slice_sum(s : SignaltransformhilbertSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_hilbert_slice_mean(s : SignaltransformhilbertSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_hilbert_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_hilbert_slice_mean(s : SignaltransformhilbertSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_hilbert_slice_scale(s : SignaltransformhilbertSlice, f : Double) -> SignaltransformhilbertSlice {
   let result = signal_transform_hilbert_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_transform_hilbert_slice_fill(s : SignaltransformhilbertSlice, v : 
   result
 }
 
-pub fn signal_transform_hilbert_slice_min(s : SignaltransformhilbertSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_slice_min(s : SignaltransformhilbertSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_hilbert_slice_max(s : SignaltransformhilbertSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_hilbert_slice_max(s : SignaltransformhilbertSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_hilbert_slice_to_string(s : SignaltransformhilbertSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_flow_fairness_make_series(vals : Array[Double], name : String) -> Net
 
 pub fn net_flow_fairness_series_len(s : NetflowfairnessSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_fairness_series_sum(s : NetflowfairnessSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_fairness_series_sum(s : NetflowfairnessSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_fairness_series_mean(s : NetflowfairnessSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_fairness_frame_set(s : NetflowfairnessFrame, i : Int, v : Double
   result
 }
 
-pub fn net_flow_fairness_frame_sum(s : NetflowfairnessFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_frame_sum(s : NetflowfairnessFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_frame_mean(s : NetflowfairnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_frame_mean(s : NetflowfairnessFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_frame_scale(s : NetflowfairnessFrame, f : Double) -> NetflowfairnessFrame {
   let result = net_flow_fairness_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_fairness_frame_fill(s : NetflowfairnessFrame, v : Double) -> Net
   result
 }
 
-pub fn net_flow_fairness_frame_min(s : NetflowfairnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_frame_min(s : NetflowfairnessFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_frame_max(s : NetflowfairnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_frame_max(s : NetflowfairnessFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_frame_to_string(s : NetflowfairnessFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_fairness_table_set(s : NetflowfairnessTable, i : Int, v : Double
   result
 }
 
-pub fn net_flow_fairness_table_sum(s : NetflowfairnessTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_table_sum(s : NetflowfairnessTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_table_mean(s : NetflowfairnessTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_table_mean(s : NetflowfairnessTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_table_scale(s : NetflowfairnessTable, f : Double) -> NetflowfairnessTable {
   let result = net_flow_fairness_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_fairness_table_fill(s : NetflowfairnessTable, v : Double) -> Net
   result
 }
 
-pub fn net_flow_fairness_table_min(s : NetflowfairnessTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_table_min(s : NetflowfairnessTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_table_max(s : NetflowfairnessTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_table_max(s : NetflowfairnessTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_table_to_string(s : NetflowfairnessTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_fairness_graphn_set(s : NetflowfairnessGraphN, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_fairness_graphn_sum(s : NetflowfairnessGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_graphn_sum(s : NetflowfairnessGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_graphn_mean(s : NetflowfairnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_graphn_mean(s : NetflowfairnessGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_graphn_scale(s : NetflowfairnessGraphN, f : Double) -> NetflowfairnessGraphN {
   let result = net_flow_fairness_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_fairness_graphn_fill(s : NetflowfairnessGraphN, v : Double) -> N
   result
 }
 
-pub fn net_flow_fairness_graphn_min(s : NetflowfairnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_graphn_min(s : NetflowfairnessGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_graphn_max(s : NetflowfairnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_graphn_max(s : NetflowfairnessGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_graphn_to_string(s : NetflowfairnessGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_fairness_node_set(s : NetflowfairnessNode, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_fairness_node_sum(s : NetflowfairnessNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_node_sum(s : NetflowfairnessNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_node_mean(s : NetflowfairnessNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_node_mean(s : NetflowfairnessNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_node_scale(s : NetflowfairnessNode, f : Double) -> NetflowfairnessNode {
   let result = net_flow_fairness_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_fairness_node_fill(s : NetflowfairnessNode, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_fairness_node_min(s : NetflowfairnessNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_node_min(s : NetflowfairnessNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_node_max(s : NetflowfairnessNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_node_max(s : NetflowfairnessNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_node_to_string(s : NetflowfairnessNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_fairness_edge_set(s : NetflowfairnessEdge, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_fairness_edge_sum(s : NetflowfairnessEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_edge_sum(s : NetflowfairnessEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_edge_mean(s : NetflowfairnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_edge_mean(s : NetflowfairnessEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_edge_scale(s : NetflowfairnessEdge, f : Double) -> NetflowfairnessEdge {
   let result = net_flow_fairness_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_fairness_edge_fill(s : NetflowfairnessEdge, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_fairness_edge_min(s : NetflowfairnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_edge_min(s : NetflowfairnessEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_edge_max(s : NetflowfairnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_edge_max(s : NetflowfairnessEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_edge_to_string(s : NetflowfairnessEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_fairness_path_set(s : NetflowfairnessPath, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_fairness_path_sum(s : NetflowfairnessPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_path_sum(s : NetflowfairnessPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_path_mean(s : NetflowfairnessPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_path_mean(s : NetflowfairnessPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_path_scale(s : NetflowfairnessPath, f : Double) -> NetflowfairnessPath {
   let result = net_flow_fairness_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_fairness_path_fill(s : NetflowfairnessPath, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_fairness_path_min(s : NetflowfairnessPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_path_min(s : NetflowfairnessPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_path_max(s : NetflowfairnessPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_path_max(s : NetflowfairnessPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_path_to_string(s : NetflowfairnessPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_fairness_cluster_set(s : NetflowfairnessCluster, i : Int, v : Do
   result
 }
 
-pub fn net_flow_fairness_cluster_sum(s : NetflowfairnessCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_cluster_sum(s : NetflowfairnessCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_cluster_mean(s : NetflowfairnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_cluster_mean(s : NetflowfairnessCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_cluster_scale(s : NetflowfairnessCluster, f : Double) -> NetflowfairnessCluster {
   let result = net_flow_fairness_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_fairness_cluster_fill(s : NetflowfairnessCluster, v : Double) ->
   result
 }
 
-pub fn net_flow_fairness_cluster_min(s : NetflowfairnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_cluster_min(s : NetflowfairnessCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_cluster_max(s : NetflowfairnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_cluster_max(s : NetflowfairnessCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_cluster_to_string(s : NetflowfairnessCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_fairness_model_set(s : NetflowfairnessModel, i : Int, v : Double
   result
 }
 
-pub fn net_flow_fairness_model_sum(s : NetflowfairnessModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_model_sum(s : NetflowfairnessModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_model_mean(s : NetflowfairnessModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_model_mean(s : NetflowfairnessModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_model_scale(s : NetflowfairnessModel, f : Double) -> NetflowfairnessModel {
   let result = net_flow_fairness_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_fairness_model_fill(s : NetflowfairnessModel, v : Double) -> Net
   result
 }
 
-pub fn net_flow_fairness_model_min(s : NetflowfairnessModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_model_min(s : NetflowfairnessModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_model_max(s : NetflowfairnessModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_model_max(s : NetflowfairnessModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_model_to_string(s : NetflowfairnessModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_fairness_layer_set(s : NetflowfairnessLayer, i : Int, v : Double
   result
 }
 
-pub fn net_flow_fairness_layer_sum(s : NetflowfairnessLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_layer_sum(s : NetflowfairnessLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_layer_mean(s : NetflowfairnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_layer_mean(s : NetflowfairnessLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_layer_scale(s : NetflowfairnessLayer, f : Double) -> NetflowfairnessLayer {
   let result = net_flow_fairness_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_fairness_layer_fill(s : NetflowfairnessLayer, v : Double) -> Net
   result
 }
 
-pub fn net_flow_fairness_layer_min(s : NetflowfairnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_layer_min(s : NetflowfairnessLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_layer_max(s : NetflowfairnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_layer_max(s : NetflowfairnessLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_layer_to_string(s : NetflowfairnessLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_fairness_buffer_set(s : NetflowfairnessBuffer, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_fairness_buffer_sum(s : NetflowfairnessBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_buffer_sum(s : NetflowfairnessBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_buffer_mean(s : NetflowfairnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_buffer_mean(s : NetflowfairnessBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_buffer_scale(s : NetflowfairnessBuffer, f : Double) -> NetflowfairnessBuffer {
   let result = net_flow_fairness_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_fairness_buffer_fill(s : NetflowfairnessBuffer, v : Double) -> N
   result
 }
 
-pub fn net_flow_fairness_buffer_min(s : NetflowfairnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_buffer_min(s : NetflowfairnessBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_buffer_max(s : NetflowfairnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_buffer_max(s : NetflowfairnessBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_buffer_to_string(s : NetflowfairnessBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_fairness_cursor_set(s : NetflowfairnessCursor, i : Int, v : Doub
   result
 }
 
-pub fn net_flow_fairness_cursor_sum(s : NetflowfairnessCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_cursor_sum(s : NetflowfairnessCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_cursor_mean(s : NetflowfairnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_cursor_mean(s : NetflowfairnessCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_cursor_scale(s : NetflowfairnessCursor, f : Double) -> NetflowfairnessCursor {
   let result = net_flow_fairness_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_fairness_cursor_fill(s : NetflowfairnessCursor, v : Double) -> N
   result
 }
 
-pub fn net_flow_fairness_cursor_min(s : NetflowfairnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_cursor_min(s : NetflowfairnessCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_cursor_max(s : NetflowfairnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_cursor_max(s : NetflowfairnessCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_cursor_to_string(s : NetflowfairnessCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_fairness_view_set(s : NetflowfairnessView, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_fairness_view_sum(s : NetflowfairnessView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_view_sum(s : NetflowfairnessView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_view_mean(s : NetflowfairnessView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_view_mean(s : NetflowfairnessView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_view_scale(s : NetflowfairnessView, f : Double) -> NetflowfairnessView {
   let result = net_flow_fairness_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_fairness_view_fill(s : NetflowfairnessView, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_fairness_view_min(s : NetflowfairnessView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_view_min(s : NetflowfairnessView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_view_max(s : NetflowfairnessView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_view_max(s : NetflowfairnessView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_view_to_string(s : NetflowfairnessView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_fairness_range_set(s : NetflowfairnessRange, i : Int, v : Double
   result
 }
 
-pub fn net_flow_fairness_range_sum(s : NetflowfairnessRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_range_sum(s : NetflowfairnessRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_range_mean(s : NetflowfairnessRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_range_mean(s : NetflowfairnessRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_range_scale(s : NetflowfairnessRange, f : Double) -> NetflowfairnessRange {
   let result = net_flow_fairness_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_fairness_range_fill(s : NetflowfairnessRange, v : Double) -> Net
   result
 }
 
-pub fn net_flow_fairness_range_min(s : NetflowfairnessRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_range_min(s : NetflowfairnessRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_range_max(s : NetflowfairnessRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_range_max(s : NetflowfairnessRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_range_to_string(s : NetflowfairnessRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_fairness_slice_set(s : NetflowfairnessSlice, i : Int, v : Double
   result
 }
 
-pub fn net_flow_fairness_slice_sum(s : NetflowfairnessSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_fairness_slice_sum(s : NetflowfairnessSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_fairness_slice_mean(s : NetflowfairnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_fairness_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_fairness_slice_mean(s : NetflowfairnessSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_fairness_slice_scale(s : NetflowfairnessSlice, f : Double) -> NetflowfairnessSlice {
   let result = net_flow_fairness_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_fairness_slice_fill(s : NetflowfairnessSlice, v : Double) -> Net
   result
 }
 
-pub fn net_flow_fairness_slice_min(s : NetflowfairnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_slice_min(s : NetflowfairnessSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_fairness_slice_max(s : NetflowfairnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_fairness_slice_max(s : NetflowfairnessSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_fairness_slice_to_string(s : NetflowfairnessSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

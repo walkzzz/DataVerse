@@ -88,11 +88,7 @@ pub fn timeseries_forecast_deepar_make_series(vals : Array[Double], name : Strin
 
 pub fn timeseries_forecast_deepar_series_len(s : TimeseriesforecastdeeparSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_forecast_deepar_series_sum(s : TimeseriesforecastdeeparSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_series_sum(s : TimeseriesforecastdeeparSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_forecast_deepar_series_mean(s : TimeseriesforecastdeeparSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_forecast_deepar_frame_set(s : TimeseriesforecastdeeparFrame, i
   result
 }
 
-pub fn timeseries_forecast_deepar_frame_sum(s : TimeseriesforecastdeeparFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_frame_sum(s : TimeseriesforecastdeeparFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_frame_mean(s : TimeseriesforecastdeeparFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_frame_mean(s : TimeseriesforecastdeeparFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_frame_scale(s : TimeseriesforecastdeeparFrame, f : Double) -> TimeseriesforecastdeeparFrame {
   let result = timeseries_forecast_deepar_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_forecast_deepar_frame_fill(s : TimeseriesforecastdeeparFrame, 
   result
 }
 
-pub fn timeseries_forecast_deepar_frame_min(s : TimeseriesforecastdeeparFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_frame_min(s : TimeseriesforecastdeeparFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_frame_max(s : TimeseriesforecastdeeparFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_frame_max(s : TimeseriesforecastdeeparFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_frame_to_string(s : TimeseriesforecastdeeparFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_forecast_deepar_table_set(s : TimeseriesforecastdeeparTable, i
   result
 }
 
-pub fn timeseries_forecast_deepar_table_sum(s : TimeseriesforecastdeeparTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_table_sum(s : TimeseriesforecastdeeparTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_table_mean(s : TimeseriesforecastdeeparTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_table_mean(s : TimeseriesforecastdeeparTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_table_scale(s : TimeseriesforecastdeeparTable, f : Double) -> TimeseriesforecastdeeparTable {
   let result = timeseries_forecast_deepar_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_forecast_deepar_table_fill(s : TimeseriesforecastdeeparTable, 
   result
 }
 
-pub fn timeseries_forecast_deepar_table_min(s : TimeseriesforecastdeeparTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_table_min(s : TimeseriesforecastdeeparTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_table_max(s : TimeseriesforecastdeeparTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_table_max(s : TimeseriesforecastdeeparTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_table_to_string(s : TimeseriesforecastdeeparTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_forecast_deepar_graphn_set(s : TimeseriesforecastdeeparGraphN,
   result
 }
 
-pub fn timeseries_forecast_deepar_graphn_sum(s : TimeseriesforecastdeeparGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_graphn_sum(s : TimeseriesforecastdeeparGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_graphn_mean(s : TimeseriesforecastdeeparGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_graphn_mean(s : TimeseriesforecastdeeparGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_graphn_scale(s : TimeseriesforecastdeeparGraphN, f : Double) -> TimeseriesforecastdeeparGraphN {
   let result = timeseries_forecast_deepar_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_forecast_deepar_graphn_fill(s : TimeseriesforecastdeeparGraphN
   result
 }
 
-pub fn timeseries_forecast_deepar_graphn_min(s : TimeseriesforecastdeeparGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_graphn_min(s : TimeseriesforecastdeeparGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_graphn_max(s : TimeseriesforecastdeeparGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_graphn_max(s : TimeseriesforecastdeeparGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_graphn_to_string(s : TimeseriesforecastdeeparGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_forecast_deepar_node_set(s : TimeseriesforecastdeeparNode, i :
   result
 }
 
-pub fn timeseries_forecast_deepar_node_sum(s : TimeseriesforecastdeeparNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_node_sum(s : TimeseriesforecastdeeparNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_node_mean(s : TimeseriesforecastdeeparNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_node_mean(s : TimeseriesforecastdeeparNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_node_scale(s : TimeseriesforecastdeeparNode, f : Double) -> TimeseriesforecastdeeparNode {
   let result = timeseries_forecast_deepar_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_forecast_deepar_node_fill(s : TimeseriesforecastdeeparNode, v 
   result
 }
 
-pub fn timeseries_forecast_deepar_node_min(s : TimeseriesforecastdeeparNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_node_min(s : TimeseriesforecastdeeparNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_node_max(s : TimeseriesforecastdeeparNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_node_max(s : TimeseriesforecastdeeparNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_node_to_string(s : TimeseriesforecastdeeparNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_forecast_deepar_edge_set(s : TimeseriesforecastdeeparEdge, i :
   result
 }
 
-pub fn timeseries_forecast_deepar_edge_sum(s : TimeseriesforecastdeeparEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_edge_sum(s : TimeseriesforecastdeeparEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_edge_mean(s : TimeseriesforecastdeeparEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_edge_mean(s : TimeseriesforecastdeeparEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_edge_scale(s : TimeseriesforecastdeeparEdge, f : Double) -> TimeseriesforecastdeeparEdge {
   let result = timeseries_forecast_deepar_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_forecast_deepar_edge_fill(s : TimeseriesforecastdeeparEdge, v 
   result
 }
 
-pub fn timeseries_forecast_deepar_edge_min(s : TimeseriesforecastdeeparEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_edge_min(s : TimeseriesforecastdeeparEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_edge_max(s : TimeseriesforecastdeeparEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_edge_max(s : TimeseriesforecastdeeparEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_edge_to_string(s : TimeseriesforecastdeeparEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_forecast_deepar_path_set(s : TimeseriesforecastdeeparPath, i :
   result
 }
 
-pub fn timeseries_forecast_deepar_path_sum(s : TimeseriesforecastdeeparPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_path_sum(s : TimeseriesforecastdeeparPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_path_mean(s : TimeseriesforecastdeeparPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_path_mean(s : TimeseriesforecastdeeparPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_path_scale(s : TimeseriesforecastdeeparPath, f : Double) -> TimeseriesforecastdeeparPath {
   let result = timeseries_forecast_deepar_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_forecast_deepar_path_fill(s : TimeseriesforecastdeeparPath, v 
   result
 }
 
-pub fn timeseries_forecast_deepar_path_min(s : TimeseriesforecastdeeparPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_path_min(s : TimeseriesforecastdeeparPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_path_max(s : TimeseriesforecastdeeparPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_path_max(s : TimeseriesforecastdeeparPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_path_to_string(s : TimeseriesforecastdeeparPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_forecast_deepar_cluster_set(s : TimeseriesforecastdeeparCluste
   result
 }
 
-pub fn timeseries_forecast_deepar_cluster_sum(s : TimeseriesforecastdeeparCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_cluster_sum(s : TimeseriesforecastdeeparCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_cluster_mean(s : TimeseriesforecastdeeparCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_cluster_mean(s : TimeseriesforecastdeeparCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_cluster_scale(s : TimeseriesforecastdeeparCluster, f : Double) -> TimeseriesforecastdeeparCluster {
   let result = timeseries_forecast_deepar_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_forecast_deepar_cluster_fill(s : TimeseriesforecastdeeparClust
   result
 }
 
-pub fn timeseries_forecast_deepar_cluster_min(s : TimeseriesforecastdeeparCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_cluster_min(s : TimeseriesforecastdeeparCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_cluster_max(s : TimeseriesforecastdeeparCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_cluster_max(s : TimeseriesforecastdeeparCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_cluster_to_string(s : TimeseriesforecastdeeparCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_forecast_deepar_model_set(s : TimeseriesforecastdeeparModel, i
   result
 }
 
-pub fn timeseries_forecast_deepar_model_sum(s : TimeseriesforecastdeeparModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_model_sum(s : TimeseriesforecastdeeparModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_model_mean(s : TimeseriesforecastdeeparModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_model_mean(s : TimeseriesforecastdeeparModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_model_scale(s : TimeseriesforecastdeeparModel, f : Double) -> TimeseriesforecastdeeparModel {
   let result = timeseries_forecast_deepar_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_forecast_deepar_model_fill(s : TimeseriesforecastdeeparModel, 
   result
 }
 
-pub fn timeseries_forecast_deepar_model_min(s : TimeseriesforecastdeeparModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_model_min(s : TimeseriesforecastdeeparModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_model_max(s : TimeseriesforecastdeeparModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_model_max(s : TimeseriesforecastdeeparModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_model_to_string(s : TimeseriesforecastdeeparModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_forecast_deepar_layer_set(s : TimeseriesforecastdeeparLayer, i
   result
 }
 
-pub fn timeseries_forecast_deepar_layer_sum(s : TimeseriesforecastdeeparLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_layer_sum(s : TimeseriesforecastdeeparLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_layer_mean(s : TimeseriesforecastdeeparLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_layer_mean(s : TimeseriesforecastdeeparLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_layer_scale(s : TimeseriesforecastdeeparLayer, f : Double) -> TimeseriesforecastdeeparLayer {
   let result = timeseries_forecast_deepar_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_forecast_deepar_layer_fill(s : TimeseriesforecastdeeparLayer, 
   result
 }
 
-pub fn timeseries_forecast_deepar_layer_min(s : TimeseriesforecastdeeparLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_layer_min(s : TimeseriesforecastdeeparLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_layer_max(s : TimeseriesforecastdeeparLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_layer_max(s : TimeseriesforecastdeeparLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_layer_to_string(s : TimeseriesforecastdeeparLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_forecast_deepar_buffer_set(s : TimeseriesforecastdeeparBuffer,
   result
 }
 
-pub fn timeseries_forecast_deepar_buffer_sum(s : TimeseriesforecastdeeparBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_buffer_sum(s : TimeseriesforecastdeeparBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_buffer_mean(s : TimeseriesforecastdeeparBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_buffer_mean(s : TimeseriesforecastdeeparBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_buffer_scale(s : TimeseriesforecastdeeparBuffer, f : Double) -> TimeseriesforecastdeeparBuffer {
   let result = timeseries_forecast_deepar_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_forecast_deepar_buffer_fill(s : TimeseriesforecastdeeparBuffer
   result
 }
 
-pub fn timeseries_forecast_deepar_buffer_min(s : TimeseriesforecastdeeparBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_buffer_min(s : TimeseriesforecastdeeparBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_buffer_max(s : TimeseriesforecastdeeparBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_buffer_max(s : TimeseriesforecastdeeparBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_buffer_to_string(s : TimeseriesforecastdeeparBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_forecast_deepar_cursor_set(s : TimeseriesforecastdeeparCursor,
   result
 }
 
-pub fn timeseries_forecast_deepar_cursor_sum(s : TimeseriesforecastdeeparCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_cursor_sum(s : TimeseriesforecastdeeparCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_cursor_mean(s : TimeseriesforecastdeeparCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_cursor_mean(s : TimeseriesforecastdeeparCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_cursor_scale(s : TimeseriesforecastdeeparCursor, f : Double) -> TimeseriesforecastdeeparCursor {
   let result = timeseries_forecast_deepar_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_forecast_deepar_cursor_fill(s : TimeseriesforecastdeeparCursor
   result
 }
 
-pub fn timeseries_forecast_deepar_cursor_min(s : TimeseriesforecastdeeparCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_cursor_min(s : TimeseriesforecastdeeparCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_cursor_max(s : TimeseriesforecastdeeparCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_cursor_max(s : TimeseriesforecastdeeparCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_cursor_to_string(s : TimeseriesforecastdeeparCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_forecast_deepar_view_set(s : TimeseriesforecastdeeparView, i :
   result
 }
 
-pub fn timeseries_forecast_deepar_view_sum(s : TimeseriesforecastdeeparView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_view_sum(s : TimeseriesforecastdeeparView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_view_mean(s : TimeseriesforecastdeeparView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_view_mean(s : TimeseriesforecastdeeparView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_view_scale(s : TimeseriesforecastdeeparView, f : Double) -> TimeseriesforecastdeeparView {
   let result = timeseries_forecast_deepar_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_forecast_deepar_view_fill(s : TimeseriesforecastdeeparView, v 
   result
 }
 
-pub fn timeseries_forecast_deepar_view_min(s : TimeseriesforecastdeeparView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_view_min(s : TimeseriesforecastdeeparView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_view_max(s : TimeseriesforecastdeeparView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_view_max(s : TimeseriesforecastdeeparView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_view_to_string(s : TimeseriesforecastdeeparView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_forecast_deepar_range_set(s : TimeseriesforecastdeeparRange, i
   result
 }
 
-pub fn timeseries_forecast_deepar_range_sum(s : TimeseriesforecastdeeparRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_range_sum(s : TimeseriesforecastdeeparRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_range_mean(s : TimeseriesforecastdeeparRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_range_mean(s : TimeseriesforecastdeeparRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_range_scale(s : TimeseriesforecastdeeparRange, f : Double) -> TimeseriesforecastdeeparRange {
   let result = timeseries_forecast_deepar_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_forecast_deepar_range_fill(s : TimeseriesforecastdeeparRange, 
   result
 }
 
-pub fn timeseries_forecast_deepar_range_min(s : TimeseriesforecastdeeparRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_range_min(s : TimeseriesforecastdeeparRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_range_max(s : TimeseriesforecastdeeparRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_range_max(s : TimeseriesforecastdeeparRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_range_to_string(s : TimeseriesforecastdeeparRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_forecast_deepar_slice_set(s : TimeseriesforecastdeeparSlice, i
   result
 }
 
-pub fn timeseries_forecast_deepar_slice_sum(s : TimeseriesforecastdeeparSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_forecast_deepar_slice_sum(s : TimeseriesforecastdeeparSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_forecast_deepar_slice_mean(s : TimeseriesforecastdeeparSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_forecast_deepar_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_forecast_deepar_slice_mean(s : TimeseriesforecastdeeparSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_forecast_deepar_slice_scale(s : TimeseriesforecastdeeparSlice, f : Double) -> TimeseriesforecastdeeparSlice {
   let result = timeseries_forecast_deepar_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_forecast_deepar_slice_fill(s : TimeseriesforecastdeeparSlice, 
   result
 }
 
-pub fn timeseries_forecast_deepar_slice_min(s : TimeseriesforecastdeeparSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_slice_min(s : TimeseriesforecastdeeparSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_forecast_deepar_slice_max(s : TimeseriesforecastdeeparSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_forecast_deepar_slice_max(s : TimeseriesforecastdeeparSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_forecast_deepar_slice_to_string(s : TimeseriesforecastdeeparSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

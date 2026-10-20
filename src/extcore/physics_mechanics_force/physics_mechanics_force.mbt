@@ -88,11 +88,7 @@ pub fn physics_mechanics_force_make_series(vals : Array[Double], name : String) 
 
 pub fn physics_mechanics_force_series_len(s : PhysicsmechanicsforceSeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_force_series_sum(s : PhysicsmechanicsforceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_force_series_sum(s : PhysicsmechanicsforceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_force_series_mean(s : PhysicsmechanicsforceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_force_frame_set(s : PhysicsmechanicsforceFrame, i : Int
   result
 }
 
-pub fn physics_mechanics_force_frame_sum(s : PhysicsmechanicsforceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_frame_sum(s : PhysicsmechanicsforceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_frame_mean(s : PhysicsmechanicsforceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_frame_mean(s : PhysicsmechanicsforceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_frame_scale(s : PhysicsmechanicsforceFrame, f : Double) -> PhysicsmechanicsforceFrame {
   let result = physics_mechanics_force_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_force_frame_fill(s : PhysicsmechanicsforceFrame, v : Do
   result
 }
 
-pub fn physics_mechanics_force_frame_min(s : PhysicsmechanicsforceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_frame_min(s : PhysicsmechanicsforceFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_frame_max(s : PhysicsmechanicsforceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_frame_max(s : PhysicsmechanicsforceFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_frame_to_string(s : PhysicsmechanicsforceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_force_table_set(s : PhysicsmechanicsforceTable, i : Int
   result
 }
 
-pub fn physics_mechanics_force_table_sum(s : PhysicsmechanicsforceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_table_sum(s : PhysicsmechanicsforceTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_table_mean(s : PhysicsmechanicsforceTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_table_mean(s : PhysicsmechanicsforceTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_table_scale(s : PhysicsmechanicsforceTable, f : Double) -> PhysicsmechanicsforceTable {
   let result = physics_mechanics_force_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_force_table_fill(s : PhysicsmechanicsforceTable, v : Do
   result
 }
 
-pub fn physics_mechanics_force_table_min(s : PhysicsmechanicsforceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_table_min(s : PhysicsmechanicsforceTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_table_max(s : PhysicsmechanicsforceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_table_max(s : PhysicsmechanicsforceTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_table_to_string(s : PhysicsmechanicsforceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_force_graphn_set(s : PhysicsmechanicsforceGraphN, i : I
   result
 }
 
-pub fn physics_mechanics_force_graphn_sum(s : PhysicsmechanicsforceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_graphn_sum(s : PhysicsmechanicsforceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_graphn_mean(s : PhysicsmechanicsforceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_graphn_mean(s : PhysicsmechanicsforceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_graphn_scale(s : PhysicsmechanicsforceGraphN, f : Double) -> PhysicsmechanicsforceGraphN {
   let result = physics_mechanics_force_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_force_graphn_fill(s : PhysicsmechanicsforceGraphN, v : 
   result
 }
 
-pub fn physics_mechanics_force_graphn_min(s : PhysicsmechanicsforceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_graphn_min(s : PhysicsmechanicsforceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_graphn_max(s : PhysicsmechanicsforceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_graphn_max(s : PhysicsmechanicsforceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_graphn_to_string(s : PhysicsmechanicsforceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_force_node_set(s : PhysicsmechanicsforceNode, i : Int, 
   result
 }
 
-pub fn physics_mechanics_force_node_sum(s : PhysicsmechanicsforceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_node_sum(s : PhysicsmechanicsforceNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_node_mean(s : PhysicsmechanicsforceNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_node_mean(s : PhysicsmechanicsforceNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_node_scale(s : PhysicsmechanicsforceNode, f : Double) -> PhysicsmechanicsforceNode {
   let result = physics_mechanics_force_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_force_node_fill(s : PhysicsmechanicsforceNode, v : Doub
   result
 }
 
-pub fn physics_mechanics_force_node_min(s : PhysicsmechanicsforceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_node_min(s : PhysicsmechanicsforceNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_node_max(s : PhysicsmechanicsforceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_node_max(s : PhysicsmechanicsforceNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_node_to_string(s : PhysicsmechanicsforceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_force_edge_set(s : PhysicsmechanicsforceEdge, i : Int, 
   result
 }
 
-pub fn physics_mechanics_force_edge_sum(s : PhysicsmechanicsforceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_edge_sum(s : PhysicsmechanicsforceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_edge_mean(s : PhysicsmechanicsforceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_edge_mean(s : PhysicsmechanicsforceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_edge_scale(s : PhysicsmechanicsforceEdge, f : Double) -> PhysicsmechanicsforceEdge {
   let result = physics_mechanics_force_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_force_edge_fill(s : PhysicsmechanicsforceEdge, v : Doub
   result
 }
 
-pub fn physics_mechanics_force_edge_min(s : PhysicsmechanicsforceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_edge_min(s : PhysicsmechanicsforceEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_edge_max(s : PhysicsmechanicsforceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_edge_max(s : PhysicsmechanicsforceEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_edge_to_string(s : PhysicsmechanicsforceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_force_path_set(s : PhysicsmechanicsforcePath, i : Int, 
   result
 }
 
-pub fn physics_mechanics_force_path_sum(s : PhysicsmechanicsforcePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_path_sum(s : PhysicsmechanicsforcePath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_path_mean(s : PhysicsmechanicsforcePath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_path_mean(s : PhysicsmechanicsforcePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_path_scale(s : PhysicsmechanicsforcePath, f : Double) -> PhysicsmechanicsforcePath {
   let result = physics_mechanics_force_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_force_path_fill(s : PhysicsmechanicsforcePath, v : Doub
   result
 }
 
-pub fn physics_mechanics_force_path_min(s : PhysicsmechanicsforcePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_path_min(s : PhysicsmechanicsforcePath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_path_max(s : PhysicsmechanicsforcePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_path_max(s : PhysicsmechanicsforcePath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_path_to_string(s : PhysicsmechanicsforcePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_force_cluster_set(s : PhysicsmechanicsforceCluster, i :
   result
 }
 
-pub fn physics_mechanics_force_cluster_sum(s : PhysicsmechanicsforceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_cluster_sum(s : PhysicsmechanicsforceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_cluster_mean(s : PhysicsmechanicsforceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_cluster_mean(s : PhysicsmechanicsforceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_cluster_scale(s : PhysicsmechanicsforceCluster, f : Double) -> PhysicsmechanicsforceCluster {
   let result = physics_mechanics_force_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_force_cluster_fill(s : PhysicsmechanicsforceCluster, v 
   result
 }
 
-pub fn physics_mechanics_force_cluster_min(s : PhysicsmechanicsforceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_cluster_min(s : PhysicsmechanicsforceCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_cluster_max(s : PhysicsmechanicsforceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_cluster_max(s : PhysicsmechanicsforceCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_cluster_to_string(s : PhysicsmechanicsforceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_force_model_set(s : PhysicsmechanicsforceModel, i : Int
   result
 }
 
-pub fn physics_mechanics_force_model_sum(s : PhysicsmechanicsforceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_model_sum(s : PhysicsmechanicsforceModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_model_mean(s : PhysicsmechanicsforceModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_model_mean(s : PhysicsmechanicsforceModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_model_scale(s : PhysicsmechanicsforceModel, f : Double) -> PhysicsmechanicsforceModel {
   let result = physics_mechanics_force_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_force_model_fill(s : PhysicsmechanicsforceModel, v : Do
   result
 }
 
-pub fn physics_mechanics_force_model_min(s : PhysicsmechanicsforceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_model_min(s : PhysicsmechanicsforceModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_model_max(s : PhysicsmechanicsforceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_model_max(s : PhysicsmechanicsforceModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_model_to_string(s : PhysicsmechanicsforceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_force_layer_set(s : PhysicsmechanicsforceLayer, i : Int
   result
 }
 
-pub fn physics_mechanics_force_layer_sum(s : PhysicsmechanicsforceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_layer_sum(s : PhysicsmechanicsforceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_layer_mean(s : PhysicsmechanicsforceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_layer_mean(s : PhysicsmechanicsforceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_layer_scale(s : PhysicsmechanicsforceLayer, f : Double) -> PhysicsmechanicsforceLayer {
   let result = physics_mechanics_force_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_force_layer_fill(s : PhysicsmechanicsforceLayer, v : Do
   result
 }
 
-pub fn physics_mechanics_force_layer_min(s : PhysicsmechanicsforceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_layer_min(s : PhysicsmechanicsforceLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_layer_max(s : PhysicsmechanicsforceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_layer_max(s : PhysicsmechanicsforceLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_layer_to_string(s : PhysicsmechanicsforceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_force_buffer_set(s : PhysicsmechanicsforceBuffer, i : I
   result
 }
 
-pub fn physics_mechanics_force_buffer_sum(s : PhysicsmechanicsforceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_buffer_sum(s : PhysicsmechanicsforceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_buffer_mean(s : PhysicsmechanicsforceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_buffer_mean(s : PhysicsmechanicsforceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_buffer_scale(s : PhysicsmechanicsforceBuffer, f : Double) -> PhysicsmechanicsforceBuffer {
   let result = physics_mechanics_force_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_force_buffer_fill(s : PhysicsmechanicsforceBuffer, v : 
   result
 }
 
-pub fn physics_mechanics_force_buffer_min(s : PhysicsmechanicsforceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_buffer_min(s : PhysicsmechanicsforceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_buffer_max(s : PhysicsmechanicsforceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_buffer_max(s : PhysicsmechanicsforceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_buffer_to_string(s : PhysicsmechanicsforceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_force_cursor_set(s : PhysicsmechanicsforceCursor, i : I
   result
 }
 
-pub fn physics_mechanics_force_cursor_sum(s : PhysicsmechanicsforceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_cursor_sum(s : PhysicsmechanicsforceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_cursor_mean(s : PhysicsmechanicsforceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_cursor_mean(s : PhysicsmechanicsforceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_cursor_scale(s : PhysicsmechanicsforceCursor, f : Double) -> PhysicsmechanicsforceCursor {
   let result = physics_mechanics_force_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_force_cursor_fill(s : PhysicsmechanicsforceCursor, v : 
   result
 }
 
-pub fn physics_mechanics_force_cursor_min(s : PhysicsmechanicsforceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_cursor_min(s : PhysicsmechanicsforceCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_cursor_max(s : PhysicsmechanicsforceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_cursor_max(s : PhysicsmechanicsforceCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_cursor_to_string(s : PhysicsmechanicsforceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_force_view_set(s : PhysicsmechanicsforceView, i : Int, 
   result
 }
 
-pub fn physics_mechanics_force_view_sum(s : PhysicsmechanicsforceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_view_sum(s : PhysicsmechanicsforceView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_view_mean(s : PhysicsmechanicsforceView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_view_mean(s : PhysicsmechanicsforceView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_view_scale(s : PhysicsmechanicsforceView, f : Double) -> PhysicsmechanicsforceView {
   let result = physics_mechanics_force_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_force_view_fill(s : PhysicsmechanicsforceView, v : Doub
   result
 }
 
-pub fn physics_mechanics_force_view_min(s : PhysicsmechanicsforceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_view_min(s : PhysicsmechanicsforceView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_view_max(s : PhysicsmechanicsforceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_view_max(s : PhysicsmechanicsforceView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_view_to_string(s : PhysicsmechanicsforceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_force_range_set(s : PhysicsmechanicsforceRange, i : Int
   result
 }
 
-pub fn physics_mechanics_force_range_sum(s : PhysicsmechanicsforceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_range_sum(s : PhysicsmechanicsforceRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_range_mean(s : PhysicsmechanicsforceRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_range_mean(s : PhysicsmechanicsforceRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_range_scale(s : PhysicsmechanicsforceRange, f : Double) -> PhysicsmechanicsforceRange {
   let result = physics_mechanics_force_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_force_range_fill(s : PhysicsmechanicsforceRange, v : Do
   result
 }
 
-pub fn physics_mechanics_force_range_min(s : PhysicsmechanicsforceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_range_min(s : PhysicsmechanicsforceRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_range_max(s : PhysicsmechanicsforceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_range_max(s : PhysicsmechanicsforceRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_range_to_string(s : PhysicsmechanicsforceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_force_slice_set(s : PhysicsmechanicsforceSlice, i : Int
   result
 }
 
-pub fn physics_mechanics_force_slice_sum(s : PhysicsmechanicsforceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_force_slice_sum(s : PhysicsmechanicsforceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_force_slice_mean(s : PhysicsmechanicsforceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_force_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_force_slice_mean(s : PhysicsmechanicsforceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_force_slice_scale(s : PhysicsmechanicsforceSlice, f : Double) -> PhysicsmechanicsforceSlice {
   let result = physics_mechanics_force_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_force_slice_fill(s : PhysicsmechanicsforceSlice, v : Do
   result
 }
 
-pub fn physics_mechanics_force_slice_min(s : PhysicsmechanicsforceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_slice_min(s : PhysicsmechanicsforceSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_force_slice_max(s : PhysicsmechanicsforceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_force_slice_max(s : PhysicsmechanicsforceSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_force_slice_to_string(s : PhysicsmechanicsforceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

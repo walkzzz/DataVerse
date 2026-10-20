@@ -88,11 +88,7 @@ pub fn ds_hash_linear_make_series(vals : Array[Double], name : String) -> Dshash
 
 pub fn ds_hash_linear_series_len(s : DshashlinearSeries) -> Int { s.vals.length() }
 
-pub fn ds_hash_linear_series_sum(s : DshashlinearSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_hash_linear_series_sum(s : DshashlinearSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_hash_linear_series_mean(s : DshashlinearSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_hash_linear_frame_set(s : DshashlinearFrame, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_linear_frame_sum(s : DshashlinearFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_frame_sum(s : DshashlinearFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_frame_mean(s : DshashlinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_frame_mean(s : DshashlinearFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_frame_scale(s : DshashlinearFrame, f : Double) -> DshashlinearFrame {
   let result = ds_hash_linear_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_hash_linear_frame_fill(s : DshashlinearFrame, v : Double) -> Dshashlin
   result
 }
 
-pub fn ds_hash_linear_frame_min(s : DshashlinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_frame_min(s : DshashlinearFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_frame_max(s : DshashlinearFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_frame_max(s : DshashlinearFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_frame_to_string(s : DshashlinearFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_hash_linear_table_set(s : DshashlinearTable, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_linear_table_sum(s : DshashlinearTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_table_sum(s : DshashlinearTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_table_mean(s : DshashlinearTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_table_mean(s : DshashlinearTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_table_scale(s : DshashlinearTable, f : Double) -> DshashlinearTable {
   let result = ds_hash_linear_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_hash_linear_table_fill(s : DshashlinearTable, v : Double) -> Dshashlin
   result
 }
 
-pub fn ds_hash_linear_table_min(s : DshashlinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_table_min(s : DshashlinearTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_table_max(s : DshashlinearTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_table_max(s : DshashlinearTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_table_to_string(s : DshashlinearTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_hash_linear_graphn_set(s : DshashlinearGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_linear_graphn_sum(s : DshashlinearGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_graphn_sum(s : DshashlinearGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_graphn_mean(s : DshashlinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_graphn_mean(s : DshashlinearGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_graphn_scale(s : DshashlinearGraphN, f : Double) -> DshashlinearGraphN {
   let result = ds_hash_linear_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_hash_linear_graphn_fill(s : DshashlinearGraphN, v : Double) -> Dshashl
   result
 }
 
-pub fn ds_hash_linear_graphn_min(s : DshashlinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_graphn_min(s : DshashlinearGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_graphn_max(s : DshashlinearGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_graphn_max(s : DshashlinearGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_graphn_to_string(s : DshashlinearGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_hash_linear_node_set(s : DshashlinearNode, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_linear_node_sum(s : DshashlinearNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_node_sum(s : DshashlinearNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_node_mean(s : DshashlinearNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_node_mean(s : DshashlinearNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_node_scale(s : DshashlinearNode, f : Double) -> DshashlinearNode {
   let result = ds_hash_linear_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_hash_linear_node_fill(s : DshashlinearNode, v : Double) -> Dshashlinea
   result
 }
 
-pub fn ds_hash_linear_node_min(s : DshashlinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_node_min(s : DshashlinearNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_node_max(s : DshashlinearNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_node_max(s : DshashlinearNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_node_to_string(s : DshashlinearNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_hash_linear_edge_set(s : DshashlinearEdge, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_linear_edge_sum(s : DshashlinearEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_edge_sum(s : DshashlinearEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_edge_mean(s : DshashlinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_edge_mean(s : DshashlinearEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_edge_scale(s : DshashlinearEdge, f : Double) -> DshashlinearEdge {
   let result = ds_hash_linear_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_hash_linear_edge_fill(s : DshashlinearEdge, v : Double) -> Dshashlinea
   result
 }
 
-pub fn ds_hash_linear_edge_min(s : DshashlinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_edge_min(s : DshashlinearEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_edge_max(s : DshashlinearEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_edge_max(s : DshashlinearEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_edge_to_string(s : DshashlinearEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_hash_linear_path_set(s : DshashlinearPath, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_linear_path_sum(s : DshashlinearPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_path_sum(s : DshashlinearPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_path_mean(s : DshashlinearPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_path_mean(s : DshashlinearPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_path_scale(s : DshashlinearPath, f : Double) -> DshashlinearPath {
   let result = ds_hash_linear_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_hash_linear_path_fill(s : DshashlinearPath, v : Double) -> Dshashlinea
   result
 }
 
-pub fn ds_hash_linear_path_min(s : DshashlinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_path_min(s : DshashlinearPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_path_max(s : DshashlinearPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_path_max(s : DshashlinearPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_path_to_string(s : DshashlinearPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_hash_linear_cluster_set(s : DshashlinearCluster, i : Int, v : Double) 
   result
 }
 
-pub fn ds_hash_linear_cluster_sum(s : DshashlinearCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_cluster_sum(s : DshashlinearCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_cluster_mean(s : DshashlinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_cluster_mean(s : DshashlinearCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_cluster_scale(s : DshashlinearCluster, f : Double) -> DshashlinearCluster {
   let result = ds_hash_linear_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_hash_linear_cluster_fill(s : DshashlinearCluster, v : Double) -> Dshas
   result
 }
 
-pub fn ds_hash_linear_cluster_min(s : DshashlinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_cluster_min(s : DshashlinearCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_cluster_max(s : DshashlinearCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_cluster_max(s : DshashlinearCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_cluster_to_string(s : DshashlinearCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_hash_linear_model_set(s : DshashlinearModel, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_linear_model_sum(s : DshashlinearModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_model_sum(s : DshashlinearModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_model_mean(s : DshashlinearModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_model_mean(s : DshashlinearModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_model_scale(s : DshashlinearModel, f : Double) -> DshashlinearModel {
   let result = ds_hash_linear_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_hash_linear_model_fill(s : DshashlinearModel, v : Double) -> Dshashlin
   result
 }
 
-pub fn ds_hash_linear_model_min(s : DshashlinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_model_min(s : DshashlinearModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_model_max(s : DshashlinearModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_model_max(s : DshashlinearModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_model_to_string(s : DshashlinearModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_hash_linear_layer_set(s : DshashlinearLayer, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_linear_layer_sum(s : DshashlinearLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_layer_sum(s : DshashlinearLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_layer_mean(s : DshashlinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_layer_mean(s : DshashlinearLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_layer_scale(s : DshashlinearLayer, f : Double) -> DshashlinearLayer {
   let result = ds_hash_linear_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_hash_linear_layer_fill(s : DshashlinearLayer, v : Double) -> Dshashlin
   result
 }
 
-pub fn ds_hash_linear_layer_min(s : DshashlinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_layer_min(s : DshashlinearLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_layer_max(s : DshashlinearLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_layer_max(s : DshashlinearLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_layer_to_string(s : DshashlinearLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_hash_linear_buffer_set(s : DshashlinearBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_linear_buffer_sum(s : DshashlinearBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_buffer_sum(s : DshashlinearBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_buffer_mean(s : DshashlinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_buffer_mean(s : DshashlinearBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_buffer_scale(s : DshashlinearBuffer, f : Double) -> DshashlinearBuffer {
   let result = ds_hash_linear_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_hash_linear_buffer_fill(s : DshashlinearBuffer, v : Double) -> Dshashl
   result
 }
 
-pub fn ds_hash_linear_buffer_min(s : DshashlinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_buffer_min(s : DshashlinearBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_buffer_max(s : DshashlinearBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_buffer_max(s : DshashlinearBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_buffer_to_string(s : DshashlinearBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_hash_linear_cursor_set(s : DshashlinearCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn ds_hash_linear_cursor_sum(s : DshashlinearCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_cursor_sum(s : DshashlinearCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_cursor_mean(s : DshashlinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_cursor_mean(s : DshashlinearCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_cursor_scale(s : DshashlinearCursor, f : Double) -> DshashlinearCursor {
   let result = ds_hash_linear_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_hash_linear_cursor_fill(s : DshashlinearCursor, v : Double) -> Dshashl
   result
 }
 
-pub fn ds_hash_linear_cursor_min(s : DshashlinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_cursor_min(s : DshashlinearCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_cursor_max(s : DshashlinearCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_cursor_max(s : DshashlinearCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_cursor_to_string(s : DshashlinearCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_hash_linear_view_set(s : DshashlinearView, i : Int, v : Double) -> Dsh
   result
 }
 
-pub fn ds_hash_linear_view_sum(s : DshashlinearView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_view_sum(s : DshashlinearView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_view_mean(s : DshashlinearView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_view_mean(s : DshashlinearView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_view_scale(s : DshashlinearView, f : Double) -> DshashlinearView {
   let result = ds_hash_linear_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_hash_linear_view_fill(s : DshashlinearView, v : Double) -> Dshashlinea
   result
 }
 
-pub fn ds_hash_linear_view_min(s : DshashlinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_view_min(s : DshashlinearView) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_view_max(s : DshashlinearView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_view_max(s : DshashlinearView) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_view_to_string(s : DshashlinearView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_hash_linear_range_set(s : DshashlinearRange, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_linear_range_sum(s : DshashlinearRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_range_sum(s : DshashlinearRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_range_mean(s : DshashlinearRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_range_mean(s : DshashlinearRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_range_scale(s : DshashlinearRange, f : Double) -> DshashlinearRange {
   let result = ds_hash_linear_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_hash_linear_range_fill(s : DshashlinearRange, v : Double) -> Dshashlin
   result
 }
 
-pub fn ds_hash_linear_range_min(s : DshashlinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_range_min(s : DshashlinearRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_range_max(s : DshashlinearRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_range_max(s : DshashlinearRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_range_to_string(s : DshashlinearRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_hash_linear_slice_set(s : DshashlinearSlice, i : Int, v : Double) -> D
   result
 }
 
-pub fn ds_hash_linear_slice_sum(s : DshashlinearSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_hash_linear_slice_sum(s : DshashlinearSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_hash_linear_slice_mean(s : DshashlinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_hash_linear_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_hash_linear_slice_mean(s : DshashlinearSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_hash_linear_slice_scale(s : DshashlinearSlice, f : Double) -> DshashlinearSlice {
   let result = ds_hash_linear_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_hash_linear_slice_fill(s : DshashlinearSlice, v : Double) -> Dshashlin
   result
 }
 
-pub fn ds_hash_linear_slice_min(s : DshashlinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_slice_min(s : DshashlinearSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_hash_linear_slice_max(s : DshashlinearSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_hash_linear_slice_max(s : DshashlinearSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_hash_linear_slice_to_string(s : DshashlinearSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

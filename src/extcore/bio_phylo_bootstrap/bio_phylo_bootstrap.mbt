@@ -88,11 +88,7 @@ pub fn bio_phylo_bootstrap_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_phylo_bootstrap_series_len(s : BiophylobootstrapSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_bootstrap_series_sum(s : BiophylobootstrapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_series_sum(s : BiophylobootstrapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_bootstrap_series_mean(s : BiophylobootstrapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_bootstrap_frame_set(s : BiophylobootstrapFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bootstrap_frame_sum(s : BiophylobootstrapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_frame_sum(s : BiophylobootstrapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_frame_mean(s : BiophylobootstrapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_frame_mean(s : BiophylobootstrapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_frame_scale(s : BiophylobootstrapFrame, f : Double) -> BiophylobootstrapFrame {
   let result = bio_phylo_bootstrap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_bootstrap_frame_fill(s : BiophylobootstrapFrame, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bootstrap_frame_min(s : BiophylobootstrapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_frame_min(s : BiophylobootstrapFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_frame_max(s : BiophylobootstrapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_frame_max(s : BiophylobootstrapFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_frame_to_string(s : BiophylobootstrapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_bootstrap_table_set(s : BiophylobootstrapTable, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bootstrap_table_sum(s : BiophylobootstrapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_table_sum(s : BiophylobootstrapTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_table_mean(s : BiophylobootstrapTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_table_mean(s : BiophylobootstrapTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_table_scale(s : BiophylobootstrapTable, f : Double) -> BiophylobootstrapTable {
   let result = bio_phylo_bootstrap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_bootstrap_table_fill(s : BiophylobootstrapTable, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bootstrap_table_min(s : BiophylobootstrapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_table_min(s : BiophylobootstrapTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_table_max(s : BiophylobootstrapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_table_max(s : BiophylobootstrapTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_table_to_string(s : BiophylobootstrapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_bootstrap_graphn_set(s : BiophylobootstrapGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_bootstrap_graphn_sum(s : BiophylobootstrapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_graphn_sum(s : BiophylobootstrapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_graphn_mean(s : BiophylobootstrapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_graphn_mean(s : BiophylobootstrapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_graphn_scale(s : BiophylobootstrapGraphN, f : Double) -> BiophylobootstrapGraphN {
   let result = bio_phylo_bootstrap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_bootstrap_graphn_fill(s : BiophylobootstrapGraphN, v : Double) 
   result
 }
 
-pub fn bio_phylo_bootstrap_graphn_min(s : BiophylobootstrapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_graphn_min(s : BiophylobootstrapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_graphn_max(s : BiophylobootstrapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_graphn_max(s : BiophylobootstrapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_graphn_to_string(s : BiophylobootstrapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_bootstrap_node_set(s : BiophylobootstrapNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bootstrap_node_sum(s : BiophylobootstrapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_node_sum(s : BiophylobootstrapNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_node_mean(s : BiophylobootstrapNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_node_mean(s : BiophylobootstrapNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_node_scale(s : BiophylobootstrapNode, f : Double) -> BiophylobootstrapNode {
   let result = bio_phylo_bootstrap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_bootstrap_node_fill(s : BiophylobootstrapNode, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bootstrap_node_min(s : BiophylobootstrapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_node_min(s : BiophylobootstrapNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_node_max(s : BiophylobootstrapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_node_max(s : BiophylobootstrapNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_node_to_string(s : BiophylobootstrapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_bootstrap_edge_set(s : BiophylobootstrapEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bootstrap_edge_sum(s : BiophylobootstrapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_edge_sum(s : BiophylobootstrapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_edge_mean(s : BiophylobootstrapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_edge_mean(s : BiophylobootstrapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_edge_scale(s : BiophylobootstrapEdge, f : Double) -> BiophylobootstrapEdge {
   let result = bio_phylo_bootstrap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_bootstrap_edge_fill(s : BiophylobootstrapEdge, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bootstrap_edge_min(s : BiophylobootstrapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_edge_min(s : BiophylobootstrapEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_edge_max(s : BiophylobootstrapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_edge_max(s : BiophylobootstrapEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_edge_to_string(s : BiophylobootstrapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_bootstrap_path_set(s : BiophylobootstrapPath, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bootstrap_path_sum(s : BiophylobootstrapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_path_sum(s : BiophylobootstrapPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_path_mean(s : BiophylobootstrapPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_path_mean(s : BiophylobootstrapPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_path_scale(s : BiophylobootstrapPath, f : Double) -> BiophylobootstrapPath {
   let result = bio_phylo_bootstrap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_bootstrap_path_fill(s : BiophylobootstrapPath, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bootstrap_path_min(s : BiophylobootstrapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_path_min(s : BiophylobootstrapPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_path_max(s : BiophylobootstrapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_path_max(s : BiophylobootstrapPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_path_to_string(s : BiophylobootstrapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_bootstrap_cluster_set(s : BiophylobootstrapCluster, i : Int, v 
   result
 }
 
-pub fn bio_phylo_bootstrap_cluster_sum(s : BiophylobootstrapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_cluster_sum(s : BiophylobootstrapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_cluster_mean(s : BiophylobootstrapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_cluster_mean(s : BiophylobootstrapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_cluster_scale(s : BiophylobootstrapCluster, f : Double) -> BiophylobootstrapCluster {
   let result = bio_phylo_bootstrap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_bootstrap_cluster_fill(s : BiophylobootstrapCluster, v : Double
   result
 }
 
-pub fn bio_phylo_bootstrap_cluster_min(s : BiophylobootstrapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_cluster_min(s : BiophylobootstrapCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_cluster_max(s : BiophylobootstrapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_cluster_max(s : BiophylobootstrapCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_cluster_to_string(s : BiophylobootstrapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_bootstrap_model_set(s : BiophylobootstrapModel, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bootstrap_model_sum(s : BiophylobootstrapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_model_sum(s : BiophylobootstrapModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_model_mean(s : BiophylobootstrapModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_model_mean(s : BiophylobootstrapModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_model_scale(s : BiophylobootstrapModel, f : Double) -> BiophylobootstrapModel {
   let result = bio_phylo_bootstrap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_bootstrap_model_fill(s : BiophylobootstrapModel, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bootstrap_model_min(s : BiophylobootstrapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_model_min(s : BiophylobootstrapModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_model_max(s : BiophylobootstrapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_model_max(s : BiophylobootstrapModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_model_to_string(s : BiophylobootstrapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_bootstrap_layer_set(s : BiophylobootstrapLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bootstrap_layer_sum(s : BiophylobootstrapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_layer_sum(s : BiophylobootstrapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_layer_mean(s : BiophylobootstrapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_layer_mean(s : BiophylobootstrapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_layer_scale(s : BiophylobootstrapLayer, f : Double) -> BiophylobootstrapLayer {
   let result = bio_phylo_bootstrap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_bootstrap_layer_fill(s : BiophylobootstrapLayer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bootstrap_layer_min(s : BiophylobootstrapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_layer_min(s : BiophylobootstrapLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_layer_max(s : BiophylobootstrapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_layer_max(s : BiophylobootstrapLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_layer_to_string(s : BiophylobootstrapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_bootstrap_buffer_set(s : BiophylobootstrapBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_bootstrap_buffer_sum(s : BiophylobootstrapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_buffer_sum(s : BiophylobootstrapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_buffer_mean(s : BiophylobootstrapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_buffer_mean(s : BiophylobootstrapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_buffer_scale(s : BiophylobootstrapBuffer, f : Double) -> BiophylobootstrapBuffer {
   let result = bio_phylo_bootstrap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_bootstrap_buffer_fill(s : BiophylobootstrapBuffer, v : Double) 
   result
 }
 
-pub fn bio_phylo_bootstrap_buffer_min(s : BiophylobootstrapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_buffer_min(s : BiophylobootstrapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_buffer_max(s : BiophylobootstrapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_buffer_max(s : BiophylobootstrapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_buffer_to_string(s : BiophylobootstrapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_bootstrap_cursor_set(s : BiophylobootstrapCursor, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_bootstrap_cursor_sum(s : BiophylobootstrapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_cursor_sum(s : BiophylobootstrapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_cursor_mean(s : BiophylobootstrapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_cursor_mean(s : BiophylobootstrapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_cursor_scale(s : BiophylobootstrapCursor, f : Double) -> BiophylobootstrapCursor {
   let result = bio_phylo_bootstrap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_bootstrap_cursor_fill(s : BiophylobootstrapCursor, v : Double) 
   result
 }
 
-pub fn bio_phylo_bootstrap_cursor_min(s : BiophylobootstrapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_cursor_min(s : BiophylobootstrapCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_cursor_max(s : BiophylobootstrapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_cursor_max(s : BiophylobootstrapCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_cursor_to_string(s : BiophylobootstrapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_bootstrap_view_set(s : BiophylobootstrapView, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_bootstrap_view_sum(s : BiophylobootstrapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_view_sum(s : BiophylobootstrapView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_view_mean(s : BiophylobootstrapView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_view_mean(s : BiophylobootstrapView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_view_scale(s : BiophylobootstrapView, f : Double) -> BiophylobootstrapView {
   let result = bio_phylo_bootstrap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_bootstrap_view_fill(s : BiophylobootstrapView, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_bootstrap_view_min(s : BiophylobootstrapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_view_min(s : BiophylobootstrapView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_view_max(s : BiophylobootstrapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_view_max(s : BiophylobootstrapView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_view_to_string(s : BiophylobootstrapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_bootstrap_range_set(s : BiophylobootstrapRange, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bootstrap_range_sum(s : BiophylobootstrapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_range_sum(s : BiophylobootstrapRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_range_mean(s : BiophylobootstrapRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_range_mean(s : BiophylobootstrapRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_range_scale(s : BiophylobootstrapRange, f : Double) -> BiophylobootstrapRange {
   let result = bio_phylo_bootstrap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_bootstrap_range_fill(s : BiophylobootstrapRange, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bootstrap_range_min(s : BiophylobootstrapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_range_min(s : BiophylobootstrapRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_range_max(s : BiophylobootstrapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_range_max(s : BiophylobootstrapRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_range_to_string(s : BiophylobootstrapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_bootstrap_slice_set(s : BiophylobootstrapSlice, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_bootstrap_slice_sum(s : BiophylobootstrapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_bootstrap_slice_sum(s : BiophylobootstrapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_bootstrap_slice_mean(s : BiophylobootstrapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_bootstrap_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_bootstrap_slice_mean(s : BiophylobootstrapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_bootstrap_slice_scale(s : BiophylobootstrapSlice, f : Double) -> BiophylobootstrapSlice {
   let result = bio_phylo_bootstrap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_bootstrap_slice_fill(s : BiophylobootstrapSlice, v : Double) ->
   result
 }
 
-pub fn bio_phylo_bootstrap_slice_min(s : BiophylobootstrapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_slice_min(s : BiophylobootstrapSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_bootstrap_slice_max(s : BiophylobootstrapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_bootstrap_slice_max(s : BiophylobootstrapSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_bootstrap_slice_to_string(s : BiophylobootstrapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

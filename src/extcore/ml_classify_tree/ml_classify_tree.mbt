@@ -88,11 +88,7 @@ pub fn ml_classify_tree_make_series(vals : Array[Double], name : String) -> Mlcl
 
 pub fn ml_classify_tree_series_len(s : MlclassifytreeSeries) -> Int { s.vals.length() }
 
-pub fn ml_classify_tree_series_sum(s : MlclassifytreeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_classify_tree_series_sum(s : MlclassifytreeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_classify_tree_series_mean(s : MlclassifytreeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_classify_tree_frame_set(s : MlclassifytreeFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_tree_frame_sum(s : MlclassifytreeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_frame_sum(s : MlclassifytreeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_frame_mean(s : MlclassifytreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_frame_mean(s : MlclassifytreeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_frame_scale(s : MlclassifytreeFrame, f : Double) -> MlclassifytreeFrame {
   let result = ml_classify_tree_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_classify_tree_frame_fill(s : MlclassifytreeFrame, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_tree_frame_min(s : MlclassifytreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_frame_min(s : MlclassifytreeFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_frame_max(s : MlclassifytreeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_frame_max(s : MlclassifytreeFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_frame_to_string(s : MlclassifytreeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_classify_tree_table_set(s : MlclassifytreeTable, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_tree_table_sum(s : MlclassifytreeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_table_sum(s : MlclassifytreeTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_table_mean(s : MlclassifytreeTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_table_mean(s : MlclassifytreeTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_table_scale(s : MlclassifytreeTable, f : Double) -> MlclassifytreeTable {
   let result = ml_classify_tree_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_classify_tree_table_fill(s : MlclassifytreeTable, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_tree_table_min(s : MlclassifytreeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_table_min(s : MlclassifytreeTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_table_max(s : MlclassifytreeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_table_max(s : MlclassifytreeTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_table_to_string(s : MlclassifytreeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_classify_tree_graphn_set(s : MlclassifytreeGraphN, i : Int, v : Double
   result
 }
 
-pub fn ml_classify_tree_graphn_sum(s : MlclassifytreeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_graphn_sum(s : MlclassifytreeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_graphn_mean(s : MlclassifytreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_graphn_mean(s : MlclassifytreeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_graphn_scale(s : MlclassifytreeGraphN, f : Double) -> MlclassifytreeGraphN {
   let result = ml_classify_tree_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_classify_tree_graphn_fill(s : MlclassifytreeGraphN, v : Double) -> Mlc
   result
 }
 
-pub fn ml_classify_tree_graphn_min(s : MlclassifytreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_graphn_min(s : MlclassifytreeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_graphn_max(s : MlclassifytreeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_graphn_max(s : MlclassifytreeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_graphn_to_string(s : MlclassifytreeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_classify_tree_node_set(s : MlclassifytreeNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_tree_node_sum(s : MlclassifytreeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_node_sum(s : MlclassifytreeNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_node_mean(s : MlclassifytreeNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_node_mean(s : MlclassifytreeNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_node_scale(s : MlclassifytreeNode, f : Double) -> MlclassifytreeNode {
   let result = ml_classify_tree_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_classify_tree_node_fill(s : MlclassifytreeNode, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_tree_node_min(s : MlclassifytreeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_node_min(s : MlclassifytreeNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_node_max(s : MlclassifytreeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_node_max(s : MlclassifytreeNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_node_to_string(s : MlclassifytreeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_classify_tree_edge_set(s : MlclassifytreeEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_tree_edge_sum(s : MlclassifytreeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_edge_sum(s : MlclassifytreeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_edge_mean(s : MlclassifytreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_edge_mean(s : MlclassifytreeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_edge_scale(s : MlclassifytreeEdge, f : Double) -> MlclassifytreeEdge {
   let result = ml_classify_tree_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_classify_tree_edge_fill(s : MlclassifytreeEdge, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_tree_edge_min(s : MlclassifytreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_edge_min(s : MlclassifytreeEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_edge_max(s : MlclassifytreeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_edge_max(s : MlclassifytreeEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_edge_to_string(s : MlclassifytreeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_classify_tree_path_set(s : MlclassifytreePath, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_tree_path_sum(s : MlclassifytreePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_path_sum(s : MlclassifytreePath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_path_mean(s : MlclassifytreePath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_path_mean(s : MlclassifytreePath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_path_scale(s : MlclassifytreePath, f : Double) -> MlclassifytreePath {
   let result = ml_classify_tree_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_classify_tree_path_fill(s : MlclassifytreePath, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_tree_path_min(s : MlclassifytreePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_path_min(s : MlclassifytreePath) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_path_max(s : MlclassifytreePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_path_max(s : MlclassifytreePath) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_path_to_string(s : MlclassifytreePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_classify_tree_cluster_set(s : MlclassifytreeCluster, i : Int, v : Doub
   result
 }
 
-pub fn ml_classify_tree_cluster_sum(s : MlclassifytreeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_cluster_sum(s : MlclassifytreeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_cluster_mean(s : MlclassifytreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_cluster_mean(s : MlclassifytreeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_cluster_scale(s : MlclassifytreeCluster, f : Double) -> MlclassifytreeCluster {
   let result = ml_classify_tree_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_classify_tree_cluster_fill(s : MlclassifytreeCluster, v : Double) -> M
   result
 }
 
-pub fn ml_classify_tree_cluster_min(s : MlclassifytreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_cluster_min(s : MlclassifytreeCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_cluster_max(s : MlclassifytreeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_cluster_max(s : MlclassifytreeCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_cluster_to_string(s : MlclassifytreeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_classify_tree_model_set(s : MlclassifytreeModel, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_tree_model_sum(s : MlclassifytreeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_model_sum(s : MlclassifytreeModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_model_mean(s : MlclassifytreeModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_model_mean(s : MlclassifytreeModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_model_scale(s : MlclassifytreeModel, f : Double) -> MlclassifytreeModel {
   let result = ml_classify_tree_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_classify_tree_model_fill(s : MlclassifytreeModel, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_tree_model_min(s : MlclassifytreeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_model_min(s : MlclassifytreeModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_model_max(s : MlclassifytreeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_model_max(s : MlclassifytreeModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_model_to_string(s : MlclassifytreeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_classify_tree_layer_set(s : MlclassifytreeLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_tree_layer_sum(s : MlclassifytreeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_layer_sum(s : MlclassifytreeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_layer_mean(s : MlclassifytreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_layer_mean(s : MlclassifytreeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_layer_scale(s : MlclassifytreeLayer, f : Double) -> MlclassifytreeLayer {
   let result = ml_classify_tree_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_classify_tree_layer_fill(s : MlclassifytreeLayer, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_tree_layer_min(s : MlclassifytreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_layer_min(s : MlclassifytreeLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_layer_max(s : MlclassifytreeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_layer_max(s : MlclassifytreeLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_layer_to_string(s : MlclassifytreeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_classify_tree_buffer_set(s : MlclassifytreeBuffer, i : Int, v : Double
   result
 }
 
-pub fn ml_classify_tree_buffer_sum(s : MlclassifytreeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_buffer_sum(s : MlclassifytreeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_buffer_mean(s : MlclassifytreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_buffer_mean(s : MlclassifytreeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_buffer_scale(s : MlclassifytreeBuffer, f : Double) -> MlclassifytreeBuffer {
   let result = ml_classify_tree_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_classify_tree_buffer_fill(s : MlclassifytreeBuffer, v : Double) -> Mlc
   result
 }
 
-pub fn ml_classify_tree_buffer_min(s : MlclassifytreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_buffer_min(s : MlclassifytreeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_buffer_max(s : MlclassifytreeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_buffer_max(s : MlclassifytreeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_buffer_to_string(s : MlclassifytreeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_classify_tree_cursor_set(s : MlclassifytreeCursor, i : Int, v : Double
   result
 }
 
-pub fn ml_classify_tree_cursor_sum(s : MlclassifytreeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_cursor_sum(s : MlclassifytreeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_cursor_mean(s : MlclassifytreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_cursor_mean(s : MlclassifytreeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_cursor_scale(s : MlclassifytreeCursor, f : Double) -> MlclassifytreeCursor {
   let result = ml_classify_tree_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_classify_tree_cursor_fill(s : MlclassifytreeCursor, v : Double) -> Mlc
   result
 }
 
-pub fn ml_classify_tree_cursor_min(s : MlclassifytreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_cursor_min(s : MlclassifytreeCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_cursor_max(s : MlclassifytreeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_cursor_max(s : MlclassifytreeCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_cursor_to_string(s : MlclassifytreeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_classify_tree_view_set(s : MlclassifytreeView, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_classify_tree_view_sum(s : MlclassifytreeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_view_sum(s : MlclassifytreeView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_view_mean(s : MlclassifytreeView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_view_mean(s : MlclassifytreeView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_view_scale(s : MlclassifytreeView, f : Double) -> MlclassifytreeView {
   let result = ml_classify_tree_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_classify_tree_view_fill(s : MlclassifytreeView, v : Double) -> Mlclass
   result
 }
 
-pub fn ml_classify_tree_view_min(s : MlclassifytreeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_view_min(s : MlclassifytreeView) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_view_max(s : MlclassifytreeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_view_max(s : MlclassifytreeView) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_view_to_string(s : MlclassifytreeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_classify_tree_range_set(s : MlclassifytreeRange, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_tree_range_sum(s : MlclassifytreeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_range_sum(s : MlclassifytreeRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_range_mean(s : MlclassifytreeRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_range_mean(s : MlclassifytreeRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_range_scale(s : MlclassifytreeRange, f : Double) -> MlclassifytreeRange {
   let result = ml_classify_tree_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_classify_tree_range_fill(s : MlclassifytreeRange, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_tree_range_min(s : MlclassifytreeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_range_min(s : MlclassifytreeRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_range_max(s : MlclassifytreeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_range_max(s : MlclassifytreeRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_range_to_string(s : MlclassifytreeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_classify_tree_slice_set(s : MlclassifytreeSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ml_classify_tree_slice_sum(s : MlclassifytreeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_classify_tree_slice_sum(s : MlclassifytreeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_classify_tree_slice_mean(s : MlclassifytreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_classify_tree_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_classify_tree_slice_mean(s : MlclassifytreeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_classify_tree_slice_scale(s : MlclassifytreeSlice, f : Double) -> MlclassifytreeSlice {
   let result = ml_classify_tree_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_classify_tree_slice_fill(s : MlclassifytreeSlice, v : Double) -> Mlcla
   result
 }
 
-pub fn ml_classify_tree_slice_min(s : MlclassifytreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_slice_min(s : MlclassifytreeSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_classify_tree_slice_max(s : MlclassifytreeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_classify_tree_slice_max(s : MlclassifytreeSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_classify_tree_slice_to_string(s : MlclassifytreeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

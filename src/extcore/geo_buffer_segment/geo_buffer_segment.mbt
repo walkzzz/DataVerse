@@ -88,11 +88,7 @@ pub fn geo_buffer_segment_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_buffer_segment_series_len(s : GeobuffersegmentSeries) -> Int { s.vals.length() }
 
-pub fn geo_buffer_segment_series_sum(s : GeobuffersegmentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_buffer_segment_series_sum(s : GeobuffersegmentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_buffer_segment_series_mean(s : GeobuffersegmentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_buffer_segment_frame_set(s : GeobuffersegmentFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_segment_frame_sum(s : GeobuffersegmentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_frame_sum(s : GeobuffersegmentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_frame_mean(s : GeobuffersegmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_frame_mean(s : GeobuffersegmentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_frame_scale(s : GeobuffersegmentFrame, f : Double) -> GeobuffersegmentFrame {
   let result = geo_buffer_segment_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_buffer_segment_frame_fill(s : GeobuffersegmentFrame, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_segment_frame_min(s : GeobuffersegmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_frame_min(s : GeobuffersegmentFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_frame_max(s : GeobuffersegmentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_frame_max(s : GeobuffersegmentFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_frame_to_string(s : GeobuffersegmentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_buffer_segment_table_set(s : GeobuffersegmentTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_segment_table_sum(s : GeobuffersegmentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_table_sum(s : GeobuffersegmentTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_table_mean(s : GeobuffersegmentTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_table_mean(s : GeobuffersegmentTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_table_scale(s : GeobuffersegmentTable, f : Double) -> GeobuffersegmentTable {
   let result = geo_buffer_segment_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_buffer_segment_table_fill(s : GeobuffersegmentTable, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_segment_table_min(s : GeobuffersegmentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_table_min(s : GeobuffersegmentTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_table_max(s : GeobuffersegmentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_table_max(s : GeobuffersegmentTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_table_to_string(s : GeobuffersegmentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_buffer_segment_graphn_set(s : GeobuffersegmentGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_segment_graphn_sum(s : GeobuffersegmentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_graphn_sum(s : GeobuffersegmentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_graphn_mean(s : GeobuffersegmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_graphn_mean(s : GeobuffersegmentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_graphn_scale(s : GeobuffersegmentGraphN, f : Double) -> GeobuffersegmentGraphN {
   let result = geo_buffer_segment_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_buffer_segment_graphn_fill(s : GeobuffersegmentGraphN, v : Double) ->
   result
 }
 
-pub fn geo_buffer_segment_graphn_min(s : GeobuffersegmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_graphn_min(s : GeobuffersegmentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_graphn_max(s : GeobuffersegmentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_graphn_max(s : GeobuffersegmentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_graphn_to_string(s : GeobuffersegmentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_buffer_segment_node_set(s : GeobuffersegmentNode, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_segment_node_sum(s : GeobuffersegmentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_node_sum(s : GeobuffersegmentNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_node_mean(s : GeobuffersegmentNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_node_mean(s : GeobuffersegmentNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_node_scale(s : GeobuffersegmentNode, f : Double) -> GeobuffersegmentNode {
   let result = geo_buffer_segment_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_buffer_segment_node_fill(s : GeobuffersegmentNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_segment_node_min(s : GeobuffersegmentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_node_min(s : GeobuffersegmentNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_node_max(s : GeobuffersegmentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_node_max(s : GeobuffersegmentNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_node_to_string(s : GeobuffersegmentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_buffer_segment_edge_set(s : GeobuffersegmentEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_segment_edge_sum(s : GeobuffersegmentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_edge_sum(s : GeobuffersegmentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_edge_mean(s : GeobuffersegmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_edge_mean(s : GeobuffersegmentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_edge_scale(s : GeobuffersegmentEdge, f : Double) -> GeobuffersegmentEdge {
   let result = geo_buffer_segment_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_buffer_segment_edge_fill(s : GeobuffersegmentEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_segment_edge_min(s : GeobuffersegmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_edge_min(s : GeobuffersegmentEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_edge_max(s : GeobuffersegmentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_edge_max(s : GeobuffersegmentEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_edge_to_string(s : GeobuffersegmentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_buffer_segment_path_set(s : GeobuffersegmentPath, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_segment_path_sum(s : GeobuffersegmentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_path_sum(s : GeobuffersegmentPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_path_mean(s : GeobuffersegmentPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_path_mean(s : GeobuffersegmentPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_path_scale(s : GeobuffersegmentPath, f : Double) -> GeobuffersegmentPath {
   let result = geo_buffer_segment_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_buffer_segment_path_fill(s : GeobuffersegmentPath, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_segment_path_min(s : GeobuffersegmentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_path_min(s : GeobuffersegmentPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_path_max(s : GeobuffersegmentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_path_max(s : GeobuffersegmentPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_path_to_string(s : GeobuffersegmentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_buffer_segment_cluster_set(s : GeobuffersegmentCluster, i : Int, v : 
   result
 }
 
-pub fn geo_buffer_segment_cluster_sum(s : GeobuffersegmentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_cluster_sum(s : GeobuffersegmentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_cluster_mean(s : GeobuffersegmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_cluster_mean(s : GeobuffersegmentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_cluster_scale(s : GeobuffersegmentCluster, f : Double) -> GeobuffersegmentCluster {
   let result = geo_buffer_segment_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_buffer_segment_cluster_fill(s : GeobuffersegmentCluster, v : Double) 
   result
 }
 
-pub fn geo_buffer_segment_cluster_min(s : GeobuffersegmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_cluster_min(s : GeobuffersegmentCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_cluster_max(s : GeobuffersegmentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_cluster_max(s : GeobuffersegmentCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_cluster_to_string(s : GeobuffersegmentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_buffer_segment_model_set(s : GeobuffersegmentModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_segment_model_sum(s : GeobuffersegmentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_model_sum(s : GeobuffersegmentModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_model_mean(s : GeobuffersegmentModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_model_mean(s : GeobuffersegmentModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_model_scale(s : GeobuffersegmentModel, f : Double) -> GeobuffersegmentModel {
   let result = geo_buffer_segment_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_buffer_segment_model_fill(s : GeobuffersegmentModel, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_segment_model_min(s : GeobuffersegmentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_model_min(s : GeobuffersegmentModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_model_max(s : GeobuffersegmentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_model_max(s : GeobuffersegmentModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_model_to_string(s : GeobuffersegmentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_buffer_segment_layer_set(s : GeobuffersegmentLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_segment_layer_sum(s : GeobuffersegmentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_layer_sum(s : GeobuffersegmentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_layer_mean(s : GeobuffersegmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_layer_mean(s : GeobuffersegmentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_layer_scale(s : GeobuffersegmentLayer, f : Double) -> GeobuffersegmentLayer {
   let result = geo_buffer_segment_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_buffer_segment_layer_fill(s : GeobuffersegmentLayer, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_segment_layer_min(s : GeobuffersegmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_layer_min(s : GeobuffersegmentLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_layer_max(s : GeobuffersegmentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_layer_max(s : GeobuffersegmentLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_layer_to_string(s : GeobuffersegmentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_buffer_segment_buffer_set(s : GeobuffersegmentBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_segment_buffer_sum(s : GeobuffersegmentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_buffer_sum(s : GeobuffersegmentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_buffer_mean(s : GeobuffersegmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_buffer_mean(s : GeobuffersegmentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_buffer_scale(s : GeobuffersegmentBuffer, f : Double) -> GeobuffersegmentBuffer {
   let result = geo_buffer_segment_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_buffer_segment_buffer_fill(s : GeobuffersegmentBuffer, v : Double) ->
   result
 }
 
-pub fn geo_buffer_segment_buffer_min(s : GeobuffersegmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_buffer_min(s : GeobuffersegmentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_buffer_max(s : GeobuffersegmentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_buffer_max(s : GeobuffersegmentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_buffer_to_string(s : GeobuffersegmentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_buffer_segment_cursor_set(s : GeobuffersegmentCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_segment_cursor_sum(s : GeobuffersegmentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_cursor_sum(s : GeobuffersegmentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_cursor_mean(s : GeobuffersegmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_cursor_mean(s : GeobuffersegmentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_cursor_scale(s : GeobuffersegmentCursor, f : Double) -> GeobuffersegmentCursor {
   let result = geo_buffer_segment_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_buffer_segment_cursor_fill(s : GeobuffersegmentCursor, v : Double) ->
   result
 }
 
-pub fn geo_buffer_segment_cursor_min(s : GeobuffersegmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_cursor_min(s : GeobuffersegmentCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_cursor_max(s : GeobuffersegmentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_cursor_max(s : GeobuffersegmentCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_cursor_to_string(s : GeobuffersegmentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_buffer_segment_view_set(s : GeobuffersegmentView, i : Int, v : Double
   result
 }
 
-pub fn geo_buffer_segment_view_sum(s : GeobuffersegmentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_view_sum(s : GeobuffersegmentView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_view_mean(s : GeobuffersegmentView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_view_mean(s : GeobuffersegmentView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_view_scale(s : GeobuffersegmentView, f : Double) -> GeobuffersegmentView {
   let result = geo_buffer_segment_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_buffer_segment_view_fill(s : GeobuffersegmentView, v : Double) -> Geo
   result
 }
 
-pub fn geo_buffer_segment_view_min(s : GeobuffersegmentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_view_min(s : GeobuffersegmentView) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_view_max(s : GeobuffersegmentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_view_max(s : GeobuffersegmentView) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_view_to_string(s : GeobuffersegmentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_buffer_segment_range_set(s : GeobuffersegmentRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_segment_range_sum(s : GeobuffersegmentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_range_sum(s : GeobuffersegmentRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_range_mean(s : GeobuffersegmentRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_range_mean(s : GeobuffersegmentRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_range_scale(s : GeobuffersegmentRange, f : Double) -> GeobuffersegmentRange {
   let result = geo_buffer_segment_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_buffer_segment_range_fill(s : GeobuffersegmentRange, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_segment_range_min(s : GeobuffersegmentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_range_min(s : GeobuffersegmentRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_range_max(s : GeobuffersegmentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_range_max(s : GeobuffersegmentRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_range_to_string(s : GeobuffersegmentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_buffer_segment_slice_set(s : GeobuffersegmentSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_segment_slice_sum(s : GeobuffersegmentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_segment_slice_sum(s : GeobuffersegmentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_segment_slice_mean(s : GeobuffersegmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_segment_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_segment_slice_mean(s : GeobuffersegmentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_segment_slice_scale(s : GeobuffersegmentSlice, f : Double) -> GeobuffersegmentSlice {
   let result = geo_buffer_segment_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_buffer_segment_slice_fill(s : GeobuffersegmentSlice, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_segment_slice_min(s : GeobuffersegmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_slice_min(s : GeobuffersegmentSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_segment_slice_max(s : GeobuffersegmentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_segment_slice_max(s : GeobuffersegmentSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_segment_slice_to_string(s : GeobuffersegmentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

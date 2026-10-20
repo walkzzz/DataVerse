@@ -88,11 +88,7 @@ pub fn crypto_sym_des_make_series(vals : Array[Double], name : String) -> Crypto
 
 pub fn crypto_sym_des_series_len(s : CryptosymdesSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_des_series_sum(s : CryptosymdesSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_des_series_sum(s : CryptosymdesSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_des_series_mean(s : CryptosymdesSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_des_frame_set(s : CryptosymdesFrame, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_des_frame_sum(s : CryptosymdesFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_frame_sum(s : CryptosymdesFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_frame_mean(s : CryptosymdesFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_frame_mean(s : CryptosymdesFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_frame_scale(s : CryptosymdesFrame, f : Double) -> CryptosymdesFrame {
   let result = crypto_sym_des_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_des_frame_fill(s : CryptosymdesFrame, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_des_frame_min(s : CryptosymdesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_frame_min(s : CryptosymdesFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_frame_max(s : CryptosymdesFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_frame_max(s : CryptosymdesFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_frame_to_string(s : CryptosymdesFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_des_table_set(s : CryptosymdesTable, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_des_table_sum(s : CryptosymdesTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_table_sum(s : CryptosymdesTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_table_mean(s : CryptosymdesTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_table_mean(s : CryptosymdesTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_table_scale(s : CryptosymdesTable, f : Double) -> CryptosymdesTable {
   let result = crypto_sym_des_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_des_table_fill(s : CryptosymdesTable, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_des_table_min(s : CryptosymdesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_table_min(s : CryptosymdesTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_table_max(s : CryptosymdesTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_table_max(s : CryptosymdesTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_table_to_string(s : CryptosymdesTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_des_graphn_set(s : CryptosymdesGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_des_graphn_sum(s : CryptosymdesGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_graphn_sum(s : CryptosymdesGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_graphn_mean(s : CryptosymdesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_graphn_mean(s : CryptosymdesGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_graphn_scale(s : CryptosymdesGraphN, f : Double) -> CryptosymdesGraphN {
   let result = crypto_sym_des_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_des_graphn_fill(s : CryptosymdesGraphN, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_des_graphn_min(s : CryptosymdesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_graphn_min(s : CryptosymdesGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_graphn_max(s : CryptosymdesGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_graphn_max(s : CryptosymdesGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_graphn_to_string(s : CryptosymdesGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_des_node_set(s : CryptosymdesNode, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_des_node_sum(s : CryptosymdesNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_node_sum(s : CryptosymdesNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_node_mean(s : CryptosymdesNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_node_mean(s : CryptosymdesNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_node_scale(s : CryptosymdesNode, f : Double) -> CryptosymdesNode {
   let result = crypto_sym_des_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_des_node_fill(s : CryptosymdesNode, v : Double) -> Cryptosymde
   result
 }
 
-pub fn crypto_sym_des_node_min(s : CryptosymdesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_node_min(s : CryptosymdesNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_node_max(s : CryptosymdesNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_node_max(s : CryptosymdesNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_node_to_string(s : CryptosymdesNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_des_edge_set(s : CryptosymdesEdge, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_des_edge_sum(s : CryptosymdesEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_edge_sum(s : CryptosymdesEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_edge_mean(s : CryptosymdesEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_edge_mean(s : CryptosymdesEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_edge_scale(s : CryptosymdesEdge, f : Double) -> CryptosymdesEdge {
   let result = crypto_sym_des_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_des_edge_fill(s : CryptosymdesEdge, v : Double) -> Cryptosymde
   result
 }
 
-pub fn crypto_sym_des_edge_min(s : CryptosymdesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_edge_min(s : CryptosymdesEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_edge_max(s : CryptosymdesEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_edge_max(s : CryptosymdesEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_edge_to_string(s : CryptosymdesEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_des_path_set(s : CryptosymdesPath, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_des_path_sum(s : CryptosymdesPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_path_sum(s : CryptosymdesPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_path_mean(s : CryptosymdesPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_path_mean(s : CryptosymdesPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_path_scale(s : CryptosymdesPath, f : Double) -> CryptosymdesPath {
   let result = crypto_sym_des_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_des_path_fill(s : CryptosymdesPath, v : Double) -> Cryptosymde
   result
 }
 
-pub fn crypto_sym_des_path_min(s : CryptosymdesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_path_min(s : CryptosymdesPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_path_max(s : CryptosymdesPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_path_max(s : CryptosymdesPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_path_to_string(s : CryptosymdesPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_des_cluster_set(s : CryptosymdesCluster, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_des_cluster_sum(s : CryptosymdesCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_cluster_sum(s : CryptosymdesCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_cluster_mean(s : CryptosymdesCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_cluster_mean(s : CryptosymdesCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_cluster_scale(s : CryptosymdesCluster, f : Double) -> CryptosymdesCluster {
   let result = crypto_sym_des_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_des_cluster_fill(s : CryptosymdesCluster, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_des_cluster_min(s : CryptosymdesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_cluster_min(s : CryptosymdesCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_cluster_max(s : CryptosymdesCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_cluster_max(s : CryptosymdesCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_cluster_to_string(s : CryptosymdesCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_des_model_set(s : CryptosymdesModel, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_des_model_sum(s : CryptosymdesModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_model_sum(s : CryptosymdesModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_model_mean(s : CryptosymdesModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_model_mean(s : CryptosymdesModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_model_scale(s : CryptosymdesModel, f : Double) -> CryptosymdesModel {
   let result = crypto_sym_des_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_des_model_fill(s : CryptosymdesModel, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_des_model_min(s : CryptosymdesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_model_min(s : CryptosymdesModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_model_max(s : CryptosymdesModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_model_max(s : CryptosymdesModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_model_to_string(s : CryptosymdesModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_des_layer_set(s : CryptosymdesLayer, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_des_layer_sum(s : CryptosymdesLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_layer_sum(s : CryptosymdesLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_layer_mean(s : CryptosymdesLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_layer_mean(s : CryptosymdesLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_layer_scale(s : CryptosymdesLayer, f : Double) -> CryptosymdesLayer {
   let result = crypto_sym_des_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_des_layer_fill(s : CryptosymdesLayer, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_des_layer_min(s : CryptosymdesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_layer_min(s : CryptosymdesLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_layer_max(s : CryptosymdesLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_layer_max(s : CryptosymdesLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_layer_to_string(s : CryptosymdesLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_des_buffer_set(s : CryptosymdesBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_des_buffer_sum(s : CryptosymdesBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_buffer_sum(s : CryptosymdesBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_buffer_mean(s : CryptosymdesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_buffer_mean(s : CryptosymdesBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_buffer_scale(s : CryptosymdesBuffer, f : Double) -> CryptosymdesBuffer {
   let result = crypto_sym_des_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_des_buffer_fill(s : CryptosymdesBuffer, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_des_buffer_min(s : CryptosymdesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_buffer_min(s : CryptosymdesBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_buffer_max(s : CryptosymdesBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_buffer_max(s : CryptosymdesBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_buffer_to_string(s : CryptosymdesBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_des_cursor_set(s : CryptosymdesCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_des_cursor_sum(s : CryptosymdesCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_cursor_sum(s : CryptosymdesCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_cursor_mean(s : CryptosymdesCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_cursor_mean(s : CryptosymdesCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_cursor_scale(s : CryptosymdesCursor, f : Double) -> CryptosymdesCursor {
   let result = crypto_sym_des_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_des_cursor_fill(s : CryptosymdesCursor, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_des_cursor_min(s : CryptosymdesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_cursor_min(s : CryptosymdesCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_cursor_max(s : CryptosymdesCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_cursor_max(s : CryptosymdesCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_cursor_to_string(s : CryptosymdesCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_des_view_set(s : CryptosymdesView, i : Int, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_des_view_sum(s : CryptosymdesView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_view_sum(s : CryptosymdesView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_view_mean(s : CryptosymdesView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_view_mean(s : CryptosymdesView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_view_scale(s : CryptosymdesView, f : Double) -> CryptosymdesView {
   let result = crypto_sym_des_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_des_view_fill(s : CryptosymdesView, v : Double) -> Cryptosymde
   result
 }
 
-pub fn crypto_sym_des_view_min(s : CryptosymdesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_view_min(s : CryptosymdesView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_view_max(s : CryptosymdesView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_view_max(s : CryptosymdesView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_view_to_string(s : CryptosymdesView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_des_range_set(s : CryptosymdesRange, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_des_range_sum(s : CryptosymdesRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_range_sum(s : CryptosymdesRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_range_mean(s : CryptosymdesRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_range_mean(s : CryptosymdesRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_range_scale(s : CryptosymdesRange, f : Double) -> CryptosymdesRange {
   let result = crypto_sym_des_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_des_range_fill(s : CryptosymdesRange, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_des_range_min(s : CryptosymdesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_range_min(s : CryptosymdesRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_range_max(s : CryptosymdesRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_range_max(s : CryptosymdesRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_range_to_string(s : CryptosymdesRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_des_slice_set(s : CryptosymdesSlice, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_des_slice_sum(s : CryptosymdesSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_des_slice_sum(s : CryptosymdesSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_des_slice_mean(s : CryptosymdesSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_des_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_des_slice_mean(s : CryptosymdesSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_des_slice_scale(s : CryptosymdesSlice, f : Double) -> CryptosymdesSlice {
   let result = crypto_sym_des_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_des_slice_fill(s : CryptosymdesSlice, v : Double) -> Cryptosym
   result
 }
 
-pub fn crypto_sym_des_slice_min(s : CryptosymdesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_slice_min(s : CryptosymdesSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_des_slice_max(s : CryptosymdesSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_des_slice_max(s : CryptosymdesSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_des_slice_to_string(s : CryptosymdesSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

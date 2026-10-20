@@ -88,11 +88,7 @@ pub fn finance_risk_coherent_make_series(vals : Array[Double], name : String) ->
 
 pub fn finance_risk_coherent_series_len(s : FinanceriskcoherentSeries) -> Int { s.vals.length() }
 
-pub fn finance_risk_coherent_series_sum(s : FinanceriskcoherentSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_risk_coherent_series_sum(s : FinanceriskcoherentSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_risk_coherent_series_mean(s : FinanceriskcoherentSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_risk_coherent_frame_set(s : FinanceriskcoherentFrame, i : Int, v 
   result
 }
 
-pub fn finance_risk_coherent_frame_sum(s : FinanceriskcoherentFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_frame_sum(s : FinanceriskcoherentFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_frame_mean(s : FinanceriskcoherentFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_frame_mean(s : FinanceriskcoherentFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_frame_scale(s : FinanceriskcoherentFrame, f : Double) -> FinanceriskcoherentFrame {
   let result = finance_risk_coherent_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_risk_coherent_frame_fill(s : FinanceriskcoherentFrame, v : Double
   result
 }
 
-pub fn finance_risk_coherent_frame_min(s : FinanceriskcoherentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_frame_min(s : FinanceriskcoherentFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_frame_max(s : FinanceriskcoherentFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_frame_max(s : FinanceriskcoherentFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_frame_to_string(s : FinanceriskcoherentFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_risk_coherent_table_set(s : FinanceriskcoherentTable, i : Int, v 
   result
 }
 
-pub fn finance_risk_coherent_table_sum(s : FinanceriskcoherentTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_table_sum(s : FinanceriskcoherentTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_table_mean(s : FinanceriskcoherentTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_table_mean(s : FinanceriskcoherentTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_table_scale(s : FinanceriskcoherentTable, f : Double) -> FinanceriskcoherentTable {
   let result = finance_risk_coherent_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_risk_coherent_table_fill(s : FinanceriskcoherentTable, v : Double
   result
 }
 
-pub fn finance_risk_coherent_table_min(s : FinanceriskcoherentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_table_min(s : FinanceriskcoherentTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_table_max(s : FinanceriskcoherentTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_table_max(s : FinanceriskcoherentTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_table_to_string(s : FinanceriskcoherentTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_risk_coherent_graphn_set(s : FinanceriskcoherentGraphN, i : Int, 
   result
 }
 
-pub fn finance_risk_coherent_graphn_sum(s : FinanceriskcoherentGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_graphn_sum(s : FinanceriskcoherentGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_graphn_mean(s : FinanceriskcoherentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_graphn_mean(s : FinanceriskcoherentGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_graphn_scale(s : FinanceriskcoherentGraphN, f : Double) -> FinanceriskcoherentGraphN {
   let result = finance_risk_coherent_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_risk_coherent_graphn_fill(s : FinanceriskcoherentGraphN, v : Doub
   result
 }
 
-pub fn finance_risk_coherent_graphn_min(s : FinanceriskcoherentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_graphn_min(s : FinanceriskcoherentGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_graphn_max(s : FinanceriskcoherentGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_graphn_max(s : FinanceriskcoherentGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_graphn_to_string(s : FinanceriskcoherentGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_risk_coherent_node_set(s : FinanceriskcoherentNode, i : Int, v : 
   result
 }
 
-pub fn finance_risk_coherent_node_sum(s : FinanceriskcoherentNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_node_sum(s : FinanceriskcoherentNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_node_mean(s : FinanceriskcoherentNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_node_mean(s : FinanceriskcoherentNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_node_scale(s : FinanceriskcoherentNode, f : Double) -> FinanceriskcoherentNode {
   let result = finance_risk_coherent_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_risk_coherent_node_fill(s : FinanceriskcoherentNode, v : Double) 
   result
 }
 
-pub fn finance_risk_coherent_node_min(s : FinanceriskcoherentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_node_min(s : FinanceriskcoherentNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_node_max(s : FinanceriskcoherentNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_node_max(s : FinanceriskcoherentNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_node_to_string(s : FinanceriskcoherentNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_risk_coherent_edge_set(s : FinanceriskcoherentEdge, i : Int, v : 
   result
 }
 
-pub fn finance_risk_coherent_edge_sum(s : FinanceriskcoherentEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_edge_sum(s : FinanceriskcoherentEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_edge_mean(s : FinanceriskcoherentEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_edge_mean(s : FinanceriskcoherentEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_edge_scale(s : FinanceriskcoherentEdge, f : Double) -> FinanceriskcoherentEdge {
   let result = finance_risk_coherent_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_risk_coherent_edge_fill(s : FinanceriskcoherentEdge, v : Double) 
   result
 }
 
-pub fn finance_risk_coherent_edge_min(s : FinanceriskcoherentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_edge_min(s : FinanceriskcoherentEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_edge_max(s : FinanceriskcoherentEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_edge_max(s : FinanceriskcoherentEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_edge_to_string(s : FinanceriskcoherentEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_risk_coherent_path_set(s : FinanceriskcoherentPath, i : Int, v : 
   result
 }
 
-pub fn finance_risk_coherent_path_sum(s : FinanceriskcoherentPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_path_sum(s : FinanceriskcoherentPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_path_mean(s : FinanceriskcoherentPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_path_mean(s : FinanceriskcoherentPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_path_scale(s : FinanceriskcoherentPath, f : Double) -> FinanceriskcoherentPath {
   let result = finance_risk_coherent_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_risk_coherent_path_fill(s : FinanceriskcoherentPath, v : Double) 
   result
 }
 
-pub fn finance_risk_coherent_path_min(s : FinanceriskcoherentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_path_min(s : FinanceriskcoherentPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_path_max(s : FinanceriskcoherentPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_path_max(s : FinanceriskcoherentPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_path_to_string(s : FinanceriskcoherentPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_risk_coherent_cluster_set(s : FinanceriskcoherentCluster, i : Int
   result
 }
 
-pub fn finance_risk_coherent_cluster_sum(s : FinanceriskcoherentCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_cluster_sum(s : FinanceriskcoherentCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_cluster_mean(s : FinanceriskcoherentCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_cluster_mean(s : FinanceriskcoherentCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_cluster_scale(s : FinanceriskcoherentCluster, f : Double) -> FinanceriskcoherentCluster {
   let result = finance_risk_coherent_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_risk_coherent_cluster_fill(s : FinanceriskcoherentCluster, v : Do
   result
 }
 
-pub fn finance_risk_coherent_cluster_min(s : FinanceriskcoherentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_cluster_min(s : FinanceriskcoherentCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_cluster_max(s : FinanceriskcoherentCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_cluster_max(s : FinanceriskcoherentCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_cluster_to_string(s : FinanceriskcoherentCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_risk_coherent_model_set(s : FinanceriskcoherentModel, i : Int, v 
   result
 }
 
-pub fn finance_risk_coherent_model_sum(s : FinanceriskcoherentModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_model_sum(s : FinanceriskcoherentModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_model_mean(s : FinanceriskcoherentModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_model_mean(s : FinanceriskcoherentModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_model_scale(s : FinanceriskcoherentModel, f : Double) -> FinanceriskcoherentModel {
   let result = finance_risk_coherent_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_risk_coherent_model_fill(s : FinanceriskcoherentModel, v : Double
   result
 }
 
-pub fn finance_risk_coherent_model_min(s : FinanceriskcoherentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_model_min(s : FinanceriskcoherentModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_model_max(s : FinanceriskcoherentModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_model_max(s : FinanceriskcoherentModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_model_to_string(s : FinanceriskcoherentModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_risk_coherent_layer_set(s : FinanceriskcoherentLayer, i : Int, v 
   result
 }
 
-pub fn finance_risk_coherent_layer_sum(s : FinanceriskcoherentLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_layer_sum(s : FinanceriskcoherentLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_layer_mean(s : FinanceriskcoherentLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_layer_mean(s : FinanceriskcoherentLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_layer_scale(s : FinanceriskcoherentLayer, f : Double) -> FinanceriskcoherentLayer {
   let result = finance_risk_coherent_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_risk_coherent_layer_fill(s : FinanceriskcoherentLayer, v : Double
   result
 }
 
-pub fn finance_risk_coherent_layer_min(s : FinanceriskcoherentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_layer_min(s : FinanceriskcoherentLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_layer_max(s : FinanceriskcoherentLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_layer_max(s : FinanceriskcoherentLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_layer_to_string(s : FinanceriskcoherentLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_risk_coherent_buffer_set(s : FinanceriskcoherentBuffer, i : Int, 
   result
 }
 
-pub fn finance_risk_coherent_buffer_sum(s : FinanceriskcoherentBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_buffer_sum(s : FinanceriskcoherentBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_buffer_mean(s : FinanceriskcoherentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_buffer_mean(s : FinanceriskcoherentBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_buffer_scale(s : FinanceriskcoherentBuffer, f : Double) -> FinanceriskcoherentBuffer {
   let result = finance_risk_coherent_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_risk_coherent_buffer_fill(s : FinanceriskcoherentBuffer, v : Doub
   result
 }
 
-pub fn finance_risk_coherent_buffer_min(s : FinanceriskcoherentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_buffer_min(s : FinanceriskcoherentBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_buffer_max(s : FinanceriskcoherentBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_buffer_max(s : FinanceriskcoherentBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_buffer_to_string(s : FinanceriskcoherentBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_risk_coherent_cursor_set(s : FinanceriskcoherentCursor, i : Int, 
   result
 }
 
-pub fn finance_risk_coherent_cursor_sum(s : FinanceriskcoherentCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_cursor_sum(s : FinanceriskcoherentCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_cursor_mean(s : FinanceriskcoherentCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_cursor_mean(s : FinanceriskcoherentCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_cursor_scale(s : FinanceriskcoherentCursor, f : Double) -> FinanceriskcoherentCursor {
   let result = finance_risk_coherent_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_risk_coherent_cursor_fill(s : FinanceriskcoherentCursor, v : Doub
   result
 }
 
-pub fn finance_risk_coherent_cursor_min(s : FinanceriskcoherentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_cursor_min(s : FinanceriskcoherentCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_cursor_max(s : FinanceriskcoherentCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_cursor_max(s : FinanceriskcoherentCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_cursor_to_string(s : FinanceriskcoherentCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_risk_coherent_view_set(s : FinanceriskcoherentView, i : Int, v : 
   result
 }
 
-pub fn finance_risk_coherent_view_sum(s : FinanceriskcoherentView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_view_sum(s : FinanceriskcoherentView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_view_mean(s : FinanceriskcoherentView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_view_mean(s : FinanceriskcoherentView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_view_scale(s : FinanceriskcoherentView, f : Double) -> FinanceriskcoherentView {
   let result = finance_risk_coherent_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_risk_coherent_view_fill(s : FinanceriskcoherentView, v : Double) 
   result
 }
 
-pub fn finance_risk_coherent_view_min(s : FinanceriskcoherentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_view_min(s : FinanceriskcoherentView) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_view_max(s : FinanceriskcoherentView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_view_max(s : FinanceriskcoherentView) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_view_to_string(s : FinanceriskcoherentView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_risk_coherent_range_set(s : FinanceriskcoherentRange, i : Int, v 
   result
 }
 
-pub fn finance_risk_coherent_range_sum(s : FinanceriskcoherentRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_range_sum(s : FinanceriskcoherentRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_range_mean(s : FinanceriskcoherentRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_range_mean(s : FinanceriskcoherentRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_range_scale(s : FinanceriskcoherentRange, f : Double) -> FinanceriskcoherentRange {
   let result = finance_risk_coherent_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_risk_coherent_range_fill(s : FinanceriskcoherentRange, v : Double
   result
 }
 
-pub fn finance_risk_coherent_range_min(s : FinanceriskcoherentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_range_min(s : FinanceriskcoherentRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_range_max(s : FinanceriskcoherentRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_range_max(s : FinanceriskcoherentRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_range_to_string(s : FinanceriskcoherentRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_risk_coherent_slice_set(s : FinanceriskcoherentSlice, i : Int, v 
   result
 }
 
-pub fn finance_risk_coherent_slice_sum(s : FinanceriskcoherentSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_risk_coherent_slice_sum(s : FinanceriskcoherentSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_risk_coherent_slice_mean(s : FinanceriskcoherentSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_risk_coherent_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_risk_coherent_slice_mean(s : FinanceriskcoherentSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_risk_coherent_slice_scale(s : FinanceriskcoherentSlice, f : Double) -> FinanceriskcoherentSlice {
   let result = finance_risk_coherent_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_risk_coherent_slice_fill(s : FinanceriskcoherentSlice, v : Double
   result
 }
 
-pub fn finance_risk_coherent_slice_min(s : FinanceriskcoherentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_slice_min(s : FinanceriskcoherentSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_risk_coherent_slice_max(s : FinanceriskcoherentSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_risk_coherent_slice_max(s : FinanceriskcoherentSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_risk_coherent_slice_to_string(s : FinanceriskcoherentSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn math_linear_prog_make_series(vals : Array[Double], name : String) -> Math
 
 pub fn math_linear_prog_series_len(s : MathlinearprogSeries) -> Int { s.vals.length() }
 
-pub fn math_linear_prog_series_sum(s : MathlinearprogSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_linear_prog_series_sum(s : MathlinearprogSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_linear_prog_series_mean(s : MathlinearprogSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_linear_prog_frame_set(s : MathlinearprogFrame, i : Int, v : Double) 
   result
 }
 
-pub fn math_linear_prog_frame_sum(s : MathlinearprogFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_frame_sum(s : MathlinearprogFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_frame_mean(s : MathlinearprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_frame_mean(s : MathlinearprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_frame_scale(s : MathlinearprogFrame, f : Double) -> MathlinearprogFrame {
   let result = math_linear_prog_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_linear_prog_frame_fill(s : MathlinearprogFrame, v : Double) -> Mathl
   result
 }
 
-pub fn math_linear_prog_frame_min(s : MathlinearprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_frame_min(s : MathlinearprogFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_frame_max(s : MathlinearprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_frame_max(s : MathlinearprogFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_frame_to_string(s : MathlinearprogFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_linear_prog_table_set(s : MathlinearprogTable, i : Int, v : Double) 
   result
 }
 
-pub fn math_linear_prog_table_sum(s : MathlinearprogTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_table_sum(s : MathlinearprogTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_table_mean(s : MathlinearprogTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_table_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_table_mean(s : MathlinearprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_table_scale(s : MathlinearprogTable, f : Double) -> MathlinearprogTable {
   let result = math_linear_prog_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_linear_prog_table_fill(s : MathlinearprogTable, v : Double) -> Mathl
   result
 }
 
-pub fn math_linear_prog_table_min(s : MathlinearprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_table_min(s : MathlinearprogTable) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_table_max(s : MathlinearprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_table_max(s : MathlinearprogTable) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_table_to_string(s : MathlinearprogTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_linear_prog_graphn_set(s : MathlinearprogGraphN, i : Int, v : Double
   result
 }
 
-pub fn math_linear_prog_graphn_sum(s : MathlinearprogGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_graphn_sum(s : MathlinearprogGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_graphn_mean(s : MathlinearprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_graphn_mean(s : MathlinearprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_graphn_scale(s : MathlinearprogGraphN, f : Double) -> MathlinearprogGraphN {
   let result = math_linear_prog_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_linear_prog_graphn_fill(s : MathlinearprogGraphN, v : Double) -> Mat
   result
 }
 
-pub fn math_linear_prog_graphn_min(s : MathlinearprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_graphn_min(s : MathlinearprogGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_graphn_max(s : MathlinearprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_graphn_max(s : MathlinearprogGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_graphn_to_string(s : MathlinearprogGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_linear_prog_node_set(s : MathlinearprogNode, i : Int, v : Double) ->
   result
 }
 
-pub fn math_linear_prog_node_sum(s : MathlinearprogNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_node_sum(s : MathlinearprogNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_node_mean(s : MathlinearprogNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_node_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_node_mean(s : MathlinearprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_node_scale(s : MathlinearprogNode, f : Double) -> MathlinearprogNode {
   let result = math_linear_prog_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_linear_prog_node_fill(s : MathlinearprogNode, v : Double) -> Mathlin
   result
 }
 
-pub fn math_linear_prog_node_min(s : MathlinearprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_node_min(s : MathlinearprogNode) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_node_max(s : MathlinearprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_node_max(s : MathlinearprogNode) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_node_to_string(s : MathlinearprogNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_linear_prog_edge_set(s : MathlinearprogEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn math_linear_prog_edge_sum(s : MathlinearprogEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_edge_sum(s : MathlinearprogEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_edge_mean(s : MathlinearprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_edge_mean(s : MathlinearprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_edge_scale(s : MathlinearprogEdge, f : Double) -> MathlinearprogEdge {
   let result = math_linear_prog_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_linear_prog_edge_fill(s : MathlinearprogEdge, v : Double) -> Mathlin
   result
 }
 
-pub fn math_linear_prog_edge_min(s : MathlinearprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_edge_min(s : MathlinearprogEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_edge_max(s : MathlinearprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_edge_max(s : MathlinearprogEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_edge_to_string(s : MathlinearprogEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_linear_prog_path_set(s : MathlinearprogPath, i : Int, v : Double) ->
   result
 }
 
-pub fn math_linear_prog_path_sum(s : MathlinearprogPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_path_sum(s : MathlinearprogPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_path_mean(s : MathlinearprogPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_path_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_path_mean(s : MathlinearprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_path_scale(s : MathlinearprogPath, f : Double) -> MathlinearprogPath {
   let result = math_linear_prog_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_linear_prog_path_fill(s : MathlinearprogPath, v : Double) -> Mathlin
   result
 }
 
-pub fn math_linear_prog_path_min(s : MathlinearprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_path_min(s : MathlinearprogPath) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_path_max(s : MathlinearprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_path_max(s : MathlinearprogPath) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_path_to_string(s : MathlinearprogPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_linear_prog_cluster_set(s : MathlinearprogCluster, i : Int, v : Doub
   result
 }
 
-pub fn math_linear_prog_cluster_sum(s : MathlinearprogCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_cluster_sum(s : MathlinearprogCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_cluster_mean(s : MathlinearprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_cluster_mean(s : MathlinearprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_cluster_scale(s : MathlinearprogCluster, f : Double) -> MathlinearprogCluster {
   let result = math_linear_prog_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_linear_prog_cluster_fill(s : MathlinearprogCluster, v : Double) -> M
   result
 }
 
-pub fn math_linear_prog_cluster_min(s : MathlinearprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_cluster_min(s : MathlinearprogCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_cluster_max(s : MathlinearprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_cluster_max(s : MathlinearprogCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_cluster_to_string(s : MathlinearprogCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_linear_prog_model_set(s : MathlinearprogModel, i : Int, v : Double) 
   result
 }
 
-pub fn math_linear_prog_model_sum(s : MathlinearprogModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_model_sum(s : MathlinearprogModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_model_mean(s : MathlinearprogModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_model_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_model_mean(s : MathlinearprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_model_scale(s : MathlinearprogModel, f : Double) -> MathlinearprogModel {
   let result = math_linear_prog_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_linear_prog_model_fill(s : MathlinearprogModel, v : Double) -> Mathl
   result
 }
 
-pub fn math_linear_prog_model_min(s : MathlinearprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_model_min(s : MathlinearprogModel) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_model_max(s : MathlinearprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_model_max(s : MathlinearprogModel) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_model_to_string(s : MathlinearprogModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_linear_prog_layer_set(s : MathlinearprogLayer, i : Int, v : Double) 
   result
 }
 
-pub fn math_linear_prog_layer_sum(s : MathlinearprogLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_layer_sum(s : MathlinearprogLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_layer_mean(s : MathlinearprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_layer_mean(s : MathlinearprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_layer_scale(s : MathlinearprogLayer, f : Double) -> MathlinearprogLayer {
   let result = math_linear_prog_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_linear_prog_layer_fill(s : MathlinearprogLayer, v : Double) -> Mathl
   result
 }
 
-pub fn math_linear_prog_layer_min(s : MathlinearprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_layer_min(s : MathlinearprogLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_layer_max(s : MathlinearprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_layer_max(s : MathlinearprogLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_layer_to_string(s : MathlinearprogLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_linear_prog_buffer_set(s : MathlinearprogBuffer, i : Int, v : Double
   result
 }
 
-pub fn math_linear_prog_buffer_sum(s : MathlinearprogBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_buffer_sum(s : MathlinearprogBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_buffer_mean(s : MathlinearprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_buffer_mean(s : MathlinearprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_buffer_scale(s : MathlinearprogBuffer, f : Double) -> MathlinearprogBuffer {
   let result = math_linear_prog_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_linear_prog_buffer_fill(s : MathlinearprogBuffer, v : Double) -> Mat
   result
 }
 
-pub fn math_linear_prog_buffer_min(s : MathlinearprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_buffer_min(s : MathlinearprogBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_buffer_max(s : MathlinearprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_buffer_max(s : MathlinearprogBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_buffer_to_string(s : MathlinearprogBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_linear_prog_cursor_set(s : MathlinearprogCursor, i : Int, v : Double
   result
 }
 
-pub fn math_linear_prog_cursor_sum(s : MathlinearprogCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_cursor_sum(s : MathlinearprogCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_cursor_mean(s : MathlinearprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_cursor_mean(s : MathlinearprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_cursor_scale(s : MathlinearprogCursor, f : Double) -> MathlinearprogCursor {
   let result = math_linear_prog_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_linear_prog_cursor_fill(s : MathlinearprogCursor, v : Double) -> Mat
   result
 }
 
-pub fn math_linear_prog_cursor_min(s : MathlinearprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_cursor_min(s : MathlinearprogCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_cursor_max(s : MathlinearprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_cursor_max(s : MathlinearprogCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_cursor_to_string(s : MathlinearprogCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_linear_prog_view_set(s : MathlinearprogView, i : Int, v : Double) ->
   result
 }
 
-pub fn math_linear_prog_view_sum(s : MathlinearprogView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_view_sum(s : MathlinearprogView) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_view_mean(s : MathlinearprogView) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_view_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_view_mean(s : MathlinearprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_view_scale(s : MathlinearprogView, f : Double) -> MathlinearprogView {
   let result = math_linear_prog_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_linear_prog_view_fill(s : MathlinearprogView, v : Double) -> Mathlin
   result
 }
 
-pub fn math_linear_prog_view_min(s : MathlinearprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_view_min(s : MathlinearprogView) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_view_max(s : MathlinearprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_view_max(s : MathlinearprogView) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_view_to_string(s : MathlinearprogView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_linear_prog_range_set(s : MathlinearprogRange, i : Int, v : Double) 
   result
 }
 
-pub fn math_linear_prog_range_sum(s : MathlinearprogRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_range_sum(s : MathlinearprogRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_range_mean(s : MathlinearprogRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_range_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_range_mean(s : MathlinearprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_range_scale(s : MathlinearprogRange, f : Double) -> MathlinearprogRange {
   let result = math_linear_prog_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_linear_prog_range_fill(s : MathlinearprogRange, v : Double) -> Mathl
   result
 }
 
-pub fn math_linear_prog_range_min(s : MathlinearprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_range_min(s : MathlinearprogRange) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_range_max(s : MathlinearprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_range_max(s : MathlinearprogRange) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_range_to_string(s : MathlinearprogRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_linear_prog_slice_set(s : MathlinearprogSlice, i : Int, v : Double) 
   result
 }
 
-pub fn math_linear_prog_slice_sum(s : MathlinearprogSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_linear_prog_slice_sum(s : MathlinearprogSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_linear_prog_slice_mean(s : MathlinearprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_linear_prog_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_linear_prog_slice_mean(s : MathlinearprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_linear_prog_slice_scale(s : MathlinearprogSlice, f : Double) -> MathlinearprogSlice {
   let result = math_linear_prog_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_linear_prog_slice_fill(s : MathlinearprogSlice, v : Double) -> Mathl
   result
 }
 
-pub fn math_linear_prog_slice_min(s : MathlinearprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_slice_min(s : MathlinearprogSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_linear_prog_slice_max(s : MathlinearprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_linear_prog_slice_max(s : MathlinearprogSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_linear_prog_slice_to_string(s : MathlinearprogSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

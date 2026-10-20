@@ -88,11 +88,7 @@ pub fn sort_dist_proxmap_make_series(vals : Array[Double], name : String) -> Sor
 
 pub fn sort_dist_proxmap_series_len(s : SortdistproxmapSeries) -> Int { s.vals.length() }
 
-pub fn sort_dist_proxmap_series_sum(s : SortdistproxmapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_dist_proxmap_series_sum(s : SortdistproxmapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_dist_proxmap_series_mean(s : SortdistproxmapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_dist_proxmap_frame_set(s : SortdistproxmapFrame, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_proxmap_frame_sum(s : SortdistproxmapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_frame_sum(s : SortdistproxmapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_frame_mean(s : SortdistproxmapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_frame_mean(s : SortdistproxmapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_frame_scale(s : SortdistproxmapFrame, f : Double) -> SortdistproxmapFrame {
   let result = sort_dist_proxmap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_dist_proxmap_frame_fill(s : SortdistproxmapFrame, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_proxmap_frame_min(s : SortdistproxmapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_frame_min(s : SortdistproxmapFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_frame_max(s : SortdistproxmapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_frame_max(s : SortdistproxmapFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_frame_to_string(s : SortdistproxmapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_dist_proxmap_table_set(s : SortdistproxmapTable, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_proxmap_table_sum(s : SortdistproxmapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_table_sum(s : SortdistproxmapTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_table_mean(s : SortdistproxmapTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_table_mean(s : SortdistproxmapTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_table_scale(s : SortdistproxmapTable, f : Double) -> SortdistproxmapTable {
   let result = sort_dist_proxmap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_dist_proxmap_table_fill(s : SortdistproxmapTable, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_proxmap_table_min(s : SortdistproxmapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_table_min(s : SortdistproxmapTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_table_max(s : SortdistproxmapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_table_max(s : SortdistproxmapTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_table_to_string(s : SortdistproxmapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_dist_proxmap_graphn_set(s : SortdistproxmapGraphN, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_proxmap_graphn_sum(s : SortdistproxmapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_graphn_sum(s : SortdistproxmapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_graphn_mean(s : SortdistproxmapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_graphn_mean(s : SortdistproxmapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_graphn_scale(s : SortdistproxmapGraphN, f : Double) -> SortdistproxmapGraphN {
   let result = sort_dist_proxmap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_dist_proxmap_graphn_fill(s : SortdistproxmapGraphN, v : Double) -> S
   result
 }
 
-pub fn sort_dist_proxmap_graphn_min(s : SortdistproxmapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_graphn_min(s : SortdistproxmapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_graphn_max(s : SortdistproxmapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_graphn_max(s : SortdistproxmapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_graphn_to_string(s : SortdistproxmapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_dist_proxmap_node_set(s : SortdistproxmapNode, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_proxmap_node_sum(s : SortdistproxmapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_node_sum(s : SortdistproxmapNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_node_mean(s : SortdistproxmapNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_node_mean(s : SortdistproxmapNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_node_scale(s : SortdistproxmapNode, f : Double) -> SortdistproxmapNode {
   let result = sort_dist_proxmap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_dist_proxmap_node_fill(s : SortdistproxmapNode, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_proxmap_node_min(s : SortdistproxmapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_node_min(s : SortdistproxmapNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_node_max(s : SortdistproxmapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_node_max(s : SortdistproxmapNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_node_to_string(s : SortdistproxmapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_dist_proxmap_edge_set(s : SortdistproxmapEdge, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_proxmap_edge_sum(s : SortdistproxmapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_edge_sum(s : SortdistproxmapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_edge_mean(s : SortdistproxmapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_edge_mean(s : SortdistproxmapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_edge_scale(s : SortdistproxmapEdge, f : Double) -> SortdistproxmapEdge {
   let result = sort_dist_proxmap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_dist_proxmap_edge_fill(s : SortdistproxmapEdge, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_proxmap_edge_min(s : SortdistproxmapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_edge_min(s : SortdistproxmapEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_edge_max(s : SortdistproxmapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_edge_max(s : SortdistproxmapEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_edge_to_string(s : SortdistproxmapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_dist_proxmap_path_set(s : SortdistproxmapPath, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_proxmap_path_sum(s : SortdistproxmapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_path_sum(s : SortdistproxmapPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_path_mean(s : SortdistproxmapPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_path_mean(s : SortdistproxmapPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_path_scale(s : SortdistproxmapPath, f : Double) -> SortdistproxmapPath {
   let result = sort_dist_proxmap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_dist_proxmap_path_fill(s : SortdistproxmapPath, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_proxmap_path_min(s : SortdistproxmapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_path_min(s : SortdistproxmapPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_path_max(s : SortdistproxmapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_path_max(s : SortdistproxmapPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_path_to_string(s : SortdistproxmapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_dist_proxmap_cluster_set(s : SortdistproxmapCluster, i : Int, v : Do
   result
 }
 
-pub fn sort_dist_proxmap_cluster_sum(s : SortdistproxmapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_cluster_sum(s : SortdistproxmapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_cluster_mean(s : SortdistproxmapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_cluster_mean(s : SortdistproxmapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_cluster_scale(s : SortdistproxmapCluster, f : Double) -> SortdistproxmapCluster {
   let result = sort_dist_proxmap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_dist_proxmap_cluster_fill(s : SortdistproxmapCluster, v : Double) ->
   result
 }
 
-pub fn sort_dist_proxmap_cluster_min(s : SortdistproxmapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_cluster_min(s : SortdistproxmapCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_cluster_max(s : SortdistproxmapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_cluster_max(s : SortdistproxmapCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_cluster_to_string(s : SortdistproxmapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_dist_proxmap_model_set(s : SortdistproxmapModel, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_proxmap_model_sum(s : SortdistproxmapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_model_sum(s : SortdistproxmapModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_model_mean(s : SortdistproxmapModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_model_mean(s : SortdistproxmapModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_model_scale(s : SortdistproxmapModel, f : Double) -> SortdistproxmapModel {
   let result = sort_dist_proxmap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_dist_proxmap_model_fill(s : SortdistproxmapModel, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_proxmap_model_min(s : SortdistproxmapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_model_min(s : SortdistproxmapModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_model_max(s : SortdistproxmapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_model_max(s : SortdistproxmapModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_model_to_string(s : SortdistproxmapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_dist_proxmap_layer_set(s : SortdistproxmapLayer, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_proxmap_layer_sum(s : SortdistproxmapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_layer_sum(s : SortdistproxmapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_layer_mean(s : SortdistproxmapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_layer_mean(s : SortdistproxmapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_layer_scale(s : SortdistproxmapLayer, f : Double) -> SortdistproxmapLayer {
   let result = sort_dist_proxmap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_dist_proxmap_layer_fill(s : SortdistproxmapLayer, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_proxmap_layer_min(s : SortdistproxmapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_layer_min(s : SortdistproxmapLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_layer_max(s : SortdistproxmapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_layer_max(s : SortdistproxmapLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_layer_to_string(s : SortdistproxmapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_dist_proxmap_buffer_set(s : SortdistproxmapBuffer, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_proxmap_buffer_sum(s : SortdistproxmapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_buffer_sum(s : SortdistproxmapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_buffer_mean(s : SortdistproxmapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_buffer_mean(s : SortdistproxmapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_buffer_scale(s : SortdistproxmapBuffer, f : Double) -> SortdistproxmapBuffer {
   let result = sort_dist_proxmap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_dist_proxmap_buffer_fill(s : SortdistproxmapBuffer, v : Double) -> S
   result
 }
 
-pub fn sort_dist_proxmap_buffer_min(s : SortdistproxmapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_buffer_min(s : SortdistproxmapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_buffer_max(s : SortdistproxmapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_buffer_max(s : SortdistproxmapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_buffer_to_string(s : SortdistproxmapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_dist_proxmap_cursor_set(s : SortdistproxmapCursor, i : Int, v : Doub
   result
 }
 
-pub fn sort_dist_proxmap_cursor_sum(s : SortdistproxmapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_cursor_sum(s : SortdistproxmapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_cursor_mean(s : SortdistproxmapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_cursor_mean(s : SortdistproxmapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_cursor_scale(s : SortdistproxmapCursor, f : Double) -> SortdistproxmapCursor {
   let result = sort_dist_proxmap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_dist_proxmap_cursor_fill(s : SortdistproxmapCursor, v : Double) -> S
   result
 }
 
-pub fn sort_dist_proxmap_cursor_min(s : SortdistproxmapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_cursor_min(s : SortdistproxmapCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_cursor_max(s : SortdistproxmapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_cursor_max(s : SortdistproxmapCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_cursor_to_string(s : SortdistproxmapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_dist_proxmap_view_set(s : SortdistproxmapView, i : Int, v : Double) 
   result
 }
 
-pub fn sort_dist_proxmap_view_sum(s : SortdistproxmapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_view_sum(s : SortdistproxmapView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_view_mean(s : SortdistproxmapView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_view_mean(s : SortdistproxmapView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_view_scale(s : SortdistproxmapView, f : Double) -> SortdistproxmapView {
   let result = sort_dist_proxmap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_dist_proxmap_view_fill(s : SortdistproxmapView, v : Double) -> Sortd
   result
 }
 
-pub fn sort_dist_proxmap_view_min(s : SortdistproxmapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_view_min(s : SortdistproxmapView) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_view_max(s : SortdistproxmapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_view_max(s : SortdistproxmapView) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_view_to_string(s : SortdistproxmapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_dist_proxmap_range_set(s : SortdistproxmapRange, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_proxmap_range_sum(s : SortdistproxmapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_range_sum(s : SortdistproxmapRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_range_mean(s : SortdistproxmapRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_range_mean(s : SortdistproxmapRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_range_scale(s : SortdistproxmapRange, f : Double) -> SortdistproxmapRange {
   let result = sort_dist_proxmap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_dist_proxmap_range_fill(s : SortdistproxmapRange, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_proxmap_range_min(s : SortdistproxmapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_range_min(s : SortdistproxmapRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_range_max(s : SortdistproxmapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_range_max(s : SortdistproxmapRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_range_to_string(s : SortdistproxmapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_dist_proxmap_slice_set(s : SortdistproxmapSlice, i : Int, v : Double
   result
 }
 
-pub fn sort_dist_proxmap_slice_sum(s : SortdistproxmapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_dist_proxmap_slice_sum(s : SortdistproxmapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_dist_proxmap_slice_mean(s : SortdistproxmapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_dist_proxmap_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_dist_proxmap_slice_mean(s : SortdistproxmapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_dist_proxmap_slice_scale(s : SortdistproxmapSlice, f : Double) -> SortdistproxmapSlice {
   let result = sort_dist_proxmap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_dist_proxmap_slice_fill(s : SortdistproxmapSlice, v : Double) -> Sor
   result
 }
 
-pub fn sort_dist_proxmap_slice_min(s : SortdistproxmapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_slice_min(s : SortdistproxmapSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_dist_proxmap_slice_max(s : SortdistproxmapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_dist_proxmap_slice_max(s : SortdistproxmapSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_dist_proxmap_slice_to_string(s : SortdistproxmapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

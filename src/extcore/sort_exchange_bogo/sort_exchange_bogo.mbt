@@ -88,11 +88,7 @@ pub fn sort_exchange_bogo_make_series(vals : Array[Double], name : String) -> So
 
 pub fn sort_exchange_bogo_series_len(s : SortexchangebogoSeries) -> Int { s.vals.length() }
 
-pub fn sort_exchange_bogo_series_sum(s : SortexchangebogoSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_exchange_bogo_series_sum(s : SortexchangebogoSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_exchange_bogo_series_mean(s : SortexchangebogoSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_exchange_bogo_frame_set(s : SortexchangebogoFrame, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_bogo_frame_sum(s : SortexchangebogoFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_frame_sum(s : SortexchangebogoFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_frame_mean(s : SortexchangebogoFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_frame_mean(s : SortexchangebogoFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_frame_scale(s : SortexchangebogoFrame, f : Double) -> SortexchangebogoFrame {
   let result = sort_exchange_bogo_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_exchange_bogo_frame_fill(s : SortexchangebogoFrame, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_bogo_frame_min(s : SortexchangebogoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_frame_min(s : SortexchangebogoFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_frame_max(s : SortexchangebogoFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_frame_max(s : SortexchangebogoFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_frame_to_string(s : SortexchangebogoFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_exchange_bogo_table_set(s : SortexchangebogoTable, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_bogo_table_sum(s : SortexchangebogoTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_table_sum(s : SortexchangebogoTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_table_mean(s : SortexchangebogoTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_table_mean(s : SortexchangebogoTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_table_scale(s : SortexchangebogoTable, f : Double) -> SortexchangebogoTable {
   let result = sort_exchange_bogo_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_exchange_bogo_table_fill(s : SortexchangebogoTable, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_bogo_table_min(s : SortexchangebogoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_table_min(s : SortexchangebogoTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_table_max(s : SortexchangebogoTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_table_max(s : SortexchangebogoTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_table_to_string(s : SortexchangebogoTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_exchange_bogo_graphn_set(s : SortexchangebogoGraphN, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_bogo_graphn_sum(s : SortexchangebogoGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_graphn_sum(s : SortexchangebogoGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_graphn_mean(s : SortexchangebogoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_graphn_mean(s : SortexchangebogoGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_graphn_scale(s : SortexchangebogoGraphN, f : Double) -> SortexchangebogoGraphN {
   let result = sort_exchange_bogo_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_exchange_bogo_graphn_fill(s : SortexchangebogoGraphN, v : Double) ->
   result
 }
 
-pub fn sort_exchange_bogo_graphn_min(s : SortexchangebogoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_graphn_min(s : SortexchangebogoGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_graphn_max(s : SortexchangebogoGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_graphn_max(s : SortexchangebogoGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_graphn_to_string(s : SortexchangebogoGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_exchange_bogo_node_set(s : SortexchangebogoNode, i : Int, v : Double
   result
 }
 
-pub fn sort_exchange_bogo_node_sum(s : SortexchangebogoNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_node_sum(s : SortexchangebogoNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_node_mean(s : SortexchangebogoNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_node_mean(s : SortexchangebogoNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_node_scale(s : SortexchangebogoNode, f : Double) -> SortexchangebogoNode {
   let result = sort_exchange_bogo_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_exchange_bogo_node_fill(s : SortexchangebogoNode, v : Double) -> Sor
   result
 }
 
-pub fn sort_exchange_bogo_node_min(s : SortexchangebogoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_node_min(s : SortexchangebogoNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_node_max(s : SortexchangebogoNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_node_max(s : SortexchangebogoNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_node_to_string(s : SortexchangebogoNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_exchange_bogo_edge_set(s : SortexchangebogoEdge, i : Int, v : Double
   result
 }
 
-pub fn sort_exchange_bogo_edge_sum(s : SortexchangebogoEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_edge_sum(s : SortexchangebogoEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_edge_mean(s : SortexchangebogoEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_edge_mean(s : SortexchangebogoEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_edge_scale(s : SortexchangebogoEdge, f : Double) -> SortexchangebogoEdge {
   let result = sort_exchange_bogo_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_exchange_bogo_edge_fill(s : SortexchangebogoEdge, v : Double) -> Sor
   result
 }
 
-pub fn sort_exchange_bogo_edge_min(s : SortexchangebogoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_edge_min(s : SortexchangebogoEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_edge_max(s : SortexchangebogoEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_edge_max(s : SortexchangebogoEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_edge_to_string(s : SortexchangebogoEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_exchange_bogo_path_set(s : SortexchangebogoPath, i : Int, v : Double
   result
 }
 
-pub fn sort_exchange_bogo_path_sum(s : SortexchangebogoPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_path_sum(s : SortexchangebogoPath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_path_mean(s : SortexchangebogoPath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_path_mean(s : SortexchangebogoPath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_path_scale(s : SortexchangebogoPath, f : Double) -> SortexchangebogoPath {
   let result = sort_exchange_bogo_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_exchange_bogo_path_fill(s : SortexchangebogoPath, v : Double) -> Sor
   result
 }
 
-pub fn sort_exchange_bogo_path_min(s : SortexchangebogoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_path_min(s : SortexchangebogoPath) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_path_max(s : SortexchangebogoPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_path_max(s : SortexchangebogoPath) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_path_to_string(s : SortexchangebogoPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_exchange_bogo_cluster_set(s : SortexchangebogoCluster, i : Int, v : 
   result
 }
 
-pub fn sort_exchange_bogo_cluster_sum(s : SortexchangebogoCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_cluster_sum(s : SortexchangebogoCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_cluster_mean(s : SortexchangebogoCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_cluster_mean(s : SortexchangebogoCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_cluster_scale(s : SortexchangebogoCluster, f : Double) -> SortexchangebogoCluster {
   let result = sort_exchange_bogo_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_exchange_bogo_cluster_fill(s : SortexchangebogoCluster, v : Double) 
   result
 }
 
-pub fn sort_exchange_bogo_cluster_min(s : SortexchangebogoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_cluster_min(s : SortexchangebogoCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_cluster_max(s : SortexchangebogoCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_cluster_max(s : SortexchangebogoCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_cluster_to_string(s : SortexchangebogoCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_exchange_bogo_model_set(s : SortexchangebogoModel, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_bogo_model_sum(s : SortexchangebogoModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_model_sum(s : SortexchangebogoModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_model_mean(s : SortexchangebogoModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_model_mean(s : SortexchangebogoModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_model_scale(s : SortexchangebogoModel, f : Double) -> SortexchangebogoModel {
   let result = sort_exchange_bogo_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_exchange_bogo_model_fill(s : SortexchangebogoModel, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_bogo_model_min(s : SortexchangebogoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_model_min(s : SortexchangebogoModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_model_max(s : SortexchangebogoModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_model_max(s : SortexchangebogoModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_model_to_string(s : SortexchangebogoModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_exchange_bogo_layer_set(s : SortexchangebogoLayer, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_bogo_layer_sum(s : SortexchangebogoLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_layer_sum(s : SortexchangebogoLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_layer_mean(s : SortexchangebogoLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_layer_mean(s : SortexchangebogoLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_layer_scale(s : SortexchangebogoLayer, f : Double) -> SortexchangebogoLayer {
   let result = sort_exchange_bogo_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_exchange_bogo_layer_fill(s : SortexchangebogoLayer, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_bogo_layer_min(s : SortexchangebogoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_layer_min(s : SortexchangebogoLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_layer_max(s : SortexchangebogoLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_layer_max(s : SortexchangebogoLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_layer_to_string(s : SortexchangebogoLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_exchange_bogo_buffer_set(s : SortexchangebogoBuffer, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_bogo_buffer_sum(s : SortexchangebogoBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_buffer_sum(s : SortexchangebogoBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_buffer_mean(s : SortexchangebogoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_buffer_mean(s : SortexchangebogoBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_buffer_scale(s : SortexchangebogoBuffer, f : Double) -> SortexchangebogoBuffer {
   let result = sort_exchange_bogo_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_exchange_bogo_buffer_fill(s : SortexchangebogoBuffer, v : Double) ->
   result
 }
 
-pub fn sort_exchange_bogo_buffer_min(s : SortexchangebogoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_buffer_min(s : SortexchangebogoBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_buffer_max(s : SortexchangebogoBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_buffer_max(s : SortexchangebogoBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_buffer_to_string(s : SortexchangebogoBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_exchange_bogo_cursor_set(s : SortexchangebogoCursor, i : Int, v : Do
   result
 }
 
-pub fn sort_exchange_bogo_cursor_sum(s : SortexchangebogoCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_cursor_sum(s : SortexchangebogoCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_cursor_mean(s : SortexchangebogoCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_cursor_mean(s : SortexchangebogoCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_cursor_scale(s : SortexchangebogoCursor, f : Double) -> SortexchangebogoCursor {
   let result = sort_exchange_bogo_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_exchange_bogo_cursor_fill(s : SortexchangebogoCursor, v : Double) ->
   result
 }
 
-pub fn sort_exchange_bogo_cursor_min(s : SortexchangebogoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_cursor_min(s : SortexchangebogoCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_cursor_max(s : SortexchangebogoCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_cursor_max(s : SortexchangebogoCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_cursor_to_string(s : SortexchangebogoCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_exchange_bogo_view_set(s : SortexchangebogoView, i : Int, v : Double
   result
 }
 
-pub fn sort_exchange_bogo_view_sum(s : SortexchangebogoView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_view_sum(s : SortexchangebogoView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_view_mean(s : SortexchangebogoView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_view_mean(s : SortexchangebogoView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_view_scale(s : SortexchangebogoView, f : Double) -> SortexchangebogoView {
   let result = sort_exchange_bogo_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_exchange_bogo_view_fill(s : SortexchangebogoView, v : Double) -> Sor
   result
 }
 
-pub fn sort_exchange_bogo_view_min(s : SortexchangebogoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_view_min(s : SortexchangebogoView) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_view_max(s : SortexchangebogoView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_view_max(s : SortexchangebogoView) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_view_to_string(s : SortexchangebogoView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_exchange_bogo_range_set(s : SortexchangebogoRange, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_bogo_range_sum(s : SortexchangebogoRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_range_sum(s : SortexchangebogoRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_range_mean(s : SortexchangebogoRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_range_mean(s : SortexchangebogoRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_range_scale(s : SortexchangebogoRange, f : Double) -> SortexchangebogoRange {
   let result = sort_exchange_bogo_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_exchange_bogo_range_fill(s : SortexchangebogoRange, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_bogo_range_min(s : SortexchangebogoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_range_min(s : SortexchangebogoRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_range_max(s : SortexchangebogoRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_range_max(s : SortexchangebogoRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_range_to_string(s : SortexchangebogoRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_exchange_bogo_slice_set(s : SortexchangebogoSlice, i : Int, v : Doub
   result
 }
 
-pub fn sort_exchange_bogo_slice_sum(s : SortexchangebogoSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_exchange_bogo_slice_sum(s : SortexchangebogoSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_exchange_bogo_slice_mean(s : SortexchangebogoSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_exchange_bogo_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_exchange_bogo_slice_mean(s : SortexchangebogoSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_exchange_bogo_slice_scale(s : SortexchangebogoSlice, f : Double) -> SortexchangebogoSlice {
   let result = sort_exchange_bogo_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_exchange_bogo_slice_fill(s : SortexchangebogoSlice, v : Double) -> S
   result
 }
 
-pub fn sort_exchange_bogo_slice_min(s : SortexchangebogoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_slice_min(s : SortexchangebogoSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_exchange_bogo_slice_max(s : SortexchangebogoSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_exchange_bogo_slice_max(s : SortexchangebogoSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_exchange_bogo_slice_to_string(s : SortexchangebogoSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn db_query_filter_make_series(vals : Array[Double], name : String) -> Dbque
 
 pub fn db_query_filter_series_len(s : DbqueryfilterSeries) -> Int { s.vals.length() }
 
-pub fn db_query_filter_series_sum(s : DbqueryfilterSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_query_filter_series_sum(s : DbqueryfilterSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_query_filter_series_mean(s : DbqueryfilterSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_query_filter_frame_set(s : DbqueryfilterFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_filter_frame_sum(s : DbqueryfilterFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_frame_sum(s : DbqueryfilterFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_frame_mean(s : DbqueryfilterFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_frame_mean(s : DbqueryfilterFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_frame_scale(s : DbqueryfilterFrame, f : Double) -> DbqueryfilterFrame {
   let result = db_query_filter_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_query_filter_frame_fill(s : DbqueryfilterFrame, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_filter_frame_min(s : DbqueryfilterFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_frame_min(s : DbqueryfilterFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_frame_max(s : DbqueryfilterFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_frame_max(s : DbqueryfilterFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_frame_to_string(s : DbqueryfilterFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_query_filter_table_set(s : DbqueryfilterTable, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_filter_table_sum(s : DbqueryfilterTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_table_sum(s : DbqueryfilterTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_table_mean(s : DbqueryfilterTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_table_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_table_mean(s : DbqueryfilterTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_table_scale(s : DbqueryfilterTable, f : Double) -> DbqueryfilterTable {
   let result = db_query_filter_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_query_filter_table_fill(s : DbqueryfilterTable, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_filter_table_min(s : DbqueryfilterTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_table_min(s : DbqueryfilterTable) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_table_max(s : DbqueryfilterTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_table_max(s : DbqueryfilterTable) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_table_to_string(s : DbqueryfilterTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_query_filter_graphn_set(s : DbqueryfilterGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_filter_graphn_sum(s : DbqueryfilterGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_graphn_sum(s : DbqueryfilterGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_graphn_mean(s : DbqueryfilterGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_graphn_mean(s : DbqueryfilterGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_graphn_scale(s : DbqueryfilterGraphN, f : Double) -> DbqueryfilterGraphN {
   let result = db_query_filter_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_query_filter_graphn_fill(s : DbqueryfilterGraphN, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_filter_graphn_min(s : DbqueryfilterGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_graphn_min(s : DbqueryfilterGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_graphn_max(s : DbqueryfilterGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_graphn_max(s : DbqueryfilterGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_graphn_to_string(s : DbqueryfilterGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_query_filter_node_set(s : DbqueryfilterNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_filter_node_sum(s : DbqueryfilterNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_node_sum(s : DbqueryfilterNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_node_mean(s : DbqueryfilterNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_node_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_node_mean(s : DbqueryfilterNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_node_scale(s : DbqueryfilterNode, f : Double) -> DbqueryfilterNode {
   let result = db_query_filter_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_query_filter_node_fill(s : DbqueryfilterNode, v : Double) -> Dbqueryfi
   result
 }
 
-pub fn db_query_filter_node_min(s : DbqueryfilterNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_node_min(s : DbqueryfilterNode) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_node_max(s : DbqueryfilterNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_node_max(s : DbqueryfilterNode) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_node_to_string(s : DbqueryfilterNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_query_filter_edge_set(s : DbqueryfilterEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_filter_edge_sum(s : DbqueryfilterEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_edge_sum(s : DbqueryfilterEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_edge_mean(s : DbqueryfilterEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_edge_mean(s : DbqueryfilterEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_edge_scale(s : DbqueryfilterEdge, f : Double) -> DbqueryfilterEdge {
   let result = db_query_filter_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_query_filter_edge_fill(s : DbqueryfilterEdge, v : Double) -> Dbqueryfi
   result
 }
 
-pub fn db_query_filter_edge_min(s : DbqueryfilterEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_edge_min(s : DbqueryfilterEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_edge_max(s : DbqueryfilterEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_edge_max(s : DbqueryfilterEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_edge_to_string(s : DbqueryfilterEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_query_filter_path_set(s : DbqueryfilterPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_filter_path_sum(s : DbqueryfilterPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_path_sum(s : DbqueryfilterPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_path_mean(s : DbqueryfilterPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_path_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_path_mean(s : DbqueryfilterPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_path_scale(s : DbqueryfilterPath, f : Double) -> DbqueryfilterPath {
   let result = db_query_filter_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_query_filter_path_fill(s : DbqueryfilterPath, v : Double) -> Dbqueryfi
   result
 }
 
-pub fn db_query_filter_path_min(s : DbqueryfilterPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_path_min(s : DbqueryfilterPath) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_path_max(s : DbqueryfilterPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_path_max(s : DbqueryfilterPath) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_path_to_string(s : DbqueryfilterPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_query_filter_cluster_set(s : DbqueryfilterCluster, i : Int, v : Double
   result
 }
 
-pub fn db_query_filter_cluster_sum(s : DbqueryfilterCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_cluster_sum(s : DbqueryfilterCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_cluster_mean(s : DbqueryfilterCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_cluster_mean(s : DbqueryfilterCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_cluster_scale(s : DbqueryfilterCluster, f : Double) -> DbqueryfilterCluster {
   let result = db_query_filter_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_query_filter_cluster_fill(s : DbqueryfilterCluster, v : Double) -> Dbq
   result
 }
 
-pub fn db_query_filter_cluster_min(s : DbqueryfilterCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_cluster_min(s : DbqueryfilterCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_cluster_max(s : DbqueryfilterCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_cluster_max(s : DbqueryfilterCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_cluster_to_string(s : DbqueryfilterCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_query_filter_model_set(s : DbqueryfilterModel, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_filter_model_sum(s : DbqueryfilterModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_model_sum(s : DbqueryfilterModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_model_mean(s : DbqueryfilterModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_model_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_model_mean(s : DbqueryfilterModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_model_scale(s : DbqueryfilterModel, f : Double) -> DbqueryfilterModel {
   let result = db_query_filter_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_query_filter_model_fill(s : DbqueryfilterModel, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_filter_model_min(s : DbqueryfilterModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_model_min(s : DbqueryfilterModel) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_model_max(s : DbqueryfilterModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_model_max(s : DbqueryfilterModel) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_model_to_string(s : DbqueryfilterModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_query_filter_layer_set(s : DbqueryfilterLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_filter_layer_sum(s : DbqueryfilterLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_layer_sum(s : DbqueryfilterLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_layer_mean(s : DbqueryfilterLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_layer_mean(s : DbqueryfilterLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_layer_scale(s : DbqueryfilterLayer, f : Double) -> DbqueryfilterLayer {
   let result = db_query_filter_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_query_filter_layer_fill(s : DbqueryfilterLayer, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_filter_layer_min(s : DbqueryfilterLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_layer_min(s : DbqueryfilterLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_layer_max(s : DbqueryfilterLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_layer_max(s : DbqueryfilterLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_layer_to_string(s : DbqueryfilterLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_query_filter_buffer_set(s : DbqueryfilterBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_filter_buffer_sum(s : DbqueryfilterBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_buffer_sum(s : DbqueryfilterBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_buffer_mean(s : DbqueryfilterBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_buffer_mean(s : DbqueryfilterBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_buffer_scale(s : DbqueryfilterBuffer, f : Double) -> DbqueryfilterBuffer {
   let result = db_query_filter_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_query_filter_buffer_fill(s : DbqueryfilterBuffer, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_filter_buffer_min(s : DbqueryfilterBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_buffer_min(s : DbqueryfilterBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_buffer_max(s : DbqueryfilterBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_buffer_max(s : DbqueryfilterBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_buffer_to_string(s : DbqueryfilterBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_query_filter_cursor_set(s : DbqueryfilterCursor, i : Int, v : Double) 
   result
 }
 
-pub fn db_query_filter_cursor_sum(s : DbqueryfilterCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_cursor_sum(s : DbqueryfilterCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_cursor_mean(s : DbqueryfilterCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_cursor_mean(s : DbqueryfilterCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_cursor_scale(s : DbqueryfilterCursor, f : Double) -> DbqueryfilterCursor {
   let result = db_query_filter_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_query_filter_cursor_fill(s : DbqueryfilterCursor, v : Double) -> Dbque
   result
 }
 
-pub fn db_query_filter_cursor_min(s : DbqueryfilterCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_cursor_min(s : DbqueryfilterCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_cursor_max(s : DbqueryfilterCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_cursor_max(s : DbqueryfilterCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_cursor_to_string(s : DbqueryfilterCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_query_filter_view_set(s : DbqueryfilterView, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_query_filter_view_sum(s : DbqueryfilterView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_view_sum(s : DbqueryfilterView) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_view_mean(s : DbqueryfilterView) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_view_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_view_mean(s : DbqueryfilterView) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_view_scale(s : DbqueryfilterView, f : Double) -> DbqueryfilterView {
   let result = db_query_filter_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_query_filter_view_fill(s : DbqueryfilterView, v : Double) -> Dbqueryfi
   result
 }
 
-pub fn db_query_filter_view_min(s : DbqueryfilterView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_view_min(s : DbqueryfilterView) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_view_max(s : DbqueryfilterView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_view_max(s : DbqueryfilterView) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_view_to_string(s : DbqueryfilterView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_query_filter_range_set(s : DbqueryfilterRange, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_filter_range_sum(s : DbqueryfilterRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_range_sum(s : DbqueryfilterRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_range_mean(s : DbqueryfilterRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_range_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_range_mean(s : DbqueryfilterRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_range_scale(s : DbqueryfilterRange, f : Double) -> DbqueryfilterRange {
   let result = db_query_filter_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_query_filter_range_fill(s : DbqueryfilterRange, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_filter_range_min(s : DbqueryfilterRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_range_min(s : DbqueryfilterRange) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_range_max(s : DbqueryfilterRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_range_max(s : DbqueryfilterRange) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_range_to_string(s : DbqueryfilterRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_query_filter_slice_set(s : DbqueryfilterSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn db_query_filter_slice_sum(s : DbqueryfilterSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_query_filter_slice_sum(s : DbqueryfilterSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_query_filter_slice_mean(s : DbqueryfilterSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_query_filter_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_query_filter_slice_mean(s : DbqueryfilterSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_query_filter_slice_scale(s : DbqueryfilterSlice, f : Double) -> DbqueryfilterSlice {
   let result = db_query_filter_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_query_filter_slice_fill(s : DbqueryfilterSlice, v : Double) -> Dbquery
   result
 }
 
-pub fn db_query_filter_slice_min(s : DbqueryfilterSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_slice_min(s : DbqueryfilterSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_query_filter_slice_max(s : DbqueryfilterSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_query_filter_slice_max(s : DbqueryfilterSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_query_filter_slice_to_string(s : DbqueryfilterSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

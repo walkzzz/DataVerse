@@ -88,11 +88,7 @@ pub fn chem_mol_props_charge_make_series(vals : Array[Double], name : String) ->
 
 pub fn chem_mol_props_charge_series_len(s : ChemmolpropschargeSeries) -> Int { s.vals.length() }
 
-pub fn chem_mol_props_charge_series_sum(s : ChemmolpropschargeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn chem_mol_props_charge_series_sum(s : ChemmolpropschargeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn chem_mol_props_charge_series_mean(s : ChemmolpropschargeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn chem_mol_props_charge_frame_set(s : ChemmolpropschargeFrame, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_charge_frame_sum(s : ChemmolpropschargeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_frame_sum(s : ChemmolpropschargeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_frame_mean(s : ChemmolpropschargeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_frame_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_frame_mean(s : ChemmolpropschargeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_frame_scale(s : ChemmolpropschargeFrame, f : Double) -> ChemmolpropschargeFrame {
   let result = chem_mol_props_charge_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn chem_mol_props_charge_frame_fill(s : ChemmolpropschargeFrame, v : Double)
   result
 }
 
-pub fn chem_mol_props_charge_frame_min(s : ChemmolpropschargeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_frame_min(s : ChemmolpropschargeFrame) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_frame_max(s : ChemmolpropschargeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_frame_max(s : ChemmolpropschargeFrame) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_frame_to_string(s : ChemmolpropschargeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn chem_mol_props_charge_table_set(s : ChemmolpropschargeTable, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_charge_table_sum(s : ChemmolpropschargeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_table_sum(s : ChemmolpropschargeTable) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_table_mean(s : ChemmolpropschargeTable) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_table_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_table_mean(s : ChemmolpropschargeTable) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_table_scale(s : ChemmolpropschargeTable, f : Double) -> ChemmolpropschargeTable {
   let result = chem_mol_props_charge_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn chem_mol_props_charge_table_fill(s : ChemmolpropschargeTable, v : Double)
   result
 }
 
-pub fn chem_mol_props_charge_table_min(s : ChemmolpropschargeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_table_min(s : ChemmolpropschargeTable) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_table_max(s : ChemmolpropschargeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_table_max(s : ChemmolpropschargeTable) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_table_to_string(s : ChemmolpropschargeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn chem_mol_props_charge_graphn_set(s : ChemmolpropschargeGraphN, i : Int, v
   result
 }
 
-pub fn chem_mol_props_charge_graphn_sum(s : ChemmolpropschargeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_graphn_sum(s : ChemmolpropschargeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_graphn_mean(s : ChemmolpropschargeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_graphn_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_graphn_mean(s : ChemmolpropschargeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_graphn_scale(s : ChemmolpropschargeGraphN, f : Double) -> ChemmolpropschargeGraphN {
   let result = chem_mol_props_charge_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn chem_mol_props_charge_graphn_fill(s : ChemmolpropschargeGraphN, v : Doubl
   result
 }
 
-pub fn chem_mol_props_charge_graphn_min(s : ChemmolpropschargeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_graphn_min(s : ChemmolpropschargeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_graphn_max(s : ChemmolpropschargeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_graphn_max(s : ChemmolpropschargeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_graphn_to_string(s : ChemmolpropschargeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn chem_mol_props_charge_node_set(s : ChemmolpropschargeNode, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_charge_node_sum(s : ChemmolpropschargeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_node_sum(s : ChemmolpropschargeNode) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_node_mean(s : ChemmolpropschargeNode) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_node_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_node_mean(s : ChemmolpropschargeNode) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_node_scale(s : ChemmolpropschargeNode, f : Double) -> ChemmolpropschargeNode {
   let result = chem_mol_props_charge_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn chem_mol_props_charge_node_fill(s : ChemmolpropschargeNode, v : Double) -
   result
 }
 
-pub fn chem_mol_props_charge_node_min(s : ChemmolpropschargeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_node_min(s : ChemmolpropschargeNode) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_node_max(s : ChemmolpropschargeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_node_max(s : ChemmolpropschargeNode) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_node_to_string(s : ChemmolpropschargeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn chem_mol_props_charge_edge_set(s : ChemmolpropschargeEdge, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_charge_edge_sum(s : ChemmolpropschargeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_edge_sum(s : ChemmolpropschargeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_edge_mean(s : ChemmolpropschargeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_edge_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_edge_mean(s : ChemmolpropschargeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_edge_scale(s : ChemmolpropschargeEdge, f : Double) -> ChemmolpropschargeEdge {
   let result = chem_mol_props_charge_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn chem_mol_props_charge_edge_fill(s : ChemmolpropschargeEdge, v : Double) -
   result
 }
 
-pub fn chem_mol_props_charge_edge_min(s : ChemmolpropschargeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_edge_min(s : ChemmolpropschargeEdge) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_edge_max(s : ChemmolpropschargeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_edge_max(s : ChemmolpropschargeEdge) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_edge_to_string(s : ChemmolpropschargeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn chem_mol_props_charge_path_set(s : ChemmolpropschargePath, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_charge_path_sum(s : ChemmolpropschargePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_path_sum(s : ChemmolpropschargePath) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_path_mean(s : ChemmolpropschargePath) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_path_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_path_mean(s : ChemmolpropschargePath) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_path_scale(s : ChemmolpropschargePath, f : Double) -> ChemmolpropschargePath {
   let result = chem_mol_props_charge_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn chem_mol_props_charge_path_fill(s : ChemmolpropschargePath, v : Double) -
   result
 }
 
-pub fn chem_mol_props_charge_path_min(s : ChemmolpropschargePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_path_min(s : ChemmolpropschargePath) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_path_max(s : ChemmolpropschargePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_path_max(s : ChemmolpropschargePath) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_path_to_string(s : ChemmolpropschargePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn chem_mol_props_charge_cluster_set(s : ChemmolpropschargeCluster, i : Int,
   result
 }
 
-pub fn chem_mol_props_charge_cluster_sum(s : ChemmolpropschargeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_cluster_sum(s : ChemmolpropschargeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_cluster_mean(s : ChemmolpropschargeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_cluster_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_cluster_mean(s : ChemmolpropschargeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_cluster_scale(s : ChemmolpropschargeCluster, f : Double) -> ChemmolpropschargeCluster {
   let result = chem_mol_props_charge_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn chem_mol_props_charge_cluster_fill(s : ChemmolpropschargeCluster, v : Dou
   result
 }
 
-pub fn chem_mol_props_charge_cluster_min(s : ChemmolpropschargeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_cluster_min(s : ChemmolpropschargeCluster) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_cluster_max(s : ChemmolpropschargeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_cluster_max(s : ChemmolpropschargeCluster) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_cluster_to_string(s : ChemmolpropschargeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn chem_mol_props_charge_model_set(s : ChemmolpropschargeModel, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_charge_model_sum(s : ChemmolpropschargeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_model_sum(s : ChemmolpropschargeModel) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_model_mean(s : ChemmolpropschargeModel) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_model_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_model_mean(s : ChemmolpropschargeModel) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_model_scale(s : ChemmolpropschargeModel, f : Double) -> ChemmolpropschargeModel {
   let result = chem_mol_props_charge_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn chem_mol_props_charge_model_fill(s : ChemmolpropschargeModel, v : Double)
   result
 }
 
-pub fn chem_mol_props_charge_model_min(s : ChemmolpropschargeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_model_min(s : ChemmolpropschargeModel) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_model_max(s : ChemmolpropschargeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_model_max(s : ChemmolpropschargeModel) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_model_to_string(s : ChemmolpropschargeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn chem_mol_props_charge_layer_set(s : ChemmolpropschargeLayer, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_charge_layer_sum(s : ChemmolpropschargeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_layer_sum(s : ChemmolpropschargeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_layer_mean(s : ChemmolpropschargeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_layer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_layer_mean(s : ChemmolpropschargeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_layer_scale(s : ChemmolpropschargeLayer, f : Double) -> ChemmolpropschargeLayer {
   let result = chem_mol_props_charge_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn chem_mol_props_charge_layer_fill(s : ChemmolpropschargeLayer, v : Double)
   result
 }
 
-pub fn chem_mol_props_charge_layer_min(s : ChemmolpropschargeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_layer_min(s : ChemmolpropschargeLayer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_layer_max(s : ChemmolpropschargeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_layer_max(s : ChemmolpropschargeLayer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_layer_to_string(s : ChemmolpropschargeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn chem_mol_props_charge_buffer_set(s : ChemmolpropschargeBuffer, i : Int, v
   result
 }
 
-pub fn chem_mol_props_charge_buffer_sum(s : ChemmolpropschargeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_buffer_sum(s : ChemmolpropschargeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_buffer_mean(s : ChemmolpropschargeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_buffer_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_buffer_mean(s : ChemmolpropschargeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_buffer_scale(s : ChemmolpropschargeBuffer, f : Double) -> ChemmolpropschargeBuffer {
   let result = chem_mol_props_charge_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn chem_mol_props_charge_buffer_fill(s : ChemmolpropschargeBuffer, v : Doubl
   result
 }
 
-pub fn chem_mol_props_charge_buffer_min(s : ChemmolpropschargeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_buffer_min(s : ChemmolpropschargeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_buffer_max(s : ChemmolpropschargeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_buffer_max(s : ChemmolpropschargeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_buffer_to_string(s : ChemmolpropschargeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn chem_mol_props_charge_cursor_set(s : ChemmolpropschargeCursor, i : Int, v
   result
 }
 
-pub fn chem_mol_props_charge_cursor_sum(s : ChemmolpropschargeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_cursor_sum(s : ChemmolpropschargeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_cursor_mean(s : ChemmolpropschargeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_cursor_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_cursor_mean(s : ChemmolpropschargeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_cursor_scale(s : ChemmolpropschargeCursor, f : Double) -> ChemmolpropschargeCursor {
   let result = chem_mol_props_charge_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn chem_mol_props_charge_cursor_fill(s : ChemmolpropschargeCursor, v : Doubl
   result
 }
 
-pub fn chem_mol_props_charge_cursor_min(s : ChemmolpropschargeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_cursor_min(s : ChemmolpropschargeCursor) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_cursor_max(s : ChemmolpropschargeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_cursor_max(s : ChemmolpropschargeCursor) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_cursor_to_string(s : ChemmolpropschargeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn chem_mol_props_charge_view_set(s : ChemmolpropschargeView, i : Int, v : D
   result
 }
 
-pub fn chem_mol_props_charge_view_sum(s : ChemmolpropschargeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_view_sum(s : ChemmolpropschargeView) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_view_mean(s : ChemmolpropschargeView) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_view_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_view_mean(s : ChemmolpropschargeView) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_view_scale(s : ChemmolpropschargeView, f : Double) -> ChemmolpropschargeView {
   let result = chem_mol_props_charge_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn chem_mol_props_charge_view_fill(s : ChemmolpropschargeView, v : Double) -
   result
 }
 
-pub fn chem_mol_props_charge_view_min(s : ChemmolpropschargeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_view_min(s : ChemmolpropschargeView) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_view_max(s : ChemmolpropschargeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_view_max(s : ChemmolpropschargeView) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_view_to_string(s : ChemmolpropschargeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn chem_mol_props_charge_range_set(s : ChemmolpropschargeRange, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_charge_range_sum(s : ChemmolpropschargeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_range_sum(s : ChemmolpropschargeRange) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_range_mean(s : ChemmolpropschargeRange) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_range_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_range_mean(s : ChemmolpropschargeRange) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_range_scale(s : ChemmolpropschargeRange, f : Double) -> ChemmolpropschargeRange {
   let result = chem_mol_props_charge_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn chem_mol_props_charge_range_fill(s : ChemmolpropschargeRange, v : Double)
   result
 }
 
-pub fn chem_mol_props_charge_range_min(s : ChemmolpropschargeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_range_min(s : ChemmolpropschargeRange) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_range_max(s : ChemmolpropschargeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_range_max(s : ChemmolpropschargeRange) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_range_to_string(s : ChemmolpropschargeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn chem_mol_props_charge_slice_set(s : ChemmolpropschargeSlice, i : Int, v :
   result
 }
 
-pub fn chem_mol_props_charge_slice_sum(s : ChemmolpropschargeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn chem_mol_props_charge_slice_sum(s : ChemmolpropschargeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn chem_mol_props_charge_slice_mean(s : ChemmolpropschargeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { chem_mol_props_charge_slice_sum(s) / s.size.to_double() }
-}
+pub fn chem_mol_props_charge_slice_mean(s : ChemmolpropschargeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn chem_mol_props_charge_slice_scale(s : ChemmolpropschargeSlice, f : Double) -> ChemmolpropschargeSlice {
   let result = chem_mol_props_charge_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn chem_mol_props_charge_slice_fill(s : ChemmolpropschargeSlice, v : Double)
   result
 }
 
-pub fn chem_mol_props_charge_slice_min(s : ChemmolpropschargeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_slice_min(s : ChemmolpropschargeSlice) -> Double { @_common.min(s.data) }
 
-pub fn chem_mol_props_charge_slice_max(s : ChemmolpropschargeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn chem_mol_props_charge_slice_max(s : ChemmolpropschargeSlice) -> Double { @_common.max(s.data) }
 
 pub fn chem_mol_props_charge_slice_to_string(s : ChemmolpropschargeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

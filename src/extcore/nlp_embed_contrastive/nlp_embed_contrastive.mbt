@@ -88,11 +88,7 @@ pub fn nlp_embed_contrastive_make_series(vals : Array[Double], name : String) ->
 
 pub fn nlp_embed_contrastive_series_len(s : NlpembedcontrastiveSeries) -> Int { s.vals.length() }
 
-pub fn nlp_embed_contrastive_series_sum(s : NlpembedcontrastiveSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_embed_contrastive_series_sum(s : NlpembedcontrastiveSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_embed_contrastive_series_mean(s : NlpembedcontrastiveSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_embed_contrastive_frame_set(s : NlpembedcontrastiveFrame, i : Int, v 
   result
 }
 
-pub fn nlp_embed_contrastive_frame_sum(s : NlpembedcontrastiveFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_frame_sum(s : NlpembedcontrastiveFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_frame_mean(s : NlpembedcontrastiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_frame_mean(s : NlpembedcontrastiveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_frame_scale(s : NlpembedcontrastiveFrame, f : Double) -> NlpembedcontrastiveFrame {
   let result = nlp_embed_contrastive_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_embed_contrastive_frame_fill(s : NlpembedcontrastiveFrame, v : Double
   result
 }
 
-pub fn nlp_embed_contrastive_frame_min(s : NlpembedcontrastiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_frame_min(s : NlpembedcontrastiveFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_frame_max(s : NlpembedcontrastiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_frame_max(s : NlpembedcontrastiveFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_frame_to_string(s : NlpembedcontrastiveFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_embed_contrastive_table_set(s : NlpembedcontrastiveTable, i : Int, v 
   result
 }
 
-pub fn nlp_embed_contrastive_table_sum(s : NlpembedcontrastiveTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_table_sum(s : NlpembedcontrastiveTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_table_mean(s : NlpembedcontrastiveTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_table_mean(s : NlpembedcontrastiveTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_table_scale(s : NlpembedcontrastiveTable, f : Double) -> NlpembedcontrastiveTable {
   let result = nlp_embed_contrastive_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_embed_contrastive_table_fill(s : NlpembedcontrastiveTable, v : Double
   result
 }
 
-pub fn nlp_embed_contrastive_table_min(s : NlpembedcontrastiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_table_min(s : NlpembedcontrastiveTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_table_max(s : NlpembedcontrastiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_table_max(s : NlpembedcontrastiveTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_table_to_string(s : NlpembedcontrastiveTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_embed_contrastive_graphn_set(s : NlpembedcontrastiveGraphN, i : Int, 
   result
 }
 
-pub fn nlp_embed_contrastive_graphn_sum(s : NlpembedcontrastiveGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_graphn_sum(s : NlpembedcontrastiveGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_graphn_mean(s : NlpembedcontrastiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_graphn_mean(s : NlpembedcontrastiveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_graphn_scale(s : NlpembedcontrastiveGraphN, f : Double) -> NlpembedcontrastiveGraphN {
   let result = nlp_embed_contrastive_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_embed_contrastive_graphn_fill(s : NlpembedcontrastiveGraphN, v : Doub
   result
 }
 
-pub fn nlp_embed_contrastive_graphn_min(s : NlpembedcontrastiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_graphn_min(s : NlpembedcontrastiveGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_graphn_max(s : NlpembedcontrastiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_graphn_max(s : NlpembedcontrastiveGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_graphn_to_string(s : NlpembedcontrastiveGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_embed_contrastive_node_set(s : NlpembedcontrastiveNode, i : Int, v : 
   result
 }
 
-pub fn nlp_embed_contrastive_node_sum(s : NlpembedcontrastiveNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_node_sum(s : NlpembedcontrastiveNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_node_mean(s : NlpembedcontrastiveNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_node_mean(s : NlpembedcontrastiveNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_node_scale(s : NlpembedcontrastiveNode, f : Double) -> NlpembedcontrastiveNode {
   let result = nlp_embed_contrastive_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_embed_contrastive_node_fill(s : NlpembedcontrastiveNode, v : Double) 
   result
 }
 
-pub fn nlp_embed_contrastive_node_min(s : NlpembedcontrastiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_node_min(s : NlpembedcontrastiveNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_node_max(s : NlpembedcontrastiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_node_max(s : NlpembedcontrastiveNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_node_to_string(s : NlpembedcontrastiveNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_embed_contrastive_edge_set(s : NlpembedcontrastiveEdge, i : Int, v : 
   result
 }
 
-pub fn nlp_embed_contrastive_edge_sum(s : NlpembedcontrastiveEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_edge_sum(s : NlpembedcontrastiveEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_edge_mean(s : NlpembedcontrastiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_edge_mean(s : NlpembedcontrastiveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_edge_scale(s : NlpembedcontrastiveEdge, f : Double) -> NlpembedcontrastiveEdge {
   let result = nlp_embed_contrastive_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_embed_contrastive_edge_fill(s : NlpembedcontrastiveEdge, v : Double) 
   result
 }
 
-pub fn nlp_embed_contrastive_edge_min(s : NlpembedcontrastiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_edge_min(s : NlpembedcontrastiveEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_edge_max(s : NlpembedcontrastiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_edge_max(s : NlpembedcontrastiveEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_edge_to_string(s : NlpembedcontrastiveEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_embed_contrastive_path_set(s : NlpembedcontrastivePath, i : Int, v : 
   result
 }
 
-pub fn nlp_embed_contrastive_path_sum(s : NlpembedcontrastivePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_path_sum(s : NlpembedcontrastivePath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_path_mean(s : NlpembedcontrastivePath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_path_mean(s : NlpembedcontrastivePath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_path_scale(s : NlpembedcontrastivePath, f : Double) -> NlpembedcontrastivePath {
   let result = nlp_embed_contrastive_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_embed_contrastive_path_fill(s : NlpembedcontrastivePath, v : Double) 
   result
 }
 
-pub fn nlp_embed_contrastive_path_min(s : NlpembedcontrastivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_path_min(s : NlpembedcontrastivePath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_path_max(s : NlpembedcontrastivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_path_max(s : NlpembedcontrastivePath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_path_to_string(s : NlpembedcontrastivePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_embed_contrastive_cluster_set(s : NlpembedcontrastiveCluster, i : Int
   result
 }
 
-pub fn nlp_embed_contrastive_cluster_sum(s : NlpembedcontrastiveCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_cluster_sum(s : NlpembedcontrastiveCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_cluster_mean(s : NlpembedcontrastiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_cluster_mean(s : NlpembedcontrastiveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_cluster_scale(s : NlpembedcontrastiveCluster, f : Double) -> NlpembedcontrastiveCluster {
   let result = nlp_embed_contrastive_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_embed_contrastive_cluster_fill(s : NlpembedcontrastiveCluster, v : Do
   result
 }
 
-pub fn nlp_embed_contrastive_cluster_min(s : NlpembedcontrastiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_cluster_min(s : NlpembedcontrastiveCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_cluster_max(s : NlpembedcontrastiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_cluster_max(s : NlpembedcontrastiveCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_cluster_to_string(s : NlpembedcontrastiveCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_embed_contrastive_model_set(s : NlpembedcontrastiveModel, i : Int, v 
   result
 }
 
-pub fn nlp_embed_contrastive_model_sum(s : NlpembedcontrastiveModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_model_sum(s : NlpembedcontrastiveModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_model_mean(s : NlpembedcontrastiveModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_model_mean(s : NlpembedcontrastiveModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_model_scale(s : NlpembedcontrastiveModel, f : Double) -> NlpembedcontrastiveModel {
   let result = nlp_embed_contrastive_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_embed_contrastive_model_fill(s : NlpembedcontrastiveModel, v : Double
   result
 }
 
-pub fn nlp_embed_contrastive_model_min(s : NlpembedcontrastiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_model_min(s : NlpembedcontrastiveModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_model_max(s : NlpembedcontrastiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_model_max(s : NlpembedcontrastiveModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_model_to_string(s : NlpembedcontrastiveModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_embed_contrastive_layer_set(s : NlpembedcontrastiveLayer, i : Int, v 
   result
 }
 
-pub fn nlp_embed_contrastive_layer_sum(s : NlpembedcontrastiveLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_layer_sum(s : NlpembedcontrastiveLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_layer_mean(s : NlpembedcontrastiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_layer_mean(s : NlpembedcontrastiveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_layer_scale(s : NlpembedcontrastiveLayer, f : Double) -> NlpembedcontrastiveLayer {
   let result = nlp_embed_contrastive_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_embed_contrastive_layer_fill(s : NlpembedcontrastiveLayer, v : Double
   result
 }
 
-pub fn nlp_embed_contrastive_layer_min(s : NlpembedcontrastiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_layer_min(s : NlpembedcontrastiveLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_layer_max(s : NlpembedcontrastiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_layer_max(s : NlpembedcontrastiveLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_layer_to_string(s : NlpembedcontrastiveLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_embed_contrastive_buffer_set(s : NlpembedcontrastiveBuffer, i : Int, 
   result
 }
 
-pub fn nlp_embed_contrastive_buffer_sum(s : NlpembedcontrastiveBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_buffer_sum(s : NlpembedcontrastiveBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_buffer_mean(s : NlpembedcontrastiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_buffer_mean(s : NlpembedcontrastiveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_buffer_scale(s : NlpembedcontrastiveBuffer, f : Double) -> NlpembedcontrastiveBuffer {
   let result = nlp_embed_contrastive_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_embed_contrastive_buffer_fill(s : NlpembedcontrastiveBuffer, v : Doub
   result
 }
 
-pub fn nlp_embed_contrastive_buffer_min(s : NlpembedcontrastiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_buffer_min(s : NlpembedcontrastiveBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_buffer_max(s : NlpembedcontrastiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_buffer_max(s : NlpembedcontrastiveBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_buffer_to_string(s : NlpembedcontrastiveBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_embed_contrastive_cursor_set(s : NlpembedcontrastiveCursor, i : Int, 
   result
 }
 
-pub fn nlp_embed_contrastive_cursor_sum(s : NlpembedcontrastiveCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_cursor_sum(s : NlpembedcontrastiveCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_cursor_mean(s : NlpembedcontrastiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_cursor_mean(s : NlpembedcontrastiveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_cursor_scale(s : NlpembedcontrastiveCursor, f : Double) -> NlpembedcontrastiveCursor {
   let result = nlp_embed_contrastive_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_embed_contrastive_cursor_fill(s : NlpembedcontrastiveCursor, v : Doub
   result
 }
 
-pub fn nlp_embed_contrastive_cursor_min(s : NlpembedcontrastiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_cursor_min(s : NlpembedcontrastiveCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_cursor_max(s : NlpembedcontrastiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_cursor_max(s : NlpembedcontrastiveCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_cursor_to_string(s : NlpembedcontrastiveCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_embed_contrastive_view_set(s : NlpembedcontrastiveView, i : Int, v : 
   result
 }
 
-pub fn nlp_embed_contrastive_view_sum(s : NlpembedcontrastiveView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_view_sum(s : NlpembedcontrastiveView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_view_mean(s : NlpembedcontrastiveView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_view_mean(s : NlpembedcontrastiveView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_view_scale(s : NlpembedcontrastiveView, f : Double) -> NlpembedcontrastiveView {
   let result = nlp_embed_contrastive_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_embed_contrastive_view_fill(s : NlpembedcontrastiveView, v : Double) 
   result
 }
 
-pub fn nlp_embed_contrastive_view_min(s : NlpembedcontrastiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_view_min(s : NlpembedcontrastiveView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_view_max(s : NlpembedcontrastiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_view_max(s : NlpembedcontrastiveView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_view_to_string(s : NlpembedcontrastiveView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_embed_contrastive_range_set(s : NlpembedcontrastiveRange, i : Int, v 
   result
 }
 
-pub fn nlp_embed_contrastive_range_sum(s : NlpembedcontrastiveRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_range_sum(s : NlpembedcontrastiveRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_range_mean(s : NlpembedcontrastiveRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_range_mean(s : NlpembedcontrastiveRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_range_scale(s : NlpembedcontrastiveRange, f : Double) -> NlpembedcontrastiveRange {
   let result = nlp_embed_contrastive_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_embed_contrastive_range_fill(s : NlpembedcontrastiveRange, v : Double
   result
 }
 
-pub fn nlp_embed_contrastive_range_min(s : NlpembedcontrastiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_range_min(s : NlpembedcontrastiveRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_range_max(s : NlpembedcontrastiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_range_max(s : NlpembedcontrastiveRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_range_to_string(s : NlpembedcontrastiveRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_embed_contrastive_slice_set(s : NlpembedcontrastiveSlice, i : Int, v 
   result
 }
 
-pub fn nlp_embed_contrastive_slice_sum(s : NlpembedcontrastiveSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_embed_contrastive_slice_sum(s : NlpembedcontrastiveSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_embed_contrastive_slice_mean(s : NlpembedcontrastiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_embed_contrastive_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_embed_contrastive_slice_mean(s : NlpembedcontrastiveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_embed_contrastive_slice_scale(s : NlpembedcontrastiveSlice, f : Double) -> NlpembedcontrastiveSlice {
   let result = nlp_embed_contrastive_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_embed_contrastive_slice_fill(s : NlpembedcontrastiveSlice, v : Double
   result
 }
 
-pub fn nlp_embed_contrastive_slice_min(s : NlpembedcontrastiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_slice_min(s : NlpembedcontrastiveSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_embed_contrastive_slice_max(s : NlpembedcontrastiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_embed_contrastive_slice_max(s : NlpembedcontrastiveSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_embed_contrastive_slice_to_string(s : NlpembedcontrastiveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

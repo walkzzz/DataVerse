@@ -88,11 +88,7 @@ pub fn math_finite_element_make_series(vals : Array[Double], name : String) -> M
 
 pub fn math_finite_element_series_len(s : MathfiniteelementSeries) -> Int { s.vals.length() }
 
-pub fn math_finite_element_series_sum(s : MathfiniteelementSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_finite_element_series_sum(s : MathfiniteelementSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_finite_element_series_mean(s : MathfiniteelementSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_finite_element_frame_set(s : MathfiniteelementFrame, i : Int, v : Do
   result
 }
 
-pub fn math_finite_element_frame_sum(s : MathfiniteelementFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_frame_sum(s : MathfiniteelementFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_frame_mean(s : MathfiniteelementFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_frame_mean(s : MathfiniteelementFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_frame_scale(s : MathfiniteelementFrame, f : Double) -> MathfiniteelementFrame {
   let result = math_finite_element_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_finite_element_frame_fill(s : MathfiniteelementFrame, v : Double) ->
   result
 }
 
-pub fn math_finite_element_frame_min(s : MathfiniteelementFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_frame_min(s : MathfiniteelementFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_frame_max(s : MathfiniteelementFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_frame_max(s : MathfiniteelementFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_frame_to_string(s : MathfiniteelementFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_finite_element_table_set(s : MathfiniteelementTable, i : Int, v : Do
   result
 }
 
-pub fn math_finite_element_table_sum(s : MathfiniteelementTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_table_sum(s : MathfiniteelementTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_table_mean(s : MathfiniteelementTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_table_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_table_mean(s : MathfiniteelementTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_table_scale(s : MathfiniteelementTable, f : Double) -> MathfiniteelementTable {
   let result = math_finite_element_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_finite_element_table_fill(s : MathfiniteelementTable, v : Double) ->
   result
 }
 
-pub fn math_finite_element_table_min(s : MathfiniteelementTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_table_min(s : MathfiniteelementTable) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_table_max(s : MathfiniteelementTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_table_max(s : MathfiniteelementTable) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_table_to_string(s : MathfiniteelementTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_finite_element_graphn_set(s : MathfiniteelementGraphN, i : Int, v : 
   result
 }
 
-pub fn math_finite_element_graphn_sum(s : MathfiniteelementGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_graphn_sum(s : MathfiniteelementGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_graphn_mean(s : MathfiniteelementGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_graphn_mean(s : MathfiniteelementGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_graphn_scale(s : MathfiniteelementGraphN, f : Double) -> MathfiniteelementGraphN {
   let result = math_finite_element_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_finite_element_graphn_fill(s : MathfiniteelementGraphN, v : Double) 
   result
 }
 
-pub fn math_finite_element_graphn_min(s : MathfiniteelementGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_graphn_min(s : MathfiniteelementGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_graphn_max(s : MathfiniteelementGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_graphn_max(s : MathfiniteelementGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_graphn_to_string(s : MathfiniteelementGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_finite_element_node_set(s : MathfiniteelementNode, i : Int, v : Doub
   result
 }
 
-pub fn math_finite_element_node_sum(s : MathfiniteelementNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_node_sum(s : MathfiniteelementNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_node_mean(s : MathfiniteelementNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_node_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_node_mean(s : MathfiniteelementNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_node_scale(s : MathfiniteelementNode, f : Double) -> MathfiniteelementNode {
   let result = math_finite_element_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_finite_element_node_fill(s : MathfiniteelementNode, v : Double) -> M
   result
 }
 
-pub fn math_finite_element_node_min(s : MathfiniteelementNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_node_min(s : MathfiniteelementNode) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_node_max(s : MathfiniteelementNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_node_max(s : MathfiniteelementNode) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_node_to_string(s : MathfiniteelementNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_finite_element_edge_set(s : MathfiniteelementEdge, i : Int, v : Doub
   result
 }
 
-pub fn math_finite_element_edge_sum(s : MathfiniteelementEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_edge_sum(s : MathfiniteelementEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_edge_mean(s : MathfiniteelementEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_edge_mean(s : MathfiniteelementEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_edge_scale(s : MathfiniteelementEdge, f : Double) -> MathfiniteelementEdge {
   let result = math_finite_element_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_finite_element_edge_fill(s : MathfiniteelementEdge, v : Double) -> M
   result
 }
 
-pub fn math_finite_element_edge_min(s : MathfiniteelementEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_edge_min(s : MathfiniteelementEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_edge_max(s : MathfiniteelementEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_edge_max(s : MathfiniteelementEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_edge_to_string(s : MathfiniteelementEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_finite_element_path_set(s : MathfiniteelementPath, i : Int, v : Doub
   result
 }
 
-pub fn math_finite_element_path_sum(s : MathfiniteelementPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_path_sum(s : MathfiniteelementPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_path_mean(s : MathfiniteelementPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_path_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_path_mean(s : MathfiniteelementPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_path_scale(s : MathfiniteelementPath, f : Double) -> MathfiniteelementPath {
   let result = math_finite_element_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_finite_element_path_fill(s : MathfiniteelementPath, v : Double) -> M
   result
 }
 
-pub fn math_finite_element_path_min(s : MathfiniteelementPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_path_min(s : MathfiniteelementPath) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_path_max(s : MathfiniteelementPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_path_max(s : MathfiniteelementPath) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_path_to_string(s : MathfiniteelementPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_finite_element_cluster_set(s : MathfiniteelementCluster, i : Int, v 
   result
 }
 
-pub fn math_finite_element_cluster_sum(s : MathfiniteelementCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_cluster_sum(s : MathfiniteelementCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_cluster_mean(s : MathfiniteelementCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_cluster_mean(s : MathfiniteelementCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_cluster_scale(s : MathfiniteelementCluster, f : Double) -> MathfiniteelementCluster {
   let result = math_finite_element_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_finite_element_cluster_fill(s : MathfiniteelementCluster, v : Double
   result
 }
 
-pub fn math_finite_element_cluster_min(s : MathfiniteelementCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_cluster_min(s : MathfiniteelementCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_cluster_max(s : MathfiniteelementCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_cluster_max(s : MathfiniteelementCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_cluster_to_string(s : MathfiniteelementCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_finite_element_model_set(s : MathfiniteelementModel, i : Int, v : Do
   result
 }
 
-pub fn math_finite_element_model_sum(s : MathfiniteelementModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_model_sum(s : MathfiniteelementModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_model_mean(s : MathfiniteelementModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_model_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_model_mean(s : MathfiniteelementModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_model_scale(s : MathfiniteelementModel, f : Double) -> MathfiniteelementModel {
   let result = math_finite_element_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_finite_element_model_fill(s : MathfiniteelementModel, v : Double) ->
   result
 }
 
-pub fn math_finite_element_model_min(s : MathfiniteelementModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_model_min(s : MathfiniteelementModel) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_model_max(s : MathfiniteelementModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_model_max(s : MathfiniteelementModel) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_model_to_string(s : MathfiniteelementModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_finite_element_layer_set(s : MathfiniteelementLayer, i : Int, v : Do
   result
 }
 
-pub fn math_finite_element_layer_sum(s : MathfiniteelementLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_layer_sum(s : MathfiniteelementLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_layer_mean(s : MathfiniteelementLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_layer_mean(s : MathfiniteelementLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_layer_scale(s : MathfiniteelementLayer, f : Double) -> MathfiniteelementLayer {
   let result = math_finite_element_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_finite_element_layer_fill(s : MathfiniteelementLayer, v : Double) ->
   result
 }
 
-pub fn math_finite_element_layer_min(s : MathfiniteelementLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_layer_min(s : MathfiniteelementLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_layer_max(s : MathfiniteelementLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_layer_max(s : MathfiniteelementLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_layer_to_string(s : MathfiniteelementLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_finite_element_buffer_set(s : MathfiniteelementBuffer, i : Int, v : 
   result
 }
 
-pub fn math_finite_element_buffer_sum(s : MathfiniteelementBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_buffer_sum(s : MathfiniteelementBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_buffer_mean(s : MathfiniteelementBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_buffer_mean(s : MathfiniteelementBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_buffer_scale(s : MathfiniteelementBuffer, f : Double) -> MathfiniteelementBuffer {
   let result = math_finite_element_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_finite_element_buffer_fill(s : MathfiniteelementBuffer, v : Double) 
   result
 }
 
-pub fn math_finite_element_buffer_min(s : MathfiniteelementBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_buffer_min(s : MathfiniteelementBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_buffer_max(s : MathfiniteelementBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_buffer_max(s : MathfiniteelementBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_buffer_to_string(s : MathfiniteelementBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_finite_element_cursor_set(s : MathfiniteelementCursor, i : Int, v : 
   result
 }
 
-pub fn math_finite_element_cursor_sum(s : MathfiniteelementCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_cursor_sum(s : MathfiniteelementCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_cursor_mean(s : MathfiniteelementCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_cursor_mean(s : MathfiniteelementCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_cursor_scale(s : MathfiniteelementCursor, f : Double) -> MathfiniteelementCursor {
   let result = math_finite_element_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_finite_element_cursor_fill(s : MathfiniteelementCursor, v : Double) 
   result
 }
 
-pub fn math_finite_element_cursor_min(s : MathfiniteelementCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_cursor_min(s : MathfiniteelementCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_cursor_max(s : MathfiniteelementCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_cursor_max(s : MathfiniteelementCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_cursor_to_string(s : MathfiniteelementCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_finite_element_view_set(s : MathfiniteelementView, i : Int, v : Doub
   result
 }
 
-pub fn math_finite_element_view_sum(s : MathfiniteelementView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_view_sum(s : MathfiniteelementView) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_view_mean(s : MathfiniteelementView) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_view_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_view_mean(s : MathfiniteelementView) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_view_scale(s : MathfiniteelementView, f : Double) -> MathfiniteelementView {
   let result = math_finite_element_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_finite_element_view_fill(s : MathfiniteelementView, v : Double) -> M
   result
 }
 
-pub fn math_finite_element_view_min(s : MathfiniteelementView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_view_min(s : MathfiniteelementView) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_view_max(s : MathfiniteelementView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_view_max(s : MathfiniteelementView) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_view_to_string(s : MathfiniteelementView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_finite_element_range_set(s : MathfiniteelementRange, i : Int, v : Do
   result
 }
 
-pub fn math_finite_element_range_sum(s : MathfiniteelementRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_range_sum(s : MathfiniteelementRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_range_mean(s : MathfiniteelementRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_range_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_range_mean(s : MathfiniteelementRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_range_scale(s : MathfiniteelementRange, f : Double) -> MathfiniteelementRange {
   let result = math_finite_element_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_finite_element_range_fill(s : MathfiniteelementRange, v : Double) ->
   result
 }
 
-pub fn math_finite_element_range_min(s : MathfiniteelementRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_range_min(s : MathfiniteelementRange) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_range_max(s : MathfiniteelementRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_range_max(s : MathfiniteelementRange) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_range_to_string(s : MathfiniteelementRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_finite_element_slice_set(s : MathfiniteelementSlice, i : Int, v : Do
   result
 }
 
-pub fn math_finite_element_slice_sum(s : MathfiniteelementSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_finite_element_slice_sum(s : MathfiniteelementSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_finite_element_slice_mean(s : MathfiniteelementSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_finite_element_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_finite_element_slice_mean(s : MathfiniteelementSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_finite_element_slice_scale(s : MathfiniteelementSlice, f : Double) -> MathfiniteelementSlice {
   let result = math_finite_element_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_finite_element_slice_fill(s : MathfiniteelementSlice, v : Double) ->
   result
 }
 
-pub fn math_finite_element_slice_min(s : MathfiniteelementSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_slice_min(s : MathfiniteelementSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_finite_element_slice_max(s : MathfiniteelementSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_finite_element_slice_max(s : MathfiniteelementSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_finite_element_slice_to_string(s : MathfiniteelementSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

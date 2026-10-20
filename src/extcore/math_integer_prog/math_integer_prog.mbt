@@ -88,11 +88,7 @@ pub fn math_integer_prog_make_series(vals : Array[Double], name : String) -> Mat
 
 pub fn math_integer_prog_series_len(s : MathintegerprogSeries) -> Int { s.vals.length() }
 
-pub fn math_integer_prog_series_sum(s : MathintegerprogSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_integer_prog_series_sum(s : MathintegerprogSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_integer_prog_series_mean(s : MathintegerprogSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_integer_prog_frame_set(s : MathintegerprogFrame, i : Int, v : Double
   result
 }
 
-pub fn math_integer_prog_frame_sum(s : MathintegerprogFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_frame_sum(s : MathintegerprogFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_frame_mean(s : MathintegerprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_frame_mean(s : MathintegerprogFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_frame_scale(s : MathintegerprogFrame, f : Double) -> MathintegerprogFrame {
   let result = math_integer_prog_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_integer_prog_frame_fill(s : MathintegerprogFrame, v : Double) -> Mat
   result
 }
 
-pub fn math_integer_prog_frame_min(s : MathintegerprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_frame_min(s : MathintegerprogFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_frame_max(s : MathintegerprogFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_frame_max(s : MathintegerprogFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_frame_to_string(s : MathintegerprogFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_integer_prog_table_set(s : MathintegerprogTable, i : Int, v : Double
   result
 }
 
-pub fn math_integer_prog_table_sum(s : MathintegerprogTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_table_sum(s : MathintegerprogTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_table_mean(s : MathintegerprogTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_table_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_table_mean(s : MathintegerprogTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_table_scale(s : MathintegerprogTable, f : Double) -> MathintegerprogTable {
   let result = math_integer_prog_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_integer_prog_table_fill(s : MathintegerprogTable, v : Double) -> Mat
   result
 }
 
-pub fn math_integer_prog_table_min(s : MathintegerprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_table_min(s : MathintegerprogTable) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_table_max(s : MathintegerprogTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_table_max(s : MathintegerprogTable) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_table_to_string(s : MathintegerprogTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_integer_prog_graphn_set(s : MathintegerprogGraphN, i : Int, v : Doub
   result
 }
 
-pub fn math_integer_prog_graphn_sum(s : MathintegerprogGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_graphn_sum(s : MathintegerprogGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_graphn_mean(s : MathintegerprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_graphn_mean(s : MathintegerprogGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_graphn_scale(s : MathintegerprogGraphN, f : Double) -> MathintegerprogGraphN {
   let result = math_integer_prog_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_integer_prog_graphn_fill(s : MathintegerprogGraphN, v : Double) -> M
   result
 }
 
-pub fn math_integer_prog_graphn_min(s : MathintegerprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_graphn_min(s : MathintegerprogGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_graphn_max(s : MathintegerprogGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_graphn_max(s : MathintegerprogGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_graphn_to_string(s : MathintegerprogGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_integer_prog_node_set(s : MathintegerprogNode, i : Int, v : Double) 
   result
 }
 
-pub fn math_integer_prog_node_sum(s : MathintegerprogNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_node_sum(s : MathintegerprogNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_node_mean(s : MathintegerprogNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_node_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_node_mean(s : MathintegerprogNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_node_scale(s : MathintegerprogNode, f : Double) -> MathintegerprogNode {
   let result = math_integer_prog_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_integer_prog_node_fill(s : MathintegerprogNode, v : Double) -> Mathi
   result
 }
 
-pub fn math_integer_prog_node_min(s : MathintegerprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_node_min(s : MathintegerprogNode) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_node_max(s : MathintegerprogNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_node_max(s : MathintegerprogNode) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_node_to_string(s : MathintegerprogNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_integer_prog_edge_set(s : MathintegerprogEdge, i : Int, v : Double) 
   result
 }
 
-pub fn math_integer_prog_edge_sum(s : MathintegerprogEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_edge_sum(s : MathintegerprogEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_edge_mean(s : MathintegerprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_edge_mean(s : MathintegerprogEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_edge_scale(s : MathintegerprogEdge, f : Double) -> MathintegerprogEdge {
   let result = math_integer_prog_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_integer_prog_edge_fill(s : MathintegerprogEdge, v : Double) -> Mathi
   result
 }
 
-pub fn math_integer_prog_edge_min(s : MathintegerprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_edge_min(s : MathintegerprogEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_edge_max(s : MathintegerprogEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_edge_max(s : MathintegerprogEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_edge_to_string(s : MathintegerprogEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_integer_prog_path_set(s : MathintegerprogPath, i : Int, v : Double) 
   result
 }
 
-pub fn math_integer_prog_path_sum(s : MathintegerprogPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_path_sum(s : MathintegerprogPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_path_mean(s : MathintegerprogPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_path_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_path_mean(s : MathintegerprogPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_path_scale(s : MathintegerprogPath, f : Double) -> MathintegerprogPath {
   let result = math_integer_prog_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_integer_prog_path_fill(s : MathintegerprogPath, v : Double) -> Mathi
   result
 }
 
-pub fn math_integer_prog_path_min(s : MathintegerprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_path_min(s : MathintegerprogPath) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_path_max(s : MathintegerprogPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_path_max(s : MathintegerprogPath) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_path_to_string(s : MathintegerprogPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_integer_prog_cluster_set(s : MathintegerprogCluster, i : Int, v : Do
   result
 }
 
-pub fn math_integer_prog_cluster_sum(s : MathintegerprogCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_cluster_sum(s : MathintegerprogCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_cluster_mean(s : MathintegerprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_cluster_mean(s : MathintegerprogCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_cluster_scale(s : MathintegerprogCluster, f : Double) -> MathintegerprogCluster {
   let result = math_integer_prog_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_integer_prog_cluster_fill(s : MathintegerprogCluster, v : Double) ->
   result
 }
 
-pub fn math_integer_prog_cluster_min(s : MathintegerprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_cluster_min(s : MathintegerprogCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_cluster_max(s : MathintegerprogCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_cluster_max(s : MathintegerprogCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_cluster_to_string(s : MathintegerprogCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_integer_prog_model_set(s : MathintegerprogModel, i : Int, v : Double
   result
 }
 
-pub fn math_integer_prog_model_sum(s : MathintegerprogModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_model_sum(s : MathintegerprogModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_model_mean(s : MathintegerprogModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_model_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_model_mean(s : MathintegerprogModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_model_scale(s : MathintegerprogModel, f : Double) -> MathintegerprogModel {
   let result = math_integer_prog_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_integer_prog_model_fill(s : MathintegerprogModel, v : Double) -> Mat
   result
 }
 
-pub fn math_integer_prog_model_min(s : MathintegerprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_model_min(s : MathintegerprogModel) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_model_max(s : MathintegerprogModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_model_max(s : MathintegerprogModel) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_model_to_string(s : MathintegerprogModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_integer_prog_layer_set(s : MathintegerprogLayer, i : Int, v : Double
   result
 }
 
-pub fn math_integer_prog_layer_sum(s : MathintegerprogLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_layer_sum(s : MathintegerprogLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_layer_mean(s : MathintegerprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_layer_mean(s : MathintegerprogLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_layer_scale(s : MathintegerprogLayer, f : Double) -> MathintegerprogLayer {
   let result = math_integer_prog_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_integer_prog_layer_fill(s : MathintegerprogLayer, v : Double) -> Mat
   result
 }
 
-pub fn math_integer_prog_layer_min(s : MathintegerprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_layer_min(s : MathintegerprogLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_layer_max(s : MathintegerprogLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_layer_max(s : MathintegerprogLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_layer_to_string(s : MathintegerprogLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_integer_prog_buffer_set(s : MathintegerprogBuffer, i : Int, v : Doub
   result
 }
 
-pub fn math_integer_prog_buffer_sum(s : MathintegerprogBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_buffer_sum(s : MathintegerprogBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_buffer_mean(s : MathintegerprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_buffer_mean(s : MathintegerprogBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_buffer_scale(s : MathintegerprogBuffer, f : Double) -> MathintegerprogBuffer {
   let result = math_integer_prog_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_integer_prog_buffer_fill(s : MathintegerprogBuffer, v : Double) -> M
   result
 }
 
-pub fn math_integer_prog_buffer_min(s : MathintegerprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_buffer_min(s : MathintegerprogBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_buffer_max(s : MathintegerprogBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_buffer_max(s : MathintegerprogBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_buffer_to_string(s : MathintegerprogBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_integer_prog_cursor_set(s : MathintegerprogCursor, i : Int, v : Doub
   result
 }
 
-pub fn math_integer_prog_cursor_sum(s : MathintegerprogCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_cursor_sum(s : MathintegerprogCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_cursor_mean(s : MathintegerprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_cursor_mean(s : MathintegerprogCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_cursor_scale(s : MathintegerprogCursor, f : Double) -> MathintegerprogCursor {
   let result = math_integer_prog_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_integer_prog_cursor_fill(s : MathintegerprogCursor, v : Double) -> M
   result
 }
 
-pub fn math_integer_prog_cursor_min(s : MathintegerprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_cursor_min(s : MathintegerprogCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_cursor_max(s : MathintegerprogCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_cursor_max(s : MathintegerprogCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_cursor_to_string(s : MathintegerprogCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_integer_prog_view_set(s : MathintegerprogView, i : Int, v : Double) 
   result
 }
 
-pub fn math_integer_prog_view_sum(s : MathintegerprogView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_view_sum(s : MathintegerprogView) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_view_mean(s : MathintegerprogView) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_view_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_view_mean(s : MathintegerprogView) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_view_scale(s : MathintegerprogView, f : Double) -> MathintegerprogView {
   let result = math_integer_prog_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_integer_prog_view_fill(s : MathintegerprogView, v : Double) -> Mathi
   result
 }
 
-pub fn math_integer_prog_view_min(s : MathintegerprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_view_min(s : MathintegerprogView) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_view_max(s : MathintegerprogView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_view_max(s : MathintegerprogView) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_view_to_string(s : MathintegerprogView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_integer_prog_range_set(s : MathintegerprogRange, i : Int, v : Double
   result
 }
 
-pub fn math_integer_prog_range_sum(s : MathintegerprogRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_range_sum(s : MathintegerprogRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_range_mean(s : MathintegerprogRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_range_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_range_mean(s : MathintegerprogRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_range_scale(s : MathintegerprogRange, f : Double) -> MathintegerprogRange {
   let result = math_integer_prog_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_integer_prog_range_fill(s : MathintegerprogRange, v : Double) -> Mat
   result
 }
 
-pub fn math_integer_prog_range_min(s : MathintegerprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_range_min(s : MathintegerprogRange) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_range_max(s : MathintegerprogRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_range_max(s : MathintegerprogRange) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_range_to_string(s : MathintegerprogRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_integer_prog_slice_set(s : MathintegerprogSlice, i : Int, v : Double
   result
 }
 
-pub fn math_integer_prog_slice_sum(s : MathintegerprogSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_integer_prog_slice_sum(s : MathintegerprogSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_integer_prog_slice_mean(s : MathintegerprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_integer_prog_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_integer_prog_slice_mean(s : MathintegerprogSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_integer_prog_slice_scale(s : MathintegerprogSlice, f : Double) -> MathintegerprogSlice {
   let result = math_integer_prog_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_integer_prog_slice_fill(s : MathintegerprogSlice, v : Double) -> Mat
   result
 }
 
-pub fn math_integer_prog_slice_min(s : MathintegerprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_slice_min(s : MathintegerprogSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_integer_prog_slice_max(s : MathintegerprogSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_integer_prog_slice_max(s : MathintegerprogSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_integer_prog_slice_to_string(s : MathintegerprogSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

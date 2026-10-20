@@ -88,11 +88,7 @@ pub fn crypto_sym_salsa_make_series(vals : Array[Double], name : String) -> Cryp
 
 pub fn crypto_sym_salsa_series_len(s : CryptosymsalsaSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_salsa_series_sum(s : CryptosymsalsaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_salsa_series_sum(s : CryptosymsalsaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_salsa_series_mean(s : CryptosymsalsaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_salsa_frame_set(s : CryptosymsalsaFrame, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_salsa_frame_sum(s : CryptosymsalsaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_frame_sum(s : CryptosymsalsaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_frame_mean(s : CryptosymsalsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_frame_mean(s : CryptosymsalsaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_frame_scale(s : CryptosymsalsaFrame, f : Double) -> CryptosymsalsaFrame {
   let result = crypto_sym_salsa_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_salsa_frame_fill(s : CryptosymsalsaFrame, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_salsa_frame_min(s : CryptosymsalsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_frame_min(s : CryptosymsalsaFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_frame_max(s : CryptosymsalsaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_frame_max(s : CryptosymsalsaFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_frame_to_string(s : CryptosymsalsaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_salsa_table_set(s : CryptosymsalsaTable, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_salsa_table_sum(s : CryptosymsalsaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_table_sum(s : CryptosymsalsaTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_table_mean(s : CryptosymsalsaTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_table_mean(s : CryptosymsalsaTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_table_scale(s : CryptosymsalsaTable, f : Double) -> CryptosymsalsaTable {
   let result = crypto_sym_salsa_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_salsa_table_fill(s : CryptosymsalsaTable, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_salsa_table_min(s : CryptosymsalsaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_table_min(s : CryptosymsalsaTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_table_max(s : CryptosymsalsaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_table_max(s : CryptosymsalsaTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_table_to_string(s : CryptosymsalsaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_salsa_graphn_set(s : CryptosymsalsaGraphN, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_salsa_graphn_sum(s : CryptosymsalsaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_graphn_sum(s : CryptosymsalsaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_graphn_mean(s : CryptosymsalsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_graphn_mean(s : CryptosymsalsaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_graphn_scale(s : CryptosymsalsaGraphN, f : Double) -> CryptosymsalsaGraphN {
   let result = crypto_sym_salsa_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_salsa_graphn_fill(s : CryptosymsalsaGraphN, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_salsa_graphn_min(s : CryptosymsalsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_graphn_min(s : CryptosymsalsaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_graphn_max(s : CryptosymsalsaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_graphn_max(s : CryptosymsalsaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_graphn_to_string(s : CryptosymsalsaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_salsa_node_set(s : CryptosymsalsaNode, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_salsa_node_sum(s : CryptosymsalsaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_node_sum(s : CryptosymsalsaNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_node_mean(s : CryptosymsalsaNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_node_mean(s : CryptosymsalsaNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_node_scale(s : CryptosymsalsaNode, f : Double) -> CryptosymsalsaNode {
   let result = crypto_sym_salsa_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_salsa_node_fill(s : CryptosymsalsaNode, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_salsa_node_min(s : CryptosymsalsaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_node_min(s : CryptosymsalsaNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_node_max(s : CryptosymsalsaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_node_max(s : CryptosymsalsaNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_node_to_string(s : CryptosymsalsaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_salsa_edge_set(s : CryptosymsalsaEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_salsa_edge_sum(s : CryptosymsalsaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_edge_sum(s : CryptosymsalsaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_edge_mean(s : CryptosymsalsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_edge_mean(s : CryptosymsalsaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_edge_scale(s : CryptosymsalsaEdge, f : Double) -> CryptosymsalsaEdge {
   let result = crypto_sym_salsa_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_salsa_edge_fill(s : CryptosymsalsaEdge, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_salsa_edge_min(s : CryptosymsalsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_edge_min(s : CryptosymsalsaEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_edge_max(s : CryptosymsalsaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_edge_max(s : CryptosymsalsaEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_edge_to_string(s : CryptosymsalsaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_salsa_path_set(s : CryptosymsalsaPath, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_salsa_path_sum(s : CryptosymsalsaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_path_sum(s : CryptosymsalsaPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_path_mean(s : CryptosymsalsaPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_path_mean(s : CryptosymsalsaPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_path_scale(s : CryptosymsalsaPath, f : Double) -> CryptosymsalsaPath {
   let result = crypto_sym_salsa_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_salsa_path_fill(s : CryptosymsalsaPath, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_salsa_path_min(s : CryptosymsalsaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_path_min(s : CryptosymsalsaPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_path_max(s : CryptosymsalsaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_path_max(s : CryptosymsalsaPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_path_to_string(s : CryptosymsalsaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_salsa_cluster_set(s : CryptosymsalsaCluster, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_salsa_cluster_sum(s : CryptosymsalsaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_cluster_sum(s : CryptosymsalsaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_cluster_mean(s : CryptosymsalsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_cluster_mean(s : CryptosymsalsaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_cluster_scale(s : CryptosymsalsaCluster, f : Double) -> CryptosymsalsaCluster {
   let result = crypto_sym_salsa_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_salsa_cluster_fill(s : CryptosymsalsaCluster, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_salsa_cluster_min(s : CryptosymsalsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_cluster_min(s : CryptosymsalsaCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_cluster_max(s : CryptosymsalsaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_cluster_max(s : CryptosymsalsaCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_cluster_to_string(s : CryptosymsalsaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_salsa_model_set(s : CryptosymsalsaModel, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_salsa_model_sum(s : CryptosymsalsaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_model_sum(s : CryptosymsalsaModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_model_mean(s : CryptosymsalsaModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_model_mean(s : CryptosymsalsaModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_model_scale(s : CryptosymsalsaModel, f : Double) -> CryptosymsalsaModel {
   let result = crypto_sym_salsa_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_salsa_model_fill(s : CryptosymsalsaModel, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_salsa_model_min(s : CryptosymsalsaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_model_min(s : CryptosymsalsaModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_model_max(s : CryptosymsalsaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_model_max(s : CryptosymsalsaModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_model_to_string(s : CryptosymsalsaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_salsa_layer_set(s : CryptosymsalsaLayer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_salsa_layer_sum(s : CryptosymsalsaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_layer_sum(s : CryptosymsalsaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_layer_mean(s : CryptosymsalsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_layer_mean(s : CryptosymsalsaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_layer_scale(s : CryptosymsalsaLayer, f : Double) -> CryptosymsalsaLayer {
   let result = crypto_sym_salsa_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_salsa_layer_fill(s : CryptosymsalsaLayer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_salsa_layer_min(s : CryptosymsalsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_layer_min(s : CryptosymsalsaLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_layer_max(s : CryptosymsalsaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_layer_max(s : CryptosymsalsaLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_layer_to_string(s : CryptosymsalsaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_salsa_buffer_set(s : CryptosymsalsaBuffer, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_salsa_buffer_sum(s : CryptosymsalsaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_buffer_sum(s : CryptosymsalsaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_buffer_mean(s : CryptosymsalsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_buffer_mean(s : CryptosymsalsaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_buffer_scale(s : CryptosymsalsaBuffer, f : Double) -> CryptosymsalsaBuffer {
   let result = crypto_sym_salsa_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_salsa_buffer_fill(s : CryptosymsalsaBuffer, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_salsa_buffer_min(s : CryptosymsalsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_buffer_min(s : CryptosymsalsaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_buffer_max(s : CryptosymsalsaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_buffer_max(s : CryptosymsalsaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_buffer_to_string(s : CryptosymsalsaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_salsa_cursor_set(s : CryptosymsalsaCursor, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_salsa_cursor_sum(s : CryptosymsalsaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_cursor_sum(s : CryptosymsalsaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_cursor_mean(s : CryptosymsalsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_cursor_mean(s : CryptosymsalsaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_cursor_scale(s : CryptosymsalsaCursor, f : Double) -> CryptosymsalsaCursor {
   let result = crypto_sym_salsa_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_salsa_cursor_fill(s : CryptosymsalsaCursor, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_salsa_cursor_min(s : CryptosymsalsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_cursor_min(s : CryptosymsalsaCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_cursor_max(s : CryptosymsalsaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_cursor_max(s : CryptosymsalsaCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_cursor_to_string(s : CryptosymsalsaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_salsa_view_set(s : CryptosymsalsaView, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_sym_salsa_view_sum(s : CryptosymsalsaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_view_sum(s : CryptosymsalsaView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_view_mean(s : CryptosymsalsaView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_view_mean(s : CryptosymsalsaView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_view_scale(s : CryptosymsalsaView, f : Double) -> CryptosymsalsaView {
   let result = crypto_sym_salsa_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_salsa_view_fill(s : CryptosymsalsaView, v : Double) -> Cryptos
   result
 }
 
-pub fn crypto_sym_salsa_view_min(s : CryptosymsalsaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_view_min(s : CryptosymsalsaView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_view_max(s : CryptosymsalsaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_view_max(s : CryptosymsalsaView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_view_to_string(s : CryptosymsalsaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_salsa_range_set(s : CryptosymsalsaRange, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_salsa_range_sum(s : CryptosymsalsaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_range_sum(s : CryptosymsalsaRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_range_mean(s : CryptosymsalsaRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_range_mean(s : CryptosymsalsaRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_range_scale(s : CryptosymsalsaRange, f : Double) -> CryptosymsalsaRange {
   let result = crypto_sym_salsa_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_salsa_range_fill(s : CryptosymsalsaRange, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_salsa_range_min(s : CryptosymsalsaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_range_min(s : CryptosymsalsaRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_range_max(s : CryptosymsalsaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_range_max(s : CryptosymsalsaRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_range_to_string(s : CryptosymsalsaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_salsa_slice_set(s : CryptosymsalsaSlice, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_sym_salsa_slice_sum(s : CryptosymsalsaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_salsa_slice_sum(s : CryptosymsalsaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_salsa_slice_mean(s : CryptosymsalsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_salsa_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_salsa_slice_mean(s : CryptosymsalsaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_salsa_slice_scale(s : CryptosymsalsaSlice, f : Double) -> CryptosymsalsaSlice {
   let result = crypto_sym_salsa_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_salsa_slice_fill(s : CryptosymsalsaSlice, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_sym_salsa_slice_min(s : CryptosymsalsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_slice_min(s : CryptosymsalsaSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_salsa_slice_max(s : CryptosymsalsaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_salsa_slice_max(s : CryptosymsalsaSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_salsa_slice_to_string(s : CryptosymsalsaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

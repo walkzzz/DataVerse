@@ -88,11 +88,7 @@ pub fn physics_heat_phase_make_series(vals : Array[Double], name : String) -> Ph
 
 pub fn physics_heat_phase_series_len(s : PhysicsheatphaseSeries) -> Int { s.vals.length() }
 
-pub fn physics_heat_phase_series_sum(s : PhysicsheatphaseSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_heat_phase_series_sum(s : PhysicsheatphaseSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_heat_phase_series_mean(s : PhysicsheatphaseSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_heat_phase_frame_set(s : PhysicsheatphaseFrame, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_phase_frame_sum(s : PhysicsheatphaseFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_frame_sum(s : PhysicsheatphaseFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_frame_mean(s : PhysicsheatphaseFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_frame_mean(s : PhysicsheatphaseFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_frame_scale(s : PhysicsheatphaseFrame, f : Double) -> PhysicsheatphaseFrame {
   let result = physics_heat_phase_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_heat_phase_frame_fill(s : PhysicsheatphaseFrame, v : Double) -> P
   result
 }
 
-pub fn physics_heat_phase_frame_min(s : PhysicsheatphaseFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_frame_min(s : PhysicsheatphaseFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_frame_max(s : PhysicsheatphaseFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_frame_max(s : PhysicsheatphaseFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_frame_to_string(s : PhysicsheatphaseFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_heat_phase_table_set(s : PhysicsheatphaseTable, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_phase_table_sum(s : PhysicsheatphaseTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_table_sum(s : PhysicsheatphaseTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_table_mean(s : PhysicsheatphaseTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_table_mean(s : PhysicsheatphaseTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_table_scale(s : PhysicsheatphaseTable, f : Double) -> PhysicsheatphaseTable {
   let result = physics_heat_phase_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_heat_phase_table_fill(s : PhysicsheatphaseTable, v : Double) -> P
   result
 }
 
-pub fn physics_heat_phase_table_min(s : PhysicsheatphaseTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_table_min(s : PhysicsheatphaseTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_table_max(s : PhysicsheatphaseTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_table_max(s : PhysicsheatphaseTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_table_to_string(s : PhysicsheatphaseTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_heat_phase_graphn_set(s : PhysicsheatphaseGraphN, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_phase_graphn_sum(s : PhysicsheatphaseGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_graphn_sum(s : PhysicsheatphaseGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_graphn_mean(s : PhysicsheatphaseGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_graphn_mean(s : PhysicsheatphaseGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_graphn_scale(s : PhysicsheatphaseGraphN, f : Double) -> PhysicsheatphaseGraphN {
   let result = physics_heat_phase_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_heat_phase_graphn_fill(s : PhysicsheatphaseGraphN, v : Double) ->
   result
 }
 
-pub fn physics_heat_phase_graphn_min(s : PhysicsheatphaseGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_graphn_min(s : PhysicsheatphaseGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_graphn_max(s : PhysicsheatphaseGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_graphn_max(s : PhysicsheatphaseGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_graphn_to_string(s : PhysicsheatphaseGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_heat_phase_node_set(s : PhysicsheatphaseNode, i : Int, v : Double
   result
 }
 
-pub fn physics_heat_phase_node_sum(s : PhysicsheatphaseNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_node_sum(s : PhysicsheatphaseNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_node_mean(s : PhysicsheatphaseNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_node_mean(s : PhysicsheatphaseNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_node_scale(s : PhysicsheatphaseNode, f : Double) -> PhysicsheatphaseNode {
   let result = physics_heat_phase_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_heat_phase_node_fill(s : PhysicsheatphaseNode, v : Double) -> Phy
   result
 }
 
-pub fn physics_heat_phase_node_min(s : PhysicsheatphaseNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_node_min(s : PhysicsheatphaseNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_node_max(s : PhysicsheatphaseNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_node_max(s : PhysicsheatphaseNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_node_to_string(s : PhysicsheatphaseNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_heat_phase_edge_set(s : PhysicsheatphaseEdge, i : Int, v : Double
   result
 }
 
-pub fn physics_heat_phase_edge_sum(s : PhysicsheatphaseEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_edge_sum(s : PhysicsheatphaseEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_edge_mean(s : PhysicsheatphaseEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_edge_mean(s : PhysicsheatphaseEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_edge_scale(s : PhysicsheatphaseEdge, f : Double) -> PhysicsheatphaseEdge {
   let result = physics_heat_phase_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_heat_phase_edge_fill(s : PhysicsheatphaseEdge, v : Double) -> Phy
   result
 }
 
-pub fn physics_heat_phase_edge_min(s : PhysicsheatphaseEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_edge_min(s : PhysicsheatphaseEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_edge_max(s : PhysicsheatphaseEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_edge_max(s : PhysicsheatphaseEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_edge_to_string(s : PhysicsheatphaseEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_heat_phase_path_set(s : PhysicsheatphasePath, i : Int, v : Double
   result
 }
 
-pub fn physics_heat_phase_path_sum(s : PhysicsheatphasePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_path_sum(s : PhysicsheatphasePath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_path_mean(s : PhysicsheatphasePath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_path_mean(s : PhysicsheatphasePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_path_scale(s : PhysicsheatphasePath, f : Double) -> PhysicsheatphasePath {
   let result = physics_heat_phase_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_heat_phase_path_fill(s : PhysicsheatphasePath, v : Double) -> Phy
   result
 }
 
-pub fn physics_heat_phase_path_min(s : PhysicsheatphasePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_path_min(s : PhysicsheatphasePath) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_path_max(s : PhysicsheatphasePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_path_max(s : PhysicsheatphasePath) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_path_to_string(s : PhysicsheatphasePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_heat_phase_cluster_set(s : PhysicsheatphaseCluster, i : Int, v : 
   result
 }
 
-pub fn physics_heat_phase_cluster_sum(s : PhysicsheatphaseCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_cluster_sum(s : PhysicsheatphaseCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_cluster_mean(s : PhysicsheatphaseCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_cluster_mean(s : PhysicsheatphaseCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_cluster_scale(s : PhysicsheatphaseCluster, f : Double) -> PhysicsheatphaseCluster {
   let result = physics_heat_phase_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_heat_phase_cluster_fill(s : PhysicsheatphaseCluster, v : Double) 
   result
 }
 
-pub fn physics_heat_phase_cluster_min(s : PhysicsheatphaseCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_cluster_min(s : PhysicsheatphaseCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_cluster_max(s : PhysicsheatphaseCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_cluster_max(s : PhysicsheatphaseCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_cluster_to_string(s : PhysicsheatphaseCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_heat_phase_model_set(s : PhysicsheatphaseModel, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_phase_model_sum(s : PhysicsheatphaseModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_model_sum(s : PhysicsheatphaseModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_model_mean(s : PhysicsheatphaseModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_model_mean(s : PhysicsheatphaseModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_model_scale(s : PhysicsheatphaseModel, f : Double) -> PhysicsheatphaseModel {
   let result = physics_heat_phase_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_heat_phase_model_fill(s : PhysicsheatphaseModel, v : Double) -> P
   result
 }
 
-pub fn physics_heat_phase_model_min(s : PhysicsheatphaseModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_model_min(s : PhysicsheatphaseModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_model_max(s : PhysicsheatphaseModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_model_max(s : PhysicsheatphaseModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_model_to_string(s : PhysicsheatphaseModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_heat_phase_layer_set(s : PhysicsheatphaseLayer, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_phase_layer_sum(s : PhysicsheatphaseLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_layer_sum(s : PhysicsheatphaseLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_layer_mean(s : PhysicsheatphaseLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_layer_mean(s : PhysicsheatphaseLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_layer_scale(s : PhysicsheatphaseLayer, f : Double) -> PhysicsheatphaseLayer {
   let result = physics_heat_phase_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_heat_phase_layer_fill(s : PhysicsheatphaseLayer, v : Double) -> P
   result
 }
 
-pub fn physics_heat_phase_layer_min(s : PhysicsheatphaseLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_layer_min(s : PhysicsheatphaseLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_layer_max(s : PhysicsheatphaseLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_layer_max(s : PhysicsheatphaseLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_layer_to_string(s : PhysicsheatphaseLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_heat_phase_buffer_set(s : PhysicsheatphaseBuffer, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_phase_buffer_sum(s : PhysicsheatphaseBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_buffer_sum(s : PhysicsheatphaseBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_buffer_mean(s : PhysicsheatphaseBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_buffer_mean(s : PhysicsheatphaseBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_buffer_scale(s : PhysicsheatphaseBuffer, f : Double) -> PhysicsheatphaseBuffer {
   let result = physics_heat_phase_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_heat_phase_buffer_fill(s : PhysicsheatphaseBuffer, v : Double) ->
   result
 }
 
-pub fn physics_heat_phase_buffer_min(s : PhysicsheatphaseBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_buffer_min(s : PhysicsheatphaseBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_buffer_max(s : PhysicsheatphaseBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_buffer_max(s : PhysicsheatphaseBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_buffer_to_string(s : PhysicsheatphaseBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_heat_phase_cursor_set(s : PhysicsheatphaseCursor, i : Int, v : Do
   result
 }
 
-pub fn physics_heat_phase_cursor_sum(s : PhysicsheatphaseCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_cursor_sum(s : PhysicsheatphaseCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_cursor_mean(s : PhysicsheatphaseCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_cursor_mean(s : PhysicsheatphaseCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_cursor_scale(s : PhysicsheatphaseCursor, f : Double) -> PhysicsheatphaseCursor {
   let result = physics_heat_phase_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_heat_phase_cursor_fill(s : PhysicsheatphaseCursor, v : Double) ->
   result
 }
 
-pub fn physics_heat_phase_cursor_min(s : PhysicsheatphaseCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_cursor_min(s : PhysicsheatphaseCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_cursor_max(s : PhysicsheatphaseCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_cursor_max(s : PhysicsheatphaseCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_cursor_to_string(s : PhysicsheatphaseCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_heat_phase_view_set(s : PhysicsheatphaseView, i : Int, v : Double
   result
 }
 
-pub fn physics_heat_phase_view_sum(s : PhysicsheatphaseView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_view_sum(s : PhysicsheatphaseView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_view_mean(s : PhysicsheatphaseView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_view_mean(s : PhysicsheatphaseView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_view_scale(s : PhysicsheatphaseView, f : Double) -> PhysicsheatphaseView {
   let result = physics_heat_phase_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_heat_phase_view_fill(s : PhysicsheatphaseView, v : Double) -> Phy
   result
 }
 
-pub fn physics_heat_phase_view_min(s : PhysicsheatphaseView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_view_min(s : PhysicsheatphaseView) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_view_max(s : PhysicsheatphaseView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_view_max(s : PhysicsheatphaseView) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_view_to_string(s : PhysicsheatphaseView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_heat_phase_range_set(s : PhysicsheatphaseRange, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_phase_range_sum(s : PhysicsheatphaseRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_range_sum(s : PhysicsheatphaseRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_range_mean(s : PhysicsheatphaseRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_range_mean(s : PhysicsheatphaseRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_range_scale(s : PhysicsheatphaseRange, f : Double) -> PhysicsheatphaseRange {
   let result = physics_heat_phase_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_heat_phase_range_fill(s : PhysicsheatphaseRange, v : Double) -> P
   result
 }
 
-pub fn physics_heat_phase_range_min(s : PhysicsheatphaseRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_range_min(s : PhysicsheatphaseRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_range_max(s : PhysicsheatphaseRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_range_max(s : PhysicsheatphaseRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_range_to_string(s : PhysicsheatphaseRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_heat_phase_slice_set(s : PhysicsheatphaseSlice, i : Int, v : Doub
   result
 }
 
-pub fn physics_heat_phase_slice_sum(s : PhysicsheatphaseSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_heat_phase_slice_sum(s : PhysicsheatphaseSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_heat_phase_slice_mean(s : PhysicsheatphaseSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_heat_phase_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_heat_phase_slice_mean(s : PhysicsheatphaseSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_heat_phase_slice_scale(s : PhysicsheatphaseSlice, f : Double) -> PhysicsheatphaseSlice {
   let result = physics_heat_phase_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_heat_phase_slice_fill(s : PhysicsheatphaseSlice, v : Double) -> P
   result
 }
 
-pub fn physics_heat_phase_slice_min(s : PhysicsheatphaseSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_slice_min(s : PhysicsheatphaseSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_heat_phase_slice_max(s : PhysicsheatphaseSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_heat_phase_slice_max(s : PhysicsheatphaseSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_heat_phase_slice_to_string(s : PhysicsheatphaseSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

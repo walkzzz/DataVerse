@@ -88,11 +88,7 @@ pub fn finance_portfolio_rebalancing_make_series(vals : Array[Double], name : St
 
 pub fn finance_portfolio_rebalancing_series_len(s : FinanceportfoliorebalancingSeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_rebalancing_series_sum(s : FinanceportfoliorebalancingSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_series_sum(s : FinanceportfoliorebalancingSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_rebalancing_series_mean(s : FinanceportfoliorebalancingSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_rebalancing_frame_set(s : FinanceportfoliorebalancingFr
   result
 }
 
-pub fn finance_portfolio_rebalancing_frame_sum(s : FinanceportfoliorebalancingFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_frame_sum(s : FinanceportfoliorebalancingFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_frame_mean(s : FinanceportfoliorebalancingFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_frame_mean(s : FinanceportfoliorebalancingFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_frame_scale(s : FinanceportfoliorebalancingFrame, f : Double) -> FinanceportfoliorebalancingFrame {
   let result = finance_portfolio_rebalancing_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_rebalancing_frame_fill(s : FinanceportfoliorebalancingF
   result
 }
 
-pub fn finance_portfolio_rebalancing_frame_min(s : FinanceportfoliorebalancingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_frame_min(s : FinanceportfoliorebalancingFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_frame_max(s : FinanceportfoliorebalancingFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_frame_max(s : FinanceportfoliorebalancingFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_frame_to_string(s : FinanceportfoliorebalancingFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_rebalancing_table_set(s : FinanceportfoliorebalancingTa
   result
 }
 
-pub fn finance_portfolio_rebalancing_table_sum(s : FinanceportfoliorebalancingTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_table_sum(s : FinanceportfoliorebalancingTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_table_mean(s : FinanceportfoliorebalancingTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_table_mean(s : FinanceportfoliorebalancingTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_table_scale(s : FinanceportfoliorebalancingTable, f : Double) -> FinanceportfoliorebalancingTable {
   let result = finance_portfolio_rebalancing_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_rebalancing_table_fill(s : FinanceportfoliorebalancingT
   result
 }
 
-pub fn finance_portfolio_rebalancing_table_min(s : FinanceportfoliorebalancingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_table_min(s : FinanceportfoliorebalancingTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_table_max(s : FinanceportfoliorebalancingTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_table_max(s : FinanceportfoliorebalancingTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_table_to_string(s : FinanceportfoliorebalancingTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_rebalancing_graphn_set(s : FinanceportfoliorebalancingG
   result
 }
 
-pub fn finance_portfolio_rebalancing_graphn_sum(s : FinanceportfoliorebalancingGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_graphn_sum(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_graphn_mean(s : FinanceportfoliorebalancingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_graphn_mean(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_graphn_scale(s : FinanceportfoliorebalancingGraphN, f : Double) -> FinanceportfoliorebalancingGraphN {
   let result = finance_portfolio_rebalancing_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_rebalancing_graphn_fill(s : Financeportfoliorebalancing
   result
 }
 
-pub fn finance_portfolio_rebalancing_graphn_min(s : FinanceportfoliorebalancingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_graphn_min(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_graphn_max(s : FinanceportfoliorebalancingGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_graphn_max(s : FinanceportfoliorebalancingGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_graphn_to_string(s : FinanceportfoliorebalancingGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_rebalancing_node_set(s : FinanceportfoliorebalancingNod
   result
 }
 
-pub fn finance_portfolio_rebalancing_node_sum(s : FinanceportfoliorebalancingNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_node_sum(s : FinanceportfoliorebalancingNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_node_mean(s : FinanceportfoliorebalancingNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_node_mean(s : FinanceportfoliorebalancingNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_node_scale(s : FinanceportfoliorebalancingNode, f : Double) -> FinanceportfoliorebalancingNode {
   let result = finance_portfolio_rebalancing_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_rebalancing_node_fill(s : FinanceportfoliorebalancingNo
   result
 }
 
-pub fn finance_portfolio_rebalancing_node_min(s : FinanceportfoliorebalancingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_node_min(s : FinanceportfoliorebalancingNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_node_max(s : FinanceportfoliorebalancingNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_node_max(s : FinanceportfoliorebalancingNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_node_to_string(s : FinanceportfoliorebalancingNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_rebalancing_edge_set(s : FinanceportfoliorebalancingEdg
   result
 }
 
-pub fn finance_portfolio_rebalancing_edge_sum(s : FinanceportfoliorebalancingEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_edge_sum(s : FinanceportfoliorebalancingEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_edge_mean(s : FinanceportfoliorebalancingEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_edge_mean(s : FinanceportfoliorebalancingEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_edge_scale(s : FinanceportfoliorebalancingEdge, f : Double) -> FinanceportfoliorebalancingEdge {
   let result = finance_portfolio_rebalancing_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_rebalancing_edge_fill(s : FinanceportfoliorebalancingEd
   result
 }
 
-pub fn finance_portfolio_rebalancing_edge_min(s : FinanceportfoliorebalancingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_edge_min(s : FinanceportfoliorebalancingEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_edge_max(s : FinanceportfoliorebalancingEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_edge_max(s : FinanceportfoliorebalancingEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_edge_to_string(s : FinanceportfoliorebalancingEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_rebalancing_path_set(s : FinanceportfoliorebalancingPat
   result
 }
 
-pub fn finance_portfolio_rebalancing_path_sum(s : FinanceportfoliorebalancingPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_path_sum(s : FinanceportfoliorebalancingPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_path_mean(s : FinanceportfoliorebalancingPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_path_mean(s : FinanceportfoliorebalancingPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_path_scale(s : FinanceportfoliorebalancingPath, f : Double) -> FinanceportfoliorebalancingPath {
   let result = finance_portfolio_rebalancing_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_rebalancing_path_fill(s : FinanceportfoliorebalancingPa
   result
 }
 
-pub fn finance_portfolio_rebalancing_path_min(s : FinanceportfoliorebalancingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_path_min(s : FinanceportfoliorebalancingPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_path_max(s : FinanceportfoliorebalancingPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_path_max(s : FinanceportfoliorebalancingPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_path_to_string(s : FinanceportfoliorebalancingPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_rebalancing_cluster_set(s : Financeportfoliorebalancing
   result
 }
 
-pub fn finance_portfolio_rebalancing_cluster_sum(s : FinanceportfoliorebalancingCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_cluster_sum(s : FinanceportfoliorebalancingCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_cluster_mean(s : FinanceportfoliorebalancingCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_cluster_mean(s : FinanceportfoliorebalancingCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_cluster_scale(s : FinanceportfoliorebalancingCluster, f : Double) -> FinanceportfoliorebalancingCluster {
   let result = finance_portfolio_rebalancing_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_rebalancing_cluster_fill(s : Financeportfoliorebalancin
   result
 }
 
-pub fn finance_portfolio_rebalancing_cluster_min(s : FinanceportfoliorebalancingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_cluster_min(s : FinanceportfoliorebalancingCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_cluster_max(s : FinanceportfoliorebalancingCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_cluster_max(s : FinanceportfoliorebalancingCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_cluster_to_string(s : FinanceportfoliorebalancingCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_rebalancing_model_set(s : FinanceportfoliorebalancingMo
   result
 }
 
-pub fn finance_portfolio_rebalancing_model_sum(s : FinanceportfoliorebalancingModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_model_sum(s : FinanceportfoliorebalancingModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_model_mean(s : FinanceportfoliorebalancingModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_model_mean(s : FinanceportfoliorebalancingModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_model_scale(s : FinanceportfoliorebalancingModel, f : Double) -> FinanceportfoliorebalancingModel {
   let result = finance_portfolio_rebalancing_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_rebalancing_model_fill(s : FinanceportfoliorebalancingM
   result
 }
 
-pub fn finance_portfolio_rebalancing_model_min(s : FinanceportfoliorebalancingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_model_min(s : FinanceportfoliorebalancingModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_model_max(s : FinanceportfoliorebalancingModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_model_max(s : FinanceportfoliorebalancingModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_model_to_string(s : FinanceportfoliorebalancingModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_rebalancing_layer_set(s : FinanceportfoliorebalancingLa
   result
 }
 
-pub fn finance_portfolio_rebalancing_layer_sum(s : FinanceportfoliorebalancingLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_layer_sum(s : FinanceportfoliorebalancingLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_layer_mean(s : FinanceportfoliorebalancingLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_layer_mean(s : FinanceportfoliorebalancingLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_layer_scale(s : FinanceportfoliorebalancingLayer, f : Double) -> FinanceportfoliorebalancingLayer {
   let result = finance_portfolio_rebalancing_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_rebalancing_layer_fill(s : FinanceportfoliorebalancingL
   result
 }
 
-pub fn finance_portfolio_rebalancing_layer_min(s : FinanceportfoliorebalancingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_layer_min(s : FinanceportfoliorebalancingLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_layer_max(s : FinanceportfoliorebalancingLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_layer_max(s : FinanceportfoliorebalancingLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_layer_to_string(s : FinanceportfoliorebalancingLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_rebalancing_buffer_set(s : FinanceportfoliorebalancingB
   result
 }
 
-pub fn finance_portfolio_rebalancing_buffer_sum(s : FinanceportfoliorebalancingBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_buffer_sum(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_buffer_mean(s : FinanceportfoliorebalancingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_buffer_mean(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_buffer_scale(s : FinanceportfoliorebalancingBuffer, f : Double) -> FinanceportfoliorebalancingBuffer {
   let result = finance_portfolio_rebalancing_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_rebalancing_buffer_fill(s : Financeportfoliorebalancing
   result
 }
 
-pub fn finance_portfolio_rebalancing_buffer_min(s : FinanceportfoliorebalancingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_buffer_min(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_buffer_max(s : FinanceportfoliorebalancingBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_buffer_max(s : FinanceportfoliorebalancingBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_buffer_to_string(s : FinanceportfoliorebalancingBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_rebalancing_cursor_set(s : FinanceportfoliorebalancingC
   result
 }
 
-pub fn finance_portfolio_rebalancing_cursor_sum(s : FinanceportfoliorebalancingCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_cursor_sum(s : FinanceportfoliorebalancingCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_cursor_mean(s : FinanceportfoliorebalancingCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_cursor_mean(s : FinanceportfoliorebalancingCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_cursor_scale(s : FinanceportfoliorebalancingCursor, f : Double) -> FinanceportfoliorebalancingCursor {
   let result = finance_portfolio_rebalancing_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_rebalancing_cursor_fill(s : Financeportfoliorebalancing
   result
 }
 
-pub fn finance_portfolio_rebalancing_cursor_min(s : FinanceportfoliorebalancingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_cursor_min(s : FinanceportfoliorebalancingCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_cursor_max(s : FinanceportfoliorebalancingCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_cursor_max(s : FinanceportfoliorebalancingCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_cursor_to_string(s : FinanceportfoliorebalancingCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_rebalancing_view_set(s : FinanceportfoliorebalancingVie
   result
 }
 
-pub fn finance_portfolio_rebalancing_view_sum(s : FinanceportfoliorebalancingView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_view_sum(s : FinanceportfoliorebalancingView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_view_mean(s : FinanceportfoliorebalancingView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_view_mean(s : FinanceportfoliorebalancingView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_view_scale(s : FinanceportfoliorebalancingView, f : Double) -> FinanceportfoliorebalancingView {
   let result = finance_portfolio_rebalancing_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_rebalancing_view_fill(s : FinanceportfoliorebalancingVi
   result
 }
 
-pub fn finance_portfolio_rebalancing_view_min(s : FinanceportfoliorebalancingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_view_min(s : FinanceportfoliorebalancingView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_view_max(s : FinanceportfoliorebalancingView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_view_max(s : FinanceportfoliorebalancingView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_view_to_string(s : FinanceportfoliorebalancingView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_rebalancing_range_set(s : FinanceportfoliorebalancingRa
   result
 }
 
-pub fn finance_portfolio_rebalancing_range_sum(s : FinanceportfoliorebalancingRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_range_sum(s : FinanceportfoliorebalancingRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_range_mean(s : FinanceportfoliorebalancingRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_range_mean(s : FinanceportfoliorebalancingRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_range_scale(s : FinanceportfoliorebalancingRange, f : Double) -> FinanceportfoliorebalancingRange {
   let result = finance_portfolio_rebalancing_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_rebalancing_range_fill(s : FinanceportfoliorebalancingR
   result
 }
 
-pub fn finance_portfolio_rebalancing_range_min(s : FinanceportfoliorebalancingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_range_min(s : FinanceportfoliorebalancingRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_range_max(s : FinanceportfoliorebalancingRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_range_max(s : FinanceportfoliorebalancingRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_range_to_string(s : FinanceportfoliorebalancingRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_rebalancing_slice_set(s : FinanceportfoliorebalancingSl
   result
 }
 
-pub fn finance_portfolio_rebalancing_slice_sum(s : FinanceportfoliorebalancingSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_rebalancing_slice_sum(s : FinanceportfoliorebalancingSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_rebalancing_slice_mean(s : FinanceportfoliorebalancingSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_rebalancing_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_rebalancing_slice_mean(s : FinanceportfoliorebalancingSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_rebalancing_slice_scale(s : FinanceportfoliorebalancingSlice, f : Double) -> FinanceportfoliorebalancingSlice {
   let result = finance_portfolio_rebalancing_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_rebalancing_slice_fill(s : FinanceportfoliorebalancingS
   result
 }
 
-pub fn finance_portfolio_rebalancing_slice_min(s : FinanceportfoliorebalancingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_slice_min(s : FinanceportfoliorebalancingSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_rebalancing_slice_max(s : FinanceportfoliorebalancingSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_rebalancing_slice_max(s : FinanceportfoliorebalancingSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_rebalancing_slice_to_string(s : FinanceportfoliorebalancingSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

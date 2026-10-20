@@ -88,11 +88,7 @@ pub fn physics_em_wave_make_series(vals : Array[Double], name : String) -> Physi
 
 pub fn physics_em_wave_series_len(s : PhysicsemwaveSeries) -> Int { s.vals.length() }
 
-pub fn physics_em_wave_series_sum(s : PhysicsemwaveSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_em_wave_series_sum(s : PhysicsemwaveSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_em_wave_series_mean(s : PhysicsemwaveSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_em_wave_frame_set(s : PhysicsemwaveFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_wave_frame_sum(s : PhysicsemwaveFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_frame_sum(s : PhysicsemwaveFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_frame_mean(s : PhysicsemwaveFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_frame_mean(s : PhysicsemwaveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_frame_scale(s : PhysicsemwaveFrame, f : Double) -> PhysicsemwaveFrame {
   let result = physics_em_wave_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_em_wave_frame_fill(s : PhysicsemwaveFrame, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_wave_frame_min(s : PhysicsemwaveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_frame_min(s : PhysicsemwaveFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_frame_max(s : PhysicsemwaveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_frame_max(s : PhysicsemwaveFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_frame_to_string(s : PhysicsemwaveFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_em_wave_table_set(s : PhysicsemwaveTable, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_wave_table_sum(s : PhysicsemwaveTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_table_sum(s : PhysicsemwaveTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_table_mean(s : PhysicsemwaveTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_table_mean(s : PhysicsemwaveTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_table_scale(s : PhysicsemwaveTable, f : Double) -> PhysicsemwaveTable {
   let result = physics_em_wave_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_em_wave_table_fill(s : PhysicsemwaveTable, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_wave_table_min(s : PhysicsemwaveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_table_min(s : PhysicsemwaveTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_table_max(s : PhysicsemwaveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_table_max(s : PhysicsemwaveTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_table_to_string(s : PhysicsemwaveTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_em_wave_graphn_set(s : PhysicsemwaveGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_wave_graphn_sum(s : PhysicsemwaveGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_graphn_sum(s : PhysicsemwaveGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_graphn_mean(s : PhysicsemwaveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_graphn_mean(s : PhysicsemwaveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_graphn_scale(s : PhysicsemwaveGraphN, f : Double) -> PhysicsemwaveGraphN {
   let result = physics_em_wave_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_em_wave_graphn_fill(s : PhysicsemwaveGraphN, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_wave_graphn_min(s : PhysicsemwaveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_graphn_min(s : PhysicsemwaveGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_graphn_max(s : PhysicsemwaveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_graphn_max(s : PhysicsemwaveGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_graphn_to_string(s : PhysicsemwaveGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_em_wave_node_set(s : PhysicsemwaveNode, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_wave_node_sum(s : PhysicsemwaveNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_node_sum(s : PhysicsemwaveNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_node_mean(s : PhysicsemwaveNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_node_mean(s : PhysicsemwaveNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_node_scale(s : PhysicsemwaveNode, f : Double) -> PhysicsemwaveNode {
   let result = physics_em_wave_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_em_wave_node_fill(s : PhysicsemwaveNode, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_wave_node_min(s : PhysicsemwaveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_node_min(s : PhysicsemwaveNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_node_max(s : PhysicsemwaveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_node_max(s : PhysicsemwaveNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_node_to_string(s : PhysicsemwaveNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_em_wave_edge_set(s : PhysicsemwaveEdge, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_wave_edge_sum(s : PhysicsemwaveEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_edge_sum(s : PhysicsemwaveEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_edge_mean(s : PhysicsemwaveEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_edge_mean(s : PhysicsemwaveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_edge_scale(s : PhysicsemwaveEdge, f : Double) -> PhysicsemwaveEdge {
   let result = physics_em_wave_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_em_wave_edge_fill(s : PhysicsemwaveEdge, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_wave_edge_min(s : PhysicsemwaveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_edge_min(s : PhysicsemwaveEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_edge_max(s : PhysicsemwaveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_edge_max(s : PhysicsemwaveEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_edge_to_string(s : PhysicsemwaveEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_em_wave_path_set(s : PhysicsemwavePath, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_wave_path_sum(s : PhysicsemwavePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_path_sum(s : PhysicsemwavePath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_path_mean(s : PhysicsemwavePath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_path_mean(s : PhysicsemwavePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_path_scale(s : PhysicsemwavePath, f : Double) -> PhysicsemwavePath {
   let result = physics_em_wave_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_em_wave_path_fill(s : PhysicsemwavePath, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_wave_path_min(s : PhysicsemwavePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_path_min(s : PhysicsemwavePath) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_path_max(s : PhysicsemwavePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_path_max(s : PhysicsemwavePath) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_path_to_string(s : PhysicsemwavePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_em_wave_cluster_set(s : PhysicsemwaveCluster, i : Int, v : Double
   result
 }
 
-pub fn physics_em_wave_cluster_sum(s : PhysicsemwaveCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_cluster_sum(s : PhysicsemwaveCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_cluster_mean(s : PhysicsemwaveCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_cluster_mean(s : PhysicsemwaveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_cluster_scale(s : PhysicsemwaveCluster, f : Double) -> PhysicsemwaveCluster {
   let result = physics_em_wave_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_em_wave_cluster_fill(s : PhysicsemwaveCluster, v : Double) -> Phy
   result
 }
 
-pub fn physics_em_wave_cluster_min(s : PhysicsemwaveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_cluster_min(s : PhysicsemwaveCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_cluster_max(s : PhysicsemwaveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_cluster_max(s : PhysicsemwaveCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_cluster_to_string(s : PhysicsemwaveCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_em_wave_model_set(s : PhysicsemwaveModel, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_wave_model_sum(s : PhysicsemwaveModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_model_sum(s : PhysicsemwaveModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_model_mean(s : PhysicsemwaveModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_model_mean(s : PhysicsemwaveModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_model_scale(s : PhysicsemwaveModel, f : Double) -> PhysicsemwaveModel {
   let result = physics_em_wave_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_em_wave_model_fill(s : PhysicsemwaveModel, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_wave_model_min(s : PhysicsemwaveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_model_min(s : PhysicsemwaveModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_model_max(s : PhysicsemwaveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_model_max(s : PhysicsemwaveModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_model_to_string(s : PhysicsemwaveModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_em_wave_layer_set(s : PhysicsemwaveLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_wave_layer_sum(s : PhysicsemwaveLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_layer_sum(s : PhysicsemwaveLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_layer_mean(s : PhysicsemwaveLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_layer_mean(s : PhysicsemwaveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_layer_scale(s : PhysicsemwaveLayer, f : Double) -> PhysicsemwaveLayer {
   let result = physics_em_wave_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_em_wave_layer_fill(s : PhysicsemwaveLayer, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_wave_layer_min(s : PhysicsemwaveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_layer_min(s : PhysicsemwaveLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_layer_max(s : PhysicsemwaveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_layer_max(s : PhysicsemwaveLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_layer_to_string(s : PhysicsemwaveLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_em_wave_buffer_set(s : PhysicsemwaveBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_wave_buffer_sum(s : PhysicsemwaveBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_buffer_sum(s : PhysicsemwaveBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_buffer_mean(s : PhysicsemwaveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_buffer_mean(s : PhysicsemwaveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_buffer_scale(s : PhysicsemwaveBuffer, f : Double) -> PhysicsemwaveBuffer {
   let result = physics_em_wave_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_em_wave_buffer_fill(s : PhysicsemwaveBuffer, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_wave_buffer_min(s : PhysicsemwaveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_buffer_min(s : PhysicsemwaveBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_buffer_max(s : PhysicsemwaveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_buffer_max(s : PhysicsemwaveBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_buffer_to_string(s : PhysicsemwaveBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_em_wave_cursor_set(s : PhysicsemwaveCursor, i : Int, v : Double) 
   result
 }
 
-pub fn physics_em_wave_cursor_sum(s : PhysicsemwaveCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_cursor_sum(s : PhysicsemwaveCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_cursor_mean(s : PhysicsemwaveCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_cursor_mean(s : PhysicsemwaveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_cursor_scale(s : PhysicsemwaveCursor, f : Double) -> PhysicsemwaveCursor {
   let result = physics_em_wave_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_em_wave_cursor_fill(s : PhysicsemwaveCursor, v : Double) -> Physi
   result
 }
 
-pub fn physics_em_wave_cursor_min(s : PhysicsemwaveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_cursor_min(s : PhysicsemwaveCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_cursor_max(s : PhysicsemwaveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_cursor_max(s : PhysicsemwaveCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_cursor_to_string(s : PhysicsemwaveCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_em_wave_view_set(s : PhysicsemwaveView, i : Int, v : Double) -> P
   result
 }
 
-pub fn physics_em_wave_view_sum(s : PhysicsemwaveView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_view_sum(s : PhysicsemwaveView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_view_mean(s : PhysicsemwaveView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_view_mean(s : PhysicsemwaveView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_view_scale(s : PhysicsemwaveView, f : Double) -> PhysicsemwaveView {
   let result = physics_em_wave_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_em_wave_view_fill(s : PhysicsemwaveView, v : Double) -> Physicsem
   result
 }
 
-pub fn physics_em_wave_view_min(s : PhysicsemwaveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_view_min(s : PhysicsemwaveView) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_view_max(s : PhysicsemwaveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_view_max(s : PhysicsemwaveView) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_view_to_string(s : PhysicsemwaveView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_em_wave_range_set(s : PhysicsemwaveRange, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_wave_range_sum(s : PhysicsemwaveRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_range_sum(s : PhysicsemwaveRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_range_mean(s : PhysicsemwaveRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_range_mean(s : PhysicsemwaveRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_range_scale(s : PhysicsemwaveRange, f : Double) -> PhysicsemwaveRange {
   let result = physics_em_wave_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_em_wave_range_fill(s : PhysicsemwaveRange, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_wave_range_min(s : PhysicsemwaveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_range_min(s : PhysicsemwaveRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_range_max(s : PhysicsemwaveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_range_max(s : PhysicsemwaveRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_range_to_string(s : PhysicsemwaveRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_em_wave_slice_set(s : PhysicsemwaveSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn physics_em_wave_slice_sum(s : PhysicsemwaveSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_em_wave_slice_sum(s : PhysicsemwaveSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_em_wave_slice_mean(s : PhysicsemwaveSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_em_wave_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_em_wave_slice_mean(s : PhysicsemwaveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_em_wave_slice_scale(s : PhysicsemwaveSlice, f : Double) -> PhysicsemwaveSlice {
   let result = physics_em_wave_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_em_wave_slice_fill(s : PhysicsemwaveSlice, v : Double) -> Physics
   result
 }
 
-pub fn physics_em_wave_slice_min(s : PhysicsemwaveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_slice_min(s : PhysicsemwaveSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_em_wave_slice_max(s : PhysicsemwaveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_em_wave_slice_max(s : PhysicsemwaveSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_em_wave_slice_to_string(s : PhysicsemwaveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

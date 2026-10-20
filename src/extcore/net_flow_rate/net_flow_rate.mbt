@@ -88,11 +88,7 @@ pub fn net_flow_rate_make_series(vals : Array[Double], name : String) -> Netflow
 
 pub fn net_flow_rate_series_len(s : NetflowrateSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_rate_series_sum(s : NetflowrateSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_rate_series_sum(s : NetflowrateSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_rate_series_mean(s : NetflowrateSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_rate_frame_set(s : NetflowrateFrame, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_flow_rate_frame_sum(s : NetflowrateFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_frame_sum(s : NetflowrateFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_frame_mean(s : NetflowrateFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_frame_mean(s : NetflowrateFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_frame_scale(s : NetflowrateFrame, f : Double) -> NetflowrateFrame {
   let result = net_flow_rate_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_rate_frame_fill(s : NetflowrateFrame, v : Double) -> Netflowrate
   result
 }
 
-pub fn net_flow_rate_frame_min(s : NetflowrateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_frame_min(s : NetflowrateFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_frame_max(s : NetflowrateFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_frame_max(s : NetflowrateFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_frame_to_string(s : NetflowrateFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_rate_table_set(s : NetflowrateTable, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_flow_rate_table_sum(s : NetflowrateTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_table_sum(s : NetflowrateTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_table_mean(s : NetflowrateTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_table_mean(s : NetflowrateTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_table_scale(s : NetflowrateTable, f : Double) -> NetflowrateTable {
   let result = net_flow_rate_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_rate_table_fill(s : NetflowrateTable, v : Double) -> Netflowrate
   result
 }
 
-pub fn net_flow_rate_table_min(s : NetflowrateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_table_min(s : NetflowrateTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_table_max(s : NetflowrateTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_table_max(s : NetflowrateTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_table_to_string(s : NetflowrateTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_rate_graphn_set(s : NetflowrateGraphN, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_rate_graphn_sum(s : NetflowrateGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_graphn_sum(s : NetflowrateGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_graphn_mean(s : NetflowrateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_graphn_mean(s : NetflowrateGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_graphn_scale(s : NetflowrateGraphN, f : Double) -> NetflowrateGraphN {
   let result = net_flow_rate_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_rate_graphn_fill(s : NetflowrateGraphN, v : Double) -> Netflowra
   result
 }
 
-pub fn net_flow_rate_graphn_min(s : NetflowrateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_graphn_min(s : NetflowrateGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_graphn_max(s : NetflowrateGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_graphn_max(s : NetflowrateGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_graphn_to_string(s : NetflowrateGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_rate_node_set(s : NetflowrateNode, i : Int, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_rate_node_sum(s : NetflowrateNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_node_sum(s : NetflowrateNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_node_mean(s : NetflowrateNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_node_mean(s : NetflowrateNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_node_scale(s : NetflowrateNode, f : Double) -> NetflowrateNode {
   let result = net_flow_rate_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_rate_node_fill(s : NetflowrateNode, v : Double) -> NetflowrateNo
   result
 }
 
-pub fn net_flow_rate_node_min(s : NetflowrateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_node_min(s : NetflowrateNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_node_max(s : NetflowrateNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_node_max(s : NetflowrateNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_node_to_string(s : NetflowrateNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_rate_edge_set(s : NetflowrateEdge, i : Int, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_rate_edge_sum(s : NetflowrateEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_edge_sum(s : NetflowrateEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_edge_mean(s : NetflowrateEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_edge_mean(s : NetflowrateEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_edge_scale(s : NetflowrateEdge, f : Double) -> NetflowrateEdge {
   let result = net_flow_rate_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_rate_edge_fill(s : NetflowrateEdge, v : Double) -> NetflowrateEd
   result
 }
 
-pub fn net_flow_rate_edge_min(s : NetflowrateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_edge_min(s : NetflowrateEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_edge_max(s : NetflowrateEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_edge_max(s : NetflowrateEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_edge_to_string(s : NetflowrateEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_rate_path_set(s : NetflowratePath, i : Int, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_rate_path_sum(s : NetflowratePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_path_sum(s : NetflowratePath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_path_mean(s : NetflowratePath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_path_mean(s : NetflowratePath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_path_scale(s : NetflowratePath, f : Double) -> NetflowratePath {
   let result = net_flow_rate_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_rate_path_fill(s : NetflowratePath, v : Double) -> NetflowratePa
   result
 }
 
-pub fn net_flow_rate_path_min(s : NetflowratePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_path_min(s : NetflowratePath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_path_max(s : NetflowratePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_path_max(s : NetflowratePath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_path_to_string(s : NetflowratePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_rate_cluster_set(s : NetflowrateCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_rate_cluster_sum(s : NetflowrateCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_cluster_sum(s : NetflowrateCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_cluster_mean(s : NetflowrateCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_cluster_mean(s : NetflowrateCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_cluster_scale(s : NetflowrateCluster, f : Double) -> NetflowrateCluster {
   let result = net_flow_rate_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_rate_cluster_fill(s : NetflowrateCluster, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_rate_cluster_min(s : NetflowrateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_cluster_min(s : NetflowrateCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_cluster_max(s : NetflowrateCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_cluster_max(s : NetflowrateCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_cluster_to_string(s : NetflowrateCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_rate_model_set(s : NetflowrateModel, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_flow_rate_model_sum(s : NetflowrateModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_model_sum(s : NetflowrateModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_model_mean(s : NetflowrateModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_model_mean(s : NetflowrateModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_model_scale(s : NetflowrateModel, f : Double) -> NetflowrateModel {
   let result = net_flow_rate_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_rate_model_fill(s : NetflowrateModel, v : Double) -> Netflowrate
   result
 }
 
-pub fn net_flow_rate_model_min(s : NetflowrateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_model_min(s : NetflowrateModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_model_max(s : NetflowrateModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_model_max(s : NetflowrateModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_model_to_string(s : NetflowrateModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_rate_layer_set(s : NetflowrateLayer, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_flow_rate_layer_sum(s : NetflowrateLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_layer_sum(s : NetflowrateLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_layer_mean(s : NetflowrateLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_layer_mean(s : NetflowrateLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_layer_scale(s : NetflowrateLayer, f : Double) -> NetflowrateLayer {
   let result = net_flow_rate_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_rate_layer_fill(s : NetflowrateLayer, v : Double) -> Netflowrate
   result
 }
 
-pub fn net_flow_rate_layer_min(s : NetflowrateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_layer_min(s : NetflowrateLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_layer_max(s : NetflowrateLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_layer_max(s : NetflowrateLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_layer_to_string(s : NetflowrateLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_rate_buffer_set(s : NetflowrateBuffer, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_rate_buffer_sum(s : NetflowrateBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_buffer_sum(s : NetflowrateBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_buffer_mean(s : NetflowrateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_buffer_mean(s : NetflowrateBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_buffer_scale(s : NetflowrateBuffer, f : Double) -> NetflowrateBuffer {
   let result = net_flow_rate_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_rate_buffer_fill(s : NetflowrateBuffer, v : Double) -> Netflowra
   result
 }
 
-pub fn net_flow_rate_buffer_min(s : NetflowrateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_buffer_min(s : NetflowrateBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_buffer_max(s : NetflowrateBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_buffer_max(s : NetflowrateBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_buffer_to_string(s : NetflowrateBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_rate_cursor_set(s : NetflowrateCursor, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_rate_cursor_sum(s : NetflowrateCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_cursor_sum(s : NetflowrateCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_cursor_mean(s : NetflowrateCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_cursor_mean(s : NetflowrateCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_cursor_scale(s : NetflowrateCursor, f : Double) -> NetflowrateCursor {
   let result = net_flow_rate_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_rate_cursor_fill(s : NetflowrateCursor, v : Double) -> Netflowra
   result
 }
 
-pub fn net_flow_rate_cursor_min(s : NetflowrateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_cursor_min(s : NetflowrateCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_cursor_max(s : NetflowrateCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_cursor_max(s : NetflowrateCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_cursor_to_string(s : NetflowrateCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_rate_view_set(s : NetflowrateView, i : Int, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_rate_view_sum(s : NetflowrateView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_view_sum(s : NetflowrateView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_view_mean(s : NetflowrateView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_view_mean(s : NetflowrateView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_view_scale(s : NetflowrateView, f : Double) -> NetflowrateView {
   let result = net_flow_rate_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_rate_view_fill(s : NetflowrateView, v : Double) -> NetflowrateVi
   result
 }
 
-pub fn net_flow_rate_view_min(s : NetflowrateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_view_min(s : NetflowrateView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_view_max(s : NetflowrateView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_view_max(s : NetflowrateView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_view_to_string(s : NetflowrateView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_rate_range_set(s : NetflowrateRange, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_flow_rate_range_sum(s : NetflowrateRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_range_sum(s : NetflowrateRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_range_mean(s : NetflowrateRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_range_mean(s : NetflowrateRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_range_scale(s : NetflowrateRange, f : Double) -> NetflowrateRange {
   let result = net_flow_rate_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_rate_range_fill(s : NetflowrateRange, v : Double) -> Netflowrate
   result
 }
 
-pub fn net_flow_rate_range_min(s : NetflowrateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_range_min(s : NetflowrateRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_range_max(s : NetflowrateRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_range_max(s : NetflowrateRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_range_to_string(s : NetflowrateRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_rate_slice_set(s : NetflowrateSlice, i : Int, v : Double) -> Net
   result
 }
 
-pub fn net_flow_rate_slice_sum(s : NetflowrateSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_rate_slice_sum(s : NetflowrateSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_rate_slice_mean(s : NetflowrateSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_rate_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_rate_slice_mean(s : NetflowrateSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_rate_slice_scale(s : NetflowrateSlice, f : Double) -> NetflowrateSlice {
   let result = net_flow_rate_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_rate_slice_fill(s : NetflowrateSlice, v : Double) -> Netflowrate
   result
 }
 
-pub fn net_flow_rate_slice_min(s : NetflowrateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_slice_min(s : NetflowrateSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_rate_slice_max(s : NetflowrateSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_rate_slice_max(s : NetflowrateSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_rate_slice_to_string(s : NetflowrateSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

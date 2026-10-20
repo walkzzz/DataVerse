@@ -88,11 +88,7 @@ pub fn crypto_asym_sm9_make_series(vals : Array[Double], name : String) -> Crypt
 
 pub fn crypto_asym_sm9_series_len(s : Cryptoasymsm9Series) -> Int { s.vals.length() }
 
-pub fn crypto_asym_sm9_series_sum(s : Cryptoasymsm9Series) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_asym_sm9_series_sum(s : Cryptoasymsm9Series) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_asym_sm9_series_mean(s : Cryptoasymsm9Series) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_asym_sm9_frame_set(s : Cryptoasymsm9Frame, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_sm9_frame_sum(s : Cryptoasymsm9Frame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_frame_sum(s : Cryptoasymsm9Frame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_frame_mean(s : Cryptoasymsm9Frame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_frame_mean(s : Cryptoasymsm9Frame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_frame_scale(s : Cryptoasymsm9Frame, f : Double) -> Cryptoasymsm9Frame {
   let result = crypto_asym_sm9_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_asym_sm9_frame_fill(s : Cryptoasymsm9Frame, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_sm9_frame_min(s : Cryptoasymsm9Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_frame_min(s : Cryptoasymsm9Frame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_frame_max(s : Cryptoasymsm9Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_frame_max(s : Cryptoasymsm9Frame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_frame_to_string(s : Cryptoasymsm9Frame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_asym_sm9_table_set(s : Cryptoasymsm9Table, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_sm9_table_sum(s : Cryptoasymsm9Table) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_table_sum(s : Cryptoasymsm9Table) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_table_mean(s : Cryptoasymsm9Table) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_table_mean(s : Cryptoasymsm9Table) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_table_scale(s : Cryptoasymsm9Table, f : Double) -> Cryptoasymsm9Table {
   let result = crypto_asym_sm9_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_asym_sm9_table_fill(s : Cryptoasymsm9Table, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_sm9_table_min(s : Cryptoasymsm9Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_table_min(s : Cryptoasymsm9Table) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_table_max(s : Cryptoasymsm9Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_table_max(s : Cryptoasymsm9Table) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_table_to_string(s : Cryptoasymsm9Table) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_asym_sm9_graphn_set(s : Cryptoasymsm9GraphN, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_sm9_graphn_sum(s : Cryptoasymsm9GraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_graphn_sum(s : Cryptoasymsm9GraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_graphn_mean(s : Cryptoasymsm9GraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_graphn_mean(s : Cryptoasymsm9GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_graphn_scale(s : Cryptoasymsm9GraphN, f : Double) -> Cryptoasymsm9GraphN {
   let result = crypto_asym_sm9_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_asym_sm9_graphn_fill(s : Cryptoasymsm9GraphN, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_sm9_graphn_min(s : Cryptoasymsm9GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_graphn_min(s : Cryptoasymsm9GraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_graphn_max(s : Cryptoasymsm9GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_graphn_max(s : Cryptoasymsm9GraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_graphn_to_string(s : Cryptoasymsm9GraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_asym_sm9_node_set(s : Cryptoasymsm9Node, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_sm9_node_sum(s : Cryptoasymsm9Node) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_node_sum(s : Cryptoasymsm9Node) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_node_mean(s : Cryptoasymsm9Node) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_node_mean(s : Cryptoasymsm9Node) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_node_scale(s : Cryptoasymsm9Node, f : Double) -> Cryptoasymsm9Node {
   let result = crypto_asym_sm9_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_asym_sm9_node_fill(s : Cryptoasymsm9Node, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_sm9_node_min(s : Cryptoasymsm9Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_node_min(s : Cryptoasymsm9Node) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_node_max(s : Cryptoasymsm9Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_node_max(s : Cryptoasymsm9Node) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_node_to_string(s : Cryptoasymsm9Node) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_asym_sm9_edge_set(s : Cryptoasymsm9Edge, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_sm9_edge_sum(s : Cryptoasymsm9Edge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_edge_sum(s : Cryptoasymsm9Edge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_edge_mean(s : Cryptoasymsm9Edge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_edge_mean(s : Cryptoasymsm9Edge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_edge_scale(s : Cryptoasymsm9Edge, f : Double) -> Cryptoasymsm9Edge {
   let result = crypto_asym_sm9_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_asym_sm9_edge_fill(s : Cryptoasymsm9Edge, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_sm9_edge_min(s : Cryptoasymsm9Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_edge_min(s : Cryptoasymsm9Edge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_edge_max(s : Cryptoasymsm9Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_edge_max(s : Cryptoasymsm9Edge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_edge_to_string(s : Cryptoasymsm9Edge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_asym_sm9_path_set(s : Cryptoasymsm9Path, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_sm9_path_sum(s : Cryptoasymsm9Path) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_path_sum(s : Cryptoasymsm9Path) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_path_mean(s : Cryptoasymsm9Path) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_path_mean(s : Cryptoasymsm9Path) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_path_scale(s : Cryptoasymsm9Path, f : Double) -> Cryptoasymsm9Path {
   let result = crypto_asym_sm9_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_asym_sm9_path_fill(s : Cryptoasymsm9Path, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_sm9_path_min(s : Cryptoasymsm9Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_path_min(s : Cryptoasymsm9Path) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_path_max(s : Cryptoasymsm9Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_path_max(s : Cryptoasymsm9Path) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_path_to_string(s : Cryptoasymsm9Path) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_asym_sm9_cluster_set(s : Cryptoasymsm9Cluster, i : Int, v : Double
   result
 }
 
-pub fn crypto_asym_sm9_cluster_sum(s : Cryptoasymsm9Cluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_cluster_sum(s : Cryptoasymsm9Cluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_cluster_mean(s : Cryptoasymsm9Cluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_cluster_mean(s : Cryptoasymsm9Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_cluster_scale(s : Cryptoasymsm9Cluster, f : Double) -> Cryptoasymsm9Cluster {
   let result = crypto_asym_sm9_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_asym_sm9_cluster_fill(s : Cryptoasymsm9Cluster, v : Double) -> Cry
   result
 }
 
-pub fn crypto_asym_sm9_cluster_min(s : Cryptoasymsm9Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_cluster_min(s : Cryptoasymsm9Cluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_cluster_max(s : Cryptoasymsm9Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_cluster_max(s : Cryptoasymsm9Cluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_cluster_to_string(s : Cryptoasymsm9Cluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_asym_sm9_model_set(s : Cryptoasymsm9Model, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_sm9_model_sum(s : Cryptoasymsm9Model) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_model_sum(s : Cryptoasymsm9Model) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_model_mean(s : Cryptoasymsm9Model) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_model_mean(s : Cryptoasymsm9Model) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_model_scale(s : Cryptoasymsm9Model, f : Double) -> Cryptoasymsm9Model {
   let result = crypto_asym_sm9_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_asym_sm9_model_fill(s : Cryptoasymsm9Model, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_sm9_model_min(s : Cryptoasymsm9Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_model_min(s : Cryptoasymsm9Model) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_model_max(s : Cryptoasymsm9Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_model_max(s : Cryptoasymsm9Model) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_model_to_string(s : Cryptoasymsm9Model) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_asym_sm9_layer_set(s : Cryptoasymsm9Layer, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_sm9_layer_sum(s : Cryptoasymsm9Layer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_layer_sum(s : Cryptoasymsm9Layer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_layer_mean(s : Cryptoasymsm9Layer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_layer_mean(s : Cryptoasymsm9Layer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_layer_scale(s : Cryptoasymsm9Layer, f : Double) -> Cryptoasymsm9Layer {
   let result = crypto_asym_sm9_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_asym_sm9_layer_fill(s : Cryptoasymsm9Layer, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_sm9_layer_min(s : Cryptoasymsm9Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_layer_min(s : Cryptoasymsm9Layer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_layer_max(s : Cryptoasymsm9Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_layer_max(s : Cryptoasymsm9Layer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_layer_to_string(s : Cryptoasymsm9Layer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_asym_sm9_buffer_set(s : Cryptoasymsm9Buffer, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_sm9_buffer_sum(s : Cryptoasymsm9Buffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_buffer_sum(s : Cryptoasymsm9Buffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_buffer_mean(s : Cryptoasymsm9Buffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_buffer_mean(s : Cryptoasymsm9Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_buffer_scale(s : Cryptoasymsm9Buffer, f : Double) -> Cryptoasymsm9Buffer {
   let result = crypto_asym_sm9_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_asym_sm9_buffer_fill(s : Cryptoasymsm9Buffer, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_sm9_buffer_min(s : Cryptoasymsm9Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_buffer_min(s : Cryptoasymsm9Buffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_buffer_max(s : Cryptoasymsm9Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_buffer_max(s : Cryptoasymsm9Buffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_buffer_to_string(s : Cryptoasymsm9Buffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_asym_sm9_cursor_set(s : Cryptoasymsm9Cursor, i : Int, v : Double) 
   result
 }
 
-pub fn crypto_asym_sm9_cursor_sum(s : Cryptoasymsm9Cursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_cursor_sum(s : Cryptoasymsm9Cursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_cursor_mean(s : Cryptoasymsm9Cursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_cursor_mean(s : Cryptoasymsm9Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_cursor_scale(s : Cryptoasymsm9Cursor, f : Double) -> Cryptoasymsm9Cursor {
   let result = crypto_asym_sm9_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_asym_sm9_cursor_fill(s : Cryptoasymsm9Cursor, v : Double) -> Crypt
   result
 }
 
-pub fn crypto_asym_sm9_cursor_min(s : Cryptoasymsm9Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_cursor_min(s : Cryptoasymsm9Cursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_cursor_max(s : Cryptoasymsm9Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_cursor_max(s : Cryptoasymsm9Cursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_cursor_to_string(s : Cryptoasymsm9Cursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_asym_sm9_view_set(s : Cryptoasymsm9View, i : Int, v : Double) -> C
   result
 }
 
-pub fn crypto_asym_sm9_view_sum(s : Cryptoasymsm9View) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_view_sum(s : Cryptoasymsm9View) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_view_mean(s : Cryptoasymsm9View) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_view_mean(s : Cryptoasymsm9View) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_view_scale(s : Cryptoasymsm9View, f : Double) -> Cryptoasymsm9View {
   let result = crypto_asym_sm9_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_asym_sm9_view_fill(s : Cryptoasymsm9View, v : Double) -> Cryptoasy
   result
 }
 
-pub fn crypto_asym_sm9_view_min(s : Cryptoasymsm9View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_view_min(s : Cryptoasymsm9View) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_view_max(s : Cryptoasymsm9View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_view_max(s : Cryptoasymsm9View) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_view_to_string(s : Cryptoasymsm9View) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_asym_sm9_range_set(s : Cryptoasymsm9Range, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_sm9_range_sum(s : Cryptoasymsm9Range) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_range_sum(s : Cryptoasymsm9Range) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_range_mean(s : Cryptoasymsm9Range) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_range_mean(s : Cryptoasymsm9Range) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_range_scale(s : Cryptoasymsm9Range, f : Double) -> Cryptoasymsm9Range {
   let result = crypto_asym_sm9_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_asym_sm9_range_fill(s : Cryptoasymsm9Range, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_sm9_range_min(s : Cryptoasymsm9Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_range_min(s : Cryptoasymsm9Range) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_range_max(s : Cryptoasymsm9Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_range_max(s : Cryptoasymsm9Range) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_range_to_string(s : Cryptoasymsm9Range) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_asym_sm9_slice_set(s : Cryptoasymsm9Slice, i : Int, v : Double) ->
   result
 }
 
-pub fn crypto_asym_sm9_slice_sum(s : Cryptoasymsm9Slice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_asym_sm9_slice_sum(s : Cryptoasymsm9Slice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_asym_sm9_slice_mean(s : Cryptoasymsm9Slice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_asym_sm9_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_asym_sm9_slice_mean(s : Cryptoasymsm9Slice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_asym_sm9_slice_scale(s : Cryptoasymsm9Slice, f : Double) -> Cryptoasymsm9Slice {
   let result = crypto_asym_sm9_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_asym_sm9_slice_fill(s : Cryptoasymsm9Slice, v : Double) -> Cryptoa
   result
 }
 
-pub fn crypto_asym_sm9_slice_min(s : Cryptoasymsm9Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_slice_min(s : Cryptoasymsm9Slice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_asym_sm9_slice_max(s : Cryptoasymsm9Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_asym_sm9_slice_max(s : Cryptoasymsm9Slice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_asym_sm9_slice_to_string(s : Cryptoasymsm9Slice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn graph_tree_mst_boruvka_make_series(vals : Array[Double], name : String) -
 
 pub fn graph_tree_mst_boruvka_series_len(s : GraphtreemstboruvkaSeries) -> Int { s.vals.length() }
 
-pub fn graph_tree_mst_boruvka_series_sum(s : GraphtreemstboruvkaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_series_sum(s : GraphtreemstboruvkaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_tree_mst_boruvka_series_mean(s : GraphtreemstboruvkaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_tree_mst_boruvka_frame_set(s : GraphtreemstboruvkaFrame, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_boruvka_frame_sum(s : GraphtreemstboruvkaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_frame_sum(s : GraphtreemstboruvkaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_frame_mean(s : GraphtreemstboruvkaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_frame_mean(s : GraphtreemstboruvkaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_frame_scale(s : GraphtreemstboruvkaFrame, f : Double) -> GraphtreemstboruvkaFrame {
   let result = graph_tree_mst_boruvka_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_tree_mst_boruvka_frame_fill(s : GraphtreemstboruvkaFrame, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_boruvka_frame_min(s : GraphtreemstboruvkaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_frame_min(s : GraphtreemstboruvkaFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_frame_max(s : GraphtreemstboruvkaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_frame_max(s : GraphtreemstboruvkaFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_frame_to_string(s : GraphtreemstboruvkaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_tree_mst_boruvka_table_set(s : GraphtreemstboruvkaTable, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_boruvka_table_sum(s : GraphtreemstboruvkaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_table_sum(s : GraphtreemstboruvkaTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_table_mean(s : GraphtreemstboruvkaTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_table_mean(s : GraphtreemstboruvkaTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_table_scale(s : GraphtreemstboruvkaTable, f : Double) -> GraphtreemstboruvkaTable {
   let result = graph_tree_mst_boruvka_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_tree_mst_boruvka_table_fill(s : GraphtreemstboruvkaTable, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_boruvka_table_min(s : GraphtreemstboruvkaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_table_min(s : GraphtreemstboruvkaTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_table_max(s : GraphtreemstboruvkaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_table_max(s : GraphtreemstboruvkaTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_table_to_string(s : GraphtreemstboruvkaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_tree_mst_boruvka_graphn_set(s : GraphtreemstboruvkaGraphN, i : Int,
   result
 }
 
-pub fn graph_tree_mst_boruvka_graphn_sum(s : GraphtreemstboruvkaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_graphn_sum(s : GraphtreemstboruvkaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_graphn_mean(s : GraphtreemstboruvkaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_graphn_mean(s : GraphtreemstboruvkaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_graphn_scale(s : GraphtreemstboruvkaGraphN, f : Double) -> GraphtreemstboruvkaGraphN {
   let result = graph_tree_mst_boruvka_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_tree_mst_boruvka_graphn_fill(s : GraphtreemstboruvkaGraphN, v : Dou
   result
 }
 
-pub fn graph_tree_mst_boruvka_graphn_min(s : GraphtreemstboruvkaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_graphn_min(s : GraphtreemstboruvkaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_graphn_max(s : GraphtreemstboruvkaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_graphn_max(s : GraphtreemstboruvkaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_graphn_to_string(s : GraphtreemstboruvkaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_tree_mst_boruvka_node_set(s : GraphtreemstboruvkaNode, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_boruvka_node_sum(s : GraphtreemstboruvkaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_node_sum(s : GraphtreemstboruvkaNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_node_mean(s : GraphtreemstboruvkaNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_node_mean(s : GraphtreemstboruvkaNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_node_scale(s : GraphtreemstboruvkaNode, f : Double) -> GraphtreemstboruvkaNode {
   let result = graph_tree_mst_boruvka_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_tree_mst_boruvka_node_fill(s : GraphtreemstboruvkaNode, v : Double)
   result
 }
 
-pub fn graph_tree_mst_boruvka_node_min(s : GraphtreemstboruvkaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_node_min(s : GraphtreemstboruvkaNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_node_max(s : GraphtreemstboruvkaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_node_max(s : GraphtreemstboruvkaNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_node_to_string(s : GraphtreemstboruvkaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_tree_mst_boruvka_edge_set(s : GraphtreemstboruvkaEdge, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_boruvka_edge_sum(s : GraphtreemstboruvkaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_edge_sum(s : GraphtreemstboruvkaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_edge_mean(s : GraphtreemstboruvkaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_edge_mean(s : GraphtreemstboruvkaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_edge_scale(s : GraphtreemstboruvkaEdge, f : Double) -> GraphtreemstboruvkaEdge {
   let result = graph_tree_mst_boruvka_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_tree_mst_boruvka_edge_fill(s : GraphtreemstboruvkaEdge, v : Double)
   result
 }
 
-pub fn graph_tree_mst_boruvka_edge_min(s : GraphtreemstboruvkaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_edge_min(s : GraphtreemstboruvkaEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_edge_max(s : GraphtreemstboruvkaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_edge_max(s : GraphtreemstboruvkaEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_edge_to_string(s : GraphtreemstboruvkaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_tree_mst_boruvka_path_set(s : GraphtreemstboruvkaPath, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_boruvka_path_sum(s : GraphtreemstboruvkaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_path_sum(s : GraphtreemstboruvkaPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_path_mean(s : GraphtreemstboruvkaPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_path_mean(s : GraphtreemstboruvkaPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_path_scale(s : GraphtreemstboruvkaPath, f : Double) -> GraphtreemstboruvkaPath {
   let result = graph_tree_mst_boruvka_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_tree_mst_boruvka_path_fill(s : GraphtreemstboruvkaPath, v : Double)
   result
 }
 
-pub fn graph_tree_mst_boruvka_path_min(s : GraphtreemstboruvkaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_path_min(s : GraphtreemstboruvkaPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_path_max(s : GraphtreemstboruvkaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_path_max(s : GraphtreemstboruvkaPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_path_to_string(s : GraphtreemstboruvkaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_tree_mst_boruvka_cluster_set(s : GraphtreemstboruvkaCluster, i : In
   result
 }
 
-pub fn graph_tree_mst_boruvka_cluster_sum(s : GraphtreemstboruvkaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_cluster_sum(s : GraphtreemstboruvkaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_cluster_mean(s : GraphtreemstboruvkaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_cluster_mean(s : GraphtreemstboruvkaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_cluster_scale(s : GraphtreemstboruvkaCluster, f : Double) -> GraphtreemstboruvkaCluster {
   let result = graph_tree_mst_boruvka_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_tree_mst_boruvka_cluster_fill(s : GraphtreemstboruvkaCluster, v : D
   result
 }
 
-pub fn graph_tree_mst_boruvka_cluster_min(s : GraphtreemstboruvkaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_cluster_min(s : GraphtreemstboruvkaCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_cluster_max(s : GraphtreemstboruvkaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_cluster_max(s : GraphtreemstboruvkaCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_cluster_to_string(s : GraphtreemstboruvkaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_tree_mst_boruvka_model_set(s : GraphtreemstboruvkaModel, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_boruvka_model_sum(s : GraphtreemstboruvkaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_model_sum(s : GraphtreemstboruvkaModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_model_mean(s : GraphtreemstboruvkaModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_model_mean(s : GraphtreemstboruvkaModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_model_scale(s : GraphtreemstboruvkaModel, f : Double) -> GraphtreemstboruvkaModel {
   let result = graph_tree_mst_boruvka_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_tree_mst_boruvka_model_fill(s : GraphtreemstboruvkaModel, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_boruvka_model_min(s : GraphtreemstboruvkaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_model_min(s : GraphtreemstboruvkaModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_model_max(s : GraphtreemstboruvkaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_model_max(s : GraphtreemstboruvkaModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_model_to_string(s : GraphtreemstboruvkaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_tree_mst_boruvka_layer_set(s : GraphtreemstboruvkaLayer, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_boruvka_layer_sum(s : GraphtreemstboruvkaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_layer_sum(s : GraphtreemstboruvkaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_layer_mean(s : GraphtreemstboruvkaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_layer_mean(s : GraphtreemstboruvkaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_layer_scale(s : GraphtreemstboruvkaLayer, f : Double) -> GraphtreemstboruvkaLayer {
   let result = graph_tree_mst_boruvka_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_tree_mst_boruvka_layer_fill(s : GraphtreemstboruvkaLayer, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_boruvka_layer_min(s : GraphtreemstboruvkaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_layer_min(s : GraphtreemstboruvkaLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_layer_max(s : GraphtreemstboruvkaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_layer_max(s : GraphtreemstboruvkaLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_layer_to_string(s : GraphtreemstboruvkaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_tree_mst_boruvka_buffer_set(s : GraphtreemstboruvkaBuffer, i : Int,
   result
 }
 
-pub fn graph_tree_mst_boruvka_buffer_sum(s : GraphtreemstboruvkaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_buffer_sum(s : GraphtreemstboruvkaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_buffer_mean(s : GraphtreemstboruvkaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_buffer_mean(s : GraphtreemstboruvkaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_buffer_scale(s : GraphtreemstboruvkaBuffer, f : Double) -> GraphtreemstboruvkaBuffer {
   let result = graph_tree_mst_boruvka_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_tree_mst_boruvka_buffer_fill(s : GraphtreemstboruvkaBuffer, v : Dou
   result
 }
 
-pub fn graph_tree_mst_boruvka_buffer_min(s : GraphtreemstboruvkaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_buffer_min(s : GraphtreemstboruvkaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_buffer_max(s : GraphtreemstboruvkaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_buffer_max(s : GraphtreemstboruvkaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_buffer_to_string(s : GraphtreemstboruvkaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_tree_mst_boruvka_cursor_set(s : GraphtreemstboruvkaCursor, i : Int,
   result
 }
 
-pub fn graph_tree_mst_boruvka_cursor_sum(s : GraphtreemstboruvkaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_cursor_sum(s : GraphtreemstboruvkaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_cursor_mean(s : GraphtreemstboruvkaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_cursor_mean(s : GraphtreemstboruvkaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_cursor_scale(s : GraphtreemstboruvkaCursor, f : Double) -> GraphtreemstboruvkaCursor {
   let result = graph_tree_mst_boruvka_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_tree_mst_boruvka_cursor_fill(s : GraphtreemstboruvkaCursor, v : Dou
   result
 }
 
-pub fn graph_tree_mst_boruvka_cursor_min(s : GraphtreemstboruvkaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_cursor_min(s : GraphtreemstboruvkaCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_cursor_max(s : GraphtreemstboruvkaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_cursor_max(s : GraphtreemstboruvkaCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_cursor_to_string(s : GraphtreemstboruvkaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_tree_mst_boruvka_view_set(s : GraphtreemstboruvkaView, i : Int, v :
   result
 }
 
-pub fn graph_tree_mst_boruvka_view_sum(s : GraphtreemstboruvkaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_view_sum(s : GraphtreemstboruvkaView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_view_mean(s : GraphtreemstboruvkaView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_view_mean(s : GraphtreemstboruvkaView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_view_scale(s : GraphtreemstboruvkaView, f : Double) -> GraphtreemstboruvkaView {
   let result = graph_tree_mst_boruvka_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_tree_mst_boruvka_view_fill(s : GraphtreemstboruvkaView, v : Double)
   result
 }
 
-pub fn graph_tree_mst_boruvka_view_min(s : GraphtreemstboruvkaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_view_min(s : GraphtreemstboruvkaView) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_view_max(s : GraphtreemstboruvkaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_view_max(s : GraphtreemstboruvkaView) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_view_to_string(s : GraphtreemstboruvkaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_tree_mst_boruvka_range_set(s : GraphtreemstboruvkaRange, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_boruvka_range_sum(s : GraphtreemstboruvkaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_range_sum(s : GraphtreemstboruvkaRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_range_mean(s : GraphtreemstboruvkaRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_range_mean(s : GraphtreemstboruvkaRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_range_scale(s : GraphtreemstboruvkaRange, f : Double) -> GraphtreemstboruvkaRange {
   let result = graph_tree_mst_boruvka_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_tree_mst_boruvka_range_fill(s : GraphtreemstboruvkaRange, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_boruvka_range_min(s : GraphtreemstboruvkaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_range_min(s : GraphtreemstboruvkaRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_range_max(s : GraphtreemstboruvkaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_range_max(s : GraphtreemstboruvkaRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_range_to_string(s : GraphtreemstboruvkaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_tree_mst_boruvka_slice_set(s : GraphtreemstboruvkaSlice, i : Int, v
   result
 }
 
-pub fn graph_tree_mst_boruvka_slice_sum(s : GraphtreemstboruvkaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_tree_mst_boruvka_slice_sum(s : GraphtreemstboruvkaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_tree_mst_boruvka_slice_mean(s : GraphtreemstboruvkaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_tree_mst_boruvka_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_tree_mst_boruvka_slice_mean(s : GraphtreemstboruvkaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_tree_mst_boruvka_slice_scale(s : GraphtreemstboruvkaSlice, f : Double) -> GraphtreemstboruvkaSlice {
   let result = graph_tree_mst_boruvka_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_tree_mst_boruvka_slice_fill(s : GraphtreemstboruvkaSlice, v : Doubl
   result
 }
 
-pub fn graph_tree_mst_boruvka_slice_min(s : GraphtreemstboruvkaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_slice_min(s : GraphtreemstboruvkaSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_tree_mst_boruvka_slice_max(s : GraphtreemstboruvkaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_tree_mst_boruvka_slice_max(s : GraphtreemstboruvkaSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_tree_mst_boruvka_slice_to_string(s : GraphtreemstboruvkaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

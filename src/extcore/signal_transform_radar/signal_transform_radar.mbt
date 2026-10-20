@@ -88,11 +88,7 @@ pub fn signal_transform_radar_make_series(vals : Array[Double], name : String) -
 
 pub fn signal_transform_radar_series_len(s : SignaltransformradarSeries) -> Int { s.vals.length() }
 
-pub fn signal_transform_radar_series_sum(s : SignaltransformradarSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_transform_radar_series_sum(s : SignaltransformradarSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_transform_radar_series_mean(s : SignaltransformradarSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_transform_radar_frame_set(s : SignaltransformradarFrame, i : Int, 
   result
 }
 
-pub fn signal_transform_radar_frame_sum(s : SignaltransformradarFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_frame_sum(s : SignaltransformradarFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_frame_mean(s : SignaltransformradarFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_frame_mean(s : SignaltransformradarFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_frame_scale(s : SignaltransformradarFrame, f : Double) -> SignaltransformradarFrame {
   let result = signal_transform_radar_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_transform_radar_frame_fill(s : SignaltransformradarFrame, v : Doub
   result
 }
 
-pub fn signal_transform_radar_frame_min(s : SignaltransformradarFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_frame_min(s : SignaltransformradarFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_frame_max(s : SignaltransformradarFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_frame_max(s : SignaltransformradarFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_frame_to_string(s : SignaltransformradarFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_transform_radar_table_set(s : SignaltransformradarTable, i : Int, 
   result
 }
 
-pub fn signal_transform_radar_table_sum(s : SignaltransformradarTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_table_sum(s : SignaltransformradarTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_table_mean(s : SignaltransformradarTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_table_mean(s : SignaltransformradarTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_table_scale(s : SignaltransformradarTable, f : Double) -> SignaltransformradarTable {
   let result = signal_transform_radar_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_transform_radar_table_fill(s : SignaltransformradarTable, v : Doub
   result
 }
 
-pub fn signal_transform_radar_table_min(s : SignaltransformradarTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_table_min(s : SignaltransformradarTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_table_max(s : SignaltransformradarTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_table_max(s : SignaltransformradarTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_table_to_string(s : SignaltransformradarTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_transform_radar_graphn_set(s : SignaltransformradarGraphN, i : Int
   result
 }
 
-pub fn signal_transform_radar_graphn_sum(s : SignaltransformradarGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_graphn_sum(s : SignaltransformradarGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_graphn_mean(s : SignaltransformradarGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_graphn_mean(s : SignaltransformradarGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_graphn_scale(s : SignaltransformradarGraphN, f : Double) -> SignaltransformradarGraphN {
   let result = signal_transform_radar_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_transform_radar_graphn_fill(s : SignaltransformradarGraphN, v : Do
   result
 }
 
-pub fn signal_transform_radar_graphn_min(s : SignaltransformradarGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_graphn_min(s : SignaltransformradarGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_graphn_max(s : SignaltransformradarGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_graphn_max(s : SignaltransformradarGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_graphn_to_string(s : SignaltransformradarGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_transform_radar_node_set(s : SignaltransformradarNode, i : Int, v 
   result
 }
 
-pub fn signal_transform_radar_node_sum(s : SignaltransformradarNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_node_sum(s : SignaltransformradarNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_node_mean(s : SignaltransformradarNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_node_mean(s : SignaltransformradarNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_node_scale(s : SignaltransformradarNode, f : Double) -> SignaltransformradarNode {
   let result = signal_transform_radar_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_transform_radar_node_fill(s : SignaltransformradarNode, v : Double
   result
 }
 
-pub fn signal_transform_radar_node_min(s : SignaltransformradarNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_node_min(s : SignaltransformradarNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_node_max(s : SignaltransformradarNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_node_max(s : SignaltransformradarNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_node_to_string(s : SignaltransformradarNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_transform_radar_edge_set(s : SignaltransformradarEdge, i : Int, v 
   result
 }
 
-pub fn signal_transform_radar_edge_sum(s : SignaltransformradarEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_edge_sum(s : SignaltransformradarEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_edge_mean(s : SignaltransformradarEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_edge_mean(s : SignaltransformradarEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_edge_scale(s : SignaltransformradarEdge, f : Double) -> SignaltransformradarEdge {
   let result = signal_transform_radar_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_transform_radar_edge_fill(s : SignaltransformradarEdge, v : Double
   result
 }
 
-pub fn signal_transform_radar_edge_min(s : SignaltransformradarEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_edge_min(s : SignaltransformradarEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_edge_max(s : SignaltransformradarEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_edge_max(s : SignaltransformradarEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_edge_to_string(s : SignaltransformradarEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_transform_radar_path_set(s : SignaltransformradarPath, i : Int, v 
   result
 }
 
-pub fn signal_transform_radar_path_sum(s : SignaltransformradarPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_path_sum(s : SignaltransformradarPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_path_mean(s : SignaltransformradarPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_path_mean(s : SignaltransformradarPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_path_scale(s : SignaltransformradarPath, f : Double) -> SignaltransformradarPath {
   let result = signal_transform_radar_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_transform_radar_path_fill(s : SignaltransformradarPath, v : Double
   result
 }
 
-pub fn signal_transform_radar_path_min(s : SignaltransformradarPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_path_min(s : SignaltransformradarPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_path_max(s : SignaltransformradarPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_path_max(s : SignaltransformradarPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_path_to_string(s : SignaltransformradarPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_transform_radar_cluster_set(s : SignaltransformradarCluster, i : I
   result
 }
 
-pub fn signal_transform_radar_cluster_sum(s : SignaltransformradarCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_cluster_sum(s : SignaltransformradarCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_cluster_mean(s : SignaltransformradarCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_cluster_mean(s : SignaltransformradarCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_cluster_scale(s : SignaltransformradarCluster, f : Double) -> SignaltransformradarCluster {
   let result = signal_transform_radar_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_transform_radar_cluster_fill(s : SignaltransformradarCluster, v : 
   result
 }
 
-pub fn signal_transform_radar_cluster_min(s : SignaltransformradarCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_cluster_min(s : SignaltransformradarCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_cluster_max(s : SignaltransformradarCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_cluster_max(s : SignaltransformradarCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_cluster_to_string(s : SignaltransformradarCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_transform_radar_model_set(s : SignaltransformradarModel, i : Int, 
   result
 }
 
-pub fn signal_transform_radar_model_sum(s : SignaltransformradarModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_model_sum(s : SignaltransformradarModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_model_mean(s : SignaltransformradarModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_model_mean(s : SignaltransformradarModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_model_scale(s : SignaltransformradarModel, f : Double) -> SignaltransformradarModel {
   let result = signal_transform_radar_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_transform_radar_model_fill(s : SignaltransformradarModel, v : Doub
   result
 }
 
-pub fn signal_transform_radar_model_min(s : SignaltransformradarModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_model_min(s : SignaltransformradarModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_model_max(s : SignaltransformradarModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_model_max(s : SignaltransformradarModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_model_to_string(s : SignaltransformradarModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_transform_radar_layer_set(s : SignaltransformradarLayer, i : Int, 
   result
 }
 
-pub fn signal_transform_radar_layer_sum(s : SignaltransformradarLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_layer_sum(s : SignaltransformradarLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_layer_mean(s : SignaltransformradarLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_layer_mean(s : SignaltransformradarLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_layer_scale(s : SignaltransformradarLayer, f : Double) -> SignaltransformradarLayer {
   let result = signal_transform_radar_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_transform_radar_layer_fill(s : SignaltransformradarLayer, v : Doub
   result
 }
 
-pub fn signal_transform_radar_layer_min(s : SignaltransformradarLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_layer_min(s : SignaltransformradarLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_layer_max(s : SignaltransformradarLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_layer_max(s : SignaltransformradarLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_layer_to_string(s : SignaltransformradarLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_transform_radar_buffer_set(s : SignaltransformradarBuffer, i : Int
   result
 }
 
-pub fn signal_transform_radar_buffer_sum(s : SignaltransformradarBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_buffer_sum(s : SignaltransformradarBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_buffer_mean(s : SignaltransformradarBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_buffer_mean(s : SignaltransformradarBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_buffer_scale(s : SignaltransformradarBuffer, f : Double) -> SignaltransformradarBuffer {
   let result = signal_transform_radar_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_transform_radar_buffer_fill(s : SignaltransformradarBuffer, v : Do
   result
 }
 
-pub fn signal_transform_radar_buffer_min(s : SignaltransformradarBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_buffer_min(s : SignaltransformradarBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_buffer_max(s : SignaltransformradarBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_buffer_max(s : SignaltransformradarBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_buffer_to_string(s : SignaltransformradarBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_transform_radar_cursor_set(s : SignaltransformradarCursor, i : Int
   result
 }
 
-pub fn signal_transform_radar_cursor_sum(s : SignaltransformradarCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_cursor_sum(s : SignaltransformradarCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_cursor_mean(s : SignaltransformradarCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_cursor_mean(s : SignaltransformradarCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_cursor_scale(s : SignaltransformradarCursor, f : Double) -> SignaltransformradarCursor {
   let result = signal_transform_radar_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_transform_radar_cursor_fill(s : SignaltransformradarCursor, v : Do
   result
 }
 
-pub fn signal_transform_radar_cursor_min(s : SignaltransformradarCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_cursor_min(s : SignaltransformradarCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_cursor_max(s : SignaltransformradarCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_cursor_max(s : SignaltransformradarCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_cursor_to_string(s : SignaltransformradarCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_transform_radar_view_set(s : SignaltransformradarView, i : Int, v 
   result
 }
 
-pub fn signal_transform_radar_view_sum(s : SignaltransformradarView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_view_sum(s : SignaltransformradarView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_view_mean(s : SignaltransformradarView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_view_mean(s : SignaltransformradarView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_view_scale(s : SignaltransformradarView, f : Double) -> SignaltransformradarView {
   let result = signal_transform_radar_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_transform_radar_view_fill(s : SignaltransformradarView, v : Double
   result
 }
 
-pub fn signal_transform_radar_view_min(s : SignaltransformradarView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_view_min(s : SignaltransformradarView) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_view_max(s : SignaltransformradarView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_view_max(s : SignaltransformradarView) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_view_to_string(s : SignaltransformradarView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_transform_radar_range_set(s : SignaltransformradarRange, i : Int, 
   result
 }
 
-pub fn signal_transform_radar_range_sum(s : SignaltransformradarRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_range_sum(s : SignaltransformradarRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_range_mean(s : SignaltransformradarRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_range_mean(s : SignaltransformradarRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_range_scale(s : SignaltransformradarRange, f : Double) -> SignaltransformradarRange {
   let result = signal_transform_radar_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_transform_radar_range_fill(s : SignaltransformradarRange, v : Doub
   result
 }
 
-pub fn signal_transform_radar_range_min(s : SignaltransformradarRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_range_min(s : SignaltransformradarRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_range_max(s : SignaltransformradarRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_range_max(s : SignaltransformradarRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_range_to_string(s : SignaltransformradarRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_transform_radar_slice_set(s : SignaltransformradarSlice, i : Int, 
   result
 }
 
-pub fn signal_transform_radar_slice_sum(s : SignaltransformradarSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_transform_radar_slice_sum(s : SignaltransformradarSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_transform_radar_slice_mean(s : SignaltransformradarSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_transform_radar_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_transform_radar_slice_mean(s : SignaltransformradarSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_transform_radar_slice_scale(s : SignaltransformradarSlice, f : Double) -> SignaltransformradarSlice {
   let result = signal_transform_radar_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_transform_radar_slice_fill(s : SignaltransformradarSlice, v : Doub
   result
 }
 
-pub fn signal_transform_radar_slice_min(s : SignaltransformradarSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_slice_min(s : SignaltransformradarSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_transform_radar_slice_max(s : SignaltransformradarSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_transform_radar_slice_max(s : SignaltransformradarSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_transform_radar_slice_to_string(s : SignaltransformradarSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

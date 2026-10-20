@@ -88,11 +88,7 @@ pub fn graph_color_dsatur_make_series(vals : Array[Double], name : String) -> Gr
 
 pub fn graph_color_dsatur_series_len(s : GraphcolordsaturSeries) -> Int { s.vals.length() }
 
-pub fn graph_color_dsatur_series_sum(s : GraphcolordsaturSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_color_dsatur_series_sum(s : GraphcolordsaturSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_color_dsatur_series_mean(s : GraphcolordsaturSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_color_dsatur_frame_set(s : GraphcolordsaturFrame, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_dsatur_frame_sum(s : GraphcolordsaturFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_frame_sum(s : GraphcolordsaturFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_frame_mean(s : GraphcolordsaturFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_frame_mean(s : GraphcolordsaturFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_frame_scale(s : GraphcolordsaturFrame, f : Double) -> GraphcolordsaturFrame {
   let result = graph_color_dsatur_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_color_dsatur_frame_fill(s : GraphcolordsaturFrame, v : Double) -> G
   result
 }
 
-pub fn graph_color_dsatur_frame_min(s : GraphcolordsaturFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_frame_min(s : GraphcolordsaturFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_frame_max(s : GraphcolordsaturFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_frame_max(s : GraphcolordsaturFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_frame_to_string(s : GraphcolordsaturFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_color_dsatur_table_set(s : GraphcolordsaturTable, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_dsatur_table_sum(s : GraphcolordsaturTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_table_sum(s : GraphcolordsaturTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_table_mean(s : GraphcolordsaturTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_table_mean(s : GraphcolordsaturTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_table_scale(s : GraphcolordsaturTable, f : Double) -> GraphcolordsaturTable {
   let result = graph_color_dsatur_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_color_dsatur_table_fill(s : GraphcolordsaturTable, v : Double) -> G
   result
 }
 
-pub fn graph_color_dsatur_table_min(s : GraphcolordsaturTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_table_min(s : GraphcolordsaturTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_table_max(s : GraphcolordsaturTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_table_max(s : GraphcolordsaturTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_table_to_string(s : GraphcolordsaturTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_color_dsatur_graphn_set(s : GraphcolordsaturGraphN, i : Int, v : Do
   result
 }
 
-pub fn graph_color_dsatur_graphn_sum(s : GraphcolordsaturGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_graphn_sum(s : GraphcolordsaturGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_graphn_mean(s : GraphcolordsaturGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_graphn_mean(s : GraphcolordsaturGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_graphn_scale(s : GraphcolordsaturGraphN, f : Double) -> GraphcolordsaturGraphN {
   let result = graph_color_dsatur_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_color_dsatur_graphn_fill(s : GraphcolordsaturGraphN, v : Double) ->
   result
 }
 
-pub fn graph_color_dsatur_graphn_min(s : GraphcolordsaturGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_graphn_min(s : GraphcolordsaturGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_graphn_max(s : GraphcolordsaturGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_graphn_max(s : GraphcolordsaturGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_graphn_to_string(s : GraphcolordsaturGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_color_dsatur_node_set(s : GraphcolordsaturNode, i : Int, v : Double
   result
 }
 
-pub fn graph_color_dsatur_node_sum(s : GraphcolordsaturNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_node_sum(s : GraphcolordsaturNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_node_mean(s : GraphcolordsaturNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_node_mean(s : GraphcolordsaturNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_node_scale(s : GraphcolordsaturNode, f : Double) -> GraphcolordsaturNode {
   let result = graph_color_dsatur_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_color_dsatur_node_fill(s : GraphcolordsaturNode, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_dsatur_node_min(s : GraphcolordsaturNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_node_min(s : GraphcolordsaturNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_node_max(s : GraphcolordsaturNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_node_max(s : GraphcolordsaturNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_node_to_string(s : GraphcolordsaturNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_color_dsatur_edge_set(s : GraphcolordsaturEdge, i : Int, v : Double
   result
 }
 
-pub fn graph_color_dsatur_edge_sum(s : GraphcolordsaturEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_edge_sum(s : GraphcolordsaturEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_edge_mean(s : GraphcolordsaturEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_edge_mean(s : GraphcolordsaturEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_edge_scale(s : GraphcolordsaturEdge, f : Double) -> GraphcolordsaturEdge {
   let result = graph_color_dsatur_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_color_dsatur_edge_fill(s : GraphcolordsaturEdge, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_dsatur_edge_min(s : GraphcolordsaturEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_edge_min(s : GraphcolordsaturEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_edge_max(s : GraphcolordsaturEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_edge_max(s : GraphcolordsaturEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_edge_to_string(s : GraphcolordsaturEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_color_dsatur_path_set(s : GraphcolordsaturPath, i : Int, v : Double
   result
 }
 
-pub fn graph_color_dsatur_path_sum(s : GraphcolordsaturPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_path_sum(s : GraphcolordsaturPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_path_mean(s : GraphcolordsaturPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_path_mean(s : GraphcolordsaturPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_path_scale(s : GraphcolordsaturPath, f : Double) -> GraphcolordsaturPath {
   let result = graph_color_dsatur_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_color_dsatur_path_fill(s : GraphcolordsaturPath, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_dsatur_path_min(s : GraphcolordsaturPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_path_min(s : GraphcolordsaturPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_path_max(s : GraphcolordsaturPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_path_max(s : GraphcolordsaturPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_path_to_string(s : GraphcolordsaturPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_color_dsatur_cluster_set(s : GraphcolordsaturCluster, i : Int, v : 
   result
 }
 
-pub fn graph_color_dsatur_cluster_sum(s : GraphcolordsaturCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_cluster_sum(s : GraphcolordsaturCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_cluster_mean(s : GraphcolordsaturCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_cluster_mean(s : GraphcolordsaturCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_cluster_scale(s : GraphcolordsaturCluster, f : Double) -> GraphcolordsaturCluster {
   let result = graph_color_dsatur_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_color_dsatur_cluster_fill(s : GraphcolordsaturCluster, v : Double) 
   result
 }
 
-pub fn graph_color_dsatur_cluster_min(s : GraphcolordsaturCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_cluster_min(s : GraphcolordsaturCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_cluster_max(s : GraphcolordsaturCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_cluster_max(s : GraphcolordsaturCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_cluster_to_string(s : GraphcolordsaturCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_color_dsatur_model_set(s : GraphcolordsaturModel, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_dsatur_model_sum(s : GraphcolordsaturModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_model_sum(s : GraphcolordsaturModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_model_mean(s : GraphcolordsaturModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_model_mean(s : GraphcolordsaturModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_model_scale(s : GraphcolordsaturModel, f : Double) -> GraphcolordsaturModel {
   let result = graph_color_dsatur_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_color_dsatur_model_fill(s : GraphcolordsaturModel, v : Double) -> G
   result
 }
 
-pub fn graph_color_dsatur_model_min(s : GraphcolordsaturModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_model_min(s : GraphcolordsaturModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_model_max(s : GraphcolordsaturModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_model_max(s : GraphcolordsaturModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_model_to_string(s : GraphcolordsaturModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_color_dsatur_layer_set(s : GraphcolordsaturLayer, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_dsatur_layer_sum(s : GraphcolordsaturLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_layer_sum(s : GraphcolordsaturLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_layer_mean(s : GraphcolordsaturLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_layer_mean(s : GraphcolordsaturLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_layer_scale(s : GraphcolordsaturLayer, f : Double) -> GraphcolordsaturLayer {
   let result = graph_color_dsatur_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_color_dsatur_layer_fill(s : GraphcolordsaturLayer, v : Double) -> G
   result
 }
 
-pub fn graph_color_dsatur_layer_min(s : GraphcolordsaturLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_layer_min(s : GraphcolordsaturLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_layer_max(s : GraphcolordsaturLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_layer_max(s : GraphcolordsaturLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_layer_to_string(s : GraphcolordsaturLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_color_dsatur_buffer_set(s : GraphcolordsaturBuffer, i : Int, v : Do
   result
 }
 
-pub fn graph_color_dsatur_buffer_sum(s : GraphcolordsaturBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_buffer_sum(s : GraphcolordsaturBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_buffer_mean(s : GraphcolordsaturBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_buffer_mean(s : GraphcolordsaturBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_buffer_scale(s : GraphcolordsaturBuffer, f : Double) -> GraphcolordsaturBuffer {
   let result = graph_color_dsatur_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_color_dsatur_buffer_fill(s : GraphcolordsaturBuffer, v : Double) ->
   result
 }
 
-pub fn graph_color_dsatur_buffer_min(s : GraphcolordsaturBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_buffer_min(s : GraphcolordsaturBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_buffer_max(s : GraphcolordsaturBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_buffer_max(s : GraphcolordsaturBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_buffer_to_string(s : GraphcolordsaturBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_color_dsatur_cursor_set(s : GraphcolordsaturCursor, i : Int, v : Do
   result
 }
 
-pub fn graph_color_dsatur_cursor_sum(s : GraphcolordsaturCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_cursor_sum(s : GraphcolordsaturCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_cursor_mean(s : GraphcolordsaturCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_cursor_mean(s : GraphcolordsaturCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_cursor_scale(s : GraphcolordsaturCursor, f : Double) -> GraphcolordsaturCursor {
   let result = graph_color_dsatur_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_color_dsatur_cursor_fill(s : GraphcolordsaturCursor, v : Double) ->
   result
 }
 
-pub fn graph_color_dsatur_cursor_min(s : GraphcolordsaturCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_cursor_min(s : GraphcolordsaturCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_cursor_max(s : GraphcolordsaturCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_cursor_max(s : GraphcolordsaturCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_cursor_to_string(s : GraphcolordsaturCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_color_dsatur_view_set(s : GraphcolordsaturView, i : Int, v : Double
   result
 }
 
-pub fn graph_color_dsatur_view_sum(s : GraphcolordsaturView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_view_sum(s : GraphcolordsaturView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_view_mean(s : GraphcolordsaturView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_view_mean(s : GraphcolordsaturView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_view_scale(s : GraphcolordsaturView, f : Double) -> GraphcolordsaturView {
   let result = graph_color_dsatur_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_color_dsatur_view_fill(s : GraphcolordsaturView, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_dsatur_view_min(s : GraphcolordsaturView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_view_min(s : GraphcolordsaturView) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_view_max(s : GraphcolordsaturView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_view_max(s : GraphcolordsaturView) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_view_to_string(s : GraphcolordsaturView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_color_dsatur_range_set(s : GraphcolordsaturRange, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_dsatur_range_sum(s : GraphcolordsaturRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_range_sum(s : GraphcolordsaturRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_range_mean(s : GraphcolordsaturRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_range_mean(s : GraphcolordsaturRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_range_scale(s : GraphcolordsaturRange, f : Double) -> GraphcolordsaturRange {
   let result = graph_color_dsatur_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_color_dsatur_range_fill(s : GraphcolordsaturRange, v : Double) -> G
   result
 }
 
-pub fn graph_color_dsatur_range_min(s : GraphcolordsaturRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_range_min(s : GraphcolordsaturRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_range_max(s : GraphcolordsaturRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_range_max(s : GraphcolordsaturRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_range_to_string(s : GraphcolordsaturRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_color_dsatur_slice_set(s : GraphcolordsaturSlice, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_dsatur_slice_sum(s : GraphcolordsaturSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_dsatur_slice_sum(s : GraphcolordsaturSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_dsatur_slice_mean(s : GraphcolordsaturSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_dsatur_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_dsatur_slice_mean(s : GraphcolordsaturSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_dsatur_slice_scale(s : GraphcolordsaturSlice, f : Double) -> GraphcolordsaturSlice {
   let result = graph_color_dsatur_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_color_dsatur_slice_fill(s : GraphcolordsaturSlice, v : Double) -> G
   result
 }
 
-pub fn graph_color_dsatur_slice_min(s : GraphcolordsaturSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_slice_min(s : GraphcolordsaturSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_dsatur_slice_max(s : GraphcolordsaturSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_dsatur_slice_max(s : GraphcolordsaturSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_dsatur_slice_to_string(s : GraphcolordsaturSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

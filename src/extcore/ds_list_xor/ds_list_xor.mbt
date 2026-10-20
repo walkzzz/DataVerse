@@ -88,11 +88,7 @@ pub fn ds_list_xor_make_series(vals : Array[Double], name : String) -> Dslistxor
 
 pub fn ds_list_xor_series_len(s : DslistxorSeries) -> Int { s.vals.length() }
 
-pub fn ds_list_xor_series_sum(s : DslistxorSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_list_xor_series_sum(s : DslistxorSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_list_xor_series_mean(s : DslistxorSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_list_xor_frame_set(s : DslistxorFrame, i : Int, v : Double) -> Dslistx
   result
 }
 
-pub fn ds_list_xor_frame_sum(s : DslistxorFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_frame_sum(s : DslistxorFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_frame_mean(s : DslistxorFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_frame_mean(s : DslistxorFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_frame_scale(s : DslistxorFrame, f : Double) -> DslistxorFrame {
   let result = ds_list_xor_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_list_xor_frame_fill(s : DslistxorFrame, v : Double) -> DslistxorFrame 
   result
 }
 
-pub fn ds_list_xor_frame_min(s : DslistxorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_frame_min(s : DslistxorFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_frame_max(s : DslistxorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_frame_max(s : DslistxorFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_frame_to_string(s : DslistxorFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_list_xor_table_set(s : DslistxorTable, i : Int, v : Double) -> Dslistx
   result
 }
 
-pub fn ds_list_xor_table_sum(s : DslistxorTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_table_sum(s : DslistxorTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_table_mean(s : DslistxorTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_table_mean(s : DslistxorTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_table_scale(s : DslistxorTable, f : Double) -> DslistxorTable {
   let result = ds_list_xor_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_list_xor_table_fill(s : DslistxorTable, v : Double) -> DslistxorTable 
   result
 }
 
-pub fn ds_list_xor_table_min(s : DslistxorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_table_min(s : DslistxorTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_table_max(s : DslistxorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_table_max(s : DslistxorTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_table_to_string(s : DslistxorTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_list_xor_graphn_set(s : DslistxorGraphN, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_xor_graphn_sum(s : DslistxorGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_graphn_sum(s : DslistxorGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_graphn_mean(s : DslistxorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_graphn_mean(s : DslistxorGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_graphn_scale(s : DslistxorGraphN, f : Double) -> DslistxorGraphN {
   let result = ds_list_xor_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_list_xor_graphn_fill(s : DslistxorGraphN, v : Double) -> DslistxorGrap
   result
 }
 
-pub fn ds_list_xor_graphn_min(s : DslistxorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_graphn_min(s : DslistxorGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_graphn_max(s : DslistxorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_graphn_max(s : DslistxorGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_graphn_to_string(s : DslistxorGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_list_xor_node_set(s : DslistxorNode, i : Int, v : Double) -> Dslistxor
   result
 }
 
-pub fn ds_list_xor_node_sum(s : DslistxorNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_node_sum(s : DslistxorNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_node_mean(s : DslistxorNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_node_mean(s : DslistxorNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_node_scale(s : DslistxorNode, f : Double) -> DslistxorNode {
   let result = ds_list_xor_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_list_xor_node_fill(s : DslistxorNode, v : Double) -> DslistxorNode {
   result
 }
 
-pub fn ds_list_xor_node_min(s : DslistxorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_node_min(s : DslistxorNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_node_max(s : DslistxorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_node_max(s : DslistxorNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_node_to_string(s : DslistxorNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_list_xor_edge_set(s : DslistxorEdge, i : Int, v : Double) -> Dslistxor
   result
 }
 
-pub fn ds_list_xor_edge_sum(s : DslistxorEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_edge_sum(s : DslistxorEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_edge_mean(s : DslistxorEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_edge_mean(s : DslistxorEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_edge_scale(s : DslistxorEdge, f : Double) -> DslistxorEdge {
   let result = ds_list_xor_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_list_xor_edge_fill(s : DslistxorEdge, v : Double) -> DslistxorEdge {
   result
 }
 
-pub fn ds_list_xor_edge_min(s : DslistxorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_edge_min(s : DslistxorEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_edge_max(s : DslistxorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_edge_max(s : DslistxorEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_edge_to_string(s : DslistxorEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_list_xor_path_set(s : DslistxorPath, i : Int, v : Double) -> Dslistxor
   result
 }
 
-pub fn ds_list_xor_path_sum(s : DslistxorPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_path_sum(s : DslistxorPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_path_mean(s : DslistxorPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_path_mean(s : DslistxorPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_path_scale(s : DslistxorPath, f : Double) -> DslistxorPath {
   let result = ds_list_xor_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_list_xor_path_fill(s : DslistxorPath, v : Double) -> DslistxorPath {
   result
 }
 
-pub fn ds_list_xor_path_min(s : DslistxorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_path_min(s : DslistxorPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_path_max(s : DslistxorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_path_max(s : DslistxorPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_path_to_string(s : DslistxorPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_list_xor_cluster_set(s : DslistxorCluster, i : Int, v : Double) -> Dsl
   result
 }
 
-pub fn ds_list_xor_cluster_sum(s : DslistxorCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_cluster_sum(s : DslistxorCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_cluster_mean(s : DslistxorCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_cluster_mean(s : DslistxorCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_cluster_scale(s : DslistxorCluster, f : Double) -> DslistxorCluster {
   let result = ds_list_xor_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_list_xor_cluster_fill(s : DslistxorCluster, v : Double) -> DslistxorCl
   result
 }
 
-pub fn ds_list_xor_cluster_min(s : DslistxorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_cluster_min(s : DslistxorCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_cluster_max(s : DslistxorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_cluster_max(s : DslistxorCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_cluster_to_string(s : DslistxorCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_list_xor_model_set(s : DslistxorModel, i : Int, v : Double) -> Dslistx
   result
 }
 
-pub fn ds_list_xor_model_sum(s : DslistxorModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_model_sum(s : DslistxorModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_model_mean(s : DslistxorModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_model_mean(s : DslistxorModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_model_scale(s : DslistxorModel, f : Double) -> DslistxorModel {
   let result = ds_list_xor_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_list_xor_model_fill(s : DslistxorModel, v : Double) -> DslistxorModel 
   result
 }
 
-pub fn ds_list_xor_model_min(s : DslistxorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_model_min(s : DslistxorModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_model_max(s : DslistxorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_model_max(s : DslistxorModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_model_to_string(s : DslistxorModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_list_xor_layer_set(s : DslistxorLayer, i : Int, v : Double) -> Dslistx
   result
 }
 
-pub fn ds_list_xor_layer_sum(s : DslistxorLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_layer_sum(s : DslistxorLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_layer_mean(s : DslistxorLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_layer_mean(s : DslistxorLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_layer_scale(s : DslistxorLayer, f : Double) -> DslistxorLayer {
   let result = ds_list_xor_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_list_xor_layer_fill(s : DslistxorLayer, v : Double) -> DslistxorLayer 
   result
 }
 
-pub fn ds_list_xor_layer_min(s : DslistxorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_layer_min(s : DslistxorLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_layer_max(s : DslistxorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_layer_max(s : DslistxorLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_layer_to_string(s : DslistxorLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_list_xor_buffer_set(s : DslistxorBuffer, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_xor_buffer_sum(s : DslistxorBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_buffer_sum(s : DslistxorBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_buffer_mean(s : DslistxorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_buffer_mean(s : DslistxorBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_buffer_scale(s : DslistxorBuffer, f : Double) -> DslistxorBuffer {
   let result = ds_list_xor_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_list_xor_buffer_fill(s : DslistxorBuffer, v : Double) -> DslistxorBuff
   result
 }
 
-pub fn ds_list_xor_buffer_min(s : DslistxorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_buffer_min(s : DslistxorBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_buffer_max(s : DslistxorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_buffer_max(s : DslistxorBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_buffer_to_string(s : DslistxorBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_list_xor_cursor_set(s : DslistxorCursor, i : Int, v : Double) -> Dslis
   result
 }
 
-pub fn ds_list_xor_cursor_sum(s : DslistxorCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_cursor_sum(s : DslistxorCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_cursor_mean(s : DslistxorCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_cursor_mean(s : DslistxorCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_cursor_scale(s : DslistxorCursor, f : Double) -> DslistxorCursor {
   let result = ds_list_xor_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_list_xor_cursor_fill(s : DslistxorCursor, v : Double) -> DslistxorCurs
   result
 }
 
-pub fn ds_list_xor_cursor_min(s : DslistxorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_cursor_min(s : DslistxorCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_cursor_max(s : DslistxorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_cursor_max(s : DslistxorCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_cursor_to_string(s : DslistxorCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_list_xor_view_set(s : DslistxorView, i : Int, v : Double) -> Dslistxor
   result
 }
 
-pub fn ds_list_xor_view_sum(s : DslistxorView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_view_sum(s : DslistxorView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_view_mean(s : DslistxorView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_view_mean(s : DslistxorView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_view_scale(s : DslistxorView, f : Double) -> DslistxorView {
   let result = ds_list_xor_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_list_xor_view_fill(s : DslistxorView, v : Double) -> DslistxorView {
   result
 }
 
-pub fn ds_list_xor_view_min(s : DslistxorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_view_min(s : DslistxorView) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_view_max(s : DslistxorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_view_max(s : DslistxorView) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_view_to_string(s : DslistxorView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_list_xor_range_set(s : DslistxorRange, i : Int, v : Double) -> Dslistx
   result
 }
 
-pub fn ds_list_xor_range_sum(s : DslistxorRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_range_sum(s : DslistxorRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_range_mean(s : DslistxorRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_range_mean(s : DslistxorRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_range_scale(s : DslistxorRange, f : Double) -> DslistxorRange {
   let result = ds_list_xor_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_list_xor_range_fill(s : DslistxorRange, v : Double) -> DslistxorRange 
   result
 }
 
-pub fn ds_list_xor_range_min(s : DslistxorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_range_min(s : DslistxorRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_range_max(s : DslistxorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_range_max(s : DslistxorRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_range_to_string(s : DslistxorRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_list_xor_slice_set(s : DslistxorSlice, i : Int, v : Double) -> Dslistx
   result
 }
 
-pub fn ds_list_xor_slice_sum(s : DslistxorSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_list_xor_slice_sum(s : DslistxorSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_list_xor_slice_mean(s : DslistxorSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_list_xor_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_list_xor_slice_mean(s : DslistxorSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_list_xor_slice_scale(s : DslistxorSlice, f : Double) -> DslistxorSlice {
   let result = ds_list_xor_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_list_xor_slice_fill(s : DslistxorSlice, v : Double) -> DslistxorSlice 
   result
 }
 
-pub fn ds_list_xor_slice_min(s : DslistxorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_slice_min(s : DslistxorSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_list_xor_slice_max(s : DslistxorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_list_xor_slice_max(s : DslistxorSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_list_xor_slice_to_string(s : DslistxorSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

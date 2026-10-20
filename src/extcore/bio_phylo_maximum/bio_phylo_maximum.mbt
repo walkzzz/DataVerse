@@ -88,11 +88,7 @@ pub fn bio_phylo_maximum_make_series(vals : Array[Double], name : String) -> Bio
 
 pub fn bio_phylo_maximum_series_len(s : BiophylomaximumSeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_maximum_series_sum(s : BiophylomaximumSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_maximum_series_sum(s : BiophylomaximumSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_maximum_series_mean(s : BiophylomaximumSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_maximum_frame_set(s : BiophylomaximumFrame, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_maximum_frame_sum(s : BiophylomaximumFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_frame_sum(s : BiophylomaximumFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_frame_mean(s : BiophylomaximumFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_frame_mean(s : BiophylomaximumFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_frame_scale(s : BiophylomaximumFrame, f : Double) -> BiophylomaximumFrame {
   let result = bio_phylo_maximum_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_maximum_frame_fill(s : BiophylomaximumFrame, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_maximum_frame_min(s : BiophylomaximumFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_frame_min(s : BiophylomaximumFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_frame_max(s : BiophylomaximumFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_frame_max(s : BiophylomaximumFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_frame_to_string(s : BiophylomaximumFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_maximum_table_set(s : BiophylomaximumTable, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_maximum_table_sum(s : BiophylomaximumTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_table_sum(s : BiophylomaximumTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_table_mean(s : BiophylomaximumTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_table_mean(s : BiophylomaximumTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_table_scale(s : BiophylomaximumTable, f : Double) -> BiophylomaximumTable {
   let result = bio_phylo_maximum_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_maximum_table_fill(s : BiophylomaximumTable, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_maximum_table_min(s : BiophylomaximumTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_table_min(s : BiophylomaximumTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_table_max(s : BiophylomaximumTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_table_max(s : BiophylomaximumTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_table_to_string(s : BiophylomaximumTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_maximum_graphn_set(s : BiophylomaximumGraphN, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_maximum_graphn_sum(s : BiophylomaximumGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_graphn_sum(s : BiophylomaximumGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_graphn_mean(s : BiophylomaximumGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_graphn_mean(s : BiophylomaximumGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_graphn_scale(s : BiophylomaximumGraphN, f : Double) -> BiophylomaximumGraphN {
   let result = bio_phylo_maximum_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_maximum_graphn_fill(s : BiophylomaximumGraphN, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_maximum_graphn_min(s : BiophylomaximumGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_graphn_min(s : BiophylomaximumGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_graphn_max(s : BiophylomaximumGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_graphn_max(s : BiophylomaximumGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_graphn_to_string(s : BiophylomaximumGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_maximum_node_set(s : BiophylomaximumNode, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_maximum_node_sum(s : BiophylomaximumNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_node_sum(s : BiophylomaximumNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_node_mean(s : BiophylomaximumNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_node_mean(s : BiophylomaximumNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_node_scale(s : BiophylomaximumNode, f : Double) -> BiophylomaximumNode {
   let result = bio_phylo_maximum_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_maximum_node_fill(s : BiophylomaximumNode, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_maximum_node_min(s : BiophylomaximumNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_node_min(s : BiophylomaximumNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_node_max(s : BiophylomaximumNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_node_max(s : BiophylomaximumNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_node_to_string(s : BiophylomaximumNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_maximum_edge_set(s : BiophylomaximumEdge, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_maximum_edge_sum(s : BiophylomaximumEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_edge_sum(s : BiophylomaximumEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_edge_mean(s : BiophylomaximumEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_edge_mean(s : BiophylomaximumEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_edge_scale(s : BiophylomaximumEdge, f : Double) -> BiophylomaximumEdge {
   let result = bio_phylo_maximum_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_maximum_edge_fill(s : BiophylomaximumEdge, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_maximum_edge_min(s : BiophylomaximumEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_edge_min(s : BiophylomaximumEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_edge_max(s : BiophylomaximumEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_edge_max(s : BiophylomaximumEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_edge_to_string(s : BiophylomaximumEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_maximum_path_set(s : BiophylomaximumPath, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_maximum_path_sum(s : BiophylomaximumPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_path_sum(s : BiophylomaximumPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_path_mean(s : BiophylomaximumPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_path_mean(s : BiophylomaximumPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_path_scale(s : BiophylomaximumPath, f : Double) -> BiophylomaximumPath {
   let result = bio_phylo_maximum_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_maximum_path_fill(s : BiophylomaximumPath, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_maximum_path_min(s : BiophylomaximumPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_path_min(s : BiophylomaximumPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_path_max(s : BiophylomaximumPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_path_max(s : BiophylomaximumPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_path_to_string(s : BiophylomaximumPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_maximum_cluster_set(s : BiophylomaximumCluster, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_maximum_cluster_sum(s : BiophylomaximumCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_cluster_sum(s : BiophylomaximumCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_cluster_mean(s : BiophylomaximumCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_cluster_mean(s : BiophylomaximumCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_cluster_scale(s : BiophylomaximumCluster, f : Double) -> BiophylomaximumCluster {
   let result = bio_phylo_maximum_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_maximum_cluster_fill(s : BiophylomaximumCluster, v : Double) ->
   result
 }
 
-pub fn bio_phylo_maximum_cluster_min(s : BiophylomaximumCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_cluster_min(s : BiophylomaximumCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_cluster_max(s : BiophylomaximumCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_cluster_max(s : BiophylomaximumCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_cluster_to_string(s : BiophylomaximumCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_maximum_model_set(s : BiophylomaximumModel, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_maximum_model_sum(s : BiophylomaximumModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_model_sum(s : BiophylomaximumModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_model_mean(s : BiophylomaximumModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_model_mean(s : BiophylomaximumModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_model_scale(s : BiophylomaximumModel, f : Double) -> BiophylomaximumModel {
   let result = bio_phylo_maximum_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_maximum_model_fill(s : BiophylomaximumModel, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_maximum_model_min(s : BiophylomaximumModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_model_min(s : BiophylomaximumModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_model_max(s : BiophylomaximumModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_model_max(s : BiophylomaximumModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_model_to_string(s : BiophylomaximumModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_maximum_layer_set(s : BiophylomaximumLayer, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_maximum_layer_sum(s : BiophylomaximumLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_layer_sum(s : BiophylomaximumLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_layer_mean(s : BiophylomaximumLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_layer_mean(s : BiophylomaximumLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_layer_scale(s : BiophylomaximumLayer, f : Double) -> BiophylomaximumLayer {
   let result = bio_phylo_maximum_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_maximum_layer_fill(s : BiophylomaximumLayer, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_maximum_layer_min(s : BiophylomaximumLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_layer_min(s : BiophylomaximumLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_layer_max(s : BiophylomaximumLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_layer_max(s : BiophylomaximumLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_layer_to_string(s : BiophylomaximumLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_maximum_buffer_set(s : BiophylomaximumBuffer, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_maximum_buffer_sum(s : BiophylomaximumBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_buffer_sum(s : BiophylomaximumBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_buffer_mean(s : BiophylomaximumBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_buffer_mean(s : BiophylomaximumBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_buffer_scale(s : BiophylomaximumBuffer, f : Double) -> BiophylomaximumBuffer {
   let result = bio_phylo_maximum_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_maximum_buffer_fill(s : BiophylomaximumBuffer, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_maximum_buffer_min(s : BiophylomaximumBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_buffer_min(s : BiophylomaximumBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_buffer_max(s : BiophylomaximumBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_buffer_max(s : BiophylomaximumBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_buffer_to_string(s : BiophylomaximumBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_maximum_cursor_set(s : BiophylomaximumCursor, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_maximum_cursor_sum(s : BiophylomaximumCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_cursor_sum(s : BiophylomaximumCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_cursor_mean(s : BiophylomaximumCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_cursor_mean(s : BiophylomaximumCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_cursor_scale(s : BiophylomaximumCursor, f : Double) -> BiophylomaximumCursor {
   let result = bio_phylo_maximum_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_maximum_cursor_fill(s : BiophylomaximumCursor, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_maximum_cursor_min(s : BiophylomaximumCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_cursor_min(s : BiophylomaximumCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_cursor_max(s : BiophylomaximumCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_cursor_max(s : BiophylomaximumCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_cursor_to_string(s : BiophylomaximumCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_maximum_view_set(s : BiophylomaximumView, i : Int, v : Double) 
   result
 }
 
-pub fn bio_phylo_maximum_view_sum(s : BiophylomaximumView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_view_sum(s : BiophylomaximumView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_view_mean(s : BiophylomaximumView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_view_mean(s : BiophylomaximumView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_view_scale(s : BiophylomaximumView, f : Double) -> BiophylomaximumView {
   let result = bio_phylo_maximum_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_maximum_view_fill(s : BiophylomaximumView, v : Double) -> Bioph
   result
 }
 
-pub fn bio_phylo_maximum_view_min(s : BiophylomaximumView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_view_min(s : BiophylomaximumView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_view_max(s : BiophylomaximumView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_view_max(s : BiophylomaximumView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_view_to_string(s : BiophylomaximumView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_maximum_range_set(s : BiophylomaximumRange, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_maximum_range_sum(s : BiophylomaximumRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_range_sum(s : BiophylomaximumRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_range_mean(s : BiophylomaximumRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_range_mean(s : BiophylomaximumRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_range_scale(s : BiophylomaximumRange, f : Double) -> BiophylomaximumRange {
   let result = bio_phylo_maximum_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_maximum_range_fill(s : BiophylomaximumRange, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_maximum_range_min(s : BiophylomaximumRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_range_min(s : BiophylomaximumRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_range_max(s : BiophylomaximumRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_range_max(s : BiophylomaximumRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_range_to_string(s : BiophylomaximumRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_maximum_slice_set(s : BiophylomaximumSlice, i : Int, v : Double
   result
 }
 
-pub fn bio_phylo_maximum_slice_sum(s : BiophylomaximumSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_maximum_slice_sum(s : BiophylomaximumSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_maximum_slice_mean(s : BiophylomaximumSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_maximum_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_maximum_slice_mean(s : BiophylomaximumSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_maximum_slice_scale(s : BiophylomaximumSlice, f : Double) -> BiophylomaximumSlice {
   let result = bio_phylo_maximum_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_maximum_slice_fill(s : BiophylomaximumSlice, v : Double) -> Bio
   result
 }
 
-pub fn bio_phylo_maximum_slice_min(s : BiophylomaximumSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_slice_min(s : BiophylomaximumSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_maximum_slice_max(s : BiophylomaximumSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_maximum_slice_max(s : BiophylomaximumSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_maximum_slice_to_string(s : BiophylomaximumSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

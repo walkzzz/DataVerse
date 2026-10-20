@@ -88,11 +88,7 @@ pub fn bio_struct_angle_make_series(vals : Array[Double], name : String) -> Bios
 
 pub fn bio_struct_angle_series_len(s : BiostructangleSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_angle_series_sum(s : BiostructangleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_angle_series_sum(s : BiostructangleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_angle_series_mean(s : BiostructangleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_angle_frame_set(s : BiostructangleFrame, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_angle_frame_sum(s : BiostructangleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_frame_sum(s : BiostructangleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_frame_mean(s : BiostructangleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_frame_mean(s : BiostructangleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_frame_scale(s : BiostructangleFrame, f : Double) -> BiostructangleFrame {
   let result = bio_struct_angle_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_angle_frame_fill(s : BiostructangleFrame, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_angle_frame_min(s : BiostructangleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_frame_min(s : BiostructangleFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_frame_max(s : BiostructangleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_frame_max(s : BiostructangleFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_frame_to_string(s : BiostructangleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_angle_table_set(s : BiostructangleTable, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_angle_table_sum(s : BiostructangleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_table_sum(s : BiostructangleTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_table_mean(s : BiostructangleTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_table_mean(s : BiostructangleTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_table_scale(s : BiostructangleTable, f : Double) -> BiostructangleTable {
   let result = bio_struct_angle_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_angle_table_fill(s : BiostructangleTable, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_angle_table_min(s : BiostructangleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_table_min(s : BiostructangleTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_table_max(s : BiostructangleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_table_max(s : BiostructangleTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_table_to_string(s : BiostructangleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_angle_graphn_set(s : BiostructangleGraphN, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_angle_graphn_sum(s : BiostructangleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_graphn_sum(s : BiostructangleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_graphn_mean(s : BiostructangleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_graphn_mean(s : BiostructangleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_graphn_scale(s : BiostructangleGraphN, f : Double) -> BiostructangleGraphN {
   let result = bio_struct_angle_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_angle_graphn_fill(s : BiostructangleGraphN, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_angle_graphn_min(s : BiostructangleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_graphn_min(s : BiostructangleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_graphn_max(s : BiostructangleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_graphn_max(s : BiostructangleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_graphn_to_string(s : BiostructangleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_angle_node_set(s : BiostructangleNode, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_angle_node_sum(s : BiostructangleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_node_sum(s : BiostructangleNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_node_mean(s : BiostructangleNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_node_mean(s : BiostructangleNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_node_scale(s : BiostructangleNode, f : Double) -> BiostructangleNode {
   let result = bio_struct_angle_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_angle_node_fill(s : BiostructangleNode, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_angle_node_min(s : BiostructangleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_node_min(s : BiostructangleNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_node_max(s : BiostructangleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_node_max(s : BiostructangleNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_node_to_string(s : BiostructangleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_angle_edge_set(s : BiostructangleEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_angle_edge_sum(s : BiostructangleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_edge_sum(s : BiostructangleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_edge_mean(s : BiostructangleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_edge_mean(s : BiostructangleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_edge_scale(s : BiostructangleEdge, f : Double) -> BiostructangleEdge {
   let result = bio_struct_angle_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_angle_edge_fill(s : BiostructangleEdge, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_angle_edge_min(s : BiostructangleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_edge_min(s : BiostructangleEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_edge_max(s : BiostructangleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_edge_max(s : BiostructangleEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_edge_to_string(s : BiostructangleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_angle_path_set(s : BiostructanglePath, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_angle_path_sum(s : BiostructanglePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_path_sum(s : BiostructanglePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_path_mean(s : BiostructanglePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_path_mean(s : BiostructanglePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_path_scale(s : BiostructanglePath, f : Double) -> BiostructanglePath {
   let result = bio_struct_angle_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_angle_path_fill(s : BiostructanglePath, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_angle_path_min(s : BiostructanglePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_path_min(s : BiostructanglePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_path_max(s : BiostructanglePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_path_max(s : BiostructanglePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_path_to_string(s : BiostructanglePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_angle_cluster_set(s : BiostructangleCluster, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_angle_cluster_sum(s : BiostructangleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_cluster_sum(s : BiostructangleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_cluster_mean(s : BiostructangleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_cluster_mean(s : BiostructangleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_cluster_scale(s : BiostructangleCluster, f : Double) -> BiostructangleCluster {
   let result = bio_struct_angle_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_angle_cluster_fill(s : BiostructangleCluster, v : Double) -> B
   result
 }
 
-pub fn bio_struct_angle_cluster_min(s : BiostructangleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_cluster_min(s : BiostructangleCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_cluster_max(s : BiostructangleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_cluster_max(s : BiostructangleCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_cluster_to_string(s : BiostructangleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_angle_model_set(s : BiostructangleModel, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_angle_model_sum(s : BiostructangleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_model_sum(s : BiostructangleModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_model_mean(s : BiostructangleModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_model_mean(s : BiostructangleModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_model_scale(s : BiostructangleModel, f : Double) -> BiostructangleModel {
   let result = bio_struct_angle_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_angle_model_fill(s : BiostructangleModel, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_angle_model_min(s : BiostructangleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_model_min(s : BiostructangleModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_model_max(s : BiostructangleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_model_max(s : BiostructangleModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_model_to_string(s : BiostructangleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_angle_layer_set(s : BiostructangleLayer, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_angle_layer_sum(s : BiostructangleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_layer_sum(s : BiostructangleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_layer_mean(s : BiostructangleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_layer_mean(s : BiostructangleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_layer_scale(s : BiostructangleLayer, f : Double) -> BiostructangleLayer {
   let result = bio_struct_angle_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_angle_layer_fill(s : BiostructangleLayer, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_angle_layer_min(s : BiostructangleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_layer_min(s : BiostructangleLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_layer_max(s : BiostructangleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_layer_max(s : BiostructangleLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_layer_to_string(s : BiostructangleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_angle_buffer_set(s : BiostructangleBuffer, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_angle_buffer_sum(s : BiostructangleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_buffer_sum(s : BiostructangleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_buffer_mean(s : BiostructangleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_buffer_mean(s : BiostructangleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_buffer_scale(s : BiostructangleBuffer, f : Double) -> BiostructangleBuffer {
   let result = bio_struct_angle_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_angle_buffer_fill(s : BiostructangleBuffer, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_angle_buffer_min(s : BiostructangleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_buffer_min(s : BiostructangleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_buffer_max(s : BiostructangleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_buffer_max(s : BiostructangleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_buffer_to_string(s : BiostructangleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_angle_cursor_set(s : BiostructangleCursor, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_angle_cursor_sum(s : BiostructangleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_cursor_sum(s : BiostructangleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_cursor_mean(s : BiostructangleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_cursor_mean(s : BiostructangleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_cursor_scale(s : BiostructangleCursor, f : Double) -> BiostructangleCursor {
   let result = bio_struct_angle_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_angle_cursor_fill(s : BiostructangleCursor, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_angle_cursor_min(s : BiostructangleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_cursor_min(s : BiostructangleCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_cursor_max(s : BiostructangleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_cursor_max(s : BiostructangleCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_cursor_to_string(s : BiostructangleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_angle_view_set(s : BiostructangleView, i : Int, v : Double) ->
   result
 }
 
-pub fn bio_struct_angle_view_sum(s : BiostructangleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_view_sum(s : BiostructangleView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_view_mean(s : BiostructangleView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_view_mean(s : BiostructangleView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_view_scale(s : BiostructangleView, f : Double) -> BiostructangleView {
   let result = bio_struct_angle_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_angle_view_fill(s : BiostructangleView, v : Double) -> Biostru
   result
 }
 
-pub fn bio_struct_angle_view_min(s : BiostructangleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_view_min(s : BiostructangleView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_view_max(s : BiostructangleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_view_max(s : BiostructangleView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_view_to_string(s : BiostructangleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_angle_range_set(s : BiostructangleRange, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_angle_range_sum(s : BiostructangleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_range_sum(s : BiostructangleRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_range_mean(s : BiostructangleRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_range_mean(s : BiostructangleRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_range_scale(s : BiostructangleRange, f : Double) -> BiostructangleRange {
   let result = bio_struct_angle_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_angle_range_fill(s : BiostructangleRange, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_angle_range_min(s : BiostructangleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_range_min(s : BiostructangleRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_range_max(s : BiostructangleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_range_max(s : BiostructangleRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_range_to_string(s : BiostructangleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_angle_slice_set(s : BiostructangleSlice, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_angle_slice_sum(s : BiostructangleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_angle_slice_sum(s : BiostructangleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_angle_slice_mean(s : BiostructangleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_angle_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_angle_slice_mean(s : BiostructangleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_angle_slice_scale(s : BiostructangleSlice, f : Double) -> BiostructangleSlice {
   let result = bio_struct_angle_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_angle_slice_fill(s : BiostructangleSlice, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_angle_slice_min(s : BiostructangleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_slice_min(s : BiostructangleSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_angle_slice_max(s : BiostructangleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_angle_slice_max(s : BiostructangleSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_angle_slice_to_string(s : BiostructangleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn net_route_bellman_make_series(vals : Array[Double], name : String) -> Net
 
 pub fn net_route_bellman_series_len(s : NetroutebellmanSeries) -> Int { s.vals.length() }
 
-pub fn net_route_bellman_series_sum(s : NetroutebellmanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_bellman_series_sum(s : NetroutebellmanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_bellman_series_mean(s : NetroutebellmanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_bellman_frame_set(s : NetroutebellmanFrame, i : Int, v : Double
   result
 }
 
-pub fn net_route_bellman_frame_sum(s : NetroutebellmanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_frame_sum(s : NetroutebellmanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_frame_mean(s : NetroutebellmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_frame_mean(s : NetroutebellmanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_frame_scale(s : NetroutebellmanFrame, f : Double) -> NetroutebellmanFrame {
   let result = net_route_bellman_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_bellman_frame_fill(s : NetroutebellmanFrame, v : Double) -> Net
   result
 }
 
-pub fn net_route_bellman_frame_min(s : NetroutebellmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_frame_min(s : NetroutebellmanFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_frame_max(s : NetroutebellmanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_frame_max(s : NetroutebellmanFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_frame_to_string(s : NetroutebellmanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_bellman_table_set(s : NetroutebellmanTable, i : Int, v : Double
   result
 }
 
-pub fn net_route_bellman_table_sum(s : NetroutebellmanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_table_sum(s : NetroutebellmanTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_table_mean(s : NetroutebellmanTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_table_mean(s : NetroutebellmanTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_table_scale(s : NetroutebellmanTable, f : Double) -> NetroutebellmanTable {
   let result = net_route_bellman_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_bellman_table_fill(s : NetroutebellmanTable, v : Double) -> Net
   result
 }
 
-pub fn net_route_bellman_table_min(s : NetroutebellmanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_table_min(s : NetroutebellmanTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_table_max(s : NetroutebellmanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_table_max(s : NetroutebellmanTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_table_to_string(s : NetroutebellmanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_bellman_graphn_set(s : NetroutebellmanGraphN, i : Int, v : Doub
   result
 }
 
-pub fn net_route_bellman_graphn_sum(s : NetroutebellmanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_graphn_sum(s : NetroutebellmanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_graphn_mean(s : NetroutebellmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_graphn_mean(s : NetroutebellmanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_graphn_scale(s : NetroutebellmanGraphN, f : Double) -> NetroutebellmanGraphN {
   let result = net_route_bellman_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_bellman_graphn_fill(s : NetroutebellmanGraphN, v : Double) -> N
   result
 }
 
-pub fn net_route_bellman_graphn_min(s : NetroutebellmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_graphn_min(s : NetroutebellmanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_graphn_max(s : NetroutebellmanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_graphn_max(s : NetroutebellmanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_graphn_to_string(s : NetroutebellmanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_bellman_node_set(s : NetroutebellmanNode, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_bellman_node_sum(s : NetroutebellmanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_node_sum(s : NetroutebellmanNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_node_mean(s : NetroutebellmanNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_node_mean(s : NetroutebellmanNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_node_scale(s : NetroutebellmanNode, f : Double) -> NetroutebellmanNode {
   let result = net_route_bellman_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_bellman_node_fill(s : NetroutebellmanNode, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bellman_node_min(s : NetroutebellmanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_node_min(s : NetroutebellmanNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_node_max(s : NetroutebellmanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_node_max(s : NetroutebellmanNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_node_to_string(s : NetroutebellmanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_bellman_edge_set(s : NetroutebellmanEdge, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_bellman_edge_sum(s : NetroutebellmanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_edge_sum(s : NetroutebellmanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_edge_mean(s : NetroutebellmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_edge_mean(s : NetroutebellmanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_edge_scale(s : NetroutebellmanEdge, f : Double) -> NetroutebellmanEdge {
   let result = net_route_bellman_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_bellman_edge_fill(s : NetroutebellmanEdge, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bellman_edge_min(s : NetroutebellmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_edge_min(s : NetroutebellmanEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_edge_max(s : NetroutebellmanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_edge_max(s : NetroutebellmanEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_edge_to_string(s : NetroutebellmanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_bellman_path_set(s : NetroutebellmanPath, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_bellman_path_sum(s : NetroutebellmanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_path_sum(s : NetroutebellmanPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_path_mean(s : NetroutebellmanPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_path_mean(s : NetroutebellmanPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_path_scale(s : NetroutebellmanPath, f : Double) -> NetroutebellmanPath {
   let result = net_route_bellman_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_bellman_path_fill(s : NetroutebellmanPath, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bellman_path_min(s : NetroutebellmanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_path_min(s : NetroutebellmanPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_path_max(s : NetroutebellmanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_path_max(s : NetroutebellmanPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_path_to_string(s : NetroutebellmanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_bellman_cluster_set(s : NetroutebellmanCluster, i : Int, v : Do
   result
 }
 
-pub fn net_route_bellman_cluster_sum(s : NetroutebellmanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_cluster_sum(s : NetroutebellmanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_cluster_mean(s : NetroutebellmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_cluster_mean(s : NetroutebellmanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_cluster_scale(s : NetroutebellmanCluster, f : Double) -> NetroutebellmanCluster {
   let result = net_route_bellman_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_bellman_cluster_fill(s : NetroutebellmanCluster, v : Double) ->
   result
 }
 
-pub fn net_route_bellman_cluster_min(s : NetroutebellmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_cluster_min(s : NetroutebellmanCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_cluster_max(s : NetroutebellmanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_cluster_max(s : NetroutebellmanCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_cluster_to_string(s : NetroutebellmanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_bellman_model_set(s : NetroutebellmanModel, i : Int, v : Double
   result
 }
 
-pub fn net_route_bellman_model_sum(s : NetroutebellmanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_model_sum(s : NetroutebellmanModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_model_mean(s : NetroutebellmanModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_model_mean(s : NetroutebellmanModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_model_scale(s : NetroutebellmanModel, f : Double) -> NetroutebellmanModel {
   let result = net_route_bellman_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_bellman_model_fill(s : NetroutebellmanModel, v : Double) -> Net
   result
 }
 
-pub fn net_route_bellman_model_min(s : NetroutebellmanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_model_min(s : NetroutebellmanModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_model_max(s : NetroutebellmanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_model_max(s : NetroutebellmanModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_model_to_string(s : NetroutebellmanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_bellman_layer_set(s : NetroutebellmanLayer, i : Int, v : Double
   result
 }
 
-pub fn net_route_bellman_layer_sum(s : NetroutebellmanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_layer_sum(s : NetroutebellmanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_layer_mean(s : NetroutebellmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_layer_mean(s : NetroutebellmanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_layer_scale(s : NetroutebellmanLayer, f : Double) -> NetroutebellmanLayer {
   let result = net_route_bellman_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_bellman_layer_fill(s : NetroutebellmanLayer, v : Double) -> Net
   result
 }
 
-pub fn net_route_bellman_layer_min(s : NetroutebellmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_layer_min(s : NetroutebellmanLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_layer_max(s : NetroutebellmanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_layer_max(s : NetroutebellmanLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_layer_to_string(s : NetroutebellmanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_bellman_buffer_set(s : NetroutebellmanBuffer, i : Int, v : Doub
   result
 }
 
-pub fn net_route_bellman_buffer_sum(s : NetroutebellmanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_buffer_sum(s : NetroutebellmanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_buffer_mean(s : NetroutebellmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_buffer_mean(s : NetroutebellmanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_buffer_scale(s : NetroutebellmanBuffer, f : Double) -> NetroutebellmanBuffer {
   let result = net_route_bellman_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_bellman_buffer_fill(s : NetroutebellmanBuffer, v : Double) -> N
   result
 }
 
-pub fn net_route_bellman_buffer_min(s : NetroutebellmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_buffer_min(s : NetroutebellmanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_buffer_max(s : NetroutebellmanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_buffer_max(s : NetroutebellmanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_buffer_to_string(s : NetroutebellmanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_bellman_cursor_set(s : NetroutebellmanCursor, i : Int, v : Doub
   result
 }
 
-pub fn net_route_bellman_cursor_sum(s : NetroutebellmanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_cursor_sum(s : NetroutebellmanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_cursor_mean(s : NetroutebellmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_cursor_mean(s : NetroutebellmanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_cursor_scale(s : NetroutebellmanCursor, f : Double) -> NetroutebellmanCursor {
   let result = net_route_bellman_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_bellman_cursor_fill(s : NetroutebellmanCursor, v : Double) -> N
   result
 }
 
-pub fn net_route_bellman_cursor_min(s : NetroutebellmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_cursor_min(s : NetroutebellmanCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_cursor_max(s : NetroutebellmanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_cursor_max(s : NetroutebellmanCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_cursor_to_string(s : NetroutebellmanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_bellman_view_set(s : NetroutebellmanView, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_bellman_view_sum(s : NetroutebellmanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_view_sum(s : NetroutebellmanView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_view_mean(s : NetroutebellmanView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_view_mean(s : NetroutebellmanView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_view_scale(s : NetroutebellmanView, f : Double) -> NetroutebellmanView {
   let result = net_route_bellman_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_bellman_view_fill(s : NetroutebellmanView, v : Double) -> Netro
   result
 }
 
-pub fn net_route_bellman_view_min(s : NetroutebellmanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_view_min(s : NetroutebellmanView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_view_max(s : NetroutebellmanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_view_max(s : NetroutebellmanView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_view_to_string(s : NetroutebellmanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_bellman_range_set(s : NetroutebellmanRange, i : Int, v : Double
   result
 }
 
-pub fn net_route_bellman_range_sum(s : NetroutebellmanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_range_sum(s : NetroutebellmanRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_range_mean(s : NetroutebellmanRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_range_mean(s : NetroutebellmanRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_range_scale(s : NetroutebellmanRange, f : Double) -> NetroutebellmanRange {
   let result = net_route_bellman_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_bellman_range_fill(s : NetroutebellmanRange, v : Double) -> Net
   result
 }
 
-pub fn net_route_bellman_range_min(s : NetroutebellmanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_range_min(s : NetroutebellmanRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_range_max(s : NetroutebellmanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_range_max(s : NetroutebellmanRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_range_to_string(s : NetroutebellmanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_bellman_slice_set(s : NetroutebellmanSlice, i : Int, v : Double
   result
 }
 
-pub fn net_route_bellman_slice_sum(s : NetroutebellmanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_bellman_slice_sum(s : NetroutebellmanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_bellman_slice_mean(s : NetroutebellmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_bellman_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_bellman_slice_mean(s : NetroutebellmanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_bellman_slice_scale(s : NetroutebellmanSlice, f : Double) -> NetroutebellmanSlice {
   let result = net_route_bellman_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_bellman_slice_fill(s : NetroutebellmanSlice, v : Double) -> Net
   result
 }
 
-pub fn net_route_bellman_slice_min(s : NetroutebellmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_slice_min(s : NetroutebellmanSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_bellman_slice_max(s : NetroutebellmanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_bellman_slice_max(s : NetroutebellmanSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_bellman_slice_to_string(s : NetroutebellmanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

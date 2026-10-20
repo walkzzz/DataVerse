@@ -88,11 +88,7 @@ pub fn math_special_zeta_make_series(vals : Array[Double], name : String) -> Mat
 
 pub fn math_special_zeta_series_len(s : MathspecialzetaSeries) -> Int { s.vals.length() }
 
-pub fn math_special_zeta_series_sum(s : MathspecialzetaSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_special_zeta_series_sum(s : MathspecialzetaSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_special_zeta_series_mean(s : MathspecialzetaSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_special_zeta_frame_set(s : MathspecialzetaFrame, i : Int, v : Double
   result
 }
 
-pub fn math_special_zeta_frame_sum(s : MathspecialzetaFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_frame_sum(s : MathspecialzetaFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_frame_mean(s : MathspecialzetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_frame_mean(s : MathspecialzetaFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_frame_scale(s : MathspecialzetaFrame, f : Double) -> MathspecialzetaFrame {
   let result = math_special_zeta_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_special_zeta_frame_fill(s : MathspecialzetaFrame, v : Double) -> Mat
   result
 }
 
-pub fn math_special_zeta_frame_min(s : MathspecialzetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_frame_min(s : MathspecialzetaFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_frame_max(s : MathspecialzetaFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_frame_max(s : MathspecialzetaFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_frame_to_string(s : MathspecialzetaFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_special_zeta_table_set(s : MathspecialzetaTable, i : Int, v : Double
   result
 }
 
-pub fn math_special_zeta_table_sum(s : MathspecialzetaTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_table_sum(s : MathspecialzetaTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_table_mean(s : MathspecialzetaTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_table_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_table_mean(s : MathspecialzetaTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_table_scale(s : MathspecialzetaTable, f : Double) -> MathspecialzetaTable {
   let result = math_special_zeta_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_special_zeta_table_fill(s : MathspecialzetaTable, v : Double) -> Mat
   result
 }
 
-pub fn math_special_zeta_table_min(s : MathspecialzetaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_table_min(s : MathspecialzetaTable) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_table_max(s : MathspecialzetaTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_table_max(s : MathspecialzetaTable) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_table_to_string(s : MathspecialzetaTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_special_zeta_graphn_set(s : MathspecialzetaGraphN, i : Int, v : Doub
   result
 }
 
-pub fn math_special_zeta_graphn_sum(s : MathspecialzetaGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_graphn_sum(s : MathspecialzetaGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_graphn_mean(s : MathspecialzetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_graphn_mean(s : MathspecialzetaGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_graphn_scale(s : MathspecialzetaGraphN, f : Double) -> MathspecialzetaGraphN {
   let result = math_special_zeta_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_special_zeta_graphn_fill(s : MathspecialzetaGraphN, v : Double) -> M
   result
 }
 
-pub fn math_special_zeta_graphn_min(s : MathspecialzetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_graphn_min(s : MathspecialzetaGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_graphn_max(s : MathspecialzetaGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_graphn_max(s : MathspecialzetaGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_graphn_to_string(s : MathspecialzetaGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_special_zeta_node_set(s : MathspecialzetaNode, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_zeta_node_sum(s : MathspecialzetaNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_node_sum(s : MathspecialzetaNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_node_mean(s : MathspecialzetaNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_node_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_node_mean(s : MathspecialzetaNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_node_scale(s : MathspecialzetaNode, f : Double) -> MathspecialzetaNode {
   let result = math_special_zeta_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_special_zeta_node_fill(s : MathspecialzetaNode, v : Double) -> Maths
   result
 }
 
-pub fn math_special_zeta_node_min(s : MathspecialzetaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_node_min(s : MathspecialzetaNode) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_node_max(s : MathspecialzetaNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_node_max(s : MathspecialzetaNode) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_node_to_string(s : MathspecialzetaNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_special_zeta_edge_set(s : MathspecialzetaEdge, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_zeta_edge_sum(s : MathspecialzetaEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_edge_sum(s : MathspecialzetaEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_edge_mean(s : MathspecialzetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_edge_mean(s : MathspecialzetaEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_edge_scale(s : MathspecialzetaEdge, f : Double) -> MathspecialzetaEdge {
   let result = math_special_zeta_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_special_zeta_edge_fill(s : MathspecialzetaEdge, v : Double) -> Maths
   result
 }
 
-pub fn math_special_zeta_edge_min(s : MathspecialzetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_edge_min(s : MathspecialzetaEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_edge_max(s : MathspecialzetaEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_edge_max(s : MathspecialzetaEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_edge_to_string(s : MathspecialzetaEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_special_zeta_path_set(s : MathspecialzetaPath, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_zeta_path_sum(s : MathspecialzetaPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_path_sum(s : MathspecialzetaPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_path_mean(s : MathspecialzetaPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_path_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_path_mean(s : MathspecialzetaPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_path_scale(s : MathspecialzetaPath, f : Double) -> MathspecialzetaPath {
   let result = math_special_zeta_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_special_zeta_path_fill(s : MathspecialzetaPath, v : Double) -> Maths
   result
 }
 
-pub fn math_special_zeta_path_min(s : MathspecialzetaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_path_min(s : MathspecialzetaPath) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_path_max(s : MathspecialzetaPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_path_max(s : MathspecialzetaPath) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_path_to_string(s : MathspecialzetaPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_special_zeta_cluster_set(s : MathspecialzetaCluster, i : Int, v : Do
   result
 }
 
-pub fn math_special_zeta_cluster_sum(s : MathspecialzetaCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_cluster_sum(s : MathspecialzetaCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_cluster_mean(s : MathspecialzetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_cluster_mean(s : MathspecialzetaCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_cluster_scale(s : MathspecialzetaCluster, f : Double) -> MathspecialzetaCluster {
   let result = math_special_zeta_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_special_zeta_cluster_fill(s : MathspecialzetaCluster, v : Double) ->
   result
 }
 
-pub fn math_special_zeta_cluster_min(s : MathspecialzetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_cluster_min(s : MathspecialzetaCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_cluster_max(s : MathspecialzetaCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_cluster_max(s : MathspecialzetaCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_cluster_to_string(s : MathspecialzetaCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_special_zeta_model_set(s : MathspecialzetaModel, i : Int, v : Double
   result
 }
 
-pub fn math_special_zeta_model_sum(s : MathspecialzetaModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_model_sum(s : MathspecialzetaModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_model_mean(s : MathspecialzetaModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_model_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_model_mean(s : MathspecialzetaModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_model_scale(s : MathspecialzetaModel, f : Double) -> MathspecialzetaModel {
   let result = math_special_zeta_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_special_zeta_model_fill(s : MathspecialzetaModel, v : Double) -> Mat
   result
 }
 
-pub fn math_special_zeta_model_min(s : MathspecialzetaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_model_min(s : MathspecialzetaModel) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_model_max(s : MathspecialzetaModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_model_max(s : MathspecialzetaModel) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_model_to_string(s : MathspecialzetaModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_special_zeta_layer_set(s : MathspecialzetaLayer, i : Int, v : Double
   result
 }
 
-pub fn math_special_zeta_layer_sum(s : MathspecialzetaLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_layer_sum(s : MathspecialzetaLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_layer_mean(s : MathspecialzetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_layer_mean(s : MathspecialzetaLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_layer_scale(s : MathspecialzetaLayer, f : Double) -> MathspecialzetaLayer {
   let result = math_special_zeta_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_special_zeta_layer_fill(s : MathspecialzetaLayer, v : Double) -> Mat
   result
 }
 
-pub fn math_special_zeta_layer_min(s : MathspecialzetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_layer_min(s : MathspecialzetaLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_layer_max(s : MathspecialzetaLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_layer_max(s : MathspecialzetaLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_layer_to_string(s : MathspecialzetaLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_special_zeta_buffer_set(s : MathspecialzetaBuffer, i : Int, v : Doub
   result
 }
 
-pub fn math_special_zeta_buffer_sum(s : MathspecialzetaBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_buffer_sum(s : MathspecialzetaBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_buffer_mean(s : MathspecialzetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_buffer_mean(s : MathspecialzetaBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_buffer_scale(s : MathspecialzetaBuffer, f : Double) -> MathspecialzetaBuffer {
   let result = math_special_zeta_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_special_zeta_buffer_fill(s : MathspecialzetaBuffer, v : Double) -> M
   result
 }
 
-pub fn math_special_zeta_buffer_min(s : MathspecialzetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_buffer_min(s : MathspecialzetaBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_buffer_max(s : MathspecialzetaBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_buffer_max(s : MathspecialzetaBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_buffer_to_string(s : MathspecialzetaBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_special_zeta_cursor_set(s : MathspecialzetaCursor, i : Int, v : Doub
   result
 }
 
-pub fn math_special_zeta_cursor_sum(s : MathspecialzetaCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_cursor_sum(s : MathspecialzetaCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_cursor_mean(s : MathspecialzetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_cursor_mean(s : MathspecialzetaCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_cursor_scale(s : MathspecialzetaCursor, f : Double) -> MathspecialzetaCursor {
   let result = math_special_zeta_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_special_zeta_cursor_fill(s : MathspecialzetaCursor, v : Double) -> M
   result
 }
 
-pub fn math_special_zeta_cursor_min(s : MathspecialzetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_cursor_min(s : MathspecialzetaCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_cursor_max(s : MathspecialzetaCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_cursor_max(s : MathspecialzetaCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_cursor_to_string(s : MathspecialzetaCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_special_zeta_view_set(s : MathspecialzetaView, i : Int, v : Double) 
   result
 }
 
-pub fn math_special_zeta_view_sum(s : MathspecialzetaView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_view_sum(s : MathspecialzetaView) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_view_mean(s : MathspecialzetaView) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_view_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_view_mean(s : MathspecialzetaView) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_view_scale(s : MathspecialzetaView, f : Double) -> MathspecialzetaView {
   let result = math_special_zeta_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_special_zeta_view_fill(s : MathspecialzetaView, v : Double) -> Maths
   result
 }
 
-pub fn math_special_zeta_view_min(s : MathspecialzetaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_view_min(s : MathspecialzetaView) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_view_max(s : MathspecialzetaView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_view_max(s : MathspecialzetaView) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_view_to_string(s : MathspecialzetaView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_special_zeta_range_set(s : MathspecialzetaRange, i : Int, v : Double
   result
 }
 
-pub fn math_special_zeta_range_sum(s : MathspecialzetaRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_range_sum(s : MathspecialzetaRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_range_mean(s : MathspecialzetaRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_range_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_range_mean(s : MathspecialzetaRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_range_scale(s : MathspecialzetaRange, f : Double) -> MathspecialzetaRange {
   let result = math_special_zeta_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_special_zeta_range_fill(s : MathspecialzetaRange, v : Double) -> Mat
   result
 }
 
-pub fn math_special_zeta_range_min(s : MathspecialzetaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_range_min(s : MathspecialzetaRange) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_range_max(s : MathspecialzetaRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_range_max(s : MathspecialzetaRange) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_range_to_string(s : MathspecialzetaRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_special_zeta_slice_set(s : MathspecialzetaSlice, i : Int, v : Double
   result
 }
 
-pub fn math_special_zeta_slice_sum(s : MathspecialzetaSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_special_zeta_slice_sum(s : MathspecialzetaSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_special_zeta_slice_mean(s : MathspecialzetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_special_zeta_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_special_zeta_slice_mean(s : MathspecialzetaSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_special_zeta_slice_scale(s : MathspecialzetaSlice, f : Double) -> MathspecialzetaSlice {
   let result = math_special_zeta_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_special_zeta_slice_fill(s : MathspecialzetaSlice, v : Double) -> Mat
   result
 }
 
-pub fn math_special_zeta_slice_min(s : MathspecialzetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_slice_min(s : MathspecialzetaSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_special_zeta_slice_max(s : MathspecialzetaSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_special_zeta_slice_max(s : MathspecialzetaSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_special_zeta_slice_to_string(s : MathspecialzetaSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

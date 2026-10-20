@@ -88,11 +88,7 @@ pub fn sort_compare_bubble_make_series(vals : Array[Double], name : String) -> S
 
 pub fn sort_compare_bubble_series_len(s : SortcomparebubbleSeries) -> Int { s.vals.length() }
 
-pub fn sort_compare_bubble_series_sum(s : SortcomparebubbleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn sort_compare_bubble_series_sum(s : SortcomparebubbleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn sort_compare_bubble_series_mean(s : SortcomparebubbleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn sort_compare_bubble_frame_set(s : SortcomparebubbleFrame, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_bubble_frame_sum(s : SortcomparebubbleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_frame_sum(s : SortcomparebubbleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_frame_mean(s : SortcomparebubbleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_frame_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_frame_mean(s : SortcomparebubbleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_frame_scale(s : SortcomparebubbleFrame, f : Double) -> SortcomparebubbleFrame {
   let result = sort_compare_bubble_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn sort_compare_bubble_frame_fill(s : SortcomparebubbleFrame, v : Double) ->
   result
 }
 
-pub fn sort_compare_bubble_frame_min(s : SortcomparebubbleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_frame_min(s : SortcomparebubbleFrame) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_frame_max(s : SortcomparebubbleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_frame_max(s : SortcomparebubbleFrame) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_frame_to_string(s : SortcomparebubbleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn sort_compare_bubble_table_set(s : SortcomparebubbleTable, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_bubble_table_sum(s : SortcomparebubbleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_table_sum(s : SortcomparebubbleTable) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_table_mean(s : SortcomparebubbleTable) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_table_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_table_mean(s : SortcomparebubbleTable) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_table_scale(s : SortcomparebubbleTable, f : Double) -> SortcomparebubbleTable {
   let result = sort_compare_bubble_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn sort_compare_bubble_table_fill(s : SortcomparebubbleTable, v : Double) ->
   result
 }
 
-pub fn sort_compare_bubble_table_min(s : SortcomparebubbleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_table_min(s : SortcomparebubbleTable) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_table_max(s : SortcomparebubbleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_table_max(s : SortcomparebubbleTable) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_table_to_string(s : SortcomparebubbleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn sort_compare_bubble_graphn_set(s : SortcomparebubbleGraphN, i : Int, v : 
   result
 }
 
-pub fn sort_compare_bubble_graphn_sum(s : SortcomparebubbleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_graphn_sum(s : SortcomparebubbleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_graphn_mean(s : SortcomparebubbleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_graphn_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_graphn_mean(s : SortcomparebubbleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_graphn_scale(s : SortcomparebubbleGraphN, f : Double) -> SortcomparebubbleGraphN {
   let result = sort_compare_bubble_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn sort_compare_bubble_graphn_fill(s : SortcomparebubbleGraphN, v : Double) 
   result
 }
 
-pub fn sort_compare_bubble_graphn_min(s : SortcomparebubbleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_graphn_min(s : SortcomparebubbleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_graphn_max(s : SortcomparebubbleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_graphn_max(s : SortcomparebubbleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_graphn_to_string(s : SortcomparebubbleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn sort_compare_bubble_node_set(s : SortcomparebubbleNode, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_bubble_node_sum(s : SortcomparebubbleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_node_sum(s : SortcomparebubbleNode) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_node_mean(s : SortcomparebubbleNode) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_node_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_node_mean(s : SortcomparebubbleNode) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_node_scale(s : SortcomparebubbleNode, f : Double) -> SortcomparebubbleNode {
   let result = sort_compare_bubble_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn sort_compare_bubble_node_fill(s : SortcomparebubbleNode, v : Double) -> S
   result
 }
 
-pub fn sort_compare_bubble_node_min(s : SortcomparebubbleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_node_min(s : SortcomparebubbleNode) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_node_max(s : SortcomparebubbleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_node_max(s : SortcomparebubbleNode) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_node_to_string(s : SortcomparebubbleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn sort_compare_bubble_edge_set(s : SortcomparebubbleEdge, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_bubble_edge_sum(s : SortcomparebubbleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_edge_sum(s : SortcomparebubbleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_edge_mean(s : SortcomparebubbleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_edge_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_edge_mean(s : SortcomparebubbleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_edge_scale(s : SortcomparebubbleEdge, f : Double) -> SortcomparebubbleEdge {
   let result = sort_compare_bubble_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn sort_compare_bubble_edge_fill(s : SortcomparebubbleEdge, v : Double) -> S
   result
 }
 
-pub fn sort_compare_bubble_edge_min(s : SortcomparebubbleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_edge_min(s : SortcomparebubbleEdge) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_edge_max(s : SortcomparebubbleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_edge_max(s : SortcomparebubbleEdge) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_edge_to_string(s : SortcomparebubbleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn sort_compare_bubble_path_set(s : SortcomparebubblePath, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_bubble_path_sum(s : SortcomparebubblePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_path_sum(s : SortcomparebubblePath) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_path_mean(s : SortcomparebubblePath) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_path_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_path_mean(s : SortcomparebubblePath) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_path_scale(s : SortcomparebubblePath, f : Double) -> SortcomparebubblePath {
   let result = sort_compare_bubble_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn sort_compare_bubble_path_fill(s : SortcomparebubblePath, v : Double) -> S
   result
 }
 
-pub fn sort_compare_bubble_path_min(s : SortcomparebubblePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_path_min(s : SortcomparebubblePath) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_path_max(s : SortcomparebubblePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_path_max(s : SortcomparebubblePath) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_path_to_string(s : SortcomparebubblePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn sort_compare_bubble_cluster_set(s : SortcomparebubbleCluster, i : Int, v 
   result
 }
 
-pub fn sort_compare_bubble_cluster_sum(s : SortcomparebubbleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_cluster_sum(s : SortcomparebubbleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_cluster_mean(s : SortcomparebubbleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_cluster_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_cluster_mean(s : SortcomparebubbleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_cluster_scale(s : SortcomparebubbleCluster, f : Double) -> SortcomparebubbleCluster {
   let result = sort_compare_bubble_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn sort_compare_bubble_cluster_fill(s : SortcomparebubbleCluster, v : Double
   result
 }
 
-pub fn sort_compare_bubble_cluster_min(s : SortcomparebubbleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_cluster_min(s : SortcomparebubbleCluster) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_cluster_max(s : SortcomparebubbleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_cluster_max(s : SortcomparebubbleCluster) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_cluster_to_string(s : SortcomparebubbleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn sort_compare_bubble_model_set(s : SortcomparebubbleModel, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_bubble_model_sum(s : SortcomparebubbleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_model_sum(s : SortcomparebubbleModel) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_model_mean(s : SortcomparebubbleModel) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_model_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_model_mean(s : SortcomparebubbleModel) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_model_scale(s : SortcomparebubbleModel, f : Double) -> SortcomparebubbleModel {
   let result = sort_compare_bubble_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn sort_compare_bubble_model_fill(s : SortcomparebubbleModel, v : Double) ->
   result
 }
 
-pub fn sort_compare_bubble_model_min(s : SortcomparebubbleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_model_min(s : SortcomparebubbleModel) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_model_max(s : SortcomparebubbleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_model_max(s : SortcomparebubbleModel) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_model_to_string(s : SortcomparebubbleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn sort_compare_bubble_layer_set(s : SortcomparebubbleLayer, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_bubble_layer_sum(s : SortcomparebubbleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_layer_sum(s : SortcomparebubbleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_layer_mean(s : SortcomparebubbleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_layer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_layer_mean(s : SortcomparebubbleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_layer_scale(s : SortcomparebubbleLayer, f : Double) -> SortcomparebubbleLayer {
   let result = sort_compare_bubble_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn sort_compare_bubble_layer_fill(s : SortcomparebubbleLayer, v : Double) ->
   result
 }
 
-pub fn sort_compare_bubble_layer_min(s : SortcomparebubbleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_layer_min(s : SortcomparebubbleLayer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_layer_max(s : SortcomparebubbleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_layer_max(s : SortcomparebubbleLayer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_layer_to_string(s : SortcomparebubbleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn sort_compare_bubble_buffer_set(s : SortcomparebubbleBuffer, i : Int, v : 
   result
 }
 
-pub fn sort_compare_bubble_buffer_sum(s : SortcomparebubbleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_buffer_sum(s : SortcomparebubbleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_buffer_mean(s : SortcomparebubbleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_buffer_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_buffer_mean(s : SortcomparebubbleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_buffer_scale(s : SortcomparebubbleBuffer, f : Double) -> SortcomparebubbleBuffer {
   let result = sort_compare_bubble_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn sort_compare_bubble_buffer_fill(s : SortcomparebubbleBuffer, v : Double) 
   result
 }
 
-pub fn sort_compare_bubble_buffer_min(s : SortcomparebubbleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_buffer_min(s : SortcomparebubbleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_buffer_max(s : SortcomparebubbleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_buffer_max(s : SortcomparebubbleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_buffer_to_string(s : SortcomparebubbleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn sort_compare_bubble_cursor_set(s : SortcomparebubbleCursor, i : Int, v : 
   result
 }
 
-pub fn sort_compare_bubble_cursor_sum(s : SortcomparebubbleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_cursor_sum(s : SortcomparebubbleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_cursor_mean(s : SortcomparebubbleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_cursor_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_cursor_mean(s : SortcomparebubbleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_cursor_scale(s : SortcomparebubbleCursor, f : Double) -> SortcomparebubbleCursor {
   let result = sort_compare_bubble_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn sort_compare_bubble_cursor_fill(s : SortcomparebubbleCursor, v : Double) 
   result
 }
 
-pub fn sort_compare_bubble_cursor_min(s : SortcomparebubbleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_cursor_min(s : SortcomparebubbleCursor) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_cursor_max(s : SortcomparebubbleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_cursor_max(s : SortcomparebubbleCursor) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_cursor_to_string(s : SortcomparebubbleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn sort_compare_bubble_view_set(s : SortcomparebubbleView, i : Int, v : Doub
   result
 }
 
-pub fn sort_compare_bubble_view_sum(s : SortcomparebubbleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_view_sum(s : SortcomparebubbleView) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_view_mean(s : SortcomparebubbleView) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_view_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_view_mean(s : SortcomparebubbleView) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_view_scale(s : SortcomparebubbleView, f : Double) -> SortcomparebubbleView {
   let result = sort_compare_bubble_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn sort_compare_bubble_view_fill(s : SortcomparebubbleView, v : Double) -> S
   result
 }
 
-pub fn sort_compare_bubble_view_min(s : SortcomparebubbleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_view_min(s : SortcomparebubbleView) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_view_max(s : SortcomparebubbleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_view_max(s : SortcomparebubbleView) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_view_to_string(s : SortcomparebubbleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn sort_compare_bubble_range_set(s : SortcomparebubbleRange, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_bubble_range_sum(s : SortcomparebubbleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_range_sum(s : SortcomparebubbleRange) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_range_mean(s : SortcomparebubbleRange) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_range_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_range_mean(s : SortcomparebubbleRange) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_range_scale(s : SortcomparebubbleRange, f : Double) -> SortcomparebubbleRange {
   let result = sort_compare_bubble_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn sort_compare_bubble_range_fill(s : SortcomparebubbleRange, v : Double) ->
   result
 }
 
-pub fn sort_compare_bubble_range_min(s : SortcomparebubbleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_range_min(s : SortcomparebubbleRange) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_range_max(s : SortcomparebubbleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_range_max(s : SortcomparebubbleRange) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_range_to_string(s : SortcomparebubbleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn sort_compare_bubble_slice_set(s : SortcomparebubbleSlice, i : Int, v : Do
   result
 }
 
-pub fn sort_compare_bubble_slice_sum(s : SortcomparebubbleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn sort_compare_bubble_slice_sum(s : SortcomparebubbleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn sort_compare_bubble_slice_mean(s : SortcomparebubbleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { sort_compare_bubble_slice_sum(s) / s.size.to_double() }
-}
+pub fn sort_compare_bubble_slice_mean(s : SortcomparebubbleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn sort_compare_bubble_slice_scale(s : SortcomparebubbleSlice, f : Double) -> SortcomparebubbleSlice {
   let result = sort_compare_bubble_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn sort_compare_bubble_slice_fill(s : SortcomparebubbleSlice, v : Double) ->
   result
 }
 
-pub fn sort_compare_bubble_slice_min(s : SortcomparebubbleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_slice_min(s : SortcomparebubbleSlice) -> Double { @_common.min(s.data) }
 
-pub fn sort_compare_bubble_slice_max(s : SortcomparebubbleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn sort_compare_bubble_slice_max(s : SortcomparebubbleSlice) -> Double { @_common.max(s.data) }
 
 pub fn sort_compare_bubble_slice_to_string(s : SortcomparebubbleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

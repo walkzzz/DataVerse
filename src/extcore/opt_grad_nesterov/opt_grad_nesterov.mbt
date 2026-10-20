@@ -88,11 +88,7 @@ pub fn opt_grad_nesterov_make_series(vals : Array[Double], name : String) -> Opt
 
 pub fn opt_grad_nesterov_series_len(s : OptgradnesterovSeries) -> Int { s.vals.length() }
 
-pub fn opt_grad_nesterov_series_sum(s : OptgradnesterovSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_grad_nesterov_series_sum(s : OptgradnesterovSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_grad_nesterov_series_mean(s : OptgradnesterovSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_grad_nesterov_frame_set(s : OptgradnesterovFrame, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_nesterov_frame_sum(s : OptgradnesterovFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_frame_sum(s : OptgradnesterovFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_frame_mean(s : OptgradnesterovFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_frame_mean(s : OptgradnesterovFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_frame_scale(s : OptgradnesterovFrame, f : Double) -> OptgradnesterovFrame {
   let result = opt_grad_nesterov_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_grad_nesterov_frame_fill(s : OptgradnesterovFrame, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nesterov_frame_min(s : OptgradnesterovFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_frame_min(s : OptgradnesterovFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_frame_max(s : OptgradnesterovFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_frame_max(s : OptgradnesterovFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_frame_to_string(s : OptgradnesterovFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_grad_nesterov_table_set(s : OptgradnesterovTable, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_nesterov_table_sum(s : OptgradnesterovTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_table_sum(s : OptgradnesterovTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_table_mean(s : OptgradnesterovTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_table_mean(s : OptgradnesterovTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_table_scale(s : OptgradnesterovTable, f : Double) -> OptgradnesterovTable {
   let result = opt_grad_nesterov_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_grad_nesterov_table_fill(s : OptgradnesterovTable, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nesterov_table_min(s : OptgradnesterovTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_table_min(s : OptgradnesterovTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_table_max(s : OptgradnesterovTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_table_max(s : OptgradnesterovTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_table_to_string(s : OptgradnesterovTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_grad_nesterov_graphn_set(s : OptgradnesterovGraphN, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_nesterov_graphn_sum(s : OptgradnesterovGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_graphn_sum(s : OptgradnesterovGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_graphn_mean(s : OptgradnesterovGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_graphn_mean(s : OptgradnesterovGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_graphn_scale(s : OptgradnesterovGraphN, f : Double) -> OptgradnesterovGraphN {
   let result = opt_grad_nesterov_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_grad_nesterov_graphn_fill(s : OptgradnesterovGraphN, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nesterov_graphn_min(s : OptgradnesterovGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_graphn_min(s : OptgradnesterovGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_graphn_max(s : OptgradnesterovGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_graphn_max(s : OptgradnesterovGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_graphn_to_string(s : OptgradnesterovGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_grad_nesterov_node_set(s : OptgradnesterovNode, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_nesterov_node_sum(s : OptgradnesterovNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_node_sum(s : OptgradnesterovNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_node_mean(s : OptgradnesterovNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_node_mean(s : OptgradnesterovNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_node_scale(s : OptgradnesterovNode, f : Double) -> OptgradnesterovNode {
   let result = opt_grad_nesterov_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_grad_nesterov_node_fill(s : OptgradnesterovNode, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_nesterov_node_min(s : OptgradnesterovNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_node_min(s : OptgradnesterovNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_node_max(s : OptgradnesterovNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_node_max(s : OptgradnesterovNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_node_to_string(s : OptgradnesterovNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_grad_nesterov_edge_set(s : OptgradnesterovEdge, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_nesterov_edge_sum(s : OptgradnesterovEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_edge_sum(s : OptgradnesterovEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_edge_mean(s : OptgradnesterovEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_edge_mean(s : OptgradnesterovEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_edge_scale(s : OptgradnesterovEdge, f : Double) -> OptgradnesterovEdge {
   let result = opt_grad_nesterov_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_grad_nesterov_edge_fill(s : OptgradnesterovEdge, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_nesterov_edge_min(s : OptgradnesterovEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_edge_min(s : OptgradnesterovEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_edge_max(s : OptgradnesterovEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_edge_max(s : OptgradnesterovEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_edge_to_string(s : OptgradnesterovEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_grad_nesterov_path_set(s : OptgradnesterovPath, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_nesterov_path_sum(s : OptgradnesterovPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_path_sum(s : OptgradnesterovPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_path_mean(s : OptgradnesterovPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_path_mean(s : OptgradnesterovPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_path_scale(s : OptgradnesterovPath, f : Double) -> OptgradnesterovPath {
   let result = opt_grad_nesterov_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_grad_nesterov_path_fill(s : OptgradnesterovPath, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_nesterov_path_min(s : OptgradnesterovPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_path_min(s : OptgradnesterovPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_path_max(s : OptgradnesterovPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_path_max(s : OptgradnesterovPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_path_to_string(s : OptgradnesterovPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_grad_nesterov_cluster_set(s : OptgradnesterovCluster, i : Int, v : Do
   result
 }
 
-pub fn opt_grad_nesterov_cluster_sum(s : OptgradnesterovCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_cluster_sum(s : OptgradnesterovCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_cluster_mean(s : OptgradnesterovCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_cluster_mean(s : OptgradnesterovCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_cluster_scale(s : OptgradnesterovCluster, f : Double) -> OptgradnesterovCluster {
   let result = opt_grad_nesterov_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_grad_nesterov_cluster_fill(s : OptgradnesterovCluster, v : Double) ->
   result
 }
 
-pub fn opt_grad_nesterov_cluster_min(s : OptgradnesterovCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_cluster_min(s : OptgradnesterovCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_cluster_max(s : OptgradnesterovCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_cluster_max(s : OptgradnesterovCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_cluster_to_string(s : OptgradnesterovCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_grad_nesterov_model_set(s : OptgradnesterovModel, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_nesterov_model_sum(s : OptgradnesterovModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_model_sum(s : OptgradnesterovModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_model_mean(s : OptgradnesterovModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_model_mean(s : OptgradnesterovModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_model_scale(s : OptgradnesterovModel, f : Double) -> OptgradnesterovModel {
   let result = opt_grad_nesterov_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_grad_nesterov_model_fill(s : OptgradnesterovModel, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nesterov_model_min(s : OptgradnesterovModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_model_min(s : OptgradnesterovModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_model_max(s : OptgradnesterovModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_model_max(s : OptgradnesterovModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_model_to_string(s : OptgradnesterovModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_grad_nesterov_layer_set(s : OptgradnesterovLayer, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_nesterov_layer_sum(s : OptgradnesterovLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_layer_sum(s : OptgradnesterovLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_layer_mean(s : OptgradnesterovLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_layer_mean(s : OptgradnesterovLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_layer_scale(s : OptgradnesterovLayer, f : Double) -> OptgradnesterovLayer {
   let result = opt_grad_nesterov_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_grad_nesterov_layer_fill(s : OptgradnesterovLayer, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nesterov_layer_min(s : OptgradnesterovLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_layer_min(s : OptgradnesterovLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_layer_max(s : OptgradnesterovLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_layer_max(s : OptgradnesterovLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_layer_to_string(s : OptgradnesterovLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_grad_nesterov_buffer_set(s : OptgradnesterovBuffer, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_nesterov_buffer_sum(s : OptgradnesterovBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_buffer_sum(s : OptgradnesterovBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_buffer_mean(s : OptgradnesterovBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_buffer_mean(s : OptgradnesterovBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_buffer_scale(s : OptgradnesterovBuffer, f : Double) -> OptgradnesterovBuffer {
   let result = opt_grad_nesterov_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_grad_nesterov_buffer_fill(s : OptgradnesterovBuffer, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nesterov_buffer_min(s : OptgradnesterovBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_buffer_min(s : OptgradnesterovBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_buffer_max(s : OptgradnesterovBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_buffer_max(s : OptgradnesterovBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_buffer_to_string(s : OptgradnesterovBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_grad_nesterov_cursor_set(s : OptgradnesterovCursor, i : Int, v : Doub
   result
 }
 
-pub fn opt_grad_nesterov_cursor_sum(s : OptgradnesterovCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_cursor_sum(s : OptgradnesterovCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_cursor_mean(s : OptgradnesterovCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_cursor_mean(s : OptgradnesterovCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_cursor_scale(s : OptgradnesterovCursor, f : Double) -> OptgradnesterovCursor {
   let result = opt_grad_nesterov_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_grad_nesterov_cursor_fill(s : OptgradnesterovCursor, v : Double) -> O
   result
 }
 
-pub fn opt_grad_nesterov_cursor_min(s : OptgradnesterovCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_cursor_min(s : OptgradnesterovCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_cursor_max(s : OptgradnesterovCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_cursor_max(s : OptgradnesterovCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_cursor_to_string(s : OptgradnesterovCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_grad_nesterov_view_set(s : OptgradnesterovView, i : Int, v : Double) 
   result
 }
 
-pub fn opt_grad_nesterov_view_sum(s : OptgradnesterovView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_view_sum(s : OptgradnesterovView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_view_mean(s : OptgradnesterovView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_view_mean(s : OptgradnesterovView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_view_scale(s : OptgradnesterovView, f : Double) -> OptgradnesterovView {
   let result = opt_grad_nesterov_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_grad_nesterov_view_fill(s : OptgradnesterovView, v : Double) -> Optgr
   result
 }
 
-pub fn opt_grad_nesterov_view_min(s : OptgradnesterovView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_view_min(s : OptgradnesterovView) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_view_max(s : OptgradnesterovView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_view_max(s : OptgradnesterovView) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_view_to_string(s : OptgradnesterovView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_grad_nesterov_range_set(s : OptgradnesterovRange, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_nesterov_range_sum(s : OptgradnesterovRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_range_sum(s : OptgradnesterovRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_range_mean(s : OptgradnesterovRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_range_mean(s : OptgradnesterovRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_range_scale(s : OptgradnesterovRange, f : Double) -> OptgradnesterovRange {
   let result = opt_grad_nesterov_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_grad_nesterov_range_fill(s : OptgradnesterovRange, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nesterov_range_min(s : OptgradnesterovRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_range_min(s : OptgradnesterovRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_range_max(s : OptgradnesterovRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_range_max(s : OptgradnesterovRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_range_to_string(s : OptgradnesterovRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_grad_nesterov_slice_set(s : OptgradnesterovSlice, i : Int, v : Double
   result
 }
 
-pub fn opt_grad_nesterov_slice_sum(s : OptgradnesterovSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_grad_nesterov_slice_sum(s : OptgradnesterovSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_grad_nesterov_slice_mean(s : OptgradnesterovSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_grad_nesterov_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_grad_nesterov_slice_mean(s : OptgradnesterovSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_grad_nesterov_slice_scale(s : OptgradnesterovSlice, f : Double) -> OptgradnesterovSlice {
   let result = opt_grad_nesterov_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_grad_nesterov_slice_fill(s : OptgradnesterovSlice, v : Double) -> Opt
   result
 }
 
-pub fn opt_grad_nesterov_slice_min(s : OptgradnesterovSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_slice_min(s : OptgradnesterovSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_grad_nesterov_slice_max(s : OptgradnesterovSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_grad_nesterov_slice_max(s : OptgradnesterovSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_grad_nesterov_slice_to_string(s : OptgradnesterovSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

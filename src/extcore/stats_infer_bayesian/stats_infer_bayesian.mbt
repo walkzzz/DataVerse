@@ -88,11 +88,7 @@ pub fn stats_infer_bayesian_make_series(vals : Array[Double], name : String) -> 
 
 pub fn stats_infer_bayesian_series_len(s : StatsinferbayesianSeries) -> Int { s.vals.length() }
 
-pub fn stats_infer_bayesian_series_sum(s : StatsinferbayesianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_infer_bayesian_series_sum(s : StatsinferbayesianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_infer_bayesian_series_mean(s : StatsinferbayesianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_infer_bayesian_frame_set(s : StatsinferbayesianFrame, i : Int, v : 
   result
 }
 
-pub fn stats_infer_bayesian_frame_sum(s : StatsinferbayesianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_frame_sum(s : StatsinferbayesianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_frame_mean(s : StatsinferbayesianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_frame_mean(s : StatsinferbayesianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_frame_scale(s : StatsinferbayesianFrame, f : Double) -> StatsinferbayesianFrame {
   let result = stats_infer_bayesian_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_infer_bayesian_frame_fill(s : StatsinferbayesianFrame, v : Double) 
   result
 }
 
-pub fn stats_infer_bayesian_frame_min(s : StatsinferbayesianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_frame_min(s : StatsinferbayesianFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_frame_max(s : StatsinferbayesianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_frame_max(s : StatsinferbayesianFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_frame_to_string(s : StatsinferbayesianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_infer_bayesian_table_set(s : StatsinferbayesianTable, i : Int, v : 
   result
 }
 
-pub fn stats_infer_bayesian_table_sum(s : StatsinferbayesianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_table_sum(s : StatsinferbayesianTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_table_mean(s : StatsinferbayesianTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_table_mean(s : StatsinferbayesianTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_table_scale(s : StatsinferbayesianTable, f : Double) -> StatsinferbayesianTable {
   let result = stats_infer_bayesian_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_infer_bayesian_table_fill(s : StatsinferbayesianTable, v : Double) 
   result
 }
 
-pub fn stats_infer_bayesian_table_min(s : StatsinferbayesianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_table_min(s : StatsinferbayesianTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_table_max(s : StatsinferbayesianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_table_max(s : StatsinferbayesianTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_table_to_string(s : StatsinferbayesianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_infer_bayesian_graphn_set(s : StatsinferbayesianGraphN, i : Int, v 
   result
 }
 
-pub fn stats_infer_bayesian_graphn_sum(s : StatsinferbayesianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_graphn_sum(s : StatsinferbayesianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_graphn_mean(s : StatsinferbayesianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_graphn_mean(s : StatsinferbayesianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_graphn_scale(s : StatsinferbayesianGraphN, f : Double) -> StatsinferbayesianGraphN {
   let result = stats_infer_bayesian_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_infer_bayesian_graphn_fill(s : StatsinferbayesianGraphN, v : Double
   result
 }
 
-pub fn stats_infer_bayesian_graphn_min(s : StatsinferbayesianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_graphn_min(s : StatsinferbayesianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_graphn_max(s : StatsinferbayesianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_graphn_max(s : StatsinferbayesianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_graphn_to_string(s : StatsinferbayesianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_infer_bayesian_node_set(s : StatsinferbayesianNode, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_bayesian_node_sum(s : StatsinferbayesianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_node_sum(s : StatsinferbayesianNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_node_mean(s : StatsinferbayesianNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_node_mean(s : StatsinferbayesianNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_node_scale(s : StatsinferbayesianNode, f : Double) -> StatsinferbayesianNode {
   let result = stats_infer_bayesian_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_infer_bayesian_node_fill(s : StatsinferbayesianNode, v : Double) ->
   result
 }
 
-pub fn stats_infer_bayesian_node_min(s : StatsinferbayesianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_node_min(s : StatsinferbayesianNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_node_max(s : StatsinferbayesianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_node_max(s : StatsinferbayesianNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_node_to_string(s : StatsinferbayesianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_infer_bayesian_edge_set(s : StatsinferbayesianEdge, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_bayesian_edge_sum(s : StatsinferbayesianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_edge_sum(s : StatsinferbayesianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_edge_mean(s : StatsinferbayesianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_edge_mean(s : StatsinferbayesianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_edge_scale(s : StatsinferbayesianEdge, f : Double) -> StatsinferbayesianEdge {
   let result = stats_infer_bayesian_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_infer_bayesian_edge_fill(s : StatsinferbayesianEdge, v : Double) ->
   result
 }
 
-pub fn stats_infer_bayesian_edge_min(s : StatsinferbayesianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_edge_min(s : StatsinferbayesianEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_edge_max(s : StatsinferbayesianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_edge_max(s : StatsinferbayesianEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_edge_to_string(s : StatsinferbayesianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_infer_bayesian_path_set(s : StatsinferbayesianPath, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_bayesian_path_sum(s : StatsinferbayesianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_path_sum(s : StatsinferbayesianPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_path_mean(s : StatsinferbayesianPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_path_mean(s : StatsinferbayesianPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_path_scale(s : StatsinferbayesianPath, f : Double) -> StatsinferbayesianPath {
   let result = stats_infer_bayesian_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_infer_bayesian_path_fill(s : StatsinferbayesianPath, v : Double) ->
   result
 }
 
-pub fn stats_infer_bayesian_path_min(s : StatsinferbayesianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_path_min(s : StatsinferbayesianPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_path_max(s : StatsinferbayesianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_path_max(s : StatsinferbayesianPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_path_to_string(s : StatsinferbayesianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_infer_bayesian_cluster_set(s : StatsinferbayesianCluster, i : Int, 
   result
 }
 
-pub fn stats_infer_bayesian_cluster_sum(s : StatsinferbayesianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_cluster_sum(s : StatsinferbayesianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_cluster_mean(s : StatsinferbayesianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_cluster_mean(s : StatsinferbayesianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_cluster_scale(s : StatsinferbayesianCluster, f : Double) -> StatsinferbayesianCluster {
   let result = stats_infer_bayesian_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_infer_bayesian_cluster_fill(s : StatsinferbayesianCluster, v : Doub
   result
 }
 
-pub fn stats_infer_bayesian_cluster_min(s : StatsinferbayesianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_cluster_min(s : StatsinferbayesianCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_cluster_max(s : StatsinferbayesianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_cluster_max(s : StatsinferbayesianCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_cluster_to_string(s : StatsinferbayesianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_infer_bayesian_model_set(s : StatsinferbayesianModel, i : Int, v : 
   result
 }
 
-pub fn stats_infer_bayesian_model_sum(s : StatsinferbayesianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_model_sum(s : StatsinferbayesianModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_model_mean(s : StatsinferbayesianModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_model_mean(s : StatsinferbayesianModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_model_scale(s : StatsinferbayesianModel, f : Double) -> StatsinferbayesianModel {
   let result = stats_infer_bayesian_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_infer_bayesian_model_fill(s : StatsinferbayesianModel, v : Double) 
   result
 }
 
-pub fn stats_infer_bayesian_model_min(s : StatsinferbayesianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_model_min(s : StatsinferbayesianModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_model_max(s : StatsinferbayesianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_model_max(s : StatsinferbayesianModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_model_to_string(s : StatsinferbayesianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_infer_bayesian_layer_set(s : StatsinferbayesianLayer, i : Int, v : 
   result
 }
 
-pub fn stats_infer_bayesian_layer_sum(s : StatsinferbayesianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_layer_sum(s : StatsinferbayesianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_layer_mean(s : StatsinferbayesianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_layer_mean(s : StatsinferbayesianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_layer_scale(s : StatsinferbayesianLayer, f : Double) -> StatsinferbayesianLayer {
   let result = stats_infer_bayesian_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_infer_bayesian_layer_fill(s : StatsinferbayesianLayer, v : Double) 
   result
 }
 
-pub fn stats_infer_bayesian_layer_min(s : StatsinferbayesianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_layer_min(s : StatsinferbayesianLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_layer_max(s : StatsinferbayesianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_layer_max(s : StatsinferbayesianLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_layer_to_string(s : StatsinferbayesianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_infer_bayesian_buffer_set(s : StatsinferbayesianBuffer, i : Int, v 
   result
 }
 
-pub fn stats_infer_bayesian_buffer_sum(s : StatsinferbayesianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_buffer_sum(s : StatsinferbayesianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_buffer_mean(s : StatsinferbayesianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_buffer_mean(s : StatsinferbayesianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_buffer_scale(s : StatsinferbayesianBuffer, f : Double) -> StatsinferbayesianBuffer {
   let result = stats_infer_bayesian_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_infer_bayesian_buffer_fill(s : StatsinferbayesianBuffer, v : Double
   result
 }
 
-pub fn stats_infer_bayesian_buffer_min(s : StatsinferbayesianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_buffer_min(s : StatsinferbayesianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_buffer_max(s : StatsinferbayesianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_buffer_max(s : StatsinferbayesianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_buffer_to_string(s : StatsinferbayesianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_infer_bayesian_cursor_set(s : StatsinferbayesianCursor, i : Int, v 
   result
 }
 
-pub fn stats_infer_bayesian_cursor_sum(s : StatsinferbayesianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_cursor_sum(s : StatsinferbayesianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_cursor_mean(s : StatsinferbayesianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_cursor_mean(s : StatsinferbayesianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_cursor_scale(s : StatsinferbayesianCursor, f : Double) -> StatsinferbayesianCursor {
   let result = stats_infer_bayesian_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_infer_bayesian_cursor_fill(s : StatsinferbayesianCursor, v : Double
   result
 }
 
-pub fn stats_infer_bayesian_cursor_min(s : StatsinferbayesianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_cursor_min(s : StatsinferbayesianCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_cursor_max(s : StatsinferbayesianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_cursor_max(s : StatsinferbayesianCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_cursor_to_string(s : StatsinferbayesianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_infer_bayesian_view_set(s : StatsinferbayesianView, i : Int, v : Do
   result
 }
 
-pub fn stats_infer_bayesian_view_sum(s : StatsinferbayesianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_view_sum(s : StatsinferbayesianView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_view_mean(s : StatsinferbayesianView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_view_mean(s : StatsinferbayesianView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_view_scale(s : StatsinferbayesianView, f : Double) -> StatsinferbayesianView {
   let result = stats_infer_bayesian_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_infer_bayesian_view_fill(s : StatsinferbayesianView, v : Double) ->
   result
 }
 
-pub fn stats_infer_bayesian_view_min(s : StatsinferbayesianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_view_min(s : StatsinferbayesianView) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_view_max(s : StatsinferbayesianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_view_max(s : StatsinferbayesianView) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_view_to_string(s : StatsinferbayesianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_infer_bayesian_range_set(s : StatsinferbayesianRange, i : Int, v : 
   result
 }
 
-pub fn stats_infer_bayesian_range_sum(s : StatsinferbayesianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_range_sum(s : StatsinferbayesianRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_range_mean(s : StatsinferbayesianRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_range_mean(s : StatsinferbayesianRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_range_scale(s : StatsinferbayesianRange, f : Double) -> StatsinferbayesianRange {
   let result = stats_infer_bayesian_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_infer_bayesian_range_fill(s : StatsinferbayesianRange, v : Double) 
   result
 }
 
-pub fn stats_infer_bayesian_range_min(s : StatsinferbayesianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_range_min(s : StatsinferbayesianRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_range_max(s : StatsinferbayesianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_range_max(s : StatsinferbayesianRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_range_to_string(s : StatsinferbayesianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_infer_bayesian_slice_set(s : StatsinferbayesianSlice, i : Int, v : 
   result
 }
 
-pub fn stats_infer_bayesian_slice_sum(s : StatsinferbayesianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_infer_bayesian_slice_sum(s : StatsinferbayesianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_infer_bayesian_slice_mean(s : StatsinferbayesianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_infer_bayesian_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_infer_bayesian_slice_mean(s : StatsinferbayesianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_infer_bayesian_slice_scale(s : StatsinferbayesianSlice, f : Double) -> StatsinferbayesianSlice {
   let result = stats_infer_bayesian_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_infer_bayesian_slice_fill(s : StatsinferbayesianSlice, v : Double) 
   result
 }
 
-pub fn stats_infer_bayesian_slice_min(s : StatsinferbayesianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_slice_min(s : StatsinferbayesianSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_infer_bayesian_slice_max(s : StatsinferbayesianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_infer_bayesian_slice_max(s : StatsinferbayesianSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_infer_bayesian_slice_to_string(s : StatsinferbayesianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

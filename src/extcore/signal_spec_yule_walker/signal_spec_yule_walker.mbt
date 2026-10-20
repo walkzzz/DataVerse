@@ -88,11 +88,7 @@ pub fn signal_spec_yule_walker_make_series(vals : Array[Double], name : String) 
 
 pub fn signal_spec_yule_walker_series_len(s : SignalspecyulewalkerSeries) -> Int { s.vals.length() }
 
-pub fn signal_spec_yule_walker_series_sum(s : SignalspecyulewalkerSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_spec_yule_walker_series_sum(s : SignalspecyulewalkerSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_spec_yule_walker_series_mean(s : SignalspecyulewalkerSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_spec_yule_walker_frame_set(s : SignalspecyulewalkerFrame, i : Int,
   result
 }
 
-pub fn signal_spec_yule_walker_frame_sum(s : SignalspecyulewalkerFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_frame_sum(s : SignalspecyulewalkerFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_frame_mean(s : SignalspecyulewalkerFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_frame_mean(s : SignalspecyulewalkerFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_frame_scale(s : SignalspecyulewalkerFrame, f : Double) -> SignalspecyulewalkerFrame {
   let result = signal_spec_yule_walker_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_spec_yule_walker_frame_fill(s : SignalspecyulewalkerFrame, v : Dou
   result
 }
 
-pub fn signal_spec_yule_walker_frame_min(s : SignalspecyulewalkerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_frame_min(s : SignalspecyulewalkerFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_frame_max(s : SignalspecyulewalkerFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_frame_max(s : SignalspecyulewalkerFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_frame_to_string(s : SignalspecyulewalkerFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_spec_yule_walker_table_set(s : SignalspecyulewalkerTable, i : Int,
   result
 }
 
-pub fn signal_spec_yule_walker_table_sum(s : SignalspecyulewalkerTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_table_sum(s : SignalspecyulewalkerTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_table_mean(s : SignalspecyulewalkerTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_table_mean(s : SignalspecyulewalkerTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_table_scale(s : SignalspecyulewalkerTable, f : Double) -> SignalspecyulewalkerTable {
   let result = signal_spec_yule_walker_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_spec_yule_walker_table_fill(s : SignalspecyulewalkerTable, v : Dou
   result
 }
 
-pub fn signal_spec_yule_walker_table_min(s : SignalspecyulewalkerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_table_min(s : SignalspecyulewalkerTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_table_max(s : SignalspecyulewalkerTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_table_max(s : SignalspecyulewalkerTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_table_to_string(s : SignalspecyulewalkerTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_spec_yule_walker_graphn_set(s : SignalspecyulewalkerGraphN, i : In
   result
 }
 
-pub fn signal_spec_yule_walker_graphn_sum(s : SignalspecyulewalkerGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_graphn_sum(s : SignalspecyulewalkerGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_graphn_mean(s : SignalspecyulewalkerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_graphn_mean(s : SignalspecyulewalkerGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_graphn_scale(s : SignalspecyulewalkerGraphN, f : Double) -> SignalspecyulewalkerGraphN {
   let result = signal_spec_yule_walker_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_spec_yule_walker_graphn_fill(s : SignalspecyulewalkerGraphN, v : D
   result
 }
 
-pub fn signal_spec_yule_walker_graphn_min(s : SignalspecyulewalkerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_graphn_min(s : SignalspecyulewalkerGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_graphn_max(s : SignalspecyulewalkerGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_graphn_max(s : SignalspecyulewalkerGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_graphn_to_string(s : SignalspecyulewalkerGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_spec_yule_walker_node_set(s : SignalspecyulewalkerNode, i : Int, v
   result
 }
 
-pub fn signal_spec_yule_walker_node_sum(s : SignalspecyulewalkerNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_node_sum(s : SignalspecyulewalkerNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_node_mean(s : SignalspecyulewalkerNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_node_mean(s : SignalspecyulewalkerNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_node_scale(s : SignalspecyulewalkerNode, f : Double) -> SignalspecyulewalkerNode {
   let result = signal_spec_yule_walker_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_spec_yule_walker_node_fill(s : SignalspecyulewalkerNode, v : Doubl
   result
 }
 
-pub fn signal_spec_yule_walker_node_min(s : SignalspecyulewalkerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_node_min(s : SignalspecyulewalkerNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_node_max(s : SignalspecyulewalkerNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_node_max(s : SignalspecyulewalkerNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_node_to_string(s : SignalspecyulewalkerNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_spec_yule_walker_edge_set(s : SignalspecyulewalkerEdge, i : Int, v
   result
 }
 
-pub fn signal_spec_yule_walker_edge_sum(s : SignalspecyulewalkerEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_edge_sum(s : SignalspecyulewalkerEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_edge_mean(s : SignalspecyulewalkerEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_edge_mean(s : SignalspecyulewalkerEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_edge_scale(s : SignalspecyulewalkerEdge, f : Double) -> SignalspecyulewalkerEdge {
   let result = signal_spec_yule_walker_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_spec_yule_walker_edge_fill(s : SignalspecyulewalkerEdge, v : Doubl
   result
 }
 
-pub fn signal_spec_yule_walker_edge_min(s : SignalspecyulewalkerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_edge_min(s : SignalspecyulewalkerEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_edge_max(s : SignalspecyulewalkerEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_edge_max(s : SignalspecyulewalkerEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_edge_to_string(s : SignalspecyulewalkerEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_spec_yule_walker_path_set(s : SignalspecyulewalkerPath, i : Int, v
   result
 }
 
-pub fn signal_spec_yule_walker_path_sum(s : SignalspecyulewalkerPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_path_sum(s : SignalspecyulewalkerPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_path_mean(s : SignalspecyulewalkerPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_path_mean(s : SignalspecyulewalkerPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_path_scale(s : SignalspecyulewalkerPath, f : Double) -> SignalspecyulewalkerPath {
   let result = signal_spec_yule_walker_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_spec_yule_walker_path_fill(s : SignalspecyulewalkerPath, v : Doubl
   result
 }
 
-pub fn signal_spec_yule_walker_path_min(s : SignalspecyulewalkerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_path_min(s : SignalspecyulewalkerPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_path_max(s : SignalspecyulewalkerPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_path_max(s : SignalspecyulewalkerPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_path_to_string(s : SignalspecyulewalkerPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_spec_yule_walker_cluster_set(s : SignalspecyulewalkerCluster, i : 
   result
 }
 
-pub fn signal_spec_yule_walker_cluster_sum(s : SignalspecyulewalkerCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_cluster_sum(s : SignalspecyulewalkerCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_cluster_mean(s : SignalspecyulewalkerCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_cluster_mean(s : SignalspecyulewalkerCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_cluster_scale(s : SignalspecyulewalkerCluster, f : Double) -> SignalspecyulewalkerCluster {
   let result = signal_spec_yule_walker_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_spec_yule_walker_cluster_fill(s : SignalspecyulewalkerCluster, v :
   result
 }
 
-pub fn signal_spec_yule_walker_cluster_min(s : SignalspecyulewalkerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_cluster_min(s : SignalspecyulewalkerCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_cluster_max(s : SignalspecyulewalkerCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_cluster_max(s : SignalspecyulewalkerCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_cluster_to_string(s : SignalspecyulewalkerCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_spec_yule_walker_model_set(s : SignalspecyulewalkerModel, i : Int,
   result
 }
 
-pub fn signal_spec_yule_walker_model_sum(s : SignalspecyulewalkerModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_model_sum(s : SignalspecyulewalkerModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_model_mean(s : SignalspecyulewalkerModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_model_mean(s : SignalspecyulewalkerModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_model_scale(s : SignalspecyulewalkerModel, f : Double) -> SignalspecyulewalkerModel {
   let result = signal_spec_yule_walker_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_spec_yule_walker_model_fill(s : SignalspecyulewalkerModel, v : Dou
   result
 }
 
-pub fn signal_spec_yule_walker_model_min(s : SignalspecyulewalkerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_model_min(s : SignalspecyulewalkerModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_model_max(s : SignalspecyulewalkerModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_model_max(s : SignalspecyulewalkerModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_model_to_string(s : SignalspecyulewalkerModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_spec_yule_walker_layer_set(s : SignalspecyulewalkerLayer, i : Int,
   result
 }
 
-pub fn signal_spec_yule_walker_layer_sum(s : SignalspecyulewalkerLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_layer_sum(s : SignalspecyulewalkerLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_layer_mean(s : SignalspecyulewalkerLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_layer_mean(s : SignalspecyulewalkerLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_layer_scale(s : SignalspecyulewalkerLayer, f : Double) -> SignalspecyulewalkerLayer {
   let result = signal_spec_yule_walker_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_spec_yule_walker_layer_fill(s : SignalspecyulewalkerLayer, v : Dou
   result
 }
 
-pub fn signal_spec_yule_walker_layer_min(s : SignalspecyulewalkerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_layer_min(s : SignalspecyulewalkerLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_layer_max(s : SignalspecyulewalkerLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_layer_max(s : SignalspecyulewalkerLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_layer_to_string(s : SignalspecyulewalkerLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_spec_yule_walker_buffer_set(s : SignalspecyulewalkerBuffer, i : In
   result
 }
 
-pub fn signal_spec_yule_walker_buffer_sum(s : SignalspecyulewalkerBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_buffer_sum(s : SignalspecyulewalkerBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_buffer_mean(s : SignalspecyulewalkerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_buffer_mean(s : SignalspecyulewalkerBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_buffer_scale(s : SignalspecyulewalkerBuffer, f : Double) -> SignalspecyulewalkerBuffer {
   let result = signal_spec_yule_walker_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_spec_yule_walker_buffer_fill(s : SignalspecyulewalkerBuffer, v : D
   result
 }
 
-pub fn signal_spec_yule_walker_buffer_min(s : SignalspecyulewalkerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_buffer_min(s : SignalspecyulewalkerBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_buffer_max(s : SignalspecyulewalkerBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_buffer_max(s : SignalspecyulewalkerBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_buffer_to_string(s : SignalspecyulewalkerBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_spec_yule_walker_cursor_set(s : SignalspecyulewalkerCursor, i : In
   result
 }
 
-pub fn signal_spec_yule_walker_cursor_sum(s : SignalspecyulewalkerCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_cursor_sum(s : SignalspecyulewalkerCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_cursor_mean(s : SignalspecyulewalkerCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_cursor_mean(s : SignalspecyulewalkerCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_cursor_scale(s : SignalspecyulewalkerCursor, f : Double) -> SignalspecyulewalkerCursor {
   let result = signal_spec_yule_walker_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_spec_yule_walker_cursor_fill(s : SignalspecyulewalkerCursor, v : D
   result
 }
 
-pub fn signal_spec_yule_walker_cursor_min(s : SignalspecyulewalkerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_cursor_min(s : SignalspecyulewalkerCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_cursor_max(s : SignalspecyulewalkerCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_cursor_max(s : SignalspecyulewalkerCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_cursor_to_string(s : SignalspecyulewalkerCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_spec_yule_walker_view_set(s : SignalspecyulewalkerView, i : Int, v
   result
 }
 
-pub fn signal_spec_yule_walker_view_sum(s : SignalspecyulewalkerView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_view_sum(s : SignalspecyulewalkerView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_view_mean(s : SignalspecyulewalkerView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_view_mean(s : SignalspecyulewalkerView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_view_scale(s : SignalspecyulewalkerView, f : Double) -> SignalspecyulewalkerView {
   let result = signal_spec_yule_walker_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_spec_yule_walker_view_fill(s : SignalspecyulewalkerView, v : Doubl
   result
 }
 
-pub fn signal_spec_yule_walker_view_min(s : SignalspecyulewalkerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_view_min(s : SignalspecyulewalkerView) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_view_max(s : SignalspecyulewalkerView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_view_max(s : SignalspecyulewalkerView) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_view_to_string(s : SignalspecyulewalkerView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_spec_yule_walker_range_set(s : SignalspecyulewalkerRange, i : Int,
   result
 }
 
-pub fn signal_spec_yule_walker_range_sum(s : SignalspecyulewalkerRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_range_sum(s : SignalspecyulewalkerRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_range_mean(s : SignalspecyulewalkerRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_range_mean(s : SignalspecyulewalkerRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_range_scale(s : SignalspecyulewalkerRange, f : Double) -> SignalspecyulewalkerRange {
   let result = signal_spec_yule_walker_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_spec_yule_walker_range_fill(s : SignalspecyulewalkerRange, v : Dou
   result
 }
 
-pub fn signal_spec_yule_walker_range_min(s : SignalspecyulewalkerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_range_min(s : SignalspecyulewalkerRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_range_max(s : SignalspecyulewalkerRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_range_max(s : SignalspecyulewalkerRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_range_to_string(s : SignalspecyulewalkerRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_spec_yule_walker_slice_set(s : SignalspecyulewalkerSlice, i : Int,
   result
 }
 
-pub fn signal_spec_yule_walker_slice_sum(s : SignalspecyulewalkerSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_spec_yule_walker_slice_sum(s : SignalspecyulewalkerSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_spec_yule_walker_slice_mean(s : SignalspecyulewalkerSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_spec_yule_walker_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_spec_yule_walker_slice_mean(s : SignalspecyulewalkerSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_spec_yule_walker_slice_scale(s : SignalspecyulewalkerSlice, f : Double) -> SignalspecyulewalkerSlice {
   let result = signal_spec_yule_walker_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_spec_yule_walker_slice_fill(s : SignalspecyulewalkerSlice, v : Dou
   result
 }
 
-pub fn signal_spec_yule_walker_slice_min(s : SignalspecyulewalkerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_slice_min(s : SignalspecyulewalkerSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_spec_yule_walker_slice_max(s : SignalspecyulewalkerSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_spec_yule_walker_slice_max(s : SignalspecyulewalkerSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_spec_yule_walker_slice_to_string(s : SignalspecyulewalkerSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

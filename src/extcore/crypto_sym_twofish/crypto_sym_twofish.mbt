@@ -88,11 +88,7 @@ pub fn crypto_sym_twofish_make_series(vals : Array[Double], name : String) -> Cr
 
 pub fn crypto_sym_twofish_series_len(s : CryptosymtwofishSeries) -> Int { s.vals.length() }
 
-pub fn crypto_sym_twofish_series_sum(s : CryptosymtwofishSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn crypto_sym_twofish_series_sum(s : CryptosymtwofishSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn crypto_sym_twofish_series_mean(s : CryptosymtwofishSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn crypto_sym_twofish_frame_set(s : CryptosymtwofishFrame, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_twofish_frame_sum(s : CryptosymtwofishFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_frame_sum(s : CryptosymtwofishFrame) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_frame_mean(s : CryptosymtwofishFrame) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_frame_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_frame_mean(s : CryptosymtwofishFrame) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_frame_scale(s : CryptosymtwofishFrame, f : Double) -> CryptosymtwofishFrame {
   let result = crypto_sym_twofish_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn crypto_sym_twofish_frame_fill(s : CryptosymtwofishFrame, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_twofish_frame_min(s : CryptosymtwofishFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_frame_min(s : CryptosymtwofishFrame) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_frame_max(s : CryptosymtwofishFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_frame_max(s : CryptosymtwofishFrame) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_frame_to_string(s : CryptosymtwofishFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn crypto_sym_twofish_table_set(s : CryptosymtwofishTable, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_twofish_table_sum(s : CryptosymtwofishTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_table_sum(s : CryptosymtwofishTable) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_table_mean(s : CryptosymtwofishTable) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_table_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_table_mean(s : CryptosymtwofishTable) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_table_scale(s : CryptosymtwofishTable, f : Double) -> CryptosymtwofishTable {
   let result = crypto_sym_twofish_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn crypto_sym_twofish_table_fill(s : CryptosymtwofishTable, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_twofish_table_min(s : CryptosymtwofishTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_table_min(s : CryptosymtwofishTable) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_table_max(s : CryptosymtwofishTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_table_max(s : CryptosymtwofishTable) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_table_to_string(s : CryptosymtwofishTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn crypto_sym_twofish_graphn_set(s : CryptosymtwofishGraphN, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_twofish_graphn_sum(s : CryptosymtwofishGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_graphn_sum(s : CryptosymtwofishGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_graphn_mean(s : CryptosymtwofishGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_graphn_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_graphn_mean(s : CryptosymtwofishGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_graphn_scale(s : CryptosymtwofishGraphN, f : Double) -> CryptosymtwofishGraphN {
   let result = crypto_sym_twofish_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn crypto_sym_twofish_graphn_fill(s : CryptosymtwofishGraphN, v : Double) ->
   result
 }
 
-pub fn crypto_sym_twofish_graphn_min(s : CryptosymtwofishGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_graphn_min(s : CryptosymtwofishGraphN) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_graphn_max(s : CryptosymtwofishGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_graphn_max(s : CryptosymtwofishGraphN) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_graphn_to_string(s : CryptosymtwofishGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn crypto_sym_twofish_node_set(s : CryptosymtwofishNode, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_twofish_node_sum(s : CryptosymtwofishNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_node_sum(s : CryptosymtwofishNode) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_node_mean(s : CryptosymtwofishNode) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_node_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_node_mean(s : CryptosymtwofishNode) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_node_scale(s : CryptosymtwofishNode, f : Double) -> CryptosymtwofishNode {
   let result = crypto_sym_twofish_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn crypto_sym_twofish_node_fill(s : CryptosymtwofishNode, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_twofish_node_min(s : CryptosymtwofishNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_node_min(s : CryptosymtwofishNode) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_node_max(s : CryptosymtwofishNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_node_max(s : CryptosymtwofishNode) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_node_to_string(s : CryptosymtwofishNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn crypto_sym_twofish_edge_set(s : CryptosymtwofishEdge, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_twofish_edge_sum(s : CryptosymtwofishEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_edge_sum(s : CryptosymtwofishEdge) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_edge_mean(s : CryptosymtwofishEdge) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_edge_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_edge_mean(s : CryptosymtwofishEdge) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_edge_scale(s : CryptosymtwofishEdge, f : Double) -> CryptosymtwofishEdge {
   let result = crypto_sym_twofish_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn crypto_sym_twofish_edge_fill(s : CryptosymtwofishEdge, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_twofish_edge_min(s : CryptosymtwofishEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_edge_min(s : CryptosymtwofishEdge) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_edge_max(s : CryptosymtwofishEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_edge_max(s : CryptosymtwofishEdge) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_edge_to_string(s : CryptosymtwofishEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn crypto_sym_twofish_path_set(s : CryptosymtwofishPath, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_twofish_path_sum(s : CryptosymtwofishPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_path_sum(s : CryptosymtwofishPath) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_path_mean(s : CryptosymtwofishPath) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_path_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_path_mean(s : CryptosymtwofishPath) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_path_scale(s : CryptosymtwofishPath, f : Double) -> CryptosymtwofishPath {
   let result = crypto_sym_twofish_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn crypto_sym_twofish_path_fill(s : CryptosymtwofishPath, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_twofish_path_min(s : CryptosymtwofishPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_path_min(s : CryptosymtwofishPath) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_path_max(s : CryptosymtwofishPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_path_max(s : CryptosymtwofishPath) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_path_to_string(s : CryptosymtwofishPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn crypto_sym_twofish_cluster_set(s : CryptosymtwofishCluster, i : Int, v : 
   result
 }
 
-pub fn crypto_sym_twofish_cluster_sum(s : CryptosymtwofishCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_cluster_sum(s : CryptosymtwofishCluster) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_cluster_mean(s : CryptosymtwofishCluster) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_cluster_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_cluster_mean(s : CryptosymtwofishCluster) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_cluster_scale(s : CryptosymtwofishCluster, f : Double) -> CryptosymtwofishCluster {
   let result = crypto_sym_twofish_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn crypto_sym_twofish_cluster_fill(s : CryptosymtwofishCluster, v : Double) 
   result
 }
 
-pub fn crypto_sym_twofish_cluster_min(s : CryptosymtwofishCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_cluster_min(s : CryptosymtwofishCluster) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_cluster_max(s : CryptosymtwofishCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_cluster_max(s : CryptosymtwofishCluster) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_cluster_to_string(s : CryptosymtwofishCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn crypto_sym_twofish_model_set(s : CryptosymtwofishModel, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_twofish_model_sum(s : CryptosymtwofishModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_model_sum(s : CryptosymtwofishModel) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_model_mean(s : CryptosymtwofishModel) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_model_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_model_mean(s : CryptosymtwofishModel) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_model_scale(s : CryptosymtwofishModel, f : Double) -> CryptosymtwofishModel {
   let result = crypto_sym_twofish_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn crypto_sym_twofish_model_fill(s : CryptosymtwofishModel, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_twofish_model_min(s : CryptosymtwofishModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_model_min(s : CryptosymtwofishModel) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_model_max(s : CryptosymtwofishModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_model_max(s : CryptosymtwofishModel) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_model_to_string(s : CryptosymtwofishModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn crypto_sym_twofish_layer_set(s : CryptosymtwofishLayer, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_twofish_layer_sum(s : CryptosymtwofishLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_layer_sum(s : CryptosymtwofishLayer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_layer_mean(s : CryptosymtwofishLayer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_layer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_layer_mean(s : CryptosymtwofishLayer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_layer_scale(s : CryptosymtwofishLayer, f : Double) -> CryptosymtwofishLayer {
   let result = crypto_sym_twofish_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn crypto_sym_twofish_layer_fill(s : CryptosymtwofishLayer, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_twofish_layer_min(s : CryptosymtwofishLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_layer_min(s : CryptosymtwofishLayer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_layer_max(s : CryptosymtwofishLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_layer_max(s : CryptosymtwofishLayer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_layer_to_string(s : CryptosymtwofishLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn crypto_sym_twofish_buffer_set(s : CryptosymtwofishBuffer, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_twofish_buffer_sum(s : CryptosymtwofishBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_buffer_sum(s : CryptosymtwofishBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_buffer_mean(s : CryptosymtwofishBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_buffer_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_buffer_mean(s : CryptosymtwofishBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_buffer_scale(s : CryptosymtwofishBuffer, f : Double) -> CryptosymtwofishBuffer {
   let result = crypto_sym_twofish_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn crypto_sym_twofish_buffer_fill(s : CryptosymtwofishBuffer, v : Double) ->
   result
 }
 
-pub fn crypto_sym_twofish_buffer_min(s : CryptosymtwofishBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_buffer_min(s : CryptosymtwofishBuffer) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_buffer_max(s : CryptosymtwofishBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_buffer_max(s : CryptosymtwofishBuffer) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_buffer_to_string(s : CryptosymtwofishBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn crypto_sym_twofish_cursor_set(s : CryptosymtwofishCursor, i : Int, v : Do
   result
 }
 
-pub fn crypto_sym_twofish_cursor_sum(s : CryptosymtwofishCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_cursor_sum(s : CryptosymtwofishCursor) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_cursor_mean(s : CryptosymtwofishCursor) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_cursor_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_cursor_mean(s : CryptosymtwofishCursor) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_cursor_scale(s : CryptosymtwofishCursor, f : Double) -> CryptosymtwofishCursor {
   let result = crypto_sym_twofish_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn crypto_sym_twofish_cursor_fill(s : CryptosymtwofishCursor, v : Double) ->
   result
 }
 
-pub fn crypto_sym_twofish_cursor_min(s : CryptosymtwofishCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_cursor_min(s : CryptosymtwofishCursor) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_cursor_max(s : CryptosymtwofishCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_cursor_max(s : CryptosymtwofishCursor) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_cursor_to_string(s : CryptosymtwofishCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn crypto_sym_twofish_view_set(s : CryptosymtwofishView, i : Int, v : Double
   result
 }
 
-pub fn crypto_sym_twofish_view_sum(s : CryptosymtwofishView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_view_sum(s : CryptosymtwofishView) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_view_mean(s : CryptosymtwofishView) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_view_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_view_mean(s : CryptosymtwofishView) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_view_scale(s : CryptosymtwofishView, f : Double) -> CryptosymtwofishView {
   let result = crypto_sym_twofish_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn crypto_sym_twofish_view_fill(s : CryptosymtwofishView, v : Double) -> Cry
   result
 }
 
-pub fn crypto_sym_twofish_view_min(s : CryptosymtwofishView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_view_min(s : CryptosymtwofishView) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_view_max(s : CryptosymtwofishView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_view_max(s : CryptosymtwofishView) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_view_to_string(s : CryptosymtwofishView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn crypto_sym_twofish_range_set(s : CryptosymtwofishRange, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_twofish_range_sum(s : CryptosymtwofishRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_range_sum(s : CryptosymtwofishRange) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_range_mean(s : CryptosymtwofishRange) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_range_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_range_mean(s : CryptosymtwofishRange) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_range_scale(s : CryptosymtwofishRange, f : Double) -> CryptosymtwofishRange {
   let result = crypto_sym_twofish_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn crypto_sym_twofish_range_fill(s : CryptosymtwofishRange, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_twofish_range_min(s : CryptosymtwofishRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_range_min(s : CryptosymtwofishRange) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_range_max(s : CryptosymtwofishRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_range_max(s : CryptosymtwofishRange) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_range_to_string(s : CryptosymtwofishRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn crypto_sym_twofish_slice_set(s : CryptosymtwofishSlice, i : Int, v : Doub
   result
 }
 
-pub fn crypto_sym_twofish_slice_sum(s : CryptosymtwofishSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn crypto_sym_twofish_slice_sum(s : CryptosymtwofishSlice) -> Double { @_common.sum(s.data) }
 
-pub fn crypto_sym_twofish_slice_mean(s : CryptosymtwofishSlice) -> Double {
-  if s.size == 0 { 0.0 } else { crypto_sym_twofish_slice_sum(s) / s.size.to_double() }
-}
+pub fn crypto_sym_twofish_slice_mean(s : CryptosymtwofishSlice) -> Double { @_common.mean(s.data) }
 
 pub fn crypto_sym_twofish_slice_scale(s : CryptosymtwofishSlice, f : Double) -> CryptosymtwofishSlice {
   let result = crypto_sym_twofish_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn crypto_sym_twofish_slice_fill(s : CryptosymtwofishSlice, v : Double) -> C
   result
 }
 
-pub fn crypto_sym_twofish_slice_min(s : CryptosymtwofishSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_slice_min(s : CryptosymtwofishSlice) -> Double { @_common.min(s.data) }
 
-pub fn crypto_sym_twofish_slice_max(s : CryptosymtwofishSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn crypto_sym_twofish_slice_max(s : CryptosymtwofishSlice) -> Double { @_common.max(s.data) }
 
 pub fn crypto_sym_twofish_slice_to_string(s : CryptosymtwofishSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

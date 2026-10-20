@@ -88,11 +88,7 @@ pub fn ds_graph_directed_make_series(vals : Array[Double], name : String) -> Dsg
 
 pub fn ds_graph_directed_series_len(s : DsgraphdirectedSeries) -> Int { s.vals.length() }
 
-pub fn ds_graph_directed_series_sum(s : DsgraphdirectedSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ds_graph_directed_series_sum(s : DsgraphdirectedSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ds_graph_directed_series_mean(s : DsgraphdirectedSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ds_graph_directed_frame_set(s : DsgraphdirectedFrame, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_directed_frame_sum(s : DsgraphdirectedFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_frame_sum(s : DsgraphdirectedFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_frame_mean(s : DsgraphdirectedFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_frame_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_frame_mean(s : DsgraphdirectedFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_frame_scale(s : DsgraphdirectedFrame, f : Double) -> DsgraphdirectedFrame {
   let result = ds_graph_directed_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ds_graph_directed_frame_fill(s : DsgraphdirectedFrame, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_directed_frame_min(s : DsgraphdirectedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_frame_min(s : DsgraphdirectedFrame) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_frame_max(s : DsgraphdirectedFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_frame_max(s : DsgraphdirectedFrame) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_frame_to_string(s : DsgraphdirectedFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ds_graph_directed_table_set(s : DsgraphdirectedTable, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_directed_table_sum(s : DsgraphdirectedTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_table_sum(s : DsgraphdirectedTable) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_table_mean(s : DsgraphdirectedTable) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_table_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_table_mean(s : DsgraphdirectedTable) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_table_scale(s : DsgraphdirectedTable, f : Double) -> DsgraphdirectedTable {
   let result = ds_graph_directed_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ds_graph_directed_table_fill(s : DsgraphdirectedTable, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_directed_table_min(s : DsgraphdirectedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_table_min(s : DsgraphdirectedTable) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_table_max(s : DsgraphdirectedTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_table_max(s : DsgraphdirectedTable) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_table_to_string(s : DsgraphdirectedTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ds_graph_directed_graphn_set(s : DsgraphdirectedGraphN, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_directed_graphn_sum(s : DsgraphdirectedGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_graphn_sum(s : DsgraphdirectedGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_graphn_mean(s : DsgraphdirectedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_graphn_mean(s : DsgraphdirectedGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_graphn_scale(s : DsgraphdirectedGraphN, f : Double) -> DsgraphdirectedGraphN {
   let result = ds_graph_directed_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ds_graph_directed_graphn_fill(s : DsgraphdirectedGraphN, v : Double) -> D
   result
 }
 
-pub fn ds_graph_directed_graphn_min(s : DsgraphdirectedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_graphn_min(s : DsgraphdirectedGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_graphn_max(s : DsgraphdirectedGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_graphn_max(s : DsgraphdirectedGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_graphn_to_string(s : DsgraphdirectedGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ds_graph_directed_node_set(s : DsgraphdirectedNode, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_directed_node_sum(s : DsgraphdirectedNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_node_sum(s : DsgraphdirectedNode) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_node_mean(s : DsgraphdirectedNode) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_node_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_node_mean(s : DsgraphdirectedNode) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_node_scale(s : DsgraphdirectedNode, f : Double) -> DsgraphdirectedNode {
   let result = ds_graph_directed_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ds_graph_directed_node_fill(s : DsgraphdirectedNode, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_directed_node_min(s : DsgraphdirectedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_node_min(s : DsgraphdirectedNode) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_node_max(s : DsgraphdirectedNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_node_max(s : DsgraphdirectedNode) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_node_to_string(s : DsgraphdirectedNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ds_graph_directed_edge_set(s : DsgraphdirectedEdge, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_directed_edge_sum(s : DsgraphdirectedEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_edge_sum(s : DsgraphdirectedEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_edge_mean(s : DsgraphdirectedEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_edge_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_edge_mean(s : DsgraphdirectedEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_edge_scale(s : DsgraphdirectedEdge, f : Double) -> DsgraphdirectedEdge {
   let result = ds_graph_directed_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ds_graph_directed_edge_fill(s : DsgraphdirectedEdge, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_directed_edge_min(s : DsgraphdirectedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_edge_min(s : DsgraphdirectedEdge) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_edge_max(s : DsgraphdirectedEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_edge_max(s : DsgraphdirectedEdge) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_edge_to_string(s : DsgraphdirectedEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ds_graph_directed_path_set(s : DsgraphdirectedPath, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_directed_path_sum(s : DsgraphdirectedPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_path_sum(s : DsgraphdirectedPath) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_path_mean(s : DsgraphdirectedPath) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_path_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_path_mean(s : DsgraphdirectedPath) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_path_scale(s : DsgraphdirectedPath, f : Double) -> DsgraphdirectedPath {
   let result = ds_graph_directed_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ds_graph_directed_path_fill(s : DsgraphdirectedPath, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_directed_path_min(s : DsgraphdirectedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_path_min(s : DsgraphdirectedPath) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_path_max(s : DsgraphdirectedPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_path_max(s : DsgraphdirectedPath) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_path_to_string(s : DsgraphdirectedPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ds_graph_directed_cluster_set(s : DsgraphdirectedCluster, i : Int, v : Do
   result
 }
 
-pub fn ds_graph_directed_cluster_sum(s : DsgraphdirectedCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_cluster_sum(s : DsgraphdirectedCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_cluster_mean(s : DsgraphdirectedCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_cluster_mean(s : DsgraphdirectedCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_cluster_scale(s : DsgraphdirectedCluster, f : Double) -> DsgraphdirectedCluster {
   let result = ds_graph_directed_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ds_graph_directed_cluster_fill(s : DsgraphdirectedCluster, v : Double) ->
   result
 }
 
-pub fn ds_graph_directed_cluster_min(s : DsgraphdirectedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_cluster_min(s : DsgraphdirectedCluster) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_cluster_max(s : DsgraphdirectedCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_cluster_max(s : DsgraphdirectedCluster) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_cluster_to_string(s : DsgraphdirectedCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ds_graph_directed_model_set(s : DsgraphdirectedModel, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_directed_model_sum(s : DsgraphdirectedModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_model_sum(s : DsgraphdirectedModel) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_model_mean(s : DsgraphdirectedModel) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_model_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_model_mean(s : DsgraphdirectedModel) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_model_scale(s : DsgraphdirectedModel, f : Double) -> DsgraphdirectedModel {
   let result = ds_graph_directed_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ds_graph_directed_model_fill(s : DsgraphdirectedModel, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_directed_model_min(s : DsgraphdirectedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_model_min(s : DsgraphdirectedModel) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_model_max(s : DsgraphdirectedModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_model_max(s : DsgraphdirectedModel) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_model_to_string(s : DsgraphdirectedModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ds_graph_directed_layer_set(s : DsgraphdirectedLayer, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_directed_layer_sum(s : DsgraphdirectedLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_layer_sum(s : DsgraphdirectedLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_layer_mean(s : DsgraphdirectedLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_layer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_layer_mean(s : DsgraphdirectedLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_layer_scale(s : DsgraphdirectedLayer, f : Double) -> DsgraphdirectedLayer {
   let result = ds_graph_directed_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ds_graph_directed_layer_fill(s : DsgraphdirectedLayer, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_directed_layer_min(s : DsgraphdirectedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_layer_min(s : DsgraphdirectedLayer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_layer_max(s : DsgraphdirectedLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_layer_max(s : DsgraphdirectedLayer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_layer_to_string(s : DsgraphdirectedLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ds_graph_directed_buffer_set(s : DsgraphdirectedBuffer, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_directed_buffer_sum(s : DsgraphdirectedBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_buffer_sum(s : DsgraphdirectedBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_buffer_mean(s : DsgraphdirectedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_buffer_mean(s : DsgraphdirectedBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_buffer_scale(s : DsgraphdirectedBuffer, f : Double) -> DsgraphdirectedBuffer {
   let result = ds_graph_directed_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ds_graph_directed_buffer_fill(s : DsgraphdirectedBuffer, v : Double) -> D
   result
 }
 
-pub fn ds_graph_directed_buffer_min(s : DsgraphdirectedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_buffer_min(s : DsgraphdirectedBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_buffer_max(s : DsgraphdirectedBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_buffer_max(s : DsgraphdirectedBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_buffer_to_string(s : DsgraphdirectedBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ds_graph_directed_cursor_set(s : DsgraphdirectedCursor, i : Int, v : Doub
   result
 }
 
-pub fn ds_graph_directed_cursor_sum(s : DsgraphdirectedCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_cursor_sum(s : DsgraphdirectedCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_cursor_mean(s : DsgraphdirectedCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_cursor_mean(s : DsgraphdirectedCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_cursor_scale(s : DsgraphdirectedCursor, f : Double) -> DsgraphdirectedCursor {
   let result = ds_graph_directed_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ds_graph_directed_cursor_fill(s : DsgraphdirectedCursor, v : Double) -> D
   result
 }
 
-pub fn ds_graph_directed_cursor_min(s : DsgraphdirectedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_cursor_min(s : DsgraphdirectedCursor) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_cursor_max(s : DsgraphdirectedCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_cursor_max(s : DsgraphdirectedCursor) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_cursor_to_string(s : DsgraphdirectedCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ds_graph_directed_view_set(s : DsgraphdirectedView, i : Int, v : Double) 
   result
 }
 
-pub fn ds_graph_directed_view_sum(s : DsgraphdirectedView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_view_sum(s : DsgraphdirectedView) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_view_mean(s : DsgraphdirectedView) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_view_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_view_mean(s : DsgraphdirectedView) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_view_scale(s : DsgraphdirectedView, f : Double) -> DsgraphdirectedView {
   let result = ds_graph_directed_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ds_graph_directed_view_fill(s : DsgraphdirectedView, v : Double) -> Dsgra
   result
 }
 
-pub fn ds_graph_directed_view_min(s : DsgraphdirectedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_view_min(s : DsgraphdirectedView) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_view_max(s : DsgraphdirectedView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_view_max(s : DsgraphdirectedView) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_view_to_string(s : DsgraphdirectedView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ds_graph_directed_range_set(s : DsgraphdirectedRange, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_directed_range_sum(s : DsgraphdirectedRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_range_sum(s : DsgraphdirectedRange) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_range_mean(s : DsgraphdirectedRange) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_range_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_range_mean(s : DsgraphdirectedRange) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_range_scale(s : DsgraphdirectedRange, f : Double) -> DsgraphdirectedRange {
   let result = ds_graph_directed_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ds_graph_directed_range_fill(s : DsgraphdirectedRange, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_directed_range_min(s : DsgraphdirectedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_range_min(s : DsgraphdirectedRange) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_range_max(s : DsgraphdirectedRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_range_max(s : DsgraphdirectedRange) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_range_to_string(s : DsgraphdirectedRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ds_graph_directed_slice_set(s : DsgraphdirectedSlice, i : Int, v : Double
   result
 }
 
-pub fn ds_graph_directed_slice_sum(s : DsgraphdirectedSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ds_graph_directed_slice_sum(s : DsgraphdirectedSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ds_graph_directed_slice_mean(s : DsgraphdirectedSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ds_graph_directed_slice_sum(s) / s.size.to_double() }
-}
+pub fn ds_graph_directed_slice_mean(s : DsgraphdirectedSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ds_graph_directed_slice_scale(s : DsgraphdirectedSlice, f : Double) -> DsgraphdirectedSlice {
   let result = ds_graph_directed_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ds_graph_directed_slice_fill(s : DsgraphdirectedSlice, v : Double) -> Dsg
   result
 }
 
-pub fn ds_graph_directed_slice_min(s : DsgraphdirectedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_slice_min(s : DsgraphdirectedSlice) -> Double { @_common.min(s.data) }
 
-pub fn ds_graph_directed_slice_max(s : DsgraphdirectedSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ds_graph_directed_slice_max(s : DsgraphdirectedSlice) -> Double { @_common.max(s.data) }
 
 pub fn ds_graph_directed_slice_to_string(s : DsgraphdirectedSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

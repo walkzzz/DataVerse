@@ -88,11 +88,7 @@ pub fn physics_fluid_turbulence_make_series(vals : Array[Double], name : String)
 
 pub fn physics_fluid_turbulence_series_len(s : PhysicsfluidturbulenceSeries) -> Int { s.vals.length() }
 
-pub fn physics_fluid_turbulence_series_sum(s : PhysicsfluidturbulenceSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_fluid_turbulence_series_sum(s : PhysicsfluidturbulenceSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_fluid_turbulence_series_mean(s : PhysicsfluidturbulenceSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_fluid_turbulence_frame_set(s : PhysicsfluidturbulenceFrame, i : I
   result
 }
 
-pub fn physics_fluid_turbulence_frame_sum(s : PhysicsfluidturbulenceFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_frame_sum(s : PhysicsfluidturbulenceFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_frame_mean(s : PhysicsfluidturbulenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_frame_mean(s : PhysicsfluidturbulenceFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_frame_scale(s : PhysicsfluidturbulenceFrame, f : Double) -> PhysicsfluidturbulenceFrame {
   let result = physics_fluid_turbulence_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_fluid_turbulence_frame_fill(s : PhysicsfluidturbulenceFrame, v : 
   result
 }
 
-pub fn physics_fluid_turbulence_frame_min(s : PhysicsfluidturbulenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_frame_min(s : PhysicsfluidturbulenceFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_frame_max(s : PhysicsfluidturbulenceFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_frame_max(s : PhysicsfluidturbulenceFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_frame_to_string(s : PhysicsfluidturbulenceFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_fluid_turbulence_table_set(s : PhysicsfluidturbulenceTable, i : I
   result
 }
 
-pub fn physics_fluid_turbulence_table_sum(s : PhysicsfluidturbulenceTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_table_sum(s : PhysicsfluidturbulenceTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_table_mean(s : PhysicsfluidturbulenceTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_table_mean(s : PhysicsfluidturbulenceTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_table_scale(s : PhysicsfluidturbulenceTable, f : Double) -> PhysicsfluidturbulenceTable {
   let result = physics_fluid_turbulence_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_fluid_turbulence_table_fill(s : PhysicsfluidturbulenceTable, v : 
   result
 }
 
-pub fn physics_fluid_turbulence_table_min(s : PhysicsfluidturbulenceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_table_min(s : PhysicsfluidturbulenceTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_table_max(s : PhysicsfluidturbulenceTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_table_max(s : PhysicsfluidturbulenceTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_table_to_string(s : PhysicsfluidturbulenceTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_fluid_turbulence_graphn_set(s : PhysicsfluidturbulenceGraphN, i :
   result
 }
 
-pub fn physics_fluid_turbulence_graphn_sum(s : PhysicsfluidturbulenceGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_graphn_sum(s : PhysicsfluidturbulenceGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_graphn_mean(s : PhysicsfluidturbulenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_graphn_mean(s : PhysicsfluidturbulenceGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_graphn_scale(s : PhysicsfluidturbulenceGraphN, f : Double) -> PhysicsfluidturbulenceGraphN {
   let result = physics_fluid_turbulence_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_fluid_turbulence_graphn_fill(s : PhysicsfluidturbulenceGraphN, v 
   result
 }
 
-pub fn physics_fluid_turbulence_graphn_min(s : PhysicsfluidturbulenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_graphn_min(s : PhysicsfluidturbulenceGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_graphn_max(s : PhysicsfluidturbulenceGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_graphn_max(s : PhysicsfluidturbulenceGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_graphn_to_string(s : PhysicsfluidturbulenceGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_fluid_turbulence_node_set(s : PhysicsfluidturbulenceNode, i : Int
   result
 }
 
-pub fn physics_fluid_turbulence_node_sum(s : PhysicsfluidturbulenceNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_node_sum(s : PhysicsfluidturbulenceNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_node_mean(s : PhysicsfluidturbulenceNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_node_mean(s : PhysicsfluidturbulenceNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_node_scale(s : PhysicsfluidturbulenceNode, f : Double) -> PhysicsfluidturbulenceNode {
   let result = physics_fluid_turbulence_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_fluid_turbulence_node_fill(s : PhysicsfluidturbulenceNode, v : Do
   result
 }
 
-pub fn physics_fluid_turbulence_node_min(s : PhysicsfluidturbulenceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_node_min(s : PhysicsfluidturbulenceNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_node_max(s : PhysicsfluidturbulenceNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_node_max(s : PhysicsfluidturbulenceNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_node_to_string(s : PhysicsfluidturbulenceNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_fluid_turbulence_edge_set(s : PhysicsfluidturbulenceEdge, i : Int
   result
 }
 
-pub fn physics_fluid_turbulence_edge_sum(s : PhysicsfluidturbulenceEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_edge_sum(s : PhysicsfluidturbulenceEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_edge_mean(s : PhysicsfluidturbulenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_edge_mean(s : PhysicsfluidturbulenceEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_edge_scale(s : PhysicsfluidturbulenceEdge, f : Double) -> PhysicsfluidturbulenceEdge {
   let result = physics_fluid_turbulence_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_fluid_turbulence_edge_fill(s : PhysicsfluidturbulenceEdge, v : Do
   result
 }
 
-pub fn physics_fluid_turbulence_edge_min(s : PhysicsfluidturbulenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_edge_min(s : PhysicsfluidturbulenceEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_edge_max(s : PhysicsfluidturbulenceEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_edge_max(s : PhysicsfluidturbulenceEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_edge_to_string(s : PhysicsfluidturbulenceEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_fluid_turbulence_path_set(s : PhysicsfluidturbulencePath, i : Int
   result
 }
 
-pub fn physics_fluid_turbulence_path_sum(s : PhysicsfluidturbulencePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_path_sum(s : PhysicsfluidturbulencePath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_path_mean(s : PhysicsfluidturbulencePath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_path_mean(s : PhysicsfluidturbulencePath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_path_scale(s : PhysicsfluidturbulencePath, f : Double) -> PhysicsfluidturbulencePath {
   let result = physics_fluid_turbulence_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_fluid_turbulence_path_fill(s : PhysicsfluidturbulencePath, v : Do
   result
 }
 
-pub fn physics_fluid_turbulence_path_min(s : PhysicsfluidturbulencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_path_min(s : PhysicsfluidturbulencePath) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_path_max(s : PhysicsfluidturbulencePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_path_max(s : PhysicsfluidturbulencePath) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_path_to_string(s : PhysicsfluidturbulencePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_fluid_turbulence_cluster_set(s : PhysicsfluidturbulenceCluster, i
   result
 }
 
-pub fn physics_fluid_turbulence_cluster_sum(s : PhysicsfluidturbulenceCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_cluster_sum(s : PhysicsfluidturbulenceCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_cluster_mean(s : PhysicsfluidturbulenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_cluster_mean(s : PhysicsfluidturbulenceCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_cluster_scale(s : PhysicsfluidturbulenceCluster, f : Double) -> PhysicsfluidturbulenceCluster {
   let result = physics_fluid_turbulence_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_fluid_turbulence_cluster_fill(s : PhysicsfluidturbulenceCluster, 
   result
 }
 
-pub fn physics_fluid_turbulence_cluster_min(s : PhysicsfluidturbulenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_cluster_min(s : PhysicsfluidturbulenceCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_cluster_max(s : PhysicsfluidturbulenceCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_cluster_max(s : PhysicsfluidturbulenceCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_cluster_to_string(s : PhysicsfluidturbulenceCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_fluid_turbulence_model_set(s : PhysicsfluidturbulenceModel, i : I
   result
 }
 
-pub fn physics_fluid_turbulence_model_sum(s : PhysicsfluidturbulenceModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_model_sum(s : PhysicsfluidturbulenceModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_model_mean(s : PhysicsfluidturbulenceModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_model_mean(s : PhysicsfluidturbulenceModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_model_scale(s : PhysicsfluidturbulenceModel, f : Double) -> PhysicsfluidturbulenceModel {
   let result = physics_fluid_turbulence_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_fluid_turbulence_model_fill(s : PhysicsfluidturbulenceModel, v : 
   result
 }
 
-pub fn physics_fluid_turbulence_model_min(s : PhysicsfluidturbulenceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_model_min(s : PhysicsfluidturbulenceModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_model_max(s : PhysicsfluidturbulenceModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_model_max(s : PhysicsfluidturbulenceModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_model_to_string(s : PhysicsfluidturbulenceModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_fluid_turbulence_layer_set(s : PhysicsfluidturbulenceLayer, i : I
   result
 }
 
-pub fn physics_fluid_turbulence_layer_sum(s : PhysicsfluidturbulenceLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_layer_sum(s : PhysicsfluidturbulenceLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_layer_mean(s : PhysicsfluidturbulenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_layer_mean(s : PhysicsfluidturbulenceLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_layer_scale(s : PhysicsfluidturbulenceLayer, f : Double) -> PhysicsfluidturbulenceLayer {
   let result = physics_fluid_turbulence_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_fluid_turbulence_layer_fill(s : PhysicsfluidturbulenceLayer, v : 
   result
 }
 
-pub fn physics_fluid_turbulence_layer_min(s : PhysicsfluidturbulenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_layer_min(s : PhysicsfluidturbulenceLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_layer_max(s : PhysicsfluidturbulenceLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_layer_max(s : PhysicsfluidturbulenceLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_layer_to_string(s : PhysicsfluidturbulenceLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_fluid_turbulence_buffer_set(s : PhysicsfluidturbulenceBuffer, i :
   result
 }
 
-pub fn physics_fluid_turbulence_buffer_sum(s : PhysicsfluidturbulenceBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_buffer_sum(s : PhysicsfluidturbulenceBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_buffer_mean(s : PhysicsfluidturbulenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_buffer_mean(s : PhysicsfluidturbulenceBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_buffer_scale(s : PhysicsfluidturbulenceBuffer, f : Double) -> PhysicsfluidturbulenceBuffer {
   let result = physics_fluid_turbulence_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_fluid_turbulence_buffer_fill(s : PhysicsfluidturbulenceBuffer, v 
   result
 }
 
-pub fn physics_fluid_turbulence_buffer_min(s : PhysicsfluidturbulenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_buffer_min(s : PhysicsfluidturbulenceBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_buffer_max(s : PhysicsfluidturbulenceBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_buffer_max(s : PhysicsfluidturbulenceBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_buffer_to_string(s : PhysicsfluidturbulenceBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_fluid_turbulence_cursor_set(s : PhysicsfluidturbulenceCursor, i :
   result
 }
 
-pub fn physics_fluid_turbulence_cursor_sum(s : PhysicsfluidturbulenceCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_cursor_sum(s : PhysicsfluidturbulenceCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_cursor_mean(s : PhysicsfluidturbulenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_cursor_mean(s : PhysicsfluidturbulenceCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_cursor_scale(s : PhysicsfluidturbulenceCursor, f : Double) -> PhysicsfluidturbulenceCursor {
   let result = physics_fluid_turbulence_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_fluid_turbulence_cursor_fill(s : PhysicsfluidturbulenceCursor, v 
   result
 }
 
-pub fn physics_fluid_turbulence_cursor_min(s : PhysicsfluidturbulenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_cursor_min(s : PhysicsfluidturbulenceCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_cursor_max(s : PhysicsfluidturbulenceCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_cursor_max(s : PhysicsfluidturbulenceCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_cursor_to_string(s : PhysicsfluidturbulenceCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_fluid_turbulence_view_set(s : PhysicsfluidturbulenceView, i : Int
   result
 }
 
-pub fn physics_fluid_turbulence_view_sum(s : PhysicsfluidturbulenceView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_view_sum(s : PhysicsfluidturbulenceView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_view_mean(s : PhysicsfluidturbulenceView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_view_mean(s : PhysicsfluidturbulenceView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_view_scale(s : PhysicsfluidturbulenceView, f : Double) -> PhysicsfluidturbulenceView {
   let result = physics_fluid_turbulence_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_fluid_turbulence_view_fill(s : PhysicsfluidturbulenceView, v : Do
   result
 }
 
-pub fn physics_fluid_turbulence_view_min(s : PhysicsfluidturbulenceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_view_min(s : PhysicsfluidturbulenceView) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_view_max(s : PhysicsfluidturbulenceView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_view_max(s : PhysicsfluidturbulenceView) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_view_to_string(s : PhysicsfluidturbulenceView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_fluid_turbulence_range_set(s : PhysicsfluidturbulenceRange, i : I
   result
 }
 
-pub fn physics_fluid_turbulence_range_sum(s : PhysicsfluidturbulenceRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_range_sum(s : PhysicsfluidturbulenceRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_range_mean(s : PhysicsfluidturbulenceRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_range_mean(s : PhysicsfluidturbulenceRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_range_scale(s : PhysicsfluidturbulenceRange, f : Double) -> PhysicsfluidturbulenceRange {
   let result = physics_fluid_turbulence_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_fluid_turbulence_range_fill(s : PhysicsfluidturbulenceRange, v : 
   result
 }
 
-pub fn physics_fluid_turbulence_range_min(s : PhysicsfluidturbulenceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_range_min(s : PhysicsfluidturbulenceRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_range_max(s : PhysicsfluidturbulenceRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_range_max(s : PhysicsfluidturbulenceRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_range_to_string(s : PhysicsfluidturbulenceRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_fluid_turbulence_slice_set(s : PhysicsfluidturbulenceSlice, i : I
   result
 }
 
-pub fn physics_fluid_turbulence_slice_sum(s : PhysicsfluidturbulenceSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_fluid_turbulence_slice_sum(s : PhysicsfluidturbulenceSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_fluid_turbulence_slice_mean(s : PhysicsfluidturbulenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_fluid_turbulence_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_fluid_turbulence_slice_mean(s : PhysicsfluidturbulenceSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_fluid_turbulence_slice_scale(s : PhysicsfluidturbulenceSlice, f : Double) -> PhysicsfluidturbulenceSlice {
   let result = physics_fluid_turbulence_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_fluid_turbulence_slice_fill(s : PhysicsfluidturbulenceSlice, v : 
   result
 }
 
-pub fn physics_fluid_turbulence_slice_min(s : PhysicsfluidturbulenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_slice_min(s : PhysicsfluidturbulenceSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_fluid_turbulence_slice_max(s : PhysicsfluidturbulenceSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_fluid_turbulence_slice_max(s : PhysicsfluidturbulenceSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_fluid_turbulence_slice_to_string(s : PhysicsfluidturbulenceSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

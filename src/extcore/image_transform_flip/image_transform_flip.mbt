@@ -88,11 +88,7 @@ pub fn image_transform_flip_make_series(vals : Array[Double], name : String) -> 
 
 pub fn image_transform_flip_series_len(s : ImagetransformflipSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_flip_series_sum(s : ImagetransformflipSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_flip_series_sum(s : ImagetransformflipSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_flip_series_mean(s : ImagetransformflipSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_flip_frame_set(s : ImagetransformflipFrame, i : Int, v : 
   result
 }
 
-pub fn image_transform_flip_frame_sum(s : ImagetransformflipFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_frame_sum(s : ImagetransformflipFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_frame_mean(s : ImagetransformflipFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_frame_mean(s : ImagetransformflipFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_frame_scale(s : ImagetransformflipFrame, f : Double) -> ImagetransformflipFrame {
   let result = image_transform_flip_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_flip_frame_fill(s : ImagetransformflipFrame, v : Double) 
   result
 }
 
-pub fn image_transform_flip_frame_min(s : ImagetransformflipFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_frame_min(s : ImagetransformflipFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_frame_max(s : ImagetransformflipFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_frame_max(s : ImagetransformflipFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_frame_to_string(s : ImagetransformflipFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_flip_table_set(s : ImagetransformflipTable, i : Int, v : 
   result
 }
 
-pub fn image_transform_flip_table_sum(s : ImagetransformflipTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_table_sum(s : ImagetransformflipTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_table_mean(s : ImagetransformflipTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_table_mean(s : ImagetransformflipTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_table_scale(s : ImagetransformflipTable, f : Double) -> ImagetransformflipTable {
   let result = image_transform_flip_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_flip_table_fill(s : ImagetransformflipTable, v : Double) 
   result
 }
 
-pub fn image_transform_flip_table_min(s : ImagetransformflipTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_table_min(s : ImagetransformflipTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_table_max(s : ImagetransformflipTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_table_max(s : ImagetransformflipTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_table_to_string(s : ImagetransformflipTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_flip_graphn_set(s : ImagetransformflipGraphN, i : Int, v 
   result
 }
 
-pub fn image_transform_flip_graphn_sum(s : ImagetransformflipGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_graphn_sum(s : ImagetransformflipGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_graphn_mean(s : ImagetransformflipGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_graphn_mean(s : ImagetransformflipGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_graphn_scale(s : ImagetransformflipGraphN, f : Double) -> ImagetransformflipGraphN {
   let result = image_transform_flip_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_flip_graphn_fill(s : ImagetransformflipGraphN, v : Double
   result
 }
 
-pub fn image_transform_flip_graphn_min(s : ImagetransformflipGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_graphn_min(s : ImagetransformflipGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_graphn_max(s : ImagetransformflipGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_graphn_max(s : ImagetransformflipGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_graphn_to_string(s : ImagetransformflipGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_flip_node_set(s : ImagetransformflipNode, i : Int, v : Do
   result
 }
 
-pub fn image_transform_flip_node_sum(s : ImagetransformflipNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_node_sum(s : ImagetransformflipNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_node_mean(s : ImagetransformflipNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_node_mean(s : ImagetransformflipNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_node_scale(s : ImagetransformflipNode, f : Double) -> ImagetransformflipNode {
   let result = image_transform_flip_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_flip_node_fill(s : ImagetransformflipNode, v : Double) ->
   result
 }
 
-pub fn image_transform_flip_node_min(s : ImagetransformflipNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_node_min(s : ImagetransformflipNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_node_max(s : ImagetransformflipNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_node_max(s : ImagetransformflipNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_node_to_string(s : ImagetransformflipNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_flip_edge_set(s : ImagetransformflipEdge, i : Int, v : Do
   result
 }
 
-pub fn image_transform_flip_edge_sum(s : ImagetransformflipEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_edge_sum(s : ImagetransformflipEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_edge_mean(s : ImagetransformflipEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_edge_mean(s : ImagetransformflipEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_edge_scale(s : ImagetransformflipEdge, f : Double) -> ImagetransformflipEdge {
   let result = image_transform_flip_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_flip_edge_fill(s : ImagetransformflipEdge, v : Double) ->
   result
 }
 
-pub fn image_transform_flip_edge_min(s : ImagetransformflipEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_edge_min(s : ImagetransformflipEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_edge_max(s : ImagetransformflipEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_edge_max(s : ImagetransformflipEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_edge_to_string(s : ImagetransformflipEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_flip_path_set(s : ImagetransformflipPath, i : Int, v : Do
   result
 }
 
-pub fn image_transform_flip_path_sum(s : ImagetransformflipPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_path_sum(s : ImagetransformflipPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_path_mean(s : ImagetransformflipPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_path_mean(s : ImagetransformflipPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_path_scale(s : ImagetransformflipPath, f : Double) -> ImagetransformflipPath {
   let result = image_transform_flip_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_flip_path_fill(s : ImagetransformflipPath, v : Double) ->
   result
 }
 
-pub fn image_transform_flip_path_min(s : ImagetransformflipPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_path_min(s : ImagetransformflipPath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_path_max(s : ImagetransformflipPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_path_max(s : ImagetransformflipPath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_path_to_string(s : ImagetransformflipPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_flip_cluster_set(s : ImagetransformflipCluster, i : Int, 
   result
 }
 
-pub fn image_transform_flip_cluster_sum(s : ImagetransformflipCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_cluster_sum(s : ImagetransformflipCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_cluster_mean(s : ImagetransformflipCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_cluster_mean(s : ImagetransformflipCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_cluster_scale(s : ImagetransformflipCluster, f : Double) -> ImagetransformflipCluster {
   let result = image_transform_flip_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_flip_cluster_fill(s : ImagetransformflipCluster, v : Doub
   result
 }
 
-pub fn image_transform_flip_cluster_min(s : ImagetransformflipCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_cluster_min(s : ImagetransformflipCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_cluster_max(s : ImagetransformflipCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_cluster_max(s : ImagetransformflipCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_cluster_to_string(s : ImagetransformflipCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_flip_model_set(s : ImagetransformflipModel, i : Int, v : 
   result
 }
 
-pub fn image_transform_flip_model_sum(s : ImagetransformflipModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_model_sum(s : ImagetransformflipModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_model_mean(s : ImagetransformflipModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_model_mean(s : ImagetransformflipModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_model_scale(s : ImagetransformflipModel, f : Double) -> ImagetransformflipModel {
   let result = image_transform_flip_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_flip_model_fill(s : ImagetransformflipModel, v : Double) 
   result
 }
 
-pub fn image_transform_flip_model_min(s : ImagetransformflipModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_model_min(s : ImagetransformflipModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_model_max(s : ImagetransformflipModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_model_max(s : ImagetransformflipModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_model_to_string(s : ImagetransformflipModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_flip_layer_set(s : ImagetransformflipLayer, i : Int, v : 
   result
 }
 
-pub fn image_transform_flip_layer_sum(s : ImagetransformflipLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_layer_sum(s : ImagetransformflipLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_layer_mean(s : ImagetransformflipLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_layer_mean(s : ImagetransformflipLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_layer_scale(s : ImagetransformflipLayer, f : Double) -> ImagetransformflipLayer {
   let result = image_transform_flip_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_flip_layer_fill(s : ImagetransformflipLayer, v : Double) 
   result
 }
 
-pub fn image_transform_flip_layer_min(s : ImagetransformflipLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_layer_min(s : ImagetransformflipLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_layer_max(s : ImagetransformflipLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_layer_max(s : ImagetransformflipLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_layer_to_string(s : ImagetransformflipLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_flip_buffer_set(s : ImagetransformflipBuffer, i : Int, v 
   result
 }
 
-pub fn image_transform_flip_buffer_sum(s : ImagetransformflipBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_buffer_sum(s : ImagetransformflipBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_buffer_mean(s : ImagetransformflipBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_buffer_mean(s : ImagetransformflipBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_buffer_scale(s : ImagetransformflipBuffer, f : Double) -> ImagetransformflipBuffer {
   let result = image_transform_flip_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_flip_buffer_fill(s : ImagetransformflipBuffer, v : Double
   result
 }
 
-pub fn image_transform_flip_buffer_min(s : ImagetransformflipBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_buffer_min(s : ImagetransformflipBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_buffer_max(s : ImagetransformflipBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_buffer_max(s : ImagetransformflipBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_buffer_to_string(s : ImagetransformflipBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_flip_cursor_set(s : ImagetransformflipCursor, i : Int, v 
   result
 }
 
-pub fn image_transform_flip_cursor_sum(s : ImagetransformflipCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_cursor_sum(s : ImagetransformflipCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_cursor_mean(s : ImagetransformflipCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_cursor_mean(s : ImagetransformflipCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_cursor_scale(s : ImagetransformflipCursor, f : Double) -> ImagetransformflipCursor {
   let result = image_transform_flip_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_flip_cursor_fill(s : ImagetransformflipCursor, v : Double
   result
 }
 
-pub fn image_transform_flip_cursor_min(s : ImagetransformflipCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_cursor_min(s : ImagetransformflipCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_cursor_max(s : ImagetransformflipCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_cursor_max(s : ImagetransformflipCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_cursor_to_string(s : ImagetransformflipCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_flip_view_set(s : ImagetransformflipView, i : Int, v : Do
   result
 }
 
-pub fn image_transform_flip_view_sum(s : ImagetransformflipView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_view_sum(s : ImagetransformflipView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_view_mean(s : ImagetransformflipView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_view_mean(s : ImagetransformflipView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_view_scale(s : ImagetransformflipView, f : Double) -> ImagetransformflipView {
   let result = image_transform_flip_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_flip_view_fill(s : ImagetransformflipView, v : Double) ->
   result
 }
 
-pub fn image_transform_flip_view_min(s : ImagetransformflipView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_view_min(s : ImagetransformflipView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_view_max(s : ImagetransformflipView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_view_max(s : ImagetransformflipView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_view_to_string(s : ImagetransformflipView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_flip_range_set(s : ImagetransformflipRange, i : Int, v : 
   result
 }
 
-pub fn image_transform_flip_range_sum(s : ImagetransformflipRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_range_sum(s : ImagetransformflipRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_range_mean(s : ImagetransformflipRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_range_mean(s : ImagetransformflipRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_range_scale(s : ImagetransformflipRange, f : Double) -> ImagetransformflipRange {
   let result = image_transform_flip_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_flip_range_fill(s : ImagetransformflipRange, v : Double) 
   result
 }
 
-pub fn image_transform_flip_range_min(s : ImagetransformflipRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_range_min(s : ImagetransformflipRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_range_max(s : ImagetransformflipRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_range_max(s : ImagetransformflipRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_range_to_string(s : ImagetransformflipRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_flip_slice_set(s : ImagetransformflipSlice, i : Int, v : 
   result
 }
 
-pub fn image_transform_flip_slice_sum(s : ImagetransformflipSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_flip_slice_sum(s : ImagetransformflipSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_flip_slice_mean(s : ImagetransformflipSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_flip_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_flip_slice_mean(s : ImagetransformflipSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_flip_slice_scale(s : ImagetransformflipSlice, f : Double) -> ImagetransformflipSlice {
   let result = image_transform_flip_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_flip_slice_fill(s : ImagetransformflipSlice, v : Double) 
   result
 }
 
-pub fn image_transform_flip_slice_min(s : ImagetransformflipSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_slice_min(s : ImagetransformflipSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_flip_slice_max(s : ImagetransformflipSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_flip_slice_max(s : ImagetransformflipSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_flip_slice_to_string(s : ImagetransformflipSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

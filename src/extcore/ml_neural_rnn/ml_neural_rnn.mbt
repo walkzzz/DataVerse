@@ -88,11 +88,7 @@ pub fn ml_neural_rnn_make_series(vals : Array[Double], name : String) -> Mlneura
 
 pub fn ml_neural_rnn_series_len(s : MlneuralrnnSeries) -> Int { s.vals.length() }
 
-pub fn ml_neural_rnn_series_sum(s : MlneuralrnnSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_neural_rnn_series_sum(s : MlneuralrnnSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_neural_rnn_series_mean(s : MlneuralrnnSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_neural_rnn_frame_set(s : MlneuralrnnFrame, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_rnn_frame_sum(s : MlneuralrnnFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_frame_sum(s : MlneuralrnnFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_frame_mean(s : MlneuralrnnFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_frame_mean(s : MlneuralrnnFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_frame_scale(s : MlneuralrnnFrame, f : Double) -> MlneuralrnnFrame {
   let result = ml_neural_rnn_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_neural_rnn_frame_fill(s : MlneuralrnnFrame, v : Double) -> Mlneuralrnn
   result
 }
 
-pub fn ml_neural_rnn_frame_min(s : MlneuralrnnFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_frame_min(s : MlneuralrnnFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_frame_max(s : MlneuralrnnFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_frame_max(s : MlneuralrnnFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_frame_to_string(s : MlneuralrnnFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_neural_rnn_table_set(s : MlneuralrnnTable, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_rnn_table_sum(s : MlneuralrnnTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_table_sum(s : MlneuralrnnTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_table_mean(s : MlneuralrnnTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_table_mean(s : MlneuralrnnTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_table_scale(s : MlneuralrnnTable, f : Double) -> MlneuralrnnTable {
   let result = ml_neural_rnn_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_neural_rnn_table_fill(s : MlneuralrnnTable, v : Double) -> Mlneuralrnn
   result
 }
 
-pub fn ml_neural_rnn_table_min(s : MlneuralrnnTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_table_min(s : MlneuralrnnTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_table_max(s : MlneuralrnnTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_table_max(s : MlneuralrnnTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_table_to_string(s : MlneuralrnnTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_neural_rnn_graphn_set(s : MlneuralrnnGraphN, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_neural_rnn_graphn_sum(s : MlneuralrnnGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_graphn_sum(s : MlneuralrnnGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_graphn_mean(s : MlneuralrnnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_graphn_mean(s : MlneuralrnnGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_graphn_scale(s : MlneuralrnnGraphN, f : Double) -> MlneuralrnnGraphN {
   let result = ml_neural_rnn_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_neural_rnn_graphn_fill(s : MlneuralrnnGraphN, v : Double) -> Mlneuralr
   result
 }
 
-pub fn ml_neural_rnn_graphn_min(s : MlneuralrnnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_graphn_min(s : MlneuralrnnGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_graphn_max(s : MlneuralrnnGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_graphn_max(s : MlneuralrnnGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_graphn_to_string(s : MlneuralrnnGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_neural_rnn_node_set(s : MlneuralrnnNode, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_rnn_node_sum(s : MlneuralrnnNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_node_sum(s : MlneuralrnnNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_node_mean(s : MlneuralrnnNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_node_mean(s : MlneuralrnnNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_node_scale(s : MlneuralrnnNode, f : Double) -> MlneuralrnnNode {
   let result = ml_neural_rnn_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_neural_rnn_node_fill(s : MlneuralrnnNode, v : Double) -> MlneuralrnnNo
   result
 }
 
-pub fn ml_neural_rnn_node_min(s : MlneuralrnnNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_node_min(s : MlneuralrnnNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_node_max(s : MlneuralrnnNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_node_max(s : MlneuralrnnNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_node_to_string(s : MlneuralrnnNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_neural_rnn_edge_set(s : MlneuralrnnEdge, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_rnn_edge_sum(s : MlneuralrnnEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_edge_sum(s : MlneuralrnnEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_edge_mean(s : MlneuralrnnEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_edge_mean(s : MlneuralrnnEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_edge_scale(s : MlneuralrnnEdge, f : Double) -> MlneuralrnnEdge {
   let result = ml_neural_rnn_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_neural_rnn_edge_fill(s : MlneuralrnnEdge, v : Double) -> MlneuralrnnEd
   result
 }
 
-pub fn ml_neural_rnn_edge_min(s : MlneuralrnnEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_edge_min(s : MlneuralrnnEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_edge_max(s : MlneuralrnnEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_edge_max(s : MlneuralrnnEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_edge_to_string(s : MlneuralrnnEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_neural_rnn_path_set(s : MlneuralrnnPath, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_rnn_path_sum(s : MlneuralrnnPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_path_sum(s : MlneuralrnnPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_path_mean(s : MlneuralrnnPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_path_mean(s : MlneuralrnnPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_path_scale(s : MlneuralrnnPath, f : Double) -> MlneuralrnnPath {
   let result = ml_neural_rnn_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_neural_rnn_path_fill(s : MlneuralrnnPath, v : Double) -> MlneuralrnnPa
   result
 }
 
-pub fn ml_neural_rnn_path_min(s : MlneuralrnnPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_path_min(s : MlneuralrnnPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_path_max(s : MlneuralrnnPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_path_max(s : MlneuralrnnPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_path_to_string(s : MlneuralrnnPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_neural_rnn_cluster_set(s : MlneuralrnnCluster, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_neural_rnn_cluster_sum(s : MlneuralrnnCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_cluster_sum(s : MlneuralrnnCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_cluster_mean(s : MlneuralrnnCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_cluster_mean(s : MlneuralrnnCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_cluster_scale(s : MlneuralrnnCluster, f : Double) -> MlneuralrnnCluster {
   let result = ml_neural_rnn_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_neural_rnn_cluster_fill(s : MlneuralrnnCluster, v : Double) -> Mlneura
   result
 }
 
-pub fn ml_neural_rnn_cluster_min(s : MlneuralrnnCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_cluster_min(s : MlneuralrnnCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_cluster_max(s : MlneuralrnnCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_cluster_max(s : MlneuralrnnCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_cluster_to_string(s : MlneuralrnnCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_neural_rnn_model_set(s : MlneuralrnnModel, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_rnn_model_sum(s : MlneuralrnnModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_model_sum(s : MlneuralrnnModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_model_mean(s : MlneuralrnnModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_model_mean(s : MlneuralrnnModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_model_scale(s : MlneuralrnnModel, f : Double) -> MlneuralrnnModel {
   let result = ml_neural_rnn_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_neural_rnn_model_fill(s : MlneuralrnnModel, v : Double) -> Mlneuralrnn
   result
 }
 
-pub fn ml_neural_rnn_model_min(s : MlneuralrnnModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_model_min(s : MlneuralrnnModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_model_max(s : MlneuralrnnModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_model_max(s : MlneuralrnnModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_model_to_string(s : MlneuralrnnModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_neural_rnn_layer_set(s : MlneuralrnnLayer, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_rnn_layer_sum(s : MlneuralrnnLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_layer_sum(s : MlneuralrnnLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_layer_mean(s : MlneuralrnnLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_layer_mean(s : MlneuralrnnLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_layer_scale(s : MlneuralrnnLayer, f : Double) -> MlneuralrnnLayer {
   let result = ml_neural_rnn_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_neural_rnn_layer_fill(s : MlneuralrnnLayer, v : Double) -> Mlneuralrnn
   result
 }
 
-pub fn ml_neural_rnn_layer_min(s : MlneuralrnnLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_layer_min(s : MlneuralrnnLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_layer_max(s : MlneuralrnnLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_layer_max(s : MlneuralrnnLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_layer_to_string(s : MlneuralrnnLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_neural_rnn_buffer_set(s : MlneuralrnnBuffer, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_neural_rnn_buffer_sum(s : MlneuralrnnBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_buffer_sum(s : MlneuralrnnBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_buffer_mean(s : MlneuralrnnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_buffer_mean(s : MlneuralrnnBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_buffer_scale(s : MlneuralrnnBuffer, f : Double) -> MlneuralrnnBuffer {
   let result = ml_neural_rnn_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_neural_rnn_buffer_fill(s : MlneuralrnnBuffer, v : Double) -> Mlneuralr
   result
 }
 
-pub fn ml_neural_rnn_buffer_min(s : MlneuralrnnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_buffer_min(s : MlneuralrnnBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_buffer_max(s : MlneuralrnnBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_buffer_max(s : MlneuralrnnBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_buffer_to_string(s : MlneuralrnnBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_neural_rnn_cursor_set(s : MlneuralrnnCursor, i : Int, v : Double) -> M
   result
 }
 
-pub fn ml_neural_rnn_cursor_sum(s : MlneuralrnnCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_cursor_sum(s : MlneuralrnnCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_cursor_mean(s : MlneuralrnnCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_cursor_mean(s : MlneuralrnnCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_cursor_scale(s : MlneuralrnnCursor, f : Double) -> MlneuralrnnCursor {
   let result = ml_neural_rnn_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_neural_rnn_cursor_fill(s : MlneuralrnnCursor, v : Double) -> Mlneuralr
   result
 }
 
-pub fn ml_neural_rnn_cursor_min(s : MlneuralrnnCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_cursor_min(s : MlneuralrnnCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_cursor_max(s : MlneuralrnnCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_cursor_max(s : MlneuralrnnCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_cursor_to_string(s : MlneuralrnnCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_neural_rnn_view_set(s : MlneuralrnnView, i : Int, v : Double) -> Mlneu
   result
 }
 
-pub fn ml_neural_rnn_view_sum(s : MlneuralrnnView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_view_sum(s : MlneuralrnnView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_view_mean(s : MlneuralrnnView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_view_mean(s : MlneuralrnnView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_view_scale(s : MlneuralrnnView, f : Double) -> MlneuralrnnView {
   let result = ml_neural_rnn_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_neural_rnn_view_fill(s : MlneuralrnnView, v : Double) -> MlneuralrnnVi
   result
 }
 
-pub fn ml_neural_rnn_view_min(s : MlneuralrnnView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_view_min(s : MlneuralrnnView) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_view_max(s : MlneuralrnnView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_view_max(s : MlneuralrnnView) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_view_to_string(s : MlneuralrnnView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_neural_rnn_range_set(s : MlneuralrnnRange, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_rnn_range_sum(s : MlneuralrnnRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_range_sum(s : MlneuralrnnRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_range_mean(s : MlneuralrnnRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_range_mean(s : MlneuralrnnRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_range_scale(s : MlneuralrnnRange, f : Double) -> MlneuralrnnRange {
   let result = ml_neural_rnn_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_neural_rnn_range_fill(s : MlneuralrnnRange, v : Double) -> Mlneuralrnn
   result
 }
 
-pub fn ml_neural_rnn_range_min(s : MlneuralrnnRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_range_min(s : MlneuralrnnRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_range_max(s : MlneuralrnnRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_range_max(s : MlneuralrnnRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_range_to_string(s : MlneuralrnnRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_neural_rnn_slice_set(s : MlneuralrnnSlice, i : Int, v : Double) -> Mln
   result
 }
 
-pub fn ml_neural_rnn_slice_sum(s : MlneuralrnnSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_neural_rnn_slice_sum(s : MlneuralrnnSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_neural_rnn_slice_mean(s : MlneuralrnnSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_neural_rnn_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_neural_rnn_slice_mean(s : MlneuralrnnSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_neural_rnn_slice_scale(s : MlneuralrnnSlice, f : Double) -> MlneuralrnnSlice {
   let result = ml_neural_rnn_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_neural_rnn_slice_fill(s : MlneuralrnnSlice, v : Double) -> Mlneuralrnn
   result
 }
 
-pub fn ml_neural_rnn_slice_min(s : MlneuralrnnSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_slice_min(s : MlneuralrnnSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_neural_rnn_slice_max(s : MlneuralrnnSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_neural_rnn_slice_max(s : MlneuralrnnSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_neural_rnn_slice_to_string(s : MlneuralrnnSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

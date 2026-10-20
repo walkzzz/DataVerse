@@ -88,11 +88,7 @@ pub fn ml_cluster_birch_make_series(vals : Array[Double], name : String) -> Mlcl
 
 pub fn ml_cluster_birch_series_len(s : MlclusterbirchSeries) -> Int { s.vals.length() }
 
-pub fn ml_cluster_birch_series_sum(s : MlclusterbirchSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_cluster_birch_series_sum(s : MlclusterbirchSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_cluster_birch_series_mean(s : MlclusterbirchSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_cluster_birch_frame_set(s : MlclusterbirchFrame, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_birch_frame_sum(s : MlclusterbirchFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_frame_sum(s : MlclusterbirchFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_frame_mean(s : MlclusterbirchFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_frame_mean(s : MlclusterbirchFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_frame_scale(s : MlclusterbirchFrame, f : Double) -> MlclusterbirchFrame {
   let result = ml_cluster_birch_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_cluster_birch_frame_fill(s : MlclusterbirchFrame, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_birch_frame_min(s : MlclusterbirchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_frame_min(s : MlclusterbirchFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_frame_max(s : MlclusterbirchFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_frame_max(s : MlclusterbirchFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_frame_to_string(s : MlclusterbirchFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_cluster_birch_table_set(s : MlclusterbirchTable, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_birch_table_sum(s : MlclusterbirchTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_table_sum(s : MlclusterbirchTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_table_mean(s : MlclusterbirchTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_table_mean(s : MlclusterbirchTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_table_scale(s : MlclusterbirchTable, f : Double) -> MlclusterbirchTable {
   let result = ml_cluster_birch_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_cluster_birch_table_fill(s : MlclusterbirchTable, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_birch_table_min(s : MlclusterbirchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_table_min(s : MlclusterbirchTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_table_max(s : MlclusterbirchTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_table_max(s : MlclusterbirchTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_table_to_string(s : MlclusterbirchTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_cluster_birch_graphn_set(s : MlclusterbirchGraphN, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_birch_graphn_sum(s : MlclusterbirchGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_graphn_sum(s : MlclusterbirchGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_graphn_mean(s : MlclusterbirchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_graphn_mean(s : MlclusterbirchGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_graphn_scale(s : MlclusterbirchGraphN, f : Double) -> MlclusterbirchGraphN {
   let result = ml_cluster_birch_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_cluster_birch_graphn_fill(s : MlclusterbirchGraphN, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_birch_graphn_min(s : MlclusterbirchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_graphn_min(s : MlclusterbirchGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_graphn_max(s : MlclusterbirchGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_graphn_max(s : MlclusterbirchGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_graphn_to_string(s : MlclusterbirchGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_cluster_birch_node_set(s : MlclusterbirchNode, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_cluster_birch_node_sum(s : MlclusterbirchNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_node_sum(s : MlclusterbirchNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_node_mean(s : MlclusterbirchNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_node_mean(s : MlclusterbirchNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_node_scale(s : MlclusterbirchNode, f : Double) -> MlclusterbirchNode {
   let result = ml_cluster_birch_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_cluster_birch_node_fill(s : MlclusterbirchNode, v : Double) -> Mlclust
   result
 }
 
-pub fn ml_cluster_birch_node_min(s : MlclusterbirchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_node_min(s : MlclusterbirchNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_node_max(s : MlclusterbirchNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_node_max(s : MlclusterbirchNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_node_to_string(s : MlclusterbirchNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_cluster_birch_edge_set(s : MlclusterbirchEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_cluster_birch_edge_sum(s : MlclusterbirchEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_edge_sum(s : MlclusterbirchEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_edge_mean(s : MlclusterbirchEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_edge_mean(s : MlclusterbirchEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_edge_scale(s : MlclusterbirchEdge, f : Double) -> MlclusterbirchEdge {
   let result = ml_cluster_birch_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_cluster_birch_edge_fill(s : MlclusterbirchEdge, v : Double) -> Mlclust
   result
 }
 
-pub fn ml_cluster_birch_edge_min(s : MlclusterbirchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_edge_min(s : MlclusterbirchEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_edge_max(s : MlclusterbirchEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_edge_max(s : MlclusterbirchEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_edge_to_string(s : MlclusterbirchEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_cluster_birch_path_set(s : MlclusterbirchPath, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_cluster_birch_path_sum(s : MlclusterbirchPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_path_sum(s : MlclusterbirchPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_path_mean(s : MlclusterbirchPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_path_mean(s : MlclusterbirchPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_path_scale(s : MlclusterbirchPath, f : Double) -> MlclusterbirchPath {
   let result = ml_cluster_birch_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_cluster_birch_path_fill(s : MlclusterbirchPath, v : Double) -> Mlclust
   result
 }
 
-pub fn ml_cluster_birch_path_min(s : MlclusterbirchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_path_min(s : MlclusterbirchPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_path_max(s : MlclusterbirchPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_path_max(s : MlclusterbirchPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_path_to_string(s : MlclusterbirchPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_cluster_birch_cluster_set(s : MlclusterbirchCluster, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_birch_cluster_sum(s : MlclusterbirchCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_cluster_sum(s : MlclusterbirchCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_cluster_mean(s : MlclusterbirchCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_cluster_mean(s : MlclusterbirchCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_cluster_scale(s : MlclusterbirchCluster, f : Double) -> MlclusterbirchCluster {
   let result = ml_cluster_birch_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_cluster_birch_cluster_fill(s : MlclusterbirchCluster, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_birch_cluster_min(s : MlclusterbirchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_cluster_min(s : MlclusterbirchCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_cluster_max(s : MlclusterbirchCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_cluster_max(s : MlclusterbirchCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_cluster_to_string(s : MlclusterbirchCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_cluster_birch_model_set(s : MlclusterbirchModel, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_birch_model_sum(s : MlclusterbirchModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_model_sum(s : MlclusterbirchModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_model_mean(s : MlclusterbirchModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_model_mean(s : MlclusterbirchModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_model_scale(s : MlclusterbirchModel, f : Double) -> MlclusterbirchModel {
   let result = ml_cluster_birch_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_cluster_birch_model_fill(s : MlclusterbirchModel, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_birch_model_min(s : MlclusterbirchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_model_min(s : MlclusterbirchModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_model_max(s : MlclusterbirchModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_model_max(s : MlclusterbirchModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_model_to_string(s : MlclusterbirchModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_cluster_birch_layer_set(s : MlclusterbirchLayer, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_birch_layer_sum(s : MlclusterbirchLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_layer_sum(s : MlclusterbirchLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_layer_mean(s : MlclusterbirchLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_layer_mean(s : MlclusterbirchLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_layer_scale(s : MlclusterbirchLayer, f : Double) -> MlclusterbirchLayer {
   let result = ml_cluster_birch_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_cluster_birch_layer_fill(s : MlclusterbirchLayer, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_birch_layer_min(s : MlclusterbirchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_layer_min(s : MlclusterbirchLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_layer_max(s : MlclusterbirchLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_layer_max(s : MlclusterbirchLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_layer_to_string(s : MlclusterbirchLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_cluster_birch_buffer_set(s : MlclusterbirchBuffer, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_birch_buffer_sum(s : MlclusterbirchBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_buffer_sum(s : MlclusterbirchBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_buffer_mean(s : MlclusterbirchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_buffer_mean(s : MlclusterbirchBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_buffer_scale(s : MlclusterbirchBuffer, f : Double) -> MlclusterbirchBuffer {
   let result = ml_cluster_birch_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_cluster_birch_buffer_fill(s : MlclusterbirchBuffer, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_birch_buffer_min(s : MlclusterbirchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_buffer_min(s : MlclusterbirchBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_buffer_max(s : MlclusterbirchBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_buffer_max(s : MlclusterbirchBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_buffer_to_string(s : MlclusterbirchBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_cluster_birch_cursor_set(s : MlclusterbirchCursor, i : Int, v : Double
   result
 }
 
-pub fn ml_cluster_birch_cursor_sum(s : MlclusterbirchCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_cursor_sum(s : MlclusterbirchCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_cursor_mean(s : MlclusterbirchCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_cursor_mean(s : MlclusterbirchCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_cursor_scale(s : MlclusterbirchCursor, f : Double) -> MlclusterbirchCursor {
   let result = ml_cluster_birch_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_cluster_birch_cursor_fill(s : MlclusterbirchCursor, v : Double) -> Mlc
   result
 }
 
-pub fn ml_cluster_birch_cursor_min(s : MlclusterbirchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_cursor_min(s : MlclusterbirchCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_cursor_max(s : MlclusterbirchCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_cursor_max(s : MlclusterbirchCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_cursor_to_string(s : MlclusterbirchCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_cluster_birch_view_set(s : MlclusterbirchView, i : Int, v : Double) ->
   result
 }
 
-pub fn ml_cluster_birch_view_sum(s : MlclusterbirchView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_view_sum(s : MlclusterbirchView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_view_mean(s : MlclusterbirchView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_view_mean(s : MlclusterbirchView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_view_scale(s : MlclusterbirchView, f : Double) -> MlclusterbirchView {
   let result = ml_cluster_birch_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_cluster_birch_view_fill(s : MlclusterbirchView, v : Double) -> Mlclust
   result
 }
 
-pub fn ml_cluster_birch_view_min(s : MlclusterbirchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_view_min(s : MlclusterbirchView) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_view_max(s : MlclusterbirchView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_view_max(s : MlclusterbirchView) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_view_to_string(s : MlclusterbirchView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_cluster_birch_range_set(s : MlclusterbirchRange, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_birch_range_sum(s : MlclusterbirchRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_range_sum(s : MlclusterbirchRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_range_mean(s : MlclusterbirchRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_range_mean(s : MlclusterbirchRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_range_scale(s : MlclusterbirchRange, f : Double) -> MlclusterbirchRange {
   let result = ml_cluster_birch_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_cluster_birch_range_fill(s : MlclusterbirchRange, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_birch_range_min(s : MlclusterbirchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_range_min(s : MlclusterbirchRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_range_max(s : MlclusterbirchRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_range_max(s : MlclusterbirchRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_range_to_string(s : MlclusterbirchRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_cluster_birch_slice_set(s : MlclusterbirchSlice, i : Int, v : Double) 
   result
 }
 
-pub fn ml_cluster_birch_slice_sum(s : MlclusterbirchSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_birch_slice_sum(s : MlclusterbirchSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_birch_slice_mean(s : MlclusterbirchSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_birch_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_birch_slice_mean(s : MlclusterbirchSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_birch_slice_scale(s : MlclusterbirchSlice, f : Double) -> MlclusterbirchSlice {
   let result = ml_cluster_birch_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_cluster_birch_slice_fill(s : MlclusterbirchSlice, v : Double) -> Mlclu
   result
 }
 
-pub fn ml_cluster_birch_slice_min(s : MlclusterbirchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_slice_min(s : MlclusterbirchSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_birch_slice_max(s : MlclusterbirchSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_birch_slice_max(s : MlclusterbirchSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_birch_slice_to_string(s : MlclusterbirchSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

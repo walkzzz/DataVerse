@@ -88,11 +88,7 @@ pub fn net_proto_http2_make_series(vals : Array[Double], name : String) -> Netpr
 
 pub fn net_proto_http2_series_len(s : Netprotohttp2Series) -> Int { s.vals.length() }
 
-pub fn net_proto_http2_series_sum(s : Netprotohttp2Series) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_proto_http2_series_sum(s : Netprotohttp2Series) -> Double { @_common.sum(s.vals) }
 
 pub fn net_proto_http2_series_mean(s : Netprotohttp2Series) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_proto_http2_frame_set(s : Netprotohttp2Frame, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_http2_frame_sum(s : Netprotohttp2Frame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_frame_sum(s : Netprotohttp2Frame) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_frame_mean(s : Netprotohttp2Frame) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_frame_mean(s : Netprotohttp2Frame) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_frame_scale(s : Netprotohttp2Frame, f : Double) -> Netprotohttp2Frame {
   let result = net_proto_http2_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_proto_http2_frame_fill(s : Netprotohttp2Frame, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_http2_frame_min(s : Netprotohttp2Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_frame_min(s : Netprotohttp2Frame) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_frame_max(s : Netprotohttp2Frame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_frame_max(s : Netprotohttp2Frame) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_frame_to_string(s : Netprotohttp2Frame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_proto_http2_table_set(s : Netprotohttp2Table, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_http2_table_sum(s : Netprotohttp2Table) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_table_sum(s : Netprotohttp2Table) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_table_mean(s : Netprotohttp2Table) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_table_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_table_mean(s : Netprotohttp2Table) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_table_scale(s : Netprotohttp2Table, f : Double) -> Netprotohttp2Table {
   let result = net_proto_http2_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_proto_http2_table_fill(s : Netprotohttp2Table, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_http2_table_min(s : Netprotohttp2Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_table_min(s : Netprotohttp2Table) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_table_max(s : Netprotohttp2Table) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_table_max(s : Netprotohttp2Table) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_table_to_string(s : Netprotohttp2Table) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_proto_http2_graphn_set(s : Netprotohttp2GraphN, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_http2_graphn_sum(s : Netprotohttp2GraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_graphn_sum(s : Netprotohttp2GraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_graphn_mean(s : Netprotohttp2GraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_graphn_mean(s : Netprotohttp2GraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_graphn_scale(s : Netprotohttp2GraphN, f : Double) -> Netprotohttp2GraphN {
   let result = net_proto_http2_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_proto_http2_graphn_fill(s : Netprotohttp2GraphN, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_http2_graphn_min(s : Netprotohttp2GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_graphn_min(s : Netprotohttp2GraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_graphn_max(s : Netprotohttp2GraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_graphn_max(s : Netprotohttp2GraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_graphn_to_string(s : Netprotohttp2GraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_proto_http2_node_set(s : Netprotohttp2Node, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_http2_node_sum(s : Netprotohttp2Node) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_node_sum(s : Netprotohttp2Node) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_node_mean(s : Netprotohttp2Node) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_node_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_node_mean(s : Netprotohttp2Node) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_node_scale(s : Netprotohttp2Node, f : Double) -> Netprotohttp2Node {
   let result = net_proto_http2_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_proto_http2_node_fill(s : Netprotohttp2Node, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_http2_node_min(s : Netprotohttp2Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_node_min(s : Netprotohttp2Node) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_node_max(s : Netprotohttp2Node) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_node_max(s : Netprotohttp2Node) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_node_to_string(s : Netprotohttp2Node) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_proto_http2_edge_set(s : Netprotohttp2Edge, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_http2_edge_sum(s : Netprotohttp2Edge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_edge_sum(s : Netprotohttp2Edge) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_edge_mean(s : Netprotohttp2Edge) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_edge_mean(s : Netprotohttp2Edge) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_edge_scale(s : Netprotohttp2Edge, f : Double) -> Netprotohttp2Edge {
   let result = net_proto_http2_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_proto_http2_edge_fill(s : Netprotohttp2Edge, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_http2_edge_min(s : Netprotohttp2Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_edge_min(s : Netprotohttp2Edge) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_edge_max(s : Netprotohttp2Edge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_edge_max(s : Netprotohttp2Edge) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_edge_to_string(s : Netprotohttp2Edge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_proto_http2_path_set(s : Netprotohttp2Path, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_http2_path_sum(s : Netprotohttp2Path) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_path_sum(s : Netprotohttp2Path) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_path_mean(s : Netprotohttp2Path) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_path_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_path_mean(s : Netprotohttp2Path) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_path_scale(s : Netprotohttp2Path, f : Double) -> Netprotohttp2Path {
   let result = net_proto_http2_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_proto_http2_path_fill(s : Netprotohttp2Path, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_http2_path_min(s : Netprotohttp2Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_path_min(s : Netprotohttp2Path) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_path_max(s : Netprotohttp2Path) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_path_max(s : Netprotohttp2Path) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_path_to_string(s : Netprotohttp2Path) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_proto_http2_cluster_set(s : Netprotohttp2Cluster, i : Int, v : Double
   result
 }
 
-pub fn net_proto_http2_cluster_sum(s : Netprotohttp2Cluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_cluster_sum(s : Netprotohttp2Cluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_cluster_mean(s : Netprotohttp2Cluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_cluster_mean(s : Netprotohttp2Cluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_cluster_scale(s : Netprotohttp2Cluster, f : Double) -> Netprotohttp2Cluster {
   let result = net_proto_http2_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_proto_http2_cluster_fill(s : Netprotohttp2Cluster, v : Double) -> Net
   result
 }
 
-pub fn net_proto_http2_cluster_min(s : Netprotohttp2Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_cluster_min(s : Netprotohttp2Cluster) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_cluster_max(s : Netprotohttp2Cluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_cluster_max(s : Netprotohttp2Cluster) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_cluster_to_string(s : Netprotohttp2Cluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_proto_http2_model_set(s : Netprotohttp2Model, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_http2_model_sum(s : Netprotohttp2Model) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_model_sum(s : Netprotohttp2Model) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_model_mean(s : Netprotohttp2Model) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_model_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_model_mean(s : Netprotohttp2Model) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_model_scale(s : Netprotohttp2Model, f : Double) -> Netprotohttp2Model {
   let result = net_proto_http2_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_proto_http2_model_fill(s : Netprotohttp2Model, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_http2_model_min(s : Netprotohttp2Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_model_min(s : Netprotohttp2Model) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_model_max(s : Netprotohttp2Model) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_model_max(s : Netprotohttp2Model) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_model_to_string(s : Netprotohttp2Model) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_proto_http2_layer_set(s : Netprotohttp2Layer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_http2_layer_sum(s : Netprotohttp2Layer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_layer_sum(s : Netprotohttp2Layer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_layer_mean(s : Netprotohttp2Layer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_layer_mean(s : Netprotohttp2Layer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_layer_scale(s : Netprotohttp2Layer, f : Double) -> Netprotohttp2Layer {
   let result = net_proto_http2_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_proto_http2_layer_fill(s : Netprotohttp2Layer, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_http2_layer_min(s : Netprotohttp2Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_layer_min(s : Netprotohttp2Layer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_layer_max(s : Netprotohttp2Layer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_layer_max(s : Netprotohttp2Layer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_layer_to_string(s : Netprotohttp2Layer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_proto_http2_buffer_set(s : Netprotohttp2Buffer, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_http2_buffer_sum(s : Netprotohttp2Buffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_buffer_sum(s : Netprotohttp2Buffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_buffer_mean(s : Netprotohttp2Buffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_buffer_mean(s : Netprotohttp2Buffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_buffer_scale(s : Netprotohttp2Buffer, f : Double) -> Netprotohttp2Buffer {
   let result = net_proto_http2_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_proto_http2_buffer_fill(s : Netprotohttp2Buffer, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_http2_buffer_min(s : Netprotohttp2Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_buffer_min(s : Netprotohttp2Buffer) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_buffer_max(s : Netprotohttp2Buffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_buffer_max(s : Netprotohttp2Buffer) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_buffer_to_string(s : Netprotohttp2Buffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_proto_http2_cursor_set(s : Netprotohttp2Cursor, i : Int, v : Double) 
   result
 }
 
-pub fn net_proto_http2_cursor_sum(s : Netprotohttp2Cursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_cursor_sum(s : Netprotohttp2Cursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_cursor_mean(s : Netprotohttp2Cursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_cursor_mean(s : Netprotohttp2Cursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_cursor_scale(s : Netprotohttp2Cursor, f : Double) -> Netprotohttp2Cursor {
   let result = net_proto_http2_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_proto_http2_cursor_fill(s : Netprotohttp2Cursor, v : Double) -> Netpr
   result
 }
 
-pub fn net_proto_http2_cursor_min(s : Netprotohttp2Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_cursor_min(s : Netprotohttp2Cursor) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_cursor_max(s : Netprotohttp2Cursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_cursor_max(s : Netprotohttp2Cursor) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_cursor_to_string(s : Netprotohttp2Cursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_proto_http2_view_set(s : Netprotohttp2View, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_proto_http2_view_sum(s : Netprotohttp2View) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_view_sum(s : Netprotohttp2View) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_view_mean(s : Netprotohttp2View) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_view_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_view_mean(s : Netprotohttp2View) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_view_scale(s : Netprotohttp2View, f : Double) -> Netprotohttp2View {
   let result = net_proto_http2_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_proto_http2_view_fill(s : Netprotohttp2View, v : Double) -> Netprotoh
   result
 }
 
-pub fn net_proto_http2_view_min(s : Netprotohttp2View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_view_min(s : Netprotohttp2View) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_view_max(s : Netprotohttp2View) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_view_max(s : Netprotohttp2View) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_view_to_string(s : Netprotohttp2View) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_proto_http2_range_set(s : Netprotohttp2Range, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_http2_range_sum(s : Netprotohttp2Range) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_range_sum(s : Netprotohttp2Range) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_range_mean(s : Netprotohttp2Range) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_range_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_range_mean(s : Netprotohttp2Range) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_range_scale(s : Netprotohttp2Range, f : Double) -> Netprotohttp2Range {
   let result = net_proto_http2_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_proto_http2_range_fill(s : Netprotohttp2Range, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_http2_range_min(s : Netprotohttp2Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_range_min(s : Netprotohttp2Range) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_range_max(s : Netprotohttp2Range) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_range_max(s : Netprotohttp2Range) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_range_to_string(s : Netprotohttp2Range) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_proto_http2_slice_set(s : Netprotohttp2Slice, i : Int, v : Double) ->
   result
 }
 
-pub fn net_proto_http2_slice_sum(s : Netprotohttp2Slice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_proto_http2_slice_sum(s : Netprotohttp2Slice) -> Double { @_common.sum(s.data) }
 
-pub fn net_proto_http2_slice_mean(s : Netprotohttp2Slice) -> Double {
-  if s.size == 0 { 0.0 } else { net_proto_http2_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_proto_http2_slice_mean(s : Netprotohttp2Slice) -> Double { @_common.mean(s.data) }
 
 pub fn net_proto_http2_slice_scale(s : Netprotohttp2Slice, f : Double) -> Netprotohttp2Slice {
   let result = net_proto_http2_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_proto_http2_slice_fill(s : Netprotohttp2Slice, v : Double) -> Netprot
   result
 }
 
-pub fn net_proto_http2_slice_min(s : Netprotohttp2Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_slice_min(s : Netprotohttp2Slice) -> Double { @_common.min(s.data) }
 
-pub fn net_proto_http2_slice_max(s : Netprotohttp2Slice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_proto_http2_slice_max(s : Netprotohttp2Slice) -> Double { @_common.max(s.data) }
 
 pub fn net_proto_http2_slice_to_string(s : Netprotohttp2Slice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

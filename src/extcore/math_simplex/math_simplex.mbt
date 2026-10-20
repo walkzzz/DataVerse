@@ -88,11 +88,7 @@ pub fn math_simplex_make_series(vals : Array[Double], name : String) -> Mathsimp
 
 pub fn math_simplex_series_len(s : MathsimplexSeries) -> Int { s.vals.length() }
 
-pub fn math_simplex_series_sum(s : MathsimplexSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_simplex_series_sum(s : MathsimplexSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_simplex_series_mean(s : MathsimplexSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_simplex_frame_set(s : MathsimplexFrame, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_simplex_frame_sum(s : MathsimplexFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_frame_sum(s : MathsimplexFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_frame_mean(s : MathsimplexFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_frame_mean(s : MathsimplexFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_frame_scale(s : MathsimplexFrame, f : Double) -> MathsimplexFrame {
   let result = math_simplex_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_simplex_frame_fill(s : MathsimplexFrame, v : Double) -> MathsimplexF
   result
 }
 
-pub fn math_simplex_frame_min(s : MathsimplexFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_frame_min(s : MathsimplexFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_frame_max(s : MathsimplexFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_frame_max(s : MathsimplexFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_frame_to_string(s : MathsimplexFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_simplex_table_set(s : MathsimplexTable, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_simplex_table_sum(s : MathsimplexTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_table_sum(s : MathsimplexTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_table_mean(s : MathsimplexTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_table_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_table_mean(s : MathsimplexTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_table_scale(s : MathsimplexTable, f : Double) -> MathsimplexTable {
   let result = math_simplex_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_simplex_table_fill(s : MathsimplexTable, v : Double) -> MathsimplexT
   result
 }
 
-pub fn math_simplex_table_min(s : MathsimplexTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_table_min(s : MathsimplexTable) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_table_max(s : MathsimplexTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_table_max(s : MathsimplexTable) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_table_to_string(s : MathsimplexTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_simplex_graphn_set(s : MathsimplexGraphN, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_simplex_graphn_sum(s : MathsimplexGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_graphn_sum(s : MathsimplexGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_graphn_mean(s : MathsimplexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_graphn_mean(s : MathsimplexGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_graphn_scale(s : MathsimplexGraphN, f : Double) -> MathsimplexGraphN {
   let result = math_simplex_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_simplex_graphn_fill(s : MathsimplexGraphN, v : Double) -> Mathsimple
   result
 }
 
-pub fn math_simplex_graphn_min(s : MathsimplexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_graphn_min(s : MathsimplexGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_graphn_max(s : MathsimplexGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_graphn_max(s : MathsimplexGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_graphn_to_string(s : MathsimplexGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_simplex_node_set(s : MathsimplexNode, i : Int, v : Double) -> Mathsi
   result
 }
 
-pub fn math_simplex_node_sum(s : MathsimplexNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_node_sum(s : MathsimplexNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_node_mean(s : MathsimplexNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_node_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_node_mean(s : MathsimplexNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_node_scale(s : MathsimplexNode, f : Double) -> MathsimplexNode {
   let result = math_simplex_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_simplex_node_fill(s : MathsimplexNode, v : Double) -> MathsimplexNod
   result
 }
 
-pub fn math_simplex_node_min(s : MathsimplexNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_node_min(s : MathsimplexNode) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_node_max(s : MathsimplexNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_node_max(s : MathsimplexNode) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_node_to_string(s : MathsimplexNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_simplex_edge_set(s : MathsimplexEdge, i : Int, v : Double) -> Mathsi
   result
 }
 
-pub fn math_simplex_edge_sum(s : MathsimplexEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_edge_sum(s : MathsimplexEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_edge_mean(s : MathsimplexEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_edge_mean(s : MathsimplexEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_edge_scale(s : MathsimplexEdge, f : Double) -> MathsimplexEdge {
   let result = math_simplex_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_simplex_edge_fill(s : MathsimplexEdge, v : Double) -> MathsimplexEdg
   result
 }
 
-pub fn math_simplex_edge_min(s : MathsimplexEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_edge_min(s : MathsimplexEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_edge_max(s : MathsimplexEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_edge_max(s : MathsimplexEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_edge_to_string(s : MathsimplexEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_simplex_path_set(s : MathsimplexPath, i : Int, v : Double) -> Mathsi
   result
 }
 
-pub fn math_simplex_path_sum(s : MathsimplexPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_path_sum(s : MathsimplexPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_path_mean(s : MathsimplexPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_path_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_path_mean(s : MathsimplexPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_path_scale(s : MathsimplexPath, f : Double) -> MathsimplexPath {
   let result = math_simplex_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_simplex_path_fill(s : MathsimplexPath, v : Double) -> MathsimplexPat
   result
 }
 
-pub fn math_simplex_path_min(s : MathsimplexPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_path_min(s : MathsimplexPath) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_path_max(s : MathsimplexPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_path_max(s : MathsimplexPath) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_path_to_string(s : MathsimplexPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_simplex_cluster_set(s : MathsimplexCluster, i : Int, v : Double) -> 
   result
 }
 
-pub fn math_simplex_cluster_sum(s : MathsimplexCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_cluster_sum(s : MathsimplexCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_cluster_mean(s : MathsimplexCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_cluster_mean(s : MathsimplexCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_cluster_scale(s : MathsimplexCluster, f : Double) -> MathsimplexCluster {
   let result = math_simplex_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_simplex_cluster_fill(s : MathsimplexCluster, v : Double) -> Mathsimp
   result
 }
 
-pub fn math_simplex_cluster_min(s : MathsimplexCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_cluster_min(s : MathsimplexCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_cluster_max(s : MathsimplexCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_cluster_max(s : MathsimplexCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_cluster_to_string(s : MathsimplexCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_simplex_model_set(s : MathsimplexModel, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_simplex_model_sum(s : MathsimplexModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_model_sum(s : MathsimplexModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_model_mean(s : MathsimplexModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_model_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_model_mean(s : MathsimplexModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_model_scale(s : MathsimplexModel, f : Double) -> MathsimplexModel {
   let result = math_simplex_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_simplex_model_fill(s : MathsimplexModel, v : Double) -> MathsimplexM
   result
 }
 
-pub fn math_simplex_model_min(s : MathsimplexModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_model_min(s : MathsimplexModel) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_model_max(s : MathsimplexModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_model_max(s : MathsimplexModel) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_model_to_string(s : MathsimplexModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_simplex_layer_set(s : MathsimplexLayer, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_simplex_layer_sum(s : MathsimplexLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_layer_sum(s : MathsimplexLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_layer_mean(s : MathsimplexLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_layer_mean(s : MathsimplexLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_layer_scale(s : MathsimplexLayer, f : Double) -> MathsimplexLayer {
   let result = math_simplex_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_simplex_layer_fill(s : MathsimplexLayer, v : Double) -> MathsimplexL
   result
 }
 
-pub fn math_simplex_layer_min(s : MathsimplexLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_layer_min(s : MathsimplexLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_layer_max(s : MathsimplexLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_layer_max(s : MathsimplexLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_layer_to_string(s : MathsimplexLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_simplex_buffer_set(s : MathsimplexBuffer, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_simplex_buffer_sum(s : MathsimplexBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_buffer_sum(s : MathsimplexBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_buffer_mean(s : MathsimplexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_buffer_mean(s : MathsimplexBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_buffer_scale(s : MathsimplexBuffer, f : Double) -> MathsimplexBuffer {
   let result = math_simplex_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_simplex_buffer_fill(s : MathsimplexBuffer, v : Double) -> Mathsimple
   result
 }
 
-pub fn math_simplex_buffer_min(s : MathsimplexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_buffer_min(s : MathsimplexBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_buffer_max(s : MathsimplexBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_buffer_max(s : MathsimplexBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_buffer_to_string(s : MathsimplexBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_simplex_cursor_set(s : MathsimplexCursor, i : Int, v : Double) -> Ma
   result
 }
 
-pub fn math_simplex_cursor_sum(s : MathsimplexCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_cursor_sum(s : MathsimplexCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_cursor_mean(s : MathsimplexCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_cursor_mean(s : MathsimplexCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_cursor_scale(s : MathsimplexCursor, f : Double) -> MathsimplexCursor {
   let result = math_simplex_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_simplex_cursor_fill(s : MathsimplexCursor, v : Double) -> Mathsimple
   result
 }
 
-pub fn math_simplex_cursor_min(s : MathsimplexCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_cursor_min(s : MathsimplexCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_cursor_max(s : MathsimplexCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_cursor_max(s : MathsimplexCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_cursor_to_string(s : MathsimplexCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_simplex_view_set(s : MathsimplexView, i : Int, v : Double) -> Mathsi
   result
 }
 
-pub fn math_simplex_view_sum(s : MathsimplexView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_view_sum(s : MathsimplexView) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_view_mean(s : MathsimplexView) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_view_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_view_mean(s : MathsimplexView) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_view_scale(s : MathsimplexView, f : Double) -> MathsimplexView {
   let result = math_simplex_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_simplex_view_fill(s : MathsimplexView, v : Double) -> MathsimplexVie
   result
 }
 
-pub fn math_simplex_view_min(s : MathsimplexView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_view_min(s : MathsimplexView) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_view_max(s : MathsimplexView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_view_max(s : MathsimplexView) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_view_to_string(s : MathsimplexView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_simplex_range_set(s : MathsimplexRange, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_simplex_range_sum(s : MathsimplexRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_range_sum(s : MathsimplexRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_range_mean(s : MathsimplexRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_range_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_range_mean(s : MathsimplexRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_range_scale(s : MathsimplexRange, f : Double) -> MathsimplexRange {
   let result = math_simplex_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_simplex_range_fill(s : MathsimplexRange, v : Double) -> MathsimplexR
   result
 }
 
-pub fn math_simplex_range_min(s : MathsimplexRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_range_min(s : MathsimplexRange) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_range_max(s : MathsimplexRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_range_max(s : MathsimplexRange) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_range_to_string(s : MathsimplexRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_simplex_slice_set(s : MathsimplexSlice, i : Int, v : Double) -> Math
   result
 }
 
-pub fn math_simplex_slice_sum(s : MathsimplexSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_simplex_slice_sum(s : MathsimplexSlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_simplex_slice_mean(s : MathsimplexSlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_simplex_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_simplex_slice_mean(s : MathsimplexSlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_simplex_slice_scale(s : MathsimplexSlice, f : Double) -> MathsimplexSlice {
   let result = math_simplex_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_simplex_slice_fill(s : MathsimplexSlice, v : Double) -> MathsimplexS
   result
 }
 
-pub fn math_simplex_slice_min(s : MathsimplexSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_slice_min(s : MathsimplexSlice) -> Double { @_common.min(s.data) }
 
-pub fn math_simplex_slice_max(s : MathsimplexSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_simplex_slice_max(s : MathsimplexSlice) -> Double { @_common.max(s.data) }
 
 pub fn math_simplex_slice_to_string(s : MathsimplexSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

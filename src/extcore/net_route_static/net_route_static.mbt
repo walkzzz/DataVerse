@@ -88,11 +88,7 @@ pub fn net_route_static_make_series(vals : Array[Double], name : String) -> Netr
 
 pub fn net_route_static_series_len(s : NetroutestaticSeries) -> Int { s.vals.length() }
 
-pub fn net_route_static_series_sum(s : NetroutestaticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_route_static_series_sum(s : NetroutestaticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_route_static_series_mean(s : NetroutestaticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_route_static_frame_set(s : NetroutestaticFrame, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_static_frame_sum(s : NetroutestaticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_frame_sum(s : NetroutestaticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_frame_mean(s : NetroutestaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_frame_mean(s : NetroutestaticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_frame_scale(s : NetroutestaticFrame, f : Double) -> NetroutestaticFrame {
   let result = net_route_static_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_route_static_frame_fill(s : NetroutestaticFrame, v : Double) -> Netro
   result
 }
 
-pub fn net_route_static_frame_min(s : NetroutestaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_frame_min(s : NetroutestaticFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_frame_max(s : NetroutestaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_frame_max(s : NetroutestaticFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_frame_to_string(s : NetroutestaticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_route_static_table_set(s : NetroutestaticTable, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_static_table_sum(s : NetroutestaticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_table_sum(s : NetroutestaticTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_table_mean(s : NetroutestaticTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_table_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_table_mean(s : NetroutestaticTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_table_scale(s : NetroutestaticTable, f : Double) -> NetroutestaticTable {
   let result = net_route_static_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_route_static_table_fill(s : NetroutestaticTable, v : Double) -> Netro
   result
 }
 
-pub fn net_route_static_table_min(s : NetroutestaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_table_min(s : NetroutestaticTable) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_table_max(s : NetroutestaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_table_max(s : NetroutestaticTable) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_table_to_string(s : NetroutestaticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_route_static_graphn_set(s : NetroutestaticGraphN, i : Int, v : Double
   result
 }
 
-pub fn net_route_static_graphn_sum(s : NetroutestaticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_graphn_sum(s : NetroutestaticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_graphn_mean(s : NetroutestaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_graphn_mean(s : NetroutestaticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_graphn_scale(s : NetroutestaticGraphN, f : Double) -> NetroutestaticGraphN {
   let result = net_route_static_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_route_static_graphn_fill(s : NetroutestaticGraphN, v : Double) -> Net
   result
 }
 
-pub fn net_route_static_graphn_min(s : NetroutestaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_graphn_min(s : NetroutestaticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_graphn_max(s : NetroutestaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_graphn_max(s : NetroutestaticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_graphn_to_string(s : NetroutestaticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_route_static_node_set(s : NetroutestaticNode, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_static_node_sum(s : NetroutestaticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_node_sum(s : NetroutestaticNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_node_mean(s : NetroutestaticNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_node_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_node_mean(s : NetroutestaticNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_node_scale(s : NetroutestaticNode, f : Double) -> NetroutestaticNode {
   let result = net_route_static_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_route_static_node_fill(s : NetroutestaticNode, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_static_node_min(s : NetroutestaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_node_min(s : NetroutestaticNode) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_node_max(s : NetroutestaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_node_max(s : NetroutestaticNode) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_node_to_string(s : NetroutestaticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_route_static_edge_set(s : NetroutestaticEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_static_edge_sum(s : NetroutestaticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_edge_sum(s : NetroutestaticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_edge_mean(s : NetroutestaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_edge_mean(s : NetroutestaticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_edge_scale(s : NetroutestaticEdge, f : Double) -> NetroutestaticEdge {
   let result = net_route_static_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_route_static_edge_fill(s : NetroutestaticEdge, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_static_edge_min(s : NetroutestaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_edge_min(s : NetroutestaticEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_edge_max(s : NetroutestaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_edge_max(s : NetroutestaticEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_edge_to_string(s : NetroutestaticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_route_static_path_set(s : NetroutestaticPath, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_static_path_sum(s : NetroutestaticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_path_sum(s : NetroutestaticPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_path_mean(s : NetroutestaticPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_path_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_path_mean(s : NetroutestaticPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_path_scale(s : NetroutestaticPath, f : Double) -> NetroutestaticPath {
   let result = net_route_static_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_route_static_path_fill(s : NetroutestaticPath, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_static_path_min(s : NetroutestaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_path_min(s : NetroutestaticPath) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_path_max(s : NetroutestaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_path_max(s : NetroutestaticPath) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_path_to_string(s : NetroutestaticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_route_static_cluster_set(s : NetroutestaticCluster, i : Int, v : Doub
   result
 }
 
-pub fn net_route_static_cluster_sum(s : NetroutestaticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_cluster_sum(s : NetroutestaticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_cluster_mean(s : NetroutestaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_cluster_mean(s : NetroutestaticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_cluster_scale(s : NetroutestaticCluster, f : Double) -> NetroutestaticCluster {
   let result = net_route_static_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_route_static_cluster_fill(s : NetroutestaticCluster, v : Double) -> N
   result
 }
 
-pub fn net_route_static_cluster_min(s : NetroutestaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_cluster_min(s : NetroutestaticCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_cluster_max(s : NetroutestaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_cluster_max(s : NetroutestaticCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_cluster_to_string(s : NetroutestaticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_route_static_model_set(s : NetroutestaticModel, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_static_model_sum(s : NetroutestaticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_model_sum(s : NetroutestaticModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_model_mean(s : NetroutestaticModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_model_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_model_mean(s : NetroutestaticModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_model_scale(s : NetroutestaticModel, f : Double) -> NetroutestaticModel {
   let result = net_route_static_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_route_static_model_fill(s : NetroutestaticModel, v : Double) -> Netro
   result
 }
 
-pub fn net_route_static_model_min(s : NetroutestaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_model_min(s : NetroutestaticModel) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_model_max(s : NetroutestaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_model_max(s : NetroutestaticModel) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_model_to_string(s : NetroutestaticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_route_static_layer_set(s : NetroutestaticLayer, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_static_layer_sum(s : NetroutestaticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_layer_sum(s : NetroutestaticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_layer_mean(s : NetroutestaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_layer_mean(s : NetroutestaticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_layer_scale(s : NetroutestaticLayer, f : Double) -> NetroutestaticLayer {
   let result = net_route_static_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_route_static_layer_fill(s : NetroutestaticLayer, v : Double) -> Netro
   result
 }
 
-pub fn net_route_static_layer_min(s : NetroutestaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_layer_min(s : NetroutestaticLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_layer_max(s : NetroutestaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_layer_max(s : NetroutestaticLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_layer_to_string(s : NetroutestaticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_route_static_buffer_set(s : NetroutestaticBuffer, i : Int, v : Double
   result
 }
 
-pub fn net_route_static_buffer_sum(s : NetroutestaticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_buffer_sum(s : NetroutestaticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_buffer_mean(s : NetroutestaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_buffer_mean(s : NetroutestaticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_buffer_scale(s : NetroutestaticBuffer, f : Double) -> NetroutestaticBuffer {
   let result = net_route_static_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_route_static_buffer_fill(s : NetroutestaticBuffer, v : Double) -> Net
   result
 }
 
-pub fn net_route_static_buffer_min(s : NetroutestaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_buffer_min(s : NetroutestaticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_buffer_max(s : NetroutestaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_buffer_max(s : NetroutestaticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_buffer_to_string(s : NetroutestaticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_route_static_cursor_set(s : NetroutestaticCursor, i : Int, v : Double
   result
 }
 
-pub fn net_route_static_cursor_sum(s : NetroutestaticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_cursor_sum(s : NetroutestaticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_cursor_mean(s : NetroutestaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_cursor_mean(s : NetroutestaticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_cursor_scale(s : NetroutestaticCursor, f : Double) -> NetroutestaticCursor {
   let result = net_route_static_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_route_static_cursor_fill(s : NetroutestaticCursor, v : Double) -> Net
   result
 }
 
-pub fn net_route_static_cursor_min(s : NetroutestaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_cursor_min(s : NetroutestaticCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_cursor_max(s : NetroutestaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_cursor_max(s : NetroutestaticCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_cursor_to_string(s : NetroutestaticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_route_static_view_set(s : NetroutestaticView, i : Int, v : Double) ->
   result
 }
 
-pub fn net_route_static_view_sum(s : NetroutestaticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_view_sum(s : NetroutestaticView) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_view_mean(s : NetroutestaticView) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_view_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_view_mean(s : NetroutestaticView) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_view_scale(s : NetroutestaticView, f : Double) -> NetroutestaticView {
   let result = net_route_static_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_route_static_view_fill(s : NetroutestaticView, v : Double) -> Netrout
   result
 }
 
-pub fn net_route_static_view_min(s : NetroutestaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_view_min(s : NetroutestaticView) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_view_max(s : NetroutestaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_view_max(s : NetroutestaticView) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_view_to_string(s : NetroutestaticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_route_static_range_set(s : NetroutestaticRange, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_static_range_sum(s : NetroutestaticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_range_sum(s : NetroutestaticRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_range_mean(s : NetroutestaticRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_range_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_range_mean(s : NetroutestaticRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_range_scale(s : NetroutestaticRange, f : Double) -> NetroutestaticRange {
   let result = net_route_static_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_route_static_range_fill(s : NetroutestaticRange, v : Double) -> Netro
   result
 }
 
-pub fn net_route_static_range_min(s : NetroutestaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_range_min(s : NetroutestaticRange) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_range_max(s : NetroutestaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_range_max(s : NetroutestaticRange) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_range_to_string(s : NetroutestaticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_route_static_slice_set(s : NetroutestaticSlice, i : Int, v : Double) 
   result
 }
 
-pub fn net_route_static_slice_sum(s : NetroutestaticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_route_static_slice_sum(s : NetroutestaticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_route_static_slice_mean(s : NetroutestaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_route_static_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_route_static_slice_mean(s : NetroutestaticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_route_static_slice_scale(s : NetroutestaticSlice, f : Double) -> NetroutestaticSlice {
   let result = net_route_static_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_route_static_slice_fill(s : NetroutestaticSlice, v : Double) -> Netro
   result
 }
 
-pub fn net_route_static_slice_min(s : NetroutestaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_slice_min(s : NetroutestaticSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_route_static_slice_max(s : NetroutestaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_route_static_slice_max(s : NetroutestaticSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_route_static_slice_to_string(s : NetroutestaticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

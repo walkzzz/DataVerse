@@ -88,11 +88,7 @@ pub fn math_complementarity_make_series(vals : Array[Double], name : String) -> 
 
 pub fn math_complementarity_series_len(s : MathcomplementaritySeries) -> Int { s.vals.length() }
 
-pub fn math_complementarity_series_sum(s : MathcomplementaritySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn math_complementarity_series_sum(s : MathcomplementaritySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn math_complementarity_series_mean(s : MathcomplementaritySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn math_complementarity_frame_set(s : MathcomplementarityFrame, i : Int, v :
   result
 }
 
-pub fn math_complementarity_frame_sum(s : MathcomplementarityFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_frame_sum(s : MathcomplementarityFrame) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_frame_mean(s : MathcomplementarityFrame) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_frame_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_frame_mean(s : MathcomplementarityFrame) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_frame_scale(s : MathcomplementarityFrame, f : Double) -> MathcomplementarityFrame {
   let result = math_complementarity_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn math_complementarity_frame_fill(s : MathcomplementarityFrame, v : Double)
   result
 }
 
-pub fn math_complementarity_frame_min(s : MathcomplementarityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_frame_min(s : MathcomplementarityFrame) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_frame_max(s : MathcomplementarityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_frame_max(s : MathcomplementarityFrame) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_frame_to_string(s : MathcomplementarityFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn math_complementarity_table_set(s : MathcomplementarityTable, i : Int, v :
   result
 }
 
-pub fn math_complementarity_table_sum(s : MathcomplementarityTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_table_sum(s : MathcomplementarityTable) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_table_mean(s : MathcomplementarityTable) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_table_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_table_mean(s : MathcomplementarityTable) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_table_scale(s : MathcomplementarityTable, f : Double) -> MathcomplementarityTable {
   let result = math_complementarity_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn math_complementarity_table_fill(s : MathcomplementarityTable, v : Double)
   result
 }
 
-pub fn math_complementarity_table_min(s : MathcomplementarityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_table_min(s : MathcomplementarityTable) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_table_max(s : MathcomplementarityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_table_max(s : MathcomplementarityTable) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_table_to_string(s : MathcomplementarityTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn math_complementarity_graphn_set(s : MathcomplementarityGraphN, i : Int, v
   result
 }
 
-pub fn math_complementarity_graphn_sum(s : MathcomplementarityGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_graphn_sum(s : MathcomplementarityGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_graphn_mean(s : MathcomplementarityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_graphn_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_graphn_mean(s : MathcomplementarityGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_graphn_scale(s : MathcomplementarityGraphN, f : Double) -> MathcomplementarityGraphN {
   let result = math_complementarity_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn math_complementarity_graphn_fill(s : MathcomplementarityGraphN, v : Doubl
   result
 }
 
-pub fn math_complementarity_graphn_min(s : MathcomplementarityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_graphn_min(s : MathcomplementarityGraphN) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_graphn_max(s : MathcomplementarityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_graphn_max(s : MathcomplementarityGraphN) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_graphn_to_string(s : MathcomplementarityGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn math_complementarity_node_set(s : MathcomplementarityNode, i : Int, v : D
   result
 }
 
-pub fn math_complementarity_node_sum(s : MathcomplementarityNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_node_sum(s : MathcomplementarityNode) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_node_mean(s : MathcomplementarityNode) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_node_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_node_mean(s : MathcomplementarityNode) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_node_scale(s : MathcomplementarityNode, f : Double) -> MathcomplementarityNode {
   let result = math_complementarity_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn math_complementarity_node_fill(s : MathcomplementarityNode, v : Double) -
   result
 }
 
-pub fn math_complementarity_node_min(s : MathcomplementarityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_node_min(s : MathcomplementarityNode) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_node_max(s : MathcomplementarityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_node_max(s : MathcomplementarityNode) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_node_to_string(s : MathcomplementarityNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn math_complementarity_edge_set(s : MathcomplementarityEdge, i : Int, v : D
   result
 }
 
-pub fn math_complementarity_edge_sum(s : MathcomplementarityEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_edge_sum(s : MathcomplementarityEdge) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_edge_mean(s : MathcomplementarityEdge) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_edge_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_edge_mean(s : MathcomplementarityEdge) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_edge_scale(s : MathcomplementarityEdge, f : Double) -> MathcomplementarityEdge {
   let result = math_complementarity_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn math_complementarity_edge_fill(s : MathcomplementarityEdge, v : Double) -
   result
 }
 
-pub fn math_complementarity_edge_min(s : MathcomplementarityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_edge_min(s : MathcomplementarityEdge) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_edge_max(s : MathcomplementarityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_edge_max(s : MathcomplementarityEdge) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_edge_to_string(s : MathcomplementarityEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn math_complementarity_path_set(s : MathcomplementarityPath, i : Int, v : D
   result
 }
 
-pub fn math_complementarity_path_sum(s : MathcomplementarityPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_path_sum(s : MathcomplementarityPath) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_path_mean(s : MathcomplementarityPath) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_path_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_path_mean(s : MathcomplementarityPath) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_path_scale(s : MathcomplementarityPath, f : Double) -> MathcomplementarityPath {
   let result = math_complementarity_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn math_complementarity_path_fill(s : MathcomplementarityPath, v : Double) -
   result
 }
 
-pub fn math_complementarity_path_min(s : MathcomplementarityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_path_min(s : MathcomplementarityPath) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_path_max(s : MathcomplementarityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_path_max(s : MathcomplementarityPath) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_path_to_string(s : MathcomplementarityPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn math_complementarity_cluster_set(s : MathcomplementarityCluster, i : Int,
   result
 }
 
-pub fn math_complementarity_cluster_sum(s : MathcomplementarityCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_cluster_sum(s : MathcomplementarityCluster) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_cluster_mean(s : MathcomplementarityCluster) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_cluster_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_cluster_mean(s : MathcomplementarityCluster) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_cluster_scale(s : MathcomplementarityCluster, f : Double) -> MathcomplementarityCluster {
   let result = math_complementarity_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn math_complementarity_cluster_fill(s : MathcomplementarityCluster, v : Dou
   result
 }
 
-pub fn math_complementarity_cluster_min(s : MathcomplementarityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_cluster_min(s : MathcomplementarityCluster) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_cluster_max(s : MathcomplementarityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_cluster_max(s : MathcomplementarityCluster) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_cluster_to_string(s : MathcomplementarityCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn math_complementarity_model_set(s : MathcomplementarityModel, i : Int, v :
   result
 }
 
-pub fn math_complementarity_model_sum(s : MathcomplementarityModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_model_sum(s : MathcomplementarityModel) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_model_mean(s : MathcomplementarityModel) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_model_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_model_mean(s : MathcomplementarityModel) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_model_scale(s : MathcomplementarityModel, f : Double) -> MathcomplementarityModel {
   let result = math_complementarity_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn math_complementarity_model_fill(s : MathcomplementarityModel, v : Double)
   result
 }
 
-pub fn math_complementarity_model_min(s : MathcomplementarityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_model_min(s : MathcomplementarityModel) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_model_max(s : MathcomplementarityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_model_max(s : MathcomplementarityModel) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_model_to_string(s : MathcomplementarityModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn math_complementarity_layer_set(s : MathcomplementarityLayer, i : Int, v :
   result
 }
 
-pub fn math_complementarity_layer_sum(s : MathcomplementarityLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_layer_sum(s : MathcomplementarityLayer) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_layer_mean(s : MathcomplementarityLayer) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_layer_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_layer_mean(s : MathcomplementarityLayer) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_layer_scale(s : MathcomplementarityLayer, f : Double) -> MathcomplementarityLayer {
   let result = math_complementarity_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn math_complementarity_layer_fill(s : MathcomplementarityLayer, v : Double)
   result
 }
 
-pub fn math_complementarity_layer_min(s : MathcomplementarityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_layer_min(s : MathcomplementarityLayer) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_layer_max(s : MathcomplementarityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_layer_max(s : MathcomplementarityLayer) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_layer_to_string(s : MathcomplementarityLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn math_complementarity_buffer_set(s : MathcomplementarityBuffer, i : Int, v
   result
 }
 
-pub fn math_complementarity_buffer_sum(s : MathcomplementarityBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_buffer_sum(s : MathcomplementarityBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_buffer_mean(s : MathcomplementarityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_buffer_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_buffer_mean(s : MathcomplementarityBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_buffer_scale(s : MathcomplementarityBuffer, f : Double) -> MathcomplementarityBuffer {
   let result = math_complementarity_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn math_complementarity_buffer_fill(s : MathcomplementarityBuffer, v : Doubl
   result
 }
 
-pub fn math_complementarity_buffer_min(s : MathcomplementarityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_buffer_min(s : MathcomplementarityBuffer) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_buffer_max(s : MathcomplementarityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_buffer_max(s : MathcomplementarityBuffer) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_buffer_to_string(s : MathcomplementarityBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn math_complementarity_cursor_set(s : MathcomplementarityCursor, i : Int, v
   result
 }
 
-pub fn math_complementarity_cursor_sum(s : MathcomplementarityCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_cursor_sum(s : MathcomplementarityCursor) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_cursor_mean(s : MathcomplementarityCursor) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_cursor_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_cursor_mean(s : MathcomplementarityCursor) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_cursor_scale(s : MathcomplementarityCursor, f : Double) -> MathcomplementarityCursor {
   let result = math_complementarity_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn math_complementarity_cursor_fill(s : MathcomplementarityCursor, v : Doubl
   result
 }
 
-pub fn math_complementarity_cursor_min(s : MathcomplementarityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_cursor_min(s : MathcomplementarityCursor) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_cursor_max(s : MathcomplementarityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_cursor_max(s : MathcomplementarityCursor) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_cursor_to_string(s : MathcomplementarityCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn math_complementarity_view_set(s : MathcomplementarityView, i : Int, v : D
   result
 }
 
-pub fn math_complementarity_view_sum(s : MathcomplementarityView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_view_sum(s : MathcomplementarityView) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_view_mean(s : MathcomplementarityView) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_view_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_view_mean(s : MathcomplementarityView) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_view_scale(s : MathcomplementarityView, f : Double) -> MathcomplementarityView {
   let result = math_complementarity_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn math_complementarity_view_fill(s : MathcomplementarityView, v : Double) -
   result
 }
 
-pub fn math_complementarity_view_min(s : MathcomplementarityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_view_min(s : MathcomplementarityView) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_view_max(s : MathcomplementarityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_view_max(s : MathcomplementarityView) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_view_to_string(s : MathcomplementarityView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn math_complementarity_range_set(s : MathcomplementarityRange, i : Int, v :
   result
 }
 
-pub fn math_complementarity_range_sum(s : MathcomplementarityRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_range_sum(s : MathcomplementarityRange) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_range_mean(s : MathcomplementarityRange) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_range_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_range_mean(s : MathcomplementarityRange) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_range_scale(s : MathcomplementarityRange, f : Double) -> MathcomplementarityRange {
   let result = math_complementarity_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn math_complementarity_range_fill(s : MathcomplementarityRange, v : Double)
   result
 }
 
-pub fn math_complementarity_range_min(s : MathcomplementarityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_range_min(s : MathcomplementarityRange) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_range_max(s : MathcomplementarityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_range_max(s : MathcomplementarityRange) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_range_to_string(s : MathcomplementarityRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn math_complementarity_slice_set(s : MathcomplementaritySlice, i : Int, v :
   result
 }
 
-pub fn math_complementarity_slice_sum(s : MathcomplementaritySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn math_complementarity_slice_sum(s : MathcomplementaritySlice) -> Double { @_common.sum(s.data) }
 
-pub fn math_complementarity_slice_mean(s : MathcomplementaritySlice) -> Double {
-  if s.size == 0 { 0.0 } else { math_complementarity_slice_sum(s) / s.size.to_double() }
-}
+pub fn math_complementarity_slice_mean(s : MathcomplementaritySlice) -> Double { @_common.mean(s.data) }
 
 pub fn math_complementarity_slice_scale(s : MathcomplementaritySlice, f : Double) -> MathcomplementaritySlice {
   let result = math_complementarity_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn math_complementarity_slice_fill(s : MathcomplementaritySlice, v : Double)
   result
 }
 
-pub fn math_complementarity_slice_min(s : MathcomplementaritySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_slice_min(s : MathcomplementaritySlice) -> Double { @_common.min(s.data) }
 
-pub fn math_complementarity_slice_max(s : MathcomplementaritySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn math_complementarity_slice_max(s : MathcomplementaritySlice) -> Double { @_common.max(s.data) }
 
 pub fn math_complementarity_slice_to_string(s : MathcomplementaritySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

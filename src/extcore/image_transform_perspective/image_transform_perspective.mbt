@@ -88,11 +88,7 @@ pub fn image_transform_perspective_make_series(vals : Array[Double], name : Stri
 
 pub fn image_transform_perspective_series_len(s : ImagetransformperspectiveSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_perspective_series_sum(s : ImagetransformperspectiveSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_perspective_series_sum(s : ImagetransformperspectiveSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_perspective_series_mean(s : ImagetransformperspectiveSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_perspective_frame_set(s : ImagetransformperspectiveFrame,
   result
 }
 
-pub fn image_transform_perspective_frame_sum(s : ImagetransformperspectiveFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_frame_sum(s : ImagetransformperspectiveFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_frame_mean(s : ImagetransformperspectiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_frame_mean(s : ImagetransformperspectiveFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_frame_scale(s : ImagetransformperspectiveFrame, f : Double) -> ImagetransformperspectiveFrame {
   let result = image_transform_perspective_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_perspective_frame_fill(s : ImagetransformperspectiveFrame
   result
 }
 
-pub fn image_transform_perspective_frame_min(s : ImagetransformperspectiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_frame_min(s : ImagetransformperspectiveFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_frame_max(s : ImagetransformperspectiveFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_frame_max(s : ImagetransformperspectiveFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_frame_to_string(s : ImagetransformperspectiveFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_perspective_table_set(s : ImagetransformperspectiveTable,
   result
 }
 
-pub fn image_transform_perspective_table_sum(s : ImagetransformperspectiveTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_table_sum(s : ImagetransformperspectiveTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_table_mean(s : ImagetransformperspectiveTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_table_mean(s : ImagetransformperspectiveTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_table_scale(s : ImagetransformperspectiveTable, f : Double) -> ImagetransformperspectiveTable {
   let result = image_transform_perspective_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_perspective_table_fill(s : ImagetransformperspectiveTable
   result
 }
 
-pub fn image_transform_perspective_table_min(s : ImagetransformperspectiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_table_min(s : ImagetransformperspectiveTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_table_max(s : ImagetransformperspectiveTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_table_max(s : ImagetransformperspectiveTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_table_to_string(s : ImagetransformperspectiveTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_perspective_graphn_set(s : ImagetransformperspectiveGraph
   result
 }
 
-pub fn image_transform_perspective_graphn_sum(s : ImagetransformperspectiveGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_graphn_sum(s : ImagetransformperspectiveGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_graphn_mean(s : ImagetransformperspectiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_graphn_mean(s : ImagetransformperspectiveGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_graphn_scale(s : ImagetransformperspectiveGraphN, f : Double) -> ImagetransformperspectiveGraphN {
   let result = image_transform_perspective_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_perspective_graphn_fill(s : ImagetransformperspectiveGrap
   result
 }
 
-pub fn image_transform_perspective_graphn_min(s : ImagetransformperspectiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_graphn_min(s : ImagetransformperspectiveGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_graphn_max(s : ImagetransformperspectiveGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_graphn_max(s : ImagetransformperspectiveGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_graphn_to_string(s : ImagetransformperspectiveGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_perspective_node_set(s : ImagetransformperspectiveNode, i
   result
 }
 
-pub fn image_transform_perspective_node_sum(s : ImagetransformperspectiveNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_node_sum(s : ImagetransformperspectiveNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_node_mean(s : ImagetransformperspectiveNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_node_mean(s : ImagetransformperspectiveNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_node_scale(s : ImagetransformperspectiveNode, f : Double) -> ImagetransformperspectiveNode {
   let result = image_transform_perspective_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_perspective_node_fill(s : ImagetransformperspectiveNode, 
   result
 }
 
-pub fn image_transform_perspective_node_min(s : ImagetransformperspectiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_node_min(s : ImagetransformperspectiveNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_node_max(s : ImagetransformperspectiveNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_node_max(s : ImagetransformperspectiveNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_node_to_string(s : ImagetransformperspectiveNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_perspective_edge_set(s : ImagetransformperspectiveEdge, i
   result
 }
 
-pub fn image_transform_perspective_edge_sum(s : ImagetransformperspectiveEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_edge_sum(s : ImagetransformperspectiveEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_edge_mean(s : ImagetransformperspectiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_edge_mean(s : ImagetransformperspectiveEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_edge_scale(s : ImagetransformperspectiveEdge, f : Double) -> ImagetransformperspectiveEdge {
   let result = image_transform_perspective_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_perspective_edge_fill(s : ImagetransformperspectiveEdge, 
   result
 }
 
-pub fn image_transform_perspective_edge_min(s : ImagetransformperspectiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_edge_min(s : ImagetransformperspectiveEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_edge_max(s : ImagetransformperspectiveEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_edge_max(s : ImagetransformperspectiveEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_edge_to_string(s : ImagetransformperspectiveEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_perspective_path_set(s : ImagetransformperspectivePath, i
   result
 }
 
-pub fn image_transform_perspective_path_sum(s : ImagetransformperspectivePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_path_sum(s : ImagetransformperspectivePath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_path_mean(s : ImagetransformperspectivePath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_path_mean(s : ImagetransformperspectivePath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_path_scale(s : ImagetransformperspectivePath, f : Double) -> ImagetransformperspectivePath {
   let result = image_transform_perspective_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_perspective_path_fill(s : ImagetransformperspectivePath, 
   result
 }
 
-pub fn image_transform_perspective_path_min(s : ImagetransformperspectivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_path_min(s : ImagetransformperspectivePath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_path_max(s : ImagetransformperspectivePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_path_max(s : ImagetransformperspectivePath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_path_to_string(s : ImagetransformperspectivePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_perspective_cluster_set(s : ImagetransformperspectiveClus
   result
 }
 
-pub fn image_transform_perspective_cluster_sum(s : ImagetransformperspectiveCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_cluster_sum(s : ImagetransformperspectiveCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_cluster_mean(s : ImagetransformperspectiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_cluster_mean(s : ImagetransformperspectiveCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_cluster_scale(s : ImagetransformperspectiveCluster, f : Double) -> ImagetransformperspectiveCluster {
   let result = image_transform_perspective_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_perspective_cluster_fill(s : ImagetransformperspectiveClu
   result
 }
 
-pub fn image_transform_perspective_cluster_min(s : ImagetransformperspectiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_cluster_min(s : ImagetransformperspectiveCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_cluster_max(s : ImagetransformperspectiveCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_cluster_max(s : ImagetransformperspectiveCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_cluster_to_string(s : ImagetransformperspectiveCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_perspective_model_set(s : ImagetransformperspectiveModel,
   result
 }
 
-pub fn image_transform_perspective_model_sum(s : ImagetransformperspectiveModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_model_sum(s : ImagetransformperspectiveModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_model_mean(s : ImagetransformperspectiveModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_model_mean(s : ImagetransformperspectiveModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_model_scale(s : ImagetransformperspectiveModel, f : Double) -> ImagetransformperspectiveModel {
   let result = image_transform_perspective_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_perspective_model_fill(s : ImagetransformperspectiveModel
   result
 }
 
-pub fn image_transform_perspective_model_min(s : ImagetransformperspectiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_model_min(s : ImagetransformperspectiveModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_model_max(s : ImagetransformperspectiveModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_model_max(s : ImagetransformperspectiveModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_model_to_string(s : ImagetransformperspectiveModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_perspective_layer_set(s : ImagetransformperspectiveLayer,
   result
 }
 
-pub fn image_transform_perspective_layer_sum(s : ImagetransformperspectiveLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_layer_sum(s : ImagetransformperspectiveLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_layer_mean(s : ImagetransformperspectiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_layer_mean(s : ImagetransformperspectiveLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_layer_scale(s : ImagetransformperspectiveLayer, f : Double) -> ImagetransformperspectiveLayer {
   let result = image_transform_perspective_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_perspective_layer_fill(s : ImagetransformperspectiveLayer
   result
 }
 
-pub fn image_transform_perspective_layer_min(s : ImagetransformperspectiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_layer_min(s : ImagetransformperspectiveLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_layer_max(s : ImagetransformperspectiveLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_layer_max(s : ImagetransformperspectiveLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_layer_to_string(s : ImagetransformperspectiveLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_perspective_buffer_set(s : ImagetransformperspectiveBuffe
   result
 }
 
-pub fn image_transform_perspective_buffer_sum(s : ImagetransformperspectiveBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_buffer_sum(s : ImagetransformperspectiveBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_buffer_mean(s : ImagetransformperspectiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_buffer_mean(s : ImagetransformperspectiveBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_buffer_scale(s : ImagetransformperspectiveBuffer, f : Double) -> ImagetransformperspectiveBuffer {
   let result = image_transform_perspective_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_perspective_buffer_fill(s : ImagetransformperspectiveBuff
   result
 }
 
-pub fn image_transform_perspective_buffer_min(s : ImagetransformperspectiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_buffer_min(s : ImagetransformperspectiveBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_buffer_max(s : ImagetransformperspectiveBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_buffer_max(s : ImagetransformperspectiveBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_buffer_to_string(s : ImagetransformperspectiveBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_perspective_cursor_set(s : ImagetransformperspectiveCurso
   result
 }
 
-pub fn image_transform_perspective_cursor_sum(s : ImagetransformperspectiveCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_cursor_sum(s : ImagetransformperspectiveCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_cursor_mean(s : ImagetransformperspectiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_cursor_mean(s : ImagetransformperspectiveCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_cursor_scale(s : ImagetransformperspectiveCursor, f : Double) -> ImagetransformperspectiveCursor {
   let result = image_transform_perspective_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_perspective_cursor_fill(s : ImagetransformperspectiveCurs
   result
 }
 
-pub fn image_transform_perspective_cursor_min(s : ImagetransformperspectiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_cursor_min(s : ImagetransformperspectiveCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_cursor_max(s : ImagetransformperspectiveCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_cursor_max(s : ImagetransformperspectiveCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_cursor_to_string(s : ImagetransformperspectiveCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_perspective_view_set(s : ImagetransformperspectiveView, i
   result
 }
 
-pub fn image_transform_perspective_view_sum(s : ImagetransformperspectiveView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_view_sum(s : ImagetransformperspectiveView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_view_mean(s : ImagetransformperspectiveView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_view_mean(s : ImagetransformperspectiveView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_view_scale(s : ImagetransformperspectiveView, f : Double) -> ImagetransformperspectiveView {
   let result = image_transform_perspective_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_perspective_view_fill(s : ImagetransformperspectiveView, 
   result
 }
 
-pub fn image_transform_perspective_view_min(s : ImagetransformperspectiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_view_min(s : ImagetransformperspectiveView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_view_max(s : ImagetransformperspectiveView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_view_max(s : ImagetransformperspectiveView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_view_to_string(s : ImagetransformperspectiveView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_perspective_range_set(s : ImagetransformperspectiveRange,
   result
 }
 
-pub fn image_transform_perspective_range_sum(s : ImagetransformperspectiveRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_range_sum(s : ImagetransformperspectiveRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_range_mean(s : ImagetransformperspectiveRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_range_mean(s : ImagetransformperspectiveRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_range_scale(s : ImagetransformperspectiveRange, f : Double) -> ImagetransformperspectiveRange {
   let result = image_transform_perspective_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_perspective_range_fill(s : ImagetransformperspectiveRange
   result
 }
 
-pub fn image_transform_perspective_range_min(s : ImagetransformperspectiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_range_min(s : ImagetransformperspectiveRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_range_max(s : ImagetransformperspectiveRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_range_max(s : ImagetransformperspectiveRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_range_to_string(s : ImagetransformperspectiveRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_perspective_slice_set(s : ImagetransformperspectiveSlice,
   result
 }
 
-pub fn image_transform_perspective_slice_sum(s : ImagetransformperspectiveSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_perspective_slice_sum(s : ImagetransformperspectiveSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_perspective_slice_mean(s : ImagetransformperspectiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_perspective_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_perspective_slice_mean(s : ImagetransformperspectiveSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_perspective_slice_scale(s : ImagetransformperspectiveSlice, f : Double) -> ImagetransformperspectiveSlice {
   let result = image_transform_perspective_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_perspective_slice_fill(s : ImagetransformperspectiveSlice
   result
 }
 
-pub fn image_transform_perspective_slice_min(s : ImagetransformperspectiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_slice_min(s : ImagetransformperspectiveSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_perspective_slice_max(s : ImagetransformperspectiveSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_perspective_slice_max(s : ImagetransformperspectiveSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_perspective_slice_to_string(s : ImagetransformperspectiveSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn geo_buffer_triangle_make_series(vals : Array[Double], name : String) -> G
 
 pub fn geo_buffer_triangle_series_len(s : GeobuffertriangleSeries) -> Int { s.vals.length() }
 
-pub fn geo_buffer_triangle_series_sum(s : GeobuffertriangleSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_buffer_triangle_series_sum(s : GeobuffertriangleSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_buffer_triangle_series_mean(s : GeobuffertriangleSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_buffer_triangle_frame_set(s : GeobuffertriangleFrame, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_triangle_frame_sum(s : GeobuffertriangleFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_frame_sum(s : GeobuffertriangleFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_frame_mean(s : GeobuffertriangleFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_frame_mean(s : GeobuffertriangleFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_frame_scale(s : GeobuffertriangleFrame, f : Double) -> GeobuffertriangleFrame {
   let result = geo_buffer_triangle_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_buffer_triangle_frame_fill(s : GeobuffertriangleFrame, v : Double) ->
   result
 }
 
-pub fn geo_buffer_triangle_frame_min(s : GeobuffertriangleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_frame_min(s : GeobuffertriangleFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_frame_max(s : GeobuffertriangleFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_frame_max(s : GeobuffertriangleFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_frame_to_string(s : GeobuffertriangleFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_buffer_triangle_table_set(s : GeobuffertriangleTable, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_triangle_table_sum(s : GeobuffertriangleTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_table_sum(s : GeobuffertriangleTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_table_mean(s : GeobuffertriangleTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_table_mean(s : GeobuffertriangleTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_table_scale(s : GeobuffertriangleTable, f : Double) -> GeobuffertriangleTable {
   let result = geo_buffer_triangle_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_buffer_triangle_table_fill(s : GeobuffertriangleTable, v : Double) ->
   result
 }
 
-pub fn geo_buffer_triangle_table_min(s : GeobuffertriangleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_table_min(s : GeobuffertriangleTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_table_max(s : GeobuffertriangleTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_table_max(s : GeobuffertriangleTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_table_to_string(s : GeobuffertriangleTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_buffer_triangle_graphn_set(s : GeobuffertriangleGraphN, i : Int, v : 
   result
 }
 
-pub fn geo_buffer_triangle_graphn_sum(s : GeobuffertriangleGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_graphn_sum(s : GeobuffertriangleGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_graphn_mean(s : GeobuffertriangleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_graphn_mean(s : GeobuffertriangleGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_graphn_scale(s : GeobuffertriangleGraphN, f : Double) -> GeobuffertriangleGraphN {
   let result = geo_buffer_triangle_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_buffer_triangle_graphn_fill(s : GeobuffertriangleGraphN, v : Double) 
   result
 }
 
-pub fn geo_buffer_triangle_graphn_min(s : GeobuffertriangleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_graphn_min(s : GeobuffertriangleGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_graphn_max(s : GeobuffertriangleGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_graphn_max(s : GeobuffertriangleGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_graphn_to_string(s : GeobuffertriangleGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_buffer_triangle_node_set(s : GeobuffertriangleNode, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_triangle_node_sum(s : GeobuffertriangleNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_node_sum(s : GeobuffertriangleNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_node_mean(s : GeobuffertriangleNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_node_mean(s : GeobuffertriangleNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_node_scale(s : GeobuffertriangleNode, f : Double) -> GeobuffertriangleNode {
   let result = geo_buffer_triangle_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_buffer_triangle_node_fill(s : GeobuffertriangleNode, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_triangle_node_min(s : GeobuffertriangleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_node_min(s : GeobuffertriangleNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_node_max(s : GeobuffertriangleNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_node_max(s : GeobuffertriangleNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_node_to_string(s : GeobuffertriangleNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_buffer_triangle_edge_set(s : GeobuffertriangleEdge, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_triangle_edge_sum(s : GeobuffertriangleEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_edge_sum(s : GeobuffertriangleEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_edge_mean(s : GeobuffertriangleEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_edge_mean(s : GeobuffertriangleEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_edge_scale(s : GeobuffertriangleEdge, f : Double) -> GeobuffertriangleEdge {
   let result = geo_buffer_triangle_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_buffer_triangle_edge_fill(s : GeobuffertriangleEdge, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_triangle_edge_min(s : GeobuffertriangleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_edge_min(s : GeobuffertriangleEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_edge_max(s : GeobuffertriangleEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_edge_max(s : GeobuffertriangleEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_edge_to_string(s : GeobuffertriangleEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_buffer_triangle_path_set(s : GeobuffertrianglePath, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_triangle_path_sum(s : GeobuffertrianglePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_path_sum(s : GeobuffertrianglePath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_path_mean(s : GeobuffertrianglePath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_path_mean(s : GeobuffertrianglePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_path_scale(s : GeobuffertrianglePath, f : Double) -> GeobuffertrianglePath {
   let result = geo_buffer_triangle_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_buffer_triangle_path_fill(s : GeobuffertrianglePath, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_triangle_path_min(s : GeobuffertrianglePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_path_min(s : GeobuffertrianglePath) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_path_max(s : GeobuffertrianglePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_path_max(s : GeobuffertrianglePath) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_path_to_string(s : GeobuffertrianglePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_buffer_triangle_cluster_set(s : GeobuffertriangleCluster, i : Int, v 
   result
 }
 
-pub fn geo_buffer_triangle_cluster_sum(s : GeobuffertriangleCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_cluster_sum(s : GeobuffertriangleCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_cluster_mean(s : GeobuffertriangleCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_cluster_mean(s : GeobuffertriangleCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_cluster_scale(s : GeobuffertriangleCluster, f : Double) -> GeobuffertriangleCluster {
   let result = geo_buffer_triangle_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_buffer_triangle_cluster_fill(s : GeobuffertriangleCluster, v : Double
   result
 }
 
-pub fn geo_buffer_triangle_cluster_min(s : GeobuffertriangleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_cluster_min(s : GeobuffertriangleCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_cluster_max(s : GeobuffertriangleCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_cluster_max(s : GeobuffertriangleCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_cluster_to_string(s : GeobuffertriangleCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_buffer_triangle_model_set(s : GeobuffertriangleModel, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_triangle_model_sum(s : GeobuffertriangleModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_model_sum(s : GeobuffertriangleModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_model_mean(s : GeobuffertriangleModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_model_mean(s : GeobuffertriangleModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_model_scale(s : GeobuffertriangleModel, f : Double) -> GeobuffertriangleModel {
   let result = geo_buffer_triangle_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_buffer_triangle_model_fill(s : GeobuffertriangleModel, v : Double) ->
   result
 }
 
-pub fn geo_buffer_triangle_model_min(s : GeobuffertriangleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_model_min(s : GeobuffertriangleModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_model_max(s : GeobuffertriangleModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_model_max(s : GeobuffertriangleModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_model_to_string(s : GeobuffertriangleModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_buffer_triangle_layer_set(s : GeobuffertriangleLayer, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_triangle_layer_sum(s : GeobuffertriangleLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_layer_sum(s : GeobuffertriangleLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_layer_mean(s : GeobuffertriangleLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_layer_mean(s : GeobuffertriangleLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_layer_scale(s : GeobuffertriangleLayer, f : Double) -> GeobuffertriangleLayer {
   let result = geo_buffer_triangle_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_buffer_triangle_layer_fill(s : GeobuffertriangleLayer, v : Double) ->
   result
 }
 
-pub fn geo_buffer_triangle_layer_min(s : GeobuffertriangleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_layer_min(s : GeobuffertriangleLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_layer_max(s : GeobuffertriangleLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_layer_max(s : GeobuffertriangleLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_layer_to_string(s : GeobuffertriangleLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_buffer_triangle_buffer_set(s : GeobuffertriangleBuffer, i : Int, v : 
   result
 }
 
-pub fn geo_buffer_triangle_buffer_sum(s : GeobuffertriangleBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_buffer_sum(s : GeobuffertriangleBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_buffer_mean(s : GeobuffertriangleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_buffer_mean(s : GeobuffertriangleBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_buffer_scale(s : GeobuffertriangleBuffer, f : Double) -> GeobuffertriangleBuffer {
   let result = geo_buffer_triangle_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_buffer_triangle_buffer_fill(s : GeobuffertriangleBuffer, v : Double) 
   result
 }
 
-pub fn geo_buffer_triangle_buffer_min(s : GeobuffertriangleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_buffer_min(s : GeobuffertriangleBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_buffer_max(s : GeobuffertriangleBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_buffer_max(s : GeobuffertriangleBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_buffer_to_string(s : GeobuffertriangleBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_buffer_triangle_cursor_set(s : GeobuffertriangleCursor, i : Int, v : 
   result
 }
 
-pub fn geo_buffer_triangle_cursor_sum(s : GeobuffertriangleCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_cursor_sum(s : GeobuffertriangleCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_cursor_mean(s : GeobuffertriangleCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_cursor_mean(s : GeobuffertriangleCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_cursor_scale(s : GeobuffertriangleCursor, f : Double) -> GeobuffertriangleCursor {
   let result = geo_buffer_triangle_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_buffer_triangle_cursor_fill(s : GeobuffertriangleCursor, v : Double) 
   result
 }
 
-pub fn geo_buffer_triangle_cursor_min(s : GeobuffertriangleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_cursor_min(s : GeobuffertriangleCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_cursor_max(s : GeobuffertriangleCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_cursor_max(s : GeobuffertriangleCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_cursor_to_string(s : GeobuffertriangleCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_buffer_triangle_view_set(s : GeobuffertriangleView, i : Int, v : Doub
   result
 }
 
-pub fn geo_buffer_triangle_view_sum(s : GeobuffertriangleView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_view_sum(s : GeobuffertriangleView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_view_mean(s : GeobuffertriangleView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_view_mean(s : GeobuffertriangleView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_view_scale(s : GeobuffertriangleView, f : Double) -> GeobuffertriangleView {
   let result = geo_buffer_triangle_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_buffer_triangle_view_fill(s : GeobuffertriangleView, v : Double) -> G
   result
 }
 
-pub fn geo_buffer_triangle_view_min(s : GeobuffertriangleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_view_min(s : GeobuffertriangleView) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_view_max(s : GeobuffertriangleView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_view_max(s : GeobuffertriangleView) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_view_to_string(s : GeobuffertriangleView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_buffer_triangle_range_set(s : GeobuffertriangleRange, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_triangle_range_sum(s : GeobuffertriangleRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_range_sum(s : GeobuffertriangleRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_range_mean(s : GeobuffertriangleRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_range_mean(s : GeobuffertriangleRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_range_scale(s : GeobuffertriangleRange, f : Double) -> GeobuffertriangleRange {
   let result = geo_buffer_triangle_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_buffer_triangle_range_fill(s : GeobuffertriangleRange, v : Double) ->
   result
 }
 
-pub fn geo_buffer_triangle_range_min(s : GeobuffertriangleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_range_min(s : GeobuffertriangleRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_range_max(s : GeobuffertriangleRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_range_max(s : GeobuffertriangleRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_range_to_string(s : GeobuffertriangleRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_buffer_triangle_slice_set(s : GeobuffertriangleSlice, i : Int, v : Do
   result
 }
 
-pub fn geo_buffer_triangle_slice_sum(s : GeobuffertriangleSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_buffer_triangle_slice_sum(s : GeobuffertriangleSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_buffer_triangle_slice_mean(s : GeobuffertriangleSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_buffer_triangle_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_buffer_triangle_slice_mean(s : GeobuffertriangleSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_buffer_triangle_slice_scale(s : GeobuffertriangleSlice, f : Double) -> GeobuffertriangleSlice {
   let result = geo_buffer_triangle_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_buffer_triangle_slice_fill(s : GeobuffertriangleSlice, v : Double) ->
   result
 }
 
-pub fn geo_buffer_triangle_slice_min(s : GeobuffertriangleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_slice_min(s : GeobuffertriangleSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_buffer_triangle_slice_max(s : GeobuffertriangleSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_buffer_triangle_slice_max(s : GeobuffertriangleSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_buffer_triangle_slice_to_string(s : GeobuffertriangleSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

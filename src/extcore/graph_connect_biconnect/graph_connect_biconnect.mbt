@@ -88,11 +88,7 @@ pub fn graph_connect_biconnect_make_series(vals : Array[Double], name : String) 
 
 pub fn graph_connect_biconnect_series_len(s : GraphconnectbiconnectSeries) -> Int { s.vals.length() }
 
-pub fn graph_connect_biconnect_series_sum(s : GraphconnectbiconnectSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_connect_biconnect_series_sum(s : GraphconnectbiconnectSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_connect_biconnect_series_mean(s : GraphconnectbiconnectSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_connect_biconnect_frame_set(s : GraphconnectbiconnectFrame, i : Int
   result
 }
 
-pub fn graph_connect_biconnect_frame_sum(s : GraphconnectbiconnectFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_frame_sum(s : GraphconnectbiconnectFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_frame_mean(s : GraphconnectbiconnectFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_frame_mean(s : GraphconnectbiconnectFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_frame_scale(s : GraphconnectbiconnectFrame, f : Double) -> GraphconnectbiconnectFrame {
   let result = graph_connect_biconnect_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_connect_biconnect_frame_fill(s : GraphconnectbiconnectFrame, v : Do
   result
 }
 
-pub fn graph_connect_biconnect_frame_min(s : GraphconnectbiconnectFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_frame_min(s : GraphconnectbiconnectFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_frame_max(s : GraphconnectbiconnectFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_frame_max(s : GraphconnectbiconnectFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_frame_to_string(s : GraphconnectbiconnectFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_connect_biconnect_table_set(s : GraphconnectbiconnectTable, i : Int
   result
 }
 
-pub fn graph_connect_biconnect_table_sum(s : GraphconnectbiconnectTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_table_sum(s : GraphconnectbiconnectTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_table_mean(s : GraphconnectbiconnectTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_table_mean(s : GraphconnectbiconnectTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_table_scale(s : GraphconnectbiconnectTable, f : Double) -> GraphconnectbiconnectTable {
   let result = graph_connect_biconnect_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_connect_biconnect_table_fill(s : GraphconnectbiconnectTable, v : Do
   result
 }
 
-pub fn graph_connect_biconnect_table_min(s : GraphconnectbiconnectTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_table_min(s : GraphconnectbiconnectTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_table_max(s : GraphconnectbiconnectTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_table_max(s : GraphconnectbiconnectTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_table_to_string(s : GraphconnectbiconnectTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_connect_biconnect_graphn_set(s : GraphconnectbiconnectGraphN, i : I
   result
 }
 
-pub fn graph_connect_biconnect_graphn_sum(s : GraphconnectbiconnectGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_graphn_sum(s : GraphconnectbiconnectGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_graphn_mean(s : GraphconnectbiconnectGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_graphn_mean(s : GraphconnectbiconnectGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_graphn_scale(s : GraphconnectbiconnectGraphN, f : Double) -> GraphconnectbiconnectGraphN {
   let result = graph_connect_biconnect_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_connect_biconnect_graphn_fill(s : GraphconnectbiconnectGraphN, v : 
   result
 }
 
-pub fn graph_connect_biconnect_graphn_min(s : GraphconnectbiconnectGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_graphn_min(s : GraphconnectbiconnectGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_graphn_max(s : GraphconnectbiconnectGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_graphn_max(s : GraphconnectbiconnectGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_graphn_to_string(s : GraphconnectbiconnectGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_connect_biconnect_node_set(s : GraphconnectbiconnectNode, i : Int, 
   result
 }
 
-pub fn graph_connect_biconnect_node_sum(s : GraphconnectbiconnectNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_node_sum(s : GraphconnectbiconnectNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_node_mean(s : GraphconnectbiconnectNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_node_mean(s : GraphconnectbiconnectNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_node_scale(s : GraphconnectbiconnectNode, f : Double) -> GraphconnectbiconnectNode {
   let result = graph_connect_biconnect_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_connect_biconnect_node_fill(s : GraphconnectbiconnectNode, v : Doub
   result
 }
 
-pub fn graph_connect_biconnect_node_min(s : GraphconnectbiconnectNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_node_min(s : GraphconnectbiconnectNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_node_max(s : GraphconnectbiconnectNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_node_max(s : GraphconnectbiconnectNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_node_to_string(s : GraphconnectbiconnectNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_connect_biconnect_edge_set(s : GraphconnectbiconnectEdge, i : Int, 
   result
 }
 
-pub fn graph_connect_biconnect_edge_sum(s : GraphconnectbiconnectEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_edge_sum(s : GraphconnectbiconnectEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_edge_mean(s : GraphconnectbiconnectEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_edge_mean(s : GraphconnectbiconnectEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_edge_scale(s : GraphconnectbiconnectEdge, f : Double) -> GraphconnectbiconnectEdge {
   let result = graph_connect_biconnect_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_connect_biconnect_edge_fill(s : GraphconnectbiconnectEdge, v : Doub
   result
 }
 
-pub fn graph_connect_biconnect_edge_min(s : GraphconnectbiconnectEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_edge_min(s : GraphconnectbiconnectEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_edge_max(s : GraphconnectbiconnectEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_edge_max(s : GraphconnectbiconnectEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_edge_to_string(s : GraphconnectbiconnectEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_connect_biconnect_path_set(s : GraphconnectbiconnectPath, i : Int, 
   result
 }
 
-pub fn graph_connect_biconnect_path_sum(s : GraphconnectbiconnectPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_path_sum(s : GraphconnectbiconnectPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_path_mean(s : GraphconnectbiconnectPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_path_mean(s : GraphconnectbiconnectPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_path_scale(s : GraphconnectbiconnectPath, f : Double) -> GraphconnectbiconnectPath {
   let result = graph_connect_biconnect_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_connect_biconnect_path_fill(s : GraphconnectbiconnectPath, v : Doub
   result
 }
 
-pub fn graph_connect_biconnect_path_min(s : GraphconnectbiconnectPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_path_min(s : GraphconnectbiconnectPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_path_max(s : GraphconnectbiconnectPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_path_max(s : GraphconnectbiconnectPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_path_to_string(s : GraphconnectbiconnectPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_connect_biconnect_cluster_set(s : GraphconnectbiconnectCluster, i :
   result
 }
 
-pub fn graph_connect_biconnect_cluster_sum(s : GraphconnectbiconnectCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_cluster_sum(s : GraphconnectbiconnectCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_cluster_mean(s : GraphconnectbiconnectCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_cluster_mean(s : GraphconnectbiconnectCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_cluster_scale(s : GraphconnectbiconnectCluster, f : Double) -> GraphconnectbiconnectCluster {
   let result = graph_connect_biconnect_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_connect_biconnect_cluster_fill(s : GraphconnectbiconnectCluster, v 
   result
 }
 
-pub fn graph_connect_biconnect_cluster_min(s : GraphconnectbiconnectCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_cluster_min(s : GraphconnectbiconnectCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_cluster_max(s : GraphconnectbiconnectCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_cluster_max(s : GraphconnectbiconnectCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_cluster_to_string(s : GraphconnectbiconnectCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_connect_biconnect_model_set(s : GraphconnectbiconnectModel, i : Int
   result
 }
 
-pub fn graph_connect_biconnect_model_sum(s : GraphconnectbiconnectModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_model_sum(s : GraphconnectbiconnectModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_model_mean(s : GraphconnectbiconnectModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_model_mean(s : GraphconnectbiconnectModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_model_scale(s : GraphconnectbiconnectModel, f : Double) -> GraphconnectbiconnectModel {
   let result = graph_connect_biconnect_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_connect_biconnect_model_fill(s : GraphconnectbiconnectModel, v : Do
   result
 }
 
-pub fn graph_connect_biconnect_model_min(s : GraphconnectbiconnectModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_model_min(s : GraphconnectbiconnectModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_model_max(s : GraphconnectbiconnectModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_model_max(s : GraphconnectbiconnectModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_model_to_string(s : GraphconnectbiconnectModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_connect_biconnect_layer_set(s : GraphconnectbiconnectLayer, i : Int
   result
 }
 
-pub fn graph_connect_biconnect_layer_sum(s : GraphconnectbiconnectLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_layer_sum(s : GraphconnectbiconnectLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_layer_mean(s : GraphconnectbiconnectLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_layer_mean(s : GraphconnectbiconnectLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_layer_scale(s : GraphconnectbiconnectLayer, f : Double) -> GraphconnectbiconnectLayer {
   let result = graph_connect_biconnect_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_connect_biconnect_layer_fill(s : GraphconnectbiconnectLayer, v : Do
   result
 }
 
-pub fn graph_connect_biconnect_layer_min(s : GraphconnectbiconnectLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_layer_min(s : GraphconnectbiconnectLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_layer_max(s : GraphconnectbiconnectLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_layer_max(s : GraphconnectbiconnectLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_layer_to_string(s : GraphconnectbiconnectLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_connect_biconnect_buffer_set(s : GraphconnectbiconnectBuffer, i : I
   result
 }
 
-pub fn graph_connect_biconnect_buffer_sum(s : GraphconnectbiconnectBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_buffer_sum(s : GraphconnectbiconnectBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_buffer_mean(s : GraphconnectbiconnectBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_buffer_mean(s : GraphconnectbiconnectBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_buffer_scale(s : GraphconnectbiconnectBuffer, f : Double) -> GraphconnectbiconnectBuffer {
   let result = graph_connect_biconnect_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_connect_biconnect_buffer_fill(s : GraphconnectbiconnectBuffer, v : 
   result
 }
 
-pub fn graph_connect_biconnect_buffer_min(s : GraphconnectbiconnectBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_buffer_min(s : GraphconnectbiconnectBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_buffer_max(s : GraphconnectbiconnectBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_buffer_max(s : GraphconnectbiconnectBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_buffer_to_string(s : GraphconnectbiconnectBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_connect_biconnect_cursor_set(s : GraphconnectbiconnectCursor, i : I
   result
 }
 
-pub fn graph_connect_biconnect_cursor_sum(s : GraphconnectbiconnectCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_cursor_sum(s : GraphconnectbiconnectCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_cursor_mean(s : GraphconnectbiconnectCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_cursor_mean(s : GraphconnectbiconnectCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_cursor_scale(s : GraphconnectbiconnectCursor, f : Double) -> GraphconnectbiconnectCursor {
   let result = graph_connect_biconnect_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_connect_biconnect_cursor_fill(s : GraphconnectbiconnectCursor, v : 
   result
 }
 
-pub fn graph_connect_biconnect_cursor_min(s : GraphconnectbiconnectCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_cursor_min(s : GraphconnectbiconnectCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_cursor_max(s : GraphconnectbiconnectCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_cursor_max(s : GraphconnectbiconnectCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_cursor_to_string(s : GraphconnectbiconnectCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_connect_biconnect_view_set(s : GraphconnectbiconnectView, i : Int, 
   result
 }
 
-pub fn graph_connect_biconnect_view_sum(s : GraphconnectbiconnectView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_view_sum(s : GraphconnectbiconnectView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_view_mean(s : GraphconnectbiconnectView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_view_mean(s : GraphconnectbiconnectView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_view_scale(s : GraphconnectbiconnectView, f : Double) -> GraphconnectbiconnectView {
   let result = graph_connect_biconnect_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_connect_biconnect_view_fill(s : GraphconnectbiconnectView, v : Doub
   result
 }
 
-pub fn graph_connect_biconnect_view_min(s : GraphconnectbiconnectView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_view_min(s : GraphconnectbiconnectView) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_view_max(s : GraphconnectbiconnectView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_view_max(s : GraphconnectbiconnectView) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_view_to_string(s : GraphconnectbiconnectView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_connect_biconnect_range_set(s : GraphconnectbiconnectRange, i : Int
   result
 }
 
-pub fn graph_connect_biconnect_range_sum(s : GraphconnectbiconnectRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_range_sum(s : GraphconnectbiconnectRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_range_mean(s : GraphconnectbiconnectRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_range_mean(s : GraphconnectbiconnectRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_range_scale(s : GraphconnectbiconnectRange, f : Double) -> GraphconnectbiconnectRange {
   let result = graph_connect_biconnect_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_connect_biconnect_range_fill(s : GraphconnectbiconnectRange, v : Do
   result
 }
 
-pub fn graph_connect_biconnect_range_min(s : GraphconnectbiconnectRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_range_min(s : GraphconnectbiconnectRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_range_max(s : GraphconnectbiconnectRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_range_max(s : GraphconnectbiconnectRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_range_to_string(s : GraphconnectbiconnectRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_connect_biconnect_slice_set(s : GraphconnectbiconnectSlice, i : Int
   result
 }
 
-pub fn graph_connect_biconnect_slice_sum(s : GraphconnectbiconnectSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_connect_biconnect_slice_sum(s : GraphconnectbiconnectSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_connect_biconnect_slice_mean(s : GraphconnectbiconnectSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_connect_biconnect_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_connect_biconnect_slice_mean(s : GraphconnectbiconnectSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_connect_biconnect_slice_scale(s : GraphconnectbiconnectSlice, f : Double) -> GraphconnectbiconnectSlice {
   let result = graph_connect_biconnect_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_connect_biconnect_slice_fill(s : GraphconnectbiconnectSlice, v : Do
   result
 }
 
-pub fn graph_connect_biconnect_slice_min(s : GraphconnectbiconnectSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_slice_min(s : GraphconnectbiconnectSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_connect_biconnect_slice_max(s : GraphconnectbiconnectSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_connect_biconnect_slice_max(s : GraphconnectbiconnectSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_connect_biconnect_slice_to_string(s : GraphconnectbiconnectSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

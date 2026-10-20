@@ -88,11 +88,7 @@ pub fn geo_proj_utm_make_series(vals : Array[Double], name : String) -> Geoproju
 
 pub fn geo_proj_utm_series_len(s : GeoprojutmSeries) -> Int { s.vals.length() }
 
-pub fn geo_proj_utm_series_sum(s : GeoprojutmSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_proj_utm_series_sum(s : GeoprojutmSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_proj_utm_series_mean(s : GeoprojutmSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_proj_utm_frame_set(s : GeoprojutmFrame, i : Int, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_utm_frame_sum(s : GeoprojutmFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_frame_sum(s : GeoprojutmFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_frame_mean(s : GeoprojutmFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_frame_mean(s : GeoprojutmFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_frame_scale(s : GeoprojutmFrame, f : Double) -> GeoprojutmFrame {
   let result = geo_proj_utm_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_proj_utm_frame_fill(s : GeoprojutmFrame, v : Double) -> GeoprojutmFra
   result
 }
 
-pub fn geo_proj_utm_frame_min(s : GeoprojutmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_frame_min(s : GeoprojutmFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_frame_max(s : GeoprojutmFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_frame_max(s : GeoprojutmFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_frame_to_string(s : GeoprojutmFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_proj_utm_table_set(s : GeoprojutmTable, i : Int, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_utm_table_sum(s : GeoprojutmTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_table_sum(s : GeoprojutmTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_table_mean(s : GeoprojutmTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_table_mean(s : GeoprojutmTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_table_scale(s : GeoprojutmTable, f : Double) -> GeoprojutmTable {
   let result = geo_proj_utm_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_proj_utm_table_fill(s : GeoprojutmTable, v : Double) -> GeoprojutmTab
   result
 }
 
-pub fn geo_proj_utm_table_min(s : GeoprojutmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_table_min(s : GeoprojutmTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_table_max(s : GeoprojutmTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_table_max(s : GeoprojutmTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_table_to_string(s : GeoprojutmTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_proj_utm_graphn_set(s : GeoprojutmGraphN, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_utm_graphn_sum(s : GeoprojutmGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_graphn_sum(s : GeoprojutmGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_graphn_mean(s : GeoprojutmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_graphn_mean(s : GeoprojutmGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_graphn_scale(s : GeoprojutmGraphN, f : Double) -> GeoprojutmGraphN {
   let result = geo_proj_utm_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_proj_utm_graphn_fill(s : GeoprojutmGraphN, v : Double) -> GeoprojutmG
   result
 }
 
-pub fn geo_proj_utm_graphn_min(s : GeoprojutmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_graphn_min(s : GeoprojutmGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_graphn_max(s : GeoprojutmGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_graphn_max(s : GeoprojutmGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_graphn_to_string(s : GeoprojutmGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_proj_utm_node_set(s : GeoprojutmNode, i : Int, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_utm_node_sum(s : GeoprojutmNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_node_sum(s : GeoprojutmNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_node_mean(s : GeoprojutmNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_node_mean(s : GeoprojutmNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_node_scale(s : GeoprojutmNode, f : Double) -> GeoprojutmNode {
   let result = geo_proj_utm_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_proj_utm_node_fill(s : GeoprojutmNode, v : Double) -> GeoprojutmNode 
   result
 }
 
-pub fn geo_proj_utm_node_min(s : GeoprojutmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_node_min(s : GeoprojutmNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_node_max(s : GeoprojutmNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_node_max(s : GeoprojutmNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_node_to_string(s : GeoprojutmNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_proj_utm_edge_set(s : GeoprojutmEdge, i : Int, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_utm_edge_sum(s : GeoprojutmEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_edge_sum(s : GeoprojutmEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_edge_mean(s : GeoprojutmEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_edge_mean(s : GeoprojutmEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_edge_scale(s : GeoprojutmEdge, f : Double) -> GeoprojutmEdge {
   let result = geo_proj_utm_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_proj_utm_edge_fill(s : GeoprojutmEdge, v : Double) -> GeoprojutmEdge 
   result
 }
 
-pub fn geo_proj_utm_edge_min(s : GeoprojutmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_edge_min(s : GeoprojutmEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_edge_max(s : GeoprojutmEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_edge_max(s : GeoprojutmEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_edge_to_string(s : GeoprojutmEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_proj_utm_path_set(s : GeoprojutmPath, i : Int, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_utm_path_sum(s : GeoprojutmPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_path_sum(s : GeoprojutmPath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_path_mean(s : GeoprojutmPath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_path_mean(s : GeoprojutmPath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_path_scale(s : GeoprojutmPath, f : Double) -> GeoprojutmPath {
   let result = geo_proj_utm_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_proj_utm_path_fill(s : GeoprojutmPath, v : Double) -> GeoprojutmPath 
   result
 }
 
-pub fn geo_proj_utm_path_min(s : GeoprojutmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_path_min(s : GeoprojutmPath) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_path_max(s : GeoprojutmPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_path_max(s : GeoprojutmPath) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_path_to_string(s : GeoprojutmPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_proj_utm_cluster_set(s : GeoprojutmCluster, i : Int, v : Double) -> G
   result
 }
 
-pub fn geo_proj_utm_cluster_sum(s : GeoprojutmCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_cluster_sum(s : GeoprojutmCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_cluster_mean(s : GeoprojutmCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_cluster_mean(s : GeoprojutmCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_cluster_scale(s : GeoprojutmCluster, f : Double) -> GeoprojutmCluster {
   let result = geo_proj_utm_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_proj_utm_cluster_fill(s : GeoprojutmCluster, v : Double) -> Geoprojut
   result
 }
 
-pub fn geo_proj_utm_cluster_min(s : GeoprojutmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_cluster_min(s : GeoprojutmCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_cluster_max(s : GeoprojutmCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_cluster_max(s : GeoprojutmCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_cluster_to_string(s : GeoprojutmCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_proj_utm_model_set(s : GeoprojutmModel, i : Int, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_utm_model_sum(s : GeoprojutmModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_model_sum(s : GeoprojutmModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_model_mean(s : GeoprojutmModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_model_mean(s : GeoprojutmModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_model_scale(s : GeoprojutmModel, f : Double) -> GeoprojutmModel {
   let result = geo_proj_utm_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_proj_utm_model_fill(s : GeoprojutmModel, v : Double) -> GeoprojutmMod
   result
 }
 
-pub fn geo_proj_utm_model_min(s : GeoprojutmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_model_min(s : GeoprojutmModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_model_max(s : GeoprojutmModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_model_max(s : GeoprojutmModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_model_to_string(s : GeoprojutmModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_proj_utm_layer_set(s : GeoprojutmLayer, i : Int, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_utm_layer_sum(s : GeoprojutmLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_layer_sum(s : GeoprojutmLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_layer_mean(s : GeoprojutmLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_layer_mean(s : GeoprojutmLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_layer_scale(s : GeoprojutmLayer, f : Double) -> GeoprojutmLayer {
   let result = geo_proj_utm_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_proj_utm_layer_fill(s : GeoprojutmLayer, v : Double) -> GeoprojutmLay
   result
 }
 
-pub fn geo_proj_utm_layer_min(s : GeoprojutmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_layer_min(s : GeoprojutmLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_layer_max(s : GeoprojutmLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_layer_max(s : GeoprojutmLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_layer_to_string(s : GeoprojutmLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_proj_utm_buffer_set(s : GeoprojutmBuffer, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_utm_buffer_sum(s : GeoprojutmBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_buffer_sum(s : GeoprojutmBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_buffer_mean(s : GeoprojutmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_buffer_mean(s : GeoprojutmBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_buffer_scale(s : GeoprojutmBuffer, f : Double) -> GeoprojutmBuffer {
   let result = geo_proj_utm_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_proj_utm_buffer_fill(s : GeoprojutmBuffer, v : Double) -> GeoprojutmB
   result
 }
 
-pub fn geo_proj_utm_buffer_min(s : GeoprojutmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_buffer_min(s : GeoprojutmBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_buffer_max(s : GeoprojutmBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_buffer_max(s : GeoprojutmBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_buffer_to_string(s : GeoprojutmBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_proj_utm_cursor_set(s : GeoprojutmCursor, i : Int, v : Double) -> Geo
   result
 }
 
-pub fn geo_proj_utm_cursor_sum(s : GeoprojutmCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_cursor_sum(s : GeoprojutmCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_cursor_mean(s : GeoprojutmCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_cursor_mean(s : GeoprojutmCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_cursor_scale(s : GeoprojutmCursor, f : Double) -> GeoprojutmCursor {
   let result = geo_proj_utm_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_proj_utm_cursor_fill(s : GeoprojutmCursor, v : Double) -> GeoprojutmC
   result
 }
 
-pub fn geo_proj_utm_cursor_min(s : GeoprojutmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_cursor_min(s : GeoprojutmCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_cursor_max(s : GeoprojutmCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_cursor_max(s : GeoprojutmCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_cursor_to_string(s : GeoprojutmCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_proj_utm_view_set(s : GeoprojutmView, i : Int, v : Double) -> Geoproj
   result
 }
 
-pub fn geo_proj_utm_view_sum(s : GeoprojutmView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_view_sum(s : GeoprojutmView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_view_mean(s : GeoprojutmView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_view_mean(s : GeoprojutmView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_view_scale(s : GeoprojutmView, f : Double) -> GeoprojutmView {
   let result = geo_proj_utm_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_proj_utm_view_fill(s : GeoprojutmView, v : Double) -> GeoprojutmView 
   result
 }
 
-pub fn geo_proj_utm_view_min(s : GeoprojutmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_view_min(s : GeoprojutmView) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_view_max(s : GeoprojutmView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_view_max(s : GeoprojutmView) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_view_to_string(s : GeoprojutmView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_proj_utm_range_set(s : GeoprojutmRange, i : Int, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_utm_range_sum(s : GeoprojutmRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_range_sum(s : GeoprojutmRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_range_mean(s : GeoprojutmRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_range_mean(s : GeoprojutmRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_range_scale(s : GeoprojutmRange, f : Double) -> GeoprojutmRange {
   let result = geo_proj_utm_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_proj_utm_range_fill(s : GeoprojutmRange, v : Double) -> GeoprojutmRan
   result
 }
 
-pub fn geo_proj_utm_range_min(s : GeoprojutmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_range_min(s : GeoprojutmRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_range_max(s : GeoprojutmRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_range_max(s : GeoprojutmRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_range_to_string(s : GeoprojutmRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_proj_utm_slice_set(s : GeoprojutmSlice, i : Int, v : Double) -> Geopr
   result
 }
 
-pub fn geo_proj_utm_slice_sum(s : GeoprojutmSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_proj_utm_slice_sum(s : GeoprojutmSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_proj_utm_slice_mean(s : GeoprojutmSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_proj_utm_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_proj_utm_slice_mean(s : GeoprojutmSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_proj_utm_slice_scale(s : GeoprojutmSlice, f : Double) -> GeoprojutmSlice {
   let result = geo_proj_utm_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_proj_utm_slice_fill(s : GeoprojutmSlice, v : Double) -> GeoprojutmSli
   result
 }
 
-pub fn geo_proj_utm_slice_min(s : GeoprojutmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_slice_min(s : GeoprojutmSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_proj_utm_slice_max(s : GeoprojutmSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_proj_utm_slice_max(s : GeoprojutmSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_proj_utm_slice_to_string(s : GeoprojutmSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

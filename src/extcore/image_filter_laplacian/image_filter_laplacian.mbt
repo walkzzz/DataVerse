@@ -88,11 +88,7 @@ pub fn image_filter_laplacian_make_series(vals : Array[Double], name : String) -
 
 pub fn image_filter_laplacian_series_len(s : ImagefilterlaplacianSeries) -> Int { s.vals.length() }
 
-pub fn image_filter_laplacian_series_sum(s : ImagefilterlaplacianSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_filter_laplacian_series_sum(s : ImagefilterlaplacianSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_filter_laplacian_series_mean(s : ImagefilterlaplacianSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_filter_laplacian_frame_set(s : ImagefilterlaplacianFrame, i : Int, 
   result
 }
 
-pub fn image_filter_laplacian_frame_sum(s : ImagefilterlaplacianFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_frame_sum(s : ImagefilterlaplacianFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_frame_mean(s : ImagefilterlaplacianFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_frame_mean(s : ImagefilterlaplacianFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_frame_scale(s : ImagefilterlaplacianFrame, f : Double) -> ImagefilterlaplacianFrame {
   let result = image_filter_laplacian_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_filter_laplacian_frame_fill(s : ImagefilterlaplacianFrame, v : Doub
   result
 }
 
-pub fn image_filter_laplacian_frame_min(s : ImagefilterlaplacianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_frame_min(s : ImagefilterlaplacianFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_frame_max(s : ImagefilterlaplacianFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_frame_max(s : ImagefilterlaplacianFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_frame_to_string(s : ImagefilterlaplacianFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_filter_laplacian_table_set(s : ImagefilterlaplacianTable, i : Int, 
   result
 }
 
-pub fn image_filter_laplacian_table_sum(s : ImagefilterlaplacianTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_table_sum(s : ImagefilterlaplacianTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_table_mean(s : ImagefilterlaplacianTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_table_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_table_mean(s : ImagefilterlaplacianTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_table_scale(s : ImagefilterlaplacianTable, f : Double) -> ImagefilterlaplacianTable {
   let result = image_filter_laplacian_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_filter_laplacian_table_fill(s : ImagefilterlaplacianTable, v : Doub
   result
 }
 
-pub fn image_filter_laplacian_table_min(s : ImagefilterlaplacianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_table_min(s : ImagefilterlaplacianTable) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_table_max(s : ImagefilterlaplacianTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_table_max(s : ImagefilterlaplacianTable) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_table_to_string(s : ImagefilterlaplacianTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_filter_laplacian_graphn_set(s : ImagefilterlaplacianGraphN, i : Int
   result
 }
 
-pub fn image_filter_laplacian_graphn_sum(s : ImagefilterlaplacianGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_graphn_sum(s : ImagefilterlaplacianGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_graphn_mean(s : ImagefilterlaplacianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_graphn_mean(s : ImagefilterlaplacianGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_graphn_scale(s : ImagefilterlaplacianGraphN, f : Double) -> ImagefilterlaplacianGraphN {
   let result = image_filter_laplacian_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_filter_laplacian_graphn_fill(s : ImagefilterlaplacianGraphN, v : Do
   result
 }
 
-pub fn image_filter_laplacian_graphn_min(s : ImagefilterlaplacianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_graphn_min(s : ImagefilterlaplacianGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_graphn_max(s : ImagefilterlaplacianGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_graphn_max(s : ImagefilterlaplacianGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_graphn_to_string(s : ImagefilterlaplacianGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_filter_laplacian_node_set(s : ImagefilterlaplacianNode, i : Int, v 
   result
 }
 
-pub fn image_filter_laplacian_node_sum(s : ImagefilterlaplacianNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_node_sum(s : ImagefilterlaplacianNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_node_mean(s : ImagefilterlaplacianNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_node_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_node_mean(s : ImagefilterlaplacianNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_node_scale(s : ImagefilterlaplacianNode, f : Double) -> ImagefilterlaplacianNode {
   let result = image_filter_laplacian_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_filter_laplacian_node_fill(s : ImagefilterlaplacianNode, v : Double
   result
 }
 
-pub fn image_filter_laplacian_node_min(s : ImagefilterlaplacianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_node_min(s : ImagefilterlaplacianNode) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_node_max(s : ImagefilterlaplacianNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_node_max(s : ImagefilterlaplacianNode) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_node_to_string(s : ImagefilterlaplacianNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_filter_laplacian_edge_set(s : ImagefilterlaplacianEdge, i : Int, v 
   result
 }
 
-pub fn image_filter_laplacian_edge_sum(s : ImagefilterlaplacianEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_edge_sum(s : ImagefilterlaplacianEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_edge_mean(s : ImagefilterlaplacianEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_edge_mean(s : ImagefilterlaplacianEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_edge_scale(s : ImagefilterlaplacianEdge, f : Double) -> ImagefilterlaplacianEdge {
   let result = image_filter_laplacian_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_filter_laplacian_edge_fill(s : ImagefilterlaplacianEdge, v : Double
   result
 }
 
-pub fn image_filter_laplacian_edge_min(s : ImagefilterlaplacianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_edge_min(s : ImagefilterlaplacianEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_edge_max(s : ImagefilterlaplacianEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_edge_max(s : ImagefilterlaplacianEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_edge_to_string(s : ImagefilterlaplacianEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_filter_laplacian_path_set(s : ImagefilterlaplacianPath, i : Int, v 
   result
 }
 
-pub fn image_filter_laplacian_path_sum(s : ImagefilterlaplacianPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_path_sum(s : ImagefilterlaplacianPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_path_mean(s : ImagefilterlaplacianPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_path_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_path_mean(s : ImagefilterlaplacianPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_path_scale(s : ImagefilterlaplacianPath, f : Double) -> ImagefilterlaplacianPath {
   let result = image_filter_laplacian_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_filter_laplacian_path_fill(s : ImagefilterlaplacianPath, v : Double
   result
 }
 
-pub fn image_filter_laplacian_path_min(s : ImagefilterlaplacianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_path_min(s : ImagefilterlaplacianPath) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_path_max(s : ImagefilterlaplacianPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_path_max(s : ImagefilterlaplacianPath) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_path_to_string(s : ImagefilterlaplacianPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_filter_laplacian_cluster_set(s : ImagefilterlaplacianCluster, i : I
   result
 }
 
-pub fn image_filter_laplacian_cluster_sum(s : ImagefilterlaplacianCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_cluster_sum(s : ImagefilterlaplacianCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_cluster_mean(s : ImagefilterlaplacianCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_cluster_mean(s : ImagefilterlaplacianCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_cluster_scale(s : ImagefilterlaplacianCluster, f : Double) -> ImagefilterlaplacianCluster {
   let result = image_filter_laplacian_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_filter_laplacian_cluster_fill(s : ImagefilterlaplacianCluster, v : 
   result
 }
 
-pub fn image_filter_laplacian_cluster_min(s : ImagefilterlaplacianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_cluster_min(s : ImagefilterlaplacianCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_cluster_max(s : ImagefilterlaplacianCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_cluster_max(s : ImagefilterlaplacianCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_cluster_to_string(s : ImagefilterlaplacianCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_filter_laplacian_model_set(s : ImagefilterlaplacianModel, i : Int, 
   result
 }
 
-pub fn image_filter_laplacian_model_sum(s : ImagefilterlaplacianModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_model_sum(s : ImagefilterlaplacianModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_model_mean(s : ImagefilterlaplacianModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_model_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_model_mean(s : ImagefilterlaplacianModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_model_scale(s : ImagefilterlaplacianModel, f : Double) -> ImagefilterlaplacianModel {
   let result = image_filter_laplacian_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_filter_laplacian_model_fill(s : ImagefilterlaplacianModel, v : Doub
   result
 }
 
-pub fn image_filter_laplacian_model_min(s : ImagefilterlaplacianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_model_min(s : ImagefilterlaplacianModel) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_model_max(s : ImagefilterlaplacianModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_model_max(s : ImagefilterlaplacianModel) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_model_to_string(s : ImagefilterlaplacianModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_filter_laplacian_layer_set(s : ImagefilterlaplacianLayer, i : Int, 
   result
 }
 
-pub fn image_filter_laplacian_layer_sum(s : ImagefilterlaplacianLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_layer_sum(s : ImagefilterlaplacianLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_layer_mean(s : ImagefilterlaplacianLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_layer_mean(s : ImagefilterlaplacianLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_layer_scale(s : ImagefilterlaplacianLayer, f : Double) -> ImagefilterlaplacianLayer {
   let result = image_filter_laplacian_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_filter_laplacian_layer_fill(s : ImagefilterlaplacianLayer, v : Doub
   result
 }
 
-pub fn image_filter_laplacian_layer_min(s : ImagefilterlaplacianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_layer_min(s : ImagefilterlaplacianLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_layer_max(s : ImagefilterlaplacianLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_layer_max(s : ImagefilterlaplacianLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_layer_to_string(s : ImagefilterlaplacianLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_filter_laplacian_buffer_set(s : ImagefilterlaplacianBuffer, i : Int
   result
 }
 
-pub fn image_filter_laplacian_buffer_sum(s : ImagefilterlaplacianBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_buffer_sum(s : ImagefilterlaplacianBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_buffer_mean(s : ImagefilterlaplacianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_buffer_mean(s : ImagefilterlaplacianBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_buffer_scale(s : ImagefilterlaplacianBuffer, f : Double) -> ImagefilterlaplacianBuffer {
   let result = image_filter_laplacian_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_filter_laplacian_buffer_fill(s : ImagefilterlaplacianBuffer, v : Do
   result
 }
 
-pub fn image_filter_laplacian_buffer_min(s : ImagefilterlaplacianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_buffer_min(s : ImagefilterlaplacianBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_buffer_max(s : ImagefilterlaplacianBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_buffer_max(s : ImagefilterlaplacianBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_buffer_to_string(s : ImagefilterlaplacianBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_filter_laplacian_cursor_set(s : ImagefilterlaplacianCursor, i : Int
   result
 }
 
-pub fn image_filter_laplacian_cursor_sum(s : ImagefilterlaplacianCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_cursor_sum(s : ImagefilterlaplacianCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_cursor_mean(s : ImagefilterlaplacianCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_cursor_mean(s : ImagefilterlaplacianCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_cursor_scale(s : ImagefilterlaplacianCursor, f : Double) -> ImagefilterlaplacianCursor {
   let result = image_filter_laplacian_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_filter_laplacian_cursor_fill(s : ImagefilterlaplacianCursor, v : Do
   result
 }
 
-pub fn image_filter_laplacian_cursor_min(s : ImagefilterlaplacianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_cursor_min(s : ImagefilterlaplacianCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_cursor_max(s : ImagefilterlaplacianCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_cursor_max(s : ImagefilterlaplacianCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_cursor_to_string(s : ImagefilterlaplacianCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_filter_laplacian_view_set(s : ImagefilterlaplacianView, i : Int, v 
   result
 }
 
-pub fn image_filter_laplacian_view_sum(s : ImagefilterlaplacianView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_view_sum(s : ImagefilterlaplacianView) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_view_mean(s : ImagefilterlaplacianView) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_view_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_view_mean(s : ImagefilterlaplacianView) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_view_scale(s : ImagefilterlaplacianView, f : Double) -> ImagefilterlaplacianView {
   let result = image_filter_laplacian_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_filter_laplacian_view_fill(s : ImagefilterlaplacianView, v : Double
   result
 }
 
-pub fn image_filter_laplacian_view_min(s : ImagefilterlaplacianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_view_min(s : ImagefilterlaplacianView) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_view_max(s : ImagefilterlaplacianView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_view_max(s : ImagefilterlaplacianView) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_view_to_string(s : ImagefilterlaplacianView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_filter_laplacian_range_set(s : ImagefilterlaplacianRange, i : Int, 
   result
 }
 
-pub fn image_filter_laplacian_range_sum(s : ImagefilterlaplacianRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_range_sum(s : ImagefilterlaplacianRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_range_mean(s : ImagefilterlaplacianRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_range_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_range_mean(s : ImagefilterlaplacianRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_range_scale(s : ImagefilterlaplacianRange, f : Double) -> ImagefilterlaplacianRange {
   let result = image_filter_laplacian_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_filter_laplacian_range_fill(s : ImagefilterlaplacianRange, v : Doub
   result
 }
 
-pub fn image_filter_laplacian_range_min(s : ImagefilterlaplacianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_range_min(s : ImagefilterlaplacianRange) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_range_max(s : ImagefilterlaplacianRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_range_max(s : ImagefilterlaplacianRange) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_range_to_string(s : ImagefilterlaplacianRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_filter_laplacian_slice_set(s : ImagefilterlaplacianSlice, i : Int, 
   result
 }
 
-pub fn image_filter_laplacian_slice_sum(s : ImagefilterlaplacianSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_filter_laplacian_slice_sum(s : ImagefilterlaplacianSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_filter_laplacian_slice_mean(s : ImagefilterlaplacianSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_filter_laplacian_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_filter_laplacian_slice_mean(s : ImagefilterlaplacianSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_filter_laplacian_slice_scale(s : ImagefilterlaplacianSlice, f : Double) -> ImagefilterlaplacianSlice {
   let result = image_filter_laplacian_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_filter_laplacian_slice_fill(s : ImagefilterlaplacianSlice, v : Doub
   result
 }
 
-pub fn image_filter_laplacian_slice_min(s : ImagefilterlaplacianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_slice_min(s : ImagefilterlaplacianSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_filter_laplacian_slice_max(s : ImagefilterlaplacianSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_filter_laplacian_slice_max(s : ImagefilterlaplacianSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_filter_laplacian_slice_to_string(s : ImagefilterlaplacianSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

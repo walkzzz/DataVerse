@@ -88,11 +88,7 @@ pub fn physics_mechanics_static_make_series(vals : Array[Double], name : String)
 
 pub fn physics_mechanics_static_series_len(s : PhysicsmechanicsstaticSeries) -> Int { s.vals.length() }
 
-pub fn physics_mechanics_static_series_sum(s : PhysicsmechanicsstaticSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn physics_mechanics_static_series_sum(s : PhysicsmechanicsstaticSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn physics_mechanics_static_series_mean(s : PhysicsmechanicsstaticSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn physics_mechanics_static_frame_set(s : PhysicsmechanicsstaticFrame, i : I
   result
 }
 
-pub fn physics_mechanics_static_frame_sum(s : PhysicsmechanicsstaticFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_frame_sum(s : PhysicsmechanicsstaticFrame) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_frame_mean(s : PhysicsmechanicsstaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_frame_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_frame_mean(s : PhysicsmechanicsstaticFrame) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_frame_scale(s : PhysicsmechanicsstaticFrame, f : Double) -> PhysicsmechanicsstaticFrame {
   let result = physics_mechanics_static_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn physics_mechanics_static_frame_fill(s : PhysicsmechanicsstaticFrame, v : 
   result
 }
 
-pub fn physics_mechanics_static_frame_min(s : PhysicsmechanicsstaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_frame_min(s : PhysicsmechanicsstaticFrame) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_frame_max(s : PhysicsmechanicsstaticFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_frame_max(s : PhysicsmechanicsstaticFrame) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_frame_to_string(s : PhysicsmechanicsstaticFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn physics_mechanics_static_table_set(s : PhysicsmechanicsstaticTable, i : I
   result
 }
 
-pub fn physics_mechanics_static_table_sum(s : PhysicsmechanicsstaticTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_table_sum(s : PhysicsmechanicsstaticTable) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_table_mean(s : PhysicsmechanicsstaticTable) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_table_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_table_mean(s : PhysicsmechanicsstaticTable) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_table_scale(s : PhysicsmechanicsstaticTable, f : Double) -> PhysicsmechanicsstaticTable {
   let result = physics_mechanics_static_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn physics_mechanics_static_table_fill(s : PhysicsmechanicsstaticTable, v : 
   result
 }
 
-pub fn physics_mechanics_static_table_min(s : PhysicsmechanicsstaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_table_min(s : PhysicsmechanicsstaticTable) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_table_max(s : PhysicsmechanicsstaticTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_table_max(s : PhysicsmechanicsstaticTable) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_table_to_string(s : PhysicsmechanicsstaticTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn physics_mechanics_static_graphn_set(s : PhysicsmechanicsstaticGraphN, i :
   result
 }
 
-pub fn physics_mechanics_static_graphn_sum(s : PhysicsmechanicsstaticGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_graphn_sum(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_graphn_mean(s : PhysicsmechanicsstaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_graphn_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_graphn_mean(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_graphn_scale(s : PhysicsmechanicsstaticGraphN, f : Double) -> PhysicsmechanicsstaticGraphN {
   let result = physics_mechanics_static_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn physics_mechanics_static_graphn_fill(s : PhysicsmechanicsstaticGraphN, v 
   result
 }
 
-pub fn physics_mechanics_static_graphn_min(s : PhysicsmechanicsstaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_graphn_min(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_graphn_max(s : PhysicsmechanicsstaticGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_graphn_max(s : PhysicsmechanicsstaticGraphN) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_graphn_to_string(s : PhysicsmechanicsstaticGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn physics_mechanics_static_node_set(s : PhysicsmechanicsstaticNode, i : Int
   result
 }
 
-pub fn physics_mechanics_static_node_sum(s : PhysicsmechanicsstaticNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_node_sum(s : PhysicsmechanicsstaticNode) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_node_mean(s : PhysicsmechanicsstaticNode) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_node_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_node_mean(s : PhysicsmechanicsstaticNode) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_node_scale(s : PhysicsmechanicsstaticNode, f : Double) -> PhysicsmechanicsstaticNode {
   let result = physics_mechanics_static_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn physics_mechanics_static_node_fill(s : PhysicsmechanicsstaticNode, v : Do
   result
 }
 
-pub fn physics_mechanics_static_node_min(s : PhysicsmechanicsstaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_node_min(s : PhysicsmechanicsstaticNode) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_node_max(s : PhysicsmechanicsstaticNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_node_max(s : PhysicsmechanicsstaticNode) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_node_to_string(s : PhysicsmechanicsstaticNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn physics_mechanics_static_edge_set(s : PhysicsmechanicsstaticEdge, i : Int
   result
 }
 
-pub fn physics_mechanics_static_edge_sum(s : PhysicsmechanicsstaticEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_edge_sum(s : PhysicsmechanicsstaticEdge) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_edge_mean(s : PhysicsmechanicsstaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_edge_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_edge_mean(s : PhysicsmechanicsstaticEdge) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_edge_scale(s : PhysicsmechanicsstaticEdge, f : Double) -> PhysicsmechanicsstaticEdge {
   let result = physics_mechanics_static_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn physics_mechanics_static_edge_fill(s : PhysicsmechanicsstaticEdge, v : Do
   result
 }
 
-pub fn physics_mechanics_static_edge_min(s : PhysicsmechanicsstaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_edge_min(s : PhysicsmechanicsstaticEdge) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_edge_max(s : PhysicsmechanicsstaticEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_edge_max(s : PhysicsmechanicsstaticEdge) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_edge_to_string(s : PhysicsmechanicsstaticEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn physics_mechanics_static_path_set(s : PhysicsmechanicsstaticPath, i : Int
   result
 }
 
-pub fn physics_mechanics_static_path_sum(s : PhysicsmechanicsstaticPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_path_sum(s : PhysicsmechanicsstaticPath) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_path_mean(s : PhysicsmechanicsstaticPath) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_path_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_path_mean(s : PhysicsmechanicsstaticPath) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_path_scale(s : PhysicsmechanicsstaticPath, f : Double) -> PhysicsmechanicsstaticPath {
   let result = physics_mechanics_static_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn physics_mechanics_static_path_fill(s : PhysicsmechanicsstaticPath, v : Do
   result
 }
 
-pub fn physics_mechanics_static_path_min(s : PhysicsmechanicsstaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_path_min(s : PhysicsmechanicsstaticPath) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_path_max(s : PhysicsmechanicsstaticPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_path_max(s : PhysicsmechanicsstaticPath) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_path_to_string(s : PhysicsmechanicsstaticPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn physics_mechanics_static_cluster_set(s : PhysicsmechanicsstaticCluster, i
   result
 }
 
-pub fn physics_mechanics_static_cluster_sum(s : PhysicsmechanicsstaticCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_cluster_sum(s : PhysicsmechanicsstaticCluster) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_cluster_mean(s : PhysicsmechanicsstaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_cluster_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_cluster_mean(s : PhysicsmechanicsstaticCluster) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_cluster_scale(s : PhysicsmechanicsstaticCluster, f : Double) -> PhysicsmechanicsstaticCluster {
   let result = physics_mechanics_static_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn physics_mechanics_static_cluster_fill(s : PhysicsmechanicsstaticCluster, 
   result
 }
 
-pub fn physics_mechanics_static_cluster_min(s : PhysicsmechanicsstaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_cluster_min(s : PhysicsmechanicsstaticCluster) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_cluster_max(s : PhysicsmechanicsstaticCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_cluster_max(s : PhysicsmechanicsstaticCluster) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_cluster_to_string(s : PhysicsmechanicsstaticCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn physics_mechanics_static_model_set(s : PhysicsmechanicsstaticModel, i : I
   result
 }
 
-pub fn physics_mechanics_static_model_sum(s : PhysicsmechanicsstaticModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_model_sum(s : PhysicsmechanicsstaticModel) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_model_mean(s : PhysicsmechanicsstaticModel) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_model_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_model_mean(s : PhysicsmechanicsstaticModel) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_model_scale(s : PhysicsmechanicsstaticModel, f : Double) -> PhysicsmechanicsstaticModel {
   let result = physics_mechanics_static_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn physics_mechanics_static_model_fill(s : PhysicsmechanicsstaticModel, v : 
   result
 }
 
-pub fn physics_mechanics_static_model_min(s : PhysicsmechanicsstaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_model_min(s : PhysicsmechanicsstaticModel) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_model_max(s : PhysicsmechanicsstaticModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_model_max(s : PhysicsmechanicsstaticModel) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_model_to_string(s : PhysicsmechanicsstaticModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn physics_mechanics_static_layer_set(s : PhysicsmechanicsstaticLayer, i : I
   result
 }
 
-pub fn physics_mechanics_static_layer_sum(s : PhysicsmechanicsstaticLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_layer_sum(s : PhysicsmechanicsstaticLayer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_layer_mean(s : PhysicsmechanicsstaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_layer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_layer_mean(s : PhysicsmechanicsstaticLayer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_layer_scale(s : PhysicsmechanicsstaticLayer, f : Double) -> PhysicsmechanicsstaticLayer {
   let result = physics_mechanics_static_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn physics_mechanics_static_layer_fill(s : PhysicsmechanicsstaticLayer, v : 
   result
 }
 
-pub fn physics_mechanics_static_layer_min(s : PhysicsmechanicsstaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_layer_min(s : PhysicsmechanicsstaticLayer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_layer_max(s : PhysicsmechanicsstaticLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_layer_max(s : PhysicsmechanicsstaticLayer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_layer_to_string(s : PhysicsmechanicsstaticLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn physics_mechanics_static_buffer_set(s : PhysicsmechanicsstaticBuffer, i :
   result
 }
 
-pub fn physics_mechanics_static_buffer_sum(s : PhysicsmechanicsstaticBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_buffer_sum(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_buffer_mean(s : PhysicsmechanicsstaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_buffer_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_buffer_mean(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_buffer_scale(s : PhysicsmechanicsstaticBuffer, f : Double) -> PhysicsmechanicsstaticBuffer {
   let result = physics_mechanics_static_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn physics_mechanics_static_buffer_fill(s : PhysicsmechanicsstaticBuffer, v 
   result
 }
 
-pub fn physics_mechanics_static_buffer_min(s : PhysicsmechanicsstaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_buffer_min(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_buffer_max(s : PhysicsmechanicsstaticBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_buffer_max(s : PhysicsmechanicsstaticBuffer) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_buffer_to_string(s : PhysicsmechanicsstaticBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn physics_mechanics_static_cursor_set(s : PhysicsmechanicsstaticCursor, i :
   result
 }
 
-pub fn physics_mechanics_static_cursor_sum(s : PhysicsmechanicsstaticCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_cursor_sum(s : PhysicsmechanicsstaticCursor) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_cursor_mean(s : PhysicsmechanicsstaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_cursor_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_cursor_mean(s : PhysicsmechanicsstaticCursor) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_cursor_scale(s : PhysicsmechanicsstaticCursor, f : Double) -> PhysicsmechanicsstaticCursor {
   let result = physics_mechanics_static_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn physics_mechanics_static_cursor_fill(s : PhysicsmechanicsstaticCursor, v 
   result
 }
 
-pub fn physics_mechanics_static_cursor_min(s : PhysicsmechanicsstaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_cursor_min(s : PhysicsmechanicsstaticCursor) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_cursor_max(s : PhysicsmechanicsstaticCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_cursor_max(s : PhysicsmechanicsstaticCursor) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_cursor_to_string(s : PhysicsmechanicsstaticCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn physics_mechanics_static_view_set(s : PhysicsmechanicsstaticView, i : Int
   result
 }
 
-pub fn physics_mechanics_static_view_sum(s : PhysicsmechanicsstaticView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_view_sum(s : PhysicsmechanicsstaticView) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_view_mean(s : PhysicsmechanicsstaticView) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_view_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_view_mean(s : PhysicsmechanicsstaticView) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_view_scale(s : PhysicsmechanicsstaticView, f : Double) -> PhysicsmechanicsstaticView {
   let result = physics_mechanics_static_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn physics_mechanics_static_view_fill(s : PhysicsmechanicsstaticView, v : Do
   result
 }
 
-pub fn physics_mechanics_static_view_min(s : PhysicsmechanicsstaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_view_min(s : PhysicsmechanicsstaticView) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_view_max(s : PhysicsmechanicsstaticView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_view_max(s : PhysicsmechanicsstaticView) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_view_to_string(s : PhysicsmechanicsstaticView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn physics_mechanics_static_range_set(s : PhysicsmechanicsstaticRange, i : I
   result
 }
 
-pub fn physics_mechanics_static_range_sum(s : PhysicsmechanicsstaticRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_range_sum(s : PhysicsmechanicsstaticRange) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_range_mean(s : PhysicsmechanicsstaticRange) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_range_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_range_mean(s : PhysicsmechanicsstaticRange) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_range_scale(s : PhysicsmechanicsstaticRange, f : Double) -> PhysicsmechanicsstaticRange {
   let result = physics_mechanics_static_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn physics_mechanics_static_range_fill(s : PhysicsmechanicsstaticRange, v : 
   result
 }
 
-pub fn physics_mechanics_static_range_min(s : PhysicsmechanicsstaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_range_min(s : PhysicsmechanicsstaticRange) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_range_max(s : PhysicsmechanicsstaticRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_range_max(s : PhysicsmechanicsstaticRange) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_range_to_string(s : PhysicsmechanicsstaticRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn physics_mechanics_static_slice_set(s : PhysicsmechanicsstaticSlice, i : I
   result
 }
 
-pub fn physics_mechanics_static_slice_sum(s : PhysicsmechanicsstaticSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn physics_mechanics_static_slice_sum(s : PhysicsmechanicsstaticSlice) -> Double { @_common.sum(s.data) }
 
-pub fn physics_mechanics_static_slice_mean(s : PhysicsmechanicsstaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else { physics_mechanics_static_slice_sum(s) / s.size.to_double() }
-}
+pub fn physics_mechanics_static_slice_mean(s : PhysicsmechanicsstaticSlice) -> Double { @_common.mean(s.data) }
 
 pub fn physics_mechanics_static_slice_scale(s : PhysicsmechanicsstaticSlice, f : Double) -> PhysicsmechanicsstaticSlice {
   let result = physics_mechanics_static_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn physics_mechanics_static_slice_fill(s : PhysicsmechanicsstaticSlice, v : 
   result
 }
 
-pub fn physics_mechanics_static_slice_min(s : PhysicsmechanicsstaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_slice_min(s : PhysicsmechanicsstaticSlice) -> Double { @_common.min(s.data) }
 
-pub fn physics_mechanics_static_slice_max(s : PhysicsmechanicsstaticSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn physics_mechanics_static_slice_max(s : PhysicsmechanicsstaticSlice) -> Double { @_common.max(s.data) }
 
 pub fn physics_mechanics_static_slice_to_string(s : PhysicsmechanicsstaticSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn finance_portfolio_factor_make_series(vals : Array[Double], name : String)
 
 pub fn finance_portfolio_factor_series_len(s : FinanceportfoliofactorSeries) -> Int { s.vals.length() }
 
-pub fn finance_portfolio_factor_series_sum(s : FinanceportfoliofactorSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn finance_portfolio_factor_series_sum(s : FinanceportfoliofactorSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn finance_portfolio_factor_series_mean(s : FinanceportfoliofactorSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn finance_portfolio_factor_frame_set(s : FinanceportfoliofactorFrame, i : I
   result
 }
 
-pub fn finance_portfolio_factor_frame_sum(s : FinanceportfoliofactorFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_frame_sum(s : FinanceportfoliofactorFrame) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_frame_mean(s : FinanceportfoliofactorFrame) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_frame_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_frame_mean(s : FinanceportfoliofactorFrame) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_frame_scale(s : FinanceportfoliofactorFrame, f : Double) -> FinanceportfoliofactorFrame {
   let result = finance_portfolio_factor_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn finance_portfolio_factor_frame_fill(s : FinanceportfoliofactorFrame, v : 
   result
 }
 
-pub fn finance_portfolio_factor_frame_min(s : FinanceportfoliofactorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_frame_min(s : FinanceportfoliofactorFrame) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_frame_max(s : FinanceportfoliofactorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_frame_max(s : FinanceportfoliofactorFrame) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_frame_to_string(s : FinanceportfoliofactorFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn finance_portfolio_factor_table_set(s : FinanceportfoliofactorTable, i : I
   result
 }
 
-pub fn finance_portfolio_factor_table_sum(s : FinanceportfoliofactorTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_table_sum(s : FinanceportfoliofactorTable) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_table_mean(s : FinanceportfoliofactorTable) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_table_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_table_mean(s : FinanceportfoliofactorTable) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_table_scale(s : FinanceportfoliofactorTable, f : Double) -> FinanceportfoliofactorTable {
   let result = finance_portfolio_factor_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn finance_portfolio_factor_table_fill(s : FinanceportfoliofactorTable, v : 
   result
 }
 
-pub fn finance_portfolio_factor_table_min(s : FinanceportfoliofactorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_table_min(s : FinanceportfoliofactorTable) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_table_max(s : FinanceportfoliofactorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_table_max(s : FinanceportfoliofactorTable) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_table_to_string(s : FinanceportfoliofactorTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn finance_portfolio_factor_graphn_set(s : FinanceportfoliofactorGraphN, i :
   result
 }
 
-pub fn finance_portfolio_factor_graphn_sum(s : FinanceportfoliofactorGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_graphn_sum(s : FinanceportfoliofactorGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_graphn_mean(s : FinanceportfoliofactorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_graphn_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_graphn_mean(s : FinanceportfoliofactorGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_graphn_scale(s : FinanceportfoliofactorGraphN, f : Double) -> FinanceportfoliofactorGraphN {
   let result = finance_portfolio_factor_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn finance_portfolio_factor_graphn_fill(s : FinanceportfoliofactorGraphN, v 
   result
 }
 
-pub fn finance_portfolio_factor_graphn_min(s : FinanceportfoliofactorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_graphn_min(s : FinanceportfoliofactorGraphN) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_graphn_max(s : FinanceportfoliofactorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_graphn_max(s : FinanceportfoliofactorGraphN) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_graphn_to_string(s : FinanceportfoliofactorGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn finance_portfolio_factor_node_set(s : FinanceportfoliofactorNode, i : Int
   result
 }
 
-pub fn finance_portfolio_factor_node_sum(s : FinanceportfoliofactorNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_node_sum(s : FinanceportfoliofactorNode) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_node_mean(s : FinanceportfoliofactorNode) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_node_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_node_mean(s : FinanceportfoliofactorNode) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_node_scale(s : FinanceportfoliofactorNode, f : Double) -> FinanceportfoliofactorNode {
   let result = finance_portfolio_factor_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn finance_portfolio_factor_node_fill(s : FinanceportfoliofactorNode, v : Do
   result
 }
 
-pub fn finance_portfolio_factor_node_min(s : FinanceportfoliofactorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_node_min(s : FinanceportfoliofactorNode) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_node_max(s : FinanceportfoliofactorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_node_max(s : FinanceportfoliofactorNode) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_node_to_string(s : FinanceportfoliofactorNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn finance_portfolio_factor_edge_set(s : FinanceportfoliofactorEdge, i : Int
   result
 }
 
-pub fn finance_portfolio_factor_edge_sum(s : FinanceportfoliofactorEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_edge_sum(s : FinanceportfoliofactorEdge) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_edge_mean(s : FinanceportfoliofactorEdge) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_edge_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_edge_mean(s : FinanceportfoliofactorEdge) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_edge_scale(s : FinanceportfoliofactorEdge, f : Double) -> FinanceportfoliofactorEdge {
   let result = finance_portfolio_factor_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn finance_portfolio_factor_edge_fill(s : FinanceportfoliofactorEdge, v : Do
   result
 }
 
-pub fn finance_portfolio_factor_edge_min(s : FinanceportfoliofactorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_edge_min(s : FinanceportfoliofactorEdge) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_edge_max(s : FinanceportfoliofactorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_edge_max(s : FinanceportfoliofactorEdge) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_edge_to_string(s : FinanceportfoliofactorEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn finance_portfolio_factor_path_set(s : FinanceportfoliofactorPath, i : Int
   result
 }
 
-pub fn finance_portfolio_factor_path_sum(s : FinanceportfoliofactorPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_path_sum(s : FinanceportfoliofactorPath) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_path_mean(s : FinanceportfoliofactorPath) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_path_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_path_mean(s : FinanceportfoliofactorPath) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_path_scale(s : FinanceportfoliofactorPath, f : Double) -> FinanceportfoliofactorPath {
   let result = finance_portfolio_factor_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn finance_portfolio_factor_path_fill(s : FinanceportfoliofactorPath, v : Do
   result
 }
 
-pub fn finance_portfolio_factor_path_min(s : FinanceportfoliofactorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_path_min(s : FinanceportfoliofactorPath) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_path_max(s : FinanceportfoliofactorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_path_max(s : FinanceportfoliofactorPath) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_path_to_string(s : FinanceportfoliofactorPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn finance_portfolio_factor_cluster_set(s : FinanceportfoliofactorCluster, i
   result
 }
 
-pub fn finance_portfolio_factor_cluster_sum(s : FinanceportfoliofactorCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_cluster_sum(s : FinanceportfoliofactorCluster) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_cluster_mean(s : FinanceportfoliofactorCluster) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_cluster_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_cluster_mean(s : FinanceportfoliofactorCluster) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_cluster_scale(s : FinanceportfoliofactorCluster, f : Double) -> FinanceportfoliofactorCluster {
   let result = finance_portfolio_factor_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn finance_portfolio_factor_cluster_fill(s : FinanceportfoliofactorCluster, 
   result
 }
 
-pub fn finance_portfolio_factor_cluster_min(s : FinanceportfoliofactorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_cluster_min(s : FinanceportfoliofactorCluster) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_cluster_max(s : FinanceportfoliofactorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_cluster_max(s : FinanceportfoliofactorCluster) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_cluster_to_string(s : FinanceportfoliofactorCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn finance_portfolio_factor_model_set(s : FinanceportfoliofactorModel, i : I
   result
 }
 
-pub fn finance_portfolio_factor_model_sum(s : FinanceportfoliofactorModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_model_sum(s : FinanceportfoliofactorModel) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_model_mean(s : FinanceportfoliofactorModel) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_model_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_model_mean(s : FinanceportfoliofactorModel) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_model_scale(s : FinanceportfoliofactorModel, f : Double) -> FinanceportfoliofactorModel {
   let result = finance_portfolio_factor_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn finance_portfolio_factor_model_fill(s : FinanceportfoliofactorModel, v : 
   result
 }
 
-pub fn finance_portfolio_factor_model_min(s : FinanceportfoliofactorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_model_min(s : FinanceportfoliofactorModel) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_model_max(s : FinanceportfoliofactorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_model_max(s : FinanceportfoliofactorModel) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_model_to_string(s : FinanceportfoliofactorModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn finance_portfolio_factor_layer_set(s : FinanceportfoliofactorLayer, i : I
   result
 }
 
-pub fn finance_portfolio_factor_layer_sum(s : FinanceportfoliofactorLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_layer_sum(s : FinanceportfoliofactorLayer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_layer_mean(s : FinanceportfoliofactorLayer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_layer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_layer_mean(s : FinanceportfoliofactorLayer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_layer_scale(s : FinanceportfoliofactorLayer, f : Double) -> FinanceportfoliofactorLayer {
   let result = finance_portfolio_factor_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn finance_portfolio_factor_layer_fill(s : FinanceportfoliofactorLayer, v : 
   result
 }
 
-pub fn finance_portfolio_factor_layer_min(s : FinanceportfoliofactorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_layer_min(s : FinanceportfoliofactorLayer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_layer_max(s : FinanceportfoliofactorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_layer_max(s : FinanceportfoliofactorLayer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_layer_to_string(s : FinanceportfoliofactorLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn finance_portfolio_factor_buffer_set(s : FinanceportfoliofactorBuffer, i :
   result
 }
 
-pub fn finance_portfolio_factor_buffer_sum(s : FinanceportfoliofactorBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_buffer_sum(s : FinanceportfoliofactorBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_buffer_mean(s : FinanceportfoliofactorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_buffer_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_buffer_mean(s : FinanceportfoliofactorBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_buffer_scale(s : FinanceportfoliofactorBuffer, f : Double) -> FinanceportfoliofactorBuffer {
   let result = finance_portfolio_factor_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn finance_portfolio_factor_buffer_fill(s : FinanceportfoliofactorBuffer, v 
   result
 }
 
-pub fn finance_portfolio_factor_buffer_min(s : FinanceportfoliofactorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_buffer_min(s : FinanceportfoliofactorBuffer) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_buffer_max(s : FinanceportfoliofactorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_buffer_max(s : FinanceportfoliofactorBuffer) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_buffer_to_string(s : FinanceportfoliofactorBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn finance_portfolio_factor_cursor_set(s : FinanceportfoliofactorCursor, i :
   result
 }
 
-pub fn finance_portfolio_factor_cursor_sum(s : FinanceportfoliofactorCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_cursor_sum(s : FinanceportfoliofactorCursor) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_cursor_mean(s : FinanceportfoliofactorCursor) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_cursor_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_cursor_mean(s : FinanceportfoliofactorCursor) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_cursor_scale(s : FinanceportfoliofactorCursor, f : Double) -> FinanceportfoliofactorCursor {
   let result = finance_portfolio_factor_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn finance_portfolio_factor_cursor_fill(s : FinanceportfoliofactorCursor, v 
   result
 }
 
-pub fn finance_portfolio_factor_cursor_min(s : FinanceportfoliofactorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_cursor_min(s : FinanceportfoliofactorCursor) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_cursor_max(s : FinanceportfoliofactorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_cursor_max(s : FinanceportfoliofactorCursor) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_cursor_to_string(s : FinanceportfoliofactorCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn finance_portfolio_factor_view_set(s : FinanceportfoliofactorView, i : Int
   result
 }
 
-pub fn finance_portfolio_factor_view_sum(s : FinanceportfoliofactorView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_view_sum(s : FinanceportfoliofactorView) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_view_mean(s : FinanceportfoliofactorView) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_view_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_view_mean(s : FinanceportfoliofactorView) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_view_scale(s : FinanceportfoliofactorView, f : Double) -> FinanceportfoliofactorView {
   let result = finance_portfolio_factor_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn finance_portfolio_factor_view_fill(s : FinanceportfoliofactorView, v : Do
   result
 }
 
-pub fn finance_portfolio_factor_view_min(s : FinanceportfoliofactorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_view_min(s : FinanceportfoliofactorView) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_view_max(s : FinanceportfoliofactorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_view_max(s : FinanceportfoliofactorView) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_view_to_string(s : FinanceportfoliofactorView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn finance_portfolio_factor_range_set(s : FinanceportfoliofactorRange, i : I
   result
 }
 
-pub fn finance_portfolio_factor_range_sum(s : FinanceportfoliofactorRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_range_sum(s : FinanceportfoliofactorRange) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_range_mean(s : FinanceportfoliofactorRange) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_range_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_range_mean(s : FinanceportfoliofactorRange) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_range_scale(s : FinanceportfoliofactorRange, f : Double) -> FinanceportfoliofactorRange {
   let result = finance_portfolio_factor_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn finance_portfolio_factor_range_fill(s : FinanceportfoliofactorRange, v : 
   result
 }
 
-pub fn finance_portfolio_factor_range_min(s : FinanceportfoliofactorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_range_min(s : FinanceportfoliofactorRange) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_range_max(s : FinanceportfoliofactorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_range_max(s : FinanceportfoliofactorRange) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_range_to_string(s : FinanceportfoliofactorRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn finance_portfolio_factor_slice_set(s : FinanceportfoliofactorSlice, i : I
   result
 }
 
-pub fn finance_portfolio_factor_slice_sum(s : FinanceportfoliofactorSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn finance_portfolio_factor_slice_sum(s : FinanceportfoliofactorSlice) -> Double { @_common.sum(s.data) }
 
-pub fn finance_portfolio_factor_slice_mean(s : FinanceportfoliofactorSlice) -> Double {
-  if s.size == 0 { 0.0 } else { finance_portfolio_factor_slice_sum(s) / s.size.to_double() }
-}
+pub fn finance_portfolio_factor_slice_mean(s : FinanceportfoliofactorSlice) -> Double { @_common.mean(s.data) }
 
 pub fn finance_portfolio_factor_slice_scale(s : FinanceportfoliofactorSlice, f : Double) -> FinanceportfoliofactorSlice {
   let result = finance_portfolio_factor_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn finance_portfolio_factor_slice_fill(s : FinanceportfoliofactorSlice, v : 
   result
 }
 
-pub fn finance_portfolio_factor_slice_min(s : FinanceportfoliofactorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_slice_min(s : FinanceportfoliofactorSlice) -> Double { @_common.min(s.data) }
 
-pub fn finance_portfolio_factor_slice_max(s : FinanceportfoliofactorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn finance_portfolio_factor_slice_max(s : FinanceportfoliofactorSlice) -> Double { @_common.max(s.data) }
 
 pub fn finance_portfolio_factor_slice_to_string(s : FinanceportfoliofactorSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn graph_color_exact_make_series(vals : Array[Double], name : String) -> Gra
 
 pub fn graph_color_exact_series_len(s : GraphcolorexactSeries) -> Int { s.vals.length() }
 
-pub fn graph_color_exact_series_sum(s : GraphcolorexactSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_color_exact_series_sum(s : GraphcolorexactSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_color_exact_series_mean(s : GraphcolorexactSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_color_exact_frame_set(s : GraphcolorexactFrame, i : Int, v : Double
   result
 }
 
-pub fn graph_color_exact_frame_sum(s : GraphcolorexactFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_frame_sum(s : GraphcolorexactFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_frame_mean(s : GraphcolorexactFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_frame_mean(s : GraphcolorexactFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_frame_scale(s : GraphcolorexactFrame, f : Double) -> GraphcolorexactFrame {
   let result = graph_color_exact_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_color_exact_frame_fill(s : GraphcolorexactFrame, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_exact_frame_min(s : GraphcolorexactFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_frame_min(s : GraphcolorexactFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_frame_max(s : GraphcolorexactFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_frame_max(s : GraphcolorexactFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_frame_to_string(s : GraphcolorexactFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_color_exact_table_set(s : GraphcolorexactTable, i : Int, v : Double
   result
 }
 
-pub fn graph_color_exact_table_sum(s : GraphcolorexactTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_table_sum(s : GraphcolorexactTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_table_mean(s : GraphcolorexactTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_table_mean(s : GraphcolorexactTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_table_scale(s : GraphcolorexactTable, f : Double) -> GraphcolorexactTable {
   let result = graph_color_exact_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_color_exact_table_fill(s : GraphcolorexactTable, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_exact_table_min(s : GraphcolorexactTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_table_min(s : GraphcolorexactTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_table_max(s : GraphcolorexactTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_table_max(s : GraphcolorexactTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_table_to_string(s : GraphcolorexactTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_color_exact_graphn_set(s : GraphcolorexactGraphN, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_exact_graphn_sum(s : GraphcolorexactGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_graphn_sum(s : GraphcolorexactGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_graphn_mean(s : GraphcolorexactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_graphn_mean(s : GraphcolorexactGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_graphn_scale(s : GraphcolorexactGraphN, f : Double) -> GraphcolorexactGraphN {
   let result = graph_color_exact_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_color_exact_graphn_fill(s : GraphcolorexactGraphN, v : Double) -> G
   result
 }
 
-pub fn graph_color_exact_graphn_min(s : GraphcolorexactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_graphn_min(s : GraphcolorexactGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_graphn_max(s : GraphcolorexactGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_graphn_max(s : GraphcolorexactGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_graphn_to_string(s : GraphcolorexactGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_color_exact_node_set(s : GraphcolorexactNode, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_exact_node_sum(s : GraphcolorexactNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_node_sum(s : GraphcolorexactNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_node_mean(s : GraphcolorexactNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_node_mean(s : GraphcolorexactNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_node_scale(s : GraphcolorexactNode, f : Double) -> GraphcolorexactNode {
   let result = graph_color_exact_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_color_exact_node_fill(s : GraphcolorexactNode, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_exact_node_min(s : GraphcolorexactNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_node_min(s : GraphcolorexactNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_node_max(s : GraphcolorexactNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_node_max(s : GraphcolorexactNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_node_to_string(s : GraphcolorexactNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_color_exact_edge_set(s : GraphcolorexactEdge, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_exact_edge_sum(s : GraphcolorexactEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_edge_sum(s : GraphcolorexactEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_edge_mean(s : GraphcolorexactEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_edge_mean(s : GraphcolorexactEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_edge_scale(s : GraphcolorexactEdge, f : Double) -> GraphcolorexactEdge {
   let result = graph_color_exact_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_color_exact_edge_fill(s : GraphcolorexactEdge, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_exact_edge_min(s : GraphcolorexactEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_edge_min(s : GraphcolorexactEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_edge_max(s : GraphcolorexactEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_edge_max(s : GraphcolorexactEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_edge_to_string(s : GraphcolorexactEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_color_exact_path_set(s : GraphcolorexactPath, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_exact_path_sum(s : GraphcolorexactPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_path_sum(s : GraphcolorexactPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_path_mean(s : GraphcolorexactPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_path_mean(s : GraphcolorexactPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_path_scale(s : GraphcolorexactPath, f : Double) -> GraphcolorexactPath {
   let result = graph_color_exact_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_color_exact_path_fill(s : GraphcolorexactPath, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_exact_path_min(s : GraphcolorexactPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_path_min(s : GraphcolorexactPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_path_max(s : GraphcolorexactPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_path_max(s : GraphcolorexactPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_path_to_string(s : GraphcolorexactPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_color_exact_cluster_set(s : GraphcolorexactCluster, i : Int, v : Do
   result
 }
 
-pub fn graph_color_exact_cluster_sum(s : GraphcolorexactCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_cluster_sum(s : GraphcolorexactCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_cluster_mean(s : GraphcolorexactCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_cluster_mean(s : GraphcolorexactCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_cluster_scale(s : GraphcolorexactCluster, f : Double) -> GraphcolorexactCluster {
   let result = graph_color_exact_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_color_exact_cluster_fill(s : GraphcolorexactCluster, v : Double) ->
   result
 }
 
-pub fn graph_color_exact_cluster_min(s : GraphcolorexactCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_cluster_min(s : GraphcolorexactCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_cluster_max(s : GraphcolorexactCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_cluster_max(s : GraphcolorexactCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_cluster_to_string(s : GraphcolorexactCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_color_exact_model_set(s : GraphcolorexactModel, i : Int, v : Double
   result
 }
 
-pub fn graph_color_exact_model_sum(s : GraphcolorexactModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_model_sum(s : GraphcolorexactModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_model_mean(s : GraphcolorexactModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_model_mean(s : GraphcolorexactModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_model_scale(s : GraphcolorexactModel, f : Double) -> GraphcolorexactModel {
   let result = graph_color_exact_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_color_exact_model_fill(s : GraphcolorexactModel, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_exact_model_min(s : GraphcolorexactModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_model_min(s : GraphcolorexactModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_model_max(s : GraphcolorexactModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_model_max(s : GraphcolorexactModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_model_to_string(s : GraphcolorexactModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_color_exact_layer_set(s : GraphcolorexactLayer, i : Int, v : Double
   result
 }
 
-pub fn graph_color_exact_layer_sum(s : GraphcolorexactLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_layer_sum(s : GraphcolorexactLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_layer_mean(s : GraphcolorexactLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_layer_mean(s : GraphcolorexactLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_layer_scale(s : GraphcolorexactLayer, f : Double) -> GraphcolorexactLayer {
   let result = graph_color_exact_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_color_exact_layer_fill(s : GraphcolorexactLayer, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_exact_layer_min(s : GraphcolorexactLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_layer_min(s : GraphcolorexactLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_layer_max(s : GraphcolorexactLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_layer_max(s : GraphcolorexactLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_layer_to_string(s : GraphcolorexactLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_color_exact_buffer_set(s : GraphcolorexactBuffer, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_exact_buffer_sum(s : GraphcolorexactBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_buffer_sum(s : GraphcolorexactBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_buffer_mean(s : GraphcolorexactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_buffer_mean(s : GraphcolorexactBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_buffer_scale(s : GraphcolorexactBuffer, f : Double) -> GraphcolorexactBuffer {
   let result = graph_color_exact_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_color_exact_buffer_fill(s : GraphcolorexactBuffer, v : Double) -> G
   result
 }
 
-pub fn graph_color_exact_buffer_min(s : GraphcolorexactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_buffer_min(s : GraphcolorexactBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_buffer_max(s : GraphcolorexactBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_buffer_max(s : GraphcolorexactBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_buffer_to_string(s : GraphcolorexactBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_color_exact_cursor_set(s : GraphcolorexactCursor, i : Int, v : Doub
   result
 }
 
-pub fn graph_color_exact_cursor_sum(s : GraphcolorexactCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_cursor_sum(s : GraphcolorexactCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_cursor_mean(s : GraphcolorexactCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_cursor_mean(s : GraphcolorexactCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_cursor_scale(s : GraphcolorexactCursor, f : Double) -> GraphcolorexactCursor {
   let result = graph_color_exact_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_color_exact_cursor_fill(s : GraphcolorexactCursor, v : Double) -> G
   result
 }
 
-pub fn graph_color_exact_cursor_min(s : GraphcolorexactCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_cursor_min(s : GraphcolorexactCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_cursor_max(s : GraphcolorexactCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_cursor_max(s : GraphcolorexactCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_cursor_to_string(s : GraphcolorexactCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_color_exact_view_set(s : GraphcolorexactView, i : Int, v : Double) 
   result
 }
 
-pub fn graph_color_exact_view_sum(s : GraphcolorexactView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_view_sum(s : GraphcolorexactView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_view_mean(s : GraphcolorexactView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_view_mean(s : GraphcolorexactView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_view_scale(s : GraphcolorexactView, f : Double) -> GraphcolorexactView {
   let result = graph_color_exact_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_color_exact_view_fill(s : GraphcolorexactView, v : Double) -> Graph
   result
 }
 
-pub fn graph_color_exact_view_min(s : GraphcolorexactView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_view_min(s : GraphcolorexactView) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_view_max(s : GraphcolorexactView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_view_max(s : GraphcolorexactView) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_view_to_string(s : GraphcolorexactView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_color_exact_range_set(s : GraphcolorexactRange, i : Int, v : Double
   result
 }
 
-pub fn graph_color_exact_range_sum(s : GraphcolorexactRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_range_sum(s : GraphcolorexactRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_range_mean(s : GraphcolorexactRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_range_mean(s : GraphcolorexactRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_range_scale(s : GraphcolorexactRange, f : Double) -> GraphcolorexactRange {
   let result = graph_color_exact_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_color_exact_range_fill(s : GraphcolorexactRange, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_exact_range_min(s : GraphcolorexactRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_range_min(s : GraphcolorexactRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_range_max(s : GraphcolorexactRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_range_max(s : GraphcolorexactRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_range_to_string(s : GraphcolorexactRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_color_exact_slice_set(s : GraphcolorexactSlice, i : Int, v : Double
   result
 }
 
-pub fn graph_color_exact_slice_sum(s : GraphcolorexactSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_color_exact_slice_sum(s : GraphcolorexactSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_color_exact_slice_mean(s : GraphcolorexactSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_color_exact_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_color_exact_slice_mean(s : GraphcolorexactSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_color_exact_slice_scale(s : GraphcolorexactSlice, f : Double) -> GraphcolorexactSlice {
   let result = graph_color_exact_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_color_exact_slice_fill(s : GraphcolorexactSlice, v : Double) -> Gra
   result
 }
 
-pub fn graph_color_exact_slice_min(s : GraphcolorexactSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_slice_min(s : GraphcolorexactSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_color_exact_slice_max(s : GraphcolorexactSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_color_exact_slice_max(s : GraphcolorexactSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_color_exact_slice_to_string(s : GraphcolorexactSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

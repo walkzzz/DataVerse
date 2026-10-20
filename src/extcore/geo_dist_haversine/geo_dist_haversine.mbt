@@ -88,11 +88,7 @@ pub fn geo_dist_haversine_make_series(vals : Array[Double], name : String) -> Ge
 
 pub fn geo_dist_haversine_series_len(s : GeodisthaversineSeries) -> Int { s.vals.length() }
 
-pub fn geo_dist_haversine_series_sum(s : GeodisthaversineSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn geo_dist_haversine_series_sum(s : GeodisthaversineSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn geo_dist_haversine_series_mean(s : GeodisthaversineSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn geo_dist_haversine_frame_set(s : GeodisthaversineFrame, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_haversine_frame_sum(s : GeodisthaversineFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_frame_sum(s : GeodisthaversineFrame) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_frame_mean(s : GeodisthaversineFrame) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_frame_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_frame_mean(s : GeodisthaversineFrame) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_frame_scale(s : GeodisthaversineFrame, f : Double) -> GeodisthaversineFrame {
   let result = geo_dist_haversine_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn geo_dist_haversine_frame_fill(s : GeodisthaversineFrame, v : Double) -> G
   result
 }
 
-pub fn geo_dist_haversine_frame_min(s : GeodisthaversineFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_frame_min(s : GeodisthaversineFrame) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_frame_max(s : GeodisthaversineFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_frame_max(s : GeodisthaversineFrame) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_frame_to_string(s : GeodisthaversineFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn geo_dist_haversine_table_set(s : GeodisthaversineTable, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_haversine_table_sum(s : GeodisthaversineTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_table_sum(s : GeodisthaversineTable) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_table_mean(s : GeodisthaversineTable) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_table_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_table_mean(s : GeodisthaversineTable) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_table_scale(s : GeodisthaversineTable, f : Double) -> GeodisthaversineTable {
   let result = geo_dist_haversine_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn geo_dist_haversine_table_fill(s : GeodisthaversineTable, v : Double) -> G
   result
 }
 
-pub fn geo_dist_haversine_table_min(s : GeodisthaversineTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_table_min(s : GeodisthaversineTable) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_table_max(s : GeodisthaversineTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_table_max(s : GeodisthaversineTable) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_table_to_string(s : GeodisthaversineTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn geo_dist_haversine_graphn_set(s : GeodisthaversineGraphN, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_haversine_graphn_sum(s : GeodisthaversineGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_graphn_sum(s : GeodisthaversineGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_graphn_mean(s : GeodisthaversineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_graphn_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_graphn_mean(s : GeodisthaversineGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_graphn_scale(s : GeodisthaversineGraphN, f : Double) -> GeodisthaversineGraphN {
   let result = geo_dist_haversine_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn geo_dist_haversine_graphn_fill(s : GeodisthaversineGraphN, v : Double) ->
   result
 }
 
-pub fn geo_dist_haversine_graphn_min(s : GeodisthaversineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_graphn_min(s : GeodisthaversineGraphN) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_graphn_max(s : GeodisthaversineGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_graphn_max(s : GeodisthaversineGraphN) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_graphn_to_string(s : GeodisthaversineGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn geo_dist_haversine_node_set(s : GeodisthaversineNode, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_haversine_node_sum(s : GeodisthaversineNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_node_sum(s : GeodisthaversineNode) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_node_mean(s : GeodisthaversineNode) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_node_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_node_mean(s : GeodisthaversineNode) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_node_scale(s : GeodisthaversineNode, f : Double) -> GeodisthaversineNode {
   let result = geo_dist_haversine_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn geo_dist_haversine_node_fill(s : GeodisthaversineNode, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_haversine_node_min(s : GeodisthaversineNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_node_min(s : GeodisthaversineNode) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_node_max(s : GeodisthaversineNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_node_max(s : GeodisthaversineNode) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_node_to_string(s : GeodisthaversineNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn geo_dist_haversine_edge_set(s : GeodisthaversineEdge, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_haversine_edge_sum(s : GeodisthaversineEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_edge_sum(s : GeodisthaversineEdge) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_edge_mean(s : GeodisthaversineEdge) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_edge_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_edge_mean(s : GeodisthaversineEdge) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_edge_scale(s : GeodisthaversineEdge, f : Double) -> GeodisthaversineEdge {
   let result = geo_dist_haversine_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn geo_dist_haversine_edge_fill(s : GeodisthaversineEdge, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_haversine_edge_min(s : GeodisthaversineEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_edge_min(s : GeodisthaversineEdge) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_edge_max(s : GeodisthaversineEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_edge_max(s : GeodisthaversineEdge) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_edge_to_string(s : GeodisthaversineEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn geo_dist_haversine_path_set(s : GeodisthaversinePath, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_haversine_path_sum(s : GeodisthaversinePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_path_sum(s : GeodisthaversinePath) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_path_mean(s : GeodisthaversinePath) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_path_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_path_mean(s : GeodisthaversinePath) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_path_scale(s : GeodisthaversinePath, f : Double) -> GeodisthaversinePath {
   let result = geo_dist_haversine_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn geo_dist_haversine_path_fill(s : GeodisthaversinePath, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_haversine_path_min(s : GeodisthaversinePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_path_min(s : GeodisthaversinePath) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_path_max(s : GeodisthaversinePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_path_max(s : GeodisthaversinePath) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_path_to_string(s : GeodisthaversinePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn geo_dist_haversine_cluster_set(s : GeodisthaversineCluster, i : Int, v : 
   result
 }
 
-pub fn geo_dist_haversine_cluster_sum(s : GeodisthaversineCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_cluster_sum(s : GeodisthaversineCluster) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_cluster_mean(s : GeodisthaversineCluster) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_cluster_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_cluster_mean(s : GeodisthaversineCluster) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_cluster_scale(s : GeodisthaversineCluster, f : Double) -> GeodisthaversineCluster {
   let result = geo_dist_haversine_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn geo_dist_haversine_cluster_fill(s : GeodisthaversineCluster, v : Double) 
   result
 }
 
-pub fn geo_dist_haversine_cluster_min(s : GeodisthaversineCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_cluster_min(s : GeodisthaversineCluster) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_cluster_max(s : GeodisthaversineCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_cluster_max(s : GeodisthaversineCluster) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_cluster_to_string(s : GeodisthaversineCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn geo_dist_haversine_model_set(s : GeodisthaversineModel, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_haversine_model_sum(s : GeodisthaversineModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_model_sum(s : GeodisthaversineModel) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_model_mean(s : GeodisthaversineModel) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_model_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_model_mean(s : GeodisthaversineModel) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_model_scale(s : GeodisthaversineModel, f : Double) -> GeodisthaversineModel {
   let result = geo_dist_haversine_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn geo_dist_haversine_model_fill(s : GeodisthaversineModel, v : Double) -> G
   result
 }
 
-pub fn geo_dist_haversine_model_min(s : GeodisthaversineModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_model_min(s : GeodisthaversineModel) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_model_max(s : GeodisthaversineModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_model_max(s : GeodisthaversineModel) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_model_to_string(s : GeodisthaversineModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn geo_dist_haversine_layer_set(s : GeodisthaversineLayer, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_haversine_layer_sum(s : GeodisthaversineLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_layer_sum(s : GeodisthaversineLayer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_layer_mean(s : GeodisthaversineLayer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_layer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_layer_mean(s : GeodisthaversineLayer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_layer_scale(s : GeodisthaversineLayer, f : Double) -> GeodisthaversineLayer {
   let result = geo_dist_haversine_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn geo_dist_haversine_layer_fill(s : GeodisthaversineLayer, v : Double) -> G
   result
 }
 
-pub fn geo_dist_haversine_layer_min(s : GeodisthaversineLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_layer_min(s : GeodisthaversineLayer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_layer_max(s : GeodisthaversineLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_layer_max(s : GeodisthaversineLayer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_layer_to_string(s : GeodisthaversineLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn geo_dist_haversine_buffer_set(s : GeodisthaversineBuffer, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_haversine_buffer_sum(s : GeodisthaversineBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_buffer_sum(s : GeodisthaversineBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_buffer_mean(s : GeodisthaversineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_buffer_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_buffer_mean(s : GeodisthaversineBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_buffer_scale(s : GeodisthaversineBuffer, f : Double) -> GeodisthaversineBuffer {
   let result = geo_dist_haversine_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn geo_dist_haversine_buffer_fill(s : GeodisthaversineBuffer, v : Double) ->
   result
 }
 
-pub fn geo_dist_haversine_buffer_min(s : GeodisthaversineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_buffer_min(s : GeodisthaversineBuffer) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_buffer_max(s : GeodisthaversineBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_buffer_max(s : GeodisthaversineBuffer) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_buffer_to_string(s : GeodisthaversineBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn geo_dist_haversine_cursor_set(s : GeodisthaversineCursor, i : Int, v : Do
   result
 }
 
-pub fn geo_dist_haversine_cursor_sum(s : GeodisthaversineCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_cursor_sum(s : GeodisthaversineCursor) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_cursor_mean(s : GeodisthaversineCursor) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_cursor_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_cursor_mean(s : GeodisthaversineCursor) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_cursor_scale(s : GeodisthaversineCursor, f : Double) -> GeodisthaversineCursor {
   let result = geo_dist_haversine_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn geo_dist_haversine_cursor_fill(s : GeodisthaversineCursor, v : Double) ->
   result
 }
 
-pub fn geo_dist_haversine_cursor_min(s : GeodisthaversineCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_cursor_min(s : GeodisthaversineCursor) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_cursor_max(s : GeodisthaversineCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_cursor_max(s : GeodisthaversineCursor) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_cursor_to_string(s : GeodisthaversineCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn geo_dist_haversine_view_set(s : GeodisthaversineView, i : Int, v : Double
   result
 }
 
-pub fn geo_dist_haversine_view_sum(s : GeodisthaversineView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_view_sum(s : GeodisthaversineView) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_view_mean(s : GeodisthaversineView) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_view_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_view_mean(s : GeodisthaversineView) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_view_scale(s : GeodisthaversineView, f : Double) -> GeodisthaversineView {
   let result = geo_dist_haversine_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn geo_dist_haversine_view_fill(s : GeodisthaversineView, v : Double) -> Geo
   result
 }
 
-pub fn geo_dist_haversine_view_min(s : GeodisthaversineView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_view_min(s : GeodisthaversineView) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_view_max(s : GeodisthaversineView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_view_max(s : GeodisthaversineView) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_view_to_string(s : GeodisthaversineView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn geo_dist_haversine_range_set(s : GeodisthaversineRange, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_haversine_range_sum(s : GeodisthaversineRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_range_sum(s : GeodisthaversineRange) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_range_mean(s : GeodisthaversineRange) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_range_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_range_mean(s : GeodisthaversineRange) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_range_scale(s : GeodisthaversineRange, f : Double) -> GeodisthaversineRange {
   let result = geo_dist_haversine_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn geo_dist_haversine_range_fill(s : GeodisthaversineRange, v : Double) -> G
   result
 }
 
-pub fn geo_dist_haversine_range_min(s : GeodisthaversineRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_range_min(s : GeodisthaversineRange) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_range_max(s : GeodisthaversineRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_range_max(s : GeodisthaversineRange) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_range_to_string(s : GeodisthaversineRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn geo_dist_haversine_slice_set(s : GeodisthaversineSlice, i : Int, v : Doub
   result
 }
 
-pub fn geo_dist_haversine_slice_sum(s : GeodisthaversineSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn geo_dist_haversine_slice_sum(s : GeodisthaversineSlice) -> Double { @_common.sum(s.data) }
 
-pub fn geo_dist_haversine_slice_mean(s : GeodisthaversineSlice) -> Double {
-  if s.size == 0 { 0.0 } else { geo_dist_haversine_slice_sum(s) / s.size.to_double() }
-}
+pub fn geo_dist_haversine_slice_mean(s : GeodisthaversineSlice) -> Double { @_common.mean(s.data) }
 
 pub fn geo_dist_haversine_slice_scale(s : GeodisthaversineSlice, f : Double) -> GeodisthaversineSlice {
   let result = geo_dist_haversine_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn geo_dist_haversine_slice_fill(s : GeodisthaversineSlice, v : Double) -> G
   result
 }
 
-pub fn geo_dist_haversine_slice_min(s : GeodisthaversineSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_slice_min(s : GeodisthaversineSlice) -> Double { @_common.min(s.data) }
 
-pub fn geo_dist_haversine_slice_max(s : GeodisthaversineSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn geo_dist_haversine_slice_max(s : GeodisthaversineSlice) -> Double { @_common.max(s.data) }
 
 pub fn geo_dist_haversine_slice_to_string(s : GeodisthaversineSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

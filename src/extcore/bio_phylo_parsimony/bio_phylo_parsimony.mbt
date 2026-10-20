@@ -88,11 +88,7 @@ pub fn bio_phylo_parsimony_make_series(vals : Array[Double], name : String) -> B
 
 pub fn bio_phylo_parsimony_series_len(s : BiophyloparsimonySeries) -> Int { s.vals.length() }
 
-pub fn bio_phylo_parsimony_series_sum(s : BiophyloparsimonySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_phylo_parsimony_series_sum(s : BiophyloparsimonySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_phylo_parsimony_series_mean(s : BiophyloparsimonySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_phylo_parsimony_frame_set(s : BiophyloparsimonyFrame, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_parsimony_frame_sum(s : BiophyloparsimonyFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_frame_sum(s : BiophyloparsimonyFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_frame_mean(s : BiophyloparsimonyFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_frame_mean(s : BiophyloparsimonyFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_frame_scale(s : BiophyloparsimonyFrame, f : Double) -> BiophyloparsimonyFrame {
   let result = bio_phylo_parsimony_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_phylo_parsimony_frame_fill(s : BiophyloparsimonyFrame, v : Double) ->
   result
 }
 
-pub fn bio_phylo_parsimony_frame_min(s : BiophyloparsimonyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_frame_min(s : BiophyloparsimonyFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_frame_max(s : BiophyloparsimonyFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_frame_max(s : BiophyloparsimonyFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_frame_to_string(s : BiophyloparsimonyFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_phylo_parsimony_table_set(s : BiophyloparsimonyTable, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_parsimony_table_sum(s : BiophyloparsimonyTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_table_sum(s : BiophyloparsimonyTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_table_mean(s : BiophyloparsimonyTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_table_mean(s : BiophyloparsimonyTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_table_scale(s : BiophyloparsimonyTable, f : Double) -> BiophyloparsimonyTable {
   let result = bio_phylo_parsimony_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_phylo_parsimony_table_fill(s : BiophyloparsimonyTable, v : Double) ->
   result
 }
 
-pub fn bio_phylo_parsimony_table_min(s : BiophyloparsimonyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_table_min(s : BiophyloparsimonyTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_table_max(s : BiophyloparsimonyTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_table_max(s : BiophyloparsimonyTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_table_to_string(s : BiophyloparsimonyTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_phylo_parsimony_graphn_set(s : BiophyloparsimonyGraphN, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_parsimony_graphn_sum(s : BiophyloparsimonyGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_graphn_sum(s : BiophyloparsimonyGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_graphn_mean(s : BiophyloparsimonyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_graphn_mean(s : BiophyloparsimonyGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_graphn_scale(s : BiophyloparsimonyGraphN, f : Double) -> BiophyloparsimonyGraphN {
   let result = bio_phylo_parsimony_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_phylo_parsimony_graphn_fill(s : BiophyloparsimonyGraphN, v : Double) 
   result
 }
 
-pub fn bio_phylo_parsimony_graphn_min(s : BiophyloparsimonyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_graphn_min(s : BiophyloparsimonyGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_graphn_max(s : BiophyloparsimonyGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_graphn_max(s : BiophyloparsimonyGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_graphn_to_string(s : BiophyloparsimonyGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_phylo_parsimony_node_set(s : BiophyloparsimonyNode, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_parsimony_node_sum(s : BiophyloparsimonyNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_node_sum(s : BiophyloparsimonyNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_node_mean(s : BiophyloparsimonyNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_node_mean(s : BiophyloparsimonyNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_node_scale(s : BiophyloparsimonyNode, f : Double) -> BiophyloparsimonyNode {
   let result = bio_phylo_parsimony_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_phylo_parsimony_node_fill(s : BiophyloparsimonyNode, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_parsimony_node_min(s : BiophyloparsimonyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_node_min(s : BiophyloparsimonyNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_node_max(s : BiophyloparsimonyNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_node_max(s : BiophyloparsimonyNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_node_to_string(s : BiophyloparsimonyNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_phylo_parsimony_edge_set(s : BiophyloparsimonyEdge, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_parsimony_edge_sum(s : BiophyloparsimonyEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_edge_sum(s : BiophyloparsimonyEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_edge_mean(s : BiophyloparsimonyEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_edge_mean(s : BiophyloparsimonyEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_edge_scale(s : BiophyloparsimonyEdge, f : Double) -> BiophyloparsimonyEdge {
   let result = bio_phylo_parsimony_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_phylo_parsimony_edge_fill(s : BiophyloparsimonyEdge, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_parsimony_edge_min(s : BiophyloparsimonyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_edge_min(s : BiophyloparsimonyEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_edge_max(s : BiophyloparsimonyEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_edge_max(s : BiophyloparsimonyEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_edge_to_string(s : BiophyloparsimonyEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_phylo_parsimony_path_set(s : BiophyloparsimonyPath, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_parsimony_path_sum(s : BiophyloparsimonyPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_path_sum(s : BiophyloparsimonyPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_path_mean(s : BiophyloparsimonyPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_path_mean(s : BiophyloparsimonyPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_path_scale(s : BiophyloparsimonyPath, f : Double) -> BiophyloparsimonyPath {
   let result = bio_phylo_parsimony_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_phylo_parsimony_path_fill(s : BiophyloparsimonyPath, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_parsimony_path_min(s : BiophyloparsimonyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_path_min(s : BiophyloparsimonyPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_path_max(s : BiophyloparsimonyPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_path_max(s : BiophyloparsimonyPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_path_to_string(s : BiophyloparsimonyPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_phylo_parsimony_cluster_set(s : BiophyloparsimonyCluster, i : Int, v 
   result
 }
 
-pub fn bio_phylo_parsimony_cluster_sum(s : BiophyloparsimonyCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_cluster_sum(s : BiophyloparsimonyCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_cluster_mean(s : BiophyloparsimonyCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_cluster_mean(s : BiophyloparsimonyCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_cluster_scale(s : BiophyloparsimonyCluster, f : Double) -> BiophyloparsimonyCluster {
   let result = bio_phylo_parsimony_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_phylo_parsimony_cluster_fill(s : BiophyloparsimonyCluster, v : Double
   result
 }
 
-pub fn bio_phylo_parsimony_cluster_min(s : BiophyloparsimonyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_cluster_min(s : BiophyloparsimonyCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_cluster_max(s : BiophyloparsimonyCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_cluster_max(s : BiophyloparsimonyCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_cluster_to_string(s : BiophyloparsimonyCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_phylo_parsimony_model_set(s : BiophyloparsimonyModel, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_parsimony_model_sum(s : BiophyloparsimonyModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_model_sum(s : BiophyloparsimonyModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_model_mean(s : BiophyloparsimonyModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_model_mean(s : BiophyloparsimonyModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_model_scale(s : BiophyloparsimonyModel, f : Double) -> BiophyloparsimonyModel {
   let result = bio_phylo_parsimony_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_phylo_parsimony_model_fill(s : BiophyloparsimonyModel, v : Double) ->
   result
 }
 
-pub fn bio_phylo_parsimony_model_min(s : BiophyloparsimonyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_model_min(s : BiophyloparsimonyModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_model_max(s : BiophyloparsimonyModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_model_max(s : BiophyloparsimonyModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_model_to_string(s : BiophyloparsimonyModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_phylo_parsimony_layer_set(s : BiophyloparsimonyLayer, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_parsimony_layer_sum(s : BiophyloparsimonyLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_layer_sum(s : BiophyloparsimonyLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_layer_mean(s : BiophyloparsimonyLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_layer_mean(s : BiophyloparsimonyLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_layer_scale(s : BiophyloparsimonyLayer, f : Double) -> BiophyloparsimonyLayer {
   let result = bio_phylo_parsimony_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_phylo_parsimony_layer_fill(s : BiophyloparsimonyLayer, v : Double) ->
   result
 }
 
-pub fn bio_phylo_parsimony_layer_min(s : BiophyloparsimonyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_layer_min(s : BiophyloparsimonyLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_layer_max(s : BiophyloparsimonyLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_layer_max(s : BiophyloparsimonyLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_layer_to_string(s : BiophyloparsimonyLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_phylo_parsimony_buffer_set(s : BiophyloparsimonyBuffer, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_parsimony_buffer_sum(s : BiophyloparsimonyBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_buffer_sum(s : BiophyloparsimonyBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_buffer_mean(s : BiophyloparsimonyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_buffer_mean(s : BiophyloparsimonyBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_buffer_scale(s : BiophyloparsimonyBuffer, f : Double) -> BiophyloparsimonyBuffer {
   let result = bio_phylo_parsimony_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_phylo_parsimony_buffer_fill(s : BiophyloparsimonyBuffer, v : Double) 
   result
 }
 
-pub fn bio_phylo_parsimony_buffer_min(s : BiophyloparsimonyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_buffer_min(s : BiophyloparsimonyBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_buffer_max(s : BiophyloparsimonyBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_buffer_max(s : BiophyloparsimonyBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_buffer_to_string(s : BiophyloparsimonyBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_phylo_parsimony_cursor_set(s : BiophyloparsimonyCursor, i : Int, v : 
   result
 }
 
-pub fn bio_phylo_parsimony_cursor_sum(s : BiophyloparsimonyCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_cursor_sum(s : BiophyloparsimonyCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_cursor_mean(s : BiophyloparsimonyCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_cursor_mean(s : BiophyloparsimonyCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_cursor_scale(s : BiophyloparsimonyCursor, f : Double) -> BiophyloparsimonyCursor {
   let result = bio_phylo_parsimony_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_phylo_parsimony_cursor_fill(s : BiophyloparsimonyCursor, v : Double) 
   result
 }
 
-pub fn bio_phylo_parsimony_cursor_min(s : BiophyloparsimonyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_cursor_min(s : BiophyloparsimonyCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_cursor_max(s : BiophyloparsimonyCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_cursor_max(s : BiophyloparsimonyCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_cursor_to_string(s : BiophyloparsimonyCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_phylo_parsimony_view_set(s : BiophyloparsimonyView, i : Int, v : Doub
   result
 }
 
-pub fn bio_phylo_parsimony_view_sum(s : BiophyloparsimonyView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_view_sum(s : BiophyloparsimonyView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_view_mean(s : BiophyloparsimonyView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_view_mean(s : BiophyloparsimonyView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_view_scale(s : BiophyloparsimonyView, f : Double) -> BiophyloparsimonyView {
   let result = bio_phylo_parsimony_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_phylo_parsimony_view_fill(s : BiophyloparsimonyView, v : Double) -> B
   result
 }
 
-pub fn bio_phylo_parsimony_view_min(s : BiophyloparsimonyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_view_min(s : BiophyloparsimonyView) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_view_max(s : BiophyloparsimonyView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_view_max(s : BiophyloparsimonyView) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_view_to_string(s : BiophyloparsimonyView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_phylo_parsimony_range_set(s : BiophyloparsimonyRange, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_parsimony_range_sum(s : BiophyloparsimonyRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_range_sum(s : BiophyloparsimonyRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_range_mean(s : BiophyloparsimonyRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_range_mean(s : BiophyloparsimonyRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_range_scale(s : BiophyloparsimonyRange, f : Double) -> BiophyloparsimonyRange {
   let result = bio_phylo_parsimony_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_phylo_parsimony_range_fill(s : BiophyloparsimonyRange, v : Double) ->
   result
 }
 
-pub fn bio_phylo_parsimony_range_min(s : BiophyloparsimonyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_range_min(s : BiophyloparsimonyRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_range_max(s : BiophyloparsimonyRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_range_max(s : BiophyloparsimonyRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_range_to_string(s : BiophyloparsimonyRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_phylo_parsimony_slice_set(s : BiophyloparsimonySlice, i : Int, v : Do
   result
 }
 
-pub fn bio_phylo_parsimony_slice_sum(s : BiophyloparsimonySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_phylo_parsimony_slice_sum(s : BiophyloparsimonySlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_phylo_parsimony_slice_mean(s : BiophyloparsimonySlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_phylo_parsimony_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_phylo_parsimony_slice_mean(s : BiophyloparsimonySlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_phylo_parsimony_slice_scale(s : BiophyloparsimonySlice, f : Double) -> BiophyloparsimonySlice {
   let result = bio_phylo_parsimony_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_phylo_parsimony_slice_fill(s : BiophyloparsimonySlice, v : Double) ->
   result
 }
 
-pub fn bio_phylo_parsimony_slice_min(s : BiophyloparsimonySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_slice_min(s : BiophyloparsimonySlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_phylo_parsimony_slice_max(s : BiophyloparsimonySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_phylo_parsimony_slice_max(s : BiophyloparsimonySlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_phylo_parsimony_slice_to_string(s : BiophyloparsimonySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

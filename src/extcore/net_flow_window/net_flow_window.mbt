@@ -88,11 +88,7 @@ pub fn net_flow_window_make_series(vals : Array[Double], name : String) -> Netfl
 
 pub fn net_flow_window_series_len(s : NetflowwindowSeries) -> Int { s.vals.length() }
 
-pub fn net_flow_window_series_sum(s : NetflowwindowSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn net_flow_window_series_sum(s : NetflowwindowSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn net_flow_window_series_mean(s : NetflowwindowSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn net_flow_window_frame_set(s : NetflowwindowFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_window_frame_sum(s : NetflowwindowFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_frame_sum(s : NetflowwindowFrame) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_frame_mean(s : NetflowwindowFrame) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_frame_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_frame_mean(s : NetflowwindowFrame) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_frame_scale(s : NetflowwindowFrame, f : Double) -> NetflowwindowFrame {
   let result = net_flow_window_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn net_flow_window_frame_fill(s : NetflowwindowFrame, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_window_frame_min(s : NetflowwindowFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_frame_min(s : NetflowwindowFrame) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_frame_max(s : NetflowwindowFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_frame_max(s : NetflowwindowFrame) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_frame_to_string(s : NetflowwindowFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn net_flow_window_table_set(s : NetflowwindowTable, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_window_table_sum(s : NetflowwindowTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_table_sum(s : NetflowwindowTable) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_table_mean(s : NetflowwindowTable) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_table_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_table_mean(s : NetflowwindowTable) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_table_scale(s : NetflowwindowTable, f : Double) -> NetflowwindowTable {
   let result = net_flow_window_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn net_flow_window_table_fill(s : NetflowwindowTable, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_window_table_min(s : NetflowwindowTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_table_min(s : NetflowwindowTable) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_table_max(s : NetflowwindowTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_table_max(s : NetflowwindowTable) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_table_to_string(s : NetflowwindowTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn net_flow_window_graphn_set(s : NetflowwindowGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_window_graphn_sum(s : NetflowwindowGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_graphn_sum(s : NetflowwindowGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_graphn_mean(s : NetflowwindowGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_graphn_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_graphn_mean(s : NetflowwindowGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_graphn_scale(s : NetflowwindowGraphN, f : Double) -> NetflowwindowGraphN {
   let result = net_flow_window_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn net_flow_window_graphn_fill(s : NetflowwindowGraphN, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_window_graphn_min(s : NetflowwindowGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_graphn_min(s : NetflowwindowGraphN) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_graphn_max(s : NetflowwindowGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_graphn_max(s : NetflowwindowGraphN) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_graphn_to_string(s : NetflowwindowGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn net_flow_window_node_set(s : NetflowwindowNode, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_window_node_sum(s : NetflowwindowNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_node_sum(s : NetflowwindowNode) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_node_mean(s : NetflowwindowNode) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_node_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_node_mean(s : NetflowwindowNode) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_node_scale(s : NetflowwindowNode, f : Double) -> NetflowwindowNode {
   let result = net_flow_window_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn net_flow_window_node_fill(s : NetflowwindowNode, v : Double) -> Netflowwi
   result
 }
 
-pub fn net_flow_window_node_min(s : NetflowwindowNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_node_min(s : NetflowwindowNode) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_node_max(s : NetflowwindowNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_node_max(s : NetflowwindowNode) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_node_to_string(s : NetflowwindowNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn net_flow_window_edge_set(s : NetflowwindowEdge, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_window_edge_sum(s : NetflowwindowEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_edge_sum(s : NetflowwindowEdge) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_edge_mean(s : NetflowwindowEdge) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_edge_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_edge_mean(s : NetflowwindowEdge) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_edge_scale(s : NetflowwindowEdge, f : Double) -> NetflowwindowEdge {
   let result = net_flow_window_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn net_flow_window_edge_fill(s : NetflowwindowEdge, v : Double) -> Netflowwi
   result
 }
 
-pub fn net_flow_window_edge_min(s : NetflowwindowEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_edge_min(s : NetflowwindowEdge) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_edge_max(s : NetflowwindowEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_edge_max(s : NetflowwindowEdge) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_edge_to_string(s : NetflowwindowEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn net_flow_window_path_set(s : NetflowwindowPath, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_window_path_sum(s : NetflowwindowPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_path_sum(s : NetflowwindowPath) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_path_mean(s : NetflowwindowPath) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_path_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_path_mean(s : NetflowwindowPath) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_path_scale(s : NetflowwindowPath, f : Double) -> NetflowwindowPath {
   let result = net_flow_window_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn net_flow_window_path_fill(s : NetflowwindowPath, v : Double) -> Netflowwi
   result
 }
 
-pub fn net_flow_window_path_min(s : NetflowwindowPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_path_min(s : NetflowwindowPath) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_path_max(s : NetflowwindowPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_path_max(s : NetflowwindowPath) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_path_to_string(s : NetflowwindowPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn net_flow_window_cluster_set(s : NetflowwindowCluster, i : Int, v : Double
   result
 }
 
-pub fn net_flow_window_cluster_sum(s : NetflowwindowCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_cluster_sum(s : NetflowwindowCluster) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_cluster_mean(s : NetflowwindowCluster) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_cluster_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_cluster_mean(s : NetflowwindowCluster) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_cluster_scale(s : NetflowwindowCluster, f : Double) -> NetflowwindowCluster {
   let result = net_flow_window_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn net_flow_window_cluster_fill(s : NetflowwindowCluster, v : Double) -> Net
   result
 }
 
-pub fn net_flow_window_cluster_min(s : NetflowwindowCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_cluster_min(s : NetflowwindowCluster) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_cluster_max(s : NetflowwindowCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_cluster_max(s : NetflowwindowCluster) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_cluster_to_string(s : NetflowwindowCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn net_flow_window_model_set(s : NetflowwindowModel, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_window_model_sum(s : NetflowwindowModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_model_sum(s : NetflowwindowModel) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_model_mean(s : NetflowwindowModel) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_model_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_model_mean(s : NetflowwindowModel) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_model_scale(s : NetflowwindowModel, f : Double) -> NetflowwindowModel {
   let result = net_flow_window_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn net_flow_window_model_fill(s : NetflowwindowModel, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_window_model_min(s : NetflowwindowModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_model_min(s : NetflowwindowModel) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_model_max(s : NetflowwindowModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_model_max(s : NetflowwindowModel) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_model_to_string(s : NetflowwindowModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn net_flow_window_layer_set(s : NetflowwindowLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_window_layer_sum(s : NetflowwindowLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_layer_sum(s : NetflowwindowLayer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_layer_mean(s : NetflowwindowLayer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_layer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_layer_mean(s : NetflowwindowLayer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_layer_scale(s : NetflowwindowLayer, f : Double) -> NetflowwindowLayer {
   let result = net_flow_window_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn net_flow_window_layer_fill(s : NetflowwindowLayer, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_window_layer_min(s : NetflowwindowLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_layer_min(s : NetflowwindowLayer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_layer_max(s : NetflowwindowLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_layer_max(s : NetflowwindowLayer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_layer_to_string(s : NetflowwindowLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn net_flow_window_buffer_set(s : NetflowwindowBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_window_buffer_sum(s : NetflowwindowBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_buffer_sum(s : NetflowwindowBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_buffer_mean(s : NetflowwindowBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_buffer_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_buffer_mean(s : NetflowwindowBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_buffer_scale(s : NetflowwindowBuffer, f : Double) -> NetflowwindowBuffer {
   let result = net_flow_window_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn net_flow_window_buffer_fill(s : NetflowwindowBuffer, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_window_buffer_min(s : NetflowwindowBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_buffer_min(s : NetflowwindowBuffer) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_buffer_max(s : NetflowwindowBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_buffer_max(s : NetflowwindowBuffer) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_buffer_to_string(s : NetflowwindowBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn net_flow_window_cursor_set(s : NetflowwindowCursor, i : Int, v : Double) 
   result
 }
 
-pub fn net_flow_window_cursor_sum(s : NetflowwindowCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_cursor_sum(s : NetflowwindowCursor) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_cursor_mean(s : NetflowwindowCursor) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_cursor_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_cursor_mean(s : NetflowwindowCursor) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_cursor_scale(s : NetflowwindowCursor, f : Double) -> NetflowwindowCursor {
   let result = net_flow_window_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn net_flow_window_cursor_fill(s : NetflowwindowCursor, v : Double) -> Netfl
   result
 }
 
-pub fn net_flow_window_cursor_min(s : NetflowwindowCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_cursor_min(s : NetflowwindowCursor) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_cursor_max(s : NetflowwindowCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_cursor_max(s : NetflowwindowCursor) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_cursor_to_string(s : NetflowwindowCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn net_flow_window_view_set(s : NetflowwindowView, i : Int, v : Double) -> N
   result
 }
 
-pub fn net_flow_window_view_sum(s : NetflowwindowView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_view_sum(s : NetflowwindowView) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_view_mean(s : NetflowwindowView) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_view_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_view_mean(s : NetflowwindowView) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_view_scale(s : NetflowwindowView, f : Double) -> NetflowwindowView {
   let result = net_flow_window_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn net_flow_window_view_fill(s : NetflowwindowView, v : Double) -> Netflowwi
   result
 }
 
-pub fn net_flow_window_view_min(s : NetflowwindowView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_view_min(s : NetflowwindowView) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_view_max(s : NetflowwindowView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_view_max(s : NetflowwindowView) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_view_to_string(s : NetflowwindowView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn net_flow_window_range_set(s : NetflowwindowRange, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_window_range_sum(s : NetflowwindowRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_range_sum(s : NetflowwindowRange) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_range_mean(s : NetflowwindowRange) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_range_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_range_mean(s : NetflowwindowRange) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_range_scale(s : NetflowwindowRange, f : Double) -> NetflowwindowRange {
   let result = net_flow_window_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn net_flow_window_range_fill(s : NetflowwindowRange, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_window_range_min(s : NetflowwindowRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_range_min(s : NetflowwindowRange) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_range_max(s : NetflowwindowRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_range_max(s : NetflowwindowRange) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_range_to_string(s : NetflowwindowRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn net_flow_window_slice_set(s : NetflowwindowSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn net_flow_window_slice_sum(s : NetflowwindowSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn net_flow_window_slice_sum(s : NetflowwindowSlice) -> Double { @_common.sum(s.data) }
 
-pub fn net_flow_window_slice_mean(s : NetflowwindowSlice) -> Double {
-  if s.size == 0 { 0.0 } else { net_flow_window_slice_sum(s) / s.size.to_double() }
-}
+pub fn net_flow_window_slice_mean(s : NetflowwindowSlice) -> Double { @_common.mean(s.data) }
 
 pub fn net_flow_window_slice_scale(s : NetflowwindowSlice, f : Double) -> NetflowwindowSlice {
   let result = net_flow_window_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn net_flow_window_slice_fill(s : NetflowwindowSlice, v : Double) -> Netflow
   result
 }
 
-pub fn net_flow_window_slice_min(s : NetflowwindowSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_slice_min(s : NetflowwindowSlice) -> Double { @_common.min(s.data) }
 
-pub fn net_flow_window_slice_max(s : NetflowwindowSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn net_flow_window_slice_max(s : NetflowwindowSlice) -> Double { @_common.max(s.data) }
 
 pub fn net_flow_window_slice_to_string(s : NetflowwindowSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

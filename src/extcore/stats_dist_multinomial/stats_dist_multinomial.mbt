@@ -88,11 +88,7 @@ pub fn stats_dist_multinomial_make_series(vals : Array[Double], name : String) -
 
 pub fn stats_dist_multinomial_series_len(s : StatsdistmultinomialSeries) -> Int { s.vals.length() }
 
-pub fn stats_dist_multinomial_series_sum(s : StatsdistmultinomialSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_dist_multinomial_series_sum(s : StatsdistmultinomialSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_dist_multinomial_series_mean(s : StatsdistmultinomialSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_dist_multinomial_frame_set(s : StatsdistmultinomialFrame, i : Int, 
   result
 }
 
-pub fn stats_dist_multinomial_frame_sum(s : StatsdistmultinomialFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_frame_sum(s : StatsdistmultinomialFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_frame_mean(s : StatsdistmultinomialFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_frame_mean(s : StatsdistmultinomialFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_frame_scale(s : StatsdistmultinomialFrame, f : Double) -> StatsdistmultinomialFrame {
   let result = stats_dist_multinomial_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_dist_multinomial_frame_fill(s : StatsdistmultinomialFrame, v : Doub
   result
 }
 
-pub fn stats_dist_multinomial_frame_min(s : StatsdistmultinomialFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_frame_min(s : StatsdistmultinomialFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_frame_max(s : StatsdistmultinomialFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_frame_max(s : StatsdistmultinomialFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_frame_to_string(s : StatsdistmultinomialFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_dist_multinomial_table_set(s : StatsdistmultinomialTable, i : Int, 
   result
 }
 
-pub fn stats_dist_multinomial_table_sum(s : StatsdistmultinomialTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_table_sum(s : StatsdistmultinomialTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_table_mean(s : StatsdistmultinomialTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_table_mean(s : StatsdistmultinomialTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_table_scale(s : StatsdistmultinomialTable, f : Double) -> StatsdistmultinomialTable {
   let result = stats_dist_multinomial_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_dist_multinomial_table_fill(s : StatsdistmultinomialTable, v : Doub
   result
 }
 
-pub fn stats_dist_multinomial_table_min(s : StatsdistmultinomialTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_table_min(s : StatsdistmultinomialTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_table_max(s : StatsdistmultinomialTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_table_max(s : StatsdistmultinomialTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_table_to_string(s : StatsdistmultinomialTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_dist_multinomial_graphn_set(s : StatsdistmultinomialGraphN, i : Int
   result
 }
 
-pub fn stats_dist_multinomial_graphn_sum(s : StatsdistmultinomialGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_graphn_sum(s : StatsdistmultinomialGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_graphn_mean(s : StatsdistmultinomialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_graphn_mean(s : StatsdistmultinomialGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_graphn_scale(s : StatsdistmultinomialGraphN, f : Double) -> StatsdistmultinomialGraphN {
   let result = stats_dist_multinomial_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_dist_multinomial_graphn_fill(s : StatsdistmultinomialGraphN, v : Do
   result
 }
 
-pub fn stats_dist_multinomial_graphn_min(s : StatsdistmultinomialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_graphn_min(s : StatsdistmultinomialGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_graphn_max(s : StatsdistmultinomialGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_graphn_max(s : StatsdistmultinomialGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_graphn_to_string(s : StatsdistmultinomialGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_dist_multinomial_node_set(s : StatsdistmultinomialNode, i : Int, v 
   result
 }
 
-pub fn stats_dist_multinomial_node_sum(s : StatsdistmultinomialNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_node_sum(s : StatsdistmultinomialNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_node_mean(s : StatsdistmultinomialNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_node_mean(s : StatsdistmultinomialNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_node_scale(s : StatsdistmultinomialNode, f : Double) -> StatsdistmultinomialNode {
   let result = stats_dist_multinomial_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_dist_multinomial_node_fill(s : StatsdistmultinomialNode, v : Double
   result
 }
 
-pub fn stats_dist_multinomial_node_min(s : StatsdistmultinomialNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_node_min(s : StatsdistmultinomialNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_node_max(s : StatsdistmultinomialNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_node_max(s : StatsdistmultinomialNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_node_to_string(s : StatsdistmultinomialNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_dist_multinomial_edge_set(s : StatsdistmultinomialEdge, i : Int, v 
   result
 }
 
-pub fn stats_dist_multinomial_edge_sum(s : StatsdistmultinomialEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_edge_sum(s : StatsdistmultinomialEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_edge_mean(s : StatsdistmultinomialEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_edge_mean(s : StatsdistmultinomialEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_edge_scale(s : StatsdistmultinomialEdge, f : Double) -> StatsdistmultinomialEdge {
   let result = stats_dist_multinomial_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_dist_multinomial_edge_fill(s : StatsdistmultinomialEdge, v : Double
   result
 }
 
-pub fn stats_dist_multinomial_edge_min(s : StatsdistmultinomialEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_edge_min(s : StatsdistmultinomialEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_edge_max(s : StatsdistmultinomialEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_edge_max(s : StatsdistmultinomialEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_edge_to_string(s : StatsdistmultinomialEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_dist_multinomial_path_set(s : StatsdistmultinomialPath, i : Int, v 
   result
 }
 
-pub fn stats_dist_multinomial_path_sum(s : StatsdistmultinomialPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_path_sum(s : StatsdistmultinomialPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_path_mean(s : StatsdistmultinomialPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_path_mean(s : StatsdistmultinomialPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_path_scale(s : StatsdistmultinomialPath, f : Double) -> StatsdistmultinomialPath {
   let result = stats_dist_multinomial_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_dist_multinomial_path_fill(s : StatsdistmultinomialPath, v : Double
   result
 }
 
-pub fn stats_dist_multinomial_path_min(s : StatsdistmultinomialPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_path_min(s : StatsdistmultinomialPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_path_max(s : StatsdistmultinomialPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_path_max(s : StatsdistmultinomialPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_path_to_string(s : StatsdistmultinomialPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_dist_multinomial_cluster_set(s : StatsdistmultinomialCluster, i : I
   result
 }
 
-pub fn stats_dist_multinomial_cluster_sum(s : StatsdistmultinomialCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_cluster_sum(s : StatsdistmultinomialCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_cluster_mean(s : StatsdistmultinomialCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_cluster_mean(s : StatsdistmultinomialCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_cluster_scale(s : StatsdistmultinomialCluster, f : Double) -> StatsdistmultinomialCluster {
   let result = stats_dist_multinomial_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_dist_multinomial_cluster_fill(s : StatsdistmultinomialCluster, v : 
   result
 }
 
-pub fn stats_dist_multinomial_cluster_min(s : StatsdistmultinomialCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_cluster_min(s : StatsdistmultinomialCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_cluster_max(s : StatsdistmultinomialCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_cluster_max(s : StatsdistmultinomialCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_cluster_to_string(s : StatsdistmultinomialCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_dist_multinomial_model_set(s : StatsdistmultinomialModel, i : Int, 
   result
 }
 
-pub fn stats_dist_multinomial_model_sum(s : StatsdistmultinomialModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_model_sum(s : StatsdistmultinomialModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_model_mean(s : StatsdistmultinomialModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_model_mean(s : StatsdistmultinomialModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_model_scale(s : StatsdistmultinomialModel, f : Double) -> StatsdistmultinomialModel {
   let result = stats_dist_multinomial_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_dist_multinomial_model_fill(s : StatsdistmultinomialModel, v : Doub
   result
 }
 
-pub fn stats_dist_multinomial_model_min(s : StatsdistmultinomialModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_model_min(s : StatsdistmultinomialModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_model_max(s : StatsdistmultinomialModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_model_max(s : StatsdistmultinomialModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_model_to_string(s : StatsdistmultinomialModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_dist_multinomial_layer_set(s : StatsdistmultinomialLayer, i : Int, 
   result
 }
 
-pub fn stats_dist_multinomial_layer_sum(s : StatsdistmultinomialLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_layer_sum(s : StatsdistmultinomialLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_layer_mean(s : StatsdistmultinomialLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_layer_mean(s : StatsdistmultinomialLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_layer_scale(s : StatsdistmultinomialLayer, f : Double) -> StatsdistmultinomialLayer {
   let result = stats_dist_multinomial_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_dist_multinomial_layer_fill(s : StatsdistmultinomialLayer, v : Doub
   result
 }
 
-pub fn stats_dist_multinomial_layer_min(s : StatsdistmultinomialLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_layer_min(s : StatsdistmultinomialLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_layer_max(s : StatsdistmultinomialLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_layer_max(s : StatsdistmultinomialLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_layer_to_string(s : StatsdistmultinomialLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_dist_multinomial_buffer_set(s : StatsdistmultinomialBuffer, i : Int
   result
 }
 
-pub fn stats_dist_multinomial_buffer_sum(s : StatsdistmultinomialBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_buffer_sum(s : StatsdistmultinomialBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_buffer_mean(s : StatsdistmultinomialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_buffer_mean(s : StatsdistmultinomialBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_buffer_scale(s : StatsdistmultinomialBuffer, f : Double) -> StatsdistmultinomialBuffer {
   let result = stats_dist_multinomial_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_dist_multinomial_buffer_fill(s : StatsdistmultinomialBuffer, v : Do
   result
 }
 
-pub fn stats_dist_multinomial_buffer_min(s : StatsdistmultinomialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_buffer_min(s : StatsdistmultinomialBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_buffer_max(s : StatsdistmultinomialBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_buffer_max(s : StatsdistmultinomialBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_buffer_to_string(s : StatsdistmultinomialBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_dist_multinomial_cursor_set(s : StatsdistmultinomialCursor, i : Int
   result
 }
 
-pub fn stats_dist_multinomial_cursor_sum(s : StatsdistmultinomialCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_cursor_sum(s : StatsdistmultinomialCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_cursor_mean(s : StatsdistmultinomialCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_cursor_mean(s : StatsdistmultinomialCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_cursor_scale(s : StatsdistmultinomialCursor, f : Double) -> StatsdistmultinomialCursor {
   let result = stats_dist_multinomial_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_dist_multinomial_cursor_fill(s : StatsdistmultinomialCursor, v : Do
   result
 }
 
-pub fn stats_dist_multinomial_cursor_min(s : StatsdistmultinomialCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_cursor_min(s : StatsdistmultinomialCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_cursor_max(s : StatsdistmultinomialCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_cursor_max(s : StatsdistmultinomialCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_cursor_to_string(s : StatsdistmultinomialCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_dist_multinomial_view_set(s : StatsdistmultinomialView, i : Int, v 
   result
 }
 
-pub fn stats_dist_multinomial_view_sum(s : StatsdistmultinomialView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_view_sum(s : StatsdistmultinomialView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_view_mean(s : StatsdistmultinomialView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_view_mean(s : StatsdistmultinomialView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_view_scale(s : StatsdistmultinomialView, f : Double) -> StatsdistmultinomialView {
   let result = stats_dist_multinomial_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_dist_multinomial_view_fill(s : StatsdistmultinomialView, v : Double
   result
 }
 
-pub fn stats_dist_multinomial_view_min(s : StatsdistmultinomialView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_view_min(s : StatsdistmultinomialView) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_view_max(s : StatsdistmultinomialView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_view_max(s : StatsdistmultinomialView) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_view_to_string(s : StatsdistmultinomialView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_dist_multinomial_range_set(s : StatsdistmultinomialRange, i : Int, 
   result
 }
 
-pub fn stats_dist_multinomial_range_sum(s : StatsdistmultinomialRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_range_sum(s : StatsdistmultinomialRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_range_mean(s : StatsdistmultinomialRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_range_mean(s : StatsdistmultinomialRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_range_scale(s : StatsdistmultinomialRange, f : Double) -> StatsdistmultinomialRange {
   let result = stats_dist_multinomial_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_dist_multinomial_range_fill(s : StatsdistmultinomialRange, v : Doub
   result
 }
 
-pub fn stats_dist_multinomial_range_min(s : StatsdistmultinomialRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_range_min(s : StatsdistmultinomialRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_range_max(s : StatsdistmultinomialRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_range_max(s : StatsdistmultinomialRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_range_to_string(s : StatsdistmultinomialRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_dist_multinomial_slice_set(s : StatsdistmultinomialSlice, i : Int, 
   result
 }
 
-pub fn stats_dist_multinomial_slice_sum(s : StatsdistmultinomialSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_dist_multinomial_slice_sum(s : StatsdistmultinomialSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_dist_multinomial_slice_mean(s : StatsdistmultinomialSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_dist_multinomial_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_dist_multinomial_slice_mean(s : StatsdistmultinomialSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_dist_multinomial_slice_scale(s : StatsdistmultinomialSlice, f : Double) -> StatsdistmultinomialSlice {
   let result = stats_dist_multinomial_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_dist_multinomial_slice_fill(s : StatsdistmultinomialSlice, v : Doub
   result
 }
 
-pub fn stats_dist_multinomial_slice_min(s : StatsdistmultinomialSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_slice_min(s : StatsdistmultinomialSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_dist_multinomial_slice_max(s : StatsdistmultinomialSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_dist_multinomial_slice_max(s : StatsdistmultinomialSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_dist_multinomial_slice_to_string(s : StatsdistmultinomialSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

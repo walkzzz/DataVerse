@@ -88,11 +88,7 @@ pub fn graph_search_bds_make_series(vals : Array[Double], name : String) -> Grap
 
 pub fn graph_search_bds_series_len(s : GraphsearchbdsSeries) -> Int { s.vals.length() }
 
-pub fn graph_search_bds_series_sum(s : GraphsearchbdsSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_search_bds_series_sum(s : GraphsearchbdsSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_search_bds_series_mean(s : GraphsearchbdsSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_search_bds_frame_set(s : GraphsearchbdsFrame, i : Int, v : Double) 
   result
 }
 
-pub fn graph_search_bds_frame_sum(s : GraphsearchbdsFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_frame_sum(s : GraphsearchbdsFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_frame_mean(s : GraphsearchbdsFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_frame_mean(s : GraphsearchbdsFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_frame_scale(s : GraphsearchbdsFrame, f : Double) -> GraphsearchbdsFrame {
   let result = graph_search_bds_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_search_bds_frame_fill(s : GraphsearchbdsFrame, v : Double) -> Graph
   result
 }
 
-pub fn graph_search_bds_frame_min(s : GraphsearchbdsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_frame_min(s : GraphsearchbdsFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_frame_max(s : GraphsearchbdsFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_frame_max(s : GraphsearchbdsFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_frame_to_string(s : GraphsearchbdsFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_search_bds_table_set(s : GraphsearchbdsTable, i : Int, v : Double) 
   result
 }
 
-pub fn graph_search_bds_table_sum(s : GraphsearchbdsTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_table_sum(s : GraphsearchbdsTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_table_mean(s : GraphsearchbdsTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_table_mean(s : GraphsearchbdsTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_table_scale(s : GraphsearchbdsTable, f : Double) -> GraphsearchbdsTable {
   let result = graph_search_bds_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_search_bds_table_fill(s : GraphsearchbdsTable, v : Double) -> Graph
   result
 }
 
-pub fn graph_search_bds_table_min(s : GraphsearchbdsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_table_min(s : GraphsearchbdsTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_table_max(s : GraphsearchbdsTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_table_max(s : GraphsearchbdsTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_table_to_string(s : GraphsearchbdsTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_search_bds_graphn_set(s : GraphsearchbdsGraphN, i : Int, v : Double
   result
 }
 
-pub fn graph_search_bds_graphn_sum(s : GraphsearchbdsGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_graphn_sum(s : GraphsearchbdsGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_graphn_mean(s : GraphsearchbdsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_graphn_mean(s : GraphsearchbdsGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_graphn_scale(s : GraphsearchbdsGraphN, f : Double) -> GraphsearchbdsGraphN {
   let result = graph_search_bds_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_search_bds_graphn_fill(s : GraphsearchbdsGraphN, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_bds_graphn_min(s : GraphsearchbdsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_graphn_min(s : GraphsearchbdsGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_graphn_max(s : GraphsearchbdsGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_graphn_max(s : GraphsearchbdsGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_graphn_to_string(s : GraphsearchbdsGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_search_bds_node_set(s : GraphsearchbdsNode, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_search_bds_node_sum(s : GraphsearchbdsNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_node_sum(s : GraphsearchbdsNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_node_mean(s : GraphsearchbdsNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_node_mean(s : GraphsearchbdsNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_node_scale(s : GraphsearchbdsNode, f : Double) -> GraphsearchbdsNode {
   let result = graph_search_bds_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_search_bds_node_fill(s : GraphsearchbdsNode, v : Double) -> Graphse
   result
 }
 
-pub fn graph_search_bds_node_min(s : GraphsearchbdsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_node_min(s : GraphsearchbdsNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_node_max(s : GraphsearchbdsNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_node_max(s : GraphsearchbdsNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_node_to_string(s : GraphsearchbdsNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_search_bds_edge_set(s : GraphsearchbdsEdge, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_search_bds_edge_sum(s : GraphsearchbdsEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_edge_sum(s : GraphsearchbdsEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_edge_mean(s : GraphsearchbdsEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_edge_mean(s : GraphsearchbdsEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_edge_scale(s : GraphsearchbdsEdge, f : Double) -> GraphsearchbdsEdge {
   let result = graph_search_bds_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_search_bds_edge_fill(s : GraphsearchbdsEdge, v : Double) -> Graphse
   result
 }
 
-pub fn graph_search_bds_edge_min(s : GraphsearchbdsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_edge_min(s : GraphsearchbdsEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_edge_max(s : GraphsearchbdsEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_edge_max(s : GraphsearchbdsEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_edge_to_string(s : GraphsearchbdsEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_search_bds_path_set(s : GraphsearchbdsPath, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_search_bds_path_sum(s : GraphsearchbdsPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_path_sum(s : GraphsearchbdsPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_path_mean(s : GraphsearchbdsPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_path_mean(s : GraphsearchbdsPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_path_scale(s : GraphsearchbdsPath, f : Double) -> GraphsearchbdsPath {
   let result = graph_search_bds_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_search_bds_path_fill(s : GraphsearchbdsPath, v : Double) -> Graphse
   result
 }
 
-pub fn graph_search_bds_path_min(s : GraphsearchbdsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_path_min(s : GraphsearchbdsPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_path_max(s : GraphsearchbdsPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_path_max(s : GraphsearchbdsPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_path_to_string(s : GraphsearchbdsPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_search_bds_cluster_set(s : GraphsearchbdsCluster, i : Int, v : Doub
   result
 }
 
-pub fn graph_search_bds_cluster_sum(s : GraphsearchbdsCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_cluster_sum(s : GraphsearchbdsCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_cluster_mean(s : GraphsearchbdsCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_cluster_mean(s : GraphsearchbdsCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_cluster_scale(s : GraphsearchbdsCluster, f : Double) -> GraphsearchbdsCluster {
   let result = graph_search_bds_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_search_bds_cluster_fill(s : GraphsearchbdsCluster, v : Double) -> G
   result
 }
 
-pub fn graph_search_bds_cluster_min(s : GraphsearchbdsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_cluster_min(s : GraphsearchbdsCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_cluster_max(s : GraphsearchbdsCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_cluster_max(s : GraphsearchbdsCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_cluster_to_string(s : GraphsearchbdsCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_search_bds_model_set(s : GraphsearchbdsModel, i : Int, v : Double) 
   result
 }
 
-pub fn graph_search_bds_model_sum(s : GraphsearchbdsModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_model_sum(s : GraphsearchbdsModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_model_mean(s : GraphsearchbdsModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_model_mean(s : GraphsearchbdsModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_model_scale(s : GraphsearchbdsModel, f : Double) -> GraphsearchbdsModel {
   let result = graph_search_bds_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_search_bds_model_fill(s : GraphsearchbdsModel, v : Double) -> Graph
   result
 }
 
-pub fn graph_search_bds_model_min(s : GraphsearchbdsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_model_min(s : GraphsearchbdsModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_model_max(s : GraphsearchbdsModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_model_max(s : GraphsearchbdsModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_model_to_string(s : GraphsearchbdsModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_search_bds_layer_set(s : GraphsearchbdsLayer, i : Int, v : Double) 
   result
 }
 
-pub fn graph_search_bds_layer_sum(s : GraphsearchbdsLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_layer_sum(s : GraphsearchbdsLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_layer_mean(s : GraphsearchbdsLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_layer_mean(s : GraphsearchbdsLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_layer_scale(s : GraphsearchbdsLayer, f : Double) -> GraphsearchbdsLayer {
   let result = graph_search_bds_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_search_bds_layer_fill(s : GraphsearchbdsLayer, v : Double) -> Graph
   result
 }
 
-pub fn graph_search_bds_layer_min(s : GraphsearchbdsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_layer_min(s : GraphsearchbdsLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_layer_max(s : GraphsearchbdsLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_layer_max(s : GraphsearchbdsLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_layer_to_string(s : GraphsearchbdsLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_search_bds_buffer_set(s : GraphsearchbdsBuffer, i : Int, v : Double
   result
 }
 
-pub fn graph_search_bds_buffer_sum(s : GraphsearchbdsBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_buffer_sum(s : GraphsearchbdsBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_buffer_mean(s : GraphsearchbdsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_buffer_mean(s : GraphsearchbdsBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_buffer_scale(s : GraphsearchbdsBuffer, f : Double) -> GraphsearchbdsBuffer {
   let result = graph_search_bds_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_search_bds_buffer_fill(s : GraphsearchbdsBuffer, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_bds_buffer_min(s : GraphsearchbdsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_buffer_min(s : GraphsearchbdsBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_buffer_max(s : GraphsearchbdsBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_buffer_max(s : GraphsearchbdsBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_buffer_to_string(s : GraphsearchbdsBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_search_bds_cursor_set(s : GraphsearchbdsCursor, i : Int, v : Double
   result
 }
 
-pub fn graph_search_bds_cursor_sum(s : GraphsearchbdsCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_cursor_sum(s : GraphsearchbdsCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_cursor_mean(s : GraphsearchbdsCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_cursor_mean(s : GraphsearchbdsCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_cursor_scale(s : GraphsearchbdsCursor, f : Double) -> GraphsearchbdsCursor {
   let result = graph_search_bds_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_search_bds_cursor_fill(s : GraphsearchbdsCursor, v : Double) -> Gra
   result
 }
 
-pub fn graph_search_bds_cursor_min(s : GraphsearchbdsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_cursor_min(s : GraphsearchbdsCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_cursor_max(s : GraphsearchbdsCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_cursor_max(s : GraphsearchbdsCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_cursor_to_string(s : GraphsearchbdsCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_search_bds_view_set(s : GraphsearchbdsView, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_search_bds_view_sum(s : GraphsearchbdsView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_view_sum(s : GraphsearchbdsView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_view_mean(s : GraphsearchbdsView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_view_mean(s : GraphsearchbdsView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_view_scale(s : GraphsearchbdsView, f : Double) -> GraphsearchbdsView {
   let result = graph_search_bds_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_search_bds_view_fill(s : GraphsearchbdsView, v : Double) -> Graphse
   result
 }
 
-pub fn graph_search_bds_view_min(s : GraphsearchbdsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_view_min(s : GraphsearchbdsView) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_view_max(s : GraphsearchbdsView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_view_max(s : GraphsearchbdsView) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_view_to_string(s : GraphsearchbdsView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_search_bds_range_set(s : GraphsearchbdsRange, i : Int, v : Double) 
   result
 }
 
-pub fn graph_search_bds_range_sum(s : GraphsearchbdsRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_range_sum(s : GraphsearchbdsRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_range_mean(s : GraphsearchbdsRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_range_mean(s : GraphsearchbdsRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_range_scale(s : GraphsearchbdsRange, f : Double) -> GraphsearchbdsRange {
   let result = graph_search_bds_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_search_bds_range_fill(s : GraphsearchbdsRange, v : Double) -> Graph
   result
 }
 
-pub fn graph_search_bds_range_min(s : GraphsearchbdsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_range_min(s : GraphsearchbdsRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_range_max(s : GraphsearchbdsRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_range_max(s : GraphsearchbdsRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_range_to_string(s : GraphsearchbdsRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_search_bds_slice_set(s : GraphsearchbdsSlice, i : Int, v : Double) 
   result
 }
 
-pub fn graph_search_bds_slice_sum(s : GraphsearchbdsSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_search_bds_slice_sum(s : GraphsearchbdsSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_search_bds_slice_mean(s : GraphsearchbdsSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_search_bds_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_search_bds_slice_mean(s : GraphsearchbdsSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_search_bds_slice_scale(s : GraphsearchbdsSlice, f : Double) -> GraphsearchbdsSlice {
   let result = graph_search_bds_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_search_bds_slice_fill(s : GraphsearchbdsSlice, v : Double) -> Graph
   result
 }
 
-pub fn graph_search_bds_slice_min(s : GraphsearchbdsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_slice_min(s : GraphsearchbdsSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_search_bds_slice_max(s : GraphsearchbdsSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_search_bds_slice_max(s : GraphsearchbdsSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_search_bds_slice_to_string(s : GraphsearchbdsSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn graph_flow_mcmf_make_series(vals : Array[Double], name : String) -> Graph
 
 pub fn graph_flow_mcmf_series_len(s : GraphflowmcmfSeries) -> Int { s.vals.length() }
 
-pub fn graph_flow_mcmf_series_sum(s : GraphflowmcmfSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn graph_flow_mcmf_series_sum(s : GraphflowmcmfSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn graph_flow_mcmf_series_mean(s : GraphflowmcmfSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn graph_flow_mcmf_frame_set(s : GraphflowmcmfFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_flow_mcmf_frame_sum(s : GraphflowmcmfFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_frame_sum(s : GraphflowmcmfFrame) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_frame_mean(s : GraphflowmcmfFrame) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_frame_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_frame_mean(s : GraphflowmcmfFrame) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_frame_scale(s : GraphflowmcmfFrame, f : Double) -> GraphflowmcmfFrame {
   let result = graph_flow_mcmf_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn graph_flow_mcmf_frame_fill(s : GraphflowmcmfFrame, v : Double) -> Graphfl
   result
 }
 
-pub fn graph_flow_mcmf_frame_min(s : GraphflowmcmfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_frame_min(s : GraphflowmcmfFrame) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_frame_max(s : GraphflowmcmfFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_frame_max(s : GraphflowmcmfFrame) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_frame_to_string(s : GraphflowmcmfFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn graph_flow_mcmf_table_set(s : GraphflowmcmfTable, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_flow_mcmf_table_sum(s : GraphflowmcmfTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_table_sum(s : GraphflowmcmfTable) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_table_mean(s : GraphflowmcmfTable) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_table_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_table_mean(s : GraphflowmcmfTable) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_table_scale(s : GraphflowmcmfTable, f : Double) -> GraphflowmcmfTable {
   let result = graph_flow_mcmf_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn graph_flow_mcmf_table_fill(s : GraphflowmcmfTable, v : Double) -> Graphfl
   result
 }
 
-pub fn graph_flow_mcmf_table_min(s : GraphflowmcmfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_table_min(s : GraphflowmcmfTable) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_table_max(s : GraphflowmcmfTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_table_max(s : GraphflowmcmfTable) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_table_to_string(s : GraphflowmcmfTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn graph_flow_mcmf_graphn_set(s : GraphflowmcmfGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mcmf_graphn_sum(s : GraphflowmcmfGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_graphn_sum(s : GraphflowmcmfGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_graphn_mean(s : GraphflowmcmfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_graphn_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_graphn_mean(s : GraphflowmcmfGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_graphn_scale(s : GraphflowmcmfGraphN, f : Double) -> GraphflowmcmfGraphN {
   let result = graph_flow_mcmf_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn graph_flow_mcmf_graphn_fill(s : GraphflowmcmfGraphN, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mcmf_graphn_min(s : GraphflowmcmfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_graphn_min(s : GraphflowmcmfGraphN) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_graphn_max(s : GraphflowmcmfGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_graphn_max(s : GraphflowmcmfGraphN) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_graphn_to_string(s : GraphflowmcmfGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn graph_flow_mcmf_node_set(s : GraphflowmcmfNode, i : Int, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mcmf_node_sum(s : GraphflowmcmfNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_node_sum(s : GraphflowmcmfNode) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_node_mean(s : GraphflowmcmfNode) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_node_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_node_mean(s : GraphflowmcmfNode) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_node_scale(s : GraphflowmcmfNode, f : Double) -> GraphflowmcmfNode {
   let result = graph_flow_mcmf_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn graph_flow_mcmf_node_fill(s : GraphflowmcmfNode, v : Double) -> Graphflow
   result
 }
 
-pub fn graph_flow_mcmf_node_min(s : GraphflowmcmfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_node_min(s : GraphflowmcmfNode) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_node_max(s : GraphflowmcmfNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_node_max(s : GraphflowmcmfNode) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_node_to_string(s : GraphflowmcmfNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn graph_flow_mcmf_edge_set(s : GraphflowmcmfEdge, i : Int, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mcmf_edge_sum(s : GraphflowmcmfEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_edge_sum(s : GraphflowmcmfEdge) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_edge_mean(s : GraphflowmcmfEdge) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_edge_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_edge_mean(s : GraphflowmcmfEdge) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_edge_scale(s : GraphflowmcmfEdge, f : Double) -> GraphflowmcmfEdge {
   let result = graph_flow_mcmf_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn graph_flow_mcmf_edge_fill(s : GraphflowmcmfEdge, v : Double) -> Graphflow
   result
 }
 
-pub fn graph_flow_mcmf_edge_min(s : GraphflowmcmfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_edge_min(s : GraphflowmcmfEdge) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_edge_max(s : GraphflowmcmfEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_edge_max(s : GraphflowmcmfEdge) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_edge_to_string(s : GraphflowmcmfEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn graph_flow_mcmf_path_set(s : GraphflowmcmfPath, i : Int, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mcmf_path_sum(s : GraphflowmcmfPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_path_sum(s : GraphflowmcmfPath) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_path_mean(s : GraphflowmcmfPath) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_path_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_path_mean(s : GraphflowmcmfPath) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_path_scale(s : GraphflowmcmfPath, f : Double) -> GraphflowmcmfPath {
   let result = graph_flow_mcmf_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn graph_flow_mcmf_path_fill(s : GraphflowmcmfPath, v : Double) -> Graphflow
   result
 }
 
-pub fn graph_flow_mcmf_path_min(s : GraphflowmcmfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_path_min(s : GraphflowmcmfPath) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_path_max(s : GraphflowmcmfPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_path_max(s : GraphflowmcmfPath) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_path_to_string(s : GraphflowmcmfPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn graph_flow_mcmf_cluster_set(s : GraphflowmcmfCluster, i : Int, v : Double
   result
 }
 
-pub fn graph_flow_mcmf_cluster_sum(s : GraphflowmcmfCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_cluster_sum(s : GraphflowmcmfCluster) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_cluster_mean(s : GraphflowmcmfCluster) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_cluster_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_cluster_mean(s : GraphflowmcmfCluster) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_cluster_scale(s : GraphflowmcmfCluster, f : Double) -> GraphflowmcmfCluster {
   let result = graph_flow_mcmf_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn graph_flow_mcmf_cluster_fill(s : GraphflowmcmfCluster, v : Double) -> Gra
   result
 }
 
-pub fn graph_flow_mcmf_cluster_min(s : GraphflowmcmfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_cluster_min(s : GraphflowmcmfCluster) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_cluster_max(s : GraphflowmcmfCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_cluster_max(s : GraphflowmcmfCluster) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_cluster_to_string(s : GraphflowmcmfCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn graph_flow_mcmf_model_set(s : GraphflowmcmfModel, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_flow_mcmf_model_sum(s : GraphflowmcmfModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_model_sum(s : GraphflowmcmfModel) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_model_mean(s : GraphflowmcmfModel) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_model_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_model_mean(s : GraphflowmcmfModel) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_model_scale(s : GraphflowmcmfModel, f : Double) -> GraphflowmcmfModel {
   let result = graph_flow_mcmf_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn graph_flow_mcmf_model_fill(s : GraphflowmcmfModel, v : Double) -> Graphfl
   result
 }
 
-pub fn graph_flow_mcmf_model_min(s : GraphflowmcmfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_model_min(s : GraphflowmcmfModel) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_model_max(s : GraphflowmcmfModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_model_max(s : GraphflowmcmfModel) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_model_to_string(s : GraphflowmcmfModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn graph_flow_mcmf_layer_set(s : GraphflowmcmfLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_flow_mcmf_layer_sum(s : GraphflowmcmfLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_layer_sum(s : GraphflowmcmfLayer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_layer_mean(s : GraphflowmcmfLayer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_layer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_layer_mean(s : GraphflowmcmfLayer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_layer_scale(s : GraphflowmcmfLayer, f : Double) -> GraphflowmcmfLayer {
   let result = graph_flow_mcmf_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn graph_flow_mcmf_layer_fill(s : GraphflowmcmfLayer, v : Double) -> Graphfl
   result
 }
 
-pub fn graph_flow_mcmf_layer_min(s : GraphflowmcmfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_layer_min(s : GraphflowmcmfLayer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_layer_max(s : GraphflowmcmfLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_layer_max(s : GraphflowmcmfLayer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_layer_to_string(s : GraphflowmcmfLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn graph_flow_mcmf_buffer_set(s : GraphflowmcmfBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mcmf_buffer_sum(s : GraphflowmcmfBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_buffer_sum(s : GraphflowmcmfBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_buffer_mean(s : GraphflowmcmfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_buffer_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_buffer_mean(s : GraphflowmcmfBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_buffer_scale(s : GraphflowmcmfBuffer, f : Double) -> GraphflowmcmfBuffer {
   let result = graph_flow_mcmf_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn graph_flow_mcmf_buffer_fill(s : GraphflowmcmfBuffer, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mcmf_buffer_min(s : GraphflowmcmfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_buffer_min(s : GraphflowmcmfBuffer) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_buffer_max(s : GraphflowmcmfBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_buffer_max(s : GraphflowmcmfBuffer) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_buffer_to_string(s : GraphflowmcmfBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn graph_flow_mcmf_cursor_set(s : GraphflowmcmfCursor, i : Int, v : Double) 
   result
 }
 
-pub fn graph_flow_mcmf_cursor_sum(s : GraphflowmcmfCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_cursor_sum(s : GraphflowmcmfCursor) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_cursor_mean(s : GraphflowmcmfCursor) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_cursor_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_cursor_mean(s : GraphflowmcmfCursor) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_cursor_scale(s : GraphflowmcmfCursor, f : Double) -> GraphflowmcmfCursor {
   let result = graph_flow_mcmf_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn graph_flow_mcmf_cursor_fill(s : GraphflowmcmfCursor, v : Double) -> Graph
   result
 }
 
-pub fn graph_flow_mcmf_cursor_min(s : GraphflowmcmfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_cursor_min(s : GraphflowmcmfCursor) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_cursor_max(s : GraphflowmcmfCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_cursor_max(s : GraphflowmcmfCursor) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_cursor_to_string(s : GraphflowmcmfCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn graph_flow_mcmf_view_set(s : GraphflowmcmfView, i : Int, v : Double) -> G
   result
 }
 
-pub fn graph_flow_mcmf_view_sum(s : GraphflowmcmfView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_view_sum(s : GraphflowmcmfView) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_view_mean(s : GraphflowmcmfView) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_view_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_view_mean(s : GraphflowmcmfView) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_view_scale(s : GraphflowmcmfView, f : Double) -> GraphflowmcmfView {
   let result = graph_flow_mcmf_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn graph_flow_mcmf_view_fill(s : GraphflowmcmfView, v : Double) -> Graphflow
   result
 }
 
-pub fn graph_flow_mcmf_view_min(s : GraphflowmcmfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_view_min(s : GraphflowmcmfView) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_view_max(s : GraphflowmcmfView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_view_max(s : GraphflowmcmfView) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_view_to_string(s : GraphflowmcmfView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn graph_flow_mcmf_range_set(s : GraphflowmcmfRange, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_flow_mcmf_range_sum(s : GraphflowmcmfRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_range_sum(s : GraphflowmcmfRange) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_range_mean(s : GraphflowmcmfRange) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_range_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_range_mean(s : GraphflowmcmfRange) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_range_scale(s : GraphflowmcmfRange, f : Double) -> GraphflowmcmfRange {
   let result = graph_flow_mcmf_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn graph_flow_mcmf_range_fill(s : GraphflowmcmfRange, v : Double) -> Graphfl
   result
 }
 
-pub fn graph_flow_mcmf_range_min(s : GraphflowmcmfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_range_min(s : GraphflowmcmfRange) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_range_max(s : GraphflowmcmfRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_range_max(s : GraphflowmcmfRange) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_range_to_string(s : GraphflowmcmfRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn graph_flow_mcmf_slice_set(s : GraphflowmcmfSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn graph_flow_mcmf_slice_sum(s : GraphflowmcmfSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn graph_flow_mcmf_slice_sum(s : GraphflowmcmfSlice) -> Double { @_common.sum(s.data) }
 
-pub fn graph_flow_mcmf_slice_mean(s : GraphflowmcmfSlice) -> Double {
-  if s.size == 0 { 0.0 } else { graph_flow_mcmf_slice_sum(s) / s.size.to_double() }
-}
+pub fn graph_flow_mcmf_slice_mean(s : GraphflowmcmfSlice) -> Double { @_common.mean(s.data) }
 
 pub fn graph_flow_mcmf_slice_scale(s : GraphflowmcmfSlice, f : Double) -> GraphflowmcmfSlice {
   let result = graph_flow_mcmf_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn graph_flow_mcmf_slice_fill(s : GraphflowmcmfSlice, v : Double) -> Graphfl
   result
 }
 
-pub fn graph_flow_mcmf_slice_min(s : GraphflowmcmfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_slice_min(s : GraphflowmcmfSlice) -> Double { @_common.min(s.data) }
 
-pub fn graph_flow_mcmf_slice_max(s : GraphflowmcmfSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn graph_flow_mcmf_slice_max(s : GraphflowmcmfSlice) -> Double { @_common.max(s.data) }
 
 pub fn graph_flow_mcmf_slice_to_string(s : GraphflowmcmfSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

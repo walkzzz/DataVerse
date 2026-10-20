@@ -88,11 +88,7 @@ pub fn timeseries_decomp_hp_make_series(vals : Array[Double], name : String) -> 
 
 pub fn timeseries_decomp_hp_series_len(s : TimeseriesdecomphpSeries) -> Int { s.vals.length() }
 
-pub fn timeseries_decomp_hp_series_sum(s : TimeseriesdecomphpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn timeseries_decomp_hp_series_sum(s : TimeseriesdecomphpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn timeseries_decomp_hp_series_mean(s : TimeseriesdecomphpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn timeseries_decomp_hp_frame_set(s : TimeseriesdecomphpFrame, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_hp_frame_sum(s : TimeseriesdecomphpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_frame_sum(s : TimeseriesdecomphpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_frame_mean(s : TimeseriesdecomphpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_frame_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_frame_mean(s : TimeseriesdecomphpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_frame_scale(s : TimeseriesdecomphpFrame, f : Double) -> TimeseriesdecomphpFrame {
   let result = timeseries_decomp_hp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn timeseries_decomp_hp_frame_fill(s : TimeseriesdecomphpFrame, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_hp_frame_min(s : TimeseriesdecomphpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_frame_min(s : TimeseriesdecomphpFrame) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_frame_max(s : TimeseriesdecomphpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_frame_max(s : TimeseriesdecomphpFrame) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_frame_to_string(s : TimeseriesdecomphpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn timeseries_decomp_hp_table_set(s : TimeseriesdecomphpTable, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_hp_table_sum(s : TimeseriesdecomphpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_table_sum(s : TimeseriesdecomphpTable) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_table_mean(s : TimeseriesdecomphpTable) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_table_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_table_mean(s : TimeseriesdecomphpTable) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_table_scale(s : TimeseriesdecomphpTable, f : Double) -> TimeseriesdecomphpTable {
   let result = timeseries_decomp_hp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn timeseries_decomp_hp_table_fill(s : TimeseriesdecomphpTable, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_hp_table_min(s : TimeseriesdecomphpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_table_min(s : TimeseriesdecomphpTable) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_table_max(s : TimeseriesdecomphpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_table_max(s : TimeseriesdecomphpTable) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_table_to_string(s : TimeseriesdecomphpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn timeseries_decomp_hp_graphn_set(s : TimeseriesdecomphpGraphN, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_hp_graphn_sum(s : TimeseriesdecomphpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_graphn_sum(s : TimeseriesdecomphpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_graphn_mean(s : TimeseriesdecomphpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_graphn_mean(s : TimeseriesdecomphpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_graphn_scale(s : TimeseriesdecomphpGraphN, f : Double) -> TimeseriesdecomphpGraphN {
   let result = timeseries_decomp_hp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn timeseries_decomp_hp_graphn_fill(s : TimeseriesdecomphpGraphN, v : Double
   result
 }
 
-pub fn timeseries_decomp_hp_graphn_min(s : TimeseriesdecomphpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_graphn_min(s : TimeseriesdecomphpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_graphn_max(s : TimeseriesdecomphpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_graphn_max(s : TimeseriesdecomphpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_graphn_to_string(s : TimeseriesdecomphpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn timeseries_decomp_hp_node_set(s : TimeseriesdecomphpNode, i : Int, v : Do
   result
 }
 
-pub fn timeseries_decomp_hp_node_sum(s : TimeseriesdecomphpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_node_sum(s : TimeseriesdecomphpNode) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_node_mean(s : TimeseriesdecomphpNode) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_node_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_node_mean(s : TimeseriesdecomphpNode) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_node_scale(s : TimeseriesdecomphpNode, f : Double) -> TimeseriesdecomphpNode {
   let result = timeseries_decomp_hp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn timeseries_decomp_hp_node_fill(s : TimeseriesdecomphpNode, v : Double) ->
   result
 }
 
-pub fn timeseries_decomp_hp_node_min(s : TimeseriesdecomphpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_node_min(s : TimeseriesdecomphpNode) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_node_max(s : TimeseriesdecomphpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_node_max(s : TimeseriesdecomphpNode) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_node_to_string(s : TimeseriesdecomphpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn timeseries_decomp_hp_edge_set(s : TimeseriesdecomphpEdge, i : Int, v : Do
   result
 }
 
-pub fn timeseries_decomp_hp_edge_sum(s : TimeseriesdecomphpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_edge_sum(s : TimeseriesdecomphpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_edge_mean(s : TimeseriesdecomphpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_edge_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_edge_mean(s : TimeseriesdecomphpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_edge_scale(s : TimeseriesdecomphpEdge, f : Double) -> TimeseriesdecomphpEdge {
   let result = timeseries_decomp_hp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn timeseries_decomp_hp_edge_fill(s : TimeseriesdecomphpEdge, v : Double) ->
   result
 }
 
-pub fn timeseries_decomp_hp_edge_min(s : TimeseriesdecomphpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_edge_min(s : TimeseriesdecomphpEdge) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_edge_max(s : TimeseriesdecomphpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_edge_max(s : TimeseriesdecomphpEdge) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_edge_to_string(s : TimeseriesdecomphpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn timeseries_decomp_hp_path_set(s : TimeseriesdecomphpPath, i : Int, v : Do
   result
 }
 
-pub fn timeseries_decomp_hp_path_sum(s : TimeseriesdecomphpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_path_sum(s : TimeseriesdecomphpPath) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_path_mean(s : TimeseriesdecomphpPath) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_path_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_path_mean(s : TimeseriesdecomphpPath) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_path_scale(s : TimeseriesdecomphpPath, f : Double) -> TimeseriesdecomphpPath {
   let result = timeseries_decomp_hp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn timeseries_decomp_hp_path_fill(s : TimeseriesdecomphpPath, v : Double) ->
   result
 }
 
-pub fn timeseries_decomp_hp_path_min(s : TimeseriesdecomphpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_path_min(s : TimeseriesdecomphpPath) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_path_max(s : TimeseriesdecomphpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_path_max(s : TimeseriesdecomphpPath) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_path_to_string(s : TimeseriesdecomphpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn timeseries_decomp_hp_cluster_set(s : TimeseriesdecomphpCluster, i : Int, 
   result
 }
 
-pub fn timeseries_decomp_hp_cluster_sum(s : TimeseriesdecomphpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_cluster_sum(s : TimeseriesdecomphpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_cluster_mean(s : TimeseriesdecomphpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_cluster_mean(s : TimeseriesdecomphpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_cluster_scale(s : TimeseriesdecomphpCluster, f : Double) -> TimeseriesdecomphpCluster {
   let result = timeseries_decomp_hp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn timeseries_decomp_hp_cluster_fill(s : TimeseriesdecomphpCluster, v : Doub
   result
 }
 
-pub fn timeseries_decomp_hp_cluster_min(s : TimeseriesdecomphpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_cluster_min(s : TimeseriesdecomphpCluster) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_cluster_max(s : TimeseriesdecomphpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_cluster_max(s : TimeseriesdecomphpCluster) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_cluster_to_string(s : TimeseriesdecomphpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn timeseries_decomp_hp_model_set(s : TimeseriesdecomphpModel, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_hp_model_sum(s : TimeseriesdecomphpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_model_sum(s : TimeseriesdecomphpModel) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_model_mean(s : TimeseriesdecomphpModel) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_model_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_model_mean(s : TimeseriesdecomphpModel) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_model_scale(s : TimeseriesdecomphpModel, f : Double) -> TimeseriesdecomphpModel {
   let result = timeseries_decomp_hp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn timeseries_decomp_hp_model_fill(s : TimeseriesdecomphpModel, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_hp_model_min(s : TimeseriesdecomphpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_model_min(s : TimeseriesdecomphpModel) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_model_max(s : TimeseriesdecomphpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_model_max(s : TimeseriesdecomphpModel) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_model_to_string(s : TimeseriesdecomphpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn timeseries_decomp_hp_layer_set(s : TimeseriesdecomphpLayer, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_hp_layer_sum(s : TimeseriesdecomphpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_layer_sum(s : TimeseriesdecomphpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_layer_mean(s : TimeseriesdecomphpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_layer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_layer_mean(s : TimeseriesdecomphpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_layer_scale(s : TimeseriesdecomphpLayer, f : Double) -> TimeseriesdecomphpLayer {
   let result = timeseries_decomp_hp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn timeseries_decomp_hp_layer_fill(s : TimeseriesdecomphpLayer, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_hp_layer_min(s : TimeseriesdecomphpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_layer_min(s : TimeseriesdecomphpLayer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_layer_max(s : TimeseriesdecomphpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_layer_max(s : TimeseriesdecomphpLayer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_layer_to_string(s : TimeseriesdecomphpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn timeseries_decomp_hp_buffer_set(s : TimeseriesdecomphpBuffer, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_hp_buffer_sum(s : TimeseriesdecomphpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_buffer_sum(s : TimeseriesdecomphpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_buffer_mean(s : TimeseriesdecomphpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_buffer_mean(s : TimeseriesdecomphpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_buffer_scale(s : TimeseriesdecomphpBuffer, f : Double) -> TimeseriesdecomphpBuffer {
   let result = timeseries_decomp_hp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn timeseries_decomp_hp_buffer_fill(s : TimeseriesdecomphpBuffer, v : Double
   result
 }
 
-pub fn timeseries_decomp_hp_buffer_min(s : TimeseriesdecomphpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_buffer_min(s : TimeseriesdecomphpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_buffer_max(s : TimeseriesdecomphpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_buffer_max(s : TimeseriesdecomphpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_buffer_to_string(s : TimeseriesdecomphpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn timeseries_decomp_hp_cursor_set(s : TimeseriesdecomphpCursor, i : Int, v 
   result
 }
 
-pub fn timeseries_decomp_hp_cursor_sum(s : TimeseriesdecomphpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_cursor_sum(s : TimeseriesdecomphpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_cursor_mean(s : TimeseriesdecomphpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_cursor_mean(s : TimeseriesdecomphpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_cursor_scale(s : TimeseriesdecomphpCursor, f : Double) -> TimeseriesdecomphpCursor {
   let result = timeseries_decomp_hp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn timeseries_decomp_hp_cursor_fill(s : TimeseriesdecomphpCursor, v : Double
   result
 }
 
-pub fn timeseries_decomp_hp_cursor_min(s : TimeseriesdecomphpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_cursor_min(s : TimeseriesdecomphpCursor) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_cursor_max(s : TimeseriesdecomphpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_cursor_max(s : TimeseriesdecomphpCursor) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_cursor_to_string(s : TimeseriesdecomphpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn timeseries_decomp_hp_view_set(s : TimeseriesdecomphpView, i : Int, v : Do
   result
 }
 
-pub fn timeseries_decomp_hp_view_sum(s : TimeseriesdecomphpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_view_sum(s : TimeseriesdecomphpView) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_view_mean(s : TimeseriesdecomphpView) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_view_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_view_mean(s : TimeseriesdecomphpView) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_view_scale(s : TimeseriesdecomphpView, f : Double) -> TimeseriesdecomphpView {
   let result = timeseries_decomp_hp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn timeseries_decomp_hp_view_fill(s : TimeseriesdecomphpView, v : Double) ->
   result
 }
 
-pub fn timeseries_decomp_hp_view_min(s : TimeseriesdecomphpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_view_min(s : TimeseriesdecomphpView) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_view_max(s : TimeseriesdecomphpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_view_max(s : TimeseriesdecomphpView) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_view_to_string(s : TimeseriesdecomphpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn timeseries_decomp_hp_range_set(s : TimeseriesdecomphpRange, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_hp_range_sum(s : TimeseriesdecomphpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_range_sum(s : TimeseriesdecomphpRange) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_range_mean(s : TimeseriesdecomphpRange) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_range_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_range_mean(s : TimeseriesdecomphpRange) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_range_scale(s : TimeseriesdecomphpRange, f : Double) -> TimeseriesdecomphpRange {
   let result = timeseries_decomp_hp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn timeseries_decomp_hp_range_fill(s : TimeseriesdecomphpRange, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_hp_range_min(s : TimeseriesdecomphpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_range_min(s : TimeseriesdecomphpRange) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_range_max(s : TimeseriesdecomphpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_range_max(s : TimeseriesdecomphpRange) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_range_to_string(s : TimeseriesdecomphpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn timeseries_decomp_hp_slice_set(s : TimeseriesdecomphpSlice, i : Int, v : 
   result
 }
 
-pub fn timeseries_decomp_hp_slice_sum(s : TimeseriesdecomphpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn timeseries_decomp_hp_slice_sum(s : TimeseriesdecomphpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn timeseries_decomp_hp_slice_mean(s : TimeseriesdecomphpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { timeseries_decomp_hp_slice_sum(s) / s.size.to_double() }
-}
+pub fn timeseries_decomp_hp_slice_mean(s : TimeseriesdecomphpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn timeseries_decomp_hp_slice_scale(s : TimeseriesdecomphpSlice, f : Double) -> TimeseriesdecomphpSlice {
   let result = timeseries_decomp_hp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn timeseries_decomp_hp_slice_fill(s : TimeseriesdecomphpSlice, v : Double) 
   result
 }
 
-pub fn timeseries_decomp_hp_slice_min(s : TimeseriesdecomphpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_slice_min(s : TimeseriesdecomphpSlice) -> Double { @_common.min(s.data) }
 
-pub fn timeseries_decomp_hp_slice_max(s : TimeseriesdecomphpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn timeseries_decomp_hp_slice_max(s : TimeseriesdecomphpSlice) -> Double { @_common.max(s.data) }
 
 pub fn timeseries_decomp_hp_slice_to_string(s : TimeseriesdecomphpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

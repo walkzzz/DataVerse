@@ -88,11 +88,7 @@ pub fn bio_seq_assembly_gap_make_series(vals : Array[Double], name : String) -> 
 
 pub fn bio_seq_assembly_gap_series_len(s : BioseqassemblygapSeries) -> Int { s.vals.length() }
 
-pub fn bio_seq_assembly_gap_series_sum(s : BioseqassemblygapSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_series_sum(s : BioseqassemblygapSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_seq_assembly_gap_series_mean(s : BioseqassemblygapSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_seq_assembly_gap_frame_set(s : BioseqassemblygapFrame, i : Int, v : D
   result
 }
 
-pub fn bio_seq_assembly_gap_frame_sum(s : BioseqassemblygapFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_frame_sum(s : BioseqassemblygapFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_frame_mean(s : BioseqassemblygapFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_frame_mean(s : BioseqassemblygapFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_frame_scale(s : BioseqassemblygapFrame, f : Double) -> BioseqassemblygapFrame {
   let result = bio_seq_assembly_gap_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_seq_assembly_gap_frame_fill(s : BioseqassemblygapFrame, v : Double) -
   result
 }
 
-pub fn bio_seq_assembly_gap_frame_min(s : BioseqassemblygapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_frame_min(s : BioseqassemblygapFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_frame_max(s : BioseqassemblygapFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_frame_max(s : BioseqassemblygapFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_frame_to_string(s : BioseqassemblygapFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_seq_assembly_gap_table_set(s : BioseqassemblygapTable, i : Int, v : D
   result
 }
 
-pub fn bio_seq_assembly_gap_table_sum(s : BioseqassemblygapTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_table_sum(s : BioseqassemblygapTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_table_mean(s : BioseqassemblygapTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_table_mean(s : BioseqassemblygapTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_table_scale(s : BioseqassemblygapTable, f : Double) -> BioseqassemblygapTable {
   let result = bio_seq_assembly_gap_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_seq_assembly_gap_table_fill(s : BioseqassemblygapTable, v : Double) -
   result
 }
 
-pub fn bio_seq_assembly_gap_table_min(s : BioseqassemblygapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_table_min(s : BioseqassemblygapTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_table_max(s : BioseqassemblygapTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_table_max(s : BioseqassemblygapTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_table_to_string(s : BioseqassemblygapTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_seq_assembly_gap_graphn_set(s : BioseqassemblygapGraphN, i : Int, v :
   result
 }
 
-pub fn bio_seq_assembly_gap_graphn_sum(s : BioseqassemblygapGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_graphn_sum(s : BioseqassemblygapGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_graphn_mean(s : BioseqassemblygapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_graphn_mean(s : BioseqassemblygapGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_graphn_scale(s : BioseqassemblygapGraphN, f : Double) -> BioseqassemblygapGraphN {
   let result = bio_seq_assembly_gap_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_seq_assembly_gap_graphn_fill(s : BioseqassemblygapGraphN, v : Double)
   result
 }
 
-pub fn bio_seq_assembly_gap_graphn_min(s : BioseqassemblygapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_graphn_min(s : BioseqassemblygapGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_graphn_max(s : BioseqassemblygapGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_graphn_max(s : BioseqassemblygapGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_graphn_to_string(s : BioseqassemblygapGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_seq_assembly_gap_node_set(s : BioseqassemblygapNode, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_gap_node_sum(s : BioseqassemblygapNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_node_sum(s : BioseqassemblygapNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_node_mean(s : BioseqassemblygapNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_node_mean(s : BioseqassemblygapNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_node_scale(s : BioseqassemblygapNode, f : Double) -> BioseqassemblygapNode {
   let result = bio_seq_assembly_gap_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_seq_assembly_gap_node_fill(s : BioseqassemblygapNode, v : Double) -> 
   result
 }
 
-pub fn bio_seq_assembly_gap_node_min(s : BioseqassemblygapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_node_min(s : BioseqassemblygapNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_node_max(s : BioseqassemblygapNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_node_max(s : BioseqassemblygapNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_node_to_string(s : BioseqassemblygapNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_seq_assembly_gap_edge_set(s : BioseqassemblygapEdge, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_gap_edge_sum(s : BioseqassemblygapEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_edge_sum(s : BioseqassemblygapEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_edge_mean(s : BioseqassemblygapEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_edge_mean(s : BioseqassemblygapEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_edge_scale(s : BioseqassemblygapEdge, f : Double) -> BioseqassemblygapEdge {
   let result = bio_seq_assembly_gap_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_seq_assembly_gap_edge_fill(s : BioseqassemblygapEdge, v : Double) -> 
   result
 }
 
-pub fn bio_seq_assembly_gap_edge_min(s : BioseqassemblygapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_edge_min(s : BioseqassemblygapEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_edge_max(s : BioseqassemblygapEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_edge_max(s : BioseqassemblygapEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_edge_to_string(s : BioseqassemblygapEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_seq_assembly_gap_path_set(s : BioseqassemblygapPath, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_gap_path_sum(s : BioseqassemblygapPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_path_sum(s : BioseqassemblygapPath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_path_mean(s : BioseqassemblygapPath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_path_mean(s : BioseqassemblygapPath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_path_scale(s : BioseqassemblygapPath, f : Double) -> BioseqassemblygapPath {
   let result = bio_seq_assembly_gap_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_seq_assembly_gap_path_fill(s : BioseqassemblygapPath, v : Double) -> 
   result
 }
 
-pub fn bio_seq_assembly_gap_path_min(s : BioseqassemblygapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_path_min(s : BioseqassemblygapPath) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_path_max(s : BioseqassemblygapPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_path_max(s : BioseqassemblygapPath) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_path_to_string(s : BioseqassemblygapPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_seq_assembly_gap_cluster_set(s : BioseqassemblygapCluster, i : Int, v
   result
 }
 
-pub fn bio_seq_assembly_gap_cluster_sum(s : BioseqassemblygapCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_cluster_sum(s : BioseqassemblygapCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_cluster_mean(s : BioseqassemblygapCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_cluster_mean(s : BioseqassemblygapCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_cluster_scale(s : BioseqassemblygapCluster, f : Double) -> BioseqassemblygapCluster {
   let result = bio_seq_assembly_gap_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_seq_assembly_gap_cluster_fill(s : BioseqassemblygapCluster, v : Doubl
   result
 }
 
-pub fn bio_seq_assembly_gap_cluster_min(s : BioseqassemblygapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_cluster_min(s : BioseqassemblygapCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_cluster_max(s : BioseqassemblygapCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_cluster_max(s : BioseqassemblygapCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_cluster_to_string(s : BioseqassemblygapCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_seq_assembly_gap_model_set(s : BioseqassemblygapModel, i : Int, v : D
   result
 }
 
-pub fn bio_seq_assembly_gap_model_sum(s : BioseqassemblygapModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_model_sum(s : BioseqassemblygapModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_model_mean(s : BioseqassemblygapModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_model_mean(s : BioseqassemblygapModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_model_scale(s : BioseqassemblygapModel, f : Double) -> BioseqassemblygapModel {
   let result = bio_seq_assembly_gap_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_seq_assembly_gap_model_fill(s : BioseqassemblygapModel, v : Double) -
   result
 }
 
-pub fn bio_seq_assembly_gap_model_min(s : BioseqassemblygapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_model_min(s : BioseqassemblygapModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_model_max(s : BioseqassemblygapModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_model_max(s : BioseqassemblygapModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_model_to_string(s : BioseqassemblygapModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_seq_assembly_gap_layer_set(s : BioseqassemblygapLayer, i : Int, v : D
   result
 }
 
-pub fn bio_seq_assembly_gap_layer_sum(s : BioseqassemblygapLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_layer_sum(s : BioseqassemblygapLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_layer_mean(s : BioseqassemblygapLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_layer_mean(s : BioseqassemblygapLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_layer_scale(s : BioseqassemblygapLayer, f : Double) -> BioseqassemblygapLayer {
   let result = bio_seq_assembly_gap_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_seq_assembly_gap_layer_fill(s : BioseqassemblygapLayer, v : Double) -
   result
 }
 
-pub fn bio_seq_assembly_gap_layer_min(s : BioseqassemblygapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_layer_min(s : BioseqassemblygapLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_layer_max(s : BioseqassemblygapLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_layer_max(s : BioseqassemblygapLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_layer_to_string(s : BioseqassemblygapLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_seq_assembly_gap_buffer_set(s : BioseqassemblygapBuffer, i : Int, v :
   result
 }
 
-pub fn bio_seq_assembly_gap_buffer_sum(s : BioseqassemblygapBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_buffer_sum(s : BioseqassemblygapBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_buffer_mean(s : BioseqassemblygapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_buffer_mean(s : BioseqassemblygapBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_buffer_scale(s : BioseqassemblygapBuffer, f : Double) -> BioseqassemblygapBuffer {
   let result = bio_seq_assembly_gap_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_seq_assembly_gap_buffer_fill(s : BioseqassemblygapBuffer, v : Double)
   result
 }
 
-pub fn bio_seq_assembly_gap_buffer_min(s : BioseqassemblygapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_buffer_min(s : BioseqassemblygapBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_buffer_max(s : BioseqassemblygapBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_buffer_max(s : BioseqassemblygapBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_buffer_to_string(s : BioseqassemblygapBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_seq_assembly_gap_cursor_set(s : BioseqassemblygapCursor, i : Int, v :
   result
 }
 
-pub fn bio_seq_assembly_gap_cursor_sum(s : BioseqassemblygapCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_cursor_sum(s : BioseqassemblygapCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_cursor_mean(s : BioseqassemblygapCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_cursor_mean(s : BioseqassemblygapCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_cursor_scale(s : BioseqassemblygapCursor, f : Double) -> BioseqassemblygapCursor {
   let result = bio_seq_assembly_gap_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_seq_assembly_gap_cursor_fill(s : BioseqassemblygapCursor, v : Double)
   result
 }
 
-pub fn bio_seq_assembly_gap_cursor_min(s : BioseqassemblygapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_cursor_min(s : BioseqassemblygapCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_cursor_max(s : BioseqassemblygapCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_cursor_max(s : BioseqassemblygapCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_cursor_to_string(s : BioseqassemblygapCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_seq_assembly_gap_view_set(s : BioseqassemblygapView, i : Int, v : Dou
   result
 }
 
-pub fn bio_seq_assembly_gap_view_sum(s : BioseqassemblygapView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_view_sum(s : BioseqassemblygapView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_view_mean(s : BioseqassemblygapView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_view_mean(s : BioseqassemblygapView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_view_scale(s : BioseqassemblygapView, f : Double) -> BioseqassemblygapView {
   let result = bio_seq_assembly_gap_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_seq_assembly_gap_view_fill(s : BioseqassemblygapView, v : Double) -> 
   result
 }
 
-pub fn bio_seq_assembly_gap_view_min(s : BioseqassemblygapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_view_min(s : BioseqassemblygapView) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_view_max(s : BioseqassemblygapView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_view_max(s : BioseqassemblygapView) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_view_to_string(s : BioseqassemblygapView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_seq_assembly_gap_range_set(s : BioseqassemblygapRange, i : Int, v : D
   result
 }
 
-pub fn bio_seq_assembly_gap_range_sum(s : BioseqassemblygapRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_range_sum(s : BioseqassemblygapRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_range_mean(s : BioseqassemblygapRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_range_mean(s : BioseqassemblygapRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_range_scale(s : BioseqassemblygapRange, f : Double) -> BioseqassemblygapRange {
   let result = bio_seq_assembly_gap_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_seq_assembly_gap_range_fill(s : BioseqassemblygapRange, v : Double) -
   result
 }
 
-pub fn bio_seq_assembly_gap_range_min(s : BioseqassemblygapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_range_min(s : BioseqassemblygapRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_range_max(s : BioseqassemblygapRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_range_max(s : BioseqassemblygapRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_range_to_string(s : BioseqassemblygapRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_seq_assembly_gap_slice_set(s : BioseqassemblygapSlice, i : Int, v : D
   result
 }
 
-pub fn bio_seq_assembly_gap_slice_sum(s : BioseqassemblygapSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_seq_assembly_gap_slice_sum(s : BioseqassemblygapSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_seq_assembly_gap_slice_mean(s : BioseqassemblygapSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_seq_assembly_gap_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_seq_assembly_gap_slice_mean(s : BioseqassemblygapSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_seq_assembly_gap_slice_scale(s : BioseqassemblygapSlice, f : Double) -> BioseqassemblygapSlice {
   let result = bio_seq_assembly_gap_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_seq_assembly_gap_slice_fill(s : BioseqassemblygapSlice, v : Double) -
   result
 }
 
-pub fn bio_seq_assembly_gap_slice_min(s : BioseqassemblygapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_slice_min(s : BioseqassemblygapSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_seq_assembly_gap_slice_max(s : BioseqassemblygapSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_seq_assembly_gap_slice_max(s : BioseqassemblygapSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_seq_assembly_gap_slice_to_string(s : BioseqassemblygapSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

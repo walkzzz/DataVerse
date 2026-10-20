@@ -88,11 +88,7 @@ pub fn ml_feature_selection_make_series(vals : Array[Double], name : String) -> 
 
 pub fn ml_feature_selection_series_len(s : MlfeatureselectionSeries) -> Int { s.vals.length() }
 
-pub fn ml_feature_selection_series_sum(s : MlfeatureselectionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_feature_selection_series_sum(s : MlfeatureselectionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_feature_selection_series_mean(s : MlfeatureselectionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_feature_selection_frame_set(s : MlfeatureselectionFrame, i : Int, v : 
   result
 }
 
-pub fn ml_feature_selection_frame_sum(s : MlfeatureselectionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_frame_sum(s : MlfeatureselectionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_frame_mean(s : MlfeatureselectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_frame_mean(s : MlfeatureselectionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_frame_scale(s : MlfeatureselectionFrame, f : Double) -> MlfeatureselectionFrame {
   let result = ml_feature_selection_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_feature_selection_frame_fill(s : MlfeatureselectionFrame, v : Double) 
   result
 }
 
-pub fn ml_feature_selection_frame_min(s : MlfeatureselectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_frame_min(s : MlfeatureselectionFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_frame_max(s : MlfeatureselectionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_frame_max(s : MlfeatureselectionFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_frame_to_string(s : MlfeatureselectionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_feature_selection_table_set(s : MlfeatureselectionTable, i : Int, v : 
   result
 }
 
-pub fn ml_feature_selection_table_sum(s : MlfeatureselectionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_table_sum(s : MlfeatureselectionTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_table_mean(s : MlfeatureselectionTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_table_mean(s : MlfeatureselectionTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_table_scale(s : MlfeatureselectionTable, f : Double) -> MlfeatureselectionTable {
   let result = ml_feature_selection_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_feature_selection_table_fill(s : MlfeatureselectionTable, v : Double) 
   result
 }
 
-pub fn ml_feature_selection_table_min(s : MlfeatureselectionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_table_min(s : MlfeatureselectionTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_table_max(s : MlfeatureselectionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_table_max(s : MlfeatureselectionTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_table_to_string(s : MlfeatureselectionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_feature_selection_graphn_set(s : MlfeatureselectionGraphN, i : Int, v 
   result
 }
 
-pub fn ml_feature_selection_graphn_sum(s : MlfeatureselectionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_graphn_sum(s : MlfeatureselectionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_graphn_mean(s : MlfeatureselectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_graphn_mean(s : MlfeatureselectionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_graphn_scale(s : MlfeatureselectionGraphN, f : Double) -> MlfeatureselectionGraphN {
   let result = ml_feature_selection_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_feature_selection_graphn_fill(s : MlfeatureselectionGraphN, v : Double
   result
 }
 
-pub fn ml_feature_selection_graphn_min(s : MlfeatureselectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_graphn_min(s : MlfeatureselectionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_graphn_max(s : MlfeatureselectionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_graphn_max(s : MlfeatureselectionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_graphn_to_string(s : MlfeatureselectionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_feature_selection_node_set(s : MlfeatureselectionNode, i : Int, v : Do
   result
 }
 
-pub fn ml_feature_selection_node_sum(s : MlfeatureselectionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_node_sum(s : MlfeatureselectionNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_node_mean(s : MlfeatureselectionNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_node_mean(s : MlfeatureselectionNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_node_scale(s : MlfeatureselectionNode, f : Double) -> MlfeatureselectionNode {
   let result = ml_feature_selection_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_feature_selection_node_fill(s : MlfeatureselectionNode, v : Double) ->
   result
 }
 
-pub fn ml_feature_selection_node_min(s : MlfeatureselectionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_node_min(s : MlfeatureselectionNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_node_max(s : MlfeatureselectionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_node_max(s : MlfeatureselectionNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_node_to_string(s : MlfeatureselectionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_feature_selection_edge_set(s : MlfeatureselectionEdge, i : Int, v : Do
   result
 }
 
-pub fn ml_feature_selection_edge_sum(s : MlfeatureselectionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_edge_sum(s : MlfeatureselectionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_edge_mean(s : MlfeatureselectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_edge_mean(s : MlfeatureselectionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_edge_scale(s : MlfeatureselectionEdge, f : Double) -> MlfeatureselectionEdge {
   let result = ml_feature_selection_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_feature_selection_edge_fill(s : MlfeatureselectionEdge, v : Double) ->
   result
 }
 
-pub fn ml_feature_selection_edge_min(s : MlfeatureselectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_edge_min(s : MlfeatureselectionEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_edge_max(s : MlfeatureselectionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_edge_max(s : MlfeatureselectionEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_edge_to_string(s : MlfeatureselectionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_feature_selection_path_set(s : MlfeatureselectionPath, i : Int, v : Do
   result
 }
 
-pub fn ml_feature_selection_path_sum(s : MlfeatureselectionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_path_sum(s : MlfeatureselectionPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_path_mean(s : MlfeatureselectionPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_path_mean(s : MlfeatureselectionPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_path_scale(s : MlfeatureselectionPath, f : Double) -> MlfeatureselectionPath {
   let result = ml_feature_selection_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_feature_selection_path_fill(s : MlfeatureselectionPath, v : Double) ->
   result
 }
 
-pub fn ml_feature_selection_path_min(s : MlfeatureselectionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_path_min(s : MlfeatureselectionPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_path_max(s : MlfeatureselectionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_path_max(s : MlfeatureselectionPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_path_to_string(s : MlfeatureselectionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_feature_selection_cluster_set(s : MlfeatureselectionCluster, i : Int, 
   result
 }
 
-pub fn ml_feature_selection_cluster_sum(s : MlfeatureselectionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_cluster_sum(s : MlfeatureselectionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_cluster_mean(s : MlfeatureselectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_cluster_mean(s : MlfeatureselectionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_cluster_scale(s : MlfeatureselectionCluster, f : Double) -> MlfeatureselectionCluster {
   let result = ml_feature_selection_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_feature_selection_cluster_fill(s : MlfeatureselectionCluster, v : Doub
   result
 }
 
-pub fn ml_feature_selection_cluster_min(s : MlfeatureselectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_cluster_min(s : MlfeatureselectionCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_cluster_max(s : MlfeatureselectionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_cluster_max(s : MlfeatureselectionCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_cluster_to_string(s : MlfeatureselectionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_feature_selection_model_set(s : MlfeatureselectionModel, i : Int, v : 
   result
 }
 
-pub fn ml_feature_selection_model_sum(s : MlfeatureselectionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_model_sum(s : MlfeatureselectionModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_model_mean(s : MlfeatureselectionModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_model_mean(s : MlfeatureselectionModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_model_scale(s : MlfeatureselectionModel, f : Double) -> MlfeatureselectionModel {
   let result = ml_feature_selection_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_feature_selection_model_fill(s : MlfeatureselectionModel, v : Double) 
   result
 }
 
-pub fn ml_feature_selection_model_min(s : MlfeatureselectionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_model_min(s : MlfeatureselectionModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_model_max(s : MlfeatureselectionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_model_max(s : MlfeatureselectionModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_model_to_string(s : MlfeatureselectionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_feature_selection_layer_set(s : MlfeatureselectionLayer, i : Int, v : 
   result
 }
 
-pub fn ml_feature_selection_layer_sum(s : MlfeatureselectionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_layer_sum(s : MlfeatureselectionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_layer_mean(s : MlfeatureselectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_layer_mean(s : MlfeatureselectionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_layer_scale(s : MlfeatureselectionLayer, f : Double) -> MlfeatureselectionLayer {
   let result = ml_feature_selection_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_feature_selection_layer_fill(s : MlfeatureselectionLayer, v : Double) 
   result
 }
 
-pub fn ml_feature_selection_layer_min(s : MlfeatureselectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_layer_min(s : MlfeatureselectionLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_layer_max(s : MlfeatureselectionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_layer_max(s : MlfeatureselectionLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_layer_to_string(s : MlfeatureselectionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_feature_selection_buffer_set(s : MlfeatureselectionBuffer, i : Int, v 
   result
 }
 
-pub fn ml_feature_selection_buffer_sum(s : MlfeatureselectionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_buffer_sum(s : MlfeatureselectionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_buffer_mean(s : MlfeatureselectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_buffer_mean(s : MlfeatureselectionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_buffer_scale(s : MlfeatureselectionBuffer, f : Double) -> MlfeatureselectionBuffer {
   let result = ml_feature_selection_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_feature_selection_buffer_fill(s : MlfeatureselectionBuffer, v : Double
   result
 }
 
-pub fn ml_feature_selection_buffer_min(s : MlfeatureselectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_buffer_min(s : MlfeatureselectionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_buffer_max(s : MlfeatureselectionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_buffer_max(s : MlfeatureselectionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_buffer_to_string(s : MlfeatureselectionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_feature_selection_cursor_set(s : MlfeatureselectionCursor, i : Int, v 
   result
 }
 
-pub fn ml_feature_selection_cursor_sum(s : MlfeatureselectionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_cursor_sum(s : MlfeatureselectionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_cursor_mean(s : MlfeatureselectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_cursor_mean(s : MlfeatureselectionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_cursor_scale(s : MlfeatureselectionCursor, f : Double) -> MlfeatureselectionCursor {
   let result = ml_feature_selection_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_feature_selection_cursor_fill(s : MlfeatureselectionCursor, v : Double
   result
 }
 
-pub fn ml_feature_selection_cursor_min(s : MlfeatureselectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_cursor_min(s : MlfeatureselectionCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_cursor_max(s : MlfeatureselectionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_cursor_max(s : MlfeatureselectionCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_cursor_to_string(s : MlfeatureselectionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_feature_selection_view_set(s : MlfeatureselectionView, i : Int, v : Do
   result
 }
 
-pub fn ml_feature_selection_view_sum(s : MlfeatureselectionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_view_sum(s : MlfeatureselectionView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_view_mean(s : MlfeatureselectionView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_view_mean(s : MlfeatureselectionView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_view_scale(s : MlfeatureselectionView, f : Double) -> MlfeatureselectionView {
   let result = ml_feature_selection_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_feature_selection_view_fill(s : MlfeatureselectionView, v : Double) ->
   result
 }
 
-pub fn ml_feature_selection_view_min(s : MlfeatureselectionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_view_min(s : MlfeatureselectionView) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_view_max(s : MlfeatureselectionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_view_max(s : MlfeatureselectionView) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_view_to_string(s : MlfeatureselectionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_feature_selection_range_set(s : MlfeatureselectionRange, i : Int, v : 
   result
 }
 
-pub fn ml_feature_selection_range_sum(s : MlfeatureselectionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_range_sum(s : MlfeatureselectionRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_range_mean(s : MlfeatureselectionRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_range_mean(s : MlfeatureselectionRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_range_scale(s : MlfeatureselectionRange, f : Double) -> MlfeatureselectionRange {
   let result = ml_feature_selection_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_feature_selection_range_fill(s : MlfeatureselectionRange, v : Double) 
   result
 }
 
-pub fn ml_feature_selection_range_min(s : MlfeatureselectionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_range_min(s : MlfeatureselectionRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_range_max(s : MlfeatureselectionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_range_max(s : MlfeatureselectionRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_range_to_string(s : MlfeatureselectionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_feature_selection_slice_set(s : MlfeatureselectionSlice, i : Int, v : 
   result
 }
 
-pub fn ml_feature_selection_slice_sum(s : MlfeatureselectionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_feature_selection_slice_sum(s : MlfeatureselectionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_feature_selection_slice_mean(s : MlfeatureselectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_feature_selection_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_feature_selection_slice_mean(s : MlfeatureselectionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_feature_selection_slice_scale(s : MlfeatureselectionSlice, f : Double) -> MlfeatureselectionSlice {
   let result = ml_feature_selection_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_feature_selection_slice_fill(s : MlfeatureselectionSlice, v : Double) 
   result
 }
 
-pub fn ml_feature_selection_slice_min(s : MlfeatureselectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_slice_min(s : MlfeatureselectionSlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_feature_selection_slice_max(s : MlfeatureselectionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_feature_selection_slice_max(s : MlfeatureselectionSlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_feature_selection_slice_to_string(s : MlfeatureselectionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn db_index_vector_make_series(vals : Array[Double], name : String) -> Dbind
 
 pub fn db_index_vector_series_len(s : DbindexvectorSeries) -> Int { s.vals.length() }
 
-pub fn db_index_vector_series_sum(s : DbindexvectorSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn db_index_vector_series_sum(s : DbindexvectorSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn db_index_vector_series_mean(s : DbindexvectorSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn db_index_vector_frame_set(s : DbindexvectorFrame, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_vector_frame_sum(s : DbindexvectorFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_frame_sum(s : DbindexvectorFrame) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_frame_mean(s : DbindexvectorFrame) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_frame_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_frame_mean(s : DbindexvectorFrame) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_frame_scale(s : DbindexvectorFrame, f : Double) -> DbindexvectorFrame {
   let result = db_index_vector_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn db_index_vector_frame_fill(s : DbindexvectorFrame, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_vector_frame_min(s : DbindexvectorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_frame_min(s : DbindexvectorFrame) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_frame_max(s : DbindexvectorFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_frame_max(s : DbindexvectorFrame) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_frame_to_string(s : DbindexvectorFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn db_index_vector_table_set(s : DbindexvectorTable, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_vector_table_sum(s : DbindexvectorTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_table_sum(s : DbindexvectorTable) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_table_mean(s : DbindexvectorTable) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_table_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_table_mean(s : DbindexvectorTable) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_table_scale(s : DbindexvectorTable, f : Double) -> DbindexvectorTable {
   let result = db_index_vector_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn db_index_vector_table_fill(s : DbindexvectorTable, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_vector_table_min(s : DbindexvectorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_table_min(s : DbindexvectorTable) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_table_max(s : DbindexvectorTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_table_max(s : DbindexvectorTable) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_table_to_string(s : DbindexvectorTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn db_index_vector_graphn_set(s : DbindexvectorGraphN, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_vector_graphn_sum(s : DbindexvectorGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_graphn_sum(s : DbindexvectorGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_graphn_mean(s : DbindexvectorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_graphn_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_graphn_mean(s : DbindexvectorGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_graphn_scale(s : DbindexvectorGraphN, f : Double) -> DbindexvectorGraphN {
   let result = db_index_vector_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn db_index_vector_graphn_fill(s : DbindexvectorGraphN, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_vector_graphn_min(s : DbindexvectorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_graphn_min(s : DbindexvectorGraphN) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_graphn_max(s : DbindexvectorGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_graphn_max(s : DbindexvectorGraphN) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_graphn_to_string(s : DbindexvectorGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn db_index_vector_node_set(s : DbindexvectorNode, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_vector_node_sum(s : DbindexvectorNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_node_sum(s : DbindexvectorNode) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_node_mean(s : DbindexvectorNode) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_node_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_node_mean(s : DbindexvectorNode) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_node_scale(s : DbindexvectorNode, f : Double) -> DbindexvectorNode {
   let result = db_index_vector_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn db_index_vector_node_fill(s : DbindexvectorNode, v : Double) -> Dbindexve
   result
 }
 
-pub fn db_index_vector_node_min(s : DbindexvectorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_node_min(s : DbindexvectorNode) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_node_max(s : DbindexvectorNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_node_max(s : DbindexvectorNode) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_node_to_string(s : DbindexvectorNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn db_index_vector_edge_set(s : DbindexvectorEdge, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_vector_edge_sum(s : DbindexvectorEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_edge_sum(s : DbindexvectorEdge) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_edge_mean(s : DbindexvectorEdge) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_edge_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_edge_mean(s : DbindexvectorEdge) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_edge_scale(s : DbindexvectorEdge, f : Double) -> DbindexvectorEdge {
   let result = db_index_vector_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn db_index_vector_edge_fill(s : DbindexvectorEdge, v : Double) -> Dbindexve
   result
 }
 
-pub fn db_index_vector_edge_min(s : DbindexvectorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_edge_min(s : DbindexvectorEdge) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_edge_max(s : DbindexvectorEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_edge_max(s : DbindexvectorEdge) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_edge_to_string(s : DbindexvectorEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn db_index_vector_path_set(s : DbindexvectorPath, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_vector_path_sum(s : DbindexvectorPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_path_sum(s : DbindexvectorPath) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_path_mean(s : DbindexvectorPath) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_path_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_path_mean(s : DbindexvectorPath) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_path_scale(s : DbindexvectorPath, f : Double) -> DbindexvectorPath {
   let result = db_index_vector_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn db_index_vector_path_fill(s : DbindexvectorPath, v : Double) -> Dbindexve
   result
 }
 
-pub fn db_index_vector_path_min(s : DbindexvectorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_path_min(s : DbindexvectorPath) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_path_max(s : DbindexvectorPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_path_max(s : DbindexvectorPath) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_path_to_string(s : DbindexvectorPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn db_index_vector_cluster_set(s : DbindexvectorCluster, i : Int, v : Double
   result
 }
 
-pub fn db_index_vector_cluster_sum(s : DbindexvectorCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_cluster_sum(s : DbindexvectorCluster) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_cluster_mean(s : DbindexvectorCluster) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_cluster_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_cluster_mean(s : DbindexvectorCluster) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_cluster_scale(s : DbindexvectorCluster, f : Double) -> DbindexvectorCluster {
   let result = db_index_vector_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn db_index_vector_cluster_fill(s : DbindexvectorCluster, v : Double) -> Dbi
   result
 }
 
-pub fn db_index_vector_cluster_min(s : DbindexvectorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_cluster_min(s : DbindexvectorCluster) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_cluster_max(s : DbindexvectorCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_cluster_max(s : DbindexvectorCluster) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_cluster_to_string(s : DbindexvectorCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn db_index_vector_model_set(s : DbindexvectorModel, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_vector_model_sum(s : DbindexvectorModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_model_sum(s : DbindexvectorModel) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_model_mean(s : DbindexvectorModel) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_model_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_model_mean(s : DbindexvectorModel) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_model_scale(s : DbindexvectorModel, f : Double) -> DbindexvectorModel {
   let result = db_index_vector_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn db_index_vector_model_fill(s : DbindexvectorModel, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_vector_model_min(s : DbindexvectorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_model_min(s : DbindexvectorModel) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_model_max(s : DbindexvectorModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_model_max(s : DbindexvectorModel) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_model_to_string(s : DbindexvectorModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn db_index_vector_layer_set(s : DbindexvectorLayer, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_vector_layer_sum(s : DbindexvectorLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_layer_sum(s : DbindexvectorLayer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_layer_mean(s : DbindexvectorLayer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_layer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_layer_mean(s : DbindexvectorLayer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_layer_scale(s : DbindexvectorLayer, f : Double) -> DbindexvectorLayer {
   let result = db_index_vector_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn db_index_vector_layer_fill(s : DbindexvectorLayer, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_vector_layer_min(s : DbindexvectorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_layer_min(s : DbindexvectorLayer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_layer_max(s : DbindexvectorLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_layer_max(s : DbindexvectorLayer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_layer_to_string(s : DbindexvectorLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn db_index_vector_buffer_set(s : DbindexvectorBuffer, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_vector_buffer_sum(s : DbindexvectorBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_buffer_sum(s : DbindexvectorBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_buffer_mean(s : DbindexvectorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_buffer_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_buffer_mean(s : DbindexvectorBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_buffer_scale(s : DbindexvectorBuffer, f : Double) -> DbindexvectorBuffer {
   let result = db_index_vector_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn db_index_vector_buffer_fill(s : DbindexvectorBuffer, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_vector_buffer_min(s : DbindexvectorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_buffer_min(s : DbindexvectorBuffer) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_buffer_max(s : DbindexvectorBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_buffer_max(s : DbindexvectorBuffer) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_buffer_to_string(s : DbindexvectorBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn db_index_vector_cursor_set(s : DbindexvectorCursor, i : Int, v : Double) 
   result
 }
 
-pub fn db_index_vector_cursor_sum(s : DbindexvectorCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_cursor_sum(s : DbindexvectorCursor) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_cursor_mean(s : DbindexvectorCursor) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_cursor_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_cursor_mean(s : DbindexvectorCursor) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_cursor_scale(s : DbindexvectorCursor, f : Double) -> DbindexvectorCursor {
   let result = db_index_vector_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn db_index_vector_cursor_fill(s : DbindexvectorCursor, v : Double) -> Dbind
   result
 }
 
-pub fn db_index_vector_cursor_min(s : DbindexvectorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_cursor_min(s : DbindexvectorCursor) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_cursor_max(s : DbindexvectorCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_cursor_max(s : DbindexvectorCursor) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_cursor_to_string(s : DbindexvectorCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn db_index_vector_view_set(s : DbindexvectorView, i : Int, v : Double) -> D
   result
 }
 
-pub fn db_index_vector_view_sum(s : DbindexvectorView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_view_sum(s : DbindexvectorView) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_view_mean(s : DbindexvectorView) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_view_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_view_mean(s : DbindexvectorView) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_view_scale(s : DbindexvectorView, f : Double) -> DbindexvectorView {
   let result = db_index_vector_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn db_index_vector_view_fill(s : DbindexvectorView, v : Double) -> Dbindexve
   result
 }
 
-pub fn db_index_vector_view_min(s : DbindexvectorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_view_min(s : DbindexvectorView) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_view_max(s : DbindexvectorView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_view_max(s : DbindexvectorView) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_view_to_string(s : DbindexvectorView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn db_index_vector_range_set(s : DbindexvectorRange, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_vector_range_sum(s : DbindexvectorRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_range_sum(s : DbindexvectorRange) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_range_mean(s : DbindexvectorRange) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_range_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_range_mean(s : DbindexvectorRange) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_range_scale(s : DbindexvectorRange, f : Double) -> DbindexvectorRange {
   let result = db_index_vector_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn db_index_vector_range_fill(s : DbindexvectorRange, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_vector_range_min(s : DbindexvectorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_range_min(s : DbindexvectorRange) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_range_max(s : DbindexvectorRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_range_max(s : DbindexvectorRange) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_range_to_string(s : DbindexvectorRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn db_index_vector_slice_set(s : DbindexvectorSlice, i : Int, v : Double) ->
   result
 }
 
-pub fn db_index_vector_slice_sum(s : DbindexvectorSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn db_index_vector_slice_sum(s : DbindexvectorSlice) -> Double { @_common.sum(s.data) }
 
-pub fn db_index_vector_slice_mean(s : DbindexvectorSlice) -> Double {
-  if s.size == 0 { 0.0 } else { db_index_vector_slice_sum(s) / s.size.to_double() }
-}
+pub fn db_index_vector_slice_mean(s : DbindexvectorSlice) -> Double { @_common.mean(s.data) }
 
 pub fn db_index_vector_slice_scale(s : DbindexvectorSlice, f : Double) -> DbindexvectorSlice {
   let result = db_index_vector_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn db_index_vector_slice_fill(s : DbindexvectorSlice, v : Double) -> Dbindex
   result
 }
 
-pub fn db_index_vector_slice_min(s : DbindexvectorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_slice_min(s : DbindexvectorSlice) -> Double { @_common.min(s.data) }
 
-pub fn db_index_vector_slice_max(s : DbindexvectorSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn db_index_vector_slice_max(s : DbindexvectorSlice) -> Double { @_common.max(s.data) }
 
 pub fn db_index_vector_slice_to_string(s : DbindexvectorSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

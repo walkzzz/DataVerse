@@ -88,11 +88,7 @@ pub fn opt_meta_evolution_make_series(vals : Array[Double], name : String) -> Op
 
 pub fn opt_meta_evolution_series_len(s : OptmetaevolutionSeries) -> Int { s.vals.length() }
 
-pub fn opt_meta_evolution_series_sum(s : OptmetaevolutionSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn opt_meta_evolution_series_sum(s : OptmetaevolutionSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn opt_meta_evolution_series_mean(s : OptmetaevolutionSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn opt_meta_evolution_frame_set(s : OptmetaevolutionFrame, i : Int, v : Doub
   result
 }
 
-pub fn opt_meta_evolution_frame_sum(s : OptmetaevolutionFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_frame_sum(s : OptmetaevolutionFrame) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_frame_mean(s : OptmetaevolutionFrame) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_frame_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_frame_mean(s : OptmetaevolutionFrame) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_frame_scale(s : OptmetaevolutionFrame, f : Double) -> OptmetaevolutionFrame {
   let result = opt_meta_evolution_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn opt_meta_evolution_frame_fill(s : OptmetaevolutionFrame, v : Double) -> O
   result
 }
 
-pub fn opt_meta_evolution_frame_min(s : OptmetaevolutionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_frame_min(s : OptmetaevolutionFrame) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_frame_max(s : OptmetaevolutionFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_frame_max(s : OptmetaevolutionFrame) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_frame_to_string(s : OptmetaevolutionFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn opt_meta_evolution_table_set(s : OptmetaevolutionTable, i : Int, v : Doub
   result
 }
 
-pub fn opt_meta_evolution_table_sum(s : OptmetaevolutionTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_table_sum(s : OptmetaevolutionTable) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_table_mean(s : OptmetaevolutionTable) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_table_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_table_mean(s : OptmetaevolutionTable) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_table_scale(s : OptmetaevolutionTable, f : Double) -> OptmetaevolutionTable {
   let result = opt_meta_evolution_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn opt_meta_evolution_table_fill(s : OptmetaevolutionTable, v : Double) -> O
   result
 }
 
-pub fn opt_meta_evolution_table_min(s : OptmetaevolutionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_table_min(s : OptmetaevolutionTable) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_table_max(s : OptmetaevolutionTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_table_max(s : OptmetaevolutionTable) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_table_to_string(s : OptmetaevolutionTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn opt_meta_evolution_graphn_set(s : OptmetaevolutionGraphN, i : Int, v : Do
   result
 }
 
-pub fn opt_meta_evolution_graphn_sum(s : OptmetaevolutionGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_graphn_sum(s : OptmetaevolutionGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_graphn_mean(s : OptmetaevolutionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_graphn_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_graphn_mean(s : OptmetaevolutionGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_graphn_scale(s : OptmetaevolutionGraphN, f : Double) -> OptmetaevolutionGraphN {
   let result = opt_meta_evolution_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn opt_meta_evolution_graphn_fill(s : OptmetaevolutionGraphN, v : Double) ->
   result
 }
 
-pub fn opt_meta_evolution_graphn_min(s : OptmetaevolutionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_graphn_min(s : OptmetaevolutionGraphN) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_graphn_max(s : OptmetaevolutionGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_graphn_max(s : OptmetaevolutionGraphN) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_graphn_to_string(s : OptmetaevolutionGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn opt_meta_evolution_node_set(s : OptmetaevolutionNode, i : Int, v : Double
   result
 }
 
-pub fn opt_meta_evolution_node_sum(s : OptmetaevolutionNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_node_sum(s : OptmetaevolutionNode) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_node_mean(s : OptmetaevolutionNode) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_node_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_node_mean(s : OptmetaevolutionNode) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_node_scale(s : OptmetaevolutionNode, f : Double) -> OptmetaevolutionNode {
   let result = opt_meta_evolution_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn opt_meta_evolution_node_fill(s : OptmetaevolutionNode, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_evolution_node_min(s : OptmetaevolutionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_node_min(s : OptmetaevolutionNode) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_node_max(s : OptmetaevolutionNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_node_max(s : OptmetaevolutionNode) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_node_to_string(s : OptmetaevolutionNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn opt_meta_evolution_edge_set(s : OptmetaevolutionEdge, i : Int, v : Double
   result
 }
 
-pub fn opt_meta_evolution_edge_sum(s : OptmetaevolutionEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_edge_sum(s : OptmetaevolutionEdge) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_edge_mean(s : OptmetaevolutionEdge) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_edge_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_edge_mean(s : OptmetaevolutionEdge) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_edge_scale(s : OptmetaevolutionEdge, f : Double) -> OptmetaevolutionEdge {
   let result = opt_meta_evolution_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn opt_meta_evolution_edge_fill(s : OptmetaevolutionEdge, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_evolution_edge_min(s : OptmetaevolutionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_edge_min(s : OptmetaevolutionEdge) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_edge_max(s : OptmetaevolutionEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_edge_max(s : OptmetaevolutionEdge) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_edge_to_string(s : OptmetaevolutionEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn opt_meta_evolution_path_set(s : OptmetaevolutionPath, i : Int, v : Double
   result
 }
 
-pub fn opt_meta_evolution_path_sum(s : OptmetaevolutionPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_path_sum(s : OptmetaevolutionPath) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_path_mean(s : OptmetaevolutionPath) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_path_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_path_mean(s : OptmetaevolutionPath) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_path_scale(s : OptmetaevolutionPath, f : Double) -> OptmetaevolutionPath {
   let result = opt_meta_evolution_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn opt_meta_evolution_path_fill(s : OptmetaevolutionPath, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_evolution_path_min(s : OptmetaevolutionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_path_min(s : OptmetaevolutionPath) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_path_max(s : OptmetaevolutionPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_path_max(s : OptmetaevolutionPath) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_path_to_string(s : OptmetaevolutionPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn opt_meta_evolution_cluster_set(s : OptmetaevolutionCluster, i : Int, v : 
   result
 }
 
-pub fn opt_meta_evolution_cluster_sum(s : OptmetaevolutionCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_cluster_sum(s : OptmetaevolutionCluster) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_cluster_mean(s : OptmetaevolutionCluster) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_cluster_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_cluster_mean(s : OptmetaevolutionCluster) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_cluster_scale(s : OptmetaevolutionCluster, f : Double) -> OptmetaevolutionCluster {
   let result = opt_meta_evolution_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn opt_meta_evolution_cluster_fill(s : OptmetaevolutionCluster, v : Double) 
   result
 }
 
-pub fn opt_meta_evolution_cluster_min(s : OptmetaevolutionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_cluster_min(s : OptmetaevolutionCluster) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_cluster_max(s : OptmetaevolutionCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_cluster_max(s : OptmetaevolutionCluster) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_cluster_to_string(s : OptmetaevolutionCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn opt_meta_evolution_model_set(s : OptmetaevolutionModel, i : Int, v : Doub
   result
 }
 
-pub fn opt_meta_evolution_model_sum(s : OptmetaevolutionModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_model_sum(s : OptmetaevolutionModel) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_model_mean(s : OptmetaevolutionModel) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_model_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_model_mean(s : OptmetaevolutionModel) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_model_scale(s : OptmetaevolutionModel, f : Double) -> OptmetaevolutionModel {
   let result = opt_meta_evolution_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn opt_meta_evolution_model_fill(s : OptmetaevolutionModel, v : Double) -> O
   result
 }
 
-pub fn opt_meta_evolution_model_min(s : OptmetaevolutionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_model_min(s : OptmetaevolutionModel) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_model_max(s : OptmetaevolutionModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_model_max(s : OptmetaevolutionModel) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_model_to_string(s : OptmetaevolutionModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn opt_meta_evolution_layer_set(s : OptmetaevolutionLayer, i : Int, v : Doub
   result
 }
 
-pub fn opt_meta_evolution_layer_sum(s : OptmetaevolutionLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_layer_sum(s : OptmetaevolutionLayer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_layer_mean(s : OptmetaevolutionLayer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_layer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_layer_mean(s : OptmetaevolutionLayer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_layer_scale(s : OptmetaevolutionLayer, f : Double) -> OptmetaevolutionLayer {
   let result = opt_meta_evolution_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn opt_meta_evolution_layer_fill(s : OptmetaevolutionLayer, v : Double) -> O
   result
 }
 
-pub fn opt_meta_evolution_layer_min(s : OptmetaevolutionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_layer_min(s : OptmetaevolutionLayer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_layer_max(s : OptmetaevolutionLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_layer_max(s : OptmetaevolutionLayer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_layer_to_string(s : OptmetaevolutionLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn opt_meta_evolution_buffer_set(s : OptmetaevolutionBuffer, i : Int, v : Do
   result
 }
 
-pub fn opt_meta_evolution_buffer_sum(s : OptmetaevolutionBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_buffer_sum(s : OptmetaevolutionBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_buffer_mean(s : OptmetaevolutionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_buffer_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_buffer_mean(s : OptmetaevolutionBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_buffer_scale(s : OptmetaevolutionBuffer, f : Double) -> OptmetaevolutionBuffer {
   let result = opt_meta_evolution_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn opt_meta_evolution_buffer_fill(s : OptmetaevolutionBuffer, v : Double) ->
   result
 }
 
-pub fn opt_meta_evolution_buffer_min(s : OptmetaevolutionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_buffer_min(s : OptmetaevolutionBuffer) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_buffer_max(s : OptmetaevolutionBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_buffer_max(s : OptmetaevolutionBuffer) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_buffer_to_string(s : OptmetaevolutionBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn opt_meta_evolution_cursor_set(s : OptmetaevolutionCursor, i : Int, v : Do
   result
 }
 
-pub fn opt_meta_evolution_cursor_sum(s : OptmetaevolutionCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_cursor_sum(s : OptmetaevolutionCursor) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_cursor_mean(s : OptmetaevolutionCursor) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_cursor_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_cursor_mean(s : OptmetaevolutionCursor) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_cursor_scale(s : OptmetaevolutionCursor, f : Double) -> OptmetaevolutionCursor {
   let result = opt_meta_evolution_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn opt_meta_evolution_cursor_fill(s : OptmetaevolutionCursor, v : Double) ->
   result
 }
 
-pub fn opt_meta_evolution_cursor_min(s : OptmetaevolutionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_cursor_min(s : OptmetaevolutionCursor) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_cursor_max(s : OptmetaevolutionCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_cursor_max(s : OptmetaevolutionCursor) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_cursor_to_string(s : OptmetaevolutionCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn opt_meta_evolution_view_set(s : OptmetaevolutionView, i : Int, v : Double
   result
 }
 
-pub fn opt_meta_evolution_view_sum(s : OptmetaevolutionView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_view_sum(s : OptmetaevolutionView) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_view_mean(s : OptmetaevolutionView) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_view_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_view_mean(s : OptmetaevolutionView) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_view_scale(s : OptmetaevolutionView, f : Double) -> OptmetaevolutionView {
   let result = opt_meta_evolution_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn opt_meta_evolution_view_fill(s : OptmetaevolutionView, v : Double) -> Opt
   result
 }
 
-pub fn opt_meta_evolution_view_min(s : OptmetaevolutionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_view_min(s : OptmetaevolutionView) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_view_max(s : OptmetaevolutionView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_view_max(s : OptmetaevolutionView) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_view_to_string(s : OptmetaevolutionView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn opt_meta_evolution_range_set(s : OptmetaevolutionRange, i : Int, v : Doub
   result
 }
 
-pub fn opt_meta_evolution_range_sum(s : OptmetaevolutionRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_range_sum(s : OptmetaevolutionRange) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_range_mean(s : OptmetaevolutionRange) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_range_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_range_mean(s : OptmetaevolutionRange) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_range_scale(s : OptmetaevolutionRange, f : Double) -> OptmetaevolutionRange {
   let result = opt_meta_evolution_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn opt_meta_evolution_range_fill(s : OptmetaevolutionRange, v : Double) -> O
   result
 }
 
-pub fn opt_meta_evolution_range_min(s : OptmetaevolutionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_range_min(s : OptmetaevolutionRange) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_range_max(s : OptmetaevolutionRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_range_max(s : OptmetaevolutionRange) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_range_to_string(s : OptmetaevolutionRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn opt_meta_evolution_slice_set(s : OptmetaevolutionSlice, i : Int, v : Doub
   result
 }
 
-pub fn opt_meta_evolution_slice_sum(s : OptmetaevolutionSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn opt_meta_evolution_slice_sum(s : OptmetaevolutionSlice) -> Double { @_common.sum(s.data) }
 
-pub fn opt_meta_evolution_slice_mean(s : OptmetaevolutionSlice) -> Double {
-  if s.size == 0 { 0.0 } else { opt_meta_evolution_slice_sum(s) / s.size.to_double() }
-}
+pub fn opt_meta_evolution_slice_mean(s : OptmetaevolutionSlice) -> Double { @_common.mean(s.data) }
 
 pub fn opt_meta_evolution_slice_scale(s : OptmetaevolutionSlice, f : Double) -> OptmetaevolutionSlice {
   let result = opt_meta_evolution_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn opt_meta_evolution_slice_fill(s : OptmetaevolutionSlice, v : Double) -> O
   result
 }
 
-pub fn opt_meta_evolution_slice_min(s : OptmetaevolutionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_slice_min(s : OptmetaevolutionSlice) -> Double { @_common.min(s.data) }
 
-pub fn opt_meta_evolution_slice_max(s : OptmetaevolutionSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn opt_meta_evolution_slice_max(s : OptmetaevolutionSlice) -> Double { @_common.max(s.data) }
 
 pub fn opt_meta_evolution_slice_to_string(s : OptmetaevolutionSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

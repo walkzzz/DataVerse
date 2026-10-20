@@ -88,11 +88,7 @@ pub fn image_transform_warp_make_series(vals : Array[Double], name : String) -> 
 
 pub fn image_transform_warp_series_len(s : ImagetransformwarpSeries) -> Int { s.vals.length() }
 
-pub fn image_transform_warp_series_sum(s : ImagetransformwarpSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn image_transform_warp_series_sum(s : ImagetransformwarpSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn image_transform_warp_series_mean(s : ImagetransformwarpSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn image_transform_warp_frame_set(s : ImagetransformwarpFrame, i : Int, v : 
   result
 }
 
-pub fn image_transform_warp_frame_sum(s : ImagetransformwarpFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_frame_sum(s : ImagetransformwarpFrame) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_frame_mean(s : ImagetransformwarpFrame) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_frame_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_frame_mean(s : ImagetransformwarpFrame) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_frame_scale(s : ImagetransformwarpFrame, f : Double) -> ImagetransformwarpFrame {
   let result = image_transform_warp_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn image_transform_warp_frame_fill(s : ImagetransformwarpFrame, v : Double) 
   result
 }
 
-pub fn image_transform_warp_frame_min(s : ImagetransformwarpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_frame_min(s : ImagetransformwarpFrame) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_frame_max(s : ImagetransformwarpFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_frame_max(s : ImagetransformwarpFrame) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_frame_to_string(s : ImagetransformwarpFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn image_transform_warp_table_set(s : ImagetransformwarpTable, i : Int, v : 
   result
 }
 
-pub fn image_transform_warp_table_sum(s : ImagetransformwarpTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_table_sum(s : ImagetransformwarpTable) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_table_mean(s : ImagetransformwarpTable) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_table_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_table_mean(s : ImagetransformwarpTable) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_table_scale(s : ImagetransformwarpTable, f : Double) -> ImagetransformwarpTable {
   let result = image_transform_warp_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn image_transform_warp_table_fill(s : ImagetransformwarpTable, v : Double) 
   result
 }
 
-pub fn image_transform_warp_table_min(s : ImagetransformwarpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_table_min(s : ImagetransformwarpTable) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_table_max(s : ImagetransformwarpTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_table_max(s : ImagetransformwarpTable) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_table_to_string(s : ImagetransformwarpTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn image_transform_warp_graphn_set(s : ImagetransformwarpGraphN, i : Int, v 
   result
 }
 
-pub fn image_transform_warp_graphn_sum(s : ImagetransformwarpGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_graphn_sum(s : ImagetransformwarpGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_graphn_mean(s : ImagetransformwarpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_graphn_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_graphn_mean(s : ImagetransformwarpGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_graphn_scale(s : ImagetransformwarpGraphN, f : Double) -> ImagetransformwarpGraphN {
   let result = image_transform_warp_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn image_transform_warp_graphn_fill(s : ImagetransformwarpGraphN, v : Double
   result
 }
 
-pub fn image_transform_warp_graphn_min(s : ImagetransformwarpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_graphn_min(s : ImagetransformwarpGraphN) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_graphn_max(s : ImagetransformwarpGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_graphn_max(s : ImagetransformwarpGraphN) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_graphn_to_string(s : ImagetransformwarpGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn image_transform_warp_node_set(s : ImagetransformwarpNode, i : Int, v : Do
   result
 }
 
-pub fn image_transform_warp_node_sum(s : ImagetransformwarpNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_node_sum(s : ImagetransformwarpNode) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_node_mean(s : ImagetransformwarpNode) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_node_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_node_mean(s : ImagetransformwarpNode) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_node_scale(s : ImagetransformwarpNode, f : Double) -> ImagetransformwarpNode {
   let result = image_transform_warp_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn image_transform_warp_node_fill(s : ImagetransformwarpNode, v : Double) ->
   result
 }
 
-pub fn image_transform_warp_node_min(s : ImagetransformwarpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_node_min(s : ImagetransformwarpNode) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_node_max(s : ImagetransformwarpNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_node_max(s : ImagetransformwarpNode) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_node_to_string(s : ImagetransformwarpNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn image_transform_warp_edge_set(s : ImagetransformwarpEdge, i : Int, v : Do
   result
 }
 
-pub fn image_transform_warp_edge_sum(s : ImagetransformwarpEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_edge_sum(s : ImagetransformwarpEdge) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_edge_mean(s : ImagetransformwarpEdge) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_edge_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_edge_mean(s : ImagetransformwarpEdge) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_edge_scale(s : ImagetransformwarpEdge, f : Double) -> ImagetransformwarpEdge {
   let result = image_transform_warp_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn image_transform_warp_edge_fill(s : ImagetransformwarpEdge, v : Double) ->
   result
 }
 
-pub fn image_transform_warp_edge_min(s : ImagetransformwarpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_edge_min(s : ImagetransformwarpEdge) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_edge_max(s : ImagetransformwarpEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_edge_max(s : ImagetransformwarpEdge) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_edge_to_string(s : ImagetransformwarpEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn image_transform_warp_path_set(s : ImagetransformwarpPath, i : Int, v : Do
   result
 }
 
-pub fn image_transform_warp_path_sum(s : ImagetransformwarpPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_path_sum(s : ImagetransformwarpPath) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_path_mean(s : ImagetransformwarpPath) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_path_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_path_mean(s : ImagetransformwarpPath) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_path_scale(s : ImagetransformwarpPath, f : Double) -> ImagetransformwarpPath {
   let result = image_transform_warp_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn image_transform_warp_path_fill(s : ImagetransformwarpPath, v : Double) ->
   result
 }
 
-pub fn image_transform_warp_path_min(s : ImagetransformwarpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_path_min(s : ImagetransformwarpPath) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_path_max(s : ImagetransformwarpPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_path_max(s : ImagetransformwarpPath) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_path_to_string(s : ImagetransformwarpPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn image_transform_warp_cluster_set(s : ImagetransformwarpCluster, i : Int, 
   result
 }
 
-pub fn image_transform_warp_cluster_sum(s : ImagetransformwarpCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_cluster_sum(s : ImagetransformwarpCluster) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_cluster_mean(s : ImagetransformwarpCluster) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_cluster_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_cluster_mean(s : ImagetransformwarpCluster) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_cluster_scale(s : ImagetransformwarpCluster, f : Double) -> ImagetransformwarpCluster {
   let result = image_transform_warp_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn image_transform_warp_cluster_fill(s : ImagetransformwarpCluster, v : Doub
   result
 }
 
-pub fn image_transform_warp_cluster_min(s : ImagetransformwarpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_cluster_min(s : ImagetransformwarpCluster) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_cluster_max(s : ImagetransformwarpCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_cluster_max(s : ImagetransformwarpCluster) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_cluster_to_string(s : ImagetransformwarpCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn image_transform_warp_model_set(s : ImagetransformwarpModel, i : Int, v : 
   result
 }
 
-pub fn image_transform_warp_model_sum(s : ImagetransformwarpModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_model_sum(s : ImagetransformwarpModel) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_model_mean(s : ImagetransformwarpModel) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_model_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_model_mean(s : ImagetransformwarpModel) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_model_scale(s : ImagetransformwarpModel, f : Double) -> ImagetransformwarpModel {
   let result = image_transform_warp_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn image_transform_warp_model_fill(s : ImagetransformwarpModel, v : Double) 
   result
 }
 
-pub fn image_transform_warp_model_min(s : ImagetransformwarpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_model_min(s : ImagetransformwarpModel) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_model_max(s : ImagetransformwarpModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_model_max(s : ImagetransformwarpModel) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_model_to_string(s : ImagetransformwarpModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn image_transform_warp_layer_set(s : ImagetransformwarpLayer, i : Int, v : 
   result
 }
 
-pub fn image_transform_warp_layer_sum(s : ImagetransformwarpLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_layer_sum(s : ImagetransformwarpLayer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_layer_mean(s : ImagetransformwarpLayer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_layer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_layer_mean(s : ImagetransformwarpLayer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_layer_scale(s : ImagetransformwarpLayer, f : Double) -> ImagetransformwarpLayer {
   let result = image_transform_warp_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn image_transform_warp_layer_fill(s : ImagetransformwarpLayer, v : Double) 
   result
 }
 
-pub fn image_transform_warp_layer_min(s : ImagetransformwarpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_layer_min(s : ImagetransformwarpLayer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_layer_max(s : ImagetransformwarpLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_layer_max(s : ImagetransformwarpLayer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_layer_to_string(s : ImagetransformwarpLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn image_transform_warp_buffer_set(s : ImagetransformwarpBuffer, i : Int, v 
   result
 }
 
-pub fn image_transform_warp_buffer_sum(s : ImagetransformwarpBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_buffer_sum(s : ImagetransformwarpBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_buffer_mean(s : ImagetransformwarpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_buffer_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_buffer_mean(s : ImagetransformwarpBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_buffer_scale(s : ImagetransformwarpBuffer, f : Double) -> ImagetransformwarpBuffer {
   let result = image_transform_warp_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn image_transform_warp_buffer_fill(s : ImagetransformwarpBuffer, v : Double
   result
 }
 
-pub fn image_transform_warp_buffer_min(s : ImagetransformwarpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_buffer_min(s : ImagetransformwarpBuffer) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_buffer_max(s : ImagetransformwarpBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_buffer_max(s : ImagetransformwarpBuffer) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_buffer_to_string(s : ImagetransformwarpBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn image_transform_warp_cursor_set(s : ImagetransformwarpCursor, i : Int, v 
   result
 }
 
-pub fn image_transform_warp_cursor_sum(s : ImagetransformwarpCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_cursor_sum(s : ImagetransformwarpCursor) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_cursor_mean(s : ImagetransformwarpCursor) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_cursor_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_cursor_mean(s : ImagetransformwarpCursor) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_cursor_scale(s : ImagetransformwarpCursor, f : Double) -> ImagetransformwarpCursor {
   let result = image_transform_warp_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn image_transform_warp_cursor_fill(s : ImagetransformwarpCursor, v : Double
   result
 }
 
-pub fn image_transform_warp_cursor_min(s : ImagetransformwarpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_cursor_min(s : ImagetransformwarpCursor) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_cursor_max(s : ImagetransformwarpCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_cursor_max(s : ImagetransformwarpCursor) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_cursor_to_string(s : ImagetransformwarpCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn image_transform_warp_view_set(s : ImagetransformwarpView, i : Int, v : Do
   result
 }
 
-pub fn image_transform_warp_view_sum(s : ImagetransformwarpView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_view_sum(s : ImagetransformwarpView) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_view_mean(s : ImagetransformwarpView) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_view_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_view_mean(s : ImagetransformwarpView) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_view_scale(s : ImagetransformwarpView, f : Double) -> ImagetransformwarpView {
   let result = image_transform_warp_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn image_transform_warp_view_fill(s : ImagetransformwarpView, v : Double) ->
   result
 }
 
-pub fn image_transform_warp_view_min(s : ImagetransformwarpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_view_min(s : ImagetransformwarpView) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_view_max(s : ImagetransformwarpView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_view_max(s : ImagetransformwarpView) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_view_to_string(s : ImagetransformwarpView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn image_transform_warp_range_set(s : ImagetransformwarpRange, i : Int, v : 
   result
 }
 
-pub fn image_transform_warp_range_sum(s : ImagetransformwarpRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_range_sum(s : ImagetransformwarpRange) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_range_mean(s : ImagetransformwarpRange) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_range_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_range_mean(s : ImagetransformwarpRange) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_range_scale(s : ImagetransformwarpRange, f : Double) -> ImagetransformwarpRange {
   let result = image_transform_warp_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn image_transform_warp_range_fill(s : ImagetransformwarpRange, v : Double) 
   result
 }
 
-pub fn image_transform_warp_range_min(s : ImagetransformwarpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_range_min(s : ImagetransformwarpRange) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_range_max(s : ImagetransformwarpRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_range_max(s : ImagetransformwarpRange) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_range_to_string(s : ImagetransformwarpRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn image_transform_warp_slice_set(s : ImagetransformwarpSlice, i : Int, v : 
   result
 }
 
-pub fn image_transform_warp_slice_sum(s : ImagetransformwarpSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn image_transform_warp_slice_sum(s : ImagetransformwarpSlice) -> Double { @_common.sum(s.data) }
 
-pub fn image_transform_warp_slice_mean(s : ImagetransformwarpSlice) -> Double {
-  if s.size == 0 { 0.0 } else { image_transform_warp_slice_sum(s) / s.size.to_double() }
-}
+pub fn image_transform_warp_slice_mean(s : ImagetransformwarpSlice) -> Double { @_common.mean(s.data) }
 
 pub fn image_transform_warp_slice_scale(s : ImagetransformwarpSlice, f : Double) -> ImagetransformwarpSlice {
   let result = image_transform_warp_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn image_transform_warp_slice_fill(s : ImagetransformwarpSlice, v : Double) 
   result
 }
 
-pub fn image_transform_warp_slice_min(s : ImagetransformwarpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_slice_min(s : ImagetransformwarpSlice) -> Double { @_common.min(s.data) }
 
-pub fn image_transform_warp_slice_max(s : ImagetransformwarpSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn image_transform_warp_slice_max(s : ImagetransformwarpSlice) -> Double { @_common.max(s.data) }
 
 pub fn image_transform_warp_slice_to_string(s : ImagetransformwarpSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn nlp_parse_span_make_series(vals : Array[Double], name : String) -> Nlppar
 
 pub fn nlp_parse_span_series_len(s : NlpparsespanSeries) -> Int { s.vals.length() }
 
-pub fn nlp_parse_span_series_sum(s : NlpparsespanSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn nlp_parse_span_series_sum(s : NlpparsespanSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn nlp_parse_span_series_mean(s : NlpparsespanSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn nlp_parse_span_frame_set(s : NlpparsespanFrame, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_span_frame_sum(s : NlpparsespanFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_frame_sum(s : NlpparsespanFrame) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_frame_mean(s : NlpparsespanFrame) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_frame_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_frame_mean(s : NlpparsespanFrame) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_frame_scale(s : NlpparsespanFrame, f : Double) -> NlpparsespanFrame {
   let result = nlp_parse_span_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn nlp_parse_span_frame_fill(s : NlpparsespanFrame, v : Double) -> Nlpparses
   result
 }
 
-pub fn nlp_parse_span_frame_min(s : NlpparsespanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_frame_min(s : NlpparsespanFrame) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_frame_max(s : NlpparsespanFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_frame_max(s : NlpparsespanFrame) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_frame_to_string(s : NlpparsespanFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn nlp_parse_span_table_set(s : NlpparsespanTable, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_span_table_sum(s : NlpparsespanTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_table_sum(s : NlpparsespanTable) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_table_mean(s : NlpparsespanTable) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_table_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_table_mean(s : NlpparsespanTable) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_table_scale(s : NlpparsespanTable, f : Double) -> NlpparsespanTable {
   let result = nlp_parse_span_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn nlp_parse_span_table_fill(s : NlpparsespanTable, v : Double) -> Nlpparses
   result
 }
 
-pub fn nlp_parse_span_table_min(s : NlpparsespanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_table_min(s : NlpparsespanTable) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_table_max(s : NlpparsespanTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_table_max(s : NlpparsespanTable) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_table_to_string(s : NlpparsespanTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn nlp_parse_span_graphn_set(s : NlpparsespanGraphN, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_span_graphn_sum(s : NlpparsespanGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_graphn_sum(s : NlpparsespanGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_graphn_mean(s : NlpparsespanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_graphn_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_graphn_mean(s : NlpparsespanGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_graphn_scale(s : NlpparsespanGraphN, f : Double) -> NlpparsespanGraphN {
   let result = nlp_parse_span_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn nlp_parse_span_graphn_fill(s : NlpparsespanGraphN, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_span_graphn_min(s : NlpparsespanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_graphn_min(s : NlpparsespanGraphN) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_graphn_max(s : NlpparsespanGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_graphn_max(s : NlpparsespanGraphN) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_graphn_to_string(s : NlpparsespanGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn nlp_parse_span_node_set(s : NlpparsespanNode, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_span_node_sum(s : NlpparsespanNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_node_sum(s : NlpparsespanNode) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_node_mean(s : NlpparsespanNode) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_node_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_node_mean(s : NlpparsespanNode) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_node_scale(s : NlpparsespanNode, f : Double) -> NlpparsespanNode {
   let result = nlp_parse_span_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn nlp_parse_span_node_fill(s : NlpparsespanNode, v : Double) -> Nlpparsespa
   result
 }
 
-pub fn nlp_parse_span_node_min(s : NlpparsespanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_node_min(s : NlpparsespanNode) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_node_max(s : NlpparsespanNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_node_max(s : NlpparsespanNode) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_node_to_string(s : NlpparsespanNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn nlp_parse_span_edge_set(s : NlpparsespanEdge, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_span_edge_sum(s : NlpparsespanEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_edge_sum(s : NlpparsespanEdge) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_edge_mean(s : NlpparsespanEdge) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_edge_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_edge_mean(s : NlpparsespanEdge) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_edge_scale(s : NlpparsespanEdge, f : Double) -> NlpparsespanEdge {
   let result = nlp_parse_span_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn nlp_parse_span_edge_fill(s : NlpparsespanEdge, v : Double) -> Nlpparsespa
   result
 }
 
-pub fn nlp_parse_span_edge_min(s : NlpparsespanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_edge_min(s : NlpparsespanEdge) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_edge_max(s : NlpparsespanEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_edge_max(s : NlpparsespanEdge) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_edge_to_string(s : NlpparsespanEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn nlp_parse_span_path_set(s : NlpparsespanPath, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_span_path_sum(s : NlpparsespanPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_path_sum(s : NlpparsespanPath) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_path_mean(s : NlpparsespanPath) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_path_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_path_mean(s : NlpparsespanPath) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_path_scale(s : NlpparsespanPath, f : Double) -> NlpparsespanPath {
   let result = nlp_parse_span_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn nlp_parse_span_path_fill(s : NlpparsespanPath, v : Double) -> Nlpparsespa
   result
 }
 
-pub fn nlp_parse_span_path_min(s : NlpparsespanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_path_min(s : NlpparsespanPath) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_path_max(s : NlpparsespanPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_path_max(s : NlpparsespanPath) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_path_to_string(s : NlpparsespanPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn nlp_parse_span_cluster_set(s : NlpparsespanCluster, i : Int, v : Double) 
   result
 }
 
-pub fn nlp_parse_span_cluster_sum(s : NlpparsespanCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_cluster_sum(s : NlpparsespanCluster) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_cluster_mean(s : NlpparsespanCluster) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_cluster_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_cluster_mean(s : NlpparsespanCluster) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_cluster_scale(s : NlpparsespanCluster, f : Double) -> NlpparsespanCluster {
   let result = nlp_parse_span_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn nlp_parse_span_cluster_fill(s : NlpparsespanCluster, v : Double) -> Nlppa
   result
 }
 
-pub fn nlp_parse_span_cluster_min(s : NlpparsespanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_cluster_min(s : NlpparsespanCluster) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_cluster_max(s : NlpparsespanCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_cluster_max(s : NlpparsespanCluster) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_cluster_to_string(s : NlpparsespanCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn nlp_parse_span_model_set(s : NlpparsespanModel, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_span_model_sum(s : NlpparsespanModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_model_sum(s : NlpparsespanModel) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_model_mean(s : NlpparsespanModel) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_model_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_model_mean(s : NlpparsespanModel) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_model_scale(s : NlpparsespanModel, f : Double) -> NlpparsespanModel {
   let result = nlp_parse_span_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn nlp_parse_span_model_fill(s : NlpparsespanModel, v : Double) -> Nlpparses
   result
 }
 
-pub fn nlp_parse_span_model_min(s : NlpparsespanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_model_min(s : NlpparsespanModel) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_model_max(s : NlpparsespanModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_model_max(s : NlpparsespanModel) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_model_to_string(s : NlpparsespanModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn nlp_parse_span_layer_set(s : NlpparsespanLayer, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_span_layer_sum(s : NlpparsespanLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_layer_sum(s : NlpparsespanLayer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_layer_mean(s : NlpparsespanLayer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_layer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_layer_mean(s : NlpparsespanLayer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_layer_scale(s : NlpparsespanLayer, f : Double) -> NlpparsespanLayer {
   let result = nlp_parse_span_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn nlp_parse_span_layer_fill(s : NlpparsespanLayer, v : Double) -> Nlpparses
   result
 }
 
-pub fn nlp_parse_span_layer_min(s : NlpparsespanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_layer_min(s : NlpparsespanLayer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_layer_max(s : NlpparsespanLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_layer_max(s : NlpparsespanLayer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_layer_to_string(s : NlpparsespanLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn nlp_parse_span_buffer_set(s : NlpparsespanBuffer, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_span_buffer_sum(s : NlpparsespanBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_buffer_sum(s : NlpparsespanBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_buffer_mean(s : NlpparsespanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_buffer_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_buffer_mean(s : NlpparsespanBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_buffer_scale(s : NlpparsespanBuffer, f : Double) -> NlpparsespanBuffer {
   let result = nlp_parse_span_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn nlp_parse_span_buffer_fill(s : NlpparsespanBuffer, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_span_buffer_min(s : NlpparsespanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_buffer_min(s : NlpparsespanBuffer) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_buffer_max(s : NlpparsespanBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_buffer_max(s : NlpparsespanBuffer) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_buffer_to_string(s : NlpparsespanBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn nlp_parse_span_cursor_set(s : NlpparsespanCursor, i : Int, v : Double) ->
   result
 }
 
-pub fn nlp_parse_span_cursor_sum(s : NlpparsespanCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_cursor_sum(s : NlpparsespanCursor) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_cursor_mean(s : NlpparsespanCursor) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_cursor_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_cursor_mean(s : NlpparsespanCursor) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_cursor_scale(s : NlpparsespanCursor, f : Double) -> NlpparsespanCursor {
   let result = nlp_parse_span_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn nlp_parse_span_cursor_fill(s : NlpparsespanCursor, v : Double) -> Nlppars
   result
 }
 
-pub fn nlp_parse_span_cursor_min(s : NlpparsespanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_cursor_min(s : NlpparsespanCursor) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_cursor_max(s : NlpparsespanCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_cursor_max(s : NlpparsespanCursor) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_cursor_to_string(s : NlpparsespanCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn nlp_parse_span_view_set(s : NlpparsespanView, i : Int, v : Double) -> Nlp
   result
 }
 
-pub fn nlp_parse_span_view_sum(s : NlpparsespanView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_view_sum(s : NlpparsespanView) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_view_mean(s : NlpparsespanView) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_view_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_view_mean(s : NlpparsespanView) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_view_scale(s : NlpparsespanView, f : Double) -> NlpparsespanView {
   let result = nlp_parse_span_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn nlp_parse_span_view_fill(s : NlpparsespanView, v : Double) -> Nlpparsespa
   result
 }
 
-pub fn nlp_parse_span_view_min(s : NlpparsespanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_view_min(s : NlpparsespanView) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_view_max(s : NlpparsespanView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_view_max(s : NlpparsespanView) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_view_to_string(s : NlpparsespanView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn nlp_parse_span_range_set(s : NlpparsespanRange, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_span_range_sum(s : NlpparsespanRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_range_sum(s : NlpparsespanRange) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_range_mean(s : NlpparsespanRange) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_range_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_range_mean(s : NlpparsespanRange) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_range_scale(s : NlpparsespanRange, f : Double) -> NlpparsespanRange {
   let result = nlp_parse_span_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn nlp_parse_span_range_fill(s : NlpparsespanRange, v : Double) -> Nlpparses
   result
 }
 
-pub fn nlp_parse_span_range_min(s : NlpparsespanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_range_min(s : NlpparsespanRange) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_range_max(s : NlpparsespanRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_range_max(s : NlpparsespanRange) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_range_to_string(s : NlpparsespanRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn nlp_parse_span_slice_set(s : NlpparsespanSlice, i : Int, v : Double) -> N
   result
 }
 
-pub fn nlp_parse_span_slice_sum(s : NlpparsespanSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn nlp_parse_span_slice_sum(s : NlpparsespanSlice) -> Double { @_common.sum(s.data) }
 
-pub fn nlp_parse_span_slice_mean(s : NlpparsespanSlice) -> Double {
-  if s.size == 0 { 0.0 } else { nlp_parse_span_slice_sum(s) / s.size.to_double() }
-}
+pub fn nlp_parse_span_slice_mean(s : NlpparsespanSlice) -> Double { @_common.mean(s.data) }
 
 pub fn nlp_parse_span_slice_scale(s : NlpparsespanSlice, f : Double) -> NlpparsespanSlice {
   let result = nlp_parse_span_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn nlp_parse_span_slice_fill(s : NlpparsespanSlice, v : Double) -> Nlpparses
   result
 }
 
-pub fn nlp_parse_span_slice_min(s : NlpparsespanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_slice_min(s : NlpparsespanSlice) -> Double { @_common.min(s.data) }
 
-pub fn nlp_parse_span_slice_max(s : NlpparsespanSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn nlp_parse_span_slice_max(s : NlpparsespanSlice) -> Double { @_common.max(s.data) }
 
 pub fn nlp_parse_span_slice_to_string(s : NlpparsespanSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

@@ -88,11 +88,7 @@ pub fn signal_window_flattop_make_series(vals : Array[Double], name : String) ->
 
 pub fn signal_window_flattop_series_len(s : SignalwindowflattopSeries) -> Int { s.vals.length() }
 
-pub fn signal_window_flattop_series_sum(s : SignalwindowflattopSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn signal_window_flattop_series_sum(s : SignalwindowflattopSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn signal_window_flattop_series_mean(s : SignalwindowflattopSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn signal_window_flattop_frame_set(s : SignalwindowflattopFrame, i : Int, v 
   result
 }
 
-pub fn signal_window_flattop_frame_sum(s : SignalwindowflattopFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_frame_sum(s : SignalwindowflattopFrame) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_frame_mean(s : SignalwindowflattopFrame) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_frame_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_frame_mean(s : SignalwindowflattopFrame) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_frame_scale(s : SignalwindowflattopFrame, f : Double) -> SignalwindowflattopFrame {
   let result = signal_window_flattop_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn signal_window_flattop_frame_fill(s : SignalwindowflattopFrame, v : Double
   result
 }
 
-pub fn signal_window_flattop_frame_min(s : SignalwindowflattopFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_frame_min(s : SignalwindowflattopFrame) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_frame_max(s : SignalwindowflattopFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_frame_max(s : SignalwindowflattopFrame) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_frame_to_string(s : SignalwindowflattopFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn signal_window_flattop_table_set(s : SignalwindowflattopTable, i : Int, v 
   result
 }
 
-pub fn signal_window_flattop_table_sum(s : SignalwindowflattopTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_table_sum(s : SignalwindowflattopTable) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_table_mean(s : SignalwindowflattopTable) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_table_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_table_mean(s : SignalwindowflattopTable) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_table_scale(s : SignalwindowflattopTable, f : Double) -> SignalwindowflattopTable {
   let result = signal_window_flattop_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn signal_window_flattop_table_fill(s : SignalwindowflattopTable, v : Double
   result
 }
 
-pub fn signal_window_flattop_table_min(s : SignalwindowflattopTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_table_min(s : SignalwindowflattopTable) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_table_max(s : SignalwindowflattopTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_table_max(s : SignalwindowflattopTable) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_table_to_string(s : SignalwindowflattopTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn signal_window_flattop_graphn_set(s : SignalwindowflattopGraphN, i : Int, 
   result
 }
 
-pub fn signal_window_flattop_graphn_sum(s : SignalwindowflattopGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_graphn_sum(s : SignalwindowflattopGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_graphn_mean(s : SignalwindowflattopGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_graphn_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_graphn_mean(s : SignalwindowflattopGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_graphn_scale(s : SignalwindowflattopGraphN, f : Double) -> SignalwindowflattopGraphN {
   let result = signal_window_flattop_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn signal_window_flattop_graphn_fill(s : SignalwindowflattopGraphN, v : Doub
   result
 }
 
-pub fn signal_window_flattop_graphn_min(s : SignalwindowflattopGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_graphn_min(s : SignalwindowflattopGraphN) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_graphn_max(s : SignalwindowflattopGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_graphn_max(s : SignalwindowflattopGraphN) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_graphn_to_string(s : SignalwindowflattopGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn signal_window_flattop_node_set(s : SignalwindowflattopNode, i : Int, v : 
   result
 }
 
-pub fn signal_window_flattop_node_sum(s : SignalwindowflattopNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_node_sum(s : SignalwindowflattopNode) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_node_mean(s : SignalwindowflattopNode) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_node_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_node_mean(s : SignalwindowflattopNode) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_node_scale(s : SignalwindowflattopNode, f : Double) -> SignalwindowflattopNode {
   let result = signal_window_flattop_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn signal_window_flattop_node_fill(s : SignalwindowflattopNode, v : Double) 
   result
 }
 
-pub fn signal_window_flattop_node_min(s : SignalwindowflattopNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_node_min(s : SignalwindowflattopNode) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_node_max(s : SignalwindowflattopNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_node_max(s : SignalwindowflattopNode) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_node_to_string(s : SignalwindowflattopNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn signal_window_flattop_edge_set(s : SignalwindowflattopEdge, i : Int, v : 
   result
 }
 
-pub fn signal_window_flattop_edge_sum(s : SignalwindowflattopEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_edge_sum(s : SignalwindowflattopEdge) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_edge_mean(s : SignalwindowflattopEdge) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_edge_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_edge_mean(s : SignalwindowflattopEdge) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_edge_scale(s : SignalwindowflattopEdge, f : Double) -> SignalwindowflattopEdge {
   let result = signal_window_flattop_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn signal_window_flattop_edge_fill(s : SignalwindowflattopEdge, v : Double) 
   result
 }
 
-pub fn signal_window_flattop_edge_min(s : SignalwindowflattopEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_edge_min(s : SignalwindowflattopEdge) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_edge_max(s : SignalwindowflattopEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_edge_max(s : SignalwindowflattopEdge) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_edge_to_string(s : SignalwindowflattopEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn signal_window_flattop_path_set(s : SignalwindowflattopPath, i : Int, v : 
   result
 }
 
-pub fn signal_window_flattop_path_sum(s : SignalwindowflattopPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_path_sum(s : SignalwindowflattopPath) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_path_mean(s : SignalwindowflattopPath) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_path_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_path_mean(s : SignalwindowflattopPath) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_path_scale(s : SignalwindowflattopPath, f : Double) -> SignalwindowflattopPath {
   let result = signal_window_flattop_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn signal_window_flattop_path_fill(s : SignalwindowflattopPath, v : Double) 
   result
 }
 
-pub fn signal_window_flattop_path_min(s : SignalwindowflattopPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_path_min(s : SignalwindowflattopPath) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_path_max(s : SignalwindowflattopPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_path_max(s : SignalwindowflattopPath) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_path_to_string(s : SignalwindowflattopPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn signal_window_flattop_cluster_set(s : SignalwindowflattopCluster, i : Int
   result
 }
 
-pub fn signal_window_flattop_cluster_sum(s : SignalwindowflattopCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_cluster_sum(s : SignalwindowflattopCluster) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_cluster_mean(s : SignalwindowflattopCluster) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_cluster_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_cluster_mean(s : SignalwindowflattopCluster) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_cluster_scale(s : SignalwindowflattopCluster, f : Double) -> SignalwindowflattopCluster {
   let result = signal_window_flattop_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn signal_window_flattop_cluster_fill(s : SignalwindowflattopCluster, v : Do
   result
 }
 
-pub fn signal_window_flattop_cluster_min(s : SignalwindowflattopCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_cluster_min(s : SignalwindowflattopCluster) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_cluster_max(s : SignalwindowflattopCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_cluster_max(s : SignalwindowflattopCluster) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_cluster_to_string(s : SignalwindowflattopCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn signal_window_flattop_model_set(s : SignalwindowflattopModel, i : Int, v 
   result
 }
 
-pub fn signal_window_flattop_model_sum(s : SignalwindowflattopModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_model_sum(s : SignalwindowflattopModel) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_model_mean(s : SignalwindowflattopModel) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_model_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_model_mean(s : SignalwindowflattopModel) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_model_scale(s : SignalwindowflattopModel, f : Double) -> SignalwindowflattopModel {
   let result = signal_window_flattop_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn signal_window_flattop_model_fill(s : SignalwindowflattopModel, v : Double
   result
 }
 
-pub fn signal_window_flattop_model_min(s : SignalwindowflattopModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_model_min(s : SignalwindowflattopModel) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_model_max(s : SignalwindowflattopModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_model_max(s : SignalwindowflattopModel) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_model_to_string(s : SignalwindowflattopModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn signal_window_flattop_layer_set(s : SignalwindowflattopLayer, i : Int, v 
   result
 }
 
-pub fn signal_window_flattop_layer_sum(s : SignalwindowflattopLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_layer_sum(s : SignalwindowflattopLayer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_layer_mean(s : SignalwindowflattopLayer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_layer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_layer_mean(s : SignalwindowflattopLayer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_layer_scale(s : SignalwindowflattopLayer, f : Double) -> SignalwindowflattopLayer {
   let result = signal_window_flattop_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn signal_window_flattop_layer_fill(s : SignalwindowflattopLayer, v : Double
   result
 }
 
-pub fn signal_window_flattop_layer_min(s : SignalwindowflattopLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_layer_min(s : SignalwindowflattopLayer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_layer_max(s : SignalwindowflattopLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_layer_max(s : SignalwindowflattopLayer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_layer_to_string(s : SignalwindowflattopLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn signal_window_flattop_buffer_set(s : SignalwindowflattopBuffer, i : Int, 
   result
 }
 
-pub fn signal_window_flattop_buffer_sum(s : SignalwindowflattopBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_buffer_sum(s : SignalwindowflattopBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_buffer_mean(s : SignalwindowflattopBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_buffer_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_buffer_mean(s : SignalwindowflattopBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_buffer_scale(s : SignalwindowflattopBuffer, f : Double) -> SignalwindowflattopBuffer {
   let result = signal_window_flattop_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn signal_window_flattop_buffer_fill(s : SignalwindowflattopBuffer, v : Doub
   result
 }
 
-pub fn signal_window_flattop_buffer_min(s : SignalwindowflattopBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_buffer_min(s : SignalwindowflattopBuffer) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_buffer_max(s : SignalwindowflattopBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_buffer_max(s : SignalwindowflattopBuffer) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_buffer_to_string(s : SignalwindowflattopBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn signal_window_flattop_cursor_set(s : SignalwindowflattopCursor, i : Int, 
   result
 }
 
-pub fn signal_window_flattop_cursor_sum(s : SignalwindowflattopCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_cursor_sum(s : SignalwindowflattopCursor) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_cursor_mean(s : SignalwindowflattopCursor) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_cursor_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_cursor_mean(s : SignalwindowflattopCursor) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_cursor_scale(s : SignalwindowflattopCursor, f : Double) -> SignalwindowflattopCursor {
   let result = signal_window_flattop_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn signal_window_flattop_cursor_fill(s : SignalwindowflattopCursor, v : Doub
   result
 }
 
-pub fn signal_window_flattop_cursor_min(s : SignalwindowflattopCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_cursor_min(s : SignalwindowflattopCursor) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_cursor_max(s : SignalwindowflattopCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_cursor_max(s : SignalwindowflattopCursor) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_cursor_to_string(s : SignalwindowflattopCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn signal_window_flattop_view_set(s : SignalwindowflattopView, i : Int, v : 
   result
 }
 
-pub fn signal_window_flattop_view_sum(s : SignalwindowflattopView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_view_sum(s : SignalwindowflattopView) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_view_mean(s : SignalwindowflattopView) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_view_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_view_mean(s : SignalwindowflattopView) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_view_scale(s : SignalwindowflattopView, f : Double) -> SignalwindowflattopView {
   let result = signal_window_flattop_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn signal_window_flattop_view_fill(s : SignalwindowflattopView, v : Double) 
   result
 }
 
-pub fn signal_window_flattop_view_min(s : SignalwindowflattopView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_view_min(s : SignalwindowflattopView) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_view_max(s : SignalwindowflattopView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_view_max(s : SignalwindowflattopView) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_view_to_string(s : SignalwindowflattopView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn signal_window_flattop_range_set(s : SignalwindowflattopRange, i : Int, v 
   result
 }
 
-pub fn signal_window_flattop_range_sum(s : SignalwindowflattopRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_range_sum(s : SignalwindowflattopRange) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_range_mean(s : SignalwindowflattopRange) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_range_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_range_mean(s : SignalwindowflattopRange) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_range_scale(s : SignalwindowflattopRange, f : Double) -> SignalwindowflattopRange {
   let result = signal_window_flattop_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn signal_window_flattop_range_fill(s : SignalwindowflattopRange, v : Double
   result
 }
 
-pub fn signal_window_flattop_range_min(s : SignalwindowflattopRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_range_min(s : SignalwindowflattopRange) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_range_max(s : SignalwindowflattopRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_range_max(s : SignalwindowflattopRange) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_range_to_string(s : SignalwindowflattopRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn signal_window_flattop_slice_set(s : SignalwindowflattopSlice, i : Int, v 
   result
 }
 
-pub fn signal_window_flattop_slice_sum(s : SignalwindowflattopSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn signal_window_flattop_slice_sum(s : SignalwindowflattopSlice) -> Double { @_common.sum(s.data) }
 
-pub fn signal_window_flattop_slice_mean(s : SignalwindowflattopSlice) -> Double {
-  if s.size == 0 { 0.0 } else { signal_window_flattop_slice_sum(s) / s.size.to_double() }
-}
+pub fn signal_window_flattop_slice_mean(s : SignalwindowflattopSlice) -> Double { @_common.mean(s.data) }
 
 pub fn signal_window_flattop_slice_scale(s : SignalwindowflattopSlice, f : Double) -> SignalwindowflattopSlice {
   let result = signal_window_flattop_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn signal_window_flattop_slice_fill(s : SignalwindowflattopSlice, v : Double
   result
 }
 
-pub fn signal_window_flattop_slice_min(s : SignalwindowflattopSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_slice_min(s : SignalwindowflattopSlice) -> Double { @_common.min(s.data) }
 
-pub fn signal_window_flattop_slice_max(s : SignalwindowflattopSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn signal_window_flattop_slice_max(s : SignalwindowflattopSlice) -> Double { @_common.max(s.data) }
 
 pub fn signal_window_flattop_slice_to_string(s : SignalwindowflattopSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

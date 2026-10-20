@@ -88,11 +88,7 @@ pub fn ml_cluster_affinity_make_series(vals : Array[Double], name : String) -> M
 
 pub fn ml_cluster_affinity_series_len(s : MlclusteraffinitySeries) -> Int { s.vals.length() }
 
-pub fn ml_cluster_affinity_series_sum(s : MlclusteraffinitySeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn ml_cluster_affinity_series_sum(s : MlclusteraffinitySeries) -> Double { @_common.sum(s.vals) }
 
 pub fn ml_cluster_affinity_series_mean(s : MlclusteraffinitySeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn ml_cluster_affinity_frame_set(s : MlclusteraffinityFrame, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_affinity_frame_sum(s : MlclusteraffinityFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_frame_sum(s : MlclusteraffinityFrame) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_frame_mean(s : MlclusteraffinityFrame) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_frame_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_frame_mean(s : MlclusteraffinityFrame) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_frame_scale(s : MlclusteraffinityFrame, f : Double) -> MlclusteraffinityFrame {
   let result = ml_cluster_affinity_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn ml_cluster_affinity_frame_fill(s : MlclusteraffinityFrame, v : Double) ->
   result
 }
 
-pub fn ml_cluster_affinity_frame_min(s : MlclusteraffinityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_frame_min(s : MlclusteraffinityFrame) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_frame_max(s : MlclusteraffinityFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_frame_max(s : MlclusteraffinityFrame) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_frame_to_string(s : MlclusteraffinityFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn ml_cluster_affinity_table_set(s : MlclusteraffinityTable, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_affinity_table_sum(s : MlclusteraffinityTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_table_sum(s : MlclusteraffinityTable) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_table_mean(s : MlclusteraffinityTable) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_table_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_table_mean(s : MlclusteraffinityTable) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_table_scale(s : MlclusteraffinityTable, f : Double) -> MlclusteraffinityTable {
   let result = ml_cluster_affinity_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn ml_cluster_affinity_table_fill(s : MlclusteraffinityTable, v : Double) ->
   result
 }
 
-pub fn ml_cluster_affinity_table_min(s : MlclusteraffinityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_table_min(s : MlclusteraffinityTable) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_table_max(s : MlclusteraffinityTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_table_max(s : MlclusteraffinityTable) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_table_to_string(s : MlclusteraffinityTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn ml_cluster_affinity_graphn_set(s : MlclusteraffinityGraphN, i : Int, v : 
   result
 }
 
-pub fn ml_cluster_affinity_graphn_sum(s : MlclusteraffinityGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_graphn_sum(s : MlclusteraffinityGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_graphn_mean(s : MlclusteraffinityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_graphn_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_graphn_mean(s : MlclusteraffinityGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_graphn_scale(s : MlclusteraffinityGraphN, f : Double) -> MlclusteraffinityGraphN {
   let result = ml_cluster_affinity_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn ml_cluster_affinity_graphn_fill(s : MlclusteraffinityGraphN, v : Double) 
   result
 }
 
-pub fn ml_cluster_affinity_graphn_min(s : MlclusteraffinityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_graphn_min(s : MlclusteraffinityGraphN) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_graphn_max(s : MlclusteraffinityGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_graphn_max(s : MlclusteraffinityGraphN) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_graphn_to_string(s : MlclusteraffinityGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn ml_cluster_affinity_node_set(s : MlclusteraffinityNode, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_affinity_node_sum(s : MlclusteraffinityNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_node_sum(s : MlclusteraffinityNode) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_node_mean(s : MlclusteraffinityNode) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_node_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_node_mean(s : MlclusteraffinityNode) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_node_scale(s : MlclusteraffinityNode, f : Double) -> MlclusteraffinityNode {
   let result = ml_cluster_affinity_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn ml_cluster_affinity_node_fill(s : MlclusteraffinityNode, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_affinity_node_min(s : MlclusteraffinityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_node_min(s : MlclusteraffinityNode) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_node_max(s : MlclusteraffinityNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_node_max(s : MlclusteraffinityNode) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_node_to_string(s : MlclusteraffinityNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn ml_cluster_affinity_edge_set(s : MlclusteraffinityEdge, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_affinity_edge_sum(s : MlclusteraffinityEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_edge_sum(s : MlclusteraffinityEdge) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_edge_mean(s : MlclusteraffinityEdge) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_edge_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_edge_mean(s : MlclusteraffinityEdge) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_edge_scale(s : MlclusteraffinityEdge, f : Double) -> MlclusteraffinityEdge {
   let result = ml_cluster_affinity_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn ml_cluster_affinity_edge_fill(s : MlclusteraffinityEdge, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_affinity_edge_min(s : MlclusteraffinityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_edge_min(s : MlclusteraffinityEdge) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_edge_max(s : MlclusteraffinityEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_edge_max(s : MlclusteraffinityEdge) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_edge_to_string(s : MlclusteraffinityEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn ml_cluster_affinity_path_set(s : MlclusteraffinityPath, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_affinity_path_sum(s : MlclusteraffinityPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_path_sum(s : MlclusteraffinityPath) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_path_mean(s : MlclusteraffinityPath) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_path_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_path_mean(s : MlclusteraffinityPath) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_path_scale(s : MlclusteraffinityPath, f : Double) -> MlclusteraffinityPath {
   let result = ml_cluster_affinity_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn ml_cluster_affinity_path_fill(s : MlclusteraffinityPath, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_affinity_path_min(s : MlclusteraffinityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_path_min(s : MlclusteraffinityPath) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_path_max(s : MlclusteraffinityPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_path_max(s : MlclusteraffinityPath) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_path_to_string(s : MlclusteraffinityPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn ml_cluster_affinity_cluster_set(s : MlclusteraffinityCluster, i : Int, v 
   result
 }
 
-pub fn ml_cluster_affinity_cluster_sum(s : MlclusteraffinityCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_cluster_sum(s : MlclusteraffinityCluster) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_cluster_mean(s : MlclusteraffinityCluster) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_cluster_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_cluster_mean(s : MlclusteraffinityCluster) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_cluster_scale(s : MlclusteraffinityCluster, f : Double) -> MlclusteraffinityCluster {
   let result = ml_cluster_affinity_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn ml_cluster_affinity_cluster_fill(s : MlclusteraffinityCluster, v : Double
   result
 }
 
-pub fn ml_cluster_affinity_cluster_min(s : MlclusteraffinityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_cluster_min(s : MlclusteraffinityCluster) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_cluster_max(s : MlclusteraffinityCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_cluster_max(s : MlclusteraffinityCluster) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_cluster_to_string(s : MlclusteraffinityCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn ml_cluster_affinity_model_set(s : MlclusteraffinityModel, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_affinity_model_sum(s : MlclusteraffinityModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_model_sum(s : MlclusteraffinityModel) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_model_mean(s : MlclusteraffinityModel) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_model_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_model_mean(s : MlclusteraffinityModel) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_model_scale(s : MlclusteraffinityModel, f : Double) -> MlclusteraffinityModel {
   let result = ml_cluster_affinity_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn ml_cluster_affinity_model_fill(s : MlclusteraffinityModel, v : Double) ->
   result
 }
 
-pub fn ml_cluster_affinity_model_min(s : MlclusteraffinityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_model_min(s : MlclusteraffinityModel) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_model_max(s : MlclusteraffinityModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_model_max(s : MlclusteraffinityModel) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_model_to_string(s : MlclusteraffinityModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn ml_cluster_affinity_layer_set(s : MlclusteraffinityLayer, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_affinity_layer_sum(s : MlclusteraffinityLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_layer_sum(s : MlclusteraffinityLayer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_layer_mean(s : MlclusteraffinityLayer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_layer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_layer_mean(s : MlclusteraffinityLayer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_layer_scale(s : MlclusteraffinityLayer, f : Double) -> MlclusteraffinityLayer {
   let result = ml_cluster_affinity_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn ml_cluster_affinity_layer_fill(s : MlclusteraffinityLayer, v : Double) ->
   result
 }
 
-pub fn ml_cluster_affinity_layer_min(s : MlclusteraffinityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_layer_min(s : MlclusteraffinityLayer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_layer_max(s : MlclusteraffinityLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_layer_max(s : MlclusteraffinityLayer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_layer_to_string(s : MlclusteraffinityLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn ml_cluster_affinity_buffer_set(s : MlclusteraffinityBuffer, i : Int, v : 
   result
 }
 
-pub fn ml_cluster_affinity_buffer_sum(s : MlclusteraffinityBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_buffer_sum(s : MlclusteraffinityBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_buffer_mean(s : MlclusteraffinityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_buffer_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_buffer_mean(s : MlclusteraffinityBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_buffer_scale(s : MlclusteraffinityBuffer, f : Double) -> MlclusteraffinityBuffer {
   let result = ml_cluster_affinity_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn ml_cluster_affinity_buffer_fill(s : MlclusteraffinityBuffer, v : Double) 
   result
 }
 
-pub fn ml_cluster_affinity_buffer_min(s : MlclusteraffinityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_buffer_min(s : MlclusteraffinityBuffer) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_buffer_max(s : MlclusteraffinityBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_buffer_max(s : MlclusteraffinityBuffer) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_buffer_to_string(s : MlclusteraffinityBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn ml_cluster_affinity_cursor_set(s : MlclusteraffinityCursor, i : Int, v : 
   result
 }
 
-pub fn ml_cluster_affinity_cursor_sum(s : MlclusteraffinityCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_cursor_sum(s : MlclusteraffinityCursor) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_cursor_mean(s : MlclusteraffinityCursor) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_cursor_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_cursor_mean(s : MlclusteraffinityCursor) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_cursor_scale(s : MlclusteraffinityCursor, f : Double) -> MlclusteraffinityCursor {
   let result = ml_cluster_affinity_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn ml_cluster_affinity_cursor_fill(s : MlclusteraffinityCursor, v : Double) 
   result
 }
 
-pub fn ml_cluster_affinity_cursor_min(s : MlclusteraffinityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_cursor_min(s : MlclusteraffinityCursor) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_cursor_max(s : MlclusteraffinityCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_cursor_max(s : MlclusteraffinityCursor) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_cursor_to_string(s : MlclusteraffinityCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn ml_cluster_affinity_view_set(s : MlclusteraffinityView, i : Int, v : Doub
   result
 }
 
-pub fn ml_cluster_affinity_view_sum(s : MlclusteraffinityView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_view_sum(s : MlclusteraffinityView) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_view_mean(s : MlclusteraffinityView) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_view_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_view_mean(s : MlclusteraffinityView) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_view_scale(s : MlclusteraffinityView, f : Double) -> MlclusteraffinityView {
   let result = ml_cluster_affinity_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn ml_cluster_affinity_view_fill(s : MlclusteraffinityView, v : Double) -> M
   result
 }
 
-pub fn ml_cluster_affinity_view_min(s : MlclusteraffinityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_view_min(s : MlclusteraffinityView) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_view_max(s : MlclusteraffinityView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_view_max(s : MlclusteraffinityView) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_view_to_string(s : MlclusteraffinityView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn ml_cluster_affinity_range_set(s : MlclusteraffinityRange, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_affinity_range_sum(s : MlclusteraffinityRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_range_sum(s : MlclusteraffinityRange) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_range_mean(s : MlclusteraffinityRange) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_range_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_range_mean(s : MlclusteraffinityRange) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_range_scale(s : MlclusteraffinityRange, f : Double) -> MlclusteraffinityRange {
   let result = ml_cluster_affinity_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn ml_cluster_affinity_range_fill(s : MlclusteraffinityRange, v : Double) ->
   result
 }
 
-pub fn ml_cluster_affinity_range_min(s : MlclusteraffinityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_range_min(s : MlclusteraffinityRange) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_range_max(s : MlclusteraffinityRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_range_max(s : MlclusteraffinityRange) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_range_to_string(s : MlclusteraffinityRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn ml_cluster_affinity_slice_set(s : MlclusteraffinitySlice, i : Int, v : Do
   result
 }
 
-pub fn ml_cluster_affinity_slice_sum(s : MlclusteraffinitySlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn ml_cluster_affinity_slice_sum(s : MlclusteraffinitySlice) -> Double { @_common.sum(s.data) }
 
-pub fn ml_cluster_affinity_slice_mean(s : MlclusteraffinitySlice) -> Double {
-  if s.size == 0 { 0.0 } else { ml_cluster_affinity_slice_sum(s) / s.size.to_double() }
-}
+pub fn ml_cluster_affinity_slice_mean(s : MlclusteraffinitySlice) -> Double { @_common.mean(s.data) }
 
 pub fn ml_cluster_affinity_slice_scale(s : MlclusteraffinitySlice, f : Double) -> MlclusteraffinitySlice {
   let result = ml_cluster_affinity_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn ml_cluster_affinity_slice_fill(s : MlclusteraffinitySlice, v : Double) ->
   result
 }
 
-pub fn ml_cluster_affinity_slice_min(s : MlclusteraffinitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_slice_min(s : MlclusteraffinitySlice) -> Double { @_common.min(s.data) }
 
-pub fn ml_cluster_affinity_slice_max(s : MlclusteraffinitySlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn ml_cluster_affinity_slice_max(s : MlclusteraffinitySlice) -> Double { @_common.max(s.data) }
 
 pub fn ml_cluster_affinity_slice_to_string(s : MlclusteraffinitySlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

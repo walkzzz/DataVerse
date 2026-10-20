@@ -88,11 +88,7 @@ pub fn stats_test_goodness_make_series(vals : Array[Double], name : String) -> S
 
 pub fn stats_test_goodness_series_len(s : StatstestgoodnessSeries) -> Int { s.vals.length() }
 
-pub fn stats_test_goodness_series_sum(s : StatstestgoodnessSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn stats_test_goodness_series_sum(s : StatstestgoodnessSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn stats_test_goodness_series_mean(s : StatstestgoodnessSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn stats_test_goodness_frame_set(s : StatstestgoodnessFrame, i : Int, v : Do
   result
 }
 
-pub fn stats_test_goodness_frame_sum(s : StatstestgoodnessFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_frame_sum(s : StatstestgoodnessFrame) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_frame_mean(s : StatstestgoodnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_frame_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_frame_mean(s : StatstestgoodnessFrame) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_frame_scale(s : StatstestgoodnessFrame, f : Double) -> StatstestgoodnessFrame {
   let result = stats_test_goodness_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn stats_test_goodness_frame_fill(s : StatstestgoodnessFrame, v : Double) ->
   result
 }
 
-pub fn stats_test_goodness_frame_min(s : StatstestgoodnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_frame_min(s : StatstestgoodnessFrame) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_frame_max(s : StatstestgoodnessFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_frame_max(s : StatstestgoodnessFrame) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_frame_to_string(s : StatstestgoodnessFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn stats_test_goodness_table_set(s : StatstestgoodnessTable, i : Int, v : Do
   result
 }
 
-pub fn stats_test_goodness_table_sum(s : StatstestgoodnessTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_table_sum(s : StatstestgoodnessTable) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_table_mean(s : StatstestgoodnessTable) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_table_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_table_mean(s : StatstestgoodnessTable) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_table_scale(s : StatstestgoodnessTable, f : Double) -> StatstestgoodnessTable {
   let result = stats_test_goodness_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn stats_test_goodness_table_fill(s : StatstestgoodnessTable, v : Double) ->
   result
 }
 
-pub fn stats_test_goodness_table_min(s : StatstestgoodnessTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_table_min(s : StatstestgoodnessTable) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_table_max(s : StatstestgoodnessTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_table_max(s : StatstestgoodnessTable) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_table_to_string(s : StatstestgoodnessTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn stats_test_goodness_graphn_set(s : StatstestgoodnessGraphN, i : Int, v : 
   result
 }
 
-pub fn stats_test_goodness_graphn_sum(s : StatstestgoodnessGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_graphn_sum(s : StatstestgoodnessGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_graphn_mean(s : StatstestgoodnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_graphn_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_graphn_mean(s : StatstestgoodnessGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_graphn_scale(s : StatstestgoodnessGraphN, f : Double) -> StatstestgoodnessGraphN {
   let result = stats_test_goodness_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn stats_test_goodness_graphn_fill(s : StatstestgoodnessGraphN, v : Double) 
   result
 }
 
-pub fn stats_test_goodness_graphn_min(s : StatstestgoodnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_graphn_min(s : StatstestgoodnessGraphN) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_graphn_max(s : StatstestgoodnessGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_graphn_max(s : StatstestgoodnessGraphN) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_graphn_to_string(s : StatstestgoodnessGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn stats_test_goodness_node_set(s : StatstestgoodnessNode, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_goodness_node_sum(s : StatstestgoodnessNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_node_sum(s : StatstestgoodnessNode) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_node_mean(s : StatstestgoodnessNode) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_node_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_node_mean(s : StatstestgoodnessNode) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_node_scale(s : StatstestgoodnessNode, f : Double) -> StatstestgoodnessNode {
   let result = stats_test_goodness_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn stats_test_goodness_node_fill(s : StatstestgoodnessNode, v : Double) -> S
   result
 }
 
-pub fn stats_test_goodness_node_min(s : StatstestgoodnessNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_node_min(s : StatstestgoodnessNode) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_node_max(s : StatstestgoodnessNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_node_max(s : StatstestgoodnessNode) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_node_to_string(s : StatstestgoodnessNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn stats_test_goodness_edge_set(s : StatstestgoodnessEdge, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_goodness_edge_sum(s : StatstestgoodnessEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_edge_sum(s : StatstestgoodnessEdge) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_edge_mean(s : StatstestgoodnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_edge_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_edge_mean(s : StatstestgoodnessEdge) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_edge_scale(s : StatstestgoodnessEdge, f : Double) -> StatstestgoodnessEdge {
   let result = stats_test_goodness_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn stats_test_goodness_edge_fill(s : StatstestgoodnessEdge, v : Double) -> S
   result
 }
 
-pub fn stats_test_goodness_edge_min(s : StatstestgoodnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_edge_min(s : StatstestgoodnessEdge) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_edge_max(s : StatstestgoodnessEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_edge_max(s : StatstestgoodnessEdge) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_edge_to_string(s : StatstestgoodnessEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn stats_test_goodness_path_set(s : StatstestgoodnessPath, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_goodness_path_sum(s : StatstestgoodnessPath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_path_sum(s : StatstestgoodnessPath) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_path_mean(s : StatstestgoodnessPath) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_path_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_path_mean(s : StatstestgoodnessPath) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_path_scale(s : StatstestgoodnessPath, f : Double) -> StatstestgoodnessPath {
   let result = stats_test_goodness_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn stats_test_goodness_path_fill(s : StatstestgoodnessPath, v : Double) -> S
   result
 }
 
-pub fn stats_test_goodness_path_min(s : StatstestgoodnessPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_path_min(s : StatstestgoodnessPath) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_path_max(s : StatstestgoodnessPath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_path_max(s : StatstestgoodnessPath) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_path_to_string(s : StatstestgoodnessPath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn stats_test_goodness_cluster_set(s : StatstestgoodnessCluster, i : Int, v 
   result
 }
 
-pub fn stats_test_goodness_cluster_sum(s : StatstestgoodnessCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_cluster_sum(s : StatstestgoodnessCluster) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_cluster_mean(s : StatstestgoodnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_cluster_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_cluster_mean(s : StatstestgoodnessCluster) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_cluster_scale(s : StatstestgoodnessCluster, f : Double) -> StatstestgoodnessCluster {
   let result = stats_test_goodness_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn stats_test_goodness_cluster_fill(s : StatstestgoodnessCluster, v : Double
   result
 }
 
-pub fn stats_test_goodness_cluster_min(s : StatstestgoodnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_cluster_min(s : StatstestgoodnessCluster) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_cluster_max(s : StatstestgoodnessCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_cluster_max(s : StatstestgoodnessCluster) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_cluster_to_string(s : StatstestgoodnessCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn stats_test_goodness_model_set(s : StatstestgoodnessModel, i : Int, v : Do
   result
 }
 
-pub fn stats_test_goodness_model_sum(s : StatstestgoodnessModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_model_sum(s : StatstestgoodnessModel) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_model_mean(s : StatstestgoodnessModel) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_model_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_model_mean(s : StatstestgoodnessModel) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_model_scale(s : StatstestgoodnessModel, f : Double) -> StatstestgoodnessModel {
   let result = stats_test_goodness_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn stats_test_goodness_model_fill(s : StatstestgoodnessModel, v : Double) ->
   result
 }
 
-pub fn stats_test_goodness_model_min(s : StatstestgoodnessModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_model_min(s : StatstestgoodnessModel) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_model_max(s : StatstestgoodnessModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_model_max(s : StatstestgoodnessModel) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_model_to_string(s : StatstestgoodnessModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn stats_test_goodness_layer_set(s : StatstestgoodnessLayer, i : Int, v : Do
   result
 }
 
-pub fn stats_test_goodness_layer_sum(s : StatstestgoodnessLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_layer_sum(s : StatstestgoodnessLayer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_layer_mean(s : StatstestgoodnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_layer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_layer_mean(s : StatstestgoodnessLayer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_layer_scale(s : StatstestgoodnessLayer, f : Double) -> StatstestgoodnessLayer {
   let result = stats_test_goodness_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn stats_test_goodness_layer_fill(s : StatstestgoodnessLayer, v : Double) ->
   result
 }
 
-pub fn stats_test_goodness_layer_min(s : StatstestgoodnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_layer_min(s : StatstestgoodnessLayer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_layer_max(s : StatstestgoodnessLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_layer_max(s : StatstestgoodnessLayer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_layer_to_string(s : StatstestgoodnessLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn stats_test_goodness_buffer_set(s : StatstestgoodnessBuffer, i : Int, v : 
   result
 }
 
-pub fn stats_test_goodness_buffer_sum(s : StatstestgoodnessBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_buffer_sum(s : StatstestgoodnessBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_buffer_mean(s : StatstestgoodnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_buffer_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_buffer_mean(s : StatstestgoodnessBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_buffer_scale(s : StatstestgoodnessBuffer, f : Double) -> StatstestgoodnessBuffer {
   let result = stats_test_goodness_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn stats_test_goodness_buffer_fill(s : StatstestgoodnessBuffer, v : Double) 
   result
 }
 
-pub fn stats_test_goodness_buffer_min(s : StatstestgoodnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_buffer_min(s : StatstestgoodnessBuffer) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_buffer_max(s : StatstestgoodnessBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_buffer_max(s : StatstestgoodnessBuffer) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_buffer_to_string(s : StatstestgoodnessBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn stats_test_goodness_cursor_set(s : StatstestgoodnessCursor, i : Int, v : 
   result
 }
 
-pub fn stats_test_goodness_cursor_sum(s : StatstestgoodnessCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_cursor_sum(s : StatstestgoodnessCursor) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_cursor_mean(s : StatstestgoodnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_cursor_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_cursor_mean(s : StatstestgoodnessCursor) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_cursor_scale(s : StatstestgoodnessCursor, f : Double) -> StatstestgoodnessCursor {
   let result = stats_test_goodness_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn stats_test_goodness_cursor_fill(s : StatstestgoodnessCursor, v : Double) 
   result
 }
 
-pub fn stats_test_goodness_cursor_min(s : StatstestgoodnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_cursor_min(s : StatstestgoodnessCursor) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_cursor_max(s : StatstestgoodnessCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_cursor_max(s : StatstestgoodnessCursor) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_cursor_to_string(s : StatstestgoodnessCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn stats_test_goodness_view_set(s : StatstestgoodnessView, i : Int, v : Doub
   result
 }
 
-pub fn stats_test_goodness_view_sum(s : StatstestgoodnessView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_view_sum(s : StatstestgoodnessView) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_view_mean(s : StatstestgoodnessView) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_view_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_view_mean(s : StatstestgoodnessView) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_view_scale(s : StatstestgoodnessView, f : Double) -> StatstestgoodnessView {
   let result = stats_test_goodness_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn stats_test_goodness_view_fill(s : StatstestgoodnessView, v : Double) -> S
   result
 }
 
-pub fn stats_test_goodness_view_min(s : StatstestgoodnessView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_view_min(s : StatstestgoodnessView) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_view_max(s : StatstestgoodnessView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_view_max(s : StatstestgoodnessView) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_view_to_string(s : StatstestgoodnessView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn stats_test_goodness_range_set(s : StatstestgoodnessRange, i : Int, v : Do
   result
 }
 
-pub fn stats_test_goodness_range_sum(s : StatstestgoodnessRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_range_sum(s : StatstestgoodnessRange) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_range_mean(s : StatstestgoodnessRange) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_range_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_range_mean(s : StatstestgoodnessRange) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_range_scale(s : StatstestgoodnessRange, f : Double) -> StatstestgoodnessRange {
   let result = stats_test_goodness_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn stats_test_goodness_range_fill(s : StatstestgoodnessRange, v : Double) ->
   result
 }
 
-pub fn stats_test_goodness_range_min(s : StatstestgoodnessRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_range_min(s : StatstestgoodnessRange) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_range_max(s : StatstestgoodnessRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_range_max(s : StatstestgoodnessRange) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_range_to_string(s : StatstestgoodnessRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn stats_test_goodness_slice_set(s : StatstestgoodnessSlice, i : Int, v : Do
   result
 }
 
-pub fn stats_test_goodness_slice_sum(s : StatstestgoodnessSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn stats_test_goodness_slice_sum(s : StatstestgoodnessSlice) -> Double { @_common.sum(s.data) }
 
-pub fn stats_test_goodness_slice_mean(s : StatstestgoodnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else { stats_test_goodness_slice_sum(s) / s.size.to_double() }
-}
+pub fn stats_test_goodness_slice_mean(s : StatstestgoodnessSlice) -> Double { @_common.mean(s.data) }
 
 pub fn stats_test_goodness_slice_scale(s : StatstestgoodnessSlice, f : Double) -> StatstestgoodnessSlice {
   let result = stats_test_goodness_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn stats_test_goodness_slice_fill(s : StatstestgoodnessSlice, v : Double) ->
   result
 }
 
-pub fn stats_test_goodness_slice_min(s : StatstestgoodnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_slice_min(s : StatstestgoodnessSlice) -> Double { @_common.min(s.data) }
 
-pub fn stats_test_goodness_slice_max(s : StatstestgoodnessSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn stats_test_goodness_slice_max(s : StatstestgoodnessSlice) -> Double { @_common.max(s.data) }
 
 pub fn stats_test_goodness_slice_to_string(s : StatstestgoodnessSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"

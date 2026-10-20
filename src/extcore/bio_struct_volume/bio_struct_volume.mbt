@@ -88,11 +88,7 @@ pub fn bio_struct_volume_make_series(vals : Array[Double], name : String) -> Bio
 
 pub fn bio_struct_volume_series_len(s : BiostructvolumeSeries) -> Int { s.vals.length() }
 
-pub fn bio_struct_volume_series_sum(s : BiostructvolumeSeries) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.vals.length() { total = total + s.vals[i] }
-  total
-}
+pub fn bio_struct_volume_series_sum(s : BiostructvolumeSeries) -> Double { @_common.sum(s.vals) }
 
 pub fn bio_struct_volume_series_mean(s : BiostructvolumeSeries) -> Double { @_common.mean(s.vals) }
 
@@ -382,15 +378,9 @@ pub fn bio_struct_volume_frame_set(s : BiostructvolumeFrame, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_volume_frame_sum(s : BiostructvolumeFrame) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_frame_sum(s : BiostructvolumeFrame) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_frame_mean(s : BiostructvolumeFrame) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_frame_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_frame_mean(s : BiostructvolumeFrame) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_frame_scale(s : BiostructvolumeFrame, f : Double) -> BiostructvolumeFrame {
   let result = bio_struct_volume_frame_make(s.size)
@@ -417,21 +407,9 @@ pub fn bio_struct_volume_frame_fill(s : BiostructvolumeFrame, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_volume_frame_min(s : BiostructvolumeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_frame_min(s : BiostructvolumeFrame) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_frame_max(s : BiostructvolumeFrame) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_frame_max(s : BiostructvolumeFrame) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_frame_to_string(s : BiostructvolumeFrame) -> String {
   "Frame[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -460,15 +438,9 @@ pub fn bio_struct_volume_table_set(s : BiostructvolumeTable, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_volume_table_sum(s : BiostructvolumeTable) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_table_sum(s : BiostructvolumeTable) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_table_mean(s : BiostructvolumeTable) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_table_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_table_mean(s : BiostructvolumeTable) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_table_scale(s : BiostructvolumeTable, f : Double) -> BiostructvolumeTable {
   let result = bio_struct_volume_table_make(s.size)
@@ -495,21 +467,9 @@ pub fn bio_struct_volume_table_fill(s : BiostructvolumeTable, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_volume_table_min(s : BiostructvolumeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_table_min(s : BiostructvolumeTable) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_table_max(s : BiostructvolumeTable) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_table_max(s : BiostructvolumeTable) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_table_to_string(s : BiostructvolumeTable) -> String {
   "Table[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -538,15 +498,9 @@ pub fn bio_struct_volume_graphn_set(s : BiostructvolumeGraphN, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_volume_graphn_sum(s : BiostructvolumeGraphN) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_graphn_sum(s : BiostructvolumeGraphN) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_graphn_mean(s : BiostructvolumeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_graphn_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_graphn_mean(s : BiostructvolumeGraphN) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_graphn_scale(s : BiostructvolumeGraphN, f : Double) -> BiostructvolumeGraphN {
   let result = bio_struct_volume_graphn_make(s.size)
@@ -573,21 +527,9 @@ pub fn bio_struct_volume_graphn_fill(s : BiostructvolumeGraphN, v : Double) -> B
   result
 }
 
-pub fn bio_struct_volume_graphn_min(s : BiostructvolumeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_graphn_min(s : BiostructvolumeGraphN) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_graphn_max(s : BiostructvolumeGraphN) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_graphn_max(s : BiostructvolumeGraphN) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_graphn_to_string(s : BiostructvolumeGraphN) -> String {
   "GraphN[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -616,15 +558,9 @@ pub fn bio_struct_volume_node_set(s : BiostructvolumeNode, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_volume_node_sum(s : BiostructvolumeNode) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_node_sum(s : BiostructvolumeNode) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_node_mean(s : BiostructvolumeNode) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_node_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_node_mean(s : BiostructvolumeNode) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_node_scale(s : BiostructvolumeNode, f : Double) -> BiostructvolumeNode {
   let result = bio_struct_volume_node_make(s.size)
@@ -651,21 +587,9 @@ pub fn bio_struct_volume_node_fill(s : BiostructvolumeNode, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_volume_node_min(s : BiostructvolumeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_node_min(s : BiostructvolumeNode) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_node_max(s : BiostructvolumeNode) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_node_max(s : BiostructvolumeNode) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_node_to_string(s : BiostructvolumeNode) -> String {
   "Node[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -694,15 +618,9 @@ pub fn bio_struct_volume_edge_set(s : BiostructvolumeEdge, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_volume_edge_sum(s : BiostructvolumeEdge) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_edge_sum(s : BiostructvolumeEdge) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_edge_mean(s : BiostructvolumeEdge) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_edge_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_edge_mean(s : BiostructvolumeEdge) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_edge_scale(s : BiostructvolumeEdge, f : Double) -> BiostructvolumeEdge {
   let result = bio_struct_volume_edge_make(s.size)
@@ -729,21 +647,9 @@ pub fn bio_struct_volume_edge_fill(s : BiostructvolumeEdge, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_volume_edge_min(s : BiostructvolumeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_edge_min(s : BiostructvolumeEdge) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_edge_max(s : BiostructvolumeEdge) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_edge_max(s : BiostructvolumeEdge) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_edge_to_string(s : BiostructvolumeEdge) -> String {
   "Edge[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -772,15 +678,9 @@ pub fn bio_struct_volume_path_set(s : BiostructvolumePath, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_volume_path_sum(s : BiostructvolumePath) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_path_sum(s : BiostructvolumePath) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_path_mean(s : BiostructvolumePath) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_path_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_path_mean(s : BiostructvolumePath) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_path_scale(s : BiostructvolumePath, f : Double) -> BiostructvolumePath {
   let result = bio_struct_volume_path_make(s.size)
@@ -807,21 +707,9 @@ pub fn bio_struct_volume_path_fill(s : BiostructvolumePath, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_volume_path_min(s : BiostructvolumePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_path_min(s : BiostructvolumePath) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_path_max(s : BiostructvolumePath) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_path_max(s : BiostructvolumePath) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_path_to_string(s : BiostructvolumePath) -> String {
   "Path[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -850,15 +738,9 @@ pub fn bio_struct_volume_cluster_set(s : BiostructvolumeCluster, i : Int, v : Do
   result
 }
 
-pub fn bio_struct_volume_cluster_sum(s : BiostructvolumeCluster) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_cluster_sum(s : BiostructvolumeCluster) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_cluster_mean(s : BiostructvolumeCluster) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_cluster_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_cluster_mean(s : BiostructvolumeCluster) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_cluster_scale(s : BiostructvolumeCluster, f : Double) -> BiostructvolumeCluster {
   let result = bio_struct_volume_cluster_make(s.size)
@@ -885,21 +767,9 @@ pub fn bio_struct_volume_cluster_fill(s : BiostructvolumeCluster, v : Double) ->
   result
 }
 
-pub fn bio_struct_volume_cluster_min(s : BiostructvolumeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_cluster_min(s : BiostructvolumeCluster) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_cluster_max(s : BiostructvolumeCluster) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_cluster_max(s : BiostructvolumeCluster) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_cluster_to_string(s : BiostructvolumeCluster) -> String {
   "Cluster[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -928,15 +798,9 @@ pub fn bio_struct_volume_model_set(s : BiostructvolumeModel, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_volume_model_sum(s : BiostructvolumeModel) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_model_sum(s : BiostructvolumeModel) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_model_mean(s : BiostructvolumeModel) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_model_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_model_mean(s : BiostructvolumeModel) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_model_scale(s : BiostructvolumeModel, f : Double) -> BiostructvolumeModel {
   let result = bio_struct_volume_model_make(s.size)
@@ -963,21 +827,9 @@ pub fn bio_struct_volume_model_fill(s : BiostructvolumeModel, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_volume_model_min(s : BiostructvolumeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_model_min(s : BiostructvolumeModel) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_model_max(s : BiostructvolumeModel) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_model_max(s : BiostructvolumeModel) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_model_to_string(s : BiostructvolumeModel) -> String {
   "Model[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1006,15 +858,9 @@ pub fn bio_struct_volume_layer_set(s : BiostructvolumeLayer, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_volume_layer_sum(s : BiostructvolumeLayer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_layer_sum(s : BiostructvolumeLayer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_layer_mean(s : BiostructvolumeLayer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_layer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_layer_mean(s : BiostructvolumeLayer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_layer_scale(s : BiostructvolumeLayer, f : Double) -> BiostructvolumeLayer {
   let result = bio_struct_volume_layer_make(s.size)
@@ -1041,21 +887,9 @@ pub fn bio_struct_volume_layer_fill(s : BiostructvolumeLayer, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_volume_layer_min(s : BiostructvolumeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_layer_min(s : BiostructvolumeLayer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_layer_max(s : BiostructvolumeLayer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_layer_max(s : BiostructvolumeLayer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_layer_to_string(s : BiostructvolumeLayer) -> String {
   "Layer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1084,15 +918,9 @@ pub fn bio_struct_volume_buffer_set(s : BiostructvolumeBuffer, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_volume_buffer_sum(s : BiostructvolumeBuffer) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_buffer_sum(s : BiostructvolumeBuffer) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_buffer_mean(s : BiostructvolumeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_buffer_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_buffer_mean(s : BiostructvolumeBuffer) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_buffer_scale(s : BiostructvolumeBuffer, f : Double) -> BiostructvolumeBuffer {
   let result = bio_struct_volume_buffer_make(s.size)
@@ -1119,21 +947,9 @@ pub fn bio_struct_volume_buffer_fill(s : BiostructvolumeBuffer, v : Double) -> B
   result
 }
 
-pub fn bio_struct_volume_buffer_min(s : BiostructvolumeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_buffer_min(s : BiostructvolumeBuffer) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_buffer_max(s : BiostructvolumeBuffer) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_buffer_max(s : BiostructvolumeBuffer) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_buffer_to_string(s : BiostructvolumeBuffer) -> String {
   "Buffer[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1162,15 +978,9 @@ pub fn bio_struct_volume_cursor_set(s : BiostructvolumeCursor, i : Int, v : Doub
   result
 }
 
-pub fn bio_struct_volume_cursor_sum(s : BiostructvolumeCursor) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_cursor_sum(s : BiostructvolumeCursor) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_cursor_mean(s : BiostructvolumeCursor) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_cursor_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_cursor_mean(s : BiostructvolumeCursor) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_cursor_scale(s : BiostructvolumeCursor, f : Double) -> BiostructvolumeCursor {
   let result = bio_struct_volume_cursor_make(s.size)
@@ -1197,21 +1007,9 @@ pub fn bio_struct_volume_cursor_fill(s : BiostructvolumeCursor, v : Double) -> B
   result
 }
 
-pub fn bio_struct_volume_cursor_min(s : BiostructvolumeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_cursor_min(s : BiostructvolumeCursor) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_cursor_max(s : BiostructvolumeCursor) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_cursor_max(s : BiostructvolumeCursor) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_cursor_to_string(s : BiostructvolumeCursor) -> String {
   "Cursor[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1240,15 +1038,9 @@ pub fn bio_struct_volume_view_set(s : BiostructvolumeView, i : Int, v : Double) 
   result
 }
 
-pub fn bio_struct_volume_view_sum(s : BiostructvolumeView) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_view_sum(s : BiostructvolumeView) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_view_mean(s : BiostructvolumeView) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_view_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_view_mean(s : BiostructvolumeView) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_view_scale(s : BiostructvolumeView, f : Double) -> BiostructvolumeView {
   let result = bio_struct_volume_view_make(s.size)
@@ -1275,21 +1067,9 @@ pub fn bio_struct_volume_view_fill(s : BiostructvolumeView, v : Double) -> Biost
   result
 }
 
-pub fn bio_struct_volume_view_min(s : BiostructvolumeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_view_min(s : BiostructvolumeView) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_view_max(s : BiostructvolumeView) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_view_max(s : BiostructvolumeView) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_view_to_string(s : BiostructvolumeView) -> String {
   "View[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1318,15 +1098,9 @@ pub fn bio_struct_volume_range_set(s : BiostructvolumeRange, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_volume_range_sum(s : BiostructvolumeRange) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_range_sum(s : BiostructvolumeRange) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_range_mean(s : BiostructvolumeRange) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_range_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_range_mean(s : BiostructvolumeRange) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_range_scale(s : BiostructvolumeRange, f : Double) -> BiostructvolumeRange {
   let result = bio_struct_volume_range_make(s.size)
@@ -1353,21 +1127,9 @@ pub fn bio_struct_volume_range_fill(s : BiostructvolumeRange, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_volume_range_min(s : BiostructvolumeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_range_min(s : BiostructvolumeRange) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_range_max(s : BiostructvolumeRange) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_range_max(s : BiostructvolumeRange) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_range_to_string(s : BiostructvolumeRange) -> String {
   "Range[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
@@ -1396,15 +1158,9 @@ pub fn bio_struct_volume_slice_set(s : BiostructvolumeSlice, i : Int, v : Double
   result
 }
 
-pub fn bio_struct_volume_slice_sum(s : BiostructvolumeSlice) -> Double {
-  let mut total = 0.0
-  for i in 0..<s.size { total = total + s.data[i] }
-  total
-}
+pub fn bio_struct_volume_slice_sum(s : BiostructvolumeSlice) -> Double { @_common.sum(s.data) }
 
-pub fn bio_struct_volume_slice_mean(s : BiostructvolumeSlice) -> Double {
-  if s.size == 0 { 0.0 } else { bio_struct_volume_slice_sum(s) / s.size.to_double() }
-}
+pub fn bio_struct_volume_slice_mean(s : BiostructvolumeSlice) -> Double { @_common.mean(s.data) }
 
 pub fn bio_struct_volume_slice_scale(s : BiostructvolumeSlice, f : Double) -> BiostructvolumeSlice {
   let result = bio_struct_volume_slice_make(s.size)
@@ -1431,21 +1187,9 @@ pub fn bio_struct_volume_slice_fill(s : BiostructvolumeSlice, v : Double) -> Bio
   result
 }
 
-pub fn bio_struct_volume_slice_min(s : BiostructvolumeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] < m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_slice_min(s : BiostructvolumeSlice) -> Double { @_common.min(s.data) }
 
-pub fn bio_struct_volume_slice_max(s : BiostructvolumeSlice) -> Double {
-  if s.size == 0 { 0.0 } else {
-    let mut m = s.data[0]
-    for i in 1..<s.size { if s.data[i] > m { m = s.data[i] } }
-    m
-  }
-}
+pub fn bio_struct_volume_slice_max(s : BiostructvolumeSlice) -> Double { @_common.max(s.data) }
 
 pub fn bio_struct_volume_slice_to_string(s : BiostructvolumeSlice) -> String {
   "Slice[" + s.size.to_string() + ",tag=" + s.tag.to_string() + "]"
